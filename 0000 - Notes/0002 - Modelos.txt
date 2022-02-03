@@ -1,0 +1,61 @@
+MODELOS de NPC:
+
+//================================
+
+//         NPC: Serviços
+
+//================================
+
+.@npc$ = "^008000[ Armazem Shinobi ]^000000";
+.@zeny$ = "Com ^800080Passe^000000 você paga apenas metade do valor e ^FF0000VIP não paga!^000000";
+set @cost,2500;
+set @descont,1250;
+
+
+
+	if (countitem(662) >= 1) { next;
+								
+	//if (getgmlevel() >= 5) { next;
+	//						openstorage;
+	//						close;	}
+	if (Zeny < 2500) {	next;
+						mes .@npc$;
+						mes " ";
+						mes "Voce nao possui zeny suficiente para este serviço";
+						mes " ";
+						mes "Torne-se ^FF0000VIP^000000 agora mesmo e utilize nossos serviços de graça!";
+						close;}
+	else {
+	set Zeny, Zeny-2500;
+	openstorage;
+	close;	
+	}
+	
+								npctalk "Obrigado por utilizar nossos servicos!";
+	
+	
+	
+// Função ESPERAR
+
+set .@t, 2,5;	// Delay Seconds.
+
+while ( .@t ) {
+dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+sleep2 0 ;
+set .@t, .@t - 1;
+}
+
+
+//=================================
+//
+// COMANDOS:
+
+NPC FALAR:
+
+		npctalk "Obrigado por utilizar nossos servicos!";
+		
+NPC MANDAR PM:
+		dispbottom ""+ strcharinfo ( 0 ) +" Seu VIP é muito importante para manter o servidor, Obrigado.";
+		
+NPC ABRIR CHAT
+waitingroom "[Teleportador - Vila]",0;

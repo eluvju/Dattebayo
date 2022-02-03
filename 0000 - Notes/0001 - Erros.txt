@@ -1,0 +1,49 @@
+///////////////////////////////////////////////////////////
+////												 /////
+////      ///////   ////////   ////////  ////////   ///// 
+////     //        //    //   //    //  //    //   /////
+////    ///////   // // //   // // //  //    //   /////
+////   //        //   \\    //   \\   //    //   /////
+////  ///////	//     \\  //     \\ ////////   /////
+////										   /////
+///////////////////////////////////////////////////
+_____________________________
+Erros ao Compilar
+
+ 1# - GCC 5 Version - Erro de Compatibilidade ao Compilar
+	
+	Soluções: Executar no console os seguintes comandos
+	
+		sudo yum install centos-release-scl
+		sudo yum install devtoolset-7-gcc*
+		scl enable devtoolset-7 bash
+		which gcc
+		gcc --version
+		
+	Após fechar o console deve executar o comando ** scl enable devtoolset-7 bash ** Sempre que for compilar
+	
+	
+_____________________________
+Erros de Conexão
+
+	1# - Closed Connection ao entrar na tela de Personagem
+	
+	Soluções: Alterar os seguintes Arquivos>
+	
+		Server Config:
+			
+			conf/import/char_conf.txt
+			login_ip: 127.0.0.1
+			char_ip: public_ip
+			conf/import/map_conf.txt
+			char_ip: 127.0.0.1
+			map_ip: public_ip
+			
+		#define PACKETVER 20180620 to rathena/src/custom/defines_pre.hpp
+		
+_____________________________
+Erros no Emulador
+
+	1# - Socket Error ao Ligar o emulador
+	
+	Soluções: Atualizar a database de acordo com a pasta SQL

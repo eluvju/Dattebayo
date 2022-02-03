@@ -1,0 +1,25 @@
+bra_fild01,118,34,4	script	Buraco	111,1,1,{
+
+if (countitem(7218) >= 1) goto descer;
+mes "Você vê um buraco fundo no chão, isso é perigoso, melhor se afastar";
+close;
+
+descer:
+mes "Você vê um buraco fundo no chão, isso é perigoso";
+next;
+mes "Hm.. e se eu usar essa corda pra descer?";
+next;
+mes "Qual será sua ação?";
+menu "Tentar descer com a corda",corda,"Se afastar",afastar;
+
+corda:
+delitem 7218,1;
+mes "Essa corda não parece muito segura... mas vamos em frente";
+next;
+warp "Orochimaru",78,109;
+close;
+
+afastar:
+close;
+
+}

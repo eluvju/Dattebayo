@@ -1,0 +1,39 @@
+//
+//
+//
+//
+moc_fild19,96,99,0	script	 #enterpiramide	111	,5,5,{
+
+	.@npc$ = "^FF0000[PERIGO]^000000";
+
+	if(baselevel >= 125) { goto entrar; }
+	
+	if(baselevel <= 124) { goto saida; }
+
+
+	entrar:
+	
+	mes .@npc$;
+	mes "Essa e uma Zona ^008000Rank A^000000, Tem certeza que quer entrar?";
+	next;
+	menu "Quero Entrar",entrar2,"Nao Estou preparado",saida;
+	
+	entrar2:
+	
+	mes .@npc$;
+	mes "Eu deveria ter pego uma Tocha";
+	next;
+	warp "moc_pryd01",193,10;
+	end;
+	
+	saida:
+	mes .@npc$;
+	mes "Voce nao esta preparado para isso.";
+	next;
+	mes .@npc$;
+	mes "Volte quando nao for mais um ^FF0000FRANGOTE!!!!!^000000";
+	close;
+
+	end;
+
+}

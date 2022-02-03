@@ -1,0 +1,8 @@
+prt_maze03,58,194,0	script	#mazewarp5303	45,1,1,{
+	switch(rand(4)) {
+		case 0: warp "prt_maze03",98,151; end;	/*To No.3-8*/
+		case 1: warp "prt_maze03",137,128; end;	/*To No.3-9*/
+		case 2: warp "prt_maze03",14,71; end;	/*To No.3-16*/
+		case 3: warp "prt_maze03",54,8; end;	/*To No.3-22*/
+	}
+}

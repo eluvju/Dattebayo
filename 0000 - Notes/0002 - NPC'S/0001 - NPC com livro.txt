@@ -1,0 +1,10 @@
+force_1-1,111,100,0	script	Livro do Naruto Uzumaki	58,{
+
+	if(quest_basic_inicio == 1) {
+		mes "Leia para aprender mais sobre o nosso jogo!";
+		next;
+		readbook 11010,1;
+		set quest_basic_inicio,2;
+		close;
+	} else { mes "Apenas um livro perdido..."; }
+}
