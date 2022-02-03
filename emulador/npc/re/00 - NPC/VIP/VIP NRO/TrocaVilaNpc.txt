@@ -1,0 +1,267 @@
+kakashi.gat,78,134,4	script	Trocar Vila	882,{
+
+if(#konoha != 1){ mes "Apenas shinobis de Konoha podem usar este npc"; close; end; }
+if (#trocafree >= 1) {mes "Você já realizou a troca grátis de vila nesta conta"; close;}
+//if (#trocasvila >= 5) {mes "Você não pode mais trocar de vila, o limite é 5.";close; }
+//mes "Antes de prosseguir, saiba que o limite para uma conta trocar de vila, é cinco.";
+//next;
+mes "Pra qual vila você gostaria de se transferir? (Konoha e Nevoa bloqueadas)";
+menu "Suna",suna,"Nuvem",nuvem,"Nenhuma no momento",nenhuma;
+
+nenhuma:
+close;
+
+no:
+close;
+
+konoha:
+next;
+mes "Indisponível no momento.";
+close;
+mes "Tem certeza que quer trocar sua vila pra Konoha?";
+menu "Sim, tenho certeza",simk,"Não",no;
+
+simk:
+if (#konoha == 1) {if (nukenin == 1) {atcommand "@job 4008"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;} mes "Nukenin desfeito, para receber sua bandana, por favor relogue"; close;} mes "Sua conta já é dessa vila"; close;}
+if (#suna == 1) {if (nukenin == 1) {atcommand "@job 4008"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #suna,0; set #konoha,1; if (Class == 2) {atcommand "@job 1";} if (Class == 9) {atcommand "@job 7";} if (Class == 4010) {atcommand "@job 4008";}}
+if (#nuvem == 1) {if (nukenin == 1) {atcommand "@job 4008"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nuvem,0; set #konoha,1; if (Class == 4) {atcommand "@job 1";} if (Class == 15) {atcommand "@job 7";} if (Class == 4016) {atcommand "@job 4008";}}
+if (#nevoa == 1) {if (nukenin == 1) {atcommand "@job 4008"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nevoa,0; set #konoha,1; if (Class == 3) {atcommand "@job 1";} if (Class == 11) {atcommand "@job 7";} if (Class == 4012) {atcommand "@job 4008";}}
+
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+next;
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+normal:
+if(#konoha == 1) {getitem 19008,1;}
+if(#nuvem == 1) {getitem 19040,1;}
+if(#suna == 1) {getitem 19006,1;}
+if(#nevoa == 1) {getitem 19001,1;}
+//set #trocasvila, #trocasvila + 1;
+set #trocafree,1;
+next;
+mes "Troca de vila finalizada com sucesso";
+close;
+
+kakashi:
+if(#konoha == 1) {getitem 19004,1;}
+if(#nuvem == 1) {getitem 19074,1;}
+if(#suna == 1) {getitem 19076,1;}
+if(#nevoa == 1) {getitem 19073,1;}
+//set #trocasvila, #trocasvila + 1;
+set #trocafree,1;
+next;
+mes "Troca de vila finalizada com sucesso";
+close;
+
+lado:
+if(#konoha == 1) {getitem 19034,1;}
+if(#nuvem == 1) {getitem 19165,1;}
+if(#suna == 1) {getitem 19018,1;}
+if(#nevoa == 1) {getitem 19019,1;}
+//set #trocasvila, #trocasvila + 1;
+set #trocafree,1;
+next;
+mes "Troca de vila finalizada com sucesso";
+close;
+
+pescoco:
+if(#konoha == 1) {getitem 19025,1;}
+if(#nuvem == 1) {getitem 19098,1;}
+if(#suna == 1) {getitem 19096,1;}
+if(#nevoa == 1) {getitem 19097,1;}
+//set #trocasvila, #trocasvila + 1;
+set #trocafree,1;
+next;
+mes "Troca de vila finalizada com sucesso";
+close;
+
+yamato:
+if(#konoha == 1) {getitem 19170,1;}
+if(#nuvem == 1) {getitem 19095,1;}
+if(#suna == 1) {getitem 19168,1;}
+if(#nevoa == 1) {getitem 19169,1;}
+//set #trocasvila, #trocasvila + 1;
+set #trocafree,1;
+next;
+mes "Troca de vila finalizada com sucesso";
+close;
+
+kisame:
+if(#konoha == 1) {getitem 19030,1;}
+if(#nuvem == 1) {getitem 19127,1;}
+if(#suna == 1) {getitem 19156,1;}
+if(#nevoa == 1) {getitem 19016,1;}
+//set #trocasvila, #trocasvila + 1;
+set #trocafree,1;
+next;
+mes "Troca de vila finalizada com sucesso";
+close;
+
+suna:
+next;
+mes "Tem certeza que quer trocar sua vila pra Suna?";
+menu "Sim, tenho certeza",sims,"Não",no;
+
+sims:
+if (#suna == 1) {if (nukenin == 1) {atcommand "@job 4010"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;} mes "Nukenin desfeito, para receber sua bandana, por favor relogue"; close;} mes "Sua conta já é dessa vila"; close;}
+if (#konoha == 1) {if (nukenin == 1) {atcommand "@job 4010"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #konoha,0; set #suna,1; if (Class == 1) {atcommand "@job 2";} if (Class == 7) {atcommand "@job 9";} if (Class == 4008) {atcommand "@job 4010";}  set #trocafree,1;}
+if (#nuvem == 1) {if (nukenin == 1) {atcommand "@job 4010"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nuvem,0; set #suna,1; if (Class == 4) {atcommand "@job 2";} if (Class == 15) {atcommand "@job 9";} if (Class == 4016) {atcommand "@job 4010";}  set #trocafree,1;}
+if (#nevoa == 1) {if (nukenin == 1) {atcommand "@job 4010"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nevoa,0; set #suna,1; if (Class == 3) {atcommand "@job 2";} if (Class == 11) {atcommand "@job 9";} if (Class == 4012) {atcommand "@job 4010";}  set #trocafree,1;}
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+next;
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+nevoa:
+next;
+mes "Indisponível no momento.";
+close;
+mes "Tem certeza que quer trocar sua vila pra Névoa?";
+menu "Sim, tenho certeza",simne,"Não",no;
+
+simne:
+if (#nevoa == 1) {if (nukenin == 1) {atcommand "@job 4012"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;} mes "Nukenin desfeito, para receber sua bandana, por favor relogue"; close;} mes "Sua conta já é dessa vila";close;}
+if (#konoha == 1) {if (nukenin == 1) {atcommand "@job 4012"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #konoha,0; set #nevoa,1; if (Class == 1) {atcommand "@job 3";} if (Class == 7) {atcommand "@job 11";} if (Class == 4008) {atcommand "@job 4012";} set #trocafree,1;}
+if (#nuvem == 1) {if (nukenin == 1) {atcommand "@job 4012"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nuvem,0; set #nevoa,1; if (Class == 4) {atcommand "@job 3";} if (Class == 15) {atcommand "@job 11";} if (Class == 4016) {atcommand "@job 4012";} set #trocafree,1;}
+if (#suna == 1) {if (nukenin == 1) {atcommand "@job 4012"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #suna,0; set #nevoa,1; if (Class == 2) {atcommand "@job 3";} if (Class == 9) {atcommand "@job 11";} if (Class == 4010) {atcommand "@job 4012";} set #trocafree,1;}
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+next;
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+nuvem:
+next;
+mes "Tem certeza que quer trocar sua vila pra Nuvem?";
+menu "Sim, tenho certeza",simnu,"Não",no;
+
+simnu:
+if (#nuvem == 1) {if (nukenin == 1) {atcommand "@job 4016"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;} mes "Nukenin desfeito, para receber sua bandana, por favor relogue"; close;} mes "Sua conta já é dessa vila";close;}
+if (#konoha == 1) {if (nukenin == 1) {atcommand "@job 4016"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #konoha,0; set #nuvem,1; if (Class == 1) {atcommand "@job 4";} if (Class == 7) {atcommand "@job 15";} if (Class == 4008) {atcommand "@job 4016";} set #trocafree,1;}
+if (#nevoa == 1) {if (nukenin == 1) {atcommand "@job 4016"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nevoa,0; set #nuvem,1; if (Class == 3) {atcommand "@job 4";} if (Class == 11) {atcommand "@job 15";} if (Class == 4012) {atcommand "@job 4016";} set #trocafree,1;}
+if (#suna == 1) {if (nukenin == 1) {atcommand "@job 4016"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #suna,0; set #nuvem,1; if (Class == 2) {atcommand "@job 4";} if (Class == 9) {atcommand "@job 15";} if (Class == 4010) {atcommand "@job 4016";} set #trocafree,1;}
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+next;
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+OnPCLoginEvent:
+if(#nuvem == 1 && nukenin == 0 || #suna == 1 && nukenin == 0){
+sc_start SC_EXPBOOST,3600000,100;
+dispbottom "Double Experience ativado.";
+}
+end;
+
+}

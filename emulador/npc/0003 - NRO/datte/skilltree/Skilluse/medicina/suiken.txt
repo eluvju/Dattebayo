@@ -1,0 +1,57 @@
+-	script	useRokusuik	-1,{
+    end;
+//When a Character uses a skill
+
+//Byakugo
+
+onPcUseSkillEvent:
+
+           if(lskillid == 307) {
+
+
+if (getskilllv(307) == 1) {
+
+if (Byakugo != 1) {end;}
+if (skill307 >= 50) {skill 307,2,0; set skill307,0; dispbottom "[Sys] Level up"; end; }
+set skill307,skill307 +1;
+dispbottom "[Jutsu level] Byakugo No Jutsu No Jutsu level 1: "+skill307+" de 50";
+
+end;
+
+}
+
+if (getskilllv(307) == 2) {
+if (Byakugo != 1) {end;}
+if (skill307 >= 100) {skill 307,3,0; set skill307,0; dispbottom "[Sys] Level up"; end;}
+set skill307,skill307 +1;
+dispbottom "[Jutsu level] Byakugo No Jutsu No Jutsu level 2: "+skill307+" de 100";
+
+end;
+
+}
+
+if (getskilllv(307) == 3) {
+
+if (Byakugo != 1) {end;}
+if (skill307 >= 150) {skill 307,4,0; set skill307,0; dispbottom "[Sys] Level up"; end;}
+set skill307,skill307 +1;
+dispbottom "[Jutsu level] Byakugo No Jutsu No Jutsu level 3: "+skill307+" de 150";
+
+end;
+
+}
+
+if (getskilllv(307) == 4) {
+if (Byakugo != 1) {end;}
+if (skill307 >= 200) {skill 307,5,0; set skill307,0; dispbottom "[Sys] Level up"; end;}
+set skill307,skill307 +1;
+dispbottom "[Jutsu level] Byakugo No Jutsu No Jutsu level 4: "+skill307+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

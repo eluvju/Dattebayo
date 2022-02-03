@@ -1,0 +1,67 @@
+-	script	UseR_chidoriN	-1,{
+    end;
+//When a Character uses a skill
+
+//R_chidoriN
+
+onPcUseSkillEvent:
+
+           if(lskillid == 541) {
+
+
+if (getskilllv(541) == 1) {
+
+if (R_chidoriN != 1) {end;}
+if (skill541 >= 50) {skill 541,2,0; set skill541,0; dispbottom "[Sys] Level up"; end; }
+set skill541,skill541 +1;
+dispbottom "[Jutsu level] Chidori Nagashi level 1: "+skill541+" de 50";
+
+end;
+
+}
+
+if (getskilllv(541) == 2) {
+if (R_chidoriN != 1) {end;}
+if (skill541 >= 100) {skill 541,3,0; set skill541,0; dispbottom "[Sys] Level up"; end;}
+set skill541,skill541 +1;
+dispbottom "[Jutsu level] Chidori Nagashi level 2: "+skill541+" de 100";
+
+end;
+
+}
+
+if (getskilllv(541) == 3) {
+
+if (R_chidoriN != 1) {end;}
+if (skill541 >= 150) {skill 541,4,0; set skill541,0; dispbottom "[Sys] Level up"; end;}
+set skill541,skill541 +1;
+dispbottom "[Jutsu level] Chidori Nagashi level 3: "+skill541+" de 150";
+
+end;
+
+}
+
+if (getskilllv(541) == 4) {
+if (R_chidoriN != 1) {end;}
+if (skill541 >= 200) {skill 541,5,0; set skill541,0; dispbottom "[Sys] Level up"; end;}
+set skill541,skill541 +1;
+dispbottom "[Jutsu level] Chidori Nagashi level 4: "+skill541+" de 200";
+
+end;
+
+}
+
+if (getskilllv(541) == 5) {
+if (R_chidoriN != 1) {end;}
+if (skill541 >= 250) {skill 541,6,0; set skill541,0; dispbottom "[Sys] Level up"; end;}
+set skill541,skill541 +1;
+dispbottom "[Jutsu level] Chidori Nagashi level 5: "+skill541+" de 250";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

@@ -1,0 +1,955 @@
+salakagen,23,36,5	script	Missão Rank D::D1	114,{
+
+if (checkquest(2023) == 1) {mes "Aqui você pode receber missões rank D, são as mais fáceis de se fazer"; completequest 2023; set newbie,7; close;}
+mes "[ Missões de Rank D ]";
+mes "Missões disponiveis: ";
+menu "- Resgatar o gato Tora (lvl 10)",L_gato,"- Colher ervas (lvl 20)",L_ervas,"- Recolher Lixo (lvl 30)",L_lixo,"- Tosar Ovelhas( lvl 40)",L_ovelha,"- Alimentar o gado (lvl 50)",L_gado;
+	
+L_gato:
+if(BaseLevel< 10) {mes "Você não tem level o suficiente pra realizar essa missão"; close;}
+if (jafezgato == 1) {next; mes "Você já completou essa missão"; close;}
+if (checkquest(1005) == 1) goto L_cat;
+if (checkquest(1005) == 2) goto L_cat;
+if (checkquest(1005) != -1)
+
+
+mes "Olá "+strcharinfo(0)+" tenho uma missão disponível para você, gostaria de fazer?";
+menu "Sim",-,"Não",L_catno;
+
+setquest 1005;
+mes "Que bom, é uma missão bem fácil, mas é extremamente cuidadosa.";
+next;
+mes "A Esposa do Senhor Feudal perdeu seu gato Tora aos arredores da Vila, e temos que recuperá-lo.";
+next;
+mes "Ele deve estar em torno do primeiro campo da vila, procure e certamente achará.";
+next;
+mes "Até mais, boa sorte!";
+close;
+
+L_cat:
+if (checkquest(1005) != 2) goto L_imcomp_cat;
+mes "Muito bem, você achou o gato, agora podemos devolver para a Esposa do Senhor Feudal, ela ficará muito Feliz!";
+next;
+mes "Ela ofereceu uma recompensa para quem achasse, receba esta bonificação:";
+mes "^3349CC1.000 Zenny^000000";
+set Zeny,Zeny+10000;
+atcommand "@lvup 5";
+set jafezgato,1;
+erasequest 1005;
+getitem 14001,1;
+announce "O Jogador "+strcharinfo(0)+" Completou a Missão Rank D - Achar o Gato Tora!",7;
+close;
+
+L_imcomp_cat:
+next;
+mes "Você ainda não completou sua missão.";
+close;
+
+L_catno:
+close;
+
+//INICIO QUEST ERVAS
+
+L_ervas:
+if(BaseLevel< 20) {mes "Você não tem level o suficiente pra realizar essa missão"; close;}
+if (jafezerva == 1) {next; mes "Você já fez essa missão"; close;}
+if (checkquest(1006) == 1) goto L_erva;
+if (checkquest(1006) != -1)
+
+next;
+mes "Olá "+strcharinfo(0)+" tenho uma missão disponível para você, gostaria de fazer?";
+menu "Sim",-,
+     "Não",naoerva;
+
+setquest 1006;
+mes "Que bom, é uma missão bem fácil.";
+next;
+mes "A população da vila está reclamando de uma invasão de Ervas Daninhas na Vila,e a sua tarefa será:";
+mes "^3349CC Coletar 30 Ervas Letais^000000 para estudarmos daonde elas estão vindo.";
+next;
+mes "Conto com você Jovem Ninja!";
+close;
+
+L_erva:
+if(countitem(631) < 30) goto L_imcomp_cat;
+mes "Muito bem, Você coletou as 30 ervas!";
+next;
+mes "A equipe Bióloga vai ficar feliz ao ver este material.";
+mes "Receba uma bonificação pelo Trabalho:";
+mes "^3349CC 2.000 Zenny ^000000";
+next;
+set Zeny,Zeny+20000;
+atcommand "@lvup 5";
+set jafezerva,1;
+delitem 631,30;
+completequest 1006;
+erasequest 1006;
+getitem 20093,1;
+announce "O Jogador "+strcharinfo(0)+" Completou a Missão Rank D - Limpar Ervas Daninhas!",7;
+close;
+
+naoerva:
+mes "Certo, estarei aqui quando precisar.";
+close;
+
+//INICIO QUEST LATA DE LIXO
+
+L_lixo:
+if(BaseLevel< 30) {mes "Você não tem level o suficiente pra realizar essa missão"; close;}
+if (jafezlixo == 1) {next; mes "Você já fez essa missão"; close;}
+if (checkquest(1007) == 1) goto L_lixoc;
+if (checkquest(1007) != -1)
+
+next;
+mes "Olá "+strcharinfo(0)+" tenho uma missão disponível para você, gostaria de fazer?";
+menu "Sim",-,
+     "Não",naolixo;
+
+setquest 1007;
+mes "Que bom, é uma missão que precisar ser feita rápido.";
+next;
+mes "Os secretários do Kage, deixaram acidentalmente papéis importantes irem parar no lixo.";
+next;
+mes "Então você precisa ^3349CC Coletar 15 Arquivos Estragados ^000000 que se encontram em latas de lixo espalhadas pela Vila, para entregar devolta para os secretários.";
+next;
+mes "Conto com você Jovem Ninja!";
+close;
+
+
+L_lixoc:
+if(countitem(7111) < 15) goto L_imcomp_cat;
+mes "Muito bem, Você coletou os Arquivos!";
+next;
+mes "Os secretários vão ficar felizes ao ver este material.";
+mes "Receba uma bonificação pelo Trabalho:";
+mes "^3349CC 3.000 Zenny ^000000";
+next;
+set Zeny,Zeny+30000;
+atcommand "@lvup 5";
+set jafezlixo,1;
+set l1,0;
+set l2,0;
+set l3,0;
+set l4,0;
+set l5,0;
+set l6,0;
+set l7,0;
+set l8,0;
+set l9,0;
+set l10,0;
+set l11,0;
+set l12,0;
+set l13,0;
+set l14,0;
+set l15,0;
+delitem 7111,15;
+completequest 1007;
+erasequest 1007;
+getitem 15027,1;
+announce "O Jogador "+strcharinfo(0)+" Completou a Missão Rank D - Coletar Arquivos do Lixo!",7;
+close;
+
+naolixo:
+mes "Certo, estarei aqui quando precisar.";
+close;
+
+
+//INICIO OVELHA
+
+L_ovelha:
+if (jafezovelha == 1) {mes "Você já fez essa missão"; close;}
+if(BaseLevel< 40) {mes "Você não tem level o suficiente pra realizar essa missão"; close;}
+if (checkquest(1008) == 1) goto L_ovelhac;
+if (checkquest(1008) == 2) goto L_ovelhac;
+if (checkquest(1008) != -1)
+
+mes "Olá "+strcharinfo(0)+" tenho uma missão disponível para você, gostaria de fazer?";
+menu "Sim",-,
+     "Não",naoovelha;
+
+setquest 1008;
+mes "Que bom, é uma missão que precisar ser feita rápido.";
+next;
+mes "Os Fazendeiros que você ajudou se importaram tanto com o Gado que se esqueceram das pobres ovelhas!";
+next;
+mes "O pêlo delas cresceu demais, e precisamos que vá tosá-las.";
+next;
+mes "Conto com você Jovem Ninja!";
+close;
+
+L_ovelhac:
+if(tosa<9) {mes "você ainda não completou a missão, você tosou "+tosa+"/10 ovelhas"; close;}
+mes "Muito bem, Você Tosou todas as Ovelhas!";
+next;
+mes "Receba uma bonificação pelo Trabalho:";
+mes "^3349CC 4.000 Zenny ^000000";
+next;
+set tosa,0;
+set Zeny,Zeny+40000;
+atcommand "@lvup 5";
+set jafezovelha,1;
+set tosa1,0;
+set tosa2,0;
+set tosa3,0;
+set tosa4,0;
+set tosa5,0;
+set tosa6,0;
+set tosa7,0;
+set tosa8,0;
+set tosa9,0;
+set tosa10,0;
+announce "O Jogador "+strcharinfo(0)+" Completou a Missão Rank D - Tosar Ovelhas!",7;
+completequest 1008;
+erasequest 1008;
+getitem 20344,1;
+close;
+
+naoovelha:
+mes "Certo, estarei aqui quando precisar.";
+close;
+
+L_gado:
+if (jafezpalha == 1) {mes "Você já fez essa missão"; close;}
+if(BaseLevel< 50) {mes "Você não tem level o suficiente pra realizar essa missão"; close;}
+if (checkquest(1009) == 1) goto L_gadoc;
+if (checkquest(1009) == 2) goto L_gadoc;
+if (checkquest(1009) != -1)
+if(alb>9) goto acabougado;
+mes "Olá "+strcharinfo(0)+" tenho uma missão disponível para você, gostaria de fazer?";
+menu "Sim",-,
+     "Não",naogado;
+
+setquest 1009;
+mes "Que bom, é uma missão que precisar ser feita rápido.";
+next;
+mes "Alguns Fazendeiros da Vila estão muito ocupados em sua intensa troca de mercadorias, e assim ficam sem tempo para alimentar seu gado.";
+mes "Ajude-os à deixar os Bois fortes e saudáveis pelo bem do Comércio na Vila!";
+next;
+mes "Dentro da vila, existe um Monte de Palha, aonde você ^3349CC Coletará 1 Palha de Cada Vez ^000000 para alimentar ^3349CC 5 Bois ^000000.";
+mes "Cada Boi consome 2 Palhas para se Alimentar.";
+next;
+mes "Conto com você Jovem Ninja!";
+close;
+
+L_gadoc:
+if(alb<9) {mes "Você ainda não completou sua missão"; close;}
+mes "Muito bem, Você alimentou o Gado dos Mercadores!";
+next;
+mes "Receba uma bonificação pelo Trabalho:";
+mes "^3349CC 5.000 Zenny ^000000";
+set Zeny,Zeny+50000;
+atcommand "@lvup 5";
+set jafezpalha,1;
+set alb,0;
+set alb1,0;
+set alb2,0;
+set alb3,0;
+set alb4,0;
+set alb5,0;
+set f1,0;
+completequest 1009;
+erasequest 1009;
+getitem 26199,1;
+getitem 16732,1;
+announce "O Jogador "+strcharinfo(0)+" Completou a Missão Rank D - Alimentar o Gado!",7;
+close;
+
+naogado:
+mes "Certo, estarei aqui quando precisar.";
+close;
+
+
+
+}
+
+
+
+
+nevoa,0,0,0,0	monster	Erva Daninha	1080,40,360000,180000,1
+
+kiragakure,193,281,5	script	Lata de Lixo#n1	845,{
+if(checkquest(1007)==1 && l1!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l1,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,224,281,5	script	Lata de Lixo#n2	845,{
+if(checkquest(1007)==1 && l2!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l2,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,280,244,5	script	Lata de Lixo#n3	845,{
+if(checkquest(1007)==1 && l3!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l3,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,234,202,5	script	Lata de Lixo#n4	845,{
+if(checkquest(1007)==1 && l4!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l4,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,195,178,5	script	Lata de Lixo#n5	845,{
+if(checkquest(1007)==1 && l5!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l5,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,212,223,5	script	Lata de Lixo#n6	845,{
+if(checkquest(1007)==1 && l6!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l6,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,200,248,5	script	Lata de Lixo#n7	845,{
+if(checkquest(1007)==1 && l7!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l7,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,157,213,5	script	Lata de Lixo#n8	845,{
+if(checkquest(1007)==1 && l8!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l8,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,149,154,5	script	Lata de Lixo#n9	845,{
+if(checkquest(1007) ==1 && l9!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l9,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,170,125,5	script	Lata de Lixo#n10	845,{
+if(checkquest(1007) ==1 && l10!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l10,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,183,159,5	script	Lata de Lixo#n11	845,{
+if(checkquest(1007) ==1 && l11!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l11,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,219,176,5	script	Lata de Lixo#n12	845,{
+if(checkquest(1007) ==1 && l12!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l12,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kiragakure,254,229,5	script	Lata de Lixo#n13	845,{
+if(checkquest(1007) ==1 && l13!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l13,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+salakagen,38,29,5	script	Lata de Lixo#n14	845,{
+if(checkquest(1007) ==1 && l14!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l14,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+salakagen,39,5,5	script	Lata de Lixo#n15	845,{
+if(checkquest(1007) ==1 && l15!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l15,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//------------------------------------------------------
+
+kiragakure,236,184,5	script	Ovelha#n1	890,{
+
+if(tosa1==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa1,tosa1 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeh  T_T";
+close;
+}
+//------------------------------------------------------
+
+kiragakure,213,214,5	script	Ovelha#n2	890,{
+
+if(tosa2==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa2,tosa2 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeh  T_T";
+close;
+}
+//------------------------------------------------------
+
+kiragakure,180,171,5	script	Ovelha#n3	890,{
+
+if(tosa3==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa3,tosa3 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeh  T_T";
+close;
+}
+//------------------------------------------------------
+
+kiragakure,260,219,5	script	Ovelha#n4	890,{
+
+if(tosa4==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa4,tosa4 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeh  T_T";
+close;
+}
+//------------------------------------------------------
+
+kiragakure,213,250,5	script	Ovelha#n5	890,{
+
+if(tosa5==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa5,tosa5 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+kiragakure,208,254,5	script	Ovelha#n6	890,{
+
+if(tosa6==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa6,tosa6 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+kiragakure,279,254,5	script	Ovelha#n7	890,{
+
+if(tosa7==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa7,tosa7 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+kiragakure,251,160,5	script	Ovelha#n8	890,{
+
+if(tosa8==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa8,tosa8 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+kiragakure,222,179,5	script	Ovelha#n9	890,{
+
+if(tosa9==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa9,tosa9 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+kiragakure,144,169,5	script	Ovelha#n10	890,{
+
+if(tosa10==0 && checkquest(1008) ==1) goto inicio;
+mes "Meeeeeeh !";
+close;
+
+inicio:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa10,tosa10 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+kiragakure,190,163,5	script	Monte de Palha#n1	430,{
+if(checkquest(1009) ==1 && f1<10 && countitem(7197) < 1){
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+set f1,f1 +1;
+getitem 7197,1;
+close;
+}else{end;}}
+
+kiragakure,234,224,5	script	Monte de Palha#n2	430,{
+if(checkquest(1009) !=1) {mes "Só um monte de palha.."; close;}
+if(checkquest(1009) ==1 && f1<10 && countitem(7197) < 1){
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+set f1,f1 +1;
+getitem 7197,1;
+close;
+}else{end;}}
+
+kiragakure,155,259,5	script	Monte de Palha#n3	430,{
+if(checkquest(1009) !=1) {mes "Só um monte de palha.."; close;}
+if(checkquest(1009) ==1 && f1<10 && countitem(7197) < 1){
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+set f1,f1 +1;
+getitem 7197,1;
+close;
+}else{end;}}
+
+
+
+
+//------------------------------------------------------
+
+kiragakure,241,155,1	script	Boi#n1	889,{
+
+
+if(alb1<2 && countitem(7197) > 0) goto inicio;
+mes "Muuuuuuh !";
+close;
+
+inicio:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb1,alb1 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+//------------------------------------------------------
+
+kiragakure,238,155,1	script	Boi#n2	889,{
+
+if(alb2<2 && countitem(7197) > 0) goto inicio;
+mes "Muuuuuuh !";
+close;
+
+inicio:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb2,alb2 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+//------------------------------------------------------
+
+kiragakure,244,157,1	script	Boi#n3	889,{
+
+if(alb3<2 && countitem(7197) > 0) goto inicio;
+mes "Muuuuuuh !";
+close;
+
+inicio:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb3,alb3 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+//------------------------------------------------------
+
+kiragakure,247,158,1	script	Boi#n4	889,{
+
+if(alb4<2 && countitem(7197) > 0) goto inicio;
+mes "Muuuuuuh !";
+close;
+
+inicio:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb4,alb4 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+//------------------------------------------------------
+
+kiragakure,250,160,1	script	Boi#n5	889,{
+
+if(alb5<2 && countitem(7197) > 0) goto inicio;
+mes "Muuuuuuh !";
+close;
+
+inicio:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb5,alb5 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+
+
+
+kiragakure,244,161,1,1	script	Fazendeiro#n	85,{
+
+mes "Sol Forte, Cheiro de Boi.. Isto é ser um Fazendeiro !";
+next;
+mes "Minha mulher as vezes Reclama, mas é o nosso meio de Sustento xP";
+close;
+}
+
+
+//==========================
+// Gatos
+//==========================
+gef_fild04,136,88,5	script	Tora#1n	876,{
+
+if(jafezgato==1) goto jafez;
+if (checkquest(1005) == 1) goto inicio;
+end;
+
+inicio:
+mes "Miau!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+completequest 1005;
+close;
+
+jafez:
+mes "Miau!";
+close;
+}
+
+gef_fild04,205,275,5	script	Tora#2n	876,{
+
+if(jafezgato==1) goto jafez;
+if (checkquest(1005) == 1) goto inicio;
+end;
+
+inicio:
+mes "Miau!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+completequest 1005;
+close;
+
+jafez:
+mes "Miau!";
+close;
+}
+gef_fild04,313,278,5	script	Tora#3n	876,{
+
+if(jafezgato==1) goto jafez;
+if (checkquest(1005) == 1) goto inicio;
+
+inicio:
+mes "Miau!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+completequest 1005;
+close;
+
+jafez:
+mes "Miau!";
+close;
+}
+
+gef_fild04,69,336,5	script	Tora#4n	876,{
+
+if(jafezgato==1) goto jafez;
+if (checkquest(1005) == 1) goto inicio;
+end;
+
+inicio:
+mes "Miau!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+completequest 1005;
+close;
+
+jafez:
+mes "Miau!";
+close;
+}
+
+//==========================
+// Timer
+//==========================
+
+konoha,156,175,5	script	ToraTimerN  	-1,{
+
+
+OnTimer60000:
+enablenpc "Tora#1n";
+disablenpc "Tora#2n";
+disablenpc "Tora#3n";
+disablenpc "Tora#4n";
+end;
+
+OnTimer120000:
+disablenpc "Tora#1n";
+enablenpc "Tora#2n";
+disablenpc "Tora#3n";
+disablenpc "Tora#4n";
+end;
+
+OnTimer180000:
+disablenpc "Tora#1n";
+disablenpc "Tora#2n";
+enablenpc "Tora#3n";
+disablenpc "Tora#4n";
+end;
+
+OnTimer240000:
+disablenpc "Tora#1n";
+disablenpc "Tora#2n";
+disablenpc "Tora#3n";
+enablenpc "Tora#4n";
+stopnpctimer;
+initnpctimer;
+end;
+
+OnInit:
+disablenpc "Tora#1n";
+disablenpc "Tora#2n";
+disablenpc "Tora#3n";
+disablenpc "Tora#4n";
+initnpctimer;
+end;
+
+}
+
+salakagea,23,36,5	duplicate(D1)	Missão Rank D#1	801
+salakage,23,36,5	duplicate(D1)	Missão Rank D#2	411
+salakagex,23,36,5	duplicate(D1)	Missão Rank D#3	853

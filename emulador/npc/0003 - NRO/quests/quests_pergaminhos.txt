@@ -1,0 +1,152 @@
+morocc,117,110,5	script	Pergaminhos Elementais	809,{
+mes "[Pergaminhos Elementais]";
+mes "Qual pergaminho gostaria de fazer?";
+menu "Suna",suna,"Névoa",nevoa,"Konoha",konoha,"Nenhum",sair;
+
+suna:
+next;
+mes "[Pergaminho da Suna]";
+mes "Est um dia maravilhoso não ?";
+mes "Era em dias como esses que eu costumava sair nas minhas aventuras shinobis";
+mes "Mas eu ja estou velho e hoje em dia eu gosto de ajudar meus companheiros de vila";
+mes "Você deve estar pensando em como um velho como eu ajudaria a vila não ?";
+next;
+mes "Fique sabendo que eu sou o responsvel por favor os Pergaminhos da Suna!";
+mes "Os Pegaminhos da Suna são a chave para entrar em lugares proibidos para shinobis comuns";
+mes "E esses lugares são proibidos com razão, pois la se escondem os mais poderosos inimigos!";
+next;
+mes "[Pergaminho da Suna]";
+mes "Voce parece ser um jovem forte e com futuro, por isso vou lhe ajudar a conseguir um pergaminho da suna";
+mes "Não vai ser fácil, voce vai precisar percorrer o mundo todo atrás de 3 flores raras";
+next;
+mes "[Pergaminho da Suna]";
+mes "^FF00001^000000  Planta de Suna";
+mes "^FF00001^000000  Planta da Nvoa";
+mes "^FF00001^000000  Planta de Konoha";
+next;
+mes "[Pergaminho da Suna]";
+mes "Voce ja tem esses itens?";
+menu "Tenho",sim1,"Ainda Não",nao1;
+
+sim1:
+next;
+mes "[Pergaminho da Suna]";
+mes "Vamos la então "+strcharinfo(0)+" vamos ver se voce tem mesmo esses itens";
+if (countitem(704) < 1) goto SemItem;
+if (countitem(710) < 1) goto SemItem;
+if (countitem(712) < 1) goto SemItem;
+mes "Voce tem todos os itens necessrios! Aqui esta o seu resultado!";
+delitem 710,1;
+delitem 704,1;
+delitem 712,1;
+getitem 687,1;
+close;
+
+SemItem:
+next;
+mes "Desculpe, mas voce ainda não completou a sua missão!";
+close;
+
+nao1:
+next;
+mes "[Pergaminho da Suna]";
+mes "Volte quando tiver com itens então";
+close;
+
+nevoa:
+next;
+mes "[Pergaminho da Névoa]";
+mes "Está um dia maravilhoso não é?";
+mes "Era em dias como esses que eu costumava sair nas minhas aventuras shinobis";
+mes "Mas eu ja estou velho e hoje em dia eu gosto de ajudar meus companheiros de vila";
+mes "Você deve estar pensando em como um velho como eu ajudaria a vila não é?";
+mes "Fique sabendo que eu sou o responsável por favor os Pergaminhos da Suna!";
+mes "Os Pegaminhos da Suna são a chave para entrar em lugares proibidos para shinobis comuns";
+mes "E esses lugares são proibidos com razão, pois la se escondem os mais poderosos inimigos!";
+next;
+mes "[Pergaminho da Névoa]";
+mes "Voce parece ser um jovem forte e com futuro, por isso vou lhe ajudar a conseguir um Pergaminho da Névoa";
+mes "Não vai ser fácil, você vai precisar percorrer o mundo todo atrás de 3 flores raras";
+next;
+mes "[Pergaminho da Névoa]";
+mes "^FF00001^000000  Planta de Suna";
+mes "^FF00001^000000  Planta da Névoa";
+mes "^FF00001^000000  Planta de Konoha";
+next;
+mes "[Pergaminho da Névoa]";
+mes "Você ja tem esses itens?";
+menu "Tenho",sim2,"Ainda Não",nao2;
+
+sim2:
+next;
+mes "[Pergaminho da Névoa]";
+mes "Vamos la então "+strcharinfo(0)+" vamos ver se você tem mesmo esses itens";
+if (countitem(704) < 1) goto SemItem;
+if (countitem(710) < 1) goto SemItem;
+if (countitem(712) < 1) goto SemItem;
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+delitem 710,1;
+delitem 704,1;
+delitem 712,1;
+getitem 688,1;
+close;
+
+nao2:
+next;
+mes "[Pergaminho da Névoa]";
+mes "Volte quando tiver com itens então";
+close;
+
+konoha:
+next;
+mes "[Pergaminho de Konoha]";
+mes "Está um dia maravilhoso não é?";
+mes "Era em dias como esses que eu costumava sair nas minhas aventuras shinobis";
+mes "Mas eu ja estou velho e hoje em dia eu gosto de ajudar meus companheiros de vila";
+mes "Você deve estar pensando em como um velho como eu ajudaria a vila não é?";
+mes "Fique sabendo que eu sou o responsável por favor os Pergaminhos da Suna!";
+mes "Os Pegaminhos da Suna são a chave para entrar em lugares proibidos para shinobis comuns";
+mes "E esses lugares são proibidos com razão, pois la se escondem os mais poderosos inimigos!";
+next;
+mes "[Pergaminho de Konoha]";
+mes "Voce parece ser um jovem forte e com futuro, por isso vou lhe ajudar a conseguir um Pergaminho de Konoha";
+mes "Não vai ser fácil, você precisará percorrer o mundo todo atrás de 3 flores raras";
+next;
+mes "[Pergaminho de Konoha]";
+mes "^FF00001^000000  Planta de Suna";
+mes "^FF00001^000000  Planta da Névoa";
+mes "^FF00001^000000  Planta de Konoha";
+next;
+mes "[Pergaminho de Konoha]";
+mes "Você ja tem esses itens?";
+menu "Tenho",sim3,"Ainda Não",nao3;
+
+sim3:
+next;
+mes "[Pergaminho de Konoha]";
+mes "Vamos la então "+strcharinfo(0)+" vamos ver se você tem mesmo esses itens";
+if (countitem(704) < 1) goto SemItem;
+if (countitem(710) < 1) goto SemItem;
+if (countitem(712) < 1) goto SemItem;
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+delitem 710,1;
+delitem 704,1;
+delitem 712,1;
+getitem 690,1;
+close;
+
+nao3:
+next;
+mes "[Pergaminho de Konoha]";
+mes "Volte quando tiver com itens então";
+close;
+
+sair:
+close;
+
+}
+
+//==============================duplicates=====================
+
+payon,171,177,4	duplicate(Pergaminhos Elementais)	Pergaminhos Elementais#p	809
+xmas,155,188,4	duplicate(Pergaminhos Elementais)	Pergaminhos Elementais#x	809

@@ -1,0 +1,104 @@
+ama_in02,181,54,4	script	Viajante Especial	4_M_MASKMAN,{
+		
+		set @n$,"[ Viajante Especial ]";
+		
+		mes @n$;
+		mes	"Olá Shinobi.";
+		mes "Eu sou o Viajante Especial e estou aqui para lhe ajudar.";
+		next;
+		mes @n$;
+		mes "Você tem quatro opções de Teleport sendo eles.";
+		mes "- Aldeia","- Bijuu","- Bijuu (Edifício)","- Campo de Treinamento";
+		next;
+		mes @n$;
+		mes "Teleport para Aldeia e Bijuu só são ativados no horário dos próprios eventos.";
+		switch(select(($option == 1?"- Aldeia":""),($option == 2?"- Bijuu":""),($option == 3?"- Bijuu (Edifício)":""),"- Campo de Treinamento")){
+		
+		case 1:
+		
+			mes @n$;
+			mes "Olá para qual aldeia gostaria de ir?";
+			mes "Lembrando você ira ser teleportado para um lugar aleatorio do mapa que escolher.";
+			switch(select("- Divisa:- Suna:- Suna 2:- Einbech:- Amatsu:- Konoha:- Payon:- Garganta da Nuvem:- Nenhuma.")) {
+		
+			case 1: warp "gef_fild10",0,0; end;
+			case 2: warp "ra_fild04",0,0; end;
+			case 3: warp "moc_fild15",0,0; end;
+			case 4: warp "einbech",0,0; end;
+			case 5: warp "ama_fild01",0,0; end;
+			case 6: warp "prt_fild00",0,0; end;
+			case 7: warp "payon",0,0; end;
+			case 8: warp "tur_dun01",0,0; end;
+			case 9:
+				mes "Ok, volte quando quiser.";
+				close;
+			}
+		
+		case 2:
+		
+			mes @n$;
+			mes "Olá para qual mapa de bijuu proximo gostaria de ser teleporta?";
+			switch(select("- Antigo GT:- Clã Kamizura:- Antigo Yonbi:- Antigo Hachibi:- GT:- Antigo Rokubi:- Suna 2:- Anbu:- Medinin Renegado:- Névoa:- Labirinto:- Payon:- Esgoto 5:- Nenhum.")) {
+		
+			case 1: warp "yuno_fild05",0,0; end;
+			case 2: warp "prt_fild09",0,0; end;
+			case 3: warp "ein_fild02",0,0; end;
+			case 4: warp "yuno_fild07",0,0; end;
+			case 5: warp "tur_dun02",0,0; end;
+			case 6: warp "um_fild03",0,0; end;
+			case 7: warp "ra_fild13",0,0; end;
+			case 8: warp "gef_fild01",0,0; end;
+			case 9: warp "gef_fild01",0,0; end;
+			case 10: warp "gef_fild05",0,0; end;
+			case 11: warp "moc_fild17",0,0; end;
+			case 12: warp "gef_fild12",0,0; end;
+			case 13: warp "pay_fild06",0,0; end;
+			case 14:
+				mes "Ok, volte quando quiser.";
+				close;	
+		}
+		case 3:
+		
+			mes @n$;
+			mes "Olá para qual qual esconderijo de Bijuu gostaria de se teleportar?";
+			switch(select("- Esconderijo do Ichibi:- Esconderijo da Nibi:- Esconderijo do Sanbi:- Esconderijo do Yonbi:- Esconderijo do Gobi:- Esconderijo do Rokubi:- Esconderijo do Shichibi:- Esconderijo do Hachibi:- Esconderijo da Kyuubi:- Nenhum.")) {
+			
+			case 1: warp "moc_fild01",0,0; end;
+			case 2: warp "yuno_fild08",0,0; end;
+			case 3: warp "mjolnir_06",0,0; end;
+			case 4: warp "cmd_fild01",0,0; end;
+			case 5: warp "mjolnir_05",0,0; end;
+			case 6: warp "gon_fild01",0,0; end;
+			case 7: warp "hu_fild03",0,0; end;
+			case 8: warp "ein_fild01",0,0; end;
+			case 9: warp "moc_fild03",0,0; end;
+			case 10:
+				mes "Ok, volte quando quiser.";
+				close;	
+		}
+		case 4:
+				warp "treinamento",96,133;
+				close;
+		}
+OnClock2100:				//	Ativa a Opção as 21:00pm.
+$option = 1;
+end;
+
+OnThur2100:					//	Ativa a Opção toda Quinta-Feira as 21:00pm
+$option = 2;
+end;
+
+OnClock1800:				//	Ativa a Opção as 18:00pm.
+$option = 3;
+end;
+
+OnClock1930:				// Desativa a Opção as 19:30pm.
+OnClocThurk2100:				// Desativa a Opção as 21:00pm todo domingo.
+OnClock2130:				// Desativa a Opção as 21:30pm.
+$option = 0;
+end;
+
+OnInit:						//  Desativa a Opção Toda vez que o jogo de @reloadscript ou reiniciar.
+$option = 0;
+end;
+}

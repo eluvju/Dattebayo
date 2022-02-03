@@ -1,0 +1,37 @@
+//man_fild03,213,194,5	script	Tobi::m1	402,{
+if(boiana == 1){mes "Você já concluiu essa missão."; close;}
+if(checkquest(30010) == 1) goto questativa;
+
+	mes "[TOBI]";
+	mes "Olá jovem ninja, vejo que ainda está fraco";
+	mes "Infelizmente eu estou nesse mundo ninja para escolher os ninjas mais fortes para eu ensinar aprimoramentos de seus jutsus, vejo que ainda está fraco mas posso quebrar um galho para você e te ajudar, mas somente uma unica vez, você não terá outra chance igual essa!";
+	mes "Deseja obter um item único para auxiliar em sua longa jornada??";
+	next;
+	menu "Sim.",L_Rasengan,"Não.",-;
+
+	L_Rasengan:
+	
+				mes "[Tobi]";
+				mes "Bem primeiramente um desafio simples. Quero que você elimine 100 Porcos. Vamos, estou aguardando!";
+				setquest 30010;
+				close;
+				
+			questativa:
+						if(checkquest(30010,hunting) == 2) {
+						mes "[Tobi]";
+						mes "Hmm, vejo que você teve um ótimo desempenho nessa matança, você será recompensado! ...";
+						completequest 30010;
+						erasequest 30010;
+     						getitem 5172,1;
+						set boiana,1;
+						close;
+						}
+						
+
+			mes "[Tobi]"; 				
+			mes "Você ainda não completou seu treinamento."; 				
+			close; 			
+			}
+
+odin_tem01,310,187,5	duplicate(m1)	Tobi#2	402,{
+pay_fild06,272,306,5	duplicate(m1)	Tobi#3	402,{

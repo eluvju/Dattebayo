@@ -1,0 +1,182 @@
+function	script	SF_System_2101	{
+
+//		bonus bInt,getarg(2);
+//		bonus bMatkRate,getarg(3);
+//		bonus bMaxSPrate,getarg(4);
+//		bonus bSPrecovRate,getarg(5);
+//		bonus2 bElementDamage,Ele_Water,5;
+//		bonus2 bElementDamage,Ele_Fire,5;
+//		bonus2 bElementDamage,Ele_Dark,5;
+//		bonus2 bElementDamage,Ele_Earth,5;
+//		bonus2 bElementDamage,Ele_Wind,5;
+
+	if(getarg(1)==1)
+	{
+		bonus bInt,getarg(2);
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+	}else if(getarg(1)==2)
+	{
+		bonus bMatkRate,getarg(3);
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+	}else if(getarg(1)==3)
+	{
+		bonus bMaxSPrate,getarg(4);
+		dispbottom "[Bonus] : Sp: "+getarg(4)+"%";
+	}else if(getarg(1)==4)
+	{
+		bonus bInt,getarg(2);
+		bonus bMatkRate,getarg(3);
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+	}else if(getarg(1)==5)
+	{
+		bonus bInt,getarg(2);
+		bonus bMaxSPrate,getarg(4);
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+		dispbottom "[Bonus] : Sp: "+getarg(4)+"%";
+	}else if(getarg(1)==6)
+	{
+		bonus bInt,getarg(2);
+		bonus bSPrecovRate,getarg(5);
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+		dispbottom "[Bonus] : Recuperação de Sp: "+getarg(5)+"%";
+	}else if(getarg(1)==7)
+	{
+		bonus bMatkRate,getarg(3);
+		bonus bMaxSPrate,getarg(4);
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+		dispbottom "[Bonus] : Sp: "+getarg(4)+"%";
+	}else if(getarg(1)==8)
+	{
+		bonus bMatkRate,getarg(3);
+		bonus bSPrecovRate,getarg(5);
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+		dispbottom "[Bonus] : Recuperação de Sp: "+getarg(5)+"%";
+	}else if(getarg(1)==9)
+	{
+		bonus2 bElementDamage,Ele_Fire,5;
+		bonus bInt,getarg(2);
+		dispbottom "[Bonus] : Dano com jutsus Katon: 5%";
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+	}else if(getarg(1)==10)
+	{
+		bonus2 bElementDamage,Ele_Fire,5;
+		bonus bMatkRate,getarg(3);
+		dispbottom "[Bonus] : Dano com jutsus Katon: 5%";
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+	}else if(getarg(1)==11)
+	{
+		bonus2 bElementDamage,Ele_Fire,5;
+		bonus bMaxSPrate,getarg(4);
+		dispbottom "[Bonus] : Dano com jutsus Katon: 5%";
+		dispbottom "[Bonus] : Sp: "+getarg(4)+"%";
+	}else if(getarg(1)==12)
+	{
+		bonus2 bElementDamage,Ele_Fire,5;
+		bonus bSPrecovRate,getarg(5);
+		dispbottom "[Bonus] : Dano com jutsus Katon: 5%";
+		dispbottom "[Bonus] : Recuperação de Sp: "+getarg(5)+"%";
+	}else if(getarg(1)==13)
+	{
+		bonus2 bElementDamage,Ele_Earth,5;
+		bonus bInt,getarg(2);
+		dispbottom "[Bonus] : Dano com jutsus Doton: 5%";
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+	}else if(getarg(1)==14)
+	{
+		bonus2 bElementDamage,Ele_Earth,5;
+		bonus bMatkRate,getarg(3);
+		dispbottom "[Bonus] : Dano com jutsus Doton: 5%";
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+	}else if(getarg(1)==15)
+	{
+		bonus2 bElementDamage,Ele_Earth,5;
+		bonus bMaxSPrate,getarg(4);
+		dispbottom "[Bonus] : Dano com jutsus Doton: 5%";
+		dispbottom "[Bonus] : Sp: "+getarg(4)+"%";
+	}else if(getarg(1)==16)
+	{
+		bonus2 bElementDamage,Ele_Earth,5;
+		bonus bSPrecovRate,getarg(5);
+		dispbottom "[Bonus] : Dano com jutsus Doton: 5%";
+		dispbottom "[Bonus] : Recuperação de Sp: "+getarg(5)+"%";
+	}else if(getarg(1)==17)
+	{
+		bonus2 bElementDamage,Ele_Water,5;
+		bonus bInt,getarg(2);
+		dispbottom "[Bonus] : Dano com jutsus Suiton: 5%";
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+	}else if(getarg(1)==18)
+	{
+		bonus2 bElementDamage,Ele_Water,5;
+		bonus bMatkRate,getarg(3);
+		dispbottom "[Bonus] : Dano com jutsus Suiton: 5%";
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+	}else if(getarg(1)==19)
+	{
+		bonus2 bElementDamage,Ele_Water,5;
+		bonus bMaxSPrate,getarg(4);
+		dispbottom "[Bonus] : Dano com jutsus Suiton: 5%";
+		dispbottom "[Bonus] : Sp: "+getarg(4)+"%";
+	}else if(getarg(1)==20)
+	{
+		bonus2 bElementDamage,Ele_Water,5;
+		bonus bSPrecovRate,getarg(5);
+		dispbottom "[Bonus] : Dano com jutsus Suiton: 5%";
+		dispbottom "[Bonus] : Recuperação de Sp: "+getarg(5)+"%";
+	}else if(getarg(1)==21)
+	{
+		bonus2 bElementDamage,Ele_Wind,5;
+		bonus bInt,getarg(2);
+		dispbottom "[Bonus] : Dano com jutsus Raiton: 5%";
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+	}else if(getarg(1)==22)
+	{
+		bonus2 bElementDamage,Ele_Wind,5;
+		bonus bMatkRate,getarg(3);
+		dispbottom "[Bonus] : Dano com jutsus Raiton: 5%";
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+	}else if(getarg(1)==23)
+	{
+		bonus2 bElementDamage,Ele_Wind,5;
+		bonus bMaxSPrate,getarg(4);
+		dispbottom "[Bonus] : Dano com jutsus Raiton: 5%";
+		dispbottom "[Bonus] : Sp: "+getarg(4)+"%";
+	}else if(getarg(1)==24)
+	{
+		bonus2 bElementDamage,Ele_Wind,5;
+		bonus bSPrecovRate,getarg(5);
+		dispbottom "[Bonus] : Dano com jutsus Raiton: 5%";
+		dispbottom "[Bonus] : Recuperação de Sp: "+getarg(5)+"%";
+	}else if(getarg(1)==25)
+	{
+		bonus2 bElementDamage,Ele_Dark,5;
+		bonus bInt,getarg(2);
+		dispbottom "[Bonus] : Dano com jutsus Fuuton: 5%";
+		dispbottom "[Bonus] : Inteligência: "+getarg(2)+" ";
+	}else if(getarg(1)==26)
+	{
+		bonus2 bElementDamage,Ele_Dark,5;
+		bonus bMatkRate,getarg(3);
+		dispbottom "[Bonus] : Dano com jutsus Fuuton: 5%";
+		dispbottom "[Bonus] : Ataque mágico: "+getarg(3)+"% ";
+	}else if(getarg(1)==27)
+	{
+		bonus2 bElementDamage,Ele_Dark,5;
+		bonus bMaxSPrate,getarg(4);
+		dispbottom "[Bonus] : Dano com jutsus Fuuton: 5%";
+		dispbottom "[Bonus] : Sp: "+getarg(4)+"%";
+	}else if(getarg(1)==28)
+	{
+		bonus2 bElementDamage,Ele_Dark,5;
+		bonus bSPrecovRate,getarg(5);
+		dispbottom "[Bonus] : Dano com jutsus Fuuton: 5%";
+		dispbottom "[Bonus] : Recuperação de Sp: "+getarg(5)+"%";
+
+	}else
+	dispbottom "Que azar, veio uma arma sem nada...";
+	return;
+}
+
+//getarg(1) = é quantos vão sair de bonus
+// mob.c = var[0] = valor do bonus getarg(2), etc.

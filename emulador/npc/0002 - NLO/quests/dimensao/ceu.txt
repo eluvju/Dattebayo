@@ -1,0 +1,213 @@
+
+gonryun,0,0,0,0	monster	Cucool		1273,50,0,0,0
+gonryun,0,0,0,0	monster	Acidus		1274,50,0,0,0
+
+gonryun,164,18,5	script	Nativo#3	4_m_fairykid4,{
+
+	if(checkquest(4) == 1) {
+		if(checkquest(4,HUNTING) == 2) {
+			if(countitem(772) >= 100) {
+				mes "[Nativo]";
+				mes "Parabéns, aqui está sua recompensa.";
+				getitem 773,1;
+				delitem 772,100;
+				completequest 4; 
+				erasequest 4;
+				close;
+			}
+			mes "[Nativo]";
+			mes "Você Não completou sua missão ainda.";
+			close;
+		}
+		mes "[Nativo]";
+		mes "Você Não completou sua missão ainda.";
+		close;
+	}
+
+	mes "[Nativo]";
+	mes "Bem vindo visitante a Dimensão dos céus, o lugar mais incrível do mundo! ";
+	mes "aqui existem bestas extremamente fortes e agressivas, ";
+	mes "ultimamente estamos enfrentando uma invasão de monstros, ";
+	mes "caso me ajude, você será muito bem recompensado.";
+	if(select("- Sim:- Não") == 2) { close; }
+		next;	
+		mes "[Nativo]";
+		mes "Recompensa: Fragmento da Dimensão do Céu";
+		mes "Derrote 100 Cucool";
+		mes "Derrote 100 Acidus";
+		mes "Coletar 100 Frescor do Vento";
+		if(select("- Pegar a Quest:- Deixa para outra hora") == 2) { close; }
+		setquest 4;
+		close;
+}
+
+gonryun,146,16,5	script	Instância do Céu#1	4_m_fairyang,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+	
+	set .@instance$, "Dimensao Ceu";
+	mes "^ff0000[Instância do Céu]^000000";
+	mes "Olá, shinobi! Está pronto para começar sua aventura?";
+	menu "Iniciar Raid.",inicio,"Removedor de Raid.",removedor;
+	removedor:
+next;
+if(questmade759 == GetTime(8)) {
+mes "^ff0000[Instância do Céu]^000000";
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+
+if(vip_status(1)) {
+mes "^ff0000[Instância do Céu]^000000";
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid do Dimensão Céu. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "^ff0000[Instância do Céu]^000000";
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7025,1;
+set questmade759, GetTime(8);
+close;
+	
+r2:
+next;
+mes "^ff0000[Instância do Céu]^000000";
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}
+
+inicio:	
+if(questmade758 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:
+mes "^ff0000[Instância do Céu]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7025) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Instância do Céu]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set questmade758, 0;
+delitem 7025,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Instância do Céu]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Fale comigo novamente!";
+close;
+}
+
+	
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	if($@partymembercount > 2) {
+	mes "Você não pode iniciar a Raid com mais de 2 membros no grupo.";
+	close;
+	}
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos da ^FF0000Dimensão Céu^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if(getpartyleader(getcharid(1),2) != getcharid(0)) goto naocria;
+
+		if (instance_create(.@instance$) < 0) {
+		mes "Você não atende aos requisitos da ^FF0000Dimensão Céu^000000.";
+		close;
+
+		naocria:
+		mes "Você precisa ser o líder do grupo para criar a raid ^FF0000Dimensão Céu^000000.";
+		close;
+		}
+
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		getpartymember getcharid(1),2;
+		for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		}
+		attachrid(getpartyleader(getcharid(1),1));
+		// Começo da Instância
+		hideonnpc ""+instance_npcname("Instância do Céu#2")+"";
+		instance_announce instance_id(),"Boa sorte shinobi!",0;
+		areamonster ""+instance_mapname("yuno",instance_id())+"",29,55,371,232,"Spicy Dragon",1277,50,"dimensaoceu::OnMonsterDie1";
+		end;
+	}
+}
+
+yuno,0,0,0	script	dimensaoceu	-1,{
+
+OnMonsterDie1:
+	if(!mobcount(""+instance_mapname("yuno",instance_id())+"","dimensaoceu::OnMonsterDie1"))  {
+		instance_announce instance_id(),"O Chefe acaba de aparecer no mapa!",0;
+		monster ""+instance_mapname("yuno",instance_id())+"",158,167,"Sky Guardian",1280,1,"dimensaoceu::OnMonsterDie2";
+		end;
+	}
+	else
+	instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("yuno",instance_id())+"","dimensaoceu::OnMonsterDie1"))+" Montros Mortos",0;
+	end;
+	
+OnMonsterDie2:
+	if(!mobcount(""+instance_mapname("yuno",instance_id())+"","dimensaoceu::OnMonsterDie2"))  {
+		instance_announce instance_id(),"Parabéns por completar a Dimensão do Céu!",0;
+		hideoffnpc ""+instance_npcname("Instância do Céu#2")+"";
+		end;	
+	}
+}
+		
+yuno,153,19,5	script	Instância do Céu#2	4_m_fairyang,{
+
+	if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "Apenas o líder pode finalizar a missão.";
+		close;
+	}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 2) {
+			mes "Seu Grupo é muito grande. Reduz a quantidade de membros. Só é permitido 2 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+
+	mes "Você conseguiu completar a missão.";
+	close2;
+	getpartymember getcharid(1),0;	
+	getpartymember getcharid(1),1;	
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	attachrid($@partymemberaid[.@i]);	
+		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
+
+			query_sql("SELECT `index`,`value`  FROM `ceu_limit` WHERE `char_id` = '"+$@partymembercid[.@i]+"'",@ceu,@limiteceu);	
+				
+				if(!@ceu) {
+					query_sql "INSERT INTO `ceu_limit` (`char_id`, `index`, `value`) VALUES ("+$@partymembercid[.@i]+",1,1)";
+				} else { 
+					query_sql "UPDATE `ceu_limit` SET `value` = `value` + 1 WHERE `char_id`= '"+$@partymembercid[.@i]+"'";	
+				}
+	// Recompensas
+	set questmade758, GetTime(8);
+		}
+	}	
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Dimensão do Céu.",bc_all;	
+	instance_destroy;
+	end;
+}
+
+yuno	mapflag	partylock

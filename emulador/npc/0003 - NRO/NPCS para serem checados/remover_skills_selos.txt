@@ -1,0 +1,12 @@
+-	script	removerselos	-1,{
+OnPCLoginEvent:
+
+if (getskilllv(677) >= 1) {set seloskill677, getskilllv(677); skill 677,0,0; end;}
+if (getskilllv(678) >= 1) {set seloskill678, getskilllv(678); skill 678,0,0; end;}
+if (getskilllv(320) >= 1) {set seloskill320, getskilllv(320); skill 320,0,0; end;}
+if (getskilllv(45) >= 1) {set seloskill45, getskilllv(45); skill 45,0,0; end;}
+if (getskilllv(543) >= 1) {set seloskill543, getskilllv(543); skill 543,0,0; end;}
+if (getskilllv(321) >= 1) {set seloskill321, getskilllv(321); skill 321,0,0; end;}
+if (getskilllv(320) >= 1) {set seloskill320, getskilllv(320); skill 320,0,0; end;}
+
+}

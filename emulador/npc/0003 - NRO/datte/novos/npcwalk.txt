@@ -1,0 +1,302 @@
+// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+//                              True Walk NPC v.2                                \\
+//                (c) 2007, by Myzter (Raff - Pow4Ever.com)                      \\
+//                     for use with eAthena SVN > 8000                           \\
+// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+//       This is a very good method to add walk capabilities to your NPCs        \\
+//                protecting the user from the distance errors                   \\
+// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+
+// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+//               NPC SAMPLE (WITH DUPLICATES) - HUNGRY VAMPIRES :P               \\
+// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+konoha.gat,236,176,3	script	Daisuke#1::Vmp1	1109,1,1,{
+	// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+	// Header - Please include this header in your Walk Enabled NPCs to control distance errors
+	// Set the status to "In Use" (multiplayer)
+	   set .inUse, .inUse + 1;
+	// Reset the current lock time while the user talk with the NPC
+	   set .curLockT,0;
+	// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+	
+	mes "Olá jovem guerreiro(a), lute por sua vila e proteja a todos do perigo!";
+	next;
+{
+		percentheal rand(0,0),0;
+		mes "Olá jovem guerreiro(a), lute por sua vila e proteja a todos do perigo!";
+		close2; // This close command ensure the execution of the next lines after press Close Button
+		// Reverse the status to "Free to walk"
+		set .inUse, .inUse - 1;
+		end;
+	}
+	mes "Olá jovem guerreiro(a), lute por sua vila e proteja a todos do perigo!";
+	close2; // This close command ensure the execution of the next lines after press Close
+	// Set status to "Free to walk"
+	set .inUse, .inUse - 1;
+	end;
+OnInit:
+	// Define the coordinates for this NPC (you can use 0,400/0,400 for a full map movement)
+	// Horizontal coordinates
+	set .minX,148;
+	set .maxX,162;
+	// Vertical coordinates
+	set .minY,175;
+	set .maxY,132;
+	// Define the min/max distance for each movement
+	set .minD,0;
+	set .maxD,10;
+	// Define stopped steps before change the status back to "Free to walk"
+	set .maxLock,50;
+	// Set the speed for this NPC (50=Faster / 250=Slower)
+	npcspeed 500;
+	
+	// Start the movements
+	initnpctimer;
+	end;
+	
+// Set here the time for the next movement (ms)
+OnTimer1000:
+	if (.inUse) {
+		set .curLockT, .curLockT + 1;
+		if (.curLockT > .maxLock) set .inUse, 0;
+	} else {
+		getmapxy .map$,.x,.y,1;
+		set .curX, callfunc("NPCWalk",.minX, .maxX,.minD,.maxD,.x);
+		set .curY, callfunc("NPCWalk",.minY, .maxY,.minD,.maxD,.y);
+		npcwalkto .curX, .curY;
+	}
+	stopnpctimer;
+	initnpctimer;
+
+
+	end;
+
+OnTouch:
+	npctalk "Olá jovem guerreiro(a), lute por sua vila e proteja a todos do perigo!";
+
+}
+
+konoha.gat,149,206,3	script	Kyouga#1::Vmp2	1242,1,1,{
+	// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+	// Header - Please include this header in your Walk Enabled NPCs to control distance errors
+	// Set the status to "In Use" (multiplayer)
+	   set .inUse, .inUse + 1;
+	// Reset the current lock time while the user talk with the NPC
+	   set .curLockT,0;
+	// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+	
+	mes "Esta um belo dia hoje....vamos caçar alguns girinos? são uma delícia assados!";
+	next;
+{
+		percentheal rand(0,0),0;
+		mes "Esta um belo dia hoje....vamos caçar alguns girinos? são uma delícia assados!";
+		close2; // This close command ensure the execution of the next lines after press Close Button
+		// Reverse the status to "Free to walk"
+		set .inUse, .inUse - 1;
+		end;
+	}
+	mes "Esta um belo dia hoje....vamos caçar alguns girinos? são uma delícia assados!";
+	close2; // This close command ensure the execution of the next lines after press Close
+	// Set status to "Free to walk"
+	set .inUse, .inUse - 1;
+	end;
+OnInit:
+	// Define the coordinates for this NPC (you can use 0,400/0,400 for a full map movement)
+	// Horizontal coordinates
+	set .minX,148;
+	set .maxX,162;
+	// Vertical coordinates
+	set .minY,175;
+	set .maxY,132;
+	// Define the min/max distance for each movement
+	set .minD,0;
+	set .maxD,10;
+	// Define stopped steps before change the status back to "Free to walk"
+	set .maxLock,50;
+	// Set the speed for this NPC (50=Faster / 250=Slower)
+	npcspeed 500;
+	
+	// Start the movements
+	initnpctimer;
+	end;
+	
+// Set here the time for the next movement (ms)
+OnTimer1000:
+	if (.inUse) {
+		set .curLockT, .curLockT + 1;
+		if (.curLockT > .maxLock) set .inUse, 0;
+	} else {
+		getmapxy .map$,.x,.y,1;
+		set .curX, callfunc("NPCWalk",.minX, .maxX,.minD,.maxD,.x);
+		set .curY, callfunc("NPCWalk",.minY, .maxY,.minD,.maxD,.y);
+		npcwalkto .curX, .curY;
+	}
+	stopnpctimer;
+	initnpctimer;
+
+
+	end;
+
+OnTouch:
+	npctalk "Esta um belo dia hoje....vamos caçar alguns girinos? são uma delícia assados!";
+
+}
+
+konoha.gat,58,175,3	script	Gouken#1::Vmp3	1233,1,3,{
+	// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+	// Header - Please include this header in your Walk Enabled NPCs to control distance errors
+	// Set the status to "In Use" (multiplayer)
+	   set .inUse, .inUse + 1;
+	// Reset the current lock time while the user talk with the NPC
+	   set .curLockT,0;
+	// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+	
+	mes "Cuidado, fique de olhos abertos, o perigo pode estar por toda parte...";
+	next;
+ {
+		percentheal rand(0,0),0;
+		mes "Cuidado, fique de olhos abertos, o perigo pode estar por toda parte...";
+		close2; // This close command ensure the execution of the next lines after press Close Button
+		// Reverse the status to "Free to walk"
+		set .inUse, .inUse - 1;
+		end;
+	}
+	mes "Cuidado, fique de olhos abertos, o perigo pode estar por toda parte...";
+	close2; // This close command ensure the execution of the next lines after press Close
+	// Set status to "Free to walk"
+	set .inUse, .inUse - 1;
+	end;
+OnInit:
+	// Define the coordinates for this NPC (you can use 0,400/0,400 for a full map movement)
+	// Horizontal coordinates
+	set .minX,148;
+	set .maxX,162;
+	// Vertical coordinates
+	set .minY,175;
+	set .maxY,132;
+	// Define the min/max distance for each movement
+	set .minD,0;
+	set .maxD,10;
+	// Define stopped steps before change the status back to "Free to walk"
+	set .maxLock,50;
+	// Set the speed for this NPC (50=Faster / 250=Slower)
+	npcspeed 500;
+	
+	// Start the movements
+	initnpctimer;
+	end;
+	
+// Set here the time for the next movement (ms)
+OnTimer1000:
+	if (.inUse) {
+		set .curLockT, .curLockT + 1;
+		if (.curLockT > .maxLock) set .inUse, 0;
+	} else {
+		getmapxy .map$,.x,.y,1;
+		set .curX, callfunc("NPCWalk",.minX, .maxX,.minD,.maxD,.x);
+		set .curY, callfunc("NPCWalk",.minY, .maxY,.minD,.maxD,.y);
+		npcwalkto .curX, .curY;
+	}
+	stopnpctimer;
+	initnpctimer;
+
+
+	end;
+
+OnTouch:
+	npctalk "Cuidado, fique de olhos abertos, o perigo pode estar por toda parte...";
+
+}
+
+konoha.gat,148,87,3	script	Gen#1::Vmp4	1155,1,1,{
+	// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+	// Header - Please include this header in your Walk Enabled NPCs to control distance errors
+	// Set the status to "In Use" (multiplayer)
+	   set .inUse, .inUse + 1;
+	// Reset the current lock time while the user talk with the NPC
+	   set .curLockT,0;
+	// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+	
+	mes "As lendas contam, que atravessando as florestas, desertos, e lugares perigosos, você vai encontrar lugares que ninguém jamais conseguiu voltar vivo, o que sera que tem la?";
+	next;
+ {
+		percentheal rand(0,0),0;
+		mes "As lendas contam, que atravessando as florestas, desertos, e lugares perigosos, você vai encontrar lugares que ninguém jamais conseguiu voltar vivo, o que sera que tem la?";
+		close2; // This close command ensure the execution of the next lines after press Close Button
+		// Reverse the status to "Free to walk"
+		set .inUse, .inUse - 1;
+		end;
+	}
+	mes "As lendas contam, que atravessando as florestas, desertos, e lugares perigosos, você vai encontrar lugares que ninguém jamais conseguiu voltar vivo, o que sera que tem la?";
+	close2; // This close command ensure the execution of the next lines after press Close
+	// Set status to "Free to walk"
+	set .inUse, .inUse - 1;
+	end;
+OnInit:
+	// Define the coordinates for this NPC (you can use 0,400/0,400 for a full map movement)
+	// Horizontal coordinates
+	set .minX,148;
+	set .maxX,162;
+	// Vertical coordinates
+	set .minY,175;
+	set .maxY,132;
+	// Define the min/max distance for each movement
+	set .minD,0;
+	set .maxD,10;
+	// Define stopped steps before change the status back to "Free to walk"
+	set .maxLock,50;
+	// Set the speed for this NPC (50=Faster / 250=Slower)
+	npcspeed 500;
+	
+	// Start the movements
+	initnpctimer;
+	end;
+	
+// Set here the time for the next movement (ms)
+OnTimer1000:
+	if (.inUse) {
+		set .curLockT, .curLockT + 1;
+		if (.curLockT > .maxLock) set .inUse, 0;
+	} else {
+		getmapxy .map$,.x,.y,1;
+		set .curX, callfunc("NPCWalk",.minX, .maxX,.minD,.maxD,.x);
+		set .curY, callfunc("NPCWalk",.minY, .maxY,.minD,.maxD,.y);
+		npcwalkto .curX, .curY;
+	}
+	stopnpctimer;
+	initnpctimer;
+
+
+	end;
+
+OnTouch:
+	npctalk "As lendas contam, que atravessando as florestas, desertos, e lugares perigosos, você vai encontrar lugares que ninguém jamais conseguiu voltar vivo, o que sera que tem la?";
+
+}
+
+areia,195,134,4	duplicate(Vmp1)	Tatsuya#1	1010
+areia,78,132,4	duplicate(Vmp2)	Romi#1	1055
+areia,154,211,4	duplicate(Vmp3)	Fumihiki#1	1060
+areia,246,176,4	duplicate(Vmp4)	Tomoko#1	1062
+
+kiri,163,40,4	duplicate(Vmp1)	Kenichi#1	1014
+kiri,206,120,4	duplicate(Vmp2)	Matsumaya#1	1022
+kiri,361,278,4	duplicate(Vmp3)	Masashi#1	1023
+kiri,102,313,4	duplicate(Vmp4)	Ryotaro#1	1043
+
+// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+//                                 END SAMPLE                                    \\
+// -o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o- \\
+
+// Function to calculate one single coordinate
+function	script	NPCWalk	{
+	set .CP, getarg(4);
+	set .DST, rand(getarg(2),getarg(3));
+	if (rand(2))
+		set .CP, .CP + .DST;
+	else
+		set .CP, .CP - .DST;
+	if (.CP < getarg(0)) set .CP, .CP + .DST;
+	if (.CP > getarg(1)) set .CP, .CP - .DST;
+	return .CP;
+}

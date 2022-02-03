@@ -1,0 +1,190 @@
+	ama_in01,22,102,3	script	Kurenai#8	831,{
+	mes "[Kurenai]";
+	if(Baselevel < 180) goto M_nao;
+
+
+	L_lista:
+	mes "Olá caro shinobi, eu vou te transformar em Chunin";
+	mes "Qual é seu clã?";
+	menu "- Akasuna",akasuna1,"- Haruno",haruno1,"- Hyuuga",hyuuga1,"- Lee",lee1,"- Momochi",momochi1,"- Nara",nara1,"- Sabaku",sabaku1,"- Uchiha",uchiha1,"- Uzumaki",uzumaki1;
+
+	akasuna1:
+	if (Class != 4006) goto M_nao;
+	if(elemento == 0){goto aprenderakasuna;}
+
+	aprenderakasuna:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simaka, "Não",nao;
+
+	simaka:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "18";
+	set genin,0;
+	set chunin,1; 
+	close;
+
+	haruno1:
+	if (Class != 4) goto M_nao;
+	if(elemento == 0){goto aprenderharuno;}
+
+
+	aprenderharuno:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simhar, "Não",nao;
+
+	simhar:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "15";
+	set genin,0;
+	set chunin,1; 
+	close;
+
+	hyuuga1:
+	if (Class != 3) goto M_nao;
+	if(elemento == 0){goto aprenderhyuuga;}
+	
+	aprenderhyuuga:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simhyu, "Não",nao;
+
+	simhyu:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "11";
+	set genin,0;
+	set chunin,1; 
+	close;
+
+
+	lee1:
+	if (Class != 23) goto M_nao;
+	if(elemento == 0){goto aprenderlee;}
+
+	aprenderlee:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simlee, "Não",nao;
+
+	simlee:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "4046";
+	set genin,0;
+	set chunin,1;
+	close;
+
+	momochi1:
+	if (Class != 2) goto M_nao;
+	if(elemento == 0){goto aprendermomochi;}	
+
+
+	aprendermomochi:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simmom, "Não",nao;
+
+	simmom:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "9";
+	set genin,0;
+	set chunin,1;
+	close;
+
+	nara1:
+	if (Class != 4007) goto M_nao;
+	if(elemento == 0){goto aprendernara;}
+
+	aprendernara:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simnar, "Não",nao;
+
+	simnar:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "17";
+	set genin,0;
+	set chunin,1;
+	close;
+
+	sabaku1:
+	if (Class != 5) goto M_nao;
+	if(elemento == 0){goto aprendersabaku;}
+
+	aprendersabaku:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simsab, "Não",nao;
+
+	simsab:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "10";
+	set genin,0;
+	set chunin,1;
+	close;
+
+	uchiha1:
+	if (Class != 1) goto M_nao;
+	if(elemento == 0){goto aprenderuchiha;}
+
+
+	aprenderuchiha:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simuchi,"Não",nao;
+
+	simuchi:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "7";
+	set genin,0;
+	set chunin,1;
+	close;
+	
+	uzumaki1:
+	if (Class != 6) goto M_nao;
+	if(elemento == 0){goto aprenderuzumaki;}
+
+	aprenderuzumaki:
+	next;
+	mes "Olá caro shinobi, vou te transformar em chunin, ok?";
+	menu "Sim, Eu quero",simuzu,"Não",nao;
+
+	simuzu:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "12";
+	set genin,0;
+	set chunin,1;
+	close;
+
+	
+	nao:
+	mes "[Kurenai]";
+	mes "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	mes "Você já possui um clã";
+	close;
+
+L_elementos:
+	mes "Você ja aprendeu dois elementos!";
+	close;
+
+M_nao:
+	mes "Você não está apto para falar comigo";
+	close;
+}

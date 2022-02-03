@@ -1,0 +1,47 @@
+//===== rAthena Script =======================================
+//= Universal Rental NPC
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+//= 1.0a
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= One-click automatic mount rentals.
+//============================================================
+
+job_monk,265,109,6	script	Garota Negociante	436,{
+setarray .@preco[1],1500,2000; //preço: Falcão, peco-peco, carrinho
+setarray .@skillid,127,39;
+
+	mes "[ Garota Negociante ]";
+	mes "Aqui você pode pegar Insetos ou Carrinhos.";
+	if(getarraysize(.@preco)){
+		mes "Insetos: ^0000FF"+.@preco[1]+"z^000000";
+		mes "Carrinho: ^0000FF"+.@preco[3]+"z^000000";
+	}
+	next;
+	if(select("Pegar Insetos:Pegar Carrinho:Nada por enquanto.")==4) close;
+	mes "[ Garota Negociante ]";
+	if(!getskilllv(.@skillid[@menu-1])){
+		mes "Você não tem a habilidade necessária para isso.";
+		close;
+	}
+	if(zeny<.@preco[@menu]){
+		mes "Você não possui Zeny suficiente.";
+		close;
+	}
+	switch(@menu){
+	case 1:
+		if(checkfalcon()){ mes "Você já possui os Insetos."; close; }
+		setfalcon();
+		break;
+	case 3:
+		if(checkcart()){ mes "Você já possui um Carrinho."; close; }
+		setcart();
+	}
+	set Zeny,Zeny-.@preco[@menu];
+	mes "Aqui está.";
+	mes "Faça bom uso dele.";
+	close;
+}

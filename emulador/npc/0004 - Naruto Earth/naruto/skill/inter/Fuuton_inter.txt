@@ -1,0 +1,137 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+biblioteca,111,70,5	script	Fuuton Intermediario	1_m_04,{
+if(checkquest(30109) == 1) goto skillfuton1;
+if(checkquest(30110) == 1) goto skillfuton2;
+if(checkquest(30111) == 1) goto skillfuton3;
+if(checkquest(30112) == 1) goto skillfuton4;
+if(elementofuuton != 1) { mes "[Fuuton Intermediario]"; mes "Esse elemento não é de sua natureza"; close;}
+if(treino_nin_inter != 1) { mes "[Fuuton Intermediario]"; mes "Você precisa estudar Ninjutsu Intermediario antes de aprender as skills"; close;}
+if(fut_skill_inter >= 3) { mes "[Fuuton Intermediario]"; mes "Você já aprendeu três skill de Fuuton Intermediario, esse é o limite"; close; }
+	mes "[Fuuton Intermediario]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Fuuton Intermediario. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Fuuton Intermediario]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Fuuton Intermediario]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Fuuton Intermediario]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808Fuuton Nindou^000000:^8A0808Fuuton Sonic Wave^000000:^8A0808Fuuton Renkuudan^000000"))
+	{
+	case 1:
+		if (fu1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Fuuton Nindou";
+		next;
+		mes "[Fuuton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Fuuton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillfuton1:
+		setquest 30109;
+		if(checkquest(30109,hunting) == 2 && countitem(32153) >= 1)
+		{
+			completequest 30109;
+			erasequest 30109;
+			delitem 32153,1;
+			set fut_skill_inter,fut_skill_inter +1;
+			skill 11,10,3;
+			set fu1,1;
+			mes "[Fuuton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (fu2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Fuuton Sonic Wave";
+		next;
+		mes "[Fuuton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Fuuton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Fuuton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillfuton2:
+		setquest 30110;
+		if(checkquest(30110,hunting) == 2 && countitem(32153) >= 1)
+		{
+			completequest 30110;
+			erasequest 30110;
+			delitem 32153,1;
+			set fut_skill_inter,fut_skill_inter +1;
+			skill 2005,3,3;
+			set fu2,1;
+			mes "[Fuuton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (fu3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Fuuton Renkuudan";
+		next;
+		mes "[Fuuton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Fuuton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Fuuton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillfuton3:
+		setquest 30111;
+		if(checkquest(30111,hunting) == 2 && countitem(32153) >= 1)
+		{
+			completequest 30111;
+			erasequest 30111;
+			delitem 32153,1;
+			set fut_skill_inter,fut_skill_inter +1;
+			set fu3,1;
+			skill 469,10,3;
+			mes "[Fuuton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Fuuton Intermediario]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Fuuton Intermediario]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de fuuton Intermediario.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

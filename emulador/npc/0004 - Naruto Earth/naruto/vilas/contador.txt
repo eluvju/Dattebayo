@@ -1,0 +1,30 @@
+//konoha3,172,3,5	script	Gato Cambista::cambista	421,{
+	mes "[^FF0000Cambista de Iene^000000]";
+	mes "Olá "+strcharinfo(0)+"! Eu posso trocar seu Vale Iene por Ienes de verdade! Gostaria de utilizar meus serviços?";
+	switch(select("- Sim, por favor:- Agora não")) {
+		case 1:
+			next;
+			mes "[^FF0000Cambista de Iene^000000]";
+			mes "Vamos lá!... Deixe-me acessar meu sistema... Só mais um segundinho... Pronto! Quantos Vale Iene você quer trocar?";
+			input .@Quantity;
+			next;
+			if(countitem(608) < .@Quantity) {
+				mes "Tentando me enganar? Que coisa feia! Esse é um trabalho sério!";
+				close;
+			} else {
+				delitem 608,.@Quantity;
+				set Zeny,Zeny+100000;
+				mes "[^FF0000Cambista de Iene^000000]";
+				mes "Prontinho! Volte sempre!";
+				close;
+			}	
+		case 2:
+			next;
+			mes "[^FF0000Cambista de Iene^000000]";
+			mes "Tudo bem, precisando de Ienes lembre-se de mim!";
+			close;
+	}
+}
+
+//kumogakure,146,116,5	duplicate(cambista)	Gato Cambista#1	421,{
+//kiragakure,176,129,1	duplicate(cambista)	Gato Cambista#2	421,{

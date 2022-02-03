@@ -1,0 +1,37 @@
+ama_in01,98,22,3	script	Elemento Raiton	734,{
+	show "[Elemento Raiton]";
+	if(getskilllv(535)) goto L_alreadyhave;
+	if(elemento >= 2){goto L_elementos;}
+	if(elementoraiton == 1){goto L_alreadyhave;}
+	if(elemento == 0){goto aprenderraiton;}
+	if(elemento == 1){goto aprenderraiton;}
+
+
+	aprenderraiton:
+	show "Olá caro shinobi, voce gostaria de aprender o elemento Raiton (Trovão) ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Elemento Raiton]";
+	show "Muito bem, muito sábia essa escolha!";
+	set elementoraiton,elementoraiton + 1;
+	set elemento,elemento + 1;
+	set genin,1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Elemento Raiton]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

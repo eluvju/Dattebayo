@@ -1,0 +1,16 @@
+inicio,29,19,4	script	Shuriken	120,{
+	mes "[Shuriken]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Aqui você pode adquirir 2 skill";
+	mes "Throw Shuriken";
+	mes "Throw Kunai";
+	next;
+			savepoint "inicio",29,19,1,1;
+			mes "[Shuriken]";
+			mes "Parabéns!";
+			close;
+OnInit:
+	waitingroom "[Shuriken]",0;
+}
+
+}

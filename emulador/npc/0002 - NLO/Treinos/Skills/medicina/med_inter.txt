@@ -1,0 +1,399 @@
+academia,30,149,5	script	Medicina Intermediario	1_m_smith,{
+
+	if(Class == 7 || Class == 8 || Class == 9 || Class == 10 || Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+	
+	mes "[Medicina Intermediário]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Medicina escolha qual habilidade você gostaria de aprender.";
+	switch( select( "- Chikatsu no Jutsu:- Lauda Agnus:- Lauda Ramus:- Shikon no Jutsu" ) ){
+
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 1:
+			next;
+			if(checkquest(5020) == 1) goto 1_go;
+			if(Chikatsu == 1) goto 1_delete;
+			if(skill_intermediaria >= 6) { mes "[Medicina Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(med_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Medicina intermediária antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Medicina Intermediário]";
+			mes "Troca de Posicão?";
+			next;
+			mes "[Medicina Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Medicina Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+			
+			//========================================================================
+			//	Troca de Posicão
+			//========================================================================
+			
+			1_delete:
+				mes "[Medicina Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Medicina Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+			
+			delete_1:
+				mes "[Medicina Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Medicina Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+			
+			quero_1:
+				mes "[Medicina Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Chikatsu,0;
+				skill 74,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_1:
+				close;
+			
+			1_SS:
+				mes "[Medicina Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5020;
+				next;
+				mes "[Medicina Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			1_go:
+				if(checkquest(5020) >= 1) {
+					mes "[Medicina Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5020) >= 1) { completequest 5020; erasequest 5020; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Medicina Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+								
+							case 1:
+								if(checkquest(5020,hunting) != 2) { mes "[Medicina Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Medicina Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5020; 
+									erasequest 5020;
+									skill 74,1,3;
+									set Chikatsu,1;
+									close;
+								}
+								mes "[Medicina Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			1_no:
+				close;
+			
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 2:
+			next;
+			if(checkquest(5021) == 1) goto 2_go;
+			if(LaudaAgnus == 1) goto 2_delete;
+			if(skill_intermediaria >= 6) { mes "[Medicina Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(med_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Medicina intermediária antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Medicina Intermediário]";
+			mes "Lauda Agnus?";
+			next;
+			mes "[Medicina Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Medicina Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+			
+			//========================================================================
+			//	Lauda Agnus
+			//========================================================================
+			
+			2_delete:
+				mes "[Medicina Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Medicina Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+			
+			delete_2:
+				mes "[Medicina Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Medicina Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+			
+			quero_2:
+				mes "[Medicina Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set LaudaAgnus,0;
+				skill 2047,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_2:
+				close;
+			
+			2_SS:
+				mes "[Medicina Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5021;
+				next;
+				mes "[Medicina Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			2_go:
+				if(checkquest(5021) >= 1) {
+					mes "[Medicina Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5021) >= 1) { completequest 5021; erasequest 5021; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Medicina Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							case 1:
+								if(checkquest(5021,hunting) != 2) { mes "[Medicina Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Medicina Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5021; 
+									erasequest 5021;
+									skill 2047,1,3;
+									set LaudaAgnus,1;
+									close;
+								}
+								mes "[Medicina Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			2_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 3:
+			next;
+			if(checkquest(5022) == 1) goto 3_go;
+			if(LaudaRamus == 1) goto 3_delete;
+			if(skill_intermediaria >= 6) { mes "[Medicina Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(med_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Medicina intermediária antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Medicina Intermediário]";
+			mes "Lauda Ramus?";
+			next;
+			mes "[Medicina Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Medicina Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+			
+			//========================================================================
+			//	Lauda Ramus
+			//========================================================================
+			
+			3_delete:
+				mes "[Medicina Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Medicina Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+			
+			delete_3:
+				mes "[Medicina Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Medicina Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+			
+			quero_3:
+				mes "[Medicina Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set LaudaRamus,0;
+				skill 2048,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_3:
+				close;
+			
+			3_SS:
+				mes "[Medicina Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5022;
+				next;
+				mes "[Medicina Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			3_go:
+				if(checkquest(5022) >= 1) {
+					mes "[Medicina Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5022) >= 1) { completequest 5022; erasequest 5022; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Medicina Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5022,hunting) != 2) { mes "[Medicina Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Medicina Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5022; 
+									erasequest 5022;
+									skill 2048,1,3;
+									set LaudaRamus,1;
+									close;
+								}
+								mes "[Medicina Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			3_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 4:
+			next;
+			if(checkquest(5023) == 1) goto 4_go;
+			if(Shikon == 1) goto 4_delete;
+			if(skill_intermediaria >= 6) { mes "[Medicina Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }	
+			if(med_intermediario != 1) { mes .@npc$; mes "Você precisa estudar Medicina Intermediária antes de aprender essa habilidade"; close;}
+			
+
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Medicina Intermediário]";
+			mes "Shikon?";
+			next;
+			mes "[Medicina Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Medicina Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+			
+			//========================================================================
+			//	Shikon
+			//========================================================================
+			
+			4_delete:
+				mes "[Medicina Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Medicina Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+			
+			delete_4:
+				mes "[Medicina Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Medicina Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+			
+			quero_4:
+				mes "[Medicina Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Shikon,0;
+				skill 54,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_4:
+				close;
+			
+			4_SS:
+				mes "[Medicina Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5023;
+				next;
+				mes "[Medicina Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			4_go:
+				if(checkquest(5023) >= 1) {
+					mes "[Medicina Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5023) >= 1) { completequest 5023; erasequest 5023; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Medicina Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+								
+							case 1:
+								if(checkquest(5023,hunting) != 2) { mes "[Medicina Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Medicina Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5023; 
+									erasequest 5023;
+									skill 54,1,3;
+									set Shikon,1;
+									close;
+								}
+								mes "[Medicina Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}		
+				}
+		
+			4_no:
+				close;
+			
+	}
+	}
+	mes "[Medicina Intermediário]"; 
+	mes "Você precisa ser Chunin ou superior."; 
+	close;
+OnInit:
+	waitingroom "[Medicina Intermediário]",0;
+		
+}

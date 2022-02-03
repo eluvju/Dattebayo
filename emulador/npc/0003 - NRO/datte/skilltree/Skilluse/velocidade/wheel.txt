@@ -1,0 +1,33 @@
+-	script	whellskill	-1,{
+    end;
+//When a Character uses a skill
+
+//Wheel Kesho
+
+onPcUseSkillEvent:
+
+           if(lskillid == 111) {
+
+
+if (getskilllv(111) == 1) {
+if (Adrenalina_P != 1) {end;}
+if (skill111 >= 50) {skill 111,2,0; set skill111,0; dispbottom "[Sys] Level up"; end; }
+set skill111,skill111 +1;
+dispbottom "[Jutsu level] Wheel Kesho level 1: "+skill111+" de 50";
+
+end;
+
+}
+
+if (getskilllv(111) == 2) {
+if (Adrenalina_P != 1) {end;}
+if (skill111 >= 100) {skill 111,3,0; set skill111,0; dispbottom "[Sys] Level up"; end;}
+set skill111,skill111 +1;
+dispbottom "[Jutsu level] Wheel Kesho level 2: "+skill111+" de 100";
+
+end;
+
+}
+                end;
+            }    
+}

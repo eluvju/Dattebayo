@@ -1,0 +1,1983 @@
+//Selo Tigre (1)
+
+-	script	on_PC_UseSkill#142	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+
+           if(lskillid == 142) {
+atcommand "@effect 64";
+if(@selosusado == 2) goto checkjutsus;
+if(@selosusado < 2) goto fazselo;
+
+fazselo:
+if(@selosusado == 2) {set @selos,@selos + 2; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 1; set @selosusado,@selosusado +1; sleep2 1; end;}
+
+checkjutsus:
+set @selos,@selos +1;
+//if (@selos == 100011) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 1
+//if (@selos == 100020) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 2
+//if (@selos == 100101) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 3
+//if (@selos == 100110) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 1
+//if (@selos == 100200) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 2
+//if (@selos == 101001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 3
+//if (@selos == 101010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 1
+//if (@selos == 101100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 2
+//if (@selos == 102000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 3
+//if (@selos == 110001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 1
+//if (@selos == 110010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 2
+//if (@selos == 110100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 3
+//if (@selos == 111000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 1
+//if (@selos == 120000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 2
+//if (@selos == 200001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 3
+if (@selos == 3) && (seloskill517 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 517 "+seloskill517+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Senton Kaisen (Ataque Gatling)
+//if (@selos == 111) && (seloskill509 > 0)  {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 509 "+seloskill509+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dekopin (Ataque Concentrado)
+if (@selos == 120) && (seloskill61 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 61 "+seloskill61+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Contra-Ataque (Contra-Ataque)
+if (@selos == 1002) && (seloskill357 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 357 "+seloskill357+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dai Senkou (Dedicação)
+if (@selos == 2010) && (seloskill420 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 420 "+seloskill420+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Cambalhota (Cambalhota)
+if (@selos == 3000) && (seloskill268 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 268 "+seloskill268+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Muralha de Chakra (Corpo Fechado)
+if (@selos == 210) && (seloskill306 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 306 "+seloskill306+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Genjutsu no Harg (Cantiga de Ninar)
+if (@selos == 102) && (seloskill678 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kana"; close;} //Kanashibari no Genjutsu
+if (@selos == 1200) && (seloskill369 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 369 "+seloskill369+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Sakki no Jutsu (Canto de Batalha)
+if (@selos == 1110) && (seloskill308 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 308 "+seloskill308+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Ryou Mayakashi no Jutsu (Ritmo Caótico)
+if (@selos == 1020) && (seloskill322 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Idou no Kaibutsu (Maças de Indu) 
+if (@selos == 2010) && (seloskill667 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 667 "+seloskill667+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Bakuhatsu Kemuri
+if (@selos == 10110) && (seloskill663 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 663 "+seloskill663+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Konohi Kemuri
+if (@selos == 300) && (seloskill668 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kemuri"; close;} //Fukai Kemuri
+if (@selos == 10200) && (seloskill311 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 311 "+seloskill311+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Miro no Gen (Lamento de Loki)
+if (@selos == 11001) && (seloskill320 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 320 "+seloskill320+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chuusuusei Biribiri (Crepúsculo Sangrento)
+if (@selos == 30) && (seloskill33 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 33 "+seloskill33+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Tsubaki no Mai (Angelus)
+if (@selos == 10020) && (seloskill362 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 362 "+seloskill362+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shugo Hakke Rokujuuyonshou (Basílica)
+if (@selos == 20100) && (seloskill307 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 307 "+seloskill307+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Suiken Ryuu (Banquete de Njord)
+if (@selos == 21000) && (seloskill330 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 330 "+seloskill330+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Kujaku Myoho (Dança Cigana)
+if (@selos == 1011) && (seloskill70 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 70 "+seloskill70+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shouen no Jutsu (Santuário)
+if (@selos == 1101) && (seloskill45 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "concentracao"; close;} //Concentração
+if (@selos == 10002) && (seloskill543 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Aura Ninja (Aura Ninja)
+if (@selos == 12000) && (seloskill459 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 459 "+seloskill459+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Jhoko Boom (Adrenalina Concentrada)
+if (@selos == 30000) && (seloskill111 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 111 "+seloskill111+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Wheel Kessho (Adrenalina Pura)
+if (@selos == 20001) && (seloskill173 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 173 "+seloskill173+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shiki Fuujin
+if (@selos == 10101) && (seloskill676 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 676 "+seloskill676+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Doryuu Heki
+if (@selos == 10011) && (seloskill74 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 74 "+seloskill74+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chikatsu no Jutsu (Magnificat)
+if (@selos == 21000) && (seloskill321 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 321 "+seloskill321+" "+strcharinfo(O); set @selos,0; set @selosusado,0; callfunc "nehan"; close;} //Nehan Shouja no Jutsu (Poema de Bragi)
+if (@selos == 201) && (seloskill677 > 0) {dispbottom "Jutsu realizado com sucesso";atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0);set @selos,0; set @selosusado,0; callfunc "jigoku"; close;}
+if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+end;
+            }    
+}
+
+//Selo Boi (10)
+
+-	script	on_PC_UseSkill#390	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+
+           if(lskillid == 526) {
+atcommand "@effect 305";
+if(@selosusado == 2) goto checkjutsus;
+if(@selosusado < 2) goto fazselo;
+
+fazselo:
+if(@selosusado == 2) {set @selos,@selos + 20; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 10; set @selosusado,@selosusado +1; sleep2 1; end;}
+
+checkjutsus:
+set @selos,@selos +10;
+//if (@selos == 100011) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 1
+//if (@selos == 100020) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 2
+//if (@selos == 100101) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 3
+//if (@selos == 100110) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 1
+//if (@selos == 100200) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 2
+//if (@selos == 101001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 3
+//if (@selos == 101010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 1
+//if (@selos == 101100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 2
+//if (@selos == 102000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 3
+//if (@selos == 110001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 1
+//if (@selos == 110010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 2
+//if (@selos == 110100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 3
+//if (@selos == 111000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 1
+//if (@selos == 120000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 2
+//if (@selos == 200001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 3
+if (@selos == 3) && (seloskill517 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 517 "+seloskill517+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Senton Kaisen (Ataque Gatling)
+//if (@selos == 111) && (seloskill509 > 0)  {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 509 "+seloskill509+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dekopin (Ataque Concentrado)
+if (@selos == 120) && (seloskill61 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 61 "+seloskill61+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Contra-Ataque (Contra-Ataque)
+if (@selos == 1002) && (seloskill357 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 357 "+seloskill357+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dai Senkou (Dedicação)
+if (@selos == 2010) && (seloskill420 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 420 "+seloskill420+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Cambalhota (Cambalhota)
+if (@selos == 3000) && (seloskill268 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 268 "+seloskill268+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Muralha de Chakra (Corpo Fechado)
+if (@selos == 201) && (seloskill677 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "jigoku"; close;} //Jigoku Kouka no Jutsu
+if (@selos == 210) && (seloskill306 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 306 "+seloskill306+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Genjutsu no Harg (Cantiga de Ninar)
+if (@selos == 102) && (seloskill678 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kana"; close;} //Kanashibari no Genjutsu
+if (@selos == 1200) && (seloskill369 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 369 "+seloskill369+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Sakki no Jutsu (Canto de Batalha)
+if (@selos == 1110) && (seloskill308 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 308 "+seloskill308+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Ryou Mayakashi no Jutsu (Ritmo Caótico)
+if (@selos == 1020) && (seloskill322 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Idou no Kaibutsu (Maças de Indu) 
+if (@selos == 2010) && (seloskill667 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 667 "+seloskill667+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Bakuhatsu Kemuri
+if (@selos == 10110) && (seloskill663 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 663 "+seloskill663+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Konohi Kemuri
+if (@selos == 300) && (seloskill668 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kemuri"; close;} //Fukai Kemuri
+if (@selos == 10200) && (seloskill311 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 311 "+seloskill311+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Miro no Gen (Lamento de Loki)
+if (@selos == 11001) && (seloskill320 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 320 "+seloskill320+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chuusuusei Biribiri (Crepúsculo Sangrento)
+if (@selos == 30) && (seloskill33 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 33 "+seloskill33+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Tsubaki no Mai (Angelus)
+if (@selos == 10020) && (seloskill362 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 362 "+seloskill362+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shugo Hakke Rokujuuyonshou (Basílica)
+if (@selos == 20100) && (seloskill307 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 307 "+seloskill307+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Suiken Ryuu (Banquete de Njord)
+if (@selos == 21000) && (seloskill330 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 330 "+seloskill330+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Kujaku Myoho (Dança Cigana)
+if (@selos == 1011) && (seloskill70 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 70 "+seloskill70+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shouen no Jutsu (Santuário)
+if (@selos == 1101) && (seloskill45 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "concentracao"; close;} //Concentração
+if (@selos == 10002) && (seloskill543 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Aura Ninja (Aura Ninja)
+if (@selos == 12000) && (seloskill459 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 459 "+seloskill459+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Jhoko Boom (Adrenalina Concentrada)
+if (@selos == 30000) && (seloskill111 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 111 "+seloskill111+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Wheel Kessho (Adrenalina Pura)
+if (@selos == 20001) && (seloskill173 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 173 "+seloskill173+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shiki Fuujin
+if (@selos == 10101) && (seloskill676 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 676 "+seloskill676+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Doryuu Heki
+if (@selos == 10011) && (seloskill74 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 74 "+seloskill74+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chikatsu no Jutsu (Magnificat)
+if (@selos == 21000) && (seloskill321 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 321 "+seloskill321+" "+strcharinfo(O); set @selos,0; set @selosusado,0; callfunc "nehan"; close;} //Nehan Shouja no Jutsu (Poema de Bragi)
+if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+end;
+            }    
+}
+
+//Selo Coelho (100)
+
+-	script	on_PC_UseSkill#26	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+
+           if(lskillid == 500) {
+atcommand "@effect 391";
+if(@selosusado == 2) goto checkjutsus;
+if(@selosusado < 2) goto fazselo;
+
+fazselo:
+if(@selosusado == 2) {set @selos,@selos + 200; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 100; set @selosusado,@selosusado +1; sleep2 1; end;}
+
+checkjutsus:
+set @selos,@selos +100;
+//if (@selos == 100011) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 1
+//if (@selos == 100020) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 2
+//if (@selos == 100101) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 3
+//if (@selos == 100110) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 1
+//if (@selos == 100200) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 2
+//if (@selos == 101001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 3
+//if (@selos == 101010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 1
+//if (@selos == 101100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 2
+//if (@selos == 102000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 3
+//if (@selos == 110001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 1
+//if (@selos == 110010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 2
+//if (@selos == 110100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 3
+//if (@selos == 111000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 1
+//if (@selos == 120000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 2
+//if (@selos == 200001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 3
+if (@selos == 3) && (seloskill517 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 517 "+seloskill517+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Senton Kaisen (Ataque Gatling)
+//if (@selos == 111) && (seloskill509 > 0)  {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 509 "+seloskill509+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dekopin (Ataque Concentrado)
+if (@selos == 120) && (seloskill61 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 61 "+seloskill61+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Contra-Ataque (Contra-Ataque)
+if (@selos == 1002) && (seloskill357 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 357 "+seloskill357+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dai Senkou (Dedicação)
+if (@selos == 2010) && (seloskill420 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 420 "+seloskill420+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Cambalhota (Cambalhota)
+if (@selos == 3000) && (seloskill268 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 268 "+seloskill268+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Muralha de Chakra (Corpo Fechado)
+if (@selos == 210) && (seloskill306 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 306 "+seloskill306+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Genjutsu no Harg (Cantiga de Ninar)
+if (@selos == 102) && (seloskill678 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kana"; close;} //Kanashibari no Genjutsu
+if (@selos == 1200) && (seloskill369 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 369 "+seloskill369+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Sakki no Jutsu (Canto de Batalha)
+if (@selos == 1110) && (seloskill308 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 308 "+seloskill308+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Ryou Mayakashi no Jutsu (Ritmo Caótico)
+if (@selos == 1020) && (seloskill322 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Idou no Kaibutsu (Maças de Indu) 
+if (@selos == 2010) && (seloskill667 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 667 "+seloskill667+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Bakuhatsu Kemuri
+if (@selos == 10110) && (seloskill663 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 663 "+seloskill663+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Konohi Kemuri
+if (@selos == 300) && (seloskill668 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kemuri"; close;} //Fukai Kemuri
+if (@selos == 10200) && (seloskill311 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 311 "+seloskill311+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Miro no Gen (Lamento de Loki)
+if (@selos == 11001) && (seloskill320 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 320 "+seloskill320+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chuusuusei Biribiri (Crepúsculo Sangrento)
+if (@selos == 30) && (seloskill33 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 33 "+seloskill33+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Tsubaki no Mai (Angelus)
+if (@selos == 10020) && (seloskill362 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 362 "+seloskill362+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shugo Hakke Rokujuuyonshou (Basílica)
+if (@selos == 20100) && (seloskill307 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 307 "+seloskill307+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Suiken Ryuu (Banquete de Njord)
+if (@selos == 21000) && (seloskill330 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 330 "+seloskill330+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Kujaku Myoho (Dança Cigana)
+if (@selos == 1011) && (seloskill70 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 70 "+seloskill70+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shouen no Jutsu (Santuário)
+if (@selos == 1101) && (seloskill45 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "concentracao"; close;} //Concentração
+if (@selos == 10002) && (seloskill543 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Aura Ninja (Aura Ninja)
+if (@selos == 12000) && (seloskill459 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 459 "+seloskill459+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Jhoko Boom (Adrenalina Concentrada)
+if (@selos == 30000) && (seloskill111 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 111 "+seloskill111+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Wheel Kessho (Adrenalina Pura)
+if (@selos == 20001) && (seloskill173 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 173 "+seloskill173+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shiki Fuujin
+if (@selos == 10101) && (seloskill676 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 676 "+seloskill676+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Doryuu Heki
+if (@selos == 10011) && (seloskill74 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 74 "+seloskill74+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chikatsu no Jutsu (Magnificat)
+if (@selos == 21000) && (seloskill321 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 321 "+seloskill321+" "+strcharinfo(O); set @selos,0; set @selosusado,0; callfunc "nehan"; close;} //Nehan Shouja no Jutsu (Poema de Bragi)
+if (@selos == 201) && (seloskill677 > 0) {dispbottom "Jutsu realizado com sucesso";atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0);set @selos,0; set @selosusado,0; callfunc "jigoku"; close;}
+if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+
+
+end;
+            }    
+}
+//Selo Cachorro (1000)
+
+-	script	on_PC_UseSkill#21	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+
+           if(lskillid == 222) {
+//atcommand "@effect 305";
+atcommand "@effect 609";
+if(@selosusado == 2) goto checkjutsus;
+if(@selosusado < 2) goto fazselo;
+
+fazselo:
+if(@selosusado == 2) {set @selos,@selos + 2000; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 1000; set @selosusado,@selosusado +1; sleep2 1; end;}
+
+checkjutsus:
+set @selos,@selos +1000;
+//if (@selos == 100011) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 1
+//if (@selos == 100020) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 2
+//if (@selos == 100101) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 3
+//if (@selos == 100110) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 1
+//if (@selos == 100200) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 2
+//if (@selos == 101001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 3
+//if (@selos == 101010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 1
+//if (@selos == 101100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 2
+//if (@selos == 102000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 3
+//if (@selos == 110001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 1
+//if (@selos == 110010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 2
+//if (@selos == 110100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 3
+//if (@selos == 111000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 1
+//if (@selos == 120000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 2
+//if (@selos == 200001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 3
+if (@selos == 3) && (seloskill517 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 517 "+seloskill517+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Senton Kaisen (Ataque Gatling)
+//if (@selos == 111) && (seloskill509 > 0)  {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 509 "+seloskill509+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dekopin (Ataque Concentrado)
+if (@selos == 120) && (seloskill61 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 61 "+seloskill61+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Contra-Ataque (Contra-Ataque)
+if (@selos == 1002) && (seloskill357 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 357 "+seloskill357+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dai Senkou (Dedicação)
+if (@selos == 2010) && (seloskill420 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 420 "+seloskill420+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Cambalhota (Cambalhota)
+if (@selos == 3000) && (seloskill268 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 268 "+seloskill268+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Muralha de Chakra (Corpo Fechado)
+if (@selos == 201) && (seloskill677 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "jigoku"; close;} //Jigoku Kouka no Jutsu
+if (@selos == 210) && (seloskill306 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 306 "+seloskill306+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Genjutsu no Harg (Cantiga de Ninar)
+if (@selos == 102) && (seloskill678 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kana"; close;} //Kanashibari no Genjutsu
+if (@selos == 1200) && (seloskill369 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 369 "+seloskill369+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Sakki no Jutsu (Canto de Batalha)
+if (@selos == 1110) && (seloskill308 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 308 "+seloskill308+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Ryou Mayakashi no Jutsu (Ritmo Caótico)
+if (@selos == 1020) && (seloskill322 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Idou no Kaibutsu (Maças de Indu) 
+if (@selos == 2010) && (seloskill667 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 667 "+seloskill667+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Bakuhatsu Kemuri
+if (@selos == 10110) && (seloskill663 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 663 "+seloskill663+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Konohi Kemuri
+if (@selos == 300) && (seloskill668 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kemuri"; close;} //Fukai Kemuri
+if (@selos == 10200) && (seloskill311 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 311 "+seloskill311+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Miro no Gen (Lamento de Loki)
+if (@selos == 11001) && (seloskill320 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 320 "+seloskill320+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chuusuusei Biribiri (Crepúsculo Sangrento)
+if (@selos == 30) && (seloskill33 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 33 "+seloskill33+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Tsubaki no Mai (Angelus)
+if (@selos == 10020) && (seloskill362 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 362 "+seloskill362+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shugo Hakke Rokujuuyonshou (Basílica)
+if (@selos == 20100) && (seloskill307 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 307 "+seloskill307+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Suiken Ryuu (Banquete de Njord)
+if (@selos == 21000) && (seloskill330 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 330 "+seloskill330+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Kujaku Myoho (Dança Cigana)
+if (@selos == 1011) && (seloskill70 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 70 "+seloskill70+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shouen no Jutsu (Santuário)
+if (@selos == 1101) && (seloskill45 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "concentracao"; close;} //Concentração
+if (@selos == 10002) && (seloskill543 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Aura Ninja (Aura Ninja)
+if (@selos == 12000) && (seloskill459 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 459 "+seloskill459+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Jhoko Boom (Adrenalina Concentrada)
+if (@selos == 30000) && (seloskill111 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 111 "+seloskill111+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Wheel Kessho (Adrenalina Pura)
+if (@selos == 20001) && (seloskill173 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 173 "+seloskill173+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shiki Fuujin
+if (@selos == 10101) && (seloskill676 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 676 "+seloskill676+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Doryuu Heki
+if (@selos == 10011) && (seloskill74 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 74 "+seloskill74+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chikatsu no Jutsu (Magnificat)
+if (@selos == 21000) && (seloskill321 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 321 "+seloskill321+" "+strcharinfo(O); set @selos,0; set @selosusado,0; callfunc "nehan"; close;} //Nehan Shouja no Jutsu (Poema de Bragi)
+if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+end;
+           }    
+}
+
+//Selo Macaco (10000)
+
+-	script	on_PC_UseSkill#25	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+
+           if(lskillid == 262) {
+atcommand "@effect 306";
+if(@selosusado == 2) goto checkjutsus;
+if(@selosusado < 2) goto fazselo;
+
+fazselo:
+if(@selosusado == 2) {set @selos,@selos + 20000; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 10000; set @selosusado,@selosusado +1; sleep2 1; end;}
+
+checkjutsus:
+set @selos,@selos +10000;
+//if (@selos == 100011) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 1
+//if (@selos == 100020) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 2
+//if (@selos == 100101) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 3
+//if (@selos == 100110) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 1
+//if (@selos == 100200) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 2
+//if (@selos == 101001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 3
+//if (@selos == 101010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 1
+//if (@selos == 101100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 2
+//if (@selos == 102000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 3
+//if (@selos == 110001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 1
+//if (@selos == 110010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 2
+//if (@selos == 110100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 3
+//if (@selos == 111000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 1
+//if (@selos == 120000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 2
+//if (@selos == 200001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 3
+if (@selos == 3) && (seloskill517 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 517 "+seloskill517+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Senton Kaisen (Ataque Gatling)
+//if (@selos == 111) && (seloskill509 > 0)  {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 509 "+seloskill509+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dekopin (Ataque Concentrado)
+if (@selos == 120) && (seloskill61 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 61 "+seloskill61+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Contra-Ataque (Contra-Ataque)
+if (@selos == 1002) && (seloskill357 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 357 "+seloskill357+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dai Senkou (Dedicação)
+if (@selos == 2010) && (seloskill420 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 420 "+seloskill420+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Cambalhota (Cambalhota)
+if (@selos == 3000) && (seloskill268 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 268 "+seloskill268+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Muralha de Chakra (Corpo Fechado)
+if (@selos == 201) && (seloskill677 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "jigoku"; close;} //Jigoku Kouka no Jutsu
+if (@selos == 210) && (seloskill306 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 306 "+seloskill306+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Genjutsu no Harg (Cantiga de Ninar)
+if (@selos == 102) && (seloskill678 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kana"; close;} //Kanashibari no Genjutsu
+if (@selos == 1200) && (seloskill369 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 369 "+seloskill369+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Sakki no Jutsu (Canto de Batalha)
+if (@selos == 1110) && (seloskill308 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 308 "+seloskill308+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Ryou Mayakashi no Jutsu (Ritmo Caótico)
+if (@selos == 1020) && (seloskill322 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Idou no Kaibutsu (Maças de Indu) 
+if (@selos == 2010) && (seloskill667 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 667 "+seloskill667+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Bakuhatsu Kemuri
+if (@selos == 10110) && (seloskill663 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 663 "+seloskill663+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Konohi Kemuri
+if (@selos == 300) && (seloskill668 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kemuri"; close;} //Fukai Kemuri
+if (@selos == 10200) && (seloskill311 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 311 "+seloskill311+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Miro no Gen (Lamento de Loki)
+if (@selos == 11001) && (seloskill320 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 320 "+seloskill320+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chuusuusei Biribiri (Crepúsculo Sangrento)
+if (@selos == 30) && (seloskill33 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 33 "+seloskill33+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Tsubaki no Mai (Angelus)
+if (@selos == 10020) && (seloskill362 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 362 "+seloskill362+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shugo Hakke Rokujuuyonshou (Basílica)
+if (@selos == 20100) && (seloskill307 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 307 "+seloskill307+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Suiken Ryuu (Banquete de Njord)
+if (@selos == 21000) && (seloskill330 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 330 "+seloskill330+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Kujaku Myoho (Dança Cigana)
+if (@selos == 1011) && (seloskill70 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 70 "+seloskill70+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shouen no Jutsu (Santuário)
+if (@selos == 1101) && (seloskill45 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "concentracao"; close;} //Concentração
+if (@selos == 10002) && (seloskill543 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Aura Ninja (Aura Ninja)
+if (@selos == 12000) && (seloskill459 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 459 "+seloskill459+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Jhoko Boom (Adrenalina Concentrada)
+if (@selos == 30000) && (seloskill111 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 111 "+seloskill111+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Wheel Kessho (Adrenalina Pura)
+if (@selos == 20001) && (seloskill173 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 173 "+seloskill173+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shiki Fuujin
+if (@selos == 10101) && (seloskill676 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 676 "+seloskill676+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Doryuu Heki
+if (@selos == 10011) && (seloskill74 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 74 "+seloskill74+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chikatsu no Jutsu (Magnificat)
+if (@selos == 21000) && (seloskill321 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 321 "+seloskill321+" "+strcharinfo(O); set @selos,0; set @selosusado,0; callfunc "nehan"; close;} //Nehan Shouja no Jutsu (Poema de Bragi)
+if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+end;
+          }    
+}
+
+//Selo Cavalo (100000)
+
+-	script	on_PC_UseSkill#46	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+
+           if(lskillid == 63) {
+atcommand "@effect 508";
+if(@selosusado == 2) goto checkjutsus;
+if(@selosusado < 2) goto fazselo;
+
+fazselo:
+if(@selosusado == 2) {set @selos,@selos + 200000; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 100000; set @selosusado,@selosusado +1; sleep2 1; end;}
+
+checkjutsus:
+set @selos,@selos +100000;
+//if (@selos == 100011) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 1
+//if (@selos == 100020) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 2
+//if (@selos == 100101) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Sapo 3
+//if (@selos == 100110) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 1
+//if (@selos == 100200) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 2
+//if (@selos == 101001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cobra 3
+//if (@selos == 101010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 1
+//if (@selos == 101100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 2
+//if (@selos == 102000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Lesma 3
+//if (@selos == 110001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 1
+//if (@selos == 110010) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 2
+//if (@selos == 110100) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Macaco 3
+//if (@selos == 111000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 1
+//if (@selos == 120000) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 2
+//if (@selos == 200001) && (seloskill1 > 0) {dispbottom "Jutsu realizado com sucesso"; itemskill "Colocar ID da Skill",1; set @selos,0; set @selosusado,0; close;} //Kuchi Cachorro 3
+if (@selos == 3) && (seloskill517 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 517 "+seloskill517+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Senton Kaisen (Ataque Gatling)
+//if (@selos == 111) && (seloskill509 > 0)  {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 509 "+seloskill509+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dekopin (Ataque Concentrado)
+if (@selos == 120) && (seloskill61 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 61 "+seloskill61+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Contra-Ataque (Contra-Ataque)
+if (@selos == 1002) && (seloskill357 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 357 "+seloskill357+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Dai Senkou (Dedicação)
+if (@selos == 2010) && (seloskill420 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 420 "+seloskill420+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Cambalhota (Cambalhota)
+if (@selos == 3000) && (seloskill268 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 268 "+seloskill268+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Muralha de Chakra (Corpo Fechado)
+if (@selos == 201) && (seloskill677 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "jigoku"; close;} //Jigoku Kouka no Jutsu
+if (@selos == 210) && (seloskill306 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 306 "+seloskill306+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Genjutsu no Harg (Cantiga de Ninar)
+if (@selos == 102) && (seloskill678 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kana"; close;} //Kanashibari no Genjutsu
+if (@selos == 1200) && (seloskill369 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 369 "+seloskill369+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Sakki no Jutsu (Canto de Batalha)
+if (@selos == 1110) && (seloskill308 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 308 "+seloskill308+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Ryou Mayakashi no Jutsu (Ritmo Caótico)
+if (@selos == 1020) && (seloskill322 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Idou no Kaibutsu (Maças de Indu) 
+if (@selos == 2010) && (seloskill667 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 667 "+seloskill667+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Bakuhatsu Kemuri
+if (@selos == 10110) && (seloskill663 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 663 "+seloskill663+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Konohi Kemuri
+if (@selos == 300) && (seloskill668 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "kemuri"; close;} //Fukai Kemuri
+if (@selos == 10200) && (seloskill311 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 311 "+seloskill311+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Miro no Gen (Lamento de Loki)
+if (@selos == 11001) && (seloskill320 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 320 "+seloskill320+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chuusuusei Biribiri (Crepúsculo Sangrento)
+if (@selos == 30) && (seloskill33 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 33 "+seloskill33+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Tsubaki no Mai (Angelus)
+if (@selos == 10020) && (seloskill362 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 362 "+seloskill362+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shugo Hakke Rokujuuyonshou (Basílica)
+if (@selos == 20100) && (seloskill307 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 307 "+seloskill307+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Suiken Ryuu (Banquete de Njord)
+if (@selos == 21000) && (seloskill330 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 330 "+seloskill330+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Kujaku Myoho (Dança Cigana)
+if (@selos == 1011) && (seloskill70 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 70 "+seloskill70+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shouen no Jutsu (Santuário)
+if (@selos == 1101) && (seloskill45 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; callfunc "concentracao"; close;} //Concentração
+if (@selos == 10002) && (seloskill543 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Aura Ninja (Aura Ninja)
+if (@selos == 12000) && (seloskill459 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 459 "+seloskill459+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Jhoko Boom (Adrenalina Concentrada)
+if (@selos == 30000) && (seloskill111 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 111 "+seloskill111+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Wheel Kessho (Adrenalina Pura)
+if (@selos == 20001) && (seloskill173 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 173 "+seloskill173+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Shiki Fuujin
+if (@selos == 10101) && (seloskill676 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 676 "+seloskill676+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Doryuu Heki
+if (@selos == 10011) && (seloskill74 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 74 "+seloskill74+" "+strcharinfo(0); set @selos,0; set @selosusado,0; close;} //Chikatsu no Jutsu (Magnificat)
+if (@selos == 21000) && (seloskill321 > 0) {dispbottom "Jutsu realizado com sucesso"; atcommand "@useskill 321 "+seloskill321+" "+strcharinfo(O); set @selos,0; set @selosusado,0; callfunc "nehan"; close;} //Nehan Shouja no Jutsu (Poema de Bragi)
+if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+end;
+          }    
+}
+
+
+//-	script	on_PC_UseSkill#36	-1,{
+//    end;
+////When a Character uses a skill
+//onPcUseSkillEvent:
+//           if(lskillid == 24) {
+//if(getequipid(EQI_HAND_R)!=1201) end;
+//if(getequipid(EQI_HAND_R)==1201) goto L_troca;
+//
+//L_troca:
+//unequip EQI_HAND_R;
+//delitem 1201,1;
+//getitem 1104,1;
+//equip 1104;
+//sleep2 1;
+//               end;
+//            }    
+//}
+
+-	script	on_PC_UseSkill#37	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 543) {
+if(getequipid(EQI_HAND_R)!=1104) end;
+if(getequipid(EQI_HAND_R)==1104) goto L_troca;
+
+L_troca:
+unequip EQI_HAND_R;
+delitem 1104,1;
+getitem 1201,1;
+equip 1201;
+sleep2 1;
+               end;
+            }    
+}
+
+
+-	script	on_PC_UseSkill222	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+//if (uzumaki != 1) end;
+
+           if(lskillid == 1010) {
+//if (countitem(19207) > 0) {dispbottom "Não é possivel criar clones com a Kekkei Genkai Mitsashi"; end;}
+if (countitem(19216) > 0) {dispbottom "Não é possivel criar clones com a Kekkei Genkai Aburame"; end;}
+getmapxy @map$,@x,@y,0;
+for(set .@i,0;.@i < 1; set .@i,.@i + 1)
+clone @map$,@x,@y,"NPCNAME::OnEVENT",getcharid(0),getcharid(0),0x83,1,10; 
+sleep2 1;
+                end;
+            }    
+}
+
+-	script	on_PC_UseSkill222#1	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+//if (uzumaki != 1) end;
+
+           if(lskillid == 51) {
+atcommand "@summon BON_GUN";
+end;
+                end;
+            }    
+}
+
+-	script	on_PC_UseSkill223	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 506) {
+
+if (Jashin >= 1) {dispbottom "Este jutsu não pode ser usado com usuários de Jashin"; end;}
+if(indisguise == 1) {atcommand "@undisguise"; set indisguise,0; DelTimer "FOME_SONO_DICREASE::OnHPDicrease"; end;}
+atcommand "@disguise "+killedrid+"";
+set indisguise,1;
+AddTimer 1000, "FOME_SONO_DICREASE::OnHPDicrease";
+
+                end;
+
+OnPCLogoutEvent:
+if(indisguise == 1) {set indisguise,0; end;}
+
+OnNPCKillEvent:
+
+set mobhenge, killedrid;
+end;
+            }    
+}
+
+-	script	on_PC_UseSkill224	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 749) {
+atcommand "@effect 154";
+sc_start SC_INCMATKRATE,30000,30;
+//sc_start SC_WALKSPEED,30000,125;
+sc_start SC_ITEMSCRIPT,30000,4054;
+set @a,rand(1,100);
+if (@a < 40) {sc_start SC_Confusion,4000,0;}
+//AddTimer 1000, "FOME_SELOSKILL::OnHPSELOSKILL1";
+AddTimer 30000, "FOME_SELOSKILL::OnHPSELOSKILL12";
+getitem 19083,1;
+equip 19083;
+end;
+
+OnPCLogoutEvent:
+sc_end SC_WALKSPEED;
+sc_end SC_INCMATKRATE;
+set @max,countitem(19083);
+if (@max >= 1) {delitem 19083, @max; end;}
+end;
+
+            }    
+}
+-	script	FOME_SELOSKILL	-1,{
+	
+OnHPSELOSKILL1:
+	percentheal -2,-2; // This will heal 100% SP
+	AddTimer 1000, "FOME_SELOSKILL::OnHPSELOSKILL1";
+	End;
+
+OnHPSELOSKILL12:
+	delitem 19083,1;
+//	DelTimer "FOME_SELOSKILL::OnHPSELOSKILL1";
+	DelTimer "FOME_SELOSKILL::OnHPSELOSKILL2";
+	End;
+
+}
+
+-	script	on_PC_UseSkill225	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 750) {
+atcommand "@effect 154";
+sc_start SC_INCATKRATE,30000,25;
+//sc_start SC_WALKSPEED,30000,125;
+sc_start SC_ITEMSCRIPT,30000,4055;
+set @a,rand(1,100);
+if (@a < 60) {sc_start SC_Confusion,4000,0;}
+//AddTimer 1000, "FOME_SELOSKILL2::OnHPSELOSKILL2";
+AddTimer 30000, "FOME_SELOSKILL2::OnHPSELOSKILL22";
+getitem 19033,1;
+equip 19033;
+end;
+
+OnPCLogoutEvent:
+sc_end SC_WALKSPEED;
+sc_end SC_INCATKRATE;
+set @max,countitem(19033);
+if (@max >= 1) {delitem 19033, @max; end;}
+end;
+
+            }    
+}
+-	script	FOME_SELOSKILL2	-1,{
+	
+OnHPSELOSKILL2:
+	percentheal -2,-2; // This will heal 100% SP
+	AddTimer 1000, "FOME_SELOSKILL2:::OnHPSELOSKILL2";
+	End;
+
+OnHPSELOSKILL22:
+//	DelTimer "FOME_SELOSKILL2::OnHPSELOSKILL2";
+	DelTimer "FOME_SELOSKILL2::OnHPSELOSKILL22";
+	delitem 19033,1;
+	End;
+
+}
+                
+-	script	on_PC_UseSkill#226	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 751) {
+	atcommand "@effect 155";
+getitem 19147,1;
+equip 19147;
+AddTimer 10000, "REMOVERGELOKG::OnHPGELOREMOVE";
+               end;
+
+
+            }
+
+}
+
+-	script	REMOVERGELOKG	-1,{
+	
+OnHPGELOREMOVE:
+delitem 19147,1;
+	End;
+
+OnPCLogoutEvent:
+set @max,countitem(19147);
+if (@max >= 1) {delitem 19147, @max; end;}
+
+}
+
+-	script	on_PC_UseSkill#227	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 752) {
+
+sc_start SC_ITEMSCRIPT,25000,19146;
+atcommand "@effect 328";
+//getitem 19146,1;
+//equip 19146;
+AddTimer 25000, "REMOVERNARAKG::OnHPNARAREMOVE";
+               end;
+
+
+            }
+
+}
+
+-	script	REMOVERNARAKG	-1,{
+	
+OnHPNARAREMOVE:
+//delitem 19146,1;
+	End;
+
+OnPCLogoutEvent:
+set @max,countitem(19146);
+if (@max >= 1) {delitem 19146, @max; end;}
+
+}
+
+-	script	on_PC_UseSkill228	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 753) {
+if (chouji_dois == 1) {dispbottom "Só é possível usar uma pílula por vez"; end;}
+if (chouji_tres == 1) {dispbottom "Só é possível usar uma pílula por vez"; end;}
+atcommand "@effect 595";
+sc_start SC_ITEMSCRIPT,30000,4041;
+set chouji_um,1;
+AddTimer 30000, "REMOVERFATKG::OnHPFATREMOVE";
+end;
+
+OnPCLogoutEvent:
+set chouji_um,0;
+end;
+
+            }    
+}
+
+-	script	REMOVERFATKG	-1,{
+	
+OnHPFATREMOVE:
+set chouji_um,0;
+//sc_start SC_ITEMSCRIPT,8000,4061;
+	End;
+
+}
+-	script	on_PC_UseSkill229	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 754) {
+if (chouji_um == 1) {dispbottom "Só é possível usar uma pílula por vez"; end;}
+if (chouji_tres == 1) {dispbottom "Só é possível usar uma pílula por vez"; end;}
+atcommand "@effect 598";
+sc_start SC_ITEMSCRIPT,30000,4042;
+set chouji_dois,1;
+AddTimer 30000, "REMOVERFATYKG::OnHPFATYREMOVE";
+end;
+
+OnPCLogoutEvent:
+set chouji_dois,0;
+end;
+
+            }    
+}
+
+-	script	REMOVERFATYKG	-1,{
+	
+OnHPFATYREMOVE:
+set chouji_dois,0;
+sc_start SC_ITEMSCRIPT,5000,4062;
+	End;
+
+}
+
+-	script	on_PC_UseSkill#230	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 755) {
+if (chouji_um == 1) {dispbottom "Só é possível usar uma pílula por vez"; end;}
+if (chouji_dois == 1) {dispbottom "Só é possível usar uma pílula por vez"; end;}
+atcommand "@effect 593";
+getitem 19024,1;
+equip 19024;
+set chouji_tres,1;
+AddTimer 30000, "REMOVERGORDOKG::OnHPGORDOREMOVE";
+//AddTimer 1000, "FOME_GORDOSKILL4::OnHPGORDOSKILL4";
+AddTimer 30000, "FOME_GORDOSKILL4::OnHPGORDOSKILL24";
+               end;
+
+            }
+
+}
+
+-	script	REMOVERGORDOKG	-1,{
+	
+OnHPGORDOREMOVE:
+delitem 19024,1;
+set chouji_tres,0;
+sc_start SC_ITEMSCRIPT,10000,4063;
+	End;
+
+OnPCLogoutEvent:
+set chouji_tres,0;
+set @max,countitem(19024);
+if (@max >= 1) {delitem 19024, @max; end;}
+
+}
+
+-	script	FOME_GORDOSKILL4	-1,{
+	
+OnHPGORDOSKILL4:
+	percentheal -1,-1; // This will heal 100% SP
+	AddTimer 1000, "FOME_GORDOSKILL4::OnHPGORDOSKILL4";
+	End;
+
+OnHPGORDOSKILL24:
+//	DelTimer "FOME_GORDOSKILL4::OnHPGORDOSKILL4";
+	DelTimer "FOME_GORDOSKILL4::OnHPGORDOSKILL24";
+//	percentheal -60,0; // This will heal 100% SP
+	End;
+
+}
+
+-	script	on_PC_UseSkill231#1	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 486) {
+atcommand "@speed 1";
+AddTimer 150000, "FOME_LEESKILL::OnHPLEE";
+end;
+                end;
+
+            }    
+}
+
+-	script	FOME_LEESKILL	-1,{
+	
+OnHPLEE:
+	atcommand "@die";
+	atcommand "@speed 150";
+	DelTimer "FOME_LEESKILL::OnHPLEE";
+	End;
+
+OnPCDieEvent:
+	atcommand "@speed 150";
+	DelTimer "FOME_LEESKILL::OnHPLEE";
+	End;
+
+}
+
+-	script	on_PC_UseSkill#485	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 756) {
+
+	atcommand "@effect 113";
+	atcommand "@effect 100";
+	percentheal 60,-100; // This will heal 100% SP
+               end;
+
+            }
+
+}
+
+-	script	on_PC_UseSkill#486	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 758) {
+if (countitem(19009) < 1) && (strcharinfo(3) == "konoha") {end;}
+if (countitem(19148) < 1) && (strcharinfo(3) == "areia") {end;}
+if (countitem(19036) < 1) && (strcharinfo(3) == "nuvem") {end;}
+if (countitem(19012) < 1) && (strcharinfo(3) == "nevoa") {end;}
+
+if (countitem(19009) >= 1) {atcommand "@guildrecall Vila Oculta da Folha"; end;}
+if (countitem(19148) >= 1) {atcommand "@guildrecall Vila Oculta da Areia"; end;}
+if (countitem(19036) >= 1) {atcommand "@guildrecall Vila Oculta da Nuvem"; end;}
+if (countitem(19012) >= 1) {atcommand "@guildrecall Vila Oculta da Nevoa"; end;}
+               end;
+
+delay:
+dispbottom "Este jutsu ainda está recarregando";
+end;
+
+            }
+
+}
+
+-	script	on_PC_UseSkill#487	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 759) {
+
+if($KonohaON1 == 1) goto delay;
+if($SunaON1 == 1) goto delay;
+if($NuvemON1 == 1) goto delay;
+if($NevoaON1 == 1) goto delay;
+
+if (countitem(19009) >= 1) {atcommand "@recall nomedojogador"; atcommand "@recall nomedojogador"; end;}
+if (countitem(19148) >= 1) {atcommand "@recall nomedojogador"; atcommand "@recall nomedojogador"; end;}
+if (countitem(19036) >= 1) {atcommand "@recall nomedojogador"; atcommand "@recall nomedojogador"; end;}
+if (countitem(19012) >= 1) {atcommand "@recall nomedojogador"; atcommand "@recall nomedojogador"; end;}
+               end;
+
+delay:
+dispbottom "Este jutsu ainda está recarregando";
+end;
+
+            }
+
+}
+
+-	script	on_PC_UseSkill#488	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 760) {
+
+if($KonohaON == 1) goto delay;
+if($SunaON == 1) goto delay;
+if($NuvemON == 1) goto delay;
+if($NevoaON == 1) goto delay;
+
+if (countitem(19009) >= 1) {warp "SavePoint", 0, 0; end;}
+if (countitem(19148) >= 1) {warp "SavePoint", 0, 0; end;}
+if (countitem(19036) >= 1) {warp "SavePoint", 0, 0; end;}
+if (countitem(19012) >= 1) {warp "SavePoint", 0, 0; end;}
+               end;
+
+delay:
+dispbottom "Este jutsu ainda está recarregando";
+end;
+
+            }
+
+}
+
+
+-	script	on_PC_UseSkill#489	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 761) {
+
+if (#konoha == 1) {atcommand "@disguise 1086";}
+if (#suna == 1) {atcommand "@disguise 1737";}
+if (#nevoa == 1) {atcommand "@disguise 1986";}
+if (#nuvem == 1) {atcommand "@disguise 1738";}
+if ($jinT_konoha == 1) && (#konoha == 1) {sc_start SC_INCSTR,150000,10; sc_start SC_INCAGI,150000,10; sc_start SC_INCDEX,150000,10; sc_start SC_INCINT,150000,10; sc_start SC_INCVIT,150000,10; sc_start SC_INCLUK,150000,10; sc_start SC_INCMHPRATE,150000,7; sc_start SC_INCMSPRATE,150000,7; sc_start SC_INCATKRATE,150000,3; sc_start SC_INCMATKRATE,150000,3;  sc_start SC_SPEED,150000,5;}
+if ($jinT_konoha == 2) && (#konoha == 1) {sc_start SC_INCSTR,150000,15; sc_start SC_INCAGI,150000,15; sc_start SC_INCDEX,150000,15; sc_start SC_INCINT,150000,15; sc_start SC_INCVIT,150000,15; sc_start SC_INCLUK,150000,15; sc_start SC_INCMHPRATE,150000,14; sc_start SC_INCMSPRATE,150000,14; sc_start SC_INCATKRATE,150000,6; sc_start SC_INCMATKRATE,150000,6;  sc_start SC_SPEED,150000,8;}
+if ($jinT_konoha == 3) && (#konoha == 1) {sc_start SC_INCSTR,150000,25; sc_start SC_INCAGI,150000,25; sc_start SC_INCDEX,150000,25; sc_start SC_INCINT,150000,25; sc_start SC_INCVIT,150000,25; sc_start SC_INCLUK,150000,25; sc_start SC_INCMHPRATE,150000,19; sc_start SC_INCMSPRATE,150000,19; sc_start SC_INCATKRATE,150000,10; sc_start SC_INCMATKRATE,150000,10;  sc_start SC_SPEED,150000,12;}
+if ($jinT_konoha == 4) && (#konoha == 1)  {sc_start SC_INCSTR,150000,35; sc_start SC_INCAGI,150000,35; sc_start SC_INCDEX,150000,35; sc_start SC_INCINT,150000,35; sc_start SC_INCVIT,150000,35; sc_start SC_INCLUK,150000,35; sc_start SC_INCMHPRATE,150000,25; sc_start SC_INCMSPRATE,150000,25; sc_start SC_INCATKRATE,150000,15; sc_start SC_INCMATKRATE,150000,15;  sc_start SC_SPEED,150000,15;}
+
+if ($jinT_nevoa == 1)  && (#nevoa == 1) {sc_start SC_INCSTR,150000,10; sc_start SC_INCAGI,150000,10; sc_start SC_INCDEX,150000,10; sc_start SC_INCINT,150000,10; sc_start SC_INCVIT,150000,10; sc_start SC_INCLUK,150000,10; sc_start SC_INCMHPRATE,150000,7; sc_start SC_INCMSPRATE,150000,7; sc_start SC_INCATKRATE,150000,3; sc_start SC_INCMATKRATE,150000,3;  sc_start SC_SPEED,150000,5;}
+if ($jinT_nevoa == 2)  && (#nevoa == 1) {sc_start SC_INCSTR,150000,15; sc_start SC_INCAGI,150000,15; sc_start SC_INCDEX,150000,15; sc_start SC_INCINT,150000,15; sc_start SC_INCVIT,150000,15; sc_start SC_INCLUK,150000,15; sc_start SC_INCMHPRATE,150000,14; sc_start SC_INCMSPRATE,150000,14; sc_start SC_INCATKRATE,150000,6; sc_start SC_INCMATKRATE,150000,6;  sc_start SC_SPEED,150000,8;}
+if ($jinT_nevoa == 3)  && (#nevoa == 1) {sc_start SC_INCSTR,150000,25; sc_start SC_INCAGI,150000,25; sc_start SC_INCDEX,150000,25; sc_start SC_INCINT,150000,25; sc_start SC_INCVIT,150000,25; sc_start SC_INCLUK,150000,25; sc_start SC_INCMHPRATE,150000,19; sc_start SC_INCMSPRATE,150000,19; sc_start SC_INCATKRATE,150000,10; sc_start SC_INCMATKRATE,150000,10;  sc_start SC_SPEED,150000,12;}
+if ($jinT_nevoa == 4)  && (#nevoa == 1) {sc_start SC_INCSTR,150000,35; sc_start SC_INCAGI,150000,35; sc_start SC_INCDEX,150000,35; sc_start SC_INCINT,150000,35; sc_start SC_INCVIT,150000,35; sc_start SC_INCLUK,150000,35; sc_start SC_INCMHPRATE,150000,25; sc_start SC_INCMSPRATE,150000,25; sc_start SC_INCATKRATE,150000,15; sc_start SC_INCMATKRATE,150000,15;  sc_start SC_SPEED,150000,15;}
+
+if ($jinT_nuvem == 1)  && (#nuvem == 1) {sc_start SC_INCSTR,150000,10; sc_start SC_INCAGI,150000,10; sc_start SC_INCDEX,150000,10; sc_start SC_INCINT,150000,10; sc_start SC_INCVIT,150000,10; sc_start SC_INCLUK,150000,10; sc_start SC_INCMHPRATE,150000,7; sc_start SC_INCMSPRATE,150000,7; sc_start SC_INCATKRATE,150000,3; sc_start SC_INCMATKRATE,150000,3;  sc_start SC_SPEED,150000,5;}
+if ($jinT_nuvem == 2)  && (#nuvem == 1) {sc_start SC_INCSTR,150000,15; sc_start SC_INCAGI,150000,15; sc_start SC_INCDEX,150000,15; sc_start SC_INCINT,150000,15; sc_start SC_INCVIT,150000,15; sc_start SC_INCLUK,150000,15; sc_start SC_INCMHPRATE,150000,14; sc_start SC_INCMSPRATE,150000,14; sc_start SC_INCATKRATE,150000,6; sc_start SC_INCMATKRATE,150000,6;  sc_start SC_SPEED,150000,8;}
+if ($jinT_nuvem == 3)  && (#nuvem == 1) {sc_start SC_INCSTR,150000,25; sc_start SC_INCAGI,150000,25; sc_start SC_INCDEX,150000,25; sc_start SC_INCINT,150000,25; sc_start SC_INCVIT,150000,25; sc_start SC_INCLUK,150000,25; sc_start SC_INCMHPRATE,150000,19; sc_start SC_INCMSPRATE,150000,19; sc_start SC_INCATKRATE,150000,10; sc_start SC_INCMATKRATE,150000,10;  sc_start SC_SPEED,150000,12;}
+if ($jinT_nuvem == 4)  && (#nuvem == 1) {sc_start SC_INCSTR,150000,35; sc_start SC_INCAGI,150000,35; sc_start SC_INCDEX,150000,35; sc_start SC_INCINT,150000,35; sc_start SC_INCVIT,150000,35; sc_start SC_INCLUK,150000,35; sc_start SC_INCMHPRATE,150000,25; sc_start SC_INCMSPRATE,150000,25; sc_start SC_INCATKRATE,150000,15; sc_start SC_INCMATKRATE,150000,15;  sc_start SC_SPEED,150000,15;}
+
+if ($jinT_suna == 1)  && (#suna == 1) {sc_start SC_INCSTR,150000,10; sc_start SC_INCAGI,150000,10; sc_start SC_INCDEX,150000,10; sc_start SC_INCINT,150000,10; sc_start SC_INCVIT,150000,10; sc_start SC_INCLUK,150000,10; sc_start SC_INCMHPRATE,150000,7; sc_start SC_INCMSPRATE,150000,7; sc_start SC_INCATKRATE,150000,3; sc_start SC_INCMATKRATE,150000,3;  sc_start SC_SPEED,150000,5;}
+if ($jinT_suna == 2)  && (#suna == 1) {sc_start SC_INCSTR,150000,15; sc_start SC_INCAGI,150000,15; sc_start SC_INCDEX,150000,15; sc_start SC_INCINT,150000,15; sc_start SC_INCVIT,150000,15; sc_start SC_INCLUK,150000,15; sc_start SC_INCMHPRATE,150000,14; sc_start SC_INCMSPRATE,150000,14; sc_start SC_INCATKRATE,150000,6; sc_start SC_INCMATKRATE,150000,6;  sc_start SC_SPEED,150000,8;}
+if ($jinT_suna == 3)  && (#suna == 1) {sc_start SC_INCSTR,150000,25; sc_start SC_INCAGI,150000,25; sc_start SC_INCDEX,150000,25; sc_start SC_INCINT,150000,25; sc_start SC_INCVIT,150000,25; sc_start SC_INCLUK,150000,25; sc_start SC_INCMHPRATE,150000,19; sc_start SC_INCMSPRATE,150000,19; sc_start SC_INCATKRATE,150000,10; sc_start SC_INCMATKRATE,150000,10;  sc_start SC_SPEED,150000,12;}
+if ($jinT_suna == 4)  && (#suna == 1) {sc_start SC_INCSTR,150000,35; sc_start SC_INCAGI,150000,35; sc_start SC_INCDEX,150000,35; sc_start SC_INCINT,150000,35; sc_start SC_INCVIT,150000,35; sc_start SC_INCLUK,150000,35; sc_start SC_INCMHPRATE,150000,25; sc_start SC_INCMSPRATE,150000,25; sc_start SC_INCATKRATE,150000,15; sc_start SC_INCMATKRATE,150000,15;  sc_start SC_SPEED,150000,15;}
+AddTimer 150000, "REMOVERGORDOKG2::OnHPGORDOREMOVE4";
+               end;
+
+OnPCLogoutEvent:
+sc_end SC_INCSTR;
+sc_end SC_INCAGI;
+sc_end SC_INCDEX;
+sc_end SC_INCINT;
+sc_end SC_INCVIT;
+sc_end SC_INCLUK;
+sc_end SC_INCMHPRATE;
+sc_end SC_INCMSPRATE;
+sc_end SC_INCATKRATE;
+sc_end SC_INCMATKRATE;
+sc_end SC_SPEED;
+end;
+
+            }
+
+}
+
+-	script	REMOVERGORDOKG2	-1,{
+	
+OnHPGORDOREMOVE4:
+sc_end SC_INCSTR;
+sc_end SC_INCAGI;
+sc_end SC_INCDEX;
+sc_end SC_INCINT;
+sc_end SC_INCVIT;
+sc_end SC_INCLUK;
+sc_end SC_INCMHPRATE;
+sc_end SC_INCMSPRATE;
+sc_end SC_INCATKRATE;
+sc_end SC_INCMATKRATE;
+sc_end SC_SPEED;
+DelTimer "REMOVERGORDOKG2::OnHPGORDOREMOVE4";
+atcommand "@undisguise";
+percentheal -75,-75; // This will heal 100% SP
+	End;
+
+OnPCLogoutEvent:
+sc_end SC_INCSTR;
+sc_end SC_INCAGI;
+sc_end SC_INCDEX;
+sc_end SC_INCINT;
+sc_end SC_INCVIT;
+sc_end SC_INCLUK;
+sc_end SC_INCMHPRATE;
+sc_end SC_INCMSPRATE;
+sc_end SC_INCATKRATE;
+sc_end SC_INCMATKRATE;
+sc_end SC_SPEED;
+end;
+}
+
+-	script	on_PC_UseSkill#490	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 18) {
+
+	atcommand "@effect 492";
+               end;
+
+            }
+
+}
+
+-	script	on_PC_UseSkill#491	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 668) {
+
+	atcommand "@effect 573";
+               end;
+
+            }
+
+}
+
+-	script	on_PC_UseSkill492	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 157) {
+AddTimer 30000, "FOME_SHARSKILL2::OnHPSHARSKILL22";
+getitem 19215,1;
+equip 19215;
+end;
+
+OnPCLogoutEvent:
+set @max,countitem(19215);
+if (@max >= 1) {delitem 19215, @max; end;}
+end;
+
+            }    
+}
+-	script	FOME_SHARSKILL2	-1,{
+	
+OnHPSHARSKILL2:
+	percentheal -2,-2; // This will heal 100% SP
+	AddTimer 1000, "FOME_SHARSKILL2:::OnHPSHARSKILL2";
+	End;
+
+OnHPSHARSKILL22:
+//	DelTimer "FOME_SHARSKILL2::OnHPSHARSKILL2";
+	DelTimer "FOME_SHARSKILL2::OnHPSHARSKILL22";
+	delitem 19215,1;
+	End;
+
+}
+
+-	script	on_PC_UseSkill#493	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 372) {
+
+	atcommand "@effect 608";
+               end;
+
+            }
+
+}
+
+//-	script	on_PC_UseSkill494	-1,{
+//    end;
+//When a Character uses a skill
+//onPcUseSkillEvent:
+//
+//           if(lskillid == 359) {
+//AddTimer 15000, "FOME_LEESKILL2::OnHPLEESKILL22";
+//end;
+//
+//            }    
+//}
+//-	script	FOME_LEESKILL2	-1,{
+//	
+//OnHPLEESKILL2:
+//	percentheal -2,-2; // This will heal 100% SP
+//	AddTimer 1000, "FOME_LEESKILL2:::OnHPLEESKILL2";
+//	End;
+//
+//OnHPLEESKILL22:
+//	DelTimer "FOME_LEESKILL2::OnHPLEESKILL2";
+//	DelTimer "FOME_LEESKILL2::OnHPLEESKILL22";
+//	atcommand "@die";	
+//	End;
+//
+//}
+
+-	script	on_PC_UseSkill495	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 762) {
+atcommand "@effect 120";
+sc_start SC_ITEMSCRIPT,5000,4043;
+end;
+
+OnPCLogoutEvent:
+//sc_end SC_INCSTR;
+//sc_end SC_INCAGI;
+end;
+
+            }    
+}
+
+-	script	on_PC_UseSkill12	-1,{
+    end;
+//When a Character uses a skill
+//shunpo
+onPcUseSkillEvent:
+
+           if(lskillid == 763) {
+atcommand "@effect 120";
+sc_start SC_ITEMSCRIPT,5000,4043;
+end;
+
+OnPCLogoutEvent:
+//sc_end SC_INCSTR;
+//sc_end SC_INCAGI;
+end;
+
+            }    
+}
+
+-	script	on_PC_UseSkill496	-1,{
+    end;
+//When a Character uses a skill
+//Kaimon
+onPcUseSkillEvent:
+
+           if(lskillid == 764) {
+atcommand "@effect 222";
+sc_start SC_ITEMSCRIPT,60000,4044;
+set lee_hachi,1;
+AddTimer 60000, "REMOVERHACHI::OnHPHACHIREMOVE";
+//AddTimer 20000, "FOME_HACHISKILL1::OnHPHACHISKILL1";
+end;
+
+
+            }    
+}
+
+-	script	REMOVERHACHI	-1,{
+	
+OnHPHACHIREMOVE:
+set lee_hachi,0;
+	End;
+
+OnPCLogoutEvent:
+set lee_hachi,0;
+
+}
+
+
+-	script	on_PC_UseSkill497	-1,{
+    end;
+//When a Character uses a skill
+//Seimon
+onPcUseSkillEvent:
+
+           if(lskillid == 765) {
+if (lee_hachi != 1) {dispbottom "É necessário ativar o Hachimon antes de ativar este portão"; end;}
+atcommand "@effect 543";
+sc_start SC_ITEMSCRIPT,60000,4045;
+set lee_sei,1;
+AddTimer 60000, "REMOVERSEI::OnHPSEIREMOVE";
+//AddTimer 20000, "FOME_SEISKILL1::OnHPSEISKILL1";
+end;
+
+            }    
+}
+
+-	script	REMOVERSEI	-1,{
+	
+OnHPSEIREMOVE:
+set lee_sei,0;
+	End;
+
+OnPCLogoutEvent:
+set lee_sei,0;
+
+}
+
+-	script	on_PC_UseSkill498	-1,{
+    end;
+//When a Character uses a skill
+//Keimon
+onPcUseSkillEvent:
+
+           if(lskillid == 766) {
+if (lee_sei != 1) {dispbottom "É necessário ativar o Seimon antes de ativar este portão"; end;}
+atcommand "@effect 502";
+sc_start SC_ITEMSCRIPT,60000,4046;
+set lee_kei,1;
+AddTimer 60000, "REMOVERKEI::OnHPKEIREMOVE";
+//AddTimer 20000, "FOME_KEISKILL1::OnHPKEISKILL1";
+end;
+
+
+            }    
+}
+
+-	script	REMOVERKEI	-1,{
+	
+OnHPKEIREMOVE:
+set lee_kei,0;
+	End;
+
+OnPCLogoutEvent:
+set lee_kei,0;
+
+}
+
+
+
+-	script	on_PC_UseSkill499	-1,{
+    end;
+//When a Character uses a skill
+//Shimon
+onPcUseSkillEvent:
+
+           if(lskillid == 767) {
+if (lee_kei != 1) {dispbottom "É necessário ativar o Keimon antes de ativar este portão"; end;}
+atcommand "@effect 220";
+sc_start SC_ITEMSCRIPT,15000,4047;
+set lee_shi,1;
+set look, getlook(1);
+setlook 1,37;
+AddTimer 25000, "REMOVERSHI::OnHPSHIREMOVE";
+//AddTimer 10000, "FOME_SHISKILL1::OnHPSHISKILL1";
+end;
+
+
+            }    
+}
+
+-	script	REMOVERSHI	-1,{
+	
+OnHPSHIREMOVE:
+set lee_shi,0;
+setlook 1,look;
+set look,0;
+percentheal -99,0;
+//atcommand "@die";
+	End;
+
+OnPCLogoutEvent:
+if (lee_shi == 1) {set lee_shi,0; setlook 1,look; set look,0;}
+
+OnPCLoginEvent:
+if (lee_shi == 1) {set lee_shi,0; setlook 1,look; set look,0;}
+
+}
+
+-	script	on_PC_UseSkill500	-1,{
+    end;
+//When a Character uses a skill
+//Percepção
+onPcUseSkillEvent:
+
+           if(lskillid == 768) {
+atcommand "@effect 220";
+sc_start SC_ITEMSCRIPT,40000,4048;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+//-	script	REMOVERSHA1	-1,{
+//	
+//OnHPSHA1REMOVE:
+//	End;
+
+//OnPCLogoutEvent:
+//
+//}
+
+//-	script	on_PC_UseSkill11	-1,{
+//    end;
+//When a Character uses a skill
+//kamui
+//onPcUseSkillEvent:
+//
+//           if(lskillid == 276) {
+//atcommand "@effect 220";
+//sc_start SC_ITEMSCRIPT,30000,4049;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+//end;
+//
+//
+//            }    
+//}
+
+//-	script	REMOVERSHA1	-1,{
+//	
+//OnHPSHA1REMOVE:
+//	End;
+
+//OnPCLogoutEvent:
+//
+//}
+
+-	script	on_PC_UseSkill501	-1,{
+    end;
+//When a Character uses a skill
+//hipnotismo
+onPcUseSkillEvent:
+
+           if(lskillid == 769) {
+atcommand "@effect 220";
+sc_start SC_ITEMSCRIPT,40000,4050;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+//-	script	REMOVERSHA1	-1,{
+//	
+//OnHPSHA1REMOVE:
+//	End;
+
+//OnPCLogoutEvent:
+//
+//}
+
+-	script	on_PC_UseSkill502	-1,{
+    end;
+//When a Character uses a skill
+//poder
+onPcUseSkillEvent:
+
+           if(lskillid == 770) {
+atcommand "@effect 220";
+sc_start SC_ITEMSCRIPT,40000,4051;
+//AddTimer 3000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+//-	script	REMOVERSHA1	-1,{
+//	
+//OnHPSHA1REMOVE:
+//	End;
+
+//OnPCLogoutEvent:
+//
+//}
+
+-	script	on_PC_UseSkill503	-1,{
+    end;
+//When a Character uses a skill
+//proteção
+onPcUseSkillEvent:
+
+           if(lskillid == 771) {
+atcommand "@effect 220";
+sc_start SC_ITEMSCRIPT,40000,4052;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+//-	script	REMOVERSHA1	-1,{
+//	
+//OnHPSHA1REMOVE:
+//	End;
+
+//OnPCLogoutEvent:
+//
+//}
+
+//-	script	on_PC_UseSkill504	-1,{
+//    end;
+//When a Character uses a skill
+//proteção
+//onPcUseSkillEvent:
+//
+//           if(lskillid == 74) {
+//sc_start SC_ITEMSCRIPT,90000,4053;
+//
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+//end;
+//
+//
+//            }    
+//}
+
+//-	script	REMOVERSHA1	-1,{
+//	
+//OnHPSHA1REMOVE:
+//	End;
+
+//OnPCLogoutEvent:
+//
+//}
+
+-	script	on_PC_UseSkill505	-1,{
+    end;
+//When a Character uses a skill
+//c1
+onPcUseSkillEvent:
+
+           if(lskillid == 772) {
+atcommand "@summon 1011";
+atcommand "@summon 1011";
+atcommand "@summon 1011";
+atcommand "@summon 1011";
+atcommand "@summon 1011";
+atcommand "@summon 1011";
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+-	script	on_PC_UseSkill506	-1,{
+    end;
+//When a Character uses a skill
+//jujutsu
+onPcUseSkillEvent:
+
+           if(lskillid == 773) {
+atcommand "@effect 60";
+sc_start SC_ITEMSCRIPT,4000,4056;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+//-	script	on_PC_UseSkill507	-1,{
+//    end;
+//When a Character uses a skill
+//jujutsu
+//onPcUseSkillEvent:
+//
+//           if(lskillid == 774) {
+//sc_start SC_ITEMSCRIPT,10000,4057;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+//end;
+//
+//
+//            }    
+//}
+
+-	script	on_PC_UseSkill#508	-1,{
+    end;
+//When a Character uses a skill
+onPcUseSkillEvent:
+
+           if(lskillid == 774) {
+atcommand "@effect 166";
+getitem 19208,1;
+equip 19208;
+AddTimer 15000, "REMOVERHIDANKG::OnHPHIDANREMOVE";
+//AddTimer 1000, "FOME_HIDANSKILL4::OnHPHIDANSKILL4";
+AddTimer 15000, "FOME_HIDANSKILL4::OnHPHIDANSKILL24";
+               end;
+
+            }
+
+}
+
+-	script	REMOVERHIDANKG	-1,{
+	
+OnHPHIDANREMOVE:
+unequip 19208;
+delitem 19208,1;
+	End;
+
+OnPCLogoutEvent:
+set @max,countitem(19208);
+if (@max >= 1) {delitem 19208, @max; end;}
+
+}
+
+-	script	on_PC_UseSkill509	-1,{
+    end;
+//When a Character uses a skill
+//mitsashi
+onPcUseSkillEvent:
+
+           if(lskillid == 775) {
+atcommand "@effect 153";
+sc_start SC_ITEMSCRIPT,25000,4403;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+-	script	on_PC_UseSkill510	-1,{
+    end;
+//When a Character uses a skill
+//aburame
+onPcUseSkillEvent:
+
+           if(lskillid == 776) {
+atcommand "@effect 238";
+sc_start SC_ITEMSCRIPT,6000,4058;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+-	script	on_PC_UseSkill511	-1,{
+    end;
+//When a Character uses a skill
+//aburame
+onPcUseSkillEvent:
+
+           if(lskillid == 777) {
+atcommand "@effect 214";
+sc_start SC_ITEMSCRIPT,10000,4059;
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+-	script	on_PC_UseSkill512	-1,{
+    end;
+//When a Character uses a skill
+//aburame
+onPcUseSkillEvent:
+
+           if(lskillid == 152) {
+atcommand "@effect 63";
+atcommand "@effect 17";
+//AddTimer 7000, "REMOVERSHI::OnHPSHA1REMOVE";
+end;
+
+
+            }    
+}
+
+-	script	on_PC_UseSkill513	-1,{
+    end;
+//When a Character uses a skill
+//guardiões genjutsu
+onPcUseSkillEvent:
+
+           if(lskillid == 945) {
+if ($edificios_block == 1) {mes "Os guardiões só podem ser invocados durante o período de guerra"; close;}
+if (strcharinfo(3) == "konoha") || (strcharinfo(3) == "nuvem") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "areia") {goto cont;} else {dispbottom "Esse jutsu só pode ser usado nas pré-vilas"; end;}
+
+cont:
+getmapxy(.@m$,.@x,.@y,0);
+if (countitem(19036) >= 1) {if (strcharinfo(3) != "nuvem") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Genjutsu",1013,3,"on_PC_UseSkill513::OnGuarConquisted100";}
+if (countitem(19009) >= 1) {if (strcharinfo(3) != "konoha") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Genjutsu",1456,3,"on_PC_UseSkill513::OnGuarConquisted100";}
+if (countitem(19148) >= 1) {if (strcharinfo(3) != "areia") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Genjutsu",1064,3,"on_PC_UseSkill513::OnGuarConquisted100";}
+if (countitem(19012) >= 1) {if (strcharinfo(3) != "nevoa") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Genjutsu",1085,3,"on_PC_UseSkill513::OnGuarConquisted100";}
+end;
+
+OnGuarConquisted100:
+end;
+
+
+            }    
+}
+
+-	script	on_PC_UseSkill514	-1,{
+    end;
+//When a Character uses a skill
+//guardiões taijutsu
+onPcUseSkillEvent:
+
+           if(lskillid == 946) {
+if ($edificios_block == 1) {mes "Os guardiões só podem ser invocados durante o período de guerra"; close;}
+if (strcharinfo(3) == "konoha") || (strcharinfo(3) == "nuvem") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "areia") {goto cont;} else {dispbottom "Esse jutsu só pode ser usado nas pré-vilas"; end;}
+
+cont:
+getmapxy(.@m$,.@x,.@y,0);
+//atcommand "@effect 150";
+if (countitem(19009) >= 1) {if (strcharinfo(3) != "konoha") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Taijutsu",1779,3,"on_PC_UseSkill514::OnGuarConquisted101";}
+if (countitem(19148) >= 1) {if (strcharinfo(3) != "areia") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Taijutsu",1061,3,"on_PC_UseSkill514::OnGuarConquisted101";}
+if (countitem(19012) >= 1) {if (strcharinfo(3) != "nevoa") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Taijutsu",1071,3,"on_PC_UseSkill514::OnGuarConquisted101";}
+if (countitem(19036) >= 1) {if (strcharinfo(3) != "nuvem") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Taijutsu",1003,3,"on_PC_UseSkill514::OnGuarConquisted101";}
+end;
+
+OnGuarConquisted101:
+end;
+
+
+            }    
+}
+
+-	script	on_PC_UseSkill515	-1,{
+    end;
+//When a Character uses a skill
+//guardiões NINJUTSU
+onPcUseSkillEvent:
+
+           if(lskillid == 947) {
+if ($edificios_block == 1) {mes "Os guardiões só podem ser invocados durante o período de guerra"; close;}
+if (strcharinfo(3) == "konoha") || (strcharinfo(3) == "nuvem") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "areia") {goto cont;} else {dispbottom "Esse jutsu só pode ser usado nas pré-vilas"; end;}
+
+cont:
+getmapxy(.@m$,.@x,.@y,0);
+//atcommand "@effect 150";
+if (countitem(19009) >= 1) {if (strcharinfo(3) != "konoha") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Ninjutsu",1450,3,"on_PC_UseSkill515::OnGuarConquisted102";}
+if (countitem(19148) >= 1) {if (strcharinfo(3) != "areia") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Ninjutsu",1063,3,"on_PC_UseSkill515::OnGuarConquisted102";}
+if (countitem(19012) >= 1) {if (strcharinfo(3) != "nevoa") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Ninjutsu",1076,3,"on_PC_UseSkill515::OnGuarConquisted102";}
+if (countitem(19036) >= 1) {if (strcharinfo(3) != "nuvem") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião Ninjutsu",1008,3,"on_PC_UseSkill515::OnGuarConquisted102";}
+end;
+
+OnGuarConquisted102:
+end;
+
+
+            }    
+}
+
+-	script	on_PC_UseSkill516	-1,{
+    end;
+//When a Character uses a skill
+//guardiões ANBU
+onPcUseSkillEvent:
+
+           if(lskillid == 948) {
+if ($edificios_block == 1) {mes "Os guardiões só podem ser invocados durante o período de guerra"; close;}
+if (strcharinfo(3) == "konoha") || (strcharinfo(3) == "nuvem") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "areia") {goto cont;} else {dispbottom "Esse jutsu só pode ser usado nas pré-vilas"; end;}
+
+cont:
+getmapxy(.@m$,.@x,.@y,0);
+//atcommand "@effect 150";
+if (countitem(19009) >= 1) {if (strcharinfo(3) != "konoha") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião ANBU",1646,3,"on_PC_UseSkill516::OnGuarConquisted103";}
+if (countitem(19148) >= 1) {if (strcharinfo(3) != "areia") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião ANBU",1647,3,"on_PC_UseSkill516::OnGuarConquisted103";}
+if (countitem(19012) >= 1) {if (strcharinfo(3) != "nevoa") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião ANBU",1649,3,"on_PC_UseSkill516::OnGuarConquisted103";}
+if (countitem(19036) >= 1) {if (strcharinfo(3) != "nuvem") {mes "Você só pode invocar seus guardiões em sua vila"; close;} monster ""+.@m$+"",.@x,.@y,"Guardião ANBU",1648,3,"on_PC_UseSkill516::OnGuarConquisted103";}
+end;
+
+OnGuarConquisted103:
+end;
+
+            }    
+}
+
+
+-	script	on_PC_UseSkill517	-1,{
+    end;
+//When a Character uses a skill
+//Byakugan extremo
+onPcUseSkillEvent:
+
+           if(lskillid == 949) {
+atcommand "@effect 8";
+sc_start SC_ITEMSCRIPT,30000,4060;
+end;
+            }    
+}
+
+-	script	on_PC_UseSkill518	-1,{
+    end;
+//When a Character uses a skill
+//kaiten
+onPcUseSkillEvent:
+
+           if(lskillid == 7) {
+sc_start SC_ITEMSCRIPT,2000,4064;
+end;
+            }    
+}
+
+-	script	on_PC_UseSkill519	-1,{
+    end;
+//When a Character uses a skill
+//Refletir sharingan percepção
+onPcUseSkillEvent:
+
+           if(lskillid == 950) {
+sc_start SC_ITEMSCRIPT,3000,4065;
+end;
+            }    
+}
+
+//-	script	on_PC_UseSkill520	-1,{
+//    end;
+//When a Character uses a skill
+//Refletir sharingan percepção
+//onPcUseSkillEvent:
+//
+//           if(lskillid == 87) {
+//if (countitem(19216) >= 1) {dispbottom "Este jutsu é bloqueado para Aburames, portanto foi removido 99% de chakra."; percentheal 0,-99;}
+//end;
+//            }    
+//}
+
+-	script	on_PC_UseSkill521	-1,{
+    end;
+//When a Character uses a skill
+//Tática de fuga
+onPcUseSkillEvent:
+
+           if(lskillid == 350) {
+sc_start SC_ITEMSCRIPT,6000,4066;
+end;
+            }    
+}
+
+-	script	on_PC_UseSkill522	-1,{
+    end;
+//When a Character uses a skill
+//1º portão lee
+onPcUseSkillEvent:
+
+           if(lskillid == 951) {
+sc_end SC_ITEMSCRIPT;
+atcommand "@effect 178";
+sc_start SC_ITEMSCRIPT,25000,4099;
+AddTimer 20000, "REMOVERPORTAO1::OnREMOVEPORTAO1";
+end;
+
+            }    
+}
+
+-	script	REMOVERPORTAO1	-1,{
+	
+OnREMOVEPORTAO1:
+dispbottom "[Portões] O efeito do portão aberto acabou, o usuário aparenta estar cansado...";
+sc_start SC_ITEMSCRIPT,10000,4071;
+	End;
+
+}
+
+-	script	on_PC_UseSkill523	-1,{
+    end;
+//When a Character uses a skill
+//2º portão lee
+onPcUseSkillEvent:
+
+           if(lskillid == 957) {
+sc_end SC_ITEMSCRIPT;
+atcommand "@effect 56";
+atcommand "@effect 237";
+sc_start SC_ITEMSCRIPT,25000,4100;
+AddTimer 20000, "REMOVERPORTAO2::OnREMOVEPORTAO2";
+end;
+
+            }    
+}
+
+-	script	REMOVERPORTAO2	-1,{
+	
+OnREMOVEPORTAO2:
+dispbottom "[Portões] O efeito do portão aberto acabou, o usuário aparenta estar cansado...";
+sc_start SC_ITEMSCRIPT,10000,4097;
+	End;
+
+}
+
+-	script	on_PC_UseSkill524	-1,{
+    end;
+//When a Character uses a skill
+//3º portão lee
+onPcUseSkillEvent:
+
+           if(lskillid == 958) {
+sc_end SC_ITEMSCRIPT;
+atcommand "@effect 56";
+atcommand "@effect 237";
+sc_start SC_ITEMSCRIPT,25000,4101;
+AddTimer 20000, "REMOVERPORTAO3::OnREMOVEPORTAO3";
+end;
+
+            }    
+}
+
+-	script	REMOVERPORTAO3	-1,{
+	
+OnREMOVEPORTAO3:
+set lee_shi,0;
+dispbottom "[Portões] O efeito do portão aberto acabou, o usuário aparenta estar cansado...";
+sc_start SC_ITEMSCRIPT,10000,4096;
+	End;
+
+}
+
+-	script	on_PC_UseSkill525	-1,{
+    end;
+//When a Character uses a skill
+//4º portão lee
+onPcUseSkillEvent:
+
+           if(lskillid == 959) {
+sc_end SC_ITEMSCRIPT;
+atcommand "@effect 247";
+atcommand "@effect 236";
+sc_start SC_ITEMSCRIPT,25000,4102;
+AddTimer 20000, "REMOVERPORTAO4::OnREMOVEPORTAO4";
+end;
+
+            }    
+}
+
+-	script	REMOVERPORTAO4	-1,{
+	
+OnREMOVEPORTAO4:
+set lee_shi,0;
+dispbottom "[Portões] O efeito do portão aberto acabou, o usuário aparenta estar cansado...";
+//set @p,rand(1,100);
+//if (@p < 30) {sc_start SC_ITEMSCRIPT,7000,4097;	End;}
+sc_start SC_ITEMSCRIPT,10000,4098;
+end;
+}
+
+-	script	on_PC_UseSkill526	-1,{
+    end;
+//When a Character uses a skill
+//5º portão lee
+onPcUseSkillEvent:
+
+           if(lskillid == 960) {
+sc_end SC_ITEMSCRIPT;
+atcommand "@effect 247";
+atcommand "@effect 236";
+sc_start SC_ITEMSCRIPT,25000,4103;
+AddTimer 20000, "REMOVERPORTAO5::OnREMOVEPORTAO5";
+end;
+
+            }    
+}
+
+-	script	REMOVERPORTAO5	-1,{
+	
+OnREMOVEPORTAO5:
+set lee_shi,0;
+dispbottom "[Portões] O efeito do portão aberto acabou, o usuário aparenta estar cansado...";
+sc_start SC_ITEMSCRIPT,10000,4072;
+	End;
+
+}
+
+-	script	on_PC_UseSkill527	-1,{
+    end;
+//When a Character uses a skill
+//6º portão lee
+onPcUseSkillEvent:
+
+           if(lskillid == 961) {
+sc_end SC_ITEMSCRIPT;
+atcommand "@effect 247";
+atcommand "@effect 236";
+sc_start SC_ITEMSCRIPT,25000,4104;
+AddTimer 20000, "REMOVERPORTAO6::OnREMOVEPORTAO6";
+end;
+
+            }    
+}
+
+-	script	REMOVERPORTAO6	-1,{
+	
+OnREMOVEPORTAO6:
+set lee_shi,0;
+dispbottom "[Portões] O efeito do portão aberto acabou, o usuário aparenta estar cansado...";
+sc_start SC_ITEMSCRIPT,10000,4073;
+	End;
+
+}
+
+-	script	on_PC_UseSkill528	-1,{
+    end;
+//When a Character uses a skill
+//7º portão lee
+onPcUseSkillEvent:
+
+           if(lskillid == 962) {
+sc_end SC_ITEMSCRIPT;
+atcommand "@effect 174";
+atcommand "@effect 236";
+sc_start SC_ITEMSCRIPT,25000,4105;
+AddTimer 20000, "REMOVERPORTAO7::OnREMOVEPORTAO7";
+end;
+
+            }    
+}
+
+-	script	REMOVERPORTAO7	-1,{
+	
+OnREMOVEPORTAO7:
+set lee_shi,0;
+dispbottom "[Portões] O efeito do portão aberto acabou, o usuário aparenta estar cansado...";
+sc_start SC_ITEMSCRIPT,10000,4108;
+	End;
+
+}
+
+-	script	on_PC_UseSkill529	-1,{
+    end;
+//When a Character uses a skill
+//8º portão lee
+onPcUseSkillEvent:
+
+           if(lskillid == 963) {
+sc_end SC_ITEMSCRIPT;
+atcommand "@effect 173";
+atcommand "@effect 225";
+sc_start SC_ITEMSCRIPT,20000,4106;
+set look, getlook(1);
+setlook 1,37;
+dispbottom "[Portões] O efeito do portão aberto acabou, o usuário aparenta estar cansado...";
+AddTimer 20000, "REMOVERPORTAO8::OnREMOVEPORTAO8";
+end;
+
+            }    
+}
+
+-	script	REMOVERPORTAO8	-1,{
+	
+OnREMOVEPORTAO8:
+set lee_shi,0;
+setlook 1,look;
+set look,0;
+sc_start SC_ITEMSCRIPT,20000,4109;
+	End;
+
+}
+
+-	script	on_PC_UseSkill530	-1,{
+    end;
+//When a Character uses a skill
+//Muralha
+onPcUseSkillEvent:
+
+           if(lskillid == 268) {
+sc_start SC_ITEMSCRIPT,20000,4067;
+end;
+
+            }    
+}
+
+-	script	on_PC_UseSkill531	-1,{
+    end;
+//When a Character uses a skill
+//Ativação sasori 1
+onPcUseSkillEvent:
+
+           if(lskillid == 964) {
+sc_start SC_ITEMSCRIPT,25000,4068;
+atcommand "@disguise 1397";
+AddTimer 25000, "REMOVERSASORI::OnSASORI";
+end;
+
+            }    
+}
+
+-	script	REMOVERSASORI	-1,{
+	
+OnSASORI:
+atcommand "@undisguise";
+	End;
+}
+
+-	script	on_PC_UseSkill532	-1,{
+    end;
+//When a Character uses a skill
+//Ativação sasori 2
+onPcUseSkillEvent:
+
+           if(lskillid == 965) {
+sc_start SC_ITEMSCRIPT,25000,4069;
+atcommand "@disguise 1397";
+AddTimer 25000, "REMOVERSASORI2::OnSASORI2";
+
+end;
+
+            }    
+
+}
+
+-	script	REMOVERSASORI2	-1,{
+	
+OnSASORI2:
+atcommand "@undisguise";
+	End;
+}
+
+-	script	on_PC_UseSkill533	-1,{
+    end;
+//When a Character uses a skill
+//Flauta Sol - Tayuya
+onPcUseSkillEvent:
+
+           if(lskillid == 994) {
+sc_start SC_ITEMSCRIPT,5000,4070;
+end;
+
+            }    
+}

@@ -1,0 +1,220 @@
+-	script	STAMINA	-1,{
+
+OnHour00:
+query_sql("TRUNCATE TABLE `academia`");	// Reseta a tabela
+end;
+
+OnPCLoginEvent:
+query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp, @s, @a, @b, @c, @d, @e);
+query_sql "SELECT (`received`) FROM `academia` WHERE `char_id` = "+getcharid(0), @recebeu;
+if (@recebeu == 1) goto restante;
+set stamina,10;
+set gordura, gordura +1;
+set forca, forca -2;
+set speed, speed -2;
+query_sql("INSERT INTO `academia` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+//query_sql "UPDATE `academia` SET `received` = 1 WHERE `char_id` = "+getcharid(0);
+end;
+
+restante:
+if (speed <= -1) set speed,0;
+if (forca <= -1) set forca,0;
+if (gordura >= 5) {AtCommand "@speed 1000"; dispbottom "Tá um pouco gordinho ein... melhor ir pra academia";}
+if (speed >= 100) {AtCommand "@speed 110"; dispbottom "Tá em forma ein... Aparenta estar com uma grande velocidade";}
+
+dispbottom "Olá, confira um breve relatório do seu shinobi:";
+dispbottom "Você possui "+@qp+" pontos de missão acumulados.";
+dispbottom "Seu sono agora é: "+sono;
+dispbottom "Sua fome agora é: "+fome;
+dispbottom "Sua stamina agora é: "+stamina;
+dispbottom "Sua força agora é: "+forca;
+dispbottom "Sua velocidade agora é: "+speed;
+dispbottom "Sua gordura agora é: "+gordura;
+end;
+
+}
+
+payon_in01,41,51,3	script	Kiyoshi::str	88,{
+
+if (stamina == 0) goto L_NoStamina;
+
+mes "[Kiyoshi]";
+mes "Quer leventar uns pesos?";
+mes "É como eu digo, força é a solução pra tudo!";
+mes "Ao contrário do que aquele maluco ali do outro lado da academia fala";
+next;
+mes "[Kiyoshi]";
+mes "Consegue imaginar que ele prefere velocidade?";
+mes "Tenho pena dele...";
+next;
+mes "[Kiyoshi]";
+mes "Enfim, quer treinar?";
+menu "Sim!",L_forca,"Não...",L_forcaNao,"O que ganho com isso?",info_forca;
+
+L_forca:
+
+mes "[Kiyoshi]";
+mes "Vamos lá então... força!!";
+set stamina, stamina -1;
+set forca, forca +1;
+if (gordura == 0) {next;} else set gordura, gordura -1;
+next;
+mes "[Kiyoshi]";
+mes "Legal!, foi um bom treinamento, força é tudo!!";
+dispbottom "Sua stamina agora é: "+stamina;
+dispbottom "Sua força agora é: "+forca;
+dispbottom "Sua velocidade agora é: "+speed;
+dispbottom "Sua gordura agora é: "+gordura;
+close;
+
+L_forcaNao:
+next;
+mes "[Kiyoshi]";
+mes "Fracote, aposto que prefere velocidade... suma daqui!";
+close;
+
+info_forca:
+next;
+mes "[Kiyoshi]";
+mes "Com força você consegue empurrar pedras e obstáculos em quests do servidor";
+mes "não se faz isso com velocidade!";
+close;
+
+L_NoStamina:
+mes "[Kiyoshi]";
+mes "Você não tem stamina pra fazer este treinamento";
+mes "Espere até amanhã para conseguir mais!";
+close;
+
+}
+
+payon_in01,64,61,3	script	Aiko::speed	98,{
+
+if (stamina == 0) goto L_NoStamina;
+
+mes "[Aiko]";
+mes "Quer dar uma corrida?";
+mes "Com a velocidade se pode chegar em qualquer, é o que eu digo!";
+next;
+mes "[Aiko]";
+mes "Aquele brutamonte do outro lado só pensa em força, aquele tolo";
+mes "Consegue imaginar que ele prefere força?";
+mes "Tenho pena dele...";
+next;
+mes "[Aiko]";
+mes "Enfim, quer treinar?";
+menu "Sim!",L_Speed,"Não...",L_SpeedNao,"O que ganho com isso?",info_Speed;
+
+L_Speed:
+next;
+mes "[Aiko]";
+mes "Vamos lá então... velocidade!!";
+set stamina, stamina -1;
+set Speed, Speed +1;
+if (gordura == 0) {next;} else set gordura, gordura -1;
+next;
+mes "[Aiko]";
+mes "Legal!, foi um bom treinamento, velocidade pra sempre!";
+dispbottom "Sua stamina agora é: "+stamina;
+dispbottom "Sua força agora é: "+forca;
+dispbottom "Sua velocidade agora é: "+speed;
+dispbottom "Sua gordura agora é: "+gordura;
+close;
+
+L_SpeedNao:
+next;
+mes "[Aiko]";
+mes "Seu lento, aposto que prefere força... suma daqui!";
+close;
+
+info_Speed:
+next;
+mes "[Aiko]";
+mes "Com velocidade você consegue correr mais rapido";
+mes "Se chegar a 100 ou mais de velocidade, você será muito rápido!";
+mes "não se faz isso com força!";
+close;
+
+L_NoStamina:
+mes "[Aiko]";
+mes "Você não tem stamina pra fazer este treinamento";
+mes "Espere até amanhã para conseguir mais!";
+close;
+
+}
+
+payon_in01,39,67,3	script	Kenichi::npc1	98,{
+
+mes "[Kenichi]";
+mes "Ei, vê se não fala pros instrutores que eu to aqui!";
+mes "Eles ficam muito competitivos aqueles dois, to me escondendo pra não sofrer na mão deles";
+next;
+mes "[Kenichi]";
+mes "Sai daqui logo, antes que me vejam!";
+close;
+
+}
+
+payon_in01,67,61,3	script	Emiko::npc2	98,{
+
+mes "[Emiko]";
+mes "Ta olhando pra que?";
+mes "Acha que ganha de mim na corrida? Sou o pupilo favorito do Aiko-sensei";
+next;
+mes "[Emiko]";
+mes "O sensei é incrível, a velocidade dele é algo de outro mundo!";
+close;
+
+}
+
+payon_in01,44,51,3	script	Hikaru::npc3	88,{
+
+mes "[Hikaru]";
+mes "Grrr... AAAAAAAA";
+mes "Droga... nunca vou conseguir pegar o mesmo peso que o Kiyoshi-sensei";
+next;
+mes "[Hikaru]";
+mes "Nunca vi ninguém forte como ele, bom deixa eu tentar denovo...";
+mes "Grrr...AAAAAAAAAAiiii meu pé, droga!";
+close;
+
+}
+
+-	script	status	-1,{
+
+OnWhisperGlobal:
+query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp, @s, @a, @b, @c, @d, @e);
+dispbottom "Olá, confira um breve relatório do seu shinobi:";
+dispbottom "Você possui "+@qp+" pontos de missão acumulados.";
+dispbottom "Seu sono agora é: "+sono;
+dispbottom "Sua fome agora é: "+fome;
+dispbottom "Sua stamina agora é: "+stamina;
+dispbottom "Sua força agora é: "+forca;
+dispbottom "Sua velocidade agora é: "+speed;
+dispbottom "Sua gordura agora é: "+gordura;
+end;
+
+}
+
+morocc_in,63,38,3	duplicate(str)	Kiyoshi#2	88
+prt_in,94,57,3	duplicate(str)	Kiyoshi#3	88
+monk_in,25,97,3	duplicate(str)	Kiyoshi#4	88
+6@tower,132,109,3	duplicate(str)	Kiyoshi#5	88
+
+morocc_in,72,38,3	duplicate(speed)	Aiko#2	98
+prt_in,23,57,3	duplicate(speed)	Aiko#3	98
+monk_in,180,93,3	duplicate(speed)	Aiko#4	98
+6@tower,176,109,3	duplicate(speed)	Aiko#5	98
+
+morocc_in,60,30,3	duplicate(npc1)	Kenichi#2	98
+prt_in,63,60,3	duplicate(npc1)	Kenichi#3	98
+
+morocc_in,72,35,3	duplicate(npc2)	Emiko#2	98
+prt_in,24,71,3	duplicate(npc2)	Emiko#3	98
+monk_in,180,88,3	duplicate(npc2)	Emiko#4	98
+6@tower,179,109,3	duplicate(npc2)	Emiko#5	98
+
+morocc_in,63,35,3	duplicate(npc3)	Hikaru#2	88
+prt_in,93,70,3	duplicate(npc3)	Hikaru#3	88
+monk_in,25,88,3	duplicate(npc3)	Hikaru#4	88
+6@tower,135,109,3	duplicate(npc3)	Hikaru#5	88

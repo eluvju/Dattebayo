@@ -1,0 +1,108 @@
+sec_in01,6,89,3	script	Mestre de Doton#1	51,{
+
+if(elemento == 1){mes "Você já tem um elemento."; close;}
+	mes "[Mestre de Terra]";
+	mes "Olá aprendiz, Vejo que está interessado no elemento terra (Doton)";
+	mes "É um ótimo elemento com ótimos Jutsus. As técnicas de Liberação de Terra têm a capacidade de alterar a força e composição da terra dura ou mole, dependendo do seu interesse. O usuário manipula a terra ao redor para fins defensivos ou ofensivos, podendo moldá-la para poeira, lama ou rocha.";
+	mes "Os membros da Vila Oculta da Pedra são os principais usuários desse elemento.";
+	next;
+	mes "Você deseja fixar o doton como o seu principal elemento?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Terra]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementodoton,1;
+	set elemento,1;
+	L_Nao:
+	close;
+
+}
+
+sec_in01,6,93,3	script	Mestre de Katon#1	54,{
+
+if(elemento == 1){mes "Você já tem um elemento."; close;}
+	mes "[Mestre de Katon]";
+	mes "Olá aprendiz, Vejo que está interessado no elemento Fogo (Katon)";
+	mes "A liberação do fogo é executada ao moldar chakra superaquecido dentro do estômago antes de soltá-lo pelos pulmões e boca.";
+	mes "O Katon consiste em técnicas ofensivas de médio a longo alcance que causam dano combustível e explosivo ao oponente. Os usuários mais conhecidos mundialmente por usarem Katon são do clã Uchiha e Sarutobi, de Konoha.";
+	next;
+	mes "Você deseja fixar o Katon como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Katon]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementokaton,1;
+	set elemento,1;
+	L_Nao:
+	close;
+
+}
+
+sec_in01,6,97,3	script	Mestre de Raiton#1	53,{
+
+if(elemento == 1){mes "Você já tem um elemento."; close;}
+	mes "[Mestre de Raiton]";
+	mes "Olá aprendiz, Vejo que está interessado no elemento Trovão (Raiton)";
+	mes "A liberação do raio permite ao usuário gerar relâmpagos aumentando as vibrações de alta frequência do chakra, ocasionando danos perfurantes e massivos ao oponente. Moldando o raio de diversas maneiras, o usuário pode se utilizar do relâmpago para ataques de médio e longo alcance.";
+	mes "A Vila Oculta da Nuvem possui uma manipulação do Raio reconhecida mundialmente, com grandes usuários por toda a vila";
+	next;
+	mes "Você deseja fixar o raiton como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Raiton]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementoraiton,1;
+	set elemento,1;
+	L_Nao:
+	close;
+
+}
+
+sec_in01,6,101,3	script	Mestre de Fuuton#1	50,{
+
+if(elemento == 1){mes "Você já tem um elemento."; close;}
+	mes "[Mestre de Fuuton]";
+	mes "Olá aprendiz, Vejo que está interessado no elemento Vento (Fuuton)";
+	mes "O Fuuton é um elemento da natureza que torna possível o usuário manipular o vento, moldando o chakra para ser tão fino quanto possível, causando danos perfurantes ao inimigo.";
+	mes "O Fuuton é muito comum nos membros da Vila Oculta da Areia, tendo como referência a kunoichi Temari..";
+	next;
+	mes "Você deseja fixar o Fuuton como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Fuuton]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementofuuton,1;
+	set elemento,1;
+	L_Nao:
+	close;
+}
+
+sec_in01,6,105,3	script	Mestre de Suiton#1	52,{
+
+if(elemento == 1){mes "Você já tem um elemento."; close;}
+	mes "[Mestre de Suiton]";
+	mes "Olá aprendiz, Vejo que está interessado no elemento (Suiton) Água";
+	mes "A liberação da água permite ao usuário tanto manipular a água pré-existente, quanto criá-la a partir do chakra. O suiton é um dos mais versáteis elementos da natureza, pois pode explorar a água em seus diversos estados físicos.";
+	mes "Os shinobis da Vila Oculta da Névoa são referências na manipulação da água.";
+	next;
+	mes "Você deseja fixar esse elemento como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Suiton]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementosuiton,1;
+	set elemento,1;
+	L_Nao:
+	close;
+
+}

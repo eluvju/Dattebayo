@@ -1,0 +1,258 @@
+# This file is a part of rAthena.
+#   Copyright(C) 2021 rAthena Development Team
+#   https://rathena.org - https://github.com/rathena
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+###########################################################################
+# Quest Database
+###########################################################################
+#
+# Quest Settings
+#
+###########################################################################
+# - Id              Quest ID.
+#   Title           Quest title.
+#   TimeLimit       Amount of time before the quest expires. (Default: 0)
+#                   Use a number following by "d" for day(s), "h" for hour(s), "mn" for minute(s), and "s" for second(s).
+#                   Specify with "+" for how long until the quest expires.
+#                   Specify without "+" for the exact time the quest expires using "d" (optional), [0-23]"h" (required), [0-59]"mn" (optional), [0-59]"s" (optional) format.
+#                   Please note the number before "d" only shift the exact timer to the given day(s).
+#   Targets:        Quest objective target. (Default: null)
+#                   The target can be a couple of node Mob/Count or of Id/Race/Size/Element/MinLevel/MaxLevel.
+#                   If Mob is supplied, Count is required and the other fields are ignored.
+#                   If Id is supplied, at least one other field of Race/Size/Element/MinLevel/MaxLevel is required.
+#                   If Id is supplied, Count is required for each new entry.
+#     - Mob         Monster to kill (aegis monster name).
+#       Count       Amount of monsters to kill. Set to 0 to skip the target on import.
+#       Id          Unique target index for the quest Id. Requires a positive number.
+#       Race        Monster race target (default All). Valid races are Angel, Brute, DemiHuman, Demon, Dragon, Fish, Formless, Insect, Plant, Undead, All.
+#       Size        Monster size target (default All). Valid sizes are Small, Medium, Large, All.
+#       Element     Monster element target (default All). Valid elements are Dark, Earth, Fire, Ghost, Holy, Neutral, Poison, Undead, Water, Wind, All.
+#       MinLevel    Minimum monster level target. If not supplied but MaxLevel defined, MinLevel is 1. Set to 0 to ignore MinLevel on import. (Default: 0)
+#       MaxLevel    Maximum monster level target. Set to 0 to ignore MaxLevel on import. (Default: 0)
+#       Location    Name of hunting location from mapindex. (Default any location)
+#       MapName     Displayed map name in quest UI. (Default: empty string)
+#   Drops:          Quest item drop targets. (Default: null)
+#     - Mob         Monster to kill. 0 will apply to all monsters. (Default: 0)
+#       Item        Item to drop.
+#       Count       Amount of items that will drop. Non-stackable items default to 1. (Default: 1)
+#       Rate        Item drop rate. (10000 = 100%)
+###########################################################################
+
+Header:
+  Type: QUEST_DB
+  Version: 2
+
+Body:
+#
+# ARCO 1 - ACADEMIA SHINOBI #
+#
+  - Id: 1000
+    Title: Torne-se um Genin
+  - Id: 1001
+    Title: Esta Atrasado Denovo
+  - Id: 1002
+    Title: Complete a Academia
+  - Id: 1003
+    Title: Campo de Treinamento
+  - Id: 1004
+    Title: O Ferreiro da Academia
+  - Id: 1005
+    Title: Biblioteca da Academia
+  - Id: 1006
+    Title: A Sala STAFF
+  - Id: 1007
+    Title: Guia da Academia
+  - Id: 1008
+    Title: Quests Secundárias
+  - Id: 1009
+    Title: Escolha Sua Vila
+#
+# Controle - Script #
+#
+  - Id: 5000
+    Title: Sala 1
+  - Id: 5001
+    Title: Sala 2
+  - Id: 5002
+    Title: Sala 3
+  - Id: 5003
+    Title: Sala 4
+#
+# Controle - Personagem #
+#
+  - Id: 9000
+    Title: Katon
+  - Id: 9001
+    Title: Doton
+  - Id: 9002
+    Title: Suiton
+  - Id: 9003
+    Title: Raiton
+  - Id: 9004
+    Title: Fuuton
+  - Id: 9005
+    Title: Iryu
+  - Id: 9006
+    Title: 2 Elemento
+  - Id: 9007
+    Title: 3 Elemento
+#  - Id: 9008
+#    Title: Null
+#  - Id: 9009
+#    Title: Null
+#  - Id: 9010
+#    Title: Null
+  - Id: 9011
+    Title: Konoha
+  - Id: 9012
+    Title: Suna
+  - Id: 9013
+    Title: Nuvem
+  - Id: 9014
+    Title: Nevoa
+  - Id: 9015
+    Title: Pedra
+#  - Id: 9016
+#    Title: Null
+#  - Id: 9017
+#    Title: Null
+#  - Id: 9018
+#    Title: Null
+#  - Id: 9019
+#    Title: Null
+#  - Id: 9020
+#    Title: Null
+  - Id: 9021
+    Title: Nukenin
+  - Id: 9022
+    Title: Genin
+  - Id: 9023
+    Title: Chunin
+  - Id: 9024
+    Title: Jounin
+  - Id: 9025
+    Title: Tokubetsu Jounin
+  - Id: 9026
+    Title: Anbu
+#  - Id: 9027
+#    Title: Null
+#  - Id: 9028
+#    Title: Null
+#  - Id: 9029
+#    Title: Null
+#  - Id: 9030
+#    Title: Null
+#  - Id: 9031
+#    Title: Null
+#  - Id: 9032
+#    Title: Null
+  - Id: 9033
+    Title: Hyuuga
+  - Id: 9034
+    Title: Haruno
+  - Id: 9035
+    Title: Uchiha
+  - Id: 9036
+    Title: Hozuki
+  - Id: 9037
+    Title: Kaguya
+  - Id: 9038
+    Title: Kamizuru
+  - Id: 9039
+    Title: Yome
+  - Id: 9040
+    Title: Shakuton
+  - Id: 9041
+    Title: Shouton
+  - Id: 9042
+    Title: Jinton
+  - Id: 9043
+    Title: Sekkaigyo
+  - Id: 9044
+    Title: Youton
+  - Id: 9045
+    Title: Hyouton
+  - Id: 9046
+    Title: Futton
+  - Id: 9047
+    Title: Raiton no Yoroi
+  - Id: 9048
+    Title: Ranton
+  - Id: 9049
+    Title: Mokuton
+  - Id: 9050
+    Title: Inuzuka
+  - Id: 9051
+    Title: Nara
+  - Id: 9052
+    Title: Aburame
+  - Id: 9053
+    Title: Mitsashi
+  - Id: 9054
+    Title: Yamanaka
+  - Id: 9055
+    Title: Akimichi
+  - Id: 9056
+    Title: Hachimon
+  - Id: 9057
+    Title: Kugutsu
+  - Id: 9058
+    Title: Shirogane
+  - Id: 9059
+    Title: Shikigami no mai
+  - Id: 9060
+    Title: Jashin
+  - Id: 9061
+    Title: Clã Senju
+  - Id: 9062
+    Title: Clã Sarutobi
+  - Id: 9063
+    Title: Clã Kazekage
+  - Id: 9064
+    Title: Clã Uzumaki
+#  - Id: 9065
+#    Title: Null
+#  - Id: 9066
+#    Title: Null
+#  - Id: 9067
+#    Title: Null
+#  - Id: 9068
+#    Title: Null
+#  - Id: 9069
+#    Title: Null
+#  - Id: 9070
+#    Title: Null
+  - Id: 9071
+    Title: Tessenjutsu
+  - Id: 9072
+    Title: Ressonante
+  - Id: 9073
+    Title: Mateki
+  - Id: 9074
+    Title: Arco Aranha
+  - Id: 9075
+    Title: Bakuton
+  - Id: 9076
+    Title: Kibaku Nendo
+  - Id: 9077
+    Title: Ode a Jashin
+  - Id: 9078
+    Title: Bashousen
+#  - Id: 9079
+#    Title: Null
+#  - Id: 9080
+#    Title: Null
+    

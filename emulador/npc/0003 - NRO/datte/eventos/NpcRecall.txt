@@ -1,0 +1,282 @@
+kakashi.gat,86,138,4	script	Recall Eventos	434,{
+
+// Nome do npc
+set .npc$,"^800000[Npc Recall]^000000";
+
+if(getgmlevel() < 5){
+mes .npc$;
+mes "Bem Vindo. Gostaria de se cadastrar para o próximo recall?";
+switch(select("Sim:Não")){
+case 1:
+next;
+if(.NRlvl > BaseLevel){
+mes .npc$;
+mes "Desculpe, você não possui level suficiente para este recall.";
+close;
+end;
+}
+if(chunin != 1 && jounin != 1 && .NRvilagrad[7] != 1 || chunin == 1 && jounin != 1 && .NRvilagrad[8] != 1 || jounin == 1 && .NRvilagrad[9] != 1){
+mes .npc$;
+mes "Desculpe, sua graduação não está habilitada a este recall.";
+close;
+end;
+}
+if(#konoha == 1 && .NRvilagrad[1] != 1 && countitem(19020) == 0 && nukenin == 0 || #nevoa == 1 && .NRvilagrad[2] != 1 && countitem(19020) == 0 && nukenin == 0 || #suna == 1 && .NRvilagrad[3] != 1 && countitem(19020) == 0 && nukenin == 0 || #nuvem == 1 && .NRvilagrad[4] != 1 && countitem(19020) == 0 && nukenin == 0 || countitem(19020)>0 && .NRvilagrad[5] != 1 || nukenin == 1 && .NRvilagrad[6] != 1){
+mes .npc$;
+mes "Desculpe, sua vila não está habilitada para este recall.";
+close;
+end;
+}
+if($NRstatus == 1){
+for(set .i, 1; .i < $NRmax+1; set .i, .i + 1 ){
+if($NRcharid[.i] == getcharid(0)){
+mes .npc$;
+mes "Você já está cadastrado. Gostaria de cancelar seu registro?";
+if(select("Não:Sim") == 2){
+set $NRcharid[.i], 0;
+}
+close;
+end;
+}
+if($NRcharid[.i] == 0){
+set $NRcharid[.i], getcharid(0);
+set .i, $NRmax+1;
+mes .npc$;
+mes "Cadastro realizado com sucesso. Você será recalado em "+$NRtimeleft2+" segundos.";
+close;
+end;
+}
+}
+mes .npc$;
+mes "Desculpe, vagas esgotadas.";
+close;
+end;
+
+}else{
+mes .npc$;
+mes "Não há nenhum recall aberto no momento.";
+close;
+end;
+}
+
+case 2:
+next;
+mes .npc$;
+mes "Ok, volte quando precisar.";
+close;
+end;
+}
+}else{
+mes .npc$;
+mes "Bem Vindo. Em que posso ajuda-lo?";
+next;
+switch(select("Programar Recall:Cancelar Recall:Cadastrar")){
+case 1:
+if($NRstatus == 1){
+mes .npc$;
+mes "Desculpe, um recall já está programado e irá ocorrer em "+$NRtimeleft+" segundos.";
+close;
+end;
+}
+mes .npc$;
+mes "Digite um nome para o evento.";
+input $NReventname$;
+next;
+mes .npc$;
+mes "Digite o nome do mapa.";
+input $NRmapa$;
+next;
+mes .npc$;
+mes "Digite a coordenada X (coordenadas 0,0 indicam um local aleatório).";
+input $NRmapax;
+next;
+mes .npc$;
+mes "Digite a coordenada Y (coordenadas 0,0 indicam um local aleatório).";
+input $NRmapay;
+next;
+mes .npc$;
+mes "Digite o tempo de inscrição(Em minutos).";
+input .NRtime;
+set $NRtimeleft, .NRtime*60; //Irá gerar o número de segundos
+next;
+mes .npc$;
+mes "Digite o limite de inscrições(Máximo 100).";
+input $NRmax;
+if($NRmax == 0 || $NRmax > 100) set $NRmax, 100;
+next;
+mes .npc$;
+mes "Digite o level mínimo para se inscrever.";
+input .NRlvl;
+next;
+mes .npc$;
+mes "Genins poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[7];
+next;
+mes .npc$;
+mes "Chunins poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[8];
+next;
+mes .npc$;
+mes "Jounins poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[9];
+next;
+mes .npc$;
+mes "Gostaria de configurar limitações de vila?";
+next;
+if(select("Não:Sim") == 2){
+mes .npc$;
+mes "Konohas poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[1];
+next;
+mes .npc$;
+mes "Névoas poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[2];
+next;
+mes .npc$;
+mes "Sunas poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[3];
+next;
+mes .npc$;
+mes "Núvens poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[4];
+next;
+mes .npc$;
+mes "Akatsukis poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[5];
+next;
+mes .npc$;
+mes "Nukenins poderão se inscrever?(Digíte 1 para Sim, e 0 para Não)";
+input .NRvilagrad[6];
+next;
+}else{
+set .NRvilagrad[1], 1;
+set .NRvilagrad[2], 1;
+set .NRvilagrad[3], 1;
+set .NRvilagrad[4], 1;
+set .NRvilagrad[5], 1;
+set .NRvilagrad[6], 1;
+}
+mes .npc$;
+mes "Você deseja fazer um recall do evento '"+$NReventname$+"' para "+$NRmax+" players, para o mapa "+$NRmapa$+" ("+$NRmapax+","+$NRmapay+"), daqui a "+.NRtime+" minutos, com level mínimo "+.NRlvl+", e seguintes condições:";
+mes "^800000Vilas habilitadas:^000000";
+if(.NRvilagrad[1] == 1) mes "Konoha";
+if(.NRvilagrad[2] == 1) mes "Névoa";
+if(.NRvilagrad[3] == 1) mes "Suna";
+if(.NRvilagrad[4] == 1) mes "Núvem";
+if(.NRvilagrad[5] == 1) mes "Akatsuki";
+if(.NRvilagrad[6] == 1) mes "Nukenin";
+mes "";
+mes "^800000Graduações Habilitadas:^000000";
+if(.NRvilagrad[7] == 1) mes "Genins";
+if(.NRvilagrad[8] == 1) mes "Chunins";
+if(.NRvilagrad[9] == 1) mes "Jounins";
+switch(select("Sim:Não")){
+case 1:
+next;
+mes .npc$;
+mes "Recall programado.";
+initnpctimer "Evento#NR";
+set $NRstatus, 1;
+Announce "[Evento]: As inscrições para o evento '"+$NReventname$+"' estão abertas e encerram em "+.NRtime+" minutos. Corra para garantir sua vaga!.",0;
+close;
+end;
+
+case 2:
+next;
+mes .npc$;
+mes "Ok, volte quando precisar de ajuda.";
+close;
+end;
+
+case 3:
+next;
+mes .npc$;
+mes "Recall programado.";
+initnpctimer "Evento#NR";
+set $NRstatus, 1;
+close;
+end;
+}
+
+case 2:
+mes .npc$;
+mes "Recall cancelado com sucesso.";
+set $NRstatus, 0;
+set $NReventname$, 0;
+set $NRmapa$, 0;
+set $NRmapax, 0;
+set $NRmapay, 0;
+set .NRtime, 0;
+set $NRtimeleft, 0;
+set $NRmax, 0;
+set $NRtimeleft2, 0;
+for(set .i, 1; .i < getarraysize($NRcharid); set .i, .i + 1 ){
+set $NRcharid[.i], 0;
+}
+set .NRlvl, 0;
+for(set .i, 1; .i < 10; set .i, .i + 1 ){
+set .NRvilagrad[.i], 0;
+}
+
+close;
+end;
+
+case 3:
+if($NRstatus == 1){
+for(set .i, 1; .i < $NRmax+1; set .i, .i + 1 ){
+if($NRcharid[.i] == 0){
+set $NRcharid[.i], getcharid(0);
+set .i, $NRmax+1;
+mes .npc$;
+mes "Cadastro realizado com sucesso. Você será recalado em "+$NRtimeleft2+" segundos.";
+close;
+end;
+}
+}
+mes .npc$;
+mes "Desculpe, vagas esgotadas.";
+close;
+end;
+
+}else{
+mes .npc$;
+mes "Não há nenhum recall aberto no momento.";
+close;
+end;
+}
+}
+}
+end;
+}
+
+
+-	script	Evento#NR	NpcRecall#NR -1,{
+
+OnTimer1000:
+for(set .i, 1; .i < $NRtimeleft+1; set .i, .i + 1 ){
+set $NRtimeleft2, $NRtimeleft - .i;
+sleep(1000);
+if($NRstatus == 0){
+stopnpctimer;
+setnpctimer 0;
+set .i, $NRtimeleft;
+}
+}
+if($NRstatus == 1){
+for(set .i, 1; .i < getarraysize($NRcharid); set .i, .i + 1 ){
+warpchar $NRmapa$,$NRmapax,$NRmapay,$NRcharid[.i];
+}
+for(set .i, 1; .i < getarraysize($NRcharid); set .i, .i + 1 ){
+set $NRcharid[.i], 0;;
+}
+}
+set $NRstatus, 0;
+end;
+
+OnPCLogoutEvent:
+for(set .i, 1; .i < getarraysize($NRcharid); set .i, .i + 1 ){
+if($NRcharid[.i] == getcharid(0)) set $NRcharid[.i], 0;
+}
+end;
+
+}

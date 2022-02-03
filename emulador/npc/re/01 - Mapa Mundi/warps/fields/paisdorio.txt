@@ -1,0 +1,51 @@
+// Pais do RIo
+
+//FIeld 1A
+
+moc_fild03,180,16,0	warp	fild_rio#03	2,2,pay_fild03,177,276
+pay_fild03,173,281,0	warp	fild_rio#04	2,2,moc_fild03,178,22
+
+moc_fild13,308,49,0	warp	fild_rio#50	2,2,moc_fild03,22,37
+moc_fild03,17,38,0	warp	fild_rio#51	2,2,moc_fild13,304,49
+
+//Field 2A
+
+pay_fild03,15,111,0	warp	fild_rio#05	2,2,pay_fild05,267,285
+pay_fild05,271,285,0	warp	fild_rio#06	2,2,pay_fild03,19,111
+
+//field 3A
+
+pay_fild05,127,378,0	warp	fild_rio#07	2,2,moc_fild13,261,37
+moc_fild13,257,35,0	warp	fild_rio#08	2,2,pay_fild05,127,374
+
+//Pais do Rio - Pais do Vento
+
+moc_fild13,146,368,0	warp	fild_rio#09	2,2,moc_fild02,71,25
+
+moc_fild02,227,29,0	warp	fild_rio#10	2,2,moc_fild13,296,367
+moc_fild13,300,370,0	warp	fild_rio#11	2,2,moc_fild02,227,33
+
+//Field 2B
+
+moc_fild03,303,173,0	warp	fild_rio#12	2,2,gef_fild14,39,66
+gef_fild14,34,65,0	warp	fild_rio#13	2,2,moc_fild03,298,173
+
+gef_fild14,180,361,0	warp	fild_rio#14	2,2,gef_fild08,219,43
+gef_fild08,218,34,0	warp	fild_rio#15	2,2,gef_fild14,180,355
+
+
+
+//FIeld 3B
+
+gef_fild08,205,344,0	warp	fild_rio#16	2,2,gef_fild10,107,26
+gef_fild10,103,21,0	warp	fild_rio#17	2,2,gef_fild08,207,340
+
+gef_fild10,370,55,0	warp	fild_rio#18	2,2,gef_fild03,22,52
+gef_fild03,18,52,0	warp	fild_rio#19	2,2,gef_fild10,367,58
+
+// Esconderijo Akatsuki
+gef_fild10,26,219,0	warp	fild_rio#120	2,2,es_fild01,169,53
+es_fild01,174,53,0	warp	fild_rio#121	2,2,gef_fild10,30,219
+
+moc_fild02,353,104,0	warp	fild_rio#122	2,2,es_fild01,15,52
+es_fild01,12,52,0	warp	fild_rio#123	2,2,moc_fild02,350,102

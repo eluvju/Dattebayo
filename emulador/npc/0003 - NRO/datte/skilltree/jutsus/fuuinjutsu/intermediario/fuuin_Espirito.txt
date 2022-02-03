@@ -1,0 +1,103 @@
+prt_fild01,85,67,5	script	Espírito Ninja::fuuinint11	831,{
+
+if (getskilllv(481) >= 1) goto L_delete;
+if(fuuin_intermediario != 1) {mes "Você precisa estudar fuuinjutsu intermediário antes de aprender esse fuuinjutsu"; close;}
+if (checkquest(2008) == 1) goto L_go;
+if(espiritoninja == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(fuu_skill_int >= 3) {mes "Você já aprendeu três fuuinjutsus intermediários, esse é o limite"; close;}
+if(accept_fuu_int == 3) {mes "Você já aceitou três treinamentos pra realizar de fuuinjutsu"; close;}
+if (WeaponLvl5 < 40) {mes "Seu nível de fuuinjutsu está baixo demais, é preciso ter nível 40 pra aprender esse fuuinjutsu"; close;}
+
+
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de fuuinjutsu espalhado pelo mundo, eu posso lhe ensinar um técnica de fuuinjutsu intermediária";
+next;
+mes "a técnica de fuuinjutsu que eu ensino é o: Espírito Ninja";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Espírito Ninja
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(481) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(481) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 481,0,0;
+set espiritoninja,0;
+erasequest 2008;
+if(accept_fuu_int > 0) {set accept_fuu_int,accept_fuu_int -1;}
+if(fuu_skill_int > 0) {set fuu_skill_int,fuu_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_fuu_int_onze,1;
+set accept_fuu_int,accept_fuu_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter fuuinjutsu intermediário (Level 40 ou Superior)";
+mes "- Derrotar 30 Chamu.";
+mes "- Obter 75 Runas Sangrentas";
+mes "- Obter 50 Flor de Planta Carnívora";
+mes "- Obter 2 Células Únicas";
+setquest 2008;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(fuu_skill_int >= 3) {mes "Você já aprendeu três fuuinjutsus intermediarios, esse é o limite"; close;}
+if(fuu_int_mobs_onze < 30) {mes "Você ainda não derrotou os 30 Chamus!"; close;}
+if (countitem(7563) <75) {mes "Você ainda não tem 75 Runas Sangrentas"; close;}
+if (countitem(1032) < 50) {mes "Você ainda não tem 50 Flores de Plantas Carnívoras"; close;}
+if (countitem(1052) < 2) {mes "Você ainda não tem 2 Células Únicas"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7563,75;
+delitem 1032,50;
+delitem 1052,2;
+skill 481,1,0;
+set espiritoninja,1;
+set quest_fuu_int_onze,0;
+set fuu_int_mobs_onze, 0;
+completequest 2008;
+erasequest 2008;
+set fuu_skill_int,fuu_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuinjutsu Intermedíario]",0;
+}
+
+-	script	fuuinint#11	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1405 && quest_fuu_int_onze == 1) {set fuu_int_mobs_onze,fuu_int_mobs_onze +1; announce "[Fuuinjutsu Quest] Você já derrotou "+fuu_int_mobs_onze+" / 30 Chamus",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_01,136,247,5	duplicate(fuuinint11)	Espírito Ninja#41	831,{
+cmd_fild09,166,149,5	duplicate(fuuinint11)	Espírito Ninja#42	831,{
+ein_fild08,208,161,5	duplicate(fuuinint11)	Espírito Ninja#43	831,{

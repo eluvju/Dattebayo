@@ -1,0 +1,56 @@
+ama_fild01,330,137,5	script	Orochimaru::manda2	70,{
+
+if( title$ == "RankE") {mes "É necessário no mínimo Rank C para fazer essa quest"; close;}
+if( title$ == "RankD") {mes "É necessário no mínimo Rank C para fazer essa quest"; close;}
+if (quest_manda2_um == 1) goto L_go;
+if(Manda1 != 1) {mes "Você precisa ter contrato com as Kyodaijas para aparender esse jutsu"; close;}
+if(jounin == 1) goto L_SS;
+if(chunin != 1) {mes "Você precisa ser Chunin para aprender esse jutsu"; close;}
+if(Manda2 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo.";
+next;
+mes "Posso te ajudar a aperfeiçoar seu Kuchiyose no Jutsu!";
+mes "Gostaria de treinar o Kuchiyose: Kyodaija?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Kyodaija
+//========================================================================
+
+L_SS:
+set quest_manda2_um,1;
+mes "Para esse treinamento,você deve provar ser fiel as Kyodaijas:";
+mes "- Obter 1 Cadáver do Zabuza";
+mes "- Obter 1 Cadáver do Haku";
+setquest 12094;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7244) < 1) goto No_Item;
+if (countitem(7245) < 1) goto No_Item;
+mes "Você completou seu treinamento,parabéns.";
+delitem 7244,1;
+delitem 7245,1;
+skill 726,4,0;
+set Manda2,1;
+set quest_manda2_um,0;
+set manda2_mobs_um, 0;
+set manda2_mobs_dois, 0;
+set manda2_mobs_tres, 0;
+set manda2_mobs_quatro, 0;
+completequest 12094;
+erasequest 12094;
+close;
+
+L_no:
+close;
+
+No_Item:
+mes "Você não pegou o pergaminho ainda, volte quando pegar!";
+close;
+}

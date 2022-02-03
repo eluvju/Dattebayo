@@ -1,0 +1,348 @@
+//
+//
+//	Author		Goddameit
+//	Version		2014/01/16
+//	Web		http://goo.gl/vZjbuc
+//
+//
+//	This is main system, only npc name is allowed to be edited
+//
+//
+function	script	II_Main	{
+	//
+	//
+	function	___Map	;
+	function	___X	;
+	function	___Y	;
+	function	___MapPlayerAmount	;
+	function	___GameID	;
+	function	___GamePlayerAmount	;
+	function	___StrSpace	;
+	function	___PlayerGameID	;
+	function	___PlayerMapID	;
+	function	___Endd	;
+	function	___PlayerLeave	;
+	function	___CreatParty	;
+	function	___CreatMap	;
+	function	___Optimize	;
+	function	___CheckPlayerLimit	;
+	//
+	//
+	switch( getarg(0,0) )
+	{
+		case 1:
+			callsub OnEvent1;
+			end;
+		case 2:
+			callsub OnEvent2;
+			end;
+	}
+	if( select("Entrar na Dungeon","Sair da Dungeon") == 2 )
+	{
+		___PlayerLeave(getcharid(3),getcharid(0));
+		mes "Você foi removido da lista de espera para um grupo automático";
+		___Endd;
+	}
+	if( getcharid(1) )
+	{
+		if( select("Entrar com grupo existente","Procurar grupo (Pode levar alguns minutos") == 1 )
+			set .@BOOL_TEAM,getcharid(1);
+	}
+	set .@Max,___Map(-1);
+	set @select$,"";
+	set .@i,getarg(0)-3;
+	{
+		set .@A,___GamePlayerAmount(.@i,___GameID(.@i));
+		set .@B,___MapPlayerAmount(.@i);
+		Set .@C$,___Map(.@i);
+		if( .@i == 0 )Set .@C$,"Denso Nevoeiro (Fácil)";
+		if( .@i == 1 )Set .@C$,"Denso Nevoeiro (Difícil)";
+		if( .@i == 2 )Set .@C$,"O Dêmonio da Névoa (Fácil)";
+		if( .@i == 3 )Set .@C$,"Mestre das Marionetes";
+		select(""+.@C$+""+___StrSpace(.@C$)+"["+.@A+"/"+.@B+"]");
+	}
+	set .@D,.@i;
+	if( .@D < 0 || .@D >= .@Max )
+	{
+		___Endd;
+	}
+	if( !.@BOOL_TEAM && ___CheckPlayerLimit(.@D,getcharid(3)) )
+	{
+		mes "Você atingiu o limite diário de tentativas para esta Dungeon";
+		___Endd;
+	}
+	set .@BOOL_BOOL,0;
+	if( .@BOOL_TEAM )
+	{
+		getpartymember .@BOOL_TEAM,2;
+		set .@BOOL_PV,$@partymembercount;
+		copyarray .@BOOL_VP[0],$@partymemberaid[0],.@BOOL_PV;
+		set .@BOOL_NUM,0;
+		set .@TFD,___MapPlayerAmount(.@D);
+		if( .@BOOL_PV > .@TFD  )
+		{
+			mes "Seu grupo está muito cheio.";
+			mes "Máximo de pessoas por grupo pra esta dungeon: "+.@TFD;
+			___Endd;
+		}
+		if( .@BOOL_PV < .@TFD  )
+		{
+			mes "Você precisa de mais membros no grupo.";
+			mes "Precisa de:"+.@TFD;
+			___Endd;
+		}
+		for(set .@i,0;.@i<.@BOOL_PV;set .@i,.@i+1)
+		{
+			if( isloggedin(.@BOOL_VP[.@i]) )
+				set .@BOOL_NUM,.@BOOL_NUM+1;
+			else
+				continue;
+			if( ___CheckPlayerLimit(.@D,.@BOOL_VP[.@i]) )
+			{
+				mes ""+rid2name(.@BOOL_VP[.@i])+" já esgotou suas idas para esta Raid";
+				set .@BOOL_BOOL,1;
+			}
+		}
+	}
+	if( .@BOOL_BOOL )
+		___Endd;
+	if( ___PlayerMapID(getcharid(3),getcharid(0)) != -1 )
+	{
+		mes "Você já está em uma dungeon";
+		___Endd;
+	}
+	set .@E,___GameID(.@D);
+	set .@F,___MapPlayerAmount(.@D);
+	if( !.@BOOL_TEAM )
+		set .@G,.@F-___GamePlayerAmount(.@D,.@E);
+	else
+		set .@G,.@F-.@BOOL_NUM;
+	if( .@G > 0 || ( .@G <= 0 && .@BOOL_NUM ) )
+	{
+		if( !.@BOOL_TEAM )
+			query_sql "INSERT `ii_game` VALUES("+.@D+","+.@E+","+getcharid(3)+","+getcharid(0)+")";
+		mes "Você entrou na lista de espera para encontrar um grupo";
+		if( .@G == 1 || ( .@G <= 0 && .@BOOL_TEAM ) )
+		{
+			if( ___GamePlayerAmount(.@D,.@E) == .@F || ( .@G <= 0 && .@BOOL_TEAM ) )
+			{
+				close2;
+				if( !.@BOOL_TEAM )
+					set .@P,___CreatParty(.@D,.@E,.@F);
+				else
+					set .@P,.@BOOL_TEAM;
+				sleep2 1;
+				if( .@P > 0 )
+				{
+					debugmes "A";
+					getpartymember .@P,2;
+					set .@PV,$@partymembercount;
+					copyarray .@VP[0],$@partymemberaid[0],.@PV;
+					if( .@PV >= .@F )
+					{
+						set .@U,___CreatMap(.@P);
+						if( .@U > 0 )
+						{
+					debugmes "C";
+							for(set .@i,0;.@i<.@PV;set .@i,.@i+1)
+							{
+								query_sql "DELETE FROM `ii_game` WHERE `account_id` = "+.@VP[.@i];
+								query_sql "UPDATE `ii_limit` set `num` = `num`+1 WHERE `account_id` = "+.@VP[.@i]+" AND `lv` = "+.@D;
+							}
+					debugmes "D";
+
+
+//					if(partycheckdualip() == 1){mes "Você possui dois ou mais jogadores com o mesmo ip em seu grupo, é permitido apenas um por IP neste evento"; close;}
+		set .@BOOL_PV,$@partymembercount;
+		if( .@BOOL_PV > .@TFD  )
+		{
+			mes "Seu grupo está muito cheio.";
+			mes "Máximo de pessoas por grupo pra esta dungeon: "+.@TFD;
+			___Endd;
+		}
+							instance_attachmap ___Map(.@D),.@U;
+							instance_init .@U;
+							instance_warpall ___Map(.@D),___X(.@D),___Y(.@D),.@U;
+							___Optimize;
+						}
+					}else
+					{
+						for(set .@i,0;.@i<.@F;set .@i,.@i+1)
+						{
+							if(attachrid(.@VP[.@i]))
+							{
+								sleep2 1;
+								leaveparty;
+								detachrid;
+							}
+							query_sql "DELETE FROM `ii_game` WHERE `account_id` = "+.@VP[.@i];
+						}
+						query_sql "DELETE FROM `party` WHERE `party_id` = "+.@P;
+						___Optimize;
+					}
+				}
+			}
+		}
+	}
+	___Endd;
+	//
+	//
+OnEvent1:
+	sleep2 1;
+	query_sql "TRUNCATE TABLE  `ii_game`";
+	set .@Max,___Map(-1);
+	for(set .@i,0;.@i<.@Max;set .@i,.@i+1)
+	{
+		mapwarp ___Map(.@i),"kakashi",81,175;
+	}
+	return;
+OnEvent2:
+	set .@AA,getcharid(3);
+	set .@BB,getcharid(0);
+	if( ___PlayerGameID(.@AA,.@BB) >= 0 )
+	{
+		___PlayerLeave(.@AA,.@BB);
+	}
+	set .@CC,getcharid(1);
+	//if( instance_check_party(.@CC) )
+	//{
+		getpartymember .@CC,2;
+		set .@WV,$@partymembercount;
+		copyarray .@VW[0],$@partymemberaid[0],.@WV;
+		for(set .@i2,0;.@i2<.@WV;set .@i2,.@i2+1)
+			if( isloggedin(.@VW[.@i2]) )
+			{
+				if( getcharid(1,rid2name(.@VW[.@i2])) == .@CC )
+					atcommand "@changeleader "+rid2name(.@VW[.@i2]);
+			}
+		leaveparty;
+	//}
+	return;
+	//
+	//
+	function	___Map	{
+		if( getarg(0) == -1 )
+		{
+			return getarraysize(getvariableofnpc(.npc_name$,"II_SET"));
+		}
+		getmapxy(.@m$,.@x,.@y,1,getvariableofnpc(.npc_name$[getarg(0)],"II_SET"));
+		if( getarg(1,0) == 0 )
+			return .@m$;
+		else if( getarg(1) == 1 )
+			return .@x;
+		else
+			return .@y;
+	}
+	function	___X	{
+		return ___Map(getarg(0),1);
+	}
+	function	___Y	{
+		return ___Map(getarg(0),2);
+	}
+	function	___MapPlayerAmount	{
+		set .@Max,getarraysize(getvariableofnpc(.map_p,"II_SET"));
+		if( getarg(0,0) >= .@Max || getarg(0,0) < 0 )
+			return 0;
+		else
+			return getvariableofnpc(.map_p[getarg(0)],"II_SET");
+	}
+	function	___GameID	{
+		query_sql "SELECT `id` FROM `ii_game` WHERE `map` = "+getarg(0,-1)+" ORDER BY `id` ASC LIMIT 1",.@id;
+		set .@id,.@id[0];
+		return .@id;
+	}
+	function	___GamePlayerAmount	{
+		query_sql "SELECT `account_id` FROM `ii_game` WHERE `map` = "+getarg(0,-1)+" AND `id` = "+getarg(1,-1),.@num;
+		return getarraysize(.@num);
+	}
+	function	___StrSpace	{
+		set .@Var,25-getstrlen(getarg(0,""));
+		for(set .@i,0;.@i<.@Var;set .@i,.@i+1)
+			set .@A$,.@A$+" ";
+		return .@A$;
+	}
+	function	___PlayerGameID	{
+		query_sql "SELECT `id`,`account_id` FROM `ii_game` WHERE `account_id` = "+getarg(0,0)+" AND `char_id` = "+getarg(1,0),.@A,.@B;
+		if( .@B )
+			return .@A;
+		else
+			return -1;
+	}
+	function	___PlayerMapID	{
+		query_sql "SELECT `map`,`account_id` FROM `ii_game` WHERE `account_id` = "+getarg(0,0)+" AND `char_id` = "+getarg(1,0),.@A,.@B;
+		if( .@B )
+			return .@A;
+		else
+			return -1;
+	}
+	function	___PlayerLeave	{
+		query_sql "DELETE FROM `ii_game` WHERE `account_id` = "+getarg(0,-1)+" AND `char_id` = "+getarg(1,-1);
+		___Optimize;
+		return;
+	}
+	function ___Endd	{
+		if( playerattached() )
+		{
+			mes " ";
+			close;
+		}
+		end;
+	}
+	function	___CreatParty	{
+		query_sql "SELECT `account_id`,`char_id` FROM `ii_game` WHERE `map` = "+getarg(0,-1)+" AND `id` = "+getarg(1,-1)+" LIMIT "+getarg(2,1),.@K,.@J;
+		set .@C,getarraysize(.@K);
+		if( .@C != getarraysize(.@J) )
+		{
+			query_sql "DELETE FROM `ii_game` WHERE `map` = "+getarg(0,-1)+" AND `id` = "+getarg(1,-1);
+			___Optimize;
+			return 0;
+			
+		}
+		set .@Var,0;
+		for(set .@i,0;.@i<.@C;set .@i,.@i+1)
+		{
+			if(attachrid(.@K[.@i]))
+			{
+				if( getcharid(0) == .@J[.@i] )
+				{
+					sleep2 1;
+					leaveparty;
+					sleep2 1;
+					if( !.@Var )
+					{
+						sleep2 1000;
+						crateparty md5(gettimetick(2)+"C");
+						sleep2 1;
+						set .@Var,getcharid(1);
+					}else
+					{
+						joinparty .@Var;
+					}
+				}
+				detachrid;
+			}
+		}
+		return .@Var;
+	}	
+	function	___CreatMap	{
+		set .@Var,getarg(0,0);
+		set .@H,instance_create("Dungeon",.@Var);
+		if( .@H > 0 )
+		{
+			instance_set_timeout 3600,3600,.@H;
+		}
+		return .@H;
+	}
+	function	___Optimize	{
+		return;
+	}
+	function	___CheckPlayerLimit	{
+		query_sql "SELECT `num`,`account_id` FROM `ii_limit` WHERE `lv` = "+getarg(0,0)+" AND `account_id` = "+getarg(1,0)+" LIMIT 1",.@num,.@A;
+		if( .@num == 0 && .@A == 0 )
+			query_sql "INSERT `ii_limit` VALUES("+getarg(1,0)+","+getarg(0,0)+",0)";
+		if( .@num >= getvariableofnpc(.map_limit[getarg(0,0)],"II_SET") )
+			return 1;
+		else
+			return 0;
+	}
+}

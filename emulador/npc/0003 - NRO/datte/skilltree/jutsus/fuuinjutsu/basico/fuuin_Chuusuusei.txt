@@ -1,0 +1,95 @@
+payon_in03,4,94,5	script	Chuusuusei Biribiri::fuu5	831,{
+
+if (seloskill320 >= 1) goto L_delete;
+if(fuu_basico != 1) {mes "Você precisa estudar fuuinjutsu básico antes de aprender um técnica de fuuinjutsu"; close;}
+if (checkquest(2082) == 1) goto L_go;
+if(fuu_skill_bas >= 3) {mes "Você já aprendeu três fuuinjutsus básicos, esse é o limite"; close;}
+if(accept_fuu == 3) {mes "Você já aceitou três treinamentos pra realizar de fuuinjutsu"; close;}
+if(Chuusuusei == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Fuuinjutsu espalhado pelo mundo, eu posso lhe ensinar um técnica de Fuuinjutsu básico";
+next;
+mes "a técnica de Fuuinjutsu que eu ensino é o: Chuusuusei Biribiri";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Chuusuusei Biribiri
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (seloskill320 == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (seloskill320 >= 1) {
+mes "Jutsu removido com sucesso";
+set seloskill320,0;
+skill 304,0,0;
+skill 315,0,0;
+set Chuusuusei,0;
+erasequest 2082;
+if(accept_fuu > 0) {set accept_fuu,accept_fuu -1;}
+if(fuu_skill_bas > 0) {set fuu_skill_bas,fuu_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set questfuuincinco,1;
+set accept_fuu,accept_fuu +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 30 Abelha Rainha Gigante.";
+setquest 2082;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(fuu_skill_bas >= 3) {mes "Você já aprendeu três fuuinjutsus básicos, esse é o limite"; close;}
+if(fuuinmobscinco < 30) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+set seloskill320,1;
+skill 304,1,0;
+skill 315,10,1;
+set Chuusuusei,1;
+set questfuuincinco,0;
+set fuuinmobscinco, 0;
+completequest 2082;
+erasequest 2082;
+set fuu_skill_bas,fuu_skill_bas +1;
+announce "[Fuuinjutsu Quest] "+strcharinfo(0)+" completou a quest de Fuuinjutsu Chuusuusei Biribiri",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+}
+
+-	script	fuuinbas#5	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1303) {
+if (questfuuincinco != 1) {end;}
+set fuuinmobscinco,fuuinmobscinco +1;
+announce "[Fuuinjutsu Quest] Você já derrotou "+fuuinmobscinco+" / 30 Abelha Rainha Gigante",bc_blue|bc_self;
+end;
+}
+}
+
+morocc_in,81,90,5	duplicate(fuu5)	Chuusuusei Biribiri#41	51,{
+payon_in01,13,47,5	duplicate(fuu5)	Chuusuusei Biribiri#42	51,{
+payon_in01,170,85,5	duplicate(fuu5)	Chuusuusei Biribiri#43	51,{

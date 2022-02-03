@@ -1,0 +1,168 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+gef_fild05,38,303,4	script	Taijutsu Avançado	60,{
+if(checkquest(30041) == 1) goto skilltai1;
+if(checkquest(30042) == 1) goto skilltai2;
+if(checkquest(30043) == 1) goto skilltai3;
+if(checkquest(30044) == 1) goto skilltai4;
+if(treino_tai_avan != 1) { mes "[Taijutsu Avançado]"; mes "Você precisa estudar taijutsu avançado antes de aprender as skills"; close;}
+if(tai_skill_avan >= 2) { mes "[Taijutsu Avançado]"; mes "Você já aprendeu duas skill de taijutsu avançado, esse é o limite"; close; }
+	mes "[Taijutsu Avançado]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de taijutsu avançado. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Taijutsu Avançado]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Taijutsu Avançado]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Taijutsu Avançado]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808ALança das mil pontas^000000:^8A0808AAEGIS INFERI^000000:^8A0808AImpacto simico^000000:^8A0808ALaminas de loki^000000:^8A0808ANenhum^000000"))
+	{
+	case 1:
+		if (t1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Taijutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Taijutsu Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skilltai1:
+		setquest 30041;
+		if(checkquest(30041,hunting) == 2 && countitem(32145) >= 1)
+		{
+			completequest 30041;
+			erasequest 30041;
+			delitem 32145,1;
+			set tai_skill_avan,tai_skill_avan +1;
+			skill 2004,10,3;
+			set t1,1;
+			mes "[Taijutsu Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (t2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Taijutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Taijutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Taijutsu Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skilltai2:
+		setquest 30042;
+		if(checkquest(30042,hunting) == 2 && countitem(32145) >= 1)
+		{
+			completequest 30042;
+			erasequest 30042;
+			delitem 32145,1;
+			set tai_skill_avan,tai_skill_avan +1;
+			skill 2323,5,3;
+			set t2,1;
+			mes "[Taijutsu Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (t3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Taijutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Taijutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Taijutsu Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skilltai3:
+		setquest 30043;
+		if(checkquest(30043,hunting) == 2 && countitem(32145) >= 1)
+		{
+			completequest 30043;
+			erasequest 30043;
+			delitem 32145,1;
+			set tai_skill_avan,tai_skill_avan +1;
+			set t3,1;
+			skill 2017,1,3;
+			mes "[Taijutsu Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if (t4 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Taijutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Taijutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Taijutsu Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skilltai4:
+		setquest 30044;
+		if(checkquest(30044,hunting) == 2 && countitem(32145) >= 1)
+		{
+			completequest 30044;
+			erasequest 30044;
+			delitem 32145,1;
+			set t4,1;
+			skill 2036,5,3;
+			set tai_skill_avan,tai_skill_avan +1;
+			mes "[Taijutsu Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 7:
+		mes "[Taijutsu Avançado]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Taijutsu Avançado]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de taijutsu avançado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

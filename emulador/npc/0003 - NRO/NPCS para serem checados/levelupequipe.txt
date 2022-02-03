@@ -1,0 +1,70 @@
+einbech,42,219,4	script	Velho Ferreiro Chefe	990,{
+
+mes "Olá, eu ja fui o antigo chefe desse país";
+mes "hoje em dia eu ajudo os shinobis do mundo com minha especialidade";
+next;
+mes "eu melhoro os equipamentos dos shinobis, eu sou o único do mundo que pode melhorar todos os tipos de equipamentos";
+next;
+mes "Está interessado em ter a minha ajuda?";
+menu "Sim, estou interessado",L_slot,"Me explique sobre seus serviços",L_guia;
+
+L_slot:
+next;
+mes "Ótimo, é sempre bom ter equipamentos cada vez melhores";
+next;
+mes "Lembre-se que precisa estar com o item equipado e que é preciso ter um vale level up";
+mes "o level máximo de todos os equipamentos é 99";
+next;
+mes "Escolha um tipo de equipamento que gostaria de melhorar";
+menu "Arma",L_weapon,"Colete",L_armor,"Calçado",L_sapato,"Capa",L_capa,"Arma elemental",L_element;
+
+L_weapon:
+if(getequipid(EQI_HAND_R)) {
+if (countitem(7622) < 1) {next; mes "Você não tem um vale level up pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 4;
+close;}
+else
+{
+mes "debug";
+close;
+}
+
+L_armor:
+if (countitem(7622) < 1) {next; mes "Você não tem um vale level up pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 2;
+close;
+
+L_sapato:
+if (countitem(7622) < 1) {next; mes "Você não tem um vale level up pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 6;
+close;
+
+L_capa:
+if (countitem(7622) < 1) {next; mes "Você não tem um vale level up pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 5;
+close;
+
+L_element:
+if (countitem(7622) < 1) {next; mes "Você não tem um vale level up pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 3;
+close;
+
+L_guia:
+next;
+mes "Eu sou o único ferreiro que possui o serviço de melhorar equipamentos.";
+next;
+mes "o meu serviço requer um vale level up, que é adquirido ao matar monstros";
+next;
+mes "Todo equipamento pode ser melhorado até o level 99";
+next;
+mes "É de extrema importância";
+next;
+mes "Esse é o fim desse tutorial!";
+close;
+
+}

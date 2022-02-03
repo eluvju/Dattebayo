@@ -1,0 +1,45 @@
+treinamento,90,142,4,5	script	Votação	1_m_orient01,{
+    set @min_vote, 0; // contagem mínima de pontos de votos para ver a lista de itens
+    set @npcname$,"[^ff0000Vote por Pontos^000000]";
+    query_sql ("SELECT `point` FROM `vote_point` WHERE `account_id` = '"+getcharid(3)+"'", @vote);
+    mes @npcname$;
+    mes "Você tem ^ff0000"+@vote+"^000000 Pontos de votos!";
+    if( @vote < @min_vote ) {
+        mes "^ff0000É preciso ter pelomenos "+@min_vote+" ou mais pontos de votos para trocá-los comigo!^000000";
+        close;
+    }
+    if (select("Trocar meus pontos!","Cancela") == 2) 
+        close;		
+    next;
+    mes @npcname$;
+    mes "Boas Compras.";
+    close2;
+    callshop "Itens",1;
+    npcshopattach "Itens";
+    end;
+OnBuyItem:
+query_sql ("SELECT `point` FROM `vote_point` WHERE `account_id` = '"+getcharid(3)+"'", .@votepoints);
+    for(set .@i,0; .@i<getarraysize(.vote_item); set .@i,.@i+1) {
+        for(set .@d,0; .@d<getarraysize(@bought_nameid); set .@d,.@d+1) {
+            if(@bought_nameid[.@d]==.vote_item[.@i]) {
+                if(checkweight(@bought_nameid[.@d],@bought_quantity[.@d])) {
+                    if(.@votepoints >= .vote_cost[.@i]*@bought_quantity[.@d]) {
+                        query_sql "UPDATE `vote_point` SET `point`=`point`-"+.vote_cost[.@i]*@bought_quantity[.@d]+" WHERE `account_id`="+getcharid(3)+"";
+                        getitem @bought_nameid[.@d],@bought_quantity[.@d]; end;
+                    } else dispbottom "Você não tem pontos suficientes para comprar esse item.";
+                } else dispbottom "Desculpe mais você está muito pesado para comprar esse item.";
+            }
+        }
+    }
+OnInit:
+    setarray .vote_item[0],            3053, 3054, 5019, 5020, 5021, 7015, 753; // ID dos Itens
+    setarray .vote_cost[0],            1,	 1,	   40,   20,   15,   5,	   60; // preço dos itens(unidade) em pontos de votos.
+	npcshopdelitem "Itens",501;
+	if(getarraysize(.vote_item) >= 1) {
+		for( set .i,0; .vote_item[.i]; set .i,.i+1 ) {
+			npcshopadditem "Itens",.vote_item[.i],.vote_cost[.i];
+		}
+	}
+    end;
+}
+-	shop	Itens	-1,501:-1

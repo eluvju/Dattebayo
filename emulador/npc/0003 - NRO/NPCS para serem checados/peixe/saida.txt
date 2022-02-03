@@ -1,0 +1,15 @@
+-	script	Saída::du	816,{
+	mes "Gostaria de sair daqui?";
+	menu "Sim",-,"Não, obrigado",Cancel;
+	warp "gef_fild10",299,251;
+	end;
+
+	Cancel:
+	mes "Até logo";
+	close;
+	end;
+}
+job_wiz,115,170,3	duplicate(du)	Saída Névoa#01	816
+job_wiz,117,98,3	duplicate(du)	Saída Kohona#02	817
+job_wiz,49,166,3	duplicate(du)	Saída Nunekin#03	818
+job_wiz,46,100,3	duplicate(du)	Saída Suna#04	815

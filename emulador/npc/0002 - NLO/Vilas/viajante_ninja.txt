@@ -1,0 +1,195 @@
+konoha3,220,81,5	script	Viajante Ninja::portos	706,{
+set @price,5000;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Bem vindo(a) ao Viajante Ninja";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Eu posso te levar!";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Por favor escolha o seu destino!";
+menu "Arredores de Konoha",arrekonoha,"Arredores da Suna",arresuna,"Arredores da Névoa",arrenevoa,"Arredores da Nuvem",arrenuvem,"Cavernas Bijuu",cavernabijuu,"Guerra Ninja",guerraninja;
+
+arrekonoha:
+	next;
+	if (Zeny < @price) goto Sem_Zeny;
+	mes "[^0000FFViajante Ninja^000000]";	
+	mes "Para qual Nivel de Mapa você gostaria de ir?";		
+	switch(select("- Rank E:- Rank D:- Rank C") ) {			
+		case 1:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "pay_fild07",0,0;				
+			end;	
+			
+		case 2:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "mjolnir_01",0,0;				
+			end;			
+			
+		case 3:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "cmd_fild01",0,0;				
+			end;		
+	}
+
+arresuna:
+	next;	
+	if (Zeny < @price) goto Sem_Zeny;	
+	mes "[^0000FFViajante Ninja^000000]";	
+	mes "Para qual Nivel de Mapa você gostaria de ir?";		
+	switch(select("- Rank E:- Rank D:- Rank C") ) {	
+		case 1:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "moc_fild12",0,0;				
+			end;
+			
+		case 2:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "moc_fild05",0,0;				
+			end;	
+			
+		case 3:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "moc_fild01",0,0;				
+			end;		
+	}
+	
+arrenevoa:
+	next;
+	if (Zeny < @price) goto Sem_Zeny;	
+	mes "[^0000FFViajante Ninja^000000]";	
+	mes "Para qual Nivel de Mapa você gostaria de ir?";		
+	switch(select("- Rank E:- Rank D:- Rank C") ) {	
+		case 1:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "prt_fild03",0,0;				
+			end;	
+		
+		case 2:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "gef_fild12",0,0;				
+			end;	
+		
+		case 3:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "mjolnir_06",0,0;				
+			end;		
+	}
+	
+arrenuvem:
+	next;	
+	if (Zeny < @price) goto Sem_Zeny;	
+	mes "[^0000FFViajante Ninja^000000]";	
+	mes "Para qual Nivel de Mapa você gostaria de ir?";		
+	switch(select("- Rank E:- Rank D:- Rank C") ) {		
+	
+		case 1:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "ein_fild02",0,0;				
+			end;	
+		
+		case 2:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "yuno_fild03",0,0;				
+			end;
+		
+		case 3:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "yuno_fild08",0,0;			
+			end;		
+	}
+	
+cavernabijuu:	
+	next;	
+	if (Zeny < @price) goto Sem_Zeny;	
+	mes "[^0000FFViajante Ninja^000000]";	
+	mes "Para qual Caverna Bijuu você gostaria de ir?";		
+	switch(select("- Ichibi:- Nibi:- Sanbi:- Yonbi:- Gobi:- Rokubi:- Shichibi:- Hachibi:- Kyuubi") ) {	
+	
+		case 1:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "moc_fild01",0,0;				
+			end;
+		
+		case 2:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "yuno_fild08",0,0;				
+			end;
+		
+		case 3:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "mjolnir_06",0,0;				
+			end;
+		
+		case 4:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "cmd_fild01",0,0;				
+			end;
+		
+		case 5:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "mjolnir_05",0,0;				
+			end;
+		
+		case 6:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "gon_fild01",0,0;				
+			end;
+		
+		case 7:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "hu_fild03",0,0;				
+			end;	
+		
+		case 8:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "ein_fild01",0,0;				
+			end;
+		
+		case 9:				
+			set Zeny,Zeny-@price;				
+			close2;				
+			warp "moc_fild03",0,0;				
+			end;					
+	}		
+
+guerraninja:
+	set Zeny,Zeny-@price;				
+	close2;				
+	warp "arug_cas01",266,94;				
+	end;
+
+	
+Sem_Zeny:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Você não tem zenys suficientes";
+close;
+}
+kirigakure,213,44,5	duplicate(portos)	Viajante Ninja#h2-2	59
+kumogakure,148,26,5	duplicate(portos)	Viajante Ninja#h2-3	59
+sunagakure,206,70,5	duplicate(portos)	Viajante Ninja#h2-4	59
+akatsuki,225,124,5	duplicate(portos)	Viajante Ninja#h2-5	59

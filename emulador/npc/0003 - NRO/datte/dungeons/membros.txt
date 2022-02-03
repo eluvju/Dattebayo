@@ -1,0 +1,15 @@
+prontera,152,150,5	script	Verificar Membros	105,{
+
+mes "Ola, vou mostrar todos os membros da sua party";
+getpartymember(getcharid(1));
+set @numerodecomponentes,$@partymembercount;
+copyarray @componentesdaparty$[0],$@partymembername$[0],@numerodecomponentes;
+set@contador,0;
+while(@contador<@numerodecomponentes){
+mes @componentesdaparty$[@contador];
+set @contador,@contador+1;
+}
+
+close;
+
+}

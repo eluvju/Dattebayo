@@ -1,0 +1,137 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+prt_fild09,340,356,4	script	Katon Avançado	120,{
+if(checkquest(30065) == 1) goto skillkat1;
+if(checkquest(30066) == 1) goto skillkat1;
+if(checkquest(30067) == 1) goto skillkat3;
+if(checkquest(30068) == 1) goto skillkat4;
+if(elementokaton != 1) { mes "[Katon Avançado]"; mes "Esse elemento não é de sua natureza"; close;}
+if(treino_nin_avan != 1) { mes "[Katon Avançado]"; mes "Você precisa estudar Ninjutsu Avançado antes de aprender as skills"; close;}
+if(kat_skill_avan >= 2) { mes "[Katon Avançado]"; mes "Você já aprendeu duas skill de Katon Avançado, esse é o limite"; close; }
+	mes "[Katon Avançado]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Katon Avançado. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Katon Avançado]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Katon Avançado]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Katon Avançado]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808AMeteoro^000000:^8A0808ADragão Explosivo^000000:^8A0808AChuva de Meteoros^000000"))
+	{
+	case 1:
+		if (k1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Meteoro";
+		next;
+		mes "[Katon Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Katon Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillkat1:
+		setquest 30065;
+		if(checkquest(30065,hunting) == 2 && countitem(32140) >= 1)
+		{
+			completequest 30065;
+			erasequest 30065;
+			delitem 32140,1;
+			set kat_skill_avan,kat_skill_avan +1;
+			skill 2211,1,3;
+			set k1,1;
+			mes "[Katon Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (k2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Dragão Explosivo";
+		next;
+		mes "[Katon Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Katon Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Katon Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillkat2:
+		setquest 30066;
+		if(checkquest(30066,hunting) == 2 && countitem(32140) >= 1)
+		{
+			completequest 30066;
+			erasequest 30066;
+			delitem 32140,1;
+			set kat_skill_avan,kat_skill_avan +1;
+			skill 536,5,3;
+			set k2,1;
+			mes "[Katon Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (k3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Chuva de Meteoros";
+		next;
+		mes "[Katon Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Katon Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Katon Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillkat3:
+		setquest 30067;
+		if(checkquest(30067,hunting) == 2 && countitem(32140) >= 1)
+		{
+			completequest 30067;
+			erasequest 30067;
+			delitem 32140,1;
+			set kat_skill_avan,kat_skill_avan +1;
+			set k3,1;
+			skill 83,10,3;
+			mes "[Katon Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Katon Avançado]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Katon Avançado]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de katon avanaçado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

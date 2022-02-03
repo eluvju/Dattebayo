@@ -1,0 +1,137 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+mjolnir_05,47,52,4	script	Doton Avançado	48,{
+if(checkquest(30057) == 1) goto skillDoto1;
+if(checkquest(30058) == 1) goto skillDoto2;
+if(checkquest(30059) == 1) goto skillDoto3;
+if(checkquest(30060) == 1) goto skillDoto4;
+if(elementodoton != 1) { mes "[Doton Avançado]"; mes "Esse elemento não é de sua natureza"; close;}
+if(treino_nin_avan != 1) { mes "[Doton Avançado]"; mes "Você precisa estudar Ninjutsu Avançado antes de aprender as skills"; close;}
+if(dot_skill_avan >= 2) { mes "[Doton Avançado]"; mes "Você já aprendeu duas skill de Doton Avançado, esse é o limite"; close; }
+	mes "[Doton Avançado]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Doton Avançado. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Doton Avançado]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Doton Avançado]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Doton Avançado]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808ADoton Abalo Sismico^000000:^8A0808ADoton Terremoto^000000:^8A0808ADoton Erva daninha^000000"))
+	{
+	case 1:
+		if (d1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Doton Abalo Sismico";
+		next;
+		mes "[Doton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Doton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillDoto1:
+		setquest 30057;
+		if(checkquest(30057,hunting) == 2 && countitem(32143) >= 1)
+		{
+			completequest 30057;
+			erasequest 30057;
+			delitem 32143,1;
+			set dot_skill_avan,dot_skill_avan +1;
+			skill 2216,5,3;
+			set d1,1;
+			mes "[Doton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (d2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Doton Terremoto";
+		next;
+		mes "[Doton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Doton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Doton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillDoto2:
+		setquest 30058;
+		if(checkquest(30058,hunting) == 2 && countitem(32143) >= 1)
+		{
+			completequest 30058;
+			erasequest 30058;
+			delitem 32143,1;
+			set dot_skill_avan,dot_skill_avan +1;
+			skill 653,2,3;
+			set d2,1;
+			mes "[Doton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (d3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Doton Erva Daninha";
+		next;
+		mes "[Doton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Doton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Doton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillDoto3:
+		setquest 30059;
+		if(checkquest(30059,hunting) == 2 && countitem(32143) >= 1)
+		{
+			completequest 30059;
+			erasequest 30059;
+			delitem 32143,1;
+			set dot_skill_avan,dot_skill_avan +1;
+			set d3,1;
+			skill 5483,10,3;
+			mes "[Doton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Doton Avançado]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Doton Avançado]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de doton avançado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

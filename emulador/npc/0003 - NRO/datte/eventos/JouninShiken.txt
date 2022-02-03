@@ -1,0 +1,564 @@
+-	script	Evento#JS	JouninShiken#JS -1,{ //801 sprite caixão
+OnInit:
+// Nome do mapa
+set .JSmap$,"izlu2dun";
+// Tempo máximo do evento (em minutos/1h = 60)
+set .JStime, 120;
+//IDS pergaminhos
+setarray .JSperg[1],7099,7304,13708;
+end;
+
+//$JSstatus-> 0 = Sem JS | 1 = JS rolando | 2 = Npc Desativado | 3 = Registro Habilitado
+
+OnClock0800:
+OnClock1100:
+OnClock1400:
+OnClock1700:
+OnClock2000:
+OnClock2300:
+OnClock0200:
+OnClock0500:
+if(gettime(4) == 0 || gettime(4) == 6 || gettime(4) == 1){
+if($JSstatus == 0){
+set $JSnumber, 0;
+set $JSend, 0;
+set $JSstatus,3;
+set $JSmod, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSname$[.i], 0;
+}
+
+disablenpc "Saída#JS";
+Announce "[Jounin Shiken]: As inscrições para a Jounin Shiken estão abertas e serão encerradas dentro de 1 hora. Corram, pois as vagas são limitadas!",0;
+initnpctimer;
+}
+}
+pvpoff .JSmap$;
+end;
+
+//OnClock2030:
+if($JSstatus == 0){
+set $JSnumber, 0;
+set $JSend, 0;
+set $JSstatus,3;
+set $JSmod, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSname$[.i], 0;
+}
+
+disablenpc "Saída#JS";
+Announce "[Jounin Shiken]: As inscrições para a Jounin Shiken estão abertas e serão encerradas dentro de 1 hora. Corram, pois as vagas são limitadas!",0;
+initnpctimer;
+}
+pvpoff .JSmap$;
+end;
+
+//OnTimer40000:
+OnTimer1800000:
+if($JSstatus == 3){
+Announce "[Jounin Shiken]: As inscrições para a Jounin Shiken estão abertas e serão encerradas dentro de 30 Minutos. Corram, pois as vagas são limitadas!",0;
+}
+end;
+
+//OnTimer45000: 
+OnTimer3300000: 
+if($JSstatus == 3){
+Announce "[Jounin Shiken]: As inscrições para a Jounin Shiken estão abertas e serão encerradas dentro de 5 Minutos. Corram, pois as vagas são limitadas!",0;
+}
+end;
+
+//OnTimer50000: 
+OnTimer3600000: 
+if($JSstatus == 3){
+Announce "[Jounin Shiken]: As inscrições para a Jounin Shiken estão encerradas. O evento iniciará em 5 minutos.",0;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+warpchar .JSmap$,0,0,$JScharid[.i];
+}
+}
+end;
+
+//OnTimer55000: 
+OnTimer3660000: 
+if($JSstatus == 3){
+set $JSmod[1], rand(100);
+set $JSmod[2], rand(100);
+MapAnnounce .JSmap$,"[Jounin Shiken]: Bem vindos ao Jounin Shiken. O pvp será liberado em 4 minutos.",1;
+}
+end;
+
+//OnTimer60000:
+OnTimer3900000: 
+if($JSstatus == 3){
+MapAnnounce .JSmap$,"[Jounin Shiken]: Evento iniciado. O último shinobi entre os "+getmapusers(.JSmap$)+" candidatos, a sobreviver será o vencedor. Boa Sorte a todos!",1;
+stopnpctimer;
+setnpctimer 0;
+initnpctimer;
+set $JSstatus,1;
+set .soma, 0;
+set .JStime2, 0;
+pvpon .JSmap$;
+monster .JSmap$,108,79,"Cristal Selado",1915,1,"Evento#JS::OnPrisaoBreak0";
+monster .JSmap$,129,87,"Cristal Selado",1914,1,"Evento#JS::OnPrisaoBreak1";
+monster .JSmap$,77,87,"Cristal Selado",1914,1,"Evento#JS::OnPrisaoBreak2";
+monster .JSmap$,91,170,"Cristal Selado",1914,1,"Evento#JS::OnPrisaoBreak3";
+monster .JSmap$,157,145,"Cristal Selado",1914,1,"Evento#JS::OnPrisaoBreak4";
+}
+end;
+
+OnPrisaoBreak0:
+monster .JSmap$,108,79,"[JS]YouAreDead",1226,2,"Evento#JS::OnYukimuraKill";
+end;
+OnPrisaoBreak1:
+monster .JSmap$,129,87,"[JS]Jounin",1634,1,"Evento#JS::OnJouninKill";
+end;
+OnPrisaoBreak2:
+monster .JSmap$,77,87,"[JS]Jounin",1634,1,"Evento#JS::OnJouninKill";
+end;
+OnPrisaoBreak3:
+monster .JSmap$,91,170,"[JS]Jounin",1634,1,"Evento#JS::OnJouninKill";
+end;
+OnPrisaoBreak4:
+monster .JSmap$,157,145,"[JS]Jounin",1634,1,"Evento#JS::OnJouninKill";
+end;
+
+OnYukimuraKill:
+getitem .JSperg[1], 1;
+getitem .JSperg[2], 2;
+getitem .JSperg[3], 3;
+end;
+
+OnJouninKill:
+getitem .JSperg[rand(1,3)], 1;
+end;
+
+OnBandidoKill:
+getitem .JSperg[rand(1,3)], 1;
+end;
+
+OnTimer30000:
+if($JSstatus == 1){
+if(.JStime2 < .JStime*2){
+stopnpctimer;
+setnpctimer 0;
+initnpctimer;
+set .soma, 0;
+set .JStime2, .JStime2 + 1;
+
+if(getmapusers(.JSmap$) == 1){
+killmonster .JSmap$, "All";
+stopnpctimer;
+setnpctimer 0;
+mapannounce .JSmap$,"[Jounin Shiken]: Parabéns! Você é o único sobrevivente. Ao centro do mapa você encontrará o responsável pela sua recompensa.",1;
+enablenpc "Saída#JS";
+pvpoff .JSmap$;
+set $JSstatus,0;
+}
+end;
+}else{
+killmonster .JSmap$, "All";
+stopnpctimer;
+setnpctimer 0;
+pvpoff .JSmap$;
+set $JSstatus,0;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSname$[.i], 0;
+}
+Announce "[Jounin Shiken]: A Jounin Shiken chegou ao fim. Não tivemos nenhum vencedor.",0;
+set $JSend, 1;
+enablenpc "Saída#JS";
+}
+}
+end;
+
+OnPCKillEvent:
+if($JSstatus == 1 && strcharinfo(3) == .JSmap$){
+if(countitem(.JSperg[1]) < 1){
+getitem .JSperg[1], 1;
+end;
+}
+if(countitem(.JSperg[2]) < 1){
+getitem .JSperg[2], 1;
+end;
+}
+if(countitem(.JSperg[3]) < 1){
+getitem .JSperg[3], 1;
+end;
+}
+}
+end;
+
+OnPCLoadMapEvent:
+delitem .JSperg[1], countitem(.JSperg[1]);
+delitem .JSperg[2], countitem(.JSperg[2]);
+delitem .JSperg[3], countitem(.JSperg[3]);
+if(strcharinfo(3) == "izlu2dun") partyleave;
+end;
+
+OnPCDieEvent:
+if($JSstatus == 1 && strcharinfo(3) == .JSmap$){
+//if(countitem(.JSperg[1] > 0) getitem .JSperg[1], 1, killerrid2;
+//if(countitem(.JSperg[2] > 0) getitem .JSperg[2], 1, killerrid2;
+//if(countitem(.JSperg[3] > 0) getitem .JSperg[3], 1, killerrid2;
+delitem .JSperg[1], countitem(.JSperg[1]);
+delitem .JSperg[2], countitem(.JSperg[2]);
+delitem .JSperg[3], countitem(.JSperg[3]);
+
+
+if(rand(100) < 10){
+getmapxy(.@mapname$,.@mapx,.@mapy,0);
+monster .JSmap$,.@mapx,.@mapy,"[JS]Bandido",1372,1;
+}
+
+
+dispbottom "Você tem 30 segundos para ser recussitado ou sairá do evento.";
+sleep2(30000);
+set .@tt, pcisdead(1);
+if(.@tt == 0) end;
+warp "kakashi",155,150;
+sleep2(2000);
+mapannounce .JSmap$,"[Jounin Shiken]: O shinobi "+strcharinfo(0)+" foi morto, sobrando assim apenas "+getmapusers(.JSmap$)+" candidatos à graduação.",1;
+if(getmapusers(.JSmap$) < 2){
+killmonster .JSmap$, "All";
+stopnpctimer;
+setnpctimer 0;
+mapannounce .JSmap$,"[Jounin Shiken]: Parabéns! Você é o único sobrevivente. Ao centro do mapa você encontrará o responsável pela sua recompensa.",1;
+enablenpc "Saída#JS";
+pvpoff .JSmap$;
+set $JSstatus,0;
+}
+end;
+}
+end;
+
+
+OnPCLogoutEvent:
+if($JSstatus == 1 && strcharinfo(3) == .JSmap$){
+delitem .JSperg[1], countitem(.JSperg[1]);
+delitem .JSperg[2], countitem(.JSperg[2]);
+delitem .JSperg[3], countitem(.JSperg[3]);
+warp "kakashi",155,150;
+sleep2(2000);
+mapannounce .JSmap$,"[Jounin Shiken]: O shinobi "+strcharinfo(0)+" foi morto, sobrando assim apenas "+getmapusers(.JSmap$)+" candidatos à graduação.",1;
+if(getmapusers(.JSmap$) < 2){
+killmonster .JSmap$, "All";
+stopnpctimer;
+setnpctimer 0;
+mapannounce .JSmap$,"[Jounin Shiken]: Parabéns! Você é o único sobrevivente. Ao centro do mapa você encontrará o responsável pela sua recompensa.",1;
+enablenpc "Saída#JS";
+pvpoff .JSmap$;
+set $JSstatus,0;
+}
+end;
+}
+end;
+}
+
+//===== Script: ==============================================
+kakashi.gat,92,144,4	script	Jounin Shiken	882,{
+
+// Nome do npc
+set .npc$,"^800000[Jounin Shiken]^000000";
+
+if(getgmlevel() < 5)
+{
+if(BaseLevel < 999){
+mes .npc$;
+mes "Desculpe, você não possui level suficiente para este evento.";
+close;
+end;
+}
+
+if(chunin != 1 && jounin != 1 || jounin == 1){
+mes .npc$;
+mes "Desculpe, mas apenas Chunins podem se inscrever.";
+close;
+}
+if($JSstatus < 3)
+{
+mes .npc$;
+mes "Desculpe, não estamos fazendo inscrições neste momento.";
+close;
+}
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+switch(select("Registrar:Informações"))
+{
+case 1:
+if(JSwin == 1){
+mes .npc$;
+mes "Um vencedor não pode ir novamente à Jounin Shiken.";
+close;
+end;
+}
+
+if($JScharid[99] > 0)
+{
+mes .npc$;
+mes "Desculpe, mas as vagas estão esgotadas.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Antes de tudo, algumas informações:";
+mes "Você só pode fazer 1 inscrição por conta.";
+mes "Você perderá o evento caso esteja offline na hora do recall.";
+next;
+mes .npc$;
+mes "Continuar inscrição?";
+switch(select("Continuar:Cancelar"))
+{
+case 1:
+next;
+set .@teste,0;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+if(getcharid(3) == $JSaccid[.i]) set .@teste, 1;
+}
+if(.@teste == 1){
+mes .npc$;
+mes "Desculpe, apenas 1 character por account pode ser inscrito.";
+close;
+end;
+}
+
+next;
+mes .npc$;
+mes "Parabéns! Você está inscrito no Jounin Shiken!";
+mes "Boa Sorte!";
+close2;
+	set @i, $JSnumber;
+	set $JSnumber, $JSnumber +1;
+	set $JSname$[@i+1], strcharinfo(0);
+	set $JSaccid[@i+1], getcharid(3);
+	set $JScharid[@i+1], getcharid(0);
+end;
+
+case 2:
+next;
+mes .npc$;
+mes "Tudo bem, estarei aqui se precisar.";
+close;
+end;
+}
+
+case 2:
+mes .npc$;
+mes "Jounin Shiken é um evento que ocorre todo dia, dando aos vencedores a graduação de Chunin para Jounin. Sendo assim, apenas Chunins podem fazer a inscrição.";
+next;
+mes .npc$;
+mes "O evento é PvP ativo e é finalizado quando houver apenas um sobrevivente.";
+next;
+mes .npc$;
+mes "Modo Survive/PvP: Os candidatos batalharão entre si, demonstrando aos mesmo tempo, tanto suas habilidades de sobrevivencia quanto as de combate.";
+next;
+mes .npc$;
+mes "A Shiken tem um limite de 2 horas, desclassificando todos os candidatos caso esse tempo chegue ao seu limite.";
+next;
+mes .npc$;
+mes "Horários:";
+mes "Dias de Semana: 21:30h";
+mes "Finais de Semana: 17h e 21:30h";
+close;
+}
+}
+
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+switch(select("Gerar nova JS:Finalizar JS atual:Ativar Npc:Desativar Npc:Inscrição"))
+{
+case 1:
+if($JSstatus == 1 || $JSstatus == 3){
+mes .npc$;
+mes "Uma Jounin Shiken já está ativa.";
+close;
+end;
+}
+mes .npc$;
+mes "Jounin Shiken criada com sucesso.";
+close2;
+callsub OnNewJS;
+end;
+
+case 2:
+mes .npc$;
+mes "Jounin Shiken cancelada com sucesso.";
+close2;
+callsub OnCancelJS;
+end;
+
+case 3:
+mes .npc$;
+mes "O npc Jounin Shiken foi ativo com sucesso.";
+set $JSstatus,0;
+close;
+end;
+
+case 4:
+mes .npc$;
+mes "O npc Jounin Shiken foi desativo com sucesso.";
+set $JSstatus,2;
+close;
+end;
+
+case 5:
+mes .npc$;
+mes "Parabéns! Você está inscrito ao Jounin Shiken!";
+mes "Boa Sorte!";
+close2;
+	set @i, $JSnumber;
+	set $JSnumber, $JSnumber +1;
+	set $JSname$[@i+1], strcharinfo(0);
+	set $JSaccid[@i+1], getcharid(3);
+	set $JScharid[@i+1], getcharid(0);
+end;
+}
+end;
+
+OnNewJS:
+if($JSstatus == 0){
+set $JSnumber, 0;
+set $JSstatus,3;
+set $JSmod, 0;
+set $JSend, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSname$[.i], 0;
+}
+
+disablenpc "Saída#JS";
+Announce "[Jounin Shiken]: As inscrições para a Jounin Shiken estão abertas e serão encerradas dentro de 1 hora. Corram, pois as vagas são limitadas!",0;
+initnpctimer "Evento#JS"; //Evento#JS	JouninShiken#JS
+}
+end;
+
+OnCancelJS:
+killmonster .JSmap$, "All";
+stopnpctimer "Evento#JS";
+//set $JSname$, 0;
+//set $JScharid, 0;
+//set $JSaccid, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSname$[.i], 0;
+}
+
+if($JSstatus == 3){
+Announce "[Jounin Shiken]: A Jounin Shiken foi cancelada. Desculpe o transtorno, logo o evento será reativado.",0;
+}
+if($JSstatus == 1){
+MapAnnounce .JSmap$,"[Jounin Shiken]: A Jounin Shiken foi cancelada. Desculpe o transtorno, logo o evento será reativado. Vocês podem sair do evento utilizando o Npc no centro do mapa.",0;
+}
+set $JSstatus, 0;
+end;
+
+}
+
+
+izlu2dun,108,29,3	script	Saída#JS	48,{ //colocar no mapa .JSmap$
+
+// Nome do npc
+set .npc$,"^800000[Jounin Shiken]^000000";
+
+setarray .JSperg[1],7099,7304,13708;
+
+if(countitem(.JSperg[1]) < 0 || countitem(.JSperg[2]) < 0 || countitem(.JSperg[3]) < 0){
+mes .npc$;
+mes "Você precisa ter adiquirido os 3 pergaminhos do teste para conseguir seu prêmio.";
+mes "Dica: Se ainda existir algum Mob vivo, tente dropar dele.";
+close;
+end;
+}
+
+delitem .JSperg[1], countitem(.JSperg[1]);
+delitem .JSperg[2], countitem(.JSperg[2]);
+delitem .JSperg[3], countitem(.JSperg[3]);
+
+set .@teste, 0;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+if(getcharid(0) == $JScharid[.i]){
+set .@teste, 1;
+}
+}
+
+if(.@teste == 1 && $JSend == 0){
+mes .npc$;
+mes "Parabéns "+strcharinfo(0)+"! Aqui está sua recompensa:";
+getitem 7195,60; //ID e quantidade (pergaminhos)
+set JSwin, 1;
+announce "[Jounin Shiken]: Jounin Shiken encerrada. Parabéns ao "+strcharinfo(0)+", o vencedor desta edição.",0;
+close2;
+}else{
+mes .npc$;
+mes "Desculpe, você não está habilitado a receber este prêmio.";
+close2;
+}
+warp "kakashi",123,90;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $JSname$[.i], 0;
+}
+disablenpc "Saída#JS";
+end;
+
+}
+
+izlu2dun	mapflag	nowarp
+izlu2dun	mapflag	noteleport
+izlu2dun	mapflag	nowarpto
+izlu2dun	mapflag	nobranch
+izlu2dun	mapflag	nosave	SavePoint
+izlu2dun	mapflag	nomemo
+izlu2dun	mapflag	nopenalty
+izlu2dun	mapflag	noexp
+izlu2dun	mapflag	noparty

@@ -1,0 +1,29 @@
+areia,273,252,5	script	Casas para aluguel::cazas	706,{
+	mes "^FF0000[Assistente]^000000";
+	mes "Olá, Bem-vindo(a)!";
+	mes "Eu posso te levar para as casas de aluguel.";
+	if (Zeny < 1) {
+		mes "Oh..Você não tem esse dinheiro. Você precisa me pagar ^FF00002000 zeny^000000 pelo warp.";
+		close;
+	}
+	mes "Onde gostaria de ir?";
+	next;
+	menu "Campo de Treinamento",L_Prontera,"Casas Suna",L_VMorroc,"Casas Konoha",L_VPayon,"Casas Névoa",L_VAlberta,"Casas Nuvem",L_VIzlude,"Lugar nenhum",-;
+	mes "^FF0000[Assistente]^000000";
+	mes "Volte quando precisar de meus serviços.";
+	close;
+
+L_Prontera:   set Zeny, Zeny - 0; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "kakashi.gat",91,141; end;
+L_VProntera:  set Zeny, Zeny - 0; mes "^FF0000[Assistente]^000000"; mes "Have nice trip!"; close2; warp "rent_mb.gat",133,113; end;
+L_VGeffen:    set Zeny, Zeny - 0; mes "^FF0000[Assistente]^000000"; mes "Have nice trip!"; close2; warp "rent_md.gat",49,92; end;
+L_VMorroc:    set Zeny, Zeny - 0; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "rent_mc.gat",49,92; end;
+L_VPayon:     set Zeny, Zeny - 0; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "rent_ma.gat",49,92; end;
+L_VAlberta:   set Zeny, Zeny - 0; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "rent_me.gat",49,92; end;
+L_VIzlude:    set Zeny, Zeny - 0; mes "^FF0000[Assistente]^000000"; mes "Have nice trip!"; close2; warp "rent_mf.gat",49,92; end;
+L_VAldebaran: set Zeny, Zeny - 0; mes "^FF0000[Assistente]^000000"; mes "Have nice trip!"; close2; warp "rent_mg.gat",49,92; end;
+
+}
+
+nuvem,293,89,5	duplicate(cazas)	Casas para aluguel#b	706
+kiri,213,293,5	duplicate(cazas)	Casas para aluguel#c	706
+konoha,23,45,5	duplicate(cazas)	Casas para aluguel#d	706

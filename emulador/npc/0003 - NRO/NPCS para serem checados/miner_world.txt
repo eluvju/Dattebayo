@@ -1,0 +1,1267 @@
+// --/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/--/ //
+//     _____  .__                       __      __            .__       .___   //
+//    /     \ |__| ____   ___________  /  \    /  \___________|  |    __| _/   //
+//   /  \ /  \|  |/    \_/ __ \_  __ \ \   \/\/   /  _ \_  __ \  |   / __ |    //
+//  /    Y    \  |   |  \  ___/|  | \/  \        (  <_> )  | \/  |__/ /_/ |    //
+//  \____|__  /__|___|  /\___  >__|      \__/\  / \____/|__|  |____/\____ |    //
+//          \/        \/     \/               \/                         \/    //
+//                     _          _____         _                              //
+//                    | |_ _ _   |     |_ _ ___| |_ ___ ___                    //
+//                    | . | | |  | | | | | |- _|  _| -_|  _|                   //
+//                    |___|_  |  |_|_|_|_  |___|_| |___|_|                     //
+//                        |___|        |___|                                   //
+// --------------------------------------------------------------------------- //
+//                                                                             //
+//  Release Date: 03-20-2012      Version: 1.4         (c)2012 by Myzter       //
+//                                                                             //
+// --------------------------------------------------------------------------- //
+//  I made 'Miner World' because my old mini-game 'Miner System' is obsolete   //
+//  and eAthena needs a injection of fresh blood.                              //
+//                                                                             //
+//  Special thanks to 'Melody', because she asked me to build a mining system  //
+//  where players could learn Skills and level up, showing me an example of    //
+//  another game, besides, she pressed me to release it quite soon. ^__^       //
+//                                                                             //
+//  I got the basics i saw in other games and put my imagination to make a new //
+//  friendly and useful miner system for eAthena.                              //
+//                                                                             //
+//  The gameplay is 100% created by me and i hope you love it as i do.         //
+// --------------------------------------------------------------------------- //
+//  DESCRIPTION:                                                               //
+//                                                                             //
+//  Hundred of maps produce mineral veins of different sizes and classes.      //
+//  Although the mines are emptied regularly, new mines are created in other   //
+//  sectors of the region regularly, allowing the business to be promising.    //
+//                                                                             //
+//  There are a new kind of boots named Driller Boots, any player level 50 can //
+//  wear it to search and extract items from the mines.                        //
+//                                                                             //
+//  Wear your driller boots and whisper to npc:mine the folowing commands:     //
+//                                                                             //
+//  skill: Open the Miner Skill Panel to configure your miner skills.          //
+//  make: Your Drill Boots require a Drill to operate, the creation process    //
+//          does not require items but it difficult.                           //
+//  ?: Show this command list                                                  //
+//  <Any Other>: Start the Detection/Excavation                                //
+// --------------------------------------------------------------------------- //
+//  DETECTION/EXCAVATION:                                                      //
+//                                                                             //
+//  The Driller Boots allow detecting Mines in the current map, depending on   //
+//  the Lynx Eye Skill, you can see more detailed information and even jump    //
+//  directly to the mine, or show the position in the mini-map.                //
+//  The Process for Detecting and Digging is the same... just whisp any word   //
+//  and your Drill Boots will check if you are in the area of a mine, in that  //
+//  case, it show the Excavation Menu, otherwhise, it show the detection info. //
+//                                                                             //
+//  The Excavation menu display 2 options:                                     //
+//  1. Drill: Spin the body and digg for some seconds.                         //
+//            More depth, better options to obtain items.                      //
+//  2. Stop Here: The drill will turn more heated after each dig process,      //
+//            but you can stop the process and wait until it's cold again,     //
+//            reserving it for a new use. (the time required to create a new   //
+//            Drill is larger, so it's a great idea avoid break it)            //
+// --------------------------------------------------------------------------- //
+//  LEVEL UP:                                                                  //
+//                                                                             //
+//  While you get items from the excavation, your miner experience is raised.  //
+//                                                                             //
+//  This is the formula for Level UP:                                          //
+//                                                                             //
+//  When: Exp >= 100 + MinerLvl * (25 + MinerLvl)                              //
+//        Exp = 0                                                              //
+//        Miner Skill Points += 3 + (MinerLvl) / 5)                            //
+//        MinerLvl ++                                                          //
+//                                                                             //
+//  Note: The miner gain base experience while work on mines                   //
+//                                                                             //
+// --------------------------------------------------------------------------- //
+//  MINER SKILLS:                                                              //
+//                                                                             //
+//  Lynx Eye: (1-10) Improved detection capability, at level 10 the player can //
+//                   jump directly to the mine or show it on the mini-map.     //
+//  Diamond Head: (1-10) Increases the heat resistance in (10 * Skill) %       //
+//  Faster Drill: (1-25) Increase the Drill speed in a (2 * Skill) %           //
+//  Lucky Miner: (1-10) Increases the chances of gain minerals (Skill / 20) %  //
+//  Quick Rest: (1-10) The drill turns cold faster (10 * Skill) %              //
+//  Money Maker: (1-20) Gives a chance of receiving 1,000 zeny every time the  //
+//                      Drill spins. (Skill) %                                 //
+//  Merchant Blood: (1-20) Increases the power of the drill and gain more      //
+//                        depth after each try (Skill) % (Only Merchant Class) //
+//  Weight Boots: (1-45) Increases the weight limit when using Driller Boots.  //
+//                       (1 + Skill / 5) % (All Classes except Merchant)       //
+//  Double or Nothing: (1-100) Gives a chance of receiving 2 items at once.    //
+//                             (Skill / 2) %                                   //
+//  Repair: (1-50) Gives a chance of cool the Drill without stop the dig       //
+//                       process (Skill / 10) %                                //
+//  Drill Box: (1-50) Allow you to create more than 1 Drill, +1 x skill        //
+//  Magical Detection: (1-100) Increase the detection range in (Skill %)       //
+//  Base Exp Booster: (1-100) Increase the chances of gain Base EXP during     //
+//                              the drill process (Skill / 10) %               //
+//  Job Booster: (1-100) Add chances of gain Job EXP during the dig process    //
+//                       (Skill / 10) %                                        //
+//  Boot Care: (1-100) Decrease the chances of break the Driller Boots during  //
+//                     the dig process (Skill %)                               //
+//  Privacy: (1) The gained items doesn't show the miner name                  //
+//  Mine Guardian: (1-50) Gives a chance of receive damage to protect the      //
+//                   mine from the destruction. (Skill %)                      //
+//  Miner Aura: (1-100) Decrease the chances of receive damage during the dig  //
+//                   process. (Skill / 2 %)                                    //
+//  Corrosive Oil: (1-100) Softens the rocks reducing the drill deterioration  //
+//                   during the dig process. (Skill / 25)                      //
+// --------------------------------------------------------------------------- //
+//  INSTALLATION:                                                              //
+//                                                                             //
+//  In script_athena.conf we have to update the values of this 2 variables:    //
+//                                                                             //
+//    check_cmdcount: 655360                                                   //
+//    check_gotocount: 655360                                                  //
+//                                                                             //
+//  1. Install "LangManagement.txt" and "VarSystem.txt" from BotKiller 6       //
+//              Look the instructions in BotKiller6.txt header                 //
+//                                                                             //
+//     www.4undeads.com/downloads/scripts/botkiller/bk6.rar                    //
+//                                                                             //
+//  2. Copy miner_world.txt in the following path:                             //
+//                                                                             //
+//  >  npc/custom/miner_world.txt                                              //
+//                                                                             //
+//  3. Edit npc/scripts_custom.conf adding the following lines:                //
+//                                                                             //
+//     // Unlimited Variable System                                            //
+//     npc: npc/custom/bk/VarSystem.txt                                        //
+//                                                                             //
+//     // Multi-Language System                                                //
+//     npc: npc/custom/bk/LangManagement.txt                                   //
+//                                                                             //
+//     // Miner World System                                                   //
+//     npc: npc/custom/miner_world.txt                                         //
+//                                                                             //
+//  3. Apply the client patch included with this script.                       //
+//                                                                             //
+//  4. Add the Drill Boots item to your item_db2 table. (or item_db2.txt)      //
+//                                                                             //
+//  5. Run your server and whisp to npc:mine to check if its working.          //
+//                                                                             //
+//  Note: use @item 22000 to get a Driller Boots, required to use the system   //
+// --------------------------------------------------------------------------- //
+//  History:                                                                   //
+//  2012-02-19 1.1: Finished the skill 'Quick Rest'                            //
+//                  Fixed several small bugs and 1 time exploit                //
+//  2012-02-20 1.2: Fixed the skill requirements                               //
+//                  Fixed double termination error using the system 2 times at //
+//                  the same time. (sleep2 ¬¬)                                 //
+//  2012-03-19 1.3: Added 8 new Skills and several small fixes                 //
+//  2012-03-26 1.4: The language system is now separated from BK6, you can use //
+//                  it without install BotKiller 6 following the installation  //
+//                  instructions.                                              //
+// --------------------------------------------------------------------------- //
+
+-	script	mine	-1,{
+OnWhisperGlobal:
+	callfunc "checkDrill",@whispervar0$;
+}
+
+// Spanish trigger - add new triggers to each language if you want
+-	duplicate(mine)	mina	-1
+
+function	script	checkDrill	{
+	if (!callfunc("bootsEquipped")) {
+		message strcharinfo(0),callfunc("getMes",$@MnrSystemID,5);
+		end;
+	}
+	if (getarg(0) == callfunc("getMes",$@MnrSystemID,45)) {
+		callfunc "craftDrill";
+	} else if (getarg(0) == callfunc("getMes",$@MnrSystemID,46)) {
+		callfunc "assignSkills";
+	} else if (getarg(0) == "?") {
+		message strcharinfo(0),callfunc("getMes",$@MnrSystemID,6);
+	} else {
+		callfunc "startMining";
+	}
+}
+
+function	script	bootsEquipped	{
+	set .@equipped,0;
+	for (set .@x,0; .@x < getarraysize($@DrillBootsID) && !.@equipped; set .@x,.@x + 1) {
+		if (isequipped($@DrillBootsID[.@x])) set .@equipped,$@DrillBootsID;
+	}
+	return .@equipped;
+}
+
+function	script	craftDrill	{
+	if (@mining) end;
+	if (callfunc("iReadC","drill") >= 1 + callfunc("iReadC","MineDrillBox")) {
+		dispbottom ">> " + callfunc("getMes",$@MnrSystemID,48);
+		end;
+	}
+	dispbottom ">> " + callfunc("getMes",$@MnrSystemID,9);
+	specialeffect2 487;
+	specialeffect2 454;
+	specialeffect2 452;
+	specialeffect2 101;
+//	progressbar "^c0c0c0",4;
+	if (!rand(6)) {
+		specialeffect2 154;
+		callfunc "SaveC","drill",callfunc("iReadC","drill") + 1;
+		message strcharinfo(0),callfunc("getMes",$@MnrSystemID,66);
+	} else {
+		specialeffect2 155;
+		message strcharinfo(0),callfunc("getMes",$@MnrSystemID,18);
+	}
+	dispbottom ">> " + callfunc("getMes",$@MnrSystemID,7) + " " + callfunc("iReadC","drill");
+	end;
+}
+
+function	script	assignSkills	{
+	if (@mining) end;
+	set @eac, eaclass();
+	setarray .@MnrSkills$[0],
+		callfunc("getMes",$@MnrSystemID,80),	  // Lynx Eye	
+		callfunc("getMes",$@MnrSystemID,81),	  // Diamond Head
+		callfunc("getMes",$@MnrSystemID,82),	  // Faster Drill
+		callfunc("getMes",$@MnrSystemID,83),	  // Lucky Miner
+		callfunc("getMes",$@MnrSystemID,84),	  // Quick Rest
+		callfunc("getMes",$@MnrSystemID,85),	  // Money Maker
+		callfunc("getMes",$@MnrSystemID,86),	  // Merchant Blood
+		callfunc("getMes",$@MnrSystemID,87),	  // Weight Boots
+		callfunc("getMes",$@MnrSystemID,88),	  // Double or Nothing
+		callfunc("getMes",$@MnrSystemID,89),	  // Repair
+		callfunc("getMes",$@MnrSystemID,90),	  // Drill Box
+		callfunc("getMes",$@MnrSystemID,91),	  // Magical Detection
+		callfunc("getMes",$@MnrSystemID,92),	  // Base Exp Booster
+		callfunc("getMes",$@MnrSystemID,93),	  // Job Booster
+		callfunc("getMes",$@MnrSystemID,94),	  // Boot Care
+		callfunc("getMes",$@MnrSystemID,95),	  // Privacy
+		callfunc("getMes",$@MnrSystemID,96),	  // Mine Guardian
+		callfunc("getMes",$@MnrSystemID,97),	  // Miner Aura
+		callfunc("getMes",$@MnrSystemID,98);	  // Corrosive Oil
+
+	l_Menu:
+	set .@menu$,"";
+	for (set .@x,0; .@x < getarraysize($@MnrSkillsLv); set .@x, .@x + 1) {
+		set .@skst,0;
+		if (callfunc("iReadC",$@MnrSkillNames$[.@x]) == 0) set .@skst,2; else set .@skst,3;
+		if ($@MnrSkillsCls[.@x]) if (!(@eac&EAJ_BASEMASK == $@MnrSkillsCls[.@x])) set .@skst,1;
+		if ($@MnrSkillsRst[.@x]) if (@eac&EAJ_BASEMASK == $@MnrSkillsRst[.@x]) set .@skst,1;
+		if (.@skst == 1) set .@menu$,.@menu$ + ":"; else set .@menu$,.@menu$ + (.@skst==2?"^c0c0c0":.@skst==3?"^0000ff":"^000000") + .@MnrSkills$[.@x] + "^000000 (" + callfunc("iReadC",$@MnrSkillNames$[.@x]) + "/" + $@MnrSkillsLv[.@x] + "):";
+	}
+	
+	if (callfunc("iReadC","MinerLvl") > 9) set .@menu$,.@menu$ + callfunc("getMes",$@MnrSystemID,10) + ":"; else set .@menu$,.@menu$ + ":";
+	set .@menu$,.@menu$ + callfunc("getMes",$@MnrSystemID,55);
+	l_Menu2:
+	mes "[^0000ff" + strcharinfo(0) + "^000000]";
+	mes callfunc("getMes",$@MnrSystemID,13);
+	mes " ";
+	mes ">" + callfunc("getMes",$@MnrSystemID,49) + ": ^0000ff" + callfunc("iReadC","MinerLvl") + "^000000";
+	mes ">" + callfunc("getMes",$@MnrSystemID,16) + ": ^0000ff" + callfunc("iReadC","MinerSkPoints") + "^000000";
+	next;
+	set .@opc, select(.@menu$) - 1;
+	if (.@opc == .@x) {
+		if ($@ResetCost) {
+			mes "[^0000ff" + strcharinfo(0) + "^000000]";
+			mes callfunc("getMes",$@MnrSystemID,11) + " ^ff0000" + $@ResetCost + "^000000 " + callfunc("getMes",$@MnrSystemID,12);
+			if (zeny < $@ResetCost) {
+				mes " ";
+				mes "^ff0000... " + callfunc("getMes",$@MnrSystemID,11) + "^000000";
+				next;
+				goto l_Menu;
+			}
+			next;
+		}
+		if (select(callfunc("getMes",$@MnrSystemID,10),callfunc("getMes",$@MnrSystemID,63)) == 2) goto l_Menu;
+		set zeny, zeny - $@ResetCost;
+		set .@DispPnts,0;
+		for (set .@x,0; .@x < getarraysize($@MnrSkillsLv); set .@x, .@x + 1) {
+			set .@DispPnts, .@DispPnts + callfunc("iReadC",$@MnrSkillNames$[.@x]);
+			callfunc "SaveC",$@MnrSkillNames$[.@x],0;
+		}
+		specialeffect2 227;
+		callfunc "SaveC","MinerSkPoints", callfunc("iReadC","MinerSkPoints") + .@DispPnts;
+		if (callfunc("iReadC","drill") > 1) callfunc "iSaveC","drill",1;
+		mes "[^0000ff" + strcharinfo(0) + "^000000]";
+		mes "^ff0000" + callfunc("getMes",$@MnrSystemID,64) + "!^000000";
+		next;
+		goto l_Menu;
+		
+	} if (.@opc > .@x) {
+		mes "[^0000ff" + strcharinfo(0) + "^000000]";
+		mes callfunc("getMes",$@MnrSystemID,64);
+	} else {
+		mes "[^0000ff" + strcharinfo(0) + "^000000]";
+		mes "^0000ff" + .@MnrSkills$[.@opc] + "^000000 - " + callfunc("getMes",$@MnrSystemID,49) + "^000000: ^ff0000" + callfunc("iReadC",$@MnrSkillNames$[.@opc]) + " / " + $@MnrSkillsLv[.@opc] + "^000000";
+		mes callfunc("getMes",$@MnrSystemID,150 + .@opc);
+		next;
+		if (callfunc("iReadC","MinerSkPoints") < 1 || callfunc("iReadC",$@MnrSkillNames$[.@opc]) >= $@MnrSkillsLv[.@opc]) goto l_Menu2;
+		if (select(callfunc("getMes",$@MnrSystemID,14),callfunc("getMes",$@MnrSystemID,15)) == 2) goto l_Menu2;
+		
+		set .@maxpnt, $@MnrSkillsLv[.@opc] - callfunc("iReadC",$@MnrSkillNames$[.@opc]);
+		if (.@maxpnt > callfunc("iReadC","MinerSkPoints")) set .@maxpnt, callfunc("iReadC","MinerSkPoints");
+		
+		set .@asspnts,1;
+		if (.@maxpnt > 1) {
+			mes "[^0000ff" + strcharinfo(0) + "^000000]";
+			mes "^0000ff" + .@MnrSkills$[.@opc] + "^000000 - " + callfunc("getMes",$@MnrSystemID,49) + "^000000: ^ff0000" + callfunc("iReadC",$@MnrSkillNames$[.@opc]) + " / " + $@MnrSkillsLv[.@opc] + "^000000";
+			mes " ";
+			mes callfunc("getMes",$@MnrSystemID,70) + " (1-" + .@maxpnt + ")";
+			next;
+			input .@asspnts;
+			if (.@asspnts > .@maxpnt) set .@asspnts, .@maxpnt;
+			if (.@asspnts < 1) goto l_Menu2;
+		}
+		
+		specialeffect2 572;
+		callfunc "SaveC",$@MnrSkillNames$[.@opc],callfunc("iReadC",$@MnrSkillNames$[.@opc]) + .@asspnts;
+		callfunc "SaveC","MinerSkPoints",callfunc("iReadC","MinerSkPoints") - .@asspnts;
+		goto l_Menu;
+	}
+	close;
+}
+
+function	script	delayDetecting	{
+	getmapxy .@mnmap$,.@mnx,.@mny,0;
+	if (@mnmap$ == .@mnmap$ && @mnx == .@mnx && @mny == .@mny) {
+		message strcharinfo(0),callfunc("getMes",$@MnrSystemID,57);
+		end;
+	}
+	message strcharinfo(0),callfunc("getMes",$@MnrSystemID,56);
+	specialeffect2 60;
+//	progressbar "^c0c0c0",3;
+	specialeffect2 191;
+	set @mnmap$,.@mnmap$;
+	set @mnx,.@mnx;
+	set @mny,.@mny;
+	return;
+}
+
+function	script	setCoolDown	{
+	set .@cd,getarg(0);
+	set .@bonus, callfunc("iReadC","MineResistant");
+	if (.@bonus) {
+		if (getarg(0) > 10) set .@bonus, .@bonus / 2;
+		set .@cd, .@cd - callfunc("getPct",.@cd, .@bonus*10);
+	}
+	set @MineCoolDown, gettimetick(2) + .@cd;
+	set @CoolDownCounter,.@cd;
+	initnpctimer "coolDownDrill",1;
+	return;
+}
+
+-	script	coolDownDrill	-1,{
+OnTimer1000:
+	stopnpctimer 1;
+	set @CoolDownCounter, @CoolDownCounter - 1;
+	if (@CoolDownCounter > 0) {
+		specialeffect2 625;
+		specialeffect2 rand(186,190);
+		initnpctimer 1;
+	} else {
+		specialeffect2 151;
+	}
+}
+
+function	script	checkMineSpot	{
+	if (@minervp) callfunc "delPoint";
+	if (@MineCoolDown > gettimetick(2)) {
+		emotion e_dots;
+		specialeffect2 96;
+		message strcharinfo(0), callfunc("getMes",$@MnrSystemID,60);
+		end;
+	}
+	getmapxy .@map$, .@myx, .@myy, 0;
+	if (set(.@cnt, query_sql("select id, x, y, size, t.name_id, m.mclass, level2detect, distance2detect, level2drill, roughness from mn_mine m left join mn_class t on m.mclass = t.mclass where map = '" + .@map$ + "'",.@mine, .@x,.@y,.@size,.@nameid,.@mclass,.@lvl2detect, .@dist2detect, .@lvl2drill, .@roughness))<1) {
+		callfunc "delayDetecting";
+		return -1;
+	}
+	set @MyDistance,10000;
+	for (set .@i,0; .@i < .@cnt; set .@i, .@i + 1) {
+		if (.@lvl2detect[.@i] <= callfunc("iReadC","MinerLvl")) {
+			set .@d, distance(.@myx,.@myy,.@x[.@i],.@y[.@i]);
+			// Magical Detection
+			set .@d2,20000;
+			if (callfunc("iReadC","MineMagicDet")) set .@d2, .@d - callfunc("getPct",.@d, callfunc("iReadC","MineMagicDet"));
+			if (.@dist2detect[.@i] >= .@d || .@dist2detect[.@i] >= .@d2) {
+				if (.@d <= @MyDistance) {
+					set @MyDistance,.@d;
+					set .@index,.@i; // Nearest mine
+				}
+			}
+		}
+	}
+	if (@MyDistance < 10000) {
+		set @minex,.@x[.@index];
+		set @miney,.@y[.@index];
+		set @minename$,callfunc("getMes",$@MnrSystemID,.@nameid[.@index]);
+		set @mineclass,.@mclass[.@index];
+		set @minesize,.@size[.@index];
+		set @mineid,.@mine[.@index];
+		set @lvl2drill,.@lvl2drill[.@index];
+		set @roughness,.@roughness[.@index];
+		set .@lynxeye,5 + callfunc("iReadC","MineLynxEye") * 3;
+		if (@MyDistance <= .@size[.@index]) { // if the player is on a mine
+			if (.@lvl2drill[.@index] > callfunc("iReadC","MinerLvl")) return -5; else return 1;
+		} else {
+			// Direction hint
+			set @coord$,callfunc("getMes",$@MnrSystemID,28);
+			if (.@myx < .@x[.@index] && .@myy < .@y[.@index]) set @coord$,callfunc("getMes",$@MnrSystemID,21); else
+			if (.@myx < .@x[.@index] && .@myy > .@y[.@index]) set @coord$,callfunc("getMes",$@MnrSystemID,22); else
+			if (.@myx > .@x[.@index] && .@myy > .@y[.@index]) set @coord$,callfunc("getMes",$@MnrSystemID,23); else
+			if (.@myx > .@x[.@index] && .@myy < .@y[.@index]) set @coord$,callfunc("getMes",$@MnrSystemID,24); else
+			if (.@myx < .@x[.@index] && .@myy == .@y[.@index]) set @coord$,callfunc("getMes",$@MnrSystemID,25); else
+			if (.@myx > .@x[.@index] && .@myy == .@y[.@index]) set @coord$,callfunc("getMes",$@MnrSystemID,26); else
+			if (.@myx == .@x[.@index] && .@myy < .@y[.@index]) set @coord$,callfunc("getMes",$@MnrSystemID,27);
+			if (.@lynxeye == 35 && @MyDistance > 5) {
+				mes "[^0000ff" + strcharinfo(0) + "^000000]";
+				mes callfunc("getMes",$@MnrSystemID,34) + " ^0000ff" + @minename$ + "^000000 " + callfunc("getMes",$@MnrSystemID,37) + " " + @coord$;
+				mes callfunc("getMes",$@MnrSystemID,31);
+				next;
+				switch(select(callfunc("getMes",$@MnrSystemID,32),callfunc("getMes",$@MnrSystemID,33),callfunc("getMes",$@MnrSystemID,55))) {
+					case 1:
+						warp .@map$,@minex,@miney;
+						close;
+					case 2:
+						viewpoint 1,@minex,@miney,9,0x0000FF;
+						viewpoint 1,@minex,@miney,9,0xFF0000;
+						set @minervp,1;
+						addtimer 15000,"delPointNPC::OnDel";
+				}
+				close;
+			}
+			callfunc "delayDetecting";
+			if (@MyDistance<.@lynxeye) return -2; else return -3;
+		}
+	}
+	callfunc "delayDetecting";
+	return -4;
+}
+
+-	script	delPointNPC	-1,{
+OnDel:
+	callfunc "delPoint";
+
+}
+
+function	script	delPoint	{
+	viewpoint 2,@minex,@miney,9,0xFF0000;
+	viewpoint 2,@minex,@miney,9,0x0000FF;
+	set @minervp,0;
+	return;
+}
+
+function	script	getPct	{
+	return getarg(0) * getarg(1) / 100;
+}
+
+function	script	equipBoots	{
+	dispbottom "** " + callfunc("getMes",$@MnrSystemID,61);
+	return;
+}
+
+function	script	startMining	{
+	if (callfunc("iReadC","drill") < 1) {
+		message strcharinfo(0), callfunc("getMes",$@MnrSystemID,4);
+		end;
+	}
+	switch(callfunc("checkMineSpot")) {
+		case -1:
+			message strcharinfo(0), callfunc("getMes",$@MnrSystemID,0);
+			end;
+		case -2:
+			message strcharinfo(0), callfunc("getMes",$@MnrSystemID,34) + " " + @minename$ + " " + callfunc("getMes",$@MnrSystemID,35) + " " + @MyDistance + " " + callfunc("getMes",$@MnrSystemID,36) + " " + @coord$;
+			end;
+		case -3:
+			message strcharinfo(0), callfunc("getMes",$@MnrSystemID,34) + " " + @minename$ + " " + callfunc("getMes",$@MnrSystemID,37) + " " + @coord$;
+			end;
+		case -4:
+			message strcharinfo(0), callfunc("getMes",$@MnrSystemID,54);
+			end;
+		case -5:
+			message strcharinfo(0), callfunc("getMes",$@MnrSystemID,52) + " " + @lvl2drill + " " + callfunc("getMes",$@MnrSystemID,53) + " " + callfunc("iReadC","MinerLvl");
+			end;
+	}
+
+	getmapxy .@curMap$,.@curX,.@curY,0;
+	if (@mnmap$ == .@curMap$ && @mnx == .@curX && @mny == .@curY) {
+		emotion e_swt,1;
+		message strcharinfo(0),callfunc("getMes",$@MnrSystemID,57);
+		end;
+	}
+	set @mnmap$,.@curMap$;
+	set @mnx,.@curX;
+	set @mny,.@curY;
+
+	// Starting Parameters
+	set .@deep,0;
+	set .@drillheat, 0;
+	set .@drillmaxheat, 100 + (10 * callfunc("iReadC","MineDiamDrll"));
+	set .@drillspeed, 3000 - callfunc("getPct",3000, callfunc("iReadC","MineTurboDrll")*2);
+	
+	// Load the items delivered by the mine
+	set .@ic, query_sql("select item, rate, rateincrement, ratelimit from mn_item where mclass = " + @mineclass,.@item,.@rate, .@increment, .@maxrate);
+	
+	if (!.@ic) {
+		message strcharinfo(0), callfunc("getMes",$@MnrSystemID,38) + @minemap$ + "]";
+		end;
+	}
+
+	set @mining,10;
+	specialeffect2 405;
+	set .@breakchance,10000 + 100 * callfunc("iReadC","MineBootCare");
+	set .@roughness2, callfunc("iReadC","MineCorrOil") / 25;
+	if (.@roughness2) set @roughness, @roughness - .@roughness2;
+	disable_items;
+	while (@mining) {
+		if (!callfunc("bootsEquipped")) {
+			message strcharinfo(0),callfunc("getMes",$@MnrSystemID,5);
+			callfunc "setCoolDown",10;
+			end;
+		}
+		getmapxy .@curMap2$,.@curX2,.@curY2,0;
+		
+		// Interrupt the mine process using fly wings or any other command to change the location of the player
+		if (.@curMap2$ != .@curMap$ || .@curX2 != .@curX || .@curY2 != .@curY) {
+			callfunc "setCoolDown",60;
+			specialeffect 155;
+			soundeffectall "jack_frost.wav",0,.@curMap$,.@curX-5,.@curY-5,.@curX+5,.@curY+5;
+			callfunc "SaveC","drill",callfunc("iReadC","drill") - 1;
+			mes "[^0000ff" + strcharinfo(0) + "^000000]";
+			mes callfunc("getMes",$@MnrSystemID,8);
+			pcblockmove getcharid(3),0;
+			set @mining,0;
+			close;
+		}
+		if (@mining == 10) {
+			set @mining,1;
+		} else {
+			set @mining,prompt(callfunc("getMes",$@MnrSystemID,2), callfunc("getMes",$@MnrSystemID,3));
+			if (@mining > 2) set @mining,2;
+		}
+		if (@mining == 1) {
+			set .@x,0;
+			set .@duration, rand(.@drillspeed/2,.@drillspeed);
+			specialeffect2 238;
+			specialeffect2 140;
+			pcblockmove getcharid(3),1;
+			while (.@x < .@drillspeed) {
+				specialeffect2 501;
+				specialeffect2 rand(429,431);
+				specialeffect2 330;
+				specialeffect2 100;
+				soundeffectall "ungoliant_move.wav",0,.@curMap$,.@curX-5,.@curY-5,.@curX+5,.@curY+5;
+
+				if (!rand(.@breakchance) && .@breakchance < 20000) {
+					emotion e_pat;
+					message strcharinfo(0),callfunc("getMes",$@MnrSystemID,1);
+					failedrefitem EQI_SHOES;
+					pcblockmove getcharid(3),0;
+					set @mining,0;
+					close;
+				}
+				
+				set .@drillheat, .@drillheat + rand(@roughness,@roughness + @roughness / 4);
+				if (callfunc("iReadC","MineRepair") / 10 > rand(100)) {
+					set .@drillheat,.@drillheat / rand(4,8);
+					specialeffect2 459;
+					message strcharinfo(0),callfunc("getMes",$@MnrSystemID,58);
+				}
+				
+				if (.@drillheat > .@drillmaxheat) {
+					specialeffect 155;
+					callfunc "setCoolDown",10;
+					soundeffectall "jack_frost.wav",0,.@curMap$,.@curX-5,.@curY-5,.@curX+5,.@curY+5;
+					callfunc "SaveC","drill",callfunc("iReadC","drill") - 1;
+					dispbottom ">> " + callfunc("getMes",$@MnrSystemID,7) + " " + callfunc("iReadC","drill");
+					pcblockmove getcharid(3),0;
+					set @mining,0;
+					mes "[^0000ff" + strcharinfo(0) + "^000000]";
+					mes callfunc("getMes",$@MnrSystemID,8);
+					close;
+				}
+
+				set .@deep,.@deep + 1;
+				
+				if (callfunc("iReadC","MineMerchBld") > rand(100)) {
+					set .@deep,.@deep + rand(1,2);
+					specialeffect2 376;
+					specialeffect2 107;
+					message strcharinfo(0),callfunc("getMes",$@MnrSystemID,59);
+				}
+
+				set .@x, .@x + .@duration;
+
+				// Select one of the mine items at random
+				set .@rndItem, rand(.@ic);
+
+				// Calculate the effective rate for this specific item
+				set .@effectiverate, .@rate[.@rndItem] + (.@increment[.@rndItem] * .@deep);
+				
+				// Debug Information for GM's (to view the probabilities while are calculated)
+				// if (getgmlevel() == 99) dispbottom "* Debug Info: current " + getitemname(.@item[.@rndItem]) + " rates: " + .@effectiverate + "/10000";
+				
+				// Calculate the Lucky Miner bonus
+				if (callfunc("iReadC","MineLuckyM")) set .@effectiverate, .@effectiverate + callfunc("getPct",.@effectiverate / 100, (callfunc("iReadC","MineLuckyM")*100)/20);
+				if (.@effectiverate > .@maxrate[.@rndItem]) set .@effectiverate, .@maxrate[.@rndItem];
+
+				// Check if the player catch a item
+				if (.@effectiverate >= rand(10000)) {
+					soundeffect "mavka_move.wav",0;
+					callfunc "getMineItem",.@item[.@rndItem];
+				}
+				
+				if (.@deep > 4) callfunc "SaveC","MinerExp", callfunc("iReadC","MinerExp") + rand(3); // 0-2% Miner Exp
+
+				// Level UP
+				if (callfunc("iReadC","MinerExp") >= 100 + callfunc("iReadC","MinerLvl") * (25 + callfunc("iReadC","MinerLvl"))) {
+					specialeffect2 568;
+					soundeffect "jupe_warp.wav",0;
+					callfunc "SaveC","MinerLvl", callfunc("iReadC","MinerLvl") + 1;
+					set .@mskp, 3 + (callfunc("iReadC","MinerLvl") / 5);
+					callfunc "SaveC","MinerSkPoints", callfunc("iReadC","MinerSkPoints") + .@mskp;
+					dispbottom callfunc("getMes",$@MnrSystemID,40) + " " + callfunc("iReadC","MinerLvl") + " " + callfunc("getMes",$@MnrSystemID,41);
+					dispbottom "> " + .@mskp + callfunc("getMes",$@MnrSystemID,42) + callfunc("iReadC","MinerSkPoints") + " " + callfunc("getMes",$@MnrSystemID,43);
+					dispbottom callfunc("getMes",$@MnrSystemID,44);
+					callfunc "SaveC","MinerExp", 0;
+				}
+
+				if (.@deep > 12) {
+					if (!rand(15)) {
+						set BaseExp, BaseExp + (NextBaseExp / 100); // 1% Base Exp
+					} else if (callfunc("iReadC","MineBaseEXP") / 10) > rand(100) {
+						set BaseExp, BaseExp + (NextBaseExp / 200); // 0.5% Base Exp
+					}
+				}
+
+				if (callfunc("iReadC","MineJobEXP") / 10 > rand(100)) set JobExp, JobExp + (NextJobExp / 100); // 0.1 to 1% Base Job
+				
+				if (callfunc("iReadC","MineRich") > rand(100)) {
+					specialeffect2 18;
+					set zeny,zeny + 1000;
+				}
+				if (!rand(8)) {
+					soundeffectall "aster_die.wav",0,.@curMap$,.@curX-5,.@curY-5,.@curX+5,.@curY+5;
+					makeitem $@GarbageMine[rand(getarraysize($@GarbageMine))],1,.@curMap$,rand(.@curX-1,.@curX+1),rand(.@curY-1,.@curY+1);
+				}
+				if (!rand(100)) {
+					if (callfunc("iReadC","MineAura") / 2 > rand(100)) {
+						message strcharinfo(0),callfunc("getMes",$@MnrSystemID,69);
+					} else {
+						sleep2 600;
+						soundeffectall "die_male.wav",0,.@curMap$,.@curX-5,.@curY-5,.@curX+5,.@curY+5;
+						// Change the last number in the rand if you added more accident messages
+						message strcharinfo(0),callfunc("getMes",$@MnrSystemID,rand(500,506));
+						callfunc "setCoolDown",30;
+						percentheal -rand(25,100),0;
+						pcblockmove getcharid(3),0;
+						set @mining,0;
+						close;
+					}
+				}
+				set .@NextLevelExp, (100 + callfunc("iReadC","MinerLvl") * (25 + callfunc("iReadC","MinerLvl")));
+				dispbottom "> " + @minename$ + " [" + callfunc("getMes",$@MnrSystemID,49) + " " + callfunc("iReadC","MinerLvl") + " / " + (callfunc("iReadC","MinerExp") * 100 / .@NextLevelExp) + "%]" + callfunc("getMes",$@MnrSystemID,39) + ": " + .@drillheat + "/" + .@drillmaxheat + " - " + callfunc("getMes",$@MnrSystemID,47) + ": " + .@deep;
+				sleep2 1000 - callfunc("getPct",1000, callfunc("iReadC","MineTurboDrll")*2);
+			}
+			if (!rand(100)) {
+				soundeffectall "earth_quake.wav",0,.@curMap$,.@curX-5,.@curY-5,.@curX+5,.@curY+5;
+				if (callfunc("iReadC","MineGuardian") > rand(100)) {
+					sleep2 600;
+					if (!rand(4)) {
+						soundeffectall "die_male.wav",0,.@curMap$,.@curX-5,.@curY-5,.@curX+5,.@curY+5;
+						percentheal -rand(25,100),0;
+						callfunc "setCoolDown",30;
+						areaannounce .@curMap$,@minex-@minesize,@miney-@minesize,@minex+@minesize,@miney+@minesize,strcharinfo(0) + " " + callfunc("getMes",$@MnrSystemID,67),0,0xff7c09;
+					} else {
+						areaannounce .@curMap$,@minex-@minesize,@miney-@minesize,@minex+@minesize,@miney+@minesize,strcharinfo(0) + " " + callfunc("getMes",$@MnrSystemID,68),0,0xff7c09;
+						callfunc "setCoolDown",10;
+					}
+					pcblockmove getcharid(3),0;
+					set @mining,0;
+					close;
+				}
+				specialeffect2 666;
+				specialeffect2 585;
+				callfunc "deleteMine",@mineid; // Destroy the mine
+				sleep2 600;
+				areaannounce .@curMap$,@minex-@minesize,@miney-@minesize,@minex+@minesize,@miney+@minesize,callfunc("getMes",$@MnrSystemID,50),0,0xff7c09;
+				callfunc "setCoolDown",10;
+				pcblockmove getcharid(3),0;
+				set @mining,0;
+				close;
+			}
+		} else {
+			set @mining,0;
+		}
+	}
+	pcblockmove getcharid(3),0;
+	callfunc "setCoolDown",10;
+	close;
+}
+
+function	script	getMineItem	{
+	set .@Qtt, 1 + (callfunc("iReadC","MineDblGain") / 2 > rand(100)?1:0);
+	if (!checkweight(getarg(0),.@Qtt)) {
+		dispbottom ">>> " + callfunc("getMes",$@MnrSystemID,65);
+		soundeffectall "aster_die.wav",0,.@curMap$,.@curX-5,.@curY-5,.@curX+5,.@curY+5;
+		makeitem getarg(0),1,.@curMap$,rand(.@curX-1,.@curX+1),rand(.@curY-1,.@curY+1);
+		makeitem getarg(0),1,.@curMap$,rand(.@curX-1,.@curX+1),rand(.@curY-1,.@curY+1);
+	} else {
+		if (callfunc("iReadC","MinePrivacy")) {
+			getitem getarg(0),1;
+			if (.@Qtt > 1) getitem getarg(0),1;
+		} else {
+			if (!getnameditem(getarg(0),getcharid(0))) getitem getarg(0),1;
+			if (.@Qtt > 1) if (!getnameditem(getarg(0),getcharid(0))) getitem getarg(0),1;
+		}
+	}
+	return;
+}
+
+function	script	deleteMine	{
+	query_sql "delete from mn_mine where id=" + getarg(0);
+	return;
+}
+
+-	script	mining_system	-1,{
+sCheckTable:
+	query_sql "SHOW TABLES LIKE '" + getarg(0) + "'",.@TExists$;
+	return .@TExists$[0] != "";
+OnInit:
+	set $@MnrSystemID, callfunc("getNPCID","mining");
+	
+	// List of the Drill Boots ID
+	setarray $@DrillBootsID[0],22000;
+	
+	// Reset Cost
+	set $@ResetCost,250000;
+	
+	// English Messages
+	set .@lc$,"en";
+	callfunc "newMes", $@MnrSystemID, 0, "I don't detect mines in this map.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 1, "Oh no... i broke my Boots, i have to buy a new one.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 2, "Drill...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 3, "Stop here!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 4, "My boots need a drill, i have to whisper 'make' to create one.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 5, "I have to wear Drill Boots.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 6, "Whisper 'make' to create a new drill, 'skill' to open the Miner Skill Panel and any other word to start the detection/excavation.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 7, "Drill count:",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 8, "Damn, i broke the drill, i can't keep digging! npc:mine -> make",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 9, "Creating a new Drill... don't move!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 10, "Reset",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 11, "I have to pay",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 12, "z to reset my Miner Skills",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 13, "Miner Skill Panel",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 14, "Train this Skill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 15, "Back",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 16, "Available Points",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 17, "Train the Skill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 18, "Dammit, the spell didn't work this time!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 19, "Yes, please!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 20, "No, thanks",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 21, "up to the right",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 22, "down to the right",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 23, "down to the left",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 24, "up to the left",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 25, "to the right",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 26, "to the left",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 27, "up",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 28, "down",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 29, "I found a",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 30, "in this map.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 31, "What should i do?",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 32, "Warp to the mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 33, "Show in the Minimap",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 34, "Detected a",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 35, "class mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 36, "tiles from here, to the",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 37, "mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 38, "This mine class is empty, i have to report it to the Administrator. [",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 39, "> Heat",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 40, "Congratulations! you ascended to level",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 41, "in mining.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 42, " Miner Skill Point gained (",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 43, "total)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 44, "> Assign your Miner Skill Points whispering 'skills' to npc:mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 45, "make",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 46, "skill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 47, "Depth",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 48, "I have no more space, i have to learn the 'Drill Box Skill' to increase my capacity.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 49, "Level",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 50, "The mine is Empty, i should find another place to work.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 51, "I can't excavate here again, i will try in an adjacent tile.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 52, "To excavate here i must be level",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 53, "and my current miner level is",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 54, "I can't detect the position of a mine, i have to get closer",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 55, "Close",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 56, "Detecting...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 57, "I can't do it 2 times in the same position...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 58, "Excelent, the drill was automatically cooled!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 59, "I dug deeper with 1 single movement, excellent!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 60, "The drill is still hot, i must wait a few seconds...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 61, "> To use this boots, whisper to npc:mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 62, "i'll collect the money.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 63, "Cancel",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 64, "Done",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 65, "Oh no, i'm exhausted with so heavy weight and my things are dropping out!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 66, "Level",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 66, "Excellent, my new drill is ready!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 67, "protected the integrity of the mine, but was injured!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 68, "protected the integrity of the mine without receiving damage!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 69, "The Miner Aura protected me from an accident!",.@lc$;
+	
+	// Skill Names
+	callfunc "newMes", $@MnrSystemID, 80, "Lynx Eye",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 81, "Diamond Head",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 82, "Faster Drill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 83, "Lucky Miner",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 84, "Quick Rest",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 85, "Money Maker",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 86, "Merchant Blood",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 87, "Weight Boots",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 88, "Double or Nothing",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 89, "Repair",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 90, "Drill Box",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 91, "Magical Detection",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 92, "Base Exp Booster",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 93, "Job Booster",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 94, "Boot Care",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 95, "Privacy",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 96, "Mine Guardian",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 97, "Miner Aura",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 98, "Corrosive Oil",.@lc$;
+
+	// Skill Descriptions
+	callfunc "newMes", $@MnrSystemID, 150, "Improved detection capability, at level 10 the player can jump right to the mine position or show it on the mini-map.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 151, "Increases the Drill resistance in (10 * Skill) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 152, "Increase the Drill speed in a (2 * Skill) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 153, "Increases the chances of obtaining minerals (Skill / 20) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 154, "Reduce the delay time between each excavation (10 * Skill) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 155, "Gives a chance of receiving 1,000 zeny every time the Drill spins. (Skill) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 156, "Increases the power of the drill (Skill) % (Exclusive for Merchant Class)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 157, "Increases the weight limit when using Driller Boots. (1 + Skill / 5) % (All Classes except Merchant)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 158, "Gives a chance of receiving 2 items at once. (Skill / 2) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 159, "Gives a chance of cool the Drill without stop the dig process (Skill / 10) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 160, "Allow you to create more than 1 Drill, increase 1 by Skill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 161, "Increase the detection range in (Skill %)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 162, "Increase the chances of gain Base EXP during the drill process. (Skill / 10) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 163, "Add chances of gain Job EXP during the dig process. (Skill / 10) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 164, "Decrease the chances of break the Driller Boots during the dig process (Skill %)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 165, "The gained items doesn't show the miner name anymore.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 166, "Gives a chance of receive damage to protect the mine from the destruction. (Skill %)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 167, "Decrease the chances of receive damage during the dig process. (Skill / 2 %)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 168, "Softens the rocks reducing the drill deterioration during the dig process. (Skill / 25)",.@lc$;
+	
+	// Mine Class Names
+	callfunc "newMes", $@MnrSystemID, 300, "Oridecon Mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 301, "Iron Mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 302, "Elunium Mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 303, "Jewel Mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 304, "Gold Mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 305, "Yggdrasil Mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 306, "Refined Items Mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 307, "Food Mine",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 308, "Taming Mine",.@lc$;
+
+	// Accident Messages
+	callfunc "newMes", $@MnrSystemID, 500, "Argh!, i broke my leg!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 501, "Ouch!, i have a bleeding finger, damn boot!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 502, "Damn, I broke my knee after that twist!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 503, "Holy sh!!t... that stone hit me right in the eye!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 504, "It burned my calf with the friction of this f*****g mine!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 505, "Ouch!, a root stuck in muy boot, it hurt my tendon!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 506, "Lucky day... a stream of boiling lava is flowing over my leg... it hurts!",.@lc$;
+
+	// Spanish Messages
+	set .@lc$,"es";
+	callfunc "newMes", $@MnrSystemID, 0, "No logro detectar venas de mineral en este mapa...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 1, "Oh no... se rompieron mis Botas, tendré que comprar unas nuevas.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 2, "Perforar...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 3, "Parar!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 4, "No me quedan brocas, debería susurrar la palabra 'crear' para crear algunas.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 5, "Debo equiparme unas Drill Boots.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 6, "Susurra 'crear' para fabricar una broca, 'skill' para abrir el Panel de Skills de minería y cualquier otra palabra para comenzar la detección/excavación.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 7, "Brocas creadas:",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 8, "Maldición, rompí la broca, no puedo seguir perforando! npc:mina -> crear",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 9, "Creando una broca... no te muevas!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 10, "Resetear",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 11, "Debo pagar",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 12, "z para resetear mis Skills de Minero.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 13, "Panel de Skills de Minería!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 14, "Entrenar esta Skill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 15, "Volver",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 16, "Puntos Disponibles",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 17, "¿Entrenar la Skill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 18, "Demonios, el conjuro no funcionó esta vez!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 19, "Si, por favor!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 20, "No, gracias.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 21, "arriba a la derecha",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 22, "abajo a la derecha",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 23, "abajo a la izquierda",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 24, "arriba a la izquierda",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 25, "a la derecha",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 26, "a la izquierda",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 27, "arriba",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 28, "abajo",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 29, "Encontré una",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 30, "en este mapa.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 31, "¿Que debería hacer?",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 32, "Transportarme a la mina",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 33, "Mostrar en el mini-mapa",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 34, "Detecto una",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 35, "a",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 36, "celdas de aquí, hacia",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 37, "hacia",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 38, "Esta mina está vacía, debo reportar el problema a un Administrador. [",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 39, "> Temperatura",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 40, "Felicidades! has ascendido al nivel",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 41, "en minería.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 42, " Puntos de minería obtenidos (",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 43, "en total)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 44, "> Asigna tus puntos susurrando la palabra 'skill' a npc:mina",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 45, "crear",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 46, "skill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 47, "Profundidad",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 48, "No tengo más espacio, tengo que aprender la skill 'Caja de Brocas' para aumentar mi capacidad.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 49, "Nivel",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 50, "La mina está vacía, debería buscar otro lugar donde trabajar.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 51, "No puedo excavar aquí nuevamente, lo intentaré en una celda adyacente.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 52, "Para excavar aquí debo ser nivel",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 53, "y mi nivel actual de minería es",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 54, "No logro detectar la posición exacta de una mina, necesito estar más cerca.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 55, "Cerrar",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 56, "Detectando...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 57, "No puedo hacerlo nuevamente en la misma posición...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 58, "Excelente, la broca se enfrió automáticamente!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 59, "Excavé más profundo con 1 solo movimiento, excelente!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 60, "La broca aún está caliente, debo esperar unos segundos...",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 61, "> Para usar estas botas, susurra a npc:mina",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 62, "Reuniré el dinero.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 63, "Cancelar",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 64, "Listo",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 65, "Oh no, no puedo soportar tanto peso y mis cosas comienzan a caer al suelo!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 66, "Excelente, mi nueva broca está lista!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 67, "protegió la integridad de la mina, pero resultó herido!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 68, "protegió la integridad de la mina sin recbir daños!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 69, "El Aura de Minero me ha protegido de un accidente!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 70, "¿Cuantos puntos subiré esta Skill?",.@lc$;
+	
+	// Nombres de Skill
+	callfunc "newMes", $@MnrSystemID, 80, "Ojo de Lince",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 81, "Punta de Diamante",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 82, "Broca Rápida",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 83, "Afortunado",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 84, "Descanso Rápido",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 85, "Loco por el Dinero",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 86, "Sangre Minera",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 87, "Botas de Aguante",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 88, "Doble o Nada",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 89, "Reparar",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 90, "Caja de Brocas",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 91, "Detección Mágica",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 92, "Potenciador de Base Exp",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 93, "Potenciador de Job Exp",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 94, "Botas Bien Cuidadas",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 95, "Privacidad",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 96, "Guardian de la Mina",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 97, "Aura de Minero",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 98, "Aceite Corrosivo",.@lc$;
+
+	// Descripciones de Skill
+	callfunc "newMes", $@MnrSystemID, 150, "Mejora la capacidad de detección del personaje, en nivel 10 el jugador podrá saltar a la posición de la mina o fijarla en el mini-mapa.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 151, "Aumenta la resistencia de la broca en un (10 * Skill) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 152, "Aumenta la velocidad de la broca en un (2 * Skill) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 153, "Aumenta las probabilidades de obtener minerales en (Skill / 20) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 154, "Reduce el tiempo de espera entre cada excavación en (10 * Skill) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 155, "Da una oportunidad de ganar 1,000 zeny cada vez que la broca hace un giro (Skill) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 156, "Aumenta el poder de la broca en (Skill % ) (Exclusivo para Clase Merchant)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 157, "Aumenta la cantidad de carga del personaje al usar Driller Boots. (1 + Skill / 5) % (No disponible para Merchant Class)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 158, "Probabilidad de recoger el doble de un item con probabilidad de Skill / 2 %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 159, "Da una oportunidad de enfriar la broca sin detener la excavación (Skill / 10) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 160, "Permite crear más de 1 broca, aumenta 1 por Skill",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 161, "Aumenta el rango de detección en (Skill %)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 162, "Aumenta las probabilidades de ganar Base EXP durante el proceso de excavación. (Skill / 10) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 163, "Añade probabilidades de ganar Job EXP durante el proceso de excavación. (Skill / 10) %",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 164, "Reduce la posibilidad de romper las botas durante el proceso de excavasión (Skill %)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 165, "Los items obtenidos de la mina no tendrán tu nombre.",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 166, "Añade la probabilidad de recibir daño a cambio de proteger la destrucción de la mina. (Skill %)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 167, "Reduce la probabilidad de recibir daño durante la excavasión. (Skill / 2 %)",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 168, "Suaviza las rocas reduciendo el desgaste de la broca en (Skill / 25)",.@lc$;
+	
+	// Nombre de Tipos de Minas
+	callfunc "newMes", $@MnrSystemID, 300, "Mina de Oridecon",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 301, "Mina de Acero",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 302, "Mina de Elunium",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 303, "Mina de Joyas",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 304, "Mina de Oro",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 305, "Mina de Yggdrasil",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 306, "Mina de Objetos Refinados",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 307, "Mina de Comidas",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 308, "Mina de Tamings",.@lc$;
+	
+	// Accident Messages
+	callfunc "newMes", $@MnrSystemID, 500, "Argh!, me rompí la pierna!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 501, "Ouch!, tengo un dedo ensangrentado, maldita bota!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 502, "Demonios, me rompí la rodilla al dar ese giro!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 503, "Maldición... esa piedra me pegó justo en el ojo!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 504, "Me quemé la pantorrilla de tanta fricción con esta odiosa mina!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 505, "Ouch!, una raíz se atascó en mi bota, me dañé los tendones!",.@lc$;
+	callfunc "newMes", $@MnrSystemID, 506, "Día de suerte... un chorro de lava circula por mi pierna... me dueleee!",.@lc$;
+
+
+	// Skills Codes (readonly, don't change or the script will fail)
+	setarray $@MnrSkillNames$[0],
+		"MineLynxEye",	   // Lynx Eye	
+		"MineDiamDrll",	   // Diamond Head
+		"MineTurboDrll",   // Faster Drill
+		"MineLuckyM",	   // Lucky Miner
+		"MineResistant",   // Quick Rest
+		"MineRich",	   // Money Maker
+		"MineMerchBld",	   // Merchant Blood
+		"MineWeight",	   // Weight Boots
+		"MineDblGain",	   // Double or Nothing
+		"MineRepair",	   // Repair
+		"MineDrillBox",	   // Drill Box
+		"MineMagicDet",	   // Magical Detection
+		"MineBaseEXP",	   // Base Exp Booster
+		"MineJobEXP",	   // Job Booster
+		"MineBootCare",	   // Boot Care
+		"MinePrivacy",	   // Privacy
+		"MineGuardian",	   // Mine Guardian
+		"MineAura",	   // Miner Aura
+		"MineCorrOil";	   // Corrosive Oil
+	// Skill Max Level
+	setarray $@MnrSkillsLv[0],
+		10,		   // Lynx Eye	
+		10,		   // Diamond Head
+		25,		   // Faster Drill
+		10,		   // Lucky Miner
+		10,		   // Quick Rest
+		20,		   // Money Maker
+		20,		   // Merchant Blood
+		45,		   // Weight Boots
+		100,		   // Double or Nothing
+		50,		   // Repair
+		50,		   // Drill Box
+		100,		   // Magical Detection
+		100,		   // Base Exp Booster
+		100,		   // Job Booster
+		100,		   // Boot Care
+		1,		   // Privacy
+		50,		   // Mine Guardian
+		100,		   // Miner Aura
+		100;		   // Corrosive Oil
+		
+	// Skill Class Allow
+	setarray $@MnrSkillsCls[0],
+		0,		   // Lynx Eye
+		0,		   // Diamond Head
+		0,		   // Faster Drill
+		0,		   // Lucky Miner
+		0,		   // Quick Rest
+		0,		   // Money Maker
+		EAJ_MERCHANT,	   // Merchant Blood
+		0,		   // Weight Boots
+		0,		   // Double or Nothing
+		0,		   // Repair
+		0,		   // Drill Box
+		0,		   // Magical Detection
+		0,		   // Base Exp Booster
+		0,		   // Job Booster
+		0,		   // Boot Care
+		0,		   // Privacy
+		0,		   // Mine Guardian
+		0,		   // Miner Aura
+		0;		   // Corrosive Oil
+		
+	// Skill Class Restriction
+	setarray $@MnrSkillsRst[0],
+		0,		   // Lynx Eye
+		0,		   // Diamond Head
+		0,		   // Faster Drill
+		0,		   // Lucky Miner
+		0,		   // Quick Rest
+		0,		   // Money Maker
+		0,		   // Merchant Blood
+		EAJ_MERCHANT,	   // Weight Boots
+		0,		   // Double or Nothing
+		0,		   // Repair
+		0,		   // Drill Box
+		0,		   // Magical Detection
+		0,		   // Base Exp Booster
+		0,		   // Job Booster
+		0,		   // Boot Care
+		0,		   // Privacy
+		0,		   // Mine Guardian
+		0,		   // Miner Aura
+		0;		   // Corrosive Oil
+	
+	// Garbage Items (Drops while digging)
+	setarray $@GarbageMine[0],7049,713,902,909,908,914,915,916,935,949,1093,1092,7134,12020,507,508,509,510,511,516,523,525,528,531,532,533,534,604,611,705,712,917,918,919,921,926,939;
+	
+	// Table & Data creation
+	if (!callsub(sCheckTable,"mn_class")) {
+		debugmes "Miner World: Creating table `mn_class`...";
+		query_sql "CREATE TABLE `mn_class` ( `mclass` smallint(5) unsigned NOT NULL DEFAULT '0', `name_id` int(11) unsigned NOT NULL DEFAULT '0', `level2detect` smallint(5) unsigned NOT NULL DEFAULT '0', `distance2detect` smallint(5) NOT NULL DEFAULT '0', `level2drill` smallint(5) unsigned NOT NULL DEFAULT '0', `roughness` smallint(5) unsigned NOT NULL DEFAULT '0', PRIMARY KEY (`mclass`) ) ENGINE=MyISAM;";
+		
+		debugmes "Miner World: Creating default values for table ...`mn_class`";
+		query_sql "REPLACE INTO `mn_class` (`mclass`,`name_id`,`level2detect`,`distance2detect`,`level2drill`,`roughness`) values (1,300,0,100,0,12),(2,301,0,100,0,10),(4,302,0,100,0,12),(8,303,0,35,20,16),(16,304,5,5,50,19),(32,305,10,20,10,17),(64,306,20,50,200,20),(128,307,1,15,10,12),(256,308,5,5,5,12);";
+
+		debugmes "Miner World: Creating table `mn_item`...";
+		query_sql "CREATE TABLE `mn_item` ( `mclass` smallint(5) unsigned NOT NULL DEFAULT '0', `item` smallint(5) unsigned NOT NULL DEFAULT '0', `rate` smallint(5) unsigned NOT NULL DEFAULT '0', `rateincrement` smallint(5) unsigned NOT NULL DEFAULT '0', `ratelimit` smallint(5) unsigned NOT NULL DEFAULT '0', PRIMARY KEY (`mclass`,`item`) ) ENGINE=MyISAM;";
+		
+		debugmes "Miner World: Creating default values for table ...`mn_item`";
+		query_sql "REPLACE INTO `mn_item` (`mclass`,`item`,`rate`,`rateincrement`,`ratelimit`) VALUES (1,756,1000,100,5000),(1,909,1000,100,10000),(1,984,250,100,10000),(1,6240,10,10,1000),(2,625,1000,100,10000),(2,909,1000,100,10000),(2,998,1000,100,5000),(2,999,250,100,4000),(4,757,1000,500,5000),(4,909,1000,500,10000),(4,985,250,100,10000),(4,6241,10,10,1000),(8,714,500,100,1500),(8,721,250,100,2000),(8,722,250,100,2000),(8,723,250,100,2000),(8,724,150,100,5000),(8,725,250,100,2000),(8,726,250,100,2000),(8,727,250,100,2000),(8,728,250,100,2000),(8,729,250,100,2000),(8,730,250,100,2000),(8,731,200,100,2000),(8,732,150,100,2000),(8,733,1000,100,10000),(8,909,1000,100,10000),(16,909,1000,100,5000),(16,969,250,100,1000),(16,2610,500,100,2500),(16,2636,500,100,2500),(16,5091,500,100,2500),(16,5159,250,100,5000),(16,5179,250,100,5000),(16,5207,250,100,5000),(16,5223,250,100,5000),(16,5295,250,100,5000),(16,7231,1000,100,5000),(32,604,1000,100,2000),(32,607,400,200,2000),(32,608,600,250,4000),(32,12103,100,100,500),(32,13517,100,100,500),(64,909,1000,100,10000),(64,1203,250,100,10000),(64,13647,10,10,1000),(64,13648,10,10,1000),(64,13649,10,10,1000),(64,13650,10,0,1000),(64,13651,10,10,1000),(64,13652,10,10,1000),(64,13653,10,10,1000),(64,13654,10,10,1000),(64,13655,10,10,1000),(64,13656,10,10,1000),(64,13657,10,10,1000),(64,13658,10,10,1000),(64,13659,10,10,1000),(64,13660,10,10,1000),(64,13661,10,10,1000),(64,13662,10,10,1000),(64,13663,10,10,1000),(64,13664,10,10,1000),(64,13665,10,10,1000),(64,13666,10,10,1000),(64,13667,10,10,1000),(64,13668,10,10,1000),(64,13669,10,10,1000),(64,13670,10,10,1000),(64,13671,10,10,1000),(64,13672,10,10,1000),(64,13673,10,10,1000),(64,13674,10,10,1000),(64,13675,10,10,1000),(64,13676,5,10,1000),(64,13677,5,10,1000),(64,13678,5,10,1000),(64,13679,5,10,1000),(64,13680,5,10,1000),(64,13681,5,10,1000),(64,13682,5,10,1000),(64,13683,5,10,1000),(64,13684,5,10,1000),(64,13685,5,10,1000),(64,13686,5,10,1000),(64,13687,5,10,1000),(64,13688,5,10,1000),(128,909,1000,500,10000),(128,12041,60,10,1000),(128,12042,60,10,1000),(128,12043,60,10,1000),(128,12044,60,10,1000),(128,12045,60,10,1000),(128,12046,60,10,1000),(128,12047,60,10,1000),(128,12048,60,10,1000),(128,12049,60,10,1000),(128,12050,60,10,1000),(128,12051,60,10,1000),(128,12052,60,10,1000),(128,12053,60,10,1000),(128,12054,60,10,1000),(128,12055,60,10,1000),(128,12056,60,10,1000),(128,12057,60,10,1000),(128,12058,60,10,1000),(128,12059,60,10,1000),(128,12060,60,10,1000),(128,12061,60,10,1000),(128,12062,60,10,1000),(128,12063,60,10,1000),(128,12065,60,10,1000),(128,12066,60,10,1000),(128,12067,60,10,1000),(128,12068,60,10,1000),(128,12069,60,10,1000),(128,12070,60,10,1000),(128,12071,60,10,1000),(128,12072,60,10,1000),(128,12073,60,10,1000),(128,12074,60,10,1000),(128,12075,60,10,1000),(128,12076,60,10,1000),(128,12077,60,10,1000),(128,12078,60,10,1000),(128,12079,60,10,1000),(128,12080,60,10,1000),(128,12081,60,10,1000),(128,12082,60,10,1000),(128,12083,60,10,1000),(128,12084,60,10,1000),(128,12085,60,10,1000),(128,12086,60,10,1000),(128,12087,60,10,1000),(128,12088,60,10,1000),(128,12089,60,10,1000),(128,12090,60,10,1000),(128,12091,60,10,1000),(128,12092,60,10,1000),(128,12093,60,10,1000),(128,12094,60,10,1000),(128,12095,60,10,1000),(128,12096,60,10,1000),(128,12097,60,10,1000),(128,12098,60,10,1000),(128,12099,60,10,1000),(128,12100,60,10,1000),(256,619,250,100,500),(256,620,250,100,500),(256,621,250,100,500),(256,622,250,100,500),(256,623,250,100,500),(256,624,250,100,500),(256,625,250,100,500),(256,626,250,100,500),(256,627,250,100,500),(256,628,250,100,500),(256,629,250,100,500),(256,630,250,100,500),(256,631,250,100,500),(256,632,250,100,500),(256,633,250,100,500),(256,634,250,100,500),(256,635,250,100,500),(256,636,250,100,500),(256,637,250,100,500),(256,638,250,100,500),(256,639,250,100,500),(256,640,250,100,500),(256,641,250,100,500),(256,642,250,100,500),(256,659,250,100,500),(256,660,250,100,500),(256,661,250,100,500),(256,909,1000,500,10000),(256,12357,250,100,500),(256,12358,250,100,500),(256,12359,250,100,500),(256,12360,250,100,500),(256,12361,250,100,500),(256,12362,250,100,500),(256,12363,250,100,500),(256,12364,250,100,500),(256,12365,250,100,500),(256,12366,250,100,500),(256,12367,250,100,500),(256,12368,250,100,500),(256,12369,250,100,500),(256,12370,250,100,500),(256,12371,250,100,500),(256,12372,250,100,500),(256,12373,250,100,500),(256,12395,250,100,500),(256,14569,250,100,500),(256,14570,250,100,500),(256,14571,250,100,500),(256,14572,250,100,500),(256,14573,250,100,500),(256,14574,250,100,500);";
+
+		debugmes "Miner World: Creating table `mn_maps`...";
+		query_sql "CREATE TABLE `mn_maps` ( `map` varchar(24) NOT NULL DEFAULT '', `mines` smallint(5) unsigned NOT NULL DEFAULT '1', `mtypes` int(11) unsigned NOT NULL DEFAULT '1', PRIMARY KEY (`map`) ) ENGINE=MyISAM;";
+		
+		debugmes "Miner World: Creating default values for table ...`mn_maps`";
+		query_sql "REPLACE INTO `mn_maps` (`map`,`mines`,`mtypes`) VALUES ('anthell01',5,7),('anthell02',5,7),('bra_dun01',1,128),('bra_dun02',1,128),('cmd_fild02',1,14),('cmd_fild03',1,384),('cmd_fild04',1,7),('ein_fild01',2,2),('ein_fild02',2,4),('ein_fild05',1,16),('ein_fild07',1,129),('gefenia04',1,80),('gef_fild06',1,257),('gef_fild08',1,7),('gef_fild09',1,26),('gef_fild10',1,10),('gef_fild11',2,24),('gef_fild14',2,399),('gld_dun01',1,8),('gld_dun03',1,160),('gl_dun01',1,128),('gl_dun02',2,256),('gon_dun03',1,16),('hu_fild02',1,0),('ice_dun03',1,184),('iz_dun02',3,15),('lhz_dun03',1,64),('mag_dun01',5,7),('mjo_dun01',2,7),('mjo_dun03',2,24),('moc_fild07',4,7),('nameless_n',2,128),('pay_dun02',4,2),('pay_dun03',3,5),('prt_fild09',2,7),('thor_v01',1,128),('thor_v03',1,256),('yggdrasil01',6,32);";
+		
+		debugmes "Miner World: Creating table `mn_mine`...";
+		query_sql "CREATE TABLE `mn_mine` ( `id` int(11) unsigned NOT NULL AUTO_INCREMENT, `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00', `map` varchar(24) NOT NULL DEFAULT '', `mclass` smallint(5) unsigned NOT NULL DEFAULT '0', `x` smallint(5) unsigned NOT NULL DEFAULT '0', `y` smallint(5) unsigned NOT NULL DEFAULT '0', `size` tinyint(3) unsigned NOT NULL DEFAULT '1', PRIMARY KEY (`id`), KEY `idx_map` (`map`), KEY `idx_type` (`mclass`) ) ENGINE=MyISAM AUTO_INCREMENT=1;";
+		
+		debugmes "Miner World: Initialization Complete!";
+	}
+
+// This process creates new mines where were exhausted
+OnTimer360000: //  Each 5 minutes the system check for destroyed mines and re-creates it in new coordinates
+	set .@tmr,0;
+	set .@Page,0;
+	set .@PageSize,10;
+	while (set(.@tot, query_sql("select map, mines, mtypes from mn_maps limit " + .@Page + "," + .@PageSize,.@map$,.@maxm,.@mtypes))) {
+		for (set .@x,0; .@x < .@tot; set .@x, .@x + 1) {
+			query_sql "select count(*) from mn_mine where map='" + .@map$[.@x] + "'",.@remain;
+			while (.@remain[0] < .@maxm[.@x]) {
+				query_sql "select mclass from mn_class" + (.@mtypes[.@x]==0?"":" where mclass & " + .@mtypes[.@x]) + " order by rand() limit 1",.@nClass;
+				set .@mx,-1;
+				while (.@mx<0) {
+					if (!checkcell (.@map$[.@x],set(.@mx,rand(1,500)),set(.@my,rand(1,500)),cell_chkpass)) set .@mx,-1;
+				}
+				// Probabilities of 30% to create a new mine at this pass... or will be created in a future process
+				if (rand(10) < 3) {
+					query_sql "insert into mn_mine (created, map, mclass, x, y, size) values (now(), '" + .@map$[.@x] + "'," + .@nClass[0] + "," + .@mx + "," + .@my + "," + rand(3,6) + ")";
+					debugmes "> Mine System: Creating a new mine in " + .@map$[.@x] + "...";
+				}
+				set .@remain[0], .@remain[0] + 1;
+			}
+		}
+		set .@Page, .@Page + .@PageSize;
+	}
+	initnpctimer;
+}
+
+// NPC where players buy the Boots
+prontera,148,249,5	script	David Watson	402,2,2,{
+	mes "[^ff0000David Watson^000000]";
+	if (baselevel < 50) {
+		mes callfunc("getMes",$@DavidWatson,0);
+		close;
+	}
+	if (!callfunc("iReadA","DrillBootsQuest")) {
+		mes callfunc("getMes",$@DavidWatson,1) + " " + strcharinfo(0) + callfunc("getMes",$@DavidWatson,2);
+		next;
+		if (select(callfunc("getMes",$@DavidWatson,3),callfunc("getMes",$@DavidWatson,4)) == 2) {
+			mes "[^ff0000David Watson^000000]";
+			mes callfunc("getMes",$@DavidWatson,5);
+			close;
+		}
+		mes "[^ff0000David Watson^000000]";
+		mes callfunc("getMes",$@DavidWatson,6);
+		next;
+		mes "[^ff0000David Watson^000000]";
+		mes callfunc("getMes",$@DavidWatson,7);
+		next;
+		mes "[^ff0000David Watson^000000]";
+		mes callfunc("getMes",$@DavidWatson,8);
+		next;
+		if (select(callfunc("getMes",$@DavidWatson,9),callfunc("getMes",$@DavidWatson,10)) == 2) {
+			callfunc "SaveA","DrillBootsQuest",1;
+			mes "[^ff0000David Watson^000000]";
+			mes callfunc("getMes",$@DavidWatson,11);
+			close;
+		}
+		if (zeny < 130000) {
+			mes callfunc("getMes",$@DavidWatson,12);
+			close;
+		}
+		if (!checkweight(22000,1)) {
+			mes callfunc("getMes",$@DavidWatson,13);
+			close;
+		}
+		set zeny, zeny - 130000;
+		callfunc "SaveA","DrillBootsQuest",1;
+		if (!getnameditem(22000,getcharid(0))) getitem 22000,1;
+		mes "[^ff0000David Watson^000000]";
+		mes callfunc("getMes",$@DavidWatson,14);
+		close;
+	}
+	mes callfunc("getMes",$@DavidWatson,1) + " " + strcharinfo(0) + callfunc("getMes",$@DavidWatson,15);
+	next;
+	if (select(callfunc("getMes",$@DavidWatson,18),callfunc("getMes",$@DavidWatson,10)) == 2) {
+		mes "[^ff0000David Watson^000000]";
+		mes callfunc("getMes",$@DavidWatson,5);
+		close;
+	}
+	mes "[^ff0000David Watson^000000]";
+	if (zeny < 260000) {
+		mes callfunc("getMes",$@DavidWatson,16);
+		close;
+	}
+	if (!checkweight(22000,1)) {
+		mes callfunc("getMes",$@DavidWatson,13);
+		close;
+	}
+	set zeny,zeny - 260000;
+	if (!getnameditem(22000,getcharid(0))) getitem 22000,1;
+	mes callfunc("getMes",$@DavidWatson,14);
+	close;
+OnTouch:
+	if (!callfunc("iReadA","DrillBootsQuest")) npctalk "pssst... " + strcharinfo(0) + "... " + callfunc("getMes",$@DavidWatson,17);
+	end;
+OnInit:
+
+	set $@DavidWatson, callfunc("getNPCID","davidwtsn");
+
+	// English Messages
+	set .@lc$,"en";
+	callfunc "newMes", $@DavidWatson, 0, "Oh, sorry, you're too young for this, come back when you are level 50.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 1, "Hello",.@lc$;
+	callfunc "newMes", $@DavidWatson, 2, ", my name is David Watson and i'm looking for volunteers... could be very interesting for you.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 3, "What's it about?",.@lc$;
+	callfunc "newMes", $@DavidWatson, 4, "Not interested, thank you.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 5, "Understood, will be another time.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 6, "I am the creator of the Driller Boots, that allow work on mines much better than a common pike.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 7, "but before advertising them, i need volunteers to perform tests.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 8, "Are you interested in buying my Driller Boots at half price?",.@lc$;
+	callfunc "newMes", $@DavidWatson, 9, "Yes (130,000z)",.@lc$;
+	callfunc "newMes", $@DavidWatson, 10, "I'm not interested, thanks.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 11, "Ok, but next time i will offer the normal price.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 12, "Unfortunately you do not have enough money.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 13, "I'm sorry, you're overweight.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 14, "Here they are, thank you very much.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 15, ", do you want to buy Drill Boots?",.@lc$;
+	callfunc "newMes", $@DavidWatson, 16, "Fine, gathers the 260.000z, i'll be waiting right here",.@lc$;
+	callfunc "newMes", $@DavidWatson, 17, "i have a secret that will surely interest you!",.@lc$;
+	callfunc "newMes", $@DavidWatson, 18, "Yes (260,000z)",.@lc$;
+	
+	
+	// Spanish Messages
+	set .@lc$,"es";
+	callfunc "newMes", $@DavidWatson, 0, "Oh, lo lamento, eres demasiado joven para esto, regresa cuando seas nivel 50.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 1, "Hola",.@lc$;
+	callfunc "newMes", $@DavidWatson, 2, ", me llamo David Watson y estoy buscando voluntarios... podría ser muy beneficioso para ti.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 3, "¿De que se trata?",.@lc$;
+	callfunc "newMes", $@DavidWatson, 4, "No me interesa, gracias.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 5, "Como quieras, adios.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 6, "Inventé unas botas especiales que permiten extraer minerales de una mina mucho mejor que con una pica.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 7, "Pero antes de comercializarlas, necesito voluntarios que realicen pruebas.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 8, "¿Te interesa comprar unas botas taladradoras a mitad de precio?",.@lc$;
+	callfunc "newMes", $@DavidWatson, 9, "Si (130,000z)",.@lc$;
+	callfunc "newMes", $@DavidWatson, 10, "No me interesa, gracias.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 11, "Ok, pero la próxima vez tendrás que pagar el precio normal.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 12, "Lamentablemente no tienes dinero suficiente.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 13, "Lo lamento, tienes exceso de peso.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 14, "Aquí las tienes, muchas gracias.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 15, ", ¿quieres comprar unas botas taladradoras?",.@lc$;
+	callfunc "newMes", $@DavidWatson, 16, "Bien, reune los 260,000z, te estaré esperando aquí mismo.",.@lc$;
+	callfunc "newMes", $@DavidWatson, 17, "tengo un secreto que seguramente te interesará!",.@lc$;
+	callfunc "newMes", $@DavidWatson, 18, "Si (260,000z)",.@lc$;	
+}

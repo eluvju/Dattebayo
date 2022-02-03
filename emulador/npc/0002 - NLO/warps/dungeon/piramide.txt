@@ -1,0 +1,119 @@
+
+//Permissão Rank C Suna
+//Permissão Rank B Konoha
+
+moc_fild19,96,99,0	script	 #enterpiramide01	111	,5,5,{
+
+
+	.@npc$ = "^D2691E[ Grande Piramide Antiga ]^000000";
+
+	if(countitem(662) == 0) { goto saida; }	
+	if(baselevel <= 124) { goto saida; }
+	if(baselevel >= 125) { goto entrar; }
+
+
+	entrar:
+	
+	mes .@npc$;
+	mes " ";
+	mes "^FFA500"+strcharinfo(0)+"^000000 esta e uma Zona ^993399Rank B^000000, Tem certeza que deseja entrar?";
+	next;
+	menu "Quero Entrar",entrar2,"Nao Estou preparado",saida;
+		
+	entrar2:
+	
+	mes .@npc$;
+	mes " ";
+	mes "Eu deveria ter pego uma ^FF0000Tocha^000000";
+	next;
+	warp "moc_pryd01",193,10;
+	end;
+	
+	saida:
+	
+	mes .@npc$;
+	mes " ";
+	mes "Va treinar jovem shinobi, volte apenas quando estiver preparado.";
+	close;
+
+	end;
+
+}
+
+//Permissão Rank C Suna
+//Permissão Rank B Konoha
+
+
+moc_fild19,96,100,0	script	 #enterpiramide02	111	,5,5,{
+
+
+
+	.@npc$ = "^D2691E[ Grande Piramide Antiga ]^000000";
+
+	if(baselevel >= 125) { goto entrar; }
+	if(countitem(662) == 0) { goto saida; }	
+	if(baselevel <= 124) { goto saida; }
+
+
+	entrar:
+	
+	mes .@npc$;
+	mes " ";
+	mes "^FFA500"+strcharinfo(0)+"^000000 esta e uma Zona ^008000Rank B^000000, Tem certeza que deseja entrar?";
+	next;
+	menu "Quero Entrar",entrar2,"Nao Estou preparado",saida;
+		
+	entrar2:
+	
+	mes .@npc$;
+	mes " ";
+	mes "Eu deveria ter pego uma ^FF0000Tocha^000000";
+	next;
+	warp "moc_pryd01",193,10;
+	end;
+	
+	saida:
+	
+	mes .@npc$;
+	mes " ";
+	mes "Va treinar jovem shinobi, volte apenas quando estiver preparado.";
+	close;
+
+	end;
+
+}
+
+// Primeiro Andar
+moc_pryd01,10,195,0	warp	mocp01	5,2,moc_pryd02,10,192
+moc_pryd02,10,195,0	warp	mocp01-1	5,2,moc_pryd01,10,192
+
+moc_pryd01,90,109,0	warp	mocp02	1,2,moc_prydb1,100,185
+moc_prydb1,100,191,0	warp	moco02-1	2,2,moc_pryd01,90,105
+
+// Basement Primeiro Andar
+//moc_prydb1,100,55,0	warp	mocp09-1	2,1,moc_pryd05,94,96
+
+moc_prydb1,100,104,0	warp	mocp10	5,2,moc_prydb1,100,74
+moc_prydb1,100,77,0	warp	mocp10-1	5,2,moc_prydb1,100,107
+moc_prydb1,111,115,0	warp	mocp11	2,6,moc_prydb1,145,115
+moc_prydb1,142,115,0	warp	mocp11-1	2,6,moc_prydb1,108,115
+moc_prydb1,59,115,0	warp	mocp12	2,6,moc_prydb1,90,115
+moc_prydb1,87,115,0	warp	mocp12-1	2,6,moc_prydb1,56,115
+
+// Segundo Andar
+moc_pryd02,99,100,0	warp	mocp03	3,2,moc_pryd05,94,96
+moc_pryd05,94,99,0	warp	mocp03-1	3,2,moc_pryd02,99,93
+
+// Terceiro Andar
+moc_pryd05,223,9,0	warp	mocp04	2,2,moc_pryd06,192,10
+moc_pryd06,197,10,0	warp	mocp04-1	2,3,moc_pryd05,220,9
+
+// Quarto Andar
+
+moc_pryd06,101,183,0	warp	mocp05	2,3,moc_fild16,205,293
+moc_fild16,205,296,0	warp	mocp05-1	2,3,moc_pryd06,101,177
+
+
+
+
+

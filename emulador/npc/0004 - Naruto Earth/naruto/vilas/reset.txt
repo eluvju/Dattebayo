@@ -1,0 +1,43 @@
+//===== eAthena Script =======================================
+//= Reset NPC for Athena by Script & DB Team
+//===== By: ================================================== 
+//= eAthena Team
+//===== Current Version: ===================================== 
+//= 1.1
+//===== Compatible With: ===================================== 
+//= Any eAthena Version
+//===== Description: ========================================= 
+//= Resets skills, stats, or both.
+//===== Additional Comments: ================================= 
+//= 1.0 First Version
+//= 1.1 Optimized for the greater good. [Kisuka]
+//============================================================ 
+kiragakure,208,188,4	script	Resetadora::reset	59,{
+	mes "[Reset Girl]";
+	mes "Eu posso resetar seus atributos!.";
+	mes "Reset Stats: 5,000 Iene";
+	mes "Gostaria de resetar?";
+	next;
+	switch(select("^FF3355Sim:Não:^000000")) {
+		case 1:
+			mes "[Reset Girl]";
+			if (Zeny < 5000) {
+				mes "Sorry, you don't have enough Zeny.";
+				close;
+			}
+			mes "Tudo bem, lá vamos nós!";
+			set Zeny,zeny-5000;
+			ResetStatus;
+			if (Class == 4049) {set StatusPoint, StatusPoint +52;}
+			close;
+		case 2:
+			mes "[Reset Girl]";
+				mes "Tudo bem, Até a próxima.";
+				close;
+	
+	}
+}
+
+konoha3,119,263,5	duplicate(reset)	Resetadora#1	59
+kumogakure,106,82,5	duplicate(reset)	Resetadora#4	59
+cave,80,97,5	duplicate(reset)	Resetadora#5	59

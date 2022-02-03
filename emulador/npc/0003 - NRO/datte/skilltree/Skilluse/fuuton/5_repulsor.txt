@@ -1,0 +1,35 @@
+-	script	on_PC_UseSkillf05	-1,{
+    end;
+//When a Character uses a skill
+
+//repulsor
+
+onPcUseSkillEvent:
+
+           if(lskillid == 115) {
+
+
+if (getskilllv(115) == 1) {
+
+if (repulsor != 1) {end;}
+if (skill115 >= 50) {skill 115,2,0; set skill115,0; dispbottom "[Sys] Level up"; end; }
+set skill115,skill115 +1;
+dispbottom "[Jutsu level] Pergaminho repulsor level 1: "+skill115+" de 50";
+
+end;
+
+}
+
+if (getskilllv(115) == 2) {
+if (repulsor != 1) {end;}
+if (skill115 >= 150) {skill 115,3,0; set skill115,0; dispbottom "[Sys] Level up"; end;}
+set skill115,skill115 +1;
+dispbottom "[Jutsu level] Pergaminho repulsor level 2: "+skill115+" de 150";
+
+end;
+
+}
+
+                end;
+            }    
+}

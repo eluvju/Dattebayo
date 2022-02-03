@@ -1,0 +1,38 @@
+ama_in01,96,26,3	script	Medico	734,{
+	show "[Medico]";
+	if(getskilllv(535)) goto L_alreadyhave;
+	if(elemento >= 2){goto L_elementos;}
+	if(elementomedico == 1){goto L_alreadyhave;}	
+	if(elemento == 0){goto aprendermedico;}
+	if(elemento == 1){goto aprendermedico;}
+
+
+	aprendermedico:
+	show "Olá caro shinobi, voce gostaria de aprender o Medico (Jutsu Médico) ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	next;
+	show "[Medico]";
+	show "Muito bem, muito sábia essa escolha!";
+	set elementomedico,elementomedico + 1;
+	set elemento,elemento + 1;
+	set genin,1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	close;
+
+L_alreadyhave:
+	next;
+	show "[Medico]";
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

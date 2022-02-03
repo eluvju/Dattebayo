@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkilltai04	-1,{
+    end;
+//When a Character uses a skill
+
+//Tokken
+
+onPcUseSkillEvent:
+
+           if(lskillid == 58) {
+
+
+if (getskilllv(58) == 1) {
+
+if (Tokken != 1) {end;}
+if (skill58 >= 50) {skill 58,2,0; set skill58,0; dispbottom "[Sys] Level up"; end; }
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 1: "+skill58+" de 50";
+
+end;
+
+}
+
+if (getskilllv(58) == 2) {
+if (Tokken != 1) {end;}
+if (skill58 >= 100) {skill 58,3,0; set skill58,0; dispbottom "[Sys] Level up"; end;}
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 2: "+skill58+" de 100";
+
+end;
+
+}
+
+if (getskilllv(58) == 3) {
+
+if (Tokken != 1) {end;}
+if (skill58 >= 150) {skill 58,4,0; set skill58,0; dispbottom "[Sys] Level up"; end;}
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 3: "+skill58+" de 150";
+
+end;
+
+}
+
+if (getskilllv(58) == 4) {
+if (Tokken != 1) {end;}
+if (skill58 >= 200) {skill 58,5,0; set skill58,0; dispbottom "[Sys] Level up"; end;}
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 4: "+skill58+" de 200";
+
+end;
+
+}
+
+if (getskilllv(58) == 5) {
+if (Tokken != 1) {end;}
+if (skill58 >= 250) {skill 58,6,0; set skill58,0; dispbottom "[Sys] Level up"; end;}
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 5: "+skill58+" de 250";
+
+end;
+
+}
+
+if (getskilllv(58) == 6) {
+if (Tokken != 1) {end;}
+if (skill58 >= 300) {skill 58,7,0; set skill58,0; dispbottom "[Sys] Level up"; end;}
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 6: "+skill58+" de 300";
+
+end;
+
+}
+
+if (getskilllv(58) == 7) {
+if (Tokken != 1) {end;}
+if (skill58 >= 500) {skill 58,8,0; set skill58,0; dispbottom "[Sys] Level up"; end;}
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 7: "+skill58+" de 500";
+
+end;
+
+}
+
+if (getskilllv(58) == 8) {
+if (Tokken != 1) {end;}
+if (skill58 >= 700) {skill 58,9,0; set skill58,0; dispbottom "[Sys] Level up"; end;}
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 8: "+skill58+" de 700";
+
+end;
+
+}
+
+if (getskilllv(58) == 9) {
+if (Tokken != 1) {end;}
+if (skill58 >= 1000) {skill 58,10,0; set skill58,0; dispbottom "[Sys] Level up"; end;}
+set skill58,skill58 +1;
+dispbottom "[Jutsu level] Tokken level 9: "+skill58+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

@@ -1,0 +1,50 @@
+//	~~~~~ show time left in days, hours, minutes and seconds ~~~~~
+function	script	timeleft__	{
+	set .@left, getarg(0);
+	if ( .@left <= 0 ) return getarg(0);
+	set .@day, .@left / 86400;
+	set .@hour, .@left % 86400 / 3600;
+	set .@min, .@left % 3600 / 60;
+	set .@sec, .@left % 60;
+	return ( ( .@day )?.@day +" day ":"" )+( ( .@day || .@hour )?.@hour +" hour ":"" )+( ( .@day == 0 && ( .@hour || .@min ) )?.@min +" min ":"" )+( ( .@day || .@hour )?"":.@sec +" sec" );
+}
+
+-	script	tombstone_dup	-1,{
+	getmapxy .@map$, .@x, .@y, 1;
+	if ( .@x == 0 && .@y == 0 ) end;
+	set .@id, atoi( strnpcinfo(2) );
+	mes "Túmulo de "+ strmobinfo( 2, .mvpid[.@id] );
+	mes "Ele foi morto por "+ .name$[.@id];
+	close;
+Onmvpdead:
+getmapxy .@map$, .@x, .@y, 0;
+	set .@id, atoi( strnpcinfo(2) );
+	set .@map$, strcharinfo(3);
+	set .name$[.@id], strcharinfo(0);
+	movenpc strnpcinfo(0), .@x, .@y;
+	set .@loop, rand(.respawn[0],.respawn[.@id]);
+	while ( .@loop ) {
+		delwaitingroom strnpcinfo(0);
+		waitingroom callfunc("timeleft__", .@loop ), 0;
+		set .@loop, .@loop -1;
+		sleep 1000;
+	}
+	delwaitingroom strnpcinfo(0);
+	monster .@map$, 0,0, "--ja--", .mvpid[.@id], 1, strnpcinfo(0) +"::Onmvpdead";
+	movenpc strnpcinfo(0), 0,0;
+	end;
+OnInit:
+	if ( strnpcinfo(2) == "" ) {
+		setarray .respawn[0], 2400; // 10 seconds to respawn
+		setarray .mvpid[1], 1258;
+	}
+	else {
+		sleep 1;
+		getmapxy .@map$, .@x, .@y, 1;
+		monster .@map$, 0,0, "--ja--", .mvpid[ atoi( strnpcinfo(2) ) ], 1, strnpcinfo(0) +"::Onmvpdead";
+	}
+	end;
+}
+
+
+prt_fild05,0,0,0	duplicate(tombstone_dup)	Túmulo#1_mvp	72

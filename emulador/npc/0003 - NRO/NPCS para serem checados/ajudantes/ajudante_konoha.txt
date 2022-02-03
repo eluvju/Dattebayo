@@ -1,0 +1,43 @@
+konoha.gat,244,170,3	script	Ajudante de Iniciantes#1	843,{
+if(BaseLevel >= 600) goto semlvl;
+mes "[Ajudante de Iniciantes]";
+mes "O Kage me enviou para te ajudar no inicio de sua jornada!";
+next;
+mes "[Ajudante de Iniciantes]";
+mes "Posso te levar para alguns lugares!";
+next;
+mes "[Ajudante de Iniciantes]";
+mes "Escolha onde quer ir:";
+menu "1º Esconderijo Kamizaru",KAMI1,"2º Esconderijo Kamizaru",KAMI2,"Minas",MINAS,"Desejo ficar na vila",NOWARP;
+
+KAMI1:
+mes "[Ajudante de Iniciantes]";
+mes "Vamos lá então!";
+next;
+warp "um_dun01.gat",154,202;
+close;
+
+KAMI2:
+mes "[Ajudante de Iniciantes]";
+mes "Vamos lá então!";
+next;
+warp "anthell01.gat",36,263;
+close;
+
+MINAS:
+mes "[Ajudante de Iniciantes]";
+mes "Vamos lá então!";
+next;
+warp "mjo_dun01.gat",52,20;
+close;
+
+NOWARP:
+mes "[Ajudante de Iniciantes]";
+mes "Tudo bem, estarei aqui se precisar!";
+close;
+
+semlvl:
+mes "[Ajudante de Iniciantes]";
+mes "Você já é forte o bastante para ter minha ajuda!";
+close;
+}

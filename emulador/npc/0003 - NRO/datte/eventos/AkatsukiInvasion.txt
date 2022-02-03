@@ -1,0 +1,149 @@
+-	script	Evento#IA	AktInvasion#AKI -1,{
+
+OnInit:
+//Mapas das Vilas
+setarray .AKImap$[1],"konoha3","kiragakure","kumogakure","sunagakure";
+setarray .AKIvila$[1],"Konohagakure","Kirigakure","Kumogakure","Sunagakure";
+set $AKIinfo[1], 0;
+end;
+
+OnClock1400:
+//if(gettime(4) == 1){ //0 = domingo, 6 = sabado
+	announce "[Akatsuki Invasion]: Foi notificado uma invasao de Akatsukis na vila de Konoha. Shinobis de Konohagakure, protejam sua vila!",8;
+	set $AKIinfo[1], 1;
+	set $AKIinfo[2], 1;
+	set $AKIinfo[4], 5;
+
+	initnpctimer;
+	callsub OnNewEvent;
+	end;
+//}
+end;
+OnClock1500:
+//if(gettime(4) == 1){ //0 = domingo, 6 = sabado
+	announce "[Akatsuki Invasion]: Foi notificado uma invasao de Akatsukis na vila da Névoa. Shinobis de Kirigagure, protejam sua vila!",8;
+	set $AKIinfo[1], 1;
+	set $AKIinfo[2], 2;
+	set $AKIinfo[4], 4;
+
+	initnpctimer;
+	callsub OnNewEvent;
+	end;
+//}
+end;
+OnClock1600:
+//if(gettime(4) == 1){ //0 = domingo, 6 = sabado
+	announce "[Akatsuki Invasion]: Foi notificado uma invasao de Akatsukis na vila da Núvem. Shinobis de Kumogakure, protejam sua vila!",8;
+	set $AKIinfo[1], 1;
+	set $AKIinfo[2], 3;
+	set $AKIinfo[4], 3;
+
+	initnpctimer;
+	callsub OnNewEvent;
+	end;
+//}
+end;
+OnClock1700:
+//if(gettime(4) == 1){ //0 = domingo, 6 = sabado
+	announce "[Akatsuki Invasion]: Foi notificado uma invasao de Akatsukis na vila da Suna. Shinobis de Sunakagure, protejam sua vila!",8;
+	set $AKIinfo[1], 1;
+	set $AKIinfo[2], 4;
+	set $AKIinfo[4], 3;
+
+	initnpctimer;
+	callsub OnNewEvent;
+	end;
+//}
+end;
+
+OnClock1459:
+OnClock1559:
+OnClock1659:
+OnClock1759:
+if($AKIinfo[1] == 1){
+stopnpctimer;
+setnpctimer 0;
+callsub OnEndEvent;
+}
+end;
+
+OnEndEvent:
+announce "[Akatsuki Invasion]: Os Shinobis de "+.AKIvila$[$AKIinfo[2]]+" nao conseguiram evitar a destruicao de sua Vila.",8;
+killmonster .AKImap$[$AKIinfo[2]],strnpcinfo(0)+"::OnAkatsukiKill1";
+killmonster .AKImap$[$AKIinfo[2]],strnpcinfo(0)+"::OnAkatsukiKill2";
+killmonster .AKImap$[$AKIinfo[2]],strnpcinfo(0)+"::OnAkatsukiKill3";
+killmonster .AKImap$[$AKIinfo[2]],strnpcinfo(0)+"::OnAkatsukiKill4";
+killmonster .AKImap$[$AKIinfo[2]],strnpcinfo(0)+"::OnAkatsukiKill5";
+killmonster .AKImap$[$AKIinfo[2]],strnpcinfo(0)+"::OnAkatsukiKill6";
+set $AKIinfo[1], 0;
+set $AKIinfo[2], 0;
+end;
+
+
+OnNewEvent:
+set $AKIinfo[3], $AKIinfo[4];
+monster .AKImap$[$AKIinfo[2]],0,0,"Clone Akatsuki",1090,$AKIinfo[3],strnpcinfo(0)+"::OnAkatsukiKill1";
+end;
+
+OnAkatsukiKill1:
+set $AKIinfo[3], $AKIinfo[3] - 1;
+if($AKIinfo[3] > 0 || $AKIinfo[1] == 0) end;
+mapannounce .AKImap$[$AKIinfo[2]],"[Akatsuki Invasion]: Foi notificado uma nova Wave de Akatsukis na vila. Shinobis de "+.AKIvila$[$AKIinfo[2]]+", protejam sua vila!",1;
+set $AKIinfo[3], $AKIinfo[4];
+monster .AKImap$[$AKIinfo[2]],0,0,"Clone Akatsuki",1090,$AKIinfo[3],strnpcinfo(0)+"::OnAkatsukiKill2";
+end;
+
+OnAkatsukiKill2:
+set $AKIinfo[3], $AKIinfo[3] - 1;
+if($AKIinfo[3] > 0 || $AKIinfo[1] == 0) end;
+mapannounce .AKImap$[$AKIinfo[2]],"[Akatsuki Invasion]: Foi notificado uma nova Wave de Akatsukis na vila. Shinobis de "+.AKIvila$[$AKIinfo[2]]+", protejam sua vila!",1;
+set $AKIinfo[3], $AKIinfo[4];
+monster .AKImap$[$AKIinfo[2]],0,0,"Clone Akatsuki",1090,$AKIinfo[3],strnpcinfo(0)+"::OnAkatsukiKill3";
+end;
+
+OnAkatsukiKill3:
+set $AKIinfo[3], $AKIinfo[3] - 1;
+if($AKIinfo[3] > 0 || $AKIinfo[1] == 0) end;
+mapannounce .AKImap$[$AKIinfo[2]],"[Akatsuki Invasion]: Foi notificado uma nova Wave de Akatsukis na vila. Shinobis de "+.AKIvila$[$AKIinfo[2]]+", protejam sua vila!",1;
+set $AKIinfo[3], $AKIinfo[4];
+monster .AKImap$[$AKIinfo[2]],0,0,"Clone Akatsuki",1090,$AKIinfo[3],strnpcinfo(0)+"::OnAkatsukiKill4";
+end;
+
+OnAkatsukiKill4:
+set $AKIinfo[3], $AKIinfo[3] - 1;
+if($AKIinfo[3] > 0 || $AKIinfo[1] == 0) end;
+mapannounce .AKImap$[$AKIinfo[2]],"[Akatsuki Invasion]: Foi notificado uma nova Wave de Akatsukis na vila. Shinobis de "+.AKIvila$[$AKIinfo[2]]+", protejam sua vila!",1;
+set $AKIinfo[3], $AKIinfo[4];
+monster .AKImap$[$AKIinfo[2]],0,0,"Clone Akatsuki",1090,$AKIinfo[3],strnpcinfo(0)+"::OnAkatsukiKill5";
+end;
+
+OnAkatsukiKill5:
+set $AKIinfo[3], $AKIinfo[3] - 1;
+if($AKIinfo[3] > 0 || $AKIinfo[1] == 0) end;
+mapannounce .AKImap$[$AKIinfo[2]],"[Akatsuki Invasion]: Foi notificado o aparecimento de um Chakra Sinistro na vila. Shinobis de "+.AKIvila$[$AKIinfo[2]]+", protejam sua vila!",1;
+monster .AKImap$[$AKIinfo[2]],0,0,"Clone Lider Akatsuki",1092,1,strnpcinfo(0)+"::OnAkatsukiKill6";
+end;
+
+OnAkatsukiKill6:
+if($AKIinfo[1] == 0) end;
+announce "[Akatsuki Invasion]: os Shinobis de "+.AKIvila$[$AKIinfo[2]]+" conseguiram defender com sucesso sua vila!",8;
+set $AKIinfo[1], 0;
+if($AKIinfo[2] == 1){
+	set $konoha_ryous, $konoha_ryous + 100;
+	set $kage_konoha_points, $kage_konoha_points + 5;
+}
+if($AKIinfo[2] == 2){
+	set $nevoa_ryous, $nevoa_ryous + 100;
+set $kage_nevoa_points, $kage_nevoa_points + 5;
+}
+if($AKIinfo[2] == 3){
+	set $nuvem_ryous, $nuvem_ryous + 100;
+	set $kage_nuvem_points, $kage_nuvem_points + 5;
+}
+if($AKIinfo[2] == 4){
+	set $areia_ryous, $areia_ryous + 100;
+	set $kage_suna_points, $kage_suna_points + 5;
+}
+set $AKIinfo[2], 0;
+end;
+}

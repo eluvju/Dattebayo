@@ -1,0 +1,45 @@
+prontera,152,183,5	script	Controle de Baús::bau	869,{
+
+if(getgroupid () > 30){
+
+mes "[ Baú Perdido ]";
+mes "Olá "+strcharinfo(0)+", o que deseja fazer ?";
+next;
+switch(select("Soltar 1 Baú:Nada, obrigado...")){
+
+	case 1:
+		mes "[ Baú Perdido ]";
+		mes "Certo, Então irei Soltar um Baú Aleatório em Prontera!";
+		goto teste;
+		
+	case 2:
+		mes "[ Baú Perdido ]";
+		mes "Ok, volte quando precisar de meus serviços!";
+		close;
+	}
+
+teste:
+monster	"kumogakure",0,0,	"Baú Perdido",1732,1,"bau::OnGanhou";
+monster	"kiragakure",0,0,	"Baú Perdido",1732,1,"bau::OnGanhou";
+monster	"konoha3",0,0,	"Baú Perdido",1732,1,"bau::OnGanhou";
+announce "[Naruto Earth RPG] Atenção, foi lançado um baú em algum lugar das vilas, quem matá-lo ganhará as bonificações concedidas pelo mesmo!",bc_yellow|bc_all;
+close;
+end;
+
+OnMinute30:
+monster	"kumogakure",0,0,	"Baú Perdido",1732,1,"bau::OnGanhou";
+monster	"kiragakure",0,0,	"Baú Perdido",1732,1,"bau::OnGanhou";
+monster	"konoha3",0,0,	"Baú Perdido",1732,1,"bau::OnGanhou";
+announce "[Naruto Earth RPG] Atenção, foi lançado um baú em algum lugar das vilas, quem matá-lo ganhará as bonificações concedidas pelo mesmo!",bc_yellow|bc_all;
+end;
+
+OnGanhou:
+set @random, rand(1,15);
+getitem 730,@random;
+announce "Sistema: OOoOo! Parabéns ao jogador "+strcharinfo(0)+", quebrou o báu, ele acaba de receber uma bonificação de "+@random+" Ticket de Evento!",0,bc_yellow|bc_all;
+end;
+}
+mes "[ Baú Perdido ]";
+mes "Sinto muito, somente membros da staff podem utilizar meus serviços.";
+close;
+}

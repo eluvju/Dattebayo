@@ -1,0 +1,100 @@
+payon_in03,126,187,5	script	Chiyute no Jutsu::med1	831,{
+
+if (getskilllv(28) >= 1) goto L_delete;
+if(med_basico != 1) {mes "Você precisa estudar medicina básica antes de aprender um técnica de medicina"; close;}
+if (checkquest(2079) == 1) goto L_go;
+if(med_skill_bas >= 3) {mes "Você já aprendeu três técnicas de medicinas básicas, esse é o limite"; close;}
+if(accept_med == 3) {mes "Você já aceitou três treinamentos pra realizar de medicina"; close;}
+if(Chiyute == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de medicina espalhado pelo mundo, eu posso lhe ensinar um técnica de medicina básica";
+next;
+mes "A técnica de medicina que eu ensino é o: Chiyute no Jutsu";
+next;
+mes "Descrição: Um jutsu de cura que pode recuperar vida de você mesmo ou de um aliado";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Chiyute no Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(28) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(28) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 28,0,0;
+set Chiyute,0;
+erasequest 2079;
+if(accept_med > 0) {set accept_med,accept_med -1;}
+if(med_skill_bas > 0) {set med_skill_bas,med_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set questmedum,1;
+set accept_med,accept_med +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 20 Genin.";
+setquest 2079;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(med_skill_bas >= 3) {mes "Você já aprendeu três técnicas de medicinas básicas, esse é o limite"; close;}
+if(medmobsum < 20) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 28,1,0;
+set Chiyute,1;
+set questmedum,0;
+set medmobsum, 0;
+completequest 2079;
+erasequest 2079;
+set med_skill_bas,med_skill_bas +1;
+announce "[Medicina Quest] "+strcharinfo(0)+" completou a quest de medicina Chiyute no Jutsu",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Medicina básica]",0;
+}
+
+
+-	script	medbas#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1656) {
+if (questmedum != 1) {end;}
+set medmobsum,medmobsum +1;
+announce "[Medicina Quest] Você já derrotou "+medmobsum+" / 20 Genins",bc_blue|bc_self;
+end;
+}
+}
+
+//ve_in,79,230,5	duplicate(med1)	Chiyute no Jutsu#11	831,{
+//payon_in03,126,187,5	duplicate(med1)	Chiyute no Jutsu#12	831,{
+//lou_in01,92,132,5	duplicate(med1)	Chiyute no Jutsu#13	831,{
+//izlude_in,71,122,5	duplicate(med1)	Chiyute no Jutsu#14	831,{

@@ -1,0 +1,49 @@
+function	script	kana	{
+
+//When a Character uses a skill
+//Kanashibari
+
+if (seloskill678 == 1) {
+
+if (Kanashibari != 1) {end;}
+if (skill678 >= 50) {set seloskill678,2; set skill678,0; dispbottom "[Sys] Level up"; end; }
+set skill678,skill678 +1;
+dispbottom "[Jutsu level] Kanashibari no Genjutsu level 1: "+skill678+" de 50";
+
+end;
+
+}
+
+if (seloskill678 == 2) {
+if (Kanashibari != 1) {end;}
+if (skill678 >= 100) {set seloskill678,3; set skill678,0; dispbottom "[Sys] Level up"; end;}
+set skill678,skill678 +1;
+dispbottom "[Jutsu level] Kanashibari no Genjutsu level 2: "+skill678+" de 100";
+
+end;
+
+}
+
+if (seloskill678 == 3) {
+
+if (Kanashibari != 1) {end;}
+if (skill678 >= 150) {set seloskill678,4; set skill678,0; dispbottom "[Sys] Level up"; end;}
+set skill678,skill678 +1;
+dispbottom "[Jutsu level] Kanashibari no Genjutsu level 3: "+skill678+" de 150";
+
+end;
+
+}
+
+if (seloskill678 == 4) {
+if (Kanashibari != 1) {end;}
+if (skill678 >= 200) {set seloskill678,5; set skill678,0; dispbottom "[Sys] Level up"; end;}
+set skill678,skill678 +1;
+dispbottom "[Jutsu level] Kanashibari no Genjutsu level 4: "+skill678+" de 200";
+
+end;
+
+}
+
+                end;
+            }

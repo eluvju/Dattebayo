@@ -1,0 +1,115 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Description: =========================================
+//= NPC Iruka 
+//= 
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 20/07/2021 as 07:30
+//===================================//
+academia,88,26,5	script	Iruka	121,{
+//===================================//
+//===== Estrutura do Script: ========//
+
+	.@npc$ = "                           ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	
+//===================================//	
+
+	if(isbegin_quest(1010) == 2) { 	mes "Você me lembra muito o Naruto na sua idade...";
+									mes "HAHAHAHAHHA";
+									end;}
+	if(isbegin_quest(1011) == 2) { 	mes "Você me lembra muito o Gaara na sua idade...";
+									mes "HAHAHAHAHHA";
+									end;}
+	
+	if (academia_arco_1 == 1) { mes .@npc$;
+								mes "Termine sua Avaliação na ^FF0000Sala 1^000000.";
+								end;}
+//===================================//
+	if (intro_arco_1 == 8) {	
+		cutin "iruka",2;		
+	if (iruka_provas == 1 ) { goto prova;}		
+	mes .@npc$;
+	mes "Que susto ein ^000080"+strcharinfo(0)+"^000000, dia de prova e você atrasado...";
+	
+		if (select("- ^FF0000Prova?^000000 Não mesmo...") == 1) {
+			next;
+			mes .@npc$;
+			mes "HAHAHAHAH, nada além do esperado do pior ninja da academia!";
+			mes " ";
+			mes "Não se preocupe, você é meu Favorito então vou te ajudar...";}
+		
+	next;		
+	mes .@npc$;
+	mes "A prova Consiste em ^FF00004 Salas de Avaliações^000000.";
+	mes " ";
+	mes "Cada uma delas definem seu futuro como ninja.";
+	next;
+		prova:
+		mes .@npc$;
+			if ( iruka_provas == 0 ) {mes "A prova final será realizada na ^FF0000Sala de Exame^000000, No final do Corredor";}
+			else {	mes "Pronto para começar?";
+					mes "Espero que sim HAHAHA"; }
+		switch (select(
+			"- " + (( iruka_provas == 0 ) ? "^FF0000Fale sobre as Avaliações":"Fale sobre as Avaliações") + "^000000",
+			"- " + (( iruka_provas == 1 ) ? "^FF0000Estou Pronto":"Estou Pronto") + "^000000")){
+	
+			case 2:
+			goto fim;
+
+			case 1:
+			set iruka_provas,1;
+			next;
+			mes .@npc$;
+			mes "Cada sala representa uma características únicas sua sendo elas:";
+			switch (select("- ^0000FFPersonagem^000000", "- ^800080Treinos^000000","- ^FF0000Kekkei genkais, Hidens...^000000","- ^000770Elementos^000000")) {
+			
+				case 1:
+				next;
+				mes .@npc$;
+				mes "Será explicado de forma mais detalhada nas salas.";
+				next;
+				goto prova;
+			
+				case 2:
+				next;
+				mes .@npc$;
+				mes "Será explicado de forma mais detalhada nas salas.";
+				next;
+				goto prova;
+			
+				case 3:
+				next;
+				mes .@npc$;
+				mes "Será explicado de forma mais detalhada nas salas.";
+				next;
+				goto prova;
+				
+				case 4:
+				next;
+				mes .@npc$;
+				mes "Será explicado de forma mais detalhada nas salas.";
+				next;
+				goto prova;
+			}
+		}
+
+	fim:
+	cutin "",255;
+	set academia_arco_1,1;
+	close2;	
+	sleep2 1000;
+	mapannounce strnpcinfo(4), "[ "+strnpcinfo(1)+" ] Dirija-se Até a Sala 1", bc_self,0xFF6961;
+	end;
+	}
+
+
+// ====================================================
+// Error Check
+else {	mes "Você pulou a introdução!!!";
+		mes " ";
+		mes "Contate um ^FF0000GM^000000 para resolver o problema!";
+		end;}
+}

@@ -1,0 +1,33 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Description: =========================================
+//= NPC Iruka 
+//= 
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 20/07/2021 as 07:30
+//
+//===================================//
+academia,95,44,0	script	treino#07	45,2,2,{
+//===================================//
+	if (academia_arco_1 == 0) {	mes "Você não esta preparado para esta Sala.";
+								close;}
+	warp "academia", 67, 36;
+	end;
+
+}
+academia,70,36,0	warp	treino#08	2,2,academia,98,44
+
+//===================================//
+academia,114,44,0	script	treino#03	45,2,2,{
+
+	if (academia_arco_1 <= 1) {	mes "Você não esta preparado para esta Sala.";
+								close;}
+	warp "academia", 148, 36;
+	end;
+
+}
+
+academia,145,36,0	warp	treino#04	2,2,academia,110,44

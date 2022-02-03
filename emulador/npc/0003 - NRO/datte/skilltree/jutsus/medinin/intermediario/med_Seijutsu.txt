@@ -1,0 +1,101 @@
+hu_fild07,281,225,5	script	Masei Seijutsu::medint2	831,{
+
+if (getskilllv(176) >= 1) goto L_delete;
+if(med_intermediario != 1) {mes "Você precisa estudar medicina intermediária antes de aprender essa técnica de medicina"; close;}
+if (checkquest(2072) == 1) goto L_go;
+if(med_skill_int >= 3) {mes "Você já aprendeu três técnicas de medicinas intermediárias, esse é o limite"; close;}
+if(accept_med_int == 3) {mes "Você já aceitou três treinamentos pra realizar de medicina"; close;}
+if(Seijutsu == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if (WeaponLvl4 < 40) {mes "Seu nível de Medicina está baixo demais, é preciso ter nível 40 ou mais pra aprender esse Medicina"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de medicina espalhado pelo mundo, eu posso lhe ensinar um técnica de medicina intermediária";
+next;
+mes "a técnica de medicina que eu ensino é o: Masei Seijutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Masei Seijutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(176) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(176) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 176,0,0;
+set Seijutsu,0;
+erasequest 2072;
+if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}
+if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_med_int_dois,1;
+set accept_med_int,accept_med_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter Medicina avançada level 40";
+mes "- Derrotar 30 Gama-Kichi.";
+mes "- Obter 150 Erva Vermelha ";
+mes "- Obter 3 Carne";
+mes "- Obter 60 Raiz de Planta Carnívora";
+setquest 2072;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(med_skill_int >= 3) {mes "Você já aprendeu três taijutsus intermediario, esse é o limite"; close;}
+if(med_int_mobs_dois < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(507) <150) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(517) < 3) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1033) < 60) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 507,150;
+delitem 517,3;
+delitem 1033,60;
+skill 176,1,0;
+set Seijutsu,1;
+set quest_med_int_dois,0;
+set med_int_mobs_dois, 0;
+completequest 2072;
+erasequest 2072;
+set med_skill_int,med_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Medicina Intermediária]",0;
+}
+
+-	script	medint#2	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1402 && quest_med_int_dois == 1) {set med_int_mobs_dois,med_int_mobs_dois +1; announce "[Medinin Quest] Você já derrotou "+med_int_mobs_dois+" / 30 Gama-Kichi",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_07,345,241,5	duplicate(medint2)	Masei Seijutsu#21	831,{
+mjolnir_02,308,171,5	duplicate(medint2)	Masei Seijutsu#22	831,{
+moc_fild08,278,115,5	duplicate(medint2)	Masei Seijutsu#23	831,{

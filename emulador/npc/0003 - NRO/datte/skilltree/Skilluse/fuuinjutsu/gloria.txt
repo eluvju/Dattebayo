@@ -1,0 +1,113 @@
+-	script	gloria	-1,{
+    end;
+//When a Character uses a skill
+
+//gloria
+
+onPcUseSkillEvent:
+
+           if(lskillid == 75) {
+
+
+if (getskilllv(75) == 1) {
+
+if (gloria != 1) {end;}
+if (skill75 >= 50) {skill 75,2,0; set skill75,0; dispbottom "[Sys] Level up"; end; }
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 1: "+skill75+" de 50";
+
+end;
+
+}
+
+if (getskilllv(75) == 2) {
+if (gloria != 1) {end;}
+if (skill75 >= 100) {skill 75,3,0; set skill75,0; dispbottom "[Sys] Level up"; end;}
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 2: "+skill75+" de 100";
+
+end;
+
+}
+
+if (getskilllv(75) == 3) {
+if (fuuin_intermediario != 1) {end;}
+if (gloria != 1) {end;}
+if (skill75 >= 150) {skill 75,4,0; set skill75,0; dispbottom "[Sys] Level up"; end;}
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 3: "+skill75+" de 150";
+
+end;
+
+}
+
+if (getskilllv(75) == 4) {
+if (fuuin_intermediario != 1) {end;}
+if (gloria != 1) {end;}
+if (skill75 >= 200) {skill 75,5,0; set skill75,0; dispbottom "[Sys] Level up"; end;}
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 4: "+skill75+" de 200";
+
+end;
+
+}
+
+if (getskilllv(75) == 5) {
+if (fuuin_intermediario != 1) {end;}
+if (gloria != 1) {end;}
+if (skill75 >= 250) {skill 75,6,0; set skill75,0; dispbottom "[Sys] Level up"; end;}
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 5: "+skill75+" de 250";
+
+end;
+
+}
+
+if (getskilllv(75) == 6) {
+if (fuuin_intermediario != 1) {end;}
+if (gloria != 1) {end;}
+if (skill75 >= 300) {skill 75,7,0; set skill75,0; dispbottom "[Sys] Level up"; end;}
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 6: "+skill75+" de 300";
+
+end;
+
+}
+
+if (getskilllv(75) == 7) {
+if (fuuin_avan != 1) {end;}
+if (gloria != 1) {end;}
+if (skill75 >= 500) {skill 75,8,0; set skill75,0; dispbottom "[Sys] Level up"; end;}
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 7: "+skill75+" de 500";
+
+end;
+
+}
+
+if (getskilllv(75) == 8) {
+if (fuuin_avan != 1) {end;}
+if (gloria != 1) {end;}
+if (skill75 >= 700) {skill 75,9,0; set skill75,0; dispbottom "[Sys] Level up"; end;}
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 8: "+skill75+" de 700";
+
+end;
+
+}
+
+if (getskilllv(75) == 9) {
+if (fuuin_avan != 1) {end;}
+if (gloria != 1) {end;}
+if (skill75 >= 1000) {skill 75,10,0; set skill75,0; dispbottom "[Sys] Level up"; end;}
+set skill75,skill75 +1;
+dispbottom "[Jutsu level] Gloria level 9: "+skill75+" de 1000";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

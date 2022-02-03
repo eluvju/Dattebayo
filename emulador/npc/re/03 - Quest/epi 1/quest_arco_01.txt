@@ -1,0 +1,384 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Aqui vai ser detalhada o modo história do Arco 1 da academia Shinobi
+//= Irei colocar aqui itens, quests entre outras coisas.
+//=
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 10/07/2021 as 04:17
+//=
+//===== QUESTS - ARCO 1: =========================================
+//
+//=	Quest 1000 - Torne-se Um genin
+//= Quest 1001 - Esta Atrasado Denovo!
+//= Quest 1002 - Complete a Academia
+//= Quest 1003 - Campo de Treinamento
+//= Quest 1004 - O Ferreiro da Academia
+//= Quest 1005 - Biblioteca da Academia
+//= Quest 1006 - A Sala Staff
+//= Quest 1007 - Guia da Academia
+//= Quest 1008 - Quests Secundárias
+//= Quest 1009 - Escolha sua Vila (Final)
+//===== PREMIOS - ARCO 1: =========================================
+//
+//= Box Iniciante ( Quest 1000 )
+//= Vale Arma ( Quest 1004 )
+//= Vale Hat Quest ( Quest 1008 )
+//= Bandana Ninja ( Quest 1009 )
+//= +4 Arma 
+//= 
+//=== MAPAS ========================================================
+//
+//=   lou_in02_1,lou_in02_2,lou_in02_3,lou_in02_4,lou_in02_5, lou_in02_5  // Sala Inicial 
+//=   lou_in02 // Estalagem
+//=	  louyang // Academia
+//=
+//=== CUTIN ========================================================
+//
+//= cutin "",255; // NADA
+//= cutin "rikudou",2; // Rikkudou Surgindo
+//
+//== Ponto de Inicio  (STEP 1) =================================//
+
+lou_in02-1,77,140,0	script	Hagoromo Otsutsuki#introducao	HIDDEN_WARP_NPC,3,3,{
+	end;
+	
+//============== ## ==================== ## ================= ##	
+// Auto Ativação
+OnTouch:
+
+	.@npc$ = "              ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	
+	if (intro_arco_1 >=3) { end; }
+	if (intro_arco_1 ==2) { 	cutin "rikudou",2;
+								mes .@npc$;
+								mes "Vá pegar seus pertences garoto, você esta atrasado.";
+								close2;
+								cutin "",255;
+								end; }
+	if (intro_arco_1 <=1) { 
+	cutin "rikudou",2;
+	mes "Bem vindo, Jovem Shinobi";	
+	mes " ";
+	mes "Me chamo Hagoromo Otsutsuki e sou conhecido como o ^FF0000Deus dos Shinobis^000000";
+	mes " ";
+	mes "Agora que me apresentei, diga-me qual seu nome?";
+	set intro_arco_1, 1; // Vá pegar suas Coisas
+	menu "- ^000080"+strcharinfo(0)+"^000000",-;
+	next;
+	mes "AHAHAHAH... Eu já sabia seu nome";
+	mes "^000080"+strcharinfo(0)+"^000000 prazer em conhece-lo(a).";
+	mes " ";
+	mes "Eu vou guiar você nesta nova jornada então siga minha instruções.";
+	close2;
+	skill 1,9,3; // skill Basica Ninja
+	cutin "",255;
+	set intro_arco_1, 2; // Vá pegar suas Coisas
+	goto navigate;
+	
+	navigate:
+	sleep2 1000;
+	navigateto("lou_in02", 71, 121, NAV_NONE, 1); // Individual map name not required
+	if (getd(".start" + strnpcinfo(1)) == 0) {
+		setd ".start" + strnpcinfo(1), 1;
+		initnpctimer;
+		mapannounce strnpcinfo(4), "[ "+strnpcinfo(1)+" ] Utilizando o Botão Esquerdo, siga até o local indicado. ", bc_self,0xFF6961;
+	}
+	end;
+
+//============== ## ==================== ## ================= ##
+// Timer Global
+OnTimer3000:
+	mapannounce strnpcinfo(4), "[ "+strnpcinfo(1)+" ] Ao chegar no local indicado, Clique no Baú.", bc_self,0xFF6961;
+	end;
+OnTimer25000:
+	mapannounce strnpcinfo(4), "[ "+strnpcinfo(1)+" ] Siga as Instruções para seguir em frente.", bc_self,0xFF0000;
+	stopnpctimer;
+	setd ".start" + strnpcinfo(1), 0;
+	end; 
+	
+}}
+
+//============== ## ==================== ## ================= ##
+// Duplicatas //
+//
+lou_in02-2,77,140,0	duplicate(Hagoromo Otsutsuki#introducao)	Hagoromo Otsutsuki#introducao-1	HIDDEN_WARP_NPC,3,3
+lou_in02-3,77,140,0	duplicate(Hagoromo Otsutsuki#introducao)	Hagoromo Otsutsuki#introducao-2	HIDDEN_WARP_NPC,3,3
+lou_in02-4,77,140,0	duplicate(Hagoromo Otsutsuki#introducao)	Hagoromo Otsutsuki#introducao-3	HIDDEN_WARP_NPC,3,3
+lou_in02-5,77,140,0	duplicate(Hagoromo Otsutsuki#introducao)	Hagoromo Otsutsuki#introducao-4	HIDDEN_WARP_NPC,3,3
+lou_in02-6,77,140,0	duplicate(Hagoromo Otsutsuki#introducao)	Hagoromo Otsutsuki#introducao-5	HIDDEN_WARP_NPC,3,3
+
+
+//###################################################
+//== Baú  (STEP 2) =================================//
+//
+//
+//===============================================================//
+lou_in02-1,71,121,1	script	!#introducao_3	10249,{
+//===============================================================//
+
+if (intro_arco_1 >= 3) { 	mes "                              ^cfa417[ Baú ]^000000";
+							mes "Baú esta ^FF0000Vazio!^000000";
+							end; }
+
+
+if (intro_arco_1 == 2) {
+	mapannounce strnpcinfo(4), "[ Hagoromo Otsutsuki ] Pegue seus pertences no baú.", bc_self,0xFF6961;
+	mes "                            ^cfa417[ Baú ]^000000";
+	mes "^FF0000Contém:^000000";
+	mes "<ITEM>Faca de Treino<INFO>1201</INFO></ITEM>";
+	mes "<ITEM>Blusa de Moletom<INFO>2301</INFO></ITEM>";
+	mes "<ITEM>Trocado da vovó<INFO>668</INFO></ITEM>";
+	menu "- ^000080Pegar Tudo^000000",-;
+	close2;
+	set intro_arco_1, 3; // Pegar Tudo
+	getitem 1201,1;// Faca de Treino
+	getitem 2301,1;// Blusa de Moletom
+	getitem 668,1;// Trocado da vovó
+	sleep2 1000;
+	navigateto("lou_in02", 71, 139, NAV_NONE, 1); // Individual map name not required
+	if (getd(".start" + strnpcinfo(1)) == 0) {
+		setd ".start" + strnpcinfo(1), 1;
+		initnpctimer;
+		mapannounce strnpcinfo(4), "[ Hagoromo Otsutsuki ] Avance até o Portal para o próximo cômodo. ", bc_self,0xFF6961;
+	}
+	cutin "",255;
+	end; }
+	
+if (intro_arco_1 <= 1){ 	mes "                              ^cfa417[ Baú ]^000000";
+								mes "Baú esta ^FF0000Trancado!^000000";
+								end; }
+
+}
+
+//============== ## ==================== ## ================= ##
+// Duplicatas //
+//
+lou_in02-1,71,121,1	duplicate(!#introducao_3)	!#introducao_3-1	10249,0,0
+lou_in02-3,71,121,1	duplicate(!#introducao_3)	!#introducao_3-2	10249,0,0
+lou_in02-4,71,121,1	duplicate(!#introducao_3)	!#introducao_3-3	10249,0,0
+lou_in02-5,71,121,1	duplicate(!#introducao_3)	!#introducao_3-4	10249,0,0
+lou_in02-6,71,121,1	duplicate(!#introducao_3)	!#introducao_3-5	10249,0,0
+//###################################################
+//== Rikudou - Estalagem (STEP 3) =================================//
+//
+//
+//===============================================================//
+
+lou_in02,73,190,0	script	Hagoromo Otsutsuki#introducao_3	HIDDEN_WARP_NPC,3,3,{
+
+	if (intro_arco_1 >=4) { end; }
+
+	cutin "rikudou",2;
+	mes "Seja educado e de um oi a ^cfa417Ayumi^000000.";	
+	mes " ";
+	mes "Ela é dona da Estalagem da ^cfa417Academia Shinobi^000000 e vai dar informações sobre o horario das Aulas.";
+		
+		close2;
+		savepoint "lou_in02",76,190;
+		set intro_arco_1, 4;
+		cutin "",255;
+		goto navigate;
+	
+			navigate:
+			sleep2 1000;
+			navigateto("lou_in02", 59, 182, NAV_NONE, 1); // Individual map name not required
+			end; 
+}
+
+// ###########################
+//
+function	script	introducao_4	{
+
+	.@npc$ = getarg(0);
+	if (intro_arco_1 >=5) { mes .@npc$;
+							mes "Corre meu amor, você esta atrasado~~";
+							end;
+	}
+	
+
+	cutin "ayumi",2;
+	mes .@npc$;
+	mes "Olha, olha quem acordou... Você não esta atrasado(a)...";
+	mes " ";
+	mes "Como você vai conseguir alcançar seu sonho assim?";
+		if (select("- Sonho?", "- Vou me tornar um ^0000FFGenin^000000!") == 1) {
+			next;
+			mes .@npc$;
+			mes "Que sonho? se tornar um ^0000FFGenin^000000 não é óbvio?";
+			mes " ";
+			mes "Garoto bobo HIHIHI~~";
+		}
+		else {
+			next;
+			mes .@npc$;
+			mes "Isso ai, este é o Espirito, ";
+			mes " ";
+			mes "Estou ansiosa para ver que tipo de ^0000FFGenin^000000 você vai se tornar.";
+		}
+		
+	next;
+	mes .@npc$;
+	mes "Agora chega de enrolar por que o ^008000Iruka^000000 vai brigar com você denovo!";
+	mes " ";
+	mes "Que? não se lembra onde é a ^cfa417Academia Shinobi^000000?";
+	menu "- Não, desculpa.",-;
+	next;
+	mes .@npc$;
+	mes "Não se preocupe, vou te ajudar a usar o ^FF0000Mini Mapa^000000.";
+	mes " ";
+	mes "Vamos até la fora";
+	navigateto("lou_in02", 57, 172, NAV_NONE, 1); // Individual map name not required
+	goto quest_on;
+	
+	quest_on:
+	set intro_arco_1, 5;
+	setquest 1000;
+	setquest 1001;
+	callfunc("quest_on");
+	end;
+
+}
+
+//###################################################
+//== Ayumi - Mini Mapa (STEP 4) =================================//
+//
+//
+//===============================================================//
+
+louyang,140,101,0	script	Ayumi#introducao_5	HIDDEN_WARP_NPC,6,6,{
+
+	.@npc$ = "                          ^cfa417[ "+strnpcinfo(1)+" ]^000000";
+	if (intro_arco_1 >=6) { end;}
+
+	cutin "ayumi",1;
+	mes .@npc$;
+	mes "Agora que estamos aqui fora vou te explicar.";
+	mes " ";
+	mes "o ^FF0000Mini Mapa^000000 serve para guiar você pelas cidades.";
+	next;
+	cutin "tutorial_minimapa_datte",2;
+	mes .@npc$;
+	mes "Como pode ver, no ^FF0000Mini Mapa^000000 é possivel selecionar o local usando os ^FF0000Icones^000000 e ele mostra o caminho";
+	mes " ";
+	mes "Esse caminho é visto com ^DAA520setas amarelas que indicam o destino^000000.";
+	next;
+	mes .@npc$;
+	mes "Então vamos tentar?";
+	close2;
+	set intro_arco_1, 6;	
+	cutin "",255;
+	sleep2 1000;
+	mapannounce strnpcinfo(4), "[ Ayumi ] Avance até a Academia Ninja.", bc_self,0xFF6961;
+	end;
+	
+
+}
+
+//###################################################
+//== IRUKA - Pré Academia (STEP 5) =================================//
+//
+//
+//===============================================================//
+louyang,223,248,1	script	Iruka#acad_00	121,{
+
+OnTouch:
+	disablenpc "Iruka#acad_00";
+	end;
+	
+OnInit:
+	disablenpc "Iruka#"+strnpcinfo(2);
+	initnpctimer;
+	end;
+	
+}
+
+
+louyang,218,248,0	script	Iruka#acad_01	HIDDEN_WARP_NPC,6,6,{
+
+.@npc$ = "                          ^cfa417[ "+strnpcinfo(1)+" ]^000000";
+
+	if (intro_arco_1 >= 7) { end;}
+
+	cutin "iruka",2;
+	mes .@npc$;
+	mes "Conseguiu encontrar o caminho?";
+	mes " ";
+	mes "Finalmente, achei que teria de mandar a ^800080ANBU^000000 atrás de você...";
+	enablenpc "Iruka#acad_00";
+	set intro_arco_1, 7;
+	next;
+	mes .@npc$;
+	mes "Entre logo, as ^FF0000Aulas^000000 vão começar";
+	completequest 1001;
+	callfunc("quest_completa");	
+	end;
+}
+
+//###################################################
+//== IRUKA - Pré Academia (STEP 5) =================================//
+//
+//
+//===============================================================//
+academia,100,11,0	script	Iruka#acad_02	HIDDEN_WARP_NPC,6,6,{
+
+.@npc$ = "                          ^cfa417[ "+strnpcinfo(1)+" ]^000000";
+set .@t, 3,5;	// Delay Seconds.
+	if (intro_arco_1 >=8) { end;} 
+
+	cutin "iruka",2;
+	mes .@npc$;
+	mes "Atrasado como sempre não é ^000080"+strcharinfo(0)+"^000000...";
+	mes " ";
+	mes "Vejo que você completou sua primeira ^FF0000Quest^000000, Parabéns...";
+	
+	next;
+	cutin "tutorial_quest_datte",0;
+	mes .@npc$;
+	mes "Vou explicar um pouco sobre as Quests...";
+	mes " ";
+	mes "Como pode ver no quadro, ^FF0000Alt + U^000000 Abre a janela de Quest's.";
+	next;
+
+	mes .@npc$;
+	mes "Nela possui todas as ^FF0000informações^000000 como:";
+	mes " - Premiação";
+	mes " - Alvo";
+	mes " - Descrição da Quest";
+	mes " ";
+	mes "Agora venha até o balcão.";
+	while ( .@t ) {	sleep2 1000 ;
+					set .@t, .@t - 1;
+					}
+	set intro_arco_1, 8;
+	setquest 1002;
+	callfunc("quest_on");
+	mapannounce strnpcinfo(4), "[ "+strnpcinfo(1)+" ] Usando o que aprendeu, Analise sua nova Quest.", bc_self,0xFF6961;
+	savepoint "academia",102,13;
+	end;	
+}
+
+
+// ###########################
+// DELETAR
+prontera,154,182,3	script	setquest0#Admin_quest	103,{
+
+	mes "Admin";
+	menu "hat Estranho",sim,"^000080Arco 1^000000",-;
+	set intro_arco_1, 0; 	
+	end;
+	
+	
+	sim:
+	next;
+	mes "wtf?";
+	set hat_estranho, 0;
+	close;
+	end;
+
+}

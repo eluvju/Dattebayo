@@ -1,0 +1,23 @@
+sec_in01,64,190,4	script	Ao Nazuki	2_f_sign1,{
+
+npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!";
+
+}
+
+sec_in01,103,189,4	script	Lee	979,{
+
+npctalk "...998, 999, 1000. Eu não posso parar agora! Se eu treinar meu jutsu 2 mil vezes, terei que fazer 500 flexões!";
+
+}
+
+sec_in01,73,188,4	script	Lu Uzumaki	4_f_kafra1,{
+
+npctalk "Que foi, fracote? Pare de atrapalhar meu treinamento!";
+
+}
+
+sec_in01,93,171,4	script	Yuh Aburame	4_m_4thprin1,{
+
+npctalk "Um ninja sem treinamento é um ninja fraco!";
+
+}

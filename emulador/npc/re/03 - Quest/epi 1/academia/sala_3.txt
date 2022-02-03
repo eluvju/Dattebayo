@@ -1,0 +1,57 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Description: =========================================
+//= NPC Iruka 
+//= 
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 21/07/2021 as 14:57
+//
+//===================================//	
+academia,62,76,2	script	Orientador Yi	4_f_kafra1,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	.@papel = 500;
+	
+//===== Variaveis: ========//
+
+//=========================//
+// Introdução
+	
+	mes .@npc$;
+	mes "^FF0000"+strcharinfo(0)+"^000000 estava ansioso por você.";
+	mes " ";
+	mes "Antes de realizar o teste do ^800080"+getitemname(.@papel)+"^000000 vamos conversar...";
+	next;
+	mes .@npc$;
+	mes "Você sabia que existem ^FF0000Cinco Naturezas Básicas^000000 de chakra?";
+	mes " ";
+	mes "Cada uma delas é um simbolo de uma grande nação, como ^FF0000Katon^000000 e o ^FF0000País do Fogo^000000.";
+	next;
+	cutin "elementos", 0;
+	mes .@npc$;
+	mes "As naturezas estão todas conectadas em um circulo.";
+	mes " ";
+	mes "Sendo uma delas mais fraca e/ou forte que a outra.";
+	next;
+	mes .@npc$;
+	mes "Existem tambem Naturezas que fogem da regra dentre elas:";
+	mes "- ^0000FFHyouton^000000";
+	mes "- ^FF0000Shakuton^000000";
+	mes "- ^007770Mokuton^000000";
+	next;
+	mes .@npc$;
+	mes "Elas são chamadas de ^000FF0Kekkei Genkais Elementais^000000.";
+	mes " ";
+	mes "Mas chega de falar disso, na ^FF0000Sala 3^000000 você vai aprender sobre.";
+	close2;
+	set academia_arco_1_sala2, 1;
+	cutin "", 255;
+	mapannounce strnpcinfo(4), "[ "+strnpcinfo(1)+" ] Vá até o 2° Andar", bc_self,0xFF6961;
+	end;
+
+}
+

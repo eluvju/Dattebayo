@@ -1,0 +1,456 @@
+-	script	Evento#AS	AnbuShiken -1,{
+OnPCLoadMapEvent:
+if(strcharinfo(3) == "pvp_n_5-5" || strcharinfo(3) == "pvp_n_6-5" || strcharinfo(3) == "pvp_n_7-5" || strcharinfo(3) == "pvp_n_8-5") end;
+if(AShide == 1){
+atcommand "@hide";
+set AShide, 0;
+}
+end;
+
+OnPCLogoutEvent:
+set AShide, 0;
+end;
+
+OnPCDieEvent:
+if(strcharinfo(3) != "pvp_n_5-5" && strcharinfo(3) != "pvp_n_6-5" && strcharinfo(3) != "pvp_n_7-5" && strcharinfo(3) != "pvp_n_8-5") end;
+sleep2(5000);
+atcommand "@alive";
+end;
+}
+
+//===== Script Konoha: ==============================================
+pvp_n_5-5.gat,80,119,4	script	Anbu Shiken#1Konoha	1_m_01,{
+// Nome do npc
+set .npc$,"^800000[Anbu Shiken]^000000";
+
+if(getguildmaster(getcharid(2)) != strcharinfo(0)) end;
+
+	mes .npc$;
+	mes "Olá Kage. Em que posso ajuda-lo?";
+	switch(select("Contagem:Desgilar PvP:Ativar Suporte:Desativar Suporte:Hide:Recall Party:Ativar Barreiras:Desativar Barreiras")){
+	
+		case 1:
+			close2;
+			pvpoff "pvp_n_5-5";
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: Preparem-se, o duelo iniciará em 10 segundos.",0;
+			sleep2(5000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 5.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 4.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 3.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 2.",0;
+			atcommand "@skilloff";
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 1.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: Lutem!",0;
+			atcommand "@skillon";
+			pvpon "pvp_n_5-5";
+			end;
+		
+		case 2:
+			close2;
+			pvpoff "pvp_n_5-5";
+			end;
+		
+		case 3:
+			close2;
+			enablenpc "Suporte AS#Konoha";
+			end;
+	
+		case 4:
+			close2;
+			disablenpc "Suporte AS#Konoha";
+			end;
+	
+		case 5:
+			close2;
+			if(AShide == 0){
+				atcommand "@hide";
+				set AShide, 1;
+			} else {
+				atcommand "@hide";
+				set AShide, 0;
+			}
+			end;
+	
+		case 6:
+			close2;
+			warpparty "pvp_n_5-5",64,100,getcharid(1);
+			warpchar strcharinfo(3),80,119,getcharid(0);
+			end;
+			
+		case 7:
+			close2;
+			setcell "pvp_n_5-5",76,101,76,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_5-5",123,101,123,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_5-5",98,122,101,122,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_5-5",101,76,98,76,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			end;
+		
+		case 8:
+			close2;
+			setcell "pvp_n_5-5",76,101,76,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_5-5",123,101,123,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_5-5",98,122,101,122,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_5-5",101,76,98,76,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			end;
+	}
+	end;
+}
+
+salakage,52,28,4	script	Anbu Shiken#0Konoha	1_m_01,{
+
+if(getguildmaster(getcharid(2)) != strcharinfo(0)) end;
+	warp "pvp_n_5-5",80,119;
+	end;
+}
+
+pvp_n_5-5.gat,99,107,4	script	Suporte AS#Konoha	1_m_01,{
+atcommand "@repairall";
+percentheal(100,100);
+end;
+}
+
+pvp_n_5-5	mapflag	nowarp
+pvp_n_5-5	mapflag	nowarpto
+pvp_n_5-5	mapflag	nobranch
+pvp_n_5-5	mapflag	nosave	SavePoint
+pvp_n_5-5	mapflag	nomemo
+pvp_n_5-5	mapflag	nopenalty
+pvp_n_5-5	mapflag	pvp
+pvp_n_5-5	mapflag	noexp
+
+
+
+
+
+
+
+//===== Script Nevoa: ==============================================
+pvp_n_6-5.gat,80,119,4	script	Anbu Shiken#1Nevoa	1_m_01,{
+
+// Nome do npc
+set .npc$,"^800000[Anbu Shiken]^000000";
+
+if(getguildmaster(getcharid(2)) != strcharinfo(0)) end;
+
+	mes .npc$;
+	mes "Olá Kage. Em que posso ajuda-lo?";
+	switch(select("Contagem:Desgilar PvP:Ativar Suporte:Desativar Suporte:Hide:Recall Party:Ativar Barreiras:Desativar Barreiras")){
+	
+		case 1:
+			close2;
+			pvpoff "pvp_n_6-5";
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: Preparem-se, o duelo iniciará em 10 segundos.",0;
+			sleep2(5000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 5.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 4.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 3.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 2.",0;
+			atcommand "@skilloff";
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 1.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: Lutem!",0;
+			atcommand "@skillon";
+			pvpon "pvp_n_6-5";
+			end;
+		
+		case 2:
+			close2;
+			pvpoff "pvp_n_6-5";
+			end;
+		
+		case 3:
+			close2;
+			enablenpc "Suporte AS#Nevoa";
+			end;
+	
+		case 4:
+			close2;
+			disablenpc "Suporte AS#Nevoa";
+			end;
+	
+		case 5:
+			close2;
+			if(AShide == 0){
+				atcommand "@hide";
+				set AShide, 1;
+			} else {
+				atcommand "@hide";
+				set AShide, 0;
+			}
+			end;
+	
+		case 6:
+			close2;
+			warpparty "pvp_n_6-5",64,100,getcharid(1);
+			warpchar strcharinfo(3),80,119,getcharid(0);
+			end;
+			
+		case 7:
+			close2;
+			setcell "pvp_n_6-5",76,101,76,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_6-5",123,101,123,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_6-5",98,122,101,122,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_6-5",101,76,98,76,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			end;
+		
+		case 8:
+			close2;
+			setcell "pvp_n_6-5",76,101,76,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_6-5",123,101,123,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_6-5",98,122,101,122,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_6-5",101,76,98,76,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			end;
+	}
+	end;
+}
+
+salakage3,52,28,4	script	Anbu Shiken#0Nevoa	1_m_01,{
+
+if(getguildmaster(getcharid(2)) != strcharinfo(0)) end;
+	warp "pvp_n_6-5",80,119;
+	end;
+}
+
+pvp_n_6-5.gat,99,107,4	script	Suporte AS#Nevoa	1_m_01,{
+
+	atcommand "@repairall";
+	percentheal(100,100);
+	end;
+}
+
+pvp_n_6-5	mapflag	nowarp
+pvp_n_6-5	mapflag	nowarpto
+pvp_n_6-5	mapflag	nobranch
+pvp_n_6-5	mapflag	nosave	SavePoint
+pvp_n_6-5	mapflag	nomemo
+pvp_n_6-5	mapflag	nopenalty
+pvp_n_6-5	mapflag	pvp
+pvp_n_6-5	mapflag	noexp
+
+
+
+
+
+//===== Script Nuvem: ==============================================
+pvp_n_7-5.gat,80,119,4	script	Anbu Shiken#1Nuvem	1_m_01,{
+
+// Nome do npc
+set .npc$,"^800000[Anbu Shiken]^000000";
+
+if(getguildmaster(getcharid(2)) != strcharinfo(0)) end;
+
+	mes .npc$;
+	mes "Olá Kage. Em que posso ajuda-lo?";
+	switch(select("Contagem:Desgilar PvP:Ativar Suporte:Desativar Suporte:Hide:Recall Party:Ativar Barreiras:Desativar Barreiras")){
+	
+		case 1:
+			close2;
+			pvpoff "pvp_n_7-5";
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: Preparem-se, o duelo iniciará em 10 segundos.",0;
+			sleep2(5000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 5.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 4.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 3.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 2.",0;
+			atcommand "@skilloff";
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 1.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: Lutem!",0;
+			atcommand "@skillon";
+			pvpon "pvp_n_7-5";
+			end;
+		
+		case 2:
+			close2;
+			pvpoff "pvp_n_7-5";
+			end;
+		
+		case 3:
+			close2;
+			enablenpc "Suporte AS#Nuvem";
+			end;
+	
+		case 4:
+			close2;
+			disablenpc "Suporte AS#Nuvem";
+			end;
+	
+		case 5:
+			close2;
+			if(AShide == 0){
+				atcommand "@hide";
+				set AShide, 1;
+			} else {
+				atcommand "@hide";
+				set AShide, 0;
+			}
+			end;
+	
+		case 6:
+			close2;
+			warpparty "pvp_n_7-5",64,100,getcharid(1);
+			warpchar strcharinfo(3),80,119,getcharid(0);
+			end;
+			
+		case 7:
+			close2;
+			setcell "pvp_n_7-5",76,101,76,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_7-5",123,101,123,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_7-5",98,122,101,122,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_7-5",101,76,98,76,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			end;
+		
+		case 8:
+			close2;
+			setcell "pvp_n_7-5",76,101,76,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_7-5",123,101,123,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_7-5",98,122,101,122,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_7-5",101,76,98,76,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			end;
+	}
+	end;
+}
+
+salakage4,52,28,4	script	Anbu Shiken#0Nuvem	1_m_01,{
+if(getguildmaster(getcharid(2)) != strcharinfo(0)) end;
+	warp "pvp_n_7-5",80,119;
+	end;
+}
+
+pvp_n_7-5.gat,99,107,4	script	Suporte AS#Nuvem	1_m_01,{
+	atcommand "@repairall";
+	percentheal(100,100);
+	end;
+}
+
+pvp_n_7-5	mapflag	nowarp
+pvp_n_7-5	mapflag	nowarpto
+pvp_n_7-5	mapflag	nobranch
+pvp_n_7-5	mapflag	nosave	SavePoint
+pvp_n_7-5	mapflag	nomemo
+pvp_n_7-5	mapflag	nopenalty
+pvp_n_7-5	mapflag	pvp
+pvp_n_7-5	mapflag	noexp
+
+
+
+
+
+
+
+//===== Script Suna: ==============================================
+pvp_n_8-5.gat,80,119,4	script	Anbu Shiken#1Suna	1_m_01,{
+// Nome do npc
+set .npc$,"^800000[Anbu Shiken]^000000";
+
+if(getguildmaster(getcharid(2)) != strcharinfo(0)) end;
+
+	mes .npc$;
+	mes "Olá Kage. Em que posso ajuda-lo?";
+	switch(select("Contagem:Desgilar PvP:Ativar Suporte:Desativar Suporte:Hide:Recall Party:Ativar Barreiras:Desativar Barreiras")){
+	
+		case 1:
+			close2;
+			pvpoff "pvp_n_8-5";
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: Preparem-se, o duelo iniciará em 10 segundos.",0;
+			sleep2(5000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 5.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 4.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 3.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 2.",0;
+			atcommand "@skilloff";
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: 1.",0;
+			sleep2(1000);
+			MapAnnounce strcharinfo(3),"[Anbu Shiken]: Lutem!",0;
+			atcommand "@skillon";
+			pvpon "pvp_n_8-5";
+			end;
+		
+		case 2:
+			close2;
+			pvpoff "pvp_n_8-5";
+			end;
+		
+		case 3:
+			close2;
+			enablenpc "Suporte AS#Suna";
+			end;
+	
+		case 4:
+			close2;
+			disablenpc "Suporte AS#Suna";
+			end;
+	
+		case 5:
+			close2;
+			if(AShide == 0){
+				atcommand "@hide";
+				set AShide, 1;
+			} else {
+				atcommand "@hide";
+				set AShide, 0;
+			}
+			end;
+	
+		case 6:
+			close2;
+			warpparty "pvp_n_8-5",64,100,getcharid(1);
+			warpchar strcharinfo(3),80,119,getcharid(0);
+			end;
+			
+		case 7:
+			close2;
+			setcell "pvp_n_8-5",76,101,76,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_8-5",123,101,123,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_8-5",98,122,101,122,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_8-5",101,76,98,76,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+			end;
+		
+		case 8:
+			close2;
+			setcell "pvp_n_8-5",76,101,76,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_8-5",123,101,123,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_8-5",98,122,101,122,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			setcell "pvp_n_8-5",101,76,98,76,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+			end;
+	}
+	end;
+}
+
+salakage2,52,28,4	script	Anbu Shiken#0Suna	1_m_01,{
+if(getguildmaster(getcharid(2)) != strcharinfo(0)) end;
+warp "pvp_n_8-5",80,119;
+end;
+}
+
+pvp_n_8-5.gat,99,107,4	script	Suporte AS#Suna	1_m_01,{
+atcommand "@repairall";
+percentheal(100,100);
+end;
+}
+
+pvp_n_8-5	mapflag	nowarp
+pvp_n_8-5	mapflag	nowarpto
+pvp_n_8-5	mapflag	nobranch
+pvp_n_8-5	mapflag	nosave	SavePoint
+pvp_n_8-5	mapflag	nomemo
+pvp_n_8-5	mapflag	nopenalty
+pvp_n_8-5	mapflag	pvp
+pvp_n_8-5	mapflag	noexp

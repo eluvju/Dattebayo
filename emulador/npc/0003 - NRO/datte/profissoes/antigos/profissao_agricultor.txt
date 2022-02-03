@@ -1,0 +1,85 @@
+konoha,84,183,5	script	Agricultor::pro_agri	59,{
+
+if(agricultor == 1) goto L_temprofissao;
+if (checkquest(2033) == 1) goto L_go;
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá, Você parece ser bom com as mãos, já pensou em ser um agricultor? Se quiser, eu posso te ensinar";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Agricultor
+//========================================================================
+
+L_SS:
+next;
+mes "Muito bem, preciso que você faça algumas tarefas pra mim, e em troca eu lhe ensinarei como ser um agricultor";
+next;
+mes "Aqui está a lista de tarefas:";
+next;
+mes "- Obter 130x Bola."; //(Id: 909)
+mes "- Obter 100x Folha de Hinalle."; //(Id: 520)
+mes "- Obter 30x Casca."; //(id: mesmo que tem ai do item casca)
+mes "- Obter 1x Pele de Verme."; //(Id: 955)
+mes "- Matar 100x Togashiro"; //(Id: 1027)
+setquest 2033;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2033,hunting) != 2) {mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(909) < 130) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(520) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(935) < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(955) < 1) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Ah, você já retornou, rs! Ótimo, aqui estão uma luva de agricultor pra você começar a colher uns frutos.";
+next;
+mes "Você agora é um agricultor";
+completequest 2033;
+delitem 909,130;
+delitem 520,100;
+delitem 935,30;
+delitem 955,1;
+getitem 1803,1;
+set agricultor,1;
+announce "[Profissão] "+strcharinfo(0)+" completou a quest de agricultor",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Bem-vindo de volta, está interessado em melhorar seus conhecimentos sobre agricultura?";
+menu "Sim",upar,"Não",L_no,"Quero receber outra luva",luva;
+
+luva:
+if (countitem(1803) >= 1) {mes "Você não precisa de outra luva"; close;}
+mes "Aqui está";
+getitem 1803,1;
+close;
+
+upar:
+next;
+mes "Upar sua agricultura signfica que terá um conhecimento melhor sobre cada local de agricultura, e poderá colher os mais raros recursos do mundo, o que é essencial pra preparar alimentos que lhe darão uma força extra";
+next;
+mes "Seu nível de agricultura está "+level_agricultor+", para subir de nível são necessários 3 milhões de zeny, e 1 Instruções dos Agricultores";
+mes "Gostaria de aumentar de nível?";
+menu "Sim",upar1,"Não",L_no;
+
+upar1:
+next;
+if (level_agricultor >=100) {mes "Seu nível de agricultura está no máximo"; close;}
+if (countitem(1553) < 1) {mes "Você não possui o Instruções dos Agricultores"; close;}
+if (Zeny < 3000000) {mes "Você não possui os 3 milhões de zeny necessários"; close;}
+set Zeny, Zeny-3000000;
+delitem 1553,1;
+set level_agricultor,level_agricultor +1;
+if (level_agricultor ==100) {Achieve( 21); end;}
+mes "Nível de agricultura aumentado com sucesso, nível está agora "+level_agricultor+"";
+close;
+}
+
+areia,274,48,5	duplicate(pro_agri)	Agricultor#1	59,{
+kiri,371,198,5	duplicate(pro_agri)	Agricultor#2	59,{
+nuvem,99,135,5	duplicate(pro_agri)	Agricultor#3	59,{

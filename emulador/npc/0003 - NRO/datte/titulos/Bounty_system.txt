@@ -1,0 +1,73 @@
+prontera,150,150,4	script	Bingo Book (Local)::b1	837,{
+	callfunc "bounty_run",0;
+}
+kakashi,73,159,4	script	Bingo Book (Global)	837,{
+	callfunc "bounty_run",1;
+}
+akatsuki,171,174,4	script	Bingo Book (Akatsuki)::b3	837,{
+	if( !nukenin && !akatsuki )
+		end;
+	callfunc "bounty_run",2;
+}
+
+function	script	bounty_run	{
+	set .@li, callfunc("get_land_value");
+	if( !.@li )
+		end;
+	set .@tcid,0;
+	set .@i,0;
+	while(!.@tcid)
+	{
+		query_sql "SELECT `char_id`,`account_id` FROM `char` WHERE `online` = 1 AND `char_id` != "+getcharid(0)+""+(getarg(0)==2?" AND `base_level` = 999":"")+" LIMIT "+.@i*127+",127", .@cid, .@aid;
+		set .@n, getarraysize(.@cid);
+		set .@t, rand(.@n);
+		set .@cid, .@cid[.@t];
+		set .@aid, .@aid[.@t];
+		if(getarg(0)==2)
+		{
+			set .@value,0;
+			query_sql "SELECT `value` FROM `global_reg_value` WHERE `char_id` = "+.@cid+" AND `str` = 'akatsuki'", .@value;
+			set .@value, .@value[0];
+			if(.@value)
+			{
+				set .@tcid,0;
+				break;
+			}
+			query_sql "SELECT `value` FROM `global_reg_value` WHERE `char_id` = "+.@cid+" AND `str` = 'nukenin'", .@value;
+			set .@value, .@value[0];
+			if(.@value)
+			{
+				set .@tcid,0;
+				break;
+			}
+			set .@tcid,.@cid;
+		}else
+			query_sql "SELECT `char_id` FROM `global_reg_value` WHERE "+(getarg(0)==0?"(SELECT `value` FROM `global_reg_value` WHERE `str` = '"+callfunc("get_bi_value",3,.@li)+"' AND `account_id` = "+.@aid+") > 0 AND":"")+" `str` = 'reputation' AND `value` < 0 AND `char_id` = "+.@cid, .@tcid;
+		set .@tcid,.@tcid[0];
+		if( .@n < 127 )
+			break;
+	}
+	if( !.@tcid )
+	{
+		mes "Sem alvo neste momento.";
+		set bounty_target, 0;
+		close;
+	}
+	query_sql "SELECT `account_id` FROM `char` WHERE `char_id` = "+.@tcid, .@taid;
+	set .@taid,.@taid[0];
+	mes "Seu alvo é o: "+rid2name(.@taid);
+	if(getarg(0)==1)
+	{
+		set .@oaid, getcharid(3);
+		attachrid .@taid;
+		set .@li, callfunc("get_land_value");
+		attachrid .@oaid;
+		mes "Vila de origem : "+callfunc("get_bi_value",3,.@li);
+	}
+	set bounty_target, .@tcid;
+	close;
+}
+
+prontera,150,150,4	duplicate(b1)	Bingo Book (Local)#2	837
+prontera,150,150,4	duplicate(b1)	Bingo Book (Local)#3	837
+prontera,150,150,4	duplicate(b1)	Bingo Book (Local)#4	837

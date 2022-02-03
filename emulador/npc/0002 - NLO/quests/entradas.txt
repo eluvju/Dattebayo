@@ -1,0 +1,99 @@
+treinamento,64,92,5	script	Fenda Suspeita#1	4_crack,{
+if(!countitem(775)) { mes "Você não tem Autorização para passar por essa fenda."; close; }	mes "Você deseja descer ?";	if(select("- Sim:- Não") == 2) close;	close2;
+	warp "dali02",39,135;
+	end;
+}
+
+dali02,39,135,5	script	Fenda Suspeita#2	4_crack,{
+
+if(!countitem(775)) { mes "Você não tem Autorização para passar por essa fenda."; close; }
+	warp "treinamento",64,92;
+	end;
+
+}
+
+dali02,38,87,5	script	Dimensão do Gelo#1	45,3,3,{
+	warp "xmas_fild01",83,52;
+	end;
+}
+
+xmas_fild01,83,48,5	script	Dimensão do Gelo#2	45,3,3,{
+	warp "dali02",43,92;
+	end;
+}
+
+dali02,46,91,5	script	Dimensão do Gelo#3	837,{
+end;
+}
+
+dali02,104,152,5	script	Dimensão do Fogo#1	45,3,3,{
+	warp "thor_v03",32,272;
+	end;
+}
+
+thor_v03,28,272,5	script	Dimensão do Fogo#2	45,3,3,{
+	warp "dali02",99,148;
+	end;
+}
+
+dali02,95,149,5	script	Dimensão do Fogo#3	837,{
+end;
+}
+
+dali02,72,55,5	script	Dimensão da Luz#1	45,3,3,{
+	warp "bif_fild02",164,229;
+	end;
+}
+
+bif_fild02,168,227,5	script	Dimensão da Luz#2	45,3,3,{
+	warp "dali02",78,58;
+	end;
+}
+
+dali02,80,56,5	script	Dimensão do Luz#3	837,{
+end;
+}
+
+dali02,143,125,5	script	Dimensão do Céu#1	45,3,3,{
+	warp "gonryun",160,15;
+	end;
+}
+
+gonryun,160,11,5	script	Dimensão do Céu#2	45,3,3,{
+	warp "dali02",140,120;
+	end;
+}
+
+dali02,136,121,5	script	Dimensão do Céu#3	837,{
+end;
+}
+
+dali02,121,48,5	script	Dimensão da Escuridão#1	45,3,3,{
+	warp "nif_fild01",315,67;
+	end;
+}
+
+nif_fild01,315,63,5	script	Dimensão da Escuridão#2	45,3,3,{
+	warp "dali02",120,55;
+	end;
+}
+
+dali02,116,56,5	script	Dimensão do Escuridão#3	837,{
+end;
+}
+
+dali02,148,82,5	script	Dimensão da Agua#1	45,3,3,{
+	warp "iz_dun03",45,64;
+	end;
+}
+
+iz_dun03,30,64,5	script	Dimensão da Agua#2	45,3,3,{
+	warp "dali02",142,82;
+	end;
+}
+
+dali02,140,86,5	script	Dimensão do Agua#3	837,{
+end;
+}
+
+

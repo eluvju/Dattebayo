@@ -1,0 +1,225 @@
+hospital,47,56,5	script	Troca de Vila [Free]::free	843,{
+
+if(quest_basic_inicio != 6) { mes "[Troca de Vila]"; mes "Termine o Tutorial"; close2; end; }
+
+if(countitem(30060) || countitem(30061) || countitem(30062) || countitem(30063) ||
+   countitem(30065) || countitem(30066) || countitem(30067) || countitem(30068) || countitem(30069) || countitem(30070) || countitem(30071) || countitem(30072) ||
+   countitem(30082) || countitem(30083) || countitem(30084) || countitem(30085) ||
+   countitem(30086)) {
+
+mes "[Troca de Vila]";
+mes "Você precisa entregar seu cargo antes de trocar de vila.";
+close;
+
+}
+
+if(getcharid(2)){
+
+mes "[Troca de Vila]";
+mes "Você precisa sair do Clã.";
+close;
+
+}
+
+if(#konoha || #suna || #nevoa || #nuvem) { goto trocagratis; }
+
+if(countitem(7006) < 1){
+mes "[Troca de Vila]";
+mes "Você não tem o ticket de Troca de Vila.";
+close;
+
+}
+
+trocagratis:
+mes "[Troca de Vila]";
+mes "Escolha qual a vilas você gostaria de ir.";
+switch(select("- Konoha:- Névoa")) {
+	case 1:
+		next;
+		mes "[Troca de Vila]";
+		mes "Você tem certeza que quer ir para Konoha?";
+		if(select("- Sim:- Não") == 2) close;
+	
+		if(#konoha) { mes "[Troca de Vila]"; mes "Sua conta já é dessa vila"; close; }
+		
+		if(countitem(30000) == 1) { delitem 30000,1; }
+		if(countitem(30001) == 1) { delitem 30001,1; }
+		if(countitem(30002) == 1) { delitem 30002,1; }
+		if(countitem(30003) == 1) { delitem 30003,1; }
+		if(countitem(30004) == 1) { delitem 30004,1; }
+		if(countitem(30005) == 1) { delitem 30005,1; }
+	
+		if(countitem(30010) == 1) { delitem 30010,1; }
+		if(countitem(30011) == 1) { delitem 30011,1; }
+		if(countitem(30012) == 1) { delitem 30012,1; }
+		if(countitem(30013) == 1) { delitem 30013,1; }
+		if(countitem(30014) == 1) { delitem 30014,1; }
+		if(countitem(30015) == 1) { delitem 30015,1; }
+	
+		if(countitem(30020) == 1) { delitem 30020,1; }
+		if(countitem(30021) == 1) { delitem 30021,1; }
+		if(countitem(30022) == 1) { delitem 30022,1; }
+		if(countitem(30023) == 1) { delitem 30023,1; }
+		if(countitem(30024) == 1) { delitem 30024,1; }
+		if(countitem(30025) == 1) { delitem 30025,1; }
+	
+		if(countitem(30030) == 1) { delitem 30030,1; }
+		if(countitem(30031) == 1) { delitem 30031,1; }
+		if(countitem(30032) == 1) { delitem 30032,1; }
+		if(countitem(30033) == 1) { delitem 30033,1; }
+		if(countitem(30034) == 1) { delitem 30034,1; }
+		if(countitem(30035) == 1) { delitem 30035,1; }
+		if(#suna)   {  set #suna,0;  set #konoha,1; savepoint "hospital",55,62; if (Class == 2) {atcommand "@job 1";} if (Class == 8) {atcommand "@job 7";} if (Class == 4009) {atcommand "@job 4008";}  goto escolhabandana1; }
+		if(#nevoa)  {  set #nevoa,0; set #konoha,1; savepoint "hospital",55,62; if (Class == 3) {atcommand "@job 1";} if (Class == 9) {atcommand "@job 7";} if (Class == 4010) {atcommand "@job 4008";}  goto escolhabandana1; }
+		if(#nuvem)  {  set #nuvem,0; set #konoha,1; savepoint "hospital",55,62; if (Class == 4) {atcommand "@job 1";} if (Class == 10) {atcommand "@job 7";} if (Class == 4011) {atcommand "@job 4008";} goto escolhabandana1; }
+		
+		escolhabandana1:
+		next;
+		mes "[Troca de Vila]";
+		mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+		switch(select("- Bandana Normal:- Bandana Lado:- Bandana Pescoço:- Bandana Yamato:- Bandana Kisame:- Bandana Kakashi")){
+			case 1:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30000,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 2:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30001,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 3:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30002,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 4:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30003,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 5:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30004,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 6:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30005,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+		}
+	
+		case 2:
+		next;	
+		mes "[Troca de Vila]";
+		mes "Você tem certeza que quer ir para Névoa?";
+		if(select("- Sim:- Não") == 2) close;
+		
+		if(#nevoa)  { mes "[Troca de Vila]"; mes "Sua conta já é dessa vila"; close; }
+		
+		if(countitem(30000) == 1) { delitem 30000,1; }
+		if(countitem(30001) == 1) { delitem 30001,1; }
+		if(countitem(30002) == 1) { delitem 30002,1; }
+		if(countitem(30003) == 1) { delitem 30003,1; }
+		if(countitem(30004) == 1) { delitem 30004,1; }
+		if(countitem(30005) == 1) { delitem 30005,1; }
+	
+		if(countitem(30010) == 1) { delitem 30010,1; }
+		if(countitem(30011) == 1) { delitem 30011,1; }
+		if(countitem(30012) == 1) { delitem 30012,1; }
+		if(countitem(30013) == 1) { delitem 30013,1; }
+		if(countitem(30014) == 1) { delitem 30014,1; }
+		if(countitem(30015) == 1) { delitem 30015,1; }
+	
+		if(countitem(30020) == 1) { delitem 30020,1; }
+		if(countitem(30021) == 1) { delitem 30021,1; }
+		if(countitem(30022) == 1) { delitem 30022,1; }
+		if(countitem(30023) == 1) { delitem 30023,1; }
+		if(countitem(30024) == 1) { delitem 30024,1; }
+		if(countitem(30025) == 1) { delitem 30025,1; }
+	
+		if(countitem(30030) == 1) { delitem 30030,1; }
+		if(countitem(30031) == 1) { delitem 30031,1; }
+		if(countitem(30032) == 1) { delitem 30032,1; }
+		if(countitem(30033) == 1) { delitem 30033,1; }
+		if(countitem(30034) == 1) { delitem 30034,1; }
+		if(countitem(30035) == 1) { delitem 30035,1; }
+		if(#konoha) {  set #konoha,0; set #nevoa,1; savepoint "hospital3",55,62; if (Class == 1) {atcommand "@job 3";} if (Class == 7) {atcommand "@job 9";} if (Class == 4008) {atcommand "@job 4010";} goto escolhabandana3; }
+		if(#suna)   {  set #suna,0; set #nevoa,1; savepoint "hospital3",55,62; if (Class == 2) {atcommand "@job 3";} if (Class == 8)  {atcommand "@job 9";} if (Class == 4009) {atcommand "@job 4010";}  goto escolhabandana3; }
+		if(#nuvem)  {  set #nuvem,0; set #nevoa,1; savepoint "hospital3",55,62; if (Class == 4) {atcommand "@job 3";} if (Class == 10) {atcommand "@job 9";} if (Class == 4011) {atcommand "@job 4010";} goto escolhabandana3; }
+		
+		escolhabandana3:
+		next;
+		mes "[Troca de Vila]";
+		mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+		switch(select("- Bandana Normal:- Bandana Lado:- Bandana Pescoço:- Bandana Yamato:- Bandana Kisame:- Bandana Kakashi")){
+			case 1:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30020,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 2:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30021,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 3:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30022,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 4:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30023,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 5:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30024,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+				
+			case 6:
+				close2;
+				mes "[Troca de Vila]";
+				mes "Você sera retirado do servidor para operação ser concluída.";
+				getitem 30025,1;
+				atcommand "@kick "+ strcharinfo(0);
+				end;
+		}	
+	}
+}
+
+hospital3,47,56,5	duplicate(free)	Troca de Vila [Free]#2	843

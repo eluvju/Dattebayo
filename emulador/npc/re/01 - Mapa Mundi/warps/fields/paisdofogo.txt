@@ -1,0 +1,93 @@
+//////////////////
+// Pais do FOGO
+/////////////////
+
+//Field 1
+
+pay_fild01,379,202,0	warp	fild_fogo#01	2,2,prt_fild03,19,251
+prt_fild03,16,251,0	warp	fild_fogo#02	2,2,pay_fild01,376,204
+
+pay_fild01,278,14,0	warp	fild_fogo#03	2,2,pay_fild02,81,383
+pay_fild02,81,388,0	warp	fild_fogo#04	2,2,pay_fild01,278,19
+
+pay_fild01,349,14,0	warp	fild_fogo#05	2,2,pay_fild02,161,385
+pay_fild02,163,389,0	warp	fild_fogo#06	2,2,pay_fild01,351,18
+
+pay_fild01,14,150,0	warp	fild_fogo#30	2,2,pay_fild07,378,292
+pay_fild07,382,292,0	warp	fild_fogo#31	2,2,pay_fild01,18,150
+
+
+//Field 2B
+
+prt_fild03,195,281,0	warp	fild_fogo#07	2,2,mjolnir_06,265,34
+mjolnir_06,265,29,0	warp	fild_fogo#08	2,2,prt_fild03,195,276
+
+//FIeld 3B
+
+mjolnir_06,365,383,0	warp	fild_fogo#09	2,2,orochimaru,104,9
+orochimaru,104,3,0	warp	fild_fogo#10	2,2,mjolnir_06,366,378
+
+//Field 2A
+
+pay_fild02,135,17,0	warp	fild_fogo#11	2,2,gef_fild02,216,348
+gef_fild02,211,349,0	warp	fild_fogo#12	2,2,pay_fild02,135,22
+
+//Field 3A
+
+gef_fild02,380,288,0	warp	fild_fogo#13	2,2,prt_fild07,18,289
+prt_fild07,14,287,0	warp	fild_fogo#14	2,2,gef_fild02,377,291
+
+gef_fild02,380,157,0	warp	fild_fogo#15	2,2,prt_fild07,20,146
+prt_fild07,17,146,0	warp	fild_fogo#16	2,2,gef_fild02,375,157
+
+gef_fild02,380,67,0	warp	fild_fogo#17	2,2,prt_fild07,16,68
+prt_fild07,13,70,0	warp	fild_fogo#18	2,2,gef_fild02,376,68
+
+gef_fild02,16,275,0	warp	fild_fogo#19	2,2,gef_fild03,378,278
+gef_fild03,382,278,0	warp	fild_fogo#20	2,2,gef_fild02,20,275
+
+gef_fild02,14,78,0	warp	fild_fogo#21	2,2,gef_fild03,377,79
+gef_fild03,382,78,0	warp	fild_fogo#22	2,2,gef_fild02,19,78
+
+//Arredores Templo do Fogo
+
+prt_fild07,384,240,0	warp	fild_fogo#23	2,2,ama_fild01,96,237
+prt_fild07,384,188,0	warp	fild_fogo#24	2,2,ama_fild01,96,237
+
+ama_fild01,93,237,0	script	fild_fogo#25	45,1,1,{
+mes "Para onde deseja ir?";
+menu "Portal do Norte",cima,"Portal do Sul",baixo;
+
+cima:
+
+warp "prt_fild07",380,240;
+
+end;
+
+baixo:
+
+warp "prt_fild07",380,188;
+
+end;
+}
+
+//Field 2C
+
+pay_fild07,279,382,0	warp	fild_fogo#26	2,2,mjolnir_11,173,25
+mjolnir_11,173,20,0	warp	fild_fogo#27	2,2,pay_fild07,279,378
+
+//Field 3C
+
+mjolnir_11,20,221,0	warp	fild_fogo#28	2,2,prt_fild00,379,250
+prt_fild00,383,250,0	warp	fild_fogo#29	2,2,mjolnir_11,24,221
+
+//--------------------------------------------------------------
+//1@nyd,32,35,5	script	Fenda Suspeita#6	4_crack,{
+//
+//if(countitem(775)) { mes "Você Não tem Autorização para Passar por essa Fenda"; close; }
+//	mes "Você Deseja descer ?";
+//	if(select("- Sim:- Não") == 2) close;
+//	close2;
+//	warp "hu_fild01",116,148;
+//	end;
+//}

@@ -1,0 +1,29 @@
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+xmas_fild01,121,237,4	script	FENDA	723,{
+	next;
+	switch(select("Acesso a dungeon konoha"))
+	{
+	case 1:
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			close;
+		}
+		if(countitem(7218) >= 1)
+		{
+			delitem 7218,1;
+			warp "tur_dun01",166,29;
+			close;
+		}
+		break;
+	case 2:
+		close;
+	}
+	close;
+}

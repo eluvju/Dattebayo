@@ -1,0 +1,305 @@
+//|==========================================================================================|
+//|   __________     __________       __________   _____          _____   _____        _____ |
+//|  |::::::::::|   |::::::::: |     |::::::::::|  \::::\        /::::/	  \::::\      /::::/ |
+//|  |:: ____ ::|   |:: ____ ::|     |:: ____ ::|   \::::\      /::::/	   \::::\    /::::/  |
+//|  |::|    |::|   |::|    |::|     |::|    |::|    \::::\    /::::/       \::::\  /::::/   |
+//|  |::|    |::|   |::|    |::|     |::|    |::|     \::::\  /::::/         \::::\/::::/    |
+//|  |::|____|::|   |::|____|::|     |::|    |::|      \::::\/::::/           \::::::::/     |
+//|  |::::::::::|   |::::::::::\     |::|    |::| 	\::::::::/             \::::::/	     |
+//|  |::________|   |:: ____ :::\    |::|    |::|	 \::::::/	       	\::::/	     |
+//|  |::|	    |::|     \:::|   |::|____|::|	 /::::::\               |::::|	     |
+//|  |::|           |::|      |::|   |::      ::|       /::::::::\              |::::|       |
+//|  |::|           |::|      |::|   |::::::::::|      /::::/\::::\             |::::|       |
+//|  |__|	    |__|      |__|   |__________|     /____/  \____\	        |____|	     |
+//|        									   	     |
+//|==========================================================================================|
+//|   Script Criando por ragnaproxy | Cronus | Por Favor, Não Retire Os Créditos.            |
+//|==========================================================================================|
+//|   * 1.0 Laçamento do NPC Death PvP                					     |
+//|==========================================================================================|
+//|Descrição: Um Sistema pvp Que e composto por 3 arena (Arena Sem Leis),(Arena Sem Ygg),    |
+//|(Arena Sem Donate).									     |
+//|==========================================================================================|
+
+-	script	Arenas de Guerra::mnp	997,{
+
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//			Configurações Arena Sem donate
+//=-=-=-=-=-=-=-=-=-==-=-=--=-=-=-=-=-=-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+setarray .@id[0],30001,30002,30003,30004,30005,30006,30007,30008,30009,30010; // Adicione os IDs dos Donate do seu servidor voce pode adicionar até 127 donate..
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+//  	Configurações Arena Sem Ygg
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+setarray .@id2[0],607,608,610;                        // Aqui nao precisa meche ..
+//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+set .nome$,"[^0000FFArenas de Guerra^000000]";
+
+SET $@LIMIT, 10;
+
+SET $MAP$[0], "anbu_vs1"; SET $MAP$[1], "pvp_y_2-2";
+//if ($guerraarena == 0) {mes "No momento a arena está fechada, ela estará aberta das 18:00 às 20:00"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar nesse PvP é 999"; close;}
+	mes .nome$;
+	mes "Escolha sua arena?";
+	next;
+	menu "^9A32CDArena Chunin^000000 ["+getmapusers ("chunin")+"] ",chunin,"^9A32CDArena Konoha^000000 ["+getmapusers ("pvp_y_2-3")+"]",arenakonoha,"^9A32CDArena Nevoa^000000  ["+getmapusers ("guild_vs2-1")+"]",arenanevoa,"^9A32CDArena Suna^000000  ["+getmapusers ("guild_vs2-2")+"]",arenasuna,"^9A32CDArena Nuvem^000000  ["+getmapusers ("guild_vs1-1")+"]",arenanuvem,"^CDAD00Rank Geral^000000",rank;
+
+chunin:
+	next;
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar nesse PvP é 999"; close;}
+	mes "Deseja entra na Arena Chunin?";
+	if(Select("Sim","Não")==2) close;
+	percentheal 100, 100 ;
+	announce "[PvP] "+strcharinfo(0)+" acaba de entrar na arena de guerra.",bc_blue|bc_all;
+	warp "chunin",0,0; end;
+
+arenakonoha:
+	if (getmapusers("pvp_y_2-3") > 1){ mes "As Arenas de vilas cabem somente duas pessoas, volte quando tiver uma vaga disponível";   close;}
+	next;
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "A Akatsuki não permitida entrar nessa arena"; close;}
+	if(#konoha != 1) {mes "Você não é dessa vila"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar nesse PvP é 999"; close;}
+	mes "Deseja entra na Arena Konoha?";
+	if(Select("Sim","Não")==2) close;
+	percentheal 100, 100 ;
+	announce "[PvP] "+strcharinfo(0)+" acaba de entrar na arena de guerra.",bc_blue|bc_all;
+	warp "pvp_y_2-3",0,0; end;
+
+arenanevoa:
+	next;
+	if (getmapusers("guild_vs2-1") > 1){ mes "As Arenas de vilas cabem somente duas pessoas, volte quando tiver uma vaga disponível";   close;}
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "A Akatsuki não permitida entrar nessa arena"; close;}
+	if(#nevoa != 1) {mes "Você não é dessa vila"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar nesse PvP é 999"; close;}
+	mes "Deseja entra na Arena Névoa?";
+	if(Select("Sim","Não")==2) close;
+	percentheal 100, 100 ;
+	announce "[PvP] "+strcharinfo(0)+" acaba de entrar na arena de guerra.",bc_blue|bc_all;
+	warp "guild_vs2-1",0,0; end;
+
+arenasuna:
+	next;
+	if (getmapusers("guild_vs2-2") > 1){ mes "As Arenas de vilas cabem somente duas pessoas, volte quando tiver uma vaga disponível";  close;}
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "A Akatsuki não permitida entrar nessa arena"; close;}
+	if(#suna != 1) {mes "Você não é dessa vila"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar nesse PvP é 999"; close;}
+	mes "Deseja entra na Arena Suna?";
+	if(Select("Sim","Não")==2) close;
+	percentheal 100, 100 ;
+	announce "[PvP] "+strcharinfo(0)+" acaba de entrar na arena de guerra.",bc_blue|bc_all;
+	warp "guild_vs2-2",0,0; end;
+
+arenanuvem:
+	next;
+	if (getmapusers("guild_vs1-1") > 1){ mes "As Arenas de vilas cabem somente duas pessoas, volte quando tiver uma vaga disponível";  close;}
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "A Akatsuki não permitida entrar nessa arena"; close;}
+	if(#nuvem != 1) {mes "Você não é dessa vila"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar nesse PvP é 999"; close;}
+	mes "Deseja entra na Arena Nuvem?";
+	if(Select("Sim","Não")==2) close;
+	percentheal 100, 100 ;
+	announce "[PvP] "+strcharinfo(0)+" acaba de entrar na arena de guerra.",bc_blue|bc_all;
+	warp "guild_vs1-1",0,0; end;
+
+desativado:
+	next;
+	mes "Arena desativada";
+	close;
+
+
+rank:
+	query_sql "SELECT char_name, Kills, Death FROM rank_death ORDER BY kills DESC LIMIT 10",@nome$,@kills,@mortes;
+
+		mes "Ranking PvP ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Matou - Morreu";
+		mes " ";
+		FOR (SET .@A,0; .@A < $@LIMIT; SET .@A, .@A + 1)
+		mes (.@A+1)+"º - "+@nome$[.@A]+" - "+@kills[.@A]+" - "+@mortes[.@A];
+		close;
+
+OnInit:
+	waitingroom "",0;
+OnTimer2000:
+	setarray .@RoomDisplay$,"[Arenas de Guerra]","Arena Chunin","Arena Konoha","Arena Nevoa","Arena Suna","Arena Nuvem";
+	delwaitingroom;
+	waitingroom .@RoomDisplay$[rand(0,4)],0;
+	initnpctimer;
+end;
+}
+
+
+-	script	PvP#SomarPonto	-1,{
+
+OnPCKillEvent:
+
+getmapxy @map$,@x,@y,0;
+if ( @map$ == "chunin") goto Kills;
+
+end;
+
+Kills:
+set @CID,getcharid(0);
+set @kills,0;
+set @nome$,"";
+query_sql "SELECT `Kills` FROM `rank_death` WHERE `char_id`="+@CID+"",@kills;
+query_sql "SELECT `char_name` FROM `rank_death` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `rank_death` (`char_id`,`char_name`,`Kills`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+dispbottom "Kills no PvP: 1";
+mapannounce @map$, "O jogador [ "+strcharinfo(0)+" ] Está agora com 1 Kills!",0;
+end;
+}
+query_sql "UPDATE `rank_death` SET `Kills` = `Kills` +1 WHERE `char_id`="+@CID+"",@esc$;
+dispbottom "Pontos no Modo PvP: "+(@pontos+1);
+mapannounce @map$, "O jogador [ "+strcharinfo(0)+" ] Está agora com "+(@kills+1)+" Kills!",0;
+end;
+
+}
+
+-	script	PvP#SomarMorte	-1,{
+
+OnPCDieEvent:
+
+getmapxy @map$,@x,@y,0;
+if ( @map$ == "chunin") goto Morte;
+
+end;
+
+Morte:
+set @CID,getcharid(0);
+set @mortes,0;
+set @nome$,"";
+query_sql "SELECT `Death` FROM `rank_death` WHERE `char_id`="+@CID+"",@mortes;
+query_sql "SELECT `char_name` FROM `rank_death` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `rank_death` (`char_id`,`char_name`,`Death`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+dispbottom "Mortes no Modo PvP: 1";
+end;
+}
+query_sql "UPDATE `rank_death` SET `Death` = `Death` +1 WHERE `char_id`="+@CID+"",@esc$;
+dispbottom "Mortes no PvP: "+(@mortes+1);
+end;
+
+}
+
+
+-	script	Porteiro PvP::mmp	105,{
+
+	mes "Deseja ir para prontera ?";
+	next;
+	if(Select("Sim","Não")==2) close;
+	warp "prontera",150,150;
+
+
+close;
+
+OnInit:
+waitingroom "Saida",0;
+end;
+}
+
+//-	script	aberturaarena	-1,{
+//
+//OnClock1200:
+//set $guerraarena,1;
+//	announce "[Arenas de Guerra] : As arenas de guerra estão agora abertas, e fecharão as 20:00!",0;
+//
+//end;
+//
+//OnClock2300:
+//set $guerraarena,0;
+//	announce "[Arenas de Guerra] : As arenas de guerra estão agora fechadas, elas abrirão novamente amanhã as 12:00!",0;
+//end;
+//
+//}
+
+
+
+//=-=-=-=-=-=-=-=-=-=-=Duplicate=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+//pvp_y_2-2,103,100,4	duplicate(mmp)	Porteiro PvP#1	105
+//anbu_vs1,89,98,4	duplicate(mmp)	Porteiro PvP#2	105
+//guild_vs2-1,49,49,4	duplicate(mmp)	Porteiro PvP#3	105
+
+//konoha3,119,173,4	duplicate(mnp)	Arenas de Guerra#1	997
+//sunagakure,143,125,4	duplicate(mnp)	Arenas de Guerra#2	997
+kakashi,114,139,4	duplicate(mnp)	Arenas de Guerra#3	997
+//kumogakure,94,211,4	duplicate(mnp)	Arenas de Guerra#4	997
+akatsuki,139,179,4	duplicate(mnp)	Arenas de Guerra#5	997
+lou_in02,254,152,4	duplicate(mnp)	Arenas de Guerra#6	997
+xmas,145,136,4	duplicate(mnp)	Death PvP#7	810
+comodo,184,158,4	duplicate(mnp)	Death PvP#8	810
+louyang,226,106,4	duplicate(mnp)	Death PvP#10	810
+hugel,87,164,4	duplicate(mnp)	Death PvP#11	810
+moscovia,209,190,5	duplicate(mnp)	Death PvP#12	810
+//=-=-=-=-=-=-=-=-=-=-=Duplicate=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+//===================Inicio dos mapflag===================
+
+//--------------------Arena Sem leis----------------------
+
+chunin	mapflag	nowarp
+chunin	mapflag	noteleport
+chunin	mapflag	nowarpto
+chunin	mapflag	nobranch
+chunin	mapflag	nosave	SavePoint
+chunin	mapflag	nomemo
+chunin	mapflag	nopenalty
+chunin	mapflag	pvp
+chunin	mapflag	noexp
+
+//----------------------Arena sem Ygg---------------------
+pvp_y_2-3	mapflag	nowarp
+pvp_y_2-3	mapflag	noteleport
+pvp_y_2-3	mapflag	nowarpto
+pvp_y_2-3	mapflag	nobranch
+pvp_y_2-3	mapflag	nosave	SavePoint
+pvp_y_2-3	mapflag	nomemo
+pvp_y_2-3	mapflag	nopenalty
+pvp_y_2-3	mapflag	noexp
+pvp_y_2-3	mapflag	restricted	6
+pvp_y_2-3	mapflag	pvp
+
+//---------------------Arena sem donate-------------------
+guild_vs2-1	mapflag	nowarp
+guild_vs2-1	mapflag	noteleport
+guild_vs2-1	mapflag	nowarpto
+guild_vs2-1	mapflag	nobranch
+guild_vs2-1	mapflag	nosave	SavePoint
+guild_vs2-1	mapflag	nomemo
+guild_vs2-1	mapflag	nopenalty
+guild_vs2-1	mapflag	noexp
+guild_vs2-1	mapflag	restricted	5
+guild_vs2-1	mapflag	gvg	off
+guild_vs2-1	mapflag	pvp
+
+guild_vs2-2	mapflag	nowarp
+guild_vs2-2	mapflag	noteleport
+guild_vs2-2	mapflag	nowarpto
+guild_vs2-2	mapflag	nobranch
+guild_vs2-2	mapflag	nosave	SavePoint
+guild_vs2-2	mapflag	nomemo
+guild_vs2-2	mapflag	nopenalty
+guild_vs2-2	mapflag	noexp
+guild_vs2-2	mapflag	restricted	5
+guild_vs2-2	mapflag	gvg	off
+guild_vs2-2	mapflag	pvp
+
+guild_vs1-1	mapflag	nowarp
+guild_vs1-1	mapflag	noteleport
+guild_vs1-1	mapflag	nowarpto
+guild_vs1-1	mapflag	nobranch
+guild_vs1-1	mapflag	nosave	SavePoint
+guild_vs1-1	mapflag	nomemo
+guild_vs1-1	mapflag	nopenalty
+guild_vs1-1	mapflag	noexp
+guild_vs1-1	mapflag	restricted	5
+guild_vs1-1	mapflag	gvg	off
+guild_vs1-1	mapflag	pvp

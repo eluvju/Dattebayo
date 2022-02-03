@@ -1,0 +1,119 @@
+kakashi,64,44,4	script	Pesquisador Chen	412,{
+
+if(storymode==3) {mes "Ainda não terminei de investigar a pista, me dê tempo!"; close;}
+if(storymode==1) goto story2;
+if(progresso_story2==1) goto story2_1;
+if(storymode==2) goto story2;
+
+
+cutin "ins_cata_pri_n",2;
+mes "[Pesquisador Chen]";
+mes "Hm... não isso não vai dar certo, e isso? Sim, isso pode dar certo!";
+next;
+mes "[Pesquisador Chen]";
+mes "Não... não vai...";
+next;
+mes "[Pesquisador Chen]";
+mes "Droga! Hm? Ah desculpe jovem eu não te vi aí";
+next;
+mes "[Pesquisador Chen]";
+mes "É que eu estou em apuros, eu sou um pesquisador, a muitos anos eu era um shinobi da Vila da Pedra.";
+next;
+mes "[Pesquisador Chen]";
+mes "Recentemente eu me afastei da vila pra pesquisar os nossos eternos inimigos, a vila do som...";
+next;
+mes "[Pesquisador Chen]";
+mes "A vila do som é uma vila impiedosa, ela ataca e massacra todos que não concordam com seus meios";
+next;
+mes "[Pesquisador Chen]";
+mes "E eles possuem ninjas realmente fortes, ninguém na Vila da Pedra consegue impedir seus ataques";
+next;
+mes "[Pesquisador Chen]";
+mes "Eu tenho que impedir esses monstros... eles não podem mais causar tanta destruição a esse mundo";
+next;
+mes "[Pesquisador Chen]";
+mes "Pai...Mãe... Eu prometo, vou impedir-los!";
+next;
+mes "[Pesquisador Chen]";
+mes "Me perdoe... eu não queria falar tanto, você não faz parte dessa guerra";
+next;
+mes "Como deseja responder?";
+menu "- Deixe-me fazer parte dessa luta",L_GO,"- Você está certo, não faço.",L_NAO;
+
+L_GO:
+next;
+mes "[Pesquisador Chen]";
+mes "Vo...Você tem certeza? Você parece tão jovem, eu não gostaria de colocar uma vida tão preciosa em tanto perigo...";
+next;
+next;
+mes "[Pesquisador Chen]";
+mes "Mas... tem algo em você que me faz acreditar que você é forte...";
+next;
+mes "[Pesquisador Chen]";
+mes "Vou confiar em você, conto com sua ajuda! Assim que eu tiver mais informações sobre o paradeiro dos shinobis do som, eu te falo!";
+set storymode,1;
+//Achieve( 19);
+cutin "",255;
+close;
+
+L_NAO:
+next;
+mes "[Pesquisador Chen]";
+mes "De fato, você estaria correndo muito perigo, não posso mais ver ninguém sendo sacrificado nessa guerra sem fim!";
+cutin "",255;
+close;
+
+story2:
+cutin "ins_cata_pri_n",2;
+mes "[Pesquisador Chen]";
+mes "Aí está você! Pensei que tinha desistido da ideia, ainda bem que não pois eu finalmente achei um dos paradeiros do som";
+next;
+mes "[Pesquisador Chen]";
+mes "É uma base recém abandonada perto da Nuvem, penso que eles estão tramando algo, temos que impedir-los!";
+next;
+mes "[Pesquisador Chen]";
+mes "Os shinobis do som são muito bons em guardar seus segredos mas quem sabe tiveram um descuido e deixaram algo pra trás";
+next;
+mes "[Pesquisador Chen]";
+mes "Eu gostaria que você fosse investigar essa base, quem sabe não achamos umas pistas sobre seus planos?";
+next;
+mes "[Pesquisador Chen]";
+mes "Conto com sua ajuda! Todos os shinobis do som precisam pagar pelo o que fizeram, vamos fazer-los sofrer...";
+next;
+mes "[Story mode]";
+mes "Sua missão é: Achar e investigar a base abandonada dos shinobis do som perto da Vila da Nuvem";
+next;
+mes "[Story mode]";
+mes "Recompensa: +3 níveis base";
+set storymode,2;
+cutin "",255;
+close;
+
+story2_1:
+cutin "ins_cata_pri_n",2;
+mes "[Pesquisador Chen]";
+mes "Muito bem, você achou uma pista sobre o paradeiro dos shinobis do som! Deixe-me ver agora...Hmm";
+next;
+mes "[Pesquisador Chen]";
+mes "Eu vou investigar isso melhor, está um pouco confuso, assim que tiver mais informações eu te falo...";
+next;
+mes "[Pesquisador Chen]";
+mes "Novamente, bom trabalho, a justiça divina está próximo, em breve os shinobis do som terão o que merecem, HAHAHAHA";
+set storymode,3;
+atcommand "@blvl 3";
+set progresso_story2,2;
+cutin "",255;
+close;
+}
+
+cmd_fild06,99,156,4	script	Papel Amassado	111,{
+
+if(storymode != 2) {mes "Nada de útil aqui."; close;}
+if (progresso_story2 ==1) {mes "Nada de útil aqui."; close;}
+mes "Você encontra um papel amassado no chão";
+next;
+mes "É uma pista! Melhor levar isso ao Chen";
+set progresso_story2,1;
+close;
+
+}

@@ -1,0 +1,109 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Description: =========================================
+//= NPC Iruka 
+//= 
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 21/07/2021 as 14:57
+//
+//===================================//	
+academia,158,36,2	script	Orientador Yi	4_f_kafra1,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	.@kakashi$ = "                  ^FF0000[ Kakashi ]^000000";
+	
+//===== Variaveis: ========//
+
+if(academia_arco_1 == 3) {	mes .@npc$;
+							mes "Agora você deve ir até a ^FF0000Sala 3^000000.";
+							close;}	
+
+//=========================//
+// Introdução
+	
+	cutin "kakash1",2;
+	mes .@npc$;
+	close2;
+	cutin "",255;
+	end;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+academia,156,42,4	script	Orientador Lee	4_f_kafra2,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	
+//===== Variaveis: ========//
+
+if(academia_arco_1 == 3) {	mes .@npc$;
+							mes "Agora você deve ir até a ^FF0000Sala 3^000000.";
+							close;}	
+
+//=========================//
+// Introdução
+	
+	cutin "kakash1",2;
+	mes .@npc$;
+	close2;
+	cutin "",255;
+	end;
+}	
+	
+	
+//===================================//	
+academia,161,39,3	script	Kakashi#Sala2	4_man_nitt,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	.@kakashi$ = "                  ^FF0000[ Kakashi ]^000000";
+	
+
+//=========================//
+// Passivo
+	
+OnInit:
+	disablenpc "Kakashi#"+strnpcinfo(2);
+	end;
+
+}
+
+

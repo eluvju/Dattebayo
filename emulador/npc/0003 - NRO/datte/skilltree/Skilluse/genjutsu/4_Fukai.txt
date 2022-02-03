@@ -1,0 +1,71 @@
+-	script	on_PC_UseSkillG04	-1,{
+    end;
+//When a Character uses a skill
+
+//Fukai
+
+onPcUseSkillEvent:
+
+           if(lskillid == 182) {
+
+
+if (getskilllv(182) == 1) {
+
+if (Fukai != 1) {end;}
+if (skill182 >= 50) {skill 182,2,0; set skill182,0; dispbottom "[Sys] Level up"; end; }
+set skill182,skill182 +1;
+dispbottom "[Jutsu level] Fukai Yasumi level 1: "+skill182+" de 50";
+
+end;
+
+}
+
+if (getskilllv(182) == 2) {
+if (Fukai != 1) {end;}
+if (gen_intermediario != 1) {end;}
+if (skill182 >= 100) {skill 182,3,0; set skill182,0; dispbottom "[Sys] Level up"; end;}
+set skill182,skill182 +1;
+dispbottom "[Jutsu level] Fukai Yasumi level 2: "+skill182+" de 100";
+
+end;
+
+}
+
+if (getskilllv(182) == 3) {
+
+if (Fukai != 1) {end;}
+if (gen_intermediario != 1) {end;}
+if (skill182 >= 150) {skill 182,4,0; set skill182,0; dispbottom "[Sys] Level up"; end;}
+set skill182,skill182 +1;
+dispbottom "[Jutsu level] Fukai Yasumi level 3: "+skill182+" de 150";
+
+end;
+
+}
+
+if (getskilllv(182) == 4) {
+if (Fukai != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill182 >= 200) {skill 182,5,0; set skill182,0; dispbottom "[Sys] Level up"; end;}
+set skill182,skill182 +1;
+dispbottom "[Jutsu level] Fukai Yasumi level 4: "+skill182+" de 200";
+
+end;
+
+}
+
+if (getskilllv(182) == 5) {
+if (Fukai != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill182 >= 250) {skill 182,6,0; set skill182,0; dispbottom "[Sys] Level up"; end;}
+set skill182,skill182 +1;
+dispbottom "[Jutsu level] Fukai Yasumi level 5: "+skill182+" de 250";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

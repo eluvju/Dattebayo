@@ -1,0 +1,75 @@
+konoha,24,261,5	script	Katsu::equipe_quatro	831,{
+
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Oi, meu nome é Katsu, se veio em busca de um Lamina Fina veio ao lugar certo.";
+next;
+mes "Uma lamina que foi muito mais cuidada na sua forja, cuja qual se tornou mais afiada, e leve fazendo com que seus movimentos sejam rapidos";
+next;
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Lâmina Fina
+//========================================================================
+
+L_SS:
+next;
+if (checkquest(2010) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Minhoca Boa Pinta.";
+mes "- Obter 25x Pele de Sapo.";
+mes "- Obter 50x Garleta.";
+mes "- Matar 50x Bactéria";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2010;
+set quest_equipe_quatro,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(equipe_mobs_quatro < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(623) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7155) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(910) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Estava esperando por você. Vejo que está tudo aqui. Aqui está sua lamina, tenha bom proveito dela.";
+completequest 2010;
+erasequest 2010;
+set galinha1,0;
+set galinha2,0;
+set galinha3,0;
+set vaca1,0;
+set vaca2,0;
+set vaca3,0;
+set galinhafeed,0;
+set vacafeed,0;
+set quest_equipe_quatro,0;
+set equipe_mobs_quatro,0;
+delitem 623,25;
+delitem 7155,25;
+delitem 910,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1227,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	equipe#4	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1619 && quest_equipe_quatro == 1) {set equipe_mobs_quatro,equipe_mobs_quatro +1; announce "[Quest de equipamento] Você já derrotou "+equipe_mobs_quatro+" / 50 Bactéria",bc_blue|bc_self; end;}
+
+}
+
+areia,30,237,5	duplicate(equipe_quatro)	Katsu#1	831
+kiri,313,38,5	duplicate(equipe_quatro)	Katsu#2	831
+nuvem,71,280,5	duplicate(equipe_quatro)	Katsu#3	831

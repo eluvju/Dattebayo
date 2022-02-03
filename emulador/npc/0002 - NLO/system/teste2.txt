@@ -1,0 +1,80 @@
+-	script	atcmd_dicas	-1,{
+    OnInit:
+        bindatcmd("dicas", "atcmd_dicas::OnAtCmd");
+        end;
+        
+    OnAtCmd:
+	
+	mes "Olá ^ff0000"+strcharinfo(0)+"^000000"! Essa é uma janela de dicas criada para te ajudar no início do jogo!";
+	next;
+	mes "Que tipo de informação você precisa?";
+	menu "Virei Genin, e agora?",-,"Como evoluir de nível?",nivel,"Já posso fazer missões?",missao,"Consigo equipamentos melhores?",equip,"Como ganho jutsus novos?",jutsus,"Como subir de graduação?",chunin;
+	next;
+	mes "Muito bem, agora que você é Genin, você deve escolher seus treinos e sua Kekkei Genkai! Para maiores informações sobre as mesmas, recomendados você acessa o nosso Fórum, www.narutolegends.com.br/forum";
+	next;
+	mes "Feito isso, você está livre para começar sua jornada no mundo aberto do NLO. Procure a sala do seu Kage, jogue algumas missões Rank E para entender como funciona nossos sistemas. Agora seu principal objetivo é evoluir de nível, ganhar novos jutsus e atingir a graduação Chunin!";
+   	close;
+
+	nivel:
+	next;
+	mes "No NLO a melhor maneira de ganhar nível é derrotando monstros. Ao descer nos Arredores da sua vila, você encontrará os monstros de nível mais baixo para derrotar mais facilmente. É recomendavel utilizar a habilidade Arremessar Shuriken ou então a habilidade inicial de sua Kekkei Genkai.";
+	next;
+	mes "Também é recomendado que antes de sair na jornada para upar, você vá até a Academia e já defina os seus 9 jutsus básicos. O motivo é simples: todas as missões dos jutsus básicos são feitas no campo inicial de cada vila, e assim você já acelera seu processo de evolução! Qualquer dúvida sobre os jutsus, visite o Fórum!";
+	next;
+	mes "Quando você atingir o nível 200, a nossa dica é: comece a fazer as missões Rank D (limite de 12 diárias), assim você pode ganhar níveis e pontos de missão ao mesmo tempo!";
+	close;
+	
+	missao:
+	next;
+	mes "Você pode fazer as missões iniciais rank E desde o nível 1. Nós recomendamos que você faça as missões Rank E apenas 1 vez para entender como funciona os sistemas do jogo, porém foque em chegar ao nível 200 para liberar as missões Rank D.";
+	next;
+	mes "Com as missões Rank D você consegue ganhar níveis matando monstros e pontos de missão ao mesmo tempo, acelerando sua evolução no jogo. São 15 o limite de missões Rank D diárias, porém você pode aumentar o limite se tornando um jogador VIP. Com 10 missões feitas, você já está liberado para fazer missões Rank C, se também estiver no level 400.";
+	next;
+	mes "Se você tiver dúvidas sobre onde localizar monstros e itens, procure na nossa Wiki: ^ff0000"www.narutolegends.com.br/wiki"^000000";
+	next;
+	mes "Caso não encontre as informações que você precise, você sempre pode acionar nossos Suportes no Discord Oficial do jogo!";
+	close;
+
+	equip:
+	next;
+	mes "Para conseguir equipamentos melhores, basta derrotar monstros! A maioria deles tem um drop chamado Caixa de Equipamentos, que vai te dar um item aleatório do Rank informado.";
+	next;
+	mes "Para identificar o item, você deve ir até a loja de equipamentos da sua vila e comprar o item Lupa. Para conseguir dinheiro, você pode vender alguns itens no próprio NPC da Loja de Equipamentos, ou então fazer missões!";
+	next;
+	mes "Quando você se tornar Jounin, você vai ter acesso a equipamentos Rank S e o sistema de equipamentos Lendários, mas isso vamos deixar para o futuro, ok?";
+	close;
+
+	jutsus:
+	next;
+	mes "No início do jogo, você pode escolher 9 jutsus básicos, os NPCs ficam no segundo andar da Academia. Recomendamos que você faça isso antes de upar o personagem, para acelerar as quests.";
+	next;
+	mes "Ao todo no seu personagem, você pode ter:";
+	mes "- 9 Jutsus básicos.";
+	mes "- 6 Jutsus intermediários.";
+	mes "- 2 Jutsus avançados.";
+	next;
+	mes "Os jutsus intermediários, você desbloqueia ao atingir a graduação Chunin. Os NPCs ficam no segundo andar da academia";
+	next;
+	mes "Os jutsus avançados, você desbloqueia ao atingir Jounin, porém são umas das quests mais difíceis do jogo. Os NPCs ficam na Vila Oculta da Grama, o acesso é pelo NPC Viajante no Campo de Treinamento.";
+	close;
+
+	chunin:
+	next;
+	mes "Primeiramente para subir de graduação para Chunin, existem 2 maneiras:";
+	mes "- Chunin Shiken.";
+	mes "- Pontos de Missão.";
+	next;
+	mes "As inscrições do Chunin Shiken são feitas na Sala 4 da Academia, 10 minutos antes do início.";
+	next;
+	mes "Os dias e horários do Chunin Shiken são:";
+	mes "Quarta-feira, inscrições iniciando ás ^ff000019h50.^000000";
+	mes "";
+	mes "Sábado, inscrições iniciando ás ^ff000016h50.^000000";
+	next;
+	mes "É um teste de sobrevivência, simulando a prova da Floresta da Morte do anime. Na prova, até 2 jogadores conseguem se graduar de Genin para Chunin.";
+	next;
+	mes "Você também pode se graduar para Chunin por Pontos de Missão, juntando 600 pontos.";
+	next;
+	mes "No caso de Jounin não existe a possibilidade de shiken, e é necessário 1500 pontos para se graduar.";
+	close;	
+}

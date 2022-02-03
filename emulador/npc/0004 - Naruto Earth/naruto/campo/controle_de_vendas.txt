@@ -1,0 +1,183 @@
+//===== rAthena Script =====================================
+//= Vendor Control
+//===== By: ================================================
+//= Original by Emistry
+//= Rewrite by AnnieRuru
+//===== Current Version: ===================================
+//= 2.1r
+//===== Compatible With: ===================================
+//= rAthena 2019-2-10
+//===== Description: =======================================
+//= Vendors only vend on certain coordinate, looks tidy :P
+//===== Topic ==============================================
+//= https://rathena.org/board/topic/117737-error-vendinghelp/
+//===== Additional Comments: ===============================
+//= Revert back to use warp
+//==========================================================
+
+job_monk,261,116,5	script	Assistente de Vendas	946,{
+	.nomenpc$ = "[^FF0000Assistente de venda^000000]";
+	.map2$ = "desert"; //Local da volta
+	.x2$ = "49"; //Coordenada x do local de volta
+	.y2$ = "68"; //Coordenada y do local de volta
+	
+	mes .nomenpc$;
+	mes "Você gostaria de comprar ítens ou vender?";
+	switch(select("^FF0000-^000000 Comprar:^FF0000-^000000 Vender")){
+		case 1:
+		next;
+		mes .nomenpc$;
+		mes "Boas Compras";
+		next;
+		warp .map2$,.x2$,.y2$;
+		end;
+		
+		case 2:
+	next;
+	mes .nomenpc$;
+	if ( !getskilllv( "MC_VENDING" ) ) {
+		mes "Você não possui a skill de ^0055FFComércio^000000.";
+		mes "Procure o ^0055FFLicenciador^000000 de comercio.";
+		close;
+	}
+	mes "Selecione o lugar que deseja ocupar com sua loja.";
+	while ( true ) {
+		.@menu$ = .@currentpage ? "Previous Page:" : ":";
+		.@pageindex = .@currentpage * .slotperpage;
+		for ( .@i = 0; .@i < .slotperpage && .@pageindex + .@i < .count; ++.@i ) {
+			if ( !getmapxy( .@map$, .@x, .@y, BL_NPC, "#vend_slot"+( .@pageindex + .@i ) ) && getareausers( .map$, .@x, .@y, .@x, .@y ) )
+				.@menu$ += "Slot No."+( .@pageindex + .@i +1 )+" - ^FF0000[Ocupado]^000000:";
+			else
+				.@menu$ += "Slot No."+( .@pageindex + .@i +1 )+" - ^00CC00[Disponível]^000000:";
+		}
+		if ( .@currentpage != .maxpage )
+			.@menu$ = .@menu$ + "Próxima página";
+		.@pick = select( .@menu$ ) -1;
+		if ( !.@pick )
+			{ --.@currentpage; }
+		else if ( .@pick == .slotperpage +1 )
+			{ ++.@currentpage; }
+		else
+			break;
+	}
+	.@s =  .@currentpage * .slotperpage + .@pick -1 ;
+	if ( !getmapxy( .@map$, .@x, .@y, BL_NPC, "#vend_slot"+ .@s ) && getareausers( .map$, .@x, .@y, .@x, .@y ) ) {
+		mes " ";
+		mes "Este slot já esta ^FF0000[OCUPADO]^000000.";
+		close;
+	}
+	warp .@map$, .@x, .@y;
+	hideonnpc "#vend_slot"+ .@s;
+	donpcevent "#vend_slot"+ .@s +"::OnCheckAvailable";
+	end;
+OnInit:
+	setbattleflag "min_npc_vendchat_distance", 0;
+//	======================= Configuration HERE =============================
+	.map$ = "desert"; // map
+	setarray .@x, 38,42,46,50,54,58,62; // x coordinates
+	setarray .@y, 35,39,43,47,51,55,59,63; // y coordinates
+	.slotperpage = 12; // display how many slots per page (prevent making the menu too long)
+
+	freeloop true;
+	setcell .map$, 0,0, 500,500, cell_novending, true;
+	.@x_size = getarraysize( .@x );
+	.@y_size = getarraysize( .@y );
+	for ( .@i = 0; .@i < .@y_size; ++.@i ) {
+		for ( .@j = 0; .@j < .@x_size; ++.@j ) {
+			if ( checkcell( .map$, .@x[.@j], .@y[.@i], cell_chkpass ) ) {
+				movenpc "#vend_slot"+ .count, .@x[.@j], .@y[.@i];
+				setcell .map$, .@x[.@j], .@y[.@i], .@x[.@j], .@y[.@i], cell_novending, false;
+				if ( getareausers( .map$, .@x[.@j], .@y[.@i], .@x[.@j], .@y[.@i] ) ) {
+					hideonnpc "#vend_slot"+ .count;
+					donpcevent "#vend_slot"+ .count +"::OnCheckAvailable";
+				}
+				++.count;
+			}
+		}
+	}
+	.maxpage = .count / .slotperpage + ( .count % .slotperpage > 0 ) -1;
+//	debugmes "Vendor NPC needed -> "+ .count;
+	end;
+	}
+}
+
+-	script	vend_slot	FAKE_NPC,{
+	mes "[Mercado Livre]";
+	if ( !getskilllv( "MC_VENDING" ) ) {
+		mes "Você não possui a habilidade ^0055FFComércio^000000.";
+		close;
+	}
+	getmapxy .@map$, .@x, .@y, BL_NPC;
+	if ( getareausers( .@map$, .@x, .@y, .@x, .@y ) ) {
+		mes "Ei, alguem já esta utilizando este lugar";
+		close;
+	}
+//	unitwalk getcharid(3), .@x, .@y;
+	warp strcharinfo(3), .@x, .@y;
+	mes "^0055FF[Regras da área de venda]^000000";
+	mes "Lugar: ^777777Disponível^000000";
+	hideonnpc strnpcinfo(0);
+	donpcevent strnpcinfo(0)+"::OnCheckAvailable";
+	close;
+OnCheckAvailable:
+	sleep 10000;
+	getmapxy .@map$, .@x, .@y, BL_NPC;
+	while ( getareausers( .@map$, .@x, .@y, .@x, .@y ) )
+		sleep 10000;
+	hideoffnpc strnpcinfo(0);
+	end;
+
+}
+
+// Add more if needed.
+desert,0,0,4	duplicate(vend_slot)	#vend_slot0	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot1	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot2	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot3	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot4	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot5	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot6	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot7	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot8	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot9	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot10	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot11	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot12	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot13	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot14	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot15	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot16	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot17	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot18	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot19	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot20	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot21	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot22	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot23	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot24	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot25	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot26	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot27	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot28	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot29	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot30	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot31	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot32	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot33	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot34	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot35	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot36	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot37	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot38	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot39	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot40	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot41	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot42	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot43	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot44	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot45	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot46	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot47	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot48	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot49	4_BULLETIN_BOARD2
+desert,0,0,4	duplicate(vend_slot)	#vend_slot50	4_BULLETIN_BOARD2

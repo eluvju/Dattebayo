@@ -1,0 +1,137 @@
+ra_in01,212,93,4	script	Removedora de Selo#eAcustom	1_F_ORIENT_04,{
+
+	set .zenycost,20000; // Set base cost in zeny of the card remover services
+	set .percardcost,2500; // set cost per card of the card remover services
+	set .faildestroy,0; // Should the card remover have a chance of failure that destroys items? 1 = Yes, 0 = No.
+
+	disable_items;
+	mes "[Velha Sábia]";
+	mes "Bom dia, meu jovem. Eu tenho a habilidade de remover selos já colocadas em seus equipamentos.";
+	mes "Gostaria de remover selos de seus equipamentos?";
+	next;
+	switch(select("Sim, eu quero!.:Quanto custa?:Não, Obrigado.")) {
+	case 1:
+		mes "[Velha Sábia]";
+		mes "Muito bem. Qual item devo examinar para você?";
+		next;
+
+		setarray .@position$[1], "Cabeça","Armadura","Mão Esquerda","Mão Direita","Capa","Sapatos","Acessório 1","Acessório 2","Item Superior 1","Item Superior 2";
+		set .@menu$,"";
+		for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+		{
+			if( getequipisequiped(.@i) )
+			set .@menu$, .@menu$ + .@position$[.@i] + "-" + "[" + getequipname(.@i) + "]";
+
+			set .@menu$, .@menu$ + ":";
+		}
+		set .@part,select(.@menu$);
+		if(!getequipisequiped(.@part)) {
+			mes "[Velha Sábia]";
+			mes "Meu jovem... Você não está equipado com nenhum item deste tipo.";
+			close;
+		}
+		if(getequipcardcnt(.@part) == 0) {
+			mes "[Velha Sábia]";
+			mes "Meu jovem... Nenhuma selo foi colocada neste item. Não posso fazer nada com isto.";
+			close;
+		}
+		set .@cardcount,getequipcardcnt(.@part);
+		
+		if (!checkweight(2830,(.@cardcount+1))) { 
+			mes "^3355FFAguarde um minuto!";
+			mes "Não posso lhe oferecer meus serviços";
+			mes "para você porque,";
+			mes "você está carregando muita";
+			mes "coisa. Coloque seus itens extras no";
+			mes "armazém e depois volte~";
+			close;
+		}
+		mes "[Velha Sábia]";
+		mes "Este item tem " + .@cardcount + " selos nele. Para usar minha mágica, vou precisar de " + (.zenycost+(.@cardcount * .percardcost)) + " iene, um ^0000FFArmadura Destruida^000000, e uma ^0000FFÁlcool^000000.";
+		next;
+		if(select("Quero remover.:Deixa pra lá.") == 2) {
+			mes "[Velha Sábia]";
+			mes "Muito bem. Volte sempre que precisar de mim.";
+			close;
+		}
+		if((Zeny < (.zenycost+(.@cardcount * .percardcost))) || (countitem(970) < 1) || (countitem(7069) < 1)) {
+			mes "[Velha Sábia]";
+			mes "Você não tem iene suficiente. Volte quando tiver.";
+			close;
+		}
+		mes "[Velha Sábia]";
+		mes "Antes que eu comece, Preciso avisá-lo--Eu posso falhar. Se eu falhar, os selos podem ser destruídas, o item, ou ambos. Eu não dou reembolsos. Sendo assim, qual é mais importante pra você: Os selos, ou o item?";
+		next;
+		switch(select("Eu mudei de idéia.:O item.:Os selos.")) {
+		case 1:
+			mes "[Velha Sábia]";
+			mes "Muito bem. Volte sempre que precisar de mim.";
+			close;
+		case 2:
+			set .@failtype,1;
+			break;
+		case 3:
+			set .@failtype,2;
+		}
+		mes "[Velha Sábia]";
+		mes "Muito bem. Devo começar.";
+		Zeny -= (.zenycost+(.@cardcount * .percardcost));
+		delitem 970,1;
+		delitem 7069,1;
+		
+		// Replace the constants in the next 3 lines with failure chance values defined in refine_db.txt
+		// First value = Total failure chance (item and cards destroyed)
+		// Second value = Partial failure chance (one or the other is destroyed, player decides which one is safe)
+		// Third value = Harmless failure chance (all that's lost is your investment)
+
+		set .@failchance,rand(100);
+		if (.faildestroy==1) {
+			if(.@failchance < 2) {
+				next;
+				failedremovecards .@part,0;
+				mes "[Velha Sábia]";
+				mes "O processo foi uma falha total. O item e seus selos foram detruídos.";
+				close;
+			}
+
+			if(.@failchance < 8) {
+				if (.@failtype == 1) {
+					next;
+					failedremovecards .@part,1;
+					mes "[Velha Sábia]";
+					mes "Enquanto eu tentava remover os selos, elas foram destruídas no processo. Porém, o item está bem.";
+					close;
+				}
+
+				if (.@failtype == 2) {
+					next;
+					failedremovecards .@part,2;
+					mes "[Velha Sábia]";
+					mes "Mas que droga. Eu consegui remover os selos, mas o item em si, foi destruído.";
+					close;
+				}
+			}
+		}
+
+		if(.@failchance < 10) {
+			next;
+			failedremovecards .@part,3;
+			mes "[Velha Sábia]";
+			mes "Eu falhei em remover as cartas. Felizmente, ambos, o item e os selos estão ok.";
+			close;
+		}
+		next;
+		successremovecards .@part;
+		mes "[Velha Sábia]";
+		mes "O Processo foi um sucesso. Aqui estão seus selos e seu item.";
+		close;
+	case 2:
+		mes "[Velha Sábia]";
+		mes "Eu cobro a taxa de "+.zenycost+" iene para remover seus selos. Valor de "+.percardcost+" iene por cada carta que eu remover do item. Em adição, Eu preciso de um Armadura Destruida e um Álcool para minha magica funcionar.";
+		close;
+	case 3:
+		mes "[Velha Sábia]";
+		mes "Muito bem. Volte quando precisar de mim.";
+		close;
+	}
+}

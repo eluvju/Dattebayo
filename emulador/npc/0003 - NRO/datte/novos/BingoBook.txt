@@ -1,0 +1,882 @@
+-	script	Evento#BB	BingoBook#var -1,{
+OnInit:
+setarray $BBmapE$[1],"prt_fild02","moc_fild01","yuno_fild08","gef_fild04";
+setarray $BBdicaE$[1],"Buscando conhecimentos sobre a técnica Kuchyose nos arredores da Vila de Konohagakure","Buscando conhecimentos sobre a técnica Kuchyose nos arredores da Vila de Sunagakure","Buscando conhecimentos sobre a técnica Kuchyose nos arredores de Kumogakure","Buscando conhecimentos sobre a técnica Kuchyose nos arredores da Vila de Kirigakure";
+
+setarray $BBmapD$[1],"prt_fild01","cmd_fild09","ein_fild08","mjolnir_01";
+setarray $BBdicaD$[1],"Caçando Genins nos arredores da Vila de Konohagakure","Caçando Genins nos arredores da Vila de Sunagakure","Caçando Genins nos arredores de Kumogakure","Caçando Genins nos arredores da Vila de Kirigakure";
+
+setarray $BBmapC$[1],"moc_fild03","moc_fild13","yuno_fild05","um_fild01";
+setarray $BBdicaC$[1],"A procura do aperfeiçoamento de treinos básicos nos arredores da Vila de Konohagakure","A procura do aperfeiçoamento de treinos básicos nos arredores da Vila de Sunagakure","A procura do aperfeiçoamento de treinos básicos nos arredores de Kumogakure","A procura do aperfeiçoamento de treinos básicos nos arredores da Vila de Kirigakure";
+
+setarray $BBmapB$[1],"mjolnir_07","moc_fild08","hu_fild07","prt_fild04";
+setarray $BBdicaB$[1],"Caçando Chunins nos arredores da Vila de Konohagakure","Caçando Chunins nos arredores da Vila de Sunagakure","Caçando Chunins nos arredores de Kumogakure","Caçando Chunins nos arredores da Vila de Kirigakure";
+
+setarray $BBmapA$[1],"mjolnir_08","ve_fild04","ein_fild01","pay_fild10";
+setarray $BBdicaA$[1],"Em busca do couro dos famosos Mamutes nos arredores da Vila de Konohagakure","Em busca do couro dos famosos Mamutes nos arredores da Vila de Sunagakure","Em busca do couro dos famosos Mamutes nos arredores de Kumogakure","Em busca do couro dos famosos Mamutes nos arredores da Vila de Kirigakure";
+
+setarray $BBmapS$[1],"mjolnir_11","ve_fild03","yuno_fild07","odin_tem01";
+setarray $BBdicaS$[1],"Buscando o aperfeiçoamento da técnica Kuchyose ao seu nível máximo nos arredores da Vila de Konohagakure","Buscando o aperfeiçoamento da técnica Kuchyose ao seu nível máximo nos arredores da Vila de Sunagakure","Buscando o aperfeiçoamento da técnica Kuchyose ao seu nível máximo nos arredores de Kumogakure","Caçando Bandidos nos arredores de Kirigakure";
+
+setarray $BBmapSS$[1],"tur_dun02";
+setarray $BBdicaSS$[1],"Não há informação sobre este alvo.";
+
+setarray $BBmob[1],1252,1377,1300,1515,1569,1705,1774;  //1705
+end;
+
+OnClock0000:
+announce "[Bingo Book]: Contabilizando pontuações do dia...",0;
+sleep(5000);
+set .i1, $BBinfo[1]/2;
+announce "[Bingo Book]: Somando um total de "+$BBinfo[1]+" Pontos, Os shinobis de Konoha conseguiram "+.i1+" ryous para sua vila.",0;
+sleep(2000);
+set .i2, $BBinfo[2]/2;
+announce "[Bingo Book]: Somando um total de "+$BBinfo[2]+" Pontos, Os shinobis da Nevoa conseguiram "+.i2+" ryous para sua vila.",0;
+sleep(2000);
+set .i3, $BBinfo[3]/2;
+announce "[Bingo Book]: Somando um total de "+$BBinfo[3]+" Pontos, Os shinobis da Nuvem conseguiram "+.i3+" ryous para sua vila.",0;
+sleep(2000);
+set .i4, $BBinfo[4]/2;
+announce "[Bingo Book]: Somando um total de "+$BBinfo[4]+" Pontos, Os shinobis da Suna conseguiram "+.i4+" ryous para sua vila.",0;
+sleep(2000);
+set .i5, $BBinfo[5]/2;
+announce "[Bingo Book]: Somando um total de "+$BBinfo[5]+" Pontos, Os nukenins da Akatsuki conseguiram "+.i5+" ryous para sua Organização.",0;
+sleep(2000);
+set .i6, $BBinfo[6]/2;
+announce "[Bingo Book]: Somando um total de "+$BBinfo[6]+" Pontos, Os nukenins conseguiram "+.i6+" ryous para si.",0;
+sleep(3000);
+set .winer, 1;
+for( set .j, 1; .j<7; set .j, .j + 1 ){
+if($BBinfo[.j] > $BBinfo[.winer]) set .winer, .j;
+}
+set .empate, 0;
+for( set .j, 1; .j<7; set .j, .j + 1 ){
+if($BBinfo[.j] == $BBinfo[.winer]) set .empate, .empate+1;
+}
+set $BBinfo[8], 0;
+setarray .BBwiner$[1],"Vila de Konoha","Vila da Nevoa","Vila da Nuvem","Vila da Suna","Organização Akatsuki";
+if(.winer < 6 && $BBinfo[.winer] > 0 && .empate < 2){
+announce "[Bingo Book]: A "+.BBwiner$[.winer]+" ganhou um bonus de 50 Ryous, pelo seu empenho no Bingo Book.",0;
+if(.winer == 1) set $konoha_ryous, $konoha_ryous + 50;
+if(.winer == 2) set $nevoa_ryous, $nevoa_ryous + 50;
+if(.winer == 3) set $nuvem_ryous, $nuvem_ryous + 50;
+if(.winer == 4) set $areia_ryous, $areia_ryous + 50;
+if(.winer == 5) set $akatsuki_ryous, $akatsuki_ryous + 50;
+}
+if(.winer == 6 && $BBinfo[.winer] > 0 && .empate < 2){
+announce "[Bingo Book]: Os nukenins do mundo shinobi ganharam um bonus no Bingo Book durante 24 horas.",0;
+set $BBinfo[8], 1;
+}
+if($BBinfo[1] + $BBinfo[2] + $BBinfo[3] + $BBinfo[4] + $BBinfo[5] + $BBinfo[6] == 0){
+announce "[Bingo Book]: Não tivemos nenhum vencedor no Bingo Book de hoje.",0;
+end;
+}
+if(.empate >= 2){
+announce "[Bingo Book]: Um empate foi detectado. Não tivemos nenhum vencedor no Bingo Book de hoje.",0;
+end;
+}
+set $konoha_ryous, $konoha_ryous + .i1;
+set $nevoa_ryous, $nevoa_ryous + .i2;
+set $nuvem_ryous, $nuvem_ryous + .i3;
+set $areia_ryous, $areia_ryous + .i4;
+set $akatsuki_ryous, $akatsuki_ryous + .i5;
+setarray $BBinfo[1],0,0,0,0,0,0;
+end;
+}
+
+//===== Script: ==============================================
+kakashi.gat,84,131,4	script	Bingo Book	46,{
+
+// Nome do npc
+set .npc$,"[Bingo Book]";
+
+if(getgmlevel() < 98)
+{
+if($BBstatus == 0)
+{
+mes .npc$;
+mes "Npc temporariamente desativado.";
+close;
+}
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+switch(select("Ver Contratos:Informações."))
+{
+case 1:
+setarray .@menu$[1],"Rank E","Rank D","Rank C","Rank B","Rank A","Rank S","Rank SS";
+if($@BBcont[1] == 0){
+set .@menu$[1],"^CC3300Rank E^000000";
+}else{
+set .@menu$[1],"^00FF33Rank E^000000";
+}
+if($@BBcont[2] == 0){
+set .@menu$[2],"^CC3300Rank D^000000";
+}else{
+set .@menu$[2],"^00FF33Rank D^000000";
+}
+if($@BBcont[3] == 0){
+set .@menu$[3],"^CC3300Rank C^000000";
+}else{
+set .@menu$[3],"^00FF33Rank C^000000";
+}
+if($@BBcont[4] == 0){
+set .@menu$[4],"^CC3300Rank B^000000";
+}else{
+set .@menu$[4],"^00FF33Rank B^000000";
+}
+if($@BBcont[5] == 0){
+set .@menu$[5],"^CC3300Rank A^000000";
+}else{
+set .@menu$[5],"^00FF33Rank A^000000";
+}
+if($@BBcont[6] == 0){
+set .@menu$[6],"^CC3300Rank S^000000";
+}else{
+set .@menu$[6],"^00FF33Rank S^000000";
+}
+if($@BBcont[7] == 0){
+set .@menu$[7],"^CC3300Rank SS^000000";
+}else{
+set .@menu$[7],"^00FF33Rank SS^000000";
+}
+
+select(.@menu$[1],.@menu$[2],.@menu$[3],.@menu$[4],.@menu$[5],.@menu$[6],.@menu$[7]);
+
+switch(@menu)
+{
+case 1:
+if($@BBcont[1] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Ultima Informação: "+$BBdicaE$[$@BBcont[1]]+"";
+close;
+end;
+
+case 2:
+if($@BBcont[2] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Ultima Informação: "+$BBdicaD$[$@BBcont[2]]+"";
+close;
+end;
+
+case 3:
+if($@BBcont[3] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Ultima Informação: "+$BBdicaC$[$@BBcont[3]]+"";
+close;
+end;
+
+case 4:
+if($@BBcont[4] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Ultima Informação: "+$BBdicaB$[$@BBcont[4]]+"";
+close;
+end;
+
+case 5:
+if($@BBcont[5] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Ultima Informação: "+$BBdicaA$[$@BBcont[5]]+"";
+close;
+end;
+
+case 6:
+if($@BBcont[6] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Ultima Informação: "+$BBdicaS$[$@BBcont[6]]+"";
+close;
+end;
+
+case 7:
+if($@BBcont[7] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Ultima Informação: "+$BBdicaSS$[$@BBcont[7]]+"";
+close;
+end;
+
+}
+case 2:
+mes .npc$;
+mes "Eu sou responsável pelo Bingo Book. Bingo Book trata-se de um catálogo, onde são divulgados os shinobis que estão sendo caçados.";
+next;
+mes .npc$;
+mes "Sempre que alguém quer certo indivíduo morto, eles recorrem ao Bingo Book, oferecendo determinadas recompensas pelo cadáver, dependendo das habilidades do alvo.";
+next;
+mes .npc$;
+mes "Não sabe-se ao certo onde você poderá encontrar o alvo, porém sempre que possível, le darei as últimas notícias dele.";
+next;
+mes .npc$;
+mes "Horários:";
+mes "Rank E: Todo minuto 00 (100%)";
+mes "Rank D: Todo minuto 00 (100%)";
+mes "Rank C: Todo minuto 00 ( 70%)";
+mes "Rank B: Todo minuto 00 ( 50%)";
+mes "Rank A: Todo minuto 00 entre 10h ~ 00h (20%)";
+mes "Rank S: Todo minuto 00 entre 10h ~ 00h ( 7%)";
+mes "Rank SS: Todo minuto 00 entre 10h ~ 00h ( 1%)";
+close;
+}
+}
+setarray .@menu$[1],"Rank E","Rank D","Rank C","Rank B","Rank A","Rank S","Rank SS";
+if($@BBcont[1] == 0){
+set .@menu$[1],"^CC3300Rank E^000000";
+}else{
+set .@menu$[1],"^00FF33Rank E^000000";
+}
+if($@BBcont[2] == 0){
+set .@menu$[2],"^CC3300Rank D^000000";
+}else{
+set .@menu$[2],"^00FF33Rank D^000000";
+}
+if($@BBcont[3] == 0){
+set .@menu$[3],"^CC3300Rank C^000000";
+}else{
+set .@menu$[3],"^00FF33Rank C^000000";
+}
+if($@BBcont[4] == 0){
+set .@menu$[4],"^CC3300Rank B^000000";
+}else{
+set .@menu$[4],"^00FF33Rank B^000000";
+}
+if($@BBcont[5] == 0){
+set .@menu$[5],"^CC3300Rank A^000000";
+}else{
+set .@menu$[5],"^00FF33Rank A^000000";
+}
+if($@BBcont[6] == 0){
+set .@menu$[6],"^CC3300Rank S^000000";
+}else{
+set .@menu$[6],"^00FF33Rank S^000000";
+}
+if($@BBcont[7] == 0){
+set .@menu$[7],"^CC3300Rank SS^000000";
+}else{
+set .@menu$[7],"^00FF33Rank SS^000000";
+}
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+menu "Ver Contratos",acept,"Informações",info,"Criar Contrato",new,"Cencelar Contrato",fim,"Ativar Npc",on,"Desativar Npc",off,"Definir Premiação",prize,"SS Manager",rSS;
+acept:
+select(.@menu$[1],.@menu$[2],.@menu$[3],.@menu$[4],.@menu$[5],.@menu$[6],.@menu$[7]);
+switch(@menu)
+{
+case 1:
+if($@BBcont[1] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Localização: "+$BBmapE$[$@BBcont[1]]+"";
+mes "Ultima Informação: "+$BBdicaE$[$@BBcont[1]]+"";
+close;
+end;
+
+case 2:
+if($@BBcont[2] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Localização: "+$BBmapD$[$@BBcont[2]]+"";
+mes "Ultima Informação: "+$BBdicaD$[$@BBcont[2]]+"";
+close;
+end;
+
+case 3:
+if($@BBcont[3] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Localização: "+$BBmapC$[$@BBcont[3]]+"";
+mes "Ultima Informação: "+$BBdicaC$[$@BBcont[3]]+"";
+close;
+end;
+
+case 4:
+if($@BBcont[4] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Localização: "+$BBmapB$[$@BBcont[4]]+"";
+mes "Ultima Informação: "+$BBdicaB$[$@BBcont[4]]+"";
+close;
+end;
+
+case 5:
+if($@BBcont[5] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Localização: "+$BBmapA$[$@BBcont[5]]+"";
+mes "Ultima Informação: "+$BBdicaA$[$@BBcont[5]]+"";
+close;
+end;
+
+case 6:
+if($@BBcont[6] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+mes "Localização: "+$BBmapS$[$@BBcont[6]]+"";
+mes "Ultima Informação: "+$BBdicaS$[$@BBcont[6]]+"";
+close;
+end;
+
+case 7:
+if($@BBcont[7] == 0){
+mes .npc$;
+mes "Estou sem contrato no momento";
+close;
+end;
+}
+mes .npc$;
+//mes "Localização: "+$BBmapSS$[$@BBcont[7]]+"";
+mes "Ultima Informação: "+$BBdicaSS$[$@BBcont[7]]+"";
+close;
+end;
+}
+
+info:
+mes .npc$;
+mes "Eu sou responsável pelo Bingo Book. Bingo Book trata-se de um catálogo, onde são divulgados os shinobis que estão sendo caçados.";
+next;
+mes .npc$;
+mes "Sempre que alguém quer certo indivíduo morto, eles recorrem ao Bingo Book, oferecendo determinadas recompensas pelo cadáver, dependendo das habilidades do alvo.";
+next;
+mes .npc$;
+mes "Não sabe-se ao certo onde você poderá encontrar o alvo, porém sempre que possível, le darei as últimas notícias dele.";
+next;
+mes .npc$;
+mes "Horários:";
+mes "Rank E: Todo minuto 00 (100%)";
+mes "Rank D: Todo minuto 00 (100%)";
+mes "Rank C: Todo minuto 00 ( 70%)";
+mes "Rank B: Todo minuto 00 ( 50%)";
+mes "Rank A: Todo minuto 00 entre 10h ~ 00h (20%)";
+mes "Rank S: Todo minuto 00 entre 10h ~ 00h ( 7%)";
+mes "Rank SS: Todo minuto 00 entre 10h ~ 00h ( 1%)";
+close;
+
+new:
+mes .npc$;
+mes "Qual o nível do contrato a ser criado?";
+switch(select(.@menu$[1],.@menu$[2],.@menu$[3],.@menu$[4],.@menu$[5],.@menu$[6],.@menu$[7]))
+{
+case 1:
+if($@BBcont[1])
+{
+mes .npc$;
+mes "Já possuo um contrato deste nível.";
+close;
+end;
+}
+mes .npc$;
+mes "Você acaba de criar um contrato de Rank E.";
+close2;
+callsub MakeNewContractE;
+end;
+
+case 2:
+if($@BBcont[2])
+{
+mes .npc$;
+mes "Já possuo um contrato deste nível.";
+close;
+end;
+}
+mes .npc$;
+mes "Você acaba de criar um contrato de Rank D.";
+close2;
+callsub MakeNewContractD;
+end;
+
+case 3:
+if($@BBcont[3])
+{
+mes .npc$;
+mes "Já possuo um contrato deste nível.";
+close;
+end;
+}
+mes .npc$;
+mes "Você acaba de criar um contrato de Rank C.";
+close2;
+callsub MakeNewContractC;
+end;
+
+case 4:
+if($@BBcont[4])
+{
+mes .npc$;
+mes "Já possuo um contrato deste nível.";
+close;
+end;
+}
+mes .npc$;
+mes "Você acaba de criar um contrato de Rank B.";
+close2;
+callsub MakeNewContractB;
+end;
+
+case 5:
+if($@BBcont[5])
+{
+mes .npc$;
+mes "Já possuo um contrato deste nível.";
+close;
+end;
+}
+mes .npc$;
+mes "Você acaba de criar um contrato de Rank A.";
+close2;
+callsub MakeNewContractA;
+end;
+
+case 6:
+if($@BBcont[6])
+{
+mes .npc$;
+mes "Já possuo um contrato deste nível.";
+close;
+end;
+}
+mes .npc$;
+mes "Você acaba de criar um contrato de Rank S.";
+close2;
+callsub MakeNewContractS;
+end;
+
+case 7:
+if($@BBcont[7])
+{
+mes .npc$;
+mes "Já possuo um contrato deste nível.";
+close;
+end;
+}
+mes .npc$;
+mes "Você acaba de criar um contrato de Rank SS.";
+close2;
+callsub MakeNewContractSS;
+end;
+}
+
+fim:
+mes .npc$;
+mes "Qual o nível do contrato a ser cancelado?";
+switch(select(.@menu$[1],.@menu$[2],.@menu$[3],.@menu$[4],.@menu$[5],.@menu$[6],.@menu$[7]))
+{
+case 1:
+mes .npc$;
+mes "Você acaba de cancelar um contrato de Rank E.";
+close2;
+callsub OnMobKilledE;
+end;
+
+case 2:
+mes .npc$;
+mes "Você acaba de cancelar um contrato de Rank D.";
+close2;
+callsub OnMobKilledD;
+end;
+
+case 3:
+mes .npc$;
+mes "Você acaba de cancelar um contrato de Rank C.";
+close2;
+callsub OnMobKilledC;
+end;
+
+case 4:
+mes .npc$;
+mes "Você acaba de cancelar um contrato de Rank B.";
+close2;
+callsub OnMobKilledB;
+end;
+
+case 5:
+mes .npc$;
+mes "Você acaba de cancelar um contrato de Rank A.";
+close2;
+callsub OnMobKilledA;
+end;
+
+case 6:
+mes .npc$;
+mes "Você acaba de cancelar um contrato de Rank S.";
+close2;
+callsub OnMobKilledS;
+end;
+
+case 7:
+mes .npc$;
+mes "Você acaba de cancelar um contrato de Rank SS.";
+close2;
+callsub OnMobKilledSS;
+end;
+}
+
+on:
+set $BBstatus,1;
+close;
+end;
+
+off:
+set $BBstatus,0;
+close;
+end;
+
+prize:
+if(getgmlevel() < 98) close;
+mes .npc$;
+mes "Você tem certeza que deseja reconfigurar os prêmios";
+switch(select("- Sim:- Não"))
+{
+		case 1:
+		next;
+		mes .npc$;
+		mes "Digite o id do prêmio do Rank E.";
+		input $BBpremio1;
+		next;
+		mes .npc$;
+		mes "Digite a quantidade do prêmio do Rank E.";
+		input $BBquant1;
+		next;
+		mes .npc$;
+		mes "Digite o id do prêmio do Rank D.";
+		input $BBpremio2;
+		next;
+		mes .npc$;
+		mes "Digite a quantidade do prêmio do Rank D.";
+		input $BBquant2;
+		next;
+		mes .npc$;
+		mes "Digite o id do prêmio do Rank C.";
+		input $BBpremio3;
+		next;
+		mes .npc$;
+		mes "Digite a quantidade do prêmio do Rank C.";
+		input $BBquant3;
+		next;
+		mes .npc$;
+		mes "Digite o id do prêmio do Rank B.";
+		input $BBpremio4;
+		next;
+		mes .npc$;
+		mes "Digite a quantidade do prêmio do Rank B.";
+		input $BBquant4;
+		next;
+		mes .npc$;
+		mes "Digite o id do prêmio do Rank A.";
+		input $BBpremio5;
+		next;
+		mes .npc$;
+		mes "Digite a quantidade do prêmio do Rank A.";
+		input $BBquant5;
+		next;
+		mes .npc$;
+		mes "Digite o id do prêmio do Rank S.";
+		input $BBpremio6;
+		next;
+		mes .npc$;
+		mes "Digite a quantidade do prêmio do Rank S.";
+		input $BBquant6;
+		next;
+		mes .npc$;
+		mes "Digite o id do prêmio do Rank SS.";
+		input $BBpremio7;
+		next;
+		mes .npc$;
+		mes "Digite a quantidade do prêmio do Rank SS.";
+		input $BBquant7;
+		next;		
+	mes .npc$;
+	mes "Os itens que você escolheu como premiação são:";
+	mes "Rank E:"+$BBquant1+" "+getitemname($BBpremio1);
+	mes "Rank D:"+$BBquant2+" "+getitemname($BBpremio2);
+	mes "Rank C:"+$BBquant3+" "+getitemname($BBpremio3);
+	mes "Rank B:"+$BBquant4+" "+getitemname($BBpremio4);
+	mes "Rank A:"+$BBquant5+" "+getitemname($BBpremio5);
+	mes "Rank S:"+$BBquant6+" "+getitemname($BBpremio6);
+	mes "Rank SS:"+$BBquant7+" "+getitemname($BBpremio7);
+	next;
+	mes .npc$;
+	mes "Tem certeja que deseja deixar assim a premiação do Bingo Book?";
+	switch(select("- Sim:- Não"))
+	{
+		case 1:
+		next;
+		mes .npc$;
+		mes "O Bingo Book foi configurado com sucesso.";
+		close2;
+		setarray $premio[0],$BBpremio1,$BBpremio2,$BBpremio3,$BBpremio4,$BBpremio5,$BBpremio6,$BBpremio7;
+		setarray $quant[0],$BBquant1,$BBquant2,$BBquant3,$BBquant4,$BBquant5,$BBquant6,$BBquant7;
+		end;
+
+		case 2:
+		next;
+		mes .npc$;
+		mes "Tudo bem, estarei aqui se precisar.";
+		close;
+		}
+
+			case 2:
+				next;
+				mes .npc$;
+				mes "Tudo bem, estarei aqui se precisar.";
+			close;
+			}
+end;
+
+rSS:
+if(getgmlevel() < 98) close;
+for( set .i, 7; .i < getarraysize($BBmob)+1; set .i, .i + 1 ){
+mes "["+.i+"] "+getmonsterinfo($BBmob[.i],0);
+}
+if(select("Adicionar:Remover") == 1){
+next;
+for( set .i, 7; .i < getarraysize($BBmob)+5 && $BBmob[.i] != 0; set .i, .i + 1 );
+mes .npc$;
+mes "Qual o ID do mob que deseja adicionar?";
+input .@newss;
+next;
+mes .npc$;
+mes "Deseja adicionar o "+getmonsterinfo(.@newss,0)+" ao Rank SS?";
+if(select("Sim:Não") == 2) close;
+next;
+mes .npc$;
+mes "Alteração concluida.";
+set $BBmob[.i], .@newss;
+close;
+end;
+}else{
+next;
+mes .npc$;
+mes "Qual o número do Mob na lista acima?";
+input .@oldss;
+next;
+mes .npc$;
+mes "Deseja remover o "+getmonsterinfo($BBmob[.@oldss],0)+" do Rank SS?";
+if(select("Sim:Não") == 2) close;
+next;
+mes .npc$;
+mes "Alteração concluida.";
+set $BBmob[.@oldss], .@newss;
+close;
+end;
+}
+	
+MakeNewContractE:
+	set $@BBcont[1], rand(1,4);
+	monster $BBmapE$[$@BBcont[1]],0,0,"Nukenin Rank E",$BBmob[1],1,strnpcinfo(0)+"::OnMobKilledE";
+	return;
+
+MakeNewContractD:
+	set $@BBcont[2], rand(1,4);
+	monster $BBmapD$[$@BBcont[2]],0,0,"Nukenin Rank D",$BBmob[2],1,strnpcinfo(0)+"::OnMobKilledD";
+	return;
+	
+MakeNewContractC:
+	set $@BBcont[3], rand(1,4);
+	monster $BBmapC$[$@BBcont[3]],0,0,"Nukenin Rank C",$BBmob[3],1,strnpcinfo(0)+"::OnMobKilledC";
+	return;
+	
+MakeNewContractB:
+	set $@BBcont[4], rand(1,4);
+	monster $BBmapB$[$@BBcont[4]],0,0,"Nukenin Rank B",$BBmob[4],1,strnpcinfo(0)+"::OnMobKilledB";
+	return;
+	
+MakeNewContractA:
+	set $@BBcont[5], rand(1,4);
+	monster $BBmapA$[$@BBcont[5]],0,0,"Nukenin Rank A",$BBmob[5],1,strnpcinfo(0)+"::OnMobKilledA";
+	return;
+	
+MakeNewContractS:
+	set $@BBcont[6], rand(1,4);
+	monster $BBmapS$[$@BBcont[6]],0,0,"Nukenin Rank S",$BBmob[6],1,strnpcinfo(0)+"::OnMobKilledS";
+	return;
+	
+MakeNewContractSS:
+	set $@BBcont[7], 1;
+	set .SSmob, rand(7,getarraysize($BBmob)-1);
+	monster $BBmapSS$[$@BBcont[7]],0,0,"Nukenin Rank SS",$BBmob[.SSmob],1,strnpcinfo(0)+"::OnMobKilledSS";
+	return;
+
+OnMobKilledE:
+if(getgmlevel()<5){
+announce "[Bingo Book]: "+strcharinfo(0)+" capturou o Nukenin Rank E! Como recompensa recebeu "+$BBquant1+"x "+getitemname($BBpremio1)+".",0;
+getitem $BBpremio1,$BBquant1;
+set $BBinfo[7], 2;
+callsub OnRecivePts;
+}else{
+killmonster $BBmapE$[$@BBcont[1]],strnpcinfo(0)+"::OnMobKilledE",1;
+}
+set $@BBcont[1],0;
+end;
+
+OnMobKilledD:
+if(getgmlevel()<5){
+announce "[Bingo Book]: "+strcharinfo(0)+" capturou o Nukenin Rank D! Como recompensa recebeu "+$BBquant2+"x "+getitemname($BBpremio2)+".",0;
+getitem $BBpremio2,$BBquant2;
+set $BBinfo[7], 2;
+callsub OnRecivePts;
+}else{
+killmonster $BBmapD$[$@BBcont[2]],strnpcinfo(0)+"::OnMobKilledD",1;
+}
+set $@BBcont[2],0;
+end;
+
+OnMobKilledC:
+if(getgmlevel()<5){
+announce "[Bingo Book]: "+strcharinfo(0)+" capturou o Nukenin Rank C! Como recompensa recebeu "+$BBquant3+"x "+getitemname($BBpremio3)+".",0;
+getitem $BBpremio3,$BBquant3;
+set $BBinfo[7], 15;
+callsub OnRecivePts;
+}else{
+killmonster $BBmapC$[$@BBcont[3]],strnpcinfo(0)+"::OnMobKilledC",1;
+}
+set $@BBcont[3],0;
+end;
+
+OnMobKilledB:
+if(getgmlevel()<5){
+announce "[Bingo Book]: "+strcharinfo(0)+" capturou o Nukenin Rank B! Como recompensa recebeu "+$BBquant4+"x "+getitemname($BBpremio4)+".",0;
+getitem $BBpremio4,$BBquant4;
+set $BBinfo[7], 25;
+callsub OnRecivePts;
+}else{
+killmonster $BBmapB$[$@BBcont[4]],strnpcinfo(0)+"::OnMobKilledB",1;
+}
+set $@BBcont[4],0;
+end;
+
+OnMobKilledA:
+if(getgmlevel()<5){
+announce "[Bingo Book]: "+strcharinfo(0)+" capturou o Nukenin Rank A! Como recompensa recebeu "+$BBquant5+"x "+getitemname($BBpremio5)+".",0;
+getitem $BBpremio5,$BBquant5;
+set $BBinfo[7], 35;
+callsub OnRecivePts;
+}else{
+killmonster $BBmapA$[$@BBcont[5]],strnpcinfo(0)+"::OnMobKilledA",1;
+}
+set $@BBcont[5],0;
+end;
+
+OnMobKilledS:
+if(getgmlevel()<5){
+announce "[Bingo Book]: "+strcharinfo(0)+" capturou o Nukenin Rank S! Como recompensa recebeu "+$BBquant6+"x "+getitemname($BBpremio6)+".",0;
+getitem $BBpremio6,$BBquant6;
+set $BBinfo[7], 100;
+callsub OnRecivePts;
+}else{
+killmonster $BBmapS$[$@BBcont[6]],strnpcinfo(0)+"::OnMobKilledS",1;
+}
+set $@BBcont[6],0;
+end;
+
+OnMobKilledSS:
+if(getgmlevel()<5){
+announce "[Bingo Book]: "+strcharinfo(0)+" capturou o Nukenin Rank SS! Como recompensa recebeu "+$BBquant7+"x "+getitemname($BBpremio7)+".",0;
+getitem $BBpremio7,$BBquant7;
+set $BBinfo[7], 200;
+callsub OnRecivePts;
+}else{
+killmonster $BBmapSS$[$@BBcont[7]],strnpcinfo(0)+"::OnMobKilledSS",1;
+}
+set $@BBcont[7],0;
+end;
+
+OnRecivePts:
+if(nukenin == 1 && countitem(19020) == 0 && countitem(19195) == 0 && countitem(19196) == 0 && countitem(19197) == 0){
+if(rand(1,5) == 1) set $BBinfo[7], $BBinfo[7] + $BBinfo[7];
+set nukenin_ryous, nukenin_ryous + $BBinfo[7];
+set $BBinfo[6], $BBinfo[6] + $BBinfo[7];
+}
+if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0) set $BBinfo[5], $BBinfo[5] + $BBinfo[7];
+if(#konoha == 1 && nukenin == 0) set $BBinfo[1], $BBinfo[1] + $BBinfo[7];
+if(#nevoa == 1 && nukenin == 0) set $BBinfo[2], $BBinfo[2] + $BBinfo[7];
+if(#nuvem == 1 && nukenin == 0) set $BBinfo[3], $BBinfo[3] + $BBinfo[7];
+if(#suna == 1 && nukenin == 0) set $BBinfo[4], $BBinfo[4] + $BBinfo[7];
+set $BBinfo[7], 0;
+return;
+end;
+
+OnMinute00:
+if(!$@BBcont[1]) callsub MakeNewContractE;
+if(!$@BBcont[2]) callsub MakeNewContractD;
+if(rand(100) < 70 && !$@BBcont[3]) callsub MakeNewContractC;
+if(rand(100) < 50 && !$@BBcont[4]) callsub MakeNewContractB;
+end;
+
+OnClock1000:
+OnClock1100:
+OnClock1200:
+OnClock1300:
+OnClock1400:
+OnClock1500:
+OnClock1600:
+OnClock1700:
+OnClock1800:
+OnClock1900:
+OnClock2000:
+OnClock2100:
+OnClock2200:
+OnClock2300:
+OnClock0000:
+if(rand(1,15) < 4 && !$@BBcont[5]) callsub MakeNewContractA;
+if(rand(1,15) < 2 && !$@BBcont[6]) callsub MakeNewContractS;
+if(rand(1,105) < 2 && !$@BBcont[7]) callsub MakeNewContractSS;
+end;
+}

@@ -1,0 +1,132 @@
+pay_fild06,249,291,5	script	Pesquisador	3,3,105,{
+	
+	OnTouch:
+		if (checkquest(4000) == 1) goto Quest ativa;
+		mes "[Pesquisador]";
+		mes "Ei, você poderia me ajudar com alguns dados?";
+		next;
+		switch(select("Sim, o que você precisa?:Agora não posso, desculpe.")) {
+		case 1:
+			mes "[Pesquisador]";
+			mes "Bem, eu sou um pesquisador de outro país";
+			mes "E gostaria de adquirir informações sobre";
+			mes "Os animais e a vegetação desta região";
+			mes "Você poderia me ajudar respondendo algumas questões";
+			mes "Tudo bem para você?";
+			next;
+			switch(select("Tudo, vamos começar.:Talvez outra hora")) {
+			case 1:
+			mes "[Pesquisador]";
+			mes "Bem, irei lhe dar uma lista com as caracteristicas do animal";
+			mes "E você me diz claramente o seu nome";
+			mes "Lembrando: Primeira letra maiuscula e o resto minuscula.";
+			next;
+			mes "- Você recebe uma ficha com dados -";
+			next;
+			mes "É uma espécie de aranha";
+			mes "Sua pele tem tons de amarelo e preto.";
+			input .@question1$;
+			next;
+			if (.@question1$ != "Kyodaigumo") goto errado;
+			next;
+			mes "Pequeno besouro, muito ágil";
+			mes "Costuma roubar pertences caídos no chão.";
+			input .@question2$;
+			if (.@question2$ != "Bikouchuu") goto errado;
+			next;
+			mes "Ave de tamanho médio, não costuma voar.";
+			mes "Suas plumas tem tons de laranja e seu bico é mediano";
+			input .@question3$;
+			next;
+			if (.@question3$ != "Nidachou") goto errado;
+			next;
+			mes "É uma espécie de coelho";
+			mes "Seu pelo tem tons de azul claro";
+			mes "Caminha sobre 2 patas";
+			input .@question4$;
+			if (.@question4$ != "Usagiburaun") goto errado;
+			next;
+			mes "É um tipo de mamute";
+			mes "Parte do seu corpo é coberto de rochas";
+			mes "Há injetado nele vários outros animais.";
+			input .@question5$;
+			if (.@question5$ != "Manmousukas") goto errado;
+			next;
+			mes "[Pesquisador]";
+			mes "Muito obrigado pela sua ajuda";
+			mes "Eu ainda tenho uma espécie nova";
+			mes "que preciso estuda-la.";
+			mes "Estou testando teorias que se ela";
+			mes "For alimentada por qualquer coisa";
+			mes "Ela entre em um estado de Metamorfose.";
+			next;
+			mes "[Pesquisador]";
+			mes "Resumindo:";
+			mes "Você precisa jogar alguma coisa no chão";
+			mes "Para que ela coma, após ela comer";
+			mes "Mate-a imediatamente, pois ela pode ser perigosa";
+			mes "Quando mata-la, volte até mim.";
+			mes "[Pesquisador]";
+			mes "Vou leva-lo até ela e você irá alimentada com alguma coisa, tudo bem?";]
+			next;
+			switch(select("Ok. Vamos lá!:Bem... tenho que ir agora fica pra outra hora.")) {
+			case 1:
+				mes "[Pesquisador]";
+				mes "Irei te levar lá.";
+				setquest 4000;
+				end;
+				warp "acad_01",100,174;
+				end2;
+			case 2:
+				mes "[Pesquisador]";
+				mes "Ok...";
+				close;
+			}
+			break;
+			case 2:
+				mes "[Pesquisador]";
+				mes "Tudo bem.";
+				close;
+			}
+			break;
+			case 2: 
+				mes "[Pesquisador]";
+				mes "Ok.";
+				mes "Por enquanto, Adeus~";
+				close;
+		}	break;
+
+	Parte 2:
+		if (checkquest(4000,hunting) != 2) {mes "[Pesquisador]"; mes "Você ainda não matou o animal!"; close;}
+		if (pesquisa_concluida == 1) goto comprimento;
+		mes "[Pesquisador]";
+		mes "Muito bem! Obrigado pela sua ajuda.";
+		mes "Agora sou seu amigo, como posso te chamar?";
+		input .seunome$;
+		next;
+		mes "[Pesquisador]";
+		mes "Hmm, legal. Seu apelido será "+.seunome$+"";
+		next;
+		mes "[Pesquisador]";
+		mes "".+seunome$+" você me ajudou bastante";
+		mes "Irei lhe recompensar.";
+		next;
+		completequest 4000;
+		erasequest 4000;
+		getitem 618,1;
+		set pesquisa_concluida,1;
+		mes "[Pesquisador]";
+		mes ""+.seunome$+", isto é um pergaminho de invocação";
+		mes "desse animal que você derrotou, ele irá lhe ajudar";
+		mes "sempre que precisar, porém só use-o contra monstros";
+		mes "Até logo, "+.seunome$+";
+		close;
+
+	comprimento:
+		mes "[Pesquisador]";
+		mes "Olá "+.seunome$+";
+		close;
+
+	}
+
+			

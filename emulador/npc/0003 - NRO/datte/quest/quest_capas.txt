@@ -1,0 +1,142 @@
+konoha,26,276,5	script	Mioko::mamaufodz	831,{
+
+mes "[Mioko]";
+mes "Olá, eu posso fazer diversas capas";
+mes "Então qual deseja obter?";
+menu "Manto da Conjuração",L_OB,"Manto da Habilidade",L_MA,"Capa da Precisão",L_MU,"Capa da Destruição",L_CS,"Agora Não",L_N;
+
+L_OB:
+mes "[Mioko]";
+mes "Para fazer o Manto da Conjuração, você precisa de:";
+mes " - 50 Dente de Morcego";
+mes " - 15 Garra de Ave";
+mes " - 2 Carne";
+mes " - 200 Bola";
+mes " - 3.000,000z";
+menu "Ja tenho, fazer prosseguir",L_OBB,"Deixa pra lá",L_N;
+close;
+
+L_OBB:
+mes "[Mioko]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(913) < 50) goto No_Item;
+if (countitem(917) < 15) goto No_Item;
+if (countitem(517) < 2) goto No_Item;
+if (countitem(909) < 200) goto No_Item;
+if (Zeny < 3000000) goto No_Item;
+next;
+mes "[Mioko]";
+mes "Parabéns, tudo certo!";
+delitem 913,50;
+delitem 917,15;
+delitem 517,2;
+delitem 909,200;
+set Zeny,Zeny-3000000;
+next;
+mes "[Mioko]";
+mes "Use-o bem!";
+getitem 2505,1;
+close;
+
+L_MA:
+mes "[Mioko]";
+mes "Para fazer o Manto da Habilidade, você precisa de:";
+mes " - 5 Pedra do Sábio";
+mes " - 2 Asa de Mosca";
+mes " - 300 Escama de Cobra";
+mes " - 100 Casca";
+mes " - 3.000,000z";
+menu "Ja tenho, fazer prosseguir",L_MAA,"Deixa pra lá",L_N;
+close;
+
+L_MAA:
+mes "[Mioko]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(12040) < 5) goto No_Item;
+if (countitem(601) < 2) goto No_Item;
+if (countitem(926) < 300) goto No_Item;
+if (countitem(935) < 100) goto No_Item;
+if (Zeny < 3000000) goto No_Item;
+next;
+mes "[Mioko]";
+mes "Parabéns, tudo certo!";
+delitem 12040,5;
+delitem 601,2;
+delitem 926,300;
+delitem 935,100;
+set Zeny,Zeny-3000000;
+next;
+mes "[Mioko]";
+mes "Use-o bem!";
+getitem 2506,1;
+close;
+
+L_MU:
+mes "[Mioko]";
+mes "Para fazer a Capa da Precisão, você precisa de:";
+mes " - 100 Tranças";
+mes " - 200 Cauda de Macaco";
+mes " - 25 Chifre Firme";
+mes " - 5.000,000z";
+menu "Ja tenho, fazer prosseguir",L_MUU,"Deixa pra lá",L_N;
+close;
+
+L_MUU:
+mes "[Mioko]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(901) < 100) goto No_Item;
+if (countitem(942) < 200) goto No_Item;
+if (countitem(7008) < 25) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Mioko]";
+mes "Parabéns, tudo certo!";
+delitem 901,100;
+delitem 942,200;
+delitem 7008,25;
+set Zeny,Zeny-5000000;
+next;
+mes "[Mioko]";
+mes "Use-o bem!";
+getitem 2507,1;
+close;
+
+L_CS:
+mes "[Mioko]";
+mes "Para fazer a Capa da Destruição, você precisa de:";
+mes " - 5 Aço";
+mes " - 100 Garra de Ave";
+mes " - 5.000,000z";
+menu "Ja tenho, fazer prosseguir",L_CSS,"Deixa pra lá",L_N;
+close;
+
+L_CSS:
+mes "[Mioko]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(999) < 5) goto No_Item;
+if (countitem(917) < 100) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Mioko]";
+mes "Parabéns, tudo certo!";
+delitem 999,5;
+delitem 917,100;
+set Zeny,Zeny-5000000;
+next;
+mes "[Mioko]";
+mes "Use-o bem!";
+getitem 2508,1;
+close;
+
+No_Item:
+mes "[Mioko]";
+mes "Desculpe, mas você precisa de todos os itens.";
+close;
+
+L_N:
+mes "[Mioko], Tudo bem, volte quando quiser... ";
+close;
+}
+areia,55,266,5	duplicate(mamaufodz)	Mioko#1	831
+kiri,86,369,5	duplicate(mamaufodz)	Mioko#2	831
+nuvem,262,288,5	duplicate(mamaufodz)	Mioko#3	831

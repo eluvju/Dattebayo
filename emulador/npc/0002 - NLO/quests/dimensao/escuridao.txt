@@ -1,0 +1,211 @@
+
+nif_fild01,0,0,0,0	monster	Bahamoth		1281,30,0,0,0
+nif_fild01,0,0,0,0	monster	Addax		1282,30,0,0,0
+
+nif_fild01,317,76,5	script	Nativo#4	4_ghost_stand,{
+
+	if(checkquest(5) == 1) {
+		if(checkquest(5,HUNTING) == 2) {
+			if(countitem(757) >= 100) {
+				mes "[Nativo]";
+				mes "Parabéns, aqui está sua recompensa.";
+				getitem 758,1;
+				delitem 757,100;
+				completequest 5; 
+				erasequest 5;
+				close;
+			}
+			mes "[Nativo]";
+			mes "Você Não completou sua missão ainda.";
+			close;
+		}
+		mes "[Nativo]";
+		mes "Você Não completou sua missão ainda.";
+		close;
+	}
+
+	mes "[Nativo]";
+	mes "Bem vindo visitante a Dimensão da Escuridão, tudo o que tem aqui são trevas, ";
+	mes "os vivos não são bem vindos aqui. ";
+	mes "Se aceitar meu desafio e derrotar meus irmãos, quem sabe eu te dê alguma recompensa. ";
+	if(select("- Sim:- Não") == 2) { close; }
+		next;	
+		mes "[Nativo]";
+		mes "Recompensa: Fragmento da Dimensão da Escuridão";
+		mes "Derrote 100 Bahamooth";
+		mes "Derrote 100 Addax";
+		mes "Coletar 100 Alma Sombria";
+		if(select("- Pegar a Quest:- Deixa para outra hora") == 2) { close; }
+		setquest 5;
+		close;
+}
+
+nif_fild01,307,79,5	script	Instância da Escuridão#1	4_m_gef_soldier,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+	
+	set .@instance$, "Dimensao Escuridao";
+	mes "^ff0000[Instância da Escuridão]^000000";
+	mes "Olá, shinobi! Está pronto para começar sua aventura?";
+	menu "Iniciar Raid.",inicio,"Removedor de Raid.",removedor;
+	removedor:
+next;
+if(questmade757 == GetTime(8)) {
+mes "^ff0000[Instância da Escuridão]^000000";
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+
+if(vip_status(1)) {
+mes "^ff0000[Instância da Escuridão]^000000";
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid do Dimensão Escuridão. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "^ff0000[Instância da Escuridão]^000000";
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7024,1;
+set questmade757, GetTime(8);
+close;
+	
+r2:
+next;
+mes "^ff0000[Instância da Escuridão]^000000";
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}
+
+inicio:	
+if(questmade756 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:
+mes "^ff0000[Instância da Escuridão]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7024) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Instância da Escuridão]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set questmade756, 0;
+delitem 7024,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Instância da Escuridão]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Fale comigo novamente!";
+close;
+}
+
+getpartymember getcharid(1),1;
+getpartymember getcharid(1),2;
+for(.@i = 0; .@i < $@partymembercount; .@i++) {
+if($@partymembercount > 2) {
+	mes "Você não pode iniciar a Raid com mais de 2 membros no grupo.";
+	close;
+	}
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos da ^FF0000Dimensão Escuridão^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if(getpartyleader(getcharid(1),2) != getcharid(0)) goto naocria;
+
+		if (instance_create(.@instance$) < 0) {
+		mes "Você não atende aos requisitos da ^FF0000Dimensão Escuridão^000000.";
+		close;
+
+		naocria:
+		mes "Você precisa ser o líder do grupo para criar a raid ^FF0000Dimensão Escuridão^000000.";
+		close;
+		}
+
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		getpartymember getcharid(1),2;
+		for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		}
+		attachrid(getpartyleader(getcharid(1),1));
+		// Começo da Instância
+		hideonnpc ""+instance_npcname("Instância da Escuridão#2")+"";
+		instance_announce instance_id(),"Boa sorte, shinobi!",0;
+		monster ""+instance_mapname("gef_dun02",instance_id())+"",0,0,"Death",1283,50,"dimensaoescuridao::OnMonsterDie1";
+		end;
+	}
+}
+
+gef_dun02,0,0,0	script	dimensaoescuridao	-1,{
+
+OnMonsterDie1:
+	if(!mobcount(""+instance_mapname("gef_dun02",instance_id())+"","dimensaoescuridao::OnMonsterDie1"))  {
+		instance_announce instance_id(),"O Chefe acaba de aparecer no mapa!",0;
+		monster ""+instance_mapname("gef_dun02",instance_id())+"",200,83,"Kades",1284,1,"dimensaoescuridao::OnMonsterDie2";
+		end;
+	}
+	else
+	instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("gef_dun02",instance_id())+"","dimensaoescuridao::OnMonsterDie1"))+" Montros Mortos",0;
+	end;
+	
+OnMonsterDie2:
+	if(!mobcount(""+instance_mapname("gef_dun02",instance_id())+"","dimensaoescuridao::OnMonsterDie2"))  {
+	instance_announce instance_id(),"Parabéns por completar a Dimensão da Escuridão!",0;
+	hideoffnpc ""+instance_npcname("Instância da Escuridão#2")+"";
+	end;	
+	}
+}
+
+gef_dun02,104,29,5	script	Instância da Escuridão#2	4_m_gef_soldier,{
+	if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "Apenas o líder pode finalizar a missão.";
+		close;
+	}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 2) {
+			mes "Seu Grupo é muito grande. Reduz a quantidade de membros. Só é permitido 2 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+
+	mes "Você conseguiu completar a missão.";
+	close2;
+	getpartymember getcharid(1),0;	
+	getpartymember getcharid(1),1;	
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	attachrid($@partymemberaid[.@i]);	
+		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
+		
+		query_sql("SELECT `index`,`value`  FROM `escuridao_limit` WHERE `char_id` = '"+$@partymembercid[.@i]+"'",@escuridao,@limiteescuridao);
+
+				if(!@escuridao) {
+					query_sql "INSERT INTO `escuridao_limit` (`char_id`, `index`, `value`) VALUES ("+$@partymembercid[.@i]+",1,1)";
+				} else { 
+					query_sql "UPDATE `escuridao_limit` SET `value` = `value` + 1 WHERE `char_id`= '"+$@partymembercid[.@i]+"'";	
+				}
+
+	// Recompensas
+	set questmade756, GetTime(8);
+		}
+	}	
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Dimensão da Escuridão.",bc_all;	
+	instance_destroy;
+	end;
+}
+
+gef_dun02	mapflag	partylock

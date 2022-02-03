@@ -1,0 +1,107 @@
+-	script	UseShiki	-1,{
+    end;
+//When a Character uses a skill
+
+//Shiki
+
+onPcUseSkillEvent:
+
+           if(lskillid == 544) {
+
+
+if (getskilllv(544) == 1) {
+
+if (Shiki != 1) {end;}
+if (skill544 >= 50) {skill 544,2,0; set skill544,0; dispbottom "[Sys] Level up"; end; }
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 1: "+skill544+" de 50";
+
+end;
+
+}
+
+if (getskilllv(544) == 2) {
+if (Shiki != 1) {end;}
+if (skill544 >= 100) {skill 544,3,0; set skill544,0; dispbottom "[Sys] Level up"; end;}
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 2: "+skill544+" de 100";
+
+end;
+
+}
+
+if (getskilllv(544) == 3) {
+
+if (Shiki != 1) {end;}
+if (skill544 >= 150) {skill 544,4,0; set skill544,0; dispbottom "[Sys] Level up"; end;}
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 3: "+skill544+" de 150";
+
+end;
+
+}
+
+if (getskilllv(544) == 4) {
+if (Shiki != 1) {end;}
+if (skill544 >= 200) {skill 544,5,0; set skill544,0; dispbottom "[Sys] Level up"; end;}
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 4: "+skill544+" de 200";
+
+end;
+
+}
+
+if (getskilllv(544) == 5) {
+if (Shiki != 1) {end;}
+if (skill544 >= 250) {skill 544,6,0; set skill544,0; dispbottom "[Sys] Level up"; end;}
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 5: "+skill544+" de 250";
+
+end;
+
+}
+
+if (getskilllv(544) == 6) {
+if (Shiki != 1) {end;}
+if (skill544 >= 300) {skill 544,7,0; set skill544,0; dispbottom "[Sys] Level up"; end;}
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 6: "+skill544+" de 300";
+
+end;
+
+}
+
+if (getskilllv(544) == 7) {
+if (Shiki != 1) {end;}
+if (skill544 >= 500) {skill 544,8,0; set skill544,0; dispbottom "[Sys] Level up"; end;}
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 7: "+skill544+" de 500";
+
+end;
+
+}
+
+if (getskilllv(544) == 8) {
+if (Shiki != 1) {end;}
+if (skill544 >= 700) {skill 544,9,0; set skill544,0; dispbottom "[Sys] Level up"; end;}
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 8: "+skill544+" de 700";
+
+end;
+
+}
+
+if (getskilllv(544) == 9) {
+if (Shiki != 1) {end;}
+if (skill544 >= 1000) {skill 544,10,0; set skill544,0; dispbottom "[Sys] Level up"; end;}
+set skill544,skill544 +1;
+dispbottom "[Jutsu level] Shiki Fuujin level 9: "+skill544+" de 1000";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

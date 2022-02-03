@@ -1,0 +1,325 @@
+prontera,156,150,4	script	name	1002,{
+
+	//======== Configuration =======
+
+	set @npc_name$,""; // NPC's name
+	set @gm_level,99;  // GM level required
+
+	//==============================
+
+	if(getgmlevel()>=@gm_level) if(select("Normal","Admin") == 2) goto L_admin;
+	mes "["+@npc_name$+"]";
+	mes "Hi, I can give you titles.";
+	next;
+	mes "["+ @npc_name$ +"]";
+	mes "Here is the list.";
+	query_sql("SELECT `a1`.`id`,`a1`.`title` FROM `title` `a1` WHERE EXISTS(SELECT `id`,`char_id` FROM `title_player` WHERE `id`=`a1`.`id` AND `char_id`="+ getcharid(0) +") ORDER BY `a1`.`title` ASC",@title_id,@title$);
+	query_sql("SELECT `a1`.`title` FROM `title` `a1` WHERE NOT EXISTS(SELECT `id`,`char_id` FROM `title_player` WHERE `id`=`a1`.`id` AND `char_id`="+ getcharid(0) +") ORDER BY `a1`.`title`",@title_no$);
+	query_sql("SELECT COUNT(*) FROM `title` `a1` WHERE EXISTS(SELECT `id`,`char_id` FROM `title_player` WHERE `id`=`a1`.`id` AND `char_id`="+ getcharid(0) +")",@title_count);
+	query_sql("SELECT COUNT(*) FROM `title` `a1` WHERE NOT EXISTS(SELECT `id`,`char_id` FROM `title_player` WHERE `id`=`a1`.`id` AND `char_id`="+ getcharid(0) +")",@title_nocount);
+	if(!@title_count && !@title_nocount) goto L_notitle;
+		
+	L_normal:
+		menu "Avaible titles ("+ @title_count +")",L_avaible,"Unaivable titles ("+ @title_nocount +")",L_unaivable,"Remove my title",L_remove,"Cancel",-;
+				close;
+		
+			L_avaible:
+				if(!@title_count) goto L_normal;
+				set @menu$,"";
+				for(set i,0;i<@title_count;set i,i+1)
+					set @menu$,(@menu$=="") ? @title$[i] : @menu$ +":"+ @title$[i];
+				set @menu$,@menu$ +":Back";
+				menu @menu$,-;
+				set @title_choice,@menu-1;
+				if(@title_choice==@title_count) goto L_normal;
+				next;
+				mes "["+ @npc_name$ +"]";
+				mes "The title : \"" + @title$[@title_choice] + "\" is avaible to you.";
+				if(select("Change my title","Cancel")==2) close;
+				atcommand "@fakename "+strcharinfo(0) + @title$[@title_choice];
+				set title$,@title$[@title_choice];
+				next;
+				mes "["+ @npc_name$ +"]";
+				mes "That's it.";
+				mes "Bye.";
+				close;
+				
+			L_unaivable:
+				if(!@title_nocount) goto L_normal;
+				set @menu$,"";
+				for(set i,0;i<@title_nocount; set i,i+1)
+					set @menu$,(@menu$=="") ? "^FF0000"+ @title_no$[i] +"^000000" : @menu$ +":^FF0000"+ @title_no$[i] +"^000000";
+				set @menu$,@menu$ +":Back";
+				menu @menu$,-;
+				goto L_normal;
+			
+			L_remove:
+				if(title$=="") {
+					mes "You don't have any title.";
+					close;
+				}
+				mes "That's it.";
+				atcommand "@fakename";
+				set title$,"";
+				close;
+		
+	L_admin:
+		query_sql("SELECT COUNT(*) FROM `title`",@title_count);
+		mes "Hi.";
+		mes "What do you want to do?";
+		menu "Delete a title",-,"Add a title",addT,"Modify a title",modifyT,"Modify a player",modifyP;
+				next;
+				mes "["+ @npc_name$ +"]";
+				mes "What title do you want to delete?";
+				if(!@title_count)
+					goto L_noTitle;
+				query_sql("SELECT * FROM `title`",@title_id,@title$);
+	  			set @menu$,"";
+				for(set i,0;i<@title_count;set i,i+1)
+					set @menu$,(@menu$=="") ? @title$[i] : @menu$ +":"+ @title$[i];
+				set @menu$,@menu$ +":Back";
+				menu @menu$,-;
+				set @title_choice,@menu-1;
+				if(@title_choice==@title_count) { next; mes "["+ @npc_name$ +"]"; goto L_admin; }
+				next;
+				mes "["+@npc_name$+"]";
+				mes "Are you sure you want to delete : \""+ @title$[@title_choice] +"\"?";
+				if(select("No","Yes")==2) {
+					next;
+					mes "["+ @npc_name$ +"]";
+					mes "The title has been deleted!";
+					query_sql("DELETE FROM `title` WHERE `id`="+ @title_id[@title_choice]);
+					query_sql("DELETE FROM `title_player` WHERE `id`="+ @title_id[@title_choice]);
+					goto L_admin;
+				}
+				next;
+				mes "["+ @npc_name$ +"]";
+				goto L_admin;
+			
+			addT:
+				next;
+				mes "["+ @npc_name$ +"]";
+				mes "What title do you want to add?";
+				next;
+				input @addT$;
+				if(@addT$==" ") { next; mes "["+ @npc_name$ +"]"; goto L_admin; }
+				mes "["+ @npc_name$ +"]";
+				if(!callfunc("Add a title",@addT$)) {
+					mes "This title is already in use!";
+					goto L_admin;
+				}
+				mes "That's it!";
+				goto L_admin;
+							
+			modifyT:
+				next;
+				mes "["+@npc_name$+"]";
+				if(!@title_count)
+					goto L_noTitle;
+				mes "What title do you want to modify?";
+				query_sql("SELECT * FROM `title`",@title_id,@title$);
+				set @menu$,"";
+				for(set i,0;i<@title_count;set i,i+1)
+					set @menu$,(@menu$=="") ? @title$[i] : @menu$ +":"+ @title$[i];
+				set @menu$,@menu$ +":Back";
+				menu @menu$,-;
+				set @title_choice,@menu-1;
+				if(@title_choice==@title_count) { next; mes "["+ @npc_name$ +"]"; goto L_admin; }
+				mes "Currently modifying : "+ @title$[@title_choice] +".";
+				mes "Those players have this title avaible.";
+				fastMod:
+					query_sql("SELECT COUNT(*) FROM `title_player` WHERE `id`="+ @title_id[@title_choice],@title_player_count);
+					query_sql("SELECT `char_id`,`name` FROM `title_player` WHERE `id`="+ @title_id[@title_choice],@title_player_charid,@title_player_name$);
+					if(!@title_player_count)
+						mes "No player.";
+					for(set i,0;i<@title_player_count;set i,i+1)
+					mes "- "+ @title_player_name$[i];
+					menu "Add a player",L_addP,"Remove a player",remP,"Modify the title's name",modT,"Modify another title",modifyT,"Return to main menu",-;
+							next;
+							mes "["+ @npc_name$ +"]";
+							goto L_admin;
+						
+						L_addP:
+							next;
+							mes "["+ @npc_name$ +"]";
+							mes "Please, enter the player's name.";
+							input @addP$;
+							if(@addP$==" ") goto fastMod;
+							next;
+							mes "["+ @npc_name$ +"]";
+							switch(callfunc("Add a player",@title$[@title_choice],@addP$)) {
+								case 1:
+									mes "The player doesn't exist.";
+									break;
+								
+								case 2:
+									mes "The title doesn't exist.";
+									break;
+
+								case 3:
+									mes "Player has already this title avaible.";
+									break;
+									
+								default:
+									mes "That's it!";
+									break;
+							}
+							next;
+							mes "["+ @npc_name$ +"]";
+							goto fastMod;
+		
+						remP:
+							if(!@title_player_count) goto fastMod;
+							mes "What player do you want to remove?";
+							set @menu$,"";
+							for(set i,0;i<@title_player_count;set i,i+1)
+								set @menu$,(@menu$=="") ? @title_player_name$[i] : @menu$ +":"+ @title_player_name$[i];
+							set @menu$,@menu$ +":Back";			
+							menu @menu$,-;
+							set @title_player_choice,@menu-1;
+							if(@title_player_choice==@title_player_count) { next; mes "["+ @npc_name$ +"]"; goto fastMod; }
+							query_sql("DELETE FROM `title_player` WHERE `id`="+ @title_id[@title_choice] +" AND `char_id`="+ @title_player_charid[@title_player_choice] +" AND `name`='"+ @title_player_name$[@title_player_choice] +"'");
+							next;
+							mes "["+ @npc_name$ +"]";
+							mes "That's it!";
+							goto fastMod;
+	
+						modT:
+							next;
+							mes "["+ @npc_name$ +"]";
+							mes "Title : \""+ @title$[@title_choice] +"\".";
+							if(select("Modify","Back")==2) { next; mes "["+ @npc_name$ +"]"; goto fastMod; }
+							next;
+							mes "["+ @npc_name$ +"]";
+							mes "Enter the new title.";
+							input @newT$;
+							next;
+							for(set i,0;i<@title_count;set i,i+1) {
+								if(@title$[i]!=@newT$) continue;
+								mes "["+ @npc_name$ +"]";
+								mes "This title is already in use!";
+								goto modT;
+							}
+							if(select("Save names","Don't save names") == 2 ) 
+								query_sql("DELETE FROM `title_player` WHERE `id`="+ @title_id[@title_choice]);
+							mes "["+ @npc_name$ +"]";
+							mes "That's it!";
+							query_sql("UPDATE `title` SET `title`='"+ @newT$ +"' WHERE `id`="+ @title_id[@title_choice]);
+							query_sql("SELECT * FROM `title`",@title_id,@title$);
+							goto fastMod;
+							
+			modifyP:
+				next;
+				mes "["+ @npc_name$ +"]";
+				query_sql("SELECT COUNT(DISTINCT `char_id`) FROM `title_player`",@player_count);
+				mes ((@modGP) ? "What player do you want to add?" : "What player do you want to modify?");
+				query_sql("SELECT `char_id`,`name`,COUNT(*) FROM `title_player` GROUP BY `char_id` ORDER BY `name` ASC",@title_player_charid,@title_player_name$,@title_player_count);
+				fastModP:
+				set @menu$,"";
+				for(set i,0;i<@player_count;set i,i+1)
+					set @menu$,(@menu$=="") ? @title_player_name$[i] +"("+ @title_player_count[i] +")" : @menu$ +":"+ @title_player_name$[i] +"("+ @title_player_count[i] +")";
+				set @menu$,(@menu$=="") ? "Type a name" : @menu$ +":Type a name";
+				set @menu$,@menu$ +":Back";
+				menu @menu$,-;
+				set @title_player_choice,@menu-1;
+				if(@title_player_choice==@player_count) {
+					input @title_player_name$[@title_player_choice];
+					query_sql("SELECT `char_id` FROM `char` WHERE `name`='"+ @title_player_name$[@title_player_choice] +"'",@charid);
+					if(!@charid[0]) {
+						mes "Player doesn't exist.";
+						goto fastModP;
+					}
+					set @title_player_charid[@title_player_choice],@charid[0];
+				} else if(@title_player_choice==@player_count+1 && !@modGP) {
+					next;
+					mes "["+ @npc_name$ +"]";
+					goto L_admin;
+				}
+				fastModPP:
+				next;
+				mes "["+ @npc_name$ +"]";
+				mes "Currently modifying : "+ @title_player_name$[@title_player_choice] +".";
+				menu "Add a title",-,"Remove a title",L_removeTP,"Modify another player",modifyP,"Return to main menu",L_admin;
+						query_sql("SELECT COUNT(*) FROM `title` `a1` WHERE NOT EXISTS(SELECT `id`,`char_id` FROM `title_player` WHERE `id`=`a1`.`id` AND `char_id`="+ @title_player_charid[@title_player_choice] +")",@title_nocount);
+						if(!@title_nocount) {
+							mes "This player has all titles avaible.";
+							goto fastModPP;
+						}
+						query_sql("SELECT `a1`.`id`,`a1`.`title` FROM `title` `a1` WHERE NOT EXISTS(SELECT `id`,`char_id` FROM `title_player` WHERE `id`=`a1`.`id` AND `char_id`="+ @title_player_charid[@title_player_choice] +") ORDER BY `a1`.`title` ASC",@title_noid,@title_no$);
+						mes "Add title ...";
+						set @menu$,"";
+						for(set i,0;i<@title_nocount;set i,i+1)
+							set @menu$,(@menu$=="") ? @title_no$[i] : @menu$ +":"+ @title_no$[i];
+						set @menu$,@menu$ +":Back";
+						menu @menu$,-;
+						set @title_choice,@menu-1;
+						if(@title_choice==@title_nocount) goto fastModPP;
+						callfunc("Add a player",@title_no$[@title_choice],@title_player_name$[@title_player_choice]);
+						mes "Title \""+ @title_no$[@title_choice] +"\" added for player \""+ @title_player_name$[@title_player_choice] +"\".";
+						goto fastModPP;
+						
+					L_removeTP:
+						query_sql("SELECT COUNT(*) FROM `title` `a1` WHERE EXISTS(SELECT `id`,`char_id` FROM `title_player` WHERE `id`=`a1`.`id` AND `char_id`="+ @title_player_charid[@title_player_choice] +")",@title_count);
+						if(!@title_count) {
+							mes "This player doesn't have any title.";
+							goto fastModPP;
+						}
+						query_sql("SELECT `a1`.`id`,`a1`.`title` FROM `title` `a1` WHERE EXISTS(SELECT `id`,`char_id` FROM `title_player` WHERE `id`=`a1`.`id` AND `char_id`="+ @title_player_charid[@title_player_choice] +") ORDER BY `a1`.`title` ASC",@title_id,@title$);
+						mes "Remove the title ...";
+						set @menu$,"";
+						for(set i,0;i<@title_count;set i,i+1)
+							set @menu$,(@menu$=="") ? @title$[i] : @menu$ +":"+ @title$[i];
+						set @menu$,@menu$ +":Back";
+						menu @menu$,-;
+						set @title_choice,@menu-1;
+						if(@title_choice==@title_count) goto fastModPP;
+						query_sql("DELETE FROM `title_player` WHERE `id`="+ @title_id[@title_choice] +" AND `char_id`="+ @title_player_charid[@title_player_choice]);
+						mes "Title \""+ @title$[@title_choice] +"\" removed for player \""+ @title_player_name$[@title_player_choice] +"\".";
+						goto fastModPP;
+					
+	L_noTitle:
+		mes "I don't have any title.";
+		close;
+
+	OnPCLoginEvent:
+		if(title$!="")
+			atcommand "@fakename "+ strcharinfo(0)+title$;
+		end;
+}
+
+function	script	Add a title	{ // callfunc "Add a title","Title name"
+	query_sql("SELECT COUNT(*) FROM `title`",@title_count);
+	query_sql("SELECT * FROM `title`",@title_id,@title$);
+	for(set i,0;i<@title_count;set i,i+1) {
+		if(getarg(0)!=@title$[i]) continue;
+		return 0;
+	}
+	query_sql("INSERT INTO `title` VALUES(NULL,'"+ getarg(0) +"')");
+	return 1;
+}
+
+function	script	Add a player	{ // callfunc "Add a player","Title name","Player name"
+	query_sql("SELECT COUNT(*) FROM `char` WHERE `name`='"+ getarg(1) +"'",@title_charid_check);
+	query_sql("SELECT `char_id` FROM `char` WHERE `name`='"+ getarg(1) +"'",@title_charid);
+	if(!@title_charid_check) return 1;
+	query_sql("SELECT COUNT(*) FROM `title` WHERE `title`='"+ getarg(0) +"'",@title_check);
+	if(!@title_check) return 2;
+	query_sql("SELECT `char_id`,`name` FROM `title_player` WHERE `id`="+ @title_id[0],@title_player_charid,@title_player_name$);
+	query_sql("SELECT `id` FROM `title` WHERE `title`='"+ getarg(0) +"'",@title_id);
+	query_sql("SELECT COUNT(*) FROM `title_player` WHERE `id`="+ @title_id[0],@title_player_count);
+		for(set i,0;i<@title_player_count;set i,i+1) {
+			if(@title_charid[0]!=@title_player_charid[i]) continue;
+			return 3;
+		}
+	query_sql("INSERT INTO `title_player` VALUES("+ @title_id[0] +","+ @title_charid[0] +",'"+ getarg(1) +"')");
+	return 0;
+}
+
+function	script	Has Title	{ // callfunc "Has title","Title name",char_id
+	query_sql("SELECT `id` FROM `title` WHERE `title`='"+ getarg(0) +"'",@title_id);
+	query_sql("SELECT COUNT(*) FROM `title_player` WHERE `id`="+ @title_id[0] +" AND `char_id`="+ getarg(1),@title_check);
+	if(@title_check)
+		return 1;
+	else
+		return 0;
+}

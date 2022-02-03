@@ -1,0 +1,73 @@
+ra_in01,239,96,4	script	Shinobi Removedor	964,{
+	set .faildestroy,0; // Should the card remover have a chance of failure that destroys items? 1 = Yes, 0 = No.
+	mes "[Shinobi Removedor]";
+	mes "Bom dia jovem Shinobi, tenho o poder de remover encantamentos do seu item pelo valor de 3.000 pontos de CASH.";
+	next;
+	mes "[Shinobi Removedor]";
+	mes "Quer remover algum encantamento?";
+	next;
+	menu "Sim!",-,"O que você cobra?",cobra,"Agora não.",hjnao;
+	next;
+		mes "[Shinobi Removedor]";
+		mes "Que item posso examinar pra você?";
+		next;
+
+		setarray .@position$[1], "Head","Body","Left hand","Right hand","Robe","Shoes","Accessory 1","Accessory 2","Head 2","Head 3";
+		set .@menu$,"";
+		for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+		{
+			if( getequipisequiped(.@i) )
+			set .@menu$, .@menu$ + .@position$[.@i] + "-" + "[" + getequipname(.@i) + "]";
+
+			set .@menu$, .@menu$ + ":";
+		}
+		set .@part,select(.@menu$);
+		if(!getequipisequiped(.@part)) {
+			mes "[Shinobi Removedor]";
+			mes "Jovem, você não tem nenhum encantamento equipado neste slot.";
+			close;
+		}
+		if(getequipcardcnt(.@part) == 0) {
+			mes "[Shinobi Removedor]";
+			mes "Veja bem jovem shinobi, esse item não tem nenhum encantamento vinculado.";
+			close;
+		}
+		set .@cardcount,getequipcardcnt(.@part);
+		
+		if (!checkweight(1202,(.@cardcount+1))) { 
+			mes "^3355FFSó um minuto!";
+			mes "Você está com muito peso, guarde seus itens no seu @storage";
+			close;
+		}
+		mes "[Shinobi Removedor]";
+		mes "Esse item tem " + .@cardcount + " encantamentos vinculados. Vou cobrar 3.000 Cash pelo serviço.";
+		next;
+	 	if(#CASHPOINTS < 3000) goto semcash;
+		mes "[Shinobi Removedor]";
+		mes "Não se preocupe em perder seus itens ou encantamentos, esse jutsu em particular tenho treinado por anos, tenho confiança em meu sucesso!";
+		next;
+		mes "[Shinobi Removedor]";
+		mes "Vou começar então.";
+		set #CASHPOINTS,#CASHPOINTS-3000;
+		next;
+		successremovecards .@part;
+		mes "[Shinobi Removedor]";
+		mes "Sucesso! Eu te disse que sou bom nisso, volte sempre que precisar!";
+		specialeffect2 610;
+		close;
+
+		semcash:
+		next;
+		mes "[Shinobi Removedor]";
+		mes "Você não tem pontos de Cash suficientes!";
+		close;
+
+	cobra:
+		mes "[Shinobi Removedor]";
+		mes "Eu cobro uma taxa de 3.000 cash para remover seus encantamentos.";
+		close;
+	hjnao:
+		mes "[Shinobi Removedor]";
+		mes "Estarei aqui se precisar.";
+		close;
+	}

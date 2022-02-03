@@ -1,0 +1,108 @@
+payon_in03,98,183,5	script	Doryuuheki::doton1	831,{
+
+//========================================================================
+//   MENU
+//========================================================================
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if (Doryuuheki == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de doton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Doryuuheki";
+next;
+mes "Descrição: O ninja cria diversas shurikens de areia e lança contra o inimigo, causando graves danos ao mesmo.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SR,"Agora não",L_no;
+
+//========================================================================
+//	Doryuuheki
+//========================================================================
+
+L_SR:
+if (checkquest(1010) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 100x Girino";
+setquest 1010;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1010,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 185,1,0;
+set Doryuuheki,1;
+completequest 1010;
+erasequest 1010;
+set skillgenin1,2;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Doton]",0;
+
+}
+//=========================================================================
+//	Sabaku Sousou
+//=========================================================================
+payon_in03,101,182,5	script	Sabaku Sousou::doton2	831,{
+
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 2) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (Sousou == 1) {mes "Você já aprendeu esse jutsu"; close;}
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de doton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Sabaku Sousou";
+next;
+mes "Descrição: O ninja cria rajadas de Areia causando dano em Area.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_DO,"Agora não",L_no;
+
+
+L_DO:
+if (checkquest(1011) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 150x Filhote de cobra";
+setquest 1011;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1011,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 91,1,0;
+set Sousou,1;
+completequest 1011;
+erasequest 1011;
+set skillgenin1,3;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Doton]",0;
+
+}
+
+//ama_in02,56,42,5	duplicate(doton1)	Doryuuheki#e1	831
+//ama_in02,56,45,5	duplicate(doton2)	Sabaku Sousou#e2	831
+//
+//payon_in03,96,174,5	duplicate(doton1)	Doryuuheki#e3	831
+//payon_in03,96,171,5	duplicate(doton2)	Sabaku Sousou#e4	831
+//
+//ve_in,101,214,5	duplicate(doton1)	Doryuuheki#e5	831
+//ve_in,101,217,5	duplicate(doton2)	Sabaku Sousou#e6	831
+//
+//izlude_in,60,100,5	duplicate(doton1)	Doryuuheki#e7	831
+//izlude_in,69,100,5	duplicate(doton2)	Sabaku Sousou#e8	831

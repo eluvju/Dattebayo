@@ -1,0 +1,177 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+biblioteca,123,14,5	script	Velocidade Intermediario	1_f_02,{
+if(checkquest(30080) == 1) goto skillvelo1;
+if(checkquest(30081) == 1) goto skillvelo2;
+if(checkquest(30082) == 1) goto skillvelo3;
+if(checkquest(30083) == 1) goto skillvelo4;
+if(treino_velo_inter != 1) { mes "[Intermediario]"; mes "Você precisa estudar Intermediario antes de aprender as skills"; close;}
+if(velo_skill_inter >= 3) { mes "[Intermediario]"; mes "Você já aprendeu três skill de Intermediario, esse é o limite"; close; }
+	mes "[Intermediario]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Intermediario. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Intermediario]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Intermediario]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Intermediario]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808Corrida^000000:^8A0808Teleporte^000000:^8A0808Kaze Sunshin^000000:^8A0808Aura de Combate^000000:^8A0808Nenhum^000000"))
+	{
+	case 1:
+		if (ve1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Corrida";
+		next;
+		mes "[Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillvelo1:
+		setquest 30080;
+		if(checkquest(30080,hunting) == 2 && countitem(32156) >= 1)
+		{
+			completequest 30080;
+			erasequest 30080;
+			delitem 32156,1;
+			set velo_skill_inter,velo_skill_inter +1;
+			skill 411,5,3;
+			set ve1,1;
+			mes "[Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (ve2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Teleporte";
+		next;
+		mes "[Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillvelo2:
+		setquest 30081;
+		if(checkquest(30081,hunting) == 2 && countitem(32156) >= 1)
+		{
+			completequest 30081;
+			erasequest 30081;
+			delitem 32156,1;
+			set velo_skill_inter,velo_skill_inter +1;
+			skill 26,5,3;
+			set ve2,1;
+			mes "[Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (ve3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Kaze Sunshin";
+		next;
+		mes "[Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillvelo3:
+		setquest 30082;
+		if(checkquest(30082,hunting) == 2 && countitem(32156) >= 1)
+		{
+			completequest 30082;
+			erasequest 30082;
+			delitem 32156,1;
+			set velo_skill_inter,velo_skill_inter +1;
+			set ve3,1;
+			skill 383,10,3;
+			mes "[Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if (ve4 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Aura de Combate";
+		next;
+		mes "[Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillvelo4:
+		setquest 30083;
+		if(checkquest(30083,hunting) == 2 && countitem(32156) >= 1)
+		{
+			completequest 30083;
+			erasequest 30083;
+			delitem 32156,1;
+			set ve4,1;
+			skill 	,1,3;
+			set velo_skill_inter,velo_skill_inter +1;
+			mes "[Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 7:
+		mes "[Intermediario]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Intermediario]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de Intermediario.";
+	mes "Volte quando você tiver matado!";
+	close;
+}
+
+//ra_in01,177,382,4	script	Armazem Shinobi::kafra	831,{
+openstorage;
+skill 749,0,3; skill 747,10,3; set treino_tai_avan,1; set treinos_avan, treinos_avan +1;
+close;
+}
+
+
+

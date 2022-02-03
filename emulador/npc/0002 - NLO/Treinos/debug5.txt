@@ -1,0 +1,15 @@
+sec_in02,180,184,5	script	Debug#62	99,{
+mes "Debug.";
+next;
+mes "[Taijutsu Básico]";
+mes "Vamos deletar essa skill.";
+next;
+if(checkquest(1001) >= 1) { completequest 1001; erasequest 1001; }
+if(checkquest(2001) >= 1) { completequest 2001; erasequest 2001; }
+if(checkquest(3001) >= 1) { completequest 3001; erasequest 3001; }
+if(checkquest(4001) >= 1) { completequest 4001; erasequest 4001; }
+if(skill_basica > 0) { set skill_basica,skill_basica -1; }	
+mes "[Taijutsu Básico]";
+mes "Missão Cancelada com Sucesso"; 
+close;
+}

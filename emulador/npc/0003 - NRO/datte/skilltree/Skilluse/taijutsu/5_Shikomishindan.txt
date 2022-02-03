@@ -1,0 +1,112 @@
+-	script	on_PC_UseSkilltai09	-1,{
+    end;
+//When a Character uses a skill
+
+//Shikomishindan
+
+onPcUseSkillEvent:
+
+           if(lskillid == 399) {
+
+
+if (getskilllv(399) == 1) {
+
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 50) {skill 399,2,0; set skill399,0; dispbottom "[Sys] Level up"; end; }
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 1: "+skill399+" de 50";
+
+end;
+
+}
+
+if (getskilllv(399) == 2) {
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 100) {skill 399,3,0; set skill399,0; dispbottom "[Sys] Level up"; end;}
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 2: "+skill399+" de 100";
+
+end;
+
+}
+
+if (getskilllv(399) == 3) {
+if (tai_intermediario != 1) {end;}
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 150) {skill 399,4,0; set skill399,0; dispbottom "[Sys] Level up"; end;}
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 3: "+skill399+" de 150";
+
+end;
+
+}
+
+if (getskilllv(399) == 4) {
+if (tai_intermediario != 1) {end;}
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 200) {skill 399,5,0; set skill399,0; dispbottom "[Sys] Level up"; end;}
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 4: "+skill399+" de 200";
+
+end;
+
+}
+
+if (getskilllv(399) == 5) {
+if (tai_avan != 1) {end;}
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 250) {skill 399,6,0; set skill399,0; dispbottom "[Sys] Level up"; end;}
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 5: "+skill399+" de 250";
+
+end;
+
+}
+
+if (getskilllv(399) == 6) {
+if (tai_avan != 1) {end;}
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 300) {skill 399,7,0; set skill399,0; dispbottom "[Sys] Level up"; end;}
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 6: "+skill399+" de 300";
+
+end;
+
+}
+
+if (getskilllv(399) == 7) {
+if (tai_avan != 1) {end;}
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 500) {skill 399,8,0; set skill399,0; dispbottom "[Sys] Level up"; end;}
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 7: "+skill399+" de 500";
+
+end;
+
+}
+
+if (getskilllv(399) == 8) {
+if (tai_avan != 1) {end;}
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 700) {skill 399,9,0; set skill399,0; dispbottom "[Sys] Level up"; end;}
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 8: "+skill399+" de 700";
+
+end;
+
+}
+
+if (getskilllv(399) == 9) {
+if (tai_avan != 1) {end;}
+if (Shikomishindan != 1) {end;}
+if (skill399 >= 1000) {skill 399,10,0; set skill399,0; dispbottom "[Sys] Level up"; end;}
+set skill399,skill399 +1;
+dispbottom "[Jutsu level] Shikomishindan level 9: "+skill399+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

@@ -1,0 +1,184 @@
+//===== eAthena Script =======================================
+//= Assist Mob Quests
+//===== By: ==================================================
+//= Kichi
+//= This is Paid Service, you can't share this content
+//= Contact http://rathena.org/board/user/424-kichi/
+//===== Current Version: =====================================
+//= Version 1.0
+//===== Description: ========================================= 
+//= Mob assist
+//============================================================
+
+prontera,150,189,6	script	Rio	762,{
+	function Qcheck; function Qsummon; Qcheck;
+
+	mes "[Rio]";
+	mes "Hi!";
+	mes "Could you do me a favor?";
+	switch(select("Alright","No.Im busy"))
+	{
+		case 1:
+		mes "Thank you!";
+		mes "I appreciate it.";
+		mes "Would you mind taking my pet to my girlfriend in (^ff0000 location ^000000)?";
+		break;
+		case 2:
+		mes "Oh, well";
+		mes "if you reconsider please let me know.";
+		end;
+	}
+	Qsummon;
+	set @sourcenpc$,strnpcinfo(0);
+	set @dest$,.DestinationNPC$;
+	close;
+	end;
+OnEndQuest:
+	message strcharinfo(0),"The Quest failed because you did not protect the monster.";
+	set @sourcenpc$,"";
+	set @joinquest,0;
+end;	
+// ============= Setting =========== //	
+
+OnInit:
+	set .Mobs,1001;							//Monster that you need to protect.
+	set .MobsName$,"--ja--";				//Mob name that show in map.
+	set .MaxQueue,10;						//Maximum player.
+	set .DestinationNPC$,"Jesse";			//The name of destination NPC. (should complete name)
+	set .Reward,607;						//Reward when the player reach target NPC.
+	set .Amount,1;							//Amount of reward.
+	setarray .player[0],0,0,0;
+	
+end;
+	
+// ============= Event Label =========== //
+OnMyMobDead1:
+	if(attachrid(.MobID1))
+	set .MobID1,0;
+	goto OnEndQuest;
+	end;
+	
+OnMyMobDead2:
+	if(attachrid(.MobID2))
+	set .MobID2,0;
+	goto OnEndQuest;
+	end;
+	
+OnMyMobDead3:
+	if(attachrid(.MobID3))
+	set .MobID3,0;
+	goto OnEndQuest;
+	end;
+
+OnMyMobDead4:
+	if(attachrid(.MobID4))
+	set .MobID4,0;
+	goto OnEndQuest;
+	end;
+
+OnMyMobDead5:
+	if(attachrid(.MobID5))
+	set .MobID5,0;
+	goto OnEndQuest;
+	end;
+
+OnMyMobDead6:
+	if(attachrid(.MobID6))
+	set .MobID6,0;
+	goto OnEndQuest;
+	end;
+	
+OnMyMobDead7:
+	if(attachrid(.MobID7))
+	set .MobID7,0;
+	goto OnEndQuest;
+	end;
+	
+OnMyMobDead8:
+	if(attachrid(.MobID8))
+	goto OnEndQuest;
+	set .MobID8,0;
+	end;
+	
+OnMyMobDead9:
+	if(attachrid(.MobID9))
+	goto OnEndQuest;
+	set .MobID9,0;
+	end;
+	
+//Only support till 10 Players
+//If you want to add till 11 player, copy paste the event label and rename it.
+//
+//example:
+//	OnMyMobDead10:
+//		if(attachrid(.MobID10))
+//		set .MobID10,0;
+//		goto OnEndQuest;
+//		end;
+// ============= End   Label =========== //
+
+
+function Qcheck {
+	if(@joinquest){
+		mes "You already in quest.";
+		mes "Please, take that pet to Jesse";
+		close;
+	}
+	for(set .@i,1;.@i <= .MaxQueue;set .@i,.@i+1){
+		if((!.player[.@i]))//If the array value is 0 (mean that no player reserve it)
+		{
+			if(.player[.@i])continue;
+			return;	// Avaiable
+		}
+	}
+	
+	mes "Sorry all jobs already taken,";
+	mes "no more slot.";
+	close;
+
+	end;
+}
+
+function Qsummon {
+	for(set .@i,1;.@i <= .MaxQueue;set .@i,.@i+1){
+		if((!.player[.@i]))//If the array value is 0 (mean that no player reserve it)
+		{
+			if(.player[.@i])continue;
+			setarray .player[.@i],getcharid(3);
+			setd ".MobID"+.@i,questmonster (.MobsName$,.Mobs,strnpcinfo(0)+"::OnMyMobDead"+.@i);
+			set @sourcenpc$,strnpcinfo(3);
+			set @joinQuest,.@i;
+			break;
+		}
+	}
+}
+}
+
+
+//======= Destination NPC =========//
+prontera,159,189,4	script	Jesse	763,{
+	mes "[Jesse]";
+	if((@sourcenpc$=="") ||(!@joinquest)){
+
+		mes "...";
+		mes "*sob*";
+		mes "I looking for my pet.";
+		close;
+	}
+	if(@dest$ != strnpcinfo(0)){
+		mes "That isn't my pet.";
+		close;
+	}
+	mes ""+.@as$+"";
+	mes "Thank you very much!";
+	mes "I am very happy to recieve my pet back safe and sound.";
+	next;
+	mes "For your kind efforts,";
+	mes "here is your reward!";
+	getitem getvariableofnpc(.Reward,@sourcenpc$),getvariableofnpc(.Amount,@sourcenpc$);
+	getmapxy .@map$,.@x,.@y,1;
+	killmonster .@map$,@sourcenpc$+"::OnMyMobDead"+@joinquest;
+	set @sourcenpc$,"";
+	set @joinquest,0;
+	close;
+}

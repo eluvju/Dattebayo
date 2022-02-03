@@ -1,0 +1,107 @@
+-	script	precisao	-1,{
+    end;
+//When a Character uses a skill
+
+//precisao
+
+OnNPCKillEvent:
+
+if (getskilllv(43) == 1) {
+
+if (precisao != 1) {end;}
+if (skill43 >= 50) {skill 43,2,0; set skill43,0; dispbottom "[Sys] Level up"; end; }
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 1: "+skill43+" de 50";
+
+end;
+
+}
+
+if (getskilllv(43) == 2) {
+if (precisao != 1) {end;}
+if (skill43 >= 100) {skill 43,3,0; set skill43,0; dispbottom "[Sys] Level up"; end;}
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 2: "+skill43+" de 100";
+
+end;
+
+}
+
+if (getskilllv(43) == 3) {
+
+if (precisao != 1) {end;}
+if (skill43 >= 150) {skill 43,4,0; set skill43,0; dispbottom "[Sys] Level up"; end;}
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 3: "+skill43+" de 150";
+
+end;
+
+}
+
+if (getskilllv(43) == 4) {
+if (precisao != 1) {end;}
+if (skill43 >= 200) {skill 43,5,0; set skill43,0; dispbottom "[Sys] Level up"; end;}
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 4: "+skill43+" de 200";
+
+end;
+
+}
+
+if (getskilllv(43) == 5) {
+if (fuuin_intermediario != 1) {end;}
+if (precisao != 1) {end;}
+if (skill43 >= 250) {skill 43,6,0; set skill43,0; dispbottom "[Sys] Level up"; end;}
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 5: "+skill43+" de 250";
+
+end;
+
+}
+
+if (getskilllv(43) == 6) {
+if (fuuin_intermediario != 1) {end;}
+if (precisao != 1) {end;}
+if (skill43 >= 300) {skill 43,7,0; set skill43,0; dispbottom "[Sys] Level up"; end;}
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 6: "+skill43+" de 300";
+
+end;
+
+}
+
+if (getskilllv(43) == 7) {
+if (fuuin_avan != 1) {end;}
+if (precisao != 1) {end;}
+if (skill43 >= 500) {skill 43,8,0; set skill43,0; dispbottom "[Sys] Level up"; end;}
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 7: "+skill43+" de 500";
+
+end;
+
+}
+
+if (getskilllv(43) == 8) {
+if (fuuin_avan != 1) {end;}
+if (precisao != 1) {end;}
+if (skill43 >= 700) {skill 43,9,0; set skill43,0; dispbottom "[Sys] Level up"; end;}
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 8: "+skill43+" de 700";
+
+end;
+
+}
+
+if (getskilllv(43) == 9) {
+if (fuuin_avan != 1) {end;}
+if (precisao != 1) {end;}
+if (skill43 >= 1000) {skill 43,10,0; set skill43,0; dispbottom "[Sys] Level up"; end;}
+set skill43,skill43 +1;
+dispbottom "[Jutsu level] Precisão level 9: "+skill43+" de 1000";
+
+end;
+
+}
+
+                end;
+            }

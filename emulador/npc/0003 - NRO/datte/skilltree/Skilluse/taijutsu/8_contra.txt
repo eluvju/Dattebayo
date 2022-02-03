@@ -1,0 +1,55 @@
+-	script	on_PC_UseSkilltai12	-1,{
+    end;
+//When a Character uses a skill
+
+//Asshou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 61) {
+
+
+if (getskilllv(61) == 1) {
+
+if (Contra != 1) {end;}
+if (skill61 >= 50) {skill 61,2,0; set skill61,0; dispbottom "[Sys] Level up"; end; }
+set skill61,skill61 +1;
+dispbottom "[Jutsu level] Contra-Ataque level 1: "+skill61+" de 50";
+
+end;
+
+}
+
+if (getskilllv(61) == 2) {
+if (Contra != 1) {end;}
+if (skill61 >= 100) {skill 61,3,0; set skill61,0; dispbottom "[Sys] Level up"; end;}
+set skill61,skill61 +1;
+dispbottom "[Jutsu level] Contra-Ataque level 2: "+skill61+" de 100";
+
+end;
+
+}
+
+if (getskilllv(61) == 3) {
+
+if (Contra != 1) {end;}
+if (skill61 >= 150) {skill 61,4,0; set skill61,0; dispbottom "[Sys] Level up"; end;}
+set skill61,skill61 +1;
+dispbottom "[Jutsu level] Contra-Ataque level 3: "+skill61+" de 150";
+
+end;
+
+}
+
+if (getskilllv(61) == 4) {
+if (Contra != 1) {end;}
+if (skill61 >= 200) {skill 61,5,0; set skill61,0; dispbottom "[Sys] Level up"; end;}
+set skill61,skill61 +1;
+dispbottom "[Jutsu level] Contra-Ataque level 4: "+skill61+" de 200";
+
+end;
+
+}
+                end;
+            }    
+}

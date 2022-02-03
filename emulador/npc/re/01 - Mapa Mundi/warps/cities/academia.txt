@@ -1,0 +1,180 @@
+//===== rAthena Script =======================================
+//= Izlude Warp Script
+//===== By: ==================================================
+//= Athena (1.0), Nana (1.1)
+//===== Current Version: =====================================
+//= 1.4
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Warp Points for Izlude
+//===== Additional Comments: =================================
+//= 1.3 Added warps to Izlude Airship [Justin84]
+//= 1.4 Minor correction on airport warps
+//============================================================
+
+//= Louyang - Academia ==============================================
+// Entrada Academia
+moc_fild03,69,341,0	warp	Acad00	2,2,louyang,218,50
+louyang,218,19,0	script	 Acad00-1#saidaacademia	45,2,2,{
+	
+	callfunc("warps"),	// Função
+	"moc_fild03",			// Mapa
+	69,				// Coordenada X
+	335,				// Coordenada Y
+	1002,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+	end;
+
+}
+
+// Treinamento
+louyang,37,271,0	script	Acad01#saidaacademia	45,2,2,{
+
+	callfunc("warps"),	// Função
+	"moc_fild03",			// Mapa
+	69,				// Coordenada X
+	335,				// Coordenada Y
+	1002,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+	end;
+}
+treinamento,78,176,0	warp	Acad01-1	2,2,louyang,42,272
+
+// Sala GM
+louyang,279,168,0	script	Acad02	45,2,2,{	
+	callfunc("warps"),	// Função
+	"reuniao",			// Mapa
+	54,				// Coordenada X
+	29,				// Coordenada Y
+	1001,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+	end;
+}
+reuniao,54,26,0	warp	Acad02-1	1,1,louyang,279,162
+
+// Biblioteca
+louyang,309,81,0	script	Acad03	45,2,2,{	
+	callfunc("warps"),	// Função
+	"lou_in01",			// Mapa
+	45,				// Coordenada X
+	140,				// Coordenada Y
+	1001,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+	end;
+}
+lou_in01,50,141,0	warp	Acad03-1	1,1,louyang,309,77	
+
+
+// Ferreiro
+louyang,145,175,0	script	Acad05	45,2,2,{	
+	callfunc("warps"),	// Função
+	"lou_in02",			// Mapa
+	125,				// Coordenada X
+	168,				// Coordenada Y
+	1001,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+	end;
+}
+lou_in02,125,164,0	warp	Acad05-1	1,1,louyang,145,171
+
+// Sala VIP
+
+louyang,134,244,0	script	Acad06	45,2,2,{	
+	callfunc("warps"),	// Função
+	"lou_in02",			// Mapa
+	189,				// Coordenada X
+	78,					// Coordenada Y
+	1001,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+	end;
+}
+lou_in02,188,74,0	warp	Acad06-1	1,1,louyang,138,244
+
+// Academia
+
+louyang,218,253,0	warp	Acad07	2,2,academia,102,13
+academia,102,8,0	script	Acad07-1	45,2,2,{	
+	callfunc("warps"),	// Função
+	"louyang",			// Mapa
+	218,				// Coordenada X
+	247,				// Coordenada Y
+	1002,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+	end;
+}
+
+
+// ## === ## === ## ===
+// Warps Internos
+// Sala 3
+academia,114,62,0	warp	treino#05	2,2,academia,148,76
+academia,145,76,0	warp	treino#06	2,2,academia,110,62
+// Sala 4
+academia,95,62,0	warp	treino#09	2,2,academia,69,76
+academia,72,76,0	warp	treino#10	2,2,academia,98,62
+// Sala 2* Andar
+academia,125,22,0	warp	treino#11	1,1,academia,79,148
+academia,79,145,0	warp	treino#12	1,1,academia,125,19
+// Bonecos
+academia,105,91,0	warp	acad_in06	1,1,acad_01,101,148
+acad_01,101,143,0	warp	acad_in06-1	1,1,academia,105,86
+
+//
+//=============================================================
+// Estalagem Academia
+//=============================================================
+//== Portal Saida  (lou_in02_X) =================================//
+lou_in02-1,71,139,0	script	lou_in02_X#introducao_2	45,2,2,{
+//===============================================================//
+	
+	OnTouch:
+	if (intro_arco_1 <= 2) { 	mes "^FF0000Você esqueceu seus pertences!^000000";
+								close; }
+								
+	else { warp "lou_in02", 76, 190; }
+	}
+//============== ## ==================== ## ================= ##
+// Duplicatas //
+lou_in02-2,71,139,0	duplicate(lou_in02_X#introducao_2)	lou_in02_X#introducao_2-1	45,2,2
+lou_in02-3,71,139,0	duplicate(lou_in02_X#introducao_2)	lou_in02_X#introducao_2-2	45,2,2
+lou_in02-4,71,139,0	duplicate(lou_in02_X#introducao_2)	lou_in02_X#introducao_2-3	45,2,2
+lou_in02-5,71,139,0	duplicate(lou_in02_X#introducao_2)	lou_in02_X#introducao_2-4	45,2,2
+lou_in02-6,71,139,0	duplicate(lou_in02_X#introducao_2)	lou_in02_X#introducao_2-5	45,2,2
+//============== ## ==================== ## ================= ##
+
+// Estalagem Entrada
+louyang,136,97,0	warp	Acad04	1,1,lou_in02,57,174
+lou_in02,57,170,0	warp	Acad04-1	1,1,louyang,140,101
+
+lou_in02,79,190,0	script	Quarto Estalagem::portalestalagem	45,2,2,{
+
+.@npc$ = "                      ^cfa417[ Estalagem ]^000000";
+
+	mes .@npc$;
+	mes "Os Quartos estao sendo limpos no momento.";
+	mes " ";
+	mes "Volte mais tarde";
+	close;
+	
+}
+
+lou_in02,36,190,0	script	Quarto Estalagem::portalestalagem2	45,2,2,{
+
+.@npc$ = "                      ^cfa417[ Estalagem ]^000000";
+
+	mes .@npc$;
+	mes "Os Quartos estao sendo limpos no momento.";
+	mes " ";
+	mes "Volte mais tarde";
+	close;
+		
+}
+

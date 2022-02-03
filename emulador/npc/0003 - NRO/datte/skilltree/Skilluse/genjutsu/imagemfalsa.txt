@@ -1,0 +1,59 @@
+-	script	on_PC_UseSkillfalsa	-1,{
+    end;
+//When a Character uses a skill
+
+//Shinkirou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 532) {
+
+
+if (getskilllv(532) == 1) {
+
+if (Shinkirou != 1) {end;}
+if (skill532 >= 50) {skill 532,2,0; set skill532,0; dispbottom "[Sys] Level up"; end; }
+set skill532,skill532 +1;
+dispbottom "[Jutsu level] Shinkirou no Genjutsu level 1: "+skill532+" de 50";
+
+end;
+
+}
+
+if (getskilllv(532) == 2) {
+if (Shinkirou != 1) {end;}
+if(gen_intermediario != 1) {end;}
+if (skill532 >= 100) {skill 532,3,0; set skill532,0; dispbottom "[Sys] Level up"; end;}
+set skill532,skill532 +1;
+dispbottom "[Jutsu level] Shinkirou no Genjutsu level 2: "+skill532+" de 100";
+
+end;
+
+}
+
+if (getskilllv(532) == 3) {
+
+if (Shinkirou != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill532 >= 150) {skill 532,4,0; set skill532,0; dispbottom "[Sys] Level up"; end;}
+set skill532,skill532 +1;
+dispbottom "[Jutsu level] Shinkirou no Genjutsu level 3: "+skill532+" de 150";
+
+end;
+
+}
+
+if (getskilllv(532) == 4) {
+if (Shinkirou != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill532 >= 200) {skill 532,5,0; set skill532,0; dispbottom "[Sys] Level up"; end;}
+set skill532,skill532 +1;
+dispbottom "[Jutsu level] Shinkirou no Genjutsu level 4: "+skill532+" de 200";
+
+end;
+
+}
+
+                end;
+            }    
+}

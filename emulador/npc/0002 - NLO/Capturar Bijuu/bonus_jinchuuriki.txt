@@ -1,0 +1,21 @@
+function	script	bonusjinchuuriki	{
+	if(#konoha == 1) { 
+		if($bijuu_konoha >= 1) { 
+		}
+	}
+	if(#suna == 1) { 
+		if($bijuu_areia >= 1) { 
+		} 
+	}
+	if(#nevoa == 1) { 
+		if($bijuu_nevoa >= 1) { 
+		} 
+	}
+	if(#nuvem == 1) { 
+		if($bijuu_nuvem >= 1) { 
+			//set @recerberjinbonus, $bijuu_nuvem*2;
+			//bonus bAllStats,@recerberjinbonus; 
+		} 
+	}
+	end;
+}

@@ -1,0 +1,12 @@
+izlude,129,103,5	script	Katon Avançado#d	831,{
+
+if(elementokaton != 1) {mes "Esse elemento não é de sua natureza"; close;}	
+	if(checkquest(2004,hunting) == 2) {mes "Você é digno de aprender a tecnica..."; set ninjutsuavancado,1; close;}
+	if(checkquest(2004) != 1) {mes "Não posso te ajudar em nada..."; close;}
+	if(ninjutsuavancado == 1) {mes "Não posso te ajudar em nada..."; close;}
+	mes "[ Mestre Katon]";
+	mes "Explicação sobre o elemento katon e a técnica...";
+	mes "Para aprender tal tecnica,você precisa provar ser digno,e derrotar um mestre em katon...";
+	setquest 2004;
+	close;
+}

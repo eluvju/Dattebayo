@@ -1,0 +1,345 @@
+//========================================================
+// Créditos: Fou-lu/Pedro
+//
+// Versão 1.0: Qualquer Bug reportar no Cronus Emulator.
+//=========================================================
+
+function	script	CheckMac_Enquete	{
+
+for( set .@i, 1; .@i < getarraysize($CheckMac$); set .@i, .@i + 1 )
+	if( $CheckMac$[.@i] == @Mac$ ) set @negado,1;
+return;
+}
+
+function	script	CheckIP_Enquete	{
+
+for( set .@i, 0; .@i < getarraysize($CheckIP$); set .@i, .@i + 1 )
+	if( $CheckIP$[.@i] == @IP$ ) set @negado,1;
+return;
+}
+
+job_monk,268,106,5	script	EnqueteEvent	 874,{
+
+if (getcharid(3) == 2000000) goto L_Menu; //Coloque aqui o ID da conta que irá acessar o menu de configuração da Enquete. <==============
+
+if (!$Enquete_ON) {
+	mes "[Enquete]";
+	mes "Não possuimos nenhuma enquete ativa no momento.";
+	close;
+}
+if ($Enquete_ON == 2) {
+	mes "[Enquete]";
+	mes "^3355FF"+$InfoEnq3$+"^000000";
+	mes " ";
+	mes "A Enquete se encerrou com resultado de";
+	for (set .@i, 0; .@i < getarraysize($OpcaoVotos$); set .@i,.@i+1)
+		mes $OpcaoVotos[.@i] + " votos para ^3355FF" + $OpcaoVotos$[.@i] + "^000000";
+	close;
+}
+
+if ($LVLmin && BaseLevel < $LVLmin) goto L_SemLVL;
+if (#VotouEm) goto L_Next;
+if (#Checado_Enquete == 1) goto L_Continue;
+
+if ($UseMac) query_sql "SELECT `last_mac` FROM `login` WHERE `account_id` = '"+ getcharid(3) +"'", @Mac$;
+set @IP$, getcharip(getcharid(0));
+if ($UseMac) callfunc "CheckMac_Enquete";
+if (@negado == 0) callfunc "CheckIP_Enquete";
+if (@negado == 1) goto L_Impedido;
+
+L_Continue:
+	mes "[Enquete]";
+	mes $InfoEnq$;
+	next;
+	mes "[Enquete]";
+	mes $InfoEnq2$;
+	next;
+	mes "[Enquete]";
+	mes "Você tem certeza que deseja votar agora?";
+	next;
+	if(select("Sim.:Depois.") == 2) {
+		mes "[Enquete]";
+		mes "Ok, quando você estiver uma opinião formada é só voltar aqui para poder votar.";
+		close;
+	}
+	else {
+		if (#Checado_Enquete != 1) {
+			set $set_mac_enq, $set_mac_enq+1;
+			if ($UseMac) setarray $CheckMac$[$set_mac_enq], @Mac$;
+			setarray $CheckIP$[$set_mac_enq], @IP$;
+			set #Checado_Enquete, 1;
+		}
+		next;
+		mes "[Enquete]";
+		mes "Ok, Escolha sua opção de voto respondendo a seguinte pergunta.";
+		next;
+		mes "^3355FF"+$InfoEnq3$+"^000000";
+		set .@votar,select($MenuEnq$);
+		for (set .@i, 0; .@i < getarraysize($OpcaoVotos$); set .@i,.@i+1)
+			if (.@votar-1 == .@i) set $OpcaoVotos[.@i], $OpcaoVotos[.@i]+1;
+		set #VotouEm,.@votar;
+		close;
+	}
+	
+L_Menu:
+
+	mes "[Enquete]";
+	mes "Bem vindo ao menu.";
+	menu "Checar Votação Atual",M_1, "Checar Dados Atuais",M_2, "Iniciar uma nova Enquete",M_3, "Configurações",M_4;
+	
+	M_1:
+		next;
+		if (!$Enquete_ON) {
+			mes "[Enquete]";
+			mes "Não possuimos nenhuma enquete ativa no momento.";
+			close;
+		}
+		goto L_VerVoto;
+	
+	M_2:
+		next;
+		if (!$Enquete_ON) {
+			mes "[Enquete]";
+			mes "Não possuimos nenhuma enquete ativa no momento.";
+			close;
+		}
+		if ($UseMac) menu "Checar Macs Usados",M2_1, "Checar IPs Usados",M2_2, "Checar Visualizações",M2_3;
+		else menu "Checar IPs Usados",M2_2, "Checar Visualizações",M2_3;
+		M2_1:
+			next;
+			mes "[Enquete]";
+			for (set .@i,0; .@i < getarraysize($CheckMac$); set .@i, .@i+1) {
+				mes (.@i) + ". ^0000FF" + $CheckMac$[.@i] + "^000000";
+			}
+			close;
+		
+		M2_2:
+			next;
+			mes "[Enquete]";
+			for (set .@i,0; .@i < getarraysize($CheckIP$); set .@i, .@i+1) {
+				mes (.@i) + ". ^0000FF" + $CheckIP$[.@i] + "^000000";
+			}
+			close;
+	
+		M2_3:
+			next;
+			mes "[Enquete]";
+			mes "O Valor Total de visualizações é " + $set_mac_enq + ".";
+			close;
+	
+	M_3:
+		next;
+		if ($Enquete_ON) {
+			mes "[Enquete]";
+			mes "Você deseja desativar a Enquete atual?";
+			if (select("Não:Sim") == 1) close;
+			deletearray $CheckMac$[0], getarraysize($CheckMac$);
+			deletearray $CheckIP$[0], getarraysize($CheckIP$);
+			set $set_mac_enq,0;
+			deletearray .PlayersON[0], getarraysize(.PlayersON);
+			query_sql "SELECT `account_id` FROM `global_reg_value WHERE `str` = '#Checado_Enquete' OR `str` = '#VotouEm'", .PlayersON;
+			for (set .@i, 0; .@i < getarraysize(.PlayersON); set .@i, .@i+1) {
+				if (isloggedin(.PlayersON[.@i])) {
+					attachrid(.PlayersON[.@i]);
+					set #Checado_Enquete, 0;
+					set #VotouEm, 0;
+				}
+			}
+			query_sql "DELETE FROM `global_reg_value` WHERE `str` = '#Checado_Enquete' OR `str` = '#VotouEm'";
+			set $Enquete_ON, 0;
+			delwaitingroom;
+			stopnpctimer;
+			next;
+		}
+		deletearray $OpcaoVotos[0], getarraysize($OpcaoVotos);
+		deletearray $OpcaoVotos$[0], getarraysize($OpcaoVotos$);
+		mes "[Enquete]";
+		mes "Você deseja ativar uma Enquete agora?";
+		if (select("Sim:Não") == 2) close;
+		next;
+		mes "[Enquete]";
+		mes "Escreva o texto que irá explicar o motivo de sua Enquete.";
+		mes "Por exemplo:";
+		mes "'Estamos criando uma enquete para decidir...'";
+		input($InfoEnq$);
+		next;
+		mes "[Enquete]";
+		mes "Termine ou acrescente mais alguma informação sobre sua Enquete.";
+		input($InfoEnq2$);
+		next;
+		mes "[Enquete]";
+		mes "Agora escreva a pergunta que fará escolher as opções de sua Enquete.";
+		mes "Por exemplo:";
+		mes "'Qual horário você acha que deveria ser nossas WOEs?'";
+		input($InfoEnq3$);
+		next;
+		mes "[Enquete]";
+		mes "Agora escolha o numero de opções de votos que terá em sua Enquete.";
+		mes "Obs: Tem que ser um numero maior que 0 e menor que 100)";
+		do {
+			input(.@num);
+		} while (.@num <= 0 || .@num > 99);
+		for (set .@i, 0; .@i < .@num; set .@i, .@i+1) {
+			next;
+			mes "[Enquete]";
+			mes "Digite como que se chamará a Opção de Voto " +(.@i+1)+ ".";
+			mes "Obs: Não pode conter o caracter ':'";
+			do {
+				input($OpcaoVotos$[.@i]);
+			} while (compare($OpcaoVotos$[.@i],":"));
+		}
+		set $MenuEnq$,"";
+		for (set .@i, 0; .@i < .@num; set .@i, .@i+1) {
+			set $MenuEnq$, $MenuEnq$ + $OpcaoVotos$[.@i];
+			if (.@i+1 != .@num) set $MenuEnq$, $MenuEnq$ + ":";
+		}
+		next;
+		mes "[Enquete]";
+		mes "Agora para terminar digite o periodo de tempo que sua Enquete ficará ativada.";
+		mes "Obs: O tempo é em horas e o limite de horas é de 720";
+		do {
+			input(.@hora);
+		} while (.@hora <= 0 || .@hora > 720);
+		set $TimerEnq, .@hora*60*60;
+		set $TimerEnq, $TimerEnq+gettimetick(2);
+		next;
+		mes "[Enquete]";
+		mes "Sua Enquete já está pronta para começar.";
+		mes "Você deseja inicia-la agora?";
+		if (select("Sim:Não") == 2) {
+			next;
+			mes "[Enquete]";
+			mes "Tem certeza que deseja não iniciar a enquete que você configurou agora?";
+			if (select("Cancelar Enquete:Continuar com Enquete") == 1) close;
+		}
+		next;
+		set $Enquete_ON, 1;
+		waitingroom "Enquete em Andamento!",0;
+		initnpctimer;
+		mes "[Enquete]";
+		mes "Sua Enquete foi criada com sucesso!";
+		close;
+	
+	M_4:
+		next;
+		if ($Enquete_ON == 1) {
+			mes "[Enquete]";
+			mes "É preciso desativar a Enquete que está em andamento no momento para poder mexer nas configurações.";
+			close;
+		}
+		menu "Alterar nível mínimo para votar.",M4_1, "Usar registros de Mac.(Apenas para Harmony)",M4_2;
+	
+		M4_1:
+			mes "[Enquete]";
+			if ($LVLmin) mes "O nível mínimo atual para se votar é "+$LVLmin+".";
+			else mes "Atualmente não existe nível mínimo para se votar.";
+			next;
+			mes "Por favor digite um novo nível mínimo para que se possa votar nas Enquetes. (Use o numero 0 para não haver nível mínimo.)";
+			next;
+			input(.@lvl);
+			if (.@lvl < 0) {
+				mes "Você não pode usar um numero negativo.";
+				close;
+			}
+			set $LVLmin,.@lvl;
+			mes "O nível mínimo agora para votar nas enquetes é "+$LVLmin+".";
+			close;
+			
+		M4_2:
+			if ($UseMac) {
+				mes "[Enquete]";
+				mes "Atualmente está configurado para se registrar o numero do Mac dos usuários.";
+				next;
+				mes "[Enquete]";
+				mes "Você deseja desativar os registros de Mac?";
+				if (select("Sim:Não") == 1) set $UseMac, 0;
+				close;
+			}
+			else {
+				mes "[Enquete]";
+				mes "Atualmente está configurado para NÃO se registrar o numero do Mac dos usuários.";
+				mes "Obs: Essa configuração só deve ser usada caso o servidor use o Harmony Shield.";
+				next;
+				mes "[Enquete]";
+				mes "Você deseja ativar os registros de Mac?";
+				if (select("Sim:Não") == 1) set $UseMac, 1;
+				close;
+			}
+	
+L_Impedido:
+	mes "[Enquete]";
+	mes "Seu safado! Você está tentando votar novamente?";
+	close;
+	
+L_SemLVL:
+	mes "[Enquete]";
+	mes "Sinto muito, mas seu nível é muito baixo para você ter o direito de votar, volte aqui quando você estiver no nível "+$LVLmin+" ou superior.";
+	close;
+	
+L_Next:
+	mes "[Enquete]";
+	mes "Olá, seu voto nessa enquete já está contando.";
+	mes "Em que posso te ajudar?";
+	next;
+	if (select("Ver andamento dessa votação.:Trocar meu voto.") == 1) {
+		next;
+L_VerVoto:
+		mes "[Enquete]";
+		mes "Atualmente temos ";
+		for (set .@i, 0; .@i < getarraysize($OpcaoVotos$); set .@i,.@i+1)
+			mes $OpcaoVotos[.@i] + " votos para ^3355FF" + $OpcaoVotos$[.@i] + "^000000";
+		close;
+	}
+	else {
+		next;
+		mes "[Enquete]";
+		mes "^3355FF"+$InfoEnq3$+"^000000";
+		mes " ";
+		mes "Seu voto atualmente está para ";
+		for (set .@i, 0; .@i < getarraysize($OpcaoVotos$); set .@i,.@i+1)
+			if (#VotouEm-1 == .@i) mes "^3355FF"+$OpcaoVotos$[.@i]+"^000000, tem certeza que deseja muda-lo?";
+		next;
+		if ( select ("Tenho certeza:Mudei de idéia.") == 1) {
+			for (set .@i, 0; .@i < getarraysize($OpcaoVotos$); set .@i,.@i+1)
+				if (#VotouEm-1 == .@i) set $OpcaoVotos[.@i], $OpcaoVotos[.@i]-1;
+			set #VotouEm,0;
+			next;
+			mes "[Enquete]";
+			mes "Escolha sua nova opção de voto respondendo a seguinte pergunta.";
+			next;
+			mes "^3355FF"+$InfoEnq3$+"^000000";
+			set .@votar,select($MenuEnq$);
+			for (set .@i, 0; .@i < getarraysize($OpcaoVotos$); set .@i,.@i+1)
+				if (.@votar-1 == .@i) set $OpcaoVotos[.@i], $OpcaoVotos[.@i]+1;
+			set #VotouEm,.@votar;
+			close;
+		}
+		else {
+			mes "[Enquete]";
+			mes "Ok, caso queira mudar seu voto é só voltar aqui.";
+			close;
+		}
+	}
+	
+OnTimer1000:
+	stopnpctimer;
+	if (gettimetick(2) > $TimerEnq) {
+		set $Enquete_ON, 2;
+		delwaitingroom;
+		waitingroom "Enquete Encerrada.",0;
+		end;
+	}
+	else {
+		initnpctimer;
+		end;
+	}
+	
+OnInit:
+	if ($Enquete_ON == 1) {
+		waitingroom "Enquete em Andamento!",0;
+		initnpctimer;
+	}
+	if ($Enquete_ON == 2) waitingroom "Enquete Encerrada.",0;
+	end;
+}
+

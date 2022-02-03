@@ -1,0 +1,11 @@
+treinamento,80,122,5	script	Cassino#55	762,{
+	mes "Deseja entrar no Cassino do NLO?";
+	menu "Agora não.",-,"Entrar.",go;
+	next;
+	mes "Até mais!";
+	close;
+	
+	go:
+	warp "spl_in01",172,189;
+	close2;
+}

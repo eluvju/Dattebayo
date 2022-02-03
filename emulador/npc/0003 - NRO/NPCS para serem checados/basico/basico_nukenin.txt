@@ -1,0 +1,114 @@
+monk_in,99,58,5	script	Ancião Nukenin	847,{
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Veja só, um forasteiro...";
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Eu sou o ancião nukenin, o mais velho e atual lider dessa aldeia.";
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Você parece confuso, vou te explicar o que é um nukenin";
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Um nukenin é um ninja renegado, um shinobi que fugiu de sua vila por qualquer motivo";
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Os nukenins são pessoas solitárias pois não pertencem a nenhuma vila";
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Os nukenins mais famosos são os temiveis Akatsuki!";
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Nukenins não possuem nenhum privilegio, são apenas pessoas que querem vingança contra sua vila ou apenas quer ter uma vida solitária";
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Bom, você andou bastante pra chegar até aqui, e parece bem interessado...";
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Gostaria de entregar sua bandana e virar um nukenin "+strcharinfo(0)+"?";
+menu "Sim!",sim,"Agora não...",nao;
+
+sim:
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Que boa noticia, mas antes de virar um nukenin me diga sua vila de origem...";
+menu "Konoha",konoha,"Névoa",nevoa,"Suna",suna;
+
+konoha:
+next;
+if(!getcharid(2)){
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Vejo que ja está sem vila, ótimo";
+}else{
+mes "Você está em uma vila, por favor saia dela antes de se tornar um nukenin.";
+close;
+}
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Ok, vamos fazer de você um nukenin!";
+if (countitem(19008) < 1) goto bandana;
+savepoint "prt_monk",139,200;
+if (genin == 1) set Rank_B, 1;
+if (chunin == 1) set Rank_A, 1;
+if (jounin == 1) set Rank_S, 1;
+delitem 19008,1;
+getitem 19081,1;
+announce "O Shinobi " + strcharinfo(0) + " acaba de virar um nukenin de Konoha!!",0;
+close;
+
+nevoa:
+next;
+if(!getcharid(2)){
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Vejo que ja está sem vila, ótimo";
+}else{
+mes "Você está em uma vila, por favor saia dela antes de se tornar um nukenin.";
+close;
+}
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Ok, vamos fazer de você um nukenin!";
+if (countitem(19001) < 1) goto bandana;
+savepoint "prt_monk",139,200;
+if (genin == 1) {set Rank_B, 1;}
+if (chunin == 1) {set Rank_A, 1;}
+if (jounin == 1) {set Rank_S, 1;}
+delitem 19001,1;
+getitem 19078,1;
+announce "O Shinobi " + strcharinfo(0) + " acaba de virar um nukenin da Névoa!!",0;
+close;
+
+suna:
+next;
+if(!getcharid(2)){
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Vejo que ja está sem vila, ótimo";
+}else{
+mes "Você está em uma vila, por favor saia dela antes de se tornar um nukenin.";
+close;
+}
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Ok, vamos fazer de você um nukenin!";
+if (countitem(19006) < 1) goto bandana;
+savepoint "prt_monk",139,200;
+if (genin == 1) set Rank_B, 1;
+if (chunin == 1) set Rank_A, 1;
+if (jounin == 1) set Rank_S, 1;
+delitem 19006,1;
+getitem 19079,1;
+announce "O Shinobi " + strcharinfo(0) + " acaba de virar um nukenin da Suna!!",0;
+close;
+
+bandana:
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Opa, ou você não é dessa vila ou você não desequipou sua bandana!";
+close;
+
+nao:
+next;
+mes "[^FFA500Ancião Nukenin^000000]";
+mes "Tudo bem, uma dica... fica esperto com os nukenins, não é de costume deles ser amigáveis.";
+close;
+
+}

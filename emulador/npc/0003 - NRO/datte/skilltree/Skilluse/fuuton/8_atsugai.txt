@@ -1,0 +1,37 @@
+-	script	on_PC_UseSkillf08	-1,{
+    end;
+//When a Character uses a skill
+
+//atsugai
+
+onPcUseSkillEvent:
+
+           if(lskillid == 148) {
+
+
+if (getskilllv(148) == 1) {
+
+if (atsugai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill148 >= 150) {skill 148,2,0; set skill148,0; dispbottom "[Sys] Level up"; end; }
+set skill148,skill148 +1;
+dispbottom "[Jutsu level] Fuuton Nindou level 1: "+skill148+" de 150";
+
+end;
+
+}
+
+if (getskilllv(148) == 2) {
+if (atsugai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill148 >= 200) {skill 148,3,0; set skill148,0; dispbottom "[Sys] Level up"; end;}
+set skill148,skill148 +1;
+dispbottom "[Jutsu level] Fuuton Nindou level 2: "+skill148+" de 200";
+
+end;
+
+}
+
+                end;
+            }    
+}

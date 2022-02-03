@@ -1,0 +1,126 @@
+nevoa,192,176,5	script	Registro shinobi::break	790,{
+
+
+
+query_sql "SELECT `char`.char_id,`char`.`name`,global_reg_value.`value` FROM global_reg_value LEFT JOIN `char` ON global_reg_value.char_id=`char`.char_id WHERE global_reg_value.str='brokeemp' ORDER BY CAST(`global_reg_value`.`value` AS UNSIGNED) DESC LIMIT 10", .@char_id, .@name$, .@count;
+
+
+
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Ohayo "+strcharinfo(0)+", o que gostaria de fazer?";
+menu "Checar os pontos de Bijuu",-,"Visualizar ranking de pontos",Llad,"Trocar pontos",Lex,"Nada",Lno;
+next;
+
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Hmm, espere um segundo, vou ver meus registros";
+next;
+mes strcharinfo(0)+" -  pontuação: ^FF0000"+brokeemp+"^000000 Ponto(s)";
+close;
+
+Lno:
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Você que sabe..";
+close;
+
+Lex:
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Quer mesmo trocar seus pontos por premios?";
+mes "^FF0000Nota: Confere seu inventário e peso antes de confirmar!";
+menu "Sim, eu quero",-,"Não",Lno;
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "O que gostaria de receber pelos seus pontos?";
+menu "Kit WOE",-,"Caixa de Ramen",Lesg,"Kit Pilúlas",Lrip,"Cx. de Pergaminho de Drop 2x",Lsil,"Cx. de Pergaminho de Exp 2x",Lval;
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Você vai precisar de 5 pontos Bijuu para trocar por este item..";
+mes "Tem certeza que quer o Kit WOE?";
+menu "Sim",-,"Não",Lno;
+if(brokeemp < 5) goto Lnep;
+if(brokeemp >= 5)
+next;
+mes "Aqui está!";
+getitem 12935,1;
+set brokeemp,brokeemp-5;
+close;
+
+
+Lnep:
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Não tem pontos bijuu o suficiente!";
+close;
+
+Lesg:
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Você vai precisar de 1 ponto(s) Bijuu para trocar por este item..";
+mes "Tem certeza que quer a Caixa de Ramen?";
+menu "Sim",-,"Não",Lno;
+if(brokeemp < 1) goto Lnep;
+if(brokeemp >= 1)
+next;
+mes "Aqui está!";
+getitem 12958,1;
+set brokeemp,brokeemp-1;
+close;
+
+Lrip:
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Você vai precisar de 5 ponto(s) Bijuu para trocar por este item..";
+mes "Tem certeza que quer o Kit Pilúlas?";
+menu "Sim",-,"Não",Lno;
+if(brokeemp < 5) goto Lnep;
+if(brokeemp >= 5)
+next;
+mes "Aqui está!";
+getitem 12936,1;
+set brokeemp,brokeemp-5;
+close;
+
+Lval:
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Você vai precisar de 50 pontos Bijuu para trocar por este item..";
+mes "Tem certeza que quer a Cx. de Pergaminho de exp 2x?";
+menu "Sim",-,"Não",Lno;
+if(brokeemp < 50) goto Lnep;
+if(brokeemp >= 50)
+next;
+mes "Aqui está!";
+getitem 12900,1;
+set brokeemp,brokeemp-50;
+close;
+
+Lsil:
+next;
+mes "[ ^00FF00 Registro Shinobi ^000000 ]";
+mes "Você vai precisar de 50 pontos Bijuu para trocar por este item..";
+mes "Tem certeza que quer a Cx. de Pergaminho de drop 2x?";
+menu "Sim",-,"Não",Lno;
+if(brokeemp < 50) goto Lnep;
+if(brokeemp >= 50)
+next;
+mes "Aqui está!";
+getitem 12902,1;
+set brokeemp,brokeemp-50;
+close;
+
+Llad:
+    next;
+    for( set .@x,0; .@x<=9; set .@x,.@x+1 )
+    {
+        mes "^0000FF"+(.@x+1)+".^000000 "+.@name$[.@x]+" - ^FF0000"+.@count[.@x]+"^000000 Ponto(s)";
+    } // .@x starts at 0, but you want to start with '1st', so use (.@x+1);)
+close;
+
+}
+
+konoha, 192, 182, 4	duplicate(break)	Registro shinobi#1	790
+areia, 203, 174, 4	duplicate(break)	Registro shinobi#2	790
+prt_monk, 260, 215, 4	duplicate(break)	Registro shinobi#3	790
+6@tower, 162, 145, 4	duplicate(break)	Registro shinobi#4	790

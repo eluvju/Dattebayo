@@ -1,0 +1,37 @@
+-	script	useGaia	-1,{
+    end;
+//When a Character uses a skill
+
+//Gaia
+
+onPcUseSkillEvent:
+
+           if(lskillid == 113) {
+
+
+if (getskilllv(113) == 1) {
+
+if (Gaia != 1) {end;}
+if (skill113 >= 100) {skill 113,2,0; set skill113,0; dispbottom "[Sys] Level up"; end; }
+set skill113,skill113 +1;
+dispbottom "[Jutsu level] Gaia Fuuin level 1: "+skill113+" de 100";
+
+end;
+
+}
+
+if (getskilllv(113) == 2) {
+
+if (Gaia != 1) {end;}
+if (skill113 >= 200) {skill 113,3,0; set skill113,0; dispbottom "[Sys] Level up"; end; }
+set skill113,skill113 +1;
+dispbottom "[Jutsu level] Gaia Fuuin level 2: "+skill113+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

@@ -1,0 +1,113 @@
+-	script	on_PC_UseSkillf01	-1,{
+    end;
+//When a Character uses a skill
+
+//bencao
+
+onPcUseSkillEvent:
+
+           if(lskillid == 34) {
+
+
+if (getskilllv(34) == 1) {
+
+if (bencao != 1) {end;}
+if (skill34 >= 50) {skill 34,2,0; set skill34,0; dispbottom "[Sys] Level up"; end; }
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 1: "+skill34+" de 50";
+
+end;
+
+}
+
+if (getskilllv(34) == 2) {
+if (bencao != 1) {end;}
+if (skill34 >= 100) {skill 34,3,0; set skill34,0; dispbottom "[Sys] Level up"; end;}
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 2: "+skill34+" de 100";
+
+end;
+
+}
+
+if (getskilllv(34) == 3) {
+
+if (bencao != 1) {end;}
+if (fuuin_intermediario != 1) {end;}
+if (skill34 >= 150) {skill 34,4,0; set skill34,0; dispbottom "[Sys] Level up"; end;}
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 3: "+skill34+" de 150";
+
+end;
+
+}
+
+if (getskilllv(34) == 4) {
+if (fuuin_intermediario != 1) {end;}
+if (bencao != 1) {end;}
+if (skill34 >= 200) {skill 34,5,0; set skill34,0; dispbottom "[Sys] Level up"; end;}
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 4: "+skill34+" de 200";
+
+end;
+
+}
+
+if (getskilllv(34) == 5) {
+if (fuuin_intermediario != 1) {end;}
+if (bencao != 1) {end;}
+if (skill34 >= 250) {skill 34,6,0; set skill34,0; dispbottom "[Sys] Level up"; end;}
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 5: "+skill34+" de 250";
+
+end;
+
+}
+
+if (getskilllv(34) == 6) {
+if (fuuin_avan != 1) {end;}
+if (bencao != 1) {end;}
+if (skill34 >= 300) {skill 34,7,0; set skill34,0; dispbottom "[Sys] Level up"; end;}
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 6: "+skill34+" de 300";
+
+end;
+
+}
+
+if (getskilllv(34) == 7) {
+if (fuuin_avan != 1) {end;}
+if (bencao != 1) {end;}
+if (skill34 >= 500) {skill 34,8,0; set skill34,0; dispbottom "[Sys] Level up"; end;}
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 7: "+skill34+" de 500";
+
+end;
+
+}
+
+if (getskilllv(34) == 8) {
+if (fuuin_avan != 1) {end;}
+if (bencao != 1) {end;}
+if (skill34 >= 700) {skill 34,9,0; set skill34,0; dispbottom "[Sys] Level up"; end;}
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 8: "+skill34+" de 700";
+
+end;
+
+}
+
+if (getskilllv(34) == 9) {
+if (fuuin_avan != 1) {end;}
+if (bencao != 1) {end;}
+if (skill34 >= 1000) {skill 34,10,0; set skill34,0; dispbottom "[Sys] Level up"; end;}
+set skill34,skill34 +1;
+dispbottom "[Jutsu level] Benção level 9: "+skill34+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

@@ -1,0 +1,195 @@
+//===== eAthena Script ======================================= 
+//= Royal Rumble Event
+//===== By: ==================================================
+//= Masao
+//===== Current Version: =====================================
+//= 2.0
+//===== Compatible With: =====================================
+//= Any Athena Version
+//===== Description: =========================================
+//= Starts an little PvP Event when a total of 10 Players
+//= are in the Waitingroom. After that every 30 seconds
+//= a new Player will be warped onto the PvP Map until the
+//= waiting room is empty.
+//===== Additional Comments: =================================
+//= Version 1.0 [Masao]
+//= Verison 2.0 added GM Control Panel & Autostart [Masao]
+//============================================================
+
+prontera.gat,0,0,0	script	RoyalAnnouncer	-1,{
+
+OnClock0400:
+OnClock0800:
+OnClock1200:
+OnClock1600:
+OnClock2000:
+OnClock0001:
+	enablenpc "Royal Rumble Warper::RRW";
+	announce "The Royal Rumble Event is Open now!",0;
+	end;
+	
+OnClock0403:
+OnClock0803:
+OnClock1203:
+OnClock1603:
+OnClock2003:
+OnClock0004:
+	disablenpc "Royal Rumble Warper::RRW";
+	announce "The Royal Rumble Event is closed now!",0;
+	end;
+}
+
+prontera,0,0,0	script	Royal Rumble Warper::RRW	946,{
+
+	set .@name$,"[Royal Rumble Warper]";
+	
+	mes .@name$;
+	mes "Hi "+strcharinfo(0)+",";
+	mes "i can warp you now to the Royal Rumble Map!";
+	mes "So would you like to go?";
+	next;
+	menu "Yes!",-,"No, thanks.",L_End;
+
+	warp "quiz_02",335,70;
+	close;
+
+L_End:
+	mes .@name$;
+	mes "Ok, bye.";
+	close;
+}
+
+quiz_02,337,74,4	script	Royal Rumble#Register	946,{
+
+	set .@name$,"[Royal Rumble]";
+
+	if (getgmlevel() >= 60) goto L_GM;
+
+	mes .@name$;
+	mes "Hi "+strcharinfo(0)+",";
+	mes "i'm the Royal Rumble NPC, you can join here";
+	mes "for the Royal Rumble Battle!";
+	mes "So, would you like to play?";
+	next;
+	menu "Yes!",-,"Royal Rumble?!",L_Rules,"No thanks.",L_End;
+
+	mes "Allright, then click on the Chatroom and wait until 10 Players are in the Room.";
+	close;
+
+L_GM:
+	mes .@name$;
+	mes "Hi "+strcharinfo(0)+",";
+	mes "what can i do for you?";
+	switch(select("Start Event!:End Event...:Set Prize:Cancel")) {
+		case 1:
+			next;
+			enablenpc "Royal Rumble Warper::RRW";
+			announce "The Royal Rumble Event is Open now!",0;
+			close;
+		case 2:
+			next;
+			disablenpc "Royal Rumble Warper::RRW";
+			kickwaitingroomall "Royal Rumble#Register";
+			mapwarp "guild_vs3","prontera",154,177;
+			announce "The Royal Rumble Event has ended!",0;
+			close;
+		case 3:
+			next;
+			mes "The current Prize is "+getitemname($royal_item_id)+", would you like to change it?";
+			switch(select("No:Yes")) {
+				case 1:
+					next;
+					mes "Ok, bye.";
+					close;
+				case 2:
+					next;
+					mes "Ok, then please insert now the new Item ID";
+					input $royal_item_id;
+					next;
+					mes "And now the Amount please.";
+					input $royal_item_amount;
+					next;
+					mes "Allright, so the Prize now is ^008000"+$royal_item_amount+" "+getitemname($royal_item_id)+"^000000";
+					close;
+			}
+		case 4:
+			next;
+			mes "Ok, bye";
+			close;
+	}
+
+OnInit:
+	waitingroom "Royal Rumble",10,"Royal Rumble#Register::OnStartArena",10;
+	enablewaitingroomevent;
+	end;
+
+OnStartArena:
+	donpcevent "Royal Rumble#Register::OnEnable";
+	disablewaitingroomevent;
+	end;
+
+OnEnable:
+	warpwaitingpc "guild_vs3",0,0,2;
+	sleep 30000;
+	donpcevent "Royal Rumble#Register::OnEnableNext";
+	end;
+
+OnEnableNext:
+	if ((getwaitingroomstate(32,"Royal Rumble#Register")) == 0) end;
+	warpwaitingpc "guild_vs3",0,0,1;
+	sleep 30000;
+	donpcevent "Royal Rumble#Register::OnEnableLoop";
+	end;
+
+OnEnableLoop:
+	if ((getwaitingroomstate(32,"Royal Rumble#Register")) == 0) end;
+	warpwaitingpc "guild_vs3",0,0,1;
+	sleep 30000;
+	donpcevent "Royal Rumble#Register::OnEnableNext";
+	end;
+
+OnStart:
+	enablewaitingroomevent;
+	end;
+
+L_Rules:
+	mes .@name$;
+	mes "The Rules are very easy!";
+	mes "Go into the waitingroom and wait until 10 Players are in there,";
+	mes "as soon as this happens the Game will start.";
+	mes "2 Players will be randomly chosen and warped onto an PvP Map,";
+	mes "then they fight each other, the loser get warped out and the Winner stays.";
+	mes "As soon as the waitingroom is empty and the last player is killed on the Map";
+	mes "the Game will end and the last survivor is the Winner!";
+	mes "And thats all, have Fun and good luck!";
+	close;
+	
+L_End:
+	mes .@name$;
+	mes "Ok, bye.";
+	close;
+}
+
+guild_vs3,0,0,0	script	kill_check	-1,{
+
+	set .@name$,"[Royal Rumble NPC]";
+
+OnPCKillEvent:
+	sleep 40000;
+	if (getmapusers("guild_vs3.gat") == 1) goto L_Winner;
+	end;
+	
+L_Winner:
+	mes .@name$;
+	mes "Congratulations "+strcharinfo(0)+"!";
+	mes "You won the Royal Rumble Game!";
+	donpcevent "Royal Rumble#Register::OnStart";
+	getitem $royal_item_id,$royal_item_amount;
+	warp "jawaii_in",154,177;
+	end;
+}
+
+mapflag	nomemo	quiz_02
+mapflag	nowarp	quiz_02
+mapflag	noteleport	quiz_02
+mapflag	nosave	quiz_02

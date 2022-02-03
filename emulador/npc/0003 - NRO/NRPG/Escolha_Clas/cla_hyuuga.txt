@@ -1,0 +1,39 @@
+que_ng,23,70,3	script	Clã Hyuuga	734,{
+	show "[Clã Hyuuga]";
+	if(elemento == 0){goto aprenderhyuuga;}
+	if(cla == 1){goto L_alreadyhavecla;}	
+
+
+	aprenderhyuuga:
+	show "Olá caro shinobi, voce gostaria de fazer parte do Clã Hyuuga ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Clã Hyuuga]";
+	show "Muito bem, muito sábia essa escolha!";
+	setjob "4012";
+	set hyuuga,hyuuga + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Clã Hyuuga]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	show "Você já possui um clã";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

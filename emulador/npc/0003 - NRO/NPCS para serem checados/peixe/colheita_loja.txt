@@ -1,0 +1,47 @@
+prontera,156,150,5	script	Cozinheira de Arroz	701,{
+ 
+	goto EveryThing; /* Nao mexa aqui */
+ 
+/*Configurações gerais do Npc*/
+OnInit:
+	setarray .ItList[0],550,4,555,6,564,6;	/* [ID,Preço (zeny&item)]*/
+	setarray .PayType[0],1,7303;								/* [Tipo,ID do item] [Tipos: 1 = item, 0 = zeny] [Para tipo = 0 ignore o segundo campo]*/
+	npcshopdelitem "CShop#B",501;
+	for(set .n,0;.n<getarraysize(.ItList);set .n,.n+2)
+		npcshopadditem "CShop#B",.ItList[.n],.ItList[(.n+1)];
+	end;
+ 
+/* Aqui você pode até mexer */
+EveryThing:
+		if(.PayType[0])
+		{
+			dispbottom "Shop de "+getitemname(.PayType[1]);
+			dispbottom "Você possui "+countitem(.PayType[1])+" "+getitemname(.PayType[1])+"(s)";
+				if(!countitem(.PayType[1])) end;
+		}
+	callshop "CShop#B",0;
+	npcshopattach "CShop#B";
+	end;
+ 
+/* Nem pense em tocar nessa parte */
+OnBuyItem:
+	for(set @n,0;@n<getarraysize(@bought_nameid);set @n,@n+1)
+		for(set @a,0;@a<getarraysize(.ItList);set @a,@a+2)
+			if(@bought_nameid[@n]==.ItList[@a])
+			{
+				set @PriceT,.ItList[@a+1]*@bought_quantity[@n];
+					if(.PayType[0])
+						{
+							if(countitem(.PayType[1])<@PriceT) end;
+						}else{
+							if(Zeny<@PriceT) end;
+						}
+				getitem @bought_nameid[@n],@bought_quantity[@n];
+					if(.PayType[0]) delitem .PayType[1],@PriceT;
+					else set Zeny,Zeny-@PriceT;
+			}
+	close;
+}
+ 
+/* Hide Shop, não mexa */
+-	shop	CShop#B	-1,501:-1

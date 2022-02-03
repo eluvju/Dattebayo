@@ -1,0 +1,40 @@
+que_ng,35,70,3	script	Clã Uzumaki	734,{
+	show "[Clã Uzumaki]";
+	if(elemento == 0){goto aprenderuzumaki;}
+	if(cla == 0){goto aprenderuzumaki;} else {goto L_alreadyhave;}	
+
+
+	aprenderuzumaki:
+	show "Olá caro shinobi, voce gostaria de fazer parte do Clã Uzumaki ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Clã Uzumaki]";
+	show "Muito bem, muito sábia essa escolha!";
+	setjob "4013";
+	set uzumaki,1;
+	set cla,1;
+	set missao_g1,missao_g1 +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Clã Uzumaki]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	show "Você já possui um clã";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

@@ -1,0 +1,61 @@
+konoha,56,276,5	script	Yukiatsu::perg_dois	831,{
+
+if (checkquest(2084) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Oi viajante, meu nome é Yukiatsu, sou um vendedor de pergaminhos raros";
+next;
+mes "O Pergaminho Suiton Básico é um pergaminho raro que aumenta o dano dos Jutsus de propriedade Suiton";
+mes "Gostaria de ter esse pergaminho?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Pergaminho Suiton Básico
+//========================================================================
+
+L_SS:
+next;
+mes "Para obter este pergaminho,você precisa :";
+mes "- Obter 40x Pena Macia.";
+mes "- Obter 30x Tanga de Tigre.";
+mes "- Obter 80x Garra de Ave.";
+mes "- Matar 50 Togashiro";
+setquest 2084;
+set quest_perg_dois,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(perg_mobs_dois < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7063) < 40) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7267) < 30) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(917) < 80) {mes "Você ainda não completou sua missão"; close;}
+mes "Me trouxe o que havia pedido, tome seu pergaminho!";
+completequest 2084;
+erasequest 2084;
+delitem 7063,40;
+delitem 7267,30;
+delitem 917,80;
+set quest_perg_dois,0;
+set perg_mobs_dois,0;
+getitem 2106,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	perg#2	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1027 && quest_perg_dois == 1) {set perg_mobs_dois,perg_mobs_dois +1; announce "[Quest de equipamento] Você já derrotou "+perg_mobs_dois+" / 50 Togashiro",bc_blue|bc_self; end;}
+
+}
+
+
+areia,272,244,5	duplicate(perg_dois)	Yukiatsu#1	831
+kiri,174,371,5	duplicate(perg_dois)	Yukiatsu#2	831
+nuvem,101,280,5	duplicate(perg_dois)	Yukiatsu#3	831

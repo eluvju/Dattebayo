@@ -1,0 +1,73 @@
+kumogakure,226,111,0	script	treino#16	45,1,1,{
+if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#nuvem == 1)
+warp "academia", 102,11;
+end;
+}
+
+kumogakure,119,148,4	script	VilaNuvem#01	45,1,1,{
+if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#nuvem == 1)
+warp "bibli_04", 53,38;
+end;
+}
+bibli_04,53,35,0	warp	VilaNuvem#02	2,2,kumogakure,122,148
+
+
+kumogakure,108,130,4	script	VilaNuvem#03	45,1,1,{
+if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#nuvem == 1)
+warp "hospital4", 101,14;
+end;
+}
+hospital4,101,10,0	script	VilaNuvem#04	45,1,1,{
+
+	mes "Escolha qual saida deseja.";
+	switch(select("- Porta do Hospital:- Sala do Kage:- Viajante Ninja:- Saida Aleatória")) {  
+		case 1:
+			warp "kumogakure", 111,127; end;
+		case 2:
+			warp "kumogakure", 158,236; end;
+		case 3:
+			warp "kumogakure", 139,27; end;
+		case 4:
+			warp "kumogakure", 0,0; end;
+	}
+}
+
+
+kumogakure,158,239,4	script	VilaNuvem#05	45,1,1,{
+if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#nuvem == 1)
+warp "salakage4", 31,5;
+end;
+}
+salakage4,31,2,0	warp	VilaNuvem#06	2,2,kumogakure,158,236
+
+kumogakure,100,76,4	script	VilaNuvem#07	45,1,1,{
+if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#nuvem == 1)
+warp "biju_pri4", 18,20;
+end;
+}
+biju_pri4,18,15,0	warp	VilaNuvem#08	2,2,kumogakure,100,73
+
+kumogakure,185,83,4	script	VilaNuvem#09	45,1,1,{
+if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#nuvem == 1)
+warp "ama_in01", 175,173;
+end;
+}
+ama_in01,175,170,0	warp	VilaNuvem#10	2,2,kumogakure,188,80

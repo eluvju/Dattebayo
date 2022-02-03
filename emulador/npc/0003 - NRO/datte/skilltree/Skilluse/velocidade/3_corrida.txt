@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillcorr	-1,{
+    end;
+//When a Character uses a skill
+
+//Vel_corrida
+
+onPcUseSkillEvent:
+
+           if(lskillid == 411) {
+
+
+if (getskilllv(411) == 1) {
+
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 50) {skill 411,2,0; set skill411,0; dispbottom "[Sys] Level up"; end; }
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 1: "+skill411+" de 50";
+
+end;
+
+}
+
+if (getskilllv(411) == 2) {
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 100) {skill 411,3,0; set skill411,0; dispbottom "[Sys] Level up"; end;}
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 2: "+skill411+" de 100";
+
+end;
+
+}
+
+if (getskilllv(411) == 3) {
+
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 150) {skill 411,4,0; set skill411,0; dispbottom "[Sys] Level up"; end;}
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 3: "+skill411+" de 150";
+
+end;
+
+}
+
+if (getskilllv(411) == 4) {
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 200) {skill 411,5,0; set skill411,0; dispbottom "[Sys] Level up"; end;}
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 4: "+skill411+" de 200";
+
+end;
+
+}
+
+if (getskilllv(411) == 5) {
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 250) {skill 411,6,0; set skill411,0; dispbottom "[Sys] Level up"; end;}
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 5: "+skill411+" de 250";
+
+end;
+
+}
+
+if (getskilllv(411) == 6) {
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 300) {skill 411,7,0; set skill411,0; dispbottom "[Sys] Level up"; end;}
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 6: "+skill411+" de 300";
+
+end;
+
+}
+
+if (getskilllv(411) == 7) {
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 400) {skill 411,8,0; set skill411,0; dispbottom "[Sys] Level up"; end;}
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 7: "+skill411+" de 400";
+
+end;
+
+}
+
+if (getskilllv(411) == 8) {
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 500) {skill 411,9,0; set skill411,0; dispbottom "[Sys] Level up"; end;}
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 8: "+skill411+" de 500";
+
+end;
+
+}
+
+if (getskilllv(411) == 9) {
+if (Vel_corrida != 1) {end;}
+if (skill411 >= 700) {skill 411,10,0; set skill411,0; dispbottom "[Sys] Level up"; end;}
+set skill411,skill411 +1;
+dispbottom "[Jutsu level] Corrida level 9: "+skill411+" de 700";
+
+end;
+
+}
+
+                end;
+            }    
+}

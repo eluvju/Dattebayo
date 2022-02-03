@@ -1,0 +1,93 @@
+-	script	correcaoskills	-1,{
+
+OnPCLoginEvent:
+	//-------------------------------------
+	// Ninjutsu Katon Avançado
+	if(countitem(6013) != 1 && !elementokaton) {
+		if(getskilllv(2211) >= 1) { set KatonMeteoroEscarlate,0; skill 2211,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Ninjutsu Suiton Avançado
+	if(countitem(6013) != 1 && !elementosuiton) {
+		if(getskilllv(2203) >= 1) { set SuitonZeroAbsoluto,0; skill 2203,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Ninjutsu Raiton Avançado
+	if(countitem(6013) != 1 && !elementoraiton) {
+		if(getskilllv(541) >= 1) { set ChidoriNagashi,0; skill 541,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Ninjutsu Doton Avançado
+	if(countitem(6013) != 1 && !elementodoton) {
+		if(getskilllv(653) >= 1) { set DotonTerremoto,0; skill 653,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Ninjutsu Fuuton Avançado
+	if(countitem(6013) != 1 && !elementofuuton) {
+		if(getskilllv(2005) >= 1) { set FuutonVentoCortante,0; skill 2005,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//--------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------
+	// Velocidade Avançado
+	if(countitem(6017) != 1) {
+		if(getskilllv(2290) >= 1) { set FormaEtera,0; skill 2290,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Velocidade Avançado
+	if(countitem(6017) != 1) {
+		if(getskilllv(264) >= 1) { set Hiraishin,0; skill 264,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//--------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------
+	// Resistência Avançado
+	if(countitem(6020) != 1) {
+		if(getskilllv(268) >= 1) { set Yosai,0; skill 268,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Resistência Avançado
+	if(countitem(6020) != 1) {
+		if(getskilllv(2333) >= 1) { set ShojunnoHiji,0; skill 2333,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Resistência Avançado
+	if(countitem(6020) != 1) {
+		if(getskilllv(2313) >= 1) { set Bogyoryoku,0; skill 2313,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Resistência Avançado
+	if(countitem(6020) != 1) {
+		if(getskilllv(2314) >= 1) { set Hofuku,0; skill 2314,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Resistência Avançado
+	if(countitem(6020) != 1) {
+		if(getskilllv(2013) >= 1) { set JokaSuru,0; skill 2013,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Resistência Avançado
+	if(countitem(6020) != 1) {
+		if(getskilllv(2015) >= 1) { set Sukeru,0; skill 2015,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//--------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------
+	// Fuuinjutsu Avançado
+	if(countitem(6015) != 1) {
+		if(getskilllv(544) >= 1) { set ShikiFujin,0; skill 544,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Fuuinjutsu Avançado
+	if(countitem(6015) != 1) {
+		if(getskilllv(288) >= 1) { set ProtegerTerreno,0; skill 288,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//--------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------
+	// Medicina Avançado
+	if(countitem(6016) != 1) {
+		if(getskilllv(5007) >= 1) { set JinseioKyoyuSuru,0; skill 5007,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+	//-------------------------------------
+	// Medicina Avançado
+	if(countitem(6016) != 1) {
+		if(getskilllv(2045) >= 1) { set SaigonoHitokuchi,0; skill 2045,0,3; if(skill_avancada >= 1) { set skill_avancada,skill_avancada -1; } }
+	}
+}

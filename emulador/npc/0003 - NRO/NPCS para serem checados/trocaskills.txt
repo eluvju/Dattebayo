@@ -1,0 +1,28 @@
+-	script	trocaskills	-1,{
+
+
+OnPCLoginEvent:
+
+if (skillreset1 == 1) { end;}
+if (skillprotect == 1) { end;}
+
+if (getskilllv(534) > 0) { set @skill534lv, getskilllv(534); skill 534,0,0; skill 186,@skill534lv,0;}
+if (getskilllv(17) > 0) { set @skill17lv, getskilllv(17); skill 17,0,0; skill 534,@skill17lv,0;}
+if (getskilllv(18) > 0) { set @skill18lv, getskilllv(18); skill 18,0,0; skill 17,@skill18lv,0;}
+if (getskilllv(87) > 0) { set @skill87lv, getskilllv(87); skill 87,0,0; skill 88,@skill87lv,0;}
+if (getskilllv(90) > 0) { set @skill90lv, getskilllv(90); skill 90,0,0; skill 236,@skill90lv,0;}
+if (getskilllv(185) > 0) { set @skill185lv, getskilllv(185); skill 185,0,0; skill 154,@skill185lv,0;}
+if (getskilllv(356) > 0) { set @skill356lv, getskilllv(356); skill 356,0,0; skill 234,@skill356lv,0;}
+if (getskilllv(236) > 0) { set @skill236lv, getskilllv(236); skill 236,0,0; skill 185,@skill236lv,0;}
+if (getskilllv(154) > 0) { set @skill154lv, getskilllv(154); skill 154,0,0; skill 356,@skill154lv,0;}
+if (getskilllv(234) > 0) { set @skill234lv, getskilllv(234); skill 234,0,0; skill 90,@skill234lv,0;}
+if (getskilllv(540) > 0) { set @skill540lv, getskilllv(540); skill 540,0,0; skill 191,@skill540lv,0;}
+if (getskilllv(148) > 0) { set @skill148lv, getskilllv(148); skill 148,0,0; skill 540,@skill148lv,0;}
+if (getskilllv(13) > 0) { set @skill13lv, getskilllv(13); skill 13,0,0; skill 542,@skill13lv,0;}
+if (getskilllv(20) > 0) { set @skill20lv, getskilllv(20); skill 20,0,0; skill 493,@skill20lv,0;}
+if (getskilllv(187) > 0) { set @skill187lv, getskilllv(187); skill 187,0,0; skill 20,@skill187lv,0;}
+if (getskilllv(493) > 0) { set @skill493lv, getskilllv(493); skill 493,0,0; skill 187,@skill493lv,0;}
+if (getskilllv(515) > 0) { set @skill515lv, getskilllv(515); skill 515,0,0; skill 21,@skill515lv,0;}
+set skillreset1,1;
+
+}

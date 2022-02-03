@@ -1,0 +1,557 @@
+////nuvem,205,244,0	warp	nuv212	1,1,hospital4,103,8
+//konoha,109,260,0	warp	nuv118	1,1,hospital,103,8
+//areia,219,244,0	warp	nuv220	1,1,hospital2,103,8
+//kiri,151,111,0	warp	hosp120	1,1,hospital3,103,8
+
+
+konoha3,88,233,4	script	Entrada#11	45,1,1,{
+if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (#konoha == 1) goto entra;
+
+entra:
+warp "hospital", 103,8;
+close;
+
+}
+
+areia,219,244,4	script	Entrada#12	45,1,1,{
+if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (#suna == 1) goto entra;
+
+entra:
+warp "hospital2", 103,8;
+close;
+
+}
+
+
+kiri,151,111,4	script	Entrada#13	45,1,1,{
+if (#nevoa != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (#nevoa == 1) goto entra;
+
+entra:
+warp "hospital3", 103,8;
+close;
+
+}
+
+nuvem,205,244,4	script	Entrada#14	45,1,1,{
+if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (#nuvem == 1) goto entra;
+
+entra:
+warp "hospital4", 103,8;
+close;
+
+}
+
+prt_fild02,174,382,4	script	Entrada pra Konoha	45,1,1,{
+if (#konoha == 1) goto entra;
+if ($konoha_caiu != 1) {mes "Você é de outra vila, e foi barrado pelos guardas, terá que achar outro meio de entrar"; close;}
+
+entra:
+warp "konoha3", 207,55;
+	if (countitem(19020) >= 1) {announce strcharinfo(0)+" da Akatsuki acaba de invadir Konoha.",bc_blue|bc_all; end;}
+	if(#nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Konoha.",bc_blue|bc_all; end;}
+	if(#suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Konoha.",bc_blue|bc_all; end;}
+	if(#nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Konoha.",bc_blue|bc_all; end;}
+close;
+
+}
+
+gl_sew01,258,259,4	script	Entrada pra Konoha#1	45,1,1,{
+if (#konoha == 1) goto entra;
+if ($konoha_caiu != 1) {mes "Você é de outra vila, e foi barrado pelos guardas, terá que achar outro meio de entrar"; close;}
+
+entra:
+warp "konoha3", 266,256;
+	if (countitem(19020) >= 1) {announce strcharinfo(0)+" da Akatsuki acaba de invadir Konoha.",bc_blue|bc_all; end;}
+    if(#nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Konoha.",bc_blue|bc_all; end;}
+    if(#suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Konoha.",bc_blue|bc_all; end;}
+    if(#nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Konoha.",bc_blue|bc_all; end;}
+close;
+
+}
+
+moc_fild01,235,382,4	script	Entrada pra Suna	45,1,1,{
+if (#suna == 1) goto entra;
+if ($areia_caiu != 1) {mes "Você é de outra vila, e foi barrado pelos guardas, terá que achar outro meio de entrar"; close;}
+
+entra:
+warp "areia", 153,13;
+	if (countitem(19020) >= 1) {announce strcharinfo(0)+" da Akatsuki acaba de invadir Suna.",bc_blue|bc_all; end;}
+    if(#nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Suna.",bc_blue|bc_all; end;}
+    if(#konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta de Konoha acaba de invadir Suna.",bc_blue|bc_all; end;}
+    if(#nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Suna.",bc_blue|bc_all; end;}
+close;
+
+}
+
+prt_sewb2,20,14,4	script	Entrada pra Suna#1	45,1,1,{
+if (#suna == 1) goto entra;
+if ($areia_caiu != 1) {mes "Você é de outra vila, e foi barrado pelos guardas, terá que achar outro meio de entrar"; close;}
+
+entra:
+warp "areia", 34,70;
+	if (countitem(19020) >= 1) {announce strcharinfo(0)+" da Akatsuki acaba de invadir Suna.",bc_blue|bc_all; end;}
+    if(#nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Suna.",bc_blue|bc_all; end;}
+    if(#konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta de Konoha acaba de invadir Suna.",bc_blue|bc_all; end;}
+    if(#nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Suna.",bc_blue|bc_all; end;}
+close;
+
+}
+
+yuno_fild08,285,383,4	script	Entrada pra Nuvem	45,1,1,{
+if (#nuvem == 1) goto entra;
+if ($nuvem_caiu != 1) {mes "Você é de outra vila, e foi barrado pelos guardas, terá que achar outro meio de entrar"; close;}
+
+entra:
+warp "nuvem", 156,13;
+	if (countitem(19020) >= 1) {announce strcharinfo(0)+" da Akatsuki acaba de invadir Nuvem.",bc_blue|bc_all; end;}
+    if(#nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Nuvem.",bc_blue|bc_all; end;}
+    if(#konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta de Konoha acaba de invadir Nuvem.",bc_blue|bc_all; end;}
+    if(#suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Nuvem.",bc_blue|bc_all; end;}
+close;
+
+}
+
+alde_dun01,167,161,4	script	Entrada pra Nuvem#1	45,1,1,{
+if (#nuvem == 1) goto entra;
+if ($nuvem_caiu != 1) {mes "Você é de outra vila, e foi barrado pelos guardas, terá que achar outro meio de entrar"; close;}
+
+entra:
+warp "nuvem", 29,65;
+	if (countitem(19020) >= 1) {announce strcharinfo(0)+" da Akatsuki acaba de invadir Nuvem.",bc_blue|bc_all; end;}
+    if(#nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Nuvem.",bc_blue|bc_all; end;}
+    if(#konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta de Konoha acaba de invadir Nuvem.",bc_blue|bc_all; end;}
+    if(#suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Nuvem.",bc_blue|bc_all; end;}
+close;
+
+}
+
+gef_fild04,263,359,4	script	Entrada pra Névoa	45,1,1,{
+if (#nevoa == 1) goto entra;
+if ($nevoa_caiu != 1) {mes "Você é de outra vila, e foi barrado pelos guardas, terá que achar outro meio de entrar"; close;}
+
+entra:
+warp "kiri", 163,10;
+	if (countitem(19020) >= 1) {announce strcharinfo(0)+" da Akatsuki acaba de invadir Névoa.",bc_blue|bc_all; end;}
+    if(#nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Névoa.",bc_blue|bc_all; end;}
+    if(#konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta de Konoha acaba de invadir Névoa.",bc_blue|bc_all; end;}
+    if(#suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Névoa.",bc_blue|bc_all; end;}
+close;
+
+}
+
+prt_sewb1,134,247,4	script	Entrada pra Névoa#1	45,1,1,{
+if (#nevoa == 1) goto entra;
+if ($nevoa_caiu != 1) {mes "Você é de outra vila, e foi barrado pelos guardas, terá que achar outro meio de entrar"; close;}
+
+entra:
+warp "kiri", 384,101;
+	if (countitem(19020) >= 1) {announce strcharinfo(0)+" da Akatsuki acaba de invadir Névoa.",bc_blue|bc_all; end;}
+    if(#nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Névoa.",bc_blue|bc_all; end;}
+    if(#konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta de Konoha acaba de invadir Névoa.",bc_blue|bc_all; end;}
+    if(#suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Névoa.",bc_blue|bc_all; end;}
+close;
+
+}
+
+hospital,140,30,4	script	Saída de emergência#11	45,1,1,{
+
+entra:
+warp "konoha3", 0,0;
+close;
+
+}
+
+hospital2,140,30,4	script	Saída de emergência#12	45,1,1,{
+
+entra:
+warp "areia", 0,0;
+close;
+
+}
+
+hospital3,140,30,4	script	Saída de emergência#13	45,1,1,{
+
+entra:
+warp "kiri", 0,0;
+close;
+
+}
+
+hospital4,140,30,4	script	Saída de emergência#14	45,1,1,{
+
+entra:
+warp "nuvem", 0,0;
+close;
+
+}
+
+acad_01,38,60,4	script	Saída#11	45,1,1,{
+
+mes "Você olhou na sala toda? Temos mais de 20 tutoriais nessa biblioteca que poderão te ajudar muito!";
+next;
+mes "Volte sempre que estiver com dúvidas";
+next;
+mes "Se você for nível 500 ou menos, é só digitar o comando @help, que será teleportado diretamente pra cá se estiver na vila!";
+next;
+mes "Tenha uma boa viagem de volta pra casa";
+next;
+warp "SavePoint", 0,0;
+close;
+
+}
+
+//Bloqueio das Casas de Konoha
+
+konoha3,276,240,4	script	Casas de Konoha#1	45,1,1,{
+
+	if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#konoha == 1) goto entra;
+
+	entra:
+	warp "payon_in01", 56,53;
+	close;
+
+}
+
+konoha3,159,197,4	script	Casas de Konoha#2	45,1,1,{
+
+
+	if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#konoha == 1) goto entra;
+
+	entra:
+	warp "payon_in01", 18,128;
+	close;
+}
+
+konoha3,105,253,4	script	Casas de Konoha#3	45,1,1,{
+
+
+	if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#konoha == 1) goto entra;
+
+	entra:
+	warp "yuno_in01", 169,102;
+	close;
+}
+
+konoha3,148,226,4	script	Casas de Konoha#4	45,1,1,{
+
+
+	if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#konoha == 1) goto entra;
+
+	entra:
+	warp "ama_in01", 23,19;
+	close;
+}
+
+konoha3,172,154,4	script	Casas de Konoha#5	45,1,1,{
+
+
+	if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#konoha == 1) goto entra;
+
+	entra:
+	warp "biju_pri1", 19,20;
+	close;
+}
+
+konoha3,194,234,4	script	Casas de Konoha#6	45,1,1,{
+
+
+	if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#konoha == 1) goto entra;
+
+	entra:
+	warp "salakagea", 31,8;
+	close;
+}
+
+konoha3,281,163,4	script	Casas de Konoha#7	45,1,1,{
+
+
+	if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#konoha == 1) goto entra;
+
+	entra:
+	warp "bibli_01", 52,41;
+	close;
+}
+
+
+//Bloqueio das Casas da Suna
+
+areia,178,163,4	script	Casas de Suna#1	45,1,1,{
+
+	if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#suna == 1) goto entra;
+
+	entra:
+	warp "morocc_in", 174,146;
+	close;
+}
+
+areia,95,72,4	script	Casas de Suna#2	45,1,1,{
+
+
+	if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#suna == 1) goto entra;
+
+	entra:
+	warp "morocc_in", 68,72;
+	close;
+}
+
+areia,189,73,4	script	Casas de Suna#3	45,1,1,{
+
+
+	if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#suna == 1) goto entra;
+
+	entra:
+	warp "yuno_in01", 32,33;
+	close;
+}
+
+areia,149,94,4	script	Casas de Suna#4	45,1,1,{
+
+
+	if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#suna == 1) goto entra;
+
+	entra:
+	warp "ama_in01", 90,22;
+	close;
+}
+
+areia,62,199,4	script	Casas de Suna#5	45,1,1,{
+
+
+	if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#suna == 1) goto entra;
+
+	entra:
+	warp "biju_pri2", 19,20;
+	close;
+}
+
+areia,153,240,4	script	Casas de Suna#6	45,1,1,{
+
+
+	if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#suna == 1) goto entra;
+
+	entra:
+	warp "salakage", 31,8;
+	close;
+}
+
+areia,208,72,4	script	Casas de Suna#7	45,1,1,{
+
+
+	if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#suna == 1) goto entra;
+
+	entra:
+	warp "bibli_02", 52,41;
+	close;
+}
+
+
+
+
+//Bloqueio das Casas da nevoa
+
+kiri,47,126,4	script	Casas de nevoa#1	45,1,1,{
+
+	if (#nevoa != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nevoa == 1) goto entra;
+
+	entra:
+	warp "payon_in03", 20,63;
+	close;
+}
+
+kiri,27,88,4	script	Casas de nevoa#2	45,1,1,{
+
+
+	if (#nevoa != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nevoa == 1) goto entra;
+
+	entra:
+	warp "ama_in01", 175,173;
+	close;
+}
+
+kiri,255,370,4	script	Casas de nevoa#3	45,1,1,{
+
+
+	if (#nevoa != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nevoa == 1) goto entra;
+
+	entra:
+	warp "yuno_in01", 174,34;
+	close;
+}
+
+kiri,193,102,4	script	Casas de nevoa#4	45,1,1,{
+
+
+	if (#nevoa != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nevoa == 1) goto entra;
+
+	entra:
+	warp "prt_in", 60,73;
+	close;
+}
+
+kiri,288,64,4	script	Casas de nevoa#5	45,1,1,{
+
+
+	if (#nevoa != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nevoa == 1) goto entra;
+
+	entra:
+	warp "biju_pri3", 19,20;
+	close;
+}
+
+kiri,205,155,4	script	Casas de nevoa#6	45,1,1,{
+
+
+	if (#nevoa != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nevoa == 1) goto entra;
+
+	entra:
+	warp "salakagen", 31,8;
+	close;
+}
+
+kiri,34,181,4	script	Casas de nevoa#7	45,1,1,{
+
+
+	if (#nevoa != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nevoa == 1) goto entra;
+
+	entra:
+	warp "bibli_03", 52,41;
+	close;
+}
+ 
+
+
+//Bloqueio das Casas da nuvem
+
+nuvem,60,66,4	script	Casas de nuvem#1	45,1,1,{
+
+	if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nuvem == 1) goto entra;
+
+	entra:
+	warp "payon_in01", 181,75;
+	close;
+}
+
+nuvem,160,99,4	script	Casas de nuvem#2	45,1,1,{
+
+
+	if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nuvem == 1) goto entra;
+
+	entra:
+	warp "geffen_in", 114,65;
+	close;
+}
+
+nuvem,120,141,4	script	Casas de nuvem#3	45,1,1,{
+
+
+	if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nuvem == 1) goto entra;
+
+	entra:
+	warp "yuno_in01", 116,37;
+	close;
+}
+
+nuvem,75,188,4	script	Casas de nuvem#4	45,1,1,{
+
+
+	if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nuvem == 1) goto entra;
+
+	entra:
+	warp "ama_in01", 174,124;
+	close;
+}
+
+nuvem,69,158,4	script	Casas de nuvem#5	45,1,1,{
+
+
+	if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nuvem == 1) goto entra;
+
+	entra:
+	warp "biju_pri4", 19,20;
+	close;
+}
+
+nuvem,156,212,4	script	Casas de nuvem#6	45,1,1,{
+
+
+	if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nuvem == 1) goto entra;
+
+	entra:
+	warp "salakagex", 31,8;
+	close;
+}
+
+nuvem,192,142,4	script	Casas de nuvem#7	45,1,1,{
+
+
+	if (#nuvem != 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (countitem(19020) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+	if (#nuvem == 1) goto entra;
+
+	entra:
+	warp "bibli_04", 52,41;
+	close;
+
+}

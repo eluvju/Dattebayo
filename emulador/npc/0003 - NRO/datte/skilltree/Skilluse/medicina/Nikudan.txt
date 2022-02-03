@@ -1,0 +1,113 @@
+-	script	on_PC_UseSkillf94	-1,{
+    end;
+//When a Character uses a skill
+
+//Nikudan
+
+onPcUseSkillEvent:
+
+           if(lskillid == 66) {
+
+
+if (getskilllv(66) == 1) {
+
+if (Nikudan != 1) {end;}
+if (skill66 >= 50) {skill 66,2,0; set skill66,0; dispbottom "[Sys] Level up"; end; }
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 1: "+skill66+" de 50";
+
+end;
+
+}
+
+if (getskilllv(66) == 2) {
+if (Nikudan != 1) {end;}
+if (skill66 >= 100) {skill 66,3,0; set skill66,0; dispbottom "[Sys] Level up"; end;}
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 2: "+skill66+" de 10";
+
+end;
+
+}
+
+if (getskilllv(66) == 3) {
+if (med_intermediario != 1) {end;}
+if (Nikudan != 1) {end;}
+if (skill66 >= 150) {skill 66,4,0; set skill66,0; dispbottom "[Sys] Level up"; end;}
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 3: "+skill66+" de 150";
+
+end;
+
+}
+
+if (getskilllv(66) == 4) {
+if (med_intermediario != 1) {end;}
+if (Nikudan != 1) {end;}
+if (skill66 >= 200) {skill 66,5,0; set skill66,0; dispbottom "[Sys] Level up"; end;}
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 4: "+skill66+" de 200";
+
+end;
+
+}
+
+if (getskilllv(66) == 5) {
+if (med_intermediario != 1) {end;}
+if (Nikudan != 1) {end;}
+if (skill66 >= 250) {skill 66,6,0; set skill66,0; dispbottom "[Sys] Level up"; end;}
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 5: "+skill66+" de 250";
+
+end;
+
+}
+
+if (getskilllv(66) == 6) {
+if (med_intermediario != 1) {end;}
+if (Nikudan != 1) {end;}
+if (skill66 >= 300) {skill 66,7,0; set skill66,0; dispbottom "[Sys] Level up"; end;}
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 6: "+skill66+" de 300";
+
+end;
+
+}
+
+if (getskilllv(66) == 7) {
+if (med_avan != 1) {end;}
+if (Nikudan != 1) {end;}
+if (skill66 >= 500) {skill 66,8,0; set skill66,0; dispbottom "[Sys] Level up"; end;}
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 7: "+skill66+" de 500";
+
+end;
+
+}
+
+if (getskilllv(66) == 8) {
+if (med_avan != 1) {end;}
+if (Nikudan != 1) {end;}
+if (skill66 >= 700) {skill 66,9,0; set skill66,0; dispbottom "[Sys] Level up"; end;}
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 8: "+skill66+" de 700";
+
+end;
+
+}
+
+if (getskilllv(66) == 9) {
+if (med_avan != 1) {end;}
+if (Nikudan != 1) {end;}
+if (skill66 >= 1000) {skill 66,10,0; set skill66,0; dispbottom "[Sys] Level up"; end;}
+set skill66,skill66 +1;
+dispbottom "[Jutsu level] Nikudan Sensha level 9: "+skill66+" de 1000";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

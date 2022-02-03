@@ -1,0 +1,201 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+prt_fild09,126,336,4	script	Medicina Avançado	107,{
+if(checkquest(30061) == 1) goto skillmed1;
+if(checkquest(30062) == 1) goto skillmed2;
+if(checkquest(30066) == 1) goto skillmed3;
+if(checkquest(30064) == 1) goto skillmed4;
+if(checkquest(30065) == 1) goto skillmed5;
+if(treino_med_avan != 1) { mes "[Medicina Avançado]"; mes "Você precisa estudar Medicina avançado antes de aprender as skills"; close;}
+if(med_skill_avan >= 2) { mes "[Medicina Avançado]"; mes "Você já aprendeu duas skill de Medicina avançado, esse é o limite"; close; }
+	mes "[Medicina Avançado]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Medicina avançado. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Medicina Avançado]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Medicina Avançado]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Medicina Avançado]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A080Curatio^000000:^8A0808Shouen no Jutsu^000000:^8A0808Sopro Divino^000000:^8A0808Warmer^000000:^8A0808Proteger Terreno^000000:^8A0808ANenhum^000000"))
+	{
+	case 1:
+		if (m1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmed1:
+		setquest 30061;
+		if(checkquest(30061,hunting) == 2)
+		{
+			completequest 30061;
+			erasequest 30061;
+			delitem 32148,1;
+			set med_skill_avan,med_skill_avan +1;
+			skill 2051,5,3;
+			set m1,1;
+			mes "[Medicina Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (m2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmed2:
+		setquest 30062;
+		if(checkquest(30062,hunting) == 2 && countitem(32148) >= 1)
+		{
+			completequest 30062;
+			erasequest 30062;
+			delitem 32148,1;
+			set med_skill_avan,med_skill_avan +1;
+			skill 70,10,3;
+			set m2,1;
+			mes "[Medicina Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (m3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmed3:
+		setquest 30063;
+		if(checkquest(30063,hunting) == 2 && countitem(32148) >= 1)
+		{
+			completequest 30063;
+			erasequest 30063;
+			delitem 30063,1;
+			set med_skill_avan,med_skill_avan +1;
+			set m3,1;
+			skill 2043,3,3;
+			mes "[Medicina Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if (m4 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmed4:
+		setquest 30064;
+		if(checkquest(30064,hunting) == 2 && countitem(32148) >= 1)
+		{
+			completequest 30064;
+			erasequest 30064;
+			delitem 32148,1;
+			set m4,1;
+			skill 2452,5,3;
+			set med_skill_avan,med_skill_avan +1;
+			mes "[Medicina Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+		case 5:
+		if (m5 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Medicina Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmed5:
+		setquest 30065;
+		if(checkquest(30065,hunting) == 2 && countitem(32148) >= 1)
+		{
+			completequest 30065;
+			erasequest 30065;
+			delitem 32148,1;
+			set m5,1;
+			skill 288,5,3;
+			set med_skill_avan,med_skill_avan +1;
+			mes "[Medicina Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 6:
+		mes "[Medicina Avançado]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Medicina Avançado]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando pergaminho de medicina avançado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

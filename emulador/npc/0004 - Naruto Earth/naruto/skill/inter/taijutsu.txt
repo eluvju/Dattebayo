@@ -1,0 +1,168 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+biblioteca,127,28,5	script	Taijutsu Intermediario	60,{
+if(checkquest(30500) == 1) goto skilltaij1;
+if(checkquest(30077) == 1) goto skilltaij2;
+if(checkquest(30078) == 1) goto skilltaij3;
+if(checkquest(30079) == 1) goto skilltaij4;
+if(treino_tai_inter != 1) { mes "[Taijutsu Intermediario]"; mes "Você precisa estudar taijutsu Intermediario antes de aprender as skills"; close;}
+if(tai_skill_inter >= 3) { mes "[Taijutsu Intermediario]"; mes "Você já aprendeu três skill de taijutsu Intermediario, esse é o limite"; close; }
+	mes "[Taijutsu Intermediario]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de taijutsu Intermediario. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Taijutsu Intermediario]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Taijutsu Intermediario]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Taijutsu Intermediario]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808Ataque Surpresa^000000:^8A0808Dai senko^000000:^8A0808TsuutenKyaku^000000:^8A080Dynamic Entry^000000:^8A0808ANenhum^000000"))
+	{
+	case 1:
+		if (ta1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Ataque Surpresa";
+		next;
+		mes "[Taijutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Taijutsu Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skilltaij1:
+		setquest 30500;
+		if(checkquest(30500,hunting) == 2 && countitem(32154) >= 1)
+		{
+			completequest 30500;
+			erasequest 30500;
+			delitem 32154,1;
+			set tai_skill_inter,tai_skill_inter +1;
+			skill 214,5,3;
+			set ta1,1;
+			mes "[Taijutsu Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (ta2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Dai senko";
+		next;
+		mes "[Taijutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Taijutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Taijutsu Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skilltaij2:
+		setquest 30077;
+		if(checkquest(30077,hunting) == 2 && countitem(32154) >= 1)
+		{
+			completequest 30077;
+			erasequest 30077;
+			delitem 32154,1;
+			set tai_skill_inter,tai_skill_inter +1;
+			skill 357,5,3;
+			set ta2,1;
+			mes "[Taijutsu Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (ta3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "TsuutenKyaku";
+		next;
+		mes "[Taijutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Taijutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Taijutsu Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skilltaij3:
+		setquest 30078;
+		if(checkquest(30078,hunting) == 2 && countitem(32154) >= 1)
+		{
+			completequest 30078;
+			erasequest 30078;
+			delitem 32154,1;
+			set tai_skill_inter,tai_skill_inter +1;
+			set ta3,1;
+			skill 62,10,3;
+			mes "[Taijutsu Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if (ta4 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Dynamic Entry";
+		next;
+		mes "[Taijutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Taijutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Taijutsu Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skilltaij4:
+		setquest 30079;
+		if(checkquest(30079,hunting) == 2 && countitem(32154) >= 1)
+		{
+			completequest 30079;
+			erasequest 30079;
+			delitem 32154,1;
+			set ta4,1;
+			skill 421,7,3;
+			set tai_skill_inter,tai_skill_inter +1;
+			mes "[Taijutsu Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 7:
+		mes "[Taijutsu Intermediario]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Taijutsu Intermediario]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de taijutsu Intermediario.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

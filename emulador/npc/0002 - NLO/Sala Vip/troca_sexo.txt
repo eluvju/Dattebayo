@@ -1,0 +1,37 @@
+//----------------changesex-------------//
+ra_in01,230,95,5	script	Mudança de Sexo	766,{
+
+mes "[^FF0000Mudança de Sexo^000000]";
+mes "Olá! ^FF0000"+strcharinfo(0)+"^000000.";
+mes "Gostaria de mudar seu sexo? Lembre que precisa pagar uma taxa de 1,000 Cashs.";
+	switch(select("- Sim, vamos lá.:- Não, nem pensar!!")) {
+	
+		case 1:
+			next;
+			mes "[^FF0000Mudança de Sexo^000000]";
+			mes "Você tem certeza disso??";
+			if(select("- Tenho sim. Mãos na massa!!:- Bem, axo melhor não.") == 2) { close; }
+	
+			next;
+			mes "[^FF0000Mudança de Sexo^000000]";
+			mes "Então, que assim seja.";
+			next;
+			if(#CASHPOINTS < 1000) { 
+				mes "[^FF0000Mudança de Sexo^000000]";
+				mes "Você não cash o suficiente para trocar de nome.";
+				close;
+			}
+			set #CASHPOINTS,#CASHPOINTS-1000;
+			changecharsex;
+			mes "Caso queira retornar ao sexo anterior,";
+			mes "basta fala comigo novamente.";
+			close;
+	
+		case 2:
+			next;
+			mes "[^FF0000Mudança de Sexo^000000]";
+			mes "Entendo. Realmente é uma decisão muito dificil.";
+			mes "Caso mude de ideia, volte a falar comigo.";
+			close;
+	}
+}

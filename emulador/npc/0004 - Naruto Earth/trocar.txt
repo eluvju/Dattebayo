@@ -1,0 +1,26 @@
+
+// ============================================================================================================================================
+
+
+function	script	removerkg	{
+
+mes "Você tem certeza que quer remover sua Kekkei Genkai? Será preciso evoluir a nova do zero.";
+menu "Sim",doit,"Não",nao;
+
+doit:
+if (byakugan > 0) {set byakugan,0; set pegoukg,0; if(countitem(30023) >= 1) {delitem 30023,1;} if(countitem(30047) >= 1) {delitem 30047,1;} if(countitem(30048) >= 1) { delitem 30048,1; } if(countitem(30049) >= 1) { delitem 30049,1; } if(expkg > 0) {set expkg,0;} }
+if (sharingan > 0) {set sharingan,0; set pegoukg,0; if(countitem(30024) >= 1) {delitem 30024,1;} if(countitem(30025) >= 1) {delitem 30025,1;} if(countitem(30026) >= 1) { delitem 30026,1; } if(countitem(30027) >= 1) { delitem 30026,1; } set MANGEKYO,0; if(expkg > 0) {set expkg,0;} }
+if (hyouton > 0) {set hyouton,0; set pegoukg,0; if(countitem(30032) >= 1) {delitem 30032,1;} if(countitem(30059) >= 1) {delitem 30059,1;} if(countitem(30060) >= 1) { delitem 30060,1; } if(countitem(30061) >= 1) { delitem 30061,1; } if(expkg > 0) {set expkg,0;} }
+if (portoes > 0) {set portoes,0; set pegoukg,0; if(countitem(30031) >= 1) {delitem 30031,1;} if(countitem(30056) >= 1) {delitem 30056,1;} if(countitem(30057) >= 1) { delitem 30057,1; } if(countitem(30058) >= 1) { delitem 30058,1; } if(expkg > 0) {set expkg,0;} }
+if (kugutsu > 0) {set kugutsu,0; set pegoukg,0; if(countitem(30034) >= 1) {delitem 30034,1;} if(countitem(30065) >= 1) {delitem 30065,1;} if(countitem(30066) >= 1) { delitem 30066,1; } if(countitem(30067) >= 1) { delitem 30067,1; } if(expkg > 0) {set expkg,0;} }
+if (akimichi > 0) {set akimichi,0; set pegoukg,0; if(countitem(30033) >= 1) {delitem 30033,1;} if(countitem(30062) >= 1) {delitem 30062,1;} if(countitem(30063) >= 1) { delitem 30063,1; } if(countitem(30064) >= 1) { delitem 30064,1; } if(expkg > 0) {set expkg,0;} }
+dispbottom "Kekkei Genkai removido com sucesso";
+next;
+mes "Agora irei te levar pra escolher sua nova Kekkei Genkai.";
+close;
+
+nao:
+getitem 7007,1;
+end;
+
+}

@@ -1,0 +1,100 @@
+konoha,221,266,3	script	Lee Ancião::kglee	734,{
+	if(kgfeito == 1) goto L_alreadyhave;
+	mes "[Lee Ancião]";
+	if(Lee == 1){goto L_lista;}else{goto L_Wrong;}
+
+	
+	L_lista:
+	mes "Você membro do clã Lee";
+	mes "Gostaria de saber como liberar seu kekkei genkai?";
+	menu "Sim, Estou preparado",claro,"Não, ainda não estou pronto",aindan;
+
+	if(jounin != 1) goto L_graduacao;		
+	claro:
+	next;
+	mes "[^A52A2ALee Ancião^000000]";
+	mes "Olá Shinobi, Vou lhe mostrar o caminho para liberar seu kekkei genkai";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2ALee Ancião^000000]";
+	mes "30x Lasca de Pedra";
+	mes "1500x Leite";
+	mes "1500x Armadura Destruida";
+	mes "500x Vida verdejante";
+	mes "100x Colar da sabedoria";
+	mes "50x Bainha Velha";
+	mes "10x Pesadelo Maternal";
+	mes "10x Lampião";
+	mes "10x Peça Queimada";
+	mes "1x Desejo das Trevas";
+	mes "1x Livro de Culinária level 10";
+	mes "e 50kk de ryous";
+	next;
+	mes "[^A52A2ALee Ancião^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <50000000) goto L_SemItem;
+	if (countitem(7211) < 30) goto L_SemItem;
+	if (countitem(519) < 1500) goto L_SemItem;
+	if (countitem(7069) < 1500) goto L_SemItem;
+	if (countitem(993) < 500) goto L_SemItem;
+	if (countitem(1007) < 100) goto L_SemItem;
+	if (countitem(7022) < 50) goto L_SemItem;
+	if (countitem(7020) < 10) goto L_SemItem;
+	if (countitem(1041) < 10) goto L_SemItem;
+	if (countitem(7512) < 10) goto L_SemItem;
+	if (countitem(7340) < 1) goto L_SemItem;
+	if (countitem(7481) < 1) goto L_SemItem;
+	next;
+	mes "[^A52A2ALee Ancião^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-50000000;
+	delitem 7211,30;
+	delitem 519,1500;
+	delitem 7069,1500;
+	delitem 993,500;
+	delitem 1007,100;
+	delitem 7022,50;
+	delitem 7020,10;
+	delitem 1041,10;
+	delitem 7512,10;
+	delitem 7340,1;
+	delitem 7481,1;
+	getitem	19155,1;
+	set kgfeito,1;
+	close;
+
+L_SemItem:
+	next;
+	mes "[^FF0000Lee Ancião^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Lee Ancião^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_Wrong:
+	mes "[^FF0000Lee Ancião^000000]";
+	mes "Você não é deste clã";
+	close;
+
+L_graduacao:
+	mes "[^FF0000Lee Ancião^000000]";
+	mes "Desculpe mas apenas jounins podem realizar esse treinamento.";
+	close;
+
+aindan:
+	mes "[^FF0000Lee Ancião^000000]";
+	mes "Tudo bem, volte quando estiver pronto.";
+	close;
+}
+
+areia,192,94,4	duplicate(kglee)	Lee Ancião#1	734
+nevoa,66,279,4	duplicate(kglee)	Lee Ancião#2	734
+prt_monk,104,202,4	duplicate(kglee)	Lee Ancião#3	734

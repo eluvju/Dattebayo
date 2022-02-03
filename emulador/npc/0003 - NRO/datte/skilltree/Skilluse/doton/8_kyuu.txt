@@ -1,0 +1,57 @@
+-	script	on_PC_UseSkilld08	-1,{
+    end;
+//When a Character uses a skill
+
+//kyuu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 16) {
+
+
+if (getskilllv(16) == 1) {
+
+if (kyuu != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill16 >= 50) {skill 16,2,0; set skill16,0; dispbottom "[Sys] Level up"; end; }
+set skill16,skill16 +1;
+dispbottom "[Jutsu level] Sabaku Kyuu level 1: "+skill16+" de 50";
+
+end;
+
+}
+
+if (getskilllv(16) == 2) {
+if (kyuu != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill16 >= 100) {skill 16,3,0; set skill16,0; dispbottom "[Sys] Level up"; end;}
+set skill16,skill16 +1;
+dispbottom "[Jutsu level] Sabaku Kyuu level 2: "+skill16+" de 100";
+
+end;
+
+}
+
+if (getskilllv(16) == 3) {
+if (nin_avan != 1) {end;} 
+if (skill16 >= 150) {skill 16,4,0; set skill16,0; dispbottom "[Sys] Level up"; end;}
+set skill16,skill16 +1;
+dispbottom "[Jutsu level] Sabaku Kyuu level 3: "+skill16+" de 150";
+
+end;
+
+}
+
+if (getskilllv(16) == 4) {
+if (nin_avan != 1) {end;}
+if (skill16 >= 200) {skill 16,5,0; set skill16,0; dispbottom "[Sys] Level up"; end;}
+set skill16,skill16 +1;
+dispbottom "[Jutsu level] Sabaku Kyuu level 4: "+skill16+" de 200";
+
+end;
+
+}
+
+                end;
+            }    
+}

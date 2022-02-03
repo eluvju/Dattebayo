@@ -1,0 +1,30 @@
+job_monk,258,116,5	script	Licenças	831,{
+
+if(licenca == 1){mes "Você já tem a licença."; close;}
+mes "[Licenças]";
+mes "Olá "+StrCharInfo(0)+"!";
+mes "Sou o supervisor de vendas e vejo que você ainda não possui uma licença";
+next;
+mes "Para obter uma licença de venda você precisa pagar 1000 Ienes, gostaria de obter uma licença?";
+menu "Sim, vamos treinar",L_go,"Agora não",L_no;
+
+L_go:
+	if(Zeny < 1000) {
+		mes "Você não tem a taxa para obter a licença";
+		close;
+	}
+	set Zeny,Zeny-1000;
+	atcommand "@cart 1";
+	skill 39,1,3;
+	skill 41,1,3;
+	set licenca,1;
+	mes "Você adquiriu sua licença, parabéns!";
+	announce "[Licenças] "+strcharinfo(0)+" Comprou uma lincença para o comercio.",bc_blue|bc_all;
+	close;
+
+L_no:
+	close;
+
+OnInit:
+	waitingroom "[Licenças]",0;
+}

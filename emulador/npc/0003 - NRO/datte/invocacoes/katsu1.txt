@@ -1,0 +1,60 @@
+gef_fild04,330,295,5	script	Tsunade::katsu1	423,{
+
+if (quest_katsu1_um == 1) goto L_go;
+if(Katsu1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com as Lesmas";
+next;
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Filhote de Katsuyu?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Filhote de Katsuyu
+//========================================================================
+
+L_SS:
+set quest_katsu1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "Vá derrotar filhotes de cobra, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido essas cobras malditas!";
+setquest 12096;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7837) < 1) goto No_Item;
+mes "Você completou seu treinamento,parabéns.";
+skill 728,4,0;
+delitem 7837,1;
+set Katsu1,1;
+set quest_katsu1_um,0;
+completequest 12096;
+erasequest 12096;
+cutin "inicio4",3;
+next;
+if (#nevoa == 1) {warp "kiragakure",267,258;}
+if (#suna == 1) {warp "sunagakure",171,125;}
+if (#konoha == 1) {warp "konoha3",159,193;}
+if (#nuvem == 1) {warp "nuvem",60,63;}
+close;
+
+L_no:
+close;
+}
+
+
+moc_fild01,375,256,5	duplicate(katsu1)	Tsunade#111	423
+prt_fild02,156,158,5	duplicate(katsu1)	Tsunade#112	423
+yuno_fild08,227,171,5	duplicate(katsu1)	Tsunade#113	423

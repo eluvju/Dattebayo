@@ -1,0 +1,101 @@
+payon_in03,122,172,5	script	Rasteira::tai16	51,{
+
+if(tai_basico != 1) {mes "Você precisa estudar taijutsu básico antes de aprender um taijutsu"; close;}
+if (checkquest(2185) == 1) goto L_go;
+if (Rasteira != 1) goto inicio;
+if(Rasteira == 1) goto L_delete;
+if(tai_skill_bas >= 3) {mes "Você já aprendeu três taijutsus básicos, esse é o limite"; close;}
+if(accept_tai == 3) {mes "Você já aceitou três treinamentos pra realizar de taijutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(417) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(417) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 416,0,0;
+skill 417,0,0;
+set Rasteira,0;
+erasequest 2185;
+if(accept_tai > 0) {set accept_tai,accept_tai -1;}
+if(tai_skill_bas > 0) {set tai_skill_bas,tai_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+inicio:
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de taijutsu espalhado pelo mundo, eu posso lhe ensinar um taijutsu básico";
+next;
+mes "Rasteira é o taijutsu que eu ensino";
+next;
+mes "Lembre que você só pode ter 3 taijutsus básicos, após isso não poderá aprender mais nenhum básico";
+next;
+mes "Descrição: Rasteira irá causar um dano físico ao ativar a Postura";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Rasteira
+//========================================================================
+
+L_SS:
+set quest_tai_dezesseis,1;
+set accept_tai,accept_tai +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 35 Saru.";
+setquest 2185;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(tai_skill_bas >= 3) {mes "Você já aprendeu três taijutsus básicos, esse é o limite"; close;}
+if(tai_mobs_dezesseis < 35) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 417,1,0;
+skill 416,1,0;
+set Rasteira,1;
+set quest_tai_dezesseis,0;
+set tai_mobs_dezesseis, 0;
+completequest 2185;
+erasequest 2185;
+set tai_skill_bas,tai_skill_bas +1;
+announce "[Taijutsu Quest] "+strcharinfo(0)+" completou a quest do taijutsu Rasteira",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Taijutsu Básico]",0;
+}
+
+-	script	taibas#16	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1628 && quest_tai_dezesseis == 1) {set tai_mobs_dezesseis,tai_mobs_dezesseis +1; announce "[Taijutsu Quest] Você já derrotou "+tai_mobs_dezesseis+" / 35 Saru",bc_blue|bc_self; end;}
+
+}
+
+//ve_in,89,233,5	duplicate(tai16)	Rasteira#51	51,{
+//payon_in03,122,174,5	duplicate(tai16)	Rasteira#52	51,{
+//lou_in01,118,132,5	duplicate(tai16)	Rasteira#53	51,{
+//izlude_in,58,114,5	duplicate(tai16)	Rasteira#54	51,{

@@ -1,0 +1,27 @@
+//===== rAthena Script =======================================
+//= Mapflag: Disable death penalty.
+//===== By: ==================================================
+//= rAthena Dev Team
+//===== Current Version: =====================================
+//= 1.6
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: ========================================= 
+//= Same as 'noexppenalty' and 'nozenypenalty' combined.
+//===== Additional Comments: ================================= 
+//= 1.2 Updated. [Lupus]
+//= 1.3 Added all novice maps. [L0ne_W0lf]
+//= 1.4 Removed Nightmare PVP maps. [L0ne_W0lf]
+//= 1.5 Updated. [L0ne_Wolf]
+//= 1.6 Renewal split. [Euphy]
+//============================================================
+
+// Battle Grounds ==============
+bat_c01	mapflag	nopenalty
+bat_c02	mapflag	nopenalty
+bat_c03	mapflag	nopenalty
+bat_room	mapflag	nopenalty
+bat_b01	mapflag	nopenalty
+bat_b02	mapflag	nopenalty
+bat_a01	mapflag	nopenalty
+bat_a02	mapflag	nopenalty

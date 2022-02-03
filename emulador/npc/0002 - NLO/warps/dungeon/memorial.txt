@@ -1,0 +1,38 @@
+//Permissão Rank D Konoha e Suna
+
+prt_fild03,372,256,0	script	 #entermemorial01	45	,2,2,{
+
+	.@npc$ = "^0000FF[Memorial 4 Guerra Ninja]^000000";
+
+	if (countitem(530) >= 1) goto entrar;
+	else mes .@npc$;
+	mes " ";
+	mes "^FFA500"+strcharinfo(0)+"^000000 volte apenas quando for prestar sua homenagem!";
+	mes " ";
+	mes "Deveria ter pego uma ^FF0000Rosa^000000.";
+	close;
+
+
+	entrar:
+	mes .@npc$;
+	mes " ";
+	mes "Aqui jaz a memoria de todos aqueles que lutaram pela liberdade.";
+	menu "Quero Entrar",entrar2,"Nao Estou preparado",saida;
+	
+	entrar2:
+	next;
+	warp "prt_monk",29,248;
+	end;
+	
+	saida:
+	next;
+	mes .@npc$;
+	mes "Volte quando estiver preparado";
+	close;
+
+	end;
+	
+
+}
+
+prt_monk,24,248,0	warp	memorial#01	2,2,prt_fild03,368,256

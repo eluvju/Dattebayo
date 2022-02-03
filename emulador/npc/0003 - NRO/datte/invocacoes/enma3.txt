@@ -1,0 +1,90 @@
+pay_fild06,351,296,5	script	Sarutobi::enma3	71,{
+
+if (quest_enma3_um == 1) goto L_go;
+if(Enma1 != 1) {mes "Você precisa ter contrato com os Sarus para aparender esse jutsu"; close;}
+if(Enma2 != 1) {mes "Você precisa aprender o Segundo Nível de Kuchiyose para aprender esse jutsu"; close;}
+if(jounin != 1) {mes "Você precisa ser Jounin para aprender esse jutsu"; close;}
+if(Enma3 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo.";
+next;
+mes "Posso te ajudar a aperfeiçoar seu Kuchiyose no Jutsu!";
+mes "Gostaria de treinar o Kuchiyose: Enma?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Enma
+//========================================================================
+
+L_SS:
+set quest_enma3_um,1;
+mes "Para esse treinamento,você deve provar ser fiel aos Sarus:";
+mes "- Derrote 1000 Manda";
+mes "- Derrote 1000 Katsuyo";
+mes "- Derrote 1000 Baru";
+mes "- Derrote 1000 Gama-Bunta";
+setquest 12104;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(enma3_mobs_um < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(enma3_mobs_dois < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(enma3_mobs_tres < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(enma3_mobs_quatro < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 743,4,0;
+set Enma3,1;
+set quest_enma3_um,0;
+set enma3_mobs_um, 0;
+set enma3_mobs_dois, 0;
+set enma3_mobs_tres, 0;
+set enma3_mobs_quatro, 0;
+completequest 12104;
+erasequest 12104;
+close;
+
+L_no:
+close;
+}
+
+
+moc_fild13,265,319,5	duplicate(enma3)	Sarutobi#311	71
+cmd_fild05,352,362,5	duplicate(enma3)	Sarutobi#312	71
+mjolnir_10,366,360,5	duplicate(enma3)	Sarutobi#313	71
+
+
+-	script	enma3#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1418 && quest_enma3_um == 1) {set enma3_mobs_um,enma3_mobs_um +1; announce "Você já derrotou "+enma3_mobs_um+" / 1000 Manda",bc_blue|bc_self; end;}
+
+}
+
+-	script	enma3#2	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1381 && quest_enma3_um == 1) {set enma3_mobs_dois,enma3_mobs_dois +1; announce "Você já derrotou "+enma3_mobs_dois+" / 1000 Katsuyo",bc_blue|bc_self; end;}
+
+}
+
+-	script	enma3#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1032 && quest_enma3_um == 1) {set enma3_mobs_tres,enma3_mobs_tres +1; announce "Você já derrotou "+enma3_mobs_tres+" / 1000 Baru",bc_blue|bc_self; end;}
+
+}
+
+-	script	enma3#4	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1089 && quest_enma3_um == 1) {set enma3_mobs_quatro,enma3_mobs_quatro +1; announce "Você já derrotou "+enma3_mobs_quatro+" / 1000 Gama-Bunta",bc_blue|bc_self; end;}
+
+}

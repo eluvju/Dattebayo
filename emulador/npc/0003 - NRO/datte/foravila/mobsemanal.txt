@@ -1,0 +1,83 @@
+prontera,155,171,5	script	Weekly Monster	437,{
+mes "Informação do evento alvo semanal :";
+if ( getgmlevel() < 99 && $WeeklyMobEvent == 0 ){
+mes "Não há no momento um alvo.";
+close;
+}
+if ( $WeeklyMobID == 0 ){
+mes "^0000FFAlvo^000000 : ^FF0000Alvo indefinido^000000.";
+}else{
+mes "^0000FFAlvo^000000 : ^FF0000"+getmonsterinfo($WeeklyMobID,0)+"^000000.";
+mes "^0000FFNecessário^000000 : ^FF0000"+$WeeklyKillAmount+"^000000 mortes.";
+}
+if ( $WeeklyItemID == 0 ){
+mes "^0000FFRecompensa^000000 : ^FF0000Indefinido^000000.";
+}else{
+mes "^0000FFRecompensa^000000 : "+$WeeklyAmount+" x ^FF0000"+getitemname($WeeklyItemID)+"^000000.";
+}
+next;
+if ( getgmlevel() < 80 ){
+mes "I only serve for GM above level 80.";
+close;
+}else{
+mes "How can i serve for you ..?";
+}
+next;
+switch(select("CLOSE:^0000FFNEW SETTINGS^000000")) {
+		Case 1:	
+			mes "Come back when you are going to do new settings again.";
+			close;
+		Case 2:
+			do{
+			mes "Please Input the Monster ID.";
+			mes "^FF0000Example : 1002 = Poring^000000";
+			input $WeeklyMobID,1001,32767;
+			next;
+			}
+			while( getmonsterinfo($WeeklyMobID,0) == "null" );
+			do{
+			mes "Please Input Required Kills.";
+			mes "^FF0000Example : 100 = 100 Kills";
+			input $WeeklyKillAmount,1,100000;
+			next;
+			}
+			while( $WeeklyKillAmount == 0 );
+			do{
+			mes "Please Input Rewards when finished.";
+			mes "^FF0000Example : 909 = Jellopy";
+			input $WeeklyItemID,501,32767;
+			next;
+			}
+			while( getitemname($WeeklyItemID) == "null" );
+			
+			do{
+			mes "Please Input Amount Of Rewards.";
+			mes "^FF0000Example : 100 = 100 each";
+			input $WeeklyAmount,1,30000;
+			next;
+			}			
+			while( $WeeklyAmount == 0 );
+			mes "New Settings has been Applied.";
+			close2;
+			set $WeeklyMobEvent,1;
+			announce "[Alvo semanal] : "+$WeeklyKillAmount+" x "+getmonsterinfo($WeeklyMobID,0)+" ",0;
+			announce "[Recompensa alvo semanal] : "+$WeeklyAmount+" x "+getitemname($WeeklyItemID)+" ",0;
+			end;
+	}
+
+OnNPCKillEvent:
+if ( $WeeklyMobEvent != 1 || killedrid != $WeeklyMobID ) end;
+set #WeeklyKill,#WeeklyKill+1;
+if ( #WeeklyKill == $WeeklyKillAmount ){
+mes "Você completou o evento do alvo semanal.";
+mes "e você foi recompensado com...";
+mes "^FF0000"+$WeeklyAmount+" x "+getitemname($WeeklyItemID)+"^000000";
+set #WeeklyKill,0;
+getitem $WeeklyItemID,$WeeklyAmount;
+close;
+}else{
+dispbottom "[Alvo semanal] : Matou [ "+#WeeklyKill+" / "+$WeeklyKillAmount+" ] vezes um [ "+getmonsterinfo($WeeklyMobID,0)+" ]";
+end;
+}	
+
+}

@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkilltai85	-1,{
+    end;
+//When a Character uses a skill
+
+//fufuken
+
+onPcUseSkillEvent:
+
+           if(lskillid == 214) {
+
+
+if (getskilllv(214) == 1) {
+
+if (fufuken != 1) {end;}
+if (skill214 >= 50) {skill 214,2,0; set skill214,0; dispbottom "[Sys] Level up"; end; }
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 1: "+skill214+" de 50";
+
+end;
+
+}
+
+if (getskilllv(214) == 2) {
+if (fufuken != 1) {end;}
+if (skill214 >= 100) {skill 214,3,0; set skill214,0; dispbottom "[Sys] Level up"; end;}
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 2: "+skill214+" de 100";
+
+end;
+
+}
+
+if (getskilllv(214) == 3) {
+
+if (fufuken != 1) {end;}
+if (skill214 >= 150) {skill 214,4,0; set skill214,0; dispbottom "[Sys] Level up"; end;}
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 3: "+skill214+" de 150";
+
+end;
+
+}
+
+if (getskilllv(214) == 4) {
+if (fufuken != 1) {end;}
+if (skill214 >= 200) {skill 214,5,0; set skill214,0; dispbottom "[Sys] Level up"; end;}
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 4: "+skill214+" de 200";
+
+end;
+
+}
+
+if (getskilllv(214) == 5) {
+if (fufuken != 1) {end;}
+if (skill214 >= 250) {skill 214,6,0; set skill214,0; dispbottom "[Sys] Level up"; end;}
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 5: "+skill214+" de 250";
+
+end;
+
+}
+
+if (getskilllv(214) == 6) {
+if (fufuken != 1) {end;}
+if (skill214 >= 300) {skill 214,7,0; set skill214,0; dispbottom "[Sys] Level up"; end;}
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 6: "+skill214+" de 300";
+
+end;
+
+}
+
+if (getskilllv(214) == 7) {
+if (fufuken != 1) {end;}
+if (skill214 >= 500) {skill 214,8,0; set skill214,0; dispbottom "[Sys] Level up"; end;}
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 7: "+skill214+" de 500";
+
+end;
+
+}
+
+if (getskilllv(214) == 8) {
+if (fufuken != 1) {end;}
+if (skill214 >= 700) {skill 214,9,0; set skill214,0; dispbottom "[Sys] Level up"; end;}
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 8: "+skill214+" de 700";
+
+end;
+
+}
+
+if (getskilllv(214) == 9) {
+if (fufuken != 1) {end;}
+if (skill214 >= 1000) {skill 214,10,0; set skill214,0; dispbottom "[Sys] Level up"; end;}
+set skill214,skill214 +1;
+dispbottom "[Jutsu level] Ataque Surpresa level 9: "+skill214+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

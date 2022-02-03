@@ -1,0 +1,181 @@
+-	script	Evento#JD	TreinamentoJinchuriki#JD -1,{
+OnInit:
+//Mapas das Vilas
+set $JDmap$,"arug_que01";
+setarray $JDinfo[1],0,0,0; //Sendo Utilizado , Guild Utilizando, Mobs Restantes, charid Konoha Fez, charid Nevoa Fez, charid Nuvem Fez, charid Suna fez
+end;
+
+OnClock0000:
+if(gettime(4) == 0){
+set $JDinfo[8], 0;
+set $JDinfo[9], 0;
+set $JDinfo[10], 0;
+set $JDinfo[11], 0;
+}
+end;
+
+OnPCDieEvent:
+if($JDinfo[2] != getcharid(0)) end;
+warp "kakashi",0,0;
+callsub OnJDEnd;
+end;
+
+OnPCLogoutEvent:
+if($JDinfo[2] != getcharid(0)) end;
+callsub OnJDEnd;
+end;
+
+OnPCLoadMapEvent:
+if($JDinfo[2] != getcharid(0)) end;
+if($JDinfo[3] == 1){
+set $JDinfo[3], 0;
+end;
+}
+callsub OnJDEnd;
+end;
+
+OnTimer360000:
+mapannounce $JDmap$,"[Treinamento Jinchuuriki]: O tempo limite para seu treinamento se esgotou.",1;
+killmonster $JDmap$,strnpcinfo(0)+"::OnJDMedoKill";
+killmonster $JDmap$,strnpcinfo(0)+"::OnJDSoulKill";
+killmonster $JDmap$,strnpcinfo(0)+"::OnJDBijuuKill";
+callsub OnJDEnd;
+end;
+
+OnJDEnd:
+warpchar "kakashi",0,0,getcharid(0,$JinTreinoName$);
+set $JDinfo[1], 0;
+set $JDinfo[2], 0;
+end;
+
+OnTimer5000:
+mapannounce $JDmap$,"[Treinamento Jinchuuriki]: Primeira Etapa: Controle do Medo.",1;
+sleep2(2000);
+monster $JDmap$,101,83,"Medo",1122,1,strnpcinfo(0)+"::OnJDMedoKill";
+end;
+
+OnJDMedoKill:
+mapannounce $JDmap$,"[Treinamento Jinchuuriki]: Segunda Etapa: Controle da Alma Jinchuuriki.",1;
+sleep2(2000);
+monster $JDmap$,101,83,"Alma Jinchuuriki",1125,1,strnpcinfo(0)+"::OnJDSoulKill";
+end;
+
+OnJDSoulKill:
+mapannounce $JDmap$,"[Treinamento Jinchuuriki]: Tereceira Etapa: Controle do Bijuu.",1;
+sleep2(2000);
+if(getcharid(0) == $JDinfo[4])
+monster $JDmap$,101,83,"Kyuubi",1107,1,strnpcinfo(0)+"::OnJDBijuuKill";
+if(getcharid(0) == $JDinfo[5])
+monster $JDmap$,101,83,"Sanbi",1116,1,strnpcinfo(0)+"::OnJDBijuuKill";
+if(getcharid(0) == $JDinfo[6])
+monster $JDmap$,101,83,"Hachibi",1119,1,strnpcinfo(0)+"::OnJDBijuuKill";
+if(getcharid(0) == $JDinfo[7])
+monster $JDmap$,101,83,"Ichibi",1115,1,strnpcinfo(0)+"::OnJDBijuuKill";
+end;
+
+OnJDBijuuKill:
+mapannounce $JDmap$,"[Treinamento Jinchuuriki]: O controle Jinchuuriki foi temporariamente alcançado.",1;
+sleep2(2000);
+announce "[Treinamento Jinchuuriki]: O Jinchuuriki da "+getguildname($JDinfo[12])+" acaba de completar o treinamento semanal.",0;
+if(getcharid(0) == $JDinfo[4]) set $konoha_ryous, $konoha_ryous + 150;
+if(getcharid(0) == $JDinfo[5]) set $nevoa_ryous, $nevoa_ryous + 150;
+if(getcharid(0) == $JDinfo[6]) set $nuvem_ryous, $nuvem_ryous + 150;
+if(getcharid(0) == $JDinfo[7]) set $suna_ryous, $suna_ryous + 150;
+if(getcharid(0) == $JDinfo[4]) set $JDinfo[8], 5;
+if(getcharid(0) == $JDinfo[5]) set $JDinfo[9], 5;
+if(getcharid(0) == $JDinfo[6]) set $JDinfo[10], 5;
+if(getcharid(0) == $JDinfo[7]) set $JDinfo[11], 5;
+if(getcharid(0) == $JDinfo[4] && $jinT_konoha < 4) set $jinT_konoha, $jinT_konoha + 1;
+if(getcharid(0) == $JDinfo[5] && $jinT_nevoa < 4) set $jinT_nevoa, $jinT_nevoa + 1;
+if(getcharid(0) == $JDinfo[6] && $jinT_nuvem < 4) set $jinT_nuvem, $jinT_nuvem + 1;
+if(getcharid(0) == $JDinfo[7] && $jinT_suna < 4) set $jinT_suna, $jinT_suna + 1;
+stopnpctimer;
+setnpctimer 0;
+callsub OnJDEnd;
+end;
+
+}
+
+kakashi.gat,90,121,4	script	Treinamento Jinchuuriki	882,{
+
+if(countitem(19094) == 0 && getgmlevel() < 5) end;
+
+//Obs implementar no npc que entrega os mantos, os charids(0) dos Jin de konoha,nevoa,nuvem e suna, mas variaveis $JDinfo[4] ~ [7]
+set $JDinfo[4], getidcharname($jinkonoha$);
+set $JDinfo[5], getidcharname($jinnevoa$);
+set $JDinfo[6], getidcharname($jinnuvem$);
+set $JDinfo[7], getidcharname($jinsuna$);
+
+if(getgmlevel() > 97){
+mes "Gostaria de resetar a Dungeon?";
+if(select("Nao:Sim") == 1) close;
+setarray $JDinfo[1],0,0,0;
+close;
+end;
+}
+
+// Nome do npc
+set .npc$,"^800000[Treinamento Jinchuuriki]^000000";
+
+mes .npc$;
+mes "Ola Sr. Jinchuuriki, gostaria de treinar o controle de sua Bijuu?";
+
+if(select("Sim:Nao") == 1){
+if(countitem(19094) == 0) close;;
+next;
+if($JDinfo[1] == 1){
+mes .npc$;
+mes "Desculpe, outro Junchiriki esta treinamento neste momento.";
+close;
+end;
+}
+
+if($JDinfo[4] == getcharid(0) && $JDinfo[8] > 4 || $JDinfo[5] == getcharid(0) && $JDinfo[9] > 4  || $JDinfo[6] == getcharid(0) && $JDinfo[10] > 4  || $JDinfo[7] == getcharid(0) && $JDinfo[11] > 4){
+mes .npc$;
+mes "Desculpe, voce ja treinou o maximo desta semana.";
+close;
+end;
+}
+
+if(getcharid(2) == 0){
+mes .npc$;
+mes "Voce deve estar na sua respectiva guild para abrir uma nova dungeon.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Voce só pode gerar uma dungeon por semana. Deseja continuar?";
+if(select("Sim:Nao") == 2) close;
+
+set $JDinfo[1], 1;
+set $JDinfo[2], getcharid(0);
+set $JDinfo[3], 1;
+set $JDinfo[12], getcharid(2);
+
+if(getcharid(0) == $JDinfo[4]) set $JDinfo[8], $JDinfo[8] + 1;
+if(getcharid(0) == $JDinfo[5]) set $JDinfo[9], $JDinfo[9] + 1;
+if(getcharid(0) == $JDinfo[6]) set $JDinfo[10], $JDinfo[10] + 1;
+if(getcharid(0) == $JDinfo[7]) set $JDinfo[11], $JDinfo[11] + 1;
+
+next;
+mes .npc$;
+mes "Dungeon aberta com sucesso. Voce tem o limite de 1 hora para finaliza-la.";
+close2;
+set $JinTreinoName$, strcharinfo(0);
+warp $JDmap$,0,0;
+initnpctimer "Evento#JD";
+end;
+}
+end;
+}
+
+arug_que01	mapflag	nowarp
+arug_que01	mapflag	noteleport
+arug_que01	mapflag	nowarpto
+arug_que01	mapflag	nobranch
+arug_que01	mapflag	nosave	SavePoint
+arug_que01	mapflag	nomemo
+arug_que01	mapflag	nopenalty
+arug_que01	mapflag	noexp
+arug_que01	mapflag	guildlock

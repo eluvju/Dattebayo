@@ -1,0 +1,112 @@
+-	script	on_PC_UseSkillf03	-1,{
+    end;
+//When a Character uses a skill
+
+//Aura
+
+onPcUseSkillEvent:
+
+           if(lskillid == 543) {
+
+
+if (seloskill543 == 1) {
+
+if (Aura != 1) {end;}
+if (skill543 >= 50) {set seloskill543,2; set skill543,0; dispbottom "[Sys] Level up"; end; }
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 1: "+skill543+" de 50";
+
+end;
+
+}
+
+if (seloskill543 == 2) {
+if (Aura != 1) {end;}
+if (skill543 >= 100) {set seloskill543,3; set skill543,0; dispbottom "[Sys] Level up"; end;}
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 2: "+skill543+" de 100";
+
+end;
+
+}
+
+if (seloskill543 == 3) {
+
+if (Aura != 1) {end;}
+if (skill543 >= 150) {set seloskill543,4; set skill543,0; dispbottom "[Sys] Level up"; end;}
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 3: "+skill543+" de 150";
+
+end;
+
+}
+
+if (seloskill543 == 4) {
+if (Aura != 1) {end;}
+if (skill543 >= 200) {set seloskill543,5; set skill543,0; dispbottom "[Sys] Level up"; end;}
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 4: "+skill543+" de 200";
+
+end;
+
+}
+
+if (seloskill543 == 5) {
+if (fuuin_intermediario != 1) {end;}
+if (Aura != 1) {end;}
+if (skill543 >= 250) {set seloskill543,6; set skill543,0; dispbottom "[Sys] Level up"; end;}
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 5: "+skill543+" de 250";
+
+end;
+
+}
+
+if (seloskill543 == 6) {
+if (fuuin_intermediario != 1) {end;}
+if (Aura != 1) {end;}
+if (skill543 >= 300) {set seloskill543,7; set skill543,0; dispbottom "[Sys] Level up"; end;}
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 6: "+skill543+" de 300";
+
+end;
+
+}
+
+if (seloskill543 == 7) {
+if (fuuin_avan != 1) {end;}
+if (Aura != 1) {end;}
+if (skill543 >= 500) {set seloskill543,8; set skill543,0; dispbottom "[Sys] Level up"; end;}
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 7: "+skill543+" de 500";
+
+end;
+
+}
+
+if (seloskill543 == 8) {
+if (fuuin_avan != 1) {end;}
+if (Aura != 1) {end;}
+if (skill543 >= 700) {set seloskill543,9; set skill543,0; dispbottom "[Sys] Level up"; end;}
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 8: "+skill543+" de 700";
+
+end;
+
+}
+
+if (seloskill543 == 9) {
+if (fuuin_avan != 1) {end;}
+if (Aura != 1) {end;}
+if (skill543 >= 1000) {set seloskill543,10; set skill543,0; dispbottom "[Sys] Level up"; end;}
+set skill543,skill543 +1;
+dispbottom "[Jutsu level] Aura Ninja level 9: "+skill543+" de 1000";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

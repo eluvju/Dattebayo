@@ -1,0 +1,106 @@
+-	script	toxica#1212	-1,{
+    end;
+//When a Character uses a skill
+
+//Toxica
+
+onPcUseSkillEvent:
+
+           if(lskillid == 140) {
+
+
+if (getskilllv(140) == 1) {
+
+if (Toxica != 1) {end;}
+if (skill140 >= 50) {skill 140,2,0; set skill140,0; dispbottom "[Sys] Level up"; end; }
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 1: "+skill140+" de 50";
+
+end;
+
+}
+
+if (getskilllv(140) == 2) {
+if (Toxica != 1) {end;}
+if (skill140 >= 100) {skill 140,3,0; set skill140,0; dispbottom "[Sys] Level up"; end;}
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 2: "+skill140+" de 100";
+
+end;
+
+}
+
+if (getskilllv(140) == 3) {
+
+if (Toxica != 1) {end;}
+if (skill140 >= 150) {skill 140,4,0; set skill140,0; dispbottom "[Sys] Level up"; end;}
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 3: "+skill140+" de 150";
+
+end;
+
+}
+
+if (getskilllv(140) == 4) {
+if (Toxica != 1) {end;}
+if (skill140 >= 200) {skill 140,5,0; set skill140,0; dispbottom "[Sys] Level up"; end;}
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 4: "+skill140+" de 200";
+
+end;
+
+}
+
+if (getskilllv(140) == 5) {
+if (Toxica != 1) {end;}
+if (skill140 >= 250) {skill 140,6,0; set skill140,0; dispbottom "[Sys] Level up"; end;}
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 5: "+skill140+" de 250";
+
+end;
+
+}
+
+if (getskilllv(140) == 6) {
+if (Toxica != 1) {end;}
+if (skill140 >= 300) {skill 140,7,0; set skill140,0; dispbottom "[Sys] Level up"; end;}
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 6: "+skill140+" de 300";
+
+end;
+
+}
+
+if (getskilllv(140) == 7) {
+if (Toxica != 1) {end;}
+if (skill140 >= 500) {skill 140,8,0; set skill140,0; dispbottom "[Sys] Level up"; end;}
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 7: "+skill140+" de 500";
+
+end;
+
+}
+
+if (getskilllv(140) == 8) {
+if (Toxica != 1) {end;}
+if (skill140 >= 700) {skill 140,9,0; set skill140,0; dispbottom "[Sys] Level up"; end;}
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 8: "+skill140+" de 700";
+
+end;
+
+}
+
+if (getskilllv(140) == 9) {
+if (Toxica != 1) {end;}
+if (skill140 >= 1000) {skill 140,10,0; set skill140,0; dispbottom "[Sys] Level up"; end;}
+set skill140,skill140 +1;
+dispbottom "[Jutsu level] Névoa Tóxica level 9: "+skill140+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

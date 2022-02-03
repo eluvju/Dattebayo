@@ -1,0 +1,1035 @@
+//==============================================================================================================================================================
+//   Investir na defesa
+//==============================================================================================================================================================
+salakage,40,29,5	script	Investir na Defesa::invdef	843,{
+
+if (countitem(30060) >= 1) {goto hokage;}
+if (countitem(30061) >= 1) {goto kazekage;}
+if (countitem(30062) >= 1) {goto mizukage;}
+if (countitem(30063) >= 1) {goto nuvem;}
+
+mes "Olá, Aqui você poderá ver o atual nível de defesa de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de defesa de sua vila é: "+$konoha_portao+""; close;}
+if(#suna ==1) {mes "O nível atual de defesa de sua vila é: "+$areia_portao+""; close;}
+if(#nevoa ==1) {mes "O nível atual de defesa de sua vila é: "+$nevoa_portao+""; close;}
+if(#nuvem ==1) {mes "O nível atual de defesa de sua vila é: "+$nuvem_portao+""; close;}
+close;
+
+//========================================================================
+//	Konoha
+//========================================================================
+
+hokage:
+mes "Seja bem-vindo hokage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef1,"Quero ver a situação da defesa",verdef1,"Nenhuma no momento",no;
+
+updef1:
+if($konoha_portao == 0) goto konohalv1;
+if($konoha_portao == 1) goto konohalv2;
+if($konoha_portao == 2) goto konohalv3;
+if($konoha_portao == 3) goto konohalv4;
+if($konoha_portao == 4) goto konohalv5;
+if($konoha_portao == 5) goto konohalv6;
+
+konohalv1:
+next;
+mes "Senhor, nosso portão está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv2:
+next;
+mes "Senhor, nosso portão está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv3:
+next;
+mes "Senhor, nosso portão está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv4:
+next;
+mes "Senhor, nosso portão está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv5:
+next;
+mes "Senhor, nosso portão está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv6:
+next;
+mes "Senhor, nosso portão já está no nível máximo";
+close;
+
+upkonoha:
+if ($konoha_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($konoha_portao == 0) {set $konoha_ryous, $konoha_ryous -75; set $konoha_portao, 1; announce "[Progresso de vilas] Konoha acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_portao == 1) {set $konoha_ryous, $konoha_ryous -75; set $konoha_portao, 2; announce "[Progresso de vilas] Konoha acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  close;}
+if($konoha_portao == 2) {set $konoha_ryous, $konoha_ryous -75; set $konoha_portao, 3; announce "[Progresso de vilas] Konoha acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  close;}
+if($konoha_portao == 3) {set $konoha_ryous, $konoha_ryous -75; set $konoha_portao, 4; announce "[Progresso de vilas] Konoha acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  close;}
+if($konoha_portao == 4) {set $konoha_ryous, $konoha_ryous -75; set $konoha_portao, 5; announce "[Progresso de vilas] Konoha acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  close;}
+
+verdef1:
+mes "Olá, Aqui você poderá ver o atual nível de defesa de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de defesa de sua vila é: "+$konoha_portao+""; close;}
+if(#suna ==1) {mes "O nível atual de defesa de sua vila é: "+$areia_portao+""; close;}
+if(#nevoa ==1) {mes "O nível atual de defesa de sua vila é: "+$nevoa_portao+""; close;}
+if(#nuvem ==1) {mes "O nível atual de defesa de sua vila é: "+$nuvem_portao+""; close;}
+close;
+
+//========================================================================
+//	Suna
+//========================================================================
+
+kazekage:
+mes "Seja bem-vindo kazekage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef2,"Quero ver a situação da defesa",verdef2,"Nenhuma no momento",no;
+
+updef2:
+if($areia_portao == 0) goto areialv1;
+if($areia_portao == 1) goto areialv2;
+if($areia_portao == 2) goto areialv3;
+if($areia_portao == 3) goto areialv4;
+if($areia_portao == 4) goto areialv5;
+if($areia_portao == 5) goto areialv6;
+
+areialv1:
+next;
+mes "Senhor, nosso portão está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv2:
+next;
+mes "Senhor, nosso portão está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv3:
+next;
+mes "Senhor, nosso portão está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv4:
+next;
+mes "Senhor, nosso portão está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv5:
+next;
+mes "Senhor, nosso portão está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv6:
+next;
+mes "Senhor, nosso portão já está no nível máximo";
+close;
+
+upareia:
+if ($areia_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($areia_portao == 0) {set $areia_ryous, $areia_ryous -75; set $areia_portao, 1; announce "[Progresso de vilas] Suna acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  end;}
+if($areia_portao == 1) {set $areia_ryous, $areia_ryous -75; set $areia_portao, 2; announce "[Progresso de vilas] Suna acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  end;}
+if($areia_portao == 2) {set $areia_ryous, $areia_ryous -75; set $areia_portao, 3; announce "[Progresso de vilas] Suna acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  end;}
+if($areia_portao == 3) {set $areia_ryous, $areia_ryous -75; set $areia_portao, 4; announce "[Progresso de vilas] Suna acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  end;}
+if($areia_portao == 4) {set $areia_ryous, $areia_ryous -75; set $areia_portao, 5; announce "[Progresso de vilas] Suna acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all;  end;}
+
+verdef2:
+mes "Olá, Aqui você poderá ver o atual nível de defesa de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de defesa de sua vila é: "+$konoha_portao+""; close;}
+if(#suna ==1) {mes "O nível atual de defesa de sua vila é: "+$areia_portao+""; close;}
+if(#nevoa ==1) {mes "O nível atual de defesa de sua vila é: "+$nevoa_portao+""; close;}
+if(#nuvem ==1) {mes "O nível atual de defesa de sua vila é: "+$nuvem_portao+""; close;}
+close;
+
+//========================================================================
+//	Névoa
+//========================================================================
+
+mizukage:
+mes "Seja bem-vindo mizukage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef3,"Quero ver a situação da defesa",verdef3,"Nenhuma no momento",no;
+
+updef3:
+if($nevoa_portao == 0) goto nevoalv1;
+if($nevoa_portao == 1) goto nevoalv2;
+if($nevoa_portao == 2) goto nevoalv3;
+if($nevoa_portao == 3) goto nevoalv4;
+if($nevoa_portao == 4) goto nevoalv5;
+if($nevoa_portao == 5) goto nevoalv6;
+
+nevoalv1:
+next;
+mes "Senhor, nosso portão está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv2:
+next;
+mes "Senhor, nosso portão está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv3:
+next;
+mes "Senhor, nosso portão está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv4:
+next;
+mes "Senhor, nosso portão está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv5:
+next;
+mes "Senhor, nosso portão está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv6:
+next;
+mes "Senhor, nosso portão já está no nível máximo";
+close;
+
+upnevoa:
+if ($nevoa_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($nevoa_portao == 0) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_portao, 1; announce "[Progresso de vilas] Névoa acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_portao == 1) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_portao, 2; announce "[Progresso de vilas] Névoa acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_portao == 2) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_portao, 3; announce "[Progresso de vilas] Névoa acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_portao == 3) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_portao, 4; announce "[Progresso de vilas] Névoa acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_portao == 4) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_portao, 5; announce "[Progresso de vilas] Névoa acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef3:
+mes "Olá, Aqui você poderá ver o atual nível de defesa de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de defesa de sua vila é: "+$konoha_portao+""; close;}
+if(#suna ==1) {mes "O nível atual de defesa de sua vila é: "+$areia_portao+""; close;}
+if(#nevoa ==1) {mes "O nível atual de defesa de sua vila é: "+$nevoa_portao+""; close;}
+if(#nuvem ==1) {mes "O nível atual de defesa de sua vila é: "+$nuvem_portao+""; close;}
+close;
+
+//========================================================================
+//	Nuvem
+//========================================================================
+
+nuvem:
+mes "Seja bem-vindo raikage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef4,"Quero ver a situação da defesa",verdef4,"Nenhuma no momento",no;
+
+updef4:
+if($nuvem_portao == 0) goto nuvemlv1;
+if($nuvem_portao == 1) goto nuvemlv2;
+if($nuvem_portao == 2) goto nuvemlv3;
+if($nuvem_portao == 3) goto nuvemlv4;
+if($nuvem_portao == 4) goto nuvemlv5;
+if($nuvem_portao == 5) goto nuvemlv6;
+
+nuvemlv1:
+next;
+mes "Senhor, nosso portão está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv2:
+next;
+mes "Senhor, nosso portão está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv3:
+next;
+mes "Senhor, nosso portão está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv4:
+next;
+mes "Senhor, nosso portão está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv5:
+next;
+mes "Senhor, nosso portão está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nosso portão?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv6:
+next;
+mes "Senhor, nosso portão já está no nível máximo";
+close;
+
+upnuvem:
+if ($nuvem_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($nuvem_portao == 0) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_portao, 1; announce "[Progresso de vilas] Nuvem acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_portao == 1) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_portao, 2; announce "[Progresso de vilas] Nuvem acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_portao == 2) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_portao, 3; announce "[Progresso de vilas] Nuvem acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_portao == 3) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_portao, 4; announce "[Progresso de vilas] Nuvem acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_portao == 4) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_portao, 5; announce "[Progresso de vilas] Nuvem acaba de melhorar suas defesas, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef4:
+mes "Olá, Aqui você poderá ver o atual nível de defesa de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de defesa de sua vila é: "+$konoha_portao+""; close;}
+if(#suna ==1) {mes "O nível atual de defesa de sua vila é: "+$areia_portao+""; close;}
+if(#nevoa ==1) {mes "O nível atual de defesa de sua vila é: "+$nevoa_portao+""; close;}
+if(#nuvem ==1) {mes "O nível atual de defesa de sua vila é: "+$nuvem_portao+""; close;}
+close;
+
+
+no:
+close;
+
+}
+
+//==============================================================================================================================================================
+//   Investimento Saúde
+//==============================================================================================================================================================
+salakage,22,30,5	script	Investir na Saúde::invsaude	843,{
+
+if (countitem(30060) >= 1) {goto hokage;}
+if (countitem(30061) >= 1) {goto kazekage;}
+if (countitem(30062) >= 1) {goto mizukage;}
+if (countitem(30063) >= 1) {goto nuvem;}
+
+mes "Olá, Aqui você poderá ver o atual nível de saúde de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de saúde de sua vila é: "+$konoha_hp+""; close;}
+if(#suna ==1) {mes "O nível atual de saúde de sua vila é: "+$areia_hp+""; close;}
+if(#nevoa ==1) {mes "O nível atual de saúde de sua vila é: "+$nevoa_hp+""; close;}
+if(#nuvem ==1) {mes "O nível atual de saúde de sua vila é: "+$nuvem_hp+""; close;}
+close;
+
+//========================================================================
+// Konoha
+//========================================================================
+
+hokage:
+mes "Seja bem-vindo hokage, qual é sua ordem?";
+menu "Quero melhorar a saúde",updef1,"Quero ver a situação da saúde",verdef1,"Nenhuma no momento",no;
+
+updef1:
+if($konoha_hp == 0) goto konohalv1;
+if($konoha_hp == 1) goto konohalv2;
+if($konoha_hp == 2) goto konohalv3;
+if($konoha_hp == 3) goto konohalv4;
+if($konoha_hp == 4) goto konohalv5;
+if($konoha_hp == 5) goto konohalv6;
+
+konohalv1:
+next;
+mes "Senhor, nossa saúde está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nossa saúde?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv2:
+next;
+mes "Senhor, nossa saúde está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv3:
+next;
+mes "Senhor, nossa saúde está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv4:
+next;
+mes "Senhor, nossa saúde está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv5:
+next;
+mes "Senhor, nossa saúde está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv6:
+next;
+mes "Senhor, nossa saúde já está no nível máximo";
+close;
+
+upkonoha:
+if ($konoha_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($konoha_hp == 0) {set $konoha_ryous, $konoha_ryous -75; set $konoha_hp, 1;  announce "[Progresso de vilas] Konoha acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_hp == 1) {set $konoha_ryous, $konoha_ryous -75; set $konoha_hp, 2; announce "[Progresso de vilas] Konoha acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_hp == 2) {set $konoha_ryous, $konoha_ryous -75; set $konoha_hp, 3; announce "[Progresso de vilas] Konoha acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_hp == 3) {set $konoha_ryous, $konoha_ryous -75; set $konoha_hp, 4; announce "[Progresso de vilas] Konoha acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_hp == 4) {set $konoha_ryous, $konoha_ryous -75; set $konoha_hp, 5; announce "[Progresso de vilas] Konoha acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef1:
+mes "Olá, Aqui você poderá ver o atual nível de saúde de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de saúde de sua vila é: "+$konoha_hp+""; close;}
+if(#suna ==1) {mes "O nível atual de saúde de sua vila é: "+$areia_hp+""; close;}
+if(#nevoa ==1) {mes "O nível atual de saúde de sua vila é: "+$nevoa_hp+""; close;}
+if(#nuvem ==1) {mes "O nível atual de saúde de sua vila é: "+$nuvem_hp+""; close;}
+close;
+
+//========================================================================
+// Suna
+//========================================================================
+
+kazekage:
+mes "Seja bem-vindo kazekage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef2,"Quero ver a situação da defesa",verdef2,"Nenhuma no momento",no;
+
+updef2:
+if($areia_hp == 0) goto areialv1;
+if($areia_hp == 1) goto areialv2;
+if($areia_hp == 2) goto areialv3;
+if($areia_hp == 3) goto areialv4;
+if($areia_hp == 4) goto areialv5;
+if($areia_hp == 5) goto areialv6;
+
+areialv1:
+next;
+mes "Senhor, nossa saúde está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv2:
+next;
+mes "Senhor, nossa saúde está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv3:
+next;
+mes "Senhor, nossa saúde está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv4:
+next;
+mes "Senhor, nossa saúde está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv5:
+next;
+mes "Senhor, nossa saúde está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv6:
+next;
+mes "Senhor, nossa saúde já está no nível máximo";
+close;
+
+upareia:
+if ($areia_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($areia_hp == 0) {set $areia_ryous, $areia_ryous -75; set $areia_hp, 1; announce "[Progresso de vilas] Suna acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($areia_hp == 1) {set $areia_ryous, $areia_ryous -75; set $areia_hp, 2; announce "[Progresso de vilas] Suna acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($areia_hp == 2) {set $areia_ryous, $areia_ryous -75; set $areia_hp, 3; announce "[Progresso de vilas] Suna acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($areia_hp == 3) {set $areia_ryous, $areia_ryous -75; set $areia_hp, 4; announce "[Progresso de vilas] Suna acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($areia_hp == 4) {set $areia_ryous, $areia_ryous -75; set $areia_hp, 5; announce "[Progresso de vilas] Suna acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef2:
+mes "Olá, Aqui você poderá ver o atual nível de saúde de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de saúde de sua vila é: "+$konoha_hp+""; close;}
+if(#suna ==1) {mes "O nível atual de saúde de sua vila é: "+$areia_hp+""; close;}
+if(#nevoa ==1) {mes "O nível atual de saúde de sua vila é: "+$nevoa_hp+""; close;}
+if(#nuvem ==1) {mes "O nível atual de saúde de sua vila é: "+$nuvem_hp+""; close;}
+close;
+
+//========================================================================
+// Névoa
+//========================================================================
+
+mizukage:
+mes "Seja bem-vindo mizukage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef3,"Quero ver a situação da defesa",verdef3,"Nenhuma no momento",no;
+
+updef3:
+if($nevoa_hp == 0) goto nevoalv1;
+if($nevoa_hp == 1) goto nevoalv2;
+if($nevoa_hp == 2) goto nevoalv3;
+if($nevoa_hp == 3) goto nevoalv4;
+if($nevoa_hp == 4) goto nevoalv5;
+if($nevoa_hp == 5) goto nevoalv6;
+
+nevoalv1:
+next;
+mes "Senhor, nossa saúde está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv2:
+next;
+mes "Senhor, nossa saúde está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv3:
+next;
+mes "Senhor, nossa saúde está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv4:
+next;
+mes "Senhor, nossa saúde está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv5:
+next;
+mes "Senhor, nossa saúde está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv6:
+next;
+mes "Senhor, nossa saúde já está no nível máximo";
+close;
+
+upnevoa:
+if ($nevoa_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($nevoa_hp == 0) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_hp, 1; announce "[Progresso de vilas] Névoa acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_hp == 1) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_hp, 2; announce "[Progresso de vilas] Névoa acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_hp == 2) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_hp, 3; announce "[Progresso de vilas] Névoa acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_hp == 3) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_hp, 4; announce "[Progresso de vilas] Névoa acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_hp == 4) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_hp, 5; announce "[Progresso de vilas] Névoa acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef3:
+mes "Olá, Aqui você poderá ver o atual nível de saúde de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de saúde de sua vila é: "+$konoha_hp+""; close;}
+if(#suna ==1) {mes "O nível atual de saúde de sua vila é: "+$areia_hp+""; close;}
+if(#nevoa ==1) {mes "O nível atual de saúde de sua vila é: "+$nevoa_hp+""; close;}
+if(#nuvem ==1) {mes "O nível atual de saúde de sua vila é: "+$nuvem_hp+""; close;}
+close;
+
+//========================================================================
+// Nuvem
+//========================================================================
+
+nuvem:
+mes "Seja bem-vindo raikage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef4,"Quero ver a situação da defesa",verdef4,"Nenhuma no momento",no;
+
+updef4:
+if($nuvem_hp == 0) goto nuvemlv1;
+if($nuvem_hp == 1) goto nuvemlv2;
+if($nuvem_hp == 2) goto nuvemlv3;
+if($nuvem_hp == 3) goto nuvemlv4;
+if($nuvem_hp == 4) goto nuvemlv5;
+if($nuvem_hp == 5) goto nuvemlv6;
+
+nuvemlv1:
+next;
+mes "Senhor, nossa saúde está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv2:
+next;
+mes "Senhor, nossa saúde está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv3:
+next;
+mes "Senhor, nossa saúde está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv4:
+next;
+mes "Senhor, nossa saúde está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv5:
+next;
+mes "Senhor, nossa saúde está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa saúde?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv6:
+next;
+mes "Senhor, nossa saúde já está no nível máximo";
+close;
+
+upnuvem:
+if ($nuvem_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($nuvem_hp == 0) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_hp, 1; announce "[Progresso de vilas] Nuvem acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_hp == 1) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_hp, 2; announce "[Progresso de vilas] Nuvem acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_hp == 2) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_hp, 3; announce "[Progresso de vilas] Nuvem acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_hp == 3) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_hp, 4; announce "[Progresso de vilas] Nuvem acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_hp == 4) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_hp, 5; announce "[Progresso de vilas] Nuvem acaba de melhorar sua saúde, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef4:
+mes "Olá, Aqui você poderá ver o atual nível de saúde de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de saúde de sua vila é: "+$konoha_hp+""; close;}
+if(#suna ==1) {mes "O nível atual de saúde de sua vila é: "+$areia_hp+""; close;}
+if(#nevoa ==1) {mes "O nível atual de saúde de sua vila é: "+$nevoa_hp+""; close;}
+if(#nuvem ==1) {mes "O nível atual de saúde de sua vila é: "+$nuvem_hp+""; close;}
+close;
+
+
+no:
+close;
+
+}
+
+//==============================================================================================================================================================
+//   Investimento Educação
+//==============================================================================================================================================================
+salakage,27,33,5	script	Investir na Educação::invint	843,{
+
+if (countitem(30060) >= 1) {goto hokage;}
+if (countitem(30061) >= 1) {goto kazekage;}
+if (countitem(30062) >= 1) {goto mizukage;}
+if (countitem(30063) >= 1) {goto nuvem;}
+
+mes "Olá, Aqui você poderá ver o atual nível de educação de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de educação de sua vila é: "+$konoha_SP+""; close;}
+if(#suna ==1) {mes "O nível atual de educação de sua vila é: "+$areia_SP+""; close;}
+if(#nevoa ==1) {mes "O nível atual de educação de sua vila é: "+$nevoa_SP+""; close;}
+if(#nuvem ==1) {mes "O nível atual de educação de sua vila é: "+$nuvem_SP+""; close;}
+close;
+
+//========================================================================
+// Konoha
+//========================================================================
+
+hokage:
+mes "Seja bem-vindo hokage, qual é sua ordem?";
+menu "Quero melhorar a educação",updef1,"Quero ver a situação da educação",verdef1,"Nenhuma no momento",no;
+
+updef1:
+if($konoha_SP == 0) goto konohalv1;
+if($konoha_SP == 1) goto konohalv2;
+if($konoha_SP == 2) goto konohalv3;
+if($konoha_SP == 3) goto konohalv4;
+if($konoha_SP == 4) goto konohalv5;
+if($konoha_SP == 5) goto konohalv6;
+
+konohalv1:
+next;
+mes "Senhor, nossa educação está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a resistência de nossa educação?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv2:
+next;
+mes "Senhor, nossa educação está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv3:
+next;
+mes "Senhor, nossa educação está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv4:
+next;
+mes "Senhor, nossa educação está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv5:
+next;
+mes "Senhor, nossa educação está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$konoha_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upkonoha,"Não, agora não",no;
+
+konohalv6:
+next;
+mes "Senhor, nossa educação já está no nível máximo";
+close;
+
+upkonoha:
+if ($konoha_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($konoha_SP == 0) {set $konoha_ryous, $konoha_ryous -75; set $konoha_SP, 1; announce "[Progresso de vilas] Konoha acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_SP == 1) {set $konoha_ryous, $konoha_ryous -75; set $konoha_SP, 2; announce "[Progresso de vilas] Konoha acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_SP == 2) {set $konoha_ryous, $konoha_ryous -75; set $konoha_SP, 3; announce "[Progresso de vilas] Konoha acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_SP == 3) {set $konoha_ryous, $konoha_ryous -75; set $konoha_SP, 4; announce "[Progresso de vilas] Konoha acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($konoha_SP == 4) {set $konoha_ryous, $konoha_ryous -75; set $konoha_SP, 5; announce "[Progresso de vilas] Konoha acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef1:
+mes "Olá, Aqui você poderá ver o atual nível de educação de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de educação de sua vila é: "+$konoha_SP+""; close;}
+if(#suna ==1) {mes "O nível atual de educação de sua vila é: "+$areia_SP+""; close;}
+if(#nevoa ==1) {mes "O nível atual de educação de sua vila é: "+$nevoa_SP+""; close;}
+if(#nuvem ==1) {mes "O nível atual de educação de sua vila é: "+$nuvem_SP+""; close;}
+close;
+
+//========================================================================
+// Suna
+//========================================================================
+
+kazekage:
+mes "Seja bem-vindo kazekage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef2,"Quero ver a situação da educação",verdef2,"Nenhuma no momento",no;
+
+updef2:
+if($areia_SP == 0) goto areialv1;
+if($areia_SP == 1) goto areialv2;
+if($areia_SP == 2) goto areialv3;
+if($areia_SP == 3) goto areialv4;
+if($areia_SP == 4) goto areialv5;
+if($areia_SP == 5) goto areialv6;
+
+areialv1:
+next;
+mes "Senhor, nossa educação está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv2:
+next;
+mes "Senhor, nossa educação está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv3:
+next;
+mes "Senhor, nossa educação está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv4:
+next;
+mes "Senhor, nossa educação está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv5:
+next;
+mes "Senhor, nossa educação está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$areia_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upareia,"Não, agora não",no;
+
+areialv6:
+next;
+mes "Senhor, nossa educação já está no nível máximo";
+close;
+
+upareia:
+if ($areia_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($areia_SP == 0) {set $areia_ryous, $areia_ryous -75; set $areia_SP, 1; announce "[Progresso de vilas] Suna acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($areia_SP == 1) {set $areia_ryous, $areia_ryous -75; set $areia_SP, 2; announce "[Progresso de vilas] Suna acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($areia_SP == 2) {set $areia_ryous, $areia_ryous -75; set $areia_SP, 3; announce "[Progresso de vilas] Suna acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($areia_SP == 3) {set $areia_ryous, $areia_ryous -75; set $areia_SP, 4; announce "[Progresso de vilas] Suna acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($areia_SP == 4) {set $areia_ryous, $areia_ryous -75; set $areia_SP, 5; announce "[Progresso de vilas] Suna acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef2:
+mes "Olá, Aqui você poderá ver o atual nível de educação de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de educação de sua vila é: "+$konoha_SP+""; close;}
+if(#suna ==1) {mes "O nível atual de educação de sua vila é: "+$areia_SP+""; close;}
+if(#nevoa ==1) {mes "O nível atual de educação de sua vila é: "+$nevoa_SP+""; close;}
+if(#nuvem ==1) {mes "O nível atual de educação de sua vila é: "+$nuvem_SP+""; close;}
+close;
+
+//========================================================================
+// Névoa
+//========================================================================
+
+mizukage:
+mes "Seja bem-vindo mizukage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef3,"Quero ver a situação da educação",verdef3,"Nenhuma no momento",no;
+
+updef3:
+if($nevoa_SP == 0) goto nevoalv1;
+if($nevoa_SP == 1) goto nevoalv2;
+if($nevoa_SP == 2) goto nevoalv3;
+if($nevoa_SP == 3) goto nevoalv4;
+if($nevoa_SP == 4) goto nevoalv5;
+if($nevoa_SP == 5) goto nevoalv6;
+
+nevoalv1:
+next;
+mes "Senhor, nossa educação está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv2:
+next;
+mes "Senhor, nossa educação está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv3:
+next;
+mes "Senhor, nossa educação está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv4:
+next;
+mes "Senhor, nossa educação está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv5:
+next;
+mes "Senhor, nossa educação está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nevoa_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnevoa,"Não, agora não",no;
+
+nevoalv6:
+next;
+mes "Senhor, nossa educação já está no nível máximo";
+close;
+
+upnevoa:
+if ($nevoa_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($nevoa_SP == 0) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_SP, 1;  announce "[Progresso de vilas] Névoa acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_SP == 1) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_SP, 2; announce "[Progresso de vilas] Névoa acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_SP == 2) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_SP, 3; announce "[Progresso de vilas] Névoa acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_SP == 3) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_SP, 4; announce "[Progresso de vilas] Névoa acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($nevoa_SP == 4) {set $nevoa_ryous, $nevoa_ryous -75; set $nevoa_SP, 5; announce "[Progresso de vilas] Névoa acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef3:
+mes "Olá, Aqui você poderá ver o atual nível de educação de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de educação de sua vila é: "+$konoha_SP+""; close;}
+if(#suna ==1) {mes "O nível atual de educação de sua vila é: "+$areia_SP+""; close;}
+if(#nevoa ==1) {mes "O nível atual de educação de sua vila é: "+$nevoa_SP+""; close;}
+if(#nuvem ==1) {mes "O nível atual de educação de sua vila é: "+$nuvem_SP+""; close;}
+close;
+
+//========================================================================
+// Nuvem
+//========================================================================
+
+nuvem:
+mes "Seja bem-vindo raikage, qual é sua ordem?";
+menu "Quero melhorar a defesa",updef4,"Quero ver a situação da educação",verdef4,"Nenhuma no momento",no;
+
+updef4:
+if($nuvem_SP == 0) goto nuvemlv1;
+if($nuvem_SP == 1) goto nuvemlv2;
+if($nuvem_SP == 2) goto nuvemlv3;
+if($nuvem_SP == 3) goto nuvemlv4;
+if($nuvem_SP == 4) goto nuvemlv5;
+if($nuvem_SP == 5) goto nuvemlv6;
+
+nuvemlv1:
+next;
+mes "Senhor, nossa educação está no momento nível 0, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv2:
+next;
+mes "Senhor, nossa educação está no momento nível 1, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv3:
+next;
+mes "Senhor, nossa educação está no momento nível 2, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv4:
+next;
+mes "Senhor, nossa educação está no momento nível 3, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv5:
+next;
+mes "Senhor, nossa educação está no momento nível 4, para melhorar-lo, gastariamos 75 ryous, no momento temos "+$nuvem_ryous+" ryous";
+next;
+mes "Gostaria de melhorar a nossa educação?";
+menu "Sim, agora mesmo!",upnuvem,"Não, agora não",no;
+
+nuvemlv6:
+next;
+mes "Senhor, nossa educação já está no nível máximo";
+close;
+
+upnuvem:
+if ($nuvem_ryous < 75) {mes "Não temos os 75 ryous necessários!"; close;}
+if($nuvem_SP == 0) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_SP, 1; announce "[Progresso de vilas] Nuvem acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_SP == 1) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_SP, 2; announce "[Progresso de vilas] Nuvem acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_SP == 2) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_SP, 3; announce "[Progresso de vilas] Nuvem acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_SP == 3) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_SP, 4; announce "[Progresso de vilas] Nuvem acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+if($nuvem_SP == 4) {set $nuvem_ryous, $nuvem_ryous -75; set $nuvem_SP, 5; announce "[Progresso de vilas] Nuvem acaba de melhorar sua educação, bom trabalho!",bc_blue|bc_all; close;}
+
+verdef4:
+mes "Olá, Aqui você poderá ver o atual nível de educação de sua vila";
+next;
+if(#konoha ==1) {mes "O nível atual de educação de sua vila é: "+$konoha_SP+""; close;}
+if(#suna ==1) {mes "O nível atual de educação de sua vila é: "+$areia_SP+""; close;}
+if(#nevoa ==1) {mes "O nível atual de educação de sua vila é: "+$nevoa_SP+""; close;}
+if(#nuvem ==1) {mes "O nível atual de educação de sua vila é: "+$nuvem_SP+""; close;}
+close;
+
+
+no:
+close;
+
+}
+
+salakage,11,27,5	script	Compra Ninja::invninja	843,{
+
+mes "Bem vindo senhor, gostaria de comprar algumas coisas que possam ajudar sua vila?";
+menu "Sim, eu quero",SIM,"Agora não",NO;
+
+SIM:
+next;
+mes "Qual jutsu você gostaria de comprar?";
+menu "Fuuin no Sho (15000 ryous)",L_fuuin,"Nenhum",NO;
+L_fuuin:
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {if ($akatsuki_ryous < 15000) {mes "Não temos os 15000 ryous necessários!"; close;} announce "A Akatsuki acaba de comprar um Fuuin no Sho, bom trabalho!",bc_blue|bc_all; getitem 753,1; set $akatsuki_ryous, $akatsuki_ryous -15000;}
+if (countitem(30060) >= 1) {if ($konoha_ryous < 15000) {mes "Não temos os 15000 ryous necessários!"; close;} announce "[Progresso de vilas] Konoha acaba de comprar um Fuuin no Sho, bom trabalho!",bc_blue|bc_all; getitem 753,1; set $konoha_ryous, $konoha_ryous -15000;}
+if (countitem(30061) >= 1) {if ($areia_ryous < 15000)  {mes "Não temos os 15000 ryous necessários!"; close;} announce "[Progresso de vilas] Suna acaba de comprar um Fuuin no Sho, bom trabalho!",bc_blue|bc_all;   getitem 753,1; set $areia_ryous, $areia_ryous -15000;}
+if (countitem(30062) >= 1) {if ($nevoa_ryous < 15000)  {mes "Não temos os 15000 ryous necessários!"; close;} announce "[Progresso de vilas] Névoa acaba de comprar um Fuuin no Sho, bom trabalho!",bc_blue|bc_all;  getitem 753,1; set $nevoa_ryous, $nevoa_ryous -15000;}
+if (countitem(30063) >= 1) {if ($nuvem_ryous < 15000)  {mes "Não temos os 15000 ryous necessários!"; close;} announce "[Progresso de vilas] Nuvem acaba de comprar um Fuuin no Sho, bom trabalho!",bc_blue|bc_all;  getitem 753,1; set $nuvem_ryous, $nuvem_ryous -15000;}
+close;
+NO:
+close;
+}
+
+salakage2,40,29,5	duplicate(invdef)	Investir na Defesa#b11	843
+salakage3,40,29,5	duplicate(invdef)	Investir na Defesa#b12	843
+salakage4,40,29,5	duplicate(invdef)	Investir na Defesa#b13	843
+
+salakage2,22,30,5	duplicate(invsaude)	Investir na Saúde#b11	843
+salakage3,22,30,5	duplicate(invsaude)	Investir na Saúde#b12	843
+salakage4,22,30,5	duplicate(invsaude)	Investir na Saúde#b13	843
+
+salakage2,27,33,5	duplicate(invint)	Investir na Educação#b11	843
+salakage3,27,33,5	duplicate(invint)	Investir na Educação#b12	843
+salakage4,27,33,5	duplicate(invint)	Investir na Educação#b13	843
+
+salakage2,11,27,5	duplicate(invninja)	Comprar Ninja#b11	843
+salakage3,11,27,5	duplicate(invninja)	Comprar Ninja#b12	843
+salakage4,11,27,5	duplicate(invninja)	Comprar Ninja#b13	843
+akatsuki,97,218,5	duplicate(invninja)	Comprar Ninja#akat	843
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Reset Semanal Dos Investimentos
+-	script	resetinvestimento	1083,{
+
+OnDay0101:
+OnDay0201:
+OnDay0301:
+OnDay0401:
+OnDay0501:
+OnDay0601:
+OnDay0701:
+OnDay0801:
+OnDay0901:
+OnDay1001:
+OnDay1101:
+OnDay1201:
+	set $konoha_hp,0;
+	set $areia_hp,0;
+	set $nevoa_hp,0;
+	set $nuvem_hp,0;
+	
+	set $konoha_guarda1,0;
+	set $areia_guarda1,0;
+	set $nevoa_guarda1,0;
+	set $nuvem_guarda1,0;
+	
+	set $konoha_guarda2,0;
+	set $areia_guarda2,0;
+	set $nevoa_guarda2,0;
+	set $nuvem_guarda2,0;
+	
+	set $konoha_guarda3,0;
+	set $areia_guarda3,0;
+	set $nevoa_guarda3,0;
+	set $nuvem_guarda3,0;
+	
+	set $nuvem_portao,0;
+	set $nevoa_portao,0;
+	set $areia_portao,0;
+	set $konoha_portao,0;
+	
+	set $konoha_SP,0;
+	set $areia_SP,0;
+	set $nevoa_SP,0;
+	set $nuvem_SP,0;
+	
+	announce "[Investimentos] Investimentos resetados",0;
+	end;
+}
+

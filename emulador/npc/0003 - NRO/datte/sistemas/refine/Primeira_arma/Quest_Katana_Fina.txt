@@ -1,0 +1,75 @@
+konoha,24,265,5	script	Reiko::equipe_dois	831,{
+
+if (checkquest(2012) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Oi viajante, sou a Reiko, sente-se descanse um pouco. Sua arma já está ultrapassada o que acha de uma arma melhor?";
+next;
+mes "Katana FIna, é um sabre com a lamina levemente curvada, mais afiada e leve do que a katana convencional.";
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Katana Fina
+//========================================================================
+
+L_SS:
+next;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Muco Pegajoso.";
+mes "- Obter 100x Antenas de Inseto.";
+mes "- Obter 50x Minhoca Boa Pinta.";
+mes "- Matar 50 Girinos";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2012;
+set quest_equipe_dois,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(equipe_mobs_dois < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(938) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(928) < 100) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(623) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Me trouxe o que havia pedido, tome seu novo sabre, e que ele te proteja por todas suas empreitadas!";
+completequest 2012;
+erasequest 2012;
+set galinha1,0;
+set galinha2,0;
+set galinha3,0;
+set vaca1,0;
+set vaca2,0;
+set vaca3,0;
+set galinhafeed,0;
+set vacafeed,0;
+set quest_equipe_dois,0;
+set equipe_mobs_dois,0;
+delitem 938,25;
+delitem 928,100;
+delitem 623,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1248,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	equipe#2	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1034 && quest_equipe_dois == 1) {set equipe_mobs_dois,equipe_mobs_dois +1; announce "[Quest de equipamento] Você já derrotou "+equipe_mobs_dois+" / 50 Girino",bc_blue|bc_self; end;}
+
+}
+
+
+areia,30,241,5	duplicate(equipe_dois)	Reiko#1	831
+kiri,309,38,5	duplicate(equipe_dois)	Reiko#2	831
+nuvem,65,280,5	duplicate(equipe_dois)	Reiko#3	831

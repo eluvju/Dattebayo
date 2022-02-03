@@ -1,0 +1,287 @@
+nuvem,188,185,4	script	Mundo Elemental::elementdup	412,{
+
+if ($element_event == 0) {mes "A entrada do mundo elemental está fechada nesse momento, ela abre das 10:30 às 11:30 e das 21:00 às 22:00"; close;}
+mes "Bem-vindo, gostaria de entrar no mundo elemental?";
+menu "Sim",L_sim,"Não", L_nao;
+
+L_sim:
+query_sql "SELECT (`received`) FROM `element_event` WHERE `char_id` = "+getcharid(0), @recebeu;
+if (@recebeu == 1) {next; mes "Você já entrou no mundo elemental uma vez hoje, é o máximo por dia"; close;}
+warp "ayo_fild01",32,244;
+query_sql("INSERT INTO `element_event` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+end;
+
+L_nao:
+close;
+
+}
+
+konoha,269,274,5	duplicate(elementdup)	Mundo Elemental#11	412
+areia,58,26,5	duplicate(elementdup)	Mundo Elemental#12	412
+kiri,48,324,5	duplicate(elementdup)	Mundo Elemental#13	114
+
+-	script	timerelement	,{
+OnClock1030: 
+set $element_event, 1;
+announce "[Evento] A entrada para o mundo elemental está aberta",bc_blue|bc_all;
+end;
+
+OnClock1130:
+mapwarp "ayo_fild01","kakashi",88,153;
+set $element_event, 0;
+announce "[Evento] A entrada para o mundo elemental está fechada",bc_blue|bc_all;
+end;
+
+OnClock2100: 
+set $element_event, 1;
+announce "[Evento] A entrada para o mundo elemental está aberta",bc_blue|bc_all;
+end;
+
+OnClock2200:
+mapwarp "ayo_fild01","kakashi",88,153;
+set $element_event, 0;
+announce "[Evento] A entrada para o mundo elemental está fechada",bc_blue|bc_all;
+end;
+
+
+
+}
+
+nuvem,188,188,4	script	Passagem::passadup	412,{
+
+if ($element_event2 == 0) {mes "A passagem do mundo elemental está fechada nesse momento, ela abre das 10:30 às 12:30 e das 21:00 às 23:00 nos Sábados"; close;}
+mes "Bem-vindo, gostaria de entrar na passagem do mundo elemental?";
+menu "Sim",L_sim,"Não", L_nao;
+
+L_sim:
+query_sql "SELECT (`received`) FROM `element_event2` WHERE `char_id` = "+getcharid(0), @recebeu;
+if (@recebeu == 1) {next; mes "Você já entrou no mundo elemental uma vez hoje, é o máximo por dia"; close;}
+warp "beach_dun",27,105;
+query_sql("INSERT INTO `element_event2` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+end;
+
+L_nao:
+close;
+
+}
+
+konoha,271,274,5	duplicate(passadup)	Passagem#11	412
+areia,56,26,5	duplicate(passadup)	Passagem#12	412
+kiri,45,328,5	duplicate(passadup)	Passagem#13	114
+
+-	script	timerelement2	,{
+OnClock1030:
+if (gettime(4)!=6) {end;}
+set $element_event2, 1;
+announce "[Evento] A passagem para o mundo elemental está aberta",bc_blue|bc_all;
+end;
+
+OnClock1230:
+mapwarp "beach_dun","kakashi",88,153;
+mapwarp "beach_dun2","kakashi",88,153;
+if (gettime(4)!=6) {end;}
+set $element_event2, 0;
+announce "[Evento] A passagem para o mundo elemental está fechada",bc_blue|bc_all;
+end;
+
+OnClock2100:
+if (gettime(4)!=6) {end;}
+set $element_event2, 1;
+announce "[Evento] A passagem para o mundo elemental está aberta",bc_blue|bc_all;
+end;
+
+OnClock2300:
+mapwarp "beach_dun","kakashi",88,153;
+mapwarp "beach_dun2","kakashi",88,153;
+if (gettime(4)!=6) {end;}
+set $element_event2, 0;
+announce "[Evento] A passagem para o mundo elemental está fechada",bc_blue|bc_all;
+end;
+
+
+
+}
+
+
+nuvem,188,192,4	script	Labirinto Oculto::labdup	412,{
+
+if ($element_event3 == 0) {mes "A entrada para o Labirinto Oculto está fechada nesse momento, ela abre das 10:30 às 12:00 e das 21:00 às 22:30 nas Terças e Quintas"; close;}
+mes "Bem-vindo, gostaria de entrar no Labirinto Oculto?";
+menu "Sim",L_sim,"Não", L_nao;
+
+L_sim:
+query_sql "SELECT (`received`) FROM `element_event3` WHERE `char_id` = "+getcharid(0), @recebeu;
+if (@recebeu == 1) {next; mes "Você já entrou no Labirinto Oculto uma vez hoje, é o máximo por dia"; close;}
+warp "prt_maze03",181,91;
+query_sql("INSERT INTO `element_event3` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+end;
+
+L_nao:
+close;
+
+}
+
+konoha,273,274,5	duplicate(labdup)	Labirinto Oculto#11	412
+areia,54,26,5	duplicate(labdup)	Labirinto Oculto#12	412
+kiri,46,326,5	duplicate(labdup)	Labirinto Oculto#13	114
+
+-	script	timerelement3	,{
+OnClock1030:
+if (gettime(4)==4)  || (gettime(4)==2)
+set $element_event3, 1;
+announce "[Evento] A entrada pro Labirinto Oculto está aberta",bc_blue|bc_all;
+
+OnClock1200:
+mapwarp "prt_maze03","kakashi",88,153;
+if (gettime(4)==4)  || (gettime(4)==2)
+set $element_event3, 0;
+announce "[Evento] A entrada pro Labirinto Oculto está fechada",bc_blue|bc_all;
+end;
+
+OnClock2100:
+if (gettime(4)==4)  || (gettime(4)==2)
+set $element_event3, 1;
+announce "[Evento] A entrada pro Labirinto Oculto está aberta",bc_blue|bc_all;
+end;
+
+OnClock2230:
+mapwarp "prt_maze03","kakashi",88,153;
+if (gettime(4)==4)  || (gettime(4)==2)
+set $element_event3, 0;
+announce "[Evento] A entrada pro Labirinto Oculto está fechada",bc_blue|bc_all;
+end;
+
+OnClock0000:
+query_sql("TRUNCATE TABLE `element_event`");	// Reseta a tabela
+query_sql("TRUNCATE TABLE `element_event2`");	// Reseta a tabela
+query_sql("TRUNCATE TABLE `element_event3`");	// Reseta a tabela
+query_sql("TRUNCATE TABLE `element_chaves`");	// Reseta a tabela
+query_sql("TRUNCATE TABLE `element_chaves2`");	// Reseta a tabela
+query_sql("TRUNCATE TABLE `element_chaves4`");	// Reseta a tabela
+query_sql("TRUNCATE TABLE `element_chaves5`");	// Reseta a tabela
+end;
+
+}
+
+prt_maze03,177,94,4	script	Peregrino1	412,{
+
+if(peregrino2 == 1) {mes "Você já falou comigo, vá atrás de meu irmão"; close;}
+mes "Hm, finalmente me achou, pura sorte, vá falar com o peregrino2 pra receber novas instruções";
+set peregrino2,1;
+//set Zeny, Zeny + 200000;
+close;
+
+}
+
+prt_maze03,30,11,4	script	Peregrino2	412,{
+
+if (peregrino2 != 1) {mes "O que quer? Sai pra lá!"; close;}
+mes "Hm, finalmente me achou, pura sorte, vá falar com o peregrino3 pra receber novas instruções";
+set peregrino2,0;
+set peregrino3,1;
+//set Zeny, Zeny + 400000;
+close;
+
+}
+
+prt_maze03,180,12,4	script	Peregrino3	412,{
+
+if (peregrino3 != 1) {mes "O que quer? Sai pra lá!"; close;}
+mes "Hm, finalmente me achou, pura sorte, vá falar com o peregrino4 pra receber novas instruções";
+set peregrino3,0;
+set peregrino4,1;
+//set Zeny, Zeny + 600000;
+close;
+
+}
+
+prt_maze03,136,150,4	script	Peregrino4	412,{
+
+if (peregrino4 != 1) {mes "O que quer? Sai pra lá!"; close;}
+mes "Hm, finalmente me achou, pura sorte, vá falar com o peregrino5 pra receber novas instruções";
+set peregrino4,0;
+set peregrino5,1;
+//set Zeny, Zeny + 1000000;
+close;
+
+}
+
+prt_maze03,13,173,4	script	Peregrino5	412,{
+
+if (peregrino6 == 1) {
+mes "Já fez o que pedi?";
+next;
+mes "Deixe eu ver...";
+if (labmobs1 >= 1) && (labmobs2 >= 1) {mes "Isso, você conseguiu, aqui está sua premiação"; set peregrino6,0; getitem 13252,1; set labmobs1,0; set labmobs2,0; warp "SavePoint",0,0; close;}
+next;
+mes "Você ainda não matou o espírito mokuton e raiton, volte quando tiver matado";
+close;
+}
+if (peregrino5 != 1) {mes "O que quer? Sai pra lá!"; close;}
+mes "Boa! Você achou eu e todos os meus irmãos, mas ainda não acabou, você quer o prêmio máximo? Então derrote um Espírito Mokuton e um Espírito Raiton";
+set peregrino6,1;
+set peregrino5,0;
+//set Zeny, Zeny + 5000000;
+close;
+
+}
+
+-	script	labmobs#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 2019 && peregrino6 == 1) {set labmobs1,labmobs1 +1; announce "[Labirinto Oculto] Você derrotou o Espírito Mokuton",bc_blue|bc_self; end;}
+
+}
+
+-	script	labmobs#2	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1065 && peregrino6 == 1) {set labmobs2,labmobs2 +1; announce "[Labirinto Oculto] Você derrotou o Espírito Raiton",bc_blue|bc_self; end;}
+
+}
+
+beach_dun2,256,244,4	script	Chave2	412,{
+
+query_sql "SELECT (`received`) FROM `element_chaves2` WHERE `char_id` = "+getcharid(0), @recebeu2;
+if (@recebeu2 == 1) {mes "Você já recebeu essa chave hoje, é o máximo por dia"; close;}
+mes "Aqui está sua chave de hoje, fale com os outros npcs para receber as demais chaves.";
+getitem 13251,1;
+query_sql("INSERT INTO `element_chaves2` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+close;
+
+}
+
+ayo_fild01,182,53,4	script	Chave1	412,{
+
+query_sql "SELECT (`received`) FROM `element_chaves` WHERE `char_id` = "+getcharid(0), @recebeu1;
+if (@recebeu1 == 1) {mes "Você já recebeu essa chave hoje, é o máximo por dia"; close;}
+mes "Aqui está sua chave de hoje, fale com os outros npcs para receber as demais chaves.";
+getitem 13255,1;
+query_sql("INSERT INTO `element_chaves` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+close;
+
+}
+
+quiz_01,208,93,4	script	Chave4	412,{
+
+query_sql "SELECT (`received`) FROM `element_chaves4` WHERE `char_id` = "+getcharid(0), @recebeu4;
+if (@recebeu4 == 1) {mes "Você já recebeu essa chave hoje, é o máximo por dia"; close;}
+mes "Aqui está sua chave de hoje, fale com os outros npcs para receber as demais chaves.";
+getitem 13253,1;
+query_sql("INSERT INTO `element_chaves4` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+close;
+
+}
+
+orochi,73,192,4	script	Chave5	412,{
+
+query_sql "SELECT (`received`) FROM `element_chaves5` WHERE `char_id` = "+getcharid(0), @recebeu5;
+if (@recebeu5 == 1) {mes "Você já recebeu essa chave hoje, é o máximo por dia"; close;}
+mes "Aqui está sua chave de hoje, fale com os outros npcs para receber as demais chaves.";
+getitem 13250,1;
+query_sql("INSERT INTO `element_chaves5` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+close;
+
+}

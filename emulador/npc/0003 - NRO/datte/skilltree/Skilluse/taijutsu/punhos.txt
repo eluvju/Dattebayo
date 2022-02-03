@@ -1,0 +1,58 @@
+-	script	useIntensos	-1,{
+    end;
+//When a Character uses a skill
+
+//Intensos
+
+onPcUseSkillEvent:
+
+           if(lskillid == 1016) {
+
+
+if (getskilllv(1016) == 1) {
+
+if (Intensos != 1) {end;}
+if (skill1016 >= 50) {skill 1016,2,0; set skill1016,0; dispbottom "[Sys] Level up"; end; }
+set skill1016,skill1016 +1;
+dispbottom "[Jutsu level] Punhos Intensos level 1: "+skill1016+" de 50";
+
+end;
+
+}
+
+if (getskilllv(1016) == 2) {
+if (Intensos != 1) {end;}
+if (skill1016 >= 100) {skill 1016,3,0; set skill1016,0; dispbottom "[Sys] Level up"; end;}
+set skill1016,skill1016 +1;
+dispbottom "[Jutsu level] Punhos Intensos level 2: "+skill1016+" de 100";
+
+end;
+
+}
+
+if (getskilllv(1016) == 3) {
+if(tai_avan != 1) {end;}
+if (Intensos != 1) {end;}
+if (skill1016 >= 150) {skill 1016,4,0; set skill1016,0; dispbottom "[Sys] Level up"; end;}
+set skill1016,skill1016 +1;
+dispbottom "[Jutsu level] Punhos Intensos level 3: "+skill1016+" de 150";
+
+end;
+
+}
+
+if (getskilllv(1016) == 4) {
+if(tai_avan != 1) {end;}
+if (Intensos != 1) {end;}
+if (skill1016 >= 200) {skill 1016,5,0; set skill1016,0; dispbottom "[Sys] Level up"; end;}
+set skill1016,skill1016 +1;
+dispbottom "[Jutsu level] Punhos Intensos level 4: "+skill1016+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

@@ -1,0 +1,41 @@
+gon_test,49,15,5	script	Kakashi	843,{
+
+mes "[^00008BKakashi^000000]";
+mes "Vejo que voce vai se tornar um genin ein...";
+mes "E um importante passo na vida de shinobi, e onde tudo comeca.";
+next;
+mes "[^00008BKakashi^000000]";
+mes "Existem varios shinobis fortes pelo mundo, e todos possuem suas habilidades.";
+mes "Alguns preferem focar suas forcas apenas em ninjutsu.";
+mes "Outros em taijutsu, e muitos gostam de usar ambos, isso depende do ninja";
+next;
+mes "[^00008BKakashi^000000]";
+mes "Eu lutei com varios ninjas pelo mundo e aprendi um pouco sobre o estilo de luta deles.";
+mes "Você como um shinobi aprendiz, pode optar por escolher seu próprio estilo de luta";
+mes "Ou se quiser pode seguir um clã ninja e se espelhar em grandes ninjas";
+mes "A escolha é sua, independentemente da escolha, boa sorte na sua trajetória!.";
+next;
+mes "[^00008BKakashi^000000]";
+mes "Vamos la entao , Gostaria de fazer um shinobi personalizado ou seguir um clã?";
+menu "- ^008000Shinobi Personalizado^000000",L_perso,"- ^FF0000Seguir um cla ninja^000000",L_cla;
+
+L_perso:
+savepoint "ama_in01",96,16;
+next;
+mes "[^00008BKakashi^000000]";
+mes "Boa escolha, vamos la!";
+next;
+warp "ama_in01",96,16;
+close;
+
+L_cla:
+savepoint "que_ng",27,66;
+next;
+mes "[^00008BKakashi^000000]";
+mes "Boa escolha, vamos la!";
+next;
+warp "que_ng",27,66;
+close;
+
+
+}

@@ -1,0 +1,82 @@
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+akatsuki,49,174,7	script	Uchiha Madara	447,{
+	mes "[Uchiha Madara]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Nesse mundo, onde quer que haja luz, também haverá trevas";
+	mes "Enquanto o conceito de vencedor existir, também haverá o de perdedor";
+	mes "O próprio desejo de se querer gerar a paz, causa guerras.";
+	mes "E o ódio nasce, para proteger o amor...";
+	next;
+	mes "Eu quero te apresentar um novo poder. O poder do Juubi.";
+	mes "Quer descobrir como despertá-lo?";
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Uchiha Madara]";
+		mes "Tolo...Tudo bem, estarei aqui quando você mudar de idéia.";
+		close;
+	}
+	mes "[Uchiha Madara]";
+	mes "Jovem Shinobi, você tem certeza que quer aprender mais sobre o despertar do Juubi?";
+	next;
+	switch(select("Estou Pronto!:Não sei ainda"))
+	{
+	case 1:
+		mes "[Despertar da Juubi]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30038);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(32000);
+		mes "1x "+getitemname(32001);
+		mes "1x "+getitemname(32003);
+		mes "1x "+getitemname(32004);
+		mes "1x "+getitemname(32005);
+		mes "1x "+getitemname(32006);
+		mes "1x "+getitemname(32007);
+		mes "1x "+getitemname(32008);
+		mes "1x "+getitemname(32009);
+		mes "1x "+getitemname(29607);
+		next;
+		mes "[Uchiha Madara]";
+		mes "Aceita essa missão para acabar com essas guerras sem sentido?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Uchiha Madara]";
+			mes "Tudo bem... Estarei aqui quando retornar!";
+			close;
+		}
+		if(countitem(32000) >= 1 && countitem(32001) >= 1 && countitem(32003) >= 1 && countitem(32004) >= 1 && countitem(32005) >= 1 && countitem(32006) >= 1 && countitem(32007) >= 1 && countitem(32008) >= 1 && countitem(32009) >= 1 && countitem(29607) >= 1)
+		{
+			delitem 32000,1;
+			delitem 32001,1;
+			delitem 32003,1;
+			delitem 32004,1;
+			delitem 32005,1;
+			delitem 32006,1;
+			delitem 32007,1;
+			delitem 32008,1;
+			delitem 32009,1;
+			delitem 29607,1;
+			getitem 30038,1;
+			mes "[Uchiha Madara]";
+			mes "Parabéns! Agora você está pronto para dominar o Juubi e acabar com esse mundo caótico!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Uchiha Madara]";
+		mes "Tudo bem, estarei aqui quando você mudar de idéia.";
+		close;
+	}
+	mes "[Uchiha Madara]";
+	mes "Você não tem todos os itens necessários. Está brincando comigo?";
+	mes "Só me apareça aqui quando tiver todos os itens! Ou eu te mato!";
+	close;
+}

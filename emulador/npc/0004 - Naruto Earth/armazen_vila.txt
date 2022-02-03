@@ -1,0 +1,28 @@
+// ===== Cronus Script =======================================
+// == Deus-Sol ues (NPC Script)
+// ===== Categoria: ===========================================
+// == Custom
+// ===== Idioma: ==============================================
+// == Português (Brasil)
+// ===== Por: =================================================
+// == Cadinhu (V. 1.0)
+// ===== Versão Atual: ========================================
+// == 1.0 (05/10/2007)
+// ===== Compactível Com: =====================================
+// == Cronus
+// ===== Descrição Parcial: ===================================
+// == Quest da Coroa do Deus-Sol
+// ===== Comentários adicionais: ==============================
+// == 1.0 - NPC Criado ........................ [by Cadinhu]
+// ============================================================
+// == Agradecimentos: =]
+// ============================================================
+
+1@ecl,61,82,5	script	Armazem da Vila::kafra1	831,{
+if(jounin != 1) {mes "Você precisa ser jounin para abrir o armazen da sua vila., "+strcharinfo(0)+"-san!"; end;}
+guildopenstorage;
+close;	
+}
+
+2@ecl,61,82,5	duplicate(kafra1)	Armazem da Vila#b	113
+3@ecl,61,82,5	duplicate(kafra1)	Armazem da Vila#c	853

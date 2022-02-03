@@ -1,0 +1,102 @@
+-	script	tornado	-1,{
+    end;
+//When a Character uses a skill
+
+//tornado
+
+OnNPCKillEvent:
+
+if (getskilllv(413) == 1) {
+
+if (tornado != 1) {end;}
+if (skill413 >= 50) {skill 413,2,0; set skill413,0; dispbottom "[Sys] Level up"; end; }
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 1: "+skill413+" de 50";
+
+end;
+
+}
+
+if (getskilllv(413) == 2) {
+if (tornado != 1) {end;}
+if (skill413 >= 100) {skill 413,3,0; set skill413,0; dispbottom "[Sys] Level up"; end;}
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 2: "+skill413+" de 100";
+
+end;
+
+}
+
+if (getskilllv(413) == 3) {
+
+if (tornado != 1) {end;}
+if (skill413 >= 150) {skill 413,4,0; set skill413,0; dispbottom "[Sys] Level up"; end;}
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 3: "+skill413+" de 150";
+
+end;
+
+}
+
+if (getskilllv(413) == 4) {
+if (tornado != 1) {end;}
+if (skill413 >= 200) {skill 413,5,0; set skill413,0; dispbottom "[Sys] Level up"; end;}
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 4: "+skill413+" de 200";
+
+end;
+
+}
+
+if (getskilllv(413) == 5) {
+if (tornado != 1) {end;}
+if (skill413 >= 250) {skill 413,6,0; set skill413,0; dispbottom "[Sys] Level up"; end;}
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 5: "+skill413+" de 250";
+
+end;
+
+}
+
+if (getskilllv(413) == 6) {
+if (tornado != 1) {end;}
+if (skill413 >= 300) {skill 413,7,0; set skill413,0; dispbottom "[Sys] Level up"; end;}
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 6: "+skill413+" de 300";
+
+end;
+
+}
+
+if (getskilllv(413) == 7) {
+if (tornado != 1) {end;}
+if (skill413 >= 500) {skill 413,8,0; set skill413,0; dispbottom "[Sys] Level up"; end;}
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 7: "+skill413+" de 500";
+
+end;
+
+}
+
+if (getskilllv(413) == 8) {
+if (tornado != 1) {end;}
+if (skill413 >= 700) {skill 413,9,0; set skill413,0; dispbottom "[Sys] Level up"; end;}
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 8: "+skill413+" de 700";
+
+end;
+
+}
+
+if (getskilllv(413) == 9) {
+if (tornado != 1) {end;}
+if (skill413 >= 1000) {skill 413,10,0; set skill413,0; dispbottom "[Sys] Level up"; end;}
+set skill413,skill413 +1;
+dispbottom "[Jutsu level] Chute do Tornado level 9: "+skill413+" de 1000";
+
+end;
+
+}
+
+                end;
+            }

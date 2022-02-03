@@ -1,0 +1,49 @@
+function	script	kemuri	{
+
+//When a Character uses a skill
+//Kemuri
+
+if (seloskill668 == 1) {
+
+if (Kemuri != 1) {end;}
+if (skill668 >= 50) {set seloskill668,2; set skill668,0; dispbottom "[Sys] Level up"; end; }
+set skill668,skill668 +1;
+dispbottom "[Jutsu level] Fukai Kemuri level 1: "+skill668+" de 50";
+
+end;
+
+}
+
+if (seloskill668 == 2) {
+if (Kemuri != 1) {end;}
+if (skill668 >= 100) {set seloskill668,3; set skill668,0; dispbottom "[Sys] Level up"; end;}
+set skill668,skill668 +1;
+dispbottom "[Jutsu level] Fukai Kemuri level 2: "+skill668+" de 100";
+
+end;
+
+}
+
+if (seloskill668 == 3) {
+
+if (Kemuri != 1) {end;}
+if (skill668 >= 150) {set seloskill668,4; set skill668,0; dispbottom "[Sys] Level up"; end;}
+set skill668,skill668 +1;
+dispbottom "[Jutsu level] Fukai Kemuri level 3: "+skill668+" de 150";
+
+end;
+
+}
+
+if (seloskill668 == 4) {
+if (Kemuri != 1) {end;}
+if (skill668 >= 200) {set seloskill668,5; set skill668,0; dispbottom "[Sys] Level up"; end;}
+set skill668,skill668 +1;
+dispbottom "[Jutsu level] Fukai Kemuri level 4: "+skill668+" de 200";
+
+end;
+
+}
+
+                end;
+            }

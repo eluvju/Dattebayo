@@ -1,0 +1,63 @@
+konoha,24,263,5	script	Azumi::equipe_tres	831,{
+
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá, meu nome é Azumi, ao que me parece você não é tão forte,talvez precise da minha arma";
+mes "Eu posso lhe dar uma Kunai Refinada, o que acha?";
+next;
+mes "Uma arma que consiste em uma lâmina de ferro refinado; mais resistente; com um grande furo na base, destinado a amarrar cordas ou linhas. Utilizada em combates de curta ou longa distancia.";
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Kunai refinada
+//========================================================================
+
+L_SS:
+next;
+if (checkquest(2008) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Muco Pegajoso.";
+mes "- Obter 100x Antenas de Inseto.";
+mes "- Obter 50x Garleta.";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2008;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if (countitem(938) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(928) < 100) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(910) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Parabéns, aqui está sua nova arma, que ela lhe traga tanta vitória e sangue quanto trouxe a mim.";
+completequest 2008;
+erasequest 2008;
+set galinha1,0;
+set galinha2,0;
+set galinha3,0;
+set vaca1,0;
+set vaca2,0;
+set vaca3,0;
+set galinhafeed,0;
+set vacafeed,0;
+delitem 938,25;
+delitem 928,100;
+delitem 910,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1207,1;
+close;
+
+L_no:
+close;
+}
+
+
+areia,30,239,5	duplicate(equipe_tres)	Azumi#1	831
+kiri,311,38,5	duplicate(equipe_tres)	Azumi#2	831
+nuvem,68,280,5	duplicate(equipe_tres)	Azumi#3	831

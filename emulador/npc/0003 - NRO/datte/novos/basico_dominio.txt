@@ -1,0 +1,65 @@
+nuvem,227,60,3	script	Bases Dominadas#1::mapdomain	819,{
+
+	mes "[^0000FFBases Dominadas^000000]";
+	query_sql("SELECT `map` FROM `nnfro_rpg` WHERE `map_owner_id` = '"+getcharid(2)+"'",@map$);
+	if(getcharid(2) == 0)
+	{
+		mes "Você só pode ser teleportado quando possuir um clã, e este possuir ao menos um mapa dominado!";
+		close;
+	} else if(getarraysize(@map$) == 0)
+	{
+		mes "Desculpe-me, mas o seu clã não possui nem um mapa.";
+		close;
+	}
+	if(getarraysize(@map$) == 1)
+		mes "Deseja viajar até o mapa do seu clã? É necessário pagar 1 milhão de zeny para viajar";
+	else
+		mes "Para qual mapa desejas viajar?";
+		if (Zeny < 1000000) {mes "Você não tem zeny suficente para viajar"; close;}
+	set .@menu$,"";
+	for(set .@i,0;.@i < getarraysize(@map$);set .@i,.@i + 1)
+		set .@menu$,.@menu$ + @map$[.@i] + ":";
+	if(select(.@menu$+"Cancelar") > getarraysize(@map$))close;
+	close2;
+		set Zeny, Zeny-1000000;
+	warp @map$[@menu-1],0,0;
+	end;
+	
+OnInit:
+	setarray .@mf[1],0,3,13,33,34;
+	query_sql("SELECT map FROM nnfro_rpg",.@map$);
+	setarray $map$[1],
+						"moc_fild06","pay_fild03","pay_fild01","ein_fild01";
+	if(getarraysize(.@map$) < getarraysize($map$))
+		for(set .@i,getarraysize(.@map$);.@i <= getarraysize($map$);set .@i,.@i + 1)
+			query_sql("INSERT INTO nnfro_rpg (map, map_owner, map_owner_id) VALUES ('"+$map$[.@i]+"', '', '0')");
+	for(set .@i,1;.@i <= getarraysize(.@mf);set .@i,.@i + 1)
+		for(set .@j,1;.@j <= getarraysize($map$);set .@j,.@j + 1)
+		{
+//			setmapflag $map$[.@j],.@mf[.@i];
+//			setmapflag $map$[.@j],20;
+		}
+	end;
+	
+}
+-	script	update_nnfro_rpg	-1,{
+
+OnMapConquisted:
+	if(getcharid(2) == 0)end;
+	getmapxy .@map$,.@x,.@y,0;
+	for(set .@i,1;.@i <= getarraysize($map$) + 1;set .@i,.@i + 1)
+		if($map$[.@i] == .@map$)break;
+	announce "O clã "+strcharinfo(2)+" acaba de conquistar o mapa "+.@map$+", parabéns!!!!",0;
+	query_sql("UPDATE nnfro_rpg SET map_owner = '"+strcharinfo(2)+"', map_owner_id = '"+getcharid(2)+"' WHERE map = '"+$map$[.@i]+"'");
+	end;
+}
+
+konoha,172,72,5	duplicate(mapdomain)	Bases dominadas#2	819
+kiri,279,18,3	duplicate(mapdomain)	Bases dominadas#3	819
+sunagakure,165,254,3	duplicate(mapdomain)	Bases dominadas#4	819
+prt_monk,133,272,5	duplicate(mapdomain)	Bases dominadas#5	819
+
+moc_fild06,264,95,0,0	monster	Base Shinobi	1001,1,1,10800000,"update_nnfro_rpg::OnMapConquisted"
+pay_fild03,140,108,0,0	monster	Base Shinobi	1388,1,1,10800000,"update_nnfro_rpg::OnMapConquisted"
+pay_fild01,52,335,0,0	monster	Base Shinobi	1388,1,1,10800000,"update_nnfro_rpg::OnMapConquisted"
+ein_fild01,95,74,0,0	monster	Base Shinobi	1388,1,1,10800000,"update_nnfro_rpg::OnMapConquisted"

@@ -1,0 +1,52 @@
+-	script	pericianinja	-1,{
+    end;
+//When a Character uses a skill
+
+//PericiaNinja
+
+OnNPCKillEvent:
+
+if (getskilllv(533) == 1) {
+
+if (PericiaNinja != 1) {end;}
+if (skill533 >= 50) {skill 533,2,0; set skill533,0; dispbottom "[Sys] Level up"; end; }
+set skill533,skill533 +1;
+dispbottom "[Jutsu level] Pericia Ninja level 1: "+skill533+" de 50";
+
+end;
+
+}
+
+if (getskilllv(533) == 2) {
+if (PericiaNinja != 1) {end;}
+if (skill533 >= 100) {skill 533,3,0; set skill533,0; dispbottom "[Sys] Level up"; end;}
+set skill533,skill533 +1;
+dispbottom "[Jutsu level] Pericia Ninja level 2: "+skill533+" de 100";
+
+end;
+
+}
+
+if (getskilllv(533) == 3) {
+
+if (PericiaNinja != 1) {end;}
+if (skill533 >= 150) {skill 533,4,0; set skill533,0; dispbottom "[Sys] Level up"; end;}
+set skill533,skill533 +1;
+dispbottom "[Jutsu level] Pericia Ninja level 3: "+skill533+" de 150";
+
+end;
+
+}
+
+if (getskilllv(533) == 4) {
+if (PericiaNinja != 1) {end;}
+if (skill533 >= 200) {skill 533,5,0; set skill533,0; dispbottom "[Sys] Level up"; end;}
+set skill533,skill533 +1;
+dispbottom "[Jutsu level] Pericia Ninja level 4: "+skill533+" de 200";
+
+end;
+
+}
+
+                end;
+            }

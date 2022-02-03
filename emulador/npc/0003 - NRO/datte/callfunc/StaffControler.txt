@@ -1,0 +1,92 @@
+in_hunter,100,90,4	script	Status Dungeons	882,{
+
+if(getgmlevel() < 5) end;
+
+mes "Kages que fizeram (1 = Fez, 0 = Nao Fez):";
+mes "Konoha: "+$KDinfo[4];
+mes "Nevoa: "+$KDinfo[5];
+mes "Nuvem: "+$KDinfo[6];
+mes "Suna: "+$KDinfo[7];
+mes "------------------------------------------";
+mes "Jins que fizeram (5 = Fez, 0~4 = Tentativas):";
+mes "Konoha: "+$JDinfo[8]+" (Treino: "+$jinT_konoha+")";
+mes "Nevoa: "+$JDinfo[9]+" (Treino: "+$jinT_nevoa+")";
+mes "Nuvem: "+$JDinfo[10]+" (Treino: "+$jinT_nuvem+")";
+mes "Suna: "+$JDinfo[11]+" (Treino: "+$jinT_suna+")";
+close;
+}
+
+in_hunter,100,85,4	script	Manager Ryous	882,{
+
+if(getgmlevel() < 99) end;
+
+mes "Konoha: "+$konoha_ryous;
+mes "Nevoa: "+$nevoa_ryous;
+mes "Nuvem: "+$nuvem_ryous;
+mes "Suna: "+$suna_ryous;
+mes "Akatsuki: "+$akatsuki_ryous;
+
+mes "De qual vila gostaria de retirar Ryous?";
+switch(select("Konoha:Nevoa:Nuvem:Suna:Akatsuki")){
+case 1:
+next;
+mes "Quantidade de Ryous a ser retirada?";
+input .@ryous;
+next;
+mes "Gostaria de retirar "+.@ryous+" da Vila Konoha?";
+if(select("Sim:Nao") == 2) close;
+set $konoha_ryous, $konoha_ryous - .@ryous;
+mes "Penalidade aplicada com sucesso";
+close;
+end;
+
+case 2:
+next;
+mes "Quantidade de Ryous a ser retirada?";
+input .@ryous;
+next;
+mes "Gostaria de retirar "+.@ryous+" da Vila Nevoa?";
+if(select("Sim:Nao") == 2) close;
+set $nevoa_ryous, $nevoa_ryous - .@ryous;
+mes "Penalidade aplicada com sucesso";
+close;
+end;
+
+case 3:
+next;
+mes "Quantidade de Ryous a ser retirada?";
+input .@ryous;
+next;
+mes "Gostaria de retirar "+.@ryous+" da Vila Nuvem?";
+if(select("Sim:Nao") == 2) close;
+set $nuvem_ryous, $nuvem_ryous - .@ryous;
+mes "Penalidade aplicada com sucesso";
+close;
+end;
+
+case 4:
+next;
+mes "Quantidade de Ryous a ser retirada?";
+input .@ryous;
+next;
+mes "Gostaria de retirar "+.@ryous+" da Vila Suna?";
+if(select("Sim:Nao") == 2) close;
+set $suna_ryous, $suna_ryous - .@ryous;
+mes "Penalidade aplicada com sucesso";
+close;
+end;
+
+case 5:
+next;
+mes "Quantidade de Ryous a ser retirada?";
+input .@ryous;
+next;
+mes "Gostaria de retirar "+.@ryous+" da Akatsuki?";
+if(select("Sim:Nao") == 2) close;
+set $akatsuki_ryous, $akatsuki_ryous - .@ryous;
+mes "Penalidade aplicada com sucesso";
+close;
+end;
+}
+end;
+}

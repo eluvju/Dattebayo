@@ -1,0 +1,113 @@
+-	script	on_PC_UseSkillf01j	-1,{
+    end;
+//When a Character uses a skill
+
+//Mahi
+
+onPcUseSkillEvent:
+
+           if(lskillid == 30) {
+
+
+if (getskilllv(30) == 1) {
+
+if (Mahi != 1) {end;}
+if (skill30 >= 50) {skill 30,2,0; set skill30,0; dispbottom "[Sys] Level up"; end; }
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 1: "+skill30+" de 50";
+
+end;
+
+}
+
+if (getskilllv(30) == 2) {
+if (Mahi != 1) {end;}
+if (skill30 >= 100) {skill 30,3,0; set skill30,0; dispbottom "[Sys] Level up"; end;}
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 2: "+skill30+" de 100";
+
+end;
+
+}
+
+if (getskilllv(30) == 3) {
+
+if (Mahi != 1) {end;}
+if(gen_intermediario != 1) {end;}
+if (skill30 >= 150) {skill 30,4,0; set skill30,0; dispbottom "[Sys] Level up"; end;}
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 3: "+skill30+" de 150";
+
+end;
+
+}
+
+if (getskilllv(30) == 4) {
+if (Mahi != 1) {end;}
+if(gen_intermediario != 1) {end;}
+if (skill30 >= 250) {skill 30,5,0; set skill30,0; dispbottom "[Sys] Level up"; end;}
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 4: "+skill30+" de 250";
+
+end;
+
+}
+
+if (getskilllv(30) == 5) {
+if (Mahi != 1) {end;}
+if(gen_avan != 1) {end;}
+if (skill30 >= 300) {skill 30,6,0; set skill30,0; dispbottom "[Sys] Level up"; end;}
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 5: "+skill30+" de 300";
+
+end;
+
+}
+
+if (getskilllv(30) == 6) {
+if (Mahi != 1) {end;}
+if(gen_avan != 1) {end;}
+if (skill30 >= 400) {skill 30,7,0; set skill30,0; dispbottom "[Sys] Level up"; end;}
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 6: "+skill30+" de 400";
+
+end;
+
+}
+
+if (getskilllv(30) == 7) {
+if (Mahi != 1) {end;}
+if(gen_avan != 1) {end;}
+if (skill30 >= 500) {skill 30,8,0; set skill30,0; dispbottom "[Sys] Level up"; end;}
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 7: "+skill30+" de 500";
+
+end;
+
+}
+
+if (getskilllv(30) == 8) {
+if (Mahi != 1) {end;}
+if(gen_avan != 1) {end;}
+if (skill30 >= 700) {skill 30,9,0; set skill30,0; dispbottom "[Sys] Level up"; end;}
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 8: "+skill30+" de 700";
+
+end;
+
+}
+
+if (getskilllv(30) == 9) {
+if (Mahi != 1) {end;}
+if(gen_avan != 1) {end;}
+if (skill30 >= 1000) {skill 30,10,0; set skill30,0; dispbottom "[Sys] Level up"; end;}
+set skill30,skill30 +1;
+dispbottom "[Jutsu level] Mahi no Jutsu level 9: "+skill30+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

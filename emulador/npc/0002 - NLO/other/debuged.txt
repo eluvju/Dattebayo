@@ -1,0 +1,5 @@
+sec_in02,143,176,5	script	DebugEd	99,{
+mes "Debug";
+set $EEinfo[1], 0;
+close;
+}

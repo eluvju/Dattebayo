@@ -1,0 +1,54 @@
+sec_in01,176,180,5	script	IryoNin	107,{
+	if(iryonin == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Tsunade^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou uma dos Sannin Lendários de Konohagakure, você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Tsunade^000000]";
+	mes "Os usarios de IryoNin são ninjas que se especializam no tratamento médico e uso de técnicas médicas para curar os outros";
+	next;
+	mes "[^00FF40Tsunade^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",IryoNin2,"- Não",nao;
+	close;
+
+	
+	
+	IryoNin2:
+
+next;
+
+	mes "[^00FF40Tsunade^000000]";
+
+mes "O ninja médico é treinado para evitar se machucar de alguma forma, pela razão de que, se eles estão feridos, então não haveria ninguém para curar os outros membros de sua equipe.";
+
+next;
+
+	mes "[^00FF40Tsunade^000000]";
+
+mes "Seus poderes são perfeitos para pessoas que utilizam ^FF8C00Ninjutsu^000000 e ^006400Medicina^000000";
+
+next;
+
+set pegoukg,1;
+
+set iryonin,1;
+
+	mes "[^00FF40Tsunade^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

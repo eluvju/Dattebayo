@@ -1,0 +1,11 @@
+-	script	xxx	-1,{
+OnPCLoginEvent:
+
+if (BaseLevel < 300) {
+announce "Bem-Vindo ao Naruto Earth RPG Novato - [ "+strcharinfo(0)+" ], caso precise tirar suas duvidas e aprender mais sobre o jogo, vá até nossa academia, e caso esteja perdido, use o @retorno para retornar para sua vila!",bc_blue|bc_self;
+}else{
+announce "Bem-Vindo ao Naruto Earth RPG Novato - [ "+strcharinfo(0)+" ], caso precise tirar suas duvidas e aprender mais sobre o jogo, vá até nossa academia, e caso esteja perdido, use o @retorno para retornar para sua vila!",bc_blue|bc_self;
+}
+end;
+close2;
+}

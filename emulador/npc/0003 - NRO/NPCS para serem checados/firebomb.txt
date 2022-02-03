@@ -1,0 +1,121 @@
+//===============Don't edit===================//
+prontera,30,39,4	script	Fire1	1692,{}
+prontera,30,39,4	script	Fire2	1692,{}
+prontera,30,39,4	script	Fire3	1692,{}
+prontera,30,39,4	script	Fire4	1692,{}
+prontera,30,39,4	script	Fire5	1692,{}
+prontera,30,39,4	script	Fire6	1692,{}
+prontera,30,39,4	script	Fire7	1692,{}
+prontera,30,39,4	script	Fire8	1692,{}
+prontera,30,39,4	script	Fire9	1692,{}
+prontera,30,39,4	script	Fire10	1692,{}
+prontera,30,39,4	script	Fire11	1692,{}
+prontera,30,39,4	script	Fire12	1692,{}
+prontera,30,39,4	script	Fire13	1692,{}
+prontera,30,39,4	script	Fire14	1692,{}
+prontera,30,39,4	script	Fire15	1692,{}
+prontera,30,39,4	script	Fire16	1692,{}
+prontera,30,39,4	script	Fire17	1692,{}
+prontera,30,39,4	script	Fire18	1692,{}
+prontera,30,39,4	script	Fire19	1692,{}
+prontera,30,39,4	script	Fire20	1692,{}
+prontera,30,39,4	script	Fire21	1692,{}
+prontera,30,39,4	script	Fire22	1692,{}
+prontera,30,39,4	script	Fire23	1692,{}
+prontera,30,39,4	script	Fire24	1692,{}
+prontera,30,39,4	script	Fire25	1692,{}
+prontera,30,39,4	script	Fire26	1692,{}
+prontera,30,39,4	script	Fire27	1692,{}
+prontera,30,39,4	script	Fire28	1692,{}
+prontera,30,39,4	script	Fire29	1692,{}
+prontera,30,39,4	script	Fire30	1692,{}
+prontera,30,39,4	script	Fire31	1692,{}
+prontera,30,39,4	script	Fire32	1692,{}
+prontera,30,39,4	script	Fire33	1692,{}
+prontera,30,39,4	script	Fire34	1692,{}
+prontera,30,39,4	script	Fire35	1692,{}
+prontera,30,39,4	script	Fire36	1692,{}
+prontera,30,39,4	script	Fire37	1692,{}
+prontera,30,39,4	script	Fire38	1692,{}
+prontera,30,39,4	script	Fire39	1692,{}
+prontera,30,39,4	script	Fire40	1692,{}
+prontera,30,39,4	script	Fire41	1692,{}
+prontera,30,39,4	script	Fire42	1692,{}
+prontera,30,39,4	script	Fire43	1692,{}
+prontera,30,39,4	script	Fire44	1692,{}
+prontera,30,39,4	script	Fire45	1692,{}
+prontera,30,39,4	script	Fire46	1692,{}
+prontera,30,39,4	script	Fire47	1692,{}
+prontera,30,39,4	script	Fire48	1692,{}
+prontera,30,39,4	script	Fire49	1692,{}
+prontera,30,39,4	script	Fire50	1692,{}
+//===============Don't edit===================//
+
+-	script	FirebombsEvent	-1,{
+OnInit:
+	if( !getusers(1) ){
+		while( $PlayerNumberM ){
+			setd "$RecordName"+(set($PlayerNumberM,$PlayerNumberM-1)+1)+"$","";
+		}
+	}
+	setarray $@F[0],1,-1,0;
+	set $@i,110000000;
+	end;
+
+OnPCLoginEvent:
+	setd "$RecordName"+set(@AIDNumberM,set($PlayerNumberM,$PlayerNumberM+1))+"$",strcharinfo(0);
+	end;
+
+OnPCLogoutEvent:
+	setd "$RecordName"+@AIDNumberM+"$",getd("$RecordName"+(set(.@AIDNumberM,set($PlayerNumberM,$PlayerNumberM-1)+1))+"$");
+	attachrid getcharid(3,getd("$RecordName"+@AIDNumberM+"$"));
+	setd "$RecordName"+@AIDNumberM+"$","";
+	set @AIDNumberM,.@AIDNumberM;
+	end;
+}
+
+function	script	Firebombs	{
+	if( @IDD ){ announce "Freeze",bc_all; end; }
+	set IFF,rand(50);
+	if( getd("$@IFF"+IFF) ){ announce "Freeze 2",bc_all; end; }
+	setd "$@IFF"+IFF,1;
+	set @IDD,1;
+	set .@EAID,getcharid(3);
+	getmapxy(.@M$,.@X,.@Y,0);
+	while( .@t < 10 ){
+		set .@t,.@t+1;
+		misceffect 589;
+		sleep2 500;
+	}
+	misceffect 97;
+	sleep2 500;
+	getmapxy(.@M2$,.@X2,.@Y2,0);
+	if( .@M$ != .@M2$ ){ announce "[ System ] : You are not in the same map",bc_self; goto eend; }
+	if( !pow(.@X2-.@X,2) && !pow(.@Y2-.@Y,2) ){ announce "[ System ] : You need to move for system get a vector",bc_self; goto eend; }
+	set .@WX,( .@X2-.@X != 0 ? compare(.@X2-.@X,"-") : 2 );
+	set .@WY,( .@Y2-.@Y != 0 ? compare(.@Y2-.@Y,"-") : 2 );
+	while( .@e < 10 ){
+		set .@ex,.@X2+$@F[.@WX]*(.@e+1);
+		set .@ey,.@Y2+$@F[.@WY]*(.@e+1);
+		for(set .@ASDFG,0; .@ASDFG<2; set .@ASDFG,.@ASDFG+1){
+		sleep2 1;
+		if( checkcell(.@M2$,.@ex+$@F[.@WX]*(.@e+2*.@ASDFG),.@ey+$@F[.@WY]*(.@e+2*.@ASDFG),cell_chkpass) ){ unitwarp $@i+IFF,.@M2$,.@ex+$@F[.@WX]*(.@e+2*.@ASDFG),.@ey+$@F[.@WY]*(.@e+2*.@ASDFG); } }
+		
+		getmapxy(.@EM$,.@EX,.@EY,0,getd("$RecordName"+.@e+"$"));
+		if( .@EM$ == .@M2$ )&&( pow(.@ex-.@EX,2) <= 4 && pow(.@ey-.@EY,2) <= 4 )&&( getcharid(3,getd("$RecordName"+.@e+"$")) !=  .@EAID )
+			&&( getcharid(3,getd("$RecordName"+.@e+"$"))  ){
+			attachrid( getcharid(3,getd("$RecordName"+.@e+"$")) );
+			misceffect 183;
+			heal -rand(1000),0;
+			unitwalk getcharid(3),.@EX+rand(1,3),.@EY+rand(1,3);
+			attachrid .@EAID;
+		}
+		sleep2 100;
+		set .@e,.@e+1;
+	}
+eend:
+	unitwarp $@i+IFF,"prontera",30,39;
+	setd "$@IFF"+IFF,0;
+	set @IDD,0;
+end;
+}

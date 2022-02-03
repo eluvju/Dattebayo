@@ -1,0 +1,76 @@
+konoha,24,267,5	script	Yayoi::equipe_um	831,{
+
+if (checkquest(2015) == 1) goto L_go;
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá! Sou Yayoi, pelo que posso observar, você veio de longe a procura da arma que posso lhe oferecer.";
+next;
+mes "O Bastão Fino, é uma arma muito útil, que pode ser utilizado para lutar contra varios lutadores diferentes, sendo forte, rapido e leve.";
+next;
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Bastão Fino
+//========================================================================
+
+L_SS:
+next;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Escama brilhante.";
+mes "- Obter 25x Casca.";
+mes "- Obter 50x Garleta.";
+mes "- Matar 50 Bikouchuu";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2015;
+set quest_equipe_um,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(equipe_mobs_um < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(954) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(935) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(910) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Ah, você já retornou, rs! Bem aqui está o seu Bastão Fino.";
+completequest 2015;
+erasequest 2015;
+set quest_equipe_um,0;
+set equipe_mobs_um,0;
+set galinha1,0;
+set galinha2,0;
+set galinha3,0;
+set vaca1,0;
+set vaca2,0;
+set vaca3,0;
+set galinhafeed,0;
+set vacafeed,0;
+delitem 954,25;
+delitem 935,25;
+delitem 910,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1357,1;
+close;
+
+L_no:
+close;
+
+
+}
+
+-	script	equipe#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1051 && quest_equipe_um == 1) {set equipe_mobs_um,equipe_mobs_um +1; announce "[Quest de equipamento] Você já derrotou "+equipe_mobs_um+" / 50 Bikouchuu",bc_blue|bc_self; end;}
+
+}
+
+areia,30,243,5	duplicate(equipe_um)	Yayoi#1	831
+kiri,307,38,5	duplicate(equipe_um)	Yayoi#2	831
+nuvem,62,280,5	duplicate(equipe_um)	Yayoi#3	831

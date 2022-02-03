@@ -1,0 +1,14 @@
+//===== rAthena Script =======================================
+//= Mapflag: Battleground map setting.
+//===== By: ==================================================
+//= Epoque
+//===== Current Version: =====================================
+//= 1.0a
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: ========================================= 
+//= Defines a Battleground map.
+//= Additional parameter '2' shows scoreboard.
+//===== Additional Comments: ================================= 
+//= 1.0 Initial script.
+//============================================================

@@ -1,0 +1,113 @@
+-	script	on_PC_UseSkilld04	-1,{
+    end;
+//When a Character uses a skill
+
+//Suna no Yomi
+
+onPcUseSkillEvent:
+
+           if(lskillid == 484) {
+
+
+if (getskilllv(484) == 1) {
+
+if (YOMI != 1) {end;}
+if (skill484 >= 50) {skill 484,2,0; set skill484,0; dispbottom "[Sys] Level up"; end; }
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 1: "+skill484+" de 50";
+
+end;
+
+}
+
+if (getskilllv(484) == 2) {
+
+if (YOMI != 1) {end;}
+if (skill484 >= 100) {skill 484,3,0; set skill484,0; dispbottom "[Sys] Level up"; end; }
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 2: "+skill484+" de 100";
+
+end;
+
+}
+
+if (getskilllv(484) == 3) {
+if (nin_intermediario != 1) {end;}
+if (skill484 >= 150) {skill 484,4,0; set skill484,0; dispbottom "[Sys] Level up"; end;}
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 3: "+skill484+" de 150";
+
+end;
+
+}
+
+if (getskilllv(484) == 4) {
+
+if (nin_intermediario != 1) {end;}
+if (skill484 >= 200) {skill 484,5,0; set skill484,0; dispbottom "[Sys] Level up"; end;}
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 4: "+skill484+" de 200";
+
+end;
+
+}
+
+if (getskilllv(484) == 5) {
+
+if (nin_intermediario != 1) {end;}
+if (skill484 >= 250) {skill 484,6,0; set skill484,0; dispbottom "[Sys] Level up"; end;}
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 5: "+skill484+" de 250";
+
+end;
+
+}
+
+if (getskilllv(484) == 6) {
+
+if (nin_intermediario != 1) {end;}
+if (skill484 >= 300) {skill 484,7,0; set skill484,0; dispbottom "[Sys] Level up"; end;}
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 6: "+skill484+" de 300";
+
+end;
+
+}
+
+if (getskilllv(484) == 7) {
+
+if (nin_avan != 1) {end;}
+if (skill484 >= 500) {skill 484,8,0; set skill484,0; dispbottom "[Sys] Level up"; end;}
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 7: "+skill484+" de 500";
+
+end;
+
+}
+
+if (getskilllv(484) == 8) {
+
+if (nin_avan != 1) {end;}
+if (skill484 >= 700) {skill 484,9,0; set skill484,0; dispbottom "[Sys] Level up"; end;}
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 8: "+skill484+" de 700";
+
+end;
+
+}
+
+if (getskilllv(484) == 9) {
+
+if (nin_avan != 1) {end;}
+if (skill484 >= 1000) {skill 484,10,0; set skill484,0; dispbottom "[Sys] Level up"; end;}
+set skill484,skill484 +1;
+dispbottom "[Jutsu level] Suna no Yomi level 9: "+skill484+" de 1000";
+
+end;
+
+}
+
+}
+
+                end;
+            }    

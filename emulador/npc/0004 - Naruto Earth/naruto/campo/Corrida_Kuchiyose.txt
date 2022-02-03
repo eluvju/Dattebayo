@@ -1,0 +1,481 @@
+
+//===== brAthena ====================================================
+
+//= Poring Race ( Corrida dos Porings )
+//===== Criador e Tradutor: =========================================
+//= Zell_ff8 e Thor
+//===== Versão: =====================================================
+//= 1.0
+//==================================================================
+
+p_track01	mapflag	nobranch
+p_track01	mapflag	noicewall
+p_track01	mapflag	nomemo
+p_track01	mapflag	noreturn
+p_track01	mapflag	noteleport
+p_track01	mapflag	nowarpto
+p_track01	mapflag	nowarp
+p_track01	mapflag	pvp	off
+p_track01	mapflag	nosave
+
+-	script	PraceAnnouncer	-1,{
+
+
+OnClock1425:
+OnClock1825:
+OnClock2025:
+	announce "[Corrida Kuchiyose]: Evento irá começar em 5 minutos.",0;
+	end;
+	
+OnClock1429:
+OnClock1829:
+OnClock2029:
+	announce "[Corrida Kuchiyose]: Evento irá começar em 1 minutos.",0;
+	end;
+	
+OnClock1430:
+OnClock1830:
+OnClock2030:
+	set $accessPrace, 1;
+	announce "[Corrida Kuchiyose]: Evento Liberado.",0;
+	initnpctimer;
+	end;
+	
+OnPraceEnd:
+	set $accessPrace, 0;
+	announce "[Corrida Kuchiyose]: A Corrida Kuchiyose terminou, Parabéns aos vencedores! Tente na próxima.",0;
+	stopnpctimer;
+	end;
+
+OnTimer600000:
+	set $accessPrace, 0;
+	announce "[Corrida Kuchiyose]: A Corrida Kuchiyose não teve apostas e terminou! Tente na próxima.",0;
+	stopnpctimer;
+
+}
+
+job_monk,243,116,3	script	Corrida Kuchiyose::Prace	882,{
+
+if( $accessPrace == 0) {
+	mes "[Corrida Kuchiyose]";
+	mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+	switch(select("Entrar.:Informação."))
+	{
+		case 1:
+			next;
+			mes "[Corrida Kuchiyose]";
+			mes "Corrida Kuchiyose já acabou.";
+			close;
+		
+		case 2:
+			next;
+			mes "[Corrida Kuchiyose]";
+			mes "Requerimento: Zeny";
+			mes "Premiação: 1 Ticket de Evento";
+			mes "Dia - Horário ";
+			mes "Todos os dias - 14:30, 18:30, 20:30";
+			close;	
+	
+	}
+OnInit:
+	waitingroom "Corrida Kuchiyose",0;
+	end;
+}
+
+	mes "[Corrida Kuchiyose]";
+	mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+	menu "Entrar",-,"Informação",L_no;
+		if( $accessPrace == 0) {
+			mes "[Corrida Kuchiyose]";
+			mes "Obaa, então vou teleportar você até a corrida.";
+			mes "Ahh, já ia me esquecendo...";
+			mes "^0000ffBoa Sorte^000000";
+			close;
+		}
+		close2;
+		warp "p_track01",52,41;
+		end;
+		
+		L_no:
+			mes "[Corrida Kuchiyose]";
+			mes "Requerimento: Zeny";
+			mes "Premiação: 1 Sacola Zeny 3kk";
+			mes "Dia - Horário ";
+			mes "Todos os dias - 14:30, 18:30, 20:30";
+			close;	
+}
+
+
+ //NPC Checker
+-	script	Checker#prace0	-1,{
+end;
+
+OnChequeo:
+
+for(set .@tmp1,0;.@tmp1<(getarraysize($prace_bidders));set .@tmp1,.@tmp1+1) {
+	if(attachrid($prace_bidders[.@tmp1])) {
+		if( prace_playing != 1) end;
+		dispbottom "O vencedor é "+$prace_winner$+" e você apostou em "+prace_winner$+".";
+			if( prace_winner$ == $prace_winner$ && prace_winner$ != "") {
+				dispbottom "Você ganhou!";
+				mapannounce "p_track01"," Parabéns! "+strcharinfo(0)+" ganhou!",1,0xFFAB54;
+				getitem 730,15;
+				emotion 21,1;
+			} else
+				dispbottom "Você perdeu."; emotion 28,1;
+				set prace_winner$,"";
+				set prace_playing,0;
+			} //else { announce .@tmp1+" || "+$prace_bidders[.@tmp1],bc_all; } //debug
+		}
+		for( set .@tmp1,0; .@tmp1 < (getarraysize( $prace_bidders )); set .@tmp1,.@tmp1 + 1 ) {
+		set $prace_bidders[.@tmp1],0;
+	}
+}
+
+//NPC Principal 765
+p_track01,58,41,3	script	Apostas#prace0	877,{
+
+if($prace_random < 1) callsub OnInit;
+	if( prace_playing == 1) {
+		mes "[Gerente da Corrida]";
+		mes "Você escolheu ^00bb00"+prace_winner$+"^000000";
+		close;
+	}
+
+getmapxy(.@mapname$,.@x1,.@y,1,"Girino#prace1");
+getmapxy(.@mapname$,.@x2,.@y,1,"Filhote de Katsuyo#prace2");
+getmapxy(.@mapname$,.@x3,.@y,1,"Corvo#prace3");
+getmapxy(.@mapname$,.@x4,.@y,1,"Onba#prace4");
+getmapxy(.@mapname$,.@x5,.@y,1,"Akino#prace5");
+getmapxy(.@mapname$,.@x6,.@y,1,"Bikouchuu#prace6");
+
+	if (.@x1 != 58 || .@x2 != 58 || .@x3 != 58 || .@x4 != 58 || .@x5 != 58 || .@x6 != 58) {
+		mes "[Gerente da Corrida]";
+		mes "Há uma corrida em andamento...";
+		close;
+	}
+
+set .@prace_zeny,50000;
+mes "[Gerente da Corrida]";
+mes "Escolha a kuchiyose quer apostar:";
+mes "Custará "+.@prace_zeny+" Zeny.";
+//next;
+	switch( select("Girino","Filhote de Katsuyo","Corvo","Onba","Akino","Bikouchuu","Nenhum.") ) {
+	
+		case 1: set .@thining$,"Girino"; break;
+		case 2: set .@thining$,"Filhote de Katsuyo"; break;
+		case 3: set .@thining$,"Corvo"; break;
+		case 4: set .@thining$,"Onba"; break;
+		case 5: set .@thining$,"Akino"; break;
+		case 6: set .@thining$,"Bikouchuu"; break;
+		
+		case 7:
+			mes "[Gerente da Corrida]";
+			mes "Adeus.";
+			close;
+	}
+
+getmapxy(.@mapname$,.@x1,.@y,1,"Girino#prace1");
+getmapxy(.@mapname$,.@x2,.@y,1,"Filhote de Katsuyo#prace2");
+getmapxy(.@mapname$,.@x3,.@y,1,"Corvo#prace3");
+getmapxy(.@mapname$,.@x4,.@y,1,"Onba#prace4");
+getmapxy(.@mapname$,.@x5,.@y,1,"Akino#prace5");
+getmapxy(.@mapname$,.@x6,.@y,1,"Bikouchuu#prace6");
+
+if (.@x1 != 58 || .@x2 != 58 || .@x3 != 58 || .@x4 != 58 || .@x5 != 58 || .@x6 != 58) {
+mes "[Gerente da Corrida]";
+mes "...";
+mes "...";
+mes "Oks! vamos lá...";
+close;
+}
+
+if( Zeny < .@prace_zeny) {
+set prace_winner$,"607";
+mes "[Gerente da Corrida]";
+mes "Você não tem Zeny suficiente.";
+close;
+}
+
+set Zeny,Zeny - .@prace_zeny;
+set prace_winner$,.@thining$;
+set $prace_bets,$prace_bets+1;
+set $prace_bidders[$prace_bets],getcharid(3);
+set prace_playing,1;
+
+mes "[Gerente da Corrida]";
+mes "Eu Tenho "+$prace_bets+" apostas.";
+setnpctimer 60000;
+startnpctimer;
+npctalk "Eu tenho "+$prace_bets+" apostas!";
+close;
+
+Start1:
+	setnpctimer 0;
+	startnpctimer;
+	end;
+
+StartRace:
+	donpcevent "Corvo#prace3::OnRace";
+	donpcevent "Girino#prace1::OnRace";
+	donpcevent "Bikouchuu#prace6::OnRace";
+	donpcevent "Filhote de Katsuyo#prace2::OnRace";
+	donpcevent "Akino#prace5::OnRace";
+	donpcevent "Onba#prace4::OnRace";
+	end;
+
+OnStopRace:
+	donpcevent "Girino#prace1::OnStop";
+	donpcevent "Filhote de Katsuyo#prace2::OnStop";
+	donpcevent "Corvo#prace3::OnStop";
+	donpcevent "Onba#prace4::OnStop";
+	donpcevent "Akino#prace5::OnStop";
+	donpcevent "Bikouchuu#prace6::OnStop";
+	if($prace_winner$!="") callsub WinRace;
+	end;
+
+ReturnRace:
+	donpcevent "Girino#prace1::OnReturn";
+	donpcevent "Filhote de Katsuyo#prace2::OnReturn";
+	donpcevent "Corvo#prace3::OnReturn";
+	donpcevent "Onba#prace4::OnReturn";
+	donpcevent "Akino#prace5::OnReturn";
+	donpcevent "Bikouchuu#prace6::OnReturn";
+	end;
+
+WinRace:
+	mapannounce "p_track01","O vencedor é "+$prace_winner$,1,0xFFAB54;
+	donpcevent "Checker#prace0::OnChequeo";
+	sleep2 10000;
+	mapwarp "p_track01","treinamento",86,130;
+	set $accessPrace, 0;
+	setnpctimer 30000;
+	startnpctimer;
+	donpcevent "PraceAnnouncer::OnPraceEnd";
+	end;
+
+OnInit:
+	set $prace_random,70;
+	set $prace_random2,600;
+	set $prace_winner$,"";
+	set $prace_bets,0;
+	set $prace_bidders,0;
+	end;
+
+OnTimer500:
+	mapannounce "p_track01","Corrida Kuchiyose, em sua marca...",1,0xFFAB54;
+	end;
+
+OnTimer3000:
+	mapannounce "p_track01","...3...",1,0xFFAB54;
+	end;
+
+OnTimer4000:
+	mapannounce "p_track01","...2...",1,0xFFAB54;
+	end;
+
+OnTimer5000:
+	mapannounce "p_track01","...1...",1,0xFFAB54;
+	callsub StartRace;
+	end;
+
+OnTimer6000:
+	stopnpctimer;
+	mapannounce "p_track01","Gooo!!!",1,0xFFAB54;
+	end;
+
+OnTimer35000:
+	set $prace_winner$,"";
+	set $prace_bets,0;
+	stopnpctimer;
+	callsub ReturnRace;
+	end;
+
+OnTimer90000:
+	npctalk "Eu tenho "+$prace_bets+" apostas. alguem mais vai apostar?";
+	end;
+
+OnTimer110000:
+	npctalk "A corrida vai começar em breve. Última chance de Apostar.";
+	end;
+
+OnTimer120000:
+	goto Start1;
+	end;
+
+}
+
+//-----------------------------------
+// Racer NPC's
+//-----------------------------------
+
+p_track01,58,38,2	script	Girino#prace1	1034,{
+end;
+
+OnRace:
+	initnpctimer;
+	startnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnReturn:
+	npcwalkto 58,38;
+	end;
+
+OnTimer1100:
+	getmapxy(.@mapname$,.@x,.@y,1,"Girino#prace1");
+	if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+	setnpctimer rand($prace_random2);
+	startnpctimer;
+	if ((.@x-1) == 29) {
+		set $prace_winner$,"Girino";
+		emotion 29;
+		donpcevent "Apostas#prace0::OnStopRace";
+	}
+	end;
+}
+
+p_track01,58,36,2	script	Filhote de Katsuyo#prace2	1783,{
+end;
+
+OnRace:
+	initnpctimer;
+	startnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnReturn:
+	npcwalkto 58,36;
+	end;
+
+OnTimer1100:
+	getmapxy(.@mapname$,.@x,.@y,1,"Filhote de Katsuyo#prace2");
+	if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+	setnpctimer rand($prace_random2);startnpctimer;
+		if ((.@x-1) == 29) {
+			set $prace_winner$,"Filhote de Katsuyo";
+			emotion 29;
+			donpcevent "Apostas#prace0::OnStopRace";
+		}
+		end;
+}
+
+p_track01,58,34,2	script	Corvo#prace3	1037,{
+end;
+
+OnRace:
+	initnpctimer;
+	startnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnReturn:
+	npcwalkto 58,34;
+	end;
+
+OnTimer1100:
+	getmapxy(.@mapname$,.@x,.@y,1,"Corvo#prace3");
+	if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+	setnpctimer rand($prace_random2);startnpctimer;
+		if ((.@x-1) == 29) {
+			set $prace_winner$,"Corvo";
+			emotion 29;
+			donpcevent "Apostas#prace0::OnStopRace";
+		}
+		end;
+}
+
+p_track01,58,32,2	script	Onba#prace4	1214,{
+end;
+
+OnRace:
+initnpctimer;
+startnpctimer;
+end;
+
+OnStop:
+stopnpctimer;
+end;
+
+OnReturn:
+npcwalkto 58,32;
+end;
+
+OnTimer1100:
+	getmapxy(.@mapname$,.@x,.@y,1,"Onba#prace4");
+	if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+	setnpctimer rand($prace_random2);startnpctimer;
+	if ((.@x-1) == 29) {
+		set $prace_winner$,"Onba";
+		emotion 29;
+		donpcevent "Apostas#prace0::OnStopRace";
+	}
+	end;
+}
+
+ 
+
+p_track01,58,30,2	script	Akino#prace5	1212,{
+end;
+
+OnRace:
+initnpctimer;
+startnpctimer;
+end;
+
+OnStop:
+stopnpctimer;
+end;
+
+OnReturn:
+npcwalkto 58,30;
+end;
+
+OnTimer1100:
+	getmapxy( .@mapname$,.@x,.@y,1,"Akino#prace5");
+	if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+	setnpctimer rand($prace_random2);startnpctimer;
+	if ((.@x-1) == 29) {
+		set $prace_winner$,"Akino";
+		emotion 29;
+		donpcevent "Apostas#prace0::OnStopRace";
+	}
+	end;
+}
+
+p_track01,58,28,2	script	Bikouchuu#prace6	1051,{
+end;
+
+OnRace:
+	initnpctimer;
+	startnpctimer;
+	end;
+
+OnStop:
+	stopnpctimer;
+	end;
+
+OnReturn:
+	npcwalkto 58,28;
+	end;
+
+OnTimer1100:
+	getmapxy(.@mapname$,.@x,.@y,1,"Bikouchuu#prace6");
+	if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+	setnpctimer rand($prace_random2);startnpctimer;
+	if ((.@x-1) == 29) {
+		set $prace_winner$,"Bikouchuu";
+		emotion 29;
+		donpcevent "Apostas#prace0::OnStopRace";
+	}
+	end;
+}

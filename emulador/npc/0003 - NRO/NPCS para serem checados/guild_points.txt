@@ -1,0 +1,23 @@
+function	WoE_Extension	{
+
+
+        // SQL database creation
+        query_sql "CREATE TABLE IF NOT EXISTS `woe_extension`(`guild_id` int(11) unsigned NOT NULL,`guild_points` smallint(6) unsigned NOT NULL default '0')";
+
+        set .@TempGuild_id, getcharid(2);
+        query_sql("SELECT guild_points FROM woe_extension WHERE guild_id="+.@TempGuild_id, .@TempGuild_Points);
+
+        if ( .@TempGuild_id != 0 && .@TempGuild_Points == 0 ) {// guild not listed yet
+                set .@TempGuild_Points, .@TempGuild_Points + 1;
+                query_sql "INSERT INTO woe_extension (guild_id, guild_points) VALUES ("+.@TempGuild_id+","+.@TempGuild_Points+")";
+                announce "Guild ["+strcharinfo(2)+"] has just added One [1] WoE Points by conquering a Castle and was  successfully accomplished by ["+strcharinfo(0)+"] !",bc_all;
+                }
+
+        if ( .@TempGuild_id != 0 && .@TempGuild_Points >= 1 ) { // guild is listed
+                set .@TempGuild_Points, .@TempGuild_Points + 1;
+                query_sql("UPDATE woe_extension SET guild_points="+.@TempGuild_Points+" WHERE guild_id="+.@TempGuild_id);
+                announce "Guild ["+strcharinfo(2)+"] has just added another One [1] WoE Points by conquering a Castle and was successfully accomplishedby ["+strcharinfo(0)+"] with a running Guild Conqueror Points of "+.@TempGuild_Points+" !",bc_all;
+        }
+        return;
+
+}

@@ -1,0 +1,71 @@
+konoha3,284,215,5	script	Minerador Chefe::pro_min	59,{
+
+if (jatemsub == 1) goto L_no;
+if(mineirador == 1) goto L_temprofissao;
+if (checkquest(2032) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Hey, você que é o ninja que veio trabalhar conosco?";
+menu "É... tá, sou eu",L_SS,"Não...",L_no;
+//========================================================================
+//	Lenhador
+//========================================================================
+
+L_SS:
+next;
+mes "Ah muito obrigado por vir, agora preciso que você colete alguns itens e faça umas outras coisas para que eu possa fazer as armas que o vendedor de armas me pediu";
+next;
+mes "Aqui está a lista de tarefas:";
+next;
+mes "- Obter 60x Shuriken Despedaçado."; //7156
+mes "- Obter 30x Escama Brilhante."; //954
+mes "- Obter 60x Escama de Cobra."; //926
+mes "- Obter 1x Pele de Verme."; //955
+mes "- Matar 100x Genin"; //1656
+setquest 2032;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2032,hunting) != 2) {mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(7156) < 60) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(954) < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(926) < 60) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(955) < 1) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Ah, você já retornou, rs! Ótimo, aqui estão alguns itens pra você começar a vida de mineiração.";
+next;
+mes "Você agora é um minerador";
+completequest 2032;
+delitem 7156,60;
+delitem 954,30;
+delitem 926,60;
+delitem 955,1;
+getitem 1452,1;
+getitem 5031,1;
+set mineirador,1;
+set jatemsub,1;
+announce "[Profissão] "+strcharinfo(0)+" completou a quest de minerador",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Bem-vindo de volta, está precisando de algo?";
+menu "Não",L_no,"Quero receber outra picareta",luva;
+
+luva:
+if (countitem(1452) >= 1) {mes "Você não precisa de outra picareta"; close;}
+mes "Aqui está";
+getitem 1452,1;
+close;
+
+}
+
+
+sunagakure,300,250,5	duplicate(pro_min)	Minerador Chefe#1	59,{
+kiri,281,372,5	duplicate(pro_min)	Minerador Chefe#2	59,{
+nuvem,61,245,5	duplicate(pro_min)	Minerador Chefe#3	59,{

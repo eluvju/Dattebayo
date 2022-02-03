@@ -1,0 +1,22 @@
+gl_prison,10,10,5	script	Velocidade Avançada	831,{
+if (limite_avan == 1) {mes "Você já chegou a um treinamento Avançada, esse é o limite"; close;}
+if (vel_avan == 1) {mes "Já não há mais nada que posso lhe ensinar"; close;}
+if (jounin != 1) {mes "Apenas Jounins podem falar comigo"; close;}
+if (WeaponLvl6 < 75) {mes "Você não está pronto pra aprender Velocidade Avançada, é preciso nível 75 de Velocidade"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+if (mestreve_dead != 1) {mes "Você está quase pronto para se tornar um usuário avançado, é preciso antes derrotar o mestre de velocidade"; close;}
+mes "!!, a sua força é enorme, seu chakra é um dos maiores que ja vi!, você é mais do que digno de aprender Velocidade Avançada";
+next;
+mes "Vá em frente, e busque mais poder, seje o melhor shinobi que já existiu, pois agora você é diferenciado, agora você é um shinobi com Velocidade Avançada!";
+set vel_avan,1;
+getitem 7021,1;
+if (countitem(1099) >= 1) {delitem 1099,1;}
+set vel_avan_new,1;
+set limite_avan, limite_avan +1;
+announce "[...] Uma força enorme é sentido em todo o mundo, alguém assim só pode ter Velocidade Avançada!",bc_blue|bc_all;
+close;
+
+}

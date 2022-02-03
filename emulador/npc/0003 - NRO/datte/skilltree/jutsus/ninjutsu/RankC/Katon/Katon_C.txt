@@ -1,0 +1,99 @@
+ve_fild04,104,244,5	script	Haisekishou::katc1	831,{
+if (nin_intermediario != 1) {mes "Você precisa de ninjutsu intermediário para aprender esse jutsu"; close;}
+if(elementokaton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(jounin == 1) goto L_HK;
+//if(chunin != 1) {mes "Você precisa ser Chunin pra aprender esse jutsu"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Katon, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Haisekishou";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_HK,"Agora não",L_no;
+
+//========================================================================
+//	Haisekishou
+//========================================================================
+
+L_HK:
+if (Haisekishou == 1) {next; mes "Você já aprendeu esse jutsu"; close;}
+if (checkquest(1014) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 10x Ouro";
+mes "- Derrotar 100x Genin";
+mes "- Derrotar 50x Chunin";
+setquest 1014;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1014,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(969) < 10) {next; mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 969,10;
+skill 186,1,0;
+completequest 1014;
+set Haisekishou,1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Katon]",0;
+}
+//=========================================================================
+//	Gouryuuka
+//=========================================================================
+gl_dun01,124,266,5	script	Gouryuuka::katc2	831,{
+if (nin_intermediario != 1) {mes "Você precisa de ninjutsu intermediário para aprender esse jutsu"; close;}
+if(elementokaton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+if(jounin == 1) goto L_GJ;
+if(chunin != 1) {mes "Você precisa ser Chunin pra aprender esse jutsu"; close;}
+if (Gouryuuka == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Katon, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Gouryuuka";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_GJ,"Agora não",L_no;
+
+
+L_GJ:
+if (checkquest(1015) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 100x Algemas";
+mes "- Derrotar 200x Chunin";
+mes "- Estudar ninjutsu intermediario.";
+setquest 1015;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1015,hunting) != 2) { next; mes "Você não completou seu treinamento."; close;}
+if (countitem(1098) < 100) {next; mes "Você não completou seu treinamento."; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 1098,100;
+skill 80,1,0;
+set Gouryuuka,1;
+completequest 1015;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Katon]",0;
+}
+
+pay_fild10,35,89,5	duplicate(katc1)	Haisekishou#11	831,{
+mjolnir_08,117,246,5	duplicate(katc1)	Haisekishou#12	831,{
+ein_fild01,153,309,5	duplicate(katc1)	Haisekishou#13	831,{
+
+alde_dun02,106,67,5	duplicate(katc2)	Gouryuuka#11	831,{
+tha_t06,218,194,5	duplicate(katc2)	Gouryuuka#12	831,{
+gl_dun02,32,166,5	duplicate(katc2)	Gouryuuka#13	831,{

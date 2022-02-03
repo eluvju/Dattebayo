@@ -1,0 +1,186 @@
+//------------------------------------------------------------
+//@dicas
+//------------------------------------------------------------
+-	script	atcmd_dicas	-1,{
+    OnInit:
+        bindatcmd("dicas", "atcmd_dicas::OnAtCmd");
+        end;
+        
+    OnAtCmd:
+	
+	mes "Olá ^ff0000"+strcharinfo(0)+"^000000! Essa é uma janela de dicas criada para te ajudar no início do jogo!";
+	next;
+	mes "Que tipo de informação você precisa?";
+	menu "Virei Genin, e agora?",-,"Como evoluir de nível?",nivel,"Já posso fazer missões?",missao,"Consigo equipamentos melhores?",equips,"Como ganho jutsus novos?",jutsus,"Como subir de graduação?",chunin;
+	next;
+	mes "Muito bem, agora que você é Genin, você deve escolher seus treinos e sua Kekkei Genkai! Para maiores informações sobre as mesmas, recomendados você acessa o nosso Fórum, ^ff0000www.narutolegends.com.br/forum^000000";
+	next;
+	mes "Feito isso, você está livre para começar sua jornada no mundo aberto do NLO. Procure a sala do seu Kage, jogue algumas missões Rank E para entender como funciona nossos sistemas. Agora seu principal objetivo é evoluir de nível, ganhar novos jutsus e atingir a graduação Chunin!";
+   	close;
+
+	nivel:
+	next;
+	mes "No NLO a melhor maneira de ganhar nível é derrotando monstros. Ao descer nos Arredores da sua vila, você encontrará os monstros de nível mais baixo para derrotar mais facilmente. É recomendavel utilizar a habilidade Arremessar Shuriken ou então a habilidade inicial de sua Kekkei Genkai.";
+	next;
+	mes "Também é recomendado que antes de sair na jornada para upar, você vá até a Academia e já defina os seus 9 jutsus básicos. O motivo é simples: todas as missões dos jutsus básicos são feitas no campo inicial de cada vila, e assim você já acelera seu processo de evolução! Qualquer dúvida sobre os jutsus, visite o Fórum!";
+	next;
+	mes "Quando você atingir o nível 200, a nossa dica é: comece a fazer as missões Rank D (limite de 12 diárias), assim você pode ganhar níveis e pontos de missão ao mesmo tempo!";
+	close;
+	
+	missao:
+	next;
+	mes "Você pode fazer as missões iniciais rank E desde o nível 1. Nós recomendamos que você faça as missões Rank E apenas 1 vez para entender como funciona os sistemas do jogo, porém foque em chegar ao nível 200 para liberar as missões Rank D.";
+	next;
+	mes "Com as missões Rank D você consegue ganhar níveis matando monstros e pontos de missão ao mesmo tempo, acelerando sua evolução no jogo. São 15 o limite de missões Rank D diárias, porém você pode aumentar o limite se tornando um jogador VIP. Com 10 missões feitas, você já está liberado para fazer missões Rank C, se também estiver no level 400.";
+	next;
+	mes "Se você tiver dúvidas sobre onde localizar monstros e itens, procure na nossa Wiki: ^ff0000www.narutolegends.com.br/wiki^000000";
+	next;
+	mes "Caso não encontre as informações que você precise, você sempre pode acionar nossos Suportes no Discord Oficial do jogo!";
+	close;
+
+	equips:
+	next;
+	mes "Para conseguir equipamentos melhores, basta derrotar monstros! A maioria deles tem um drop chamado Caixa de Equipamentos, que vai te dar um item aleatório do Rank informado.";
+	next;
+	mes "Para identificar o item, você deve ir até a loja de equipamentos da sua vila e comprar o item Lupa. Para conseguir dinheiro, você pode vender alguns itens no próprio NPC da Loja de Equipamentos, ou então fazer missões!";
+	next;
+	mes "Quando você se tornar Jounin, você vai ter acesso a equipamentos Rank S e o sistema de equipamentos Lendários, mas isso vamos deixar para o futuro, ok?";
+	close;
+
+	jutsus:
+	next;
+	mes "No início do jogo, você pode escolher 9 jutsus básicos, os NPCs ficam no segundo andar da Academia. Recomendamos que você faça isso antes de upar o personagem, para acelerar as quests.";
+	next;
+	mes "Ao todo no seu personagem, você pode ter:";
+	mes "- 9 Jutsus básicos.";
+	mes "- 6 Jutsus intermediários.";
+	mes "- 2 Jutsus avançados.";
+	next;
+	mes "Os jutsus intermediários, você desbloqueia ao atingir a graduação Chunin. Os NPCs ficam no segundo andar da academia";
+	next;
+	mes "Os jutsus avançados, você desbloqueia ao atingir Jounin, porém são umas das quests mais difíceis do jogo. Os NPCs ficam na Vila Oculta da Grama, o acesso é pelo NPC Viajante no Campo de Treinamento.";
+	close;
+
+	chunin:
+	next;
+	mes "Primeiramente para subir de graduação para Chunin, existem 2 maneiras:";
+	mes "- Chunin Shiken.";
+	mes "- Pontos de Missão.";
+	next;
+	mes "As inscrições do Chunin Shiken são feitas na Sala 4 da Academia, 10 minutos antes do início.";
+	next;
+	mes "Os dias e horários do Chunin Shiken são:";
+	mes "Quarta-feira, inscrições iniciando ás ^ff000019h50.^000000";
+	mes "";
+	mes "Sábado, inscrições iniciando ás ^ff000016h50.^000000";
+	next;
+	mes "É um teste de sobrevivência, simulando a prova da Floresta da Morte do anime. Na prova, até 2 jogadores conseguem se graduar de Genin para Chunin.";
+	next;
+	mes "Você também pode se graduar para Chunin por Pontos de Missão, juntando 600 pontos.";
+	next;
+	mes "No caso de Jounin não existe a possibilidade de shiken, e é necessário 2000 pontos para se graduar.";
+	close;	
+}
+//------------------------------------------------------------
+// @ficha
+//------------------------------------------------------------
+-	script	atcmd_sample_new8	-1,{
+    OnInit:
+        bindatcmd("ficha", "atcmd_sample_new8::OnAtCmd");
+        end;
+        
+    OnAtCmd:
+	query_sql("SELECT `quest_points` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp);
+	
+	mes "[Ficha Ninja]";
+	mes "Ninja: ^ff0000"+strcharinfo(0)+"^000000";
+	mes "Pontos de Missão: ^ff0000"+@qp+"^000000";
+	mes "Pontos de Reputação: ^ff0000"+reputation2+"^000000";
+	mes "Pontos de Fidelidade: ^ff0000"+#RAGNARUPOINTS+"^000000";
+	if ( vip_status(1) ) {
+	mes "Tempo VIP: ^ff0000"+vip_status(VIP_STATUS_REMAINING)/86400+"Dia(s)^000000";
+	}
+    close;
+}
+
+//------------------------------------------------------------
+// @kage
+//------------------------------------------------------------
+-	script	atcmd_sample_kage	-1,{
+    OnInit:
+        bindatcmd("kage", "atcmd_sample_kage::OnAtCmd");
+		end;		
+	OnAtCmd:
+	query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E`, `D_DIA`, `C_DIA`, `B_DIA`, `A_DIA`, `S_DIA` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp, @s, @a, @b, @c, @d, @e, @d_dia, @c_dia, @b_dia, @a_dia, @s_dia);
+	dispbottom "Você possui "+@qp+" pontos de missão acumulados.";	
+	if(@s >= 1) {
+		dispbottom "Missões de Ranking S [ "+@s+" ] Status: Você ja fez "+@s_dia+" Missões Rank S Hoje."; 
+	}
+	if(@a >= 1) {
+		dispbottom "Missões de Ranking A [ "+@a+" ] Status: Você ja fez "+@a_dia+" Missões Rank A Hoje."; 
+	}
+	if(@b >= 1) {
+		dispbottom "Missões de Ranking B [ "+@b+" ] Status: Você ja fez "+@b_dia+" Missões Rank B Hoje."; 
+	}
+	if(@c >= 1) {
+		dispbottom "Missões de Ranking C [ "+@c+" ] Status: Você ja fez "+@c_dia+" Missões Rank C Hoje."; 
+	}
+	if(@d >= 1) {
+		dispbottom "Missões de Ranking D [ "+@d+" ] Status: Você ja fez "+@d_dia+" Missões Rank D Hoje."; 
+	}
+	end;
+}
+
+//------------------------------------------------------------
+// @showkg
+//------------------------------------------------------------
+-	script	atcmd_sample_newkg	-1,{
+    OnInit:
+        bindatcmd("showkg", "atcmd_sample_newkg::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	if(showkg == 0) { set showkg,1; dispbottom "[Sys] Exp KG Ativado"; end;}
+	if(showkg == 1) { set showkg,0; dispbottom "[Sys] Exp KG Desativado"; end;}
+	end;                    
+}
+
+//------------------------------------------------------------
+// @voltar
+//------------------------------------------------------------
+-	script	atcmd_sample_new27	-1,{
+    OnInit:
+        bindatcmd("voltar", "atcmd_sample_new27::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	
+	if(strcharinfo(3) == "sec_pri") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "iz_dun04") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "yuno") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "gef_dun02") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "moro_vol") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "ice_dun03") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "bif_fild01") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "exame") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "1@exame") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+	if(strcharinfo(3) == "1@ponte") { dispbottom "[Sys] Comando bloqueado nesse mapa."; end; }
+
+	if($EEinfo[1] == 1) {
+		if(strcharinfo(3) == "konoha3" || 
+		strcharinfo(3) == "sunagakure" || 
+		strcharinfo(3) == "kirigakure" || 
+		strcharinfo(3) == "kumogakure") { dispbottom "[Sys] Comando Bloqueado nesse mapa."; end; }
+	}
+	
+	if(vip_status(1)) {
+		progressbar "#00FF00",5;
+		warp "SavePoint", 0, 0;
+		end;
+	}
+	progressbar "#00FF00",15;
+	warp "SavePoint", 0, 0;
+	end;
+}

@@ -1,0 +1,371 @@
+spl_fild03,105,202,5	script	Homem Ferido#1	457,{
+
+if (quest_kuchy_3 >= 1) {mes "..."; close;}
+
+mes "[^DC143CHomem Ferido^000000]";
+mes "Cofcof, AAAAAAAAAAAAAAAAAA";
+next;
+mes "[^DC143CHomem Ferido^000000]";
+mes "Cuidado com...";
+next;
+mes "[^DC143CHomem Ferido^000000]";
+mes "...AAAAAAAAA";
+next;
+mes "[^DC143CHomem Ferido^000000]";
+mes "Cuidado com esse lugar, unico modo de sair é a morte ou com a ajuda da Kowari.";
+next;
+mes "...";
+next;
+mes "[^DC143CHomem Ferido^000000]";
+mes "Não se esqueça, só poderá voltar aqui caso tenha um pergaminho.";
+set quest_kuchy_3,1;
+close;
+
+}
+
+spl_in01,29,228,5	script	Kowari#1	840,{
+
+if (quest_kuchy_3 != 1) {mes "[^DC143CKowari^000000]"; mes "Não vá se perder aqui ein"; close;}
+if (quest_cobra_3 == 1) || (quest_lesma_3 == 1) || (quest_cachorro_3 == 1) || (quest_sapo_3 == 1) || (quest_macaco_3 == 1) {goto L_sim4;}
+
+mes "[^DC143CKowari^000000]";
+mes "Olá meu querido, finalmente alguem se dispôs a conhecer a grande floresta Kodachi, em que posso ajudar?";
+menu "- Estou perdido, para que serve essa floresta?",L_sim,"- Esquece, vou dar o fora daqui",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+next;
+mes "[^DC143CKowari^000000]";
+mes "Bem, essa é uma floresta sagrada!";
+next;
+mes "[^DC143CKowari^000000]";
+mes "A grande floresta das kuchiyose, e muitos ninjas do passado vieram aqui para treinar e aperfeiçoar suas habilidades de controle e invocação de animais.";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Eu cheguei a ser uma dessas pessoas mas me apeguei tanto a floresta que resolvi ficar e proteger este templo";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Vejo que sua alma anseia por poder, eu posso treinar você porém não é algo facíl de lidar";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Essa floresta secretamente guarda uma pedra, dizem que essa pedra é um portal, existem varias dessas pedras espalhadas pelo mundo";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Certa vez um viajante resolveu decifrar o enigma que envolve essas pedras, segundo ele essas pedras eram usadas para adorar deuses e seus seguidores utilizam elas para se comunicar";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Dizem que ao derrotar esse deus, parte de seu poder passa para a pessoa que o derrotou.";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Eu conheço o ritual de invocação dos Deuses mas não é algo que eu vá fazer de bom grado, você tem certeza que quer enfrentar um deus apenas pela chance de buscar poder?";
+menu "- Sim, não me importa os riscos",L_sim2,"- Esquece, vou dar o fora daqui",L_nao;
+
+L_sim2:
+next;
+mes "[^DC143CKowari^000000]";
+mes "HAHAHAHA, sabia que iria responder desse modo.";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Bem, para o ritual precisamos primeiro saber qual dos deuses você quer invocar:";
+menu "- Cobra",L_cobra,"- Sapo",L_sapo,"- Lesma",L_lesma,"- Cachorro",L_cachorro,"- Macaco",L_macaco,"- Esquece, vou dar o fora daqui",L_nao;
+
+L_cobra:
+next;
+if(Manda2 != 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa ter a invocação de cobra nível 2 para fazer esta quest"; close;}
+set quest_cobra_3,1;
+mes "[^DC143CKowari^000000]";
+mes "Ok, vejo que esta bastante determinado a isso, daqui para frente não existe volta";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Para o treinamento, você deve me trazer um pergaminho de invocação, derrotar 500 Manda's e trazer a pedra do oculto que será usado como catalizador do selo";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Essa pedra dropa de Kami, um Deus que vive na floresta e para invoca-lo é necessario um ritual especial";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Traga 150 corações imortais para meu assistente fazer o sangue para o ritual de invocação de Kami, após receber o sangue basta ir até a pedra sagrada e invoca-lo.";
+menu "- Eu já finalizei tudo, quero minha invocação",L_sim4,"- Volto mais tarde",L_nao;
+
+L_sapo:
+next;
+if(Gama2 != 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa ter a invocação de sapo nível 2 para fazer esta quest"; close;}
+set quest_sapo_3,1;
+mes "[^DC143CKowari^000000]";
+mes "Ok, vejo que esta bastante determinado a isso, daqui para frente não existe volta";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Para o treinamento, você deve me trazer um pergaminho de invocação, derrotar 500 Gama-Bunta's e trazer a pedra do oculto que será usado como catalizador do selo";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Essa pedra dropa de Kami, um Deus que vive na floresta e para invoca-lo é necessario um ritual especial";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Traga 150 Mucos pegajosos para meu assistente fazer o sangue para o ritual de invocação de Kami, após receber o sangue basta ir até a pedra sagrada e invoca-lo.";
+menu "- Eu já finalizei tudo, quero minha invocação",L_sim4,"- Volto mais tarde",L_nao;
+
+L_lesma:
+next;
+if(Katsu2 != 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa ter a invocação de lesma nível 2 para fazer esta quest"; close;}
+set quest_lesma_3,1;
+mes "[^DC143CKowari^000000]";
+mes "Ok, vejo que esta bastante determinado a isso, daqui para frente não existe volta";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Para o treinamento, você deve me trazer um pergaminho de invocação, derrotar 500 Katsuyo's e trazer a pedra do oculto que será usado como catalizador do selo";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Essa pedra dropa de Kami, um Deus que vive na floresta e para invoca-lo é necessario um ritual especial";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Traga 150 Folhas de Hinalle para meu assistente fazer o sangue para o ritual de invocação de Kami, após receber o sangue basta ir até a pedra sagrada e invoca-lo.";
+menu "- Eu já finalizei tudo, quero minha invocação",L_sim4,"- Volto mais tarde",L_nao;
+
+L_cachorro:
+next;
+if(Baru2 != 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa ter a invocação de cachorro nível 2 para fazer esta quest"; close;}
+set quest_cachorro_3,1;
+mes "[^DC143CKowari^000000]";
+mes "Ok, vejo que esta bastante determinado a isso, daqui para frente não existe volta";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Para o treinamento, você deve me trazer um pergaminho de invocação, derrotar 500 Baru's e trazer a pedra do oculto que será usado como catalizador do selo";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Essa pedra dropa de Kami, um Deus que vive na floresta e para invoca-lo é necessario um ritual especial";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Traga 150 garras de lobo do deserto para meu assistente fazer o sangue para o ritual de invocação de Kami, após receber o sangue basta ir até a pedra sagrada e invoca-lo.";
+menu "- Eu já finalizei tudo, quero minha invocação",L_sim4,"- Volto mais tarde",L_nao;
+
+L_macaco:
+next;
+if(Enma2 != 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa ter a invocação de macaco nível 2 para fazer esta quest"; close;}
+set quest_macaco_3,1;
+mes "[^DC143CKowari^000000]";
+mes "Ok, vejo que esta bastante determinado a isso, daqui para frente não existe volta";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Para o treinamento, você deve me trazer um pergaminho de invocação, derrotar 500 Enma's e trazer a pedra do oculto que será usado como catalizador do selo";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Essa pedra dropa de Kami, um Deus que vive na floresta e para invoca-lo é necessario um ritual especial";
+next;
+mes "[^DC143CKowari^000000]";
+mes "Traga 150 Garras de macaco para meu assistente fazer o sangue para o ritual de invocação de Kami, após receber o sangue basta ir até a pedra sagrada e invoca-lo.";
+menu "- Eu já finalizei tudo, quero minha invocação",L_sim4,"- Volto mais tarde",L_nao;
+
+L_sim4:
+
+if (quest_cobra_3 == 1) {
+
+if(countitem(7836) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui o pergaminho de invocação"; close;}
+if (quest_cobra_mobs < 500) {mes "[^DC143CKowari^000000]"; mes "Você ainda precisa matar os 500 Manda's"; close;}
+if(countitem(640) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui a pedra do oculto"; close;}
+if(countitem(639) < 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa estar com seu pergaminho reverso em seu inventário antes de completar a quest"; close;}
+mes "[^DC143CKowari^000000]";
+mes "Não acredito! Que poder grandioso você possui, e agora ele está ainda maior pois você dominou a invocação mais poderosa das Cobras!";
+announce ""+strcharinfo(0)+" mostrou ser um shinobi lendário ao dominar a invocação nível 3 de Cobra",bc_blue|bc_all;
+delitem 7836,1;
+delitem 640,1;
+set quest_cobra_mobs,0;
+set quest_cobra_3,2;
+skill 727,4,0;
+delitem 639,1;
+set Manda3,1;
+
+
+}
+
+if (quest_sapo_3 == 1) {
+
+if(countitem(7835) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui o pergaminho de invocação"; close;}
+if (quest_sapo_mobs < 500) {mes "[^DC143CKowari^000000]"; mes "Você ainda precisa matar os 500 Gama-Bunta's"; close;}
+if(countitem(640) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui a pedra do oculto"; close;}
+if(countitem(639) < 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa estar com seu pergaminho reverso em seu inventário antes de completar a quest"; close;}
+mes "[^DC143CKowari^000000]";
+mes "Não acredito! Que poder grandioso você possui, e agora ele está ainda maior pois você dominou a invocação mais poderosa dos Sapos!";
+announce ""+strcharinfo(0)+" mostrou ser um shinobi lendário ao dominar a invocação nível 3 de Sapo",bc_blue|bc_all;
+delitem 7835,1;
+delitem 640,1;
+set quest_sapo_mobs,0;
+set quest_sapo_3,2;
+skill 723,4,0;
+delitem 639,1;
+set Gama3,1;
+}
+
+if (quest_cachorro_3 == 1) {
+
+if(countitem(7705) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui o pergaminho de invocação"; close;}
+if (quest_cachorro_mobs < 500) {mes "[^DC143CKowari^000000]"; mes "Você ainda precisa matar os 500 Baru's"; close;}
+if(countitem(640) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui a pedra do oculto"; close;}
+if(countitem(639) < 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa estar com seu pergaminho reverso em seu inventário antes de completar a quest"; close;}
+mes "[^DC143CKowari^000000]";
+mes "Não acredito! Que poder grandioso você possui, e agora ele está ainda maior pois você dominou a invocação mais poderosa dos cachorros!";
+announce ""+strcharinfo(0)+" mostrou ser um shinobi lendário ao dominar a invocação nível 3 de Cachorro",bc_blue|bc_all;
+delitem 7705,1;
+delitem 640,1;
+set quest_cachorro_mobs,0;
+set quest_cachorro_3,2;
+skill 740,4,0;
+delitem 639,1;
+set Baru3,1;
+
+}
+
+if (quest_macaco_3 == 1) {
+
+if(countitem(7838) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui o pergaminho de invocação"; close;}
+if (quest_macaco_mobs < 500) {mes "[^DC143CKowari^000000]"; mes "Você ainda precisa matar os 500 Enma's"; close;}
+if(countitem(640) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui a pedra do oculto"; close;}
+if(countitem(639) < 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa estar com seu pergaminho reverso em seu inventário antes de completar a quest"; close;}
+mes "[^DC143CKowari^000000]";
+mes "Não acredito! Que poder grandioso você possui, e agora ele está ainda maior pois você dominou a invocação mais poderosa dos Macacos!";
+announce ""+strcharinfo(0)+" mostrou ser um shinobi lendário ao dominar a invocação nível 3 de Macaco",bc_blue|bc_all;
+delitem 7838,1;
+delitem 640,1;
+set quest_macaco_mobs,0;
+set quest_macaco_3,2;
+skill 743,4,0;
+delitem 639,1;
+set Enma3,1;
+
+}
+
+if (quest_lesma_3 == 1) {
+
+if(countitem(7837) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui o pergaminho de invocação"; close;}
+if (quest_lesma_mobs < 500) {mes "[^DC143CKowari^000000]"; mes "Você ainda precisa matar os 500 Katsuyo's"; close;}
+if(countitem(640) < 1) {mes "[^DC143CKowari^000000]"; mes "Você não possui a pedra do oculto"; close;}
+if(countitem(639) < 1) {mes "[^DC143CKowari^000000]"; mes "Você precisa estar com seu pergaminho reverso em seu inventário antes de completar a quest"; close;}
+mes "[^DC143CKowari^000000]";
+mes "Não acredito! Que poder grandioso você possui, e agora ele está ainda maior pois você dominou a invocação mais poderosa das Lesmas!";
+announce ""+strcharinfo(0)+" mostrou ser um shinobi lendário ao dominar a invocação nível 3 de Lesma",bc_blue|bc_all;
+delitem 7837,1;
+delitem 640,1;
+set quest_lesma_mobs,0;
+set quest_lesma_3,2;
+skill 730,4,0;
+delitem 639,1;
+set Katsu3,1;
+
+}
+}
+
+spl_in01,31,228,5	script	Assistente#2	71,{
+if(countitem(641) >= 1) {mes "[^DC143CAssistente^000000]"; mes "Você já tem tudo o que precisa..."; close;}
+if (quest_cobra_3 != 1) && (quest_cachorro_3 != 1) && (quest_sapo_3 != 1) && (quest_macaco_3 != 1) && (quest_lesma_3 != 1) {mes "[^DC143CAssistente^000000]"; mes "Não tenho nada a tratar com você no momento"; close;}
+if(countitem(929) < 150) && (quest_cobra_3 == 1) {mes "[^DC143CAssistente^000000]"; mes "Você não possui os 150 corações imortais, volte quando tiver"; close;}
+if(countitem(938) < 150) && (quest_sapo_3 == 1)  {mes "[^DC143CAssistente^000000]"; mes "Você não possui os 150 Mucos pegajosos, volte quando tiver"; close;}
+if(countitem(7030) < 150) && (quest_cachorro_3 == 1)  {mes "[^DC143CAssistente^000000]"; mes "Você não possui os 150 garras de lobo do deserto, volte quando tiver"; close;}
+if(countitem(7011) < 150) && (quest_macaco_3 == 1)  {mes "[^DC143CAssistente^000000]"; mes "Você não possui os 150 Garras de macaco, volte quando tiver"; close;}
+if(countitem(520) < 150) && (quest_lesma_3 == 1)  {mes "[^DC143CAssistente^000000]"; mes "Você não possui os 150 Folhas de Hinalle, volte quando tiver"; close;}
+mes "[^DC143CAssistente^000000]";
+mes "Muito bem, aqui está seu sangue preservado para invocar o Kami, cuidado pois ele é poderoso.";
+if (quest_cobra_3 == 1) {delitem 929,150; getitem 641,1; close;}
+if (quest_sapo_3 == 1) {delitem 938,150; getitem 641,1; close;}
+if (quest_cachorro_3 == 1) {delitem 7030,150; getitem 641,1; close;}
+if (quest_macaco_3 == 1) {delitem 7011,150; getitem 641,1; close;}
+if (quest_lesma_3 == 1) {delitem 520,150; getitem 641,1; close;}
+
+}
+
+spl_fild03,187,201,5	script	Pedra sagrada#1	406,{
+
+if(countitem(641) < 1) {mes "Então essa é a pedra sagrada, talvez se eu colocar o sangue que o Kowari me disse..."; close;}
+mes "Você colocou o Sangue em cima da Pedra sagrada";
+next;
+mes "Algo está acontecendo... O chão está tremendo...";
+next;
+mes "É o Kami! Cuidado, lá vem ele!";
+next;
+delitem 641,1;
+announce "[Quest - Kuchiyose] "+strcharinfo(0)+" acaba de invocar o Kami, será que ele consegue derrotá-lo?",bc_blue|bc_all;
+monster "spl_fild03",185,201,"Kami",1062,1,"kami_kill::OnMapConquisted100";
+close;
+
+
+}
+
+
+-	script	manda1#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1418 && quest_cobra_3 == 1) {set quest_cobra_mobs,quest_cobra_mobs +1; announce "[Quest Invocação] Você já derrotou "+quest_cobra_mobs+" / 500 Manda's",bc_blue|bc_self; end;}
+
+}
+
+-	script	gama1#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1788 && quest_sapo_3 == 1) {set quest_sapo_mobs,quest_sapo_mobs +1; announce "[Quest Invocação] Você já derrotou "+quest_sapo_mobs+" / 500 Gama-Bunta's",bc_blue|bc_self; end;}
+
+}
+
+-	script	baru1#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1032 && quest_cachorro_3 == 1) {set quest_cachorro_mobs,quest_cachorro_mobs +1; announce "[Quest Invocação] Você já derrotou "+quest_cachorro_mobs+" / 500 Baru's",bc_blue|bc_self; end;}
+
+}
+
+-	script	enma1#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1057 && quest_macaco_3 == 1) {set quest_macaco_mobs,quest_macaco_mobs +1; announce "[Quest Invocação] Você já derrotou "+quest_macaco_mobs+" / 500 Enma's",bc_blue|bc_self; end;}
+
+}
+
+-	script	kats1#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1381 && quest_lesma_3 == 1) {set quest_lesma_mobs,quest_lesma_mobs +1; announce "[Quest Invocação] Você já derrotou "+quest_lesma_mobs+" / 500 Katsuyo's",bc_blue|bc_self; end;}
+
+}
+
+spl_in01,30,249,0	warp	k31	1,1,spl_in02,191,41
+spl_in02,188,39,0	warp	k32	1,1,spl_in01,30,247
+spl_in01,30,212,0	warp	k33	1,1,spl_fild03,373,364
+spl_fild03,373,366,0	warp	k34	1,1,spl_in01,30,214
+spl_fild03,101,373,0	warp	k35	1,1,cmd_fild03,23,270
+
+spl_fild03,0,0,0,0	monster	Gama-Bunta	1788,15,0,0,0
+spl_fild03,0,0,0,0	monster	Manda	1418,15,0,0,0
+spl_fild03,0,0,0,0	monster	Baru	1032,15,0,0,0
+spl_fild03,0,0,0,0	monster	Enma	1057,15,0,0,0
+spl_fild03,0,0,0,0	monster	Katsuyo	1381,15,0,0,0
+
+spl_fild03	mapflag	nowarp
+spl_fild03	mapflag	noteleport
+spl_fild03	mapflag	nowarpto
+spl_fild03	mapflag	nobranch
+spl_fild03	mapflag	nosave	SavePoint
+spl_fild03	mapflag	nomemo
+spl_fild03	mapflag	nopenalty
+spl_fild03	mapflag	noexp
+
+spl_in01	mapflag	nowarp
+spl_in01	mapflag	noteleport
+spl_in01	mapflag	nowarpto
+spl_in01	mapflag	nobranch
+spl_in01	mapflag	nosave	SavePoint
+spl_in01	mapflag	nomemo
+spl_in01	mapflag	nopenalty
+spl_in01	mapflag	noexp
+
+spl_in02	mapflag	nowarp
+spl_in02	mapflag	noteleport
+spl_in02	mapflag	nowarpto
+spl_in02	mapflag	nobranch
+spl_in02	mapflag	nosave	SavePoint
+spl_in02	mapflag	nomemo
+spl_in02	mapflag	nopenalty
+spl_in02	mapflag	noexp
+

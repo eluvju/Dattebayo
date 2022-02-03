@@ -1,0 +1,661 @@
+//FildsKonoha
+prt_fild02,0,0,0,0	monster	Planta de Konoha	1079,1,600000,600000,0
+prt_fild02,0,0,0,0	monster	Girino	1034,60,0,0,0
+prt_fild02,0,0,0,0	monster	Filhote de Cobra	1037,50,0,0,0
+prt_fild02,0,0,0,0	monster	Filhote de Katsuyu	1783,50,0,0,0
+prt_fild02,0,0,0,0	monster	Akino	1212,50,0,0,0
+prt_fild02,0,0,0,0	monster	Onbba	1214,50,0,0,0
+
+prt_fild01,0,0,0,0	monster	Líder Genin	1389,1,1800000,1800000,0
+mjolnir_01,0,0,0,0	monster	Líder Genin	1389,1,1800000,1800000,0
+ein_fild08,0,0,0,0	monster	Líder Genin	1389,1,1800000,1800000,0
+cmd_fild09,0,0,0,0	monster	Líder Genin	1389,1,1800000,1800000,0
+
+mjolnir_07,0,0,0,0	monster	Líder Chunin	1390,1,1800000,1800000,0
+mjolnir_02,0,0,0,0	monster	Líder Chunin	1390,1,1800000,1800000,0
+hu_fild07,0,0,0,0	monster	Líder Chunin	1390,1,1800000,1800000,0
+moc_fild08,0,0,0,0	monster	Líder Chunin	1390,1,1800000,1800000,0
+
+prt_fild00,0,0,0,0	monster	Líder Jounin	1391,1,1800000,1800000,0
+ama_fild01,0,0,0,0	monster	Líder Jounin	1391,1,1800000,1800000,0
+yuno_fild11,0,0,0,0	monster	Líder Jounin	1391,1,1800000,1800000,0
+ra_fild03,0,0,0,0	monster	Líder Jounin	1391,1,1800000,1800000,0
+
+gef_fild00,0,0,0,0	monster	Mestre Katon	1101,1,21600000,21600000,0
+yuno_fild10,0,0,0,0	monster	Mestre Doton	1575,1,21600000,21600000,0
+ama_dun03,0,0,0,0	monster	Mestre Suiton	1050,1,21600000,21600000,0
+cmd_fild07,0,0,0,0	monster	Mestre Fuuton	1060,1,21600000,21600000,0
+ein_fild09,0,0,0,0	monster	Mestre Raiton	1574,1,21600000,21600000,0
+lhz_fild03,0,0,0,0	monster	Mestre Medinin	1832,1,21600000,21600000,0
+gl_church,0,0,0,0	monster	Mestre Velocidade	1049,1,21600000,21600000,0
+lou_fild01,0,0,0,0	monster	Mestre Fuuinjutsu	1241,1,21600000,21600000,0
+gon_fild01,0,0,0,0	monster	Mestre Taijutsu	1688,1,21600000,21600000,0
+mosk_que,0,0,0,0	monster	Mestre Genjutsu	1751,1,21600000,21600000,0
+
+prt_fild01,0,0,0,0	monster	Bikouchuu	1051,50,0,0,0
+prt_fild01,0,0,0,0	monster	Kyodaigumo	1304,40,0,0,0
+prt_fild01,0,0,0,0	monster	Genin	1656,40,0,0,0
+prt_fild01,0,0,0,0	monster	Abelha Rainha Gigante	1303,20,0,0,0
+prt_fild01,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//prt_fild06,0,0,0,0	monster	Bikouchuu	1051,50,0,0,0
+//prt_fild06,0,0,0,0	monster	Kyodaigumo	1304,40,0,0,0
+//prt_fild06,0,0,0,0	monster	Genin	1656,40,0,0,0
+//prt_fild06,0,0,0,0	monster	Abelha Rainha Gigante	1303,20,0,0,0
+//prt_fild06,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+
+moc_fild03,0,0,0,0	monster	Kyodaija	1025,35,0,0,0
+moc_fild03,0,0,0,0	monster	Gama-Kichi	1402,30,0,0,0
+moc_fild03,0,0,0,0	monster	Namekuji	1031,30,0,0,0
+moc_fild03,0,0,0,0	monster	Pakkun	1296,30,0,0,0
+moc_fild03,0,0,0,0	monster	Saru	1628,30,0,0,0
+moc_fild03,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+cmd_fild01,0,0,0,0	monster	Bandido	1372,35,0,0,0
+//cmd_fild01,0,0,0,0	monster	Chunin	1636,50,0,0,0
+//cmd_fild01,0,0,0,0	monster	Akamaru	1106,25,0,0,0
+//cmd_fild01,0,0,0,0	monster	Nidachou	1036,25,0,0,0
+//cmd_fild01,0,0,0,0	monster	Usagiburaun	1322,25,0,0,0
+//cmd_fild01,0,0,0,0	monster	Togashiro	1027,25,0,0,0
+//cmd_fild01,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+
+//mjolnir_06,0,0,0,0	monster	Condor	1009,25,0,0,0
+//mjolnir_06,0,0,0,0	monster	Coelho	1093,25,0,0,0
+//mjolnir_06,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+//mjolnir_06,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+//mjolnir_06,0,0,0,0	monster	Chamu	1405,25,0,0,0
+//mjolnir_06,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//prt_fild05,0,0,0,0	monster	Condor	1009,25,0,0,0
+//prt_fild05,0,0,0,0	monster	Coelho	1093,25,0,0,0
+//prt_fild05,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+//prt_fild05,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+//prt_fild05,0,0,0,0	monster	Chamu	1405,25,0,0,0
+//prt_fild05,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+mjolnir_09,0,0,0,0	monster	Condor	1009,25,0,0,0
+mjolnir_09,0,0,0,0	monster	Coelho	1093,25,0,0,0
+mjolnir_09,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+mjolnir_09,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+mjolnir_09,0,0,0,0	monster	Chamu	1405,25,0,0,0
+mjolnir_09,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+
+mjolnir_07,0,0,0,0	monster	Chunin	1636,50,0,0,0
+mjolnir_07,0,0,0,0	monster	Akamaru	1106,25,0,0,0
+mjolnir_07,0,0,0,0	monster	Nidachou	1036,25,0,0,0
+mjolnir_07,0,0,0,0	monster	Usagiburaun	1322,25,0,0,0
+mjolnir_07,0,0,0,0	monster	Togashiro	1027,25,0,0,0
+mjolnir_07,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+//prt_fild09,0,0,0,0	monster	Chunin	1636,50,0,0,0
+//prt_fild09,0,0,0,0	monster	Akamaru	1106,25,0,0,0
+//prt_fild09,0,0,0,0	monster	Nidachou	1036,25,0,0,0
+//prt_fild09,0,0,0,0	monster	Usagiburaun	1322,25,0,0,0
+//prt_fild09,0,0,0,0	monster	Togashiro	1027,25,0,0,0
+//prt_fild09,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+mjolnir_08,0,0,0,0	monster	Condor	1009,25,0,0,0
+mjolnir_08,0,0,0,0	monster	Coelho	1093,25,0,0,0
+mjolnir_08,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+mjolnir_08,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+mjolnir_08,0,0,0,0	monster	Chamu	1405,25,0,0,0
+mjolnir_08,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//mjolnir_08,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+//mjolnir_08,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+//mjolnir_08,0,0,0,0	monster	Doki	1177,20,0,0,0
+//mjolnir_08,0,0,0,0	monster	Jounin	1634,30,0,0,0
+//mjolnir_08,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//gef_fild01,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+//gef_fild01,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+//gef_fild01,0,0,0,0	monster	Doki	1177,20,0,0,0
+//gef_fild01,0,0,0,0	monster	Jounin	1634,30,0,0,0
+//gef_fild01,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+prt_fild00,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+prt_fild00,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+prt_fild00,0,0,0,0	monster	Doki	1177,20,0,0,0
+prt_fild00,0,0,0,0	monster	Jounin	1634,30,0,0,0
+prt_fild00,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+
+mjolnir_11,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+mjolnir_11,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+mjolnir_11,0,0,0,0	monster	Manda	1418,25,0,0,0
+mjolnir_11,0,0,0,0	monster	Enma	1057,25,0,0,0
+mjolnir_11,0,0,0,0	monster	Baru	1032,25,0,0,0
+mjolnir_11,0,0,0,0	monster	Anbu	1635,20,0,0,0
+mjolnir_11,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//pay_fild06,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+//pay_fild06,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+//pay_fild06,0,0,0,0	monster	Manda	1418,25,0,0,0
+//pay_fild06,0,0,0,0	monster	Enma	1057,25,0,0,0
+//pay_fild06,0,0,0,0	monster	Baru	1032,25,0,0,0
+//pay_fild06,0,0,0,0	monster	Anbu	1635,20,0,0,0
+//pay_fild06,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+yuno_fild07,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+yuno_fild07,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+yuno_fild07,0,0,0,0	monster	Manda	1418,25,0,0,0
+yuno_fild07,0,0,0,0	monster	Enma	1057,25,0,0,0
+yuno_fild07,0,0,0,0	monster	Baru	1032,25,0,0,0
+yuno_fild07,0,0,0,0	monster	Anbu	1635,20,0,0,0
+yuno_fild07,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//pay_fild03,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+//pay_fild03,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+//pay_fild03,0,0,0,0	monster	Manda	1418,25,0,0,0
+//pay_fild03,0,0,0,0	monster	Enma	1057,25,0,0,0
+//pay_fild03,0,0,0,0	monster	Baru	1032,25,0,0,0
+//pay_fild03,0,0,0,0	monster	Anbu	1635,20,0,0,0
+//pay_fild03,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//pay_fild02,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+//pay_fild02,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+//pay_fild02,0,0,0,0	monster	Manda	1418,25,0,0,0
+//pay_fild02,0,0,0,0	monster	Enma	1057,25,0,0,0
+//pay_fild02,0,0,0,0	monster	Baru	1032,25,0,0,0
+//pay_fild02,0,0,0,0	monster	Anbu	1635,20,0,0,0
+//pay_fild02,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+odin_tem02,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+odin_tem02,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+odin_tem02,0,0,0,0	monster	Manda	1418,25,0,0,0
+odin_tem02,0,0,0,0	monster	Enma	1057,25,0,0,0
+odin_tem02,0,0,0,0	monster	Baru	1032,25,0,0,0
+odin_tem02,0,0,0,0	monster	Anbu	1635,20,0,0,0
+odin_tem02,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+//FildsSuna
+
+moc_fild01,0,0,0,0	monster	Planta de Suna	1078,1,600000,600000,0
+moc_fild01,0,0,0,0	monster	Girino	1034,60,0,0,0
+moc_fild01,0,0,0,0	monster	Filhote de Cobra	1037,50,0,0,0
+moc_fild01,0,0,0,0	monster	Filhote de Katsuyu	1783,50,0,0,0
+moc_fild01,0,0,0,0	monster	Akino	1212,50,0,0,0
+moc_fild01,0,0,0,0	monster	Onbba	1214,50,0,0,0
+
+//moc_fild17,0,0,0,0	monster	Bikouchuu	1051,50,0,0,0
+//moc_fild17,0,0,0,0	monster	Kyodaigumo	1304,40,0,0,0
+//moc_fild17,0,0,0,0	monster	Genin	1656,40,0,0,0
+//moc_fild17,0,0,0,0	monster	Abelha Rainha Gigante	1303,20,0,0,0
+//moc_fild17,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+cmd_fild09,0,0,0,0	monster	Bikouchuu	1051,50,0,0,0
+cmd_fild09,0,0,0,0	monster	Kyodaigumo	1304,40,0,0,0
+cmd_fild09,0,0,0,0	monster	Genin	1656,40,0,0,0
+cmd_fild09,0,0,0,0	monster	Abelha Rainha Gigante	1303,20,0,0,0
+cmd_fild09,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+
+moc_fild13,0,0,0,0	monster	Kyodaija	1025,35,0,0,0
+moc_fild13,0,0,0,0	monster	Gama-Kichi	1402,30,0,0,0
+moc_fild13,0,0,0,0	monster	Namekuji	1031,30,0,0,0
+moc_fild13,0,0,0,0	monster	Pakkun	1296,30,0,0,0
+moc_fild13,0,0,0,0	monster	Saru	1628,30,0,0,0
+moc_fild13,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+//moc_fild06,0,0,0,0	monster	Kyodaija	1025,35,0,0,0
+//moc_fild06,0,0,0,0	monster	Gama-Kichi	1402,30,0,0,0
+//moc_fild06,0,0,0,0	monster	Namekuji	1031,30,0,0,0
+//moc_fild06,0,0,0,0	monster	Pakkun	1296,30,0,0,0
+//moc_fild06,0,0,0,0	monster	Saru	1628,30,0,0,0
+//moc_fild06,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+moc_fild08,0,0,0,0	monster	Chunin	1636,50,0,0,0
+moc_fild08,0,0,0,0	monster	Akamaru	1106,25,0,0,0
+moc_fild08,0,0,0,0	monster	Nidachou	1036,25,0,0,0
+moc_fild08,0,0,0,0	monster	Usagiburaun	1322,25,0,0,0
+moc_fild08,0,0,0,0	monster	Togashiro	1027,25,0,0,0
+moc_fild08,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+moc_fild02,0,0,0,0	monster	Condor	1009,25,0,0,0
+moc_fild02,0,0,0,0	monster	Coelho	1093,25,0,0,0
+moc_fild02,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+moc_fild02,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+moc_fild02,0,0,0,0	monster	Chamu	1405,25,0,0,0
+moc_fild02,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+ve_fild04,0,0,0,0	monster	Condor	1009,25,0,0,0
+ve_fild04,0,0,0,0	monster	Coelho	1093,25,0,0,0
+ve_fild04,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+ve_fild04,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+ve_fild04,0,0,0,0	monster	Chamu	1405,25,0,0,0
+ve_fild04,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+ra_fild03,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+ra_fild03,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+ra_fild03,0,0,0,0	monster	Doki	1177,20,0,0,0
+ra_fild03,0,0,0,0	monster	Jounin	1634,30,0,0,0
+ra_fild03,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+ve_fild03,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+ve_fild03,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+ve_fild03,0,0,0,0	monster	Manda	1418,25,0,0,0
+ve_fild03,0,0,0,0	monster	Enma	1057,25,0,0,0
+ve_fild03,0,0,0,0	monster	Baru	1032,25,0,0,0
+ve_fild03,0,0,0,0	monster	Anbu	1635,20,0,0,0
+ve_fild03,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+yuno_in01,173,23,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,173,29,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,164,23,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,164,29,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,36,30,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,36,24,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,36,18,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,28,37,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,165,98,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,165,93,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,170,93,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,170,98,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,88,36,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,97,20,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,104,20,0,0	monster	Boneco de Treino	1836,1,10,10,0
+yuno_in01,111,20,0,0	monster	Boneco de Treino	1836,1,10,10,0
+
+//FildsNévoa
+
+gef_fild04,0,0,0,0	monster	Planta da Névoa	1083,1,600000,600000,0
+gef_fild04,0,0,0,0	monster	Girino	1034,60,0,0,0
+gef_fild04,0,0,0,0	monster	Filhote de Cobra	1037,50,0,0,0
+gef_fild04,0,0,0,0	monster	Filhote de Katsuyu	1783,50,0,0,0
+gef_fild04,0,0,0,0	monster	Akino	1212,50,0,0,0
+gef_fild04,0,0,0,0	monster	Onbba	1214,50,0,0,0
+
+
+mjolnir_01,0,0,0,0	monster	Bikouchuu	1051,50,0,0,0
+mjolnir_01,0,0,0,0	monster	Kyodaigumo	1304,40,0,0,0
+mjolnir_01,0,0,0,0	monster	Genin	1656,40,0,0,0
+mjolnir_01,0,0,0,0	monster	Abelha Rainha Gigante	1303,20,0,0,0
+mjolnir_01,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+um_fild01,0,0,0,0	monster	Kyodaija	1025,35,0,0,0
+um_fild01,0,0,0,0	monster	Gama-Kichi	1402,30,0,0,0
+um_fild01,0,0,0,0	monster	Namekuji	1031,30,0,0,0
+um_fild01,0,0,0,0	monster	Pakkun	1296,30,0,0,0
+um_fild01,0,0,0,0	monster	Saru	1628,30,0,0,0
+um_fild01,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+prt_fild04,0,0,0,0	monster	Chunin	1636,50,0,0,0
+prt_fild04,0,0,0,0	monster	Akamaru	1106,25,0,0,0
+prt_fild04,0,0,0,0	monster	Nidachou	1036,25,0,0,0
+prt_fild04,0,0,0,0	monster	Usagiburaun	1322,25,0,0,0
+prt_fild04,0,0,0,0	monster	Togashiro	1027,25,0,0,0
+prt_fild04,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+//mjolnir_03,0,0,0,0	monster	Chunin	1636,50,0,0,0
+//mjolnir_03,0,0,0,0	monster	Akamaru	1106,25,0,0,0
+//mjolnir_03,0,0,0,0	monster	Nidachou	1036,25,0,0,0
+//mjolnir_03,0,0,0,0	monster	Usagiburaun	1322,25,0,0,0
+//mjolnir_03,0,0,0,0	monster	Togashiro	1027,25,0,0,0
+//mjolnir_03,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+gef_fild05,0,0,0,0	monster	Kyodaija	1025,35,0,0,0
+gef_fild05,0,0,0,0	monster	Gama-Kichi	1402,30,0,0,0
+gef_fild05,0,0,0,0	monster	Namekuji	1031,30,0,0,0
+gef_fild05,0,0,0,0	monster	Pakkun	1296,30,0,0,0
+gef_fild05,0,0,0,0	monster	Saru	1628,30,0,0,0
+gef_fild05,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//gef_fild05,0,0,0,0	monster	Condor	1009,25,0,0,0
+//gef_fild05,0,0,0,0	monster	Coelho	1093,25,0,0,0
+//gef_fild05,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+//gef_fild05,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+//gef_fild05,0,0,0,0	monster	Chamu	1405,25,0,0,0
+//gef_fild05,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+gef_fild09,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+gef_fild09,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+gef_fild09,0,0,0,0	monster	Doki	1177,20,0,0,0
+gef_fild09,0,0,0,0	monster	Jounin	1634,30,0,0,0
+gef_fild09,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+mjolnir_02,0,0,0,0	monster	Chunin	1636,50,0,0,0
+mjolnir_02,0,0,0,0	monster	Akamaru	1106,25,0,0,0
+mjolnir_02,0,0,0,0	monster	Nidachou	1036,25,0,0,0
+mjolnir_02,0,0,0,0	monster	Usagiburaun	1322,25,0,0,0
+mjolnir_02,0,0,0,0	monster	Togashiro	1027,25,0,0,0
+mjolnir_02,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+//mjolnir_02,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+//mjolnir_02,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+//mjolnir_02,0,0,0,0	monster	Doki	1177,20,0,0,0
+//mjolnir_02,0,0,0,0	monster	Jounin	1634,30,0,0,0
+//mjolnir_02,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+pay_fild10,0,0,0,0	monster	Condor	1009,25,0,0,0
+pay_fild10,0,0,0,0	monster	Coelho	1093,25,0,0,0
+pay_fild10,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+pay_fild10,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+pay_fild10,0,0,0,0	monster	Chamu	1405,25,0,0,0
+pay_fild10,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+ama_fild01,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+ama_fild01,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+ama_fild01,0,0,0,0	monster	Doki	1177,20,0,0,0
+ama_fild01,0,0,0,0	monster	Jounin	1634,30,0,0,0
+ama_fild01,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+//Filds Nuvem
+
+yuno_fild08,0,0,0,0	monster	Planta de Suna	1078,1,600000,600000,0
+yuno_fild08,0,0,0,0	monster	Girino	1034,60,0,0,0
+yuno_fild08,0,0,0,0	monster	Filhote de Cobra	1037,50,0,0,0
+yuno_fild08,0,0,0,0	monster	Filhote de Katsuyu	1783,50,0,0,0
+yuno_fild08,0,0,0,0	monster	Akino	1212,50,0,0,0
+yuno_fild08,0,0,0,0	monster	Onbba	1214,50,0,0,0
+
+ein_fild08,0,0,0,0	monster	Bikouchuu	1051,50,0,0,0
+ein_fild08,0,0,0,0	monster	Kyodaigumo	1304,40,0,0,0
+ein_fild08,0,0,0,0	monster	Genin	1656,40,0,0,0
+ein_fild08,0,0,0,0	monster	Abelha Rainha Gigante	1303,20,0,0,0
+ein_fild08,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+
+yuno_fild05,0,0,0,0	monster	Kyodaija	1025,35,0,0,0
+yuno_fild05,0,0,0,0	monster	Gama-Kichi	1402,30,0,0,0
+yuno_fild05,0,0,0,0	monster	Namekuji	1031,30,0,0,0
+yuno_fild05,0,0,0,0	monster	Pakkun	1296,30,0,0,0
+yuno_fild05,0,0,0,0	monster	Saru	1628,30,0,0,0
+yuno_fild05,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+hu_fild07,0,0,0,0	monster	Chunin	1636,50,0,0,0
+hu_fild07,0,0,0,0	monster	Akamaru	1106,25,0,0,0
+hu_fild07,0,0,0,0	monster	Nidachou	1036,25,0,0,0
+hu_fild07,0,0,0,0	monster	Usagiburaun	1322,25,0,0,0
+hu_fild07,0,0,0,0	monster	Togashiro	1027,25,0,0,0
+hu_fild07,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+ein_fild01,0,0,0,0	monster	Condor	1009,25,0,0,0
+ein_fild01,0,0,0,0	monster	Coelho	1093,25,0,0,0
+ein_fild01,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+ein_fild01,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+ein_fild01,0,0,0,0	monster	Chamu	1405,25,0,0,0
+ein_fild01,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+moc_fild14,0,0,0,0	monster	Bandido	1372,35,0,0,0
+mjolnir_04,0,0,0,0	monster	Bandido	1372,35,0,0,0
+//moc_fild14,0,0,0,0	monster	Coelho	1093,25,0,0,0
+//moc_fild14,0,0,0,0	monster	Manmosukas	1040,25,0,0,0
+//moc_fild14,0,0,0,0	monster	Sanjuu Kyodaireo	1517,25,0,0,0
+//moc_fild14,0,0,0,0	monster	Chamu	1405,25,0,0,0
+//moc_fild14,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+yuno_fild11,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+yuno_fild11,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+yuno_fild11,0,0,0,0	monster	Doki	1177,20,0,0,0
+yuno_fild11,0,0,0,0	monster	Jounin	1634,30,0,0,0
+yuno_fild11,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+//hu_fild06,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+//hu_fild06,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+//hu_fild06,0,0,0,0	monster	Manda	1418,25,0,0,0
+//hu_fild06,0,0,0,0	monster	Enma	1057,25,0,0,0
+//hu_fild06,0,0,0,0	monster	Baru	1032,25,0,0,0
+//hu_fild06,0,0,0,0	monster	Anbu	1635,20,0,0,0
+//hu_fild06,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+//bra_fild01,0,0,0,0	monster	Gama-Bunta	1089,25,0,0,0
+//bra_fild01,0,0,0,0	monster	Katsuyo	1381,25,0,0,0
+//bra_fild01,0,0,0,0	monster	Manda	1418,25,0,0,0
+//bra_fild01,0,0,0,0	monster	Enma	1057,25,0,0,0
+//bra_fild01,0,0,0,0	monster	Baru	1032,25,0,0,0
+//bra_fild01,0,0,0,0	monster	Anbu	1635,20,0,0,0
+//bra_fild01,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+yuno_fild11,0,0,0,0	monster	Camaleon	1831,20,0,0,0
+yuno_fild11,0,0,0,0	monster	Ninkame	1315,40,0,0,0
+yuno_fild11,0,0,0,0	monster	Doki	1177,20,0,0,0
+yuno_fild11,0,0,0,0	monster	Jounin	1634,30,0,0,0
+yuno_fild11,0,0,0,0	monster	Planta Medicinal 	1082,4,60000,60000,0
+
+
+//Esgoto
+
+prt_sewb1,0,0,0,0	monster	Verme		1070,50,0,0,0
+prt_sewb1,0,0,0,0	monster	Morcego		1005,55,0,0,0
+prt_sewb1,0,0,0,0	monster	Mosquito	1042,50,0,0,0
+
+prt_sewb3,0,0,0,0	monster	Ratasana		1209,55,0,0,0
+prt_sewb3,0,0,0,0	monster	Barata Macho		1053,55,0,0,0
+prt_sewb3,0,0,0,0	monster	Bacteria		1619,50,0,0,0
+prt_sewb3,0,0,0,0	monster	Shinobi Ladrão		1201,35,0,0,0
+
+gld_dun04,0,0,0,0	monster	Barata		1618,45,0,0,0
+gld_dun04,0,0,0,0	monster	Shinobi Sanguinário	1769,35,0,0,0
+gld_dun04,0,0,0,0	monster	Shinobi Assassino	1507,25,0,0,0
+gld_dun04,0,0,0,0	monster	Bacteria		1619,20,0,0,0
+
+gl_dun01,0,0,0,0	monster	Shinobi Prisioneiro	1196,25,0,0,0
+gl_dun01,0,0,0,0	monster	Shinobi Sanguinario	1769,45,0,0,0
+gl_dun01,0,0,0,0	monster	Prisioneiro Assassino	1202,70,0,0,0
+gl_dun01,0,0,0,0	monster	Prisioneiro Fugitivo	1257,45,0,0,0
+//gl_dun01,0,0,0,0	monster	Nukenin Procurado 	1839,10,0,0,0
+gl_dun01,0,0,0,0	monster	Nukenin Assassino 	1401,10,0,0,0
+
+gl_sew01,0,0,0,0	monster	Verme		1070,100,0,0,0
+gl_sew01,0,0,0,0	monster	Morcego		1005,55,0,0,0
+gl_sew01,0,0,0,0	monster	Mosquito	1042,50,0,0,0
+
+gl_sew03,0,0,0,0	monster	Ratasana		1209,55,0,0,0
+gl_sew03,0,0,0,0	monster	Barata Macho		1053,55,0,0,0
+gl_sew03,0,0,0,0	monster	Bacteria		1619,50,0,0,0
+gl_sew03,0,0,0,0	monster	Shinobi Ladrão		1201,35,0,0,0
+
+gl_sew04,0,0,0,0	monster	Barata		1618,45,0,0,0
+gl_sew04,0,0,0,0	monster	Shinobi Sanguinário	1769,35,0,0,0
+gl_sew04,0,0,0,0	monster	Shinobi Assassino	1507,25,0,0,0
+gl_sew04,0,0,0,0	monster	Bacteria		1619,20,0,0,0
+
+tha_t06,0,0,0,0	monster	Shinobi Prisioneiro	1196,25,0,0,0
+tha_t06,0,0,0,0	monster	Shinobi Sanguinário	1769,45,0,0,0
+tha_t06,0,0,0,0	monster	Prisioneiro Assassino	1202,70,0,0,0
+tha_t06,0,0,0,0	monster	Prisioneiro Fugitivo	1257,45,0,0,0
+//tha_t06,0,0,0,0	monster	Nukenin Procurado 	1839,10,0,0,0
+tha_t06,0,0,0,0	monster	Nukenin Assassino 	1401,10,0,0,0
+
+prt_sewb2,0,0,0,0	monster	Verme	1070,100,0,0,0
+prt_sewb2,0,0,0,0	monster	Morcego	1005,55,0,0,0
+prt_sewb2,0,0,0,0	monster	Mosquito	1042,50,0,0,0
+
+prt_sewb4,0,0,0,0	monster	Ratasana		1209,55,0,0,0
+prt_sewb4,0,0,0,0	monster	Barata Macho		1053,55,0,0,0
+prt_sewb4,0,0,0,0	monster	Bacteria		1619,50,0,0,0
+prt_sewb4,0,0,0,0	monster	Shinobi Ladrão		1201,35,0,0,0
+
+gl_sew02,0,0,0,0	monster	Barata		1618,45,0,0,0
+gl_sew02,0,0,0,0	monster	Shinobi Sanguinário	1769,35,0,0,0
+gl_sew02,0,0,0,0	monster	Shinobi Assassino	1507,25,0,0,0
+gl_sew02,0,0,0,0	monster	Bacteria	1619,20,0,0,0
+
+alde_dun02,0,0,0,0	monster	Shinobi Prisioneiro	1196,25,0,0,0
+alde_dun02,0,0,0,0	monster	Shinobi Sanguinário	1769,45,0,0,0
+alde_dun02,0,0,0,0	monster	Prisioneiro Assassino	1202,70,0,0,0
+alde_dun02,0,0,0,0	monster	Prisioneiro Fugitivo	1257,45,0,0,0
+//alde_dun02,0,0,0,0	monster	Nukenin Procurado 	1839,10,0,0,0
+alde_dun02,0,0,0,0	monster	Nukenin Assassino 	1401,10,0,0,0
+
+alde_dun01,0,0,0,0	monster	Verme	1070,100,0,0,0
+alde_dun01,0,0,0,0	monster	Morcego	1005,55,0,0,0
+alde_dun01,0,0,0,0	monster	Mosquito	1042,50,0,0,0
+
+alde_dun04,0,0,0,0	monster	Ratasana		1209,55,0,0,0
+alde_dun04,0,0,0,0	monster	Barata Macho		1053,55,0,0,0
+alde_dun04,0,0,0,0	monster	Bacteria		1619,50,0,0,0
+alde_dun04,0,0,0,0	monster	Shinobi Ladrão		1201,35,0,0,0
+
+beach_dun3,0,0,0,0	monster	Barata		1618,45,0,0,0
+beach_dun3,0,0,0,0	monster	Shinobi Sanguinário	1769,35,0,0,0
+beach_dun3,0,0,0,0	monster	Shinobi Assassino	1507,25,0,0,0
+beach_dun3,0,0,0,0	monster	Bacteria	1619,20,0,0,0
+
+gl_dun02,0,0,0,0	monster	Shinobi Prisioneiro	1196,25,0,0,0
+gl_dun02,0,0,0,0	monster	Shinobi Sanguinário	1769,45,0,0,0
+gl_dun02,0,0,0,0	monster	Prisioneiro Assassino	1202,70,0,0,0
+gl_dun02,0,0,0,0	monster	Prisioneiro Fugitivo	1257,45,0,0,0
+//gl_dun02,0,0,0,0	monster	Nukenin Procurado 	1839,10,0,0,0
+gl_dun02,0,0,0,0	monster	Nukenin Assassino 	1401,10,0,0,0
+
+
+//MapasEspeciais
+
+um_dun01,0,0,0,0	monster	Besouro-Rei	1494,40,0,0,0
+um_dun01,0,0,0,0	monster	Borboleta Sanguinária	1408,40,0,0,0
+um_dun01,0,0,0,0	monster	Borboleta	1018,35,0,0,0
+
+um_dun02,0,0,0,0	monster	Abelha	1114,40,0,0,0
+um_dun02,0,0,0,0	monster	Abelha Macho	1004,40,0,0,0
+um_dun02,0,0,0,0	monster	Abelha Chefe	1059,30,0,0,0
+
+yggdrasil01,0,0,0,0	monster	Borboleta Macho	1293,30,0,0,0
+yggdrasil01,0,0,0,0	monster	Lavadeira	1321,30,0,0,0
+yggdrasil01,0,0,0,0	monster	Besouro	1128,25,0,0,0
+
+mjo_dun01,0,0,0,0	monster	Operário	1169,40,0,0,0
+mjo_dun01,0,0,0,0	monster	Mineirador	1838,40,0,0,0
+mjo_dun01,0,0,0,0	monster	Escavador	1121,25,0,0,0
+
+mjo_dun02,0,0,0,0	monster	Guardião		1735,40,0,0,0
+mjo_dun02,0,0,0,0	monster	Guardião Mestre	1736,40,0,0,0
+mjo_dun02,0,0,0,0	monster	Guardião Arqueiro	1830,25,0,0,0
+mjo_dun02,0,0,0,0	monster	Espadachim	1163,30,0,0,0
+
+mjo_dun03,0,0,0,0	monster	Guardião Chefe	1829,30,0,0,0
+mjo_dun03,0,0,0,0	monster	Cavaleiro	1046,30,0,0,0
+mjo_dun03,0,0,0,0	monster	Samurai		1492,25,0,0,0
+
+anthell01,0,0,0,0	monster	Verme Mestre	1305,40,0,0,0
+anthell01,0,0,0,0	monster	Verme Maldito		1194,40,0,0,0
+anthell01,0,0,0,0	monster	Verme Chefe	1099,25,0,0,0
+anthell01,0,0,0,0	monster	Escaravelho	1211,35,0,0,0
+
+anthell02,0,0,0,0	monster	Inseto Assassino	1294,40,0,0,0
+anthell02,0,0,0,0	monster	Louva-a-Deus	1139,40,0,0,0
+anthell02,0,0,0,0	monster	Dragão Mutante	1262,25,0,0,0
+anthell02,0,0,0,0	monster	Gremlin	1632,20,0,0,0
+
+gld_dun03,0,0,0,0	monster	Inseto Rainha	1147,20,0,0,0
+gld_dun03,0,0,0,0	monster	Inseto Rei	1289,20,0,0,0
+gld_dun03,0,0,0,0	monster	Gafanhoto	1058,35,0,0,0
+gld_dun03,0,0,0,0	monster	Inseto Guardião	1159,30,0,0,0
+
+tur_dun01,0,0,0,0	monster	Pequena Planta Carnívora	1368,40,0,0,0
+tur_dun01,0,0,0,0	monster	Pequena Tartaruga		1318,40,0,0,0
+tur_dun01,0,0,0,0	monster	Cornutus	1067,25,0,0,0
+tur_dun01,0,0,0,0	monster	Planta	1780,35,0,0,0
+
+tur_dun02,0,0,0,0	monster	Caranguejo	1073,40,0,0,0
+tur_dun02,0,0,0,0	monster	Tartaruga	1601,40,0,0,0
+tur_dun02,0,0,0,0	monster	Grande Esquilo	1041,20,0,0,0
+tur_dun02,0,0,0,0	monster	Planta Carnívora	1118,25,0,0,0
+tur_dun02,0,0,0,0	monster	Estrela-do-Mar	1266,20,0,0,0
+
+tur_dun03,0,0,0,0	monster	Crustáceo	1066,20,0,0,0
+tur_dun03,0,0,0,0	monster	Gorila	1499,20,0,0,0
+tur_dun03,0,0,0,0	monster	Monstro Marinho	1039,35,0,0,0
+tur_dun03,0,0,0,0	monster	General Tartaruga	1312,40,0,0,0
+
+//FloodMapasAvulsos
+//prt_fild00,0,0,0,0	monster	Chunin	1636,30,0,0,0
+//prt_fild00,0,0,0,0	monster	Jounin	1634,30,0,0,0
+//prt_fild00,0,0,0,0	monster	Bandido	1372,75,0,0,0
+//mjolnir_11,0,0,0,0	monster	Chunin	1636,30,0,0,0
+//mjolnir_11,0,0,0,0	monster	Jounin	1634,30,0,0,0
+//mjolnir_11,0,0,0,0	monster	Bandido	1372,75,0,0,0
+gef_fild02,0,0,0,0	monster	Chunin	1636,30,0,0,0
+gef_fild02,0,0,0,0	monster	Jounin	1634,30,0,0,0
+gef_fild02,0,0,0,0	monster	Bandido	1372,75,0,0,0
+prt_fild07,0,0,0,0	monster	Bandido	1372,75,0,0,0
+gef_fild03,0,0,0,0	monster	Bandido	1372,75,0,0,0
+gef_fild03,0,0,0,0	monster	Chunin	1636,30,0,0,0
+gef_fild03,0,0,0,0	monster	Jounin	1634,30,0,0,0
+gef_fild12,0,0,0,0	monster	Bandido	1372,75,0,0,0
+gef_fild12,0,0,0,0	monster	Chunin	1636,30,0,0,0
+gef_fild12,0,0,0,0	monster	Jounin	1634,30,0,0,0
+payon,0,0,0,0	monster	Bandido	1372,75,0,0,0
+payon,0,0,0,0	monster	Chunin	1636,30,0,0,0
+payon,0,0,0,0	monster	Jounin	1634,30,0,0,0
+mjolnir_05,0,0,0,0	monster	Bandido	1372,75,0,0,0
+mjolnir_05,0,0,0,0	monster	Chunin	1636,30,0,0,0
+mjolnir_05,0,0,0,0	monster	Jounin	1634,30,0,0,0
+prt_fild03,0,0,0,0	monster	Bandido	1372,75,0,0,0
+prt_fild03,0,0,0,0	monster	Chunin	1636,30,0,0,0
+prt_fild03,0,0,0,0	monster	Jounin	1634,30,0,0,0
+prt_fild11,0,0,0,0	monster	Bandido	1372,75,0,0,0
+prt_fild11,0,0,0,0	monster	Chunin	1636,30,0,0,0
+prt_fild11,0,0,0,0	monster	Jounin	1634,30,0,0,0
+mosk_dun01,0,0,0,0	monster	Bandido	1372,75,0,0,0
+mosk_dun01,0,0,0,0	monster	Chunin	1636,30,0,0,0
+mosk_dun01,0,0,0,0	monster	Jounin	1634,30,0,0,0
+gef_fild10,0,0,0,0	monster	Bandido	1372,75,0,0,0
+gef_fild10,0,0,0,0	monster	Chunin	1636,30,0,0,0
+gef_fild10,0,0,0,0	monster	Jounin	1634,30,0,0,0
+gef_fild08,0,0,0,0	monster	Bandido	1372,75,0,0,0
+gef_fild08,0,0,0,0	monster	Chunin	1636,30,0,0,0
+gef_fild08,0,0,0,0	monster	Jounin	1634,30,0,0,0
+gef_fild06,0,0,0,0	monster	Bandido	1372,75,0,0,0
+gef_fild06,0,0,0,0	monster	Chunin	1636,30,0,0,0
+gef_fild06,0,0,0,0	monster	Jounin	1634,30,0,0,0
+um_fild03,0,0,0,0	monster	Bandido	1372,75,0,0,0
+um_fild03,0,0,0,0	monster	Chunin	1636,30,0,0,0
+um_fild03,0,0,0,0	monster	Jounin	1634,30,0,0,0
+pay_fild05,0,0,0,0	monster	Bandido	1372,75,0,0,0
+pay_fild05,0,0,0,0	monster	Chunin	1636,30,0,0,0
+pay_fild05,0,0,0,0	monster	Jounin	1634,30,0,0,0
+pay_fild01,0,0,0,0	monster	Bandido	1372,75,0,0,0
+pay_fild01,0,0,0,0	monster	Chunin	1636,30,0,0,0
+pay_fild01,0,0,0,0	monster	Jounin	1634,30,0,0,0
+einbech,0,0,0,0	monster	Bandido	1372,75,0,0,0
+einbech,0,0,0,0	monster	Chunin	1636,30,0,0,0
+einbech,0,0,0,0	monster	Jounin	1634,30,0,0,0
+moc_fild04,0,0,0,0	monster	Bandido	1372,75,0,0,0
+moc_fild04,0,0,0,0	monster	Chunin	1636,30,0,0,0
+moc_fild04,0,0,0,0	monster	Jounin	1634,30,0,0,0
+hu_fild04,0,0,0,0	monster	Bandido	1372,75,0,0,0
+hu_fild04,0,0,0,0	monster	Chunin	1636,30,0,0,0
+hu_fild04,0,0,0,0	monster	Jounin	1634,30,0,0,0
+lhz_fild02,0,0,0,0	monster	Bandido	1372,75,0,0,0
+lhz_fild02,0,0,0,0	monster	Chunin	1636,30,0,0,0
+lhz_fild02,0,0,0,0	monster	Jounin	1634,30,0,0,0
+ve_fild02,0,0,0,0	monster	Bandido	1372,75,0,0,0
+ve_fild02,0,0,0,0	monster	Chunin	1636,30,0,0,0
+ve_fild02,0,0,0,0	monster	Jounin	1634,30,0,0,0
+moc_fild15,0,0,0,0	monster	Bandido	1372,75,0,0,0
+moc_fild15,0,0,0,0	monster	Chunin	1636,30,0,0,0
+moc_fild15,0,0,0,0	monster	Jounin	1634,30,0,0,0
+ra_fild02,0,0,0,0	monster	Bandido	1372,75,0,0,0
+ra_fild02,0,0,0,0	monster	Chunin	1636,30,0,0,0
+ra_fild02,0,0,0,0	monster	Jounin	1634,30,0,0,0
+ra_fild13,0,0,0,0	monster	Bandido	1372,75,0,0,0
+ra_fild13,0,0,0,0	monster	Chunin	1636,30,0,0,0
+ra_fild13,0,0,0,0	monster	Jounin	1634,30,0,0,0
+ra_fild04,0,0,0,0	monster	Bandido	1372,75,0,0,0
+ra_fild04,0,0,0,0	monster	Chunin	1636,30,0,0,0
+ra_fild04,0,0,0,0	monster	Jounin	1634,30,0,0,0
+ra_fild01,0,0,0,0	monster	Bandido	1372,75,0,0,0
+ra_fild01,0,0,0,0	monster	Chunin	1636,30,0,0,0
+ra_fild01,0,0,0,0	monster	Jounin	1634,30,0,0,0
+ein_fild02,0,0,0,0	monster	Bandido	1372,75,0,0,0
+ein_fild02,0,0,0,0	monster	Chunin	1636,30,0,0,0
+ein_fild02,0,0,0,0	monster	Jounin	1634,30,0,0,0
+yuno_fild04,0,0,0,0	monster	Bandido	1372,75,0,0,0
+yuno_fild04,0,0,0,0	monster	Chunin	1636,30,0,0,0
+yuno_fild04,0,0,0,0	monster	Jounin	1634,30,0,0,0
+
+
+odin_tem01,0,0,0,0	monster	Bandido	1372,75,0,0,0
+odin_tem01,0,0,0,0	monster	Chunin	1636,30,0,0,0
+odin_tem01,0,0,0,0	monster	Jounin	1634,30,0,0,0
+
+//Nukes e Gatos
+gl_prison,0,0,0,0	monster	Nukenin Procurado 	1839,25,0,0,0
+gl_prison,0,0,0,0	monster	Nukenin Assassino 	1401,25,0,0,0
+gl_prison,0,0,0,0	monster	Nukenin Ladrão 	1154,25,0,0,0
+gl_prison,0,0,0,0	monster	Nukenin	1771,25,0,0,0
+//gl_prison,0,0,0,0	monster	Taka	1987,25,0,0,0
+ayo_dun01,0,0,0,0	monster	Taka	1987,50,0,0,0
+ayo_dun02,0,0,0,0	monster	Taka	1987,40,0,0,0
+ayo_dun02,0,0,0,0	monster	Bandido	1372,25,0,0,0
+
+//Kakashi
+
+kakashi,0,0,0,0	monster	Girino			1034,20,0,0
+kakashi,0,0,0,0	monster	Filhote de cobra	1037,20,0,0
+kakashi,0,0,0,0	monster	Bikouchuu		1051,20,0,0
+kakashi,0,0,0,0	monster	Filhote de Katsuyu	1783,20,0,0,0
+kakashi,0,0,0,0	monster	Akino	1212,20,0,0,0
+kakashi,0,0,0,0	monster	Onbba	1214,20,0,0,0

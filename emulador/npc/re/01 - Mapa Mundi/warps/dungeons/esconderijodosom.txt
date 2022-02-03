@@ -1,0 +1,16 @@
+//Permissão Rank S Konoha e Suna
+
+orochimaru,80,144,0	script	 #entersom	111,2,2,{
+	
+	OnTouch:
+	callfunc("warps"),	// Função
+	"ayo_dun01",			// Mapa
+	11,				// Coordenada X
+	148,				// Coordenada Y
+	1001,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+}
+
+//Sub Solo 1
+ayo_dun01,6,150,0	warp	entersom-1	2,2,orochimaru,80,137

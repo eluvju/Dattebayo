@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillfu02	-1,{
+    end;
+//When a Character uses a skill
+
+//daitoppa
+
+onPcUseSkillEvent:
+
+           if(lskillid == 11) {
+
+
+if (getskilllv(11) == 1) {
+
+if (daitoppa != 1) {end;}
+if (skill11 >= 50) {skill 11,2,0; set skill11,0; dispbottom "[Sys] Level up"; end; }
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 1: "+skill11+" de 50";
+
+end;
+
+}
+
+if (getskilllv(11) == 2) {
+if (daitoppa != 1) {end;}
+if (skill11 >= 100) {skill 11,3,0; set skill11,0; dispbottom "[Sys] Level up"; end;}
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 2: "+skill11+" de 100";
+
+end;
+
+}
+
+if (getskilllv(11) == 3) {
+
+if (nin_intermediario != 1) {end;}
+if (skill11 >= 150) {skill 11,4,0; set skill11,0; dispbottom "[Sys] Level up"; end;}
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 3: "+skill11+" de 150";
+
+end;
+
+}
+
+if (getskilllv(11) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill11 >= 200) {skill 11,5,0; set skill11,0; dispbottom "[Sys] Level up"; end;}
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 4: "+skill11+" de 200";
+
+end;
+
+}
+
+if (getskilllv(11) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill11 >= 250) {skill 11,6,0; set skill11,0; dispbottom "[Sys] Level up"; end;}
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 5: "+skill11+" de 250";
+
+end;
+
+}
+
+if (getskilllv(11) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill11 >= 300) {skill 11,7,0; set skill11,0; dispbottom "[Sys] Level up"; end;}
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 6: "+skill11+" de 300";
+
+end;
+
+}
+
+if (getskilllv(11) == 7) {
+if (nin_avan != 1) {end;}
+if (skill11 >= 500) {skill 11,8,0; set skill11,0; dispbottom "[Sys] Level up"; end;}
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 7: "+skill11+" de 500";
+
+end;
+
+}
+
+if (getskilllv(11) == 8) {
+if (nin_avan != 1) {end;}
+if (skill11 >= 700) {skill 11,9,0; set skill11,0; dispbottom "[Sys] Level up"; end;}
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 8: "+skill11+" de 700";
+
+end;
+
+}
+
+if (getskilllv(11) == 9) {
+if (nin_avan != 1) {end;}
+if (skill11 >= 1000) {skill 11,10,0; set skill11,0; dispbottom "[Sys] Level up"; end;}
+set skill11,skill11 +1;
+dispbottom "[Jutsu level] Fuuton Daitoppa level 9: "+skill11+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

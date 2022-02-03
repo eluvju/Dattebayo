@@ -1,0 +1,219 @@
+treinamento,73,160,5	script	Tazuna#1	1_M_LIBRARYMASTER,{
+
+	set .@instance$, "Grande Ponte";
+	mes "^ff0000[Tazuna]^000000";
+	mes "Olá, shinobi! Está pronto para começar sua aventura?";
+	menu "Iniciar Raid.",inicio,"Removedor de Raid.",removedor;
+	removedor:
+next;
+if(questmade22 == GetTime(8)) {
+mes "^ff0000[Tazuna]^000000";
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+
+if(vip_status(1)) {
+mes "^ff0000[Tazuna]^000000";
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid do Grande Ponte. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "^ff0000[Tazuna]^000000";
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7020,1;
+set questmade22, GetTime(8);
+close;
+	
+r2:
+next;
+mes "^ff0000[Tazuna]^000000";
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}
+
+inicio:	
+if(questmade2 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:
+mes "^ff0000[Tazuna]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7020) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Tazuna]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set questmade2, 0;
+delitem 7020,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Tazuna]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Fale comigo novamente!";
+close;
+}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	if($@partymembercount > 5) {
+	mes "Você não pode iniciar a Raid com mais de 5 membros no grupo.";
+	close;
+	}
+}
+
+		if(!instance_check_party(getcharid(1),1,400,999)) {
+			mes "Todos os membros do grupo devem ser no mínimo nível 400.";
+			close;
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos do ^FF0000Grande Ponte^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if(getpartyleader(getcharid(1),2) != getcharid(0)) goto naocria;
+
+		if (instance_create(.@instance$) < 0) {
+		mes "Você não atende aos requisitos do ^FF0000Grande Ponte^000000.";
+		close;
+
+		naocria:
+		mes "Você precisa ser o líder do grupo para criar a raid ^FF0000Grande Ponte^000000.";
+		close;
+		}
+
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		getpartymember getcharid(1),2;
+		for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		}
+		attachrid(getpartyleader(getcharid(1),1));
+		hideonnpc ""+instance_npcname("Tazuna#2")+"";
+		hideonnpc ""+instance_npcname("warpponte")+"";
+		disablenpc ""+instance_npcname("warpponte")+"";
+		instance_announce instance_id(),"Fiquem atentos, os capangas estão vindo!",0;
+		areamonster ""+instance_mapname("1@ponte",instance_id())+"",88,44,130,83,"Capanga",1301,50,"ponteinstance::OnCapangaDie1";
+		end;
+	}
+}
+
+1@ponte,0,0,0	script	ponteinstance	-1,{
+	OnCapangaDie1:
+		if(!mobcount(""+instance_mapname("1@ponte",instance_id())+"","ponteinstance::OnCapangaDie1")) {
+			instance_announce instance_id(),"Eles não param de vir, fiquem atentos!",0;
+			areamonster ""+instance_mapname("1@ponte",instance_id())+"",180,44,230,83,"Capanga",1301,50,"ponteinstance::OnCapangaDie2";
+			end;
+		}
+		else
+			instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("1@ponte",instance_id())+"",
+			"ponteinstance::OnCapangaDie1"))+" capangas mortos",0;
+		end;
+		
+	OnCapangaDie2:
+		if(!mobcount(""+instance_mapname("1@ponte",instance_id())+"","ponteinstance::OnCapangaDie2")) {
+			instance_announce instance_id(),"Ufa, parece que derrotamos todos!",0;
+			sleep2 5000;
+			instance_announce instance_id(),"Cuidado! Tem mais capangas vindo!",0;
+			areamonster ""+instance_mapname("1@ponte",instance_id())+"",270,44,326,83,"Capanga",1301,50,"ponteinstance::OnCapangaDie3";
+			end;
+		}
+		else
+			instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("1@ponte",instance_id())+"",
+			"ponteinstance::OnCapangaDie2"))+" capangas mortos",0;
+		end;
+	OnCapangaDie3:
+		if(!mobcount(""+instance_mapname("1@ponte",instance_id())+"","ponteinstance::OnCapangaDie3")) {
+			instance_announce instance_id(),"Todos os capangas foram derrotados!",0;
+			areamonster ""+instance_mapname("1@ponte",instance_id())+"",167,363,197,364,"Haku",1302,1,"ponteinstance::OnHakuDie";
+			hideoffnpc ""+instance_npcname("warpponte")+"";
+			enablenpc ""+instance_npcname("warpponte")+"";
+		}
+		else
+			instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("1@ponte",instance_id())+"",
+			"ponteinstance::OnCapangaDie3"))+" capangas mortos",0;
+		end;
+	OnHakuDie:
+		instance_announce instance_id(),"Zabuza Momochi: Haha! Obrigado por ter sido minha ferramenta, Haku!",0;
+		monster ""+instance_mapname("1@ponte",instance_id())+"",283,363,"Zabuza Momochi",1304,1,"ponteinstance::OnZabuzaDie";
+		end;
+	OnZabuzaDie:
+		instance_announce instance_id(),"Zabuza Momochi: Não pode ser! Perdi para esse bando de pirralhos!",0;
+		hideoffnpc ""+instance_npcname("Tazuna#2")+"";
+		sleep2 2000;
+		instance_announce instance_id(),"Tazuna: Atenção líder do grupo, aguarde os outros shinobis pegarem a premiação!",0;
+		sleep2 2000;
+		instance_announce instance_id(),"Tazuna: Vocês tem 45 segundos antes da raid ser destruída!",0;
+		sleep2 35000;
+		instance_announce instance_id(),"Tazuna: Vocês tem 10 segundos antes da raid ser destruída!",0;
+		sleep2 10000;
+		instance_destroy;
+		end;
+}
+
+1@ponte,325,364,4	script	Tazuna#2	1_M_LIBRARYMASTER,{
+
+		if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+
+		mes "Parabéns por completar a missão, aqui está sua premiação!";
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 150 WHERE `char_id` = '"+getcharid(0)+"'");
+		dispbottom "Você ganhou 150 pontos de missão.";
+		next;
+		mes "Até a próxima aventura!";
+		getitem 734,1;
+		set questmade2, GetTime(8);
+		close2;
+		warp "SavePoint",0,0;
+	}
+
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 5) {
+			mes "Seu Grupo é muito grande. Reduza a quantidade de membros. Só é permitido 5 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+	mes "^ff0000[Tazuna]^000000";
+	mes "Atenção líder, você deve ser o último a confirmar a saída comigo! Aguarde os membros do seu grupo pegarem a premiação...";
+	instance_announce instance_id(),"Tazuna: Atenção shinobis, vocês devem pegar a premiação antes do líder!",0;
+	next;
+	mes "^ff0000[Tazuna]^000000";
+	mes "Verificou se todos pegaram a premiação, líder?";
+	menu "Não.",saida,"Sim.",sim;
+
+	sim:
+	close2;
+	query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 150 WHERE `char_id` = '"+getcharid(0)+"'");
+	dispbottom "Você ganhou 150 pontos de missão.";
+	getitem 734,1;
+	set questmade2, GetTime(8);	
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Raid Grande Ponte.",bc_all;	
+	instance_destroy;
+	end;
+
+	saida:
+	next;
+	mes "^ff0000[Tazuna]^000000";
+	mes "Aguarde todos jogadores pegarem o prêmio!";
+	close;
+}
+1@ponte,326,64,0	warp	warpponte	1,1,1@ponte,40,363
+1@ponte	mapflag	partylock
+1@ponte	mapflag	nomemo
+1@ponte	mapflag	nosave	SavePoint
+hospital	mapflag	loadevent
+hospital2	mapflag	loadevent
+hospital3	mapflag	loadevent
+hospital4	mapflag	loadevent

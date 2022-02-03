@@ -1,0 +1,48 @@
+sec_in01,165,164,5	script	Aburame	103,{
+	if(aburame == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Shino Aburame^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou o Shino Aburame , você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Shino Aburame^000000]";
+	mes "O Clã Aburame (Aburame Ichizoku) é um dos quatro clãs nobres de Konohagakure, e são caracterizadas pelo uso de insetos como armas. Ao nascer, os membros deste clã são oferecidos a uma raça especial de insetos, como kikaichu como um ninho, residente apenas sob a pele de seu hospedeiro. Esses insetos vivem em simbiose com seu hospedeiro.";
+	next;
+	mes "[^00FF40Shino Aburame^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",aburame2,"- Não",nao;
+	close;
+
+	
+	
+	aburame2:
+
+next;
+
+	mes "[^00FF40Shino Aburame^000000]";
+
+mes " aburame pode ser usado em combinação com ninjutsu, fluxo de Chakra e até mesmo Taijutsu para obter técnicas mais devastadoras.  ";
+
+next;
+
+set pegoukg,1;
+
+set aburame,1;
+
+	mes "[^00FF40Shino Aburame^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

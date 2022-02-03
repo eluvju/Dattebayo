@@ -1,0 +1,10 @@
+sec_in01,78,39,5	script	Iruka Umino	426,{
+mes "Olá, jovem shinobi! Eu sou o Iruka Sensei! Seja Bem-Vindo à academia ninja! É aqui que você irá aprender tudo sobre treinamentos, elementos, Kekkei Genkais e treinar suas primeiras habilidades. Se você for um ninja aplicado, é aqui também que você irá se graduar como genin!";
+next;
+mes "Para começar, o seu nível pode ser evoluído até o nível 300! Aqui na academia, você irá encontrar inicialmente o Sensei te explicando sobre treinamentos. Logo depois, evolua seus conhecimentos e aprenda um pouco mais sobre os elementos da natureza. Em seguida, descubra a sua Kekkei Genkai e, por fim, aprenda suas primeiras habilidades, se tiver sucesso, podera estar a um passo para se tornar um Grande Ninja entao comece a sua jornada!";
+next;
+mes "Dirija-se até a Sala 1 e vá em busca de mais conhecimento!";
+set iruka,1;
+set saida,1;
+   close;
+}

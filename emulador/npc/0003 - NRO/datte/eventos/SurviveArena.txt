@@ -1,0 +1,149 @@
+-	script	Evento#SvA	SurviveArena#SvA -1,{
+OnClock1000:
+OnClock1200:
+OnClock1400:
+OnClock1600:
+OnClock1800:
+OnClock2000:
+OnClock2200:
+OnClock0000:
+end;
+Announce "[Survive Arena]: A entrada para o evento está aberta e fechará dentro de 5 minutos.",0;
+pvpoff "guild_vs2";
+disablenpc "Survive Arena#In";
+initnpctimer;
+set $SvAinfo[1], 1;
+end;
+
+OnTimer5000:
+if($SvAinfo[2] == 0) end;
+disablenpc "Survive Arena#In";
+set $SvAinfo[2], 0;
+end;
+
+OnTimer300000:
+mapannounce "guild_vs2","[Survive Arena]: Evento iniciado. A saída será liberada dentro de 1 minuto.",1;
+pvpon "guild_vs2";
+end;
+
+OnTimer360000:
+enablenpc "Survive Arena#In";
+mapannounce "guild_vs2","[Survive Arena]: O npc de saída foi habilitado. A chance de premiação depende do número de usuários no mapa.",1;
+end;
+
+OnTimer1740000:
+mapannounce "guild_vs2","[Survive Arena]: O evento chegará ao fim em 1 minuto.",1;
+end;
+
+OnTimer1800000:
+disablenpc "Survive Arena#In";
+pvpoff "guild_vs2";
+mapannounce "guild_vs2","[Survive Arena]: O evento chegou ao fim. Boa sorte na próxima.",1;
+set $SvAinfo[1], 0;
+end;
+}
+
+guild_vs2,50,50,3	script	Survive Arena#In	48,{
+if(rand(1,getmapusers("guild_vs2")) == 1){
+Announce "[Survive Arena]: O jogador "+strcharinfo(0)+" deu sorte no evento e ganhou uma recompensa.",0;
+getitem 12937, 1;
+}
+if(getmapusers("guild_vs2") == 1){
+pvpoff "guild_vs2";
+set $SvAinfo[2], 1;
+initnpctimer "Evento#SvA";
+}
+warp "kakashi",0,0;
+end;
+}
+
+
+kakashi,78,129,3	script	Survive Arena#Out	48,{
+
+// Nome do npc
+set .npc$,"^800000[Survive Arena]^000000";
+
+if(getgmlevel() > 5 && $SvAinfo[1] == 0){
+mes "Gostaria de abrir o evento?";
+if(select("Não:Sim") == 1) close;
+Announce "[Survive Arena]: Evento iniciado pelo Staffer "+strcharinfo(0)+"! Boa sorte a todos.",0;
+pvpoff "guild_vs2";
+disablenpc "Survive Arena#In";
+initnpctimer "Evento#SvA";
+set $SvAinfo[1], 1;
+close2;
+partyleave;
+warp "guild_vs2",0,0;
+end;
+}
+
+if(getgmlevel() > 5 && $SvAinfo[1] == 1){
+mes "Gostaria de fechar o evento?";
+if(select("Não:Sim") == 1) close;
+Announce "[Survive Arena]: Evento finalizado pelo Staffer "+strcharinfo(0)+".",0;
+disablenpc "Survive Arena#In";
+pvpoff "guild_vs2";
+mapannounce "guild_vs2","[Survive Arena]: O evento chegou ao fim. Boa sorte na próxima.",1;
+set $SvAinfo[1], 0;
+close;
+end;
+}
+
+
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+if(select("Entrar["+getmapusers("guild_vs2")+"]:Informações") == 1){
+if(SvAinfo[1] == 0){
+mes .npc$;
+mes "A entrada está bloqueada";
+close;
+end;
+}
+if(BaseLevel < 999){
+mes .npc$;
+mes "Você precisa ser level 999 para participar deste evento.";
+close;
+end;
+}
+close2;
+partyleave;
+warp "guild_vs2",0,0;
+end;
+}else{
+next;
+mes .npc$;
+mes "O evento se trata de uma arena de sobrevivencia, onde após 1 minuto do inicio do evento, a saida sera liberada.";
+next;
+mes .npc$;
+mes "No momento da saida, o npc ira sortear um numero dependente do numero de usuarios no mapa.";
+next;
+mes .npc$;
+mes "Dependendo do numero, o individuo podera ganhar um premio.";
+next;
+mes .npc$;
+mes "De forma geral, quantos menos usuarios no mapa, maior e a chance de se ganhar um premio.";
+next;
+mes .npc$;
+mes "O ultimo individuo no evento, tem quase 100% de chance de ganhar o premio. o segunda lugar tem 50%, o terceiro lugar 33%, e assim por diante.";
+next;
+mes .npc$;
+mes "O Npc abre a cada 2 horas, entre 10h e 00h.";
+close;
+end;
+}
+end;
+}
+
+guild_vs2	mapflag	nowarp
+guild_vs2	mapflag	noteleport
+guild_vs2	mapflag	nowarpto
+guild_vs2	mapflag	nobranch
+guild_vs2	mapflag	nosave	SavePoint
+guild_vs2	mapflag	nomemo
+guild_vs2	mapflag	nopenalty
+guild_vs2	mapflag	noexp
+guild_vs2	mapflag	pvp
+guild_vs2	mapflag	pvp_noguild
+guild_vs2	mapflag	pvp_noparty
+guild_vs2	mapflag	noparty

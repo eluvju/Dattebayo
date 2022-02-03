@@ -1,0 +1,141 @@
+//===== eAthena Script ======================================= 
+//= Card Removal NPC
+//===== By: ================================================== 
+//= TyrNemesis^
+//===== Current Version: ===================================== 
+//= 1.2
+//===== Compatible With: ===================================== 
+//= eAthena SVN
+//===== Description: ========================================= 
+//= Removes cards from equipped items.
+//===== Additional Comments: ================================= 
+//= 1.0 First version. [TyrNemesis^]
+//= 1.2 Optimized and fixed getequipname menu. [Kisuka]
+//============================================================ 
+
+prontera,158,177,4	script	Mineirador Ancião	78,{
+	mes "[Mineirador Ancião]";
+	mes "Olá jovem, Eu sou o único mineirador capaz de remover os cristals selados em equipamentos, tem interesse nos meus serviços?";
+	next;
+	switch(select("Sim, eu tenho.:O que você cobra?:Não, obrigado.")) {
+		case 1:
+			mes "[Mineirador Ancião]";
+			mes "Muito bem. qual equipamento quer que eu examine?";
+			next;
+
+			setarray .@position$[1], "Cabeça","Colete","Mão esquerda","Mão direita","Capa","Bota","Acessório 1","Acessório 2","Cabeça 2","Cabeça 3";
+			set .@menu$,"";
+			for( set .@i,1; .@i <= 10; set .@i,.@i+1 )
+			{
+				if( getequipisequiped(.@i) )
+					set .@menu$, .@menu$ + .@position$[.@i] + "-" + "[" + getequipname(.@i) + "]";
+
+				set .@menu$, .@menu$ + ":";
+			}
+			set .@part,select(.@menu$);
+			if(!getequipisequiped(.@part)) {
+				mes "[Mineirador Ancião]";
+				mes "Meu jovem... você não tem nenhum item equipado do qual posso remover cristais.";
+				close;
+			}
+			if(getequipcardcnt(.@part) == 0) {
+				mes "[Mineirador Ancião]";
+				mes "Meu jovem... Não há cristais nesse equipamento.";
+				close;
+			}
+			set .@cardcount,getequipcardcnt(.@part);
+			
+			if (!checkweight(1202,(.@cardcount+1))) { 
+				mes "^3355FFSó um minuto!";
+				mes "Não posso concluir o serviço";
+				mes "porque você está com muito";
+				mes "peso em seu inventário";
+				close;
+			}
+			mes "[Mineirador Ancião]";
+			mes "Este equipamento possui " + .@cardcount + " cristais selados nele. Pra realizar o processo, eu preciso de um ^0000FFmetal de remoção^000000.";
+			next;
+			if(select("Entendi, pode finalizar.:Deixa pra lá...") == 2) {
+				mes "[Mineirador Ancião]";
+				mes "Certo. Volte quando precisar.";
+				close;
+			}
+			if (countitem(562) < 1){
+				mes "[Mineirador Ancião]";
+				mes "Você não possui o metal de remoção, volte quando tiver um.";
+				close;
+			}
+			mes "[Mineirador Ancião]";
+			mes "Antes que eu dou inicio ao processo, Devo avisar que tem chance de falhar. Se eu falhar, Os cristais podem ser quebrados, o equipamento, ou ambos. Eu não faço devoluções. Sendo assim, O que é mais importante pra você: Os cristais, ou o equipamento?";
+			next;
+			switch(select("Mudei de ideia, desisto.:O equipamento.:Os cristais.")) {
+				case 1:
+					mes "[Mineirador Ancião]";
+					mes "Entendido. volte quando precisar.";
+					close;
+				case 2:
+					set .@failtype,1;
+					break;
+				case 3:
+					set .@failtype,2;
+			}
+			mes "[Mineirador Ancião]";
+			mes "Ótimo. vou começar.";
+			delitem 562,1;
+			
+			// Replace the constants in the next 3 lines with failure chance values defined in refine_db.txt
+			// First value = Total failure chance (item and cards destroyed)
+			// Second value = Partial failure chance (one or the other is destroyed, player decides which one is safe)
+			// Third value = Harmless failure chance (all that's lost is your investment)
+
+			set .@failchance,rand(100);
+		/*	
+			if(.@failchance < 2) {
+				next;
+				failedremovecards .@part,0;
+				mes "[Mineirador Ancião]";
+				mes "Infelizmente o processo falhou. infelizmente o equipamento e cristais foram perdidos.";
+				close;
+			}
+
+			if(.@failchance < 8) {
+				if (.@failtype == 1) {
+					next;
+					failedremovecards .@part,1;					
+					mes "[Mineirador Ancião]";
+					mes "Jovem, infelizmente seus cristais foram perdidos no processo. Seu equipamento, no entanto, está okay.";
+					close;
+				}
+
+				if (.@failtype == 2) {
+					next;
+					failedremovecards .@part,2;
+					mes "[Mineirador Ancião]";
+					mes "Infelizmente, Eu removi as cartas, mas o equipamento foi destruido no processo.";
+					close;	
+				}
+			}
+		*/
+
+			if(.@failchance < 10) {
+				next;
+				failedremovecards .@part,3;				
+				mes "[Mineirador Ancião]";
+				mes "Eu falhei no processo de remoção. Mas pra sua sorte, os cristais e equipamento está intacto.";
+				close;	
+			}
+			next;
+			successremovecards .@part;
+			mes "[Mineirador Ancião]";
+			mes "O processo foi um sucesso. Aqui está seu equipamento e cristais.";
+			close;			
+		case 2:
+			mes "[Mineirador Ancião]";
+			mes "A única coisa que preciso é de um metal de remoção.";
+			close;
+		case 3:
+			mes "[Mineirador Ancião]";
+			mes "Certo. Volte quando precisar de mim.";
+			close;
+	}
+}

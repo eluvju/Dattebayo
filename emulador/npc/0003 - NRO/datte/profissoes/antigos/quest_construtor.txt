@@ -1,0 +1,70 @@
+konoha,77,185,5	script	Construtor::pro_construtor	59,{
+
+if (jatemmain == 1) goto L_no;
+if(construtor == 1) goto L_temprofissao;
+if (checkquest(2033) == 1) goto L_go;
+//========================================================================
+//	MENU
+//========================================================================
+set @suamorte,rand(1,2);
+if (@suamorte == 1) {mes "Ah, ser construtor não é fácil."; mes " * Uma pedra pontiaguda voa em direção a você * "; atcommand "kill "+strcharinfo(0)+""; next; mes "Ah, desculpe não havia te visto, desculpe mesmo!"; close;}
+if (@suamorte == 2) {mes "Olá "+strcharinfo(0)+"."; mes "Você parece bem disposto hoje! Gostaria trabalhar duro como um Construtor? Eu posso lhe ensinar."; menu "Sim, eu quero",L_SS,"Agora não",L_no; }
+//========================================================================
+//	construtor
+//========================================================================
+
+L_SS:
+next;
+mes "Bom, primeiramente preciso que você consiga alguns itens que irão me ajudar muito!";
+next;
+mes "Aqui está a lista de itens:";
+next;
+mes "- Obter 100x Raiz Marrom."; //(Id: 7188)
+mes "- Obter 30x Zargônio."; //(Id: 912)
+mes "- Obter 5x Brigan."; //(id: 7054)
+mes "- Obter 1x Natureza Grandiosa."; //(Id: 997)
+mes "- Matar 100x Vermes Malditos"; //
+setquest 2033;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2033,hunting) != 2) {mes "Você ainda não completou suas Tarefas."; close;}
+if (countitem(7188) < 100) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(912) < 30) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(7054) < 5) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(997) < 1) {mes "Você ainda não completou suas tarefas"; close;}
+mes "Com essa velocidade, logo logo você será um grande construtor!!";
+next;
+mes "Agora você é um Construtor!";
+completequest 2033;
+delitem 7188,150;
+delitem 912,30;
+delitem 7054,5;
+delitem 997,1;
+getitem 2671,1;
+getitem 2224,1;
+set construtor,1;
+set jatemmain,1;
+announce "[Profissão] "+strcharinfo(0)+" acaba de virar Construtor!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Bem-vindo de volta, oque você faz por aqui?";
+menu "Nada",L_no,"Quero receber outro Luva de Construtor.",luva;
+
+luva:
+if (countitem(2671) >= 1) {mes "Você não precisa de outra Luva de Construtor."; close;}
+mes "Aqui está";
+getitem 2671,1;
+close;
+
+}
+
+areia,274,48,5	duplicate(pro_construtor)	Construtor#1	59,{
+kiri,371,198,5	duplicate(pro_construtor)	Construtor#2	59,{
+nuvem,99,135,5	duplicate(pro_construtor)	Construtor#3	59,{

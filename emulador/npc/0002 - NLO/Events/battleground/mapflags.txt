@@ -1,0 +1,80 @@
+/*.-----------------------------------------------------------------------------.
+  .          ____                          __                                   .
+  .         /\  _`\                       /\ \__  __                            .
+  .         \ \ \/\_\  _ __    __     __  \ \ ,_\/\_\  __  __     __            .
+  .          \ \ \/_/_/\`'__\/'__`\ /'__`\ \ \ \/\/\ \/\ \/\ \  /'__`\          .
+  .           \ \ \s\ \ \ \//\  __//\ \d\.\_\ \ \_\ \ \ \ \_/ |/\  __/          .
+  .            \ \____/\ \_\\ \____\ \__/.\_\\ \__\\ \_\ \___/ \ \____\         .
+  .             \/___/  \/_/ \/____/\/__/\/_/ \/__/ \/_/\/__/   \/____/         .
+  .                                                                             .
+  .                  2014~2016 © Creative Services and Developent               .
+  .                            www.creativesd.com.br                            .
+  .                          www.sbkmod.ragnagreen.com                          .
+  .-----------------------------------------------------------------------------.
+  . Script:                                                                     .
+  .    MapFlags.                                                                .
+  .-----------------------------------------------------------------------------.
+  . Autor: Romulo SM (sbk_)                                        Versão: 6.0  .
+  .                                                                             .
+  . Compátivel:	eAthena / rAthena / Hercules e derivações.                    	.
+  *------------------------------------------------------------------------------*/
+  
+// Battle Grounds ==============
+bat_room	mapflag	pvp	off
+bat_a01	mapflag	pvp	off
+bat_a02	mapflag	pvp	off
+bat_b01	mapflag	pvp	off
+bat_b02	mapflag	pvp	off
+bat_c01	mapflag	pvp	off
+bat_c02	mapflag	pvp	off
+bat_c03	mapflag	pvp	off
+
+
+// Tierra
+bat_a01	mapflag	nowarp
+bat_a01	mapflag	nowarpto
+bat_a01	mapflag	nomemo
+bat_a01	mapflag	noteleport
+bat_a01	mapflag	nosave
+bat_a01	mapflag	battleground	2
+
+bat_a02	mapflag	nowarp
+bat_a02	mapflag	nowarpto
+bat_a02	mapflag	nomemo
+bat_a02	mapflag	noteleport
+bat_a02	mapflag	nosave
+bat_a02	mapflag	battleground	2
+
+// Flavius
+bat_b01	mapflag	nowarp
+bat_b01	mapflag	nowarpto
+bat_b01	mapflag	nomemo
+bat_b01	mapflag	noteleport
+bat_b01	mapflag	nosave
+bat_b01	mapflag	battleground	2
+
+bat_b02	mapflag	nowarp
+bat_b02	mapflag	nowarpto
+bat_b02	mapflag	nomemo
+bat_b02	mapflag	noteleport
+bat_b02	mapflag	nosave
+bat_b02	mapflag	battleground	2
+
+// Krieger von Midgard
+bat_c01	mapflag	nowarp
+bat_c01	mapflag	nowarpto
+bat_c01	mapflag	nomemo
+bat_c01	mapflag	noteleport
+bat_c01	mapflag	nosave
+bat_c01	mapflag	battleground	2
+bat_c01	mapflag	nobgskillcall
+bat_c01	mapflag	nobgrespawn
+
+bat_c02	mapflag	nowarp
+bat_c02	mapflag	nowarpto
+bat_c02	mapflag	nomemo
+bat_c02	mapflag	noteleport
+bat_c02	mapflag	nosave
+bat_c02	mapflag	battleground	2
+bat_c02	mapflag	nobgskillcall
+bat_c02	mapflag	nobgrespawn

@@ -1,0 +1,460 @@
+bibli_01,59,43,3	script	Professora Hiddens::profkg	895,{
+mes "^ff0000[Professora]^000000";
+mes "Olá ^ff0000"+strcharinfo(0)+"^000000! No Naruto Legends Online, você pode construir seu personagem da maneira que desejar!";
+next;
+mes "^ff0000[Professora]^000000";
+mes "Porém, caso esteja em dúvida, posso sugerir alguns treinos padrões para você!";
+next;
+mes "^ff0000[Professora]^000000";
+mes "Você deseja dicas de treino para alguma Hidden?";
+menu "Byakugan(Neji)",neji,"Byakugan (Hinata)",hina,"Selo Amaldiçoado Céu",seloceu,"Selo Amaldiçoado Terra",seloterra,"Akimichi",akimichi,"Tayuya",tayuya,"Mitsashi",mit,"Ibuse",ibuse,"Hyouton",hyo,"Jashin",jashin,"Sharingan",sharingan,"Portões",portoes,"Nara",nara,"Aburame",abu,"Shakuton",shakuton,"Kugutsu",kugutsu,"Kibaku Socho",socho,"Kibaku Nendo",nendo,"Jinton",jin,"Byakugo no In",byakugo,"Kaguya",kaguya,"Ressonante",resso,"Kidoumaru",kido,"Liberação de Relâmpago",raikage,"Kenjutsu",kenjutsu,"Liberação de Cristal",shouton,"Liberação de Lava",youton;
+
+neji:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Byakugan Neji";
+mes "- Velocidade Avançado";
+mes "- Taijutsu Intermediário";
+mes "- Fuuinjutsu Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+hina:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Byakugan Hinata";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Mid/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+seloceu:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Selo Amaldiçoado Céu";
+mes "- Ninjutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Early/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+seloterra:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Selo Amaldiçoado Terra";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Early game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+akimichi:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Akimichi";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Early/Mid game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+tayuya:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Tayuya";
+mes "- Genjutsu Avançado";
+mes "- Taijutsu Intermediário";
+mes "- Fuinjutsu Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+mit:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Mitsashi";
+mes "- Taijutsu Avançado";
+mes "- Velocidade Intermediário";
+mes "- Fuuinjutsu Básico";
+mes "Picos de poder: ^ff0000Early/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+ibuse:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Ibuse";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+hyo:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Hyouton";
+mes "- Ninjutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Mid game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+jashin:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Jashin";
+mes "- Resistência Avançado";
+mes "- Taijutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Mid/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+sharingan:
+next;
+mes "^ff0000[Professora]^000000";
+mes "O Sharingan funciona de maneira diferente, temos 3 variações que são atingidas no Late Game (nível 4 da Hidden).";
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Sharingan (Sasuke ou Itachi)";
+mes "- Ninjutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "• Sharingan (Obito)";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+portoes:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Portões";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Mid/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+nara:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Nara";
+mes "- Velocidade Avançado";
+mes "- Resistência Intermediário";
+mes "- Taijutsu Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+abu:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Aburame";
+mes "- Fuuinjutsu Avançado";
+mes "- Genjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Early/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+shakuton:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Shakuton";
+mes "- Ninjutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Early/Mid game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+kugutsu:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Kugutsu";
+mes "- Resistência Avançado";
+mes "- Taijutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+socho:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Kibaku Socho";
+mes "- Resistência Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Mid/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+nendo:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Kibaku Nendo";
+mes "- Fuuinjutsu Avançado";
+mes "- Velocidade Intermediário";
+mes "- Taijutsu Básico";
+mes "Picos de poder: ^ff0000Early game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+jin:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Jinton";
+mes "- Ninjutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Early/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+byakugo:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Byakugo no Inn";
+mes "- Medicina Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Mid/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+kaguya:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Kaguya";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Early/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+resso:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Ressonante";
+mes "- Ninjutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Mid game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+kido:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Kidoumaro";
+mes "- Fuuinjutsu Avançado";
+mes "- Velocidade Intermediário";
+mes "- Genjutsu Básico";
+mes "Picos de poder: ^ff0000Early/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+raikage:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Liberação de Relâmpago";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Mid/Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+kenjutsu:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Kenjutsu";
+mes "- Taijutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+shouton:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Liberação de Cristal";
+mes "- Ninjutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Late game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+youton:
+next;
+mes "^ff0000[Professora]^000000";
+mes "Minhas recomendações de treino para essa Hidden são:";
+next;
+mes "• Liberação de Lava";
+mes "- Ninjutsu Avançado";
+mes "- Fuuinjutsu Intermediário";
+mes "- Velocidade Básico";
+mes "Picos de poder: ^ff0000Early/mid game^000000.";
+next;
+mes "Você pode avançar dois treinos para o nível ^ff0000Intermediário^000000, é necessário se graduar para Chunin.";
+next;
+mes "Para avançar um treino para o nível ^ff0000Avançado^000000, é necessário se graduar para Jounin.";
+close;
+
+
+OnInit:
+waitingroom "Dúvidas?",0;
+}
+
+bibli_02,59,43,3	duplicate(profkg)	Professora Hiddens#2	895
+bibli_03,59,43,3	duplicate(profkg)	Professora Hiddens#3	895
+bibli_04,59,43,3	duplicate(profkg)	Professora Hiddens#4	895

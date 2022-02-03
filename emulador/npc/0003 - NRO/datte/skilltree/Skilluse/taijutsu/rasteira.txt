@@ -1,0 +1,102 @@
+-	script	Rasteira	-1,{
+    end;
+//When a Character uses a skill
+
+//Rasteira
+
+OnNPCKillEvent:
+
+if (getskilllv(417) == 1) {
+
+if (Rasteira != 1) {end;}
+if (skill417 >= 50) {skill 417,2,0; set skill417,0; dispbottom "[Sys] Level up"; end; }
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 1: "+skill417+" de 50";
+
+end;
+
+}
+
+if (getskilllv(417) == 2) {
+if (Rasteira != 1) {end;}
+if (skill417 >= 100) {skill 417,3,0; set skill417,0; dispbottom "[Sys] Level up"; end;}
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 2: "+skill417+" de 100";
+
+end;
+
+}
+
+if (getskilllv(417) == 3) {
+
+if (Rasteira != 1) {end;}
+if (skill417 >= 150) {skill 417,4,0; set skill417,0; dispbottom "[Sys] Level up"; end;}
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 3: "+skill417+" de 150";
+
+end;
+
+}
+
+if (getskilllv(417) == 4) {
+if (Rasteira != 1) {end;}
+if (skill417 >= 200) {skill 417,5,0; set skill417,0; dispbottom "[Sys] Level up"; end;}
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 4: "+skill417+" de 200";
+
+end;
+
+}
+
+if (getskilllv(417) == 5) {
+if (Rasteira != 1) {end;}
+if (skill417 >= 250) {skill 417,6,0; set skill417,0; dispbottom "[Sys] Level up"; end;}
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 5: "+skill417+" de 250";
+
+end;
+
+}
+
+if (getskilllv(417) == 6) {
+if (Rasteira != 1) {end;}
+if (skill417 >= 300) {skill 417,7,0; set skill417,0; dispbottom "[Sys] Level up"; end;}
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 6: "+skill417+" de 300";
+
+end;
+
+}
+
+if (getskilllv(417) == 7) {
+if (Rasteira != 1) {end;}
+if (skill417 >= 500) {skill 417,8,0; set skill417,0; dispbottom "[Sys] Level up"; end;}
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 7: "+skill417+" de 500";
+
+end;
+
+}
+
+if (getskilllv(417) == 8) {
+if (Rasteira != 1) {end;}
+if (skill417 >= 700) {skill 417,9,0; set skill417,0; dispbottom "[Sys] Level up"; end;}
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 8: "+skill417+" de 700";
+
+end;
+
+}
+
+if (getskilllv(417) == 9) {
+if (Rasteira != 1) {end;}
+if (skill417 >= 1000) {skill 417,10,0; set skill417,0; dispbottom "[Sys] Level up"; end;}
+set skill417,skill417 +1;
+dispbottom "[Jutsu level] Rasteira level 9: "+skill417+" de 1000";
+
+end;
+
+}
+
+                end;
+            }

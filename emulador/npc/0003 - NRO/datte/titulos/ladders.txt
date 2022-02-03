@@ -1,0 +1,210 @@
+//Iniciar todo dia 01:
+//   - Zerar variaveis globais dos antigos vencedores
+//   - Ligar ladders
+//   - Aplicar código do brunno do dojo
+//   - truncate de todas as tabelas menos dojo
+//   - cutins indicando que ligou
+//
+//Desligar todo dia 08:
+//   - guardar nomes dos primeiros colocados e salvar numa variavel global
+//   - desligar ladders
+//   - Anunciar em um npc os vencedores / forum / site
+
+-	script	LigarLadders	-1,{
+
+//Ligar Ladders
+
+OnClock0000:
+if (gettime(5)!=2) {end;}
+set $ladder_1,1;
+set $ladder_2,1;
+set $ladder_3,1;
+set $ladder_4,1;
+set $ladder_5,1;
+set $ladder_6,1;
+set $ladder_7,1;
+set $Winner_Ladder1$,0;
+set $Winner_Ladder2$,0;
+set $Winner_Ladder3$,0;
+set $Winner_Ladder4$,0;
+set $Winner_Ladder5$,0;
+set $Winner_Ladder6$,0;
+set $Winner_Ladder7$,0;
+query_sql("TRUNCATE TABLE `ladder_1`");
+query_sql("TRUNCATE TABLE `ladder_2`");
+query_sql("TRUNCATE TABLE `ladder_3`");
+query_sql("TRUNCATE TABLE `ladder_4`");
+query_sql("TRUNCATE TABLE `ladder_5`");
+query_sql("TRUNCATE TABLE `ladder_6`");
+query_sql("TRUNCATE TABLE `ladder_7`");
+//query_sql "UPDATE `rank_death` SET `KillsDojo` = 0";
+//query_sql "UPDATE `rank_death` SET `DeathDojo` = 0";
+announce "[Ladders] O período das ladders teve início!",bc_blue|bc_all;
+end;
+
+//OnClock1800:
+//if (gettime(5)!=12) {end;}
+//set $evento_hat,1;
+//announce "[Hat Sortudo] O evento Hat Sortudo está ativo, o hat a ser disputado nas raids deste mês é: Chapéu de Pesar de Thanatos! Boa sorte a todos!",bc_blue|bc_all;
+//end;
+
+}
+
+
+-	script	DesligarLadders	-1,{
+
+OnClock0000:
+if (gettime(5)!=10) {end;}
+set $ladder_1,0;
+set $ladder_2,0;
+set $ladder_3,0;
+set $ladder_4,0;
+set $ladder_5,0;
+set $ladder_6,0;
+set $ladder_7,0;
+
+//query_sql "SELECT char_name, `KillsDojo`, `DeathDojo` FROM rank_death ORDER BY `KillsDojo` DESC LIMIT 5",.@nome7$,.@kills,.@mortes;
+//FOR (SET .@i,0; .@i < 5; SET .@i, .@i + 1)
+//set .@LadderDojoP[.@i], (.@kills[.@i]*100)/(.@kills[.@i] + .@mortes[.@i]);
+//set .@winnerL7, 0; 
+//FOR (SET .@i,0; .@i < 5; SET .@i, .@i + 1)
+//if(.@LadderDojoP[.@i] > .@LadderDojoP[.@winnerL7]) set .@winnerL7, .@i;
+//set $Winner_Ladder7$, .@nome7$[.@winnerL7];
+
+query_sql "SELECT char_name FROM ladder_1 ORDER BY `quantidade` DESC LIMIT 1",.@nome1$;
+set $Winner_Ladder1$,.@nome1$;
+query_sql "SELECT char_name FROM ladder_2 ORDER BY `quantidade` DESC LIMIT 1",.@nome2$;
+set $Winner_Ladder2$,.@nome2$;
+query_sql "SELECT char_name FROM ladder_3 ORDER BY `quantidade` DESC LIMIT 1",.@nome3$;
+set $Winner_Ladder3$,.@nome3$;
+query_sql "SELECT char_name FROM ladder_4 ORDER BY `quantidade` DESC LIMIT 1",.@nome4$;
+set $Winner_Ladder4$,.@nome4$;
+query_sql "SELECT char_name FROM ladder_5 ORDER BY `quantidade` DESC LIMIT 1",.@nome5$;
+set $Winner_Ladder5$,.@nome5$;
+query_sql "SELECT char_name FROM ladder_6 ORDER BY `quantidade` DESC LIMIT 1",.@nome6$;
+set $Winner_Ladder6$,.@nome6$;
+
+announce "[Resultados das Ladders] Chegou ao fim o periódo das ladders pelas Espadas Lendárias",bc_blue|bc_all;
+sleep 2000;
+announce "---",bc_blue|bc_all;
+announce "[Resultados das Ladders] Confira agora os vencedores:",bc_blue|bc_all;
+sleep 2000;
+announce "---",bc_blue|bc_all;
+announce "[Resultados das Ladders] Ladder da Samehada, Vencedor: "+$Winner_Ladder1$+"!",bc_blue|bc_all;
+sleep 2000;
+announce "---",bc_blue|bc_all;
+announce "[Resultados das Ladders] Ladder da Kubikiri, Vencedor: "+$Winner_Ladder2$+"!",bc_blue|bc_all;
+sleep 2000;
+announce "---",bc_blue|bc_all;
+announce "[Resultados das Ladders] Ladder da Nuibari, Vencedor: "+$Winner_Ladder3$+"!",bc_blue|bc_all;
+sleep 2000;
+announce "---",bc_blue|bc_all;
+announce "[Resultados das Ladders] Ladder da Kabutowari, Vencedor: "+$Winner_Ladder4$+"!",bc_blue|bc_all;
+sleep 2000;
+announce "---",bc_blue|bc_all;
+announce "[Resultados das Ladders] Ladder da Shibuki, Vencedor: "+$Winner_Ladder5$+"!",bc_blue|bc_all;
+sleep 2000;
+announce "---",bc_blue|bc_all;
+announce "[Resultados das Ladders] Ladder da Kiba, Vencedor: "+$Winner_Ladder6$+"!",bc_blue|bc_all;
+//sleep 2000;
+//announce "[Resultados das Ladders] Ladder da Hiramekarei, Vencedor: "+$Winner_Ladder7$+"!",bc_blue|bc_all;
+sleep 2000;
+announce "[Resultados das Ladders] Parabéns aos novos donos dessas poderosas espadas, as ladders voltarão no dia 02!",bc_blue|bc_all;
+end;
+
+}
+
+kakashi,86,175,5	script	Ranking - Ladders	1990,{
+if ($ladder_1 == 0) {mes "[^DC143CRanking - Ladders^000000]"; mes "No momento o período de ladders estão desligado, o período é entre os dias 3 até o dia 10, boa sorte!"; close;}
+mes "[^DC143CRanking - Ladders^000000]";
+mes "Qual ranking deseja ver?";
+menu "- Samehada",Samehada,"- Kubikiri",Kubikiri,"- Nuibari",Nuibari,"- Kabutowari",Kabutowari,"- Shibuki",Shibuki,"- Kiba",Kiba,"- Hiramekarei",Hiramekarei,"- Nenhum",L_close;
+
+Samehada:
+next;
+query_sql "SELECT char_name, quantidade FROM ladder_1 ORDER BY quantidade DESC LIMIT 10",@nome1$,@quantidade1;
+	SET $@LIMIT, 10;
+		mes "Ranking Samehada ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Quantidade";
+		mes " ";
+		FOR (SET .@A,0; .@A < $@LIMIT; SET .@A, .@A + 1)
+		mes (.@A+1)+"º - "+@nome1$[.@A]+" - "+@quantidade1[.@A]+"";
+		close;
+
+Kubikiri:
+next;
+query_sql "SELECT char_name, quantidade FROM ladder_2 ORDER BY quantidade DESC LIMIT 10",@nome2$,@quantidade2;
+	SET $@LIMIT, 10;
+		mes "Ranking Kubikiri^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Quantidade";
+		mes " ";
+		FOR (SET .@A,0; .@A < $@LIMIT; SET .@A, .@A + 1)
+		mes (.@A+1)+"º - "+@nome2$[.@A]+" - "+@quantidade2[.@A]+"";
+		close;
+
+Nuibari:
+next;
+query_sql "SELECT char_name, quantidade FROM ladder_3 ORDER BY quantidade DESC LIMIT 10",@nome3$,@quantidade3;
+	SET $@LIMIT, 10;
+		mes "Ranking Nuibari ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Quantidade";
+		mes " ";
+		FOR (SET .@A,0; .@A < $@LIMIT; SET .@A, .@A + 1)
+		mes (.@A+1)+"º - "+@nome3$[.@A]+" - "+@quantidade3[.@A]+"";
+		close;
+
+Kabutowari:
+next;
+query_sql "SELECT char_name, quantidade FROM ladder_4 ORDER BY quantidade DESC LIMIT 10",@nome4$,@quantidade4;
+	SET $@LIMIT, 10;
+		mes "Ranking Kabutowari ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Quantidade";
+		mes " ";
+		FOR (SET .@A,0; .@A < $@LIMIT; SET .@A, .@A + 1)
+		mes (.@A+1)+"º - "+@nome4$[.@A]+" - "+@quantidade4[.@A]+"";
+		close;
+
+Shibuki:
+next;
+query_sql "SELECT char_name, quantidade FROM ladder_5 ORDER BY quantidade DESC LIMIT 10",@nome5$,@quantidade5;
+	SET $@LIMIT, 10;
+		mes "Ranking Shibuki ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Quantidade";
+		mes " ";
+		FOR (SET .@A,0; .@A < $@LIMIT; SET .@A, .@A + 1)
+		mes (.@A+1)+"º - "+@nome5$[.@A]+" - "+@quantidade5[.@A]+"";
+		close;
+
+Kiba:
+next;
+query_sql "SELECT char_name, quantidade FROM ladder_6 ORDER BY quantidade DESC LIMIT 10",@nome6$,@quantidade6;
+	SET $@LIMIT, 10;
+		mes "Ranking Kiba ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Quantidade";
+		mes " ";
+		FOR (SET .@A,0; .@A < $@LIMIT; SET .@A, .@A + 1)
+		mes (.@A+1)+"º - "+@nome6$[.@A]+" - "+@quantidade6[.@A]+"";
+		close;
+
+Hiramekarei:
+next;
+query_sql "SELECT char_name, quantidade FROM ladder_7 ORDER BY quantidade DESC LIMIT 10",@nome7$,@quantidade7;
+	SET $@LIMIT, 10;
+		mes "Ranking Hiramekarei ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Quantidade";
+		mes " ";
+		FOR (SET .@A,0; .@A < $@LIMIT; SET .@A, .@A + 1)
+		mes (.@A+1)+"º - "+@nome7$[.@A]+" - "+@quantidade7[.@A]+"";
+		close;
+
+L_close:
+close;
+
+}

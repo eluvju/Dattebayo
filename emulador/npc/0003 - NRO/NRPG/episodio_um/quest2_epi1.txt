@@ -1,0 +1,218 @@
+ondular.gat,22,213,5	script	Ikeda	846,{
+
+if(mori_done == 1) goto F;
+if(Rank_S == 1) goto E;
+if(Class == 4049) goto E;
+if (countitem(625) >= 5) goto C;
+if(q2_epi1 == 1) goto D;
+
+mes "Oh, vida... quanto trabalho!";
+mes "Você parece bastante desocupado...";
+next;
+mes "Eu to trabalhando numa Bandana shinibi exclusiva... mas o material usado é bastante raro";
+mes "E apenas um tipo de pessoa possui o material 'Ferro especial', os irmãos Mori, uma família de mineiradores shinibi";
+next;
+mes "Eu preciso de 5 ferros especiais, poderia pedir-los aos irmãos Mori pra mim?";
+menu "Hm, ok, eu te ajudo.",A,"Agora não senhora...",B;
+
+A:
+mes "Obrigado!, procure os irmãos e recolha os ferros!";
+set q2_epi1,1;
+close;
+
+B:
+close;
+
+C:
+mes "Já terminou?! Que bom, não sabe o quanto está me ajudando!";
+mes "Como recompensa pela sua ajuda vou te dar uma das minhas bandanas exclusivas";
+delitem 625,5;
+set mori_done,1;
+set mori1,0;
+set mori2,0;
+set mori3,0;
+set mori4,0;
+set mori5,0;
+if(##faction == 1) {getitem 19170,1;}
+if(##faction == 2) {getitem 19168,1;}
+if(##faction == 3) {getitem 19169,1;}
+close;
+
+D:
+mes "Vá buscar os ferros especiais com os irmãos Mori!";
+close;
+
+E:
+mes "Desculpe, mas não converso com pessoas do seu caráter.";
+close;
+
+F:
+mes "Olá novamente, aproveitando bem a bandana?";
+close;
+
+}
+
+mjo_dun01.gat,63,256,5	script	Irmão Mori#1	848,{
+
+if(mori1 == 1) goto B;
+if(mori_done == 1) goto C;
+if(q2_epi1 == 1) goto A;
+
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+A:
+mes "Hmm, a Ikeda te mandou?";
+mes "Ela é gente boa, sempre ajudamos ela.";
+mes "Tome aqui 1 ferro especial";
+set mori1,1;
+getitem 625,1;
+close;
+
+B:
+mes "Você já recebeu um ferro especial meu, procure meus outros irmãos.";
+close;
+
+C:
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+}
+
+mjo_dun01.gat,43,152,5	script	Irmão Mori#2	848,{
+
+if(mori2 == 1) goto B;
+if(mori_done == 1) goto C;
+if(q2_epi1 == 1) goto A;
+
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+A:
+mes "Hmm, a Ikeda te mandou?";
+mes "Ela é gente boa, sempre ajudamos ela.";
+mes "Tome aqui 1 ferro especial";
+set mori2,1;
+getitem 625,1;
+close;
+
+B:
+mes "Você já recebeu um ferro especial meu, procure meus outros irmãos.";
+close;
+
+C:
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+}
+
+mjo_dun02.gat,134,70,5	script	Irmão Mori#3	848,{
+
+if(mori3 == 1) goto B;
+if(mori_done == 1) goto C;
+if(q2_epi1 == 1) goto A;
+
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+A:
+mes "Hmm, a Ikeda te mandou?";
+mes "Ela é gente boa, sempre ajudamos ela.";
+mes "Tome aqui 1 ferro especial";
+set mori3,1;
+getitem 625,1;
+close;
+
+B:
+mes "Você já recebeu um ferro especial meu, procure meus outros irmãos.";
+close;
+
+C:
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+}
+
+gef_fild07.gat,28,116,5	script	Irmão Mori#4	848,{
+
+if(mori4 == 1) goto B;
+if(mori_done == 1) goto C;
+if(q2_epi1 == 1) goto A;
+
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+A:
+mes "Hmm, a Ikeda te mandou?";
+mes "Ela é gente boa, sempre ajudamos ela.";
+mes "Tome aqui 1 ferro especial";
+set mori4,1;
+getitem 625,1;
+close;
+
+B:
+mes "Você já recebeu um ferro especial meu, procure meus outros irmãos.";
+close;
+
+C:
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+}
+
+pay_fild08.gat,217,195,5	script	Irmão Mori#5	848,{
+
+if(mori5 == 1) goto B;
+if(mori_done == 1) goto C;
+if(q2_epi1 == 1) goto A;
+
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+A:
+mes "Hmm, a Ikeda te mandou?";
+mes "Ela é gente boa, sempre ajudamos ela.";
+mes "Tome aqui 1 ferro especial";
+set mori5,1;
+getitem 625,1;
+close;
+
+B:
+mes "Você já recebeu um ferro especial meu, procure meus outros irmãos.";
+close;
+
+C:
+mes "Olá! Bom te conhecer";
+mes "Eu sou um dos irmãos Mori, uma família de mineiradores shinibi";
+mes "Sabia que nós temos os materiais mais raros do mundo?";
+mes "Impressionante né?";
+close;
+
+}

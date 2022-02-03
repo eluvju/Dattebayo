@@ -1,0 +1,453 @@
+function	script	SF_System_1467	{
+
+//2 = str, 3= crit, 4 = precisão, 5 = aspd, 6= break arma, 7 = break armadura
+	if(getarg(1)==1)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,200;
+		dispbottom "[Bonus] : Força: 200 ";
+	}else if(getarg(1)==2)
+	{
+		bonus bCritical,getarg(3);
+		dispbottom "[Bonus] : Crítico: "+getarg(3)+" ";
+	}else if(getarg(1)==3)
+	{
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Ataque: "+getarg(10)+" ";
+	}else if(getarg(1)==4)
+	{
+		bonus bAspdRate,getarg(5);
+		dispbottom "[Bonus] : Velocidade de ataque: "+getarg(5)+" ";
+	}else if(getarg(1)==5)
+	{
+		bonus bstr,241;
+//		bonus bstr,getarg(2);
+		bonus bCritical,getarg(3);
+		dispbottom "[Bonus] : Força: 241, Crítico "+getarg(3)+" ";
+	}else if(getarg(1)==6)
+	{
+		bonus bstr,190;
+//		bonus bstr,getarg(2);
+		bonus bHit,getarg(4);
+		dispbottom "[Bonus] : Força: 190, Precisão "+getarg(4)+" ";
+	}else if(getarg(1)==7)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,178;
+		bonus bAspdRate,getarg(5);
+		dispbottom "[Bonus] : Força: 178, Velocidade de ataque "+getarg(5)+" ";
+	}else if(getarg(1)==8)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,276;
+		bonus bUnbreakableWeapon,1;
+		dispbottom "[Bonus] : Força: 276, Indestrutível";
+	}else if(getarg(1)==9)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,197;
+		bonus2 bAddSize,3,10;
+		dispbottom "[Bonus] : Força: 197, Dano em monstros grandes 10% ";
+	}else if(getarg(1)==10)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,149;
+		bonus2 bAddSize,2,8;
+		dispbottom "[Bonus] : Força: 149, Dano em monstros médios 8% ";
+	}else if(getarg(1)==11)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,152;
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 152, Dano em monstros pequenos 10% ";
+	}else if(getarg(1)==12)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,241;
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 241, Dano em Boss: 10% ";
+	}else if(getarg(1)==13)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,300;
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 300, Ataque "+getarg(10)+" ";
+	}else if(getarg(1)==14)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,184;
+		bonus bCritical,getarg(3);
+		bonus bHit,getarg(4);
+		dispbottom "[Bonus] : Força: 184, Crítico "+getarg(3)+" , Precisão "+getarg(4)+"";
+	}else if(getarg(1)==15)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,214;
+		bonus bCritical,getarg(3);
+		bonus bAspdRate,getarg(5);
+		dispbottom "[Bonus] : Força: 214, Crítico "+getarg(3)+" , Velocidade de ataque "+getarg(5)+"";
+	}else if(getarg(1)==16)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,232;
+		bonus bCritical,getarg(3);
+		bonus bUnbreakableWeapon,1;
+		dispbottom "[Bonus] : Força: 232, Crítico "+getarg(3)+" , Indestrutível";
+	}else if(getarg(1)==17)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,244;
+		bonus bCritical,getarg(3);
+		bonus2 bAddSize,3,10;
+		dispbottom "[Bonus] : Força: 244, Crítico "+getarg(3)+" , Dano em monstros grandes 10%";
+	}else if(getarg(1)==18)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,296;
+		bonus bCritical,getarg(3);
+		bonus2 bAddSize,2,8;
+		dispbottom "[Bonus] : Força: 296, Crítico "+getarg(3)+" , Dano em monstros médios 10%";
+	}else if(getarg(1)==19)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,164;
+		bonus bCritical,getarg(3);
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 164, Crítico "+getarg(3)+" , Dano em monstros pequenos 10%";
+	}else if(getarg(1)==20)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,279;
+		bonus bCritical,getarg(3);
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 279, Crítico "+getarg(3)+" , Dano em Boss: 10%";
+	}else if(getarg(1)==21)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,117;
+		bonus bCritical,getarg(3);
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 117, Crítico "+getarg(3)+" , Ataque "+getarg(10)+"";
+	}else if(getarg(1)==22)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,149;
+		bonus bHit,getarg(4);
+		bonus bAspdRate,getarg(5);
+		dispbottom "[Bonus] : Força: 149, Precisão "+getarg(4)+" , Velocidade de ataque "+getarg(5)+"";
+	}else if(getarg(1)==23)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,199;
+		bonus bHit,getarg(4);
+		bonus bUnbreakableWeapon,1;
+		dispbottom "[Bonus] : Força: 199, Precisão "+getarg(4)+" , Indestrutível";
+	}else if(getarg(1)==24)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,199;
+		bonus bHit,getarg(4);
+		bonus2 bAddSize,3,10;
+		dispbottom "[Bonus] : Força: 199, Precisão "+getarg(4)+" , Dano em monstros grandes: 10";
+	}else if(getarg(1)==25)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,287;
+		bonus bHit,getarg(4);
+		bonus2 bAddSize,2,8;
+		dispbottom "[Bonus] : Força: 287, Precisão "+getarg(4)+" , Dano em monstros médios: 8%";
+	}else if(getarg(1)==26)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,181;
+		bonus bHit,getarg(4);
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 181, Precisão "+getarg(4)+" , Dano em monstros pequenos: 8%";
+	}else if(getarg(1)==27)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,181;
+		bonus bHit,getarg(4);
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 181, Precisão "+getarg(4)+" , Dano em boss: 10%";
+	}else if(getarg(1)==28)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,184;
+		bonus bHit,getarg(4);
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 184, Precisão "+getarg(4)+" , Ataque: "+getarg(10)+"";
+	}else if(getarg(1)==29)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,167;
+		bonus bAspdRate,getarg(5);
+		bonus bUnbreakableWeapon,1;
+		dispbottom "[Bonus] : Força: 167, Velocidade de ataque: "+getarg(5)+" , Indestrutível";
+	}else if(getarg(1)==30)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,287;
+		bonus bAspdRate,getarg(5);
+		bonus2 bAddSize,3,10;
+		dispbottom "[Bonus] : Força: 287, Velocidade de ataque "+getarg(5)+" , Dano em monstros grandes: 10";
+	}else if(getarg(1)==31)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,193;
+		bonus bAspdRate,getarg(5);
+		bonus2 bAddSize,2,8;
+		dispbottom "[Bonus] : Força: 193, Velocidade de ataque "+getarg(5)+" , Dano em monstros médios: 8%";
+	}else if(getarg(1)==32)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,174;
+		bonus bAspdRate,getarg(5);
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 174, Velocidade de ataque "+getarg(5)+" , Dano em monstros pequenos: 10%";
+	}else if(getarg(1)==33)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,116;
+		bonus bAspdRate,getarg(5);
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 116, Velocidade de ataque "+getarg(5)+" , Dano em boss: 10%";
+	}else if(getarg(1)==34)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,101;
+		bonus bAspdRate,getarg(5);
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 101, Velocidade de ataque "+getarg(5)+" , Ataque: "+getarg(10)+"";
+	}else if(getarg(1)==35)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,120;
+		bonus bUnbreakableWeapon,1;
+		bonus2 bAddSize,3,10;
+		dispbottom "[Bonus] : Força: 120, Indestrutível , Dano em monstros grandes: 10";
+	}else if(getarg(1)==36)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,159;
+		bonus bUnbreakableWeapon,1;
+		bonus2 bAddSize,2,8;
+		dispbottom "[Bonus] : Força: 159, Indestrutível , Dano em monstros médios: 8%";
+	}else if(getarg(1)==37)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,157;
+		bonus bUnbreakableWeapon,1;
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 157, Indestrutível , Dano em monstros pequenos: 10%";
+	}else if(getarg(1)==38)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,109;
+		bonus bUnbreakableWeapon,1;
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 109, Indestrutível , Dano em boss: 10%";
+	}else if(getarg(1)==39)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,207;
+		bonus bUnbreakableWeapon,1;
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 207, Indestrutível , Ataque: "+getarg(10)+"";
+	}else if(getarg(1)==40)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,254;
+		bonus2 bAddSize,3,10;
+		bonus2 bAddSize,2,8;
+		dispbottom "[Bonus] : Força: 254, Dano em monstros grandes: 10 , Dano em monstros médios: 8%";
+	}else if(getarg(1)==41)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,109;
+		bonus2 bAddSize,3,10;
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 109, Dano em monstros grandes: 10 , Dano em monstros pequenos: 10%";
+	}else if(getarg(1)==42)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,300;
+		bonus2 bAddSize,3,10;
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 300, Dano em monstros grandes: 10 , Dano em boss: 10%";
+	}else if(getarg(1)==43)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,169;
+		bonus2 bAddSize,3,10;
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 169, Dano em monstros grandes: 10 , Ataque: "+getarg(10)+"";
+	}else if(getarg(1)==44)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,191;
+		bonus2 bAddSize,2,8;
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 191, Dano em monstros médios: 8% , Dano em monstros pequenos: 10%";
+	}else if(getarg(1)==45)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,178;
+		bonus2 bAddSize,2,8;
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 178, Dano em monstros médios: 8% , Dano em boss: 10%";
+	}else if(getarg(1)==46)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,157;
+		bonus2 bAddSize,2,8;
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 157, Dano em monstros médios: 8% , Ataque: "+getarg(10)+"";
+	}else if(getarg(1)==47)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,139;
+		bonus2 bAddSize,1,10;
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 139, Dano em monstros pequenos: 10% , Dano em boss: 10%";
+	}else if(getarg(1)==48)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,267;
+		bonus2 bAddSize,1,10;
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 267, Dano em monstros pequenos: 10% , Ataque: "+getarg(10)+"";
+	}else if(getarg(1)==49)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,200;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus bCritical,getarg(3);
+		dispbottom "[Bonus] : Força: 200, Chance de quebrar arma: "+getarg(6)+" /100, Crítico: "+getarg(3)+"";
+	}else if(getarg(1)==50)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,201;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus bAspdRate,getarg(5);
+		dispbottom "[Bonus] : Força: 201, Chance de quebrar arma: "+getarg(6)+" /100, Velocidade de ataque "+getarg(5)+"";
+	}else if(getarg(1)==51)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,164;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus bHit,getarg(4);
+		dispbottom "[Bonus] : Força: 164, Chance de quebrar arma: "+getarg(6)+" /100, Precisão "+getarg(4)+"";
+	}else if(getarg(1)==52)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,169;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus bUnbreakableWeapon,1;
+		dispbottom "[Bonus] : Força: 169, Chance de quebrar arma: "+getarg(6)+" /100, Indestrutível";
+	}else if(getarg(1)==53)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,147;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus2 bAddSize,3,10;
+		dispbottom "[Bonus] : Força: 147, Chance de quebrar arma: "+getarg(6)+" /100, Dano em monstros grandes: 10%";
+	}else if(getarg(1)==54)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,246;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus2 bAddSize,2,8;
+		dispbottom "[Bonus] : Força: 246, Chance de quebrar arma: "+getarg(6)+" /100, Dano em monstros médios: 8%";
+	}else if(getarg(1)==55)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,191;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 191, Chance de quebrar arma: "+getarg(6)+" /100, Dano em monstros pequenos: 10%";
+	}else if(getarg(1)==56)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,158;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 158, Chance de quebrar arma: "+getarg(6)+" /100, Dano em boss: 10%";
+	}else if(getarg(1)==57)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,119;
+		bonus bBreakWeaponRate,getarg(6);
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 119, Chance de quebrar arma: "+getarg(6)+" /100 , Ataque: "+getarg(10)+"";
+	}else if(getarg(1)==58)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,197;
+		bonus bBreakArmorRate,getarg(7);
+		bonus bHit,getarg(4);
+		dispbottom "[Bonus] : Força: 197, Chance de quebrar armadura: "+getarg(7)+" /100 , Precisão: "+getarg(4)+"";
+	}else if(getarg(1)==59)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,171;
+		bonus bBreakArmorRate,getarg(7);
+		bonus bCritical,getarg(3);
+		dispbottom "[Bonus] : Força: 171, Chance de quebrar armadura: "+getarg(7)+" /100 , Crítico: "+getarg(3)+"";
+	}else if(getarg(1)==60)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,146;
+		bonus bBreakArmorRate,getarg(7);
+		bonus bAspdRate,getarg(5);
+		dispbottom "[Bonus] : Força: 146, Chance de quebrar armadura: "+getarg(7)+" /100 , Velocidade de ataque: "+getarg(5)+"";
+	}else if(getarg(1)==61)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,227;
+		bonus bBreakArmorRate,getarg(7);
+		bonus bUnbreakableWeapon,1;
+		dispbottom "[Bonus] : Força: 227, Chance de quebrar armadura: "+getarg(7)+" /100 , Indestrutível";
+	}else if(getarg(1)==62)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,254;
+		bonus bBreakArmorRate,getarg(7);
+		bonus2 bAddSize,3,10;
+		dispbottom "[Bonus] : Força: 254, Chance de quebrar armadura: "+getarg(7)+" /100 , Dano em monstros grandes: 10%";
+	}else if(getarg(1)==63)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,127;
+		bonus bBreakArmorRate,getarg(7);
+		bonus2 bAddSize,2,8;
+		dispbottom "[Bonus] : Força: 127, Chance de quebrar armadura: "+getarg(7)+" /100 , Dano em monstros médios: 8%";
+	}else if(getarg(1)==64)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,157;
+		bonus bBreakArmorRate,getarg(7);
+		bonus2 bAddSize,1,10;
+		dispbottom "[Bonus] : Força: 157, Chance de quebrar armadura: "+getarg(7)+" /100 , Dano em monstros pequenos: 10%";
+	}else if(getarg(1)==65)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,165;
+		bonus bBreakArmorRate,getarg(7);
+		bonus2 bAddRace,10,10;
+		dispbottom "[Bonus] : Força: 165, Chance de quebrar armadura: "+getarg(7)+" /100 , Dano em boss: 10%";
+	}else if(getarg(1)==66)
+	{
+//		bonus bstr,getarg(2);
+		bonus bstr,282;
+		bonus bBreakArmorRate,getarg(7);
+		bonus bAtk,getarg(10);
+		dispbottom "[Bonus] : Força: 282, Chance de quebrar armadura: "+getarg(7)+" /100 , Ataque: "+getarg(10)+"";
+
+	}else
+	dispbottom "Que azar, veio uma arma sem nada...";
+	return;
+}
+
+//getarg(1) = é quantos vão sair de bonus
+// mob.c = var[0] = valor do bonus getarg(2), etc.

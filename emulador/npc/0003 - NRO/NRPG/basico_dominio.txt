@@ -1,0 +1,56 @@
+prontera,150,150,3	script	Teleporter#1::mapdomain	741,{
+
+	mes "[Teleporter]";
+	query_sql("SELECT * FROM nnfro_rpg",.@map$[1],.@map_owner[1],.@map_owner$[1]);
+	query_sql("SELECT map FROM nnfro_rpg WHERE map_owner_id = "+getcharid(2),.@map_have$[1]);
+	if(getcharid(2) == 0)
+	{
+		mes "Você só pode ser teleportado quando possuir um clã, e este possui ao menos um castelo!";
+		close;
+	} else if(getarraysize(.@map_have$) == 0)
+	{
+		mes "Desculpe-me, mas os eu clã não possui nem um mapa.";
+		close;
+	}
+	if(getarraysize(.@map_have$) == 1)
+		mes "Desejas que eu te teleporte para o mapa do seu clã?";
+	else
+		mes "Para qual mapa desejas que eu o teleporte?";
+	set .@menu$,"";
+	for(set .@i,1;.@i <= getarraysize(.@map_have$);set .@i,.@i + 1)
+		set .@menu$,.@menu$ + .@map_have$ + ":";
+	if(select(.@menu$+"Cancelar")==getarraysize(.@map_have$) + 1)close;
+	close2;
+	warp .@map_have$[@menu],0,0;
+	end;
+	
+OnInit:
+	setarray .@mf[1],0,1,3,13,29,30,31,32,33,34;
+	query_sql("SELECT map FROM nnfro_rpg",.@map$);
+	setarray $map$[1],
+						"gef_fild02";
+	if(getarraysize(.@map$) < getarraysize($map$))
+		for(set .@i,getarraysize(.@map$);.@i <= getarraysize($map$);set .@i,.@i + 1)
+			query_sql("INSERT INTO nnfro_rpg (map, map_owner, map_owner_id) VALUES ('"+$map$[.@i]+"', '', '0')");
+	for(set .@i,1;.@i <= getarraysize(.@mf);set .@i,.@i + 1)
+		for(set .@j,1;.@j <= getarraysize($map$);set .@j,.@j + 1)
+		{
+			setmapflag $map$[.@j],.@mf[.@i];
+			setmapflag $map$[.@j],20;
+		}
+	end;
+	
+OnMapConquisted:
+	getmapxy .@map$,.@x,.@y,0;
+	for(set .@i,1;.@i <= getarraysize($map$) + 1;set .@i,.@i + 1)
+		if($map$[.@i] == .@map$)break;
+	announce "O clã "+strcharinfo(2)+" acaba de conquistar o mapa "+.@map$+", parabéns!!!!",0;
+	query_sql("UPDATE nnfro_rpg SET map_owner = "+strcharinfo(2)+", map_owner_id = "+getcharid(2)+" WHERE map = "+$map$[.@i]);
+	end;
+	
+}
+
+prontera,150,150,3	duplicate(mapdomain)	Teleporter#2	741
+prontera,150,150,3	duplicate(mapdomain)	Teleporter#3	741
+
+gef_fild02,0,0,0,0	monster	Nome do monstro	1502,1,1,36000000,"Teleporter#1::OnMapConquisted"

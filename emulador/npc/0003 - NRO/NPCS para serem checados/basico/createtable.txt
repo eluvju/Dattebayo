@@ -1,0 +1,8 @@
+prontera,152,132,4	script	Table Creator	65,{
+	query_sql ("DROP TABLE IF EXISTS `NRPG`.`bountys`");
+	query_sql ("DROP TABLE IF EXISTS `NRPG`.`bountyladder`");
+	query_sql ("CREATE TABLE IF NOT EXISTS `NRPG`.`bountyladder` (`char_id` int(10) unsigned NOT NULL default '0',`name` varchar(255) NOT NULL,`earned` int(10) unsigned NOT NULL default '0',`assasinated` int(10) unsigned NOT NULL default '0',`target1` varchar(255) NOT NULL,`target2` varchar(255) NOT NULL,`target3` varchar(255) NOT NULL,PRIMARY KEY  (`char_id`)) ENGINE=MyISAM DEFAULT CHARSET=latin1;");
+	query_sql ("CREATE TABLE IF NOT EXISTS `NRPG`.`bountys` (`char_id` bigint(20) unsigned NOT NULL,`name` varchar(255) NOT NULL,`bounty` bigint(20) unsigned NOT NULL,`onoff` tinyint(4) unsigned NOT NULL default '0',`des` varchar(255) NOT NULL,`reason` varchar(255) default NULL,`id` bigint(20) unsigned default '0',`basexp` bigint(20) unsigned NOT NULL,`jobxp` bigint(20) unsigned NOT NULL,`itemid` bigint(20) unsigned NOT NULL,`itemat` bigint(20) unsigned NOT NULL,PRIMARY KEY  (`char_id`)) ENGINE=MyISAM DEFAULT CHARSET=latin1");
+	atcommand "@unloadnpc Table Creator";
+	}	
+	

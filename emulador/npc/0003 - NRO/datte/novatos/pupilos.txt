@@ -1,0 +1,33 @@
+//=======================================================
+salakagea,40,20,6	script	Treine um pupilo::pup	705,{
+
+if (BaseLevel < 500) {mes "Você está muito fraco pra treinar um pupilo, é preciso ter level 500 ou mais"; close;}
+
+mes "Nossa, são tantos os pupilos espalhados pelo mundo, professores estão em falta!";
+next;
+mes "Você aí, parece ser forte, gostaria de treinar um pupilo? Há recompensas pra quem treinar eles...";
+next;
+mes "Só uma coisa, custa 1 milhão de ryous cada pergaminho de pupilo... Também preciso ganhar com isso afinal, estou dividindo meu serviço com você!";
+next;
+mes "E então, o que me diz?";
+menu "Hm, sim porque não?",SIM,"Eu? Estou fora, tenho mais o que fazer",NAO;
+
+SIM:
+next;
+if (Zeny < 1000000) {mes "Ei ei ei, você não tem o dinheiro, sai pra lá!"; close;}
+mes "Ótimo, Aqui está seu pergaminho de pupilo, cada aula dura 1 hora, cuidado pra não deixar ele morrer ou teremos problemas!";
+if(#suna == 1) {getitem 12154,1; set Zeny, Zeny-1000000; close;}
+if(#konoha == 1) {getitem 12153,1; set Zeny, Zeny-1000000; close;}
+if(#nevoa == 1) {getitem 12155,1; set Zeny, Zeny-1000000; close;}
+if(#nuvem == 1) {getitem 12156,1; set Zeny, Zeny-1000000; close;}
+close;
+
+
+NAO:
+close;
+
+}
+
+salakage,40,20, 4	duplicate(pup)	Treine um pupilo#2	705
+salakagex,40,20, 4	duplicate(pup)	Treine um pupilo#3	705
+salakagen,40,20, 4	duplicate(pup)	Treine um pupilo#4	705

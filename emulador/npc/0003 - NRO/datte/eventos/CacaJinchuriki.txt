@@ -1,0 +1,380 @@
+-	script	Evento#GC	GuerraDoChakra#GC-1,{
+
+OnInit:
+set $GCinfo[1], 0;
+set $GCinfo[2], 0;
+stopnpctimer;
+setnpctimer 0;
+end;
+
+OnClock0000:
+if(gettime(5) == 10) || (gettime(5) == 20) || (gettime(5) == 30){
+//OnClock1200:
+//if(gettime(4) == 4){
+set $GDinfo[10], 0;
+set $GDinfo[11], 0;
+set $GDinfo[12], 0;
+set $GCinfo[13], 0;
+set $AkJC[1], 0;
+set $AkJC[2], 0;
+set $AkJC[3], 0;
+set $AkJC[4], 0;
+set $AkJC[5], 0;
+}
+end;
+
+OnPCLoginEvent:
+if(strcharinfo(0) != $jinkonoha$ && strcharinfo(0) != $jinnevoa$ && strcharinfo(0) != $jinnuvem$ && strcharinfo(0) != $jinsuna$)
+if (countitem(19020) == 0 && countitem(19195) == 0 && countitem(19196) == 0 && countitem(19197) == 0){
+if(countitem(616) > 0) delitem 616, countitem(616);
+if(countitem(4409) > 0) delitem 616, countitem(4409);
+if(countitem(4253) > 0) delitem 616, countitem(4253);
+if(countitem(4254) > 0) delitem 616, countitem(4254);
+}
+
+if(countitem(616) > 0){
+if (countitem(19020) == 0 && countitem(19195) == 0 && countitem(19196) == 0 && countitem(19197) == 0) {end;}
+dispbottom "Voce acaba de selar "+countitem(616)+" Chakras do Jinchuuriki da Kyuubi.";
+set $AkJC[2], $AkJC[2] + countitem(616);
+delitem 616, countitem(616);
+set $AkJC[1], $AkJC[2] + $AkJC[3] + $AkJC[4] + $AkJC[5];
+}
+if(countitem(4409) > 0){
+if (countitem(19020) == 0 && countitem(19195) == 0 && countitem(19196) == 0 && countitem(19197) == 0) {end;}
+dispbottom "Voce acaba de selar "+countitem(4409)+" Chakras do Jinchuuriki Sanbi.";
+set $AkJC[3], $AkJC[3] + countitem(4409);
+delitem 4409, countitem(4409);
+set $AkJC[1], $AkJC[2] + $AkJC[3] + $AkJC[4] + $AkJC[5];
+}
+if(countitem(4253) > 0){
+if (countitem(19020) == 0 && countitem(19195) == 0 && countitem(19196) == 0 && countitem(19197) == 0) {end;}
+dispbottom "Voce acaba de selar "+countitem(4253)+" Chakras do Jinchuuriki do Hachibi.";
+set $AkJC[4], $AkJC[4] + countitem(4253);
+delitem 4253, countitem(4253);
+set $AkJC[1], $AkJC[2] + $AkJC[3] + $AkJC[4] + $AkJC[5];
+}
+if(countitem(4254) > 0){
+if (countitem(19020) == 0 && countitem(19195) == 0 && countitem(19196) == 0 && countitem(19197) == 0) {end;}
+dispbottom "Voce acaba de selar "+countitem(4254)+" Chakras do Jinchuuriki do Ichibi.";
+set $AkJC[5], $AkJC[5] + countitem(4254);
+delitem 4254, countitem(4254);
+set $AkJC[1], $AkJC[2] + $AkJC[3] + $AkJC[4] + $AkJC[5];
+}
+if(strcharinfo(0) == $jinkonoha$) set $GCinfo[3], 1;
+if(strcharinfo(0) == $jinnevoa$) set $GCinfo[4], 1;
+if(strcharinfo(0) == $jinnuvem$) set $GCinfo[5], 1;
+if(strcharinfo(0) == $jinsuna$) set $GCinfo[6], 1;
+end;
+
+OnPCLogoutEvent:
+if(strcharinfo(0) == $jinkonoha$) set $GCinfo[3], 0;
+if(strcharinfo(0) == $jinnevoa$) set $GCinfo[4], 0;
+if(strcharinfo(0) == $jinnuvem$) set $GCinfo[5], 0;
+if(strcharinfo(0) == $jinsuna$) set $GCinfo[6], 0;
+end;
+
+OnTimer500:
+setarray .vilasname$[1],"de Konoha","da Nevoa","da Nuvem","da Suna";
+if($GCinfo[$GCinfo[2]+2] == 0){
+announce "[Guerra do Chakra]: A Organizacao Akatsuki tentou saquear um Jinchuuriki, mas este conseguiu escapar.",0;
+stopnpctimer;
+setnpctimer 0;
+end;
+}
+if($GCinfo[2] == 1){delitem 616, 1, getcharid(3,$jinkonoha$); set $GCinfo[10], 1;}
+if($GCinfo[2] == 2){delitem 4409, 1, getcharid(3,$jinnevoa$); set $GCinfo[11], 1;}
+if($GCinfo[2] == 3){delitem 4253, 1, getcharid(3,$jinnuvem$); set $GCinfo[12], 1;}
+if($GCinfo[2] == 4){delitem 4254, 1, getcharid(3,$jinsuna$); set $GCinfo[13], 1;}
+
+announce "[Guerra do Chakra]: A Organizacao Akatsuki adquiriu chakra do Jinchuuriki "+.vilasname$[$GCinfo[2]]+". O selamento do Chakra comecará em 30 minutos.",0;
+monster "akatsuki",0,0,"Selo Gedou",1362,10,strnpcinfo(0)+"::OnGCSeloBreak"; //sprite 802
+set $GCinfo[8], 10;
+end;
+
+OnGCSeloBreak:
+set $GCinfo[8], $GCinfo[8] - 1;
+mapannounce "akatsuki","[Guerra do Chakra]: Um dos selos foi quebrado, restando "+$GCinfo[8]+" selos.",1;
+if($GCinfo[8] > 0) end;
+mapannounce "akatsuki","[Guerra do Chakra]: Todos os selos foram quebrados. Os restos do Gedou foram revelados.",1;
+monster "akatsuki",90,170,"Restos do Gedou",1362,1,strnpcinfo(0)+"::OnFragGedouKill"; //406
+end;
+
+OnFragGedouKill:
+announce "[Guerra do Chakra]: A Organizacao Akatsuki falhou em defender o Gedou. O residuo de chakra voltou para seu Jinchuuriki.",0;
+if($GCinfo[2] == 1) getitem 616, 1, getcharid(3,$jinkonoha$);
+if($GCinfo[2] == 2) getitem 4409, 1, getcharid(3,$jinnevoa$);
+if($GCinfo[2] == 3) getitem 4253, 1, getcharid(3,$jinnuvem$);
+if($GCinfo[2] == 4) getitem 4254, 1, getcharid(3,$jinsuna$);
+set $GCinfo[1], 0;
+set $GCinfo[2], 0;
+stopnpctimer;
+setnpctimer 0;
+end;
+
+OnTimer1800000:
+announce "[Guerra do Chakra]: A Organizacao Akatsuki obteve sucesso em defender o Gedou. O residuo de chakra foi selado.",0;
+if($GCinfo[2] == 1){ set $AkJC[2], $AkJC[2] + 1; set $AkJC[1], $AkJC[1] + 1;}
+if($GCinfo[2] == 2){ set $AkJC[3], $AkJC[3] + 1; set $AkJC[1], $AkJC[1] + 1;}
+if($GCinfo[2] == 3){ set $AkJC[4], $AkJC[4] + 1; set $AkJC[1], $AkJC[1] + 1;}
+if($GCinfo[2] == 4){ set $AkJC[5], $AkJC[5] + 1; set $AkJC[1], $AkJC[1] + 1;}
+set $GCinfo[1], 0;
+set $GCinfo[2], 0;
+stopnpctimer;
+setnpctimer 0;
+end;
+}
+
+akatsuki,154,200,4	script	Guerra do Chakra	882,{
+
+if(getcharid(2) != 9 && getgmlevel() < 5) end;
+
+// Nome do npc
+set .npc$,"^800000[Mercenário]^000000";
+
+if(getguildmaster(9) != strcharinfo(0) && getgmlevel() < 5){
+mes "Ryous: "+$akatsuki_ryous;
+mes "Chakras Selados:";
+mes "Geral: "+$AkJC[1]+" Chakras";
+mes "Konoha: "+$AkJC[2]+" Chakras";
+mes "Nevoa: "+$AkJC[3]+" Chakras";
+mes "Nuvem: "+$AkJC[4]+" Chakras";
+mes "Suna: "+$AkJC[5]+" Chakras";
+close;
+end;
+}
+
+
+// Preco do evento
+set .price, 100;
+
+mes .npc$;
+mes "Ola "+strcharinfo(0)+" em que posso servi-lo?";
+if(select("Sequestrar Jinchuuriki:Chakras Selados") == 2){
+next;
+mes .npc$;
+mes "Geral: "+$AkJC[1]+" Chakras";
+mes "Konoha: "+$AkJC[2]+" Chakras";
+mes "Nevoa: "+$AkJC[3]+" Chakras";
+mes "Nuvem: "+$AkJC[4]+" Chakras";
+mes "Suna: "+$AkJC[5]+" Chakras";
+close;
+
+}else{
+if($GCinfo[1] == 1){
+next;
+mes .npc$;
+mes "Já existe um sequestro ativo.";
+close;
+end;
+}
+
+setarray .@menu$[1],"Konoha","Nevoa","Nuvem","Suna";
+if($GCinfo[3] == 0){
+set .@menu$[1],"^CC3300Konoha^000000";
+}else{
+set .@menu$[1],"^00FF33Konoha^000000";
+}
+if($GCinfo[4] == 0){
+set .@menu$[2],"^CC3300Nevoa^000000";
+}else{
+set .@menu$[2],"^00FF33Nevoa^000000";
+}
+if($GCinfo[5] == 0){
+set .@menu$[3],"^CC3300Nuvem^000000";
+}else{
+set .@menu$[3],"^00FF33Nuvem^000000";
+}
+if($GCinfo[6] == 0){
+set .@menu$[4],"^CC3300Suna^000000";
+}else{
+set .@menu$[4],"^00FF33Suna^000000";
+}
+
+select(.@menu$[1],.@menu$[2],.@menu$[3],.@menu$[4]);
+switch(@menu)
+{
+case 1:
+next;
+if($GCinfo[3] == 0){
+mes .npc$;
+mes "Nao foi possivel encontrar este Jinchuuriki.";
+close;
+end;
+}
+if($GCinfo[10] == 1){
+mes .npc$;
+mes "Voce ja adquiriu chakra deste Jinchuuriki esta semana.";
+close;
+end;
+}
+mes .npc$;
+mes "Voce deseja comprar nossos servicos para saquear o Jinchuuriki "+$jinkonoha$+" da Vila de Konoha, por "+.price+" Ryous?";
+if(select("Sim:Nao") == 2) close;
+next;
+if($akatsuki_ryous < .price){
+mes .npc$;
+mes "Voces nao possuem Ryous o suficiente.";
+close;
+end;
+}
+if($GCinfo[3] == 0){
+mes .npc$;
+mes "Nao foi possivel encontrar este Jinchuuriki.";
+close;
+end;
+}
+if($AkJC[2] > 4){
+mes .npc$;
+mes "Este Jinchuuriki ja chegou em seu limite.";
+close;
+end;
+}
+set $akatsuki_ryous, $akatsuki_ryous - .price;
+set $GCinfo[1], 1;
+set $GCinfo[2], 1;
+initnpctimer "Evento#GC";
+close;
+end;
+
+case 2:
+next;
+if($GCinfo[4] == 0){
+mes .npc$;
+mes "Nao foi possivel encontrar este Jinchuuriki.";
+close;
+end;
+}
+if($GCinfo[11] == 1){
+mes .npc$;
+mes "Voce ja adquiriu chakra deste Jinchuuriki esta semana.";
+close;
+end;
+}
+mes .npc$;
+mes "Voce deseja comprar nossos servicos para saquear o Jinchuuriki "+$jinnevoa$+" da Vila a Nevoa, por "+.price+" Ryous?";
+if(select("Sim:Nao") == 2) close;
+next;
+if($akatsuki_ryous < .price){
+mes .npc$;
+mes "Voces nao possuem Ryous o suficiente.";
+close;
+end;
+}
+if($GCinfo[4] == 0){
+mes .npc$;
+mes "Nao foi possivel encontrar este Jinchuuriki.";
+close;
+end;
+}
+if($AkJC[3] > 4){
+mes .npc$;
+mes "Este Jinchuuriki ja chegou em seu limite.";
+close;
+end;
+}
+set $akatsuki_ryous, $akatsuki_ryous - .price;
+set $GCinfo[1], 1;
+set $GCinfo[2], 2;
+initnpctimer "Evento#GC";
+close;
+end;
+
+case 3:
+next;
+if($GCinfo[5] == 0){
+mes .npc$;
+mes "Nao foi possivel encontrar este Jinchuuriki.";
+close;
+end;
+}
+if($GCinfo[12] == 1){
+mes .npc$;
+mes "Voce ja adquiriu chakra deste Jinchuuriki esta semana.";
+close;
+end;
+}
+mes .npc$;
+mes "Voce deseja comprar nossos servicos para saquear o Jinchuuriki "+$jinnuvem$+" da Vila da Nuvem, por "+.price+" Ryous?";
+if(select("Sim:Nao") == 2) close;
+next;
+if($akatsuki_ryous < .price){
+mes .npc$;
+mes "Voces nao possuem Ryous o suficiente.";
+close;
+end;
+}
+if($GCinfo[5] == 0){
+mes .npc$;
+mes "Nao foi possivel encontrar este Jinchuuriki.";
+close;
+end;
+}
+if($AkJC[4] > 4){
+mes .npc$;
+mes "Este Jinchuuriki ja chegou em seu limite.";
+close;
+end;
+}
+set $akatsuki_ryous, $akatsuki_ryous - .price;
+set $GCinfo[1], 1;
+set $GCinfo[2], 3;
+initnpctimer "Evento#GC";
+close;
+end;
+
+case 4:
+next;
+if($GCinfo[6] == 0){
+mes .npc$;
+mes "Nao foi possivel encontrar este Jinchuuriki.";
+close;
+end;
+}
+if($GCinfo[13] == 1){
+mes .npc$;
+mes "Voce ja adquiriu chakra deste Jinchuuriki esta semana.";
+close;
+end;
+}
+mes .npc$;
+mes "Voce deseja comprar nossos servicos para saquear o Jinchuuriki "+$jinsuna$+" da Vila da Suna, por "+.price+" Ryous?";
+if(select("Sim:Nao") == 2) close;
+next;
+if($akatsuki_ryous < .price){
+mes .npc$;
+mes "Voces nao possuem Ryous o suficiente.";
+close;
+end;
+}
+if($GCinfo[6] == 0){
+mes .npc$;
+mes "Nao foi possivel encontrar este Jinchuuriki.";
+close;
+end;
+}
+if($AkJC[5] > 4){
+mes .npc$;
+mes "Este Jinchuuriki ja chegou em seu limite.";
+close;
+end;
+}
+set $akatsuki_ryous, $akatsuki_ryous - .price;
+set $GCinfo[1], 1;
+set $GCinfo[2], 4;
+initnpctimer "Evento#GC";
+close;
+end;
+}
+}
+end;
+}
+
+payon,155,324,4	script	Esconderijo Akatsuki::EscAkat	882,{
+if($GCinfo[2] == 1 && getcharid(2) == 88 || $GCinfo[2] == 2 && getcharid(2) == 4 || $GCinfo[2] == 3 && getcharid(2) == 29 || $GCinfo[2] == 4 && getcharid(2) == 41)
+warp "akatsuki",0,0;
+if(getcharid(2) == 9)
+warp "akatsuki",0,0;
+end;
+}
+
+//akatsuki,154,200,4	duplicate(EscAkat)	Esconderijo Akatsuki#2	434

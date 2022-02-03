@@ -1,0 +1,1350 @@
+//===== eAthena Script =============================================================================
+//= Mining Script
+//===== By: ========================================================================================
+//= Precious (1.4)
+//===== Edited to work with current versions of eAthena by: ========================================
+//= ChrisBowen (1.5)
+//===== Current Version: ===========================================================================
+//= 1.5
+//===== Compatible With: ===========================================================================
+//= Any eAthena Version
+//===== Description: ===============================================================================
+//= Enables the player to "mine" in certain Mineraçãos.
+//= There are three levels to the mines
+//= To mine at lvl 1 area you have to have lvl 1 pick axe, to mine at lvl 2, level 2 pickaxe.
+//= Player will have to "learn to mine" and when they do, they will be given lvl 1 pickaxe.
+//===== Additional Comments: =======================================================================
+//= 6/14/05 - Started writing the script
+//= 6/15/05 - v.1.1 worked out the bugs and messed with the random.
+//= 6/16/05 - v.1.3 testesd all spots and added the dup coords. enjoy my script happy.gif
+//= 6/19/05 - v.1.4 fixed last minute bugs, added variables.
+//= 4/18/07 - v.1.5 added new spots to mine (ChrisBowen)
+//==================================================================================================
+//Mining quest===========================================================
+//=======================================================================
+//first level of the mine================================================
+//=======================================================================
+//= Edited script by: ===================================================
+//= ChrisBowen (1.5) (for download go to http://nopaste.php-q.net/290213=
+//=======================================================================
+cmd_fild06,321,155,1	script	Mineração::Miner	754,{
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (countitem(1452) < 1) goto needpickaxelvl1;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto tryagain;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 1452,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1452) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto carvao;
+if (found == 8) goto carvao;
+if (found == 9) goto carvao;
+if (found == 10) goto carvao;
+if (found == 11) goto carvao;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal1;
+close;
+
+carvao:
+getitem 1003,1;
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+goto lookagain;
+close;
+
+ferro:
+getitem 7231,1;
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+goto lookagain;
+close;
+
+cristal1:
+set mineracaoexp,mineracaoexp +5;
+set getcristal1, rand(9);
+if (getcristal1 == 0) {getitem 512,1; goto lookagain; close;}
+if (getcristal1 == 1) {getitem 556,1; goto lookagain; close;}
+if (getcristal1 == 2) {getitem 558,1; goto lookagain; close;}
+if (getcristal1 == 3) {getitem 582,1; goto lookagain; close;}
+if (getcristal1 == 4) {getitem 578,1; goto lookagain; close;}
+if (getcristal1 == 5) {getitem 572,1; goto lookagain; close;}
+if (getcristal1 == 6) {getitem 573,1; goto lookagain; close;}
+if (getcristal1 == 7) {getitem 574,1; goto lookagain; close;}
+if (getcristal1 == 8) {getitem 575,1; goto lookagain; close;}
+
+needpickaxelvl1:
+mes "Você precisa de uma picareta básica para minerar.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+cmd_fild06,90,227,1	duplicate(Miner)	Mineração#12	754
+cmd_fild06,18,215,1	duplicate(Miner)	Mineração#13	754
+
+pay_fild09,48,127,1	duplicate(Miner)	Mineração#14	754
+pay_fild09,280,335,1	duplicate(Miner)	Mineração#15	754
+pay_fild09,277,262,1	duplicate(Miner)	Mineração#16	754
+
+gef_fild12,351,118,1	duplicate(Miner)	Mineração#17	754
+gef_fild12,114,149,1	duplicate(Miner)	Mineração#18	754
+gef_fild12,43,264,1	duplicate(Miner)	Mineração#19	754
+
+moc_fild07,138,193,1	duplicate(Miner)	Mineração#110	754
+moc_fild07,109,211,1	duplicate(Miner)	Mineração#754	754
+moc_fild07,245,370,1	duplicate(Miner)	Mineração#112	754
+
+//Second level of the mine===========================================
+//===================================================================
+cmd_fild08,342,348,1	script	Mineração::Miner2	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 10) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13749) < 1) goto needpickaxelvl2;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13749,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13749) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto carvao;
+if (found == 8) goto carvao;
+if (found == 9) goto carvao;
+if (found == 10) goto carvao;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal1;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13871,1;
+goto lookagain;
+close;
+
+cristal1:
+set mineracaoexp,mineracaoexp +5;
+set getcristal1, rand(9);
+if (getcristal1 == 0) {getitem 512,1; goto lookagain; close;}
+if (getcristal1 == 1) {getitem 556,1; goto lookagain; close;}
+if (getcristal1 == 2) {getitem 558,1; goto lookagain; close;}
+if (getcristal1 == 3) {getitem 582,1; goto lookagain; close;}
+if (getcristal1 == 4) {getitem 578,1; goto lookagain; close;}
+if (getcristal1 == 5) {getitem 572,1; goto lookagain; close;}
+if (getcristal1 == 6) {getitem 573,1; goto lookagain; close;}
+if (getcristal1 == 7) {getitem 574,1; goto lookagain; close;}
+if (getcristal1 == 8) {getitem 575,1; goto lookagain; close;}
+
+
+needpickaxelvl2:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+cmd_fild08,161,284,1	duplicate(Miner2)	Mineração#21	754
+
+pay_fild11,34,266,1	duplicate(Miner2)	Mineração#22	754
+pay_fild11,240,223,1	duplicate(Miner2)	Mineração#23	754
+
+moc_fild03,155,109,1	duplicate(Miner2)	Mineração#24	754
+moc_fild03,62,42,1	duplicate(Miner2)	Mineração#25	754
+
+moc_fild14,47,287,1	duplicate(Miner2)	Mineração#26	754
+moc_fild14,161,283,1	duplicate(Miner2)	Mineração#27	754
+
+//third level of the mine============================================
+//===================================================================
+ein_fild01,84,139,1	script	Mineração::Miner3	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 20) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13750) < 1) goto needpickaxelvl3;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13750,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13750) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(15);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto carvao;
+if (found == 8) goto carvao;
+if (found == 9) goto carvao;
+if (found == 10) goto ferro3;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal1;
+if (found == 14) goto carvao;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13871,1;
+goto lookagain;
+close;
+
+ferro3:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13872,1;
+goto lookagain;
+close;
+
+cristal1:
+set mineracaoexp,mineracaoexp +5;
+set getcristal1, rand(9);
+if (getcristal1 == 0) {getitem 512,1; goto lookagain; close;}
+if (getcristal1 == 1) {getitem 556,1; goto lookagain; close;}
+if (getcristal1 == 2) {getitem 558,1; goto lookagain; close;}
+if (getcristal1 == 3) {getitem 582,1; goto lookagain; close;}
+if (getcristal1 == 4) {getitem 578,1; goto lookagain; close;}
+if (getcristal1 == 5) {getitem 572,1; goto lookagain; close;}
+if (getcristal1 == 6) {getitem 573,1; goto lookagain; close;}
+if (getcristal1 == 7) {getitem 574,1; goto lookagain; close;}
+if (getcristal1 == 8) {getitem 575,1; goto lookagain; close;}
+
+needpickaxelvl3:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+ein_fild01,108,116,1	duplicate(Miner3)	Mineração#31	754
+
+pay_fild10,91,299,1	duplicate(Miner3)	Mineração#32	754
+pay_fild10,105,318,1	duplicate(Miner3)	Mineração#33	754
+
+pay_fild03,98,158,1	duplicate(Miner3)	Mineração#34	754
+pay_fild03,178,154,1	duplicate(Miner3)	Mineração#35	754
+
+moc_fild06,270,50,1	duplicate(Miner3)	Mineração#36	754
+moc_fild06,306,194,1	duplicate(Miner3)	Mineração#37	754
+
+//fourth level of the mine============================================
+//===================================================================
+ein_fild07,347,227,1	script	Mineração::Miner4	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 30) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13751) < 1) goto needpickaxelvl4;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13751,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13751) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(16);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto carvao;
+if (found == 8) goto carvao;
+if (found == 9) goto ferro4;
+if (found == 10) goto ferro3;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal1;
+if (found == 14) goto carvao;
+if (found == 15) goto carvao;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13871,1;
+goto lookagain;
+close;
+
+ferro3:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13872,1;
+goto lookagain;
+close;
+
+ferro4:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13873,1;
+goto lookagain;
+close;
+
+cristal1:
+set mineracaoexp,mineracaoexp +5;
+set getcristal1, rand(9);
+if (getcristal1 == 0) {getitem 512,1; goto lookagain; close;}
+if (getcristal1 == 1) {getitem 556,1; goto lookagain; close;}
+if (getcristal1 == 2) {getitem 558,1; goto lookagain; close;}
+if (getcristal1 == 3) {getitem 582,1; goto lookagain; close;}
+if (getcristal1 == 4) {getitem 578,1; goto lookagain; close;}
+if (getcristal1 == 5) {getitem 572,1; goto lookagain; close;}
+if (getcristal1 == 6) {getitem 573,1; goto lookagain; close;}
+if (getcristal1 == 7) {getitem 574,1; goto lookagain; close;}
+if (getcristal1 == 8) {getitem 575,1; goto lookagain; close;}
+
+needpickaxelvl4:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+ein_fild07,219,196,1	duplicate(Miner4)	Mineração#41	754
+ein_fild07,211,299,1	duplicate(Miner4)	Mineração#42	754
+
+pay_fild07,99,74,1	duplicate(Miner4)	Mineração#43	754
+pay_fild07,66,257,1	duplicate(Miner4)	Mineração#44	754
+pay_fild07,123,359,1	duplicate(Miner4)	Mineração#45	754
+
+prt_fild03,54,279,1	duplicate(Miner4)	Mineração#46	754
+prt_fild03,200,75,1	duplicate(Miner4)	Mineração#47	754
+prt_fild03,96,212,1	duplicate(Miner4)	Mineração#48	754
+
+moc_fild17,359,282,1	duplicate(Miner4)	Mineração#49	754
+moc_fild17,304,362,1	duplicate(Miner4)	Mineração#410	754
+moc_fild17,335,195,1	duplicate(Miner4)	Mineração#411	754
+
+
+//fifth level of the mine============================================
+//===================================================================
+ein_fild08,248,183,1	script	Mineração::Miner5	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 40) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13752) < 1) goto needpickaxelvl5;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13752,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13752) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto carvao;
+if (found == 8) goto ferro5;
+if (found == 9) goto ferro4;
+if (found == 10) goto ferro3;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal1;
+if (found == 14) goto carvao;
+if (found == 15) goto carvao;
+if (found == 16) goto carvao;
+if (found == 17) goto carvao;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13871,1;
+goto lookagain;
+close;
+
+ferro3:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13872,1;
+goto lookagain;
+close;
+
+ferro4:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13873,1;
+goto lookagain;
+close;
+
+ferro5:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13874,1;
+goto lookagain;
+close;
+
+cristal1:
+set mineracaoexp,mineracaoexp +5;
+set getcristal1, rand(9);
+if (getcristal1 == 0) {getitem 512,1; goto lookagain; close;}
+if (getcristal1 == 1) {getitem 556,1; goto lookagain; close;}
+if (getcristal1 == 2) {getitem 558,1; goto lookagain; close;}
+if (getcristal1 == 3) {getitem 582,1; goto lookagain; close;}
+if (getcristal1 == 4) {getitem 578,1; goto lookagain; close;}
+if (getcristal1 == 5) {getitem 572,1; goto lookagain; close;}
+if (getcristal1 == 6) {getitem 573,1; goto lookagain; close;}
+if (getcristal1 == 7) {getitem 574,1; goto lookagain; close;}
+if (getcristal1 == 8) {getitem 575,1; goto lookagain; close;}
+
+needpickaxelvl5:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+hu_fild03,130,199,1	duplicate(Miner5)	Mineração#51	754
+
+um_fild01,89,290,1	duplicate(Miner5)	Mineração#52	754
+
+moc_fild01,158,375,1	duplicate(Miner5)	Mineração#53	754
+
+//sixth level of the mine============================================
+//===================================================================
+ein_fild08,48,201,1	script	Mineração::Miner6	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 50) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13753) < 1) goto needpickaxelvl6;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13753,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13753) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto ferro6;
+if (found == 8) goto carvao;
+if (found == 9) goto carvao;
+if (found == 10) goto carvao;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal2;
+if (found == 14) goto carvao;
+if (found == 15) goto carvao;
+if (found == 16) goto carvao;
+if (found == 17) goto carvao;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13871,1;
+goto lookagain;
+close;
+
+ferro6:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13875,1;
+goto lookagain;
+close;
+
+cristal2:
+set mineracaoexp,mineracaoexp +5;
+set getcristal2, rand(9);
+if (getcristal2 == 0) {getitem 13100,1; goto lookagain; close;}
+if (getcristal2 == 1) {getitem 13101,1; goto lookagain; close;}
+if (getcristal2 == 2) {getitem 13102,1; goto lookagain; close;}
+if (getcristal2 == 3) {getitem 13103,1; goto lookagain; close;}
+if (getcristal2 == 4) {getitem 13104,1; goto lookagain; close;}
+if (getcristal2 == 5) {getitem 13105,1; goto lookagain; close;}
+if (getcristal2 == 6) {getitem 13106,1; goto lookagain; close;}
+if (getcristal2 == 7) {getitem 13150,1; goto lookagain; close;}
+if (getcristal2 == 8) {getitem 13151,1; goto lookagain; close;}
+
+needpickaxelvl6:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+hu_fild03,109,280,1	duplicate(Miner6)	Mineração#61	754
+um_fild01,169,249,1	duplicate(Miner6)	Mineração#62	754
+moc_fild01,367,182,1	duplicate(Miner6)	Mineração#63	754
+
+//seventh level of the mine============================================
+//===================================================================
+ein_fild08,239,216,1	script	Mineração::Miner7	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 60) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13754) < 1) goto needpickaxelvl7;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13754,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13754) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto ferro7;
+if (found == 8) goto carvao;
+if (found == 9) goto carvao;
+if (found == 10) goto carvao;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal2;
+if (found == 14) goto carvao;
+if (found == 15) goto carvao;
+if (found == 16) goto carvao;
+if (found == 17) goto carvao;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13871,1;
+goto lookagain;
+close;
+
+ferro7:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13876,1;
+goto lookagain;
+close;
+
+cristal2:
+set mineracaoexp,mineracaoexp +5;
+set getcristal2, rand(9);
+if (getcristal2 == 0) {getitem 13100,1; goto lookagain; close;}
+if (getcristal2 == 1) {getitem 13101,1; goto lookagain; close;}
+if (getcristal2 == 2) {getitem 13102,1; goto lookagain; close;}
+if (getcristal2 == 3) {getitem 13103,1; goto lookagain; close;}
+if (getcristal2 == 4) {getitem 13104,1; goto lookagain; close;}
+if (getcristal2 == 5) {getitem 13105,1; goto lookagain; close;}
+if (getcristal2 == 6) {getitem 13106,1; goto lookagain; close;}
+if (getcristal2 == 7) {getitem 13150,1; goto lookagain; close;}
+if (getcristal2 == 8) {getitem 13151,1; goto lookagain; close;}
+
+needpickaxelvl7:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+hu_fild03,190,301,1	duplicate(Miner7)	Mineração#71	754
+um_fild01,337,113,1	duplicate(Miner7)	Mineração#72	754
+moc_fild01,230,102,1	duplicate(Miner7)	Mineração#73	754
+
+//eighth level of the mine============================================
+//===================================================================
+cmd_fild04,200,304,1	script	Mineração::Miner8	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 70) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13755) < 1) goto needpickaxelvl8;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13755,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13755) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto ferro8;
+if (found == 8) goto carvao;
+if (found == 9) goto carvao;
+if (found == 10) goto carvao;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal3;
+if (found == 14) goto carvao;
+if (found == 15) goto carvao;
+if (found == 16) goto carvao;
+if (found == 17) goto carvao;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13871,1;
+goto lookagain;
+close;
+
+ferro8:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13877,1;
+goto lookagain;
+close;
+
+cristal3:
+set mineracaoexp,mineracaoexp +5;
+set getcristal3, rand(9);
+if (getcristal3 == 0) {getitem 13152,1; goto lookagain; close;}
+if (getcristal3 == 1) {getitem 13153,1; goto lookagain; close;}
+if (getcristal3 == 2) {getitem 13154,1; goto lookagain; close;}
+if (getcristal3 == 3) {getitem 13155,1; goto lookagain; close;}
+if (getcristal3 == 4) {getitem 13156,1; goto lookagain; close;}
+if (getcristal3 == 5) {getitem 13157,1; goto lookagain; close;}
+if (getcristal3 == 6) {getitem 13158,1; goto lookagain; close;}
+if (getcristal3 == 7) {getitem 13159,1; goto lookagain; close;}
+if (getcristal3 == 8) {getitem 13160,1; goto lookagain; close;}
+
+needpickaxelvl8:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+mosk_fild02,106,146,1	duplicate(Miner8)	Mineração#81	754
+um_fild03,121,240,1	duplicate(Miner8)	Mineração#82	754
+moc_fild08,340,371,1	duplicate(Miner8)	Mineração#83	754
+
+//ninth level of the mine============================================
+//===================================================================
+cmd_fild05,100,100,1	script	Mineração::Miner9	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 80) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13756) < 1) goto needpickaxelvl9;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13756,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13756) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto ferro9;
+if (found == 8) goto carvao;
+if (found == 9) goto carvao;
+if (found == 10) goto carvao;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal3;
+if (found == 14) goto carvao;
+if (found == 15) goto carvao;
+if (found == 16) goto carvao;
+if (found == 17) goto carvao;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")"; }
+getitem 13871,1;
+goto lookagain;
+close;
+
+ferro9:
+set mineracaoexp,mineracaoexp +3;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")";}
+getitem 13878,1;
+goto lookagain;
+close;
+
+cristal3:
+set mineracaoexp,mineracaoexp +5;
+set getcristal3, rand(9);
+if (getcristal3 == 0) {getitem 13152,1; goto lookagain; close;}
+if (getcristal3 == 1) {getitem 13153,1; goto lookagain; close;}
+if (getcristal3 == 2) {getitem 13154,1; goto lookagain; close;}
+if (getcristal3 == 3) {getitem 13155,1; goto lookagain; close;}
+if (getcristal3 == 4) {getitem 13156,1; goto lookagain; close;}
+if (getcristal3 == 5) {getitem 13157,1; goto lookagain; close;}
+if (getcristal3 == 6) {getitem 13158,1; goto lookagain; close;}
+if (getcristal3 == 7) {getitem 13159,1; goto lookagain; close;}
+if (getcristal3 == 8) {getitem 13160,1; goto lookagain; close;}
+
+needpickaxelvl9:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+pay_fild06,328,303,1	duplicate(Miner9)	Mineração#91	754
+mjolnir_10,344,140,1	duplicate(Miner9)	Mineração#92	754
+moc_fild13,171,339,1	duplicate(Miner9)	Mineração#93	754
+
+//tenth level of the mine============================================
+//===================================================================
+cmd_fild05,344,375,1	script	Mineração::Miner10	754,{
+
+if (mineirador != 1) {mes "Você ainda não é minerador, faça a quest em sua vila"; close;}
+if (level_minerador < 90) {mes "Seu nível de minerador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13757) < 1) goto needpickaxelvl10;
+mes "Você encontrou com ponto de mineração.";
+mes "Gostaria de minerar.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua picareta quebrou...espero que tenha outra..";
+delitem 13757,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13757) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto ferro10;
+if (found == 8) goto carvao;
+if (found == 9) goto carvao;
+if (found == 10) goto carvao;
+if (found == 11) goto ferro2;
+if (found == 12) goto ferro;
+if (found == 13) goto cristal4;
+if (found == 14) goto carvao;
+if (found == 15) goto carvao;
+if (found == 16) goto carvao;
+if (found == 17) goto carvao;
+close;
+
+carvao:
+set mineracaoexp,mineracaoexp +1;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")";}
+getitem 1003,1;
+goto lookagain;
+close;
+
+ferro:
+set mineracaoexp,mineracaoexp +5;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")";}
+getitem 7231,1;
+goto lookagain;
+close;
+
+ferro2:
+set mineracaoexp,mineracaoexp +5;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")";}
+getitem 13871,1;
+goto lookagain;
+close;
+
+ferro10:
+set mineracaoexp,mineracaoexp +5;
+if (mineracaoexp >= 500) {set level_minerador, level_minerador +1; set mineracaoexp,0; dispbottom "Profissão: Minerador, level up (nível atual: "+level_minerador+")";}
+getitem 13879,1;
+goto lookagain;
+close;
+
+cristal4:
+set mineracaoexp,mineracaoexp +10;
+set getcristal4, rand(9);
+if (getcristal4 == 0) {getitem 13161,1; goto lookagain; close;}
+if (getcristal4 == 1) {getitem 13162,1; goto lookagain; close;}
+if (getcristal4 == 2) {getitem 13163,1; goto lookagain; close;}
+if (getcristal4 == 3) {getitem 13164,1; goto lookagain; close;}
+if (getcristal4 == 4) {getitem 13165,1; goto lookagain; close;}
+if (getcristal4 == 5) {getitem 13166,1; goto lookagain; close;}
+if (getcristal4 == 6) {getitem 13167,1; goto lookagain; close;}
+if (getcristal4 == 7) {getitem 13168,1; goto lookagain; close;}
+if (getcristal4 == 8) {getitem 13169,1; goto lookagain; close;}
+
+needpickaxelvl10:
+mes "Você precisa de uma picareta.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+pay_fild06,209,168,1	duplicate(Miner10)	Mineração#101	754
+mjolnir_10,333,367,1	duplicate(Miner10)	Mineração#102	754
+moc_fild13,28,265,1	duplicate(Miner10)	Mineração#103	754

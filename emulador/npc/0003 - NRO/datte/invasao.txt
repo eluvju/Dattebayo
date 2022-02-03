@@ -1,0 +1,191 @@
+-	script	Disable_Exit	-1,{
+OnInit:
+	hideonnpc "Voltar para a vila";
+	end;
+}
+-	script	PronteraUnderAttack	-1,{
+
+
+OnClock1423:
+OnClock2123:
+
+
+startdefender:	
+	
+	announce "Atenção! Os capangas e alguns generais da Vila oculta do som estão atacando as vilas",0;
+	sleep2 3000;
+	announce "Jogadores, defendem suas vilas dos ataques da vila inimiga, agora!",0;
+	sleep2 30000;
+	announce "Derrote o general responsável pelo ataque o mais rápido possível!",0;
+	sleep2 5000;
+	announce "Relatório da entrada principal: Ataque inimigo chegando em dois minutos, preparar defesa!",0;
+	sleep2 120000;
+	announce "O general com os capangas chegaram ao portão principal, iniciem o ataque!!",0;
+	sleep2 3000;
+	goto L_OnSummon;
+L_OnSummon:
+	setmapflag	"konoha",31; // 31 mean mf_nomobloot
+	setmapflag	"konoha",31; // 32 mean mf_nomvploot
+	setmapflag	"areia",31; // if error, open db/const.txt find mf_noloot and set that number
+	setmapflag	"areia",32;
+	setmapflag	"kiri",31;
+	setmapflag	"kiri",32;
+	setmapflag	"nuvem",31;
+	setmapflag	"nuvem",32;
+ 
+	monster "konoha",148,45,"Capanga",1201,50,"PronteraUnderAttack::OnMobLose";
+	monster "konoha",148,48,"General Dosu",1575,1,"PronteraUnderAttack::OnMobWin1";
+
+	monster "areia",153,26,"Capanga",1201,50,"PronteraUnderAttack::OnMobLose";
+	monster "areia",153,26,"General Zaku",1575,1,"PronteraUnderAttack::OnMobWin2";
+
+	monster "kiri",163,13,"Capanga",1201,50,"PronteraUnderAttack::OnMobLose";
+	monster "kiri",163,13,"General Kin",1575,1,"PronteraUnderAttack::OnMobWin3";
+
+	monster "nuvem",155,16,"Capanga",1201,50,"PronteraUnderAttack::OnMobLose";
+	monster "nuvem",155,16,"General Abumi",1575,1,"PronteraUnderAttack::OnMobWin4";
+
+	initnpctimer;
+	set $oroinvocado,0;
+	end;
+
+OnTimer3600000:
+	announce "O ataque não foi impedido em uma das vilas",0;
+	sleep2 3000;
+	killmonster "konoha","PronteraUnderAttack::OnMobLose";
+	killmonster "konoha","PronteraUnderAttack::OnMobWin1";
+	killmonster "areia","PronteraUnderAttack::OnMobLose";
+	killmonster "areia","PronteraUnderAttack::OnMobWin2";
+	killmonster "kiri","PronteraUnderAttack::OnMobLose";
+	killmonster "kiri","PronteraUnderAttack::OnMobWin3";
+	killmonster "nuvem","PronteraUnderAttack::OnMobLose";
+	killmonster "nuvem","PronteraUnderAttack::OnMobWin4";
+	killmonster "in_hunter","Voltar para a vila::OnMafiaKilled";
+	removemapflag	"konoha",31; // 31 mean mf_nomobloot
+	removemapflag	"konoha",31; // 32 mean mf_nomvploot
+	removemapflag	"areia",31; // if error, open db/const.txt find mf_noloot and set that number
+	removemapflag	"areia",32;
+	removemapflag	"kiri",31;
+	removemapflag	"kiri",32;
+	removemapflag	"nuvem",31;
+	removemapflag	"nuvem",32;
+	stopnpctimer;
+	end;
+
+OnMobLose:
+	dispbottom "Tolo... não sou o líder... *Se suicida*";
+	end;
+
+OnMobWin1:
+//	removemapflag	konoha,31;
+//	removemapflag	konoha,32;
+//	atcommand "@cleanmap";
+	killmonster "konoha","PronteraUnderAttack::OnMobLose";
+	killmonster "konoha","PronteraUnderAttack::OnMobWin1";
+	getitem 7205,1;
+	dispbottom "Você derrotou o General Dosu, e recebeu um prêmio por isso";
+	announce strcharinfo(0) + " derrotou General Dosu! As tropas de Dosu estão recuando",0;
+	sleep2 3000;
+	announce "Espere, Dosu está fazendo alguma coisa no chão , ele está fazendo um último jutsu! O jogador "+strcharinfo(0)+" foi levado para um local estranho",0;
+	warp "orochi",15,75;
+	mapannounce "orochi","[Evento]: Aguarde enquanto a situação nas outras vilas seja definida",0;
+	donpcevent "Voltar para a vila::OnEnable";
+	set $oroinvocado,1;
+	end;
+
+OnMobWin2:
+//	removemapflag	areia,31;
+//	removemapflag	areia,32;
+//	atcommand "@cleanmap";
+	killmonster "areia","PronteraUnderAttack::OnMobLose";
+	killmonster "areia","PronteraUnderAttack::OnMobWin2";
+	getitem 7205,1;
+	dispbottom "Você derrotou o General Zaku, e recebeu um prêmio por isso";
+	announce strcharinfo(0) + " derrotou General Zaku! As tropas de Zaku estão recuando",0;
+	sleep2 3000;
+	announce "Espere, Zaku está fazendo alguma coisa no chão , ele está fazendo um último jutsu! O jogador "+strcharinfo(0)+" foi levado para um local estranho",0;
+	warp "orochi",15,75;
+//	mapannounce "orochi","[Evento]: Aguarde enquanto a situação nas outras vilas seja definida",0;
+	donpcevent "Voltar para a vila::OnEnable";
+	set $oroinvocado,1;
+	end;
+
+OnMobWin3:
+//	removemapflag	kiri,31;
+//	removemapflag	kiri,32;
+//	atcommand "@cleanmap";
+	killmonster "kiri","PronteraUnderAttack::OnMobLose";
+	killmonster "kiri","PronteraUnderAttack::OnMobWin3";
+	getitem 7205,1;
+	dispbottom "Você derrotou o General Kin, e recebeu um prêmio por isso";
+	announce strcharinfo(0) + " derrotou General Kin! As tropas de Kin estão recuando",0;
+	sleep2 3000;
+	announce "Espere, Kin está fazendo alguma coisa no chão , ele está fazendo um último jutsu! O jogador "+strcharinfo(0)+" foi levado para um local estranho",0;
+	warp "orochi",15,75;
+	mapannounce "orochi","[Evento]: Aguarde enquanto a situação nas outras vilas seja definida",0;
+	donpcevent "Voltar para a vila::OnEnable";
+	set $oroinvocado,1;
+	end;
+
+OnMobWin4:
+//	removemapflag	nuvem,31;
+//	removemapflag	nuvem,32;
+//	atcommand "@cleanmap";
+	killmonster "nuvem","PronteraUnderAttack::OnMobLose";
+	killmonster "nuvem","PronteraUnderAttack::OnMobWin4";
+	getitem 7205,1;
+	dispbottom "Você derrotou o General Abumi, e recebeu um prêmio por isso";
+	announce strcharinfo(0) + " derrotou General Abumi! As tropas de Abumi estão recuando",0;
+	sleep2 3000;
+	announce "Espere, Abumi está fazendo alguma coisa no chão , ele está fazendo um último jutsu! O jogador "+strcharinfo(0)+" foi levado para um local estranho",0;
+	warp "orochi",15,75;
+	mapannounce "orochi","[Evento]: Aguarde enquanto a situação nas outras vilas seja definida",0;
+	donpcevent "Voltar para a vila::OnEnable";
+	set $oroinvocado,1;
+	end;
+
+
+
+}
+
+orochi,10,88,5	script	Voltar para a vila	119,{
+
+	warp "prontera",0,0;
+	end;
+OnEnable:
+	if($oroinvocado == 1) {end;}
+	announce "[Evento Invasão]: Você se encontra em um local desconhecido",0;
+	sleep2 3000;
+	announce "[Evento invasão]: Voz desconhecida: Hahahaha, vocês que derrotaram meus generais, é hora de vocês sentirem o poder da Vila oculta do som",0;
+	sleep2 3000;
+	mapannounce "orochi","[Evento invasão]: Uma sombra surge e vai se aproximando de você, será possível...?!",0;
+	sleep2 3000;
+	mapannounce "orochi","[Evento invasão]: Não acredito, é Orochimaru!",0;
+	sleep2 10000;
+	monster "orochi",0,0,"Orochimaru",1574,1,"Voltar para a vila::OnMafiaKilled";
+	announce "Orochimaru aparece pra enfrentar os shinobis que derrotaram seus generais, os shinobis estão em apuros",0;
+	mapannounce "orochi","[Evento invasão]: Orochimaru: Então foram vocês fracotes que derrotaram meus generais? Tsc, matarei todos vocês",0;
+	sleep2 3000;
+ 
+	end;
+OnMafiaKilled:
+	announce strcharinfo(0)+" derrotou o Orochimaru, mas era apenas um bunshin!",0;
+	sleep2 3000;
+	announce "[Orochimaru]: Ainda não terminamos "+strcharinfo(0)+", suas vilas serão minhas, aguarde que voltaremos a atacar!",0;
+	sleep2 3000;
+	announce "[Orochimaru]: e da próxima vez não terei piedade!",0;
+	sleep2 5000;
+	announce "["+strcharinfo(0)+"] : Até se você tiver 10 vidas, eu darei um jeito de te matar!",0;
+	sleep2 5000;
+	announce "[Evento Invasão] : Obrigado a todos os shinobis que ajudaram a defender, e principalmente o "+strcharinfo(0)+" por derrotar o bunshin de Orochimaru",0;
+	sleep2 5000;
+	announce "[Evento Invasão] : "+strcharinfo(0)+" receberá agora seu prêmio por derrotar o bunshin de Orochimaru",0;
+	getitem 7206,1;
+	dispbottom "Seu prêmio foi entregue, parabéns";
+	warp "SavePoint",0,0;
+	end;
+}
+in_hunter	mapflag	nowarp
+in_hunter	mapflag	nowarpto
+in_hunter	mapflag	noteleport
+in_hunter	mapflag	nosave

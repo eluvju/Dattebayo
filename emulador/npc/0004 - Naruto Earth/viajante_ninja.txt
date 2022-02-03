@@ -1,0 +1,140 @@
+konoha3,193,63,5	script	Viajante::portos	56,{
+
+
+set @price,5000;
+
+mes "[^0000FFViajante^000000]";
+mes "Bem vindo(a) ao Viajante";
+next;
+mes "[^0000FFViajante^000000]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[^0000FFViajante^000000]";
+mes "Eu posso te levar!";
+next;
+mes "[^0000FFViajante^000000]";
+mes "Eu cobro 5,000 Iene cada viagem, afinal, também preciso de uns trocados.";
+next;
+mes "[^0000FFViajante^000000]";
+mes "Por favor escolha o seu destino!";
+menu "Konoha",arrekonoha,"Névoa",arrenevoa,"Nuvem",arrenuvem;
+
+arrekonoha:
+next;
+menu "Rank D",konoha1,"Rank C",konoha2,"Rank B",konoha3;
+close;
+
+konoha1:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "prt_fild03",0,0;
+close;
+
+konoha2:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "pay_fild03",0,0;
+close;
+
+konoha3:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "moc_fild03",0,0;
+close;
+
+arrenevoa:
+next;
+menu "Rank D",nevoa1,"Rank C",nevoa2,"Rank B",nevoa3;
+close;
+
+nevoa1:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "odin_tem02",0,0;
+close;
+
+nevoa2:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "odin_tem03",0,0;
+close;
+
+nevoa3:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "cmd_fild05",0,0;
+close;
+
+arrenuvem:
+next;
+menu "Rank D",nuvem1,"Rank C",nuvem2,"Rank B",nuvem3;
+close;
+
+nuvem1:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "ve_fild07",0,0;
+close;
+
+nuvem2:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "ve_fild04",0,0;
+close;
+
+nuvem3:
+next;
+mes "[^0000FFViajante^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "ein_fild01",0,0;
+close;
+
+Sem_Zeny:
+next;
+mes "[^0000FFViajante^000000]";
+mes "Você não tem ienes suficientes";
+close;
+
+
+
+}
+
+kiragakure,172,131,5	duplicate(portos)	Viajante#h2-2	112
+kumogakure,182,31,5	duplicate(portos)	Viajante#h2-3	56
+cave,120,72,5	duplicate(portos)	Viajante#h2-4	402
+

@@ -1,0 +1,40 @@
+/*
+Author	Goddameit
+Version	2013/08/19
+Web	http://bit.ly/MDuQ9F
+*/
+-	script	AGME	-1,{
+OnAgitEnd:
+	setarray .@maps$[0],"payg_cas02","gefg_cas04";
+	set .@NUM,getarraysize(.@maps$);
+	for( set .@i,0; .@i < .@NUM; set .@i, .@i+1)
+	{
+		set .@GID,getcastledata(.@maps$[.@i],1);
+		if( .@GID > 0 )
+		{
+			query_sql "SELECT `char_id`,`master` FROM `guild` WHERE `guild_id` = "+.@GID+" LIMIT 1",.@CID,.@NAME$;
+			set .@AID,getcharid(3,.@NAME$);
+			set .@BO,0;
+			if( !.@CID )
+				continue;
+			//
+			set .@ITME,12961;
+			set .@AMOM,1;
+			//
+			if( attachrid(.@AID) )
+			{
+				if( getcharid(0) == .@CID )
+				{
+					set .@BO,1;
+					getitem .@ITME,.@AMOM;
+				}
+				detachrid;
+			}
+			if( !.@BO )
+			{
+				query_sql "INSERT INTO `inventory` VALUES (NULL, '"+.@CID+"', '"+.@ITME+"', '"+.@AMOM+"', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0')";
+			}
+		}
+	}
+	end;
+}

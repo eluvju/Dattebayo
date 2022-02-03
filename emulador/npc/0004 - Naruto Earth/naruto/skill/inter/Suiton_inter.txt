@@ -1,0 +1,137 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+biblioteca,105,70,5	script	Suiton Intermediario	1_m_hof,{
+if(checkquest(30097) == 1) goto skillsuit1;
+if(checkquest(30098) == 1) goto skillsuit2;
+if(checkquest(30099) == 1) goto skillsuit3;
+if(checkquest(30100) == 1) goto skillsuit4;
+if(elementosuiton != 1) { mes "[Suiton Intermediario]"; mes "Esse elemento não é de sua natureza"; close;}
+if(treino_nin_inter != 1) { mes "[Suiton Intermediario]"; mes "Você precisa estudar suijutsu Intermediario antes de aprender as skills"; close;}
+if(sui_skill_inter >= 3) { mes "[Suiton Intermediario]"; mes "Você já aprendeu três skill de Suiton Intermediario, esse é o limite"; close; }
+	mes "[Suiton Intermediario]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Suiton Intermediario. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Suiton Intermediario]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Suiton Intermediario]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Suiton Intermediario]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808Suiryuudan^000000:^8A0808Mizurappa^000000:^8A0808Onda Aquatica^000000"))
+	{
+	case 1:
+		if (su1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Suiryuudan";
+		next;
+		mes "[Suiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Suiton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillsuit1:
+		setquest 30097;
+		if(checkquest(30097,hunting) == 2 && countitem(32151) >= 1)
+		{
+			completequest 30097;
+			erasequest 30097;
+			delitem 32151,1;
+			set sui_skill_inter,sui_skill_inter +1;
+			skill 14,10,3;
+			set su1,1;
+			mes "[Suiton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (su2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Mizurappa";
+		next;
+		mes "[Suiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Suiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Suiton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillsuit2:
+		setquest 30098;
+		if(checkquest(30098,hunting) == 2 && countitem(32151) >= 1)
+		{
+			completequest 30098;
+			erasequest 30098;
+			delitem 32151,1;
+			set sui_skill_inter,sui_skill_inter +1;
+			skill 88,10,3;
+			set su2,1;
+			mes "[Suiton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (su3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Onda Aquatica";
+		next;
+		mes "[Suiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Suiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Suiton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillsuit3:
+		setquest 30099;
+		if(checkquest(30099,hunting) == 2 && countitem(32151) >= 1)
+		{
+			completequest 30099;
+			erasequest 30099;
+			delitem 32151,1;
+			set sui_skill_inter,sui_skill_inter +1;
+			set su3,1;
+			skill 2449,4,3;
+			mes "[Suiton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Suiton Intermediario]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Suiton Intermediario]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou falta esta faltando pergaminho de suiton Intermediario.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

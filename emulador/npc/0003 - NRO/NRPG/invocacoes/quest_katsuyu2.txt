@@ -1,0 +1,177 @@
+in_hunter,93,98,3	script	Medinin Anciã#recu	734,{
+	if(contrato_cobra == 1) goto L_wrongcontract;
+	if(contrato_sapo == 1) goto L_wrongcontract;
+	if(invoca_done == 1) goto L_alreadyhave;
+	if(contrato_lesma == 1) goto claro;
+	if(jounin != 1) goto L_graduacao;
+	
+	mes "[Medinin Anciã]";
+	mes "Olá shinobi, Eu tive uma visão de sua chegada...";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Na minha visão você me procurou para saber como aprender o Kuchiyose no jutsu";
+	mes "Já vou adiantar que essa é uma habilidade que poucos tem...";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Antes de mais nada, é preciso fazer um contrato de sangue";
+	mes "E após feito o contrato, terá que aperfeiçoar a técnica";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Devo avisar que o contrato é eterno, e que não poderá ter dois contratos";
+	mes "com dois tipos de animais, então antes de confirmar pense bem...";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Além de mim existem mais duas pessoas com quem você pode conversar";
+	mes "a respeito de contratos de sangue, eu sou Medinin das lesmas";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Através de mim você pode aprender o jutsu que Katsuyu, a mais poderosa das lesmas!";
+	mes "Katsuyu é uma lesma com grande poder de cura e extremamente útil";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Enfim, chega de conversa, quer fazer um contrato de sangue com as lesmas?";
+	menu "Sim, Estou preparado",contrato,"Não, ainda não estou pronto",aindan;
+
+	contrato:
+	mes "Seu contrato foi assinado!";
+	set invoca_lesma1,1;
+	set contrato_lesma,1;
+	close;
+
+
+	claro:
+	mes "[Medinin Anciã]";
+	mes "Ótimo, vou lhe ensinar o jutsu por etapas";
+	mes "Será preciso aprender um estágio de cada vez";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Qual lesma gostaria de dominar?";
+	menu "Katsuyu Filhote",kat1,"Katsuyu Média",kat2,"Katsuyu",kat3;
+
+	kat1:
+	if(contrato_lesma != 1) goto L_wrongcontract;
+	if(invoca_lesma1 != 1) goto L_wronglevel;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Vamos começar então, iremos começar pela Katsuyu Filhote, a mais fraca das lesmas";
+	mes "O treinamento todo será difícil, mas aguente firme que vai aprender";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Neste treinamento você terá que coletar o seguinte:";
+	next;
+	mes "[Medinin Anciã]";
+	mes "1 vale Kuchiyose lvl 1";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7622) < 1) goto L_SemItem;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7622,1;
+	skill 728,4,0;
+	set invoca_lesma1,0;
+	set invoca_lesma2,1;
+	close;
+
+	kat2:
+	if(invoca_lesma2 != 1) goto L_wronglevel;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Muito bem, já está na segunda etapa, vai ficar cada vez mais difícil";
+	mes "Não desista ainda, se supere!";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Agora vamos tentar dominar a invocação da Katsuyu média";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[Medinin Anciã]";
+	mes "1 vale Kuchiyose lvl 2";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Vá! e faça seu treinamento!";
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7037) < 1) goto L_SemItem;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7037,1;
+	skill 729,4,0;
+	set invoca_lesma2,0;
+	set invoca_lesma3,1;
+	close;
+
+	kat3:
+	if(invoca_lesma3 != 1) goto L_wronglevel;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Chegou a hora, A última etapa do treinamento...";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Chegou a hora de tentar invoca a maior das lesmas, Katsuyu";
+	mes "Após isso terá sobre seu controle um poderoso animal, vamos lá!";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[Medinin Anciã]";
+	mes "1 vale Kuchiyose lvl 3";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7199) < 1) goto L_SemItem;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7199,1;
+	skill 730,4,0;
+	set invoca_lesma3,0;
+	set invoca_done,1;
+	close;
+
+L_SemItem:
+	next;
+	mes "[Medinin Anciã]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+
+aindan:
+	next;
+	mes "[Medinin Anciã]";
+	mes "Volte quando estiver pronto!";
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[Medinin Anciã]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_Wrong:
+	mes "[Medinin Anciã]";
+	mes "Você não é deste clã";
+	close;
+
+L_graduacao:
+	mes "[Medinin Anciã]";
+	mes "Desculpe mas apenas jounins podem realizar esse treinamento.";
+	close;
+
+L_wrongcontract:
+	mes "[Medinin Anciã]";
+	mes "Desculpe mas seu contrato de sangue não é desse animal.";
+	close;
+
+L_wronglevel:
+	mes "[Medinin Anciã]";
+	mes "Desculpe mas você não pode pular etapas!";
+	close;
+
+}

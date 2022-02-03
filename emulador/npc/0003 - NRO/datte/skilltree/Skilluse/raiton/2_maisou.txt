@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkill002	-1,{
+    end;
+//When a Character uses a skill
+
+//Maisou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 192) {
+
+
+if (getskilllv(192) == 1) {
+
+if (maisou != 1) {end;}
+if (skill192 >= 50) {skill 192,2,0; set skill192,0; dispbottom "[Sys] Level up"; end; }
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 1: "+skill192+" de 50";
+
+end;
+
+}
+
+if (getskilllv(192) == 2) {
+if (maisou != 1) {end;}
+if (skill192 >= 100) {skill 192,3,0; set skill192,0; dispbottom "[Sys] Level up"; end;}
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 2: "+skill192+" de 100";
+
+end;
+
+}
+
+if (getskilllv(192) == 3) {
+
+
+if (skill192 >= 150) {skill 192,4,0; set skill192,0; dispbottom "[Sys] Level up"; end;}
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 3: "+skill192+" de 150";
+
+end;
+
+}
+
+if (getskilllv(192) == 4) {
+
+if (skill192 >= 200) {skill 192,5,0; set skill192,0; dispbottom "[Sys] Level up"; end;}
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 4: "+skill192+" de 200";
+
+end;
+
+}
+
+if (getskilllv(192) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill192 >= 250) {skill 192,6,0; set skill192,0; dispbottom "[Sys] Level up"; end;}
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 5: "+skill192+" de 250";
+
+end;
+
+}
+
+if (getskilllv(192) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill192 >= 300) {skill 192,7,0; set skill192,0; dispbottom "[Sys] Level up"; end;}
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 6: "+skill192+" de 300";
+
+end;
+
+}
+
+if (getskilllv(192) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill192 >= 500) {skill 192,8,0; set skill192,0; dispbottom "[Sys] Level up"; end;}
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 7: "+skill192+" de 500";
+
+end;
+
+}
+
+if (getskilllv(192) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill192 >= 700) {skill 192,9,0; set skill192,0; dispbottom "[Sys] Level up"; end;}
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 8: "+skill192+" de 700";
+
+end;
+
+}
+
+if (getskilllv(192) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill192 >= 1000) {skill 192,10,0; set skill192,0; dispbottom "[Sys] Level up"; end;}
+set skill192,skill192 +1;
+dispbottom "[Jutsu level] Maisou level 9: "+skill192+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

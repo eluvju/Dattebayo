@@ -1,0 +1,31 @@
+//===== eAthena Script ========================================
+//= Viajante
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= Irá falar sobre o País das Ondas e levar aos Wainting roons.
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+ra_temple,119,115,4	script	Viajante	910,5,5,{
+//============================================================
+OnTouch:
+mes "[^000080Viajante^000000]";
+mes "Olá ^BEBEBE"+strcharinfo(0)+"^000000.Seja Bem Vindo(a) ao País das ^0000FFOndas^000000";
+mes "Hoje você terá a missão de Protejer Tazuna um humilde construtor de pontes";
+next;
+mes "[^000080Viajante^000000]";
+mes "Tazuna está Sendo ameaçado por ^FF0000Gatou^000000 um um grande milionário que domina o ^0000FFPaís das Ondas^000000";
+next;
+mes "[^000080Viajante^000000]";
+mes "Você deverá garantir a segurança de Tazuna até o término da ponte";
+next;
+mes "[^000080Viajante^000000]";
+mes "Ti Levarei ao Tazuna";
+next;
+warp "kh_vila",120,178;
+dispbottom "[Boa Sorte "+strcharinfo(0)+" o País das Ondas precisa de sua coragem!]";
+close;
+}

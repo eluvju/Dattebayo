@@ -1,0 +1,96 @@
+payon_in03,80,166,5	script	Shikumi no Jutsu::gen8	831,{
+
+if (shikumi == 1) goto L_delete;
+if(gen_basico != 1) {mes "Você precisa estudar genjutsu básico antes de aprender um genjutsu"; close;}
+if (checkquest(2158) == 1) goto L_go;
+if(gen_skill_bas >= 3) {mes "Você já aprendeu três genjutsus básicos, esse é o limite"; close;}
+if(accept_gen == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if(shikumi == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de genjutsu espalhado pelo mundo, eu posso lhe ensinar um genjutsu básico";
+next;
+mes "O genjutsu que eu ensino é o: Shikumi no Jutsu";
+next;
+mes "Descrição: Este Genjutsu causa o efeito atordoamento no adversário";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Shikumi no Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(179) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(179) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 179,0,0;
+set shikumi,0;
+erasequest 2158;
+if(accept_gen > 0) {set accept_gen,accept_gen -1;}
+if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;}
+close;
+}
+
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_oito,1;
+set accept_gen,accept_gen +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 40 Kyodaigumo.";
+setquest 2158;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_bas >= 3) {mes "Você já aprendeu três genjutsus básicos, esse é o limite"; close;}
+if(gen_mobs_oito < 40) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 179,1,0;
+set shikumi,1;
+set quest_gen_oito,0;
+set gen_mobs_oito, 0;
+completequest 2158;
+erasequest 2158;
+set gen_skill_bas,gen_skill_bas +1;
+announce "[Genjutsu Quest] "+strcharinfo(0)+" completou a quest do genjutsu Shikumi no Jutsu",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Básico]",0;
+}
+
+-	script	genbas#31	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1304 && quest_gen_oito == 1) {set gen_mobs_oito,gen_mobs_oito +1; announce "[Genjutsu Quest] Você já derrotou "+gen_mobs_oito+" / 40 Kyodaigumo",bc_blue|bc_self; end;}
+
+}
+
+//ve_in,75,231,5	duplicate(gen8)	Shikumi no Jutsu#81	51,{
+//payon_in03,80,166,5	duplicate(gen8)	Shikumi no Jutsu#82	51,{
+//lou_in01,82,162,5	duplicate(gen8)	Shikumi no Jutsu#83	51,{
+//izlude_in,60,127,5	duplicate(gen8)	Shikumi no Jutsu#84	51,{

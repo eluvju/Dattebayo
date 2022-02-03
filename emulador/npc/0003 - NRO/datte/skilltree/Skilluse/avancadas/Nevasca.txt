@@ -1,0 +1,67 @@
+-	script	UseSuishouha	-1,{
+    end;
+//When a Character uses a skill
+
+//Suishouha
+
+onPcUseSkillEvent:
+
+           if(lskillid == 89) {
+
+
+if (getskilllv(89) == 1) {
+
+if (Suishouha != 1) {end;}
+if (skill89 >= 50) {skill 89,2,0; set skill89,0; dispbottom "[Sys] Level up"; end; }
+set skill89,skill89 +1;
+dispbottom "[Jutsu level] Baku Suishouha level 1: "+skill89+" de 50";
+
+end;
+
+}
+
+if (getskilllv(89) == 2) {
+if (Suishouha != 1) {end;}
+if (skill89 >= 100) {skill 89,3,0; set skill89,0; dispbottom "[Sys] Level up"; end;}
+set skill89,skill89 +1;
+dispbottom "[Jutsu level] Baku Suishouha level 2: "+skill89+" de 100";
+
+end;
+
+}
+
+if (getskilllv(89) == 3) {
+
+if (Suishouha != 1) {end;}
+if (skill89 >= 150) {skill 89,4,0; set skill89,0; dispbottom "[Sys] Level up"; end;}
+set skill89,skill89 +1;
+dispbottom "[Jutsu level] Baku Suishouha level 3: "+skill89+" de 150";
+
+end;
+
+}
+
+if (getskilllv(89) == 4) {
+if (Suishouha != 1) {end;}
+if (skill89 >= 200) {skill 89,5,0; set skill89,0; dispbottom "[Sys] Level up"; end;}
+set skill89,skill89 +1;
+dispbottom "[Jutsu level] Baku Suishouha level 4: "+skill89+" de 200";
+
+end;
+
+}
+
+if (getskilllv(89) == 5) {
+if (Suishouha != 1) {end;}
+if (skill89 >= 250) {skill 89,6,0; set skill89,0; dispbottom "[Sys] Level up"; end;}
+set skill89,skill89 +1;
+dispbottom "[Jutsu level] Baku Suishouha level 5: "+skill89+" de 250";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

@@ -1,0 +1,349 @@
+academia,25,174,5	script	Velocidade Básico	1_f_02,{
+
+	mes "[Velocidade Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de velocidade escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Concentrar chakra nos pés:- Perícia em Esquiva:- Recuar:- Rapidez com uma mão" )){
+		
+
+	case 1:
+		next;
+		if(checkquest(1011) == 1) goto 1_go;
+		if(checkquest(2011) == 1) goto 1_go;
+		if(checkquest(3011) == 1) goto 1_go;
+		if(checkquest(4011) == 1) goto 1_go;
+		if(agiup == 1) goto 1_delete;
+		if(skill_basica >= 9) { mes "[Velocidade Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Velocidade Básico]";
+		mes "Concentrar chakra nos pés?";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Concentrar chakra nos pés
+		//========================================================================
+		
+		1_delete:
+		mes "[Velocidade Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Velocidade Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Velocidade Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Velocidade Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 29,0,3;
+		set agiup,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Velocidade Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) { setquest 1011; }
+		if(#suna == 1) {   setquest 2011; }
+		if(#nevoa == 1) {  setquest 3011; }
+		if(#nuvem == 1) {  setquest 4011; }
+		next;
+		mes "[Velocidade Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1011,hunting) == 1 || 
+			checkquest(2011,hunting) == 1 || 
+			checkquest(3011,hunting) == 1 || 
+			checkquest(4011,hunting) == 1	) { 				mes "[Velocidade Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1011) >= 1) { completequest 1011; erasequest 1011; }						if(checkquest(2011) >= 1) { completequest 2011; erasequest 2011; }						if(checkquest(3011) >= 1) { completequest 3011; erasequest 3011; }						if(checkquest(4011) >= 1) { completequest 4011; erasequest 4011; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Velocidade Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Velocidade Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Velocidade Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 29,1,3;
+		set agiup,1;
+		if(checkquest(1011) >= 1) { completequest 1011; erasequest 1011; }
+		if(checkquest(2011) >= 1) { completequest 2011; erasequest 2011; }
+		if(checkquest(3011) >= 1) { completequest 3011; erasequest 3011; }
+		if(checkquest(4011) >= 1) { completequest 4011; erasequest 4011; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(checkquest(1012) == 1) goto 2_go;
+		if(checkquest(2012) == 1) goto 2_go;
+		if(checkquest(3012) == 1) goto 2_go;
+		if(checkquest(4012) == 1) goto 2_go;
+		if(PeriEsquiva == 1) goto 2_delete;
+		if(skill_basica >= 9) { mes "[Velocidade Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Velocidade Básico]";
+		mes "Perícia em Esquiva?";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Perícia em Esquiva
+		//========================================================================
+		
+		2_delete:
+		mes "[Velocidade Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Velocidade Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Velocidade Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Velocidade Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 49,0,3;
+		set PeriEsquiva,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Velocidade Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) { setquest 1012; }
+		if(#suna == 1) {   setquest 2012; }
+		if(#nevoa == 1) {  setquest 3012; }
+		if(#nuvem == 1) {  setquest 4012; }
+		next;
+		mes "[Velocidade Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1012,hunting) == 1 || 
+			checkquest(2012,hunting) == 1 || 
+			checkquest(3012,hunting) == 1 || 
+			checkquest(4012,hunting) == 1	) { 				mes "[Velocidade Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1012) >= 1) { completequest 1012; erasequest 1012; }						if(checkquest(2012) >= 1) { completequest 2012; erasequest 2012; }						if(checkquest(3012) >= 1) { completequest 3012; erasequest 3012; }						if(checkquest(4012) >= 1) { completequest 4012; erasequest 4012; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Velocidade Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Velocidade Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close;			}
+		mes "[Velocidade Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 49,1,3;
+		set PeriEsquiva,1;
+		if(checkquest(1012) >= 1) { completequest 1012; erasequest 1012; }
+		if(checkquest(2012) >= 1) { completequest 2012; erasequest 2012; }
+		if(checkquest(3012) >= 1) { completequest 3012; erasequest 3012; }
+		if(checkquest(4012) >= 1) { completequest 4012; erasequest 4012; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(checkquest(1014) == 1) goto 3_go;
+		if(checkquest(2014) == 1) goto 3_go;
+		if(checkquest(3014) == 1) goto 3_go;
+		if(checkquest(4014) == 1) goto 3_go;
+		if(Recuar == 1) goto 3_delete;
+		if(skill_basica >= 9) { mes "[Velocidade Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Velocidade Básico]";
+		mes "Recuar?";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Recuar
+		//========================================================================
+		
+		3_delete:
+		mes "[Velocidade Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Velocidade Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Velocidade Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Velocidade Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 150,0,3;
+		set Recuar,0;
+		if(accept_velo > 0) {set accept_velo,accept_velo -1;}
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		set accept_velo,accept_velo +1;
+		mes "[Velocidade Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1014; }
+		if(#suna == 1) {  setquest 2014; }
+		if(#nevoa == 1) { setquest 3014; }
+		if(#nuvem == 1) { setquest 4014; }
+		next;
+		mes "[Velocidade Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		3_go:
+		if(	checkquest(1014,hunting) == 1 || 
+			checkquest(2014,hunting) == 1 || 
+			checkquest(3014,hunting) == 1 || 
+			checkquest(4014,hunting) == 1	) { 				mes "[Velocidade Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1014) >= 1) { completequest 1014; erasequest 1014; }						if(checkquest(2014) >= 1) { completequest 2014; erasequest 2014; }						if(checkquest(3014) >= 1) { completequest 3014; erasequest 3014; }						if(checkquest(4014) >= 1) { completequest 4014; erasequest 4014; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Velocidade Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Velocidade Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Velocidade Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 150,1,3;
+		set Recuar,1;
+		if(checkquest(1014) >= 1) {completequest 1014; erasequest 1014; }
+		if(checkquest(2014) >= 1) {completequest 2014; erasequest 2014; }
+		if(checkquest(3014) >= 1) {completequest 3014; erasequest 3014; }
+		if(checkquest(4014) >= 1) {completequest 4014; erasequest 4014; }
+		close;
+		
+		3_no:
+		close;
+
+	case 4:
+		next;
+		if(checkquest(1013) == 1) goto 4_go;
+		if(checkquest(2013) == 1) goto 4_go;
+		if(checkquest(3013) == 1) goto 4_go;
+		if(checkquest(4013) == 1) goto 4_go;
+		if(Rapidezmao == 1) goto 4_delete;
+		if(skill_basica >= 9) { mes "[Velocidade Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Velocidade Básico]";
+		mes "Rapidez com uma mão?";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+		//========================================================================
+		//	Rapidez com uma mão
+		//========================================================================
+		
+		4_delete:
+		mes "[Velocidade Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Velocidade Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+		
+		delete_4:
+		mes "[Velocidade Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Velocidade Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+		
+		quero_4:
+		mes "[Velocidade Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 495,0,3;
+		set Rapidezmao,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_4:
+		close;
+		
+		4_SS:
+		set accept_velo,accept_velo +1;
+		mes "[Velocidade Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1013; }
+		if(#suna == 1) {  setquest 2013; }
+		if(#nevoa == 1) { setquest 3013; }
+		if(#nuvem == 1) { setquest 4013; }
+		next;
+		mes "[Velocidade Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		4_go:
+		if(	checkquest(1013,hunting) == 1 || 
+			checkquest(2013,hunting) == 1 || 
+			checkquest(3013,hunting) == 1 || 
+			checkquest(4013,hunting) == 1	) { 				mes "[Velocidade Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1013) >= 1) { completequest 1013; erasequest 1013; }						if(checkquest(2013) >= 1) { completequest 2013; erasequest 2013; }						if(checkquest(3013) >= 1) { completequest 3013; erasequest 3013; }						if(checkquest(4013) >= 1) { completequest 4013; erasequest 4013; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Velocidade Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Velocidade Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Velocidade Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 495,1,3;
+		set Rapidezmao,1;
+		if(checkquest(1013) >= 1) { completequest 1013; erasequest 1013; }
+		if(checkquest(2013) >= 1) { completequest 2013; erasequest 2013; }
+		if(checkquest(3013) >= 1) { completequest 3013; erasequest 3013; }
+		if(checkquest(4013) >= 1) { completequest 4013; erasequest 4013; }
+		close;
+		
+		4_no:
+		close;
+	}
+OnInit:
+	waitingroom "[Velocidade Básico]",0;
+}

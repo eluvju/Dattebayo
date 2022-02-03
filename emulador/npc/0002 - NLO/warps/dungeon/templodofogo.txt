@@ -1,0 +1,72 @@
+// RANK A
+
+ama_fild01,173,332,0	script	 #entertemplo	111	,5,5,{
+
+	.@npc$ = "^FF574D[Templo do Fogo]^000000";
+
+	if (countitem(662) >= 1) goto entrar;
+	else mes .@npc$;
+	mes "O Templo Esta ^FF574DAbandonado^000000.";
+	close;
+
+
+	entrar:
+	mes .@npc$;
+	mes "Somente aqueles que sofreram por muito tempo...";
+	next;
+	menu "Quero Entrar",entrar2,"Nao Estou preparado",saida;
+	
+	entrar2:
+	
+	mes .@npc$;
+	mes	"conseguem ver luz atraves das sombras.";
+	next;
+	warp "ama_dun01",228,10;
+	end;
+	
+	saida:
+	mes .@npc$;
+	mes "Volte quando estiver preparado";
+	close;
+
+	end;
+
+}
+
+//Permissão Rank C Ambos
+
+ama_fild01,330,141,0	script	 #entertemplo1	45	,2,2,{
+
+	.@npc$ = "^FF574D[Templo do Fogo - Ferreiro]^000000";
+
+	if (countitem(662) >= 1) goto entrar;
+	else mes .@npc$;
+	mes "Voce nao esta ^FF6961permitido^000000 de entrar.";
+	close;
+
+
+	entrar:
+	mes .@npc$;
+	mes "Bem vindo meu amigo!";
+	next;
+	menu "Quero Entrar",entrar2,"Deixa pra la",saida;
+	
+	entrar2:
+	warp "ama_in01",88,98;
+	end;
+	
+	saida:
+	mes .@npc$;
+	mes "Volte quando estiver preparado";
+	close;
+
+	end;
+
+}
+
+ama_dun01,235,144,0	warp	ama_dun1-1	1,1,ama_dun02,33,40
+ama_dun02,30,40,0	warp	ama_dun1-2	1,1,ama_dun01,232,144
+ama_dun02,196,123,0	warp	ama_dun2-1	1,1,ama_dun03,120,12
+ama_dun03,120,9,0	warp	ama_dun2-2	1,1,ama_dun02,196,120
+
+ama_in01,88,94,0	warp	entertemplo#02	2,2,ama_fild01,330,137

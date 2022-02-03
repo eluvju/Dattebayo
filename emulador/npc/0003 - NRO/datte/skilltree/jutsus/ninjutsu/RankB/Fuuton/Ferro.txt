@@ -1,0 +1,19 @@
+job_wiz,50,166,5	script	Mineirador#b4	831,{
+	if(checkquest(1017) != 1) {mes "Não posso te ajudar em nada..."; close;}
+	if(ferro == 1) {mes"Não posso te ajudar em nada..."; close;}
+	mes "[ Minerador ]";
+	mes "Ah,então você precisa de meus serviços?";
+	mes "Para isso, preciso de uma lista de itens....";
+	next;
+	mes "- 100x Minerio de ferro";
+	mes "- 1x Martelo";
+	if (countitem(1002) < 100) {next; mes "Você não completou seu treinamento."; close;}
+	if (countitem(1005) < 1) {next; mes "Você não completou seu treinamento."; close;}
+	next;
+	mes "Você trouxe tudo,aqui está...";
+	getitem 625,1;
+	delitem 1002,100;
+	delitem 1005,1;
+	set ferro,1;
+	close;
+}

@@ -1,0 +1,111 @@
+-	script	on_PC_UseSkillf01b	-1,{
+    end;
+//When a Character uses a skill
+
+//Jigyaku
+
+onPcUseSkillEvent:
+
+           if(lskillid == 76) {
+
+
+if (getskilllv(76) == 1) {
+
+if (Jigyaku != 1) {end;}
+if (skill76 >= 50) {skill 76,2,0; set skill76,0; dispbottom "[Sys] Level up"; end; }
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 1: "+skill76+" de 50";
+
+end;
+
+}
+
+if (getskilllv(76) == 2) {
+if (Jigyaku != 1) {end;}
+if (skill76 >= 100) {skill 76,3,0; set skill76,0; dispbottom "[Sys] Level up"; end;}
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 2: "+skill76+" de 100";
+
+end;
+
+}
+
+if (getskilllv(76) == 3) {
+
+if (Jigyaku != 1) {end;}
+if (skill76 >= 150) {skill 76,4,0; set skill76,0; dispbottom "[Sys] Level up"; end;}
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 3: "+skill76+" de 150";
+
+end;
+
+}
+
+if (getskilllv(76) == 4) {
+if (Jigyaku != 1) {end;}
+if (skill76 >= 200) {skill 76,5,0; set skill76,0; dispbottom "[Sys] Level up"; end;}
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 4: "+skill76+" de 200";
+
+end;
+
+}
+
+if (getskilllv(76) == 5) {
+if (Jigyaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill76 >= 250) {skill 76,6,0; set skill76,0; dispbottom "[Sys] Level up"; end;}
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 5: "+skill76+" de 250";
+
+end;
+
+}
+
+if (getskilllv(76) == 6) {
+if (Jigyaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill76 >= 300) {skill 76,7,0; set skill76,0; dispbottom "[Sys] Level up"; end;}
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 6: "+skill76+" de 300";
+
+end;
+
+}
+
+if (getskilllv(76) == 7) {
+if (Jigyaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill76 >= 500) {skill 76,8,0; set skill76,0; dispbottom "[Sys] Level up"; end;}
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 7: "+skill76+" de 500";
+
+end;
+
+}
+
+if (getskilllv(76) == 8) {
+if (Jigyaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill76 >= 700) {skill 76,9,0; set skill76,0; dispbottom "[Sys] Level up"; end;}
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 8: "+skill76+" de 700";
+
+end;
+
+}
+
+if (getskilllv(76) == 9) {
+if (Jigyaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill76 >= 1000) {skill 76,10,0; set skill76,0; dispbottom "[Sys] Level up"; end;}
+set skill76,skill76 +1;
+dispbottom "[Jutsu level] Jigyaku no Chakra level 9: "+skill76+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

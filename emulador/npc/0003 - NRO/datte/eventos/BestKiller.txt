@@ -1,0 +1,215 @@
+-	script	Evento#BK	BestKiller#BK -1,{
+
+OnInit:
+set $BKinfo[1], 0;
+end;
+
+OnClock2200:
+Announce "[Best Killer]: O evento iniciará em 5 minutos. Preparem-se para a matança.",0;
+end;
+OnClock2202:
+Announce "[Best Killer]: O evento iniciará em 3 minutos. Preparem-se para a matança.",0;
+end;
+OnClock2204:
+Announce "[Best Killer]: O evento iniciará em 1 minutos. Preparem-se para a matança.",0;
+end;
+OnClock2205:
+Announce "[Best Killer]: Evento iniciado! Boa sorte a todos.",0;
+set $BKinfo[1], 1;
+end;
+
+OnClock2230:
+Announce "[Best Killer]: Evento finalizado.",0;
+set $BKinfo[1],0;
+end;
+
+OnClock1500:
+Announce "[Best Killer]: O evento iniciará em 5 minutos. Preparem-se para a matança.",0;
+end;
+OnClock1502:
+Announce "[Best Killer]: O evento iniciará em 3 minutos. Preparem-se para a matança.",0;
+end;
+OnClock1504:
+Announce "[Best Killer]: O evento iniciará em 1 minutos. Preparem-se para a matança.",0;
+end;
+OnClock1505:
+Announce "[Best Killer]: Evento iniciado! Boa sorte a todos.",0;
+set $BKinfo[1], 1;
+end;
+
+OnClock1530:
+Announce "[Best Killer]: Evento finalizado.",0;
+set $BKinfo[1],0;
+end;
+
+OnPCKillEvent:
+if($BKinfo[1] == 1 && strcharinfo(3) == "pvp_n_4-3"){
+dispbottom "Pontos: "+BKpts;
+set BKpts, BKpts+1;
+}
+end;
+
+
+OnPCDieEvent:
+if($BKinfo[1] == 1 && strcharinfo(3) == "pvp_n_4-3"){
+warp "kakashi",0,0;
+}
+end;
+}
+
+
+kakashi,88,124,3	script	Best Killer#BK	48,{
+
+// Nome do npc
+set .npc$,"^800000[Best Killer]^000000";
+
+if(getgmlevel() > 5 && $BKinfo[1] == 0){
+mes "Gostaria de abrir o evento?";
+if(select("Não:Sim") == 1) close;
+Announce "[Best Killer]: Evento iniciado pelo Staffer "+strcharinfo(0)+"! Boa sorte a todos.",0;
+set $BKinfo[1], 1;
+close2;
+partyleave;
+warp "pvp_n_4-3",0,0;
+end;
+}
+
+if(getgmlevel() > 5 && $BKinfo[1] == 1){
+mes "Gostaria de fechar o evento?";
+if(select("Não:Sim") == 1) close;
+Announce "[Best Killer]: Evento finalizado pelo Staffer "+strcharinfo(0)+".",0;
+set $BKinfo[1],0;
+close;
+end;
+}
+
+
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+switch(select("Entrar["+getmapusers ("pvp_n_4-3")+"]:Usar Pontos")){
+case 1:
+if($BKinfo[1] == 0){
+mes .npc$;
+mes "O evento está fechado no momento.";
+close;
+end;
+}
+if(BaseLevel < 999){
+mes .npc$;
+mes "Você precisa ser level 999 para participar.";
+close;
+end;
+}
+close2;
+partyleave;
+warp "pvp_n_4-3",0,0;
+end;
+
+case 2:
+next;
+mes .npc$;
+mes "Você possui: "+BKpts+" pontos.";
+mes "Premiações desabilitadas temporariamente.";
+close;
+end;
+mes "Oque gostaria de adiquirir?";
+setarray $BKinfo[2],12210,7205,7206,516,552,554,581,594,612,627,7023,7611,1008,1014,7442,7169,724,7513,7524,7481,7027,3,3,5,5,7,10,12,15,18,20,20,20,20,20,20,20,20,20,20,30;
+switch(select("Perg. Furtividade[3]:Manual Básico[3]:Manual Avançado[5]:KillKG1[5]:KillKG2[7]:KillKG3[10]:KillKG4[12]:KillKG5[15]:KillKG6[18]:KillKG7[20]Lâmina[20]:Máscara[20]:Colar[20]:Mandíbula[20]:Selo[20]:Bagua[20]:Rubi[20]:Relógio[20]:Esfera[20]:Livro[20]:Chave[30]")){
+case 1:
+set .@prize, 2;
+break;
+case 2:
+set .@prize, 3;
+break;
+case 3:
+set .@prize, 4;
+break;
+case 4:
+set .@prize, 5;
+break;
+case 5:
+set .@prize, 6;
+break;
+case 6:
+set .@prize, 7;
+break;
+case 7:
+set .@prize, 8;
+break;
+case 8:
+set .@prize, 9;
+break;
+case 9:
+set .@prize, 10;
+break;
+case 10:
+set .@prize, 11;
+break;
+case 11:
+set .@prize, 12;
+break;
+case 12:
+set .@prize, 13;
+break;
+case 13:
+set .@prize, 14;
+break;
+case 14:
+set .@prize, 15;
+break;
+case 15:
+set .@prize, 16;
+break;
+case 16:
+set .@prize, 17;
+break;
+case 17:
+set .@prize, 18;
+break;
+case 18:
+set .@prize, 19;
+break;
+case 19:
+set .@prize, 20;
+break;
+case 20:
+set .@prize, 21;
+break;
+case 21:
+set .@prize, 22;
+break;
+}
+next;
+mes .npc$;
+mes "Gostaria de adiquirir um "+getitemname($BKinfo[.@prize])+" por "+$BKinfo[.@prize+21]+" pontos?";
+if(select("Não:Sim") == 1) close;
+
+if($BKinfo[.@prize+21] > BKpts){
+next;
+mes .npc$;
+mes "Você não possui pontos suficientes.";
+close;
+end;
+}
+
+getitem $BKinfo[.@prize], 1;
+set BKpts, BKpts - $BKinfo[.@prize+21];
+close;
+end;
+}
+end;
+}
+
+pvp_n_4-3	mapflag	nowarp
+pvp_n_4-3	mapflag	noteleport
+pvp_n_4-3	mapflag	nowarpto
+pvp_n_4-3	mapflag	nobranch
+pvp_n_4-3	mapflag	nosave	SavePoint
+pvp_n_4-3	mapflag	nomemo
+pvp_n_4-3	mapflag	nopenalty
+pvp_n_4-3	mapflag	noexp
+pvp_n_4-3	mapflag	pvp
+pvp_n_4-3	mapflag	pvp_noguild
+pvp_n_4-3	mapflag	pvp_noparty
+pvp_n_4-3	mapflag	noparty

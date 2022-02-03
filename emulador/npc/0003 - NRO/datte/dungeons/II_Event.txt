@@ -1,0 +1,26 @@
+-	script	II_Event	-1,{
+
+OnPCLogoutEvent:
+	callfunc "II_Main",2;
+	end;
+OnInit:
+	callfunc "II_Main",1;
+	end;
+}
+pay_dun03,126,62,4	script	Denso Nevoeiro (Easy)#3	118,{
+	callfunc "II_Main",3;
+	end;
+}
+pay_dun03,126,60,4	script	Denso Nevoeiro (Hard)#4	118,{
+	callfunc "II_Main",4;
+	end;
+}
+bra_dun02,262,264,4	script	O Dêmonio da Névoa#5	68,{
+	callfunc "II_Main",5;
+	end;
+}
+
+moc_fild06,196,364,4	script	Mestre das Marionetes#6	64,{
+	callfunc "II_Main",6;
+	end;
+}

@@ -1,0 +1,36 @@
+kumogakure,184,26,0	warp	saida	1,1,man_fild03,92,365
+
+man_fild03,265,94,0	warp	saida	1,1,ve_fild07,148,367
+ve_fild07,146,372,0	warp	entrada	1,1,man_fild03,261,94
+
+ve_fild07,304,36,0	warp	saida	1,1,ve_fild04,173,337
+ve_fild04,173,340,0	warp	entrada	1,1,ve_fild07,301,41
+
+ve_fild04,116,49,0	warp	saida	1,1,ein_fild01,348,367
+ein_fild01,350,369,0	warp	entrada	1,1,ve_fild04,116,53
+
+ein_fild01,109,34,0	warp	saida	1,1,pay_fild09,182,367
+pay_fild09,184,371,0	warp	entrada	1,1,ein_fild01,109,37
+
+//kumogakure,13,96,0	warp	entrada	1,1,sec_in01,85,19
+
+beach_dun,88,31,0	warp	saida	1,1,beach_dun2,154,24
+beach_dun2,154,19,0	warp	entrada	1,1,beach_dun,87,36
+
+beach_dun2,259,244,0	warp	saida	1,1,beach_dun3,279,57
+beach_dun3,287,57,0	warp	entrada	1,1,beach_dun2,254,244
+
+beach_dun3,16,265,0	warp	saida	1,1,alb2trea,32,92
+alb2trea,29,94,0	warp	entrada	1,1,beach_dun3,21,261
+
+
+kumogakure,76,152,0	warp	entrada	1,1,payon_in01,12,135
+
+kumogakure,69,138,0	warp	entrada	1,1,3@ecl,53,76
+3@ecl,53,62,0	warp	saida	1,1,kumogakure,71,139
+
+kumogakure,193,62,0	warp	entrada	1,1,biblioteca,69,15
+
+pay_fild09,112,16,0	warp	entrada	1,1,prt_fild09,223,376
+
+prt_fild09,222,380,0	warp	entrada	1,1,pay_fild09,112,20

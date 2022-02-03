@@ -1,0 +1,455 @@
+// ===== R-Athena - DATTEBAYO =======================================
+// == Kira ( NPC - Script )
+// ===== Categoria: ===========================================
+// == Prestação de serviços
+// ===== Idioma: ==============================================
+// == Português (Brasil)
+// ===== Versão Atual: ========================================
+// == 1.0 (24/02/2021)
+// ===== Compactível Com: =====================================
+// == Rathena
+// ===== Descrição Parcial: ===================================
+// == NPC Escolha Sua Vida
+// == Hokage
+// ============================================================
+louyang,215,118,5	script	 #Tsunade_Hokage_Acad	4w_f_kafra2,{
+// ============================================================
+// == CONFIGURAÇÕES
+// ============================================================
+		.@npc$ = "                        ^008000[ Tsunade ]^000000";
+		.@descricao$ = " ";
+		set .@t, 3,5;	// Delay Seconds.
+// ============================================================
+	if(#konoha == 1) goto ja_e_de_konoha;
+	if(#suna == 1) goto ja_e_de_outra;
+	if(#nevoa == 1) goto ja_e_de_outra;
+	if(#nuvem == 1) goto ja_e_de_outra;
+	if (isbegin_quest(1000) == 2) { goto novato;} // Quest " Quero ser um Genin"
+	else {goto veterano;}
+// ============================================================	
+
+	Novato:
+	cutin "tsunade",2;
+//	set primeiravezferreiro,1;
+	mes .@npc$;
+	mes "Prazer em conhece-lo estudante, Meu nome é Tsunade e eu sou a ^008000Hokage^000000.";
+	mes " ";
+	mes "O ^008000Hokage^000000 é o líder da ^008000Vila Oculta da Folha^000000, todo Pais possui uma vila oculta e cada uma possui um ^666666Kage^000000.";
+	mes " ";
+	mes "A ^008000Vila Oculta da Folha^000000 conhecida como ^008000Konoha^000000 defende o ^CC0000Pais do Fogo^000000";
+	next;
+	voltaraomenu:
+	cutin "tsunade",2;
+	mes .@npc$;
+//	mes "Lembrando que quando você escolher a que país se juntar, será ^FF0000Permanente^000000";	
+//	mes " ";
+	mes "Então estou aqui para esclarecer suas duvidas, para que você tome a melhor decisão.";
+	mes " ";
+	mes "Portanto seja sábio na sua escolha!";
+	next;
+	switch( select( "O que sao os ^666666Kages^000000?:Me fale sobre o ^CC0000Pais do Fogo^000000?:Me fale sobre ^7B68EEClãs Shinobis^000000:^000FF0Preciso Pensar Mais!^000000:^FF0000Juntar-se ao Pais do Fogo^000000" ) ){
+	
+	case 4:
+	cutin "",255;	
+	npctalk "Tsunade: É necessario a Vontade do Fogo, e você não parece possuir ela!";
+	close;
+	
+	case 5:
+	goto veterano;
+
+// ============================================================
+// == Kages
+// ============================================================
+	
+	case 1:
+	cutin "tsunadekages",2;
+	mes .@npc$;
+	mes "Os ^666666Kages^000000 são os lideres de cada vila, são os shinobis mais ^FF0000Fortes^000000.";
+	mes " ";
+	mes "Ser o ^666666Kage^000000 é o sonho de qualquer shinobi iniciante.";
+	next;
+	mes .@npc$;
+	mes "^008000Vila Oculta da Folha^000000 é do ^CC0000País do Fogo^000000 e possui um Hokage";
+	mes " ";	
+	mes "^c2bd60Vila Oculta da Areia^000000 é do País do Vento e possui um Kazekage";
+	mes " ";
+	mes "^bfbf00Vila Oculta da Nuvem^000000 é do País do Relâmpago e possui um Raikage";
+	mes " ";
+	mes "^4040ffVila Oculta da Névoa^000000 é do País da Agua e possui um Mizukage";
+	mes " ";
+	mes "^cd853fVila oculta da Pedra^000000 é do País da Pedra e possui um Tsuchikage";
+	next;
+	mes .@npc$;
+	mes "As vilas estão procurando jovens shinobis para se tornarem a proxima ^FF0000Elite^000000.";
+	mes " ";
+	mes "Quem sabe você possa se tornar o próximo ^666666Kage^000000!!";
+	next;
+	goto voltaraomenu;
+
+// ============================================================
+// == Pais do Fogo
+// ============================================================
+	
+	case 2:
+	cutin "paisdofogo",2;
+	mes .@npc$;
+	mes "O ^CC0000Pais do Fogo^000000 faz divisa com Pais do Rio e o Pais do Som.";
+	mes " ";
+	mes "É composto pelo bioma de ^77DD77Floresta^000000, e seus monstros são do tipo Animal e Humanoide.";
+	next;
+	mes .@npc$;
+	mes "O ^CC0000Pais do Fogo^000000 tem uma relação de cooperação com o ^00bfffPais do Vento^000000 e possui inimizades com Pais dos Ursos e Pais da Chuva.";
+	mes " ";
+	mes "No ^CC0000Pais do Fogo^000000 é realizado o chunin shiken na ^3d2b1fFloresta da Morte^000000 e la encontra-se o ^FF0000Templo do Fogo^000000.";
+	next;
+	mes .@npc$;
+	mes "Dizem alguns boatos que um dos esconderijo de ^800080Orochimaru^000000 encontra-se na divisa entre Pais do Som e ^CC0000Pais do Fogo^000000";
+	mes " ";
+	mes "E alguns experimentos estão ocorrendo lá...";
+	next;
+	goto voltaraomenu;
+
+// ============================================================
+// == Clãs Shinobis
+// ============================================================
+	
+	case 3:
+	cutin "tsunadeclas",2;
+	mes .@npc$;
+	mes "^7B68EEClãs Shinobis^000000 são uma familia ou grupo de shinobis que compartilham uma caracteristica especial única.";
+	mes " ";
+	mes "Esta caracteristica pode ser:";
+	mes " ";
+	mes "- ^800080Linhagem sanguinea(Kekkei Genkai)^000000";
+	mes "- ^8a8887Jutsu secreto(Hiden)^000000";
+	mes " ";
+	mes "Ou até mesmo algo tão forte como a Determinação Do Fogo";
+	next;
+	voltarmenuclas:
+	cutin "tsunadeclas",2;
+	mes .@npc$;
+	mes "Em uma vila oculta um ^7B68EEClã Shinobi^000000 é um poder militar inigualável por isso são muito importantes para o seu ^FF0000País^000000.";
+	mes	" ";
+	mes "Na ^008000Vila Oculta da Folha^000000 existem varios clãs sendo eles:";
+	next;
+	switch( select( "^FF0000Voltar Ao Inicio^000000:Clã ^a51b0bUchiha^000000:Clã ^00BFFFHyuuga^000000:Clã ^556B2FNara^000000:Clã ^ff4500Inuzuka^000000:Clã ^850083Aburame^000000:Clã Mitsashi:Clã Yamanaka:Clã Akimichi:Clã Sarutobi:Hachimon" ) ){
+
+// == Voltar Menu Principal
+// =================	
+	case 1:
+	goto voltaraomenu;
+
+// == Clã Uchiha
+// =================
+	case 2:
+	cutin "tsunadeclasuchiha",2;
+	mes .@npc$;
+	mes "O ^a51b0bClã Uchiha^000000, um dos quatro clãs nobres de ^008000Konoha^000000. É possivelmente o mais poderoso da vila...";
+	mes " ";
+	mes "Aqueles nascidos no ^a51b0bClã Uchiha^000000 tem a capacidade de despertar o ^a51b0bSharingan^000000.";
+	mes " ";
+	mes "Uma ^800080Kekkei Genkai^000000 do tipo doujutsu que possui habilidades unicas.";
+	next;
+	mes .@npc$;
+	mes "Dentre as habilidades do ^a51b0bSharingan^000000 estão:";
+	mes " ";
+	mes "- Pode copiar qualquer jutsu Ofensivo";
+	mes " ";
+	mes "- Possui uma incrivel proeficiência em ^9370DBGenjutsu^000000";
+	mes " ";
+	mes "- Pode Despertar Mangekyo Sharingan";
+	next;
+	cutin "tsunadeclasuchiha2",2;
+	mes .@npc$;
+	mes "O ^a51b0bMangekyo Sharingan^000000 é um doujutsu assustador que poucos usuarios conseguem despertar.";
+	mes " ";
+	mes "Dentre suas habilidades esta a capacidade de:";
+	mes " ";
+	mes "- Criar Fogo Negro.";
+	mes "- O ^9370DBGenjutsu^000000 mais poderoso do mundo.";
+	mes "- E a Defesa Absoluta dos ^a51b0bUchiha^000000, O Susano";
+	mes " ";
+	mes "Ninguem sabe ao certo como funciona, apenas que são extremamente poderosas";
+	next;
+	mes .@npc$;
+	mes "Por ser Uma ^800080Kekkei Genkai^000000, o usuário recebe atributos passivos entre outros beneficios";
+	mes " ";
+	mes "Porém diferente de uma ^8a8887Hiden^000000 sua evolução é mais lenta e pode se tornar uma tarefa difícil...";
+	switch( select( "Voltar ao Inicio:Quero Saber Sobre Outros Clãs")) {
+
+		case 1:
+		next;
+		goto voltaraomenu;
+		
+		case 2:
+		next;
+		goto voltarmenuclas; }
+
+// == Clã Hyuuga
+// =================	
+	case 3:
+	cutin "tsunadeclashyuuga",2;
+	mes .@npc$;
+	mes "O ^00BFFFClã Hyuuga^000000, um dos clãs mais antigos de ^008000Konoha^000000. Todos os membros do clã nascem com byakugan.";
+	mes " ";
+	mes "Um Doujutsu unico capaz ver as ^00BFFFLinhas de Chakra^000000 do alvo.";
+	mes " ";
+	mes "Na Pratica ele permite que você anule o fluxo de ^00BFFFChakra^000000 e até mesmo elimine totalmente o ^00BFFFChakra^000000 do alvo.";
+	next;
+	cutin "tsunadeclashyuuga2",2;
+	mes .@npc$;
+	mes "As caracteristicas mais marcantes de um usuario de ^00BFFFByakugan^000000 esta:";
+	mes " ";
+	mes "- Seus ataques ignoram defesa do alvo";
+	mes " ";
+	mes "- Seus ataques reduzem o chakra do alvo ao acertar.";
+	mes " ";
+	mes "- O Usuario ^FF0000não pode usar armas^000000 como kunais e espadas, apenas luvas e soqueiras.";
+	next;
+	mes .@npc$;
+	mes "Sendo o ^00BFFFByakugan^000000 uma ^800080Kekkei Genkai^000000, o usuário recebe atributos passivos que podem definir seu caminho como ninja.";
+	mes " ";
+	mes "Diferente de uma ^8a8887Hiden^000000 escolher uma ^800080Kekkei Genkai^000000 reduz sua variedade de escolha de builds.";
+	mes " ";
+	mes "Portanto seja consciente sobre sua escolha!";
+	switch( select( "Voltar ao Inicio:Quero Saber Sobre Outros Clãs")) {
+
+		case 1:
+		next;
+		goto voltaraomenu;
+		
+		case 2:
+		next;
+		goto voltarmenuclas; }
+
+// == Clã Nara
+// =================
+	case 4:
+	cutin "tsunadeclasnara",2;
+	mes .@npc$;
+	mes "O ^556B2FClã Nara^000000, são conhecidos por possuirem uma ^8a8887Hiden^000000 unica de manipulação das sombras.";
+	mes " ";
+	mes "São extremamente poderosos em batalhas em grupo.";
+	next;
+	mes .@npc$;
+	mes "Seus jutsus de sombras possuem ^556B2FNatureza Yin (Sombras)^000000 e apenas membros do clã podem aprender.";
+	mes " ";
+	mes "Em batalha suas qualidades estão:";
+	mes " ";
+	mes "- Seus ataques de ^556B2FNatureza Yin (Sombras)^000000 tornam se defender um desafio.";
+	mes " ";
+	mes "- Seus jutsus de sombra possuem muito ^800080controle de grupo^000000.";
+	mes " ";
+	mes "- Seus jutsus de ^800080controle de grupo^000000 reduzem as defesas do alvo.";
+	next;
+	mes .@npc$;
+	mes "Uma ^8a8887Hiden^000000 torna sua build mais flexivel.";
+	mes " ";
+	mes "Sua desvantagem obvia é que diferente de uma ^800080Kekkei Genkai^000000 uma hiden não fornece atributos.";
+	switch( select( "Voltar ao Inicio:Quero Saber Sobre Outros Clãs")) {
+
+		case 1:
+		next;
+		goto voltaraomenu;
+		
+		case 2:
+		next;
+		goto voltarmenuclas; }
+
+// == Clã Inuzuka
+// =================
+	case 5:
+	cutin "tsunadeclasinuzuka",2;
+	mes .@npc$;
+	mes "Conhecida pelo uso de ^ff4500Ninken^000000 ou Cães Ninjas, O ^ff4500Clã Inuzuka^000000 são facilmente reconhecidos em batalha pois cada membro do clã possui um companheiro canino que evolui junto com seu dono.";
+	next;
+	mes .@npc$;
+	mes "Fieis companheiros que sempre estão prontos para auxiliar na batalha.";
+	mes " ";
+	mes "Metade do potencial de luta de um ^ff4500Inuzuka^000000 esta em seu Ninken.";
+	next;
+	mes .@npc$;
+	mes " Entre suas qualidades esta:";
+	mes " ";
+	mes "- A capacidade de montar em seu ^ff4500Ninken^000000. Aumentando sua velocidade.";
+	mes " ";
+	mes "- Ataques do seu ^ff4500Ninken^000000 são super efetivos em caçadas de monstros.";
+	mes " ";
+	mes "- Seus ataques podem desabilitar o alvo e aplicar ^800080efeitos negativos^000000.";
+	next;
+	mes .@npc$;
+	mes "Se tornar parte da familia ^ff4500Inuzuka^000000 é saber que você esta optando por uma ^8a8887Hiden^000000.";
+	mes " ";
+	mes "Quer saber as vantagens e desvantagens de uma ^8a8887Hiden^000000? Visite a biblioteca!";
+	switch( select( "Voltar ao Inicio:Quero Saber Sobre Outros Clãs")) {
+
+		case 1:
+		next;
+		goto voltaraomenu;
+		
+		case 2:
+		next;
+		goto voltarmenuclas; }
+	close;
+
+// == Clã Aburame
+// =================	
+	case 6:
+	cutin "tsunadeclasaburame",2;
+	mes .@npc$;
+	mes "O ^850083Clã Aburame^000000 são um dos 4 clãs nobres de konoha e seus membros são usuarios de uma ^8a8887Hiden^000000 assustadora.";
+	mes " ";
+	mes "Desde pequeno seus corpos são submetidos a se tornarem um ninho para insetos.";
+	next;
+	mes .@npc$;
+	mes "Seus insetos se tornaram suas armas, e podem manipular e controlar eles conforme a batalha se extende";
+	mes " ";
+	mes "Cada inseto tem uma função especial e são conhecidos como ^850083Kikaichu^000000";
+	next;
+	mes .@npc$;
+	mes "Seus ^850083Kikaichu^000000 tem habilidades unicas como:";
+	mes " ";
+	mes "- Roubar ^00BFFFChakra^000000 do inimigo";
+	mes " ";
+	mes "- Roubar ^FF0000Vida^000000 do inimigo.";
+	mes " ";
+	mes "Assustador Não?";
+	next;
+	mes .@npc$;
+	mes "Se tornar parte do Clã ^850083Aburame^000000 é saber que você esta optando por uma ^8a8887Hiden^000000.";
+	mes " ";
+	mes "Quer saber as vantagens e desvantagens de uma ^8a8887Hiden^000000? Visite a biblioteca!";
+	switch( select( "Voltar ao Inicio:Quero Saber Sobre Outros Clãs")) {
+
+		case 1:
+		next;
+		goto voltaraomenu;
+		
+		case 2:
+		next;
+		goto voltarmenuclas; }
+
+// == Clã Mitsashi
+// =================
+	case 7:
+	close;
+
+// == Clã Yamanaka
+// =================	
+	case 8:
+	close;
+
+// == Clã Akimichi
+// =================
+	case 9:
+	close;
+
+// == Clã Sarutobi
+// =================	
+	case 10:
+	close;
+
+// == Hachimon
+// =================
+	case 11:
+	close;
+	
+	}
+	
+
+}
+	
+	veterano:
+	next;
+	mes .@npc$;
+	mes " ";
+	mes "Prazer em conhece-lo novato, Meu nome é Tsunade e eu sou a ^008000Hokage^000000.";
+	mes " ";
+	mes "O kage nada mais é do que o lider de uma vila oculta, todo pais possui uma vila oculta.";
+	next;
+	voltandomenu:
+	switch( select( "Detalhes da nação.:Juntar-se a nação do Fogo." ) ){
+		case 1:
+			cutin "paisdoFogo",2;
+			mes "[Hokage]";
+			mes "Claro, sou da nação do Fogo, em que sua capital é a poderosa Vila da Folha dita como konohagakure no sato";
+			next;
+			mes "[Hokage]";	
+			mes "Nossa vila tem vários clãs e ninjas distintos, você bem que poderia vir morar em nossa vila, mas ae a decisão não é minha, mas sim sua.";
+			next;
+			goto voltandomenu;
+		case 2:
+			mes "[Hokage]";
+			mes "Será um grande prazer ter você em nossa vila";
+			next;
+			mes "[Hokage]";
+			mes "Antes que faça sua mudança, preciso que você faça seu registro no livro da vila.";
+			next;
+			if( select( "Tudo bem eu assino.:Estou meio com receio, deixe me pensar mais sobre o assunto." ) == 1 ){
+				mes "[Hokage]";
+				mes "A claro lembrei de umas coisas, nossa vila é boa, mas existem ninjas que preferem mudar de vila, e isso é possível.";
+				next;
+				mes "[Hokage]";
+				mes "Mas pela burocracia existente a troca é complicada.";
+				next;
+				mes "[Hokage]";
+				mes "Mais uma coisa, há algo que presamos em nossa vila, a educação entre as pessoas, por tanto respeite seus professores, senpais, amigos e acima de tudo obedeça e acate as normas e regras de seu Hokage, no caso eu, HeHe";
+				next;
+				if( select( "Entendido Hokage sama:Estou meio em dúvida." ) == 1 ){
+					mes "[Hokage]";
+					mes "Hum ok, assine aqui seu nome de maneira legivel e sem gracinhas.";
+					next;
+					input .@name$;
+					mes "[Hokage]";
+					mes "Então,esse é seu nome ^3131FF" + .@name$ + "^000000...";
+					next;
+					if(.@name$ == strcharinfo(0)){
+					mes "[Hokage]";
+					mes "Uhrg... agora é a minha parte, mais papela para eu resolver e assinar,enfim desejo que tenha uma ótima vida em Konoha";
+					next;
+						set #konoha,1;
+						mes "[Hokage]";
+						mes "Bem Vindo a ^3131FFVila Oculta da Folha^000000!";
+						next;
+						mes "[Hokage]";
+						mes "Qualquer dúvida procure-me na minha sala.";
+						next;
+						mes "[Hokage]";
+						mes "Ah, como todo ninja você precisa passar pela academia, você agora é um estudante e deverá se formar na academia e se tornar genin.";
+						close2;
+						warp "academia",102,23;
+						savepoint "academia",102,23;
+						end;
+					}
+					mes "[Hokage]";
+					mes " ^3131FF"+.@name$+"^000000, Este não é  o seu nome.";
+					break;	
+				}
+				mes "[Hokage]";
+				mes "Tudo bem, para todos casos estarei aqui.";
+				break;
+			}
+			mes "[Hokage]";
+			mes "Tudo bem, para todos casos estarei aqui.";
+			break;
+	}
+	close2;
+	cutin "",255;
+	end;
+	
+	ja_e_de_outra:
+		mes "^008000[ Hokage ]^000000";
+		mes "Olá!^3131FF" + strcharinfo( 0 ) + "^000000! Vejo que você já é de outra vila, tenho mais o que fazer.";
+		cutin "",255;
+		close;
+	
+	ja_e_de_konoha:
+		mes "^008000[ Hokage ]^000000";
+		mes "Olá!^3131FF" + strcharinfo( 0 ) + "^000000! Vejo que você já é de Konoha, Vá para a academia estudar, nada de matar aula isso é errado!";
+		close2;
+		cutin "",255;
+		warp "academia",102,23;
+		savepoint "academia",102,23;
+		end;
+	
+}

@@ -1,0 +1,627 @@
+ama_in01,19,17,4	script	Evolução de armas::EVOarma	990,{
+
+mes "Olá, aqui você pode evoluir suas armas pra obter um poder maior";
+mes "Cada arma possui 10 níveis, as 3 primeiras de cada arma estão disponíveis na loja e em quest, as demais só são conseguidas depois de ";
+next;
+mes "eu melhoro os equipamentos dos shinobis, eu sou o único do mundo que pode melhorar todos os tipos de equipamentos";
+next;
+mes "Está interessado em ter a minha ajuda?";
+menu "Sim, estou interessado",L_slot,"Me explique sobre seus serviços",L_guia;
+
+L_slot:
+next;
+mes "Ótimo, é sempre bom ter equipamentos cada vez melhores";
+next;
+mes "Lembre-se que precisa estar com o item equipado e que é preciso ter um vale level up";
+mes "o level máximo de todos os equipamentos é 99";
+next;
+mes "Escolha um tipo de equipamento que gostaria de melhorar";
+menu "Kunai",L_kunai,"Lâmina",L_lamina,"Wakizashi",L_wakizashi,"Katana",L_katana,"Ninja-to",L_ninjato,"Zambatou",L_zambatou,"Bastão",L_bastao,"Soqueira",L_soqueira;
+
+
+//KUNAIS
+
+L_kunai:
+next;
+mes "Muito bem, escolha qual kunai você deseja evoluir (Que você já possui)";
+menu "Kunai Refinada",L_kurefine,"Kunai Reforçada",L_kureforcada,"Kunai Avançada",L_kuavancada,"Kunai-Espada",L_kuespada,"Kunai Gigante",L_kugigante,"Kunai Dupla-Lâmina",L_kudupla,"Kunai Completa",L_kucomp;
+
+L_kurefine:
+next;
+mes "Para evoluir essa arma é preciso ter uma Kunai Refinada +10, ela será evoluida para uma Kunai Reforçada";
+next;
+mes "Nesta evolução você receberá todos os seus tickets de volta";
+next;
+if(getequipid(EQI_HAND_R)==1207 && getequiprefinerycnt(EQI_HAND_R) >= 10) {getitem 1210,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R); failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kureforcada:
+next;
+mes "Para evoluir essa arma é preciso ter uma Kunai Reforçada +23, ela será evoluida para uma Kunai Avançada";
+next;
+mes "Nesta evolução você acabara perdendo 4 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1210 && getequiprefinerycnt(EQI_HAND_R) >= 23) {getitem 1213,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-4; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kuavancada:
+next;
+mes "Para evoluir essa arma é preciso ter uma Kunai Avançada +36, ela será evoluida para uma Kunai-Espada";
+next;
+mes "Nesta evolução você acabara perdendo 8 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1213 && getequiprefinerycnt(EQI_HAND_R) >= 36) {getitem 1216,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-8; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kuespada:
+next;
+mes "Para evoluir essa arma é preciso ter uma Kunai-Espada +49, ela será evoluida para uma Kunai Gigante";
+next;
+mes "Nesta evolução você acabara perdendo 12 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1216 && getequiprefinerycnt(EQI_HAND_R) >= 49) {getitem 1219,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-12; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kugigante:
+next;
+mes "Para evoluir essa arma é preciso ter uma Kunai Gigante +62, ela será evoluida para uma Kunai Dupla-Lâmina";
+next;
+mes "Nesta evolução você acabara perdendo 16 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1219 && getequiprefinerycnt(EQI_HAND_R) >= 62) {getitem 1222,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-16; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kudupla:
+next;
+mes "Para evoluir essa arma é preciso ter uma Kunai Dupla-Lâmina +75, ela será evoluida para uma Kunai Completa";
+next;
+mes "Nesta evolução você acabara perdendo 20 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1222 && getequiprefinerycnt(EQI_HAND_R) >= 75) {getitem 1223,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-20; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kucomp:
+next;
+mes "Para evoluir essa arma é preciso ter uma Kunai Completa +90, ela será evoluida para uma Kunai Final";
+next;
+mes "Nesta evolução você acabara perdendo 25 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1223 && getequiprefinerycnt(EQI_HAND_R) >= 90) {getitem 1224,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-25; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+//LAMINA
+
+L_lamina:
+next;
+mes "Muito bem, escolha qual lâmina você deseja evoluir (Que você já possui)";
+menu "Lâmina Fina",L_lafina,"Lâmina Pesada",L_lapesada,"Lâmina Curva",L_lacurva,"Lâmina Forte",L_laforte,"Lâmina Especial",L_laespecial,"Lâmina Mortal",L_lamortal,"Lâmina Encantada",L_laencant;
+
+L_lafina:
+next;
+mes "Para evoluir essa arma é preciso ter uma Lâmina Fina +10, ela será evoluida para uma Lâmina Pesada";
+next;
+mes "Nesta evolução você receberá todos os seus tickets de volta";
+next;
+if(getequipid(EQI_HAND_R)==1227 && getequiprefinerycnt(EQI_HAND_R) >= 10) {getitem 1228,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R); failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_lapesada:
+next;
+mes "Para evoluir essa arma é preciso ter uma Lâmina Pesada +23, ela será evoluida para uma Lâmina Curva";
+next;
+mes "Nesta evolução você acabara perdendo 4 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1228 && getequiprefinerycnt(EQI_HAND_R) >= 23) {getitem 1229,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-4; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_lacurva:
+next;
+mes "Para evoluir essa arma é preciso ter uma Lâmina Curva +36, ela será evoluida para uma Lâmina Forte";
+next;
+mes "Nesta evolução você acabara perdendo 8 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1229 && getequiprefinerycnt(EQI_HAND_R) >= 36) {getitem 1230,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-8; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_laforte:
+next;
+mes "Para evoluir essa arma é preciso ter uma Lâmina Forte +49, ela será evoluida para uma Lâmina Especial";
+next;
+mes "Nesta evolução você acabara perdendo 12 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1230 && getequiprefinerycnt(EQI_HAND_R) >= 49) {getitem 1231,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-12; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_laespecial:
+next;
+mes "Para evoluir essa arma é preciso ter uma Lâmina Especial +62, ela será evoluida para uma Lâmina Mortal";
+next;
+mes "Nesta evolução você acabara perdendo 16 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1231 && getequiprefinerycnt(EQI_HAND_R) >= 62) {getitem 1232,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-16; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_lamortal:
+next;
+mes "Para evoluir essa arma é preciso ter uma Lâmina Mortal +75, ela será evoluida para uma Lâmina Encantada";
+next;
+mes "Nesta evolução você acabara perdendo 20 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1232 && getequiprefinerycnt(EQI_HAND_R) >= 75) {getitem 1233,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-20; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_laencant:
+next;
+mes "Para evoluir essa arma é preciso ter uma Lâmina Encantada +90, ela será evoluida para uma Lâmina Final";
+next;
+mes "Nesta evolução você acabara perdendo 25 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1233 && getequiprefinerycnt(EQI_HAND_R) >= 90) {getitem 1234,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-25; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+//WAKIZASHI
+
+L_wakizashi:
+next;
+mes "Muito bem, escolha qual wakizashi você deseja evoluir (Que você já possui)";
+menu "Waki Refinada",L_warefi,"Waki Reforçada",L_warefor,"Waki Avançada",L_waavan,"Waki Enriquecida",L_waenri,"Waki Gigante",L_wagiga,"Waki Dupla-Lâmina",L_wadup,"Waki Completa",L_wacomp;
+
+L_warefi:
+next;
+mes "Para evoluir essa arma é preciso ter uma Waki Refinada +10, ela será evoluida para uma Waki Reforçada";
+next;
+mes "Nesta evolução você receberá todos os seus tickets de volta";
+next;
+if(getequipid(EQI_HAND_R)==1237 && getequiprefinerycnt(EQI_HAND_R) >= 10) {getitem 1238,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R); failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_warefor:
+next;
+mes "Para evoluir essa arma é preciso ter uma Waki Reforçada +23, ela será evoluida para uma Waki Avançada";
+next;
+mes "Nesta evolução você acabara perdendo 4 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1238 && getequiprefinerycnt(EQI_HAND_R) >= 23) {getitem 1239,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-4; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_waavan:
+next;
+mes "Para evoluir essa arma é preciso ter uma Waki Avançada +36, ela será evoluida para uma Waki Enriquecida";
+next;
+mes "Nesta evolução você acabara perdendo 8 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1239 && getequiprefinerycnt(EQI_HAND_R) >= 36) {getitem 1240,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-8; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_waenri:
+next;
+mes "Para evoluir essa arma é preciso ter uma Waki Enriquecida +49, ela será evoluida para uma Waki Gigante";
+next;
+mes "Nesta evolução você acabara perdendo 12 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1240 && getequiprefinerycnt(EQI_HAND_R) >= 49) {getitem 1241,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-12; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_wagiga:
+next;
+mes "Para evoluir essa arma é preciso ter uma Waki Gigante +62, ela será evoluida para uma Waki Dupla-Lâmina";
+next;
+mes "Nesta evolução você acabara perdendo 16 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1241 && getequiprefinerycnt(EQI_HAND_R) >= 62) {getitem 1242,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-16; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_wadup:
+next;
+mes "Para evoluir essa arma é preciso ter uma Waki Dupla-Lâmina +75, ela será evoluida para uma Waki Completa";
+next;
+mes "Nesta evolução você acabara perdendo 20 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1242 && getequiprefinerycnt(EQI_HAND_R) >= 75) {getitem 1243,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-20; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_wacomp:
+next;
+mes "Para evoluir essa arma é preciso ter uma Waki Completa +90, ela será evoluida para uma Waki Final";
+next;
+mes "Nesta evolução você acabara perdendo 25 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1243 && getequiprefinerycnt(EQI_HAND_R) >= 90) {getitem 1244,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-25; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+//KATANA
+
+L_katana:
+next;
+mes "Muito bem, escolha qual katana você deseja evoluir (Que você já possui)";
+menu "Katana Fina",L_kafi,"Katana Pesada",L_kapes,"Katana Curvada",L_kacur,"Katana Forte",L_kafor,"Katana Especial",L_kaespe,"Katana Mortal",L_kamor,"Katana Encantada",L_kaencan;
+
+L_kafi:
+next;
+mes "Para evoluir essa arma é preciso ter uma Katana Fina +10, ela será evoluida para uma Katana Pesada";
+next;
+mes "Nesta evolução você receberá todos os seus tickets de volta";
+next;
+if(getequipid(EQI_HAND_R)==1248 && getequiprefinerycnt(EQI_HAND_R) >= 10) {getitem 1249,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R); failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kapes:
+next;
+mes "Para evoluir essa arma é preciso ter uma Katana Pesada +23, ela será evoluida para uma Katana Curvada";
+next;
+mes "Nesta evolução você acabara perdendo 4 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1249 && getequiprefinerycnt(EQI_HAND_R) >= 23) {getitem 1250,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-4; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kacur:
+next;
+mes "Para evoluir essa arma é preciso ter uma Katana Curvada +36, ela será evoluida para uma Katana Forte";
+next;
+mes "Nesta evolução você acabara perdendo 8 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1250 && getequiprefinerycnt(EQI_HAND_R) >= 36) {getitem 1252,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-8; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kafor:
+next;
+mes "Para evoluir essa arma é preciso ter uma Katana Forte +49, ela será evoluida para uma Katana Especial";
+next;
+mes "Nesta evolução você acabara perdendo 12 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1252 && getequiprefinerycnt(EQI_HAND_R) >= 49) {getitem 1254,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-12; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kaespe:
+next;
+mes "Para evoluir essa arma é preciso ter uma Katana Especial +62, ela será evoluida para uma Katana Mortal";
+next;
+mes "Nesta evolução você acabara perdendo 16 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1254 && getequiprefinerycnt(EQI_HAND_R) >= 62) {getitem 1256,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-16; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kamor:
+next;
+mes "Para evoluir essa arma é preciso ter uma Katana Mortal +75, ela será evoluida para uma Katana Encantada";
+next;
+mes "Nesta evolução você acabara perdendo 20 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1256 && getequiprefinerycnt(EQI_HAND_R) >= 75) {getitem 1257,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-20; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_kaencan:
+next;
+mes "Para evoluir essa arma é preciso ter uma Katana Encantada +90, ela será evoluida para uma Katana Final";
+next;
+mes "Nesta evolução você acabara perdendo 25 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1257 && getequiprefinerycnt(EQI_HAND_R) >= 90) {getitem 1258,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-25; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+//NINJA-TO
+
+L_ninjato:
+next;
+mes "Muito bem, escolha qual ninja-to você deseja evoluir (Que você já possui)";
+menu "Ninja-to Refinada",L_ninrefi,"Ninja-to Reforçada",L_ninrefo,"Ninja-to Avançada",L_ninavan,"Ninja-to Enriquecida",L_ninenri,"Ninja-to Gigante",L_ningiga,"Ninja-to Dupla-Lâmina",L_nindup,"Ninja-to Completa",L_nincomp;
+
+L_ninrefi:
+next;
+mes "Para evoluir essa arma é preciso ter uma Ninja-to Refinada +10, ela será evoluida para uma Ninja-to Reforçada";
+next;
+mes "Nesta evolução você receberá todos os seus tickets de volta";
+next;
+if(getequipid(EQI_HAND_R)==1261 && getequiprefinerycnt(EQI_HAND_R) >= 10) {getitem 1262,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R); failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_ninrefo:
+next;
+mes "Para evoluir essa arma é preciso ter uma Ninja-to Reforçada +23, ela será evoluida para uma Ninja-to Avançada";
+next;
+mes "Nesta evolução você acabara perdendo 4 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1262 && getequiprefinerycnt(EQI_HAND_R) >= 23) {getitem 1263,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-4; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_ninavan:
+next;
+mes "Para evoluir essa arma é preciso ter uma Ninja-to Avançada +36, ela será evoluida para uma Ninja-to Enriquecida";
+next;
+mes "Nesta evolução você acabara perdendo 8 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1263 && getequiprefinerycnt(EQI_HAND_R) >= 36) {getitem 1264,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-8; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_ninenri:
+next;
+mes "Para evoluir essa arma é preciso ter uma Ninja-to Enriquecida +49, ela será evoluida para uma Ninja-to Gigante";
+next;
+mes "Nesta evolução você acabara perdendo 12 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1264 && getequiprefinerycnt(EQI_HAND_R) >= 49) {getitem 1265,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-12; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_ningiga:
+next;
+mes "Para evoluir essa arma é preciso ter uma Ninja-to Gigante +62, ela será evoluida para uma Ninja-to Dupla-Lâmina";
+next;
+mes "Nesta evolução você acabara perdendo 16 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1265 && getequiprefinerycnt(EQI_HAND_R) >= 62) {getitem 1266,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-16; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_nindup:
+next;
+mes "Para evoluir essa arma é preciso ter uma Ninja-to Dupla-Lâmina +75, ela será evoluida para uma Ninja-to Completa";
+next;
+mes "Nesta evolução você acabara perdendo 20 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1266 && getequiprefinerycnt(EQI_HAND_R) >= 75) {getitem 1304,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-20; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_nincomp:
+next;
+mes "Para evoluir essa arma é preciso ter uma Ninja-to Completa +90, ela será evoluida para uma Ninja-to Final";
+next;
+mes "Nesta evolução você acabara perdendo 25 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1304 && getequiprefinerycnt(EQI_HAND_R) >= 90) {getitem 1305,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-25; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+//ZAMBATOU
+
+L_zambatou:
+next;
+mes "Muito bem, escolha qual zambatou você deseja evoluir (Que você já possui)";
+menu "Zambatou Refinada",L_zamrefi,"Zambatou Reforçada",L_zamrefo,"Zambatou Avançada",L_zamavan,"Zambatou Enriquecida",L_zamenri,"Zambatou Gigante",L_zamgiga,"Zambatou Dupla-Lâmina",L_zamdup,"Zambatou Completa",L_zamcomp;
+
+L_zamrefi:
+next;
+mes "Para evoluir essa arma é preciso ter uma Zambatou Refinada +10, ela será evoluida para uma Zambatou Reforçada";
+next;
+mes "Nesta evolução você receberá todos os seus tickets de volta";
+next;
+if(getequipid(EQI_HAND_R)==1306 && getequiprefinerycnt(EQI_HAND_R) >= 10) {getitem 1307,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R); failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_zamrefo:
+next;
+mes "Para evoluir essa arma é preciso ter uma Zambatou Reforçada +23, ela será evoluida para uma Zambatou Avançada";
+next;
+mes "Nesta evolução você acabara perdendo 4 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1307 && getequiprefinerycnt(EQI_HAND_R) >= 23) {getitem 1308,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-4; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_zamavan:
+next;
+mes "Para evoluir essa arma é preciso ter uma Zambatou Avançada +36, ela será evoluida para uma Zambatou Enriquecida";
+next;
+mes "Nesta evolução você acabara perdendo 8 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1308 && getequiprefinerycnt(EQI_HAND_R) >= 36) {getitem 1309,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-8; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_zamenri:
+next;
+mes "Para evoluir essa arma é preciso ter uma Zambatou Enriquecida +49, ela será evoluida para uma Zambatou Gigante";
+next;
+mes "Nesta evolução você acabara perdendo 12 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1309 && getequiprefinerycnt(EQI_HAND_R) >= 49) {getitem 1351,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-12; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_zamgiga:
+next;
+mes "Para evoluir essa arma é preciso ter uma Zambatou Gigante +62, ela será evoluida para uma Zambatou Dupla-Lâmina";
+next;
+mes "Nesta evolução você acabara perdendo 16 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1351 && getequiprefinerycnt(EQI_HAND_R) >= 62) {getitem 1352,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-16; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_zamdup:
+next;
+mes "Para evoluir essa arma é preciso ter uma Zambatou Dupla-Lâmina +75, ela será evoluida para uma Zambatou Completa";
+next;
+mes "Nesta evolução você acabara perdendo 20 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1352 && getequiprefinerycnt(EQI_HAND_R) >= 75) {getitem 1353,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-20; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_zamcomp:
+next;
+mes "Para evoluir essa arma é preciso ter uma Zambatou Completa +90, ela será evoluida para uma Zambatou Final";
+next;
+mes "Nesta evolução você acabara perdendo 25 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1353 && getequiprefinerycnt(EQI_HAND_R) >= 90) {getitem 1354,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-25; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+//BASTAO
+
+L_bastao:
+next;
+mes "Muito bem, escolha qual bastão você deseja evoluir (Que você já possui)";
+menu "Bastão Fino",L_basfino,"Bastão Pesado",L_baspesado,"Bastão Curvado",L_bascurva,"Bastão Forte",L_basforte,"Bastão Especial",L_basespecial,"Bastão Mortal",L_basmortal,"Bastão Encantado",L_basencant;
+
+L_basfino:
+next;
+mes "Para evoluir essa arma é preciso ter uma Bastão Fino +10, ela será evoluida para uma Bastão Pesado";
+next;
+mes "Nesta evolução você receberá todos os seus tickets de volta";
+next;
+if(getequipid(EQI_HAND_R)==1357 && getequiprefinerycnt(EQI_HAND_R) >= 10) {getitem 1358,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R); failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_baspesado:
+next;
+mes "Para evoluir essa arma é preciso ter uma Bastão Pesado +23, ela será evoluida para uma Bastão Curvado";
+next;
+mes "Nesta evolução você acabara perdendo 4 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1358 && getequiprefinerycnt(EQI_HAND_R) >= 23) {getitem 1359,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-4; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_bascurva:
+next;
+mes "Para evoluir essa arma é preciso ter uma Bastão Curvado +36, ela será evoluida para uma Bastão Forte";
+next;
+mes "Nesta evolução você acabara perdendo 8 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1359 && getequiprefinerycnt(EQI_HAND_R) >= 36) {getitem 1360,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-8; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_basforte:
+next;
+mes "Para evoluir essa arma é preciso ter uma Bastão Forte +49, ela será evoluida para uma Bastão Especial";
+next;
+mes "Nesta evolução você acabara perdendo 12 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1360 && getequiprefinerycnt(EQI_HAND_R) >= 49) {getitem 1361,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-12; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_basespecial:
+next;
+mes "Para evoluir essa arma é preciso ter uma Bastão Especial +62, ela será evoluida para uma Bastão Mortal";
+next;
+mes "Nesta evolução você acabara perdendo 16 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1361 && getequiprefinerycnt(EQI_HAND_R) >= 62) {getitem 1362,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-16; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_basmortal:
+next;
+mes "Para evoluir essa arma é preciso ter uma Bastão Mortal +75, ela será evoluida para uma Bastão Encantado";
+next;
+mes "Nesta evolução você acabara perdendo 20 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1362 && getequiprefinerycnt(EQI_HAND_R) >= 75) {getitem 1363,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-20; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_basencant:
+next;
+mes "Para evoluir essa arma é preciso ter uma Bastão Encantado +90, ela será evoluida para uma Bastão Final";
+next;
+mes "Nesta evolução você acabara perdendo 25 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1363 && getequiprefinerycnt(EQI_HAND_R) >= 90) {getitem 1364,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-25; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+//SOQUEIRA
+
+L_soqueira:
+next;
+mes "Muito bem, escolha qual bastão você deseja evoluir (Que você já possui)";
+menu "Soqueira Fina",L_socfina,"Soqueira Pesada",L_socpesada,"Soqueira Protegida",L_socprot,"Soqueira Forte",L_socforte,"Soqueira Especial",L_socespecial,"Soqueira Mortal",L_socmortal,"Soqueira Encantada",L_socencant;
+
+L_socfina:
+next;
+mes "Para evoluir essa arma é preciso ter uma Soqueira Fina +10, ela será evoluida para uma Soqueira Pesada";
+next;
+mes "Nesta evolução você receberá todos os seus tickets de volta";
+next;
+if(getequipid(EQI_HAND_R)==1367 && getequiprefinerycnt(EQI_HAND_R) >= 10) {getitem 1368,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R); failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_socpesada:
+next;
+mes "Para evoluir essa arma é preciso ter uma Soqueira Pesada +23, ela será evoluida para uma Soqueira Protegida";
+next;
+mes "Nesta evolução você acabara perdendo 4 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1368 && getequiprefinerycnt(EQI_HAND_R) >= 23) {getitem 1369,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-4; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_socprot:
+next;
+mes "Para evoluir essa arma é preciso ter uma Soqueira Protegida +36, ela será evoluida para uma Soqueira Forte";
+next;
+mes "Nesta evolução você acabara perdendo 8 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1369 && getequiprefinerycnt(EQI_HAND_R) >= 36) {getitem 1370,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-8; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_socforte:
+next;
+mes "Para evoluir essa arma é preciso ter uma Soqueira Forte +49, ela será evoluida para uma Soqueira Especial";
+next;
+mes "Nesta evolução você acabara perdendo 12 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1370 && getequiprefinerycnt(EQI_HAND_R) >= 49) {getitem 1371,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-12; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_socespecial:
+next;
+mes "Para evoluir essa arma é preciso ter uma Soqueira Especial +62, ela será evoluida para uma Soqueira Mortal";
+next;
+mes "Nesta evolução você acabara perdendo 16 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1371 && getequiprefinerycnt(EQI_HAND_R) >= 62) {getitem 1372,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-16; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_socmortal:
+next;
+mes "Para evoluir essa arma é preciso ter uma Soqueira Mortal +75, ela será evoluida para uma Soqueira Encantada";
+next;
+mes "Nesta evolução você acabara perdendo 20 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1372 && getequiprefinerycnt(EQI_HAND_R) >= 75) {getitem 1401,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-20; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_socencant:
+next;
+mes "Para evoluir essa arma é preciso ter uma Soqueira Encantada +90, ela será evoluida para uma Soqueira Final";
+next;
+mes "Nesta evolução você acabara perdendo 25 tickets";
+next;
+if(getequipid(EQI_HAND_R)==1401 && getequiprefinerycnt(EQI_HAND_R) >= 90) {getitem 1402,1; getitem 7622,getequiprefinerycnt(EQI_HAND_R)-25; failedrefitem 4; announce "[Evolução de armas] "+strcharinfo(0)+" acaba de evoluir sua arma, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com arma necessária equipada pra evoluir"; close;}
+close;
+
+L_sapato:
+if (getequipisequiped(EQI_SHOES) == 0) goto L_NothingEquiped;
+if(getequiprefinerycnt(EQI_SHOES) >= 99) { next ;mes "Seu equipamento está no level máximo"; close;}
+if (countitem(7622) < 1) {next; mes "Você não tem um vale level up pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 6;
+announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_SHOES)+", impressionante",bc_blue|bc_all;
+close;
+
+L_capa:
+if (getequipisequiped(EQI_GARMENT) == 0) goto L_NothingEquiped;
+if(getequiprefinerycnt(EQI_GARMENT) >= 99) { next ;mes "Seu equipamento está no level máximo"; close;}
+if (countitem(7622) < 1) {next; mes "Você não tem um vale level up pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 5;
+announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_GARMENT)+", impressionante",bc_blue|bc_all;
+close;
+
+L_element:
+if (getequipisequiped(EQI_HAND_L) == 0) goto L_NothingEquiped;
+if(getequiprefinerycnt(EQI_HAND_L) >= 99) { next ;mes "Seu equipamento está no level máximo"; close;}
+if (countitem(7622) < 1) {next; mes "Você não tem um vale level up pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 3;
+announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_L)+", impressionante",bc_blue|bc_all;
+close;
+
+L_guia:
+next;
+mes "Eu sou o único ferreiro que possui o serviço de evoluir armas.";
+next;
+mes "o meu serviço requer que sua arma esteja no nível necessário para evoluir, se estiver, você receberá a nova arma e uma certa porcentagem de seus vale level up usados";
+close;
+
+L_NothingEquiped:
+next;
+mes "Você não possui nada equipado nesse slot";
+close;
+
+
+}
+
+ama_in01,94,28,4	duplicate(EVOarma)	Evolução de armas#1	990,{
+ama_in01,173,183,4	duplicate(EVOarma)	Evolução de armas#2	990,{
+ama_in01,174,127,4	duplicate(EVOarma)	Evolução de armas#3	990,{
+6@tower,127,67,4	duplicate(EVOarma)	Evolução de armas#4	990,{

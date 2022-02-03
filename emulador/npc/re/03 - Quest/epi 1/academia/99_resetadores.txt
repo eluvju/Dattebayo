@@ -1,0 +1,38 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Aqui vai ser detalhada o modo história do Arco 1 da academia Shinobi
+//= Irei colocar aqui itens, quests entre outras coisas.
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 20/07/2021 as 07:30
+//=
+//===== Estrutura do Script: =================================
+//=
+//= 1* NPC - Iruka #Linha 21 ! Linha 119#
+//=
+//=
+//################################################################
+academia,94,25,5	script	Resetar	121,{
+
+set academia_arco_1,0;
+set iruka_provas,0;
+end;
+
+}
+
+academia,62,40,5	script	Resetar SAla 1	121,{
+
+set academia_arco_1, 1;
+set academia_arco_1_sala1,0;
+set iruka_provas,0;
+set academia_arco_1_sala1_interface, 0;
+set academia_arco_1_sala1_atributos, 0;
+set academia_arco_1_sala1_inato, 0;
+end;
+
+}

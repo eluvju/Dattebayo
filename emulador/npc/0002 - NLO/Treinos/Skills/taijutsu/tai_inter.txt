@@ -1,0 +1,868 @@
+academia,20,149,5	script	Taijutsu Intermediario	1_m_pastor,{
+
+	if(Class == 7 || Class == 8 || Class == 9 || Class == 10 || Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+	
+	mes "[Taijutsu Intermediário]";
+	mes "Olá "+strcharinfo(0)+", sou professor de taijutsu escolha qual habilidade você gostaria de aprender.";
+	switch( select( "- Ataque Surpresa:- Dai Senkou:- Shoufuu Rendan:- Konoha Dai Senpuu:- Konoha Shoufuu:- Tsutenkyaku:- Rasengan:- Dinamic Entry:- Tsuki no Kaiten" ) ){
+
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 1:
+			next;
+			if(checkquest(5000) == 1) goto 1_go;
+			if(AtaqueSurpresa == 1) goto 1_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Ataque Surpresa?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+			
+			//========================================================================
+			//	Ataque Surpresa
+			//========================================================================
+			
+			1_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+			
+			delete_1:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+			
+			quero_1:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set AtaqueSurpresa,0;
+				skill 214,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_1:
+				close;
+			
+			1_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5000;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			1_go:
+				if(checkquest(5000) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5000) >= 1) { completequest 5000; erasequest 5000; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+						
+							case 1:
+								if(checkquest(5000,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5000; 
+									erasequest 5000;
+									skill 214,1,3;
+									set AtaqueSurpresa,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			1_no:
+				close;
+			
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 2:
+			next;
+			if(checkquest(5002) == 1) goto 3_go;
+			if(DaiSenkou == 1) goto 3_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Dai Senkou?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+			
+			//========================================================================
+			//	Dai Senkou
+			//========================================================================
+			
+			3_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+			
+			delete_3:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+			
+			quero_3:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set DaiSenkou,0;
+				skill 357,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_3:
+				close;
+			
+			3_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5002;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			3_go:
+				if(checkquest(5002) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5002) >= 1) { completequest 5002; erasequest 5002; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+					
+							case 1:
+								if(checkquest(5002,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5002; 
+									erasequest 5002;
+									skill 357,1,3;
+									set DaiSenkou,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+				
+			3_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 3:
+			next;
+			if(checkquest(5003) == 1) goto 4_go;
+			if(ShoufuuRendan == 1) goto 4_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Shoufuu Rendan?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+			
+			//========================================================================
+			//	Shoufuu Rendan
+			//========================================================================
+			
+			4_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+			
+			delete_4:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+			
+			quero_4:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set ShoufuuRendan,0;
+				skill 171,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_4:
+				close;
+			
+			4_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5003;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			4_go:
+				if(checkquest(5003) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5003) >= 1) { completequest 5003; erasequest 5003; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+						
+							case 1:
+								if(checkquest(5003,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5003; 
+									erasequest 5003;
+									skill 171,1,3;
+									set ShoufuuRendan,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			4_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 4:
+			next;
+			if(checkquest(5004) == 1) goto 5_go;
+			if(KonohaDaiSenpuu == 1) goto 5_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Konoha Dai Senpuu?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",5_SS,"Agora não",5_no;
+			
+			//========================================================================
+			//	Konoha Dai Senpuu
+			//========================================================================
+			
+			5_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_5,"Nada não, só papo furado",naoquero_5;
+			
+			delete_5:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_5,"Não, não quero",naoquero_5;
+			
+			quero_5:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set KonohaDaiSenpuu,0;
+				skill 413,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_5:
+				close;
+			
+			5_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5004;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			5_go:
+				if(checkquest(5004) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5004) >= 1) { completequest 5004; erasequest 5004; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+						
+							case 1:
+								if(checkquest(5004,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5004; 
+									erasequest 5004;
+									skill 413,1,3;
+									set KonohaDaiSenpuu,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+				
+			5_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 5:
+			next;
+			if(checkquest(5005) == 1) goto 6_go;
+			if(KonohaShoufuu == 1) goto 6_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Konoha Shoufuu?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",6_SS,"Agora não",6_no;
+			
+			//========================================================================
+			//	Konoha Shoufuu
+			//========================================================================
+			
+			6_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_6,"Nada não, só papo furado",naoquero_6;
+			
+			delete_6:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_6,"Não, não quero",naoquero_6;
+			
+			quero_6:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set KonohaShoufuu,0;
+				skill 419,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_6:
+				close;
+			
+			6_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5005;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			6_go:
+				if(checkquest(5005) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5005) >= 1) { completequest 5005; erasequest 5005; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+						
+							case 1:
+								if(checkquest(5005,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5005; 
+									erasequest 5005;
+									skill 419,1,3;
+									set KonohaShoufuu,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			6_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 6:
+			next;
+			if(checkquest(5006) == 1) goto 7_go;
+			if(Tsutenkyaku == 1) goto 7_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Tsutenkyaku?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",7_SS,"Agora não",7_no;
+			
+			//========================================================================
+			//	Tsutenkyaku
+			//========================================================================
+			
+			7_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_7,"Nada não, só papo furado",naoquero_7;
+			
+			delete_7:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_7,"Não, não quero",naoquero_7;
+			
+			quero_7:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Tsutenkyaku,0;
+				skill 62,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_7:
+				close;
+			
+			7_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5006;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			7_go:
+				if(checkquest(5006) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5006) >= 1) { completequest 5006; erasequest 5006; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+						
+							case 1:
+								if(checkquest(5006,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5006;
+									erasequest 5006;
+									skill 62,1,3;
+									set Tsutenkyaku,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			7_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 7:
+			next;
+			if(checkquest(5007) == 1) goto 8_go;
+			if(Rasengan == 1) goto 8_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Rasengan?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",8_SS,"Agora não",8_no;
+			
+			//========================================================================
+			//	Rasengan
+			//========================================================================
+			
+			8_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_8,"Nada não, só papo furado",naoquero_8;
+			
+			delete_8:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_8,"Não, não quero",naoquero_8;
+			
+			quero_8:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Rasengan,0;
+				skill 370,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_8:
+				close;
+			
+			8_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5007;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			8_go:
+				if(checkquest(5007) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5007) >= 1) { completequest 5007; erasequest 5007; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+						
+							case 1:
+								if(checkquest(5007,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5007; 
+									erasequest 5007;
+									skill 370,1,3;
+									set Rasengan,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			8_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 8:
+			next;
+			if(checkquest(5008) == 1) goto 9_go;
+			if(DinamicEntry == 1) goto 9_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			if(tai_intermediario != 1) { mes .@npc$; mes "Você precisa estudar Taijutsu intermediário antes de aprender esse Taijutsu."; close; }
+
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Dinamic Entry?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",9_SS,"Agora não",9_no;
+			
+			//========================================================================
+			//	Dinamic Entry
+			//========================================================================
+			
+			9_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_9,"Nada não, só papo furado",naoquero_9;
+			
+			delete_9:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_9,"Não, não quero",naoquero_9;
+			
+			quero_9:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set DinamicEntry,0;
+				skill 421,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_9:
+				close;
+			
+			9_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5008;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			9_go:
+				if(checkquest(5008) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5008) >= 1) { completequest 5008; erasequest 5008; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+								
+							case 1:
+								if(checkquest(5008,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5008; 
+									erasequest 5008;
+									skill 421,1,3;
+									set DinamicEntry,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			9_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 9:
+			next;
+			if(checkquest(5009) == 1) goto 10_go;
+			if(TsukinoKaiten == 1) goto 10_delete;
+			if(skill_intermediaria >= 6) { mes "[Taijutsu Intermediário]"; mes "Você já aprendeu todas skills intermediária, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Taijutsu Intermediário]";
+			mes "Tsuki no Kaiten?";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Taijutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",10_SS,"Agora não",10_no;
+			
+			//========================================================================
+			//	Tsuki no Kaiten
+			//========================================================================
+			
+			10_delete:
+				mes "[Taijutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_10,"Nada não, só papo furado",naoquero_10;
+			
+			delete_10:
+				mes "[Taijutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_10,"Não, não quero",naoquero_10;
+			
+			quero_10:
+				mes "[Taijutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set TsukinoKaiten,0;
+				skill 2320,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_10:
+				close;
+			
+			10_SS:
+				mes "[Taijutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5009;
+				next;
+				mes "[Taijutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			10_go:
+				if(checkquest(5009) >= 1) {
+					mes "[Taijutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5009) >= 1) { completequest 5009; erasequest 5009; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Taijutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+						
+							case 1:
+								if(checkquest(5009,hunting) != 2) { mes "[Taijutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Taijutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5009; 
+									erasequest 5009;
+									skill 2320,1,3;
+									set TsukinoKaiten,1;
+									close;
+								}
+								mes "[Taijutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			10_no:
+				close;
+			
+	}
+	}
+	mes "[Fuuinjutsu Intermediário]"; 
+	mes "Você precisa ser Chunin ou superior."; 
+	close;
+OnInit:
+	waitingroom "[Taijutsu Intermediário]",0;
+		
+}

@@ -1,0 +1,100 @@
+payon_in03,78,187,5	script	Recuar::velo3	831,{
+
+if (getskilllv(150) >= 1) goto L_delete;
+if(velo_basico != 1) {mes "Você precisa estudar velocidade básico antes de aprender um técnica de velocidade"; close;}
+if (checkquest(2151) == 1) goto L_go;
+if(velo_skill_bas >= 3) {mes "Você já aprendeu três técnicas de velocidade básico, esse é o limite"; close;}
+if(accept_velo == 3) {mes "Você já aceitou três treinamentos pra realizar de velocidade"; close;}
+if(recuar == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de velocidade espalhado pelo mundo, eu posso lhe ensinar um técnica de velocidade básico";
+next;
+mes "A técnica de velocidade que eu ensino é o: Recuar";
+next;
+mes "Descrição: Quando em perigo, o ninja se afasta do adversário evitando ser atingido.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Recuar
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(150) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(150) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 150,0,0;
+set recuar,0;
+erasequest 2151;
+if(accept_velo > 0) {set accept_velo,accept_velo -1;}
+if(velo_skill_bas > 0) {set velo_skill_bas,velo_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set questvelotres,1;
+set accept_velo,accept_velo +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 10 Chunin.";
+setquest 2151;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(velo_skill_bas >= 3) {mes "Você já aprendeu três técnicas de velocidade básico, esse é o limite"; close;}
+if(velomobstres < 10) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 150,1,0;
+set recuar,1;
+set questvelotres,0;
+set velomobstres, 0;
+completequest 2151;
+erasequest 2151;
+set velo_skill_bas,velo_skill_bas +1;
+announce "[Velocidade Quest] "+strcharinfo(0)+" completou a quest de velocidade Recuar",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Velocidade Básico]",0;
+}
+
+
+-	script	velobas#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1636) {
+if (questvelotres != 1) {end;}
+set velomobstres,velomobstres +1;
+announce "[Velocidade Quest] Você já derrotou "+velomobstres+" / 10 Chunins",bc_blue|bc_self;
+end;
+}
+}
+
+//ama_in02,38,25,5	duplicate(velo3)	Recuar#11	51,{
+//ve_in,78,218,5	duplicate(velo3)	Recuar#12	51,{
+//lou_in01,84,148,5	duplicate(velo3)	Recuar#13	51,{
+//izlude_in,70,127,5	duplicate(velo3)	Recuar#14	51,{

@@ -1,0 +1,15 @@
+1@ecl,40,82,5	script	Consulta Pontos::P1	825,{
+
+mes "^DC143CPontos de Missões^000000";
+mes "Você tem";
+mes #RPGPOINTS;
+
+close;
+
+OnInit:
+	waitingroom "[Consulta Pontos]",0;
+
+} 
+
+2@ecl,39,81,5	duplicate(P1)	Consulta Pontos#1	114
+3@ecl,39,81,5	duplicate(P1)	Consulta Pontos#2	855

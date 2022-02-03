@@ -1,0 +1,61 @@
+akatsuki.gat,133,44,3	script	Cidade de Vendas::venda	734,{
+mes "[Cidade de Vendas]";
+mes "Se está interessado em fazer negociações a Cidade de Vendas é o lugar perfeito pra você!";
+next;
+mes "[Cidade de Vendas]";
+mes "Quer que eu te leve lá?";
+menu "Sim",SIM,"Não",NAO;
+
+SIM:
+mes "[Cidade de Vendas]";
+mes "Vamos lá!";
+next;
+warp "nrpg_sell.gat",49,23;
+close;
+
+NAO:
+mes "[Cidade de Vendas]";
+mes "Caso mude de idéia estarei aqui!";
+close;
+}
+
+konoha.gat,248,93,7	duplicate(venda)	Cidade de Vendas#a	734
+nevoa.gat,265,76,7	duplicate(venda)	Cidade de Vendas#b	734
+prt_monk.gat,158,182,7	duplicate(venda)	Cidade de Vendas#c	734
+areia.gat,212,74,7	duplicate(venda)	Cidade de Vendas#d	734
+
+nrpg_sell.gat,37,25,5	script	Naomi#1	817,{
+mes "[Naomi]";
+mes "Deseja ir ao Cassino?";
+menu "Sim",SIM,"Não",NAO;
+
+SIM:
+mes "[Naomi]";
+mes "Espero que se divirta!";
+next;
+warp "jawaii_in.gat",28,99;
+close;
+
+NAO:
+mes "[Naomi]";
+mes "Se mudar de idéia venha falar comigo!";
+close;
+}
+
+jawaii_in.gat,31,98,3	script	Naomi#2	817,{
+mes "[Naomi]";
+mes "Deseja retornar para Cidade de Vendas?";
+menu "Sim",SIM,"Não",NAO;
+
+SIM:
+mes "[Naomi]";
+mes "Volte sempre!";
+next;
+warp "nrpg_sell.gat",50,26;
+close;
+
+NAO:
+mes "[Naomi]";
+mes "Sem problemas, fique o tempo que achar necessário!";
+close;
+}

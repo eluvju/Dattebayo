@@ -1,0 +1,6 @@
+function	script	MVPTower2_Reward_2	{
+	getitem 12937,2;
+		instance_warpall "savepoint",0,0;
+	warp "SavePoint", 0, 0;
+	return;
+}

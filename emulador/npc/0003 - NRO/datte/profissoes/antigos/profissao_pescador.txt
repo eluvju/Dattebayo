@@ -1,0 +1,1467 @@
+konoha,89,183,5	script	Pescador Chefe::pro_pes	59,{
+
+if(pescador == 1) goto L_temprofissao;
+if (checkquest(2031) == 1) goto L_go;
+
+mes "Um pescador com certeza tem muitas histórias para contar...";
+next;
+mes "Nem sempre são mentiras, a vida de um pescador é muito emocionante!";
+next;
+mes "Você parece gostar de peixes...";
+mes "Gostaria de se tornar um pescador como eu?";
+menu "Sim, parece um trabalho decente",L_aceito,"Não, deixa pra depois",L_rejeitar;
+
+L_aceito:
+next;
+mes "Muito bem, preciso que você faça algumas tarefas pra mim, e em troca eu lhe ensinarei como ser um pescador";
+next;
+mes "Aqui está a lista de tarefas:";
+next;
+mes "- Obter 130x Teia de Aranha.";
+mes "- Obter 50x Minhoca Boa Pinta.";
+mes "- Obter 50x Pele de Sapo.";
+mes "- Obter 1x Asa de Morcego vermelho.";
+mes "- Matar 100x Chunin";
+setquest 2031;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2031,hunting) != 2) {mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(1025) < 130) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(623) < 50) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7155) < 50) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7006) < 1) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Ah, você já retornou, rs! Ótimo, aqui estão alguns itens pra você começar a pescar.";
+next;
+mes "Você agora é um pescador";
+completequest 2031;
+erasequest 2031;
+delitem 1025,130;
+delitem 623,50;
+delitem 7155,50;
+delitem 7006,1;
+getitem 1710,1;
+getitem 5317,1;
+set pescador,1;
+announce "[Profissão] "+strcharinfo(0)+" completou a quest de pescador",bc_blue|bc_all;
+close;
+
+L_rejeitar:
+close;
+
+L_temprofissao:
+mes "Bem-vindo de volta, está interessado em melhorar seus conhecimentos sobre pescaria?";
+menu "Sim",upar,"Não",L_no,"Quero receber outra Vara de pesca",luva;
+
+luva:
+if (countitem(1710) >= 1) {mes "Você não precisa de outra vara de pesca"; close;}
+mes "Aqui está";
+getitem 1710,1;
+close;
+
+upar:
+next;
+mes "Upar sua pescaria signfica que terá um conhecimento melhor sobre cada local de pescaria, e poderá pescar os mais raros peixes do mundo, o que é essencial pra preparar alimentos que lhe darão uma força extra";
+next;
+mes "Seu nível de pescaria está "+level_pescador+", para subir de nível são necessários 3 milhões de zeny, e 1 Contos De Um Pescador";
+mes "Gostaria de aumentar de nível?";
+menu "Sim",upar1,"Não",L_no;
+
+upar1:
+next;
+if (level_pescador >=100) {mes "Seu nível de pescaria está no máximo"; close;}
+if (countitem(1552) < 1) {mes "Você não possui o Contos De Um Pescador"; close;}
+if (Zeny < 3000000) {mes "Você não possui os 3 milhões de zeny necessários"; close;}
+set Zeny, Zeny-3000000;
+delitem 1552,1;
+set level_pescador,level_pescador +1;
+if (level_pescador ==100) {Achieve( 22); end;}
+mes "Nível de pescaria aumentado com sucesso, nível está agora "+level_pescador+"";
+close;
+
+}
+
+pay_fild09,304,336,5	script	Ponto de pesca#1	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+}
+
+pay_fild09,318,176,5	script	Ponto de pesca#2	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+}
+
+pay_fild09,342,88,5	script	Ponto de pesca#3	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+L_esgotou:
+mes "Acabaram os recursos deste local.";
+close;
+
+}
+
+pay_fild11,249,81,5	script	Ponto de pesca#4	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+}
+
+pay_fild11,111,89,5	script	Ponto de pesca#5	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+}
+
+pay_fild11,85,153,5	script	Ponto de pesca#6	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+getitem 579,1;
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+}
+
+moc_fild07,147,334,5	script	Ponto de pesca#7	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+}
+
+moc_fild07,172,327,5	script	Ponto de pesca#8	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+moc_fild14,324,148,5	script	Ponto de pesca#9	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+
+moc_fild14,342,210,5	script	Ponto de pesca#10	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+moc_fild14,344,261,5	script	Ponto de pesca#11	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+kiri,146,160,5	script	Ponto de pesca#12	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+kiri,244,141,5	script	Ponto de pesca#13	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+gef_fild12,92,249,5	script	Ponto de pesca#14	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+gef_fild12,239,179,5	script	Ponto de pesca#15	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+gef_fild12,283,248,5	script	Ponto de pesca#16	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+gef_fild12,152,240,5	script	Ponto de pesca#17	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+cmd_fild06,167,122,5	script	Ponto de pesca#18	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+cmd_fild06,215,325,5	script	Ponto de pesca#19	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+cmd_fild06,307,331,5	script	Ponto de pesca#20	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+cmd_fild08,271,353,5	script	Ponto de pesca#21	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+cmd_fild08,271,50,5	script	Ponto de pesca#22	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+cmd_fild01,270,174,5	script	Ponto de pesca#23	58,{
+
+if(pescador != 1) goto L_wrongjob;
+if(getequipid(EQI_HAND_R)!=1710) goto L_picareta;
+if(getequipid(EQI_HEAD_TOP)!=5317) goto L_capacete;
+if (countitem(632) < 1) goto L_FaltaItem;
+
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 632, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+set pescadorexp,pescadorexp +3;
+if (pescadorexp >= 700) {set level_pescador, level_pescador +1; set pescadorexp,0; dispbottom "Profissão: Pescador, level up (nível atual: "+level_pescador+")"; }
+getitem 579,1;
+close;
+
+L_wrongjob:
+mes "Você ainda não é pescador, converse com o pescador chefe na sua vila";
+close;
+
+L_picareta:
+mes "Você não está usando uma vara de pescar";
+close;
+
+L_capacete:
+mes "Você não está usando um chapéu de pescador";
+close;
+
+
+}
+
+
+areia,274,51,5	duplicate(pro_pes)	Pescador Chefe#1	59,{
+kiri,296,372,5	duplicate(pro_pes)	Pescador Chefe#2	59,{
+nuvem,91,245,5	duplicate(pro_pes)	Pescador Chefe#3	59,{

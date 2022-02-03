@@ -1,0 +1,57 @@
+-	script	usemuralha	-1,{
+    end;
+//When a Character uses a skill
+
+//Muralha
+
+onPcUseSkillEvent:
+
+           if(lskillid == 268) {
+
+
+if (getskilllv(268) == 1) {
+
+if (Muralha != 1) {end;}
+if (skill268 >= 50) {skill 268,2,0; set skill268,0; dispbottom "[Sys] Level up"; end; }
+set skill268,skill268 +1;
+dispbottom "[Jutsu level] Muralha de Chakra level 1: "+skill268+" de 50";
+
+end;
+
+}
+
+if (getskilllv(268) == 2) {
+if (Muralha != 1) {end;}
+if (skill268 >= 100) {skill 268,3,0; set skill268,0; dispbottom "[Sys] Level up"; end;}
+set skill268,skill268 +1;
+dispbottom "[Jutsu level] Muralha de Chakra level 2: "+skill268+" de 100";
+
+end;
+
+}
+
+if (getskilllv(268) == 3) {
+
+if (Muralha != 1) {end;}
+if (skill268 >= 1500) {skill 268,4,0; set skill268,0; dispbottom "[Sys] Level up"; end;}
+set skill268,skill268 +1;
+dispbottom "[Jutsu level] Muralha de Chakra level 3: "+skill268+" de 150";
+
+end;
+
+}
+
+if (getskilllv(268) == 4) {
+if (Muralha != 1) {end;}
+if (skill268 >= 200) {skill 268,5,0; set skill268,0; dispbottom "[Sys] Level up"; end;}
+set skill268,skill268 +1;
+dispbottom "[Jutsu level] Muralha de Chakra level 4: "+skill268+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

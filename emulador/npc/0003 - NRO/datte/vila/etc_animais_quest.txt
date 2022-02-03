@@ -1,0 +1,238 @@
+cmd_fild01,190,91,5	script	Galinha#1::galinha_um	800,{
+
+if (galinha1 == 1) {mes "Você já alimentou essa galinha"; close;}
+if (checkquest(2008) == 1) goto L_go;
+if (checkquest(2009) == 1) goto L_go;
+if (checkquest(2010) == 1) goto L_go;
+if (checkquest(2011) == 1) goto L_go;
+if (checkquest(2012) == 1) goto L_go;
+if (checkquest(2013) == 1) goto L_go;
+if (checkquest(2014) == 1) goto L_go;
+if (checkquest(2015) == 1 ) goto L_go;
+if (checkquest(2016) == 1) goto L_go;
+
+mes "Cluck cluck";
+close;
+
+L_go:
+mes "É preciso 10 sementes pra alimentar uma galinha";
+mes "Gostaria de alimentar a galinha?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+if (countitem(7193) < 10) {mes "Você não tem 10 sementes pra alimentar uma galinha"; close;}
+mes "Você alimentou a galinha";
+delitem 7193,10;
+set galinhafeed, galinhafeed +1;
+set galinha1,1;
+if (galinhafeed == 3) {getitem 720,1; close;}
+close;
+
+L_nao:
+close;
+
+}
+
+
+prt_fild09,350,179,5	duplicate(galinha_um)	Galinha#1.1	800
+abyss_01,66,257,5	duplicate(galinha_um)	Galinha#1.2	800
+ama_fild01,254,242,5	duplicate(galinha_um)	Galinha#1.3	800
+
+cmd_fild01,271,240,5	script	Galinha#2::galinha_dois	800,{
+
+if (galinha2 == 1) {mes "Você já alimentou essa galinha"; close;}
+if (checkquest(2008) == 1) goto L_go;
+if (checkquest(2009) == 1) goto L_go;
+if (checkquest(2010) == 1) goto L_go;
+if (checkquest(2011) == 1) goto L_go;
+if (checkquest(2012) == 1) goto L_go;
+if (checkquest(2013) == 1) goto L_go;
+if (checkquest(2014) == 1) goto L_go;
+if (checkquest(2015) == 1 ) goto L_go;
+if (checkquest(2016) == 1) goto L_go;
+
+mes "Cluck cluck";
+close;
+
+L_go:
+mes "É preciso 10 sementes pra alimentar uma galinha";
+mes "Gostaria de alimentar a galinha?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+if (countitem(7193) < 10) {mes "Você não tem 10 sementes pra alimentar uma galinha"; close;}
+mes "Você alimentou a galinha";
+delitem 7193,10;
+set galinhafeed, galinhafeed +1;
+set galinha2,1;
+if (galinhafeed == 3) {getitem 720,1; close;}
+close;
+
+L_nao:
+close;
+
+}
+
+
+prt_fild09,93,274,5	duplicate(galinha_dois)	Galinha#2.1	800
+abyss_01,278,154,5	duplicate(galinha_dois)	Galinha#2.2	800
+ama_fild01,360,125,5	duplicate(galinha_dois)	Galinha#2.3	800
+
+cmd_fild01,122,207,5	script	Galinha#3::galinha_tres	800,{
+
+if (galinha3 == 1) {mes "Você já alimentou essa galinha"; close;}
+if (checkquest(2008) == 1) goto L_go;
+if (checkquest(2009) == 1) goto L_go;
+if (checkquest(2010) == 1) goto L_go;
+if (checkquest(2011) == 1) goto L_go;
+if (checkquest(2012) == 1) goto L_go;
+if (checkquest(2013) == 1) goto L_go;
+if (checkquest(2014) == 1) goto L_go;
+if (checkquest(2015) == 1 ) goto L_go;
+if (checkquest(2016) == 1) goto L_go;
+
+mes "Cluck cluck";
+close;
+
+L_go:
+mes "É preciso 10 sementes pra alimentar uma galinha";
+mes "Gostaria de alimentar a galinha?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+if (countitem(7193) < 10) {mes "Você não tem 10 sementes pra alimentar uma galinha"; close;}
+mes "Você alimentou a galinha";
+delitem 7193,10;
+set galinhafeed, galinhafeed +1;
+set galinha3,1;
+if (galinhafeed == 3) {getitem 720,1; close;}
+close;
+
+L_nao:
+close;
+
+}
+
+
+prt_fild09,316,364,5	duplicate(galinha_tres)	Galinha#3.1	800
+abyss_01,175,246,5	duplicate(galinha_tres)	Galinha#3.2	800
+ama_fild01,88,198,5	duplicate(galinha_tres)	Galinha#3.3	800
+
+hu_fild03,125,297,5	script	Vaca#1::vaca_um	957,{
+
+if (vaca1 == 1) {mes "Você já alimentou essa vaca"; close;}
+if (checkquest(2008) == 1) goto L_go;
+if (checkquest(2009) == 1) goto L_go;
+if (checkquest(2010) == 1) goto L_go;
+if (checkquest(2011) == 1) goto L_go;
+if (checkquest(2012) == 1) goto L_go;
+if (checkquest(2013) == 1) goto L_go;
+if (checkquest(2014) == 1) goto L_go;
+if (checkquest(2015) == 1 ) goto L_go;
+if (checkquest(2016) == 1) goto L_go;
+
+mes "Muu";
+close;
+
+L_go:
+mes "É preciso 10 capins pra alimentar uma vaca";
+mes "Gostaria de alimentar a vaca?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+if (countitem(7194) < 10) {mes "Você não tem 10 capins pra alimentar uma vaca"; close;}
+mes "Você alimentou a vaca";
+delitem 7194,10;
+set vacafeed, vacafeed +1;
+set vaca1,1;
+if (vacafeed == 3) {getitem 931,1; close;}
+close;
+
+L_nao:
+close;
+
+}
+
+moc_fild01,178,194,5	duplicate(vaca_um)	Vaca#1.1	957
+um_fild01,212,269,5	duplicate(vaca_um)	Vaca#1.2	957
+ein_fild08,56,219,5	duplicate(vaca_um)	Vaca#1.3	957
+
+hu_fild03,314,133,5	script	Vaca#2::vaca_dois	957,{
+
+if (vaca2 == 1) {mes "Você já alimentou essa vaca"; close;}
+if (checkquest(2008) == 1) goto L_go;
+if (checkquest(2009) == 1) goto L_go;
+if (checkquest(2010) == 1) goto L_go;
+if (checkquest(2011) == 1) goto L_go;
+if (checkquest(2012) == 1) goto L_go;
+if (checkquest(2013) == 1) goto L_go;
+if (checkquest(2014) == 1) goto L_go;
+if (checkquest(2015) == 1 ) goto L_go;
+if (checkquest(2016) == 1) goto L_go;
+
+mes "Muu";
+close;
+
+L_go:
+mes "É preciso 10 capins pra alimentar uma vaca";
+mes "Gostaria de alimentar a vaca?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+if (countitem(7194) < 10) {mes "Você não tem 10 capins pra alimentar uma vaca"; close;}
+mes "Você alimentou a vaca";
+delitem 7194,10;
+set vacafeed, vacafeed +1;
+set vaca2,1;
+if (vacafeed == 3) {getitem 931,1; close;}
+close;
+
+L_nao:
+close;
+
+}
+
+
+moc_fild01,254,346,5	duplicate(vaca_dois)	Vaca#2.1	957
+um_fild01,138,63,5	duplicate(vaca_dois)	Vaca#2.2	957
+ein_fild08,221,306,5	duplicate(vaca_dois)	Vaca#2.3	957
+
+hu_fild03,222,168,5	script	Vaca#3::vaca_tres	957,{
+
+if (vaca3 == 1) {mes "Você já alimentou essa vaca"; close;}
+if (checkquest(2008) == 1) goto L_go;
+if (checkquest(2009) == 1) goto L_go;
+if (checkquest(2010) == 1) goto L_go;
+if (checkquest(2011) == 1) goto L_go;
+if (checkquest(2012) == 1) goto L_go;
+if (checkquest(2013) == 1) goto L_go;
+if (checkquest(2014) == 1) goto L_go;
+if (checkquest(2015) == 1 ) goto L_go;
+if (checkquest(2016) == 1) goto L_go;
+
+mes "Muu";
+close;
+
+L_go:
+mes "É preciso 10 capins pra alimentar uma vaca";
+mes "Gostaria de alimentar a vaca?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+if (countitem(7194) < 10) {mes "Você não tem 10 capins pra alimentar uma vaca"; close;}
+mes "Você alimentou a vaca";
+delitem 7194,10;
+set vacafeed, vacafeed +1;
+set vaca3,1;
+if (vacafeed == 3) {getitem 931,1; close;}
+close;
+
+L_nao:
+close;
+
+}
+
+
+moc_fild01,183,25,5	duplicate(vaca_tres)	Vaca#3.1	957
+um_fild01,282,275,5	duplicate(vaca_tres)	Vaca#3.2	957
+ein_fild08,146,148,5	duplicate(vaca_tres)	Vaca#3.3	957

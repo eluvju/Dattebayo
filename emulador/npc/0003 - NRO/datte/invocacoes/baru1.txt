@@ -1,0 +1,65 @@
+prt_fild02,163,305,5	script	Kakashi::baru1	843,{
+
+if (quest_baru1_um == 1) goto L_go;
+if(Baru1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com os Cachorros";
+next;
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Akino?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Akino
+//========================================================================
+
+L_SS:
+set quest_baru1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "Vá derrotar girinos, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido esses sapos malditos!";
+setquest 12099;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7705) < 1) goto No_Item;
+mes "Você completou seu treinamento,parabéns.";
+skill 738,4,0;
+delitem 7705,1;
+set Baru1,1;
+set quest_baru1_um,0;
+completequest 12099;
+erasequest 12099;
+cutin "inicio4",3;
+next;
+if (#nevoa == 1) {warp "kiragakure",267,258;}
+if (#suna == 1) {warp "sunagakure",171,125;}
+if (#konoha == 1) {warp "konoha3",159,193;}
+if (#nuvem == 1) {warp "nuvem",60,63;}
+close;
+
+L_no:
+close;
+
+No_Item:
+mes "Você não pegou o pergaminho ainda, volte quando pegar!";
+close;
+
+}
+
+
+moc_fild01,56,385,5	duplicate(baru1)	Kakashi#b11	843
+yuno_fild08,345,51,5	duplicate(baru1)	Kakashi#b12	843
+gef_fild04,224,92,5	duplicate(baru1)	Kakashi#b13	843

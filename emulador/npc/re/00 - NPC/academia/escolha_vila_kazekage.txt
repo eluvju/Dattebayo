@@ -1,0 +1,110 @@
+// ===== R-Athena - DATTEBAYO =======================================
+// == Kira ( NPC - Script )
+// ===== Categoria: ===========================================
+// == Prestação de serviços
+// ===== Idioma: ==============================================
+// == Português (Brasil)
+// ===== Versão Atual: ========================================
+// == 1.0 (24/02/2021)
+// ===== Compactível Com: =====================================
+// == Rathena
+// ===== Descrição Parcial: ===================================
+// == NPC Escolha Sua Vida
+// == Hokage
+// ============================================================
+
+louyang,219,118,5	script	 #Gaara_kazekage_Acad	4_m_2ndprin1,{
+	
+	if(#konoha == 1) goto ja_e_de_outra;
+	if(#suna == 1) goto ja_e_de_suna;
+	if(#nevoa == 1) goto ja_e_de_outra;
+	if(#nuvem == 1) goto ja_e_de_outra;
+	
+	cutin "gaara",2;
+	mes "[Kazekage]";
+	mes "Seja bem vindo, à reunião das 5 grandes nações";
+	next;
+	mes "[Kazekage]";
+	mes "Eu sou Gaara, Kazekage e representante de uma das nações.";
+	next;
+	voltandomenu:
+	switch( select( "Detalhes da nação.:Gostaria de me juntar à sua nação." ) ){
+		case 1:
+			mes "[Kazekage]";
+			mes "Claro, sou da nação do Vento, em que sua capital é a poderosa Vila da Areia dita como Sunagakure no sato";
+			next;
+			mes "[Kazekage]";
+			mes "Nossa vila tem vários clãs e ninjas distintos, você bem que poderia vir morar em nossa vila, mas essa decisão não é minha...";
+			next;
+			goto voltandomenu;
+		case 2:
+			mes "[Kazekage]";
+			mes "Será um grande prazer, ter você em nossa vila";
+			next;
+			mes "[Kazekage]";
+			mes "Antes que faça sua mudança, preciso que você faça seu registro no livro da vila.";
+			next;
+			if( select( "Tudo bem eu assino.:Estou meio com receio, deixe me pensar mais sobre o assunto." ) == 1 ){
+				mes "[Kazekage]";
+				mes "A claro lembrei de umas coisas, nossa vila é boa, mas existem ninjas que preferem mudar de vila e isso é possível.";
+				next;
+				mes "[Kazekage]";
+				mes "Mas pela burocracia existente a troca é complicada.";
+				next;
+				mes "[Kazekage]";
+				mes "Mais uma coisa, há algo que presamos em nossa vila, a educação entre as pessoas, por tanto respeite seus professores, senpais, amigos e acima de tudo obedeça e acate as normas e regras de seu Kazekage, no caso eu.";
+				next;
+				if( select( "Entendido Kazekage sama:Estou meio em dúvida." ) == 1 ){
+					mes "[Kazekage]";
+					mes "Hum ok, assine aqui seu nome de maneira legivel e sem gracinhas.";
+					next;
+					input .@name$;
+					mes "[Kazekage]";
+					mes "Então,esse é seu nome ^3131FF" + .@name$ + "^000000...";
+					next;
+					if(.@name$ == strcharinfo(0)){
+					mes "[Kazekage]";
+					mes "Ok...deixe-me registra-lo, enfim desejo que tenha uma ótima vida na Suna";
+					next;
+							set #suna,1;
+							mes "[Kazekage]";
+							mes "Bem Vindo a ^3131FFVila Oculta da Areia^000000!";
+							next;
+							mes "[Kazekage]";
+							mes "Dúvidas me procure";
+							next;
+							mes "[Kazekage]";
+							mes "Ah, como todo ninja você precisa passar pela academia, você agora é um estudante e deverá se formar na academia e se tornar genin.";
+							close2;
+							warp "academia",102,23;
+							savepoint "academia",102,23;
+							end;
+					}
+					mes "[Kazekage]";
+					mes " ^3131FF"+.@name$+"^000000, Este não é  o seu nome.";
+					break;		
+				}
+				mes "[Kazekage]";
+				mes "Tudo bem, para todos casos estarei aqui.";
+				break;
+			}
+			mes "[Kazekage]";
+			mes "Tudo bem, para todos casos estarei aqui.";
+			break;
+	}
+	close2;
+	end;
+	
+	ja_e_de_outra:
+		mes "^008000[ Kazekage ]^000000";
+		mes "Olá!^3131FF" + strcharinfo( 0 ) + "^000000! Vejo que você já é de outra vila.";
+		cutin "",255;
+		close;
+	
+	ja_e_de_suna:
+		mes "^008000[ Kazekage ]^000000";
+		mes "Olá!^3131FF" + strcharinfo( 0 ) + "^000000! Vejo que você já é da Suna, Vá para a academia estudar, nada de matar aula isso é errado!";
+		close2;
+		cutin "",255;
+		end;
+}

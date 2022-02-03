@@ -1,0 +1,459 @@
+//===== eAthena Script =============================================================================
+//= Mining Script
+//===== By: ========================================================================================
+//= Precious (1.4)
+//===== Edited to work with current versions of eAthena by: ========================================
+//= ChrisBowen (1.5)
+//===== Current Version: ===========================================================================
+//= 1.5
+//===== Compatible With: ===========================================================================
+//= Any eAthena Version
+//===== Description: ===============================================================================
+//= Enables the player to "mine" in certain Árvores.
+//= There are three levels to the mines
+//= To mine at lvl 1 area you have to have lvl 1 pick axe, to mine at lvl 2, level 2 pickaxe.
+//= Player will have to "learn to mine" and when they do, they will be given lvl 1 pickaxe.
+//===== Additional Comments: =======================================================================
+//= 6/14/05 - Started writing the script
+//= 6/15/05 - v.1.1 worked out the bugs and messed with the random.
+//= 6/16/05 - v.1.3 testesd all spots and added the dup coords. enjoy my script happy.gif
+//= 6/19/05 - v.1.4 fixed last minute bugs, added variables.
+//= 4/18/07 - v.1.5 added new spots to mine (ChrisBowen)
+//==================================================================================================
+//Mining quest===========================================================
+//=======================================================================
+//first level of the mine================================================
+//=======================================================================
+//= Edited script by: ===================================================
+//= ChrisBowen (1.5) (for download go to http://nopaste.php-q.net/290213=
+//=======================================================================
+pay_fild09,303,59,1	script	Árvore Frutífera::fruta	1701,{
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você encontrou com ponto para colher frutos.";
+mes "Gostaria de cortar?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto tryagain;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva quebrou...espero que tenha outro..";
+delitem 1803,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto madeira;
+if (found == 8) goto madeira;
+if (found == 9) goto madeira;
+if (found == 10) goto madeira;
+if (found == 11) goto madeira;
+if (found == 12) goto madeira;
+if (found == 13) goto madeira;
+close;
+
+carvao:
+getitem 587,1;
+set agricultorexp,agricultorexp +1;
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+goto lookagain;
+close;
+
+madeira:
+getitem 971,1;
+set agricultorexp,agricultorexp +3;
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+goto lookagain;
+close;
+
+needpickaxelvl1:
+mes "Você precisa de uma luva de agricultor para colher esses frutos.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+pay_fild09,136,67,1	duplicate(fruta)	Laranjeira#12	1701
+pay_fild09,301,213,1	duplicate(fruta)	Laranjeira#13	1701
+
+moc_fild07,54,369,1	duplicate(fruta)	Laranjeira#14	1701
+moc_fild07,133,234,1	duplicate(fruta)	Laranjeira#15	1701
+moc_fild07,123,39,1	duplicate(fruta)	Laranjeira#16	1701
+
+gef_fild12,74,86,1	duplicate(fruta)	Laranjeira#17	1701
+gef_fild12,369,186,1	duplicate(fruta)	Laranjeira#18	1701
+gef_fild12,236,280,1	duplicate(fruta)	Laranjeira#19	1701
+
+cmd_fild06,89,115,1	duplicate(fruta)	Laranjeira#110	1701
+cmd_fild06,196,30,1	duplicate(fruta)	Laranjeira#753	1701
+cmd_fild06,148,321,1	duplicate(fruta)	Laranjeira#112	1701
+
+//Second level of the mine===========================================
+//===================================================================
+pay_fild11,132,93,1	script	Bananeira::fruta2	1702,{
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 20) {mes "Seu nível de agricultor está muito baixo, é preciso nível 10 para cortar árvores nesse ponto"; close;}
+if (countitem(1803) < 1) goto needpickaxelvl2;
+mes "Você encontrou com ponto para colher frutos.";
+mes "Gostaria de cortar?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva quebrou...espero que tenha outro..";
+delitem 1803,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto madeira;
+if (found == 8) goto madeira;
+if (found == 9) goto madeira;
+if (found == 10) goto madeira;
+if (found == 11) goto madeira;
+if (found == 12) goto madeira;
+if (found == 13) goto madeira;
+close;
+
+carvao:
+getitem 587,1;
+set agricultorexp,agricultorexp +1;
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+goto lookagain;
+close;
+
+madeira:
+getitem 972,1;
+set agricultorexp,agricultorexp +3;
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+goto lookagain;
+close;
+
+needpickaxelvl2:
+mes "Você precisa de uma luva de agricultor para colher esses frutos.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+pay_fild11,218,80,1	duplicate(fruta2)	Bananeira#22	1702
+
+moc_fild14,209,219,1	duplicate(fruta2)	Bananeira#23	1702
+moc_fild14,132,368,1	duplicate(fruta2)	Bananeira#24	1702
+
+moc_fild03,72,129,1	duplicate(fruta2)	Bananeira#25	1702
+moc_fild03,270,126,1	duplicate(fruta2)	Bananeira#26	1702
+
+cmd_fild08,127,277,1	duplicate(fruta2)	Bananeira#27	1702
+cmd_fild08,338,139,1	duplicate(fruta2)	Bananeira#28	1702
+
+
+//third level of the mine============================================
+//===================================================================
+pay_fild10,320,327,1	script	Macieira::fruta3	1703,{
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 30) {mes "Seu nível de agricultor está muito baixo, é preciso nível 20 para cortar árvores nesse ponto"; close;}
+if (countitem(1803) < 1) goto needpickaxelvl3;
+mes "Você encontrou com ponto para colher frutos.";
+mes "Gostaria de cortar?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva quebrou...espero que tenha outro..";
+delitem 1803,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto madeira;
+if (found == 8) goto madeira;
+if (found == 9) goto madeira;
+if (found == 10) goto madeira;
+if (found == 11) goto madeira;
+if (found == 12) goto madeira;
+if (found == 13) goto madeira;
+close;
+
+carvao:
+getitem 587,1;
+set agricultorexp,agricultorexp +1;
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+goto lookagain;
+close;
+
+madeira:
+getitem 970,1;
+set agricultorexp,agricultorexp +3;
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+goto lookagain;
+close;
+
+needpickaxelvl3:
+mes "Você precisa de uma luva de agricultor para colher esses frutos.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+pay_fild10,300,327,1	duplicate(fruta3)	Macieira#35	1703
+pay_fild10,148,144,1	duplicate(fruta3)	Macieira#36	1703
+
+moc_fild06,111,202,1	duplicate(fruta3)	Macieira#37	1703
+moc_fild06,350,219,1	duplicate(fruta3)	Macieira#38	1703
+
+pay_fild03,359,116,1	duplicate(fruta3)	Macieira#39	1703
+pay_fild03,103,208,1	duplicate(fruta3)	Macieira#310	1703
+ein_fild01,56,104,1	duplicate(fruta3)	Macieira#311	1703
+ein_fild01,125,277,1	duplicate(fruta3)	Macieira#312	1703
+
+
+//fourth level of the mine============================================
+//===================================================================
+hu_fild03,226,192,1	script	Videira::fruta4	1700,{
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 40) {mes "Seu nível de agricultor está muito baixo, é preciso nível 30 para cortar árvores nesse ponto"; close;}
+if (countitem(1803) < 1) goto needpickaxelvl4;
+mes "Você encontrou com ponto para colher frutos.";
+mes "Gostaria de cortar?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva quebrou...espero que tenha outro..";
+delitem 1803,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto carvao;
+if (found == 1) goto carvao;
+if (found == 2) goto carvao;
+if (found == 3) goto carvao;
+if (found == 4) goto carvao;
+if (found == 5) goto carvao;
+if (found == 6) goto carvao;
+if (found == 7) goto madeira;
+if (found == 8) goto madeira;
+if (found == 9) goto madeira;
+if (found == 10) goto madeira;
+if (found == 11) goto madeira;
+if (found == 12) goto madeira;
+if (found == 13) goto madeira;
+close;
+
+carvao:
+getitem 587,1;
+set agricultorexp,agricultorexp +1;
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+goto lookagain;
+close;
+
+madeira:
+getitem 973,1;
+set agricultorexp,agricultorexp +3;
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+goto lookagain;
+close;
+
+needpickaxelvl4:
+mes "Você precisa de uma luva de agricultor para colher esses frutos.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+}
+
+hu_fild03,138,93,1	duplicate(fruta4)	Videira#42	1700
+hu_fild03,61,197,1	duplicate(fruta4)	Videira#43	1700
+
+moc_fild01,236,253,1	duplicate(fruta4)	Videira#44	1700
+moc_fild01,373,64,1	duplicate(fruta4)	Videira#45	1700
+moc_fild01,37,351,1	duplicate(fruta4)	Videira#46	1700
+
+um_fild01,227,155,1	duplicate(fruta4)	Videira#47	1700
+um_fild01,182,325,1	duplicate(fruta4)	Videira#48	1700
+um_fild01,357,329,1	duplicate(fruta4)	Videira#49	1700
+
+ein_fild08,83,311,1	duplicate(fruta4)	Videira#410	1700
+ein_fild08,256,78,1	duplicate(fruta4)	Videira#411	1700
+ein_fild08,318,240,1	duplicate(fruta4)	Videira#412	1700

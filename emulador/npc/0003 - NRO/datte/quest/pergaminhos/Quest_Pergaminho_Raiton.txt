@@ -1,0 +1,61 @@
+konoha,58,276,5	script	Ginjou::perg_cinco	831,{
+
+if (checkquest(2078) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Oi viajante, meu nome é Ginjou, sou um vendedor de pergaminhos raros";
+next;
+mes "O Pergaminho Raiton Básico é um pergaminho raro que aumenta o dano dos Jutsus de propriedade Raiton";
+mes "Gostaria de ter esse pergaminho?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Pergaminho Raiton Básico
+//========================================================================
+
+L_SS:
+next;
+mes "Para obter este pergaminho,você precisa :";
+mes "- Obter 40x Pena Macia.";
+mes "- Obter 30x Tanga de Tigre.";
+mes "- Obter 80x Garra de Ave.";
+mes "- Matar 50 Barata";
+setquest 2078;
+set quest_perg_cinco,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(perg_mobs_cinco < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7063) < 40) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7267) < 30) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(917) < 80) {mes "Você ainda não completou sua missão"; close;}
+mes "Me trouxe o que havia pedido, tome seu pergaminho!";
+completequest 2078;
+erasequest 2078;
+delitem 7063,40;
+delitem 7267,30;
+delitem 917,80;
+set quest_perg_cinco,0;
+set perg_mobs_cinco,0;
+getitem 2118,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	perg#5	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1618 && quest_perg_cinco == 1) {set perg_mobs_cinco,perg_mobs_cinco +1; announce "[Quest de equipamento] Você já derrotou "+perg_mobs_cinco+" / 50 Barata",bc_blue|bc_self; end;}
+
+}
+
+
+areia,272,246,5	duplicate(perg_cinco)	Ginjou#1	831
+kiri,178,371,5	duplicate(perg_cinco)	Ginjou#2	831
+nuvem,98,280,5	duplicate(perg_cinco)	Ginjou#3	831

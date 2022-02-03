@@ -1,0 +1,516 @@
+// (???????????????????????????? Script by ? ???????????????????????????) \\
+// (                                                                    ) \\
+// (         ___________                           __  .__              ) \\
+// (         \_   _____/____    ___________  _____/  |_|  |__           ) \\
+// (          |    __) \__  \ _/ __ \_  __ \/  _ \   __\  |  \          ) \\
+// (          |     \   / __ \\  ___/|  | \(  <_> )  | |   Y  \         ) \\
+// (          \___  /  (____  /\___  >__|   \____/|__| |___|  /         ) \\
+// (              \/        \/     \/                       \/          ) \\
+// (                                                                    ) \\
+// ( ---------------------------- SQL Only ---------------------------- ) \\
+// (                                                                    ) \\
+// ( ---------------------------- Beta 1.4 ---------------------------- ) \\
+// (                                                                    ) \\
+// ( ~ 11/08/07: Basic system.                                          ) \\
+// ( ~ 12/08/07: Update System, fixed some duplicate-bug with this.     ) \\
+// ( ~ 16/08/07: Callshop gefixt; Abbrechnung ?berarbeitet.             ) \\
+// ( ~ 20/08/07: Alpha Version is working an finished.                  ) \\
+// ( ~ 21/08/07: Function fixed to delete items.                        ) \\
+// ( ~ 17/10/07: First huge revision of the script.                     ) \\
+// ( ~ 20/12/07: New Layout; Bug Fixes.                                 ) \\
+// ( ~ 27/12/07: Fixed the dynamic menu.                                ) \\
+// ( ~ 21/01/08: Optimation to make the script working for every SVN.   ) \\
+// (                                                                    ) \\
+// ( --------------------------- Instruction: ------------------------- ) \\
+// (                                                                    ) \\
+// ( 1) Import 'installation.sql' into the SQL-DBs.                     ) \\
+// ( 2) Chose the GM Level for the Admin Menu.                          ) \\
+// ( 3) Map, coordinates and name.                                      ) \\
+// ( 4) Load the NPC.                                                   ) \\
+// ( 5) Reload the NPCs again.                                          ) \\
+// ( 6) Lock the NPC.                                                   ) \\
+// ( 7) Add items with prices.                                          ) \\
+// ( 8) Chose the way to pay.                                           ) \\
+// ( 9) First help: Chose "- Debug Help." in the Admin Menu.            ) \\
+// (                                                                    ) \\
+// ( ---------------------------- Config: ----------------------------- ) \\
+
+ama_in01.gat,30,23,4	shop	Dynamic_Shop		931,501:100,505:100,13254:5
+
+-	script	dynamic_shop_confg	-,{
+
+OnInit:
+
+	set $ds_conf[0], 99; // Instruction 2)
+
+	end;
+
+}
+
+// ( ------------------------------------------------------------------ ) \\
+                                                          
+in_hunter.gat,99,99,4	script	Name::Dynamic_Shop	762,{
+
+set @n$,"~ ^00B200Name^000000 ~";
+
+	function AMS;
+	function DEBUG_MES;
+	function RESET;
+
+	if(getgmlevel() < $ds_conf[0]){
+
+		if($dynamic_shop_sperre){
+
+			mes @n$;
+			mes "I'm sorry, the NPC has been locked by an Admin.";
+			close;
+			
+		} else if($ds_conf[2]){
+
+			mes @n$;
+			mes "Hello, I only want to advise you of the fact that you have to pay with the item ^999999" + getitemname($ds_conf[2]) + " instead of Zenys.^000000";
+			mes "^FF0000(So the amount of Zenys stands for the amount of items.)";
+			close2;
+			
+		}
+
+		callshop "Dynamic_Shop",1;
+		npcshopattach "Dynamic_Shop";
+		end;
+
+	} else {
+	
+		set @admin_menu, 0;
+		
+		while(!@admin_menu){
+	
+			mes @n$;
+			mes "Hello, what do you want to do?";
+			mes " ";
+			mes "~ ^FF0000Status:^000000 ~";
+			
+			if(!$ds_conf[2]) 
+				mes "^FF9900You pay with Zenys in the shop.";
+			else 
+				mes "^FF9900You pay with the item ^999999" + getitemname($ds_conf[2]) + " (ID: " + $ds_conf[2] + ") ^FF9900in the shop!^000000";
+				
+			if($dynamic_shop_sperre) 
+				mes "^FF0000The NPC is locked.^000000";
+				
+			next;
+
+			switch(select("- Add an item with price.:- List all item with their prices.:- Chose the way to pay.:- Lock/unlock the NPC.:- Debug Help.:- Preview of the shop.:- Nothing, thanks.")){
+
+				case 1:
+					if( (AMS("add an item with price")) && (!@AMS) ) break;
+
+					mes @n$;
+					mes "Please input the ^FF0000Item ID^000000.";
+					mes "^FF0000Attention: If it's the wrong ID, it may cause errors!";
+					next;
+					input @item_id;
+					
+					mes @n$;
+					mes "Please input now the ^FF0000Price^000000 for the items.";
+					next;
+					input @price;
+
+					mes @n$;
+					mes "Summary:";
+					mes "^FF0000Name: " + getitemname(@item_id);
+					mes "ID: " + @item_id;
+					mes "Price: " + @price + "^000000";
+					mes "Is everything fine?";
+					next;
+					if(!(select("- No!:- Yes.") -1)){ 
+					
+						mes @n$; 
+						mes "The action has been aborted."; 
+						next; 
+						break; 
+						
+					} else {
+
+						query_sql "INSERT INTO `dynamic_shop` ( `id` , `price` ) VALUES ( '"+@item_id+"' , '"+@price+"' )";
+						
+						npcshopadditem "Dynamic_Shop", @item_id, @price;
+
+						mes @n$;
+						mes "The new item has been added!";
+						next;
+						break;
+
+					}
+
+				case 2:
+					set @admin_menu,1;
+					
+						while(@admin_menu){
+						
+							RESET(1);
+
+							query_sql "SELECT * FROM `dynamic_shop`", @id_all, @price_all;
+
+							if(!@id_all[0]){
+							
+								set @admin_menu,0;
+
+								mes @n$;
+								mes "You don't have added any ^FF0000Items^000000 yet..";
+								next;
+								
+							} else {
+
+								mes @n$;
+								mes "All of the ^FF0000Items^000000 will now be listed as a Menu.";
+								mes "If you want to delete one, you may chose it.";
+								mes "^FF0000Attention:^000000 Name ( ID , Price ).";
+								next;
+								
+								set .@menu_d$, "- " + getitemname(@id_all[0]) + " ( " + @id_all[0] + " , " + @price_all[0] + " )";
+
+								for( set @i, 1; @i < getarraysize(@id_all); set @i, @i + 1) 
+									set .@menu_d$, .@menu_d$ +  ":- " + getitemname(@id_all[@i]) + " ( " + @id_all[@i] + " , " + @price_all[@i] + " )";
+
+								set .@menu_d$, .@menu_d$ + ":- I'm finished, thanks.";
+
+								set @m, select (.@menu_d$) - 1;
+
+								if(@m == getarraysize(@id_all)){
+								
+									set @admin_menu, 0;
+									break;
+									
+								}
+
+								mes @n$;
+								mes "Do you want to delete the ^FF0000Item^000000 ^FF0000" + getitemname(@id_all[@m]) + "^000000 with the ID ^FF0000" + @id_all[@m] + "^000000?";
+								next;
+								if(select("- No.:- Yes!") -1){ 
+
+									query_sql "DELETE FROM `dynamic_shop` WHERE `id` = '"+@id_all[@m]+"'";
+									
+									npcshopdelitem "Dynamic_Shop", @id_all[@m];
+
+									mes @n$;
+									mes "The item has been deleted.";
+									next;
+					
+								}
+							
+							}
+						
+						}
+
+					break;
+
+				case 3:
+					if( (AMS("chose the way to pay")) && (!@AMS) ) break;
+
+					set @backup, $ds_conf[2];
+
+					mes @n$;
+					mes "Please input the ^999999ID^000000 of an ^FF0000Item^000000 to be payed with.";
+					mes "^FF0000Attention: Insert 0 means pay with Zenys.";
+					next;
+					input $ds_conf[2];
+					
+					if(!$ds_conf[2]){
+
+						mes @n$;
+						mes "Should you pay with ^999999Zenys^000000 in the shop?";
+						next;
+						if(!(select("- Nein!:- Ja.") -1)){
+						
+							mes @n$; 
+							mes "Aborted."; 
+							next; 
+							set $ds_conf[2], @backup;
+							break;
+							
+						} else {
+						
+							mes @n$;
+							mes "You will pay with ^999999Zenys^000000 nowt.";
+							next;
+							break;
+					
+						}
+
+					} else {
+
+						mes @n$;
+						mes "^FF0000Name : " + getitemname($ds_conf[2]) + "^000000";
+						mes "^999999Item ID: " + $ds_conf[2];
+						mes "^000000Everything right?";
+						next;
+						if(!(select("- No, it's not.:- Yes.") -1)){
+
+							set $ds_conf[2], @backup;
+			
+							mes @n$;
+							mes "Aborted..";
+							
+							if(!$ds_conf[2])
+								mes "You will continue on paying with ^999999Zenys^000000.";
+							else 
+								mes "You will continue on paying with the ^FF0000Item^000000 " + getitemname($ds_conf[2]) + " gezahlt.";
+
+							next;
+							break;
+
+						}
+
+						mes @n$;
+						mes "Thank you.";
+						mes "You will now have to pay with the ^FF0000Item^000000 " + getitemname($ds_conf[2]) + ".";
+						next;
+						break;
+
+					}
+
+
+				case 4:
+					mes @n$;
+				
+					if($ue_sperre) 
+						mes "Do you want to ^FF0000unlock^000000 the NPC?";
+					else 
+						mes "Do you want to^FF0000lock^000000 the NPC?";
+
+					next;
+					if(!(select("- No.:- Yes.") -1)) break;
+
+					mes @n$;
+
+					if($ue_sperre){
+
+						set $ue_sperre,0;
+						mes "The NPC is now ^FF0000no longer locked^000000.";
+						
+					} else {
+					
+						set $ue_sperre,1;
+						mes "The NPC has been ^FF0000locked^000000.";
+
+					}
+		
+					next;
+					break;
+
+
+				case 5:
+					mes @n$;
+					mes "If you find any bugs usw, please inform ^33CC00Faeroth | Kaze^000000.";
+					mes "Contact me:";
+					mes "MSN: faeroth@hotmail.de";
+					mes "ICQ: 284-209-043";
+					mes "eAthena: F!re";
+					next;
+					mes @n$;
+					mes "First help:";
+					mes "- Are the Item-IDs all right?";
+					mes "- [...] (will follow)";
+					next;
+					mes @n$;
+					mes "Scripted and CopyRight by ^33CC00Faeroth | Kaze^000000 ?.";
+					next;
+					break;
+				
+				case 6:
+					if( (AMS("see the preview of the shop")) && (!@AMS) ) break;
+
+					mes @n$;
+					mes "The shop will be open now...";
+					close2;
+					
+					if($ds_conf[2]){
+
+						mes @n$;
+						mes "Hello, I only want to advise you of the fact that you have to pay with the item ^999999" + getitemname($ds_conf[2]) + " instead of Zenys.^000000";
+						mes "^FF0000(So the amount of Zenys stands for the amount of items.)";
+						close2;
+
+					}
+
+					callshop "Dynamic_Shop",1;
+					npcshopattach "Dynamic_Shop";
+					end;
+
+				case 7:
+					mes @n$;
+					mes "I'm always to your command.";
+					set @admin_menu, 1;
+					break;
+			}
+			
+		}
+		
+		close;
+
+	}
+	
+OnBuyItem:
+
+	set @price, 0;
+	set @quantity, 0;
+
+	RESET(1);
+
+	query_sql "SELECT * FROM `dynamic_shop`", @id_all, @price_all;
+	
+	if(!@id_all[0]) DEBUG_MES(0);
+
+	if(!$ds_conf[2]){
+
+		for( set @i, 0; @i < getarraysize(@bought_nameid); set @i, @i + 1)
+			for( set @z, 0; @z < getarraysize(@id_all); set @z, @z + 1)
+				if(@id_all[@z] == @bought_nameid[@i])
+					set @price, @price + (@price_all[@z] * @bought_quantity[@i]);
+
+		if(Zeny < @price){
+
+			RESET(0);
+
+			mes @n$;
+			mes "You don't have enough Zenys..";
+			close;
+
+		} else {
+
+			set Zeny, Zeny - @price;
+
+			for( set @i,0; @i < getarraysize(@bought_nameid); set @i, @i + 1) 
+				getitem @bought_nameid[@i], @bought_quantity[@i];
+
+			RESET(0);
+			end;
+		
+		}
+
+	} else {
+
+		for( set @i, 0; @i < getarraysize(@bought_nameid); set @i, @i + 1)
+			for( set @z, 0; @z < getarraysize(@id_all); set @z, @z + 1)
+				if(@id_all[@z] == @bought_nameid[@i])
+					set @quantity, @quantity + (@price_all[@z] * @bought_quantity[@i]);
+
+		mes "~ ^999999Bill^000000 ~";
+		
+		for( set @i, 0; @i < getarraysize(@bought_nameid); set @i, @i + 1 ) 
+			mes "^FF0000" + getitemname(@bought_nameid[@i]) + ": " + @bought_quantity[@i] + "^000000";
+
+		mes "This will cost you ^999999" + @quantity + " " + getitemname($ds_conf[2]) + "^000000!";
+		mes "Do you want to complete the purchase?";
+		next;
+		if(!(select("- No, I don't..:- Yes, I do.") -1)){ RESET(0); mes @n$; mes "The purchase has been aborted."; close; }
+
+		if(countitem($ds_conf[2]) < @quantity){
+
+			RESET(0);
+
+			mes @n$;
+			mes "I'm sorry, you don't have enough ^999999" + getitemname($ds_conf[2]) + "^000000...";
+			close;
+
+		} else {
+
+			delitem $ds_conf[2], @quantity;
+
+			for( set @i, 0; @i < getarraysize(@bought_nameid); set @i, @i + 1 ) 
+				getitem @bought_nameid[@i], @bought_quantity[@i];
+				
+			RESET(0);
+				
+			mes @n$;
+			mes "Thank you for your purchase.";
+			close;
+
+		}
+
+	}
+
+// ( -------------------------- Functions: --------------------------- ) \\
+
+	function AMS {
+
+	// ( ------- Admin Menu Security-Question -------- ) \\
+	// ( --------- getarg(0) - Menu point ------------ ) \\
+
+		mes @n$;
+		mes "Do you really want to " + getarg(0) + "?";
+		next;
+		set @AMS, select("- No.:- Yes!") - 1;
+		
+		return 1;
+		
+	}
+
+	function DEBUG_MES {
+
+	// ( ----- If the SQL-DBs are empty ----- ) \\
+	// ( ------- getarg(0) - Player --------- ) \\
+	// ( ------- getarg(1) - Admin ---------- ) \\
+
+		if(!getarg(0)){
+
+			mes @n$;
+			mes "^FF0000I'm sorry, it seems that there was a SQL-Error.^000000";
+			mes "Please try again in short.";
+			mes "If this isn't the first time, please inform a Gamemaster!";
+			close;
+			
+		} else {
+		
+			mes @n$;
+			mes "^FF0000There was a SQL-Error.^000000";
+			mes "Make sure that the tables do exist and that they are not empty!";
+			close;
+			
+		}
+		
+	}
+
+	function RESET {
+
+	// ( ---------------------- Reset of the Variables -------------------- ) \\
+	// ( -------- getarg(0) - 1 for SQL-RESET; 0 for OnBuyItem-RESET. ----- ) \\
+
+		if(getarg(0)){
+		
+			deletearray @id_all, getarraysize(@id_all);
+			deletearray @price_all, getarraysize(@price_all);
+			
+		} else {
+		
+			deletearray @bought_quantity, getarraysize(@bought_quantity);
+			deletearray @bought_nameid, getarraysize(@bought_nameid);
+
+		}
+		
+		return;
+
+	}
+	
+// ( ------------------------------------------------------------------ ) \\
+
+OnInit:
+
+
+
+  	npcshopdelitem "Dynamic_Shop", 512;
+
+	query_sql "SELECT * FROM `dynamic_shop`", .id_all, .price_all;
+	
+	if(!.id_all[0])
+		end;
+	
+	npcshopitem "Dynamic_Shop", .id_all[0], .price_all[0];
+	
+	for( set .i, 1; .i < getarraysize(.id_all); set .i, .i + 1 ) 
+		npcshopadditem "Dynamic_Shop", .id_all[.i], .price_all[.i];
+
+	end;
+	
+}
+

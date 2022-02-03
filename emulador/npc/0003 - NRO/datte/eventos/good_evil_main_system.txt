@@ -1,0 +1,150 @@
+function	script	reputation_check	{
+	set .@rep,getarg(0,0);
+	if( .@rep < 0 )
+		set .@rep,-.@rep;
+	else
+		return 0;
+	return .@rep;
+}
+function	script	get_jail_time	{	//minute	
+	return getarg(0,0);
+}
+-	script	Good_Evil_System	-1,{
+	function	limit_map	{
+		getmapxy(.@m$,.@x,.@y,0);
+		for(set .@i,0;getarg(.@i,"")!="";set .@i,.@i+1)
+		{
+			if(.@m$==getarg(.@i))
+				return 1;
+		}
+		return 0;
+	}
+OnPCKillEvent:
+if( getcharid(3) == killedrid) end;
+	set .@tcid, getcharid(0, rid2name(killedrid));
+	callfunc "spidfy_Kill_system",getcharid(3),killedrid;
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {end;}
+	if (nukenin == 1) {end;}
+	if( limit_map("pvp_y_2-3","guild_vs2-1", "guild_vs2-2","guild_vs1-1","job_knt","pvp_n_1-5","bat_c01","prt_are01","job_thief1","guild_vs2","guild_vs3","alde_tt02","prt_maze03","prt_maze02","pvp_n_5-1","pvp_n_5-2","pvp_n_5-3","pvp_n_5-4","pvp_n_5-5","gl_step", "job3_arch01","izlu2dun","pvp_n_4-3","pvp_n_5-5","pvp_n_6-5","pvp_n_7-5","pvp_n_8-5","gonryun","moc_pryd04","prtg_cas03","payg_cas02","prtg_cas01","gefg_cas04","bat_b02","bat_b01","prt_maze02","vend_zone","poring_c01") )
+		end;
+	if( .@tcid == bounty_target )
+	{
+		set bounty_target,0;
+		message strcharinfo(0)," Você recebeu 1 ponto de lealdade a Vila!";
+		set reputation, reputation+1;
+	}else
+	{
+		set .@li, callfunc("get_land_value");
+		set .@oaid, getcharid(3);
+		if( attachrid(killedrid) )
+		{
+			if (nukenin == 1) {set .@var2, 1;}
+			if( killerrid == .@oaid && callfunc("get_land_value") == .@li && .@li )
+				set .@bool, 1;
+			else
+				set .@bool, 0;
+			detachrid;
+			attachrid .@oaid;
+			if( .@bool == 1 ) && (.@var2 != 1)
+			{
+				message strcharinfo(0)," Você perdeu 1 ponto de lealdade a Vila!";
+				set reputation, reputation-1;
+				set bad_guy_time, gettimetick(2);
+			}else
+				end;
+			set .@rc, callfunc("reputation_check", reputation);
+			set .@ji, callfunc("get_jail_time", .@rc);
+			
+			if( .@rc && .@ji && countitem(19020)==0 && countitem(19195)==0 && countitem(19196)==0 && countitem(19197)==0 && !.@var && !.@var2)
+			{
+				query_sql "INSERT `jail_record` VALUES(NULL,"+getcharid(3)+","+getcharid(0)+","+(.@ji+1)+")";
+				atcommand "@jailfor "+.@ji+"mn "+strcharinfo(0);
+				message strcharinfo(0)," Você foi preso por "+.@ji+" minutos, por atacar membros de sua vila!";
+			}
+		}
+	}
+	end;
+OnInit:
+	Initnpctimer;
+	end;
+OnTimer60000:
+	query_sql "SELECT `char_id` FROM `global_reg_value` WHERE `str` = 'bad_guy_time' AND "+gettimetick(2)+" - `value` > 86400 LIMIT 127", .@tcid;
+	set .@num, getarraysize(.@tcid);
+	for(set .@i,0; .@i<.@num; set .@i,.@i+1)
+	{
+		query_sql "SELECT `account_id` FROM `char` WHERE `char_id` = "+.@tcid[.@i]+"",.@taid;
+		set .@taid, .@taid[0];
+		if( isloggedin(.@taid,.@tcid[.@i]) )
+		{
+			attachrid .@taid;
+			if( reputation < 0 )
+			{
+				set reputation,0;
+				set bad_guy_time,0;
+				dispbottom "Sua reputação de vila negativa foi removida, continue assim";
+			}
+			detachrid;
+		}else
+		{
+			query_sql "DELETE FROM `global_reg_value` WHERE `str` = 'bad_guy_time' AND `char_id` = "+.@tcid[.@i]+"";
+			query_sql "DELETE FROM `global_reg_value` WHERE `str` = 'reputation' AND `value` < 0 AND `char_id` = "+.@tcid[.@i]+"";
+		}
+	}
+	query_sql "UPDATE `jail_record` SET `time` = `time`-1 WHERE `time` > 0";
+	query_sql "SELECT `account_id`,`char_id` FROM `jail_record` WHERE `time` = 0 LIMIT 127",.@aid,.@cid;
+	set .@num,getarraysize(.@cid);
+	for(set .@i,0; .@i<.@num; set .@i,.@i+1)
+	{
+		if(attachrid(.@aid[.@i]))
+		{
+			atcommand "@unjail "+strcharinfo(0);
+			query_sql "DELETE FROM `jail_record` WHERE `char_id` ="+.@cid[.@i];
+			announce "Você foi libertado",bc_self;
+		}
+		detachrid;
+	}
+	query_sql "DELETE FROM `jail_record` WHERE `time` = 0";
+	Initnpctimer;
+	end;
+OnPCLoginEvent:
+ sleep2 1;
+	set .@cid, 0;
+	set .@ocid, getcharid(0);
+	query_sql "SELECT `time` FROM `jail_record` WHERE `char_id` ="+.@ocid,.@time;
+	if( .@time )
+		end;
+	else
+	{
+		if( CONST_JAIL_TIMER > 0 )
+			end;
+		else
+		{
+			getmapxy(.@m$,.@x,.@y,0);
+			if( .@m$ == "sec_pri" )
+			{
+				atcommand "@unjail "+strcharinfo(0);
+				warp "kakashi",76,170;
+			}
+		}
+	}
+	end;
+OnPCLogoutEvent:
+	set .@ocid, getcharid(0);
+	set .@oaid, getcharid(3);	
+	detachrid;
+	sleep2 1000;
+	query_sql "SELECT `tick` FROM `sc_data` WHERE `type` = 249 AND `char_id` ="+.@ocid,.@time;
+	query_sql "DELETE FROM `global_reg_value` WHERE `str` = 'CONST_JAIL_TIMER' AND `char_id` ="+.@ocid;
+	if( .@time )
+		query_sql "INSERT INTO `global_reg_value` VALUES ("+.@ocid+", 'CONST_JAIL_TIMER','1', 3, 0)";
+	end;
+/*
+CREATE TABLE IF NOT EXISTS `jail_record` (
+	`id` int(11) NOT NULL auto_increment,
+	`account_id` int(11) unsigned NOT NULL default '0',
+	`char_id` int(11) unsigned NOT NULL default '0',
+	`time` int(11) unsigned NOT NULL default '0',
+	KEY (`id`)
+) ENGINE=MyISAM;
+*/
+}

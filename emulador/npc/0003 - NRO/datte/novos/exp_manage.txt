@@ -1,0 +1,87 @@
+-	script	EXPEvent2	-1,{
+OnEXPGainEvent:
+
+//if (genin == 1) {set base_exp, base_exp * 2; end;}
+//if (chunin == 1) {set base_exp, base_exp * 2; end;}
+//if (jounin == 1) {set base_exp, base_exp * 2; end;}
+	
+}
+
+//-	script	EXPEvent4	-1,{
+//OnEXPGainEvent:
+
+//    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+//    if( .@mapname$ == "hu_fild02") {set base_exp, base_exp * 3; end;}
+
+//    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+//  if( .@mapname$ == "ve_fild04") {set base_exp, base_exp * 3; end;}
+
+//    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+//  if( .@mapname$ == "lhz_fild03") {set base_exp, base_exp * 3; end;}
+
+//    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+//    if( .@mapname$ == "ra_fild01") {set base_exp, base_exp * 2; end;}
+	
+//}
+
+-	script	EXPEvent5	-1,{
+
+//OnEXPGainEvent:
+
+
+//set $boost, base_exp * @recebeu3/50;
+//set base_exp, base_exp + $boost;
+//end;
+	
+}
+
+-	script	EXPEvent3	-1,{
+OnEXPGainEvent:
+
+if (BaseLevel >= 700) {set base_exp, base_exp / 2; end;}
+//if (BaseLevel < 200) {set base_exp, base_exp * 2; end;}
+
+//if(getgmlevel() == 1) goto L_vip;
+
+//if (title$ == "RankS") {set base_exp, base_exp * 150/1000; end;}
+//if (title$ == "RankA") {set base_exp, base_exp * 100/1000; end;}
+//if (title$ == "RankB") {set base_exp, base_exp * 70/1000; end;}
+//if (title$ == "RankC") {set base_exp, base_exp * 50/1000; end;}
+//if (title$ == "RankD") {set base_exp, base_exp * 2; end;}
+//if (BaseLevel > 500) && (BaseLevel < 700) {set base_exp, base_exp / 2; end;}
+//if (BaseLevel > 700) && (BaseLevel < 900) {set base_exp, base_exp / 4; end;}
+//if (BaseLevel > 900) && (BaseLevel < 950) {set base_exp, base_exp / 18; end;}
+//if (BaseLevel > 950) && (BaseLevel < 990) {set base_exp, base_exp / 32; end;}
+//if (BaseLevel > 990) {set base_exp, base_exp / 64; end;}
+//if (title$ == "RankE") {set base_exp, base_exp * 2; end;}
+
+
+//L_vip:
+
+//if (title$ == "RankS") {set base_exp, base_exp * 200/1000; end;}
+//if (title$ == "RankA") {set base_exp, base_exp * 150/1000; end;}
+//if (title$ == "RankB") {set base_exp, base_exp * 120/1000; end;}
+//if (title$ == "RankC") {set base_exp, base_exp * 100/1000; end;}
+//if (title$ == "RankD") {set base_exp, base_exp * 70/1000; end;}
+
+}
+
+-	script	EXPEvent56	-1,{
+
+//OnPCLoginEvent:
+
+//set @quantosonline,query_sql("SELECT `account_id`,COUNT(`account_id`) FROM `char` WHERE `online` = 1");
+//dispbottom "Bonus de exp por jogadores online = "+@quantosonline+" porcento";
+//end;
+
+}
+
+-	script	EXPEvent57	-1,{
+
+//OnPCLogoutEvent:
+//query_sql "SELECT (`onlinenow`) FROM `online` WHERE `char_id` = 1", @recebeu2;
+//if (@recebeu2 <= 0) {end;}
+//query_sql("UPDATE `online` SET `onlinenow` = `onlinenow` - 1 WHERE `char_id` = 1");
+//end;
+
+}

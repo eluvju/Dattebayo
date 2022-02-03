@@ -1,0 +1,29 @@
+//===== rAthena Script =======================================
+//= Mapflag: Disable Warp Portal memory.
+//===== By: ==================================================
+//= rAthena Dev Team
+//===== Current Version: =====================================
+//= 2.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: ========================================= 
+//= Prevents players from using /memo on a map.
+//= Also disables marriage warp skills.
+//===== Additional Comments: ================================= 
+//= 1.6a Added up to Hugel maps. [Lupus]
+//= 1.6b Added job_knt map. [Samuray22]
+//= 1.7 Added all novice maps. [L0ne_W0lf]
+//= 1.8 Added nameless_i location. [Lupus]
+//= 1.8a Removed duplicate gef_cas nomemo mapflags. [Yommy]
+//= 1.8b Removed duplicate arug_dun01 & schg_dun01 entries. [Gepard]
+//= 1.9 Updated. [L0ne_W0lf]
+//= 2.0 Renewal split. [Euphy]
+//============================================================
+
+dali02	mapflag	nomemo
+xmas_fild01	mapflag	nomemo
+thor_v03	mapflag	nomemo
+bif_fild02	mapflag	nomemo
+gonryun	mapflag	nomemo
+nif_fild01	mapflag	nomemo
+iz_dun03	mapflag	nomemo

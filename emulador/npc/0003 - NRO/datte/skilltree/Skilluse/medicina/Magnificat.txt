@@ -1,0 +1,57 @@
+-	script	useChikatsu	-1,{
+    end;
+//When a Character uses a skill
+
+//Chikatsu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 74) {
+
+
+if (getskilllv(74) == 1) {
+
+if (Chikatsu != 1) {end;}
+if (skill74 >= 50) {skill 74,2,0; set skill74,0; dispbottom "[Sys] Level up"; end; }
+set skill74,skill74 +1;
+dispbottom "[Jutsu level] Chikatsu no Jutsu level 1: "+skill74+" de 50";
+
+end;
+
+}
+
+if (getskilllv(74) == 2) {
+if (Chikatsu != 1) {end;}
+if (skill74 >= 100) {skill 74,3,0; set skill74,0; dispbottom "[Sys] Level up"; end;}
+set skill74,skill74 +1;
+dispbottom "[Jutsu level] Chikatsu no Jutsu level 2: "+skill74+" de 100";
+
+end;
+
+}
+
+if (getskilllv(74) == 3) {
+
+if (Chikatsu != 1) {end;}
+if (skill74 >= 150) {skill 74,4,0; set skill74,0; dispbottom "[Sys] Level up"; end;}
+set skill74,skill74 +1;
+dispbottom "[Jutsu level] Chikatsu no Jutsu level 3: "+skill74+" de 150";
+
+end;
+
+}
+
+if (getskilllv(74) == 4) {
+if (Chikatsu != 1) {end;}
+if (skill74 >= 200) {skill 74,5,0; set skill74,0; dispbottom "[Sys] Level up"; end;}
+set skill74,skill74 +1;
+dispbottom "[Jutsu level] Chikatsu no Jutsu level 4: "+skill74+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

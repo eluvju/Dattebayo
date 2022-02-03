@@ -1,0 +1,101 @@
+hu_fild07,142,367,5	script	Shikon no Jutsu::medint9	831,{
+
+if (getskilllv(54) >= 1) goto L_delete;
+if(med_intermediario != 1) {mes "Você precisa estudar medicina intermediária antes de aprender essa técnica de medicina"; close;}
+if (checkquest(2113) == 1) goto L_go;
+if(med_skill_int >= 3) {mes "Você já aprendeu três técnicas de medicinas intermediárias, esse é o limite"; close;}
+if(accept_med_int == 3) {mes "Você já aceitou três treinamentos pra realizar de medicina"; close;}
+if (WeaponLvl4 < 40) {mes "Seu nível de Medicina está baixo demais, é preciso ter nível 40 ou mais pra aprender esse Medicina"; close;}
+if(Shikon == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de medicina espalhados pelo mundo, eu posso lhe ensinar um medicina intermediária";
+next;
+mes "A medicina que eu ensino é o: Shikon no Jutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Shikon no Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(54) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(54) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 54,0,0;
+set Shikon,0;
+erasequest 2113;
+if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}
+if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_med_int_nove,1;
+set accept_med_int,accept_med_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter Medicina intermedário level 40";
+mes "- Derrotar 30 Pakkun.";
+mes "- Obter 20 Madeira";
+mes "- Obter 100 Avelã ";
+mes "- Obter 15 Bolinha de Gude";
+setquest 2113;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(med_skill_int >= 3) {mes "Você já aprendeu três medicinas intermediárias, esse é o limite"; close;}
+if(med_int_mobs_nove < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7068) <20) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1026) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(746) < 15) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7068,20;
+delitem 1026,100;
+delitem 746,15;
+skill 54,1,0;
+set Shikon,1;
+set quest_med_int_nove,0;
+set med_int_mobs_nove, 0;
+completequest 2113;
+erasequest 2113;
+set med_skill_int,med_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Medicina Intermediária]",0;
+}
+
+-	script	medint#9	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1296 && quest_med_int_nove == 1) {set med_int_mobs_nove,med_int_mobs_nove +1; announce "[Medicina Quest] Você já derrotou "+med_int_mobs_nove+" / 30 Pakkun",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_07,186,96,5	duplicate(medint9)	Shikon no Jutsu#41	831,{
+mjolnir_02,347,333,5	duplicate(medint9)	Shikon no Jutsu#42	831,{
+moc_fild08,35,361,5	duplicate(medint9)	Shikon no Jutsu#43	831,{

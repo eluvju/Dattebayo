@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillM02	-1,{
+    end;
+//When a Character uses a skill
+
+//Chiyute
+
+onPcUseSkillEvent:
+
+           if(lskillid == 28) {
+
+
+if (getskilllv(28) == 1) {
+
+if (Chiyute != 1) {end;}
+if (skill28 >= 50) {skill 28,2,0; set skill28,0; dispbottom "[Sys] Level up"; end; }
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 1: "+skill28+" de 50";
+
+end;
+
+}
+
+if (getskilllv(28) == 2) {
+if (Chiyute != 1) {end;}
+if (skill28 >= 100) {skill 28,3,0; set skill28,0; dispbottom "[Sys] Level up"; end;}
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 2: "+skill28+" de 100";
+
+end;
+
+}
+
+if (getskilllv(28) == 3) {
+
+if (Chiyute != 1) {end;}
+if (skill28 >= 150) {skill 28,4,0; set skill28,0; dispbottom "[Sys] Level up"; end;}
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 3: "+skill28+" de 150";
+
+end;
+
+}
+
+if (getskilllv(28) == 4) {
+if (Chiyute != 1) {end;}
+if (skill28 >= 200) {skill 28,5,0; set skill28,0; dispbottom "[Sys] Level up"; end;}
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 4: "+skill28+" de 200";
+
+end;
+
+}
+
+if (getskilllv(28) == 5) {
+if (Chiyute != 1) {end;}
+if (skill28 >= 250) {skill 28,6,0; set skill28,0; dispbottom "[Sys] Level up"; end;}
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 5: "+skill28+" de 250";
+
+end;
+
+}
+
+if (getskilllv(28) == 6) {
+if (Chiyute != 1) {end;}
+if (skill28 >= 300) {skill 28,7,0; set skill28,0; dispbottom "[Sys] Level up"; end;}
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 6: "+skill28+" de 300";
+
+end;
+
+}
+
+if (getskilllv(28) == 7) {
+if (Chiyute != 1) {end;}
+if (skill28 >= 500) {skill 28,8,0; set skill28,0; dispbottom "[Sys] Level up"; end;}
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 7: "+skill28+" de 500";
+
+end;
+
+}
+
+if (getskilllv(28) == 8) {
+if (Chiyute != 1) {end;}
+if (skill28 >= 700) {skill 28,9,0; set skill28,0; dispbottom "[Sys] Level up"; end;}
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 8: "+skill28+" de 700";
+
+end;
+
+}
+
+if (getskilllv(28) == 9) {
+if (Chiyute != 1) {end;}
+if (skill28 >= 1000) {skill 28,10,0; set skill28,0; dispbottom "[Sys] Level up"; end;}
+set skill28,skill28 +1;
+dispbottom "[Jutsu level] Chiyute no Jutsu level 9: "+skill28+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

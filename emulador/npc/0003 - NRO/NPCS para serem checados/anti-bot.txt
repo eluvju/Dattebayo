@@ -1,0 +1,162 @@
+-	script	Anti Bot	-1,{
+OnNPCKillEvent:
+//	if(getgmlevel() == 99) {mes "Bem-vindo"; close;}
+	set @kill,@kill+1;
+	if(@kill >= rand(2000,3000)) goto Check;
+	end;
+OnPCLoginEvent:
+Check:
+	if(getgmlevel() == 99) {end;}
+	getmapxy .@map$, .@x, .@y, 0;
+//	if (.@map$=="konoha" || .@map$=="areia" || .@map$=="kiri" || .@map$=="nuvem" || .@map$=="izlude" || .@map$=="alberta" || .@map$=="aldebaran") end;
+	if(checkcart() == 1) set @cart,1;
+	if(checkfalcon() == 1) set @falcon,1;
+	if(checkriding() == 1) set @riding,1;
+	atcommand "@option 2 0 0";
+	atcommand "@battleignore";
+	setoption 0x2,1;
+//	sc_start sc_berserk, 1000000000, 1;
+	mes "[Anti Bot]";
+	mes "Verificação de bot";
+	mes "Digite o número que aparecer";
+	next;
+	switch( rand(1,9) ) {
+	case 1:
+		mes "#################^83F52C##^000000################";
+		mes "###############^83F52C####^000000################";
+		mes "#################^83F52C##^000000################";
+		mes "#################^83F52C##^000000################";
+		mes "#################^83F52C##^000000################";
+		mes "#################^83F52C##^000000################";
+		mes "###############^83F52C######^000000##############";
+		input @num;
+		if(@num == 1) break;
+		announce "[Anti-Bot] "+strcharinfo(0)+" foi kickado por errar o anti-bot, olho nele.",bc_blue|bc_all;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	case 2:
+		mes "#############^83F52C#######^000000###############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "###################^83F52C##^000000##############";
+		mes "#############^83F52C#######^000000###############";
+		mes "############^83F52C##^000000#####################";
+		mes "############^83F52C##^000000#####################";
+		mes "############^83F52C#########^000000##############";
+		input @num;
+		if(@num == 2) break;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	case 3:
+		mes "#############^83F52C#######^000000###############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "###################^83F52C##^000000##############";
+		mes "#############^83F52C#######^000000###############";
+		mes "###################^83F52C##^000000##############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "#############^83F52C#######^000000###############";
+		input @num;
+		if(@num == 3) break;
+		announce "[Anti-Bot] "+strcharinfo(0)+" foi kickado por errar o anti-bot, olho nele.",bc_blue|bc_all;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	case 4:
+		mes "############^83F52C##^000000#####################";
+		mes "############^83F52C##^000000####^83F52C##^000000###############";
+		mes "############^83F52C##^000000####^83F52C##^000000###############";
+		mes "############^83F52C##^000000####^83F52C##^000000###############";
+		mes "############^83F52C#########^000000##############";
+		mes "##################^83F52C##^000000###############";
+		mes "##################^83F52C##^000000###############";
+		input @num;
+		if(@num == 4) break;
+		announce "[Anti-Bot] "+strcharinfo(0)+" foi kickado por errar o anti-bot, olho nele.",bc_blue|bc_all;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	case 5:
+		mes "############^83F52C########^000000###############";
+		mes "############^83F52C##^000000#####################";
+		mes "############^83F52C##^000000#####################";
+		mes "############^83F52C#######^000000################";
+		mes "##################^83F52C##^000000###############";
+		mes "############^83F52C##^000000####^83F52C##^000000###############";
+		mes "#############^83F52C######^000000################";
+		input @num;
+		if(@num == 5) break;
+		announce "[Anti-Bot] "+strcharinfo(0)+" foi kickado por errar o anti-bot, olho nele.",bc_blue|bc_all;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	case 6:
+		mes "#############^83F52C#######^000000###############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "############^83F52C##^000000#####################";
+		mes "############^83F52C########^000000###############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "#############^83F52C######^000000################";
+		input @num;
+		if(@num == 6) break;
+		announce "[Anti-Bot] "+strcharinfo(0)+" foi kickado por errar o anti-bot, olho nele.",bc_blue|bc_all;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	case 7:
+		mes "############^83F52C########^000000###############";
+		mes "############^83F52C##^000000####^83F52C##^000000###############";
+		mes "################^83F52C##^000000#################";
+		mes "###############^83F52C##^000000##################";
+		mes "###############^83F52C##^000000##################";
+		mes "###############^83F52C##^000000##################";
+		mes "###############^83F52C##^000000##################";
+		input @num;
+		if(@num == 7) break;
+		announce "[Anti-Bot] "+strcharinfo(0)+" foi kickado por errar o anti-bot, olho nele.",bc_blue|bc_all;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	case 8:
+		mes "#############^83F52C#######^000000###############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "#############^83F52C#######^000000###############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "#############^83F52C#######^000000###############";
+		input @num;
+		if(@num == 8) break;
+		announce "[Anti-Bot] "+strcharinfo(0)+" foi kickado por errar o anti-bot, olho nele.",bc_blue|bc_all;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	case 9:
+		mes "#############^83F52C#######^000000###############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "#############^83F52C########^000000##############";
+		mes "###################^83F52C##^000000##############";
+		mes "############^83F52C##^000000#####^83F52C##^000000##############";
+		mes "#############^83F52C#######^000000###############";
+		input @num;
+		if(@num == 9) break;
+		announce "[Anti-Bot] "+strcharinfo(0)+" foi kickado por errar o anti-bot, olho nele.",bc_blue|bc_all;
+		atcommand "@kick "+strcharinfo(0);
+		end;
+	}
+	next;
+	mes "[Anti Bot]";
+	mes "Obrigado pela compreensão, você está livre.";
+	atcommand "@option 0 0 0";
+	atcommand "@battleignore";
+	setoption 0x2,0;
+	sc_end sc_berserk;
+	set @kill,0;
+	if(@cart == 1) {
+		setcart;
+		set @cart,0;
+	}
+	if(@falcon == 1) {
+		setfalcon;
+		set @falcon,0;
+	}
+	if(@riding == 1) {
+		setriding;
+		set @riding,0;
+	}
+	close;
+}

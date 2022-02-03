@@ -1,0 +1,346 @@
+academia,20,174,5	script	Taijutsu Básico#9	1_m_pastor,{
+
+	mes "[Taijutsu Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de taijutsu escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Jyuuken Ryuu:- Rasteira:- Shikomishidan:- Expandir Chakra" ) ){
+	case 1:
+		next;
+		if(checkquest(1002) == 1) goto 2_go;
+		if(checkquest(2002) == 1) goto 2_go;
+		if(checkquest(3002) == 1) goto 2_go;
+		if(checkquest(4002) == 1) goto 2_go;
+		if(Jyuuken == 1) goto 2_delete;
+		if(skill_basica >= 9) { mes "[Taijutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Taijutsu Básico]";
+		mes "Jyuuken Ryuu?";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Jyuuken Ryuu
+		//========================================================================
+		
+		2_delete:
+		mes "[Taijutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Taijutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Taijutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 48,0,0;
+		set Jyuuken,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		set accept_tai,accept_tai +1;
+		mes "[Taijutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) { setquest 1002; }
+		if(#suna == 1) { setquest 2002; }
+		if(#nevoa == 1) { setquest 3002; }
+		if(#nuvem == 1) { setquest 4002; }
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1002,hunting) == 1 || 
+			checkquest(2002,hunting) == 1 || 
+			checkquest(3002,hunting) == 1 || 
+			checkquest(4002,hunting) == 1	) { 				mes "[Taijutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1002) >= 1) { completequest 1002; erasequest 1002; }						if(checkquest(2002) >= 1) { completequest 2002; erasequest 2002; }						if(checkquest(3002) >= 1) { completequest 3002; erasequest 3002; }						if(checkquest(4002) >= 1) { completequest 4002; erasequest 4002; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Taijutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Taijutsu Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close;			}
+		mes "[Taijutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 48,1,3;
+		set Jyuuken,1;
+		if(checkquest(1002) >= 1) { completequest 1002; erasequest 1002; }
+		if(checkquest(2002) >= 1) { completequest 2002; erasequest 2002; }
+		if(checkquest(3002) >= 1) { completequest 3002; erasequest 3002; }
+		if(checkquest(4002) >= 1) { completequest 4002; erasequest 4002; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 2:
+		next;
+		if(checkquest(1003) == 1) goto 3_go;
+		if(checkquest(2003) == 1) goto 3_go;
+		if(checkquest(3003) == 1) goto 3_go;
+		if(checkquest(4003) == 1) goto 3_go;
+		if(Rasteira == 1) goto 3_delete;
+		if(skill_basica >= 9) { mes "[Taijutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Taijutsu Básico]";
+		mes "Rasteira?";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Rasteira
+		//========================================================================
+		
+		3_delete:
+		mes "[Taijutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Taijutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Taijutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 417,0,0;
+		set Rasteira,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Taijutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) { setquest 1003; }
+		if(#suna == 1) { setquest 2003; }
+		if(#nevoa == 1) { setquest 3003; }
+		if(#nuvem == 1) { setquest 4003; }
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		3_go:
+		if(	checkquest(1003,hunting) == 1 || 
+			checkquest(2003,hunting) == 1 || 
+			checkquest(3003,hunting) == 1 || 
+			checkquest(4003,hunting) == 1	) { 				mes "[Taijutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1003) >= 1) { completequest 1003; erasequest 1003; }						if(checkquest(2003) >= 1) { completequest 2003; erasequest 2003; }						if(checkquest(3003) >= 1) { completequest 3003; erasequest 3003; }						if(checkquest(4003) >= 1) { completequest 4003; erasequest 4003; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Taijutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Taijutsu Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Taijutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 417,1,3;
+		set Rasteira,1;
+		if(checkquest(1003) >= 1) { completequest 1003; erasequest 1003; }
+		if(checkquest(2003) >= 1) { completequest 2003; erasequest 2003; }
+		if(checkquest(3003) >= 1) { completequest 3003; erasequest 3003; }
+		if(checkquest(4003) >= 1) { completequest 4003; erasequest 4003; }
+		close;
+		
+		3_no:
+		close;
+
+	case 3:
+		next;
+		if(checkquest(1004) == 1) goto 4_go;
+		if(checkquest(2004) == 1) goto 4_go;
+		if(checkquest(3004) == 1) goto 4_go;
+		if(checkquest(4004) == 1) goto 4_go;
+		if(Shikomishindan == 1) goto 4_delete;
+		if(skill_basica >= 9) { mes "[Taijutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Taijutsu Básico]";
+		mes "Shikomishindan?";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+		//========================================================================
+		//	Shikomishindan
+		//========================================================================
+		
+		4_delete:
+		mes "[Taijutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+		
+		delete_4:
+		mes "[Taijutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+		
+		quero_4:
+		mes "[Taijutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 399,0,0;
+		set Shikomishindan,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_4:
+		close;
+		
+		4_SS:
+		mes "[Taijutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) { setquest 1004; }
+		if(#suna == 1) { setquest 2004; }
+		if(#nevoa == 1) { setquest 3004; }
+		if(#nuvem == 1) { setquest 4004; }
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		4_go:
+		if(	checkquest(1004,hunting) == 1 || 
+			checkquest(2004,hunting) == 1 || 
+			checkquest(3004,hunting) == 1 || 
+			checkquest(4004,hunting) == 1	) { 				mes "[Taijutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1004) >= 1) { completequest 1004; erasequest 1004; }						if(checkquest(2004) >= 1) { completequest 2004; erasequest 2004; }						if(checkquest(3004) >= 1) { completequest 3004; erasequest 3004; }						if(checkquest(4004) >= 1) { completequest 4004; erasequest 4004; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Taijutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Taijutsu Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		
+		mes "[Taijutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 399,1,3;
+		set Shikomishindan,1;
+		if(checkquest(1004) >= 1) { completequest 1004; erasequest 1004; }
+		if(checkquest(2004) >= 1) { completequest 2004; erasequest 2004; }
+		if(checkquest(3004) >= 1) { completequest 3004; erasequest 3004; }
+		if(checkquest(4004) >= 1) { completequest 4004; erasequest 4004; }
+		close;
+		
+		4_no:
+		close;
+		
+	case 4:
+		next;
+		if(checkquest(1005) == 1) goto 5_go;
+		if(checkquest(2005) == 1) goto 5_go;
+		if(checkquest(3005) == 1) goto 5_go;
+		if(checkquest(4005) == 1) goto 5_go;
+		if(Tokken == 1) goto 5_delete;
+		if(skill_basica >= 9) { mes "[Taijutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Taijutsu Básico]";
+		mes "Tokken?";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",5_SS,"Agora não",5_no;
+		//========================================================================
+		//	Tokken
+		//========================================================================
+		
+		5_delete:
+		mes "[Taijutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_5,"Nada não, só papo furado",naoquero_5;
+		
+		delete_5:
+		mes "[Taijutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_5,"Não, não quero",naoquero_5;
+		
+		quero_5:
+		mes "[Taijutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 2034,0,0;
+		set Tokken,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_5:
+		close;
+		
+		5_SS:
+		mes "[Taijutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) { setquest 1005; }
+		if(#suna == 1) { setquest 2005; }
+		if(#nevoa == 1) { setquest 3005; }
+		if(#nuvem == 1) { setquest 4005; }
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		5_go:
+		if(	checkquest(1005,hunting) == 1 || 
+			checkquest(2005,hunting) == 1 || 
+			checkquest(3005,hunting) == 1 || 
+			checkquest(4005,hunting) == 1	) { 				mes "[Taijutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1005) >= 1) { completequest 1005; erasequest 1005; }						if(checkquest(2005) >= 1) { completequest 2005; erasequest 2005; }						if(checkquest(3005) >= 1) { completequest 3005; erasequest 3005; }						if(checkquest(4005) >= 1) { completequest 4005; erasequest 4005; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Taijutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Taijutsu Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Taijutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 2034,1,3;
+		set Tokken,1;
+		if(checkquest(1005) >= 1) { completequest 1005; erasequest 1005; }
+		if(checkquest(2005) >= 1) { completequest 2005; erasequest 2005; }
+		if(checkquest(3005) >= 1) { completequest 3005; erasequest 3005; }
+		if(checkquest(4005) >= 1) { completequest 4005; erasequest 4005; }
+		close;
+		
+		5_no:
+		close;
+	}
+OnInit:
+	waitingroom "[Taijutsu Básico]",0;
+}

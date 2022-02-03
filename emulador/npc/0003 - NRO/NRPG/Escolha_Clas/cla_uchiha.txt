@@ -1,0 +1,39 @@
+que_ng,33,70,3	script	Clã Uchiha	734,{
+	show "[Clã Uchiha]";
+	if(elemento == 0){goto aprenderuchiha;}
+	if(cla == 1){goto L_alreadyhavecla;}	
+
+
+	aprenderuchiha:
+	show "Olá caro shinobi, voce gostaria de fazer parte do Clã Uchiha ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Clã Uchiha]";
+	show "Muito bem, muito sábia essa escolha!";
+	setjob "4008";
+	set uchiha,uchiha + 1;	
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Clã Uchiha]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	show "Você já possui um clã";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

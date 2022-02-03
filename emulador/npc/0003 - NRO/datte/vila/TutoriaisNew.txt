@@ -1,0 +1,602 @@
+payon_in03,81,28,5	script	1. Interface	843,{
+
+mes "[Interface]";
+mes "A tela de jogo apresenta uma 'janela principal' composta de um menu com o desenvolvimento, o nome do personagem, sua classe, o HP, o SP, o peso em itens e o dinheiro do personagem.";
+next;
+mes "[Interface]";
+mes "Existe também uma barra de atalhos que representam as teclas do F1 ao F9 ( Para tivar essa barra clique em F12 ) .O jogador pode configurar seus itens, equipamentos e suas habilidades que serão usadas nele.";
+next;
+mes "[Interface]";
+mes "Também existe uma barra de chat, que permite o jogador se comunicar publicamente com outros personagens presentes no mesmo mapa, ou privadamente com qualquer outro jogador, com os membros da guild, da party, e amigos.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 1]",0;
+
+}
+
+payon_in03,78,28,5	script	2. Atalhos	884,{
+
+mes "[Atalhos]";
+mes "Existem comandos de atalho para verificar uma 'aba' de informações de seu personagem , verifique a seguir os atalhos:";
+next;
+mes "[Atalhos]";
+mes "Alt + A = Abre a parte de atributos do personagem.";
+mes "Alt + E = Abre o inventário do personagem.";
+mes "Alt + S = Abre a lista de habilidades.";
+mes "Alt + G = Abre a janela da sua Guild ( Clã ).";
+next;
+mes "[Atalhos]";
+mes "Alt + V = Abre as informações de HP e SP de seu personagem";
+mes "Alt + Z = Abre a janela do seu grupo.";
+mes "Alt + U = Abre a janela de missões do seu personagem.";
+mes "Alt + Q = Abre a janela de equipamentos de seu personagem.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 2]",0;
+
+}
+
+
+payon_in03,81,9,5	script	3. Equipamentos	121,{
+
+mes "[Equipamentos]";
+mes "Os equipamentos são divididos em dez categorias: cabeça, corpo, capa, mão esquerda, mão direita, sapatos, acessório esquerdo e acessório direito.";
+next;
+mes "[Equipamentos]";
+mes "E servem para aumentar os atributos de um personagem, podem ser equipados dando um click duplo ou pela barra de atalhos.";
+next;
+mes "[Equipamentos]";
+mes "Para obter-los , derrote monstros de diferentes mapas e obtenha o equipamento. Quanto mais forte o monstro , mais forte será a vantagem que o equipamento possuirá";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 3]",0;
+
+}
+
+payon_in03,78,9,5	script	4. Atributos	819,{
+
+mes "[Atributos]";
+mes "Ao passar um nível de base, o jogador recebe pontos para serem distribuídos livremente entre seus atributos. Quanto mais pontos forem investidos em determinado atributo, mais pontos serão necessários para que se possa elevar o mesmo.";
+mes "Atributos influenciam diretamente no desempenho do personagem.";
+next;
+mes "[Atributos]";
+mes "STR, acrescenta mais ataque ao personagem.";
+mes "INT, acrescenta mais ataque magico,defesa magica e sp ao personagem";
+mes "DEX, acrescenta mais precisão e diminui o cast.";
+mes "LUK, acrescenta mais resistência a status negativos (genjutsu)";
+mes "AGI, acrescenta mais esquiva e velocidade de ataque.";
+mes "VIT, acrescenta mais hp e defesa ao personagem.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 4]",0;
+
+}
+
+payon_in03,57,19,5	script	5. Monstros	706,{
+
+mes "[Monstros]";
+mes "São NPCs que agem sob inteligência artificial, e são encontrados nos mais variados mapas do jogo.";
+next;
+mes "[Monstros]";
+mes "Podem, ou não, se locomover, assim como podem atacar o jogador sem que o mesmo o tenha provocado.";
+next;
+mes "[Monstros]";
+mes "Possuem também a capacidade de usar skills(Habilidades), e são divididos por várias raças, formas e níveis.";
+next;
+mes "[Monstros]";
+mes "Existem também, em alguns mapas, os 'bijuus' popularmente chamados de 'boss' ou 'MVP'.";
+next;
+mes "[Monstros]";
+mes "Os monstros desse tipo são mais fortes e qualquer jogador pode atacá-lo, sendo que o mesmo pode ser selado pelo kage da sua vila ou akatsuki.";
+next;
+mes "[Monstros]";
+mes "Somente Kages e a Akatsuki são capazes de selar um bijuu, utilizando a habilidade 'Capturar Bijuu'.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 5]",0;
+
+}
+
+payon_in03,60,28,5	script	6. Grupos 	55,{
+
+mes "[Grupos]";
+mes "São equipes que podem ser criadas e desfeitas a qualquer hora, desde que o personagem tenha as habilidades necessárias. Possuem o limite de 15 membros";
+next;
+mes "[Grupos]";
+mes "Os membros de uma party podem dividir itens e EXP entre eles (desde que a diferença entre níveis dos mesmos não ultrapasse 400) assim como podem ver quantidade de HP de seus aliados.";
+next;
+mes "[Grupos]";
+mes "O 'líder' da Party é o único que possui o direito de convidar, expulsar membros e configurar a party, como drops divididos entre os membros.";
+next;
+mes "[Grupos]";
+mes "Personagens não podem participar de mais de um grupo ao mesmo tempo, e os personagens de uma mesma conta não podem participar da mesma party.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 6]",0;
+
+}
+
+payon_in03,53,28,5	script	7. Primeiros Passos 	56,{
+
+mes "[Primeiros Passos]";
+mes "Procure o NPC 'Campo de Treinamento':";
+mes "Vá para baixo e ache 4 NPC's:";
+mes "As quests pedem:";
+mes "- 50 Pata de Inseto(dropa de Bikouchuu, Campo de Treinamento ou Fild2):";
+mes "- 40 Garras de Rato";
+mes "- 80 Poeiras Venenosas";
+mes "- 60 Rabos de Cobra";
+mes "Termine essas missões para receber novos jutsus.";
+next;
+mes "[Primeiros Passos]";
+mes "Volte para a Vila falando com o NPC 'Retorno'";
+next;
+mes "[Primeiros Passos]";
+mes "Procure o Teleportador de sua Vila:";
+mes "Ao falar com ele, selecione 'Biblioteca' como destino.";
+mes "Chegando lá, escolha os Treinos que você deseja. Lembrando que você pode pegar apenas 3 treinos básicos.";
+mes "Desses 3 treinos basicos, você pode escolher 2 e deixá-los como Intermediários, e após isso, um dos dois poderá ser Avançado";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 7]",0;
+
+}
+
+payon_in03,60,31,5	script	8. Se tornando forte	49,{
+
+mes "[Como ficar mais forte]";
+mes "Agora que voce já finalizou os primeiros passos , voce pode começar a fortificar seu personagem. Primeiro pegue as habilidades de cada Treino que voce escolheu e deixe-as fortes ( Evoluindo ), o mais rápido possível. Uma maneira de evoluir rapidamente as suas habilidades , é fazer as missões que o Kage lhe pede ( No Escritório Kage ).";
+next;
+mes "[Como ficar mais forte]";
+mes "Para evoluir uma habilidade , voce deve usá-la um certo número de vezes , e esse número sobe a cada level.";
+mes "Depois de ter elevado o nível de sua habilidade , voce pode começar a evoluir um de seus treino , para no futuro transformá-lo em intermediário.";
+next;
+mes "[Como ficar mais forte]";
+mes "Para evoluir seu treino , apenas mate uma quantidade de monstros ( Quanto mais forte o monstro que voce mata, mais rápido o seu treino vai evoluir. ).";
+mes "Após deixar o seu treino no intermediário , procure as habilidades intermediárias do mesmo, que estão espalhadas pelos mapas do jogo.";
+mes "Faça o mesmo com outro treino , até voce possuir 2 treinos intermediários.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 8]",0;
+
+}
+
+payon_in03,53,31,5	script	9. Treinos	68,{
+
+mes "[O que é um treino]";
+mes "Existem 6 treinos ao total , são eles:";
+mes "Ninjutsu ( O uso de técnicas que dependem do seu elemento , voltada para personagens defensivos )";
+mes "Taijutsu ( O uso de técnicas de ataque corpo-a-corpo , voltada para personagens ofensivos )";
+mes "Fuuinjutsu ( O uso de técnicas de habilidades de selamento , que beneficiam o usuário )";
+next;
+mes "[O que é um treino]";
+mes "Medicina ( O uso de técnicas que não ajudam só o usuário , mas como também seus aliados , sendo com curas ou com a habilidade de ressuscitar )";
+mes "Genjutsu ( O uso de técnicas confundem o inimigo , como atordoar , fazer-lo dormir , etc.. )";
+mes "Velocidade ( O uso de técnicas que fazem com que o usuário fique mais rápido , tanto em batalha , quanto na hora de fugir do inimigo )";
+next;
+mes "[Como adquirir um treino]";
+mes "Para adquiria os treinos , voce deve se dirigir a biblioteca de sua vila , e lá conversar com o NPC de seus respectivos treinos.";
+next;
+mes "[Como evoluir meu treino]";
+mes "Para evoluir seus treinos , você precisa primeiro conversar com a Kurenai na Biblioteca , e decidir qual treino você quer evoluir.";
+mes "Para evoluir é simples , mate um certo número de monstros !";
+mes "Ao atingir o nível 40 do seu treino , você pode torna-lo Intermediário , e ao atingir nível 75 , avançado.";
+mes "Você só pode ter 1 Treino avançado , 1 Treino Intermediário e 1 Treino Básico.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 9]",0;
+
+}
+
+payon_in03,60,9,5	script	10. Habilidades	60,{
+
+mes "[Habilidades]";
+mes "Após completar a quest do seu Treino voce pode escolher 3 habilidades do seu Treino.";
+mes "Existem certos NPCs espalhados pela sua vila , que ensinam as habilidades de cada Treino.";
+next;
+mes "[Habilidades]";
+mes "As Habilidades de Ninjutsu / Fuuinjutsu e Taijutsu estão dentro da Central de Jutsu de sua vila.";
+mes "As Habilidades de Genjutsu / Velocidade e Medicina estão ao redor de sua vila.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 10]",0;
+
+}
+
+payon_in03,53,9,5	script	11. Invocações	69,{
+
+mes "[Invocações (Kuchiyose no Jutsu) ]";
+mes "As invocações são monstros que o jogador pode invocar para ajudar-los em batalha. Eles são divididos em 3 niveis, sendo a primeira a mais fácil de se obter e a última a mais difícil.";
+next;
+mes "[Invocações]";
+mes "Atualmente existem 5 tipos de invocações , são eles :";
+mes "- Girino ( Que ajuda com benção )";
+mes "- Cobra ( Que ajuda com Defesa Absoluta )";
+mes "- Macaco ( Que ajuda com Ataques Físicos )";
+mes "- Lesma ( Que ajuda com Cura )";
+mes "- Cachorro ( Que ajuda prendendo o inimigo )";
+mes "Para obter estas invocações , procure o NPC no primeiro campo da sua vila e faça o contrato de sangue com o pergaminho.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 11]",0;
+
+}
+
+payon_in03,60,6,5	script	12. Selos de Mão	847,{
+
+mes "[Selos de Mão]";
+mes "São movimentos com as mãos feitos pelos shinobis para utilizar jutsus presentes no jogo. Geralmente são mais usados em fuuinjutsus e genjutsus , mais são necessários em quase todos os treinos.";
+mes "Cada sequencia de selo de mão irá resultar em um certo jutsu. Para poder utilizar esse jutsu , voce deve aprende-lo antes.";
+next;
+mes "[Selos de Mão]";
+mes "Para evoluir um jutsu com selos de mão , apenas continue usando a mesma sequencia , que o jutsu estará evoluindo.";
+next;
+mes "[Selos de Mão]";
+mes "Lembrando: Jutsus de Selos de Mão não aparecem na sua lista de habilidades , portanto voce deve verificar no fórum a sequencia de selos do jutsu.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 12]",0;
+
+}
+
+payon_in03,53,6,5	script	13. Kekkei Genkai	809,{
+
+mes "[O que é]";
+mes "No Anime/Mangá Naruto, kekkei genkai 'Linhagem Sangüínea Avançada' ou 'Linhagem Avançada' é uma propriedade passada geneticamente dentro de um clã (ex: Sharingan do Clã Uchiha, Byakugan do Clã Hyuuga) .";
+next;
+mes "[Pra que serve]";
+mes "Kekkei Genkai são benéficos, e geralmente ajudam um ninja durante as suas batalhas ou em outras situações.";
+next;
+mes "[Onde conseguir]";
+mes "Onde consigo?";
+mes "Há um npc dentro da biblioteca de sua vila que lhe oferece as kekkei genkais. Lá você escolhe qual Kekkei Genkai voce deseja obter e depois ela estará disponível para voce despertar depois de um certo tempo.";
+next;
+mes "[Kekkei Genkai]";
+mes "Existem diversas KG's , todas possuem um objetivo. Para começar a sua seleção de KG , tenha em mente quais habilidades voce irá utilizar no futuro , estude os jutsus com cuidado e junte-os com os de sua KG, assim voce estará mais preparado.";
+next;
+mes "[Kekkei Genkai]";
+mes "Sharingan = Kekkei Genkai voltada para os modos de GvG , onde não está presente o 1x1. Essa KG possuí a habilidade de refletir ataques físicos e mágicos , o que pode ajudar muito em batalha. ";
+next;
+mes "[Kekkei Genkai]";
+mes "Byakugan = Kekkei Genkai ofensiva , para quem gosta de atacar os oponentes e derrotár-los fácil. Possui combos de habilidades com poder de ataque altíssimos";
+next;
+mes "[Kekkei Genkai]";
+mes "Selo do Céu = Kekkei Genkai para ninjutsus ofensivos , por possuir um alto poder de ataque mágico e velocidade de locomoção.";
+next;
+mes "[Kekkei Genkai]";
+mes "Selo da Terra = Kekkei Genkai para taijutsus ofensivos , possui grande poder de ataque físico e velocidade.";
+next;
+mes "[Kekkei Genkai]";
+mes "Sombras ( Nara )= Kekkei Genkai tática , pois prende o inimigo , confundindo os mesmos. ";
+next;
+mes "[Kekkei Genkai]";
+mes "Hyouton = Kekkei Genkai tática , voce pode desaparecer e aparecer , surpreendendo seus adversários , o que pode tornár-lo muito forte.";
+next;
+mes "[Kekkei Genkai]";
+mes "Akimichi ( Baika ) = Kekkei Genkai Defensiva , os portadores dessa Kekkei Genkai possuem grande resistencia e HP , geralmente usada por usuários de Medicina.";
+next;
+mes "[Kekkei Genkai]";
+mes "Kugutsu = Kekkei Genkai Defensiva , possui grande resistencia e o sistema de invocação de Marionetes.";
+next;
+mes "[Kekkei Genkai]";
+mes "Portões de Chakra = Kekkei Genkai totalmente Ofensiva , pode causar um dano altíssimo em questão de segundos, porém esse dano tem um custo alto , que é o seu HP.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 13]",0;
+
+}
+
+payon_in03,35,28,5	script	14. Missões do Kage	831,{
+
+mes "[Missões do Kage]";
+mes "O que são missões?";
+mes "Missões são tarefas que o Kage ( NPC que está presente dentro do Escritório Kage ) pedirá que você realize.";
+mes "Estas missões consistem em matar monstros , geralmente em torno de 50 a 100 monstros.";
+next;
+mes "[Missões do Kage]";
+mes "Onde eu consigo pegar Missões ?";
+mes "Vá ao escritório do Kage de sua Vila , converse com o NPC Kage e veja as missões que voce já recebeu.";
+next;
+mes "[Missões do Kage]";
+mes "Para receber uma missão voce precisa estar online no jogo nos seguintes horários : 10:00 - 11:00 - 12:00 - 14:00 - 15:00 - 16:00 - 19:00 - 20 :00 e 21:00";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 14]",0;
+
+}
+
+payon_in03,32,28,5	script	15. Sistema de Rank	870,{
+
+mes "[Sistema de Rank]";
+mes "O que é Rank ?";
+mes "- Rank é um sistema que define o quão bom um Player pode ser.";
+mes "Dependendo do Rank de um jogador , ele pode ter matado mais inimigos e completado mais missões. Quanto maior sua reputação , maior o seu Rank.";
+next;
+mes "[Sistema de Rank]";
+mes "O que é Reputação ?";
+mes "- Reputação significa que você matou e tem capacidade de matar os outros players.";
+next;
+mes "[Sistema de Rank]";
+mes "Quanto maior sua reputação , maior número de players você irá ter matado. Para ganhar pontos de reputação , você deve matar os jogadores de outras vilas.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 15]",0;
+
+}
+
+payon_in03,35,9,5	script	16. Graduações	884,{
+
+mes "[Graduações]";
+mes "Quais são as graduacões ?";
+mes "- São elas :";
+mes "Chunin, Jounin, ANBU, Kage, Akatsuki";
+next;
+mes "[Graduações]";
+mes "Requisitos para Graduacão:";
+mes "- Chunin : Ser no mínimo level 500 e passar no Chunin Shiken.";
+mes "ou Conseguir 800 pontos de missão.";
+mes "- Jounin : Ser no mínimo level 700 e passar no Jounin Shiken";
+mes "ou Conseguir 3.000 pontos de missão";
+next;
+mes "[Graduações]";
+mes "- ANBU : Ser Jounin e ser indicado pelo Kage para participar do ANBU Shiken.";
+mes "- Kage : Para participar do Kage Shiken , você deve ser Jounin e ser votado pela sua Vila.";
+next;
+mes "[Graduações]";
+mes "- Akatsuki: Para participar do Akatsuki Shiken , você deve ter Rank A , Level 999 e ser Jounin.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 16]",0;
+
+}
+
+
+payon_in03,32,9,5	script	17. Shikens	426,{
+
+mes "[Shikens]";
+mes "O que é Shiken ?";
+mes "- Shiken é um evento realizado de 15 em 15 dias , para definir os próximos jogadores a serem graduados.";
+next;
+mes "[Shikens]";
+mes "Como funciona o Shiken ? Veja a seguir :";
+mes "Chunin Shiken ( CS ) :";
+mes "- Funciona de modo Sobrevivencia , com as regras do aplicador presente no dia do shiken.";
+mes "Jounin Shiken ( JS ) :";
+mes "- Funciona de modo Sobrevivencia , com as regras do aplicador presente no dia do shiken.";
+next;
+mes "[Shikens]";
+mes "ANBU Shiken ( AS ) :";
+mes "-1 x 1 entre os indicados ( Jounins ) pelo Kage.";
+mes "Os 4 ou 5 Melhores ganham o cargo de ANBU.";
+next;
+mes "[Shikens]";
+mes "Akatsuki Shiken ( AkS ) :";
+mes "- Funciona como 2 x 2 entre Jounins.";
+mes "Os Melhores 3 Jounins ganham o cargo na Akatsuki.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 17]",0;
+
+}
+
+payon_in03,14,28,5	script	18. Aldeias	434,{
+
+mes "[Aldeias]";
+mes "O sistema de aldeias ocorre todos os dias as 21:00 , onde 10 aldeias aparecem no servidor e as vilas devem conquistar-las. Cada aldeia fornece uma quantidade de Ryous, e os ryous podem ser usados para investimentos.";
+next;
+mes "[Aldeias]";
+mes "Cada investimento ajuda a vila tanto em HP quanto em SP e defesa. É de responsabilidade dos Kages e ANBUs pegarem as aldeias e ajudarem a vila.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 18]",0;
+
+}
+
+
+payon_in03,11,19,5	script	19. Bijuu	897,{
+
+mes "[Bijuu]";
+mes "O Sistema de bijuu ocorre todos os domingos as 21:00 , onde os 9 bijuus resurgem em seu esconderijo. Os Kages de cada vila devem capturar os bijuus , para que a vila tenha seu HP e SP aumentados.";
+next;
+mes "[ Bijuu ]";
+mes "Todos os Bijuus são monstros difíceis de se derrotar , possuindo resistencia e força altíssimas, por isso os Jounins e ANBUs devem ajudar o Kage nessa tarefa.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 19]",0;
+
+}
+
+payon_in03,7,28,5	script	20. Jinchuuriki	985,{
+
+mes "[Jinchuurikis]";
+mes "Cada vila pode ter 1 Jinchuuriki , que é escolhido por votação e o vencedor recebe o cargo de Jinchuuriki.";
+next;
+mes "[Jinchuuriki]";
+mes "A votação ocorre mensalmente e pode ser anulada caso o jogador não logue em seu cargo por 3 ou 4 dias.";
+next;
+mes "[Jinchuuriki]";
+mes "Jinchuurikis recebem bonus no HP , SP , ATK , MATK e podem se transformar no bijuu de sua vila.";
+next;
+mes "[Jinchuuriki]";
+mes "Kyuubi = Folha";
+mes "Sanbi = Névoa";
+mes "Hachibi = Nuvem";
+mes "Ichibi = Areia";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 20]",0;
+
+}
+
+payon_in03,14,31,5	script	21. Kages	 970,{
+
+mes "[Kages]";
+mes "É obrigação do Kage ajudar a vila com informações para iniciantes , Aldeias , Bijuus , e a ordem da vila.";
+next;
+mes "[Kages]";
+mes "O Kage é escolhido por meio de votação, e essa mesma votação ocorre novamente depois de 30 dias , dando o cargo a outro jogador , que se tornará o novo Kage.";
+next;
+mes "[Kages]";
+mes "Caso o Kage não logue por 3 dias seguidos pode ser retirado do cargo e uma nova votação ocorerrá.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 21]",0;
+
+}
+
+
+payon_in03,7,31,5	script	22. PvP	65,{
+
+mes "[PvP]";
+mes " O Sistema de PvP é aplicado no servidor em alguns mapas envolta de sua vila, onde os ninjas de outras vilas podem te matar, ou vice-versa.";
+mes "A cada morte ( tanto sua quanto do inimigo ) voce irá ganhar e perder pontos de Ranking.";
+next;
+mes "[PvP]";
+mes "Quanto maior for o seu Rank , maior será a sua reputação no servidor. Esse sistema só é aplicado a jogadores com nível de base igual ou superior a 500.Ou seja , antes do level 500 , o jogador não pode entrar em duelos diretos contra outros jogadores.";
+next;
+mes "[PvP]";
+mes "Existem também as arenas de PvP , onde jogadores podem entrar a qualquer momento e duelarem entre si. O sistema de Arena possuí um Rank de jogadores , ou seja , a cada morte sua ou de seu inimigo , seu rank na arena irá subir ou descer.";
+next;
+mes "[PvP]";
+mes "Existem também as arenas somente com acesso restrito de sua vila , e lá podem ocorrer treinamentos entre membros da mesma vila.";
+mes "Geralmente é usada para o treinamento dos ninjas antes dos shikens, o que pode ajudar muito.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 22]",0;
+
+}
+
+payon_in03,14,9,5	script	23. Guild 	108,{
+
+mes "[Guild]";
+mes "Cada vila possuí uma Guild , liderada pelo seu Kage. O Limite de pessoas para cada Guild é de 150 pessoas , o que pode causar a retirada de jogadores que não logam a um certo tempo da mesma.";
+next;
+mes "[Guild]";
+mes "É de total responsabilidade do Kage cuidar de sua Guild assim como de sua vila, para que não haja desordem em ambas.";
+next;
+mes "[Guild]";
+mes "A Guild possuí a habilidade 'Reunião Emergencial' que é somente utilizada pelo Kage da, que faz com que todos os membros presentes na guild sejam teleportados ao local que o Kage utilizou a habilidade.";
+next;
+mes "[Guild]";
+mes "Esta habilidade é muito utilizada em horários de Aldeia e Bijuu , onde o Kage necessita da ajuda de seus Jounin e ANBUs ,principalmente. Pode ser também utilizada em momentos de invasão.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 23]",0;
+
+}
+
+payon_in03,7,9,5	script	24. WoE  	420,{
+
+mes "[WoE]";
+mes "WoE significa War Of Emperium ( Guerra do Emperium ) e ocorre de quartas ,quintas e sábados, no período da noite, as 20 horas. ";
+next;
+mes "[WoE]";
+mes "O Objetivo principal é conquistar o bijuu que está dentro do castelo, e caso seja conquistado , deve ser defendido. ";
+next;
+mes "[WoE]";
+mes "O Evento é aberto para todas as vilas e inclusive a Akatsuki.";
+mes "A vila que defender seu castelo por mais tempo , e até o término do evento , ganha a recompensa por ter conquistado o castelo e defendido o mesmo.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 24]",0;
+
+}
+
+payon_in03,14,6,5	script	25. Torre Sangrenta	118,{
+
+mes "[Torre Sangrenta]";
+mes "A Torre Sangrenta é um sistema onde um grupo de players entram em um mapa onde monstros muito fortes são invocados.";
+next;
+mes "[Torre Sangrenta]";
+mes "Essa Torre possuí 5 dificuldades que variam de 8 a 10 andares , e a cada andar , os monstros vão ficando mais fortes.";
+next;
+mes "[Torre Sangrenta]";
+mes "Caso voce complete a Torre , seu grupo irá receber Caixas Surpresas , e ao abrir-las , voces tem chance de ganhar itens lendários !";
+next;
+mes "[Torre Sangrenta]";
+mes "O custo de entrada é 40,000,000z (Em semanas de eventos, 20,000,000z) e o limite de pessoas é de 15. Por isso junte dinheiro e membros fortes para o seu grupo antes de ir na Torre.";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 25]",0;
+
+}
+
+payon_in03,7,6,5	script	26. Doações	734,{
+
+mes "[Doações]";
+mes "Como Doar?";
+mes "1-> Entre no site do NRO";
+mes "http://nnfro.net/narutorpg/";
+mes "2-> Click em 'Doações'";
+mes "http://nnfro.net/narutorpg/doacoes.html";
+next;
+mes "[Doações] 3-> Quando vooc entrar na parte 'Doaçoes' anote em um papel a conta do nosso ADM.";
+mes "Agencia: 1009";
+mes "Operação: 023";
+mes "Conta: 6.440-9";
+mes "Titular da conta: Marcos Paulo Gonçalves Lima";
+next;
+mes "[Doações] 4-> Depois de fazer isso, vá em alguma loterica ou caixa e deposite o valor desejado na conta.";
+mes "5-> Ao fazer o deposito vá na Loja de Rops.";
+mes "http://nnfro.net/loja_nro/index.php";
+next;
+mes "[Doações] 6-> Logue com a sua mesma conta do jogo.";
+mes "7-> Quando logar click em 'Confirmar'";
+mes "8-> Ponha as informações que estejam no seu comprovante, depois click em confirmar.";
+mes "9-> Pronto, voce já fez seu deposito e a confirmação, agora espere o DK confirmar o seu ROPs";
+close;
+
+OnInit:
+	waitingroom "[Tutorial Número 26]",0;
+
+}
+
+//kakashi,100,132,5	script	Ebisu	734,{
+//
+//mes "Você deseja ir pra biblioteca?";
+//menu "Sim",L_sim,"Não",L_nao,"Informações",L_info;
+//
+//L_sim: 
+//next;
+//mes "Ok, então vamos lá!";
+//warp "acad_01",32,38;
+//close;
+//
+//L_nao: 
+//next;
+//mes "Te vejo mais tarde!";
+//close;
+//
+//L_info:
+//next;
+//mes "A biblioteca é o lugar na qual há vários NPCs de ajuda ao novato, desde interface até Shikens.";
+//close;
+//
+//}
+
+// Obs: Lembrar de por um NPC 'Retorno' (Já existente) em: acad_01,40,61

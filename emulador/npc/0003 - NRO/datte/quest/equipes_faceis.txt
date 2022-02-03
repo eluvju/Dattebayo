@@ -1,0 +1,1582 @@
+//arma#1
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,28,65,4	script	Watashi	85,{
+	mes "[Watashi]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Watashi]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Watashi]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Inpakutoburedo:Nenhum"))
+	{
+	case 1:
+		mes "[Inpakutoburedo]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19500);
+		mes " ";
+		mes "Requerimento:";
+		mes "30x "+getitemname(601);
+		mes "10x "+getitemname(719);
+		mes "5x "+getitemname(997);
+		next;
+		mes "[Watashi]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Watashi]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(601) >= 30 && countitem(719) >= 10 && countitem(997) >= 5)
+		{
+			delitem 601,30;
+			delitem 719,10;
+			delitem 997,5;
+			getitem 19500,1;
+			mes "[Watashi]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Watashi]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Watashi]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//arma#2
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,28,61,4	script	Tatsuo	85,{
+	mes "[Tatsuo]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Tatsuo]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Tatsuo]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Tei Sendo no Ken:Nenhum"))
+	{
+	case 1:
+		mes "[Tei Sendo no Ken]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19501);
+		mes " ";
+		mes "Requerimento:";
+		mes "30x "+getitemname(7006);
+		mes "10x "+getitemname(997);
+		mes "5x "+getitemname(658);
+		next;
+		mes "[Tatsuo]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Tatsuo]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(7006) >= 30 && countitem(997) >= 10 && countitem(658) >= 5)
+		{
+			delitem 7006,30;
+			delitem 997,10;
+			delitem 658,5;
+			getitem 19501,1;
+			mes "[Tatsuo]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Tatsuo]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Tatsuo]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//arma#3
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,28,57,4	script	Aoi	85,{
+	mes "[Aoi]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Aoi]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Aoi]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Omoi Ken:Nenhum"))
+	{
+	case 1:
+		mes "[Omoi Ken]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19502);
+		mes " ";
+		mes "Requerimento:";
+		mes "30x "+getitemname(954);
+		mes "10x "+getitemname(721);
+		mes "5x "+getitemname(719);
+		next;
+		mes "[Aoi]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Aoi]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(954) >= 30 && countitem(721) >= 10 && countitem(719) >= 5)
+		{
+			delitem 954,30;
+			delitem 721,10;
+			delitem 719,5;
+			getitem 19502,1;
+			mes "[Aoi]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Aoi]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Aoi]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Pergaminho#1
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,26,78,4	script	Yoshida	89,{
+	mes "[Yoshida]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Yoshida]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yoshida]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Yowai Yohishi (Suiton):Nenhum"))
+	{
+	case 1:
+		mes "[Yowai Yohishi - Suiton]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19503);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(746);
+		mes "5x "+getitemname(721);
+		mes "5x "+getitemname(12040);
+		next;
+		mes "[Yoshida]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Yoshida]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(746) >= 70 && countitem(721) >= 5 && countitem(12040) >= 5)
+		{
+			delitem 746,70;
+			delitem 721,5;
+			delitem 12040,5;
+			getitem 19503,1;
+			mes "[Yoshida]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Yoshida]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yoshida]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Pergaminho#2
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,31,78,4	script	Haru	89,{
+	mes "[Haru]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Haru]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Haru]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Yowai Yohishi - Doton:Nenhum"))
+	{
+	case 1:
+		mes "[Yowai Yohishi - Doton]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19504);
+		mes " ";
+		mes "Requerimento:";
+		mes "30x "+getitemname(1041);
+		mes "20x "+getitemname(601);
+		mes "5x "+getitemname(997);
+		next;
+		mes "[Haru]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Haru]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(1041) >= 30 && countitem(601) >= 20 && countitem(997) >= 5)
+		{
+			delitem 1041,30;
+			delitem 601,20;
+			delitem 997,5;
+			getitem 19504,1;
+			mes "[Haru]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Haru]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Haru]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+ 
+//Yowai Yohishi - 
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,31,78,4	script	Yzuko	89,{
+	mes "[Yzuko]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Yzuko]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yzuko]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Yowai Yohishi - Katon:Nenhum"))
+	{
+	case 1:
+		mes "[Yowai Yohishi - Katon]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19505);
+		mes " ";
+		mes "Requerimento:";
+		mes "50x "+getitemname(7054);
+		mes "10x "+getitemname(7006);
+		mes "5x "+getitemname(716);
+		next;
+		mes "[Yzuko]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Yzuko]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(7054) >= 50 && countitem(7006) >= 10 && countitem(716) >= 5)
+		{
+			delitem 7054,50;
+			delitem 7006,10;
+			delitem 716,5;
+			getitem 19505,1;
+			mes "[Yzuko]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Yzuko]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yzuko]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Yowai Yohishi - Raiton
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,43,78,4	script	Matsuda	89,{
+	mes "[Matsuda]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Matsuda]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Matsuda]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Yowai Yohishi - Raiton:Nenhum"))
+	{
+	case 1:
+		mes "[Yowai Yohishi - Raiton]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19506);
+		mes " ";
+		mes "Requerimento:";
+		mes "100x "+getitemname(911);
+		mes "50x "+getitemname(7211);
+		mes "5x "+getitemname(12040);
+		next;
+		mes "[Matsuda]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Matsuda]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(911) >= 100 && countitem(7211) >= 50 && countitem(12040) >= 5)
+		{
+			delitem 911,100;
+			delitem 7211,50;
+			delitem 12040,5;
+			getitem 19506,1;
+			mes "[Matsuda]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Matsuda]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Matsuda]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Yowai Yohishi - Fuuton
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,48,78,4	script	Hitsuro	89,{
+	mes "[Hitsuro]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Hitsuro]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Hitsuro]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Yowai Yohishi - Fuuton:Nenhum"))
+	{
+	case 1:
+		mes "[Yowai Yohishi - Fuuton]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19507);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(7511);
+		mes "5x "+getitemname(721);
+		mes "5x "+getitemname(12040);
+		next;
+		mes "[Hitsuro]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Hitsuro]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(7511) >= 70 && countitem(721) >= 5 && countitem(12040) >= 5)
+		{
+			delitem 7511,70;
+			delitem 721,5;
+			delitem 12040,5;
+			getitem 19507,1;
+			mes "[Hitsuro]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Hitsuro]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Hitsuro]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Dajjibutsu
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,26,45,4	script	Asako	86,{
+	mes "[Asako]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Asako]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Asako]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Dajjibutsu:Nenhum"))
+	{
+	case 1:
+		mes "[Dajjibutsu]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19508);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(919);
+		mes "50x "+getitemname(7008);
+		mes "5x "+getitemname(943);
+		next;
+		mes "[Asako]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Asako]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(919) >= 70 && countitem(7008) >= 50 && countitem(943) >= 5)
+		{
+			delitem 919,70;
+			delitem 7008,50;
+			delitem 943,5;
+			getitem 19508,1;
+			mes "[Asako]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Asako]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Asako]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Ran'ningushuzu
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,31,45,4	script	Sasahara	86,{
+	mes "[Sasahara]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Sasahara]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Sasahara]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Ran'ningushuzu:Nenhum"))
+	{
+	case 1:
+		mes "[Ran'ningushuzu]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19509);
+		mes " ";
+		mes "Requerimento:";
+		mes "100x "+getitemname(919);
+		mes "30x "+getitemname(993);
+		mes "5x "+getitemname(954);
+		next;
+		mes "[Sasahara]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Sasahara]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(919) >= 100 && countitem(993) >= 30 && countitem(954) >= 5)
+		{
+			delitem 919,100;
+			delitem 993,30;
+			delitem 954,5;
+			getitem 19509,1;
+			mes "[Sasahara]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Sasahara]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Sasahara]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Ninja Kutsu
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,37,45,4	script	Yamaguchi	86,{
+	mes "[Yamaguchi]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Yamaguchi]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yamaguchi]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Ninja Kutsu:Nenhum"))
+	{
+	case 1:
+		mes "[Ninja Kutsu]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19510);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(919);
+		mes "50x "+getitemname(1096);
+		mes "5x "+getitemname(943);
+		next;
+		mes "[Yamaguchi]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Yamaguchi]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(919) >= 70 && countitem(1096) >= 50 && countitem(943) >= 5)
+		{
+			delitem 919,70;
+			delitem 1096,50;
+			delitem 943,5;
+			getitem 19510,1;
+			mes "[Yamaguchi]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Yamaguchi]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yamaguchi]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Hi no Mantoru
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,43,45,4	script	Miyama	78,{
+	mes "[Miyama]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Miyama]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Miyama]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Hi no Mantoru:Nenhum"))
+	{
+	case 1:
+		mes "[Hi no Mantoru]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19511);
+		mes " ";
+		mes "Requerimento:";
+		mes "100x "+getitemname(910);
+		mes "30x "+getitemname(1048);
+		mes "10x "+getitemname(997);
+		next;
+		mes "[Miyama]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Miyama]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(910) >= 100 && countitem(1048) >= 30 && countitem(997) >= 10)
+		{
+			delitem 910,100;
+			delitem 1048,30;
+			delitem 997,10;
+			getitem 19511,1;
+			mes "[Miyama]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Miyama]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Miyama]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Chikyu no Mantoru
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,48,45,4	script	Yuzan	78,{
+	mes "[Yuzan]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Yuzan]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yuzan]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Chikyu no Mantoru:Nenhum"))
+	{
+	case 1:
+		mes "[Chikyu no Mantoru]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19512);
+		mes " ";
+		mes "Requerimento:";
+		mes "100x "+getitemname(910);
+		mes "40x "+getitemname(1048);
+		mes "10x "+getitemname(997);
+		next;
+		mes "[Yuzan]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Yuzan]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(910) >= 100 && countitem(1048) >= 40 && countitem(997) >= 10)
+		{
+			delitem 910,100;
+			delitem 1048,40;
+			delitem 997,10;
+			getitem 19512,1;
+			mes "[Yuzan]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Yuzan]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yuzan]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Mantoru Mizu
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,53,45,4	script	Misawa	78,{
+	mes "[Misawa]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Misawa]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Misawa]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Mantoru Mizu:Nenhum"))
+	{
+	case 1:
+		mes "[Mantoru Mizu]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19513);
+		mes " ";
+		mes "Requerimento:";
+		mes "100x "+getitemname(910);
+		mes "30x "+getitemname(1048);
+		mes "10x "+getitemname(721);
+		next;
+		mes "[Misawa]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Misawa]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(910) >= 100 && countitem(1048) >= 30 && countitem(721) >= 10)
+		{
+			delitem 910,100;
+			delitem 1048,30;
+			delitem 721,10;
+			getitem 19513,1;
+			mes "[Misawa]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Misawa]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Misawa]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Mantoru Hankei
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,56,45,4	script	Mitsuyoshi	78,{
+	mes "[Mitsuyoshi]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Mitsuyoshi]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Mitsuyoshi]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Mantoru Hankei:Nenhum"))
+	{
+	case 1:
+		mes "[Mantoru Hankei]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19514);
+		mes " ";
+		mes "Requerimento:";
+		mes "100x "+getitemname(910);
+		mes "30x "+getitemname(1048);
+		mes "10x "+getitemname(719);
+		next;
+		mes "[Mitsuyoshi]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Mitsuyoshi]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(910) >= 100 && countitem(1048) >= 30 && countitem(719) >= 10)
+		{
+			delitem 910,100;
+			delitem 1048,30;
+			delitem 719,10;
+			getitem 19514,1;
+			mes "[Mitsuyoshi]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Mitsuyoshi]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Mitsuyoshi]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//manto #5
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,56,52,4	script	Takaya	78,{
+	mes "[Takaya]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Takaya]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Takaya]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Kaze no Mantoru:Nenhum"))
+	{
+	case 1:
+		mes "[Kaze no Mantoru]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19515);
+		mes " ";
+		mes "Requerimento:";
+		mes "100x "+getitemname(910);
+		mes "30x "+getitemname(1048);
+		mes "10x "+getitemname(19160);
+		next;
+		mes "[Takaya]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Takaya]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(910) >= 100 && countitem(1048) >= 30 && countitem(19160) >= 10)
+		{
+			delitem 910,100;
+			delitem 1048,30;
+			delitem 19160,10;
+			getitem 19515,1;
+			mes "[Takaya]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Takaya]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Takaya]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Keiryo Robu
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,56,49,4	script	Oshima	78,{
+	mes "[Oshima]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Oshima]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Oshima]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Keiryo Robu:Nenhum"))
+	{
+	case 1:
+		mes "[Keiryo Robu]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19516);
+		mes " ";
+		mes "Requerimento:";
+		mes "100x "+getitemname(910);
+		mes "30x "+getitemname(1048);
+		mes "10x "+getitemname(991);
+		next;
+		mes "[Oshima]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Oshima]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(910) >= 100 && countitem(1048) >= 30 && countitem(991) >= 10)
+		{
+			delitem 910,100;
+			delitem 1048,30;
+			delitem 991,10;
+			getitem 19516,1;
+			mes "[Oshima]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Oshima]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Oshima]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Hono no Yoroi
+
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,33,61,4	script	Kirishima	880,{
+	mes "[Kirishima]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Kirishima]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Kirishima]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Hono no Yoroi:Nenhum"))
+	{
+	case 1:
+		mes "[Hono no Yoroi]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19517);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(953);
+		mes "35x "+getitemname(997);
+		mes "25x "+getitemname(721);
+		mes "1x "+getitemname(2303);
+		next;
+		mes "[Kirishima]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kirishima]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(953) >= 70 && countitem(997) >= 35 && countitem(721) >= 25 && countitem(2303) >= 1)
+		{
+			delitem 953,70;
+			delitem 997,35;
+			delitem 721,25;
+			delitem 2303,1;
+			getitem 19517,1;
+			mes "[Kirishima]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Kirishima]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Kirishima]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+
+//Tochi no Yoroi
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,35,53,4	script	Haruto	880,{
+	mes "[Haruto]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Haruto]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Haruto]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Tochi no Yoroi:Nenhum"))
+	{
+	case 1:
+		mes "[Tochi no Yoroi]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19518);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(953);
+		mes "35x "+getitemname(997);
+		mes "25x "+getitemname(721);
+		mes "1x "+getitemname(2303);
+		next;
+		mes "[Haruto]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Haruto]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(953) >= 70 && countitem(997) >= 35 && countitem(721) >= 25 && countitem(2303) >= 1)
+		{
+			delitem 953,70;
+			delitem 997,35;
+			delitem 721,25;
+			delitem 2303,1;
+			getitem 19518,1;
+			mes "[Haruto]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Haruto]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Haruto]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Mizu no Yoroi
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,44,51,4	script	Yuzuki	880,{
+	mes "[Yuzuki]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Yuzuki]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yuzuki]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Mizu no Yoroi:Nenhum"))
+	{
+	case 1:
+		mes "[Mizu no Yoroi]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19519);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(953);
+		mes "35x "+getitemname(997);
+		mes "25x "+getitemname(721);
+		mes "1x "+getitemname(2303);
+		next;
+		mes "[Yuzuki]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Yuzuki]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(953) >= 70 && countitem(997) >= 35 && countitem(721) >= 25 && countitem(2303) >= 1)
+		{
+			delitem 953,70;
+			delitem 997,35;
+			delitem 721,25;
+			delitem 2303,1;
+			getitem 19519,1;
+			mes "[Yuzuki]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Yuzuki]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Yuzuki]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Yoroi-sen
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,52,53,4	script	Nanami	880,{
+	mes "[Nanami]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Nanami]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Nanami]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Yoroi-sen:Nenhum"))
+	{
+	case 1:
+		mes "[Yoroi-sen]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19520);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(953);
+		mes "35x "+getitemname(997);
+		mes "25x "+getitemname(721);
+		mes "1x "+getitemname(2303);
+		next;
+		mes "[Nanami]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Nanami]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(953) >= 70 && countitem(997) >= 35 && countitem(721) >= 25 && countitem(2303) >= 1)
+		{
+			delitem 953,70;
+			delitem 997,35;
+			delitem 721,25;
+			delitem 2303,1;
+			getitem 19520,1;
+			mes "[Nanami]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Nanami]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Nanami]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Kaze ama
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,51,69,4	script	Akari	880,{
+	mes "[Akari]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Akari]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Akari]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Kaze ama:Nenhum"))
+	{
+	case 1:
+		mes "[Kaze ama]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19521);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(953);
+		mes "35x "+getitemname(997);
+		mes "25x "+getitemname(721);
+		mes "1x "+getitemname(2303);
+		next;
+		mes "[Akari]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Akari]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(953) >= 70 && countitem(997) >= 35 && countitem(721) >= 25 && countitem(2303) >= 1)
+		{
+			delitem 953,70;
+			delitem 997,35;
+			delitem 721,25;
+			delitem 2303,1;
+			getitem 19521,1;
+			mes "[Akari]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Akari]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Akari]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//Furui Yoroi
+
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+yuno_in02,43,71,4	script	Selador de Coletes	880,{
+	mes "[Kyousuke]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns itens interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Kyousuke]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Kyousuke]";
+	mes "Bem, estes são os itens que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Furui Yoroi:Nenhum"))
+	{
+	case 1:
+		mes "[Furui Yoroi]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(19522);
+		mes " ";
+		mes "Requerimento:";
+		mes "70x "+getitemname(953);
+		mes "35x "+getitemname(997);
+		mes "25x "+getitemname(721);
+		mes "1x "+getitemname(2303);
+		next;
+		mes "[Kyousuke]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kyousuke]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(953) >= 70 && countitem(997) >= 35 && countitem(721) >= 25 && countitem(2303) >= 1)
+		{
+			delitem 953,70;
+			delitem 997,35;
+			delitem 721,25;
+			delitem 2303,1;
+			getitem 19522,1;
+			mes "[Kyousuke]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Kyousuke]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Kyousuke]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta quest.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+}
+
+//cabou :(
+
+
+
+

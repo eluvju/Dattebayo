@@ -1,0 +1,220 @@
+function	script	read_quests	{
+
+setarray $S_type[0], 0, -1, 0, 0, -1, 1;	// Tipo de cada missão rank S, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $A_type[0], 0, 0, -1, 0, -1, 1;	// Tipo de cada missão rank A, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $B_type[0], 0, 0, -1, -1, 0, 1;	// Tipo de cada missão rank B, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $C_type[0], 0, 0, -1, -1, 0, 1;	// Tipo de cada missão rank C, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $D_type[0], 0, 0, 0, -1, -1, 1;	// Tipo de cada missão rank D, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $E_type[0], 0, 0, 0, -1, -1, 1;	// Tipo de cada missão rank E, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+
+setarray $S_id[0], 1492, 7305, 1089, 1418, 1014, -1; // Item de cada missão rank S, baseado no tipo, se for para procurar npc coloque -1
+setarray $A_id[0], 1289, 1830, 1041, 1057, 1004, -1; // Item de cada missão rank A, baseado no tipo, se for para procurar npc coloque -1
+setarray $B_id[0], 1059, 1292, 997, 509, 1737, -1; // Item de cada missão rank B, baseado no tipo, se for para procurar npc coloque -1
+setarray $C_id[0], 1202, 1018, 924, 518, 1121, -1; // Item de cada missão rank C, baseado no tipo, se for para procurar npc coloque -1
+setarray $D_id[0], 1201, 1618, 1507, 7223, 7563, -1; // Item de cada missão rank D, baseado no tipo, se for para procurar npc coloque -1
+setarray $E_id[0], 1304, 1214, 1619, 7448, 1015, -1; // Item de cada missão rank E, baseado no tipo, se for para procurar npc coloque -1
+
+setarray $S_quantify[0], 200, 80, 20, 20, 100, -1; // Quantidade de cada missão rank S, baseado no tipo, se for para procurar npc coloque -1
+setarray $A_quantify[0], 150, 150, 80, 100, 80, -1; // Quantidade de cada missão rank A, baseado no tipo, se for para procurar npc coloque -1
+setarray $B_quantify[0], 100, 120, 80, 80, 100, -1; // Quantidade de cada missão rank B, baseado no tipo, se for para procurar npc coloque -1
+setarray $C_quantify[0], 100, 80, 70, 100, 100, -1; // Quantidade de cada missão rank C, baseado no tipo, se for para procurar npc coloque -1
+setarray $D_quantify[0], 70, 80, 100, 70, 60, -1; // Quantidade de cada missão rank D, baseado no tipo, se for para procurar npc coloque -1
+setarray $E_quantify[0], 50, 50, 50, 50, 50, -1; // Quantidade de cada missão rank E, baseado no tipo, se for para procurar npc coloque -1
+
+setarray $S_npc_name$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank S, se não for para procurar npc coloque "-1"
+setarray $A_npc_name$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank A, se não for para procurar npc coloque "-1"
+setarray $B_npc_name$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank B, se não for para procurar npc coloque "-1"
+setarray $C_npc_name$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank C, se não for para procurar npc coloque "-1"
+setarray $D_npc_name$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank D, se não for para procurar npc coloque "-1"
+setarray $E_npc_name$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank E, se não for para procurar npc coloque "-1"
+
+setarray $S_map$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank S, se não for para procurar npc coloque "-1"
+setarray $A_map$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank A, se não for para procurar npc coloque "-1"
+setarray $B_map$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank B, se não for para procurar npc coloque "-1"
+setarray $C_map$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank C, se não for para procurar npc coloque "-1"
+setarray $D_map$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank D, se não for para procurar npc coloque "-1"
+setarray $E_map$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank E, se não for para procurar npc coloque "-1"
+
+setarray $S_x[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank S, se não for para procurar npc coloque -1
+setarray $A_x[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank A, se não for para procurar npc coloque -1
+setarray $B_x[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank B, se não for para procurar npc coloque -1
+setarray $C_x[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank C, se não for para procurar npc coloque -1
+setarray $D_x[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank D, se não for para procurar npc coloque -1
+setarray $E_x[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank E, se não for para procurar npc coloque -1
+
+setarray $S_y[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank S, se não for para procurar npc coloque -1
+setarray $A_y[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank A, se não for para procurar npc coloque -1
+setarray $B_y[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank B, se não for para procurar npc coloque -1
+setarray $C_y[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank C, se não for para procurar npc coloque -1
+setarray $D_y[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank D, se não for para procurar npc coloque -1
+setarray $E_y[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank E, se não for para procurar npc coloque -1
+
+return;
+}
+
+-	script	Missões	-1,{
+
+OnInit:
+	setarray $hour[1], 10, 12, 19, 21;	// Horários das missões.
+	set $q, 6;						// Quantidade de missões por Rank. ( Não altere sem comunicar ao MidNight )
+	setarray $level[1], 50, 100, 150, 200, 250, 300; // Respectivamente o nível mínimo necessário para fazer as missões dos tipos: e, d, c, b, a, s
+	setarray $rank$[1], "E", "D", "C", "B", "A", "S"; // Não altere.
+	callfunc("read_quests");	// Seta as informaçõs das missões
+	end;
+
+OnMinute00:
+	if(gettime(3) != $hour[1] && gettime(3) != $hour[2] && gettime(3) != $hour[3] && gettime(3) != $hour[4])end;	// Se não tiver na hora das missões, não exibe nada
+	query_sql("SELECT `account_id` FROM `char` WHERE `online` = '1' LIMIT 125", .AID);	// Seleciona os 125 primeiros jogadores online e salva na array .AID
+	for(set .i, 0; .i < getarraysize(.AID); set .i, .i + 1)	// Aqui faz um loop para executar o código para todos os jogadores online.
+	{
+		if(! attachrid(.AID[.i]))continue;	// Checa se o jogador está online ( novamente ) só por segurança.
+		//for(set @j, 6; (@j) && (BaseLevel < $level[@j]); set @j,@j - 1);	// Vê qual o nível do cara para adequà-lo à missão
+		if(BaseLevel < $level[1])
+			continue;
+		if(BaseLevel >= $level[1] && BaseLevel < $level[2])
+			set @j, 1;
+		else if(BaseLevel >= $level[2] && BaseLevel < $level[3])
+			set @j, 2;
+		else if(BaseLevel >= $level[3] && BaseLevel < $level[4])
+			set @j, 3;
+		else if(BaseLevel >= $level[4] && BaseLevel < $level[5])
+			set @j, 4;
+		else if(BaseLevel >= $level[5] && BaseLevel < $level[6])
+			set @j, 5;
+		else
+			set @j, 6;
+		if(@j < 6);
+		{
+			query_sql("SELECT `"+$rank$[@j]+"` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @points);
+			if(@points >= 100)
+			{
+				announce "Você já fez o limite de missões de tipo "+$rank$[@j]+", você terá que ganhar nivel para poder fazer as missões de tipo "+$rank$[@j+1],bc_blue|bc_self;
+				continue;
+			}
+		}
+		set @mission, rand($q);	// Seleciona uma missão aleatória
+		set @mt, getd("$"+$rank$[@j]+"_type["+ @mission+"]");	// Seta em @mt o tipo da missão que o jogador vai fazer
+		if(@mt <= 0) // Se a missão for de matar monstro ou pegar item executa esse if
+		{
+			set @mq, getd("$"+$rank$[@j]+"_quantify["+@mission+"]");	// Seta a quantidade de monstro/item da missão
+			set @mid, getd("$"+$rank$[@j]+"_id["+@mission+"]");				// Seta o id do monstro/item da missão
+			announce "Você acaba de receber uma missão de ranking "+$rank$[@j]+".",bc_blue|bc_self;
+			message "Você terá que "+((@mt == 0) ? "matar" : "pegar")+" "+@mq+" "+((@mt == 0) ? "monstros" : "itens")+":";
+			if(@mt == 0)
+				message getmonsterinfo(@mid, 0); // Exibe o nome do monstro
+			else
+				message getitemname(@mid); // Exibe ou o nome do item
+			query_sql("INSERT INTO `quests_table` (`char_id`,`mission_ranking`,`mission_type`,`mission_quantify`,`mission_id`) VALUES ('"+getcharid(0)+"','"+$rank$[@j]+"','"+@mt+"','"+@mq+"','"+@mid+"')");	// Coloca na tabela os dados da missão.
+		}	else { // Agora é a execução de missão de procurar npc
+			setarray @npc_data$, getd("$"+$rank$[@j]+"_npc_name$["+@mission+"]"), getd("$"+$rank$[@j]+"_map$["+@mission+"]"); // Seta o mapa e o nome do npc a ser procurado
+			setarray @nd, getd("$"+$rank$[@j]+"_x["+@mission+"]"), getd("$"+$rank$[@j]+"_y["+@mission+"]");	// Seta as coordenadas do npc a ser procurado
+			message "Você terá que procurar pelo npc "+@npc_data$;
+			query_sql("INSERT INTO `quests_table` (`char_id`,`mission_ranking`,`mission_type`,`npc_name`,`npc_map`,`npc_x`,`npc_y`) VALUES ('"+getcharid(0)+"','"+$rank$[@j]+"','1','"+@npc_data$[0]+"','"+@npc_data$[1]+"','"+@nd+"','"+@nd[1]+"')");	// Coloca na tabela os dados da missão.
+		}
+		detachrid;
+	}
+	end;
+	
+OnHour00:
+	query_sql("TRUNCATE TABLE `quests_table`");	// Reseta a tabela
+	end;
+	
+OnNPCKillEvent:
+	query_sql("SELECT `mission_quantify`, `mission_id`,`mob_killed` FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'", .@q, .@id, .@mk);
+	if(getarraysize(.@q) == 0 || .@id != killedrid || .@mk >= .@q)end;
+	query_sql("UPDATE `quests_table` SET `mob_killed` = `mob_killed` + 1");
+	if(.@mk + 1 > .@q)
+	{
+		mes "Parabéns! Você matou todos os monstros necessários para a sua missão, por favor, venha falar comigo para eu te dar sua pontuação.";
+		close2;
+	}
+	end;
+}
+
+nevoa,254,304,3	script	Central das Missões::cent	707,{
+
+	query_sql("SELECT `mission_ranking`, `mission_type` FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'", .@ranking$, .@type);
+	if(.@ranking$ == "")
+	{
+		mes "Você não possui nem uma missão.";
+		close;
+	}
+	switch(.@type)
+	{
+		
+		case -1:
+			query_sql("SELECT `mission_quantify`, `mission_id` FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'", .@q, .@id);
+			if(countitem(.@id) < .@q)
+			{
+				mes "Volte quando tiver "+.@q+"x "+getitemname(.@id);
+				close;
+			}
+			mes "Parabéns! Conseguistes coletar todos os itens!";
+			delitem .@id, .@q;
+			query_sql("UPDATE `char` SET `"+.@ranking$+"` = `"+.@ranking$+"` + 1 WHERE `char_id` = '"+getcharid(0)+"'");
+			query_sql("DELETE FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'");
+			break;
+			
+		case 0:
+			query_sql("SELECT `mission_quantify`,`mob_killed`, `mission_id` FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'", .@q, .@mk, .@id);
+			if(.@mk < .@q)
+			{
+				mes "Volte quando tiver matado "+.@q+"x "+getmonsterinfo(.@id, 0);
+				close;
+			}
+			mes "Parabéns! Conseguistes matar todos os monstros!";
+			query_sql("UPDATE `char` SET `"+.@ranking$+"` = `"+.@ranking$+"` + 1 WHERE `char_id` = '"+getcharid(0)+"'");
+			query_sql("DELETE FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'");
+			break;
+			
+		case 1:
+			query_sql("SELECT `npc_talked`, `npc_name` FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'", .@tk, .@npc_name$);
+			if(.@tk == FALSE)
+			{
+				mes "Volte quando tiver falado com o NPC "+.@npc_name$;
+				close;
+			}
+			mes "Parabéns! Conseguiu achar o NPC "+.@npc_name$;
+			query_sql("UPDATE `char` SET `"+.@ranking$+"` = `"+.@ranking$+"` + 1 WHERE `char_id` = '"+getcharid(0)+"'");
+			query_sql("DELETE FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'");
+			break;
+			
+		default:
+			mes "ERRO! Comunique a um GM urgente!";
+			close;
+	}
+	if(.@ranking$ == "S")
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 50 WHERE `char_id` = '"+getcharid(0)+"'");
+	else if(.@ranking$ == "A")
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 35 WHERE `char_id` = '"+getcharid(0)+"'");
+	else if(.@ranking$ == "B")
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 25 WHERE `char_id` = '"+getcharid(0)+"'");
+	else if(.@ranking$ == "C")
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 15 WHERE `char_id` = '"+getcharid(0)+"'");
+	else if(.@ranking$ == "D")
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 10 WHERE `char_id` = '"+getcharid(0)+"'");
+	else if(.@ranking$ == "E")
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 5 WHERE `char_id` = '"+getcharid(0)+"'");
+	close;
+}
+-	script	quest_npc::mission_npc	-1,{
+	query_sql("SELECT `mission_type`,`npc_talked` FROM `quests_table` WHERE `char_id` = '"+getcharid(0)+"'", .@type, .@tk);
+	if(.@type != 1)
+	{
+		mes "Olá!";
+		mes ((isday()) ? "Um belo dia, não?" : "Uma bela noite, não?");
+		close;
+	} else if(.@tk)
+	{
+		mes "Você já falou comigo, agora volte para a Central das Missões";
+		close;
+	}
+	mes "Bah! Maldito! Você conseguiu me achar!";
+	query_sql("UPDATE `quests_table` SET `npc_talked` = '1'");
+	close;
+	
+}
+
+prontera, 156, 149, 4	duplicate(mission_npc)	Teste	746
+areia, 329, 243, 4	duplicate(cent)	Central de Missões#1	746
+konoha, 274, 283, 4	duplicate(cent)	Central de Missões#2	718

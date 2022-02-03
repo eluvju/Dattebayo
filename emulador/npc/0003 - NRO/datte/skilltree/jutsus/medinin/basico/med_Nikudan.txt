@@ -1,0 +1,95 @@
+payon_in03,123,187,5	script	Nikudan Sensha::medbas7	831,{
+
+if (getskilllv(66) >= 1) goto L_delete;
+if(med_basico != 1) {mes "Você precisa estudar medicina básica antes de aprender um técnica de medicina"; close;}
+if (checkquest(2071) == 1) goto L_go;
+if(med_skill_bas >= 3) {mes "Você já aprendeu três técnicas de medicinas básicas, esse é o limite"; close;}
+if(accept_med == 3) {mes "Você já aceitou três treinamentos pra realizar de medicina"; close;}
+if(Nikudan == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de medicina espalhado pelo mundo, eu posso lhe ensinar um técnica de medicina básica";
+next;
+mes "A técnica de medicina que eu ensino é o: Nikudan Sensha";
+next;
+mes "Descrição: Ao usar o ninja aumenta o dano de sua arma ou de seus aliados";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Nikudan Sensha
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(66) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(66) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 66,0,0;
+set Nikudan,0;
+erasequest 2071;
+if(accept_med > 0) {set accept_med,accept_med -1;}
+if(med_skill_bas > 0) {set med_skill_bas,med_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_med_bas_sete,1;
+set accept_med,accept_med +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 30 Saru.";
+setquest 2071;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(med_skill_bas >= 3) {mes "Você já aprendeu três técnicas de medicinas básicas, esse é o limite"; close;}
+if(med_bas_mobs_sete < 30) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 66,1,0;
+set Nikudan,1;
+set quest_med_bas_sete,0;
+set med_bas_mobs_sete, 0;
+completequest 2071;
+erasequest 2071;
+set med_skill_bas,med_skill_bas +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Medicina básica]",0;
+
+}
+
+-	script	medbase#7	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1628 && quest_med_bas_sete == 1) {set med_bas_mobs_sete,med_bas_mobs_sete +1; announce "[Medinin Quest] Você já derrotou "+med_bas_mobs_sete+" / 30 Saru",bc_blue|bc_self; end;}
+
+}
+
+//ve_in,79,228,5	duplicate(medbas7)	Nikudan Sensha#51	831,{
+//payon_in03,123,187,5	duplicate(medbas7)	Nikudan Sensha#52	831,{
+//lou_in01,90,132,5	duplicate(medbas7)	Nikudan Sensha#53	831,{
+//izlude_in,71,112,5	duplicate(medbas7)	Nikudan Sensha#54	831,{

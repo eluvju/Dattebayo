@@ -1,0 +1,66 @@
+konoha,170,217,5	script	Hiroshi::equipe_seis	831,{
+
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá, meu caro viajante, meu nome é Hiroshi vejo que vem de muitas batalhas, o que acha de uma nova shuriken?";
+next;
+mes "Shuriken Refinada é o nome da lâmina que posso te oferecer, mais resistente e fina, lhe dará mais eficiencia em seus arremessos.";
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Shuriken Refinada
+//========================================================================
+
+L_SS:
+next;
+if (checkquest(2009) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Escama brilhante.";
+mes "- Obter 25x Casca.";
+mes "- Obter 50x Minhoca Boa Pinta.";
+mes "- Matar 50 Gama-Kichi";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2009;
+set quest_equipe_seis,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(equipe_mobs_Seis < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(954) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(935) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(623) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Mais já está de volta? E vejo que me trouxe o que pedi, parabéns aqui está sua nova Shuriken, mate muitos inimigos com ela.";
+completequest 2009;
+erasequest 2009;
+set quest_equipe_seis,0;
+set equipe_mobs_seis,0;
+delitem 954,25;
+delitem 935,25;
+delitem 623,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1207,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	equipe#6	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1402 && quest_equipe_seis == 1) {set equipe_mobs_seis,equipe_mobs_seis +1; announce "[Quest de equipamento] Você já derrotou "+equipe_mobs_seis+" / 50 Gama-Kichi",bc_blue|bc_self; end;}
+
+}
+
+areia,138,191,5	duplicate(equipe_seis)	Hiroshi#1	831
+kiri,317,38,5	duplicate(equipe_seis)	Hiroshi#2	831
+nuvem,65,275,5	duplicate(equipe_seis)	Hiroshi#3	831

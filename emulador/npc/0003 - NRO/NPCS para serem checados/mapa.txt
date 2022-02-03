@@ -1,0 +1,565 @@
+//===== eAthena Script ======================================================================
+//= Map Of The Week v4.1
+//===== Original By =========================================================================
+//= Kaushik
+//===== Current Version: ====================================================================
+//= 1.0 - Script Release.
+//= 1.1 - Added GM selection of Map Of The Week.
+//= 1.2 - Fixed Timer Selection of the Map is on Sunday @ 24:00 server time.
+//= 2.0 - Added Contract System.
+//= 2.1 - Fixed Contract Expiry (Set #MOTWC to 0 once contract is expired).
+//= 2.2 - Cleaned Script to remove some unneeded repertition and script. [ToastOfDoom]
+//= 2.3 - Added Bottle Grenade ingredients to the script as it was missed.
+//= 2.4 - Decreased the drop rate.
+//= 2.5 - Changed announce and dispbottom.
+//= 3.0 - Added Whisper Functions. (map, kills, contract, gm).
+//= 3.1 - Changed to dynamic Cost and Kills - @motwcost & @motwkill to your desired numbers.
+//= 3.2 - Added Menu To The NPC.
+//= 4.0 - Added GM commands to change random map, selected map & to Destroy all contracts.
+//= 4.1 - Removed SQL unwanted variable.
+//= 5.0 - Changed rewards to dynamic rewards [WIP].
+//===== Compatible With: ====================================================================
+//= Tested in SQL Revision 14435
+//===== Description: ========================================================================
+//= A Random Map Will be selected and edp, acid demo bottle ingredients are rewarded.
+//===========================================================================================
+kakashi,87,155,1	script	MOTW	411,{
+	set @motwcost, 2000000;  //The cost for the contract per @motwkill kills.
+	set @motwkill, 10000;  //Kills available while the contract is purchased for @motwcost Zeny.
+	
+	mes "[Mapa Semanal]";
+	mes "O que gostaria de fazer?";
+	switch(select("^00FF00•^000000Verificar mapa semanal","^00FF00•^000000Verificar recompensas","^00FF00•^000000Status do contrato","^00FF00•^000000Assinar um contrato","^00FF00•^000000Comandos","^FF0000•^000000Nada"))
+	{
+	case 1:
+		next;
+		mes "[Mapa Semanal]";
+		mes "O mapa semanal é ^FF0000"+$MOTW$+"^000000.";
+		close;
+	case 2:
+		next;
+		mes "[Mapa Semanal]";
+		mes "As recompensas são ^FF0000Selo Kai de força, Selo kai de chakra, Selo kai de defesa, Selo kai de agilidade, Selo kai elemental e fragmento de cristais nível 1^000000.";
+		close;
+	case 3:
+		next;
+		mes "[Mapa Semanal]";
+		mes "Aguarde.";
+//		progressbar "green",5;
+		if(!#MOTWC) {
+		next;
+		mes "[Mapa Semanal]";
+		mes "Você não tem um contrato";
+		close;
+		}
+		mes "Seu contrato expira em ^FF0000"+(@motwkill-#MOTWKI)+"^000000";
+		close;
+	case 4:
+		next;
+		mes "[Mapa Semanal]";
+		mes "Gostaria de assinar um contrato?";
+		if(select("Sim:Não")-1) {
+			mes "[Mapa Semanal]";
+			mes "Sai da minha frente então";
+			close;
+			} 
+		else {
+			mes "[Mapa Semanal]";
+			mes "Vai custar ^FF0000"+@motwcost+" Zeny^000000 pra ^FF0000"+@motwkill+" kills^000000";
+			if(select("Ok, eu quero:Não")-1) {
+				mes "[Mapa Semanal]";
+				mes "Sai da minha frente então";
+				close;
+				}
+			else {
+				if (Zeny < @motwcost) goto MO_NoZeny;
+				set Zeny,Zeny-@motwcost;
+				set #MOTWC, 1;
+				set #MOTWKI, 0;
+				next;
+				mes "[Mapa Semanal]";
+				mes "Seu contrato foi assinado";
+				mes "Você pode renovar seu contrato mandando uma pm para";
+				mes "^FF0000NPC:MOTW^000000";
+				close;
+				}
+			}
+	case 5:
+		next;
+		mes "[Mapa Semanal]";
+		mes "Mande uma pm para ^FF0000NPC:MOTW^000000";
+		mes "com as seguintes palavras :";
+		mes "^00FF00•^000000^FF0000kills^000000 : numero de kills ainda disponível";
+		mes "^00FF00•^000000^FF0000contract^000000 : para renovar ou comprar um contrato";
+		mes "^00FF00•^000000^FF0000map^000000 : para saber qual o mapa semanal";
+		close;
+	case 6:
+		next;
+		mes "[Mapa Semanal]";
+		mes "Volte sempre";
+		close;
+	}
+
+	OnWhisperGlobal:	
+		if (strcharinfo(3) == "konoha") || (strcharinfo(3) == "nuvem") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "areia") {goto cont;} else {dispbottom "Esse comando só pode ser usado nas vilas"; end;}
+		if(compare(@whispervar0$,"map")) {
+			dispbottom "Mapa semanal : O mapa semanal é "+$MOTW$;
+			end;
+		}
+		
+		if(compare(@whispervar0$,"kills")) {
+			if(#MOTWC != 1) goto MO_NoContract;
+			mes "[Mapa Semanal]";
+			mes "Você ainda pode matar ^FF0000"+(@motwkill-#MOTWKI)+"^000000 monstros.!!";
+			close;
+		}
+		
+		if(compare(@whispervar0$,"contract")) {
+			mes "[Mapa Semanal]";
+			mes "Gostaria de comprar um contrato?";
+			if(select("Sim:Não")-1) {
+				mes "[Mapa Semanal]";
+				mes "Suma da minha frente então";
+				close;
+				} 
+			else {
+				mes "[Mapa Semanal]";
+				mes "Vai custar ^FF0000"+@motwcost+" Zeny^000000 por ^FF0000"+@motwkill+" Kills^000000";
+				if(select("Ok, eu quero:Não")-1) {
+					mes "[Mapa Semanal]";
+					mes "Sai da minha frente então";
+					close;
+					}
+				else {
+					if (Zeny < @motwcost) goto MO_NoZeny;
+					set Zeny,Zeny-@motwcost;
+					set #MOTWC, 1;
+					set #MOTWKI, 0;
+					mes "[Mapa Semanal]";
+					mes "Seu contrato foi assinado";
+					close;
+					}
+				}
+		}
+		
+		if(compare(@whispervar0$,"gm")) {
+			if(getgmlevel() < 90) end;
+			mes "[Mapa Semanal]";
+			mes "What do you want to do "+strcharinfo(0)+"?";
+			switch(select("^00FF00•^000000Random MOTW","^00FF00•^000000Enter MOTW","^FF0000•^000000Destroy All Contracts","^FF0000•^000000Nothing"))
+			{
+			case 1:
+				switch(rand(29)){
+			case 0:
+				set $mapotw$, "gef_fild09";
+				set $MOTW$, "gef_fild09";
+				break;
+				
+			case 1:
+				set $mapotw$, "gef_fild10";
+				set $MOTW$, "gef_fild10";
+				break;
+				
+			case 2:
+				set $mapotw$, "gef_fild07";
+				set $MOTW$, "gef_fild07";
+				break;
+
+			case 3:
+				set $mapotw$, "prt_fild10";
+				set $MOTW$, "prt_fild10";
+				break;
+
+			case 4:
+				set $mapotw$, "pay_fild08";
+				set $MOTW$, "pay_fild08";
+				break;
+
+			case 5:
+				set $mapotw$, "prt_fild02";
+				set $MOTW$, "prt_fild02";
+				break;
+
+			case 6:
+				set $mapotw$, "mjolnir_08";
+				set $MOTW$, "mjolnir_08";
+				break;
+
+			case 7:
+				set $mapotw$, "prt_fild05";
+				set $MOTW$, "prt_fild05";
+				break;
+
+			case 8:
+				set $mapotw$, "mjolnir_05";
+				set $MOTW$, "mjolnir_05";
+				break;
+
+			case 9:
+				set $mapotw$, "ra_fild07";
+				set $MOTW$, "ra_fild07";
+				break;
+
+			case 10:
+				set $mapotw$, "pay_arche";
+				set $MOTW$, "pay_arche";
+				break;
+
+			case 11:
+				set $mapotw$, "mjolnir_10";
+				set $MOTW$, "mjolnir_10";
+				break;
+
+			case 12:
+				set $mapotw$, "moc_fild13";
+				set $MOTW$, "moc_fild13";
+				break;
+
+			case 13:
+				set $mapotw$, "cmd_fild05";
+				set $MOTW$, "cmd_fild05";
+				break;
+
+			case 14:
+				set $mapotw$, "pay_fild06";
+				set $MOTW$, "pay_fild06";
+				break;
+
+			case 15:
+				set $mapotw$, "gef_fild00";
+				set $MOTW$, "gef_fild00";
+				break;
+
+			case 16:
+				set $mapotw$, "gef_fild03";
+				set $MOTW$, "gef_fild03";
+				break;
+
+			case 17:
+				set $mapotw$, "mosk_dun02";
+				set $MOTW$, "mosk_dun02";
+				break;
+
+			case 18:
+				set $mapotw$, "pay_fild05";
+				set $MOTW$, "pay_fild05";
+				break;
+
+			case 19:
+				set $mapotw$, "gl_prison";
+				set $MOTW$, "gl_prison";
+				break;
+
+			case 20:
+				set $mapotw$, "gl_dun02";
+				set $MOTW$, "gl_dun02";
+				break;
+
+			case 21:
+				set $mapotw$, "alde_dun02";
+				set $MOTW$, "alde_dun02";
+				break;
+
+			case 22:
+				set $mapotw$, "gl_dun01";
+				set $MOTW$, "gl_dun01";
+				break;
+
+			case 23:
+				set $mapotw$, "tha_t06";
+				set $MOTW$, "tha_t06";
+				break;
+
+			case 24:
+				set $mapotw$, "ayo_dun02";
+				set $MOTW$, "ayo_dun02";
+				break;
+
+			case 25:
+				set $mapotw$, "gld_dun03";
+				set $MOTW$, "gld_dun03";
+				break;
+
+			case 26:
+				set $mapotw$, "yggdrasil01";
+				set $MOTW$, "yggdrasil01";
+				break;
+
+			case 27:
+				set $mapotw$, "mjo_dun03";
+				set $MOTW$, "mjo_dun03";
+				break;
+
+			case 28:
+				set $mapotw$, "bra_fild01";
+				set $MOTW$, "bra_fild01";
+				break;
+					}
+				announce "Mapa semanal : O mapa semanal foi alterado para "+$MOTW$+"!!!!",0;
+				next;
+				mes "[Mapa Semanal]";
+				mes "O mapa semanal é ^FF0000"+$MOTW$+"^000000!!!!";
+				close;
+			case 2:
+				goto MOTW_Name;
+			case 3:
+				next;
+				mes "[Mapa Semanal]";
+				mes "Destroyed All Contracts";
+				query_sql "DELETE FROM global_reg_value where str = '#MOTWC'";
+				query_sql "DELETE FROM global_reg_value where str = '#MOTWKI'";
+				close;
+			case 4:
+				next;
+				mes "[Mapa Semanal]";
+				mes "Come Back When You are free again";
+				close;
+			}
+		}
+		
+	MO_Nothing:
+		mes "[Mapa Semanal]";
+		mes "Available Keywords :";
+		mes "^0000FF•^000000^FF0000kills^000000 : the no. of kills left";
+		mes "^0000FF•^000000^FF0000contract^000000 : to renew or buy contract";
+		mes "^0000FF•^000000^FF0000map^000000 : to know the Map Of The Week";
+		close;
+		
+	MO_NoZeny:
+		next;
+		mes "[Mapa Semanal]";
+		mes "Volte quando tiver zeny";
+		close;
+		
+	MO_NoContract:
+		next;
+		mes "[Mapa Semanal]";
+		mes "Você não tem um contrato";
+		close;
+		
+	MO_ContractEnd:
+		dispbottom "Mapa semanal : seu contrato expirou";
+		set #MOTWC,0;
+		end;
+		
+	MO_NoContractk:
+		dispbottom "Mapa semanal : Você não tem um contrato";
+		end;
+		
+	MOTW_Name:
+		mes "[Mapa Semanal]";
+		mes "Enter the map name";
+		input $MOTWGM$;
+		mes "The map you entered is ^FF0000"+$MOTWGM$+"^000000";
+		mes "Is this the correct map";
+		if(select("Yes:No")-1) {
+			goto MOTW_Name;
+			}
+		else {
+			set $mapotw$, $MOTWGM$;
+			set $MOTW$, $MOTWGM$;
+			announce "Mapa semanal : O mapa semanal foi alterado para "+$MOTW$+"!!!!",0;
+			close;
+			}
+			
+			
+	OnClock2400:
+		if(gettime(4)!=0) end;
+		switch(rand(29)){
+			case 0:
+				set $mapotw$, "gef_fild09";
+				set $MOTW$, "gef_fild09";
+				break;
+				
+			case 1:
+				set $mapotw$, "gef_fild10";
+				set $MOTW$, "gef_fild10";
+				break;
+				
+			case 2:
+				set $mapotw$, "gef_fild07";
+				set $MOTW$, "gef_fild07";
+				break;
+
+			case 3:
+				set $mapotw$, "prt_fild10";
+				set $MOTW$, "prt_fild10";
+				break;
+
+			case 4:
+				set $mapotw$, "pay_fild08";
+				set $MOTW$, "pay_fild08";
+				break;
+
+			case 5:
+				set $mapotw$, "prt_fild02";
+				set $MOTW$, "prt_fild02";
+				break;
+
+			case 6:
+				set $mapotw$, "mjolnir_08";
+				set $MOTW$, "mjolnir_08";
+				break;
+
+			case 7:
+				set $mapotw$, "prt_fild05";
+				set $MOTW$, "prt_fild05";
+				break;
+
+			case 8:
+				set $mapotw$, "mjolnir_05";
+				set $MOTW$, "mjolnir_05";
+				break;
+
+			case 9:
+				set $mapotw$, "ra_fild07";
+				set $MOTW$, "ra_fild07";
+				break;
+
+			case 10:
+				set $mapotw$, "pay_arche";
+				set $MOTW$, "pay_arche";
+				break;
+
+			case 11:
+				set $mapotw$, "mjolnir_10";
+				set $MOTW$, "mjolnir_10";
+				break;
+
+			case 12:
+				set $mapotw$, "moc_fild13";
+				set $MOTW$, "moc_fild13";
+				break;
+
+			case 13:
+				set $mapotw$, "cmd_fild05";
+				set $MOTW$, "cmd_fild05";
+				break;
+
+			case 14:
+				set $mapotw$, "pay_fild06";
+				set $MOTW$, "pay_fild06";
+				break;
+
+			case 15:
+				set $mapotw$, "gef_fild00";
+				set $MOTW$, "gef_fild00";
+				break;
+
+			case 16:
+				set $mapotw$, "gef_fild03";
+				set $MOTW$, "gef_fild03";
+				break;
+
+			case 17:
+				set $mapotw$, "mosk_dun02";
+				set $MOTW$, "mosk_dun02";
+				break;
+
+			case 18:
+				set $mapotw$, "pay_fild05";
+				set $MOTW$, "pay_fild05";
+				break;
+
+			case 19:
+				set $mapotw$, "gl_prison";
+				set $MOTW$, "gl_prison";
+				break;
+
+			case 20:
+				set $mapotw$, "gl_dun02";
+				set $MOTW$, "gl_dun02";
+				break;
+
+			case 21:
+				set $mapotw$, "alde_dun02";
+				set $MOTW$, "alde_dun02";
+				break;
+
+			case 22:
+				set $mapotw$, "gl_dun01";
+				set $MOTW$, "gl_dun01";
+				break;
+
+			case 23:
+				set $mapotw$, "tha_t06";
+				set $MOTW$, "tha_t06";
+				break;
+
+			case 24:
+				set $mapotw$, "ayo_dun02";
+				set $MOTW$, "ayo_dun02";
+				break;
+
+			case 25:
+				set $mapotw$, "gld_dun03";
+				set $MOTW$, "gld_dun03";
+				break;
+
+			case 26:
+				set $mapotw$, "yggdrasil01";
+				set $MOTW$, "yggdrasil01";
+				break;
+
+			case 27:
+				set $mapotw$, "mjo_dun03";
+				set $MOTW$, "mjo_dun03";
+				break;
+
+			case 28:
+				set $mapotw$, "bra_fild01";
+				set $MOTW$, "bra_fild01";
+				break;
+		}
+		announce "Mapa semanal : O mapa semanal foi alterado para "+$MOTW$+"!!!!",0;
+		end;
+		
+	OnNPCKillEvent:
+		getmapxy(.@map$,.@x,.@y,0);
+		if (.@map$ != $mapotw$) end;
+		if (!#MOTWC) goto MO_NoContractk;
+		if (#MOTWKI >= 10000) goto MO_ContractEnd;
+		set #MOTWKI, #MOTWKI+1;
+		switch(rand(70)){
+		case 0:
+			getitem 576,1;
+			break;
+		case 1:
+			getitem 577,1;
+			break;
+		case 2:
+			getitem 559,1;
+			break;
+
+		case 3:
+			getitem 560,1;
+			break;
+
+		case 4:
+			getitem 561,1;
+			break;
+
+		case 5:
+			getitem 512,1;
+			announce "Mapa semanal : Um fragmento de cristal foi dropado no mapa semanal "+$MOTW$+", Tente você também sua sorte!",0;
+			break;
+
+		case 6:
+			getitem 556,1;
+			announce "Mapa semanal : Um fragmento de cristal foi dropado no mapa semanal "+$MOTW$+", Tente você também sua sorte!",0;
+			break;
+
+		case 7:
+			getitem 558,1;
+			announce "Mapa semanal : Um fragmento de cristal foi dropado no mapa semanal "+$MOTW$+", Tente você também sua sorte!",0;
+			break;
+
+		case 8:
+			getitem 582,1;
+			announce "Mapa semanal : Um fragmento de cristal foi dropado no mapa semanal "+$MOTW$+", Tente você também sua sorte!",0;
+			break;
+		default:
+			announce "Mapa semanal : Nenhuma recompensa",bc_yellow|bc_self;
+			break;
+		}
+}

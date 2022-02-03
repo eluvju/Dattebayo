@@ -1,0 +1,117 @@
+prt_sewb3,182,16,5	script	Gougakyuu no Jutsu::katon3	831,{
+if(gougakyuu == 1) && (getskilllv(534) == 0) goto L_HK2;
+if(elementokaton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 3) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (WeaponLvl2 < 20) {mes "Você precisa de ninjutsu level 20 pra aprender esse jutsu"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Katon, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Gougakyuu no Jutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_HK,"Agora não",L_no;
+
+//========================================================================
+//	Gougakyuu no Jutsu
+//========================================================================
+
+L_HK:
+if (getskilllv(19) > 0) {mes "Você já aprendeu esse jutsu"; close;}
+if (checkquest(1012) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Rabo de cobra";
+mes "- Derrotar 10x Girino";
+setquest 1012;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_HK2:
+if (checkquest(1012) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Rabo de cobra";
+mes "- Derrotar 10x Girino";
+setquest 1012;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1012,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(934) < 200) {next; mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 934,200;
+skill 19,1,0;
+set gougakyuu,1;
+set skillgenin1,4;
+completequest 1012;
+erasequest 1012;
+
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Katon]",0;
+}
+//=========================================================================
+//	Pergaminho Explosivo
+//=========================================================================
+gld_dun04,91,78,5	script	Pergaminho Explosivo::katon4	831,{
+if (nin_intermediario != 1) {mes "Você precisa de ninjutsu intermediário para aprender esse jutsu"; close;}
+if(elementokaton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 4) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (WeaponLvl2 < 20) {mes "Você precisa de ninjutsu level 20 pra aprender esse jutsu"; close;}
+if (P_Explosivo == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Katon, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Pergaminho Explosivo";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_HB,"Agora não",L_no;
+
+L_HB:
+if (checkquest(1013) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Pele de sapo";
+mes "- Derrotar 10x Filhote de cobra";
+mes "- Estudar ninjutsu básico.";
+setquest 1013;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1013,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+if (countitem(7155) < 200) {next; mes "Você não completou seu treinamento."; close;}
+if (nin_basico != 1) {next; mes "Você não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7155,200;
+skill 123,1,0;
+set P_Explosivo,1;
+completequest 1013;
+erasequest 1013;
+set skillgenin1,5;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Katon]",0;
+}
+
+prt_sewb4,132,162,5	duplicate(katon3)	Gougakyuu no Jutsu#d7	831
+gl_sew02,111,222,5	duplicate(katon4)	Pergaminho Explosivo#d8	831
+
+gl_sew03,32,260,5	duplicate(katon3)	Gougakyuu no Jutsu#d9	831
+gl_sew04,79,186,5	duplicate(katon4)	Pergaminho Explosivo#d10	831
+
+alde_dun04,207,225,5	duplicate(katon3)	Gougakyuu no Jutsu#d11	831
+beach_dun3,269,200,5	duplicate(katon4)	Pergaminho Explosivo#d12	831

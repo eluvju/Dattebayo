@@ -1,0 +1,1008 @@
+bibli_01,43,64,4	script	Diário Secreto::diario	111,3,3,{
+
+if (kgs_novas > 0) {mes "Nada de Útil aqui"; close;}
+set kgs_novas,1;
+getitem 12955,1;
+mes "Você encontra um diário antigo escondido no meio dos livros, o que será que tem escrito nele?";
+close;
+
+}
+
+floresta,208,327,4	script	Velho andarilho	57,{
+
+if (countitem(12955) == 0) {mes "Sinto muito, sou uma pessoa ocupada"; close;}
+if (kgs_novas != 1) {mes "[^DC143CVelho andarilho^000000]"; mes "Desculpe, não posso mais ajudar"; close;}
+
+mes "[^DC143CVelho andarilho^000000]";
+mes "Olá jovem viajante, muito cansado?";
+menu "- Olá, conhece algum Strauss?",L_Sim,"- Sim, estou, até mais",L_nao;
+
+L_sim:
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "Bem, você parece conhecer um pouco da minha vergonha sendo assim acho que vou contar a você um pouco da minha historia mas preste atenção pois não irei repetir.";
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "Ha 10 anos atrás, Strauss e eu estávamos pesquisando meios de se replicar habilidades consideradas únicas porem não tínhamos recurso para bons equipamentos e testes adequados, certo dia chegou alguém com uma aparência assustadora chamado Orochimaru.";
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "Orochimaru se mostrou interessado no nosso trabalho e decidiu nos contratar a serviço de konoha porém com os resultados se aproximando seria necessário testar o experimento em cobaias vivas.";
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "O experimento era simples, implantar o DNA de um usuário de kekkei genkai em uma pessoa sem uma kekkei genkai fazendo com que ela naturalmente evolua e adquira as habilidades de um determinado clã, todos os testes apontaram para o que nós dois já sabíamos, era possível mudar a história de guerra e sangue e com isso trazer a paz ao mundo.";
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "Sonhos de criança eu diria, com a queda de Orochimaru, nós fomos obrigados a sair de konoha e abandonar tudo mas Strauss já tinha ido muito longe para desistir sem lutar e armou uma explosão falsa no laboratório da superfície, um lugar inútil";
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "O verdadeiro lugar de atrocidades e terror, aonde foi realizado os testes em humanos sem que ninguém pudesse ouvir os gritos, foi lá aonde ele se escondeu e acredito que ainda se esconde, se eu estou vivo ele também está.";
+menu "- Desculpe, não quero mais saber disso",L_nao,"- Ele conseguiu finalizar a pesquisa?",L_sim2;
+
+L_sim2:
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "Sim, ele finalizou a pesquisa antes da queda de Orochimaru e como consequência disso eu resolvi ir embora e ajudar as pessoas que buscam poder, assim investindo na nova geração, assim treinei Welfen quando fiquei muito velho, Welfen é o medico andarilho, meu filho.";
+menu "- Obrigado pela historia, vou ir embora agora.",L_nao,"- Aonde eu encontro o laboratório?",L_sim3;
+
+L_sim3:
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "Você não prestou atenção na historia garoto? Como a entrada foi explodida é impossível chegar lá, era a única entrada mas caso você não acredita em mim, converse com quem construiu aquilo, seu nome é Oscar";
+next;
+mes "[^DC143CVelho andarilho^000000]";
+mes "Ele é a pessoa que reformou konoha, ele conhece cada canto de lá e deve ter mais alguma informação para você, porém ele não vai falar a menos que entregue isso a ele, boa sorte.";
+getitem 7308,1;
+set kgs_novas,2;
+close;
+
+
+L_nao:
+close;
+
+}
+
+konoha,100,136,4	script	Oscar	120,{
+
+if (countitem(12955) == 0) {mes "[^DC143COscar^000000]"; mes "Sinto muito, sou uma pessoa ocupada"; close;}
+if (kgs_novas < 2) {mes "[^DC143COscar^000000]"; mes "Sinto muito, sou uma pessoa ocupada"; close;}
+if (kgs_novas > 2) {mes "[^DC143COscar^000000]"; mes "Sinto muito, era apenas uma pergunta"; close;}
+
+mes "[^DC143COscar^000000]";
+mes "Se você tem esse diário, aquele velho maluco deve ter mandado você aqui, o que faz pensar que irei ajudar você?";
+menu "- Talvez isso faça você mudar de ideia",L_sim,"- Melhor eu ir então",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+next;
+mes "[^DC143COscar^000000]";
+mes "Não posso dizer não a isso, hehe. Já que você fez essa gentileza irei responder a apenas uma pergunta sua portanto seja inteligente e pense bem antes de fazer ela!";
+menu "- Como você conheceu Strauss?",L_sim2,"- Pra que essa bebida?",L_sim3,"- Quero uma dica para entrar no laboratório",L_sim4;
+
+L_sim2:
+next;
+mes "[^DC143COscar^000000]";
+mes "Eu conheci ele quando criei e montei seu laboratório e me lembro de cada detalhe daquela magnifica construção, seu laboratório como deve saber fica no sub-solo de Konoha e como foi explodida a entrada é impossível entrar porém existe um modo de chegar pela biblioteca do laboratório da superfície, criei ela para emergências e ela acaba nos arredores da ilha tartaruga";
+next;
+mes "[^DC143COscar^000000]";
+mes "Pronto, respondi sua pergunta pode ir embora agora mas antes tome isto, você vai precisar";
+getitem 12956,1;
+delitem 7308,1;
+set kgs_novas,3;
+close;
+
+L_sim3:
+next;
+mes "[^DC143COscar^000000]";
+mes "Por que gosto de beber junto dos takas, lembro de ter construído algo lá";
+next;
+mes "[^DC143COscar^000000]";
+mes "Pronto, respondi sua pergunta pode ir embora agora mas antes tome isto, você vai precisar";
+getitem 12956,1;
+delitem 7308,1;
+set kgs_novas,3;
+close;
+
+L_sim4:
+next;
+mes "[^DC143COscar^000000]";
+mes "Quer uma dica? Precisa de uma chave para acessar a passagem secreta do laboratório";
+next;
+mes "[^DC143COscar^000000]";
+mes "Pronto, respondi sua pergunta pode ir embora agora mas antes tome isto, você vai precisar";
+getitem 12956,1;
+delitem 7308,1;
+set kgs_novas,3;
+close;
+
+}
+
+ayo_dun01,163,271,4	script	Passagem#kgsnew	111,3,3,{
+
+if (kgs_novas < 3) {mes "Talvez eu não esteja pronto pra entrar aqui ainda..."; close;}
+
+warp "yuno_in05",152,141;
+end;
+
+}
+
+yuno_in04,100,16,4	script	Passagem#kgsnew1	111,3,3,{
+
+if (kgs_novas < 3) {mes "Talvez eu não esteja pronto pra entrar aqui ainda..."; close;}
+if (countitem(12956) == 0) {mes "Hm, parece que para entrar aqui precisa de uma chave"; close;}
+
+warp "yuno_in03",25,11;
+end;
+
+}
+
+
+yuno_in05,197,194,0	warp	kgs1	1,1,yuno_in04,103,22
+lhz_dun02,150,150,0	warp	kgs2	1,1,lhz_dun03,140,137
+
+
+yuno_in04,43,64,4	script	Pedaço de papel	111,3,3,{
+
+getitem 12957,1;
+mes "Você encontra um pedaço de papel, parece ter algo escrito nele";
+close;
+
+}
+
+yuno_in03,32,15,4	script	Enfermeira Joy	71,{
+
+mes "[^DC143CEnfermeira Joy^000000]";
+mes "Seja bem vindo ao centro de pesquisa de gene, aqui ajudamos as pessoas que buscam poder em que posso ser util?";
+menu "- Vim em busca de poder",L_sim,"- Por enquanto nada, obrigado",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+next;
+mes "[^DC143CEnfermeira Joy^000000]";
+mes "Podemos ajudar nisso, você só precisa se inscrever no programa, lembre-se que existem sérios riscos no processo";
+next;
+mes "[^DC143CEnfermeira Joy^000000]";
+mes "Cada fase do programa será coordenada por um doutor especializado nisso";
+next;
+mes "[^DC143CEnfermeira Joy^000000]";
+mes "Como implantar células no corpo, fazer a síntese de proteínas e montar o DNA. E sempre haverá um preço a ser pago para prosseguir. O primeiro doutor se chama Doutor Lupin";
+next;
+mes "[^DC143CEnfermeira Joy^000000]";
+mes "A consulta com ele custa 20.000.000 zeny, caso sua vila tenha contrato de redução de impostos nível 1, este valor cai para 12.000.000 e caso tenha no nível 2, cai para 8.000.000 e não há reembolsos";
+menu "- Sim, eu aceito os riscos",L_sim2,"- Deixa pra lá...",L_nao;
+
+L_sim2:
+next;
+if ($konoha_impostos1 == 1) && (#konoha == 1) && (Zeny < 12000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) && (Zeny < 8000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos1 == 1) && (#suna == 1) && (Zeny < 12000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos2 == 1) && (#suna == 1) && (Zeny < 8000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) && (Zeny < 12000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) && (Zeny < 8000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) && (Zeny < 12000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) && (Zeny < 8000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+
+if ($konoha_impostos1 == 1) && (#konoha == 1) && (Zeny >= 12000000) {goto continuar;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) && (Zeny >= 8000000) {goto continuar;}
+if ($areia_impostos1 == 1) && (#suna == 1) && (Zeny >= 12000000) {goto continuar;}
+if ($areia_impostos2 == 1) && (#suna == 1) && (Zeny >= 8000000) {goto continuar;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) && (Zeny >= 12000000) {goto continuar;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) && (Zeny >= 8000000) {goto continuar;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) && (Zeny >= 12000000) {goto continuar;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) && (Zeny >= 8000000) {goto continuar;}
+if (Zeny >= 40000000) {goto continuar;}
+
+if ($konoha_impostos1 == 0) && (#konoha == 1) && (Zeny < 20000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($konoha_impostos2 == 0) && (#konoha == 1) && (Zeny < 20000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos1 == 0) && (#suna == 1) && (Zeny < 20000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos2 == 0) && (#suna == 1) && (Zeny < 20000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos1 == 0) && (#nuvem == 1) && (Zeny < 20000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos2 == 0) && (#nuvem == 1) && (Zeny < 20000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos1 == 0) && (#nevoa == 1) && (Zeny < 20000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos2 == 0) && (#nevoa == 1) && (Zeny < 20000000) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+
+
+continuar:
+if (pegoukg == 1) {mes "[^DC143CEnfermeira Joy^000000]"; mes "Hm... vamos fazer uma olhada em você... Oh não! Você já possui uma Kekkei Gekkai, este procedimento funciona apenas em quem não tem"; close;}
+mes "[^DC143CEnfermeira Joy^000000]";
+mes "Perfeito, tome essa ficha de inscrição e entregue para o doutor Lupin";
+getitem 12959,1;
+if ($konoha_impostos1 == 1) && (#konoha == 1) {set Zeny, Zeny-12000000; close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) {set Zeny, Zeny-8000000; close;}
+if ($areia_impostos1 == 1) && (#suna == 1) {set Zeny, Zeny-12000000; close;}
+if ($areia_impostos2 == 1) && (#suna == 1) {set Zeny, Zeny-8000000; close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) {set Zeny, Zeny-12000000; close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) {set Zeny, Zeny-8000000; close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) {set Zeny, Zeny-12000000; close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) {set Zeny, Zeny-8000000; close;}
+set Zeny, Zeny-20000000;
+close;
+
+}
+
+yuno_in03,20,21,4	script	Doutor Lupin	59,{
+if (pegoukg == 1) && (kg_kikaichu < 2) && (kg_flauta < 2) && (kg_ibuse < 2) && (kg_kibaku < 2) && (kg_Bukijutsu < 2) && (kg_Jashin < 2) {goto L_sim3;}
+if (pegoukg == 1) && (kg_kikaichu >= 2) || (kg_flauta >= 2) || (kg_ibuse >= 2) || (kg_kibaku >= 2) || (kg_Bukijutsu >= 2) || (kg_Jashin >= 2) {mes "[^DC143CDoutor Lupin^000000]"; mes "Desculpe, você só pode ter uma Kekkei Genkai por vez"; close;}
+if (countitem(12959) == 0) {mes "[^DC143CDoutor Lupin^000000]"; mes "Sinto muito, agende uma consulta com a enfermeira"; close;}
+
+
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Bem vindo, vejo que almeja ter poder, veio ao lugar certo, mas antes, sabe como funciona nosso procedimento?";
+menu "- Não, poderia me explicar doutor?",L_sim,"- Mudei de ideia, não quero mais",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Pois bem, nosso procedimento consiste em implantar células de outras pessoas em você e naturalmente seu sistema vai recriar a habilidade que você desejar, é um processo doloroso e algumas pessoas morrem.";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Deseja continuar?";
+menu "- Sim, não me importo com os riscos",L_sim2,"- Não, é muito perigoso",L_nao;
+
+L_sim2:
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Vejo que esta decidido, agora você deve escolher qual habilidade você deseja recriar";
+menu "- Kikaichu",Kikaichu2,"- Flauta Demoníaca",flauta2,"- Jashin",Jashin2,"- Mestre Ibuse",ibuse2,"- Kibaku Nendo",kibaku2,"- Bukijutsu",Bukijutsu2,"- Vou pensar mais",L_nao;
+
+Kikaichu2:
+if (getskilllv(416) > 0) {next; mes "Você possui o jutsu Preparar konoha Senpuu, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+if (getskilllv(414) > 0) {next; mes "Você possui o jutsu Preparar konoha Renpuu, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+if (getskilllv(418) > 0) {next; mes "Você possui o jutsu Preparar konoha Shoufu, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+if (getskilllv(412) > 0) {next; mes "Você possui o jutsu Preparar konoha Dai Senpu, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+if (getskilllv(279) > 0) {next; mes "Você possui o jutsu Autospell, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+if (getskilllv(263) > 0) {next; mes "Você possui o jutsu Shippo Tetsu Rendan, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Kikaichu  é uma habilidade de um dos 3 clãs nobres de konoha, eles utilizam insetos para poder atacar seus inimigos a uma distancia segura";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Seus poderes são perfeitos para pessoas que utilizam ^FF8C00Fuuinjutsu^000000 e ^006400Medicina^000000";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Tem certeza que quer esta Kekkei Genkai?";
+menu "- Sim, eu tenho certeza",L_kikaichu,"- Vou pensar mais",L_nao;
+close;
+
+flauta2:
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Ser um usuário da Flauta Demoníaca consiste basicamente em invocar servos para auxiliar em sua luta e pode utilizar debuffs com sua flauta";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Seus poderes são perfeitos para aqueles que utilizam ^800080Genjutsu^000000 e ^FF8C00Fuuinjutsu^000000.";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Tem certeza que quer esta Kekkei Genkai?";
+menu "- Sim, eu tenho certeza",L_flauta,"- Vou pensar mais",L_nao;
+close;
+
+Jashin2:
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Jashin é uma religião muito comum na vila oculta da grama, seu estilo de luta é baseado em segurar o dano inimigo e eliminar os alvos mais fracos";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Seus poderes são perfeitos para aqueles que utilizam ^FF0000Taijutsu^000000 e ^006400Medicina^000000.";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Tem certeza que quer esta Kekkei Genkai?";
+menu "- Sim, eu tenho certeza",L_Jashin,"- Vou pensar mais",L_nao;
+close;
+
+ibuse2:
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Ibuse era uma salamandra que vivia nos arredores da vila oculta da chuva e conseguimos coletar seu DNA e sintetizar replicar as habilidades da salamandra, dizem que alguns evoluíram tanto que é possível invocar a própria ibuse";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Seus poderes são perfeitos para quem usa ^FF8C00Fuuinjutsu^000000 e ^FFD700Velocidade^000000";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Tem certeza que quer esta Kekkei Genkai?";
+menu "- Sim, eu tenho certeza",L_ibuse,"- Vou pensar mais",L_nao;
+close;
+
+kibaku2:
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Kibaku nendo é uma habilidade de bakuton e muito comum na vila da pedra, ela é baseada em invocações e criações de bombas baseadas em argila";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Seus poderes são perfeitos com ^006400Medicina^000000, ^0000FFNinjutsu^000000 e ^FF0000Taijutsu^000000";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Tem certeza que quer esta Kekkei Genkai?";
+menu "- Sim, eu tenho certeza",L_kibaku,"- Vou pensar mais",L_nao;
+close;
+
+Bukijutsu2:
+//if (getskilllv(416) > 0) {next; mes "Você possui o jutsu Preparar konoha Senpuu, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+//if (getskilllv(414) > 0) {next; mes "Você possui o jutsu Preparar konoha Renpuu, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+//if (getskilllv(418) > 0) {next; mes "Você possui o jutsu Preparar konoha Shoufu, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+//if (getskilllv(412) > 0) {next; mes "Você possui o jutsu Preparar konoha Dai Senpu, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+//if (getskilllv(279) > 0) {next; mes "Você possui o jutsu Autospell, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+//if (getskilllv(263) > 0) {next; mes "Você possui o jutsu Shippo Tetsu Rendan, por motivos de equilíbrio, os efeitos da Kekkei Genkai não funcionam se você possuir este jutsu. Se quiser utilizar esta Kekkei Genkai, remova antes este jutsu"; close;} 
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Bukijutsu é a arte de invocar e usar armas e combates a distância, os usuarios mais conhecidos são os mitsashis";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Seus poderes são perfeitos com ^FFD700Velocidade^000000 e ^FF8C00Fuuinjutsu^000000.";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Tem certeza que quer esta Kekkei Genkai?";
+menu "- Sim, eu tenho certeza",L_Bukijutsu,"- Vou pensar mais",L_nao;
+close;
+
+//////////////////////////
+
+L_kikaichu:
+next;
+set pegoukg,1;
+set kg_kikaichu,1;
+delitem 12959,1;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Muito Bem, para ativar seu gene é necessário você fazer um treinamento ardúo então se esforce bastante. ";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Para ativar seu gene é preciso ter level 999 e me provar que você esta treinando duro para isso me pague 1 NRO point.";
+menu "- Eu tenho o que é preciso",L_sim3,"- Eu volto depois",L_nao;
+close;
+
+L_flauta:
+next;
+set pegoukg,1;
+set kg_flauta,1;
+delitem 12959,1;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Muito Bem, para ativar seu gene é necessário você fazer um treinamento ardúo então se esforce bastante. ";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Para ativar seu gene é preciso ter level 999 e me provar que você esta treinando duro para isso me pague 1 NRO point.";
+menu "- Eu tenho o que é preciso",L_sim3,"- Eu volto depois",L_nao;
+close;
+
+L_Jashin:
+next;
+set pegoukg,1;
+set kg_Jashin,1;
+delitem 12959,1;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Muito Bem, para ativar seu gene é necessário você fazer um treinamento ardúo então se esforce bastante. ";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Para ativar seu gene é preciso ter level 999 e me provar que você esta treinando duro para isso me pague 1 NRO point.";
+menu "- Eu tenho o que é preciso",L_sim3,"- Eu volto depois",L_nao;
+close;
+
+L_ibuse:
+next;
+set pegoukg,1;
+set kg_ibuse,1;
+delitem 12959,1;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Muito Bem, para ativar seu gene é necessário você fazer um treinamento ardúo então se esforce bastante. ";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Para ativar seu gene é preciso ter level 999 e me provar que você esta treinando duro para isso me pague 1 NRO point.";
+menu "- Eu tenho o que é preciso",L_sim3,"- Eu volto depois",L_nao;
+close;
+
+L_kibaku:
+next;
+set pegoukg,1;
+set kg_kibaku,1;
+delitem 12959,1;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Muito Bem, para ativar seu gene é necessário você fazer um treinamento ardúo então se esforce bastante. ";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Para ativar seu gene é preciso ter level 999 e me provar que você esta treinando duro para isso me pague 1 NRO point.";
+menu "- Eu tenho o que é preciso",L_sim3,"- Eu volto depois",L_nao;
+close;
+
+L_Bukijutsu:
+next;
+set pegoukg,1;
+set kg_Bukijutsu,1;
+delitem 12959,1;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Muito Bem, para ativar seu gene é necessário você fazer um treinamento ardúo então se esforce bastante. ";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Para ativar seu gene é preciso ter level 999 e me dar 1 NRO Point. Este item é o cartão-mestre para a máquina funcionar e estou sem ele no momento. Pode me trazer um?";
+menu "- Eu tenho o que é preciso",L_sim3,"- Eu volto depois",L_nao;
+close;
+
+L_sim3:
+if (countitem(7116) == 0) {mes "[^DC143CDoutor Lupin^000000]"; mes "Sinto muito, você não possui o meu pagamento de 1 NRO Point"; close;}
+if (BaseLevel < 999) {mes "[^DC143CDoutor Lupin^000000]"; mes "Você não está no nível 999, volte quando estiver"; close;}
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Parabéns a cirugia foi um sucesso, e você agora despertou o nível 1 de sua Kekkei Gekkai, agora você ja esta pronto para seguir seu rumo a grandeza";
+next;
+mes "[^DC143CDoutor Lupin^000000]";
+mes "Para seguir adiante no seu treinamento, você deve falar com o Doutor Leonard, ele vai auxiliar você nesse processo.";
+if (kg_kikaichu == 1) {getitem 19216,1; set Aburame,1; set kg_kikaichu,2; delitem 7116,1; announce " "+strcharinfo(0)+" Acaba de iniciar seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+if (kg_flauta == 1) {getitem 19211,1; set Tayuya,1; set kg_flauta,2; delitem 7116,1; announce " "+strcharinfo(0)+" Acaba de iniciar seu tratamento com o gene Flauta Demoníaca!",bc_blue|bc_all; close;}
+if (kg_Jashin == 1) {getitem 19210,1; set Jashin,1; set kg_Jashin,2; delitem 7116,1; announce " "+strcharinfo(0)+" Acaba de iniciar seu tratamento com o gene Jashin!",bc_blue|bc_all; close;}
+if (kg_ibuse == 1) {getitem 19218,1; set Ibuse,1; set kg_ibuse,2; delitem 7116,1; announce " "+strcharinfo(0)+" Acaba de iniciar seu tratamento com o gene Ibuse!",bc_blue|bc_all; close;}
+if (kg_kibaku == 1) {getitem 19212,1; set kibaku,1; set kg_kibaku,2; delitem 7116,1; announce " "+strcharinfo(0)+" Acaba de iniciar seu tratamento com o gene Kibaku!",bc_blue|bc_all; close;}
+if (kg_Bukijutsu == 1) {getitem 19207,1; set Mitsashi,1; set kg_Bukijutsu,2; delitem 7116,1; announce " "+strcharinfo(0)+" Acaba de iniciar seu tratamento com o gene Bukijutsu!",bc_blue|bc_all; close;}
+}
+
+yuno_in03,31,27,4	script	Doutor Leonard	89,{
+
+if (pegoukg == 1) && (kg_kikaichu != 2) && (kg_flauta != 2) && (kg_ibuse != 2) && (kg_kibaku != 2) && (kg_Bukijutsu != 2) && (kg_Jashin != 2) {mes "[^DC143CDoutor Leonard^000000]"; mes "Volte aqui quando estiver pronto"; close;}
+
+mes "[^DC143CDoutor Leonard^000000]";
+mes "Olá, seja bem vindo.";
+next;
+mes "[^DC143CDoutor Leonard^000000]";
+mes "Vejo que está aqui por que deseja avançar no tratamento então vou explicar logo como funciona essa fase.";
+next;
+mes "[^DC143CDoutor Leonard^000000]";
+mes "Com o gene no seu organismo eu irei duplicar eles para começar as mudanças no seu corpo. Só avisando, essa etapa é meio dolorosa e você vai ter que resistir.";
+next;
+mes "[^DC143CDoutor Leonard^000000]";
+mes "Para isso você precisa ser lvl 999, chunin e me trazer 2 NRO Points, acredito que o Doutor Lupin explicou que eles são a chave-mestre da máquina";
+menu "- Eu tenho o que é preciso",L_sim,"- Desculpe, volto outra hora.",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+if (countitem(7116) < 2) {next; mes "[^DC143CDoutor Leonard^000000]"; mes "Desculpe, você não possui meu pagamento de 2 NRO Points."; close;}
+if (chunin != 1) && (jounin != 1) {next; mes "[^DC143CDoutor Leonard^000000]"; mes "Você ainda não é Chunin, seu corpo não irá aguentar este tratamento"; close;}
+next;
+mes "[^DC143CDoutor Leonard^000000]";
+mes "Parabéns, sua Kekkei Gekkai evoluiu para o nível 2, agora você ja esta pronto para seguir seu rumo a grandeza";
+next;
+mes "[^DC143CDoutor Leonard^000000]";
+mes "Muitos não sobrevivem a essa estagio, parabéns e para seguir adiante no seu treinamento, você deve falar com o Doutor Wenworth, ele vai auxiliar você nesse processo.";
+if (kg_kikaichu == 2) {set Aburame,2; set kg_kikaichu,3; delitem 7116,2; announce ""+strcharinfo(0)+" está reagindo bem ao gene Kikaichu!",bc_blue|bc_all; close;}
+if (kg_flauta == 2) {set Tayuya,2; set kg_flauta,3; delitem 7116,2; announce ""+strcharinfo(0)+" está reagindo bem ao gene Flauta Demoníaca!",bc_blue|bc_all; close;}
+if (kg_Jashin == 2) {set Jashin,2; set kg_Jashin,3; delitem 7116,2; announce ""+strcharinfo(0)+" está reagindo bem ao gene Jashin!",bc_blue|bc_all; close;}
+if (kg_ibuse == 2) {set Ibuse,2; set kg_ibuse,3; delitem 7116,2; announce ""+strcharinfo(0)+" está reagindo bem ao gene Ibuse!",bc_blue|bc_all; close;}
+if (kg_kibaku == 2) {set kibaku,2; set kg_kibaku,3; delitem 7116,2; announce ""+strcharinfo(0)+" está reagindo bem ao gene Kibaku!",bc_blue|bc_all; close;}
+if (kg_Bukijutsu == 2) {set Mitsashi,2; set kg_Bukijutsu,3; delitem 7116,2; announce ""+strcharinfo(0)+" está reagindo bem ao gene Bukijutsu!",bc_blue|bc_all; close;}
+close;
+
+}
+
+yuno_in03,20,33,4	script	Doutor Wenworth	110,{
+
+if (pegoukg == 1) && (kg_kikaichu != 3) && (kg_flauta != 3) && (kg_ibuse != 3) && (kg_kibaku != 3) && (kg_Bukijutsu != 3) && (kg_Jashin != 3) {mes "Volte aqui quando estiver pronto"; close;}
+
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "Nossa, que surpresa você ter sobrevivido que bom para você não é?";
+next;
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "Vejo que está aqui por que cansou de ser fraco e deseja avançar no tratamento então vou explicar logo como funciona para você não perder tempo";
+next;
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "Os doutores devem ter explicado que você precisa evoluir seu corpo para ele aguentar o procedimento";
+next;
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "O que eles não explicaram é que poucos chegam a esse estágio por ser muito difícil o corpo de alguém aguentar tanto, você pode morrer dependendo da situação tem certeza disso?";
+menu "- Sim, eu tenho certeza disso",L_sim,"- Desculpe, não aguento mais isso eu desisto.",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+next;
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "Já que você aceitou, vou explicar como vai funcionar."; 
+next;
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "você precisa ser nível 999, jounin, me dar 3 NRO points e completar a torre no nivel mais díficil e me trazer 45.000.000 de dinheiro, caso sua vila tenha contrato de redução de impostos nível 1, este valor cai para 33.000.000 e caso tenha no nível 2, cai para 22.000.000";
+next;
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "Afinal esse tratamento não é barato, só assim você pode me provar que é capaz de seguir seu tratamento";
+menu "- Eu tenho o que é preciso",L_sim2,"- Eu volto depois",L_nao;
+
+L_sim2:
+next;
+if (jounin != 1) {next; mes "[^DC143CDoutor Wenworth^000000]"; mes "Você ainda não é Jounin, seu corpo não irá aguentar este tratamento"; close;}
+if (countitem(7116) < 3) {next; mes "[^DC143CDoutor Wenworth^000000]"; mes "Desculpe, você não possui meu pagamento de 3 NRO Points."; close;}
+if (torrefeita != 1) {next; mes "[^DC143CDoutor Wenworth^000000]"; mes "Você ainda não completou a torre sangrenta no nível mais difícil"; close;}
+
+if ($konoha_impostos1 == 1) && (#konoha == 1) && (Zeny < 33000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) && (Zeny < 22000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos1 == 1) && (#suna == 1) && (Zeny < 33000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos2 == 1) && (#suna == 1) && (Zeny < 22000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) && (Zeny < 33000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) && (Zeny < 22000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) && (Zeny < 33000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) && (Zeny < 22000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+
+if ($konoha_impostos1 == 1) && (#konoha == 1) && (Zeny >= 33000000) {goto continuar;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) && (Zeny >= 22000000) {goto continuar;}
+if ($areia_impostos1 == 1) && (#suna == 1) && (Zeny >= 33000000) {goto continuar;}
+if ($areia_impostos2 == 1) && (#suna == 1) && (Zeny >= 22000000) {goto continuar;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) && (Zeny >= 33000000) {goto continuar;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) && (Zeny >= 22000000) {goto continuar;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) && (Zeny >= 33000000) {goto continuar;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) && (Zeny >= 22000000) {goto continuar;}
+if (Zeny >= 45000000) {goto continuar;}
+
+if ($konoha_impostos1 == 0) && (#konoha == 1) && (Zeny < 45000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($konoha_impostos2 == 0) && (#konoha == 1) && (Zeny < 45000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos1 == 0) && (#suna == 1) && (Zeny < 45000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos2 == 0) && (#suna == 1) && (Zeny < 45000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos1 == 0) && (#nuvem == 1) && (Zeny < 45000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos2 == 0) && (#nuvem == 1) && (Zeny < 45000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos1 == 0) && (#nevoa == 1) && (Zeny < 45000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos2 == 0) && (#nevoa == 1) && (Zeny < 45000000) {mes "[^DC143CDoutor Wenworth^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+
+
+
+continuar:
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "Não esperava nada menos, me faça ter orgulho de ajudar você";
+next;
+mes "[^DC143CDoutor Wenworth^000000]";
+mes "Bem, agora só resta você falar com a Dra Strauss, ela vai auxiliar nesse processo.";
+
+if (kg_kikaichu == 3) {
+set Aburame,3; set kg_kikaichu,4; delitem 7116,3;
+if ($konoha_impostos1 == 1) && (#konoha == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+if ($areia_impostos1 == 1) && (#suna == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+if ($areia_impostos2 == 1) && (#suna == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;}
+set Zeny, Zeny-45000000;
+announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kikaichu!",bc_blue|bc_all; close;
+}
+
+if (kg_flauta == 3) {
+set Tayuya,3; set kg_flauta,4; delitem 7116,3;
+if ($konoha_impostos1 == 1) && (#konoha == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all;close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all; close;}
+if ($areia_impostos1 == 1) && (#suna == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all; close;}
+if ($areia_impostos2 == 1) && (#suna == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all; close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all; close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all; close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all; close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all; close;}
+set Zeny, Zeny-45000000;
+announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Flauta demoníaca!",bc_blue|bc_all; close;
+}
+
+if (kg_Jashin == 3) {
+set Jashin,3; set kg_Jashin,4; delitem 7116,3;
+if ($konoha_impostos1 == 1) && (#konoha == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all;close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all;close;}
+if ($areia_impostos1 == 1) && (#suna == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all;close;}
+if ($areia_impostos2 == 1) && (#suna == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all;close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all;close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all;close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all;close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all;close;}
+set Zeny, Zeny-45000000;
+announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Jashin!",bc_blue|bc_all; close;
+}
+
+if (kg_ibuse == 3) {
+set Ibuse,3; set kg_ibuse,4; delitem 7116,3;
+if ($konoha_impostos1 == 1) && (#konoha == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all;close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all;close;}
+if ($areia_impostos1 == 1) && (#suna == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all;close;}
+if ($areia_impostos2 == 1) && (#suna == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all;close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all;close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all;close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all;close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all;close;}
+set Zeny, Zeny-45000000;
+announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Ibuse!",bc_blue|bc_all; close;
+}
+
+if (kg_kibaku == 3) {
+set kibaku,3; set kg_kibaku,4; delitem 7116,3;
+if ($konoha_impostos1 == 1) && (#konoha == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all;close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all;close;}
+if ($areia_impostos1 == 1) && (#suna == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all;close;}
+if ($areia_impostos2 == 1) && (#suna == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all;close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all;close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all;close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all;close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all;close;}
+set Zeny, Zeny-45000000;
+announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Kibaku!",bc_blue|bc_all; close;
+}
+
+if (kg_Bukijutsu == 3) {
+set Mitsashi,3; set kg_Bukijutsu,4; delitem 7116,3;
+if ($konoha_impostos1 == 1) && (#konoha == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all;close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all;close;}
+if ($areia_impostos1 == 1) && (#suna == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all;close;}
+if ($areia_impostos2 == 1) && (#suna == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all;close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all;close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all;close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) {set Zeny, Zeny-33000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all;close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) {set Zeny, Zeny-22000000; announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all; close;}
+set Zeny, Zeny-45000000;
+announce " "+strcharinfo(0)+" acaba de progredir no seu tratamento com o gene Bukijutsu!",bc_blue|bc_all; close;
+}
+
+close;
+}
+
+yuno_in03,26,39,4	script	Doutora Strauss	78,{
+
+if (pegoukg == 1) && (kg_kikaichu != 4) && (kg_flauta != 4) && (kg_ibuse != 4) && (kg_kibaku != 4) && (kg_Bukijutsu != 4) && (kg_Jashin != 4) {mes "Querido, com este nível de Kekkei Gekkai não posso te ajudar"; close;}
+
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Nossa, estou surpresa por ter se tornado tão forte assim";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Você é um dos poucos que chegou tão longe, o que deseja meu querido?";
+menu "- O que aconteceu com o Doutor Strauss?",L_sim;
+
+L_sim:
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Meu marido sofreu um acidente durante em um dos testes, ele e meu filho sofreram mutações horrorosas devido  a misturas de genes e agora nós fomos obrigados a tranca-los na areá principal do laboratório junto com os demais cientistas afetados";
+menu "- Como posso ficar mais forte?",L_sim2,"- Isso parece muito perigoso...",L_nao;
+
+L_nao:
+close;
+
+L_sim2:
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Bem meu querido, como pôde notar não existem muitas pessoas que sobrevivem a este procedimento e as vezes mutações acontecem com as pessoas como foi com meu marido e meu filho";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Se você realmente deseja se arriscar eu vou lhe dizer como pode conseguir";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Você precisa conseguir o DNA completo para finalizar o procedimento mas existe um problema, o DNA só pode ser obtido do paciente zero e no caso é meu marido.";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Você precisa ter 2 DNA's completos do gene que você escolheu, existem 2 formas de conseguir isso";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Uma delas é derrotando Strauss e a outra é montar o DNA com fragmentos que caiem dos cientistas infectados, para montar um DNA fale com Oliva";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Você irá precisar também de um antígeno, o modo de obter ele é derrotar meu marido strauss, ele é o criador mas é muito difícil derrotar ele, acredito que quem também possui ele é o parceiro de laboratório de meu marido, o Henry. Ele deve estar no primeiro nível do laboratório";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Boa sorte, mas tome cuidado, com todos os experimentos que ele fez em si mesmo , meu marido ficou muito forte, porém enlouqueceu, ele não terá piedade...";
+menu "- Eu já consegui o que é preciso",L_sim3,"- Ok, vou correr atrás",L_nao;
+
+L_sim3:
+if (countitem(973) < 1) {next; mes "[^DC143CDoutora Strauss^000000]"; mes "Desculpe, você não possui um antígeno."; close;}
+if (kg_kikaichu == 4)  && (countitem(12950) < 2) {next; mes "[^DC143CDoutora Strauss^000000]"; mes "Desculpe, você não possui dois dna's completos de seu gene."; close;}
+if (kg_flauta == 4)  && (countitem(12951) < 2) {next; mes "[^DC143CDoutora Strauss^000000]"; mes "Desculpe, você não possui dois dna's completos de seu gene."; close;}
+if (kg_Jashin == 4)  && (countitem(12949) < 2) {next; mes "[^DC143CDoutora Strauss^000000]"; mes "Desculpe, você não possui dois dna's completos de seu gene."; close;}
+if (kg_ibuse == 4)  && (countitem(12952) < 2) {next; mes "[^DC143CDoutora Strauss^000000]"; mes "Desculpe, você não possui dois dna's completos de seu gene."; close;}
+if (kg_kibaku == 4)  && (countitem(12953) < 2) {next; mes "[^DC143CDoutora Strauss^000000]"; mes "Desculpe, você não possui dois dna's completos de seu gene."; close;}
+if (kg_Bukijutsu == 4)  && (countitem(12954) < 2) {next; mes "[^DC143CDoutora Strauss^000000]"; mes "Desculpe, você não possui dois dna's completos de seu gene."; close;}
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Conseguiu mesmo! Não acredito";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Finalmente meu marido poderá descansar em paz, e eu poderei continuar a pesquisa de meu marido, sei que é isso que ele gostaria que eu fizesse, afinal, foi o trabalho da vida dele!";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Vou iniciar o processo, fique parado, não queremos que aconteça com você o mesmo que aconteceu com meu marido";
+next;
+mes "*Barulhos de máquina*";
+next;
+mes "*Estalos*";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Mas o que? Deu certo?! Quer dizer... Deu certo!";
+next;
+mes "[^DC143CDoutora Strauss^000000]";
+mes "Você agora possui um grande poder, por favor... Não o use para o mal, meu marido queria que sua pesquisa fosse usado para o bem, para manter a paz.";
+if (kg_kikaichu == 4) {set Aburame,4; set kg_kikaichu,5; delitem 973,1;  delitem 12950,2; announce "Oh Meu Deus! O experimento com o gene Kikaichu no "+strcharinfo(0)+" foi finalizado!",bc_blue|bc_all; close;}
+if (kg_flauta == 4) {set Tayuya,4; set kg_flauta,5; delitem 973,1;  delitem 12951,2; announce "Oh Meu Deus! O experimento com o gene Flauta Demoníaca no "+strcharinfo(0)+" foi finalizado!",bc_blue|bc_all; close;}
+if (kg_Jashin == 4) {set Jashin,4; set kg_Jashin,5; delitem 973,1;  delitem 12949,2; announce "Oh Meu Deus! O experimento com o gene Jashin no "+strcharinfo(0)+" foi finalizado!",bc_blue|bc_all; close;}
+if (kg_ibuse == 4) {set Ibuse,4; set kg_ibuse,5; delitem 973,1;  delitem 12952,2; announce "Oh Meu Deus! O experimento com o gene Ibuse no "+strcharinfo(0)+" foi finalizado!",bc_blue|bc_all; close;}
+if (kg_kibaku == 4) {set kibaku,4; set kg_kibaku,5; delitem 973,1;  delitem 12953,2; announce "Oh Meu Deus! O experimento com o gene Kibaku no "+strcharinfo(0)+" foi finalizado!",bc_blue|bc_all; close;}
+if (kg_Bukijutsu == 4) {set Mitsashi,4; set kg_Bukijutsu,5; delitem 973,1;  delitem 12954,2; announce "Oh Meu Deus! O experimento com o gene Bukijutsu no "+strcharinfo(0)+" foi finalizado!",bc_blue|bc_all; close;}
+close;
+
+}
+
+yuno_in03,25,57,4	script	Guarda do Laboratório	105,{
+
+mes "[^DC143CGuarda do Laboratório^000000]";
+mes "Saudações caro visitante eu sou o Guarda para o próximo nível do laboratório deseja alguma coisa?";
+menu "Gostaria de entrar no laboratório",L_sim,"Não quero nada, obrigado",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+next;
+mes "[^DC143CGuarda do Laboratório^000000]";
+mes "Você sabe que este lugar é muito perigoso né? Todos os cobaias usados pelo doutor estão presos aí dentro, eles estão com sérias deformações físicas e mentais, pode se dizer que não são mais humanos...";
+next;
+mes "[^DC143CGuarda do Laboratório^000000]";
+mes "Se você realmente quer entrar, eu terei que cobrar 1.000.000 zeny, caso sua vila tenha o contrato de redução de impostos nível 1, esse preço cai para 500.000, e caso tenha no nível, cai para 100.000, tem certeza que quer entrar?";
+menu "- Sim, eu gostaria",L_sim2,"- Não, agora não",L_nao;
+
+L_sim2:
+if(getgmlevel() >= 1) {mes "Boa sorte!"; warp "lhz_dun02",148,18; end;}
+if ($konoha_impostos1 == 1) && (#konoha == 1) && (Zeny < 500000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) && (Zeny < 100000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos1 == 1) && (#suna == 1) && (Zeny < 500000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($areia_impostos2 == 1) && (#suna == 1) && (Zeny < 100000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) && (Zeny < 500000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) && (Zeny < 100000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) && (Zeny < 500000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) && (Zeny < 100000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar pelo procedimento"; close;}
+
+if ($konoha_impostos1 == 1) && (#konoha == 1) && (Zeny >= 500000) {goto continuar;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) && (Zeny >= 100000) {goto continuar;}
+if ($areia_impostos1 == 1) && (#suna == 1) && (Zeny >= 500000) {goto continuar;}
+if ($areia_impostos2 == 1) && (#suna == 1) && (Zeny >= 100000) {goto continuar;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) && (Zeny >= 500000) {goto continuar;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) && (Zeny >= 100000) {goto continuar;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) && (Zeny >= 500000) {goto continuar;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) && (Zeny >= 100000) {goto continuar;}
+
+if ($konoha_impostos1 == 0) && (#konoha == 1) && (Zeny >= 1000000) {goto continuar;}
+if ($konoha_impostos2 == 0) && (#konoha == 1) && (Zeny >= 1000000) {goto continuar;}
+if ($areia_impostos1 == 0) && (#suna == 1) && (Zeny >= 1000000) {goto continuar;}
+if ($areia_impostos2 == 0) && (#suna == 1) && (Zeny >= 1000000) {goto continuar;}
+if ($nuvem_impostos1 == 0) && (#nuvem == 1) && (Zeny >= 1000000) {goto continuar;}
+if ($nuvem_impostos2 == 0) && (#nuvem == 1) && (Zeny >= 1000000) {goto continuar;}
+if ($nevoa_impostos1 == 0) && (#nevoa == 1) && (Zeny >= 1000000) {goto continuar;}
+if ($nevoa_impostos2 == 0) && (#nevoa == 1) && (Zeny >= 1000000) {goto continuar;}
+
+if (Zeny < 1000000) {next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Você não possui dinheiro o bastante para pagar"; close;}
+
+continuar:
+if ($konoha_impostos1 == 1) && (#konoha == 1) {set Zeny, Zeny-500000; next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Boa sorte..."; next; warp "lhz_dun02",148,18; close;}
+if ($konoha_impostos2 == 1) && (#konoha == 1) {set Zeny, Zeny-100000; next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Boa sorte..."; next; warp "lhz_dun02",148,18; close;}
+if ($areia_impostos1 == 1) && (#suna == 1) {set Zeny, Zeny-500000; next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Boa sorte..."; next; warp "lhz_dun02",148,18; close;}
+if ($areia_impostos2 == 1) && (#suna == 1) {set Zeny, Zeny-100000; next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Boa sorte..."; next; warp "lhz_dun02",148,18; close;}
+if ($nuvem_impostos1 == 1) && (#nuvem == 1) {set Zeny, Zeny-500000; next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Boa sorte..."; next; warp "lhz_dun02",148,18; close;}
+if ($nuvem_impostos2 == 1) && (#nuvem == 1) {set Zeny, Zeny-100000; next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Boa sorte..."; next; warp "lhz_dun02",148,18; close;}
+if ($nevoa_impostos1 == 1) && (#nevoa == 1) {set Zeny, Zeny-500000; next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Boa sorte..."; next; warp "lhz_dun02",148,18; close;}
+if ($nevoa_impostos2 == 1) && (#nevoa == 1) {set Zeny, Zeny-100000; next; mes "[^DC143CGuarda do Laboratório^000000]"; mes "Boa sorte..."; next; warp "lhz_dun02",148,18; close;}
+set Zeny, Zeny-1000000;
+next;
+mes "[^DC143CGuarda do Laboratório^000000]";
+mes "Boa sorte...";
+next;
+warp "lhz_dun02",148,18;
+
+}
+
+yuno_in03,19,15,4	script	Olívia	74,{
+
+mes "[^DC143COlívia^000000]";
+mes "Olá, eu sou uma geneticista e ajudo a doutora strauss a mapear o genoma humano";
+next;
+mes "[^DC143COlívia^000000]";
+mes "Porém com as cobaias a solta fica perigoso para montar o soro e estamos perdendo os clientes, você parece ser bem forte em que posso ajudar?";
+menu "- Desejo remontar um DNA",L_sim,"- Nada, obrigado",L_nao;
+
+L_sim:
+next;
+mes "[^DC143COlívia^000000]";
+mes "Muito bem, eu preciso de 200 fragmentos de DNA iguais, 1 antígeno e 15.000.000 zeny pelo serviço, mas antes qual DNA você quer remontar?";
+menu "- Kikaichu",Kikaichu,"- Flauta Demoníaca",flauta,"- Jashin",Jashin,"- Mestre Ibuse",Ibuse,"- Kibaku Nendo",Kibaku,"- Bukijutsu",Bukijutsu,"- Vou pensar mais",L_nao;
+
+L_nao:
+close;
+
+Kikaichu:
+next;
+mes "[^DC143COlívia^000000]";
+mes "Tudo bem, aguarde um minuto...";
+if (countitem(12940) < 200) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui os 200 DNA's iguais."; close;}
+if (countitem(973) < 1) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui um antígeno."; close;}
+if (Zeny < 15000000) {next; mes "[^DC143COlívia^000000]"; mes "Você não possui dinheiro o bastante para pagar"; close;}
+set Zeny, Zeny-15000000;
+delitem 12940,200;
+delitem 973,1;
+next;
+mes "[^DC143COlívia^000000]";
+mes "Aqui está, a remontagem foi um sucesso!";
+getitem 12950,1;
+close;
+
+flauta:
+next;
+mes "Tudo bem, aguarde um minuto...";
+if (countitem(12941) < 200) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui os 200 DNA's iguais."; close;}
+if (countitem(973) < 1) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui um antígeno."; close;}
+if (Zeny < 15000000) {next; mes "[^DC143COlívia^000000]"; mes "Você não possui dinheiro o bastante para pagar"; close;}
+set Zeny, Zeny-15000000;
+delitem 12941,200;
+delitem 973,1;
+next;
+mes "Aqui está, a remontagem foi um sucesso!";
+getitem 12951,1;
+close;
+
+Jashin:
+next;
+mes "[^DC143COlívia^000000]";
+mes "Tudo bem, aguarde um minuto...";
+if (countitem(12939) < 200) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui os 200 DNA's iguais."; close;}
+if (countitem(973) < 1) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui um antígeno."; close;}
+if (Zeny < 15000000) {next; mes "[^DC143COlívia^000000]"; mes "Você não possui dinheiro o bastante para pagar"; close;}
+set Zeny, Zeny-15000000;
+delitem 973,12939;
+delitem 973,1;
+next;
+mes "[^DC143COlívia^000000]";
+mes "Aqui está, a remontagem foi um sucesso!";
+getitem 12949,1;
+close;
+
+Ibuse:
+next;
+mes "[^DC143COlívia^000000]";
+mes "Tudo bem, aguarde um minuto...";
+if (countitem(12942) < 200) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui os 200 DNA's iguais."; close;}
+if (countitem(973) < 1) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui um antígeno."; close;}
+if (Zeny < 15000000) {next; mes "[^DC143COlívia^000000]"; mes "Você não possui dinheiro o bastante para pagar"; close;}
+set Zeny, Zeny-15000000;
+delitem 12942,200;
+delitem 973,1;
+next;
+mes "[^DC143COlívia^000000]";
+mes "Aqui está, a remontagem foi um sucesso!";
+getitem 12952,1;
+close;
+
+Kibaku:
+next;
+mes "[^DC143COlívia^000000]";
+mes "Tudo bem, aguarde um minuto...";
+if (countitem(12943) < 200) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui os 200 DNA's iguais."; close;}
+if (countitem(973) < 1) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui um antígeno."; close;}
+if (Zeny < 15000000) {next; mes "[^DC143COlívia^000000]"; mes "Você não possui dinheiro o bastante para pagar"; close;}
+set Zeny, Zeny-15000000;
+delitem 12943,200;
+delitem 973,1;
+next;
+mes "[^DC143COlívia^000000]";
+mes "Aqui está, a remontagem foi um sucesso!";
+getitem 12953,1;
+close;
+
+Bukijutsu:
+next;
+mes "[^DC143COlívia^000000]";
+mes "Tudo bem, aguarde um minuto...";
+if (countitem(12944) < 200) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui os 200 DNA's iguais."; close;}
+if (countitem(973) < 1) {next; mes "[^DC143COlívia^000000]"; mes "Desculpe, você não possui um antígeno."; close;}
+if (Zeny < 15000000) {next; mes "[^DC143COlívia^000000]"; mes "Você não possui dinheiro o bastante para pagar"; close;}
+set Zeny, Zeny-15000000;
+delitem 12944,200;
+delitem 973,1;
+next;
+mes "[^DC143COlívia^000000]";
+mes "Aqui está, a remontagem foi um sucesso!";
+getitem 12954,1;
+close;
+
+}
+
+-	script	cobaia1	-1,{
+
+OnNPCKillEvent:
+
+if(killedrid == 1020) {
+
+set @a,rand(1,1000);
+
+if (@a == 1) {getitem 12952,1; end;}
+
+}
+}
+
+-	script	cobaia2	-1,{
+
+OnNPCKillEvent:
+
+if(killedrid == 1014) {
+
+set @a,rand(1,1000);
+
+if (@a == 1) {getitem 12950,1; end;}
+
+}
+}
+
+-	script	cobaia3	-1,{
+
+OnNPCKillEvent:
+
+if(killedrid == 1016) {
+
+set @a,rand(1,1000);
+
+if (@a == 1) {getitem 12953,1; end;}
+
+}
+}
+
+-	script	cobaia4	-1,{
+
+OnNPCKillEvent:
+
+if(killedrid == 1017) {
+
+set @a,rand(1,1000);
+
+if (@a == 1) {getitem 12951,1; end;}
+
+}
+}
+
+-	script	cobaia5	-1,{
+
+OnNPCKillEvent:
+
+if(killedrid == 1012) {
+
+set @a,rand(1,1000);
+
+if (@a == 1) {getitem 12949,1; end;}
+
+}
+}
+
+-	script	cobaia6	-1,{
+
+OnNPCKillEvent:
+
+if(killedrid == 1637) {
+
+set @a,rand(1,1000);
+
+if (@a == 1) {getitem 12954,1; end;}
+
+}
+}
+
+
+lhz_dun02,0,0,0,0	monster	Cobaia I	1020,30,420000,420000,0
+lhz_dun02,0,0,0,0	monster	Cobaia A	1014,30,420000,420000,0
+lhz_dun02,0,0,0,0	monster	Cobaia K	1016,30,420000,420000,0
+lhz_dun02,0,0,0,0	monster	Cobaia T	1017,30,420000,420000,0
+lhz_dun02,0,0,0,0	monster	Cobaia J	1012,30,420000,420000,0
+lhz_dun02,0,0,0,0	monster	Cobaia M	1637,30,420000,420000,0
+
+lhz_dun03,0,0,0,0	monster	Cobaia I	1020,30,420000,420000,0
+lhz_dun03,0,0,0,0	monster	Cobaia A	1014,30,420000,420000,0
+lhz_dun03,0,0,0,0	monster	Cobaia K	1016,30,420000,420000,0
+lhz_dun03,0,0,0,0	monster	Cobaia T	1017,30,420000,420000,0
+lhz_dun03,0,0,0,0	monster	Cobaia J	1012,30,420000,420000,0
+lhz_dun03,0,0,0,0	monster	Cobaia M	1637,30,420000,420000,0
+
+lhz_dun02,0,0,0,0	monster	Henry	1638,1,21600000,21600000,0
+lhz_dun03,0,0,0,0	monster	Strauss	1639,1,21600000,21600000,0
+
+//bibli_02,43,64,4	duplicate(diario)	Diário Secreto#1	111,3,3,{
+//bibli_03,43,64,4	duplicate(diario)	Diário Secreto#2	111,3,3,{
+//bibli_04,43,64,4	duplicate(diario)	Diário Secreto#3	111,3,3,{
+
+bibli_02,43,64,5	duplicate(diario)	Diário Secreto#1	111
+bibli_03,43,64,5	duplicate(diario)	Diário Secreto#2	111
+bibli_04,43,64,5	duplicate(diario)	Diário Secreto#3	111
+izlude_in,167,134,5	duplicate(diario)	Diário Secreto#4	111
+lou_in02,184,93,5	duplicate(diario)	Diário Secreto#5	111
+//bibli_01,43,64,4	script	Diário Secreto#diario	111,3,3,{

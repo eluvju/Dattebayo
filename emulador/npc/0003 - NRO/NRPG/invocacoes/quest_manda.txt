@@ -1,0 +1,363 @@
+konoha,201,123,3	script	Velho Suspeito::cobra	734,{
+	if(contrato_lesma == 1) goto L_wrongcontract;
+	if(contrato_sapo == 1) goto L_wrongcontract;
+	if(invoca_done == 1) goto L_alreadyhave;
+	if(contrato_cobra == 1) goto claro;
+	if(jounin != 1) goto L_graduacao;
+	
+	mes "[Velho Suspeito]";
+	mes "Olá shinobi, Eu tive uma visão de sua chegada...";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Na minha visão você me procurou para saber como aprender o Kuchiyose no jutsu";
+	mes "Já vou adiantar que essa é uma habilidade que poucos tem...";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Antes de mais nada, é preciso fazer um contrato de sangue";
+	mes "E após feito o contrato, terá que aperfeiçoar a técnica";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Devo avisar que o contrato é eterno, e que não poderá ter dois contratos";
+	mes "com dois tipos de animais, então antes de confirmar pense bem...";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Além de mim existem mais duas pessoas com quem você pode conversar";
+	mes "a respeito de contratos de sangue, eu sou o Velho Suspeito da cobra";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Através de mim você pode aprender o jutsu que invoca o rei das cobras Manda!";
+	mes "Manda é o rei das cobras e é bastante forte no ataque, é muito destrutivo";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Enfim, chega de conversa, quer fazer um contrato de sangue com as cobras?";
+	menu "Sim, Estou preparado",contrato,"Não, ainda não estou pronto",aindan;
+
+	contrato:
+	mes "Seu contrato foi assinado!";
+	set invoca_cobra1,1;
+	set contrato_cobra,1;
+	close;
+
+
+	claro:
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Ótimo, vou lhe ensinar o jutsu por etapas";
+	mes "Será preciso aprender um estágio de cada vez";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Qual cobra gostaria de dominar?";
+	menu "Jya",jya,"Kyodaijya Ermida",kyodaijya,"Manda",manda;
+
+	jya:
+	if(contrato_cobra != 1) goto L_wrongcontract;
+	if(invoca_cobra1 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Vamos começar então, iremos começar pela Jya, a mais fraca das cobras";
+	mes "O treinamento todo será difícil, mas aguente firme que vai aprender";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Neste treinamento você terá que coletar o seguinte:";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "1500x Garras de rato";
+	mes "1000x Pinças de Escorpião";
+	mes "1000x Casca Escamada";
+	mes "150x Lingua de reptil";
+	mes "100x Luva de carrasco";
+	mes "5x Garleta";
+	mes "55x Trevos";
+	mes "3x tendoes";
+	mes "3x Plantas de konoha";
+	mes "3x Plantas de Suna";
+	mes "3x Plantas de Kiri";
+	mes "1x Relogio de bolso";
+	mes "1x Lâmina perdida nas trevas";
+	mes "1x Simbolo dos Nove Reinos";
+	mes "Matar 1000 Filhote de cobra";
+	mes "e 500k de ryous";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_cobra1,1;		
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <500000) goto L_SemItem;
+	if (countitem(7007) < 1500) goto L_SemItem;
+	if (countitem(7125) < 1000) goto L_SemItem;
+	if (countitem(936) < 1000) goto L_SemItem;
+	if (countitem(903) < 150) goto L_SemItem;
+	if (countitem(7017) < 100) goto L_SemItem;
+	if (countitem(705) < 55) goto L_SemItem;
+	if (countitem(910) < 5) goto L_SemItem;
+	if (countitem(704) < 3) goto L_SemItem;
+	if (countitem(710) < 3) goto L_SemItem;
+	if (countitem(712) < 3) goto L_SemItem;
+	if (countitem(7513) < 1) goto L_SemItem;
+	if (countitem(7023) < 1) goto L_SemItem;
+	if (countitem(7305) < 1) goto L_SemItem;
+	if(invocacobramobs1 < 1000) goto L_SemItem;
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-500000;
+	delitem 7007,1500;
+	delitem 7125,1000;
+	delitem 936,1000;
+	delitem 903,150;
+	delitem 7017,100;
+	delitem 705,55;
+	delitem 910,5;
+	delitem 704,3;
+	delitem 710,3;
+	delitem 712,3;
+	delitem 7513,1;
+	delitem 7023,1;
+	delitem 7305,1;
+	skill 725,4,0;
+	set invoca_cobra1,0;
+	set invoca_cobra2,1;
+	set invocacobramobs1,0;
+	set quest_cobra1,0;
+	close;
+
+	kyodaijya:
+	if(invoca_cobra2 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Muito bem, já está na segunda etapa, vai ficar cada vez mais difícil";
+	mes "Não desista ainda, se supere!";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Agora vamos tentar dominar a invocação da Kyodaijya Ermida";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "1500x Gema vermelha";
+	mes "1000x Runa Sangrenta";
+	mes "1000x Auto retrato";
+	mes "250x Escama Brilhante";
+	mes "250x Presa";
+	mes "75x Minhoca Boa pinta";
+	mes "6x Plantas de konoha";
+	mes "6x Plantas de Suna";
+	mes "6x Plantas de Kiri";
+	mes "1x Fragmento de Espirito";
+	mes "1x Esfera das Sombras";
+	mes "1x ba gua";
+	mes "Matar 1000 Kyodaija";
+	mes "e 1.000.00 de ryous";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_cobra2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <1000000) goto L_SemItem;
+	if (countitem(716) < 1500) goto L_SemItem;
+	if (countitem(7563) < 1000) goto L_SemItem;
+	if (countitem(7223) < 1000) goto L_SemItem;
+	if (countitem(954) < 250) goto L_SemItem;
+	if (countitem(1063) < 250) goto L_SemItem;
+	if (countitem(623) < 75) goto L_SemItem;
+	if (countitem(704) < 6) goto L_SemItem;
+	if (countitem(710) < 6) goto L_SemItem;
+	if (countitem(712) < 6) goto L_SemItem;
+	if (countitem(7306) < 1) goto L_SemItem;
+	if (countitem(7524) < 1) goto L_SemItem;
+	if (countitem(7169) < 1) goto L_SemItem;
+	if(invocacobramobs2 < 1000) goto L_SemItem;
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-1000000;
+	delitem 716,1500;
+	delitem 7563,1000;
+	delitem 7223,1000;
+	delitem 954,250;
+	delitem 1063,250;
+	delitem 623,75;
+	delitem 704,6;
+	delitem 710,6;
+	delitem 712,6;
+	delitem 7306,1;
+	delitem 7524,1;
+	delitem 7169,1;
+	skill 726,4,0;
+	set invoca_cobra2,0;
+	set invoca_cobra3,1;
+	set invocacobramobs2,0;
+	set quest_cobra2,0;
+	close;
+
+	manda:
+	if(invoca_cobra3 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Chegou a hora, A última etapa do treinamento...";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Chegou a hora de tentar invoca o rei das cobras,Manda";
+	mes "Após isso terá sobre seu controle um poderoso animal, vamos lá!";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "800x Insignia de Heroi";
+	mes "500x Esporo Venenoso";
+	mes "500x Nadadeiras";
+	mes "250x Algemas";
+	mes "100x Pernas de gafonhoto";
+	mes "50x Coração Imortal";
+	mes "50x Pedra do Pesadelo";
+	mes "15x Selo Maldito";
+	mes "15x Plantas de konoha";
+	mes "15x Plantas de Suna";
+	mes "15x Plantas de Kiri";
+	mes "5x Planta da Melodia";
+	mes "1x Pedra do sabio";
+	mes "Matar 600 Manda";
+	mes "e 5.000.000 de ryous";
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_cobra3,1;	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <5000000) goto L_SemItem;
+	if (countitem(968) < 800) goto L_SemItem;
+	if (countitem(7033) < 500) goto L_SemItem;
+	if (countitem(951) < 500) goto L_SemItem;
+	if (countitem(1098) < 250) goto L_SemItem;
+	if (countitem(940) < 100) goto L_SemItem;
+	if (countitem(929) < 50) goto L_SemItem;
+	if (countitem(7102) < 50) goto L_SemItem;
+	if (countitem(7442) < 15) goto L_SemItem;
+	if (countitem(704) < 15) goto L_SemItem;
+	if (countitem(710) < 15) goto L_SemItem;
+	if (countitem(712) < 15) goto L_SemItem;
+	if (countitem(707) < 5) goto L_SemItem;
+	if (countitem(12040) < 1) goto L_SemItem;
+	if(invocacobramobs3 < 600) goto L_SemItem;
+	next;
+	mes "[^A52A2AVelho Suspeito^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-5000000;
+	delitem 968,800;
+	delitem 7033,500;
+	delitem 951,500;
+	delitem 1098,250;
+	delitem 940,100;
+	delitem 929,50;
+	delitem 7102,50;
+	delitem 7442,15;
+	delitem 704,15;
+	delitem 710,15;
+	delitem 712,15;
+	delitem 707,5;
+	delitem 12040,1;
+	skill 727,4,0;
+	set invoca_cobra3,0;
+	set invoca_done,1;
+	set invocacobramobs3,0;
+	set quest_cobra3,0;
+	close;
+
+L_SemItem:
+	next;
+	mes "[^FF0000Velho Suspeito^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+
+aindan:
+	next;
+	mes "[^FF0000Velho Suspeito^000000]";
+	mes "Volte quando estiver pronto!";
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Velho Suspeito^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_Wrong:
+	mes "[^FF0000Velho Suspeito^000000]";
+	mes "Você não é deste clã";
+	close;
+
+L_graduacao:
+	mes "[^FF0000Velho Suspeito^000000]";
+	mes "Desculpe mas apenas jounins podem realizar esse treinamento.";
+	close;
+
+L_wrongcontract:
+	mes "[^FF0000Velho Suspeito^000000]";
+	mes "Desculpe mas seu contrato de sangue não é desse animal.";
+	close;
+
+L_wronglevel:
+	mes "[^FF0000Velho Suspeito^000000]";
+	mes "Desculpe mas você não pode pular etapas!";
+	close;
+
+}
+
+areia,252,141,4	duplicate(cobra)	Velho Suspeito#1	734
+nevoa,269,172,4	duplicate(cobra)	Velho Suspeito#2	734
+prt_monk,86,214,4	duplicate(cobra)	Velho Suspeito#3	734
+
+-	script	OnNPCKill_cobra1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_cobra1 == 1){goto cobra_inv1;} else {end;}
+
+cobra_inv1:
+switch (killedrid) {
+case 1037:
+set invocacobramobs1, invocacobramobs1 + 1;
+dispbottom "Você ja matou "+invocacobramobs1+" Filhote de cobra(s)";
+end;
+
+}
+}
+
+-	script	OnNPCKill_cobra2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_cobra2 == 1){goto cobra_inv2;} else {end;}
+
+cobra_inv2:
+switch (killedrid) {
+case 1025:
+set invocacobramobs2, invocacobramobs2 + 1;
+dispbottom "Você ja matou "+invocacobramobs2+" Kyodaija(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_cobra3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_cobra3 == 1){goto cobra_inv3;} else {end;}
+
+cobra_inv3:
+switch (killedrid) {
+case 1418:
+set invocacobramobs3, invocacobramobs3 + 1;
+dispbottom "Você ja matou "+invocacobramobs3+" Manda(s)";
+
+end;
+
+
+}
+}

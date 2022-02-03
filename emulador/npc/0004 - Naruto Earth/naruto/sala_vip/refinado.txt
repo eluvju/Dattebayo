@@ -1,0 +1,124 @@
+//===== Hercules Script ======================================
+//= HD Refiners
+//===== By: ==================================================
+//= Euphy
+//===== Current Version: =====================================
+
+//============================================================
+	function	script	refine	{
+	mes "[Sistema de Refine]";
+	mes "Ao contrário de outros, sou um ferreiro que refina itens Ninja sem a chance de que sejam quebrados.";
+	next;
+	mes "[Sistema de Refine]";
+	mes "Minha especialidade e que, mesmo que meu refino falhe, o nível de refino diminui em 1 sem perder a engrenagem. Não e ótimo?";
+	next;
+	mes "[Sistema de Refine]";
+	mes "Então vamos colocar isso para refinar, o que você disse? Qual item você deseja refinar?";
+	next;
+	setarray .@position$[1],"Head","Body","Left Hand","Right Hand","Robe","Shoes","Accessory 1","Accessory 2","Head 2","Head 3";
+	.@menu$ = "";
+	for(.@i = 1; .@i<=10; ++.@i)
+		.@menu$ += ((getequipisequiped(.@i))?getequipname(.@i):.@position$[.@i]+"-[Not equipped]")+":";
+	.@part = select(.@menu$);
+	if (!getequipisequiped(.@part)) {
+		mes "[Sistema de Refine]";
+		switch(.@part) {
+		case 1:
+			mes "Sou ferreiro, não cabeleireiro.";
+			break;
+		case 2:
+			mes "Com o meu martelo, vou fazer de você uma estrela do céu.";
+			break;
+		case 3:
+		case 4:
+			mes "Fazer mãos artificiais não é minha especialidade.";
+			break;
+		case 5:
+			mes "Traga o item para que eu possa refiná-lo!";
+			break;
+		case 6:
+			mes "De onde vem esse odor nos pés?";
+			break;
+		case 7:
+		case 8:
+			mes "Onde está o acessório?";
+			break;
+		case 9:
+			mes "O que você quer que eu refine?";
+			break;
+		case 10:
+			mes "Hã? O que você quer que eu faça?";
+			break;
+		}
+		close;
+	}
+	if (!getequipisenableref(.@part)) {
+		mes "[Sistema de Refine]";
+		mes "Este item não pode ser refinado.";
+		close;
+	}
+	if (getequiprefinerycnt(.@part) < 0 || getequiprefinerycnt(.@part) > 9) {
+		mes "[Sistema de Refine]";
+		mes "Eu refino itens de todos os niveis.";
+		close;
+	}
+	switch(getequipweaponlv(.@part)) {
+	default:
+	case 0:
+		.@price = 20000;
+		break;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		.@price = 20000;
+		break;
+	}
+	mes "[Sistema de Refine]";
+	mes "Para refinar o equipamento selecionado, você precisa de 20,000 zeny como taxa.";
+	mes "Você os tem prontos?";
+	next;
+	if(select("Yes:No") == 2) {
+		mes "[Sistema de Refine]";
+		mes "Vou esperar até que você esteja pronto.";
+		close;
+	}
+	if (getequippercentrefinery(.@part) < 100) {
+		mes "[Sistema de Refine]";
+		mes "Parece que esse item provavelmente não será refinado.";
+		mes "Bem, mesmo que falhe, apenas diminui em 1 nível de refino.";
+		mes "Deseja continuar refinando?";
+		next;
+		if(select("Yes:No") == 2) {
+			mes "[Sistema de Refine]";
+			mes "Somente aqueles que vencerem o medo do fracasso obterão uma obra-prima.";
+			close;
+		}
+	}
+	if (Zeny < .@price) {
+		mes "[Sistema de Refine]";
+		mes "Você não disse que tinha tudo pronto?";
+		close;
+	}
+	Zeny -= .@price;
+	mes "[Sistema de Refine	]";
+	mes "Tac! Tac! Tac!";
+	if (getequippercentrefinery(.@part) > rand(100) || getequippercentrefinery(.@part) > rand(100)) {
+		successrefitem .@part;
+		next;
+		emotion e_no1;
+		mes "[Sistema de Refine]";
+		mes "O som refresca minha mente toda vez que ouço.";
+		mes "Aqui está. Refinar sucedeu perfeitamente!";
+		close;
+	}
+	downrefitem .@part;
+	next;
+	emotion e_omg;
+	mes "[Sistema de Refine]";
+	mes "Oops!!";
+	next;
+	mes "[Sistema de Refine]";
+	mes "Tenho certeza de que uma pessoa como você nunca me culparia por uma diminuição no nível de refino em 1. Hum.";
+	close;
+}

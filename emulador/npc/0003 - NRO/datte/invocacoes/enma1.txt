@@ -1,0 +1,64 @@
+gef_fild04,135,90,5	script	Sarutobi::enma1	445,{
+
+if (quest_enma1_um == 1) goto L_go;
+if(Enma1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com os Macacos";
+next;
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Onbba?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Onbba
+//========================================================================
+
+L_SS:
+set quest_enma1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "Vá derrotar girinos, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido esses sapos malditos!";
+setquest 12102;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7838) < 1) goto No_Item;
+mes "Você completou seu treinamento,parabéns.";
+skill 741,4,0;
+delitem 7838,1;
+set Enma1,1;
+set quest_enma1_um,0;
+completequest 12102;
+erasequest 12102;
+cutin "inicio4",3;
+next;
+if (#nevoa == 1) {warp "kiragakure",267,258;}
+if (#suna == 1) {warp "sunagakure",171,125;}
+if (#konoha == 1) {warp "konoha3",159,193;}
+if (#nuvem == 1) {warp "nuvem",60,63;}
+close;
+
+L_no:
+close;
+
+No_Item:
+mes "Você não pegou o pergaminho ainda, volte quando pegar!";
+close;
+}
+
+
+moc_fild01,193,30,5	duplicate(enma1)	Sarutobi#111	445
+prt_fild02,163,104,5	duplicate(enma1)	Sarutobi#112	445
+yuno_fild08,159,307,5	duplicate(enma1)	Sarutobi#113	445

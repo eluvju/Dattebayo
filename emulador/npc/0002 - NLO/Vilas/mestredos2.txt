@@ -1,0 +1,18 @@
+treinamento,73,93,5	script	Mestre de Encantamentos	468,{
+	mes "^ff0000[Mestre]^000000";
+	mes "Olá "+ strcharinfo(0) +", deseja ser levado ao mapa de encantamentos?";
+	menu "- Sim.",sim,"- Não.",nao;
+	
+	sim:
+	mes "^ff0000[Mestre]^000000";
+	mes "Vamos lá!";
+	next;
+	warp "hu_fild01",117,142;
+	close2;
+
+	nao:
+	next;
+	mes "^ff0000[Mestre]^000000";
+	mes "Estarei aguardando.";
+	close;
+}

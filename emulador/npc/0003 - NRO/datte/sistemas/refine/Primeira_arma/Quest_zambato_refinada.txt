@@ -1,0 +1,75 @@
+konoha,26,261,5	script	Yuudai::equipe_nove	831,{
+
+if (checkquest(2014) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Sou Yuudai, você veio de longe, em busca dessa arma?";
+next;
+mes "Zambatou Refinada, ainda mais letal que a normal, conhecida como decaptadora, em sua lamina refinada, trará mais medo e sangue por onde passar.";
+next;
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Zambatô Refinada
+//========================================================================
+
+L_SS:
+next;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Muco Pegajoso .";
+mes "- Obter 100x Antena de Inseto.";
+mes "- Obter 50x Garleta.";
+mes "- Matar Matar 50 Mosquitos";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2014;
+set quest_equipe_nove,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(equipe_mobs_nove < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(938) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(928) < 100) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(910) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Já retornou, sua recompensa agora está com você, que por onde passar o medo se estenda, diante dos seus pés.";
+completequest 2014;
+erasequest 2014;
+set quest_equipe_nove,0;
+set equipe_mobs_nove,0;
+set galinha1,0;
+set galinha2,0;
+set galinha3,0;
+set vaca1,0;
+set vaca2,0;
+set vaca3,0;
+set galinhafeed,0;
+set vacafeed,0;
+delitem 938,25;
+delitem 928,100;
+delitem 910,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1306,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	equipe#9	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1042 && quest_equipe_nove == 1) {set equipe_mobs_nove,equipe_mobs_nove +1; announce "[Quest de equipamento] Você já derrotou "+equipe_mobs_nove+" / 50 Mosquito",bc_blue|bc_self; end;}
+
+}
+
+areia,30,229,5	duplicate(equipe_nove)	Yuudai#1	831
+kiri,321,38,5	duplicate(equipe_nove)	Yuudai#2	831
+nuvem,71,275,5	duplicate(equipe_nove)	Yuudai#3	831

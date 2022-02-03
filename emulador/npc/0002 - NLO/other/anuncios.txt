@@ -1,0 +1,17 @@
+-	script	Anuncios	-1,{
+
+OnMinute01:
+OnMinute16:
+OnMinute31:
+OnMinute46:
+
+	setarray .News$[0],	// Random Mensagens
+		"[Naruto Legends] : Para abrir o World Map Naruto Legends utilize Ctrl + ' ",
+		"[Naruto Legends] : Incentive o servidor a ficar online, faça uma doação e ganhe recompensas!",
+		"[Naruto Legends] : Para tutoriais e descrições de jutsus: narutolegends.com.br/forum/",
+		"[Naruto Legends] : Participe do nosso Discord Oficial: discord.gg/XHv7EQV",
+		"[Naruto Legends] : Dúvidas? Digite @dicas ou acesse narutolegends.com.br/wiki!";
+		
+	announce .News$[ rand( getarraysize( .News$ ) ) ],0; // Anuncio.
+	end;
+}

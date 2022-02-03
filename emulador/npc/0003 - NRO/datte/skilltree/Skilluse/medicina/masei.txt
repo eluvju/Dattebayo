@@ -1,0 +1,79 @@
+-	script	useMASEI	-1,{
+    end;
+//When a Character uses a skill
+
+//Seijutsu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 176) {
+
+
+if (getskilllv(176) == 1) {
+
+if (Seijutsu != 1) {end;}
+if (skill176 >= 50) {skill 176,2,0; set skill176,0; dispbottom "[Sys] Level up"; end; }
+set skill176,skill176 +1;
+dispbottom "[Jutsu level] Masei Seijutsu level 1: "+skill176+" de 50";
+
+end;
+
+}
+
+if (getskilllv(176) == 2) {
+if (Seijutsu != 1) {end;}
+if (skill176 >= 100) {skill 176,3,0; set skill176,0; dispbottom "[Sys] Level up"; end;}
+set skill176,skill176 +1;
+dispbottom "[Jutsu level] Masei Seijutsu level 2: "+skill176+" de 100";
+
+end;
+
+}
+
+if (getskilllv(176) == 3) {
+
+if (Seijutsu != 1) {end;}
+if (skill176 >= 150) {skill 176,4,0; set skill176,0; dispbottom "[Sys] Level up"; end;}
+set skill176,skill176 +1;
+dispbottom "[Jutsu level] Masei Seijutsu level 3: "+skill176+" de 150";
+
+end;
+
+}
+
+if (getskilllv(176) == 4) {
+if (Seijutsu != 1) {end;}
+if (skill176 >= 200) {skill 176,5,0; set skill176,0; dispbottom "[Sys] Level up"; end;}
+set skill176,skill176 +1;
+dispbottom "[Jutsu level] Masei Seijutsu level 4: "+skill176+" de 200";
+
+end;
+
+}
+
+if (getskilllv(176) == 5) {
+if (med_avan != 1) {end;}
+if (Seijutsu != 1) {end;}
+if (skill176 >= 250) {skill 176,6,0; set skill176,0; dispbottom "[Sys] Level up"; end;}
+set skill176,skill176 +1;
+dispbottom "[Jutsu level] Masei Seijutsu level 5: "+skill176+" de 250";
+
+end;
+
+}
+
+if (getskilllv(176) == 6) {
+if (Seijutsu != 1) {end;}
+if (med_avan != 1) {end;}
+if (skill176 >= 300) {skill 176,7,0; set skill176,0; dispbottom "[Sys] Level up"; end;}
+set skill176,skill176 +1;
+dispbottom "[Jutsu level] Masei Seijutsu level 6: "+skill176+" de 300";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

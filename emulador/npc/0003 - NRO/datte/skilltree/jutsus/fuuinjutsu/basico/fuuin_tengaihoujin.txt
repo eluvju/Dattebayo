@@ -1,0 +1,97 @@
+payon_in03,114,156,5	script	Kekkai: Tengai Houjin::fuu22	51,{
+
+if (getskilllv(319) >= 1) goto L_delete;
+if(fuu_basico != 1) {mes "Você precisa estudar fuuinjutsu básico antes de aprender um técnica de fuuinjutsu"; close;}
+if (checkquest(2180) == 1) goto L_go;
+if(fuu_skill_bas >= 3) {mes "Você já aprendeu três fuuinjutsus básicos, esse é o limite"; close;}
+if(accept_fuu == 3) {mes "Você já aceitou três treinamentos pra realizar de fuuinjutsu"; close;}
+if(TengaiHoujin == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Fuuinjutsu espalhado pelo mundo, eu posso lhe ensinar um técnica de Fuuinjutsu básico";
+next;
+mes "A técnica de Fuuinjutsu que eu ensino é o: ^3366FFKekkai: Tengai Houjin^000000";
+next;
+mes "Descrição: Os aliados na área desta habilidade receberão bônus de esquiva.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Kekkai: Tengai Houjin
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(319) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+mes "Jutsu removido com sucesso";
+skill 319,0,0;
+set TengaiHoujin,0;
+erasequest 2180;
+if(accept_fuu > 0) {set accept_fuu,accept_fuu -1;}
+if(fuu_skill_bas > 0) {set fuu_skill_bas,fuu_skill_bas -1;}
+close;
+
+
+naoquero:
+close;
+
+L_SS:
+set questfuuinvintedois,1;
+set accept_fuu,accept_fuu +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 10 Abelhas Rainhas Gigantes.";
+setquest 2180;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(fuu_skill_bas >= 3) {mes "Você já aprendeu três fuuinjutsus básicos, esse é o limite"; close;}
+if(fuuinmobsvintedois < 10) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 319,1,0;
+set TengaiHoujin,1;
+set questfuuinvintedois,0;
+set fuuinmobsvintedois,0;
+completequest 2180;
+erasequest 2180;
+set fuu_skill_bas,fuu_skill_bas +1;
+announce "[Fuuinjutsu Quest] "+strcharinfo(0)+" completou a quest de Kekkai: Tengai Houjin",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuinjutsu Básico]",0;
+}
+
+-	script	fuuinbas#22	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1303) {
+if (questfuuinvintedois != 1) {end;}
+set fuuinmobsvintedois,fuuinmobsvintedois +1;
+announce "[Fuuinjutsu Quest] Você já derrotou "+fuuinmobsvintedois+" / 10 Abelhas Rainhas Gigantes",bc_blue|bc_self;
+end;
+}
+}
+
+//ve_in,102,222,85,5	duplicate(fuu22)	Kekkai: Tengai Houjin#41	51,{
+//payon_in03,124,165,5	duplicate(fuu22)	Kekkai: Tengai Houjin#42	51,{
+//lou_in01,119,148,5	duplicate(fuu22)	Kekkai: Tengai Houjin#43	51,{
+//izlude_in,75,11,5	duplicate(fuu22)	Kekkai: Tengai Houjin#44	51,{

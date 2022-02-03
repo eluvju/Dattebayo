@@ -1,0 +1,224 @@
+///////////////////////////////////////////////////////////////////
+//===== Cronus Script ===========================================//
+//= 							 	=//
+//= Reparador							=//
+//= 								=//
+//===== Por: ====================================================//
+//=								=//
+//=       KIRA THE CAT
+//=								=//
+//===== Changelog: ========================== Versão Atual ======//
+// Criado em 28/02/2021 
+// Alteração Dia 22/06/2021
+// 		Alterada estrutura do NPC para compor o novo modelo de Kafra Pass
+// 		Alterado o modelo de estrutura do NPC para uma forma mais organizada
+//		Criado Interações Especiais Para VIP's
+//      Finalizado 23/06/2021 - 16:31
+//===== Descrição: ==============================================//
+//= 								=//
+//= Repara os equipametos. Para Vips ou não-vips		=//
+//= 								=//
+//===== NPC: ====================================================//
+//= 		Reparador Da Academia						=// 
+//============================================================
+lou_in02,126,180,4	script	 Leo::repairman	86,{
+// ============================================================
+
+	set .@t, 3;	// Delay Seconds.
+
+	.@passecomercio = 1084;	
+	.@npc$ = "                  ^cfa417[ "+strnpcinfo(1)+" ]^000000";
+	.@zeny$ = "Com o ^800080"+getitemname(.@passecomercio)+"^000000 você pode utilizar o serviço sem pagar ^808080(O passe é consumido POR EQUIPAMENTO)^000000 e ^FF0000VIP não paga!^000000";
+	.@costreparador = 5000;
+
+// ============================================================
+
+	if (isbegin_quest(1001) == 0) { goto novato;}
+	else {goto veterano;}
+
+// ============================================================	
+
+	veterano:
+	mes .@npc$;
+	mes " ";
+	mes "Posso lhe ajudar?!";
+	mes " ";
+	mes "Eu posso reparar seus itens... vou cobrar ^FF0000" + .@costreparador + "z^000000 por equipamento quebrado.";
+	next;
+	mes .@npc$;
+	mes " ";
+	mes "Com o ^800080"+getitemname(.@passecomercio)+"^000000 você pode utilizar o serviço sem pagar ^808080(O passe é consumido POR EQUIPAMENTO)^000000";
+	mes " ";
+	mes "^FF0000VIP não paga!^000000";
+	switch(select("Na Verdade, tenho alguns itens...:Esquece")) {
+	case 1:
+		.@checkitem = 1;
+		while (1) {
+			if (getbrokenid(.@checkitem) == 0) {
+				break;
+			}
+			.@checkitem = .@checkitem+1;
+		}
+		.@checkitem = .@checkitem-1;
+// ############################################
+// Sem Itens Quebrados
+
+		if (!.@checkitem) {
+			next;
+			mes .@npc$;
+			mes " ";
+			mes "Tsc, não me faça perder meu tempo...";
+			mes " ";
+			mes "^FF0000Nenhum^000000 de seus item(ns) esta(ão) quebrado(s)";
+			close;
+		}
+		
+// ############################################		
+		next;
+		mes .@npc$;
+		mes " ";
+		mes "Você possui ^FF0000" + .@checkitem + " item(ns)^000000 que esta(ão) quebrado(s).";
+		next;
+		.@totalcost = .@costreparador*.@checkitem;
+		.@passcost = 0+.@checkitem;
+		mes .@npc$;
+		mes " ";
+		mes "A reparação custa ^FF0000" + .@costreparador + " Zeny^000000 por equipamento.";
+		mes " ";
+		mes "Então para reparar todos vai custar ^FF000000" + .@totalcost + " Zeny^000000!";
+		mes " ";
+		mes "Gostaria de reparar seus itens? Lembrando que ^FF0000VIP^000000 Não precisa pagar";
+		next;
+		switch(select("^FF0000Quero!^000000:^800080Usar passe^000000:Esquece")) {
+
+// ############################################	
+// Não Tem Zeny
+			case 1:
+//			if (getgmlevel() >= 5) { goto vip;}
+			if (Zeny < .@totalcost) {
+				mes .@npc$;
+				mes " ";
+				mes "OW OW...";
+				mes " ";
+				mes "Você não possui dinheiro suficiente.";
+				close;
+			}
+			.@checkitem2 = 1;
+			while (1) {
+				if (getbrokenid(.@checkitem2) == 0) {
+					break;
+				}
+				.@checkitem2 = .@checkitem2+1;
+			}
+			.@checkitem2 = .@checkitem2-1;
+
+
+// ############################################	
+// Zeny
+
+			if (.@checkitem == .@checkitem2) {
+				mes .@npc$;
+				mes " ";
+				mes "Espere alguns segundos enquanto eu reparo seus Itens!";
+				mes " ";
+				while( .@t ) {
+					mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+					sleep2 1000 ;
+					set .@t, .@t - 1;
+				
+				while (.@checkitem) {
+					repair(.@checkitem);
+					.@checkitem = .@checkitem-1;
+				}}
+				Zeny = Zeny-.@totalcost;
+				skilleffect 108,0;
+				dispbottom "[Servidor] Dattebayo: Seus itens foram arrumados";
+				dispbottom "[Servidor] Dattebayo: -" + .@totalcost + "z";
+				close;
+			}
+			else {
+				mes .@npc$;
+				mes " ";
+				mes "Ocorreu um erro, tento novamente!";
+				close;
+			}
+
+//=======================================================================================
+//
+// Passe
+//
+//=======================================================================================
+
+		case 2: 
+		if (countitem(.@passecomercio) < (0+.@checkitem)) { mes .@npc$;
+												 mes " ";
+												 mes "Você não possui ^800080"+getitemname(.@passecomercio)+"^000000 suficiente.";
+												 mes " ";
+												 mes "Você precisa de ^FF000000" + .@passcost + " ^800080"+getitemname(.@passecomercio)+"^000000";
+												 close; }
+		mes .@npc$;
+		mes " ";
+		mes "Espere alguns segundos enquanto eu reparo seus Itens!";
+		mes " ";
+		while( .@t ) {
+					mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+					sleep2 1000 ;
+					set .@t, .@t - 1;
+				
+		while (.@checkitem) {
+					repair(.@checkitem);
+					.@checkitem = .@checkitem-1;
+				}}
+		delitem .@passecomercio,.@passcost;
+		skilleffect 108,0;
+		dispbottom "[Servidor] Dattebayo: Seus itens foram arrumados";
+		dispbottom "[Servidor] Dattebayo: " + .@passcost + " "+getitemname(.@passecomercio)+" foram removido(s)";
+		close;
+		
+// ############################################	
+// Esquece
+
+		case 3:
+			mes .@npc$;
+			mes " ";
+			mes "Não é da minha conta mas não é bom andar com equipamentos quebrados por ai.";
+			close;
+		}
+	case 2:
+		close;
+	}
+
+//=======================================================================================
+//
+// VIP
+//
+//=======================================================================================
+
+			vip: {
+				dispbottom "[Servidor] Dattebayo: Seus itens foram arrumados";
+				while (.@checkitem) {
+					repair(.@checkitem);
+					.@checkitem = .@checkitem-1;
+				}
+				skilleffect 108,0;
+				sleep2 750;
+				npctalk "Leo: "+ strcharinfo ( 0 ) +", Tudo certo até a proxima amigo", "", bc_self;
+				close;
+			}
+	
+//=======================================================================================
+//
+// QUEST NOVATO
+//
+//=======================================================================================
+	
+	novato:
+	mes " ";
+	close;
+	
+}
+
+//===== NPC: ====================================================//
+
+prontera,159,159,4	duplicate(repairman)	Reparador#reparador1	86
+//==============================================================//

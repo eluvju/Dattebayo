@@ -1,0 +1,139 @@
+-	script	atcmd_sample_loja	-1,{
+    OnInit:
+        bindatcmd("loja", "atcmd_sample_loja::OnAtCmd");
+        end;
+        
+    OnAtCmd:
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Você tem ^ff0000"+#RAGNARUPOINTS+"^000000 pontos de fidelidade!";
+    menu "Trocar meus pontos.",-,"Fechar.",fechar;
+    next;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Tudo bem, me diga qual premiação você tem interesse?";
+    menu "Pergaminho de EXP. ^ff0000[2 pontos]^000000",exp,"Pergaminho de DROP. ^ff0000[2 pontos]^000000",drop,"Ficha de Cassino. ^ff0000[25 pontos]^000000",cassino,"Visual Óculos de Machão. ^ff0000[75 pontos]^000000",machao,"Visual Sombrero. ^ff0000[75 pontos]^000000",sombrero,"Visual Lacinho. ^ff0000[75 pontos]^000000",lacinho,"Visual Cartola de Coelho. ^ff0000[75 pontos]^000000",coelho,"Fragmento Fuuin no Sho. ^ff0000[100 pontos]^000000",fuin;
+	
+    exp:
+    next;
+    if(#RAGNARUPOINTS < 2) goto naotem;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Aproveite sua compra!";
+    set #RAGNARUPOINTS, #RAGNARUPOINTS - 2;
+    getitem 3053,1;
+    close;
+
+    drop:
+    next;
+    if(#RAGNARUPOINTS < 2) goto naotem;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Aproveite sua compra!";
+    set #RAGNARUPOINTS, #RAGNARUPOINTS - 2;
+    getitem 3054,1;
+    close;
+
+    cassino:
+    next;
+    if(#RAGNARUPOINTS < 25) goto naotem;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Aproveite sua compra!";
+    set #RAGNARUPOINTS, #RAGNARUPOINTS - 25;
+    getitem 782,1;
+    close;
+
+    machao:
+    next;
+    if(#RAGNARUPOINTS < 75) goto naotem;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Aproveite sua compra!";
+    set #RAGNARUPOINTS, #RAGNARUPOINTS - 75;
+    getitem 5232,1;
+    close;
+
+    sombrero:
+    next;
+    if(#RAGNARUPOINTS < 75) goto naotem;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Aproveite sua compra!";
+    set #RAGNARUPOINTS, #RAGNARUPOINTS - 75;
+    getitem 5208,1;
+    close;
+
+    lacinho:
+    next;
+    if(#RAGNARUPOINTS < 75) goto naotem;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Aproveite sua compra!";
+    set #RAGNARUPOINTS, #RAGNARUPOINTS - 75;
+    getitem 5231,1;
+    close;
+
+    coelho:
+    next;
+    if(#RAGNARUPOINTS < 75) goto naotem;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Aproveite sua compra!";
+    set #RAGNARUPOINTS, #RAGNARUPOINTS - 75;
+    getitem 5242,1;
+    close;
+
+    fuin:
+    next;
+    if(#RAGNARUPOINTS < 100) goto naotem;
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Aproveite sua compra!";
+    set #RAGNARUPOINTS, #RAGNARUPOINTS - 100;
+    getitem 781,1;
+    close;
+
+    naotem:
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Você não tem pontos suficientes para pegar essa premiação!";
+    close;
+
+    fechar:
+    mes "[^ff0000Fidelidade^000000]";
+    mes "Estamos sempre abertos!";
+    close;
+}
+    	
+-	script	hourlypoints	-1,{
+
+//--Start of the Script
+OnPCLoginEvent:
+	if (Class < 5) {dispbottom "Olá shinobi! Ao se graduar para Chunin, você terá acesso ao sistema de fidelidade!"; end;}
+	attachnpctimer ""+strcharinfo(0)+"";
+	initnpctimer;
+	end;
+	
+OnTimer30000:
+	//Check if Vending (normal or @at)
+	if(checkvending() >= 1 || checkchatting() == 1) {
+		dispbottom "A contagem de pontos de fidelidade foi interrompida porque está com chat ou venda aperta. Relogue para reiniciar contagem.";
+		stopnpctimer;
+		end;
+	}
+
+OnTimer60000:
+	set @minute, @minute + 1;
+	//Check for 1 Minute
+	if(@minute == 120){
+		set @minute,0;
+		set .@point_amt, 1; //Points to get every hour (default: 10)
+		set #RAGNARUPOINTS, #RAGNARUPOINTS + .@point_amt;
+		dispbottom "Você recebeu "+.@point_amt+" ponto(s) de fidelidade por ficar online por 1 hora, junte para trocar por prêmios!";
+		dispbottom "Saldo: "+#RAGNARUPOINTS+" ponto(s) de fidelidade.";
+		set @consecutive_hour, @consecutive_hour + 1;
+		}
+	//bonus 3 horas
+		if(@consecutive_hour == 3) {
+		set @consecutive_hour,0;
+		set .@cpoint_amt, 5;
+		set #RAGNARUPOINTS, #RAGNARUPOINTS + .@cpoint_amt;
+		dispbottom "Você recebeu "+.@cpoint_amt+" pontos de fidelidade por jogar 3 horas consecutivas, junte para trocar por prêmios!";
+		dispbottom "Saldo: "+#RAGNARUPOINTS+" ponto(s) de fidelidade.";
+		}
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+}
+//--End of the Script

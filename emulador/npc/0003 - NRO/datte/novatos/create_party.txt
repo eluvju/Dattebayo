@@ -1,0 +1,137 @@
+kakashi,77,154,4	script	Recrutar Genins	74,{
+	callfunc "create_bi_party";
+	close;
+}
+//====================================================================
+//====================================================================
+//====================================================================
+//====================================================================
+function	script	create_bi_party	{
+
+	if( jounin && genin )
+		set genin,0;
+
+	if( jounin )
+	{
+		callsub OnClean;
+		query_sql "SELECT `genin` FROM `land_party` WHERE `jounin` = "+getcharid(0)+"",@genin;
+		query_sql "SELECT `last_ip` FROM `login` WHERE `account_id` = "+getcharid(3)+"",.@ip$;
+		set .@ip$,.@ip$[0];
+		for(set .@i,0; @genin[.@i];set .@i,.@i+1)
+		{
+			query_sql "SELECT `name` FROM `char`  WHERE `char_id` = "+@genin[.@i]+" ", .@nameZ$;
+			mes "[No."+(.@i+1)+"] "+.@nameZ$[.@i];
+		}
+		switch(select("Recrutar Genin para seu time","Dispensar Genin de seu time"))
+		{
+			case 1:
+				if( getarraysize(@genin) >= 3 )
+				{
+					mes "Você não pode mais enlistar nenhum genin, o máximo é três.";
+					callsub OnClean;
+					close;
+				}
+
+				mes "Digite o nome do genin, Tenha certeza que ele está online.";
+				input @name$;
+				set .@aid,getcharid(3);
+				set .@cid,getcharid(0);
+				set @li, callfunc("get_land_value");
+				set .@li,@li;
+				if(attachrid(getcharid(3,@name$)))
+				{
+					set @cid,.@cid;
+					set @aid,.@aid;
+					set @li,.@li;
+					set @ip$,.@ip$;
+					addtimer 1,"create_bi_party_check::OnInvite";
+					detachrid;
+					attachrid .@aid;
+				}else
+				{
+					next;
+					mes "Nome inválido";
+				}
+
+				next;
+				mes "Seu convite foi enviado com sucesso.";
+				close;
+				break;
+
+			case 2:
+				mes " ";
+				next;
+				mes "Por favor, Digite o número do genin.";
+				input .@id;
+				if( .@id < 1 || .@id > 3 )
+					;
+				else
+				{
+					query_sql "DELETE FROM `land_party` WHERE `genin` = "+@genin[.@id-1]+"";
+					query_sql "SELECT account_id,online FROM `char`  WHERE `char_id` = "+@genin[.@id-1]+" ",.@taid,.@online;
+					if( .@online )
+					{
+						set .@aid,getcharid(3);
+						if(attachrid(.@taid))
+						{
+							message strcharinfo(0),"Você foi removido do time. (Pelo líder)";
+							set li_value,0;
+							detachrid;
+							attachrid .@aid;
+						}
+					}
+					query_sql "DELETE FROM `global_reg_value` WHERE `str` = 'li_value' AND `char_id` = "+@genin[.@id-1]+"";
+				}
+				break;
+		}
+		callsub OnClean;
+		close;
+	}else if( genin )
+	{
+
+	}else
+		end;
+		
+OnClean:
+	deletearray @genin[0],128;
+	set @name$,"";
+	set @li,0;
+	callfunc "get_genin_date";
+	return;
+
+}
+-	script	create_bi_party_check	-1,{
+OnInvite:
+	query_sql "SELECT `last_ip` FROM `login` WHERE `account_id` = "+getcharid(3)+"",.@ip$;
+	set .@ip$,.@ip$[0];
+	if( callfunc("get_land_value") == @li && !li_value && @ip$ != .@ip$ )
+	{
+		mes ""+rid2name(@aid)+" lhe convidou para seu time, Aceita ele como seu mestre?";
+		if( select("[Sim]","[Não]") == 1 )
+		{
+			set li_value, @cid;
+			query_sql "INSERT `land_party` VALUES('"+callfunc("get_bi_value",3,@li)+"',"+@cid+","+getcharid(0)+","+getcharid(3)+")";
+			message rid2name(@aid),strcharinfo(0)+" concordou em ser seu pupilo.";
+		}
+		close;
+	}
+	end;
+}
+function	script	get_land_value	{
+	set .@li,0;
+	for(set .@i,0; set(.@str$,callfunc("get_bi_value",3,.@i+1))!=""; set .@i,.@i+1)
+	{
+		if(getd(.@str$))
+		{
+			set .@li,.@i+1;
+			break;
+		}
+	}
+	return .@li;
+}
+function	script	get_genin_date	{
+	deletearray @genin_cid[0],128;
+	deletearray @genin_aid[0],128;
+	query_sql "SELECT `genin`,`genin_aid` FROM `land_party` WHERE `jounin` = "+getcharid(0)+"",@genin_cid,@genin_aid;
+	return;
+}

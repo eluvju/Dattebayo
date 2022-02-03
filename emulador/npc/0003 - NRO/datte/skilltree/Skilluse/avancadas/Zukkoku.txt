@@ -1,0 +1,77 @@
+-	script	UseZokkoku	-1,{
+    end;
+//When a Character uses a skill
+
+//Zokkoku
+
+onPcUseSkillEvent:
+
+           if(lskillid == 536) {
+
+
+if (getskilllv(536) == 1) {
+
+if (Zokkoku != 1) {end;}
+if (skill536 >= 50) {skill 536,2,0; set skill536,0; dispbottom "[Sys] Level up"; end; }
+set skill536,skill536 +1;
+dispbottom "[Jutsu level] Katon Zukokku level 1: "+skill536+" de 50";
+
+end;
+
+}
+
+if (getskilllv(536) == 2) {
+if (Zokkoku != 1) {end;}
+if (skill536 >= 100) {skill 536,3,0; set skill536,0; dispbottom "[Sys] Level up"; end;}
+set skill536,skill536 +1;
+dispbottom "[Jutsu level] Katon Zukokku level 2: "+skill536+" de 100";
+
+end;
+
+}
+
+if (getskilllv(536) == 3) {
+
+if (Zokkoku != 1) {end;}
+if (skill536 >= 150) {skill 536,4,0; set skill536,0; dispbottom "[Sys] Level up"; end;}
+set skill536,skill536 +1;
+dispbottom "[Jutsu level] Katon Zukokku level 3: "+skill536+" de 150";
+
+end;
+
+}
+
+if (getskilllv(536) == 4) {
+if (Zokkoku != 1) {end;}
+if (skill536 >= 200) {skill 536,5,0; set skill536,0; dispbottom "[Sys] Level up"; end;}
+set skill536,skill536 +1;
+dispbottom "[Jutsu level] Katon Zukokku level 4: "+skill536+" de 200";
+
+end;
+
+}
+
+if (getskilllv(536) == 5) {
+if (Zokkoku != 1) {end;}
+if (skill536 >= 250) {skill 536,6,0; set skill536,0; dispbottom "[Sys] Level up"; end;}
+set skill536,skill536 +1;
+dispbottom "[Jutsu level] Katon Zukokku level 5: "+skill536+" de 250";
+
+end;
+
+}
+
+if (getskilllv(536) == 6) {
+if (Zokkoku != 1) {end;}
+if (skill536 >= 300) {skill 536,7,0; set skill536,0; dispbottom "[Sys] Level up"; end;}
+set skill536,skill536 +1;
+dispbottom "[Jutsu level] Katon Zukokku level 6: "+skill536+" de 300";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

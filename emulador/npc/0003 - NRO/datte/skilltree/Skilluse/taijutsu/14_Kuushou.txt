@@ -1,0 +1,55 @@
+-	script	on_PC_UseSkilltai18	-1,{
+    end;
+//When a Character uses a skill
+
+//Asshou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 480) {
+
+
+if (getskilllv(480) == 1) {
+
+if (Kuushou != 1) {end;}
+if (skill480 >= 50) {skill 480,2,0; set skill480,0; dispbottom "[Sys] Level up"; end; }
+set skill480,skill480 +1;
+dispbottom "[Jutsu level] Hakke Kuushou level 1: "+skill480+" de 50";
+
+end;
+
+}
+
+if (getskilllv(480) == 2) {
+if (Kuushou != 1) {end;}
+if (skill480 >= 100) {skill 480,3,0; set skill480,0; dispbottom "[Sys] Level up"; end;}
+set skill480,skill480 +1;
+dispbottom "[Jutsu level] Hakke Kuushou level 2: "+skill480+" de 100";
+
+end;
+
+}
+
+if (getskilllv(480) == 3) {
+
+if (Kuushou != 1) {end;}
+if (skill480 >= 150) {skill 480,4,0; set skill480,0; dispbottom "[Sys] Level up"; end;}
+set skill480,skill480 +1;
+dispbottom "[Jutsu level] Hakke Kuushou level 3: "+skill480+" de 150";
+
+end;
+
+}
+
+if (getskilllv(480) == 4) {
+if (Kuushou != 1) {end;}
+if (skill480 >= 200) {skill 480,5,0; set skill480,0; dispbottom "[Sys] Level up"; end;}
+set skill480,skill480 +1;
+dispbottom "[Jutsu level] Hakke Kuushou level 4: "+skill480+" de 200";
+
+end;
+
+}
+                end;
+            }    
+}

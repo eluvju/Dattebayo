@@ -1,0 +1,684 @@
+konoha3,0,0,0,0	monster	Erva Daninha	1080,40,360000,180000,1
+
+salakagea,37,2,5	script	Lata de Lixo#ko1	845,{
+if(checkquest(1007)==1 && l1!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l1,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+salakagea,9,2,5	script	Lata de Lixo#ko2	845,{
+if(checkquest(1007)==1 && l2!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l2,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+salakagea,28,29,5	script	Lata de Lixo#ko3	845,{
+if(checkquest(1007)==1 && l3!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l3,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+salakagea,45,37,5	script	Lata de Lixo#ko4	845,{
+if(checkquest(1007)==1 && l4!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l4,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+salakagea,53,26,5	script	Lata de Lixo#ko5	845,{
+if(checkquest(1007)==1 && l5!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l5,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,247,229,5	script	Lata de Lixo#ko6	845,{
+if(checkquest(1007)==1 && l6!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l6,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,302,173,5	script	Lata de Lixo#ko7	845,{
+if(checkquest(1007)==1 && l7!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l7,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,235,254,5	script	Lata de Lixo#ko8	845,{
+if(checkquest(1007)==1 && l8!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l8,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,175,247,5	script	Lata de Lixo#ko9	845,{
+if(checkquest(1007) ==1 && l9!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l9,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,227,123,5	script	Lata de Lixo#ko10	845,{
+if(checkquest(1007) ==1 && l10!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l10,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,251,123,5	script	Lata de Lixo#ko11	845,{
+if(checkquest(1007) ==1 && l11!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l11,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,296,207,5	script	Lata de Lixo#ko12	845,{
+if(checkquest(1007) ==1 && l12!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l12,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,257,247,5	script	Lata de Lixo#ko13	845,{
+if(checkquest(1007) ==1 && l13!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l13,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,171,124,5	script	Lata de Lixo#ko14	845,{
+if(checkquest(1007) ==1 && l14!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l14,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+konoha3,116,144,5	script	Lata de Lixo#ko15	845,{
+if(checkquest(1007) ==1 && l15!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l15,1;
+getitem 7111,1;
+close;
+}else{end;}}
+
+//------------------------------------------------------
+
+konoha3,89,142,5	script	Ovelha#ko1	890,{
+
+if(tosa1==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa1,tosa1 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeh  T_T";
+close;
+}
+//------------------------------------------------------
+
+konoha3,183,128,5	script	Ovelha#ko2	890,{
+
+if(tosa2==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa2,tosa2 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeh  T_T";
+close;
+}
+//------------------------------------------------------
+
+konoha3,232,149,5	script	Ovelha#ko3	890,{
+
+if(tosa3==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa3,tosa3 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeh  T_T";
+close;
+}
+//------------------------------------------------------
+
+konoha3,241,98,5	script	Ovelha#ko4	890,{
+
+if(tosa4==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa4,tosa4 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeh  T_T";
+close;
+}
+//------------------------------------------------------
+
+konoha3,186,179,5	script	Ovelha#ko5	890,{
+
+if(tosa5==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa5,tosa5 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+konoha3,247,249,5	script	Ovelha#ko6	890,{
+
+if(tosa6==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa6,tosa6 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+konoha3,281,186,5	script	Ovelha#ko7	890,{
+
+if(tosa7==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa7,tosa7 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+konoha3,106,235,5	script	Ovelha#ko8	890,{
+
+if(tosa8==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa8,tosa8 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+konoha3,285,163,5	script	Ovelha#ko9	890,{
+
+if(tosa9==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa9,tosa9 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+//------------------------------------------------------
+
+konoha3,124,101,5	script	Ovelha#ko10	890,{
+
+if(tosa10==0 && checkquest(1008) ==1) goto iniciok;
+mes "Meeeeeeh !";
+close;
+
+iniciok:
+mes "Tosar Ovelha?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Meeeeeeh !";
+mes "^3349CC Ovelha Tosada ~ ^000000";
+set tosa10,tosa10 +1;
+set tosa,tosa +1;
+close;
+
+n:
+mes "Meeeeeeh  T_T";
+close;
+}
+
+konoha3,263,160,5	script	Monte de Palha#ko1	430,{
+if(checkquest(1009) ==1 && f1<10 && countitem(7197) < 1){
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+set f1,f1 +1;
+getitem 7197,1;
+close;
+}else{end;}}
+
+konoha3,131,268,5	script	Monte de Palha#ko2	430,{
+if(checkquest(1009) !=1) {mes "Só um monte de palha.."; close;}
+if(checkquest(1009) ==1 && f1<10 && countitem(7197) < 1){
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+set f1,f1 +1;
+getitem 7197,1;
+close;
+}else{end;}}
+
+konoha3,143,104,5	script	Monte de Palha#ko3	430,{
+if(checkquest(1009) !=1) {mes "Só um monte de palha.."; close;}
+if(checkquest(1009) ==1 && f1<10 && countitem(7197) < 1){
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+next;
+set f1,f1 +1;
+getitem 7197,1;
+close;
+}else{end;}}
+
+
+
+
+//------------------------------------------------------
+
+konoha3,197,193,1	script	Boi#ko1	889,{
+
+
+if(alb1<2 && countitem(7197) > 0) goto iniciok;
+mes "Muuuuuuh !";
+close;
+
+iniciok:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb1,alb1 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+//------------------------------------------------------
+
+konoha3,197,189,1	script	Boi#ko2	889,{
+
+if(alb2<2 && countitem(7197) > 0) goto iniciok;
+mes "Muuuuuuh !";
+close;
+
+iniciok:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb2,alb2 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+//------------------------------------------------------
+
+konoha3,195,188,1	script	Boi#ko3	889,{
+
+if(alb3<2 && countitem(7197) > 0) goto iniciok;
+mes "Muuuuuuh !";
+close;
+
+iniciok:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb3,alb3 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+//------------------------------------------------------
+
+konoha3,194,194,1	script	Boi#ko4	889,{
+
+if(alb4<2 && countitem(7197) > 0) goto iniciok;
+mes "Muuuuuuh !";
+close;
+
+iniciok:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb4,alb4 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+//------------------------------------------------------
+
+konoha3,192,195,1	script	Boi#ko5	889,{
+
+if(alb5<2 && countitem(7197) > 0) goto iniciok;
+mes "Muuuuuuh !";
+close;
+
+iniciok:
+mes "Alimentar Boi?";
+menu "Sim",-,
+     "Não",n;
+
+mes "Muuuuuuh !";
+mes "^3349CC Boi Alimentado ~ ^000000";
+set alb5,alb5 +1;
+set alb,alb +1;
+delitem 7197,1;
+close;
+
+n:
+mes "Muuuuuuh  T_T";
+close;
+}
+
+
+
+konoha3,197,191,1	script	Fazendeiro#ko	85,{
+
+mes "Sol Forte, Cheiro de Boi.. Isto é ser um Fazendeiro !";
+next;
+mes "Minha mulher as vezes Reclama, mas é o nosso meio de Sustento xP";
+close;
+}
+
+
+//==========================
+// Gatos
+//==========================
+prt_fild02,351,362,5	script	Tora#1ko	876,{
+
+if(jafezgato==1) goto jafez;
+if (checkquest(1005) == 1) goto iniciok;
+end;
+
+iniciok:
+mes "Miau!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+completequest 1005;
+close;
+
+jafez:
+mes "Miau!";
+close;
+}
+
+prt_fild02,350,63,5	script	Tora#2ko	876,{
+
+if(jafezgato==1) goto jafez;
+if (checkquest(1005) == 1) goto iniciok;
+end;
+
+iniciok:
+mes "Miau!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+completequest 1005;
+close;
+
+jafez:
+mes "Miau!";
+close;
+}
+
+prt_fild02,98,180,5	script	Tora#3ko	876,{
+
+if(jafezgato==1) goto jafez;
+if (checkquest(1005) == 1) goto iniciok;
+
+iniciok:
+mes "Miau!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+completequest 1005;
+close;
+
+jafez:
+mes "Miau!";
+close;
+}
+
+prt_fild02,205,242,5	script	Tora#4ko	876,{
+
+if(jafezgato==1) goto jafez;
+if (checkquest(1005) == 1) goto iniciok;
+
+iniciok:
+mes "Miau!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+next;
+mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+completequest 1005;
+close;
+
+jafez:
+mes "Miau!";
+close;
+}
+
+//==========================
+// Timer
+//==========================
+
+konoha,156,175,5	script	ToraTimerko  	-1,{
+
+
+OnTimer60000:
+enablenpc "Tora#1ne";
+disablenpc "Tora#2ne";
+disablenpc "Tora#3ne";
+disablenpc "Tora#4ne";
+end;
+
+OnTimer120000:
+disablenpc "Tora#1ne";
+enablenpc "Tora#2ne";
+disablenpc "Tora#3ne";
+disablenpc "Tora#4ne";
+end;
+
+OnTimer180000:
+disablenpc "Tora#1ne";
+disablenpc "Tora#2ne";
+enablenpc "Tora#3ne";
+disablenpc "Tora#4ne";
+end;
+
+OnTimer240000:
+disablenpc "Tora#1ne";
+disablenpc "Tora#2ne";
+disablenpc "Tora#3ne";
+enablenpc "Tora#4ne";
+stopnpctimer;
+initnpctimer;
+end;
+
+OnInit:
+disablenpc "Tora#1ne";
+disablenpc "Tora#2ne";
+disablenpc "Tora#3ne";
+disablenpc "Tora#4ne";
+initnpctimer;
+end;
+
+}

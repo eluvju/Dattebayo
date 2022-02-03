@@ -1,0 +1,26 @@
+-	script	useoboro	-1,{
+    end;
+//When a Character uses a skill
+
+//oboro
+
+onPcUseSkillEvent:
+
+           if(lskillid == 27) {
+
+
+if (getskilllv(27) == 1) {
+if (vel_avan != 1) {end;}
+if (oboro != 1) {end;}
+if (skill27 >= 150) {skill 27,2,0; set skill27,0; dispbottom "[Sys] Level up"; end; }
+set skill27,skill27 +1;
+dispbottom "[Jutsu level] Oboro Shushin level 1: "+skill27+" de 150";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

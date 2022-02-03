@@ -1,0 +1,115 @@
+-	script	on_PC_UseSkill006	-1,{
+    end;
+//When a Character uses a skill
+
+//Shibarai
+
+onPcUseSkillEvent:
+
+           if(lskillid == 85) {
+
+
+if (getskilllv(85) == 1) {
+
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 50) {skill 85,2,0; set skill85,0; dispbottom "[Sys] Level up"; end; }
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 1: "+skill85+" de 50";
+
+end;
+
+}
+
+if (getskilllv(85) == 2) {
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 100) {skill 85,3,0; set skill85,0; dispbottom "[Sys] Level up"; end;}
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 2: "+skill85+" de 100";
+
+end;
+
+}
+
+if (getskilllv(85) == 3) {
+
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 150) {skill 85,4,0; set skill85,0; dispbottom "[Sys] Level up"; end;}
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 3: "+skill85+" de 150";
+
+end;
+
+}
+
+if (getskilllv(85) == 4) {
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 200) {skill 85,5,0; set skill85,0; dispbottom "[Sys] Level up"; end;}
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 4: "+skill85+" de 200";
+
+end;
+
+}
+
+if (getskilllv(85) == 5) {
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 250) {skill 85,6,0; set skill85,0; dispbottom "[Sys] Level up"; end;}
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 5: "+skill85+" de 250";
+
+end;
+
+}
+
+if (getskilllv(85) == 6) {
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 300) {skill 85,7,0; set skill85,0; dispbottom "[Sys] Level up"; end;}
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 6: "+skill85+" de 300";
+
+end;
+
+}
+
+if (getskilllv(85) == 7) {
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 500) {skill 85,8,0; set skill85,0; dispbottom "[Sys] Level up"; end;}
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 7: "+skill85+" de 500";
+
+end;
+
+}
+
+if (getskilllv(85) == 8) {
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 700) {skill 85,9,0; set skill85,0; dispbottom "[Sys] Level up"; end;}
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 8: "+skill85+" de 700";
+
+end;
+
+}
+
+if (getskilllv(85) == 9) {
+if (shibarai != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill85 >= 1000) {skill 85,10,0; set skill85,0; dispbottom "[Sys] Level up"; end;}
+set skill85,skill85 +1;
+dispbottom "[Jutsu level] Shichuu Shibarai level 9: "+skill85+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

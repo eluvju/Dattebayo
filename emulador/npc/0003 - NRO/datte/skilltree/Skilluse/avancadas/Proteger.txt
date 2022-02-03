@@ -1,0 +1,57 @@
+-	script	useProtegerT	-1,{
+    end;
+//When a Character uses a skill
+
+//ProtegerT
+
+onPcUseSkillEvent:
+
+           if(lskillid == 288) {
+
+
+if (getskilllv(288) == 1) {
+
+if (ProtegerT != 1) {end;}
+if (skill288 >= 50) {skill 288,2,0; set skill288,0; dispbottom "[Sys] Level up"; end; }
+set skill288,skill288 +1;
+dispbottom "[Jutsu level] Kekkei Houjin level 1: "+skill288+" de 50";
+
+end;
+
+}
+
+if (getskilllv(288) == 2) {
+if (ProtegerT != 1) {end;}
+if (skill288 >= 100) {skill 288,3,0; set skill288,0; dispbottom "[Sys] Level up"; end;}
+set skill288,skill288 +1;
+dispbottom "[Jutsu level] Kekkei Houjin level 2: "+skill288+" de 100";
+
+end;
+
+}
+
+if (getskilllv(288) == 3) {
+
+if (ProtegerT != 1) {end;}
+if (skill288 >= 150) {skill 288,4,0; set skill288,0; dispbottom "[Sys] Level up"; end;}
+set skill288,skill288 +1;
+dispbottom "[Jutsu level] Kekkei Houjin level 3: "+skill288+" de 150";
+
+end;
+
+}
+
+if (getskilllv(288) == 4) {
+if (ProtegerT != 1) {end;}
+if (skill288 >= 200) {skill 288,5,0; set skill288,0; dispbottom "[Sys] Level up"; end;}
+set skill288,skill288 +1;
+dispbottom "[Jutsu level] Kekkei Houjin level 4: "+skill288+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

@@ -1,0 +1,215 @@
+konoha3,237,252,5	script	Academia#1	837,{
+mes "[Academia]";
+mes "Bem-vindo a academia, o melhor local de ensino!";
+close;
+}
+
+sunagakure,224,130,5	script	Academia#2	837,{
+mes "[Academia]";
+mes "Bem-vindo a academia, o melhor local de ensino!";
+close;
+}
+
+kumogakure,225,114,5	script	Academia#3	837,{
+mes "[Academia]";
+mes "Bem-vindo a academia, o melhor local de ensino!";
+close;
+}
+
+kirigakure,189,156,5	script	Academia#4	837,{
+mes "[Academia]";
+mes "Bem-vindo a academia, o melhor local de ensino!";
+close;
+}
+
+// ------------------------------------------------------------------------
+
+sunagakure,105,249,5	script	Entrada do Esgoto#1	837,{
+	mes "[Entrada do esgoto]";
+	mes "Uma entrada para um esgoto misterioso...";
+	close;
+}
+
+kirigakure,263,267,5	script	Entrada para esgoto#2	837,{
+	mes "[Entrada para esgoto]";
+	mes "Esgoto, entre com cuidado!";
+	close;
+}
+
+konoha3,263,244,5	script	Entrada para esgoto#3	837,{
+	mes "[Entrada para esgoto]";
+	mes "Esgoto, entre com cuidado!";
+	close;
+}
+
+kumogakure,214,191,5	script	Entrada para esgoto#4	837,{
+	mes "[Entrada para esgoto]";
+	mes "Esgoto, entre com cuidado!";
+	close;
+}
+
+// ------------------------------------------------------------------------
+
+sunagakure,300,216,5	script	Equipamentos#2	837,{
+	mes "[Loja de Equipamentos]";
+	mes "Bem-vindo a loja de equipamentos da Areia.";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Boas compras!";
+	close;
+}
+
+kirigakure,168,276,5	script	Equipamentos#3	837,{
+	mes "[Loja de Equipamentos]";
+	mes "Bem-vindo a loja de equipamentos da Névoa.";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Boas compras!";
+	close;
+}
+
+kumogakure,187,86,5	script	Equipamentos#4	837,{
+	mes "[Loja de Equipamentos]";
+	mes "Bem-vindo a loja de equipamentos da Nuvem.";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Boas compras!";
+	close;
+}
+
+konoha3,191,92,5	script	Equipamentos#b	837,{
+	mes "[Loja de Equipamentos]";
+	mes "Bem-vindo a loja de equipamentos da Nuvem.";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Boas compras!";
+	close;
+}
+
+// ------------------------------------------------------------------------
+
+
+
+konoha3,190,234,5	script	Escritório do Kage#1	837,{
+	mes "[Escritório do Kage]";
+	mes "Receba aqui missões e fale com o Hokage!";
+	close;
+}
+
+sunagakure,197,188,5	script	Escritório do Kage#2	837,{
+	mes "[Escritório do Kage]";
+	mes "Receba aqui missões e fale com o Kazekage!";
+	close;
+}
+
+kirigakure,197,185,5	script	Escritório do Kage#3	837,{
+	mes "[Escritório do Kage]";
+	mes "Receba aqui missões e fale com o Mizuage!";
+	close;
+}
+
+kumogakure,162,239,5	script	Escritório do Kage#4	837,{
+	mes "[Escritório do Kage]";
+	mes "Receba aqui missões e fale com o Raikage!";
+	close;
+}
+
+// ------------------------------------------------------------------------
+
+konoha3,85,230,5	script	Hospital de Konoha#1	837,{
+	mes "[Hospital de Konoha]";
+	mes "Está ferido? Aqui cuidaremos de você!";
+	close;
+}
+
+kirigakure,233,169,5	script	Hospital da Névoa#1	837,{
+	mes "[Hospital de Konoha]";
+	mes "Está ferido? Aqui cuidaremos de você!";
+	close;
+}
+
+kumogakure,111,132,5	script	Hospital da Núvem#1	837,{
+	mes "[Hospital da Núvem]";
+	mes "Está ferido? Aqui cuidaremos de você!";
+	close;
+}
+
+sunagakure,224,259,5	script	Hospital da Suna#1	837,{
+	mes "[Hospital da Suna]";
+	mes "Está ferido? Aqui cuidaremos de você!";
+	close;
+}
+
+// ------------------------------------------------------------------------
+
+konoha3,283,163,5	script	Biblioteca de Konoha	837,{
+	mes "[Biblioteca de Konoha]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+sunagakure,171,125,5	script	Biblioteca da Suna	837,{
+	mes "[Biblioteca da Suna]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+kirigakure,154,159,5	script	Biblioteca da Névoa	837,{
+	mes "[Biblioteca da Névoa]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+kumogakure,119,152,5	script	Biblioteca da Nuvem	837,{
+	mes "[Biblioteca da Nuvem]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+
+// ------------------------------------------------------------------------
+academia,101,88,5	script	Campo de Treinamento	837,{
+	mes "[Campo de Treinamento]";
+	mes "Venha praticar seus Jutsus aqui.";
+	close;
+}
+
+// ------------------------------------------------------------------------
+
+konoha3,305,222,5	script	Prisão Bijuu#1	837,{
+	mes "[Prisão Bijuu]";
+	mes "Todas as bijuus seladas pelo Kage, ficam presas aqui!";
+	close;
+}
+
+sunagakure,172,213,5	script	Prisão Bijuu#2	837,{
+	mes "[Prisão Bijuu]";
+	mes "Todas as bijuus seladas pelo Kage, ficam presas aqui!";
+	close;
+}
+
+kirigakure,121,168,5	script	Prisão Bijuu#3	837,{
+	mes "[Prisão Bijuu]";
+	mes "Todas as bijuus seladas pelo Kage, ficam presas aqui!";
+	close;
+}
+
+kumogakure,97,76,5	script	Prisão Bijuu#4	837,{
+	mes "[Prisão Bijuu]";
+	mes "Todas as bijuus seladas pelo Kage, ficam presas aqui!";
+	close;
+}
+
+

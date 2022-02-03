@@ -1,0 +1,21 @@
+treinamento,65,61,5	script	Dimensões#55	723,{
+	mes "** Você identifica um portal estranho... **";
+	next;
+	mes "["+StrCharInfo(0)+"]";
+	mes "Parece que é nesse portal que eu consigo treinar meus jutsus de Kuchiyose!";
+	next;
+	mes "Deseja entrar no portal das dimensões?";
+	menu "Agora não.",-,"Dimensão Kuchiyose 1.",dim1,"Dimensão Kuchiyose 2.",dim2;
+	next;
+	mes "** O portal começa a se fechar... **";
+	close;
+	
+	dim1:
+	warp "prt_fild09",0,0;
+	close2;
+
+	dim2:
+	warp "prt_fild10",0,0;
+	close2;
+
+}

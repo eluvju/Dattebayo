@@ -1,0 +1,236 @@
+biblioteca,69,27,5	script	Doton Básico	1_m_bard,{
+
+if(nin_basico != 1) { mes "[Doton Básico]"; mes "Você precisa estudar doton básica antes de aprender um técnica de doton"; close;}
+if(elementodoton != 1) { mes "[Doton Básico]"; mes "Esse elemento não é de sua natureza"; close;}
+
+	mes "[Doton Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Doton escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Caixão de areia:- Doton Sousou:- Doton Doryuusou" ) ){
+
+	case 1:
+		next;
+		if(checkquest(1081) == 1) goto 1_go;
+		if(checkquest(2081) == 1) goto 1_go;
+		if(checkquest(3081) == 1) goto 1_go;
+		if(checkquest(4081) == 1) goto 1_go;
+		if(Caxao == 1) goto 1_delete;
+		if(nin_skill_bas >= 3) { mes "[Doton Básico]"; mes "Você já aprendeu três Dotons básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Doton Básico]";
+		mes "Caixão de areia?";
+		next;
+		mes "[Doton Básico]";
+		mes "Lembre-se que você só pode ter 3 Dotons básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Doton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Caixão de areia
+		//========================================================================
+		
+		1_delete:
+		mes "[Doton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Doton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Doton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Doton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Doton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 16,0,3;
+		set caxao,0;
+		if(nin_skill_bas > 0) {set nin_skill_bas,nin_skill_bas -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Doton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 16,10,3;
+		set caxao,1;
+		set nin_skill_bas,nin_skill_bas +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1081,hunting) == 1 || 
+			checkquest(2081,hunting) == 1 || 
+			checkquest(3081,hunting) == 1 || 
+			checkquest(4081,hunting) == 1	) { mes "[Doton Básico]"; next; mes "Você ainda não completou seu treinamento."; close; }
+		if(checkquest(1081) >= 1) { completequest 1081; erasequest 1035; }
+		if(checkquest(2081) >= 1) { completequest 2081; erasequest 2035; }
+		if(checkquest(3081) >= 1) { completequest 3081; erasequest 3035; }
+		if(checkquest(4081) >= 1) { completequest 4081; erasequest 4035; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(checkquest(1082) == 1) goto 2_go;
+		if(checkquest(2082) == 1) goto 2_go;
+		if(checkquest(3082) == 1) goto 2_go;
+		if(checkquest(4082) == 1) goto 2_go;
+		if(SabakuSousou == 1) goto 2_delete;
+		if(nin_skill_bas >= 3) { mes "[Doton Básico]"; mes "Você já aprendeu três Dotons básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Doton Básico]";
+		mes "Sabaku Sousou?";
+		next;
+		mes "[Doton Básico]";
+		mes "Lembre-se que você só pode ter 3 Dotons básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Doton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Sabaku Sousou
+		//========================================================================
+		
+		2_delete:
+		mes "[Doton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Doton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Doton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Doton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Doton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 91,0,3;
+		set SabakuSousou,0;
+		if(nin_skill_bas > 0) {set nin_skill_bas,nin_skill_bas -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Doton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 91,10,3;
+		set SabakuSousou,1;
+		set nin_skill_bas,nin_skill_bas +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1082,hunting) == 1 || 
+			checkquest(2082,hunting) == 1 || 
+			checkquest(2082,hunting) == 1 || 
+			checkquest(2082,hunting) == 1	) { mes "[Doton Básico]"; next; mes "Você ainda não completou seu treinamento."; close; }
+		if(checkquest(1082) >= 1) { completequest 1082; erasequest 1082; }
+		if(checkquest(2082) >= 1) { completequest 2082; erasequest 2082; }
+		if(checkquest(3082) >= 1) { completequest 3082; erasequest 3082; }
+		if(checkquest(4082) >= 1) { completequest 4082; erasequest 4082; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(checkquest(1083) == 1) goto 3_go;
+		if(checkquest(2083) == 1) goto 3_go;
+		if(checkquest(3083) == 1) goto 3_go;
+		if(checkquest(4083) == 1) goto 3_go;
+		if(Doyuusou == 1) goto 3_delete;
+		if(nin_skill_bas >= 3) { mes "[Doton Básico]"; mes "Você já aprendeu três Dotons básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Doton Básico]";
+		mes "Doton Doyuusou?";
+		next;
+		mes "[Doton Básico]";
+		mes "Lembre-se que você só pode ter 3 Dotons básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Doton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Doyuusou
+		//========================================================================
+		
+		3_delete:
+		mes "[Doton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Doton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Doton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Doton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Doton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 90,0,3;
+		set Doyuusou,0;
+		if(nin_skill_bas > 0) {set nin_skill_bas,nin_skill_bas -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Doton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 90,10,3;
+		set Doyuusou,1;
+		set nin_skill_bas,nin_skill_bas +1;
+		close;
+		
+		3_go:
+		if(	checkquest(1083,hunting) == 1 || 
+			checkquest(2083,hunting) == 1 || 
+			checkquest(2083,hunting) == 1 || 
+			checkquest(2083,hunting) == 1	) { mes "[Doton Básico]"; next; mes "Você ainda não completou seu treinamento."; close; }
+		if(checkquest(1083) >= 1) { completequest 1083; erasequest 1083; }
+		if(checkquest(2083) >= 1) { completequest 2083; erasequest 2083; }
+		if(checkquest(3083) >= 1) { completequest 3083; erasequest 3083; }
+		if(checkquest(4083) >= 1) { completequest 4083; erasequest 4083; }
+		close;
+		
+		3_no:
+		close;
+	}
+		
+}

@@ -1,0 +1,59 @@
+//===== eAthena Script ======================================= 
+//= Stylist Script
+//===== By: ================================================== 
+//= eAthena Dev team
+//= Revised by Nekosume [pyRO v3.0] 
+//===== Current Version: ===================================== 
+//= 4.2
+//===== Compatible With: ===================================== 
+//= Any eAthena Version 
+//===== Description: ========================================= 
+//= Revised dye NPC
+//===== Additional Comments: =================================
+//= v4.2 - Renamed to avoid conflict [Paradox924X]
+//= v4.1 - New hairstyles added [Mass Zero]
+//= v4.0 - Refined and Combined [Darkchild]
+//= v3.0 - Added the 'Browse' options
+//= v2.5 - Added more hair colors
+//= v2.0 - Changed palette and hair style select
+//= v1.5 - Revised script / different dialog
+//= v1.0 - Split into two NPCs
+//============================================================ 
+
+konoha3,116,261,3	script	Estilista::estil	756,{
+	mes "[^FF0000Estilista^000000]";
+	mes "Bem-vind"+ (Sex?"o":"a") +" "+strcharinfo(0)+",";
+	mes "o que você gostaria de alterar?";
+	next;
+	if(select("Estilo do Cabelo","Cor do Cabelo","Cancelar") == 3) close;
+	if(vip_status(1)) {
+	if(@menu == 1) setarray .@cor[0],1,getbattleflag ("min_hair_style"),getbattleflag ("max_hair_style");
+	} else {
+	if(@menu == 1) setarray .@cor[0],1,getbattleflag ("min_hair_style"),23;
+	}
+	if(vip_status(1)) {
+	if(@menu == 2) setarray .@cor[0],6,getbattleflag ("min_hair_color"),getbattleflag ("max_hair_color");
+	} else {
+	if(@menu == 2) setarray .@cor[0],6,getbattleflag ("min_hair_color"),8;
+	}
+	while(1) {
+	if(select("Próximo","Anterior","Digitar","Cancelar") == 4) close;
+	if(@menu == 1)
+	if(getlook(.@cor[0]) >= .@cor[2]) setlook .@cor[0],.@cor[1];
+	else setlook .@cor[0],getlook(.@cor[0])+1;
+	if(@menu == 2)
+	if(getlook(.@cor[0]) <= .@cor[1]) setlook .@cor[0],.@cor[2];
+	else setlook .@cor[0],getlook(.@cor[0])-1;
+	if(@menu == 3) {
+	input .@num,.@cor[1],.@cor[2];
+	setlook .@cor[0],.@num;
+	}
+	mes "Número ^FF0000"+getlook(.@cor[0])+"^000000/"+.@cor[2];
+	specialeffect2 339;
+	}
+}
+
+kirigakure,221,173,3	duplicate(estil)	Estilista#2	756
+sunagakure,215,158,3	duplicate(estil)	Estilista#3	756
+kumogakure,96,123,3	duplicate(estil)	Estilista#6	756
+akatsuki,181,184,3	duplicate(estil)	Estilista#7	756

@@ -1,0 +1,63 @@
+prontera.gat,150,150,5	script	Home Helper	726,{
+
+if (bought == 1) goto L_Bought; //<-- This is where it checks if it's been bought yet or not.
+mes "[Home Helper]";
+mes "Please pick an option!";
+menu "Buy!",-,"Warp In",L_warp,"Cancel",L_Cancel;
+next;
+mes "That'll be [3,000,000] Zeny please."; //<-- if you change the amount of zeny it costs below, you might want to change this.
+menu "Okay",-,"Nevermind",L_Cancel;
+next;
+if (zeny<3000000) goto L_Cancel; //<-- checks if you have the amount of zeny needed to buy it. if not, it goes to L_Cancel.
+set zeny,zeny-3000000; //<-- Deletes the zeny from the account.
+set .charID$, strcharinfo(0); //<-- THIS IS WHERE IT SAVES THE PLAYERS NAME AS THE PASSWORD! DO NOT EDIT.
+set bought,1; //<-- Changes settings to show that someone owns it blah blah blah
+mes "Congratulations!";
+mes "You have a home!";
+close;
+
+L_Bought:
+if (others == 1) goto L_OtherWarp; ////<-- This is where it checks if the owner is allowing others to enter or not.
+if (.charID$ != strcharinfo(0)) goto L_Exit; //<-- This checks if you are the owner. If not, it sends them to L_Exit.
+mes "[Home Helper]";
+mes "How may I help you "+ strcharinfo(0) +"?";
+menu "Warp Inside",L_Warp,"Sell Home",L_Sell,"Nevermind",L_Cancel,"Allow Others To Enter",L_others,"Do Not Allow Others To Enter",L_me;
+
+L_Sell:
+mes "[Home Helper]";
+mes "You are sure about this?";
+mes "You will only recieve [Half] of what you paid.";
+menu "Yes!",-,"No!",L_Cancel;
+next;
+set .charID$, Nobody; //<-- from here and below it will set everything back to normal. Unless you have someone on your server named Nobody, don't change this.
+set bought, 0;
+set others, 0;
+set zeny,zeny+1500000; //<-- Only gives them half of what they paid for back. If you don't want them to get anything back, then just delete this line.
+mes "Done!";
+close;
+
+L_others:
+set others, 1; //<-- sets to allow others to enter.
+close;
+
+L_me:
+set others, 0; //<-- sets to NOT allow others to enter.
+close;
+
+L_OtherWarp:
+if (.charID$ != strcharinfo(0)) goto L_Warp; //<-- Checks to see if they are the owner, if not, it just warps them inside.
+mes "[Home Helper]";
+mes "How may I help you "+ strcharinfo(0) +"?";
+menu "Warp Inside",L_Warp,"Sell Home",L_Sell,"Nevermind",L_Cancel,"Allow Others To Enter",L_others,"Do Not Allow Others To Enter",L_me;
+
+L_Warp: warp "ve_in.gat", 209,382; end; //<-- for this you are going to need to go INSIDE the actuall home and stand where you want them to be warped inside then type /where and add that in here.
+
+L_Exit:
+mes "[Home Helper]";
+mes "Not the Owner.";
+mes "I only help ["+ .charID$ +".]";
+close;
+
+L_Cancel:
+close;
+}

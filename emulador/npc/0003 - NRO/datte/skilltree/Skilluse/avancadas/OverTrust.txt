@@ -1,0 +1,26 @@
+-	script	useOverTrust	-1,{
+    end;
+//When a Character uses a skill
+
+//OverTrust
+
+onPcUseSkillEvent:
+
+           if(lskillid == 113) {
+
+
+if (getskilllv(113) == 1) {
+
+if (OverTrust!= 1) {end;}
+if (skill113 >= 1000) {skill 113,2,0; set skill113,0; dispbottom "[Sys] Level up"; end; }
+set skill113,skill113 +1;
+dispbottom "[Jutsu level] OverTrust level 1: "+skill113+" de 1000";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

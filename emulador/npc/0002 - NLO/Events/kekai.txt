@@ -1,0 +1,256 @@
+treinamento,80,129,4	script	Kekkai	998,{
+
+mes set(.@n$,"[Kekkai]");
+mes "Bem-vindo shinobi "+strcharinfo(0)+",";
+if(getgmlevel() >=80){
+set .@menu$,select("- Ligar Evento","- Entrar","- Infos");
+}
+else {
+set .@menu$,select("","Entrar.","Info.");
+}
+switch(.@menu$){//Ligando evento
+  case 01:
+   mes .@n$;
+   mes "Olá [STAFF]"+strcharinfo(0)+".";
+   mes "quer ligar o evento agora?";
+         if(select("Sim:Não")==2)close();
+          mes "Ok, ligando evento.";
+          donpcevent "Kekkai::OnEvento";
+          close2();
+          warp "quiz_01",237,276;
+   end();
+//Entrando no evento
+  case 02:
+   if($evento == 1){
+         mes .@n$;
+         mes "O evento está aberto, boa sorte.";
+         close2();
+         warp "quiz_01",227,282;
+   }
+   mes .@n$;
+   mes "Infelizmente o evento está fechado, tente outra vez.";
+   close();// Informações
+  case 03:
+  mes .@n$;
+  mes "O evento é aberto, apenas quando um STAFF liberar.";
+  mes "São 4 mapas, em que você escolhe em qual lado quer ficar.";
+   next;
+  mes .@n$;
+  mes "Cada rodada o STAFF tira 1 mapa, até que sobre 1~2 player(s) no mapa que ficou,";
+  mes "sendo que cada turno, você pode trocar de mapa.";
+   next;
+  mes .@n$;
+  mes "Até mais...";
+  close();
+}
+
+
+
+//Evento ligando
+OnEvento:
+// Evento Ligado
+announce "[KEKKAI] ATENÇÃO! O evento está começando, me procure no Centro de Treinamento!",bc_all;
+set $evento,1;
+sleep 5000;
+initnpctimer;//5 minutos
+announce "Vocês tem 5 minutos para entrar no evento [KEKKAI] no Centro de Treinamento!",bc_all;
+end();
+
+OnTimer60000:
+announce "Vocês tem 4 minutos para entrar no evento [KEKKAI] no Centro de Treinamento!",bc_all;
+end();
+
+OnTimer120000:
+announce "Vocês tem 3 minuto para entrar no evento [KEKKAI] no Centro de Treinamento!",bc_all;
+end();
+
+OnTimer180000:
+announce "Vocês tem 2 minutos para entrar no evento [KEKKAI] no Centro de Treinamento!",bc_all;
+end();
+
+OnTimer240000:
+announce "Vocês tem 1 minuto para entrar no evento [KEKKAI] no Centro de Treinamento!",bc_all;
+end();
+//Começou
+OnTimer300000:
+announce "O evento [KEKKAI] vai começar, boa sorte a todos!",bc_all;
+set $evento,0;
+end();OnInit:
+setwall "quiz_01",234,271,6,7,0,"quiz01wall_a";
+setwall "quiz_01",234,270,6,7,0,"quiz01wall_b";
+setwall "quiz_01",234,269,6,7,0,"quiz01wall_c";
+setwall "quiz_01",239,271,6,7,0,"quiz01wall_d";
+setwall "quiz_01",239,270,6,7,0,"quiz01wall_e";
+setwall "quiz_01",239,269,6,7,0,"quiz01wall_f";
+setwall "quiz_01",242,274,6,7,0,"quiz01wall_g";
+setwall "quiz_01",243,274,6,7,0,"quiz01wall_h";
+setwall "quiz_01",244,274,6,7,0,"quiz01wall_i";
+setwall "quiz_01",242,279,6,7,0,"quiz01wall_g";
+setwall "quiz_01",243,279,6,7,0,"quiz01wall_h";
+setwall "quiz_01",244,279,6,7,0,"quiz01wall_i";
+setwall "quiz_01",239,282,6,7,0,"quiz01wall_l";
+setwall "quiz_01",239,283,6,7,0,"quiz01wall_m";
+setwall "quiz_01",239,284,6,7,0,"quiz01wall_n";
+setwall "quiz_01",234,282,6,7,0,"quiz01wall_o";
+setwall "quiz_01",234,283,6,7,0,"quiz01wall_p";
+setwall "quiz_01",234,284,6,7,0,"quiz01wall_q";
+setwall "quiz_01",229,279,6,7,0,"quiz01wall_r";
+setwall "quiz_01",230,279,6,7,0,"quiz01wall_s";
+setwall "quiz_01",231,279,6,7,0,"quiz01wall_t";
+setwall "quiz_01",229,274,6,7,0,"quiz01wall_u";
+setwall "quiz_01",230,274,6,7,0,"quiz01wall_v";
+setwall "quiz_01",231,274,6,7,0,"quiz01wall_x";
+}
+//============================================================================================//
+
+quiz_01,237,277,4	script	Mestre Kekkai	997,{if(getgmlevel() <80) end();
+
+mes set(.@n$,"[Kekkai]");
+mes "Olá "+strcharinfo(0)+".";
+if(select("Avançar Rodada.","Retirar Paredes.")==2){
+delwall "quiz01wall_a";
+delwall "quiz01wall_b";
+delwall "quiz01wall_c";
+delwall "quiz01wall_d";
+delwall "quiz01wall_e";
+delwall "quiz01wall_f";
+delwall "quiz01wall_g";
+delwall "quiz01wall_h";
+delwall "quiz01wall_i";
+delwall "quiz01wall_j";
+delwall "quiz01wall_l";
+delwall "quiz01wall_m";
+delwall "quiz01wall_n";
+delwall "quiz01wall_o";
+delwall "quiz01wall_p";
+delwall "quiz01wall_q";
+delwall "quiz01wall_r";
+delwall "quiz01wall_s";
+delwall "quiz01wall_t";
+delwall "quiz01wall_u";
+delwall "quiz01wall_v";
+delwall "quiz01wall_x";
+mes .@n$;
+mes "Kekkai retirada.";
+mapannounce "quiz_01","A Kekkai foi removida! Você pode alterar sua posição!",1,0x80FFFF;
+close();
+}
+mes "A próxima rodada está começando.";
+mapannounce "quiz_01","Se ficarem nas pontes, serão removidos do evento.",1,0x80FFFF;
+close2();
+setwall "quiz_01",234,271,6,7,0,"quiz01wall_a";
+setwall "quiz_01",234,270,6,7,0,"quiz01wall_b";
+setwall "quiz_01",234,269,6,7,0,"quiz01wall_c";
+setwall "quiz_01",239,271,6,7,0,"quiz01wall_d";
+setwall "quiz_01",239,270,6,7,0,"quiz01wall_e";
+setwall "quiz_01",239,269,6,7,0,"quiz01wall_f";
+setwall "quiz_01",242,274,6,7,0,"quiz01wall_g";
+setwall "quiz_01",243,274,6,7,0,"quiz01wall_h";
+setwall "quiz_01",244,274,6,7,0,"quiz01wall_i";
+setwall "quiz_01",242,279,6,7,0,"quiz01wall_g";
+setwall "quiz_01",243,279,6,7,0,"quiz01wall_h";
+setwall "quiz_01",244,279,6,7,0,"quiz01wall_i";
+setwall "quiz_01",239,282,6,7,0,"quiz01wall_l";
+setwall "quiz_01",239,283,6,7,0,"quiz01wall_m";
+setwall "quiz_01",239,284,6,7,0,"quiz01wall_n";
+setwall "quiz_01",234,282,6,7,0,"quiz01wall_o";
+setwall "quiz_01",234,283,6,7,0,"quiz01wall_p";
+setwall "quiz_01",234,284,6,7,0,"quiz01wall_q";
+setwall "quiz_01",229,279,6,7,0,"quiz01wall_r";
+setwall "quiz_01",230,279,6,7,0,"quiz01wall_s";
+setwall "quiz_01",231,279,6,7,0,"quiz01wall_t";
+setwall "quiz_01",229,274,6,7,0,"quiz01wall_u";
+setwall "quiz_01",230,274,6,7,0,"quiz01wall_v";
+setwall "quiz_01",231,274,6,7,0,"quiz01wall_x";
+sleep 5000;
+initnpctimer;
+mapannounce "quiz_01","[KEKKAI]:5 segundos para começar!",8;
+end();
+
+OnTimer1000:
+mapannounce "quiz_01","[KEKKAI]:4 segundos para começar!",8;
+end();
+OnTimer2000:
+mapannounce "quiz_01","[KEKKAI]:3 segundos para começar!",8;
+end();OnTimer3000:
+mapannounce "quiz_01","[KEKKAI]:2 segundos para começar!",8;
+end();
+OnTimer4000:
+mapannounce "quiz_01","[KEKKAI]:1 segundo para começar!",8;
+end();OnTimer5000:
+set .@rand,rand(1,4);
+mapannounce "quiz_01","[KEKKAI]:o sorteado foi:"+.@rand+".",8;
+switch(.@rand){
+case 1:
+areawarp "quiz_01",233,280,233,292,"treinamento",150,150;
+areawarp "quiz_01",232,280,232,292,"treinamento",150,150;
+areawarp "quiz_01",231,280,231,292,"treinamento",150,150;
+areawarp "quiz_01",230,280,230,292,"treinamento",150,150;
+areawarp "quiz_01",229,280,229,292,"treinamento",150,150;
+areawarp "quiz_01",228,280,228,292,"treinamento",150,150;
+areawarp "quiz_01",227,280,227,292,"treinamento",150,150;
+areawarp "quiz_01",226,280,236,292,"treinamento",150,150;
+areawarp "quiz_01",225,280,225,292,"treinamento",150,150;
+areawarp "quiz_01",224,280,224,292,"treinamento",150,150;
+areawarp "quiz_01",223,280,223,292,"treinamento",150,150;
+areawarp "quiz_01",222,280,222,292,"treinamento",150,150;
+areawarp "quiz_01",221,280,221,292,"treinamento",150,150;
+end();
+
+case 2:
+areawarp "quiz_01",252,280,252,292,"treinamento",150,150;
+areawarp "quiz_01",251,280,251,292,"treinamento",150,150;
+areawarp "quiz_01",250,280,250,292,"treinamento",150,150;
+areawarp "quiz_01",249,280,249,292,"treinamento",150,150;
+areawarp "quiz_01",278,280,248,292,"treinamento",150,150;
+areawarp "quiz_01",247,280,247,292,"treinamento",150,150;
+areawarp "quiz_01",246,280,246,292,"treinamento",150,150;
+areawarp "quiz_01",245,280,245,292,"treinamento",150,150;
+areawarp "quiz_01",244,280,244,292,"treinamento",150,150;
+areawarp "quiz_01",243,280,243,292,"treinamento",150,150;
+areawarp "quiz_01",242,280,242,292,"treinamento",150,150;
+areawarp "quiz_01",241,280,241,292,"treinamento",150,150;
+areawarp "quiz_01",240,280,240,292,"treinamento",150,150;
+end();
+case 3:
+areawarp "quiz_01",233,273,233,261,"treinamento",150,150;
+areawarp "quiz_01",232,273,232,261,"treinamento",150,150;
+areawarp "quiz_01",231,273,231,261,"treinamento",150,150;
+areawarp "quiz_01",230,273,230,261,"treinamento",150,150;
+areawarp "quiz_01",229,273,229,261,"treinamento",150,150;
+areawarp "quiz_01",228,273,228,261,"treinamento",150,150;
+areawarp "quiz_01",227,273,227,261,"treinamento",150,150;
+areawarp "quiz_01",226,273,236,261,"treinamento",150,150;
+areawarp "quiz_01",225,273,225,261,"treinamento",150,150;
+areawarp "quiz_01",224,273,224,261,"treinamento",150,150;
+areawarp "quiz_01",223,273,223,261,"treinamento",150,150;
+areawarp "quiz_01",222,273,222,261,"treinamento",150,150;
+areawarp "quiz_01",221,273,221,261,"treinamento",150,150;
+end();
+case 4:
+areawarp "quiz_01",252,273,252,261,"treinamento",150,150;
+areawarp "quiz_01",251,273,251,261,"treinamento",150,150;
+areawarp "quiz_01",250,273,250,261,"treinamento",150,150;
+areawarp "quiz_01",249,273,249,261,"treinamento",150,150;
+areawarp "quiz_01",248,273,248,261,"treinamento",150,150;
+areawarp "quiz_01",247,273,247,261,"treinamento",150,150;
+areawarp "quiz_01",246,273,246,261,"treinamento",150,150;
+areawarp "quiz_01",245,273,245,261,"treinamento",150,150;
+areawarp "quiz_01",244,273,244,261,"treinamento",150,150;
+areawarp "quiz_01",243,273,243,261,"treinamento",150,150;
+areawarp "quiz_01",242,273,242,261,"treinamento",150,150;
+areawarp "quiz_01",241,273,241,261,"treinamento",150,150;
+areawarp "quiz_01",240,273,240,261,"treinamento",150,150;
+end();
+}
+}
+
+// - MapFlag
+quiz_01	mapflag	nowarp
+quiz_01	mapflag	nowarpto
+quiz_01	mapflag	noteleport
+quiz_01	mapflag	nosave
+quiz_01	mapflag	nomemo
+quiz_01	mapflag	nobranch
+quiz_01	mapflag	nopenalty
+quiz_01	mapflag	pvp	off

@@ -1,0 +1,104 @@
+jawaii_in,6,112,4	script	Jackpot!	1732,{
+	if (.jpotnum <= 0 || !.jpotnum){
+	set .jpotnum, rand(1,300);
+	}
+	mes "[^000099Jackpot^000000]";
+	mes "Oi!";
+	mes "Aqui você pode tirar a sorte grande, se você acertar o número secreto!";
+	mes "Jackpot atual : "+.jackpot+"Z";
+	menu "Mais informação",-,"Participar",LGo,"Deixa pra lá",Lexit;
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Pra participar, você vai precisar apostar 10,000 zeny.";
+	mes "Sendo assim, o prêmio acumulado irá aumentar, e a pessoa que acertar o número ganha tudo!";
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Gostaria de tentar?";
+	menu "Sim!",LGo,"Não, obrigado.",Lexit;
+
+LGo:
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Agora, aposte no mínimo 10,000 zeny.";
+	mes "Se não tem certeza, insira 0 como o valor da aposta.";
+	input @jp;
+	next;
+	mes "[^000099Jackpot^000000]";
+	if (@jp < 10000){
+	mes "Desculpe, o valor mínimo da aposta é 10,000 zeny.";
+	goto LGo;
+	}
+	if (Zeny < @jp){
+	mes "Você não possui "+@jp+" Zeny";
+	close;
+	}
+	mes "Você inseriu "+@jp+" Zeny.";
+	mes "Está correto?";
+	menu "Não",LGo,"Sim",-;
+	next;
+	set Zeny, Zeny - @jp;
+	set .jackpot,.jackpot + @jp;
+	mes "[^000099Jackpot^000000]";
+	mes "Valor adicionado : "+ @jp;
+	mes "Jackpot atual :"+ .jackpot +"Z";
+	announce "[Jackpot]: "+strcharinfo(0)+" apostou "+ @jp +"Z no cassino. [Jackpot atual :"+.jackpot+"]",0x76EE00;
+	dispbottom "[ "+@jp+"Z foi adicionado ao jackpot ]";
+	goto LNum;
+LNum:
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Agora é hora de chutar um número!";
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Se o número que você chutar estiver errado, você perderá o dinheiro que apostou, e terá que tentar denovo!";
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Por favor insira o número e boa sorte!";
+	mes "Chute um número entre 1 e 300!";
+	input @jpnum;
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Devo tentar o número "+@jpnum+"?";
+	mes "ou gostaria de tentar outro número?";
+	menu @jpnum+" !",-,"Outro",LNum;
+	next;
+	mes "[^000099Jackpot^000000]";
+	if (@jpnum < 1 && @jpnum > 300){
+	mes "Insira um número entre 1 & 300";
+	goto LNum;
+	}
+	mes "Okay, vamos tentar!";
+	next;
+	mes "*Tentando número ["+@jpnum+"]*";
+	next;
+	mes "[^000099Jackpot^000000]";
+	if (@jpnum != .jpotnum){
+	mes "Oh, Lamento, mas não é este número.";
+	mes "Volte e tente denovo quando quiser !";
+	close;
+	} else {
+	mes "Wow! funcionou!";
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Parabéns!!";
+	mes "Você ganhou todo o prêmio acumulado!";
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Prêmio recebido: "+.jackpot+"Z";
+	dispbottom "Parabéns! Você tirou a sorte grande e ganhou "+.jackpot+" Zeny!";
+	set Zeny, Zeny + .jackpot;
+	announce " [ Jackpot ] : "+strcharinfo(0)+" acertou o número e recebeu "+.jackpot+" Zeny !!",0x76EE00;
+	set .jackpot,0;
+	set .jpotnum,0;
+	close2;
+	announce " [ Jackpot ] : O número premiado foi "+.jpotnum+".",0x76EE00;
+	sleep2(5000);
+	announce " [ Jackpot ] : Quer ser sortudo como o "+strcharinfo(0)+", venha e tente você também!",0x76EE00;
+	end;
+}
+Lexit:
+	next;
+	mes "[^000099Jackpot^000000]";
+	mes "Ok então";
+	close;
+}

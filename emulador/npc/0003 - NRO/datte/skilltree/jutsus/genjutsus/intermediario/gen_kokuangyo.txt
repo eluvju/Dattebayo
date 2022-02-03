@@ -1,0 +1,100 @@
+moc_fild03,113,330,5	script	Kokuangyo no Jutsu::genint22	831,{
+
+if (getskilllv(207) >= 1) goto L_delete;
+if(gen_intermediario != 1) {mes "Você precisa estudar genjutsu intermediário antes de aprender esse genjutsu"; close;}
+if (checkquest(2191) == 1) goto L_go;
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsus intermediários, esse é o limite"; close;}
+if(Kokuangyo == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(accept_gen_int == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if (WeaponLvl3 < 40) {mes "Seu nível de genjutsu está baixo demais, é preciso ter nível 40 pra aprender esse genjutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de genjutsu espalhados pelo mundo, eu posso lhe ensinar um genjutsu intermediário";
+next;
+mes "O genjutsu que eu ensino é o: Kokuangyo no Jutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Kokuangyo no Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(207) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(207) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 207,0,0;
+set Kokuangyo,0;
+erasequest 2191;
+if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}
+if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_int_vintedois,1;
+set accept_gen_int,accept_gen_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter genjutsu intermedário level 40";
+mes "- Derrotar 35 Crustáceos.";
+mes "- Obter 30 Garletas";
+mes "- Obter 100 Conchas";
+setquest 2191;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsu intermediario, esse é o limite"; close;}
+if(gen_int_mobs_vintedois < 35) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(910) <30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(961) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 910,30;
+delitem 961,100;
+skill 207,1,0;
+set Kokuangyo,1;
+set quest_gen_int_vintedois,0;
+set gen_int_mobs_vintedois, 0;
+completequest 2191;
+erasequest 2191;
+set gen_skill_int,gen_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Intermedíario]",0;
+}
+
+-	script	genint#21	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1066 && quest_gen_int_vintedois == 1)
+{set gen_int_mobs_vintedois,gen_int_mobs_vintedois +1;
+announce "[Genjutsu Quest] Você já derrotou "+gen_int_mobs_vintedois+" / 35 Crustáceos",bc_blue|bc_self; end;}
+
+}
+
+yuno_fild05,72,148,5	duplicate(genint22)	Kokuangyo no Jutsu#41	831,{
+moc_fild13,201,336,5	duplicate(genint22)	Kokuangyo no Jutsu#42	831,{
+gef_fild05,30,310,5	duplicate(genint22)	Kokuangyo no Jutsu#43	831,{

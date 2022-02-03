@@ -1,0 +1,437 @@
+ra_in01,202,92,5	script	Troca de Máscara ANBU	99,{
+
+if(countitem(19130) == 1) goto inicio;
+if(countitem(19131) == 1) goto inicio;
+if(countitem(19132) == 1) goto inicio;
+if(countitem(19133) == 1) goto inicio;
+
+if(countitem(19134) == 1) goto inicio;
+if(countitem(19135) == 1) goto inicio;
+if(countitem(19136) == 1) goto inicio;
+if(countitem(19137) == 1) goto inicio;
+
+if(countitem(19138) == 1) goto inicio;
+if(countitem(19139) == 1) goto inicio;
+if(countitem(19140) == 1) goto inicio;
+if(countitem(19141) == 1) goto inicio;
+
+if(countitem(19142) == 1) goto inicio;
+if(countitem(19143) == 1) goto inicio;
+if(countitem(19144) == 1) goto inicio;
+if(countitem(19145) == 1) goto inicio;
+
+mes "Você não possui máscara ANBU";
+close;
+
+inicio:
+mes "Eu sou o trocador de Máscaras ANBU, se está cansado de sua máscara você pode trocar por outra comigo, é importante que você deixe desequipado sua máscara pra essa troca ser feita, vamos lá!";
+next;
+mes "Qual Máscara você gostaria de ter?";
+menu "Máscara 1",normal,"Máscara 2",kakashi,"Máscara 3",lado,"Máscara 4",pescoco,"Máscara 5",yamato,"Máscara 6",kisame,"Máscara 7",mask7,"Máscara 8",mask8,"Máscara 9",mask9,"Máscara 10",mask10,"Mais opções",mais;
+
+mais:
+next;
+menu "Máscara 11",mask11,"Máscara 12",mask12,"Máscara 13",mask13,"Máscara 14",mask14,"Máscara 15",mask15,"Máscara 16",mask16;
+
+normal:
+
+
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+getitem 19130,1;
+close;
+
+kakashi:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19131,1;
+close;
+
+lado:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19132,1;
+close;
+
+pescoco:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19133,1;
+close;
+
+yamato:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19134,1;
+close;
+
+kisame:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19135,1;
+close;
+
+mask7:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19136,1;
+close;
+
+mask8:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19137,1;
+close;
+
+mask9:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19138,1;
+close;
+
+mask10:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19139,1;
+close;
+
+mask11:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19140,1;
+close;
+
+mask12:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19141,1;
+close;
+
+mask13:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19142,1;
+close;
+
+mask14:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19143,1;
+close;
+
+mask15:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19144,1;
+close;
+
+mask16:
+if(countitem(19130) == 1) {delitem 19130,1;}
+if(countitem(19131) == 1) {delitem 19131,1;}
+if(countitem(19132) == 1) {delitem 19132,1;}
+if(countitem(19133) == 1) {delitem 19133,1;}
+
+if(countitem(19134) == 1) {delitem 19134,1;}
+if(countitem(19135) == 1) {delitem 19135,1;}
+if(countitem(19136) == 1) {delitem 19136,1;}
+if(countitem(19137) == 1) {delitem 19137,1;}
+
+if(countitem(19138) == 1) {delitem 19138,1;}
+if(countitem(19139) == 1) {delitem 19139,1;}
+if(countitem(19140) == 1) {delitem 19140,1;}
+if(countitem(19141) == 1) {delitem 19141,1;}
+
+if(countitem(19142) == 1) {delitem 19142,1;}
+if(countitem(19143) == 1) {delitem 19143,1;}
+if(countitem(19144) == 1) {delitem 19144,1;}
+if(countitem(19145) == 1) {delitem 19145,1;}
+
+
+getitem 19145,1;
+close;
+
+}

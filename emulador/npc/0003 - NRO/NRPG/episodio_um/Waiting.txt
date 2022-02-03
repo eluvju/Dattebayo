@@ -1,0 +1,53 @@
+//===== eAthena Script ========================================
+//= Wainting
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= WaintinRoom
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+ama_test,50,15,2	script	Espera	105,{
+//==================Variavéis================================
+set @npc$,"[^000080Sala de Espera^000000]";
+//============================================================
+OnInit:
+if (getmapusers ("ondr_fild01") == 0) waitingroom "País das Ondas",1,"Espera::OnENTER",1;
+if (getmapusers ("ondr_fild01") >= 1) disablewaitingroomevent;
+setnpctimer 0;
+startnpctimer;
+
+OnENTER:
+if (getmapusers ("ondr_fild01") >= 1) close;
+killmonsterall "ondr_fild01.gat";
+hideoffnpc "Tazuna";
+warpwaitingpc "ondr_fild01",135,69,1;
+end;
+}
+//===== eAthena Script ========================================
+//= Informações
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= WaintinRoom
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+ama_test,47,18,6	script	Informações	105,{
+//==================Variavéis================================
+set @npc$,"[^000080Informações^000000]";
+//============================================================
+mes @npc$;
+mes "^BEBEBE"+strcharinfo(0)+"^000000 primeiramente,obrigado por ter atendido o nosso pedido";
+mes "Você já irá encontrar com Tazuna,agurde alguns instantes até que apareça um ^FF0000chat^000000, escrito ^0000FFPaís das Ondas^000000";
+next;
+mes @npc$;
+mes "^BEBEBE"+strcharinfo(0)+"^000000 Boa Sorte em sua Jornada !";
+close;
+}
+//MapFlag
+ama_test	mapflag	pvp	off

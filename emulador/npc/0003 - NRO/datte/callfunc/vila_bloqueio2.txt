@@ -1,0 +1,10 @@
+pay_fild09,20,91,4	script	Entrada pra Konoha#12	45,1,1,{
+
+}
+
+moc_fild18	mapflag	noreturn
+moc_fild18	mapflag	pvp	off
+moc_fild18	mapflag	nosave	SavePoint
+moc_fild18	mapflag	noteleport
+moc_fild18	mapflag	nowarp
+moc_fild18	mapflag	nowarpto

@@ -1,0 +1,57 @@
+-	script	on_PC_UseSkillf19q	-1,{
+    end;
+//When a Character uses a skill
+
+//f_protecao
+
+onPcUseSkillEvent:
+
+           if(lskillid == 255) {
+
+
+if (getskilllv(255) == 1) {
+
+if (f_protecao != 1) {end;}
+if (skill255 >= 50) {skill 255,2,0; set skill255,0; dispbottom "[Sys] Level up"; end; }
+set skill255,skill255 +1;
+dispbottom "[Jutsu level] Proteção Ninja level 1: "+skill255+" de 50";
+
+end;
+
+}
+
+if (getskilllv(255) == 2) {
+if (f_protecao != 1) {end;}
+if (skill255 >= 100) {skill 255,3,0; set skill255,0; dispbottom "[Sys] Level up"; end;}
+set skill255,skill255 +1;
+dispbottom "[Jutsu level] Proteção Ninja level 2: "+skill255+" de 100";
+
+end;
+
+}
+
+if (getskilllv(255) == 3) {
+
+if (f_protecao != 1) {end;}
+if (skill255 >= 150) {skill 255,4,0; set skill255,0; dispbottom "[Sys] Level up"; end;}
+set skill255,skill255 +1;
+dispbottom "[Jutsu level] Proteção Ninja level 3: "+skill255+" de 150";
+
+end;
+
+}
+
+if (getskilllv(255) == 4) {
+if (f_protecao != 1) {end;}
+if (skill255 >= 200) {skill 255,5,0; set skill255,0; dispbottom "[Sys] Level up"; end;}
+set skill255,skill255 +1;
+dispbottom "[Jutsu level] Proteção Ninja level 4: "+skill255+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

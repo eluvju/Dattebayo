@@ -1,0 +1,27 @@
+-	script	VIPS#CONTROL	-1,{
+//OnInit:
+//	Set .VIP_DIAS_GRATIS, 3;
+//	Set .VIP_NIVEL, 1;
+//	Set .GM_NIVEL, 60;
+//	End;
+
+//OnPCLoginEvent:
+//	If (GetGMLevel() >= .GM_NIVEL) End;
+//	If (#VIP_GOT == FALSE)
+//	{
+//		Set #VIP_GOT, TRUE;
+//		Query_Sql("UPDATE `login` SET `level` = '"+.VIP_NIVEL+"' WHERE `account_id` = '"+GetCharID(3)+"'");
+//		Query_Sql("UPDATE `login` SET `diasvip` = "+.VIP_DIAS_GRATIS+" WHERE `account_id` = '"+GetCharID(3)+"'");
+//		Announce "Você acaba de receber "+.VIP_DIAS_GRATIS+" dias de vip grátis.", bc_blue|bc_self;
+//	}
+//	Else
+//	{
+//		End;
+//	}
+// end;
+
+OnClock0000:
+Query_Sql("UPDATE `login` SET `diasvip` = `diasvip` - 1 WHERE `diasvip` >= 1");
+Query_Sql("UPDATE `login` SET `level` = 0 WHERE `diasvip` = 0");
+End;
+}

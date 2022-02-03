@@ -1,0 +1,30 @@
+ama_test,59,22,4	script	Voltar#epi1	830,{
+	mes "[Retorno]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Retorno]";
+	mes "Quer retornar para sua vila?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Retorno]";
+	mes "OK "+ strcharinfo(0) +"!";
+	if(Rank_S == 1) {warp "prt_monk", 249,201; end;}
+	if(Rank_A == 1) {warp "prt_monk", 249,201; end;}
+	if(Rank_B == 1) {warp "prt_monk", 249,201; end;}
+	if(Rank_C == 1) {warp "prt_monk", 249,201; end;}
+	if(Rank_D == 1) {warp "prt_monk", 249,201; end;}
+	if(Class == 4049) {warp "prt_monk", 249,201; end;}
+	if(##faction == 1) {warp "konoha", 192,203; end;}
+	if(##faction == 2) {warp "areia", 206,155; end;}
+	if(##faction == 3) {warp "nevoa", 123,283; end;}
+	close;
+
+	r2:
+	mes "[Retorno]";
+	mes "Ok..";
+	close;
+
+
+}

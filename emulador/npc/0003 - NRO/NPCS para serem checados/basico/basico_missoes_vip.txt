@@ -1,0 +1,174 @@
+function	script	read_quests_vip	{
+
+setarray $S_type_vip[0], 0, -1, 0, 0, -1, -1;	// Tipo de cada missão rank S, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $A_type_vip[0], 0, 0, -1, 0, -1, -1;	// Tipo de cada missão rank A, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $B_type_vip[0], 0, 0, -1, -1, 0, 0;	// Tipo de cada missão rank B, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $C_type_vip[0], 0, 0, -1, -1, 0, -1;	// Tipo de cada missão rank C, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $D_type_vip[0], 0, 0, 0, -1, -1, -1;	// Tipo de cada missão rank D, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+setarray $E_type_vip[0], 0, 0, 0, -1, -1, 0;	// Tipo de cada missão rank E, -1 = Pegar item, 0 = Matar MOB, 1 = Procurar NPC
+
+setarray $S_id_vip[0], 1492, 7305, 1089, 1418, 968, 968; // Item de cada missão rank S, baseado no tipo, se for para procurar npc coloque -1
+setarray $A_id_vip[0], 1289, 1830, 705, 1057, 969, 969; // Item de cada missão rank A, baseado no tipo, se for para procurar npc coloque -1
+setarray $B_id_vip[0], 1059, 1262, 997, 509, 1735, 1735; // Item de cada missão rank B, baseado no tipo, se for para procurar npc coloque -1
+setarray $C_id_vip[0], 1507, 1196, 1098, 1040, 1121, 1003; // Item de cada missão rank C, baseado no tipo, se for para procurar npc coloque -1
+setarray $D_id_vip[0], 1656, 1618, 1201, 7223, 7563, 626; // Item de cada missão rank D, baseado no tipo, se for para procurar npc coloque -1
+setarray $E_id_vip[0], 1304, 1214, 1619, 910, 1015, 1042; // Item de cada missão rank E, baseado no tipo, se for para procurar npc coloque -1
+
+setarray $S_quantify_vip[0], 50, 30, 20, 20, 80, 80; // Quantidade de cada missão rank S, baseado no tipo, se for para procurar npc coloque -1
+setarray $A_quantify_vip[0], 80, 80, 80, 20, 20, 20; // Quantidade de cada missão rank A, baseado no tipo, se for para procurar npc coloque -1
+setarray $B_quantify_vip[0], 50, 50, 60, 60, 50, 50; // Quantidade de cada missão rank B, baseado no tipo, se for para procurar npc coloque -1
+setarray $C_quantify_vip[0], 50, 40, 50, 35, 50, 50; // Quantidade de cada missão rank C, baseado no tipo, se for para procurar npc coloque -1
+setarray $D_quantify_vip[0], 60, 50, 50, 50, 40, 50; // Quantidade de cada missão rank D, baseado no tipo, se for para procurar npc coloque -1
+setarray $E_quantify_vip[0], 30, 30, 30, 30, 50, 50; // Quantidade de cada missão rank E, baseado no tipo, se for para procurar npc coloque -1
+
+setarray $S_npc_name_vip$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank S, se não for para procurar npc coloque "-1"
+setarray $A_npc_name_vip$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank A, se não for para procurar npc coloque "-1"
+setarray $B_npc_name_vip$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank B, se não for para procurar npc coloque "-1"
+setarray $C_npc_name_vip$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank C, se não for para procurar npc coloque "-1"
+setarray $D_npc_name_vip$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank D, se não for para procurar npc coloque "-1"
+setarray $E_npc_name_vip$[0], "-1", "-1", "-1", "-1", "-1", "Shinobi Desaparecido"; // Nome de cada npc das missões de rank E, se não for para procurar npc coloque "-1"
+
+setarray $S_map_vip$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank S, se não for para procurar npc coloque "-1"
+setarray $A_map_vip$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank A, se não for para procurar npc coloque "-1"
+setarray $B_map_vip$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank B, se não for para procurar npc coloque "-1"
+setarray $C_map_vip$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank C, se não for para procurar npc coloque "-1"
+setarray $D_map_vip$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank D, se não for para procurar npc coloque "-1"
+setarray $E_map_vip$[0], "-1", "-1", "-1", "-1", "-1", "gef_fild07"; // Mapa de cada missão rank E, se não for para procurar npc coloque "-1"
+
+setarray $S_x_vip[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank S, se não for para procurar npc coloque -1
+setarray $A_x_vip[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank A, se não for para procurar npc coloque -1
+setarray $B_x_vip[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank B, se não for para procurar npc coloque -1
+setarray $C_x_vip[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank C, se não for para procurar npc coloque -1
+setarray $D_x_vip[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank D, se não for para procurar npc coloque -1
+setarray $E_x_vip[0], -1, -1, -1, -1, -1, 34; // Coordenada X de cada missão rank E, se não for para procurar npc coloque -1
+
+setarray $S_y_vip[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank S, se não for para procurar npc coloque -1
+setarray $A_y_vip[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank A, se não for para procurar npc coloque -1
+setarray $B_y_vip[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank B, se não for para procurar npc coloque -1
+setarray $C_y_vip[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank C, se não for para procurar npc coloque -1
+setarray $D_y_vip[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank D, se não for para procurar npc coloque -1
+setarray $E_y_vip[0], -1, -1, -1, -1, -1, 64; // Coordenada Y de cada missão rank E, se não for para procurar npc coloque -1
+
+set $S_exp_vip, 2000000000;
+set $A_exp_vip, 1000000000;
+set $B_exp_vip, 500000000;
+set $C_exp_vip, 300000000;
+set $D_exp_vip, 150000000;
+set $E_exp_vip, 75000000;
+
+set $S_zeny_vip, 1500000;
+set $A_zeny_vip, 1000000;
+set $B_zeny_vip, 500000;
+set $C_zeny_vip, 300000;
+set $D_zeny_vip, 150000;
+set $E_zeny_vip, 50000;
+
+return;
+}
+
+function	script	check clock_vip	{
+	for(set .@i, 0; .@i < getarraysize($hour_vip); set .@i, .@i + 1)
+		if(getarg(0) == $hour_vip[.@i])
+			return(TRUE);
+	return(FALSE);
+}
+-	script	Missões#1	-1,{
+
+OnInit:
+	setarray $hour_vip[0], 10, 11, 12, 14, 15, 16, 19, 20, 21;	// Horários das missões.
+	set $q_vip, 6;						// Quantidade de missões por Rank. ( Não altere sem comunicar ao MidNight )
+	setarray $level_vip[1], 100, 150, 200, 250, 300, 350; // Respectivamente o nível mínimo necessário para fazer as missões dos tipos: e, d, c, b, a, s
+	setarray $rank_vip$[1], "E", "D", "C", "B", "A", "S"; // Não altere.
+	callfunc("read_quests_vip");	// Seta as informaçõs das missões
+	end;
+
+OnMinute00:
+	if(! callfunc("check clock_vip", gettime(3)))end;	// Se não tiver na hora das missões, não exibe nada
+	set .@query$, "SELECT `account_id` FROM `char` WHERE `online` = '1' AND `gmlevel` > '0' LIMIT 125";
+	do
+	{
+		query_sql(.@query$, .AID);	// Seleciona os 125 primeiros jogadores online e salva na array .AID
+		for(set .i, 0; .i < getarraysize(.AID); set .i, .i + 1)	// Aqui faz um loop para executar o código para todos os jogadores online.
+		{
+			if(! attachrid(.AID[.i]))continue;	// Checa se o jogador está online ( novamente ) só por segurança.
+			//for(set @j, 6; (@j) && (BaseLevel < $level[@j]); set @j,@j - 1);	// Vê qual o nível do cara para adequà-lo à missão
+			if(BaseLevel < $level_vip[1])
+				continue;
+			if(BaseLevel >= $level_vip[1] && BaseLevel < $level_vip[2])
+				set @j, 1;
+			else if(BaseLevel >= $level_vip[2] && BaseLevel < $level_vip[3])
+				set @j, 2;
+			else if(BaseLevel >= $level_vip[3] && BaseLevel < $level_vip[4])
+				set @j, 3;
+			else if(BaseLevel >= $level_vip[4] && BaseLevel < $level_vip[5])
+				set @j, 4;
+			else if(BaseLevel >= $level_vip[5] && BaseLevel < $level_vip[6])
+				set @j, 5;
+			else
+				set @j, 6;
+			set @mission, rand($q_vip);	// Seleciona uma missão aleatória
+			set @mt, getd("$"+$rank_vip$[@j]+"_type_vip["+ @mission+"]");	// Seta em @mt o tipo da missão que o jogador vai fazer
+			announce "Você acaba de receber uma missão de ranking "+$rank_vip$[@j]+".",bc_blue|bc_self;
+			if(@mt <= 0) // Se a missão for de matar monstro ou pegar item executa esse if
+			{
+				set @mq, getd("$"+$rank_vip$[@j]+"_quantify_vip["+@mission+"]");	// Seta a quantidade de monstro/item da missão
+				set @mid, getd("$"+$rank_vip$[@j]+"_id_vip["+@mission+"]");				// Seta o id do monstro/item da missão
+				message "Você terá que "+((@mt == 0) ? "matar" : "pegar")+" "+@mq+" "+((@mt == 0) ? "monstros" : "itens")+":";
+				if(@mt == 0)
+					message getmonsterinfo(@mid, 0); // Exibe o nome do monstro
+				else
+					message getitemname(@mid); // Exibe ou o nome do item
+				query_sql("INSERT INTO `quests_table_vip` (`char_id`,`mission_ranking`,`mission_type`,`mission_quantify`,`mission_id`) VALUES ('"+getcharid(0)+"','"+$rank$[@j]+"','"+@mt+"','"+@mq+"','"+@mid+"')");	// Coloca na tabela os dados da missão.
+			}	else { // Agora é a execução de missão de procurar npc
+				setarray @npc_data$, getd("$"+$rank_vip$[@j]+"_npc_name_vip$["+@mission+"]"), getd("$"+$rank_vip$[@j]+"_map_vip$["+@mission+"]"); // Seta o mapa e o nome do npc a ser procurado
+				setarray @nd, getd("$"+$rank_vip$[@j]+"_x_vip["+@mission+"]"), getd("$"+$rank_vip$[@j]+"_y_vip["+@mission+"]");	// Seta as coordenadas do npc a ser procurado
+				message "Você terá que procurar pelo npc "+@npc_data$;
+				query_sql("INSERT INTO `quests_table_vip` (`char_id`,`mission_ranking`,`mission_type`,`npc_name`,`npc_map`,`npc_x`,`npc_y`) VALUES ('"+getcharid(0)+"','"+$rank_vip$[@j]+"','1','"+@npc_data$[0]+"','"+@npc_data$[1]+"','"+@nd+"','"+@nd[1]+"')");	// Coloca na tabela os dados da missão.
+			}
+			detachrid;
+		}
+	if(getarraysize(.AID) == 125)
+		set .@query$, "SELECT `account_id` FROM `char` WHERE `online` = '1' AND `gmlevel` > '0' AND `account_id` > '"+.AID[124]+"' LIMIT 125";
+	} while(getarraysize(.AID) == 125);
+	set .@query$, "SELECT `char_id`, `base_level` FROM `char` WHERE `online` = '0' AND `gmlevel` > '0' LIMIT 125";
+	do
+	{
+		query_sql(.@query$, .CID, .BL);
+		for(set .i, 0; .i < getarraysize(.CID); set .i, .i + 1)	// Aqui faz um loop para executar o código para todos os jogadores offline.
+		{
+			if(.BL[.i] < $level_vip[1])
+				continue;
+			if(.BL[.i] >= $level_vip[1] && .BL[.i] < $level_vip[2])
+				set .j, 1;
+			else if(.BL[.i] >= $level_vip[2] && .BL[.i] < $level_vip[3])
+				set .j, 2;
+			else if(.BL[.i] >= $level_vip[3] && .BL[.i] < $level_vip[4])
+				set .j, 3;
+			else if(.BL[.i] >= $level_vip[4] && .BL[.i] < $level_vip[5])
+				set .j, 4;
+			else if(.BL[.i] >= $level_vip[5] && .BL[.i] < $level_vip[6])
+				set .j, 5;
+			else
+				set .j, 6;
+			set .mission, rand($q_vip);	// Seleciona uma missão aleatória
+			set .mt, getd("$"+$rank_vip$[.j]+"_type_vip["+ .mission+"]");
+			if(.@mt <= 0)
+			{
+				set .mq, getd("$"+$rank_vip$[.j]+"_quantify_vip["+.mission+"]");
+				set .mid, getd("$"+$rank_vip$[.j]+"_id_vip["+.mission+"]");	
+				query_sql("INSERT INTO `quests_table_vip` (`char_id`,`mission_ranking`,`mission_type`,`mission_quantify`,`mission_id`) VALUES ('"+.CID[.i]+"','"+$rank$[.j]+"','"+.mt+"','"+.mq+"','"+.mid+"')");
+			}	else {
+				setarray .npc_data$, getd("$"+$rank_vip$[.j]+"_npc_name_vip$["+.mission+"]"), getd("$"+$rank_vip$[.j]+"_map_vip$["+.mission+"]");
+				setarray .nd, getd("$"+$rank_vip$[.j]+"_x_vip["+.mission+"]"), getd("$"+$rank_vip$[.j]+"_y_vip["+.mission+"]");
+				query_sql("INSERT INTO `quests_table_vip` (`char_id`,`mission_ranking`,`mission_type`,`npc_name`,`npc_map`,`npc_x`,`npc_y`) VALUES ('"+.CID[.i]+"','"+$rank_vip$[.j]+"','1','"+.npc_data$+"','"+.npc_data$[1]+"','"+.nd+"','"+.nd[1]+"')");
+			}
+		}
+		if(getarraysize(.CID) == 125)
+			set .@query$, "SELECT `char_id`, `base_level` FROM `char` WHERE `online` = '0' AND `gmlevel` > '0' AND `char_id` > '"+.CID[124]+"' LIMIT 125";
+	} while(getarraysize(.CID) == 125);
+	end;
+	
+OnPCLoginEvent:
+	query_sql("UPDATE `char` SET `gmlevel` = '"+getgmlevel()+"' WHERE `account_id` = '"+getcharid(3)+"'");
+	end;
+}

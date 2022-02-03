@@ -1,0 +1,37 @@
+payon_in03,20,72,3	script	Treinamento de Fuuton::T_fuuton	734,{
+
+if(elementofuuton != 1) goto L_class;
+if(Treino_Fuuton == 1) goto treino_feito;
+
+mes "[Treinamento de Fuuton]";
+mes "Ohayo!!";
+next;
+mes "Eu sou um mestre no elemento fuuton, e vejo que você leva jeito também!";
+next;
+mes "O que? Quer treinar comigo? *-*";
+menu "Quero",-,"Não",nao;
+mes "Beleza! vamos lá! *sinal de positivo*";
+next;
+mes "Ahh dei um jeito nas minhas costas... pega estes pergaminhos e estuda que você aprende!";
+next;
+mes "*Estudando*";
+mes "Yosh! Já terminei meu treinamento fuuton!";
+skill 401,1,0;
+set Treino_Fuuton,1;
+close;
+
+treino_feito:
+mes "Você já fez este treinamento!";
+close;
+
+nao:
+close;
+
+L_class:
+mes "Você não é um usuário fuuton!";
+close;
+
+}
+
+morocc_in,178,135,4	duplicate(T_fuuton)	Treinamento de Fuuton#1	734
+payon_in01,7,133,4	duplicate(T_fuuton)	Treinamento de Fuuton#2	734

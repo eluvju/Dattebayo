@@ -1,0 +1,270 @@
+function	script	KG_BYAKUGAN_PRIMARIO	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bAddRace,RC_All,10; skill 263,1; skill 272,1; bonus bIntravision,0; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bAddRace,RC_All,15; skill 263,1; skill 272,2; skill 273,2; bonus bIntravision,0; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bAddRace,RC_All,20; bonus bIntravision,0; skill 263,1; skill 272,3; skill 273,3; skill 371,3; skill 7,2; skill 380,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bAddRace,RC_All,25; bonus bIntravision,0; skill 263,1; skill 272,4; skill 273,4; skill 371,4; skill 7,4; skill 380,4; skill 372,4; skill 949,1; }
+end;
+}
+
+function	script	KG_SELOCEU	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bMatkRate,5; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bMatkRate,15; skill 531,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bMatkRate,20; skill 531,1; skill 373,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bMatkRate,25; skill 531,2; skill 373,4; skill 749,2; }
+end;
+}
+
+function	script	KG_SELOTERRA	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bAddRace,RC_All,5; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bAddRace,RC_All,10; skill 1001,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bAddRace,RC_All,15; skill 1001,1; skill 146,1; skill 373,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bAddRace,RC_All,20; skill 1001,1; skill 146,1; skill 373,4; skill 750,2; }
+end;
+}
+
+function	script	KG_AKIMICHI	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bAddRace,RC_All,5; skill 753,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bAddRace,RC_All,17; bonus2 bAddRace,RC_Player,-7; skill 753,2; skill 754,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bAddRace,RC_All,27; bonus2 bAddRace,RC_Player,-12; skill 2328,3; skill 753,3; skill 754,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bAddRace,RC_All,35; bonus2 bAddRace,RC_Player,-15; skill 2328,4; skill 753,4; skill 754,4; skill 755,4; }
+end;
+}
+
+function	script	KG_HYOUTON	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bMatkRate,10; skill 87,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bMatkRate,15; skill 87,2; skill 482,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bMatkRate,20; skill 87,3; skill 482,3; skill 2204,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bMatkRate,25; bonus bCastrate,-12; skill 87,4; skill 482,4; skill 2204,4; }
+end;
+}
+
+function	script	KG_NARA	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bVit,10;  skill 1005,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bVit,15; skill 1005,2; skill 269,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bVit,20; skill 1005,3; skill 269,3; skill 3023,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bVit,30; skill 1005,4; skill 269,1; skill 3023,3; skill 2334,4; }
+end;
+}
+
+
+function	script	KG_KUGUTSU	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bAllStats,5; skill 756,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bAllStats,10; skill 757,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bAllStats,15; skill 758,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bAllStats,20; skill 758,1; skill 247,5; skill 244,1; skill 243,1; skill 396,1; }
+end;
+}
+
+function	script	KG_PORTOES	{
+
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bSkillAtk,"TK_TURNKICK",5; bonus2 bSkillAtk,"TK_STORMKICK",5;  bonus2 bSkillAtk,"TK_COUNTER",5; bonus2 bSkillAtk,"TK_DOWNKICK",5; bonus2 bAddRace,RC_All,10; skill 957,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bSkillAtk,"TK_TURNKICK",10; bonus2 bSkillAtk,"TK_STORMKICK",10;  bonus2 bSkillAtk,"TK_COUNTER",10; bonus2 bSkillAtk,"TK_DOWNKICK",10; bonus2 bAddRace,RC_All,15; skill 957,2; skill 958,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bSkillAtk,"TK_TURNKICK",15; bonus2 bSkillAtk,"TK_STORMKICK",15;  bonus2 bSkillAtk,"TK_COUNTER",15; bonus2 bSkillAtk,"TK_DOWNKICK",15; bonus2 bAddRace,RC_All,20; skill 957,3; skill 958,3; skill 959,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bSkillAtk,"TK_TURNKICK",20; bonus2 bSkillAtk,"TK_STORMKICK",20;  bonus2 bSkillAtk,"TK_COUNTER",20; bonus2 bSkillAtk,"TK_DOWNKICK",20; bonus2 bAddRace,RC_All,25; skill 957,4; skill 958,4; skill 959,4; skill 2443,4; skill 2336,4; }
+end;
+}
+
+function	script	MANGEKYOU	{
+//MANGEKYOU_1 = Itachi
+//MANGEKYOU_2 = Sasuke
+//MANGEKYOU_3 = Obito
+if(getequipcardid(EQI_HEAD_MID,0) == 30094 ) { bonus bMatkRate,25; skill 768,1; skill 3013,1; bonus3 bAddEffOnSkill,"KO_KYOUGAKU",Eff_Stun,100; skill 157,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30095 ) { bonus bMatkRate,25; skill 769,1; skill 2008,4; skill 157,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30096 ) { bonus2 bAddRace,RC_All,20; skill 770,1; bonus bSpeedAddRate,25; skill 276,4; skill 157,1; skill 2280,4; skill 2284,4; }
+end;
+}
+
+function	script	KG_MITSASHI	{
+
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bSkillAtk,"NJ_SYURIKEN",50;  bonus2 bSkillAtk,"NJ_KUNAI",25;  bonus2 bAddRace,RC_All,5;  skill 3010,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bSkillAtk,"NJ_SYURIKEN",100; bonus2 bSkillAtk,"NJ_KUNAI",50;  bonus2 bAddRace,RC_All,10; skill 3010,2; skill 3006,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bSkillAtk,"NJ_SYURIKEN",150; bonus2 bSkillAtk,"NJ_KUNAI",75;  bonus2 bAddRace,RC_All,15; skill 3010,3; skill 3006,3; skill 3007,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bSkillAtk,"NJ_SYURIKEN",200; bonus2 bSkillAtk,"NJ_KUNAI",100; bonus2 bAddRace,RC_All,20; skill 3010,4; skill 3006,4; skill 3007,4; skill 3009,4; }
+end;
+}
+
+function	script	KG_KIBAKU	{
+
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bVit,10; bonus bMatkRate,1; bonus bAtkRate,1; skill 759,1; skill 521,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bVit,15; bonus bMatkRate,2; bonus bAtkRate,2; skill 759,2; skill 521,2; skill 2304,2; skill 760,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bVit,20; bonus bMatkRate,3; bonus bAtkRate,3; skill 759,3; skill 521,3; skill 2304,3; skill 760,2; skill 761,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bVit,25; bonus bMatkRate,5; bonus bAtkRate,5; skill 759,4; skill 521,4; skill 2304,4; skill 760,3; skill 761,1; skill 762,1; skill 763,1; }
+end;
+}
+
+function	script	KG_ABURAME	{
+
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bDex,10; skill 128,1; skill 129,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bDex,15; skill 128,2; skill 129,2; skill 130,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bDex,20; skill 128,3; skill 129,3; skill 130,3; skill 364,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bDex,30; skill 128,4; skill 129,4; skill 130,4; skill 364,4; skill 381,4; bonus bAtkRange,3; }
+end;
+}
+
+function	script	KG_JASHIN	{
+
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bVit,5;  bonus2 bSubRace,RC_All,2;  bonus3 bAutoSpell,"NPC_CRITICALWOUND",1,10; skill 673,1; skill 248,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bVit,10; bonus2 bSubRace,RC_All,5;  bonus3 bAutoSpell,"NPC_CRITICALWOUND",1,20; skill 673,1; skill 248,2; skill 254,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bVit,15; bonus2 bSubRace,RC_All,10; bonus3 bAutoSpell,"NPC_CRITICALWOUND",1,30; skill 673,1; skill 248,3; skill 254,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bVit,20; bonus2 bSubRace,RC_All,15; bonus3 bAutoSpell,"NPC_CRITICALWOUND",1,40; skill 673,1; skill 248,4; skill 254,4; skill 2287,4; skill 462,1; }
+end;
+}
+
+function	script	KG_TAYUYA	{
+
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bLuk,15; skill 326,1; skill 2205,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bLuk,20; skill 326,2; skill 2205,2; skill 764,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bLuk,25; skill 326,3; skill 328,3; skill 2205,3; skill 765,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bLuk,30; skill 326,4; skill 328,4; skill 2205,4; skill 766,1; }
+end;
+}
+
+function	script	KG_IBUSE	{
+
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bAddRace,RC_All,5;  skill 138,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bAddRace,RC_All,10; skill 138,2; skill 379,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bAddRace,RC_All,15; skill 138,3; skill 379,3; skill 406,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bAddRace,RC_All,20; skill 138,4; skill 379,4; skill 406,4; skill 2021,1; skill 767,1; }
+end;
+}
+
+function	script	KG_BYAKUGO	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bSkillHeal,"AL_HEAL",30; bonus bHealPower,15; skill 2051,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bSkillHeal,"AL_HEAL",60; bonus bHealPower,30; skill 2051,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bSkillHeal,"AL_HEAL",80; bonus bHealPower,45; skill 2051,3; skill 2050,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bSkillHeal,"AL_HEAL",100; bonus bHealPower,60; skill 2051,4; skill 2050,4; skill 5014,4; }
+end;
+}
+
+function	script	KG_BYAKUGAN_SECUNDARIO	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bIntravision,0; bonus2 bAddRace,RC_All,5; bonus2 bSkillAtk,"SR_DRAGONCOMBO",2; skill 2326,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bIntravision,0; bonus2 bAddRace,RC_All,10; bonus2 bSkillAtk,"SR_DRAGONCOMBO",5; skill 2326,2; skill 2517,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bIntravision,0; bonus2 bAddRace,RC_All,15; bonus2 bSkillAtk,"SR_DRAGONCOMBO",7;  bonus2 bSkillAtk,"SR_FALLENEMPIRE",7;  skill 2326,3; skill 2329,3; skill 380,3; skill 2517,3; skill 2330,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bIntravision,0; bonus2 bAddRace,RC_All,20; bonus2 bSkillAtk,"SR_DRAGONCOMBO",10; bonus2 bSkillAtk,"SR_FALLENEMPIRE",10; bonus2 bSkillAtk,"SR_GATEOFHELL",10; skill 2326,4; skill 2329,4; skill 380,4; skill 2517,4; skill 2330,4; skill 2343,4; skill 949,1; }
+end;
+}
+
+function	script	KG_KAGUYA	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bAddRace,RC_All,5;  skill 59,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bAddRace,RC_All,10; skill 59,2; skill 2020,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bAddRace,RC_All,15; skill 59,3; skill 2020,3; skill 2004,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bAddRace,RC_All,20; skill 59,4; skill 2020,4; skill 2004,4; skill 2483,4; }
+end;
+}
+
+function	script	KG_SHAKUTON	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bMatkRate,10; skill 3015,1; skill 3019,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bMatkRate,15; skill 3015,2; skill 3019,2; skill 428,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bMatkRate,20; skill 3015,3; skill 3019,3; skill 428,3; skill 2481,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bMatkRate,25; skill 3015,4; skill 3019,4; skill 428,4; skill 2481,4; }
+end;
+}
+
+function	script	KG_JINTON	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bMatkRate,5; bonus bSpeedAddRate,10; skill 365,1; skill 2202,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bMatkRate,10; bonus bSpeedAddRate,15; skill 365,2; skill 2202,2; skill 2201,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bMatkRate,15; bonus bSpeedAddRate,25; skill 365,3; skill 2202,3; skill 2201,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bMatkRate,20; bonus bSpeedAddRate,30; skill 365,4; skill 2202,4; skill 2201,4; skill 2477,4; }
+end;
+}
+
+function	script	KG_RESSONANTE	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bMatkRate,5; skill 2414,1; skill 2417,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bMatkRate,10; skill 2414,2; skill 2417,2; skill 2413,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bMatkRate,15; skill 2414,3; skill 2417,3; skill 2413,3; skill 2419,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bMatkRate,25; skill 2414,4; skill 2417,4; skill 2413,4; skill 2419,4; skill 2426,4; }
+end;
+}
+
+function	script	KG_KIDOUMARU	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bLongAtkRate,5; skill 44,1; skill 46,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bLongAtkRate,10; skill 44,2; skill 46,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bLongAtkRate,15; skill 44,3; skill 46,3; skill 382,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bLongAtkRate,20; skill 44,4; skill 46,4; skill 382,4; skill 2233,4; }
+end;
+}
+
+function	script	ARCO_KIDOUMARU	{
+if(getequipcardid(EQI_HAND_R,0) == 30090 ) { bonus bAtk,500; bonus bMaxHpRate,-5; }
+if(getequipcardid(EQI_HAND_R,0) == 30091 ) { bonus bAtk,1000; bonus bMaxHpRate,-10; }
+if(getequipcardid(EQI_HAND_R,0) == 30092 ) { bonus bAtk,2000; bonus bMaxHpRate,-15; }
+if(getequipcardid(EQI_HAND_R,0) == 30093 ) { bonus bAtk,2500; bonus bMaxHpRate,-15; }
+end;
+}
+
+function	script	KG_RAIKAGE	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bAddRace,RC_All,5;  skill 2307,1; bonus bShortWeaponDamageReturn,4; bonus bLongWeaponDamageReturn,4; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bAddRace,RC_All,10; skill 2307,2; skill 2312,2; bonus bShortWeaponDamageReturn,6; bonus bLongWeaponDamageReturn,6; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bAddRace,RC_All,15; skill 2307,3; skill 2312,3; skill 457,3; bonus bShortWeaponDamageReturn,8; bonus bLongWeaponDamageReturn,8; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bAddRace,RC_All,20; skill 2307,4; skill 2312,4; skill 457,4; skill 2444,4; bonus bShortWeaponDamageReturn,10; bonus bLongWeaponDamageReturn,10; }
+end;
+}
+
+function	script	KG_SELOSENJUTSU	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bAddSize,Size_Small,5;  bonus2 bAddSize,Size_Large,5;  bonus2 bAddSize,Size_Medium,5;  skill 2279,1; bonus bMaxSPRate,5; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bAddSize,Size_Small,10; bonus2 bAddSize,Size_Large,10; bonus2 bAddSize,Size_Medium,10; skill 2279,2; skill 373,2; skill 374,2; bonus bMaxSPRate,7; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bAddSize,Size_Small,15; bonus2 bAddSize,Size_Large,15; bonus2 bAddSize,Size_Medium,15; skill 2279,3; skill 373,3; skill 374,3; skill 2316,3; bonus bMaxSPRate,9; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bAddSize,Size_Small,20; bonus2 bAddSize,Size_Large,20; bonus2 bAddSize,Size_Medium,20; skill 2279,4; skill 373,4; skill 374,4; skill 2316,4; skill 2014,4; bonus bMaxSPRate,12; }
+end;
+}
+
+function	script	KG_UZUMAKI	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bCastrate,-15; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { skill 277,2; skill 289,2; bonus bCastrate,-30; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { skill 277,3; skill 289,3; skill 2274,3; bonus bCastrate,-50; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { skill 277,4; skill 289,4; skill 2274,4; skill 2273,1; bonus bCastrate,-70; }
+end;
+}
+
+function	script	KG_SUIGETSU	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bMatkRate,5;  skill 86,1; skill 286,1; skill 3016,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bMatkRate,10; skill 86,2; skill 286,2; skill 3016,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bMatkRate,15; skill 86,3; skill 286,3; skill 3016,3; skill 3020,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bMatkRate,20; skill 86,4; skill 286,4; skill 3016,4; skill 3020,4; skill 3011,4; }
+end;
+}
+
+function	script	KG_KENJUTSU	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus2 bAddRace,RC_All,5;  skill 136,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus2 bAddRace,RC_All,10; skill 136,2; skill 452,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus2 bAddRace,RC_All,15; skill 136,3; skill 452,3; skill 2036,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus2 bAddRace,RC_All,20; skill 136,4; skill 452,4; skill 2036,4; skill 2022,4; skill 2037,4; }
+end;
+}
+
+function	script	KG_NENDO	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bLongAtkRate,15; skill 511,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bLongAtkRate,20; skill 511,2; skill 2559,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bLongAtkRate,25; skill 511,3; skill 2559,3; skill 2560,3; skill 2571,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bLongAtkRate,30; skill 511,4; skill 2559,4; skill 2560,4; skill 2571,4; bonus3 bAutoSpell,"NC_ARMSCANNON",4,250; }
+end;
+}
+
+function	script	PISTOL_KIBAKU	{
+if(getequipcardid(EQI_HAND_R,0) == 30090 ) { bonus bAtk,500; bonus bMaxHpRate,-5; bonus bAspd,-10;  }
+if(getequipcardid(EQI_HAND_R,0) == 30091 ) { bonus bAtk,1000; bonus bMaxHpRate,-10; bonus bAspd,-20;  }
+if(getequipcardid(EQI_HAND_R,0) == 30092 ) { bonus bAtk,2000; bonus bMaxHpRate,-15; bonus bAspd,-30;  }
+if(getequipcardid(EQI_HAND_R,0) == 30093 ) { bonus bAtk,2500; bonus bMaxHpRate,-15; bonus bAspd,-30;  }
+end;
+}
+
+function	script	KG_SHOUTON	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bMatkRate,10; skill 88,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bMatkRate,15; skill 88,2; skill 3031,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bMatkRate,20; skill 88,3; skill 3031,3; skill 2447,3; bonus2 bResEff,Eff_Crystalize,10000; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bMatkRate,25; skill 88,4; skill 3031,4; skill 2447,4; bonus4 bAddEffWhenHit,Eff_Crystalize,50,ATF_TARGET,5000; bonus2 bResEff,Eff_Crystalize,10000; }
+end;
+}
+
+function	script	KG_YOUTON	{
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { bonus bMatkRate,10; skill 5006,1; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { bonus bMatkRate,15; skill 5006,2; skill 2212,2; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { bonus bMatkRate,20; skill 5006,3; skill 2212,3; skill 2485,3; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) { bonus bMatkRate,25; skill 5006,4; skill 2212,4; skill 2485,4; skill 2213,4; }
+end;
+}
+
+function	script	AHURA_ALL	{
+{ skill 1,10;skill 2,10;skill 3,10;skill 4,10 ; skill 84,10;}
+end;
+}

@@ -1,0 +1,101 @@
+moc_fild01,164,369,5	script	Oboro Shushin::velointer5	831,{
+
+if (getskilllv(27) >= 1) goto L_delete;
+if(velo_intermediario != 1) {mes "Você precisa estudar velocidade intermediário antes de aprender esse velocidade"; close;}
+if (checkquest(2148) == 1) goto L_go;
+if(velo_skill_int >= 3) {mes "Você já aprendeu três velocidades intermediários, esse é o limite"; close;}
+if(accept_velo_int == 3) {mes "Você já aceitou três treinamentos pra realizar de velocidade"; close;}
+if(oboro == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if (WeaponLvl6 < 40) {mes "Seu nível de velocidade está baixo demais, é preciso ter nível 40 ou mais pra aprender esse velocidade"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de velocidade espalhado pelo mundo, eu posso lhe ensinar um velocidade intermediário";
+next;
+mes "O velocidade que eu ensino é o: Oboro Shuushin";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	 Oboro Shushin
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(27) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(27) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 27,0,0;
+set oboro,0;
+erasequest 2148;
+if(accept_velo_int > 0) {set accept_velo_int,accept_velo_int -1;}
+if(velo_skill_int > 0) {set velo_skill_int,velo_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_velo_int_cinco,1;
+set accept_velo_int,accept_velo_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter velocidade intermediário level 40";
+mes "- Derrotar 30 Pakkun.";
+mes "- Obter 2 Ametista";
+mes "- Obter 20 Carne";
+mes "- Obter 40 Raiz de Planta Carnívora";
+setquest 2148;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(velo_skill_int >= 3) {mes "Você já aprendeu três velocidades intermediários, esse é o limite"; close;}
+if(velo_int_mobs_cinco < 25) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(719) <2) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(517) <20) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1033) <40) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 719,2;
+delitem 517,20;
+delitem 1033,40;
+skill 27,1,0;
+set oboro,1;
+set quest_velo_int_cinco,0;
+set velo_int_mobs_cinco, 0;
+completequest 2148;
+erasequest 2148;
+set velo_skill_int,velo_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[velocidade Intermediária]",0;
+}
+
+-	script	veloint#5	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1296 && quest_velo_int_cinco == 1) {set velo_int_mobs_cinco,velo_int_mobs_cinco +1; announce "[velocidade Quest] Você já derrotou "+velo_int_mobs_cinco+" / 30 Pakkun",bc_blue|bc_self; end;}
+
+}
+
+gef_fild04,104,258,5	duplicate(velointer5)	Oboro Shushin#11	831,{
+prt_fild02,214,294,5	duplicate(velointer5)	Oboro Shushin#12	831,{
+yuno_fild08,348,168,5	duplicate(velointer5)	Oboro Shushin#13	831,{

@@ -1,0 +1,8 @@
+payon,154,90,5	script	Jovem de Konoha	59,{
+	mes "[Jovem]";
+	mes "Ei, por favor não atrapalhe meu treinamento, estou treinando para me tornar um ninja de Konoha";
+	mes "meu sonho é se tornar Hokage um dia e tornar Konoha a vila mais poderosas de todas";
+	mes "Ainda está longe sou apenas um jovem que em breve me tornarei Gennin e lutarei defendendo Konoha.";
+	mes "Preciso continuar meu treinamento agora, me dê licença.";
+close;
+}

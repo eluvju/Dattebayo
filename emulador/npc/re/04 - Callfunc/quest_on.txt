@@ -1,0 +1,9 @@
+function	script	quest_on	{
+
+close2;
+cutin "quest_icon",1;
+sleep2 2500;
+cutin "",255;
+return;
+
+}

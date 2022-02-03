@@ -1,0 +1,111 @@
+-	script	on_PC_UseSkillfu01	-1,{
+    end;
+//When a Character uses a skill
+
+//Shinkuha no Jutsu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 191) {
+
+
+if (getskilllv(191) == 1) {
+
+if (kamaitachi != 1) {end;}
+if (skill191 >= 50) {skill 191,2,0; set skill191,0; dispbottom "[Sys] Level up"; end; }
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 1: "+skill191+" de 50";
+
+end;
+
+}
+
+if (getskilllv(191) == 2) {
+
+if (kamaitachi != 1) {end;}
+if (skill191>= 100) {skill 191,3,0; set skill191,0; dispbottom "[Sys] Level up"; end; }
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 2: "+skill191+" de 100";
+
+end;
+
+}
+
+if (getskilllv(191) == 3) {
+
+if (skill191 >= 150) {skill 191,4,0; set skill191,0; dispbottom "[Sys] Level up"; end;}
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 3: "+skill191+" de 150";
+
+end;
+
+}
+
+if (getskilllv(191) == 4) {
+
+if (skill191 >= 200) {skill 191,5,0; set skill191,0; dispbottom "[Sys] Level up"; end;}
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 4: "+skill191+" de 200";
+
+end;
+
+}
+
+if (getskilllv(191) == 5) {
+
+if (nin_intermediario != 1) {end;}
+if (skill191 >= 250) {skill 191,6,0; set skill191,0; dispbottom "[Sys] Level up"; end;}
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 5: "+skill191+" de 250";
+
+end;
+
+}
+
+if (getskilllv(191) == 6) {
+
+if (nin_intermediario != 1) {end;}
+if (skill191 >= 300) {skill 191,7,0; set skill191,0; dispbottom "[Sys] Level up"; end;}
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 6: "+skill191+" de 300";
+
+end;
+
+}
+
+if (getskilllv(191) == 7) {
+
+if (nin_intermediario != 1) {end;}
+if (skill191 >= 500) {skill 191,8,0; set skill191,0; dispbottom "[Sys] Level up"; end;}
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 7: "+skill191+" de 500";
+
+end;
+
+}
+
+if (getskilllv(191) == 8) {
+
+if (nin_intermediario != 1) {end;}
+if (skill191 >= 700) {skill 191,9,0; set skill191,0; dispbottom "[Sys] Level up"; end;}
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 8: "+skill191+" de 700";
+
+end;
+
+}
+
+if (getskilllv(191) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill191 >= 1000) {skill 191,10,0; set skill191,0; dispbottom "[Sys] Level up"; end;}
+set skill191,skill191 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 9: "+skill191+" de 1000";
+
+end;
+
+}
+
+}
+
+                end;
+            }    

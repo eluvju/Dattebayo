@@ -1,0 +1,137 @@
+xmas,172,132,5	script	Sabaku Senpai	730,{
+
+show "Olá shinobi, eu sou o instrutor de jutsus";
+show "Eu posso lhe ensinar jutsus poderosos, basta você seguir meu treinamento";
+next;
+show "[Iruka-Sensei]";
+show "Primeiro me diz sua graduação shinobi para eu passar seu treinamento";
+menu "Genin",genin,"Chunin",chunin,"Jounin",jounin,"Nenhum",nenhum;
+
+genin:
+if (Class != 5) goto noclasse;
+next;
+show "[Iruka-Sensei]";
+show "Você é genin e está começando sua jornada, eu vou lhe ensinar um jutsu básico de seu clã";
+show "Basta você ir treinar e me trazer os seguintes itens de prova";
+next;
+show "^FF0000100^000000  Casco Arco-Íris";
+show "^FF0000100^000000  Pinças de Escorpião";
+show "^FF000050^000000  Pata de Inseto";
+next;
+show "Esqueci de perguntar, sou meio esquecido, você ja possui esses itens?";
+menu "Sim",sim1,"Não",nao1;
+
+sim1:
+show "Vamos ver se você tem mesmo os itens!";
+next;
+if (countitem(1013) < 100) goto SemItem;
+if (countitem(7125) < 100) goto SemItem;
+if (countitem(1042) < 50) goto SemItem;
+show "[Iruka-Sensei]";
+show "Você tem todos os itens necessários! Aqui está a sua recompensa!";
+next;
+delitem 1013,100;
+delitem 7125,100;
+delitem 1042,50;
+additem 19099,1;
+announce "O Shinobi do clã Sabaku " + strcharinfo(0) + " Aprendeu o jutsu de genin Suna Raishin",0;
+close;
+
+nao1:
+next;
+show "[Iruka-Sensei]";
+show "Então vai treinar...Baka!";
+close;
+
+chunin:
+if (Class != 10) goto noclasse;
+next;
+show "[Iruka-Sensei]";
+show "Quem diria ja é um chunin! Parabéns, gostei muito do seu chunin shiken";
+show "Bom vamos para mais um treinamento?";
+show "Dessa vez será um pouco mais dificil mas garanto que vai valer a pena";
+show "O jutsu que você vai aprender é muito bom!!";
+show "Mesmo sistema, vá treinar e me traga estes itens de prova";
+next;
+show "^FF0000200^000000  Pata de Besouro";
+show "^FF0000100^000000  Antenas de Inseto";
+show "^FF000030^000000  Osso";
+show "^FF00005^000000  Minhoca Boa-Pinta";
+next;
+show "Esqueci de perguntar denovo ^^' , sou meio esquecido, você ja possui esses itens?";
+menu "Sim",sim2,"Não",nao1;
+
+sim2:
+show "Vamos ver se você tem mesmo os itens!";
+next;
+if (countitem(7202) < 200) goto SemItem;
+if (countitem(928) < 100) goto SemItem;
+if (countitem(932) < 30) goto SemItem;
+if (countitem(623) < 5) goto SemItem;
+show "[Iruka-Sensei]";
+show "Você tem todos os itens necessários! Aqui está a sua recompensa!";
+next;
+delitem 7202,200;
+delitem 928,100;
+delitem 932,30;
+delitem 623,5;
+additem 19100,1;
+announce "O Shinobi do clã Sabaku " + strcharinfo(0) + " Aprendeu o jutsu de chunin Suna Taisou",0;
+close;
+
+jounin:
+if (Class != 4011) goto noclasse;
+next;
+show "[Iruka-Sensei]";
+show "Olha isso, você ja é jounin, que orgulho T_T";
+show "Você provavelmente ja é mais forte do que eu, mas eu posso lhe ensinar mais um jutsu";
+show "Vamos ao seu ultimo treinamento comigo!";
+show "Vá na sua ultima caçada e me traga os seguintes itens de prova";
+next;
+show "^FF00005^000000  Ba Gua";
+show "^FF0000200^000000  Pele de Dragão";
+show "^FF00003^000000  Selo Maldito";
+show "^FF00003^000000  Lâmina Perdida nas Trevas";
+next;
+show "Esqueci de perguntar denovo, não me bata! ^^' , sou meio esquecido como você ja sabe, mas você ja possui esses itens?";
+menu "Sim",sim3,"Não",nao1;
+
+sim3:
+show "Vamos ver se você tem mesmo os itens!";
+next;
+if (countitem(7169) < 5) goto SemItem;
+if (countitem(7123) < 200) goto SemItem;
+if (countitem(7442) < 3) goto SemItem;
+if (countitem(7023) < 3) goto SemItem;
+show "[Iruka-Sensei]";
+show "Você tem todos os itens necessários! Aqui está a sua recompensa!";
+next;
+delitem 7169,5;
+delitem 7123,200;
+delitem 7442,3;
+delitem 7023,3;
+additem 19101,1;
+announce "O Shinobi do clã Sabaku " + strcharinfo(0) + " Aprendeu o jutsu de jounin Sabaku Sousou",0;
+close;
+
+SemItem:
+next;
+show "[Iruka-Sensei]";
+show "Então volte quando tiver os itens!";
+
+nenhum:
+next;
+show "[Iruka-Sensei]";
+show "Então primeiro vire genin e depois fale comigo.";
+close;
+
+noclasse:
+next;
+show "Você não é dessa classe,suma!";
+close;
+
+}
+
+//==============================duplicates=====================
+morocc,35,68,5	duplicate(Sabaku Senpai)	Sabaku Senpai#02	730
+payon,180,87,5	duplicate(Sabaku Senpai)	Sabaku Senpai#03	730

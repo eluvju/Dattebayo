@@ -1,0 +1,16 @@
+function	script	walktonpc	{
+
+	getmapxy .@m$, .@x1, .@y1, 0 ;
+	getmapxy .@m$, .@x2, .@y2, 1, getarg ( 0 );
+	set .@d1, sqrt ( pow ( .@x1 - .@x2, 2 ) );
+	set .@d2, sqrt ( pow ( .@y1 - .@y2, 2 ) );
+	do {
+		set .@b, .@b + 1;
+		set .@x1, .@x1 + ( ( .@x1 < .@x2 ) ? 1 : -1 );
+		set .@y1, .@y1 + ( ( .@y1 < .@y2 ) ? 1 : -1 );
+		sleep2 ( ! ( .@b % 100 ) ) ;
+	} while ( ! checkcell ( .@m$, .@x1, .@y1, cell_chkpass ) || .@b < .@d1 || .@b < .@d2 ) ;
+	unitwalk getcharid ( 3 ), .@x1, .@y1 ;
+	return ;
+	
+}

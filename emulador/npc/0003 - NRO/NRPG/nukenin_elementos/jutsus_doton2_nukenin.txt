@@ -1,0 +1,329 @@
+//===== Cronus Script ======================================== 
+//= Cavaleiro Skill Quest
+//===== Por: =================================================
+//= Lupus, Reddozen
+//= Mehah [Traduziu para PT(br)]
+//===== Versão Atual: ======================================== 
+//= 1.3a
+//============================================================
+
+
+//============================================================
+// Cavaleiro - CHARGE ATTACK
+//============================================================
+prt_monk,187,241,3	script	Doton Secundário#a	819,{
+	mes "[^A52A2AProfessor de Doton^000000]";
+	if(dotonsec != 1){mes "Quem é você?? Saia daqui!"; close;}
+	if(elementodoton == 1){goto L_lista;}else{mes "Quem é você?? Saia daqui!"; close;}
+	if(Class != 4049) goto L_NoJutsu;
+
+
+	
+	L_lista:
+	mes "Você usuário do elemento Doton, A terra que tudo esmaga";
+	mes "Gostaria de ver as skills de qual graduação?";
+	menu "- Chunin",chuninDoton,"- Jounin",jouninDoton;
+	
+	chuninDoton:
+	if(chunin != 1) goto L_NoJutsu;
+	next;
+	mes "[Professor de Doton]";
+	mes "Você que é um Chunin do segundo elemento Doton, pode aprender os seguintes Jutsus!";
+	menu "- Doton - Ganchuusou Nv 10",skill1Dotonc,"- Yomi Numa nv 5",skill2Dotonc;
+
+	skill1Dotonc:
+	if(Jutsu2chunin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Doton - Ganchuusou Nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "500 Patas Pegajosas";
+	mes "300 Retrato Velhos";
+	mes "300 Tranças";
+	mes "50 Luvas do Carrasco";
+	mes "50 Vida Verdejantes";
+	mes "150 Avelãs";
+	mes "15 Coração Imortal";
+	mes "E matar 50 Operários";
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_terra2c1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(918) < 500) goto L_SemItem;
+	if (countitem(7014) < 300) goto L_SemItem;
+	if (countitem(901) < 300) goto L_SemItem;
+	if (countitem(7017) < 50) goto L_SemItem;
+	if (countitem(993) < 50) goto L_SemItem;
+	if (countitem(1026) < 150) goto L_SemItem;
+	if (countitem(929) < 15) goto L_SemItem;
+	if(skillc1terra2mobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 918,500;
+	delitem 7014,300;
+	delitem 901,300;
+	delitem 7017,50;
+	delitem 993,50;
+	delitem 1026,150;
+	delitem 929,15;
+	skill 91,5,0;
+	set Jutsu2chunin1,0;
+	set Jutsu2chunin2,1;
+	set skillc1terra2mobs,0;
+	set quest_terra2c1,0;
+	close;
+
+	skill2Dotonc:
+	if(Jutsu2chunin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Yomi Numa nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "20 Espetos Quebrados";
+	mes "300 Ossos";
+	mes "300 Escamas Brilhantes";
+	mes "200 galho";
+	mes "150 algemas";
+	mes "300 Sangue de animal";
+	mes "100 raiz marrom";
+	mes "E matar 50 Escaravelhos";
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_terra2c2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7215) < 20) goto L_SemItem;
+	if (countitem(932) < 300) goto L_SemItem;
+	if (countitem(954) < 300) goto L_SemItem;
+	if (countitem(7203) < 200) goto L_SemItem;
+	if (countitem(1098) < 150) goto L_SemItem;
+	if (countitem(702) < 300) goto L_SemItem;
+	if (countitem(7188) < 100) goto L_SemItem;
+	if(skillc2terra2mobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7215,20;
+	delitem 932,300;
+	delitem 954,300;
+	delitem 7203,200;
+	delitem 1098,150;
+	delitem 702,300;
+	delitem 7188,100;
+	skill 92,5,0;
+	set Jutsu2chunin2,0;
+	set Jutsu2jounin1,1;
+	set skillc2terra2mobs,0;
+	set quest_terra2c2,0;
+	close;
+
+	jouninDoton:
+	if(jounin != 1) goto L_NoJutsu;
+	next;
+	mes "[Professor de Doton]";
+	mes "Você que é um Jounin do segundo elemento Doton, pode aprender os seguintes Jutsus!";
+	menu "- Doton-Gandan Kyuu nv 10",skill1Dotonj,"- Sabaku Kyuu",skill2Dotonj;
+
+	skill1Dotonj:
+	if(Jutsu2jounin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Doton-Gandan Kyuu nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "400 Esfera das Sombras";
+	mes "50 Cachimbo";
+	mes "300 Pedra do Sabio";
+	mes "500 Cyfar";
+	mes "200 Pedra do Pesadelo";
+	mes "200 Insígnia de Herói";
+	mes "300 rosa eterna";
+	mes "E matar 30 Ninkames";
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_terra2j1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7524) < 400) goto L_SemItem;
+	if (countitem(2268) < 50) goto L_SemItem;
+	if (countitem(12040) < 300) goto L_SemItem;
+	if (countitem(7053) < 500) goto L_SemItem;
+	if (countitem(7102) < 200) goto L_SemItem;
+	if (countitem(968) < 200) goto L_SemItem;
+	if (countitem(748) < 300) goto L_SemItem;
+	if(skillj1terra2mobs < 30) goto L_SemItem;
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7524,400;
+	delitem 2268,50;
+	delitem 12040,300;
+	delitem 7053,500;
+	delitem 7102,200;
+	delitem 968,200;
+	delitem 748,300;
+	skill 91,10,0;
+	set Jutsu2jounin1,0;
+	set Jutsu2jounin2,1;
+	set skillj1terra2mobs,0;
+	set quest_terra2j1,0;
+	close;
+
+	skill2Dotonj:
+	if(Jutsu2jounin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Sabaku Kyuu nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "300 Lamina Perdida das Trevas";
+	mes "300 Fragmento da Desgraça";
+	mes "20 Plantas da Névoa";
+	mes "20 plantas de Konoha";
+	mes "20 Plantas da Suna";
+	mes "15 símbolo de guerreiro";
+	mes "10 Fragmento de Espírito";
+	mes "40 ouro";
+	mes "E matar 40 Jounins";
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_terra2j2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7437) < 300) goto L_SemItem;
+	if (countitem(710) < 20) goto L_SemItem;
+	if (countitem(712) < 20) goto L_SemItem;
+	if (countitem(704) < 20) goto L_SemItem;
+	if (countitem(7484) < 15) goto L_SemItem;
+	if (countitem(7306) < 10) goto L_SemItem;
+	if (countitem(969) < 40) goto L_SemItem;
+	if(skillj2terra2mobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AProfessor de Doton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7023,300;
+	delitem 7437,300;
+	delitem 710,20;
+	delitem 712,20;
+	delitem 704,20;
+	delitem 7484,15;
+	delitem 7306,10;
+	delitem 969,40;
+	skill 16,10,0;
+	set Jutsu2jounin2,0;
+	set skillj2terra2mobs,0;
+	set quest_terra2j2,0;
+	close;
+
+
+L_SemItem:
+	next;
+	mes "[^FF0000Professor de Doton^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+		
+L_nogradu:
+	next;
+	mes "Você não é desta graduação.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Professor de Doton^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_NoJutsu:
+	next;
+	mes "[^FF0000Professor de Doton^000000]";
+	mes "Você não está preparado para este Jutsu ainda ou ja fez este treinamento!";
+	close;
+
+}
+
+-	script	OnNPCKill_terra2c1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_terra2c1 == 1){goto terra2_c1;} else {end;}
+
+terra2_c1:
+switch (killedrid) {
+case 1169:
+set skillc1terra2mobs, skillc1terra2mobs + 1;
+dispbottom "Você ja matou "+skillc1terra2mobs+" Operário(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_terra2c2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_terra2c2 == 1){goto terra2_c2;} else {end;}
+
+terra2_c2:
+switch (killedrid) {
+case 1211:
+set skillc2terra2mobs, skillc2terra2mobs + 1;
+dispbottom "Você ja matou "+skillc2terra2mobs+" Escaravelho(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_terra2j1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_terra2j1 == 1){goto terra2_j1;} else {end;}
+
+terra2_j1:
+switch (killedrid) {
+case 1315:
+set skillj1terra2mobs, skillj1terra2mobs + 1;
+dispbottom "Você ja matou "+skillj1terra2mobs+" Ninkame(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_terra2j2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_terra2j2 == 1){goto terra2_j2;} else {end;}
+
+terra2_j2:
+switch (killedrid) {
+case 1634:
+set skillj2terra2mobs, skillj2terra2mobs + 1;
+dispbottom "Você ja matou "+skillj2terra2mobs+" Jounin(s)";
+
+end;
+
+}
+}

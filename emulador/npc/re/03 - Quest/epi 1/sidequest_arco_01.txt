@@ -1,0 +1,102 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Aqui vai ser detalhada o modo história do Arco 1 da academia Shinobi
+//= Irei colocar aqui itens, quests entre outras coisas.
+//=
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 10/07/2021 as 04:17
+//=
+//==========================================================
+// NPCS APENAS VISUAIS - IRRELEVANTES
+// 
+//==========================================================
+// lou_in02-X - Sala Inicial
+lou_in02-1,73,118,0	script	zZzZ#npc_dormindo_1	519,{
+
+//	if (hat_estranho == 1) 	{ 	npctalk "Estranho: Ja dei o que você queria, suma daqui!","",bc_self;						
+//								end;}
+
+//==========================================================
+
+OnTouch:
+emotion ET_SURPRISE;
+.@choice = rand(1,100);
+		if (.@choice == 27)	 	{ 	npctalk "Estranho: Ok, Ok tome isso e suma daqui!","",bc_self;
+									getitem 19502,1;
+									set sidequest_arco1,sidequest_arco1 +1;
+									set hat_estranho,1;
+									close;}
+		
+		if (.@choice < 25)		{	npctalk "Estranho: zZzZzz","",bc_self;
+								end;}
+
+		if (.@choice >= 25) && (.@choice < 50) 		{ 	npctalk "Estranho: QUE, OQUE? CARALEOOOO!","",bc_self;
+								end;}
+
+		if (.@choice >= 50) && (.@choice < 100) 	{ 	npctalk "Estranho: ME DEIXA DORMIR INFERNOO!","",bc_self;
+														end;} 
+end;
+													
+}
+								
+
+//============== ## ==================== ## ================= ##
+// Duplicatas //
+//
+lou_in02-2,73,118,0	duplicate(zZzZ#npc_dormindo_1)	zZzZ#npc_dormindo_1-1	519
+lou_in02-3,73,118,0	duplicate(zZzZ#npc_dormindo_1)	zZzZ#npc_dormindo_1-2	519
+lou_in02-4,73,118,0	duplicate(zZzZ#npc_dormindo_1)	zZzZ#npc_dormindo_1-3	519
+lou_in02-5,73,118,0	duplicate(zZzZ#npc_dormindo_1)	zZzZ#npc_dormindo_1-4	519
+lou_in02-6,73,118,0	duplicate(zZzZ#npc_dormindo_1)	zZzZ#npc_dormindo_1-5	519
+//=====================================
+
+lou_in02-1,71,129,0	script	 #npc_dormindo_2	519,{
+	end;
+
+OnTimer30000:
+	switch(rand(1,2)) {
+	case 1:
+		npctalk "ZzzZzzZZ";
+		break;
+	case 2:
+		npctalk "Snif Snif~~";
+		break;
+	}
+
+OnInit:
+	initnpctimer;
+	end;
+} 
+
+//============== ## ==================== ## ================= ##
+// Duplicatas //
+//
+lou_in02-2,71,129,0	duplicate( #npc_dormindo_2)	 #npc_dormindo_2-1	519
+lou_in02-3,71,129,0	duplicate( #npc_dormindo_2)	 #npc_dormindo_2-2	519
+lou_in02-4,71,129,0	duplicate( #npc_dormindo_2)	 #npc_dormindo_2-3	519
+lou_in02-5,71,129,0	duplicate( #npc_dormindo_2)	 #npc_dormindo_2-4	519
+lou_in02-6,71,129,0	duplicate( #npc_dormindo_2)	 #npc_dormindo_2-5	519
+
+//==========================================================
+
+lou_in02-1,75,134,0	script	#Armário_1	HIDDEN_NPC,5,5,{
+
+OnTouch:
+emotion ET_SURPRISE;
+npctalk "Armário esta Trancado!","",bc_self;
+end;
+
+}
+//============== ## ==================== ## ================= ##
+// Duplicatas //
+lou_in02-2,75,134,0	duplicate(#Armário_1)	#Armário_1-1	HIDDEN_NPC
+lou_in02-3,75,134,0	duplicate(#Armário_1)	#Armário_1-2	HIDDEN_NPC
+lou_in02-4,75,134,0	duplicate(#Armário_1)	#Armário_1-3	HIDDEN_NPC
+lou_in02-5,75,134,0	duplicate(#Armário_1)	#Armário_1-4	HIDDEN_NPC
+lou_in02-6,75,134,0	duplicate(#Armário_1)	#Armário_1-5	HIDDEN_NPC

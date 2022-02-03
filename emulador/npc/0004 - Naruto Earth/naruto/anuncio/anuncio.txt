@@ -1,0 +1,47 @@
+// Konoha
+pay_fild06,307,375,0	script	Entrada pra Konoha	45,2,2,{
+
+	if(#konoha == 1) { goto entrar; }
+	if($EEinfo[1] == 1) { end; }
+	
+		entrar:
+		warp "konoha3", 189,66;
+		if(countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1){announce strcharinfo(0)+" da Akatsuki acaba de invadir Konohagakure.",bc_yellow|bc_all; end;}
+		if(nukenin == 1) {announce strcharinfo(0)+" da Nukenin acaba de invadir Konohagakure.",bc_yellow|bc_all; end;}
+		if(nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Konohagakure.",bc_yellow|bc_all; end;}
+		if(suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Konohagakure.",bc_yellow|bc_all; end;}
+		if(nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Konohagakure.",bc_yellow|bc_all; end;}
+		end;
+}
+
+// Kirigakure
+odin_tem01,384,334,0	script	Entrada pra Nevoa	45,2,2,{
+
+	if(#nevoa == 1) { goto entrar; }
+	if($EEinfo[1] == 1) { end; }
+
+	entrar:
+	warp "kiragakure", 168,125;
+	if(countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1){announce strcharinfo(0)+" da Akatsuki acaba de invadir Kirigakure.",bc_yellow|bc_all; end;}
+	if(nukenin == 1) {announce strcharinfo(0)+" da Nukenin acaba de invadir Kirigakure.",bc_yellow|bc_all; end;}
+	if(konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Konoha acaba de invadir Kirigakure.",bc_yellow|bc_all; end;}
+	if(suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Kirigakure.",bc_yellow|bc_all; end;}
+	if(nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Kirigakure.",bc_yellow|bc_all; end;}
+	end;
+}
+
+// Nuvem:
+man_fild03,92,369,0	script	Entrada pra Nuvem	45,2,2,{
+
+	if(#nuvem == 1) { goto entrar; }
+	if($EEinfo[1] == 1) { end; }
+
+		entrar:
+		warp "kumogakure", 187,26;
+		if(countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1){
+		announce strcharinfo(0)+" da Akatsuki acaba de invadir Kumogakure.",bc_yellow|bc_all; end;}
+		if(nukenin == 1) {announce strcharinfo(0)+" da Nukenin acaba de invadir Kumogakure.",bc_yellow|bc_all; end;}
+		if(nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Kumogakure.",bc_yellow|bc_all; end;}
+		if(suna == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Kumogakure.",bc_yellow|bc_all; end;}
+		if(konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Konoha acaba de invadir Kumogakure.",bc_yellow|bc_all; end;}
+}

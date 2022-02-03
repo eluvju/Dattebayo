@@ -1,0 +1,54 @@
+sec_in01,161,180,5	script	Kugutsu	986,{
+	if(kugutsu == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Mestre Kankuro^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou o mestre das Marionetes , você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Mestre Kankuro^000000]";
+	mes "A Técnica de Marionetes é um estilo único de combate de ninjutsu; esta técnica usa fios de chakra para controlar marionetes.  ";
+	next;
+	mes "[^00FF40Mestre Kankuro^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",Kugutsu2,"- Não",nao;
+	close;
+
+	
+	
+	Kugutsu2:
+
+next;
+
+	mes "[^00FF40Mestre Kankuro^000000]";
+
+mes "Qualquer número de fios de chakra pode ser usado para controlar um boneco, mas os usuários com mais habilidade pode usar menos cordas por marionetes. ";
+
+next;
+
+	mes "[^00FF40Mestre Kankuro^000000]";
+
+mes "Seus poderes são perfeitos para pessoas que utilizam ^FF8C00Ninjutsu^000000 e ^006400Medicina^000000";
+
+next;
+
+set pegoukg,1;
+
+set kugutsu,1;
+
+	mes "[^00FF40Mestre Kankuro^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

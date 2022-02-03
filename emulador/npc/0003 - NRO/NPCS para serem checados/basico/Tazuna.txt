@@ -1,0 +1,90 @@
+-	script	epimorte	-1,{
+OnPCLoadMapEvent:
+getmapxy(.@mapname$,.@mapx,.@mapy,0);
+if( .@mapname$ == "ondr_fild01")
+hideoffnpc "Tazuna";
+killmonsterall "ondr_fild01";
+atcommand "cleanmap";
+npcwalkto 132,69;
+npcspeed 150;
+    end;
+}
+
+ondr_fild01	mapflag	loadevent
+
+//===== eAthena Script ========================================
+//= Tazuna
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= Tazuna
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+ondr_fild01,132,69,4	script	Tazuna	57,50,50,{
+//===========================================================
+
+if	(getmapusers("ondr_fild01.gat") == 0) goto L_clear;
+
+initnpctimer;
+OnTimer1000:
+npctalk "Olá essa é a Ponte que eu almejo terminar a construção.";
+end;
+OnTimer2000:
+npctalk "Me siga até o fim da mesma,por favor.";
+npcwalkto 120,69;
+end;
+OnTimer8000:
+npctalk "O que é aquilo no final da ponte?";
+end;
+OnTimer9000:
+atcommand "@clouds";
+npctalk "Ah Não são os Subordinados do Gatou";
+end;
+OnTimer12000:
+npcwalkto 96,69;
+npctalk "Proteja-me";
+end;
+OnTimer13000:
+monster     "ondr_fild01",95,68,"Haku",1048,1,"Tazuna::OnMyMobDead1";
+hideonnpc "Tazuna";
+end;
+stopnpctimer;
+
+OnMyMobDead1:
+monster     "ondr_fild01",95,68,"Zabuza",1047,1,"Tazuna::OnMyMobDead2";
+end;
+
+OnMyMobDead2:
+hideoffnpc "Tazuna";
+npcwalkto 60,69;
+npctalk "Ih! ainda não acabou, tem o capanga e o gatou ainda!";
+hideonnpc "Tazuna";
+monster     "ondr_fild01",95,68,"Capanga do gatou",1592,1,"Tazuna::OnMyMobDead3";	
+end;
+
+OnMyMobDead3:
+hideoffnpc "Tazuna";
+npcwalkto 132,69;
+npcspeed 150;
+dispbottom "[Tazuna]";
+dispbottom "Obrigado, "+strcharinfo(0)+".Você salvou a economia do País das Ondas";
+dispbottom "Sempre seremos muito Grato à você";
+set EPI,2;
+warp "Save",0,0;
+end;
+
+L_clear:
+killmonsterall "ondr_fild01";
+atcommand "cleanmap";
+end;
+
+}
+
+ondr_fild01,45,69,4	script	Gatou	103,{
+
+mes "Maldito!";
+close;
+}

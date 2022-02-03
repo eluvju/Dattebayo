@@ -1,0 +1,9 @@
+sec_in02,147,178,5	script	DebugGen#7	99,{
+mes "Desbugando...";
+set kuchiyose,0;
+completequest 6040; 
+erasequest 6040;
+completequest 6042; 
+erasequest 6042;
+close;
+}

@@ -1,0 +1,95 @@
+konoha,49,177,5	script	Impulso::velo4	831,{
+
+if (getskilllv(387) >= 1) goto L_delete;
+if (checkquest(2152) == 1) goto L_go;
+if(velo_basico != 1) {mes "Você precisa estudar velocidade básico antes de aprender um técnica de velocidade"; close;}
+if(velo_skill_bas >= 3) {mes "Você já aprendeu três técnicas de velocidade básico, esse é o limite"; close;}
+if(accept_velo == 3) {mes "Você já aceitou três treinamentos pra realizar de velocidade"; close;}
+if(V_impulso == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de velocidade espalhado pelo mundo, eu posso lhe ensinar um técnica de velocidade básico";
+next;
+mes "a técnica de velocidade que eu ensino é o: Impulso";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Impulso
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(387) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(387) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 387,0,0;
+set V_impulso,0;
+erasequest 2152;
+if(accept_velo > 0) {set accept_velo,accept_velo -1;}
+if(velo_skill_bas > 0) {set velo_skill_bas,velo_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set questveloquatro,1;
+set accept_velo,accept_velo +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 30 Kyodaigumo.";
+setquest 2152;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(velomobsquatro < 30) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 387,1,0;
+set V_impulso,1;
+set questveloquatro,0;
+set velomobsquatro, 0;
+completequest 2152;
+erasequest 2152;
+set velo_skill_bas,velo_skill_bas +1;
+announce "[Velocidade Quest] "+strcharinfo(0)+" completou a quest de velocidade Impulso",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Velocidade Básico]",0;
+}
+
+
+-	script	velobas#4	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1304) {
+if (questveloquatro != 1) {end;}
+set velomobsquatro,velomobsquatro +1;
+announce "[Velocidade Quest] Você já derrotou "+velomobsquatro+" / 30 Kyodaigumo",bc_blue|bc_self;
+end;
+}
+}
+
+kiri,293,374,5	duplicate(velo4)	Impulso#11	51,{
+nuvem,242,104,5	duplicate(velo4)	Impulso#12	51,{
+areia,250,71,5	duplicate(velo4)	Impulso#13	51,{

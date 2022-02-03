@@ -1,0 +1,54 @@
+sec_in01,161,168,5	script	Sharigan::sharigan	120,{
+	if(sharingan == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Sasuke Uchiha^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou o mestre do clã uchiha, você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Sasuke Uchiha^000000]";
+	mes "Os usuario do sharigan ( Literalmente significa Olho Copiador Giratório,é um dojutsu kekkei genkai, que aparece em alguns membros do clã Uchiha";
+	next;
+	mes "[^00FF40Sasuke Uchiha^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",Sharigan2,"- Não",nao;
+	close;
+
+	
+	
+	Sharigan2:
+
+next;
+
+	mes "[^00FF40Sasuke Uchiha^000000]";
+
+mes "Sharigan sua verdadeira forma se manifestou pela primeira vez em Indra Otsutsuki, o ancestral mais antigo do clã Uchiha, e mais tarde veio a ser considerado como um dos Três Grandes Dojutsu ";
+
+next;
+
+	mes "[^00FF40Sasuke Uchiha^000000]";
+
+mes "pode ser usado em combinação com ninjutsu, fluxo de Chakra e até mesmo Taijutsu para obter técnicas mais devastadoras";
+
+next;
+
+set pegoukg,1;
+
+set sharingan,1;
+
+	mes "[^00FF40Sasuke Uchiha^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

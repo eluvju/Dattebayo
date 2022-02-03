@@ -1,0 +1,17 @@
+//sec_in01,86,59,0	script	Portal::Warp001	45,1,1,{
+
+OnInit:
+  .warp$[Job_swordman] = "prontera,150,150";
+  .warp$[Job_archer] = "geffen,150,150";
+  .warp$[Job_acolyte] = "geffen,120,150";
+  .warp$[Job_high_priest] = "prontera,120,150";
+  end;
+
+OnTouch:
+  explode( .@warp$, .warp$[Class], "," );
+  warp( .@warp$[0], atoi( .@warp$[1] ), atoi( .@warp$[2] ) );
+  end;
+	
+	}
+	
+}

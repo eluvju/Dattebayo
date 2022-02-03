@@ -1,0 +1,484 @@
+//é preciso consertar a ponte antes de ter acesso ao mapa onde fica o npc que inicia a raid do zabuza.
+//
+//é preciso escoltar o cara que conserta até sua casa pra ele buscar suas ferramentas, fica no mesmo mapa, precisa ser grande
+//
+//apos chegar na ponte, ele pedirá para buscar alguns recursos com seu amigo
+//
+//esse amigo não estará em sua casa e voce encontrará sangue, você seguirá o rastro de sangue até uma caverna, logo na entrada terá um genjutsu onde apenas quem tem um pergaminho especial poderá passar por ele
+//
+//após entrar na caverna, terão vários capangas do zabuza e um líder dos capangas, onde dele dropará os recursos roubados (Apenas de quem tem a quest) do amigo do cara que conserta.
+//
+//Após recuperar os recursos, leve para o cara que conserta, ele dirá que sozinho não dará conta, e que precise que busque seu irmão na sua casa
+//
+//após escoltar o amigo pra ponte, os dois irão consertar a ponte e você poderá passar, após passar voce chegará a uma vila saqueada, pegue o barco até o proximo mapa
+//
+//no novo mapa, terão vários capangas do zabuza, depois terá a entrada para a caverna onde fica a raid do zabuza
+
+prt_fild04,320,140,1	script	Mamoru	106,{
+
+if (zabuza_raid == 1) {mes "[^FF0000Mamoru^000000]"; mes "De pressa! Busque minhas ferramentas ao sul no esconderijo para eu consertar a passagem secreta"; close;}
+if (zabuza_raid == 2) {goto parte2;}
+if (zabuza_raid == 3) && (countitem(12946) > 0) {goto parte3;}
+if (zabuza_raid == 3) {mes "[^FF0000Mamoru^000000]"; mes "Vá, busque os recursos para consertar a passagem, siga os rastros de sangue para encontrar o esconderijo dos capangas!"; close;}
+if (zabuza_raid >= 4) {mes "[^FF0000Mamoru^000000]"; mes "Maldito Zabuza..."; close;}
+
+mes "[^FF0000Mamoru^000000]";
+mes "Maldito Zabuza! Ele destruiu essa passagem durante sua fuga...";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Hm? Quem é você?";
+next;
+mes "[^FF0000"+strcharinfo(0)+"^000000]";
+mes "Sou o "+strcharinfo(0)+"";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Entendi... talvez você possa me ajudar, não sei se conhece o Zabuza, mas ele é conhecido como o demônio da Névoa";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Ele é uma pessoa terrível e muito poderoso. Ele mata as pessoas sem nenhuma misercórdia ou pena...";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Recentemente ele tem invadido e saqueado pequenos povoados, nós da vila da Cachoeira temos perseguido ele e na sua fuga ele conseguiu escapar quebrando esta passagem";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Eu, meu irmão Masahiko e um amigo fomos enviados para consertar a passagem para podermos prosseguir nossa busca por justiça";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Porém durante nossa vinda, fomos atacados por capangas do Zabuza que estavam na área, conseguimos vencer a luta mas meu amigo ficou ferido, enquanto Masahiko ficou cuidando de seus ferimentos em um esconderijo aqui perto.";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Por favor ^FF0000"+strcharinfo(0)+"^000000 - San, ajude-me a buscar a justiça e acabar com esse Demômio de uma vez por todas!";
+menu "- Certo, eu lhe ajudarei!",L_sim,"- Não é problema meu",L_nao;
+
+L_sim:
+next;
+set zabuza_raid,1;
+mes "[^FF0000Mamoru^000000]";
+mes "Muito obrigado! Nosso primeiro passo é consertar esta passagem o mais rápido possível para podermos continuar a perseguição";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Preciso que me escolte meu assistente até minhas ferramentas que estão com Masahiko e meu amigo, eu fico aqui e vou analisando a passagem";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Eles estão ao sul daqui, por favor, tenha pressa, não podemos deixar o Zabuza fugir!";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Quando estiver pronto fale com meu assistente";
+close;
+
+L_nao:
+close;
+
+parte2:
+set zabuza_raid,3;
+mes "[^FF0000Mamoru^000000]";
+mes "O que? Yutaka está morto?";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Maldito Zabuza! Eu não deixarei ele escapar... Eu vou me vingar!";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Agora que tenho minhas ferramentas poderei iniciar os reparos, porém eu vou precisar dos recursos que os capangas do Zabuza roubaram";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Siga os rastros de sangue deixados pelos capangas, provavelmente irão te levar até o esconderijo deles";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Vá, recupere nossos recursos dos capangas do Zabuza, confio em você!";
+delitem 1531,1;
+close;
+
+parte3:
+mes "[^FF0000Mamoru^000000]";
+mes "Muito bem, ^FF0000"+strcharinfo(0)+"^000000 - San!";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Agora posso finalizar o conserto da passagem, só um instante enquanto termino...";
+next;
+sleep2 1000;
+mes "...";
+next;
+sleep2 1000;
+mes "...";
+next;
+sleep2 1000;
+mes "...";
+next;
+sleep2 1000;
+mes "...";
+next;
+sleep2 1000;
+mes "...";
+next;
+mes "[^FF0000Mamoru^000000]";
+mes "Prontinho! Agora você poderá passar e acabar de vez com aquele Maldito, confio em você ^FF0000"+strcharinfo(0)+"^000000 - San!";
+set zabuza_raid,4;
+delitem 12946,1;
+close;
+}
+
+prt_fild04,322,142,1	script	Assistente	1656,{
+	function Qcheck; function Qsummon; Qcheck;
+
+if (zabuza_raid != 1) {mes "[^FF0000Assistente^000000]"; mes "Olá ^FF0000"+strcharinfo(0)+"^000000 - San, como vai?"; close;}
+mes "[^FF0000Assistente^000000]";
+	mes "Olá ^FF0000"+strcharinfo(0)+"^000000 - San, está pronto pra ir?";
+	switch(select("- Sim, é só me seguir","- Ainda não estou pronto"))
+	{
+		case 1:
+		next;
+		mes "[^FF0000Assistente^000000]";
+		mes "Pode deixar";
+		next;
+		mes "[^FF0000Assistente^000000]";
+		mes "lembrando que temos que ir ao (^ff0000 Sul ^000000)?";
+		break;
+		case 2:
+		next;
+		mes "[^FF0000Assistente^000000]";
+		mes "Ah, Ok";
+		mes "Quando estiver pronto me avise";
+		end;
+	}
+	Qsummon;
+	set @sourcenpc$,strnpcinfo(0);
+	set @dest$,.DestinationNPC$;
+	close;
+	end;
+OnEndQuest:
+	message strcharinfo(0),"Você falhou por não conseguir proteger o alvo.";
+	set @sourcenpc$,"";
+	set @joinquest,0;
+end;	
+// ============= Setting =========== //	
+
+OnInit:
+	set .Mobs,1656;							//Monster that you need to protect.
+	set .MobsName$,"--ja--";				//Mob name that show in map.
+	set .MaxQueue,10;						//Maximum player.
+	set .DestinationNPC$,"Masahiko";			//The name of destination NPC. (should complete name)
+	set .Reward,1531;						//Reward when the player reach target NPC.
+	set .Amount,1;							//Amount of reward.
+	setarray .player[0],0,0,0;
+	
+end;
+	
+// ============= Event Label =========== //
+OnMyMobDead1:
+	if(attachrid(.MobID1))
+	set .MobID1,0;
+	goto OnEndQuest;
+	end;
+	
+OnMyMobDead2:
+	if(attachrid(.MobID2))
+	set .MobID2,0;
+	goto OnEndQuest;
+	end;
+	
+OnMyMobDead3:
+	if(attachrid(.MobID3))
+	set .MobID3,0;
+	goto OnEndQuest;
+	end;
+
+OnMyMobDead4:
+	if(attachrid(.MobID4))
+	set .MobID4,0;
+	goto OnEndQuest;
+	end;
+
+OnMyMobDead5:
+	if(attachrid(.MobID5))
+	set .MobID5,0;
+	goto OnEndQuest;
+	end;
+
+OnMyMobDead6:
+	if(attachrid(.MobID6))
+	set .MobID6,0;
+	goto OnEndQuest;
+	end;
+	
+OnMyMobDead7:
+	if(attachrid(.MobID7))
+	set .MobID7,0;
+	goto OnEndQuest;
+	end;
+	
+OnMyMobDead8:
+	if(attachrid(.MobID8))
+	goto OnEndQuest;
+	set .MobID8,0;
+	end;
+	
+OnMyMobDead9:
+	if(attachrid(.MobID9))
+	goto OnEndQuest;
+	set .MobID9,0;
+	end;
+	
+//Only support till 10 Players
+//If you want to add till 11 player, copy paste the event label and rename it.
+//
+//example:
+//	OnMyMobDead10:
+//		if(attachrid(.MobID10))
+//		set .MobID10,0;
+//		goto OnEndQuest;
+//		end;
+// ============= End   Label =========== //
+
+
+function Qcheck {
+	if(@joinquest){
+		mes "You already in quest.";
+		mes "Please, take that pet to Jesse";
+		close;
+	}
+	for(set .@i,1;.@i <= .MaxQueue;set .@i,.@i+1){
+		if((!.player[.@i]))//If the array value is 0 (mean that no player reserve it)
+		{
+			if(.player[.@i])continue;
+			return;	// Avaiable
+		}
+	}
+	
+	mes "Sorry all jobs already taken,";
+	mes "no more slot.";
+	close;
+
+	end;
+}
+
+function Qsummon {
+	for(set .@i,1;.@i <= .MaxQueue;set .@i,.@i+1){
+		if((!.player[.@i]))//If the array value is 0 (mean that no player reserve it)
+		{
+			if(.player[.@i])continue;
+			setarray .player[.@i],getcharid(3);
+			setd ".MobID"+.@i,questmonster (.MobsName$,.Mobs,strnpcinfo(0)+"::OnMyMobDead"+.@i);
+			set @sourcenpc$,strnpcinfo(3);
+			set @joinquest,.@i;
+			return;
+		}
+	}
+end;
+}
+OnPCLogoutEvent:
+	if (@joinquest){
+		for(set .@i,1;.@i <= .MaxQueue;set .@i,.@i+1){
+			if(.player[.@i] == getcharid(3))
+				setarray .player[.@i],0;
+		}
+	}
+end;
+}
+
+
+//======= Destination NPC =========//
+prt_fild04,355,111,4	script	Masahiko	763,{
+	if((@sourcenpc$=="") ||(!@joinquest)){
+		mes "...";
+		close;
+	}
+	if(@dest$ != strnpcinfo(0)){
+		mes "Não conheço este sujeito.";
+		close;
+	}
+	mes "[^FF0000Masahiko^000000]";
+	mes "Nós fomos atacados novamente pelos capangas do Zabuza, eles mataram o Yutaka e levaram os recursos que trouxemos para consertar a passagem";
+	next;
+	mes "[^FF0000Masahiko^000000]";
+	mes "Tome, leve as ferramentas do Mamoru, eu vou enterrar o Yutaka...";
+	getitem getvariableofnpc(.Reward,@sourcenpc$),getvariableofnpc(.Amount,@sourcenpc$);
+	getmapxy .@map$,.@x,.@y,1;
+	killmonster .@map$,@sourcenpc$+"::OnMyMobDead"+@joinquest;
+	set @sourcenpc$,"";
+	set @joinquest,0;
+	set zabuza_raid,2;
+	close;
+}
+
+prt_fild04,355,106,5	script	Pista#11	111,5,5,{
+
+if (zabuza_raid < 3) {end;}
+mes "Hmm, umas marcas de sangue frescas, elas estão indo ao oeste";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+
+prt_fild04,285,94,5	script	Pista#12	111,5,5,{
+
+if (zabuza_raid < 3) {end;}
+mes "Hmm, umas marcas de sangue frescas, elas estão indo ao oeste";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+prt_fild04,144,106,5	script	Pista#13	111,5,5,{
+
+if (zabuza_raid < 3) {end;}
+mes "Hmm, umas marcas de sangue frescas, elas estão indo ao oeste, parece que pularam daqui até o outro lado";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+prt_fild04,133,106,5	script	Pista#14	111,5,5,{
+
+if (zabuza_raid < 3) {end;}
+mes "Hmm, umas marcas de sangue frescas, elas estão indo ao oeste";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+gef_fild09,364,83,5	script	Pista#15	111,5,5,{
+
+if (zabuza_raid < 3) {end;}
+mes "Hmm, umas marcas de sangue frescas, elas estão indo ao oeste";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+gef_fild09,296,56,5	script	Entrada#16	111,5,5,{
+
+if (zabuza_raid < 3) {end;}
+mes "As marcas de sangue acabam aqui, este deve ser a entrada para o esconderijo, gostaria de entrar? Parece ser perigoso...";
+menu "- Sim",L_sim,"- Não",L_nao;
+
+
+L_sim:
+warp "bra_dun01" ,132,36;
+end;
+
+L_nao:
+close;
+
+
+}
+
+prt_fild04,317,140,5	script	Passagem#177	111,5,5,{
+
+if (zabuza_raid < 4) {end;}
+mes "A passagem está liberada, gostaria de entrar?";
+menu "- Sim",L_sim,"- Não",L_nao;
+
+
+L_sim:
+warp "alberta" ,16,233;
+end;
+
+L_nao:
+close;
+
+
+}
+
+-	script	zabuzaraid1#1	-1,{
+
+OnNPCKillEvent:
+
+if(killedrid == 1673) {
+
+if (zabuza_raid == 3) {if (countitem(12946) > 0) {end;} getitem 12946,1; end;}
+
+}
+}
+
+alberta,54,239,6	script	Corpo	849,{
+
+
+mes "[^FF0000"+strcharinfo(0)+"^000000]";
+mes "Zabuza desgraçado... farei ele pagar por isso!";
+close;
+
+}
+
+alberta,62,178,6	script	Corpo#1	849,{
+
+
+mes "[^FF0000"+strcharinfo(0)+"^000000]";
+mes "Zabuza...!";
+close;
+
+}
+
+alberta,61,105,6	script	Corpo#2	849,{
+
+
+mes "[^FF0000"+strcharinfo(0)+"^000000]";
+mes "Pobres indefesos...!";
+close;
+
+}
+
+alberta,117,52,6	script	Corpo#3	849,{
+
+
+mes "[^FF0000"+strcharinfo(0)+"^000000]";
+mes "Zabuza, Estou indo atrás de você desgraçado!";
+close;
+
+}
+
+alberta,188,148,6	script	Corpo#4	849,{
+
+
+mes "[^FF0000"+strcharinfo(0)+"^000000]";
+mes "...";
+close;
+
+}
+
+
+prt_fild04,317,140,5	script	Passagem#17	111,5,5,{
+
+if (zabuza_raid < 4) {end;}
+mes "A passagem está liberada, gostaria de entrar?";
+menu "- Sim",L_sim,"- Não",L_nao;
+
+
+L_sim:
+warp "alberta" ,16,233;
+end;
+
+L_nao:
+close;
+
+
+}
+
+alberta,192,159,5	script	Passagem#18	45,5,5,{
+
+if (zabuza_raid < 4) {end;}
+mes "A passagem está liberada, gostaria de entrar?";
+menu "- Sim",L_sim,"- Não",L_nao;
+
+
+L_sim:
+warp "bra_dun02" ,24,27;
+end;
+
+L_nao:
+close;
+
+
+}
+
+bra_dun01,131,32,0	warp	raidz1	1,1,gef_fild09,296,56
+alberta,14,234,0	warp	raidz2	1,1,prt_fild04,315,144
+bra_dun02,19,34,0	warp	raidz3	1,1,alberta,192,147
+bra_dun01,0,0,0,0	monster	Capanga	1676,30,30000,30000,0
+bra_dun02,0,0,0,0	monster	Capanga	1676,60,30000,30000,0
+bra_dun01,0,0,0,0	monster	Líder Capanga	1673,1,1800000,1800000,0

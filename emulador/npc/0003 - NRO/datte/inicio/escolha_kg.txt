@@ -1,0 +1,442 @@
+bibli_01,50,86,5	script	Pesquisador::pegarkg	402,{
+
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	//if(treinos_aceitos != 3) {mes "Antes de escolher sua kekkei genkai, por favor escolha seus três treinamentos"; close;}
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Olá "+strcharinfo(0)+"-chan!";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Há vários anos que eu estou estudando sobre formas de aperfeiçoamento";
+	mes "Em outras palavras,";
+	mes "Estudando sobre Kekkei Genkais, Hidens e outras formas de ganhar mais poder.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Conte-me.";
+	mes "O que você é?";
+	next;
+	mes "-^3366FF Você pode selecionar uma das próximas opções ^000000";
+	mes "^3366FF apenas para saber mais sobre ela ou ^000000";
+	mes "^3366FF para definir qual é o seu. ^000000-";
+	menu "- Sou um Uchiha.",sharin,"- Sou um Hyuuga.",byaku,"- Sou um Koori.",hyou,"- Sou um usuário dos Portões de Chakra.",rock,"- Sou um Controlador de Marionetes",kugu,"- Sou um Akimichi.",chouji,"- Sou um Nara.",shika,"- Eu possuo o Ten no Juin.",ceu,"- Eu possuo o Chi no Juin.",terra,"- Não quero-lhe contar",nao;
+	close;
+
+	Sharin:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "O clã uchiha tem compatibilidade com o treino ^00ade6Ninjutsu^000000 e ^7300e6Fuinjutsu^000000";
+	mes "Possui alto dano mágico e chance de rebletir jutsus.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Os que possuem o '^FF3366Sharingan^000000'.";
+	mes "Quando este é ativo, o usuário tem a chance de repetir alguns jutsus";
+	mes "usados no mesmo.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "O sharingan possui 4 tipos de '^FF3366Mangekyou Sharingan^000000'.";
+	mes "Porém... você só descubrirá qual é o seu, quando obter o Mangekyou.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Tem certeza que é um Uchiha?";
+	next;
+	mes "- ^3366FF Isto irá decidir a sua Kekkei Genkai ^000000 -";
+	next;
+	menu "- Sim. Eu sou um Uchiha",sharin1,"- Desculpa.. eu menti.",nao;
+	close;
+
+	sharin1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Yosh! Treine bastante para tornar-se forte e um dia...";
+	mes "Atingir o '^FF3366Mangekyou Sharingan^000000'.";
+	set kg_sharingan,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	next;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	byaku:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Hyuugas tem compatilidade com os treinamentos ^00e639Velocidade^000000 e ^e63900Taijutsu^000000.";
+	mes "Possui alto ataque, ótima velocidade de movimento e jyuukens.";
+	mes "Ótimos em combates corpo-a-corpo.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Membros do clã hyuuga são extremamente ágeis com os punhos";
+	mes "E estes tem um estilo próprio de luta o '^5c5c5cJyuuken^000000' que é usado";
+	mes "Em conjunto com o '^5c5c5cByakugan^000000'.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Membros do clã hyuuga também são ótimos ninjas detectores.";
+	mes "Conseguem ver pessoas ou animais invisíveis.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Você realmente é um Hyuuga?";
+	next;
+	mes "- ^3366FF Isto irá decidir a sua Kekkei Genkai ^000000 -";
+	next;
+	menu "- Sim, sou um Hyuuga.",byaku1,"- Desculpa, Eu menti.",nao;
+	close;
+	
+	byaku1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Tudo bem. Eu acredito em você.";
+	mes "Treine bastante, Ok?";
+	set kg_byakugan,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	next;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	hyou:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Membros do clã koori tem compatibilidade com os treinos ^00ade6Ninjutsu^000000 e ^7300e6Fuinjutsu^000000";
+	mes "Ótima velocidade de movimento, alto dano mágico e conjuração rápida.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Além disto.. Possuem a habilidade '^127bb7Shunpoo^000000'.";
+	mes "Que os deixam quase invisíveis à olho nú e extremamente rápidos.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Você tem certeza que é um membro do clã Koori?";
+	next;
+	mes "- ^3366FF Isto irá decidir o seu clã ^000000 -";
+	menu "- Sim! Eu sou um Koori.",hyou1,"- Desculpe, eu não sou um Koori.",nao;
+	close;
+
+	hyou1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Ok! Treine bastante para superar seus senpais!";
+	set kg_hyouton,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	next;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	rock:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Usuários de '^0ea30fPortões de Chakra^000000' tem compatibilidade com os treinos ^e63900Taijutsu^000000 e ^009a73Medicina^000000.";
+	mes "São excelentes em combata corpo-a-corpo";
+	mes "Têm a capacidade de abrir portões de chakra assim aumentando seu ataque e velocidade de movimento.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Além disto, possuem a habilidade '^0ea30fOmote Renge^000000',";
+	mes "Que realiza ataques de alto desgate físico, porém";
+	mes "há dano devastador!";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Você tem certeza que é um Usuário de Portões de Chakra?";
+	next;
+	mes "- ^3366FF Isto irá decidir que você é usuário dos Portões de Chakra ^000000 -";
+	menu "- Sim! Eu sou um usuário do Hachimon.",rock1,"- Não, eu não controlo o Hachimon..",nao;
+	close;
+
+	rock1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Yosh! Dê o seu melhor de si para um dia...";
+	mes "Atingir o ^0ea30f8º Portão de Chakra^000000!";
+	set kg_lee,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	next;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	kugu:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Kugutsus tem compatibilidade com os treinos ^009a73Medicina^000000 e ^4d009aGenjutsu^000000";
+	mes "Ótima para usuários de ^e63900Taijutsu^000000 e também de ^00ade6Ninjutsu^000000.";
+	mes "Alta resistência e invocações poderosas.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Controladores de Marionetes, conhecidos como '^8114e9Kugutsus^000000'.";
+	mes "São muito resistentes e tem afinidade com o Veneno";
+	mes "Logo, pode criar vários venenos.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Ao atingir o seu auge da Arte de Controlar Marionetes";
+	mes "o Kugutsu consegue controlar a marionete '^8114e9Sasori^000000'.";
+	mes "Esta marionete consegue usar ninjutsus de alto nível.";
+	mes "E também é a mais fácil de ser manuseada...";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Você é mesmo um Controlador de Marionetes ou seja...";
+	mes "Um kugutsu?";
+	next;
+	mes "- ^3366FF Isto irá decidir Controle de Marionetes como sua 'Especialidade'. ^000000 -";
+	menu "- Sim.. Eu sou um Kugutsu.",kugu1,"- Não, não sou um kugutsu.",nao;
+	close;
+
+	kugu1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Assim é que se fala!";
+	mes "Treine bastante para um dia conseguir controlar a marionete '^8114e9Sasori^000000'.";
+	set kg_kugutsu,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	next;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	chouji:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Akimichis tem compatibilidade com os treinos ^e63900Taijutsu^000000 e ^009a73Medicina^000000";
+	mes "Tem alta recuperação de vitalidade, dano excelente e velocidade de movimento boa.";
+	mes "Pode expandir seus limites usando Pilulas.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "O Clã Akimichi passa um 'Hiden' por gerações entre seu clã...";
+	mes "Hidens são técnicas secretas de especifico clã ou pessoa.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "No caso do clã akimichi, eles utilizam o 'Baika no Jutsu' que permite";
+	mes "Que eles expandam seu corpo como quiserem,";
+	mes "Assim possuindo um maior alcance de ataque.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "E também utilizam pilulas de chakra para aumentar seu ataque e sua velocidade";
+	mes "A ^00e639verde^000000 para aumentar velocidade.";
+	mes "A ^ffcc33amarela^000000 para aumentar o ataque";
+	mes "A ^FF3366vermelha^000000 para aumentar velocidade e ataque";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Tem certeza que você é um Akimichi?";
+	next;
+	mes "- ^3366FF Isto irá decidir 'Baika no Jutsu' como seu Hiden'. ^000000 -";
+	menu "- Sim. Eu sou um Akimichi!",chouji1,"Desculpe, não sou um Akimichi",nao;
+	close;
+
+	chouji1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Treine bastante para atingir a '^d21312Pilula Vermelha^000000'.";
+	mes "E não vá engordar, rs.";
+	set kg_baika,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	next;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	shika:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Naras tem compatibilidade tanto com o treino ^00ade6Ninjutsu^000000 quanto com o ^e63900Taijutsu^000000";
+	mes "Ótimo ataque físico e mágico, habilidades de imobilização do inimigo e de rápida conjuração.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "O Clã Nara passa um 'Hiden' por gerações entre seu clã...";
+	mes "Hidens são técnicas secretas de especifico clã ou pessoa.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "O hiden do clã nara é o '^5c5c5cControle das Sombras^000000' como o nome diz";
+	mes "Eles controlam as sombras, estas por sua vez, podem ser usadas";
+	mes "tanto de modo ofensivo, como defensivo.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Uma tática especial desenvolvida por um certo membro do clã";
+	mes "Também é repassada dentre seus membros, é a habilidade '^5c5c5cMeditar^000000'.";
+	mes "Assim, aumentando a velocidade em que os jutsus são realizados.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Tem certeza que você é um Nara?";
+	next;
+	mes "- ^3366FF Isto irá decidir 'Controle das Sombras' como seu Hiden'. ^000000 -";
+	menu "- Sim! Sou um Nara.",shika1,"- Não sou um nara.",nao;
+	close;
+
+	shika1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Dê o melhor de si para conseguir";
+	mes "usar a tática/habilidade '^5c5c5cMeditar^000000'!";
+	set kg_nara,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	next;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	ceu:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "^1271d2Ten no Juin^000000 ou ^1271d2Selo Amaldiçoado do céu^000000";
+	mes "É um tipo de Juinjutsu, em outras palavras... É um selo amaldiçoado.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Tem compatibilidade com os treinos ^00ade6Ninjutsu^000000 e ^7300e6Fuinjutsu^000000";
+	mes "Ataque mágico extremamente alto, velocidade de movimento ótima e habilidades defensivas.";
+	mes "Tem habilidades para expandir seu ataque mágico e sua velocidade de movimento.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Dizem que o próprio Orochimaru que implanta estes selos amaldiçoados em suas cobaias...";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "O selo do céu expande o poder de ^1271d2Ninjutsus^000000 e aumentam a velocidade de movimento do usuário.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Aparentemente, quando o usuário está muito obcecado por poder, o Orochimaru fornece uma habilidade.";
+	mes "Chamada... '^1271d2Ativar selo do céu extremo^000000'! Não tive tempo para estuda-la... mas, pelo nome dá pra deduzir";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Você realmente possui o '^1271d2Ten no Juin/Selo Amaldiçoado do Céu^000000'?";
+	next;
+	mes "- ^3366FF Isto irá decidir 'Ten no Juin' como seu Juinjutsu'. ^000000 -";
+	menu "- Sim! Eu possuo o Ten no Juin",ceu1,"- Não possuo o Ten no Juin.",nao;
+	close;
+
+	ceu1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Procure mais poder...";
+	mes "Para atingir o '^1271d2Ativar Selo do Céu Extremo^000000'.";
+	set kg_seloceu,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	next;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	terra:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "'^8c4c0cChi no Juin^000000' ou '^8c4c0cSelo amaldiçoado da Terra^000000'";
+	mes "É um tipo de Juinjutsu, em outras palavras... É um selo amaldiçoado.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Tem compatibilidade com os treinos ^e63900Taijutsu^000000 e ^7300e6Fuinjutsu^000000.";
+	mes "Ataque físico extremamente alto, velocidade de movimento ótima e habilidades de aproximação";
+	mes "Tem habilidades de expandir seu ataque físico e velocidade de movimento.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Dizem que o próprio Orochimaru que implanta estes selos amaldiçoados em suas cobaias...";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "O selo da terra expande o poder de ^8c4c0cTaijutsus^000000 e aumentam a velocidade de movimento do usuário.";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Aparentemente, quando o usuário está muito obcecado por poder, o Orochimaru fornece uma habilidade.";
+	mes "Chamada... '^8c4c0cAtivar selo da terra extremo^000000'! Não tive tempo para estuda-la... mas, pelo nome dá pra deduzir";
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Você realmente possui o '^8c4c0cChi no Juin/Selo Amaldiçoado da Terra^000000'?";
+	next;
+	mes "- ^3366FF Isto irá decidir 'Chi no Juin' como seu Juinjutsu'. ^000000 -";
+	menu "- Sim! Eu possuo o Chi no Juin",terra1,"- Não possuo o Chi no Juin",nao;
+
+	terra1:
+	next;
+	mes "[^5c5c5cPesquisador^000000]";
+	mes "Procure por mais poder";
+	mes "Para atingir o '^8c4c0cAtivar Selo da Terra Extremo^000000'";
+	set kg_seloterra,1;
+	set pegoukg,1;
+	cutin "inicio3",3;
+	if (#nevoa == 1) {warp "gef_fild04",263,356;}
+	if (#suna == 1) {warp "moc_fild01",235,377;}
+	if (#konoha == 1) {warp "prt_fild02",173,377;}
+	if (#nuvem == 1) {warp "yuno_fild08",285,377;}
+	close;
+
+	nao:
+	close;
+
+	OnInit:
+	waitingroom "",0;
+
+	OnTimer1000:
+	setarray .@RoomDisplay$,"Kekkei Genkai","Hiden","Juinjutsu","E outros";
+	delwaitingroom;
+	waitingroom .@RoomDisplay$[rand(0,3)],0;
+	initnpctimer;
+
+}
+
+-	script	questpegarkg#1	-1,{
+
+  OnNPCKillEvent:
+
+if(kg_sharingan == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set kg_sharingan,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all;  if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1;  end;} end;}
+if(kg_sharingan == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {delitem 19068,1; set kg_sharingan,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1;  end;} end;}
+if(kg_sharingan == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {delitem 19069,1; set kg_sharingan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1; end;} end;}
+
+if(kg_byakugan == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set byakugan,1; set kg_byakugan,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1;  end;} end;}
+if(kg_byakugan == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {set byakugan,2; set kg_byakugan,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 2!",bc_blue|bc_all; end;} end;}
+if(kg_byakugan == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {set byakugan,3; set kg_byakugan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 3!",bc_blue|bc_all; end;} end;}
+
+if(kg_hyouton == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set GELO,1; set kg_hyouton,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades como membro do Clã Koori!",bc_blue|bc_all; if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1; end;} end;}
+if(kg_hyouton == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {set GELO,2; set kg_hyouton,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 2",bc_blue|bc_all; end;} end;}
+if(kg_hyouton == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {set GELO,3; set kg_hyouton,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 3!",bc_blue|bc_all; end;} end;}
+
+if(kg_lee == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set LEE2,1; set kg_lee,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all;  if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1; end;} end;}
+if(kg_lee == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {set LEE2,2; set kg_lee,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all; end;} end;}
+if(kg_lee == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {set LEE2,3; set kg_lee,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all; end;} end;}
+
+if(kg_kugutsu == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set MARIONETE,1; set kg_kugutsu,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Kugutsu!",bc_blue|bc_all;  if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1; end;} end;}
+if(kg_kugutsu == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {set MARIONETE,2; set kg_kugutsu,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 2!",bc_blue|bc_all; end;} end;}
+if(kg_kugutsu == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {set MARIONETE,3; set kg_kugutsu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 3!",bc_blue|bc_all; end;} end;}
+
+if(kg_baika == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set AKIMICHI,1; set kg_baika,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all;  if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1; end;} end;}
+if(kg_baika == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {set AKIMICHI,2; set kg_baika,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all; end;} end;}
+if(kg_baika == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {set AKIMICHI,3; set kg_baika,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; end;} end;}
+
+if(kg_nara == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set NARA2,1; set kg_nara,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all;  if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1; end;} end;}
+if(kg_nara == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {set NARA2,2; set kg_nara,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all; end;} end;}
+if(kg_nara == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {set NARA2,3; set kg_nara,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; end;} end;}
+
+if(kg_seloceu == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set SELO1,1; set kg_seloceu,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado do céu!",bc_blue|bc_all;  if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1; end;} end;}
+if(kg_seloceu == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {set SELO1,2; set kg_seloceu,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 2!",bc_blue|bc_all; end;} end;}
+if(kg_seloceu == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {set SELO1,3; set kg_seloceu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 3!",bc_blue|bc_all; end;} end;}
+
+if(kg_seloterra == 1) {set kgmobs1,kgmobs1 +1; if (kgmobs1 >= 50) {set SELO2,1; set kg_seloterra,2; set kgmobs1,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado da terra!",bc_blue|bc_all;  if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1; end;} end;}
+if(kg_seloterra == 2) {set kgmobs2,kgmobs2 +1; if (kgmobs2 >= 16429) {set SELO2,2; set kg_seloterra,3; set kgmobs2,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 2!",bc_blue|bc_all; end;} end;}
+if(kg_seloterra == 3) {set kgmobs3,kgmobs3 +1; if (kgmobs3 >= 44429) {set SELO2,3; set kg_seloterra,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 3!",bc_blue|bc_all; end;} end;}
+
+
+}
+
+bibli_02,50,86,5	duplicate(pegarkg)	Pesquisador#11	402,{
+bibli_03,50,86,5	duplicate(pegarkg)	Pesquisador#12	402,{
+bibli_04,50,86,5	duplicate(pegarkg)	Pesquisador#13	402,{
+lou_in02,203,85,5	duplicate(pegarkg)	Pesquisador#14	402,{
+izlude_in,177,134,5	duplicate(pegarkg)	Pesquisador#15	402,{

@@ -1,0 +1,107 @@
+//===================================//	
+academia,36,162,3	script	Kakashi#2andar	4_man_nitt,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+//===================================//	
+academia,78,180,3	script	!	564,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+// Fuuton
+//===================================//	
+academia,25,178,3	script	Fuuton	1_m_04,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+// Fuuton
+//===================================//	
+academia,33,178,3	script	Doton	1_m_bard,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+// Suiton
+//===================================//	
+academia,41,178,3	script	Suiton	1_m_hof,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+// Raiton
+//===================================//	
+academia,49,178,3	script	Raiton	1_m_innkeeper,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+// Katon
+//===================================//	
+academia,57,178,3	script	Katon	1_m_jobguider,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+// Taijutsu
+//===================================//	
+academia,21,162,3	script	Taijutsu	1_m_03,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+// Nijutsu
+//===================================//	
+academia,21,174,3	script	Ninjutsu	1_m_jobtester,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}
+
+// Genjutsu
+//===================================//	
+academia,21,150,3	script	Genjutsu	1_m_knightmaster,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+}

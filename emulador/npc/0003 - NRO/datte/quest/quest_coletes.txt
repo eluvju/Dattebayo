@@ -1,0 +1,230 @@
+konoha,99,132,5	script	Coletes Elementais::questcol	801,{
+
+mes "[Coletes Elementais]";
+mes "Olá, eu posso criar alguns coletes reforçados elementais";
+mes "Então qual deseja obter?";
+menu "Katon",L_OB,"Suiton",L_MA,"Fuuton",L_MU,"Doton",L_CS,"Raiton",L_RAITON,"Taijutsu",L_taijutsu;
+
+L_OB:
+next;
+mes "[Coletes Elementais]";
+mes "Para fazer o colete reforçado katon, você precisa me entregar:";
+mes " - 10x Peça Queimada";
+mes " - 10x Piroxineio";
+mes " - 100x Brigan";
+mes " - 100x Espeto Quebrado";
+mes " - 15 milhões de zeny";
+menu "Ja tenho tudo",L_OBB,"Deixa para depois",L_N;
+close;
+
+L_OBB:
+next;
+mes "[Coletes Elementais]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7512) < 10) goto No_Item;
+if (countitem(7296) < 10) goto No_Item;
+if (countitem(7054) < 100) goto No_Item;
+if (countitem(7215) < 100) goto No_Item;
+if (Zeny < 15000000) goto No_Item;
+next;
+mes "[Coletes Elementais]";
+mes "Parabéns, tudo certo!";
+delitem 7512,10;
+delitem 7296,10;
+delitem 7054,100;
+delitem 7215,100;
+set Zeny,Zeny-15000000;
+next;
+mes "[Coletes Elementais]";
+mes "Muito bom, aqui está o seu item";
+getitem 2347,1;
+close;
+
+L_MA:
+next;
+mes "[Coletes Elementais]";
+mes "Para fazer o Colete Reforçado Suiton, você precisa me entregar:";
+mes " - 50x Aquamarina";
+mes " - 50x Cristal Azul";
+mes " - 10x Insignia da Cavalaria";
+mes " - 10x Foice de louva deus";
+mes " - 15 milhões de zeny";
+menu "Ja tenho tudo",L_MAA,"Deixa para depois",L_N;
+close;
+
+L_MAA:
+next;
+mes "[Coletes Elementais]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(720) < 50) goto No_Item;
+if (countitem(991) < 50) goto No_Item;
+if (countitem(1004) < 10) goto No_Item;
+if (countitem(1031) < 10) goto No_Item;
+if (Zeny < 15000000) goto No_Item;
+next;
+mes "[Coletes Elementais]";
+mes "Parabéns, tudo certo!";
+delitem 720,50;
+delitem 991,50;
+delitem 1004,10;
+delitem 1031,10;
+set Zeny,Zeny-15000000;
+next;
+mes "[Coletes Elementais]";
+mes "Muito bom, aqui está o seu item";
+getitem 2352,1;
+close;
+
+L_MU:
+next;
+mes "[Coletes Elementais]";
+mes "Para fazer o Colete Reforçado Fuuton, você precisa me entregar:";
+mes " - 30x Simbolo dos Noves reinos";
+mes " - 15x Girassol";
+mes " - 50x Ferrão de abelha";
+mes " - 5x Ametista";
+mes " - 15 milhões de zeny";
+menu "Ja tenho tudo",L_MUU,"Deixa para depois",L_N;
+close;
+
+L_MUU:
+next;
+mes "[Coletes Elementais]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7305) < 30) goto No_Item;
+if (countitem(2253) < 15) goto No_Item;
+if (countitem(939) < 50) goto No_Item;
+if (countitem(719) < 5) goto No_Item;
+if (Zeny < 15000000) goto No_Item;
+next;
+mes "[Coletes Elementais]";
+mes "Parabéns, tudo certo!";
+delitem 7305,30;
+delitem 2253,15;
+delitem 939,50;
+delitem 719,5;
+set Zeny,Zeny-15000000;
+next;
+mes "[Coletes Elementais]";
+mes "Muito bom, aqui está o seu item";
+getitem 19190,1;
+close;
+
+L_CS:
+next;
+mes "[Coletes Elementais]";
+mes "Para fazer o Colete Reforçado Doton, você precisa de:";
+mes " - 100x Vida verdejante";
+mes " - 15x Natureza Grandioza";
+mes " - 5x Rosa Eterna";
+mes " - 50x Caule";
+mes " - 15 milhões de zeny";
+menu "Ja tenho tudo",L_CSS,"Deixa para depois",L_N;
+close;
+
+L_CSS:
+next;
+mes "[Coletes Elementais]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(993) < 100) goto No_Item;
+if (countitem(997) < 15) goto No_Item;
+if (countitem(748) < 5) goto No_Item;
+if (countitem(905) < 50) goto No_Item;
+if (Zeny < 15000000) goto No_Item;
+next;
+mes "[Coletes Elementais]";
+mes "Parabéns, tudo certo!";
+delitem 993,100;
+delitem 997,15;
+delitem 748,5;
+delitem 905,50;
+set Zeny,Zeny-15000000;
+next;
+mes "[Coletes Elementais]";
+mes "Muito bom, aqui está o seu item";
+getitem 19187,1;
+close;
+
+L_RAITON:
+next;
+mes "[Coletes Elementais]";
+mes "Para fazer o Colete Reforçado Raiton, você precisa de:";
+mes " - 10x Garra de Crustaceo";
+mes " - 10x Martelo";
+mes " - 50x Antenas Afiadas";
+mes " - 50x pesadelo martenal";
+mes " - 15 milhões de zeny";
+menu "Ja tenho tudo",L_RSS,"Deixa para depois",L_N;
+close;
+
+L_RSS:
+next;
+mes "[Coletes Elementais]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(960) < 10) goto No_Item;
+if (countitem(10006) < 10) goto No_Item;
+if (countitem(7163) < 50) goto No_Item;
+if (countitem(7020) < 50) goto No_Item;
+if (Zeny < 15000000) goto No_Item;
+next;
+mes "[Coletes Elementais]";
+mes "Parabéns, tudo certo!";
+delitem 960,10;
+delitem 10006,10;
+delitem 7163,50;
+delitem 7020,50;
+set Zeny,Zeny-15000000;
+next;
+mes "[Coletes Elementais]";
+mes "Muito bom, aqui está o seu item";
+getitem 19184,1;
+close;
+
+L_taijutsu:
+next;
+mes "[Coletes Elementais]";
+mes "Para fazer o Colete Reforçado Taijutsu, você precisa de:";
+mes " - 20x Pedras do sabio";
+mes " - 50x bananas";
+mes " - 50x armaduras destruida";
+mes " - 30x shuriken despedaçada";
+mes " - 15 milhões de zeny";
+menu "Ja tenho tudo",L_TAISS,"Deixa para depois",L_N;
+close;
+
+L_TAISS:
+next;
+mes "[Coletes Elementais]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(12040) < 20) goto No_Item;
+if (countitem(513) < 50) goto No_Item;
+if (countitem(7069) < 50) goto No_Item;
+if (countitem(7156) < 30) goto No_Item;
+if (Zeny < 15000000) goto No_Item;
+next;
+mes "[Coletes Elementais]";
+mes "Parabéns, tudo certo!";
+delitem 12040,20;
+delitem 513,50;
+delitem 7069,50;
+delitem 7156,30;
+set Zeny,Zeny-15000000;
+next;
+mes "[Coletes Elementais]";
+mes "Muito bom, aqui está o seu item";
+getitem 19193,1;
+close;
+
+No_Item:
+next;
+mes "[Coletes Elementais]";
+mes "Desculpe, mas você precisa de todos os itens.";
+close;
+
+L_N:
+mes "[Coletes Elementais], Tudo bem, volte quando quiser... ";
+close;
+}
+areia,86,165,5	duplicate(questcol)	Coletes Elementais#1	411
+nuvem,67,156,5	duplicate(questcol)	Coletes Elementais#2	853
+nevoa,310,238,5	duplicate(questcol)	Coletes Elementais#3	114

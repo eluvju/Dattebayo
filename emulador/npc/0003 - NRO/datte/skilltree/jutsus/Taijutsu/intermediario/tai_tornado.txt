@@ -1,0 +1,100 @@
+ein_fild01,230,243,5	script	Chute do Tornado::taiint11	831,{
+
+if (getskilllv(413) >= 1) goto L_delete;
+if(tai_intermediario != 1) {mes "Você precisa estudar taijutsu intermediário antes de aprender esse taijutsu"; close;}
+if (checkquest(2186) == 1) goto L_go;
+if(tai_skill_int >= 3) {mes "Você já aprendeu três taijutsus intermediários, esse é o limite"; close;}
+if(tornado == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(accept_tai_int == 3) {mes "Você já aceitou três treinamentos pra realizar de taijutsu"; close;}
+if (WeaponLvl < 40) {mes "Seu nível de taijutsu está baixo demais, é preciso ter nível 40 ou mais pra aprender esse taijutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de taijutsu espalhado pelo mundo, eu posso lhe ensinar um taijutsu intermediário";
+next;
+mes "O taijutsu que eu ensino é o: Chute do Tornado";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Chute do Tornado
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(413) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(413) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 412,0,0;
+skill 413,0,0;
+set tornado,0;
+erasequest 2186;
+if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;}
+if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_tai_int_onze,1;
+set accept_tai_int,accept_tai_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter taijutsu intermediário level 40";
+mes "- Derrotar 35 Nidachou.";
+mes "- Obter 5 Naturezas Grandiosas";
+mes "- Obter 100 Símbolo dos nove reinos";
+mes "- Obter 100 Lanternas";
+setquest 2186;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(tai_skill_int >= 3) {mes "Você já aprendeu três taijutsus intermediários, esse é o limite"; close;}
+if(tai_int_mobs_onze < 35) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(997) <5) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7305) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7191) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 997,5;
+delitem 7305,100;
+delitem 7191,100;
+skill 412,1,0;
+skill 413,1,0;
+set tornado,1;
+set quest_tai_int_onze,0;
+set tai_int_mobs_onze,0;
+completequest 2186;
+erasequest 2186;
+set tai_skill_int,tai_skill_int +1;
+close;
+
+L_no:
+close;
+}
+
+-	script	taiint#11	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1036 && quest_tai_int_onze == 1) {set tai_int_mobs_onze,tai_int_mobs_onze +1; announce "[Taijutsu Quest] Você já derrotou "+tai_int_mobs_onze+" / 35 Nidachou",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_08,159,371,5	duplicate(taiint11)	Chute do Tornado#91	831,{
+pay_fild10,212,157,5	duplicate(taiint11)	Chute do Tornado#92	831,{
+ve_fild04,72,141,5	duplicate(taiint11)	Chute do Tornado#93	831,{

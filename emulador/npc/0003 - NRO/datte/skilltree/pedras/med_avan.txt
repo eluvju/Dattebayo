@@ -1,0 +1,22 @@
+gl_prison,73,170,5	script	Medicina Avançada	831,{
+if (limite_avan == 1) {mes "Você já chegou a um treinamento avançado, esse é o limite"; close;}
+if (med_avan == 1) {mes "Já não há mais nada que posso lhe ensinar"; close;}
+if (jounin != 1) {mes "Apenas Jounins podem falar comigo"; close;}
+if (WeaponLvl4 < 75) {mes "Você não está pronto pra aprender Medicina Avançada, é preciso nível 75 de Medicina"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+if (mestreme_dead != 1) {mes "Você está quase pronto para se tornar um usuário avançado, é preciso antes derrotar o mestre medinin"; close;}
+mes "!!, a sua força é enorme, seu chakra é um dos maiores que ja vi!, você é mais do que digno de aprender medicina avançada";
+next;
+mes "Vá em frente, e busque mais poder, seje o melhor shinobi que já existiu, pois agora você é diferenciado, agora você é um shinobi com Medicina Avançada!";
+set med_avan,1;
+getitem 754,1;
+if (countitem(742) >= 1) {delitem 742,1;}
+set med_avan_new,1;
+set limite_avan, limite_avan +1;
+announce "[...] Um chakra enorme é sentido em todo o mundo, alguém assim só pode ter Medicina Avançada!",bc_blue|bc_all;
+close;
+
+}

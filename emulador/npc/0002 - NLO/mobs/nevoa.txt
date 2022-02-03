@@ -1,0 +1,69 @@
+// Filds Nevoa
+
+//----fild 1 - prt_fild03  - todos passivos
+prt_fild03,0,0,0,0	monster	Planta da Névoa	1083,1,600000,600000,0
+prt_fild03,0,0,0,0	monster	Mosca		1183,100,0,0,0
+prt_fild03,0,0,0,0	monster	Esquilo		1860,100,0,0,0
+prt_fild03,0,0,0,0	monster	Sapo		1012,100,0,0,0
+prt_fild03,0,0,0,0	monster	Gafanhoto		1052,100,0,0,0
+
+//----fild2 - pay_fild11 - todos passivos exceto mini boss
+pay_fild11,0,0,0,0	monster	Lesma Marinha		1094,75,0,0,0
+pay_fild11,0,0,0,0	monster	Carangueijo		1066,75,0,0,0
+pay_fild11,0,0,0,0	monster	Cornutus		1067,75,0,0,0
+pay_fild11,0,0,0,0	monster	Planta Aquática		2081,75,0,0,0
+//Mini-Boss
+pay_fild11,0,0,0,0	boss_monster	Strouf		1065,1,1800000,0,0
+
+//----fild3 - gef_fild12
+gef_fild12,0,0,0,0	monster	Abelha		1004,100,0,0,0
+gef_fild12,0,0,0,0	monster	Coelho		1322,100,0,0,0
+gef_fild12,0,0,0,0	monster	Joaninha		1174,100,0,0,0
+gef_fild12,0,0,0,0	monster	Árvore Demônio		1410,100,0,0,0
+gef_fild12,0,0,0,0	monster	Genin		1656,100,0,0,0
+
+//----fild4 - mjolnir_07
+mjolnir_07,0,0,0,0	monster	Borboleta Gigante		1408,75,0,0,0
+mjolnir_07,0,0,0,0	monster	Crocodilo		1271,75,0,0,0
+mjolnir_07,0,0,0,0	monster	Galápago		1391,75,0,0,0
+mjolnir_07,0,0,0,0	monster	Trilobita		1279,75,0,0,0
+//Mini-Boss
+mjolnir_07,0,0,0,0	boss_monster	Espírito Assassino		1702,1,1800000,0,0
+
+//----fild5 - mjolnir_06 - todos agressivos
+mjolnir_06,0,0,0,0	monster	Flor Assassina		1995,75,0,0,0
+mjolnir_06,0,0,0,0	monster	Árvore Andarilha		1880,75,0,0,0
+mjolnir_06,0,0,0,0	monster	Dragão Filhote		1275,75,0,0,0
+mjolnir_06,0,0,0,0	monster	Vespa Gigante		1276,75,0,0,0
+mjolnir_06,0,0,0,0	monster	Chunin		1636,75,0,0,0
+
+
+//----fild6 - mjolnir_04 - todos agressivos
+mjolnir_04,0,0,0,0	monster	Foca		1317,100,0,0,0
+mjolnir_04,0,0,0,0	monster	Mandragora		1020,100,0,0,0
+mjolnir_04,0,0,0,0	monster	Golem de Cristal		2024,100,0,0,0
+//Boss
+mjolnir_04,0,0,0,0	boss_monster	Taturana		1300,1,3600000,0,0
+
+//----fild7 - gon_fild01 - todos agressivos
+gon_fild01,0,0,0,0	monster	Kappa		1406,75,0,0,0
+gon_fild01,0,0,0,0	monster	Anolian		1506,75,0,0,0
+gon_fild01,0,0,0,0	monster	Nereida		1255,75,0,0,0
+gon_fild01,0,0,0,0	monster	Medusa		1148,75,0,0,0
+//Boss
+gon_fild01,0,0,0,0	boss_monster	Polvo Ninja		2194,1,3600000,0,0
+
+
+//----fild1 prt_fild07 - todos agressivos
+prt_fild07,0,0,0,0	monster	Jounin		1634,50,0,0,0
+prt_fild07,0,0,0,0	monster	Byorgue		1839,50,0,0,0
+prt_fild07,0,0,0,0	monster	Shinobi		1401,50,0,0,0
+
+prt_fild07,0,0,0,0	boss_monster	Jiraiya	3577,1,7200000,0,0
+
+//----fild2 prt_fild08
+prt_fild08,0,0,0,0	monster	Bandido		1373,50,0,0,0
+prt_fild08,0,0,0,0	monster	Anbu		1635,50,0,0,0
+prt_fild08,0,0,0,0	monster	Cap Anbu		1992,50,0,0,0
+
+prt_fild08,0,0,0,0	boss_monster	Uchiha Itachi	3576,1,7200000,0,0

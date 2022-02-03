@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillshoe	-1,{
+    end;
+//When a Character uses a skill
+
+//Shouen
+
+onPcUseSkillEvent:
+
+           if(lskillid == 70) {
+
+
+if (getskilllv(70) == 1) {
+
+if (Shouen != 1) {end;}
+if (skill70 >= 25) {skill 70,2,0; set skill70,0; dispbottom "[Sys] Level up"; end; }
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 1: "+skill70+" de 25";
+
+end;
+
+}
+
+if (getskilllv(70) == 2) {
+if (Shouen != 1) {end;}
+if (skill70 >= 50) {skill 70,3,0; set skill70,0; dispbottom "[Sys] Level up"; end;}
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 2: "+skill70+" de 50";
+
+end;
+
+}
+
+if (getskilllv(70) == 3) {
+
+if (Shouen != 1) {end;}
+if (skill70 >= 75) {skill 70,4,0; set skill70,0; dispbottom "[Sys] Level up"; end;}
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 3: "+skill70+" de 75";
+
+end;
+
+}
+
+if (getskilllv(70) == 4) {
+if (Shouen != 1) {end;}
+if (skill70 >= 100) {skill 70,5,0; set skill70,0; dispbottom "[Sys] Level up"; end;}
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 4: "+skill70+" de 100";
+
+end;
+
+}
+
+if (getskilllv(70) == 5) {
+if (Shouen != 1) {end;}
+if (skill70 >= 125) {skill 70,6,0; set skill70,0; dispbottom "[Sys] Level up"; end;}
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 5: "+skill70+" de 125";
+
+end;
+
+}
+
+if (getskilllv(70) == 6) {
+if (Shouen != 1) {end;}
+if (skill70 >= 150) {skill 70,7,0; set skill70,0; dispbottom "[Sys] Level up"; end;}
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 6: "+skill70+" de 150";
+
+end;
+
+}
+
+if (getskilllv(70) == 7) {
+if (Shouen != 1) {end;}
+if (skill70 >= 250) {skill 70,8,0; set skill70,0; dispbottom "[Sys] Level up"; end;}
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 7: "+skill70+" de 250";
+
+end;
+
+}
+
+if (getskilllv(70) == 8) {
+if (Shouen != 1) {end;}
+if (skill70 >= 350) {skill 70,9,0; set skill70,0; dispbottom "[Sys] Level up"; end;}
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 8: "+skill70+" de 350";
+
+end;
+
+}
+
+if (getskilllv(70) == 9) {
+if (Shouen != 1) {end;}
+if (skill70 >= 500) {skill 70,10,0; set skill70,0; dispbottom "[Sys] Level up"; end;}
+set skill70,skill70 +1;
+dispbottom "[Jutsu level] Shouen no Jutsu level 9: "+skill70+" de 500";
+
+end;
+
+}
+
+                end;
+            }    
+}

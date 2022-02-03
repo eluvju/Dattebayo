@@ -1,0 +1,15 @@
+//Permissão Rank C se for suna e Konoha	
+
+pay_fild03,393,63,0	script	 #enteristo	45,2,2,{
+	
+	OnTouch:
+	callfunc("warps"),	// Função
+	"alberta",			// Mapa
+	18,				// Coordenada X
+	235,				// Coordenada Y
+	0,				// Quest (default +1000_
+	502,					// Item (Default 0)
+	1;					// Item Quantidade
+}
+
+alberta,14,235,0	warp	enteristo-1	2,2,pay_fild03,389,63

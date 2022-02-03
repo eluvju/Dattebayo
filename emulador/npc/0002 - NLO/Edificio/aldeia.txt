@@ -1,0 +1,979 @@
+-	script	edi_1	1083,{
+
+
+
+OnMapConquisted1:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 && countitem(30083) == 0 && countitem(30084) == 0 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+
+
+
+
+
+
+}
+
+
+
+
+
+-	script	edi_2	1083,{
+
+
+
+OnMapConquisted2:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+
+
+
+
+
+
+}
+
+
+
+-	script	edi_3	1083,{
+
+
+
+OnMapConquisted3:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+
+
+}
+
+
+
+-	script	edi_4	1083,{
+
+
+
+OnMapConquisted4:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+
+
+}
+
+
+
+-	script	edi_5	1083,{
+
+
+
+OnMapConquisted5:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+}
+
+
+
+-	script	edi_6	1083,{
+
+
+
+OnMapConquisted6:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+}
+
+
+
+-	script	edi_7	1083,{
+
+
+
+OnMapConquisted7:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+
+
+}
+
+
+
+-	script	edi_8	1083,{
+
+
+
+OnMapConquisted8:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+}
+
+
+
+-	script	edi_9	1083,{
+
+
+
+OnMapConquisted9:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+
+
+}
+
+
+
+-	script	edi_10	1083,{
+
+
+
+OnMapConquisted10:
+
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) goto L_akat;
+
+if(nukenin == 1 && countitem(30082) == 0 || nukenin == 1 && countitem(30083) == 0 || nukenin == 1 && countitem(30084) == 0 || nukenin == 1 && countitem(30085) == 0) goto L_nuke;
+
+end;
+
+
+
+L_nuke:
+
+set nukenin_ryous, nukenin_ryous + 20;
+
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_akat:
+
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+
+set $AMinfo[.id], $AMinfo[.id] + 1;
+
+}
+
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+end;
+
+
+
+L_konoha:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $konoha_ryous,$konoha_ryous + 20;
+
+end;
+
+
+
+L_areia:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $areia_ryous, $areia_ryous + 20;
+
+end;
+
+
+
+L_nuvem:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nuvem_ryous, $nuvem_ryous + 20;
+
+end;
+
+
+
+L_nevoa:
+
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+
+set $nevoa_ryous, $nevoa_ryous + 20;
+
+end;
+
+
+
+}
+
+
+
+-	script	comecoaldeia	1083,{
+
+
+
+OnFri2000:
+
+	killmonster "moc_fild02","edi_1::OnMapConquisted1";
+
+	killmonster "moc_fild03","edi_2::OnMapConquisted2";
+
+	killmonster "yuno_fild11","edi_3::OnMapConquisted3";
+
+	killmonster "gon_fild01","edi_4::OnMapConquisted4";
+
+	killmonster "prt_fild02","edi_5::OnMapConquisted5";
+
+	killmonster "dic_fild01","edi_6::OnMapConquisted6";
+
+	killmonster "hu_fild03","edi_7::OnMapConquisted7";
+
+	killmonster "prt_fild08","edi_8::OnMapConquisted8";
+
+	killmonster "mjolnir_11","edi_9::OnMapConquisted9";
+
+	killmonster "tur_dun04","edi_10::OnMapConquisted10";
+
+	
+
+	monster "moc_fild02",193,262,"Aldeia",1694,1,"edi_1::OnMapConquisted1";
+
+	monster "moc_fild03",211,268,"Aldeia",1694,1,"edi_2::OnMapConquisted2";
+
+	monster "yuno_fild11",129,173,"Aldeia",1694,1,"edi_3::OnMapConquisted3";
+
+	monster "gon_fild01",323,105,"Aldeia",1694,1,"edi_4::OnMapConquisted4";
+
+	monster "prt_fild02",220,312,"Aldeia",1694,1,"edi_5::OnMapConquisted5";
+
+	monster "dic_fild01",178,196,"Aldeia",1694,1,"edi_6::OnMapConquisted6";
+
+	monster "hu_fild03",233,182,"Aldeia",1694,1,"edi_7::OnMapConquisted7";
+
+	monster "prt_fild08",229,61,"Aldeia",1694,1,"edi_8::OnMapConquisted8";
+
+	monster "mjolnir_11",153,166,"Aldeia",1694,1,"edi_9::OnMapConquisted9";
+
+	monster "tur_dun04",100,96,"Aldeia",1694,1,"edi_10::OnMapConquisted10";
+
+	
+
+	announce "[Aldeia] As aldeias estão desprotegidas!",0;
+
+	end;
+
+}

@@ -1,0 +1,120 @@
+//Made by Lunar
+//Version 1.6
+//6.1.09
+
+-	shop	quest_shop	-1,501:50
+ama_in01,93,20,5,	script	Equipamentos shinobi::lojaT	899,{
+	set @i,0;
+	mes "[Equipamentos shinobi]";
+	mes "Qual equipamento você deseja comprar?";
+	mes "Selecione apenas um!.";
+	callshop "quest_shop",1;
+	npcshopattach "quest_shop";
+	end;
+
+OnBuyItem:
+	if(.BuildQuest) {
+		for(set .e,0; !compare(getarg(.e+1),"Zeny"); set .e,.e+2) {}
+		npcshopadditem "quest_shop",getarg(.e+2),getarg(.e)*compare(getarg(.e+1),"SZeny");
+		setarray .Shop[.i],getarg(.e+2);
+		set .i,.i+1;
+		goto Quest_Setup;
+	}
+	if(.Shop[@i]!=@bought_nameid) for(set @i,1; 1; set @i,@i+1) if(.Shop[@i]==@bought_nameid) { set .i,@i; callsub Quest_Setup; }
+	for(set @i,1; !@e; set @i,@i+1) if(.Shop[@i]==@bought_nameid) { set @e,1; set .i,@i; callsub Quest_Setup; }
+	mes "[Equipamentos shinobi]";
+	mes "Eu preciso do seguinte:";
+	for(set @i,0; !compare(getarg(@i+1),"Zeny"); set @i,@i+2) mes "^FF0000" + ((countitem(getarg(@i))>=getarg(@i+1))? "^00FF00":"") + "" + getarg(@i+1) + " " + getitemname(getarg(@i)) + " [" + countitem(getarg(@i)) + "/" + getarg(@i+1) + "]";
+	if(getarg(@i)) mes "^FF0000" + ((Zeny>=getarg(@i))? "^00FF00":"") + "" + getarg(@i) + " Zeny";
+	mes "^000000Em troca, eu te darei:^0000FF";
+	for(set @i,@i+2; getarg(@i+1,0); set @i,@i+2) mes getarg(@i+1) + " " + getitemname(getarg(@i));
+	switch(select("Trocar:" + (((((getiteminfo(@bought_nameid,5) & 1) || (getiteminfo(@bought_nameid,5) & 256) || (getiteminfo(@bought_nameid,5) & 512)) && @equip==0))? "Experimentar":"") + ":Não obrigado")) {
+		case 1:
+			for(set @i,0; !compare(getarg(@i+1),"Zeny"); set @i,@i+2) if(countitem(getarg(@i)) < getarg(@i+1)) {
+				next;
+				mes "Você possui " + countitem(getarg(@i)) + " " + getitemname(getarg(@i)) + ", e eu preciso de " + getarg(@i+1) + ".";
+				mes "Por favor consiga ^FF0000" + (getarg(@i+1)-countitem(getarg(@i))) + " a mais " + getitemname(getarg(@i)) + "^000000.";
+				close;
+			}
+			if(Zeny < getarg(@i)) {
+				next;
+				mes "Você não tem zeny o suficiente.";
+				mes "Por favor consiga mais ^FF0000" + (getarg(@i)-Zeny) + " Zeny^000000.";
+				close;
+			}
+			for(set @i,0; !compare(getarg(@i+1),"Zeny"); set @i,@i+2) delitem getarg(@i),getarg(@i+1);
+			set Zeny,Zeny-getarg(@i);
+			for(set @i,@i+2; getarg(@i+1,0); set @i,@i+2) getitem getarg(@i),getarg(@i+1);
+			if (compare(getarg(@i,0),"announce")) announce strcharinfo(0) + " comprou um " + getitemname(@bought_nameid) + "!",bc_all;
+			close;
+		case 2:
+			set @bottomview, getlook(3);
+			set @topview, getlook(4);
+			set @midview, getlook(5);
+			addtimer 1000, strnpcinfo(3)+"::On_Leave";
+			set @equip,getiteminfo(@bought_nameid, 5);
+			set @view, getiteminfo(@bought_nameid, 11);
+			if(@equip != -1 && @view > 0) {
+				if(@equip & 1) atcommand "@changelook 3 " + @view;
+				if(@equip & 256) atcommand "@changelook 1 " + @view;
+				if(@equip & 512) atcommand "@changelook 2 " + @view;
+			}
+			next;
+			goto OnBuyItem;
+		case 3:
+			close;
+	}
+On_Leave:
+	atcommand "@changelook 1 " + @topview;
+	atcommand "@changelook 2 " + @midview;
+	atcommand "@changelook 3 " + @bottomview;
+	set @equip,0;
+	set @view,0;
+	set @topview,0;
+	set @midview,0;
+	set @bottomview,0;
+	end;
+OnInit:
+	npcshopitem "quest_shop",0,0;
+	set .BuildQuest,1;
+	set .i,1;
+Quest_Setup:
+	switch(.i) {
+		default: set .BuildQuest,0; set .e,0; set .i,0; end;
+		case 1: callsub OnBuyItem,35000,"SZeny",1201,1;
+		case 2: callsub OnBuyItem,70000,"SZeny",1204,1;
+		case 3: callsub OnBuyItem,35000,"SZeny",1225,1;
+		case 4: callsub OnBuyItem,70000,"SZeny",1226,1;
+		case 5: callsub OnBuyItem,35000,"SZeny",1235,1;
+		case 6: callsub OnBuyItem,70000,"SZeny",1236,1;
+		case 7: callsub OnBuyItem,100000,"SZeny",2121,1;
+		case 8: callsub OnBuyItem,100000,"SZeny",2305,1;
+		case 9: callsub OnBuyItem,250000,"SZeny",2306,1;
+		case 10: callsub OnBuyItem,500000,"SZeny",2307,1;
+		case 11: callsub OnBuyItem,2000000,"SZeny",2308,1;
+		case 12: callsub OnBuyItem,200000,"SZeny",2356,1;
+		case 13: callsub OnBuyItem,200000,"SZeny",2383,1;
+		case 14: callsub OnBuyItem,200000,"SZeny",19183,1;
+		case 15: callsub OnBuyItem,200000,"SZeny",19186,1;
+		case 16: callsub OnBuyItem,200000,"SZeny",19189,1;
+		case 17: callsub OnBuyItem,1000000,"SZeny",2613,1;
+		case 18: callsub OnBuyItem,1000000,"SZeny",2614,1;
+		case 19: callsub OnBuyItem,1000000,"SZeny",2615,1;
+		case 20: callsub OnBuyItem,1000000,"SZeny",2616,1;
+		case 21: callsub OnBuyItem,1000000,"SZeny",2617,1;
+		case 22: callsub OnBuyItem,1000000,"SZeny",2618,1;
+		case 23: callsub OnBuyItem,10000000,"SZeny",2619,1;
+		case 24: callsub OnBuyItem,10000000,"SZeny",2620,1;
+		case 25: callsub OnBuyItem,10000000,"SZeny",2621,1;
+		case 26: callsub OnBuyItem,10000000,"SZeny",2622,1;
+		case 27: callsub OnBuyItem,10000000,"SZeny",2623,1;
+		case 28: callsub OnBuyItem,10000000,"SZeny",2624,1;
+		case 29: callsub OnBuyItem,200000,"SZeny",19192,1;
+
+	}
+}
+
+ama_in01,25,26,5	duplicate(lojaT)	Equipamentos Shinobi#b	899
+ama_in01,178,131,5	duplicate(lojaT)	Equipamentos Shinobi#c	899
+ama_in01,180,173,5	duplicate(lojaT)	Equipamentos Shinobi#d	899
+6@tower,184,75,5	duplicate(lojaT)	Equipamentos Shinobi#e	899

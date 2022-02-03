@@ -1,0 +1,101 @@
+ve_fild02,317,381,5	script	Tsubaki no Mai::medint3	831,{
+
+if (getskilllv(33) >= 1) goto L_delete;
+if(med_intermediario != 1) {mes "Você precisa estudar medicina intermediária antes de aprender essa técnica de medicina"; close;}
+if (checkquest(2074) == 1) goto L_go;
+if(med_skill_int >= 3) {mes "Você já aprendeu três técnicas de medicinas intermediárias, esse é o limite"; close;}
+if(Tsubaki == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(accept_med_int == 3) {mes "Você já aceitou três treinamentos pra realizar de medicina"; close;}
+if (WeaponLvl4 < 40) {mes "Seu nível de Medicina está baixo demais, é preciso ter nível 40 ou mais pra aprender esse Medicina"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de medicina espalhado pelo mundo, eu posso lhe ensinar um técnica de medicina intermediária";
+next;
+mes "a técnica de medicina que eu ensino é o: Tsubaki no Mai";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Tsubaki no Mai
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(33) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(33) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 33,0,0;
+set Tsubaki,0;
+erasequest 2074;
+if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}
+if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_med_int_tres,1;
+set accept_med_int,accept_med_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter Medicina avançada level 40";
+mes "- Derrotar 30 Namekuji.";
+mes "- Obter 60 Casco de Tartaruga";
+mes "- Obter 100 Pata de Besouro";  
+mes "- Obter 25 Vida Verdejante"; 
+setquest 2074;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(med_skill_int >= 3) {mes "Você já aprendeu três técnicas de medicinas intermediárias, esse é o limite"; close;}
+if(med_int_mobs_tres < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(967) <60) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7202) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(993) < 25) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 967,60;
+delitem 7202,100;
+delitem 993,25;
+skill 33,1,0;
+set Tsubaki,1;
+set quest_med_int_tres,0;
+set med_int_mobs_tres, 0;
+completequest 2074;
+erasequest 2074;
+set med_skill_int,med_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Medicina Intermediária]",0;
+}
+
+-	script	medint#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1031 && quest_med_int_tres == 1) {set med_int_mobs_tres,med_int_mobs_tres +1; announce "[Medinin Quest] Você já derrotou "+med_int_mobs_tres+" / 35 Namekuji",bc_blue|bc_self; end;}
+
+}
+
+mosk_dun01,98,179,5	duplicate(medint3)	Tsubaki no Mai#31	831,{
+yuno_fild05,254,154,5	duplicate(medint3)	Tsubaki no Mai#32	831,{
+ama_fild01,262,58,5	duplicate(medint3)	Tsubaki no Mai#33	831,{

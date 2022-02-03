@@ -1,0 +1,90 @@
+pay_fild06,307,233,5	script	Jiraya::gama3	69,{
+
+if (quest_gama3_um == 1) goto L_go;
+if(Gama1 != 1) {mes "Você precisa ter contrato com os Gamas para aparender esse jutsu"; close;}
+if(Gama2 != 1) {mes "Você precisa aprender o Segundo Nível de Kuchiyose para aprender esse jutsu"; close;}
+if(jounin != 1) {mes "Você precisa ser Jounin para aprender esse jutsu"; close;}
+if(Gama3 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo.";
+next;
+mes "Posso te ajudar a aperfeiçoar seu Kuchiyose no Jutsu!";
+mes "Gostaria de treinar o Kuchiyose: Gama-Bunta?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Gama-Bunta
+//========================================================================
+
+L_SS:
+set quest_gama3_um,1;
+mes "Para esse treinamento,você deve provar ser fiel aos Gamas:";
+mes "- Derrote 1000 Manda";
+mes "- Derrote 1000 Katsuyo";
+mes "- Derrote 1000 Baru";
+mes "- Derrote 1000 Enma";
+setquest 12092;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gama3_mobs_um < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(gama3_mobs_dois < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(gama3_mobs_tres < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(gama3_mobs_quatro < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 723,4,0;
+set Gama3,1;
+set quest_gama3_um,0;
+set gama3_mobs_um, 0;
+set gama3_mobs_dois, 0;
+set gama3_mobs_tres, 0;
+set gama3_mobs_quatro, 0;
+completequest 12092;
+erasequest 12092;
+close;
+
+L_no:
+close;
+}
+
+
+moc_fild13,57,361,5	duplicate(gama3)	Jiraya#311	69
+cmd_fild05,289,319,5	duplicate(gama3)	Jiraya#312	69
+mjolnir_10,377,37,5	duplicate(gama3)	Jiraya#313	69
+
+
+-	script	gama3#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1418 && quest_gama3_um == 1) {set gama3_mobs_um,gama3_mobs_um +1; announce "Você já derrotou "+gama3_mobs_um+" / 1000 Manda",bc_blue|bc_self; end;}
+
+}
+
+-	script	gama3#2	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1381 && quest_gama3_um == 1) {set gama3_mobs_dois,gama3_mobs_dois +1; announce "Você já derrotou "+gama3_mobs_dois+" / 1000 Katsuyo",bc_blue|bc_self; end;}
+
+}
+
+-	script	gama3#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1032 && quest_gama3_um == 1) {set gama3_mobs_tres,gama3_mobs_tres +1; announce "Você já derrotou "+gama3_mobs_tres+" / 1000 Baru",bc_blue|bc_self; end;}
+
+}
+
+-	script	gama3#4	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1057 && quest_gama3_um == 1) {set gama3_mobs_quatro,gama3_mobs_quatro +1; announce "Você já derrotou "+gama3_mobs_quatro+" / 1000 Enma",bc_blue|bc_self; end;}
+
+}

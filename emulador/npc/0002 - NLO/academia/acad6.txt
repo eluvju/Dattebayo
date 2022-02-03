@@ -1,0 +1,16 @@
+prontera,156,191,5	script	Kurenai	4_f_zondagirl,{
+
+if(quest8_4 == 0){
+mes "Você deve falar com o Yondaime Hokage e aprender sobre fuuinjutsu antes falar comigo.";
+close;
+}
+
+mes "Olá, eu sou o mestre de genjutsu e irei lhe ensinar algumas coisas";
+mes "Genjutsu sao tecnicas de ilusao que atacam o fluxo do chakra no cerebro da vitima, pertubando seus sentidos";
+mes "Suas habilidades serao baseadas na sua energia espiritual que governa a imaginacao";
+next;
+mes "Parabens! Voce ja pode se tornar um ninja especializado em genjutsu!";
+getitem 6002, 1;
+set quest8_5, 1;
+close;
+}

@@ -1,0 +1,54 @@
+sec_in01,161,176,5	script	Liberação de Portões	979,{
+	if(portoes == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Maito Gai^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou o mestre da Liberaçao de Portoes , você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Maito Gai^000000]";
+	mes "Os Oito Portões são oito tenketsu específicos do Sistema de Circulação de Chakra de um indivíduo. Eles limitam o fluxo global de chakra dentro do corpo de uma pessoa.  ";
+	next;
+	mes "[^00FF40Maito Gai^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",Liberacaodeportoes2,"- Não",nao;
+	close;
+
+	
+	
+	Liberacaodeportoes2:
+
+next;
+
+	mes "[^00FF40Maito Gai^000000]";
+
+mes "A base para a ideia dos portões de chakra vem de limites do corpo sobre as funções dentro dele. ";
+
+next;
+
+	mes "[^00FF40Maito Gai^000000]";
+
+mes "Seus poderes são perfeitos para pessoas que utilizam ^FF8C00Taijutsu^000000 e ^006400Velocidade^000000";
+
+next;
+
+set pegoukg,1;
+
+set portoes,1;
+
+	mes "[^00FF40Maito Gai^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

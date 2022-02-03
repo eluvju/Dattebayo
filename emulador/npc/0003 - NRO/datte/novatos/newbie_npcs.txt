@@ -1,0 +1,79 @@
+kumogakure,192,54,5	script	Sato::new_sato	99,{
+
+if (checkquest(2019) == 1) goto L_go;
+
+mes "Como eu amo minha vila, luto até a morte por ela!";
+close;
+
+L_go:
+mes "Sempre proteja sua vila, a vila é o bem mais precisoso de um shinobi";
+mes "Haverão ataques constantes, mas nunca desista!";
+completequest 2019;
+set newbie,3;
+close;
+
+}
+
+sunagakure,212,69,5	script	Guarda Ando::new_guarda	99,{
+
+if (checkquest(2021) == 1) goto L_go;
+
+mes "Fique atento, inimigos podem estar perto!";
+close;
+
+L_go:
+mes "Tome cuidado nesses campos, os animais podem parecer fracos mas alguns são muito perigosos";
+mes "além de outros shinobis de outras vilas que podem estar escondidos";
+completequest 2021;
+set newbie,5;
+close;
+
+}
+
+nevoa,14,103,5	script	Guarda Ito::new_guarda2	100,{
+
+if (checkquest(2024) == 1) goto L_go;
+
+mes "Fique atento, nunca abaixe sua guarda!";
+close;
+
+L_go:
+mes "Quando acabar os arredores de sua vila, começa a aparecer animais mais poderosos";
+mes "aumenta também a chance de encontrar outros shinobis, tome cuidado";
+completequest 2024;
+set newbie,8;
+close;
+
+}
+
+ama_in01,89,28,5	script	Ferreiro viajante::new_ferr	99,{
+
+if (checkquest(2026) == 1) goto L_go;
+
+mes "Ferreiros são os melhores";
+close;
+
+L_go:
+mes "As armas dessa loja são muito bem feitas";
+mes "Os outros equipamentos também são bastante resistentes";
+completequest 2026;
+set newbie,10;
+close;
+
+}
+
+sunagakure,143,249,5	duplicate(new_sato)	Sato#2	99
+konoha3,210,85,5	duplicate(new_sato)	Sato#3	99
+kiragakure,276,198,5	duplicate(new_sato)	Sato#4	99
+
+kumogakure,190,29,5	duplicate(new_guarda)	Guarda Ando#1	99
+kiragakure,158,138,5	duplicate(new_guarda)	Guarda Ando#2	99
+konoha3,206,71,5	duplicate(new_guarda)	Guarda Ando#3	99 //suna
+
+areia,119,270,5	duplicate(new_guarda2)	Guarda Ito#1	100 //suna
+konoha,201,276,5	duplicate(new_guarda2)	Guarda Ito#2	100
+nuvem,149,289,5	duplicate(new_guarda2)	Guarda Ito#3	100
+
+ama_in01,178,182,5	duplicate(new_ferr)	Ferreiro viajante#1	99
+ama_in01,183,131,5	duplicate(new_ferr)	Ferreiro viajante#2	99
+ama_in01,31,30,5	duplicate(new_ferr)	Ferreiro viajante#3	99

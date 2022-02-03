@@ -1,0 +1,258 @@
+dew_fild01,0,0,0,0	monster	Saru		1628,50,0,0,0
+dew_fild01,0,0,0,0	monster	Enma		1057,150,0,0,0
+
+dew_fild01	mapflag	nosave	SavePoint
+dew_fild01	mapflag	nomemo
+payon_in01	mapflag	nosave	SavePoint
+payon_in01	mapflag	nomemo
+
+dew_fild01,57,274,0	warp	dimensao_macaco#1	2,2,payon_in01,47,10
+payon_in01,43,10,0	warp	dimensao_macaco#2	2,2,dew_fild01,61,274
+
+payon_in01,65,10,2	script	Mestre Macaco	1057,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@quest3kuchy1 = 50206;
+	.@quest3kuchy2 = 50207;
+	
+	if(checkquest(.@quest3kuchy2) == 1) {
+		if(checkquest(.@quest3kuchy2,HUNTING) == 2) {
+			if(countitem(748) >= 5 && countitem(749) >= 5 && countitem(750) >= 5 && countitem(751) >= 5 && countitem(755) >= 1 && countitem(505) >= 2 && countitem(754) >= 1) {
+				if(Zeny >= 10000000){
+					mes .@npc$;
+					mes "Parabéns você completou seu treinamento.";
+					mes "Agora você já pode invocar sua kuchiyose.";
+					delitem 748,5;
+					delitem 749,5;
+					delitem 750,5;
+					delitem 751,5;
+					Zeny = Zeny - 10000000;
+			
+					delitem 755,1;
+					delitem 505,2;
+					skill 2503,3,3;
+					delitem 754,1;
+					completequest .@quest3kuchy2; 
+					erasequest .@quest3kuchy2;
+					close;
+				}
+				mes .@npc$;
+				mes "Você nao tem zeny suficiente.";
+				close;
+			}
+			mes .@npc$;
+			mes "Você nao tem todos os itens ainda";
+			close;
+		}
+		mes .@npc$;
+		mes "Você nao completou seu treinamento ainda";
+		close;
+	}
+	
+	if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Vejo que você já aprendeu bem a dominar a invocação da minha espécie.";
+		next;
+		mes .@npc$;
+		mes "Mas um contrato comigo não vai ser tão simples assim.";
+		next;
+		mes .@npc$;
+		mes "Gostaria de tentar?";
+		if(select("- Sim:- Não") == 2) { next; mes .@npc$; mes "Tudo bem."; close; }
+			next;
+			mes .@npc$;
+			mes "Eu só aceito como meu mestre aqueles que tem como objetivo proteger seus amigos e sua vila.";
+			next;
+			mes .@npc$;
+			mes "Mas para isso você terá q me provar. Traga me os seguinte itens:";
+			mes "5x Planta de cada Vila";
+			mes "1x Pergaminho em Branco Lendário";
+			mes "2x Banana";
+			mes "Matar 50 Enma";
+			completequest .@quest3kuchy1; 
+			erasequest .@quest3kuchy1;
+			setquest .@quest3kuchy2;
+			close;
+	}
+
+	mes .@npc$;
+	mes "Estou ocupado no momento volte mais tarde";
+	close;
+
+}
+
+yuno_fild02,287,16,0	script	Dimensão Paralela#7	58,{
+	if(countitem(754) >= 1) {
+		warp "dew_fild01",183,300;
+	}
+	
+	mes "Você não está autorizado a ir para outra dimensão";
+	close;
+
+}
+
+treinamento,97,46,5	script	Sarutobi	445,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+	
+	.@itemkuchy = 736;
+	.@questkuchy1 = 50006;
+	.@questkuchy2 = 50007;
+	
+	.@quest2kuchy1 = 50103;
+	
+	.@quest3kuchy1 = 50206;
+	
+	if(getskilllv(2503) == 3 ) {
+		mes .@npc$;
+		mes "Você ja está no nivel máximo.";
+		close;
+	}
+	
+	if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Você precisa ir ao mundo paralelo conversar com o Mestre Macaco";
+		close;
+	}
+	
+	if(getskilllv(2503) == 2 ) {
+		if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+			mes .@npc$;
+			mes "Vejo que você já possui um contrato, você gostaria de se tornar um Mestre?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Para se tornar um mestre kuchiyose você precisa ir até o mundo paralelo dos macacos e falar com o Mestre Macaco.";
+				next;
+				mes .@npc$;
+				mes "Para entrar nesse mundo você vai precisar de um Pergaminho Reverso e ir até o local que conecta esse mundo com o outro.";
+				next;
+				mes .@npc$;
+				mes "Já vou logo avisando que não será nada facil controlar totalmente sua invocação.";
+				next;
+				mes .@npc$;
+				mes "Então vamos continuar com o treinamento.";
+				setquest .@quest3kuchy1;
+				close;
+		}
+		mes .@npc$;
+		mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";
+		close;
+	}
+	
+	if(checkquest(.@quest2kuchy1) == 1) {
+		if(checkquest(.@quest2kuchy1,HUNTING) == 2) {
+			mes .@npc$;
+			mes "Parabéns você completou seu treinamento.";
+			mes "Agora você já pode invocar sua kuchiyose.";
+			skill 2503,2,3;
+			completequest .@quest2kuchy1; 
+			erasequest .@quest2kuchy1;
+			close;
+		}
+		mes .@npc$;
+		mes "Você não completou seu treinamento ainda.";
+		close;
+	}
+	
+	if(getskilllv(2503) == 1) {
+		if(Class == 7 || Class == 8 || Class == 9 || Class == 10 || Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+			mes .@npc$;
+			mes "Vejo que você já possui um contrato, você gostaria de evolui-lo?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Então vamos continuar com o treinamento.";
+				setquest .@quest2kuchy1;
+				close;
+		}
+		mes .@npc$;
+		mes "Você precisa ser Chunin para evoluir sua Kuchiyose.";
+		close;
+	}
+	
+	if(checkquest(.@questkuchy2) == 1) {
+		if(checkquest(.@questkuchy2,HUNTING) == 2) {
+			mes .@npc$;
+			mes "Parabéns você completou seu treinamento.";
+			mes "Agora você já pode invocar sua kuchiyose.";
+			skill 2503,1,3; 
+			completequest .@questkuchy2; 
+			erasequest .@questkuchy2;
+			close;
+		}
+		mes .@npc$;
+		mes "Você não completou seu treinamento ainda.";
+		close;
+	}
+	
+	if(checkquest(.@questkuchy1) == 1) {
+		if(countitem(.@itemkuchy) >= 1) {
+			mes .@npc$;
+			mes "Nossa você está mesmo determinado";
+			next;
+			mes .@npc$;
+			mes "Para começar seu treinamento será cobrado uma taxa de 500,000 Zeny";
+			mes "Você quer iniciar seu treinamento?";
+			if(select("- Sim:- Não") == 2) { close; }
+			if(Zeny >= 500000){
+				mes .@npc$;
+				mes "Vamos começar seu treinamento.";
+				mes "Mate 50 Macacos.";
+				Zeny = Zeny - 500000;
+				delitem .@itemkuchy,1;
+				setquest .@questkuchy2;
+				completequest .@questkuchy1; 
+				erasequest .@questkuchy1;
+				close;
+			}
+			mes .@npc$;
+			mes "Você não tem Zeny suficiente";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem o Pergaminho ainda";
+		close;
+	}
+	
+	if(kuchiyose == 1) { mes .@npc$; mes "Você já tem um contrato"; close; }
+
+	if(BaseLevel >= 400) {
+		if(livromacaco >= 1) {
+			mes .@npc$;
+			mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+			mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com as Macacos";
+			next;
+			mes .@npc$;
+			mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+			mes "Gostaria de treinar o Kuchiyose: Macaco?";
+			if(select("- Sim:- Não") == 2) { close; }
+			
+				mes .@npc$;
+				mes "Não vai ser nada facil, será um treinamento arduo.";
+				next;
+				mes .@npc$;
+				mes "Antes de comerçar preciso que me traga 1 Pergaminho em Branco";
+				setquest .@questkuchy1;
+				set kuchiyose,1;
+				close;
+		}
+		mes .@npc$;
+		mes "Antes de falar comigo leia na biblioteca mais a respeito das invocações.";
+		close;
+	}
+	mes .@npc$;
+	mes "Você precisa ser Level 400 ou mais para fazer um contrato.";
+	close;
+}
+
+bibli_01,56,89,0	script	Livro Sobre Macacos::livromacaco	58,{
+
+	mes "Livro Sobre Macacos";
+	mes "Os Macacos são excelentes para dano taijutsu, empurra e atordoa inimigos, não subestime os macacos, e se obter seu respeito pode até conseguir um contrato com o Rei dos Macacos assim como Sarutobi Sensei.";
+	set livromacaco,1;
+	close;
+}
+
+bibli_02,56,89,3	duplicate(livromacaco)	Livro Sobre Macacos#2	58
+bibli_03,56,89,3	duplicate(livromacaco)	Livro Sobre Macacos#3	58
+bibli_04,56,89,3	duplicate(livromacaco)	Livro Sobre Macacos#4	58

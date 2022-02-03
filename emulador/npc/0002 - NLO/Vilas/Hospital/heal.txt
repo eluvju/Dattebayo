@@ -1,0 +1,121 @@
+hospital,58,51,5	script	Médica#h1-1	739,{
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+}
+
+
+hospital2,58,51,3	script	Médica#h1-2	739,{
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+}
+
+hospital3,58,51,3	script	Médica#h1-3	739,{
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+}
+
+hospital4,58,51,3	script	Médica#h1-31	739,{
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+}
+
+akatsuki,148,174,5	script	Médico#aka	742,{
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+
+}

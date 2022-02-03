@@ -1,0 +1,161 @@
+//===================================
+//Made	:	Goddameit              //
+//===================================
+function	script	Backpack	{
+getitem getarg(0),1;
+set @ck,getcharid(0);
+set @ve,getarg(1);
+set @select$,"";
+set @select2$,"";
+set @nu,0;
+set @i,0;
+set @j,0;
+set @w,0;
+set @maxnu,getarg(2);
+set @maxwi,getarg(3);
+mes "Mochila";
+for(set @i,1;@i<=@maxnu;set @i,@i+1){
+	set @select$,@select$+"["+getitemname(getd("$bpdat_"+@ck+"aid"+@i+"_"+@ve))+"]^000000x["+getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)+"]:";
+	if(getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)){set .@yy,.@yy+1;}
+}
+set @select$,@select$+"[Close]";
+mes "[Vagas] ~ [^000088"+.@yy+"/^FF0000"+(@maxnu-.@yy)+"^000000]";
+mes "[Peso] ~ [^000088"+getd("$bpdat_"+@ck+"aww_"+@ve)+"/^FF0000"+(@maxwi-getd("$bpdat_"+@ck+"aww_"+@ve))+"^000000]";
+set @i,select(@select$);
+if(@i>@maxnu){close;}
+switch(select("[Retirar]","[Guardar]","[Limpar]")){
+	case 1:
+		next;
+		if(getd("$bpdat_"+@ck+"are"+@i+"_"+@ve)){
+			mes "[+"+getd("$bpdat_"+@ck+"are"+@i+"_"+@ve)+"]";
+		}
+		if(getd("$bpdat_"+@ck+"ac1"+@i+"_"+@ve)){
+			mes "["+getitemname(getd("$bpdat_"+@ck+"ac1"+@i+"_"+@ve))+"]";
+		}
+		if(getd("$bpdat_"+@ck+"ac2"+@i+"_"+@ve)){
+			mes "["+getitemname(getd("$bpdat_"+@ck+"ac2"+@i+"_"+@ve))+"]";
+		}
+		if(getd("$bpdat_"+@ck+"ac3"+@i+"_"+@ve)){
+			mes "["+getitemname(getd("$bpdat_"+@ck+"ac3"+@i+"_"+@ve))+"]";
+		}
+		if(getd("$bpdat_"+@ck+"ac4"+@i+"_"+@ve)){
+			mes "["+getitemname(getd("$bpdat_"+@ck+"ac4"+@i+"_"+@ve))+"]";
+		}
+		mes "["+getitemname(getd("$bpdat_"+@ck+"aid"+@i+"_"+@ve))+"]x["+getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)+"]";
+		if(!getd("$bpdat_"+@ck+"awa"+@i+"_"+@ve)){
+			if(!getd("$bpdat_"+@ck+"aid"+@i+"_"+@ve)||input(@nu,1,getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve))){
+				mes "Error.";
+				close;
+			}
+		}
+			if(getd("$bpdat_"+@ck+"awa"+@i+"_"+@ve)){set @nu,1;}
+			if(!checkweight(getd("$bpdat_"+@ck+"aid"+@i+"_"+@ve),@nu)){
+				mes "Muito pesado.";
+				close;
+			}
+			if(!getd("$bpdat_"+@ck+"awa"+@i+"_"+@ve)){
+				getitem getd("$bpdat_"+@ck+"aid"+@i+"_"+@ve),@nu;
+			}else{
+				getitem2 getd("$bpdat_"+@ck+"aid"+@i+"_"+@ve),@nu,getd("$bpdat_"+@ck+"aiy"+@i+"_"+@ve),getd("$bpdat_"+@ck+"are"+@i+"_"+@ve),getd("$bpdat_"+@ck+"aat"+@i+"_"+@ve),getd("$bpdat_"+@ck+"ac1"+@i+"_"+@ve),getd("$bpdat_"+@ck+"ac2"+@i+"_"+@ve),getd("$bpdat_"+@ck+"ac3"+@i+"_"+@ve),getd("$bpdat_"+@ck+"ac4"+@i+"_"+@ve);
+			}
+			setd "$bpdat_"+@ck+"anu"+@i+"_"+@ve,getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)-@nu;
+			setd "$bpdat_"+@ck+"aww_"+@ve,getd("$bpdat_"+@ck+"aww_"+@ve)-getiteminfo(getd("$bpdat_"+@ck+"aid"+@i+"_"+@ve),6)*@nu;
+			if(!getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)){
+				for(;@i<=@maxnu;set @i,@i+1){
+					setd "$bpdat_"+@ck+"anu"+@i+"_"+@ve,getd("$bpdat_"+@ck+"anu"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"aid"+@i+"_"+@ve,getd("$bpdat_"+@ck+"aid"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"are"+@i+"_"+@ve,getd("$bpdat_"+@ck+"are"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"ac1"+@i+"_"+@ve,getd("$bpdat_"+@ck+"ac1"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"ac2"+@i+"_"+@ve,getd("$bpdat_"+@ck+"ac2"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"ac3"+@i+"_"+@ve,getd("$bpdat_"+@ck+"ac3"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"ac4"+@i+"_"+@ve,getd("$bpdat_"+@ck+"ac4"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"aiy"+@i+"_"+@ve,getd("$bpdat_"+@ck+"aiy"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"aat"+@i+"_"+@ve,getd("$bpdat_"+@ck+"aat"+(@i+1)+"_"+@ve);
+					setd "$bpdat_"+@ck+"awa"+@i+"_"+@ve,getd("$bpdat_"+@ck+"awa"+(@i+1)+"_"+@ve);
+				}
+			}
+		next;mes "[Pronto]";
+		close;
+	case 2:
+		next;
+		getinventorylist;
+		for(set @j,0;@j<@inventorylist_count;set @j,@j+1){
+			set @select2$,@select2$+"["+getitemname(@inventorylist_id[@j])+"]x["+@inventorylist_amount[@j]+"]:";
+		}
+		set @select2$,@select2$+"[Close]";
+		set @j,select(@select2$)-1;
+		if(@j>@inventorylist_count){close;}
+		if(@inventorylist_refine[@j]){
+			mes "[+"+@inventorylist_refine[@j]+"]";
+		}
+		if(@inventorylist_card1[@j]){
+			mes "["+getitemname(@inventorylist_card1[@j])+"]";
+		}
+		if(@inventorylist_card2[@j]){
+			mes "["+getitemname(@inventorylist_card2[@j])+"]";
+		}
+		if(@inventorylist_card3[@j]){
+			mes "["+getitemname(@inventorylist_card3[@j])+"]";
+		}
+		if(@inventorylist_card4[@j]){
+			mes "["+getitemname(@inventorylist_card4[@j])+"]";
+		}
+		mes "["+getitemname(@inventorylist_id[@j])+"]x["+@inventorylist_amount[@j]+"]";
+		if(getiteminfo(@inventorylist_id[@j],2)==4||getiteminfo(@inventorylist_id[@j],2)==5){set @nu,1;setd "$bpdat_"+@ck+"awa"+@i+"_"+@ve,1;}
+		if(!getd("$bpdat_"+@ck+"awa"+@i+"_"+@ve)){
+			if(input(@nu,1,@inventorylist_amount[@j])){
+				mes "Error.";
+				close;
+			}
+		}
+			if(getd("$bpdat_"+@ck+"awa"+@i+"_"+@ve)&&getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)){
+				mes "Só cabe 1 item por espaço";
+				close;
+			}
+			if(getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)!=@inventorylist_id[@j]&&getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)){
+				mes "Você precisar escolher um lugar vázio";
+				mes "ou o mesmo item.";
+				close;
+			}
+			set @w,getiteminfo(@inventorylist_id[@j],6)*@nu;
+			if(getd("$bpdat_"+@ck+"aww_"+@ve)+@w>@maxwi){
+				mes "Muito pesado.";
+				close;
+			}
+			if(!getd("$bpdat_"+@ck+"awa"+@i+"_"+@ve)){
+				delitem @inventorylist_id[@j],@nu;
+			}else{
+				delitem2 @inventorylist_id[@j],@nu,@inventorylist_identify[@j],@inventorylist_refine[@j],@inventorylist_attribute[@j],@inventorylist_card1[@j],@inventorylist_card2[@j],@inventorylist_card3[@j],@inventorylist_card4[@j];
+			}
+			setd "$bpdat_"+@ck+"aid"+@i+"_"+@ve,@inventorylist_id[@j];
+			setd "$bpdat_"+@ck+"anu"+@i+"_"+@ve,getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve)+@nu;
+			setd "$bpdat_"+@ck+"are"+@i+"_"+@ve,@inventorylist_refine[@j];
+			setd "$bpdat_"+@ck+"ac1"+@i+"_"+@ve,@inventorylist_card1[@j];
+			setd "$bpdat_"+@ck+"ac2"+@i+"_"+@ve,@inventorylist_card2[@j];
+			setd "$bpdat_"+@ck+"ac3"+@i+"_"+@ve,@inventorylist_card3[@j];
+			setd "$bpdat_"+@ck+"ac4"+@i+"_"+@ve,@inventorylist_card4[@j];
+			setd "$bpdat_"+@ck+"aiy"+@i+"_"+@ve,@inventorylist_identify[@j];
+			setd "$bpdat_"+@ck+"aat"+@i+"_"+@ve,@inventorylist_attribute[@j];
+			setd "$bpdat_"+@ck+"aww_"+@ve,getd("$bpdat_"+@ck+"aww_"+@ve)+@w;
+		next;mes "[Pronto]";
+		close;
+	case 3:
+		next;
+		if(select("Não","Sim")==1){close;}
+		setd "$bpdat_"+@ck+"aww_"+@ve,getd("$bpdat_"+@ck+"aww_"+@ve)-getiteminfo(getd("$bpdat_"+@ck+"aid"+@i+"_"+@ve),6)*getd("$bpdat_"+@ck+"anu"+@i+"_"+@ve);
+		for(;@i<=@maxnu;set @i,@i+1){
+			setd "$bpdat_"+@ck+"anu"+@i+"_"+@ve,getd("$bpdat_"+@ck+"anu"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"aid"+@i+"_"+@ve,getd("$bpdat_"+@ck+"aid"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"are"+@i+"_"+@ve,getd("$bpdat_"+@ck+"are"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"ac1"+@i+"_"+@ve,getd("$bpdat_"+@ck+"ac1"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"ac2"+@i+"_"+@ve,getd("$bpdat_"+@ck+"ac2"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"ac3"+@i+"_"+@ve,getd("$bpdat_"+@ck+"ac3"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"ac4"+@i+"_"+@ve,getd("$bpdat_"+@ck+"ac4"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"aiy"+@i+"_"+@ve,getd("$bpdat_"+@ck+"aiy"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"aat"+@i+"_"+@ve,getd("$bpdat_"+@ck+"aat"+(@i+1)+"_"+@ve);
+			setd "$bpdat_"+@ck+"awa"+@i+"_"+@ve,getd("$bpdat_"+@ck+"awa"+(@i+1)+"_"+@ve);
+		}
+		next;mes "[Complete]";
+		close;
+}
+}

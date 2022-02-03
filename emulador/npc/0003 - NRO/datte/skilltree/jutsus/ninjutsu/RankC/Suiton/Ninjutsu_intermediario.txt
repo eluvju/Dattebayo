@@ -1,0 +1,7 @@
+geffen,123,72,5	script	Ninjutsu intermediário#c	831,{
+	if(checkquest(1015) != 1) {mes "Não posso te ajudar em nada."; close;}
+	mes " [Ninjutsu intermediário] ";
+	mes " Explicação sobre rank de ninjutsus.";
+	set ninintermediario,1;
+	close;
+}

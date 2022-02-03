@@ -1,0 +1,248 @@
+tur_dun201,0,0,0,0	monster	Tartaruga		1021,25,0,0,0
+tur_dun201,0,0,0,0	monster	Ninkame		1026,100,0,0,0
+
+tur_dun201	mapflag	nosave	SavePoint
+tur_dun201	mapflag	nomemo
+payg_cas05	mapflag	nosave	SavePoint
+payg_cas05	mapflag	nomemo
+tur_dun201,154,242,0	warp	dimensao_tartaruga#1	2,2,payg_cas05,222,256
+payg_cas05,219,256,0	warp	dimensao_tartaruga#2	2,2,tur_dun201,154,238
+payg_cas05,251,256,5	script	Mestre Tartaruga	1026,{
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+	.@quest3kuchy1 = 50210;
+	.@quest3kuchy2 = 50211;
+
+	if(checkquest(.@quest3kuchy2) == 1) {
+		if(checkquest(.@quest3kuchy2,HUNTING) == 2) {			
+			if(countitem(736) >= 40 && countitem(755) >= 40 && countitem(756) >= 40 && countitem(753) >= 1) {				
+				if(Zeny >= 100000000){					
+					mes .@npc$;					
+					mes "Parabéns, você completou seu treinamento.";					
+					mes "Agora você já pode invocar sua kuchiyose.";					
+					delitem 736,40;					
+					delitem 755,40;					
+					delitem 756,40;					
+					delitem 753,1;
+					set Zeny, Zeny - 100000000;
+					skill 2505,3,3;
+					completequest .@quest3kuchy2; 
+					erasequest .@quest3kuchy2;
+					close;
+				}
+				mes .@npc$;
+				mes "Você nao tem zeny suficiente.";
+				close;
+			}
+			mes .@npc$;
+			mes "Você nao tem todos os itens ainda";
+			close;
+		}
+		mes .@npc$;
+		mes "Você nao completou seu treinamento ainda";
+		close;
+	}
+	if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Vejo que você já aprendeu bem a dominar a invocação da minha espécie.";
+		next;
+		mes .@npc$;
+		mes "Mas um contrato comigo não vai ser tão simples assim.";
+		next;
+		mes .@npc$;
+		mes "Gostaria de tentar?";
+		if(select("- Sim:- Não") == 2) { next; mes .@npc$; mes "Tudo bem."; close; }
+			next;
+			mes .@npc$;
+			mes "Eu só aceito como meu mestre aqueles que tem como objetivo proteger seus amigos e sua vila.";
+			next;
+			mes .@npc$;
+			mes "Mas para isso você terá q me provar. Traga me os seguinte itens:";			
+			mes "40x Pergaminho em Branco";			
+			mes "40x Pergaminho em Branco Lendário";			
+			mes "40x Segredo Shinobi";			
+			mes "1x Fuuin no Sho";
+			mes "100.000.000 zeny";			
+			mes "Matar 100 Ninkame";
+			completequest .@quest3kuchy1; 
+			erasequest .@quest3kuchy1;
+			setquest .@quest3kuchy2;
+			close;
+	}
+	mes .@npc$;
+	mes "Estou ocupado no momento volte mais tarde";
+	close;
+}
+tur_dun01,67,61,0	script	Dimensão Paralela#6	58,{
+
+	if(countitem(754) >= 1) {
+		mes "Vejo que você possui um pergaminho reverso. Lembre-se o seu pergaminho será consumido ao entrar no dimensão paralelo.";
+		if(select("- Sim:- Não") == 2) close;
+		close2;
+		delitem 754,1;
+		warp "tur_dun201",67,61;
+	}
+	mes "Você não está autorizado a ir para outra dimensão";
+	close;
+}
+
+treinamento,65,65,5	script	Maito Gai	1_m_pastor,{
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+	.@questkuchy1 = 50010;
+	.@questkuchy2 = 50011;
+	.@quest2kuchy1 = 50105;
+	.@quest3kuchy1 = 50210;
+	
+	if(getskilllv(2505) == 3 ) {
+		mes .@npc$;
+		mes "Você ja está no nivel máximo.";
+		close;
+	}
+	
+		if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Você precisa ir ao mundo paralelo conversar com o Mestre Tartaruga";
+		close;
+		}
+
+		if(kuchiyose2 == 1 || kuchiyose == 1 || kuchiyose3 == 1 || kuchiyose5 == 1) { 
+		mes .@npc$; 
+		mes "Você já tem um contrato"; 
+		close; 
+		}
+
+	if(getskilllv(2505) == 2) {
+		if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+			mes .@npc$;
+			mes "Vejo que você já possui um contrato, você gostaria de se tornar um Mestre?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Para se tornar um mestre kuchiyose você precisa ir até o mundo paralelo das tartarugas e falar com o Mestre Tartaruga.";
+				next;
+				mes .@npc$;
+				mes "Para entrar nesse mundo você vai precisar de um Pergaminho Reverso e ir até o local que conecta esse mundo com o outro.";
+				next;
+				mes .@npc$;
+				mes "Já vou logo avisando que não será nada facil controlar totalmente sua invocação.";
+				next;
+				mes .@npc$;
+				mes "Então vamos continuar com o treinamento.";
+				setquest .@quest3kuchy1;
+				close;
+		}
+		mes .@npc$;
+		mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";
+		close;
+	}		//----------------------------------------------------------------------------------------------------
+	if(checkquest(.@quest2kuchy1) == 1) {		
+		if(countitem(736) >= 20 && countitem(755) >= 20 && countitem(756) >= 20) {			
+			if(checkquest(.@quest2kuchy1,HUNTING) == 2) {				
+				if(Zeny >= 30000000){					
+					mes .@npc$;					
+					mes "Parabéns você completou seu treinamento.";					
+					mes "Agora você já pode invocar sua kuchiyose.";					
+					delitem 736,20;
+					delitem 755,20;
+					delitem 756,20;
+					set Zeny, Zeny - 30000000;
+					skill 2505,2,3;
+					completequest .@quest2kuchy1;
+					erasequest .@quest2kuchy1;
+					close;
+				}				
+				mes .@npc$;				
+				mes "Você não tem zeny suficiente.";				
+				close;			
+			}			
+			mes .@npc$;			
+			mes "Você não completou seu treinamento ainda.";			
+			close;		
+		}		
+		mes .@npc$;		
+		mes "Você não completou seu treinamento ainda.";		
+		close;	
+	}		
+		
+		if(getskilllv(2505) == 1) {		
+			if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {			
+				mes .@npc$;			
+				mes "Vejo que você já possui um contrato, você gostaria de evolui-lo?";			
+				if(select("- Sim:- Não") == 2) { close; }				
+					mes .@npc$;				
+					mes "Então vamos continuar com o treinamento.";				
+					next;				
+					mes "Traga-me:";				
+					mes "20x Pergaminho em Branco";				
+					mes "20x Pergaminho Branco Lendário";				
+					mes "20x Segredo Shinobi";				
+					mes "30,000,000 Zeny";				
+					mes "Mate 100 Cobras";				
+					setquest .@quest2kuchy1;				
+					close;		
+			}		
+			mes .@npc$;		
+			mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";		
+			close;	
+		}
+	//----------------------------------------------------------------------------------------------------	
+	if(checkquest(.@questkuchy2) == 1) {
+		if(checkquest(.@questkuchy2,HUNTING) == 2) {
+			mes .@npc$;
+			mes "Parabéns você derrotou todos os monstros!";
+			mes "Vou verificar se você tem os outros items e o Zeny...";
+			if(countitem(736) < 10 || Zeny < 5000000) { close; }
+				next;
+				mes .@npc$;
+				mes "Parabéns!";
+				delitem 736,10;
+				skill 2505,1,3;
+				completequest .@questkuchy2; 
+				erasequest .@questkuchy2;
+				close;
+		}
+		mes .@npc$;
+		mes "Você não completou seu treinamento ainda.";
+		close;
+	}
+
+	if(Class > 5) {
+		if(livrotartaruga >= 1) {
+			mes .@npc$;
+			mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+			mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com as tartarugas.";
+			next;
+			mes .@npc$;
+			mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+			mes "Gostaria de treinar o Kuchiyose: Tartaruga?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Não vai ser nada facil, será um treinamento arduo.";
+				next;
+				mes .@npc$;
+				mes "Vou precisar que você me traga:";
+				mes "10x Pergaminho em Branco.";
+				mes "5.000.000 zenys.";
+				mes "E mate 100x Tartarugas.";
+				next;
+				mes .@npc$;
+				mes "Boa sorte!";
+				setquest .@questkuchy2;
+				set kuchiyose4,1;
+				close;
+		}
+		mes .@npc$;
+		mes "Antes de falar comigo leia na biblioteca mais a respeito das invocações.";
+		close;
+	}
+	mes .@npc$;	mes "Você precisa ser Chunin ou superior para aprender Kuchiyose.";
+	close;
+}
+
+bibli_01,61,52,0	script	Livro Sobre Tartarugas::livrotartaruga	58,{
+	mes "Livro Sobre Tartarugas";
+	mes "As tartarugas são as mais versátil das invocações, seu foco é na defesa e na mobilidade de seu mestre, e não acredite que ela é devagar só por ser uma tartaruga, muito pelo contrário, já o rei das tartarugas não luta, porém protege seu mestre até a morte, seu maior usurio no universo ninja foi Gai Sensei.";
+	set livrotartaruga,1;
+	close;
+}
+bibli_02,61,52,3	duplicate(livrotartaruga)	Livro Sobre Tartarugas#2	58
+bibli_03,61,52,3	duplicate(livrotartaruga)	Livro Sobre Tartarugas#3	58
+bibli_04,61,52,3	duplicate(livrotartaruga)	Livro Sobre Tartarugas#4	58

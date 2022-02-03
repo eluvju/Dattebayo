@@ -1,0 +1,93 @@
+//developer:Gustavo Ruiz
+acad_01,98,24,5	script	Ajudante	89,{
+
+OnInit:
+waitingroom "Informações",0;
+
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes "Olá "+StrCharInfo(0)+". Eu posso lhe dar algumas informações do NRO";
+next;
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes"O que você gostaria de saber?";
+next;
+menu "O que faço?",in,"Preciso de mais informações",se,"Nada",-;
+close;
+
+in:
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes "Selecione uma opção abaixo";
+next;
+menu "Como eu saio daqui?",qu,"Como eu viro Genin?",co,"Como eu aprendo jutsus?",oq,"Como eu fico mais forte?",co2,"Dicas importantes",dicas,"Nada",-;
+close;
+
+qu:
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes "Pra sair da sala de treinamento, é preciso:";
+mes " ";
+mes "^993300Completar todos os jutsus da atendente (Shizune)^000000";
+mes "^333300Responder todos os questionários das salas^000000";
+mes "^003300Falar com a Tsunade na biblioteca (Primeira sala a esquerda)^000000";
+close;
+
+
+co:
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes "Pra virar Genin, é preciso:";
+mes " ";
+mes "^993300Completar todos os jutsus da atendente (Shizune)^000000";
+mes "^333300Responder todos os questionários das salas^000000";
+mes "^003300Falar com a Tsunade na biblioteca (Primeira sala a esquerda)^000000";
+close;
+
+
+oq:
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes "Pra aprender jutsus, é preciso fazer uma quest para cada um, no NRO temos Ninjutsu, Taijutsu, Fuuinjutsu, Genjutsu, Medicina, Velocidade";
+next;
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes "Desses 6 estilos, Só podem ser aprendidos três, que serão seus treinos básicos, desse três treinos, apenas dois podem ser evoluídos para treinos intermediários, e desses dois, apenas um pode virar avançado, então escolha com sabedoria";
+next;
+mes "^993300Ninjutsu:^000000";
+mes "Consite em manipular chakra e soltar em seus inimigos, capaz de causar grandes danos";
+next;
+mes "^333300Taijutsu^000000";
+mes "Luta corpo a corpo, usado bastante e capaz de provocar enormes danos";
+next;
+mes "^003300Fuuinjutsu:^000000";
+mes "Buffs e debuffs, útil em campos de batalha como suporte";
+next;
+mes "^003366Genjutsu^000000";
+mes "Um estilo que confude seus inimigos, tornando-os vulneráveis nas lutas";
+next;
+mes "^000080Medicina^000000";
+mes "Um bom médico pode fazer a diferença em uma guerra, ótimo suporte";
+next;
+mes "^000080Velocidade^000000";
+mes "Jutsus que permite que o usuário se mova e ataque mais rapidamente";
+close;
+
+
+co2:
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes "Após sair da sala de treinamento, você será enviado para a vila, e poderá começar a subir de nível, é aconselhado a montar grupos para upar mais rapidamente";
+next;
+mes "Mas se preferir ir sozinho, é só se dirigir para a saída da vila, e começar a matar os montros.";
+close;
+
+
+dicas:
+mes "[^FF0000"+strnpcinfo(0)+"^000000]";
+mes "vou lhe dizer algumas dicas importantes";
+next;
+mes "Alt + u: Ao apertar esse atalho, você verá suas quests ativas, há 3 abas nessa tela, on/off/all, ao clicar com o botão direito na quest, ela alternará entre on e off, ao entregar uma quest, certifique-se que ela esteja on";
+next;
+mes "@main: Esse comando permite que você converse com todos os jogadores do servidor, muito útil para montar grupos e tirar dúvidas!";
+next;
+mes "Seus estilos: Escolha muito bem seus estilos de luta, para trocar-los é apenas com itens de doação, mais informações no 'Como aprendo jutsus'";
+close;
+
+se:
+mes "Para maiores informações, visite nosso fórum, lá aprenderá tudo que precisa do servidor!";
+close;
+
+}

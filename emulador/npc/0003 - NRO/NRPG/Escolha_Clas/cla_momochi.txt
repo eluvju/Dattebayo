@@ -1,0 +1,39 @@
+que_ng,27,70,3	script	Clã Momochi	734,{
+	show "[Clã Momochi]";
+	if(elemento == 0){goto aprendermomochi;}
+	if(cla == 1){goto L_alreadyhavecla;}	
+
+
+	aprendermomochi:
+	show "Olá caro shinobi, voce gostaria de fazer parte do Clã Momochi ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Clã Momochi]";
+	show "Muito bem, muito sábia essa escolha!";
+	setjob "4010";
+	set momochi,momochi + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Clã Momochi]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	show "Você já possui um clã";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

@@ -1,0 +1,311 @@
+nevoa.gat,113,242,5	script	Armas Ninjas Lendárias::armas	59,{
+mes "[Armas Ninjas Lendárias]";
+mes "Olá "+strcharinfo(0)+"! Eu posso lhe ajudar a conseguir armas incríveis.";
+mes "São armas que ja foram de grandes ninjas e que obtive atrávez de grande batalhas e conquistas";
+mes "Como ja estou velho vou ajudar minha vila dando elas para a nova geração de ninjas!";
+mes "Pelo jeito ficou interessado ein bom como não sou tão jovem como você";
+mes "preciso de alguns suprimentos se voce me trouxer eu lhe dou um item.";
+menu "Samehada (lvl 150)",samehada,"Kubikiri Houchi (lvl 160)",kubikiri,"Bastão Sandaime (lvl 180)",sandaime,"Kusanagi (lvl 150)",kusanagi,"Esmagador Kamakiri (lvl 200)",esmagador,"Lâmina Garian (lvl 200)",lamina,"Kunai Yondaime (lvl 180)",yondaime;
+
+samehada:
+if(Baselevel < 150) goto NAO;
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Então você gosta de espadas grandes e pesadas, está é perfeita para você. Uma espada que dá um grande dano em um ataque, porém por ser pesada ela é bem lenta e tem uma grande capacidade de absorver chakra. A textura dessa grande espada se assemelha com á pele de um tubarão.";
+next;
+mes "Essa espada fornece ao usuário +30% de ataque mágico e +15% de dano com a habilidade nevasca.";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Me mostre sua força! Sua missão é buscar os seguintes items";
+mes "^FF000050^000000  Insígnia do Herói";
+mes "^FF000015^000000  Bainha Velha";
+mes "^FF000015^000000  Luva do Carrasco";
+mes "^FF0000500^000000  Presa";
+mes "^FF000025^000000  Esfera das Sombras";
+mes "^FF000010^000000  Cyfar";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Terminou a Missão?";
+next;
+menu "Sim",-,"Nao",NAO;
+mes "[Armas Ninjas Lendárias]";
+mes "hum... deixe me ver....";
+next;
+if (countitem(968) < 50) goto SemItem;
+if (countitem(7022) < 15) goto SemItem;
+if (countitem(7017) < 15) goto SemItem;
+if (countitem(1063) < 500) goto SemItem;
+if (countitem(7524) < 25) goto SemItem;
+if (countitem(7053) < 10) goto SemItem;
+mes "[Armas Ninjas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está a sua recompensa!";
+next;
+delitem 968,50;
+delitem 7022,15;
+delitem 7017,15;
+delitem 1063,500;
+delitem 7524,25;
+delitem 7053,10;
+getitem 1160,1;
+announce "O Shinobi " + strcharinfo(0) + " terminou a missão da Samehada",0;
+mes "[Armas Ninjas Lendárias]";
+mes "Parabens Garoto!!";
+close;
+
+
+kubikiri:
+if(Baselevel < 160) goto NAO;
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Espada utilizada por Zabuza, um grande shinobi da Vila Oculta da Névoa, ela se assemelha a Samehada porém é parecida com um facão só que bem grande e pesado, reduz a velocidade do usuario dessa espada.";
+next;
+mes "Fornece ao usuário +30% de ataque, +15% de Chance de Causar Sangramento , e 0.4% de chance de dar Coma";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "^FF000025^000000 Ba Gua";
+mes "^FF0000100^000000 Nadadeira";
+mes "^FF000025^000000 Pedra do Pesadelo";
+mes "^FF000015^000000  Cachimbo";
+mes "^FF00001500^000000  Dente Fossilizado";
+mes "^FF000020^000000  Braceletes de Obediencia";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Terminou?";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Deixe me ver.";
+next;
+if (countitem(7169) < 25) goto SemItem;
+if (countitem(951) < 100) goto SemItem;
+if (countitem(7102) < 25) goto SemItem;
+if (countitem(2268) < 15) goto SemItem;
+if (countitem(1053) < 1500) goto SemItem;
+if (countitem(639) < 20) goto SemItem;
+mes "[Armas Ninjas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 7169,25;
+delitem 951,100;
+delitem 7102,25;
+delitem 2268,15;
+delitem 1053,1500;
+delitem 639,20;
+getitem 1172,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Kubikiri Houchi! ",0;
+mes "[Armas Ninjas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+sandaime:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Bastão criado pelo falecido Sarutobi, grande nome entre os Kages de Konoha, que deu sua vida para salvar sua vila. Este bastão é bem agil e pode se transformar de acordo com a vontade do usuario dele.";
+next;
+mes "Fornece ao usuário +25% de ataque , é indestrutível , e Precisão +100.";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "^FF000010^000000 Plantas da Névoa";
+mes "^FF000010^000000 Plantas de Suna ";
+mes "^FF000010^000000 Plantas de Konoha";
+mes "^FF000010^000000 Fragmento de Desgraça";
+mes "^FF000010^000000 Pedra do Sábio";
+mes "^FF000020^000000  Braceletes de Obediencia";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(710) < 10) goto SemItem;
+if (countitem(704) < 10) goto SemItem;
+if (countitem(712) < 10) goto SemItem;
+if (countitem(7437) < 10) goto SemItem;
+if (countitem(12040) < 10) goto SemItem;
+if (countitem(639) < 20) goto SemItem;
+mes "[Armas Ninjas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 710,10;
+delitem 704,10;
+delitem 712,10;
+delitem 7437,10;
+delitem 12040,10;
+delitem 639,20;
+getitem 1133,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Bastão Sandaime! ",0;
+mes "[Armas Ninjas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+kusanagi:
+if(Baselevel < 150) goto NAO;
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Espada Lendária, possui uma lâmina tão afiada que é capaz de cortar até diamante e pode expandir sua lamina infinitamente.";
+next;
+mes "Fornece ao usuário +30% de ataque mágico , +5% de chance de conjurar Atordoar , e +15% de dano com habilidade Chidori";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "^FF000050^000000 Língua de Réptil";
+mes "^FF00005^000000 Lasca de Pedra";
+mes "^FF00005^000000 Plantas da Névoa";
+mes "^FF00005^000000 Plantas de Suna";
+mes "^FF00005^000000 Plantas de Konoha";
+mes "^FF000010^000000  Cyfar";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Terminou? Foi facil ne";
+mes "Deixe ver se você terminou mesmo!";
+next;
+if (countitem(903) < 50) goto SemItem;
+if (countitem(7211) < 5) goto SemItem;
+if (countitem(710) < 5) goto SemItem;
+if (countitem(704) < 5) goto SemItem;
+if (countitem(712) < 5) goto SemItem;
+if (countitem(7053) < 10) goto SemItem;
+mes "[Armas Ninjas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 903,50;
+delitem 7211,5;
+delitem 710,5;
+delitem 704,5;
+delitem 712,5;
+delitem 7053,10;
+getitem 1161,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão da Kusanagi! ",0;
+mes "[Armas Ninjas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+esmagador:
+if(Baselevel < 200) goto NAO;
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Uma tesoura gigante que tem a função de cortar como uma tesoura ou como uma faca quando suas lâminas estão fechadas. ";
+next;
+mes "Fornece ao usuário +10% de ataque , e tem uma pequena chance de quebrar o colete do inimigo";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "^FF0000500^000000 Casco Arco-Íris";
+mes "^FF0000500^000000 Pinças de Escorpião";
+mes "^FF000010^000000 Insígnia do Herói";
+mes "^FF0000100^000000 Osso";
+mes "^FF0000100^000000 Escama Brilhante";
+next;
+if (countitem(1013) < 500) goto SemItem;
+if (countitem(7125) < 500) goto SemItem;
+if (countitem(968) < 10) goto SemItem;
+if (countitem(932) < 100) goto SemItem;
+if (countitem(954) < 100) goto SemItem;
+mes "[Armas Ninjas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 1013,500;
+delitem 7125,500;
+delitem 968,10;
+delitem 932,100;
+delitem 954,100;
+getitem 1225,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Esmagador Kamakiri! ",0;
+mes "[Armas Ninjas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+
+lamina:
+if(Baselevel < 200) goto NAO;
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "é uma espada azul semelhante a um tridente, com uma esfera verde no cabo. Pode expadir suas três lâminas e movimenta-las em qualquer direção, devido a suas partes serem presas por um fino cabo de aço. Essa espada reage ao Chakra, e o amplifica, fazendo com que suas lâminas ganhem a forma de cabeças de dragão.";
+next;
+mes "Fornece ao usuário uma pequena chance de quebrar a arma do oponente e  fornece +10% de ataque físico";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "^FF000010^000000 Cabelo Horrendo";
+mes "^FF00005^000000 Casca";
+mes "^FF000040^000000 Casca Quebrada";
+mes "^FF0000100^000000 Garras de Leopardo";
+mes "^FF000050^000000 Escama de Dragão";
+next;
+if (countitem(1048) < 10) goto SemItem;
+if (countitem(935) < 5) goto SemItem;
+if (countitem(7070) < 40) goto SemItem;
+if (countitem(7172) < 100) goto SemItem;
+if (countitem(1036) < 50) goto SemItem;
+mes "[Armas Ninjas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 1048,10;
+delitem 935,5;
+delitem 7070,40;
+delitem 7172,100;
+delitem 1036,50;
+getitem 1224,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão da Lâmina Garian! ",0;
+mes "[Armas Ninjas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+SemItem:
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Desculpe, mas você ainda não completou a sua missão!";
+close;
+
+NAO:
+next;
+mes "Você não tem o level necessário para essa missão";
+close;
+
+yondaime:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Uma kunai especial usada pelo yondaime hokage.";
+next;
+mes "Fornece ao usuário +30% de ataque físico e tira dano conforme a defesa do inimigo, quanto mais defesa mais dano.";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "^FF0000100^000000 Insígnia do Herói";
+mes "^FF000050^000000 Colar do Oblívio";
+mes "^FF000050^000000 Garra de Macaco";
+mes "^FF0000100^000000 Sopa de Tinta de Lula e Ovos de Sapo";
+mes "^FF0000100^000000 Coração Imortal";
+mes "^FF000020^000000  Braceletes de Obediencia";
+next;
+mes "[Armas Ninjas Lendárias]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(968) < 100) goto SemItem;
+if (countitem(1008) < 50) goto SemItem;
+if (countitem(7011) < 50) goto SemItem;
+if (countitem(12056) < 100) goto SemItem;
+if (countitem(929) < 100) goto SemItem;
+if (countitem(639) < 20) goto SemItem;
+mes "[Armas Ninjas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 968,100;
+delitem 1008,50;
+delitem 7011,50;
+delitem 12056,100;
+delitem 929,100;
+delitem 639,20;
+getitem 1230,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão da Kunai Yondaime! ",0;
+mes "[Armas Ninjas Lendárias]";
+mes "Volte Sempre!!";
+close;
+}
+
+//============== MAP FLAG ===============
+in_hunter	mapflag	nowarp
+in_hunter	mapflag	nowarpto	
+
+konoha.gat,160,216,5	duplicate(armas)	Armas Ninjas Lendárias#x	59
+areia.gat,172,235,5	duplicate(armas)	Armas Ninjas Lendárias#m	59
+prt_monk.gat,227,162,5	duplicate(armas)	Armas Ninjas Lendárias#z	59

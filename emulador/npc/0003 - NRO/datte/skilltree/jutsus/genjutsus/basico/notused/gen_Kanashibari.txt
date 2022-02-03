@@ -1,0 +1,92 @@
+kiri,269,315,5	script	Kanashibari::gen3	831,{
+
+if (seloskill678 >= 1) goto L_delete;
+if(gen_basico != 1) {mes "Você precisa estudar genjutsu básico antes de aprender um genjutsu"; close;}
+if (checkquest(2043) == 1) goto L_go;
+if(gen_skill_bas >= 3) {mes "Você já aprendeu três genjutsus básicos, esse é o limite"; close;}
+if(accept_gen == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if(Kanashibari == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de genjutsu espalhado pelo mundo, eu posso lhe ensinar um genjutsu básico";
+next;
+mes "O genjutsu que eu ensino é o: Kanashibari no Genjutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Kanashibari no Genjutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (seloskill678 == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (seloskill678 >= 1) {
+mes "Jutsu removido com sucesso";
+set seloskill678,0;
+set Kanashibari,0;
+erasequest 2043;
+if(accept_gen > 0) {set accept_gen,accept_gen -1;}
+if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;}
+close;
+}
+
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_tres,1;
+set accept_gen,accept_gen +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 30 Kyodaigumo.";
+setquest 2043;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_bas >= 3) {mes "Você já aprendeu três genjutsus básicos, esse é o limite"; close;}
+if(gen_mobs_tres < 30) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+set seloskill678,1;
+set Kanashibari,1;
+set quest_gen_tres,0;
+set gen_mobs_tres, 0;
+completequest 2043;
+erasequest 2043;
+set gen_skill_bas,gen_skill_bas +1;
+announce "[Genjutsu Quest] "+strcharinfo(0)+" completou a quest do genjutsu Kanashibari no Genjutsu",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Básico]",0;
+}
+
+-	script	genbas#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1304 && quest_gen_tres == 1) {set gen_mobs_tres,gen_mobs_tres +1; announce "[Genjutsu Quest] Você já derrotou "+gen_mobs_tres+" / 30 Kyodaigumo",bc_blue|bc_self; end;}
+
+}
+
+areia,68,140,5	duplicate(gen3)	Kanashibari#31	51,{
+konoha,49,81,5	duplicate(gen3)	Kanashibari#32	51,{
+nuvem,42,231,5	duplicate(gen3)	Kanashibari#33	51,{

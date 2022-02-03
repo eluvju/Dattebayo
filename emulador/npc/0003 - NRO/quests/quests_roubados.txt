@@ -1,0 +1,326 @@
+nevoa.gat,125,242,5	script	Equipamentos Roubados::roubados	59,{
+mes "[Equipamentos Ninjas Lendários]";
+mes "Olá "+strcharinfo(0)+"! eu sou uma pessoa que ja lutou bastante nessa vida.";
+mes "E falo com orgulho que nunca venci nenhuma luta *-*";
+mes "Mas de todas as minhas lutas eu consegui fugir com uma lembrança do meu adversário";
+mes "Como eu não luto mais esses equipamentos não me servem mais";
+mes "Então vou lhe dar uma força, se você me trouxer uns suprimentos que preciso eu lhe dou um deles!.";
+menu "Faixa Sabaku (lvl 50)",Faixa,"Selo Hyuuga (lvl 50)",Selo,"Orelhas Kyuubi (lvl 50)",Orelha,"Brincos Nara (lvl 50)",Brinco,"Mais Equipamentos",mais;
+
+mais:
+mes "[Equipamentos Ninjas Lendários]";
+mes "Olá "+strcharinfo(0)+"! quer ver os outros equipamentos é?.";
+menu "Chapéu do Kankurou (lvl 50)",Kankurou,"Selo da Tsunade (lvl 50)",Tsunade,"Máscara Zabuza (lvl 50)",Zabuza,"Sombrancelhas Grossas (lvl 50)",Grossas;
+
+Faixa:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Faixa Exclusiva do Clã Sabaku , simboliza a especialização em Areia.";
+next;
+mes "Fornece +5 de Inteligencia, +5 de destreza.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000200^000000 Erva vermelha";
+mes "^FF0000100^000000 Prego Enferrujado";
+mes "^FF00002^000000 Graveto de Visco";
+mes "^FF00005^000000 Máscara Ninja";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(507) < 200) goto SemItem;
+if (countitem(7317) < 100) goto SemItem;
+if (countitem(7018) < 2) goto SemItem;
+if (countitem(7157) < 5) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 507,200;
+delitem 7317,100;
+delitem 7018,2;
+delitem 7157,5;
+getitem 2295,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão da Faixa Sabaku!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+
+Selo:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Selo Hyuuga que diferencia as duas grandes Familias Hyuuga.";
+next;
+mes "Fornece +5 de Força, +5 de destreza.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000200^000000 Erva Verde";
+mes "^FF0000100^000000 Couro de Animal";
+mes "^FF00002^000000 Vida Verdejante";
+mes "^FF000010^000000 Máscara do Festival";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(511) < 200) goto SemItem;
+if (countitem(919) < 100) goto SemItem;
+if (countitem(993) < 2) goto SemItem;
+if (countitem(7187) < 10) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 511,200;
+delitem 919,100;
+delitem 993,2;
+delitem 7187,10;
+getitem 2211,1;
+announce "O Shinobi " + strcharinfo(O) + " Completou a missão do Selo Hyuuga!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+
+Orelha:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Esta orelha tem o proposito de relembra a figura Kyuubi que foi selada no corpo de Naruto.";
+next;
+mes "Fornece +5 de Vitalidade, +5 de Agilidade.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000200^000000 Mel";
+mes "^FF0000100^000000 Erva Branca";
+mes "^FF00002^000000 Ametista";
+mes "^FF00002^000000 Insígnia do Herói";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(518) < 200) goto SemItem;
+if (countitem(509) < 100) goto SemItem;
+if (countitem(719) < 2) goto SemItem;
+if (countitem(968) < 2) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 518,200;
+delitem 509,100;
+delitem 719,2;
+delitem 968,2;
+getitem 19030,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão da Orelha Kyuubi!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+Brinco:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Brinco dado a Shikamaru por Asuma.";
+next;
+mes "Fornece +5 de Inteligencia, +5 de Vitalidade.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000200^000000 Minério de Ferro";
+mes "^FF0000100^000000 Brigan";
+mes "^FF00002^000000 Esmeralda";
+mes "^FF000050^000000 Casca Quebrada";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(1002) < 200) goto SemItem;
+if (countitem(7054) < 100) goto SemItem;
+if (countitem(721) < 2) goto SemItem;
+if (countitem(7070) < 50) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 1002,200;
+delitem 7054,100;
+delitem 721,2;
+delitem 7070,50;
+getitem 5285,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Brinco Nara!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+Kankurou:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Chapeu dado aos Grandes mestres de Marionetes.";
+next;
+mes "Fornece +5 de Inteligencia, +5 de Força.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000200^000000 Zargonio";
+mes "^FF0000100^000000 Poeira Estelar";
+mes "^FF00002^000000 Piroxênio";
+mes "^FF0000300^000000 Garras de Leopardo";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(912) < 200) goto SemItem;
+if (countitem(1001) < 100) goto SemItem;
+if (countitem(7296) < 2) goto SemItem;
+if (countitem(7172) < 300) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 912,200;
+delitem 1001,100;
+delitem 7296,2;
+delitem 7172,300;
+getitem 19005,1;
+announce "O Shinobi " + strcharinfo(O) + " Completou a missão do Kankurou Hat!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+Tsunade:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Selo da tsunade que quando liberado o usuário adquire uma força adicional.";
+next;
+mes "Fornece +5 de Força, +5 de Agilidade.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000200^000000 Gema Vermelha";
+mes "^FF0000100^000000 Carvão";
+mes "^FF00002^000000 Asas de Libélula";
+mes "^FF00005^000000 Nadadeira";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(716) < 200) goto SemItem;
+if (countitem(1003) < 100) goto SemItem;
+if (countitem(7064) < 2) goto SemItem;
+if (countitem(951) < 5) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 716,200;
+delitem 1003,100;
+delitem 7064,2;
+delitem 951,5;
+getitem 5125,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Selo da Tsunade!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+Zabuza:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Máscara usada pelo demonio da névoa Zabuza.";
+next;
+mes "Fornece +5 de Inteligencia, +5 de Destreza.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000200^000000 Pata de Besouro";
+mes "^FF0000100^000000 Scell";
+mes "^FF00002^000000 Casca Brilhante";
+mes "^FF00002^000000 Lasca de Pedra";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(7202) < 200) goto SemItem;
+if (countitem(911) < 100) goto SemItem;
+if (countitem(7009) < 2) goto SemItem;
+if (countitem(7211) < 2) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 7202,200;
+delitem 911,100;
+delitem 7009,2;
+delitem 7211,2;
+getitem 19128,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão da Mascara Zabuza!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+Grossas:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Sombrancelhas grossas do Rock Lee e Maito Gai.";
+next;
+mes "Fornece +5 de Força, +5 de Agilidade.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000200^000000 Casca";
+mes "^FF0000100^000000 Elunium";
+mes "^FF00002^000000 Foice de Louva-a-Deus";
+mes "^FF0000300^000000 Poeira Venenosa";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(935) < 200) goto SemItem;
+if (countitem(985) < 100) goto SemItem;
+if (countitem(1031) < 2) goto SemItem;
+if (countitem(7154) < 300) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 935,200;
+delitem 985,100;
+delitem 1031,2;
+delitem 7154,300;
+getitem 19127,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão das Sobrancelhas Grossas!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+
+SemItem:
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Desculpe, mas você ainda não completou a sua missão!";
+close;
+
+NAO:
+next;
+mes "Você não tem o level necessário para essa missão ou não tem todos os items requeridos";
+close;
+
+
+}
+
+//============== MAP FLAG ===============
+in_hunter	mapflag	nowarp
+in_hunter	mapflag	nowarpto	
+
+areia.gat,170,235,5	duplicate(roubados)	Equipamentos Roubados#m	59
+konoha.gat,172,216,5	duplicate(roubados)	Equipamentos Roubados#x	59
+prt_monk.gat,227,170,5	duplicate(roubados)	Equipamentos Roubados#z	59

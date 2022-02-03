@@ -1,0 +1,41 @@
+ondular.gat,211,187,3	script	Barqueiro#1	120,{
+mes "[Barqueiro]";
+mes "“Deseja retornar?";
+menu "Sim",SIM,"Não",NAO;
+
+SIM:
+mes "[Barqueiro]";
+mes "Volte sempre que desejar!";
+next;
+warp "gef_fild03.gat",284,306;
+close;
+
+NAO:
+mes "[Barqueiro]";
+mes "Fique a vontade!";
+close;
+}
+
+gef_fild03.gat,284,304,5	script	Barqueiro#2	120,{
+mes "[Barqueiro]";
+mes "Eu vim de um Pequeno Vilarejo no País da Água";
+next;
+mes "[Barqueiro]";
+mes "Se Quiser Posso te Levar de Barco pra Lá";
+next;
+mes "[Barqueiro]";
+mes "Gostaria de Ir?";
+menu "Sim",SIM,"Não",NAO;
+
+SIM:
+mes "[Barqueiro]";
+mes "Entre no Barco e Aproveite o Passeio =D";
+next;
+warp "ondular.gat",212,185;
+close;
+
+NAO:
+mes "[Barqueiro]";
+mes "Se Mudar de Idéia Venha Falar Comigo!";
+close;
+}

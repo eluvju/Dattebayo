@@ -1,0 +1,43 @@
+inicio,29,25,5	script	Curandeira::curar	4w_f_kafra2,{
+
+//===== Configurações do NPC =================================
+
+.npc$ = "[Curadeira]"; // Nome do NPC.
+.time = 7; // Tempo que o jogador precisa esperar para se buffar novamente[Em segundos]. (Para desabilitar coloque 0).
+.tbuffv = 10; // Tempo dos buffs do jogador vip[Minutos].
+.msgn$ = "Tenha um bom jogo."; // Mensagem que vai ser exibida quando o jogador normal se buffar e curar.
+.msgv$ = "Espero que você esteja se divertindo em nosso servidor, tenha um excelente jogo."; // Mensagem que vai ser exibida quando o jogador vip se buffar e curar.
+
+//============================================================
+
+.@delay = gettimetick(2);
+
+if( .@delay < buff_delay ) { message strcharinfo(0), .npc$+" Aguarde "+(buff_delay - .@delay)+" segundos para se buffar e curar novamente."; end; }
+
+buff_delay = gettimetick(2) + .time;
+
+if(getgroupid() < .groupid){
+
+specialeffect2 7;
+percentheal 100,100;
+for( set .@i, 0; .@i < getarraysize(.buffn); set .@i, .@i + 1 )
+sc_start .buffn[.@i],.tbuffn*60000,.blvn[.@i];
+message strcharinfo(0), .npc$+" "+.msgn$+"";
+end;
+}
+
+specialeffect2 14;
+percentheal 100,100;
+for( set .@i, 0; .@i < getarraysize(.buffv); set .@i, .@i + 1 )
+sc_start .buffv[.@i],.tbuffv*60000,.blvv[.@i];
+message strcharinfo(0), .npc$+" "+.msgv$+"";
+end;
+
+OnPCLoginEvent:
+.@delay = 0;
+end;
+}
+
+inicio2,29,25,5	duplicate(curar)	Curandeira#1	4w_f_kafra2,{
+inicio3,29,25,5	duplicate(curar)	Curandeira#2	4w_f_kafra2,{
+cave,110,73,5	duplicate(curar)	Curandeira#3	4w_f_kafra2,{

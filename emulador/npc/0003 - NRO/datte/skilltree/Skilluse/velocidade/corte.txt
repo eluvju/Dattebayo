@@ -1,0 +1,57 @@
+-	script	useCSombra	-1,{
+    end;
+//When a Character uses a skill
+
+//CSombra
+
+onPcUseSkillEvent:
+
+           if(lskillid == 530) {
+
+
+if (getskilllv(530) == 1) {
+
+if (CSombra != 1) {end;}
+if (skill530 >= 50) {skill 530,2,0; set skill530,0; dispbottom "[Sys] Level up"; end; }
+set skill530,skill530 +1;
+dispbottom "[Jutsu level] Corte das sombras level 1: "+skill530+" de 50";
+
+end;
+
+}
+
+if (getskilllv(530) == 2) {
+if (CSombra != 1) {end;}
+if (skill530 >= 100) {skill 530,3,0; set skill530,0; dispbottom "[Sys] Level up"; end;}
+set skill530,skill530 +1;
+dispbottom "[Jutsu level] Corte das sombras level 2: "+skill530+" de 100";
+
+end;
+
+}
+
+if (getskilllv(530) == 3) {
+
+if (CSombra != 1) {end;}
+if (skill530 >= 150) {skill 530,4,0; set skill530,0; dispbottom "[Sys] Level up"; end;}
+set skill530,skill530 +1;
+dispbottom "[Jutsu level] Corte das sombras level 3: "+skill530+" de 150";
+
+end;
+
+}
+
+if (getskilllv(530) == 4) {
+if (CSombra != 1) {end;}
+if (skill530 >= 200) {skill 530,5,0; set skill530,0; dispbottom "[Sys] Level up"; end;}
+set skill530,skill530 +1;
+dispbottom "[Jutsu level] Corte das sombras level 4: "+skill530+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

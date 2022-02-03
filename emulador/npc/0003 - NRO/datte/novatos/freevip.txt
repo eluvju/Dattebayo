@@ -1,0 +1,17 @@
+kakashi,155,31,4	script	Vip Grátis	436,{
+
+if(#gotvip1==1){mes "[Vip Grátis]"; mes "Você já ganhou seus 7 dias de vip, tenha um bom jogo ^-^"; close;}
+
+mes "[Vip Grátis]";
+mes "Quem diria, Você me achou! GRR...";
+next;
+mes "[Vip Grátis]";
+mes "Bem-vindo ao NRO, como presente por estar jogando em nosso servidor, vou lhe dar 7 dias de vip grátis!";
+set #gotvip1,1;
+Query_Sql("UPDATE `login` SET `diasvip` = `diasvip` + '7' WHERE `account_id`='"+GetCharID(3)+"'"); Query_Sql("UPDATE `login` SET `level` = '1' WHERE `account_id`='"+GetCharID(3)+"'");
+next;
+mes "[Vip Grátis]";
+mes "Prontinho, tenha um bom jogo!";
+close;
+
+}

@@ -1,0 +1,368 @@
+konoha,201,130,3	script	Medinin Anciã::lesma	734,{
+	if(contrato_cobra == 1) goto L_wrongcontract;
+	if(contrato_sapo == 1) goto L_wrongcontract;
+	if(invoca_done == 1) goto L_alreadyhave;
+	if(contrato_lesma == 1) goto claro;
+	if(jounin != 1) goto L_graduacao;
+	
+	mes "[Medinin Anciã]";
+	mes "Olá shinobi, Eu tive uma visão de sua chegada...";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Na minha visão você me procurou para saber como aprender o Kuchiyose no jutsu";
+	mes "Já vou adiantar que essa é uma habilidade que poucos tem...";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Antes de mais nada, é preciso fazer um contrato de sangue";
+	mes "E após feito o contrato, terá que aperfeiçoar a técnica";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Devo avisar que o contrato é eterno, e que não poderá ter dois contratos";
+	mes "com dois tipos de animais, então antes de confirmar pense bem...";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Além de mim existem mais duas pessoas com quem você pode conversar";
+	mes "a respeito de contratos de sangue, eu sou Medinin das lesmas";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Através de mim você pode aprender o jutsu que Katsuyu, a mais poderosa das lesmas!";
+	mes "Katsuyu é uma lesma com grande poder de cura e extremamente útil";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Enfim, chega de conversa, quer fazer um contrato de sangue com as lesmas?";
+	menu "Sim, Estou preparado",contrato,"Não, ainda não estou pronto",aindan;
+
+	contrato:
+	mes "Seu contrato foi assinado!";
+	set invoca_lesma1,1;
+	set contrato_lesma,1;
+	close;
+
+
+	claro:
+	mes "[Medinin Anciã]";
+	mes "Ótimo, vou lhe ensinar o jutsu por etapas";
+	mes "Será preciso aprender um estágio de cada vez";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Qual lesma gostaria de dominar?";
+	menu "Katsuyu Filhote",kat1,"Katsuyu Média",kat2,"Katsuyu",kat3;
+
+	kat1:
+	if(contrato_lesma != 1) goto L_wrongcontract;
+	if(invoca_lesma1 != 1) goto L_wronglevel;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Vamos começar então, iremos começar pela Katsuyu Filhote, a mais fraca das lesmas";
+	mes "O treinamento todo será difícil, mas aguente firme que vai aprender";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Neste treinamento você terá que coletar o seguinte:";
+	next;
+	mes "[Medinin Anciã]";
+	mes "1500x Garras de rato";
+	mes "1000x Pata de inseto";
+	mes "500x Antenas de inseto";
+	mes "150x Luva de carrasco";
+	mes "55x Trevos";
+	mes "15x Colar do Oblívio";
+	mes "3x Plantas de konoha";
+	mes "3x Plantas de Suna";
+	mes "3x Plantas de Kiri";
+	mes "1x Relogio de bolso";
+	mes "1x Lâmina perdida nas trevas";
+	mes "1x Simbolo dos Nove Reinos";
+	mes "Matar 1000 Bichouji";
+	mes "e 500k de ryous";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_lesma1,1;		
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <500000) goto L_SemItem;
+	if (countitem(7007) < 1500) goto L_SemItem;
+	if (countitem(1042) < 1000) goto L_SemItem;
+	if (countitem(928) < 500) goto L_SemItem;
+	if (countitem(7017) < 150) goto L_SemItem;
+	if (countitem(705) < 55) goto L_SemItem;
+	if (countitem(1008) < 15) goto L_SemItem;
+	if (countitem(704) < 3) goto L_SemItem;
+	if (countitem(710) < 3) goto L_SemItem;
+	if (countitem(712) < 3) goto L_SemItem;
+	if (countitem(7513) < 1) goto L_SemItem;
+	if (countitem(7023) < 1) goto L_SemItem;
+	if (countitem(7305) < 1) goto L_SemItem;
+	if(invocalesmamobs1 < 1000) goto L_SemItem;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-500000;
+	delitem 7007,1500;
+	delitem 1042,1000;
+	delitem 928,500;
+	delitem 7017,150;
+	delitem 705,55;
+	delitem 1008,15;
+	delitem 704,3;
+	delitem 710,3;
+	delitem 712,3;
+	delitem 7513,1;
+	delitem 7023,1;
+	delitem 7305,1;
+	skill 728,4,0;
+	set invoca_lesma1,0;
+	set invoca_lesma2,1;
+	set invocalesmamobs1,0;
+	set quest_lesma1,0;
+	close;
+
+	kat2:
+	if(invoca_lesma2 != 1) goto L_wronglevel;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Muito bem, já está na segunda etapa, vai ficar cada vez mais difícil";
+	mes "Não desista ainda, se supere!";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Agora vamos tentar dominar a invocação da Katsuyu média";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[Medinin Anciã]";
+	mes "1500x Gema vermelha";
+	mes "1000x Ossos";
+	mes "1000x Runa Sangrenta";
+	mes "1000x Auto retrato";
+	mes "550x Parafuso Enferujado";
+	mes "150x Bandagem Estragada";
+	mes "100x Gas toxico";
+	mes "55x Uniao de tribo";
+	mes "6x Plantas de konoha";
+	mes "6x Plantas de Suna";
+	mes "6x Plantas de Kiri";
+	mes "1x Fragmento de Espirito";
+	mes "1x Pedra do sabio";
+	mes "1x ba gua";
+	mes "Matar 1000 Onbba";
+	mes "e 1kk de ryous";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_lesma2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <1000000) goto L_SemItem;
+	if (countitem(716) < 1500) goto L_SemItem;
+	if (countitem(932) < 1000) goto L_SemItem;
+	if (countitem(7563) < 1000) goto L_SemItem;
+	if (countitem(7223) < 1000) goto L_SemItem;
+	if (countitem(7317) < 550) goto L_SemItem;
+	if (countitem(930) < 150) goto L_SemItem;
+	if (countitem(658) < 55) goto L_SemItem;
+	if (countitem(7322) < 100) goto L_SemItem;
+	if (countitem(704) < 6) goto L_SemItem;
+	if (countitem(710) < 6) goto L_SemItem;
+	if (countitem(712) < 6) goto L_SemItem;
+	if (countitem(7306) < 1) goto L_SemItem;
+	if (countitem(12040) < 1) goto L_SemItem;
+	if (countitem(7169) < 1) goto L_SemItem;
+	if(invocalesmamobs2 < 1000) goto L_SemItem;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-1000000;
+	delitem 716,1500;
+	delitem 932,1000;
+	delitem 7563,1000;
+	delitem 7223,1000;
+	delitem 7317,550;
+	delitem 930,150;
+	delitem 7322,100;
+	delitem 658,55;
+	delitem 704,6;
+	delitem 710,6;
+	delitem 712,6;
+	delitem 7306,1;
+	delitem 12040,1;
+	delitem 7169,1;
+	skill 729,4,0;
+	set invoca_lesma2,0;
+	set invoca_lesma3,1;
+	set invocalesmamobs2,0;
+	set quest_lesma2,0;
+	close;
+
+	kat3:
+	if(invoca_lesma3 != 1) goto L_wronglevel;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Chegou a hora, A última etapa do treinamento...";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Chegou a hora de tentar invoca a maior das lesmas, Katsuyu";
+	mes "Após isso terá sobre seu controle um poderoso animal, vamos lá!";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[Medinin Anciã]";
+	mes "1500x Lanterna";
+	mes "800x Insignia de Heroi";
+	mes "500x Nadadeiras";
+	mes "350x Algemas";
+	mes "250x Oridecon";
+	mes "250x Elunium";
+	mes "250x Pernas de Gafanhoto";
+	mes "15x Plantas de konoha";
+	mes "15x Plantas de Suna";
+	mes "15x Plantas de Kiri";
+	mes "10x Fragmento de Espirito";
+	mes "10x Simbolo de Guerreiro";
+	mes "10x Simbolo de Nove Reinos";
+	mes "5x Planta da Melodia";
+	mes "Matar 700 Cavaleiros";
+	mes "e 5kk de ryous";
+	next;
+	mes "[Medinin Anciã]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_lesma3,1;	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <5000000) goto L_SemItem;
+	if (countitem(7191) < 1500) goto L_SemItem;
+	if (countitem(968) < 800) goto L_SemItem;
+	if (countitem(951) < 500) goto L_SemItem;
+	if (countitem(1098) < 350) goto L_SemItem;
+	if (countitem(984) < 250) goto L_SemItem;
+	if (countitem(985) < 250) goto L_SemItem;
+	if (countitem(940) < 250) goto L_SemItem;
+	if (countitem(704) < 15) goto L_SemItem;
+	if (countitem(710) < 15) goto L_SemItem;
+	if (countitem(712) < 15) goto L_SemItem;
+	if (countitem(7306) < 10) goto L_SemItem;
+	if (countitem(7484) < 10) goto L_SemItem;
+	if (countitem(7305) < 10) goto L_SemItem;
+	if (countitem(707) < 5) goto L_SemItem;
+	if(invocalesmamobs3 < 700) goto L_SemItem;
+	next;
+	mes "[Medinin Anciã]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-5000000;
+	delitem 7191,1500;
+	delitem 968,800;
+	delitem 951,500;
+	delitem 1098,350;
+	delitem 984,250;
+	delitem 985,250;
+	delitem 940,250;
+	delitem 704,15;
+	delitem 710,15;
+	delitem 712,15;
+	delitem 7306,10;
+	delitem 7484,10;
+	delitem 7305,10;
+	delitem 707,5;
+	skill 730,4,0;
+	set invoca_lesma3,0;
+	set invoca_done,1;
+	set invocalesmamobs3,0;
+	set quest_lesma3,0;
+	close;
+
+L_SemItem:
+	next;
+	mes "[Medinin Anciã]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+
+aindan:
+	next;
+	mes "[Medinin Anciã]";
+	mes "Volte quando estiver pronto!";
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[Medinin Anciã]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_Wrong:
+	mes "[Medinin Anciã]";
+	mes "Você não é deste clã";
+	close;
+
+L_graduacao:
+	mes "[Medinin Anciã]";
+	mes "Desculpe mas apenas jounins podem realizar esse treinamento.";
+	close;
+
+L_wrongcontract:
+	mes "[Medinin Anciã]";
+	mes "Desculpe mas seu contrato de sangue não é desse animal.";
+	close;
+
+L_wronglevel:
+	mes "[Medinin Anciã]";
+	mes "Desculpe mas você não pode pular etapas!";
+	close;
+
+}
+
+areia,252,138,4	duplicate(lesma)	Medinin Anciã#1	734
+nevoa,269,169,4	duplicate(lesma)	Medinin Anciã#2	734
+prt_monk,88,214,4	duplicate(lesma)	Medinin Anciã#3	734
+
+-	script	OnNPCKill_lesma1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_lesma1 == 1){goto lesma_inv1;} else {end;}
+
+lesma_inv1:
+switch (killedrid) {
+case 1051:
+set invocalesmamobs1, invocalesmamobs1 + 1;
+dispbottom "Você ja matou "+invocalesmamobs1+" Bichouji(s)";
+end;
+
+}
+}
+
+-	script	OnNPCKill_lesma2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_lesma2 == 1){goto lesma_inv2;} else {end;}
+
+lesma_inv2:
+switch (killedrid) {
+case 1214:
+set invocalesmamobs2, invocalesmamobs2 + 1;
+dispbottom "Você ja matou "+invocalesmamobs2+" Onbba(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_lesma3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_lesma3 == 1){goto lesma_inv3;} else {end;}
+
+lesma_inv3:
+switch (killedrid) {
+case 1046:
+set invocalesmamobs3, invocalesmamobs3 + 1;
+dispbottom "Você ja matou "+invocalesmamobs3+" Caveleiro(s)";
+
+end;
+
+
+}
+}

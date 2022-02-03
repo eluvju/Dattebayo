@@ -1,0 +1,100 @@
+payon_in03,125,174,5	script	Tokken::tai6	51,{
+
+if(tai_basico != 1) {mes "Você precisa estudar taijutsu básico antes de aprender um taijutsu"; close;}
+if (checkquest(2062) == 1) goto L_go;
+if (Tokken != 1) goto inicio;
+if (Tokken == 1) goto L_delete;
+if(tai_skill_bas >= 3) {mes "Você já aprendeu três taijutsus básicos, esse é o limite"; close;}
+if(accept_tai == 3) {mes "Você já aceitou três treinamentos pra realizar de taijutsu"; close;}
+if(Tokken == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(58) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(58) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 58,0,0;
+set Tokken,0;
+erasequest 2062;
+if(accept_tai > 0) {set accept_tai,accept_tai -1;}
+if(tai_skill_bas > 0) {set tai_skill_bas,tai_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+inicio:
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de taijutsu espalhado pelo mundo, eu posso lhe ensinar um taijutsu básico";
+next;
+mes "Tokken é o taijutsu que eu ensino";
+next;
+mes "Lembre que você só pode ter 3 taijutsus básicos, após isso não poderá aprender mais nenhum básico";
+next;
+mes "Descrição: O usuário causa dano e empurra o oponente para longe";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Tokken
+//========================================================================
+
+L_SS:
+set quest_tai_seis,1;
+set accept_tai,accept_tai +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 100 Kyodaija.";
+setquest 2062;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(tai_skill_bas >= 3) {mes "Você já aprendeu três taijutsus básicos, esse é o limite"; close;}
+if(tai_mobs_seis < 100) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 58,1,0;
+set Tokken,1;
+set quest_tai_seis,0;
+set tai_mobs_seis, 0;
+completequest 2062;
+erasequest 2062;
+set tai_skill_bas,tai_skill_bas +1;
+announce "[Taijutsu Quest] "+strcharinfo(0)+" completou a quest do taijutsu Tokken",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Taijutsu Básico]",0;
+}
+
+-	script	taibas#6	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1025 && quest_tai_seis == 1) {set tai_mobs_seis,tai_mobs_seis +1; announce "[Taijutsu Quest] Você já derrotou "+tai_mobs_seis+" / 100 Kyodaija",bc_blue|bc_self; end;}
+
+}
+
+//ve_in,91,233,5	duplicate(tai6)	Tokken#61	51,{
+//payon_in03,125,174,5	duplicate(tai6)	Tokken#62	51,{
+//lou_in01,116,132,5	duplicate(tai6)	Tokken#63	51,{
+//izlude_in,58,116,5	duplicate(tai6)	Tokken#64	51,{

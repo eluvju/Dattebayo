@@ -1,0 +1,41 @@
+nevoa,109,176,3	script	Treinamento Lee::T_lee	734,{
+
+if(lee != 1) goto L_class;
+if(treino_Lee == 1) goto treino_feito;
+
+mes "[Treinamento Lee]";
+mes "Ohayo Lee!";
+next;
+mes "Ué... você não é o Lee!";
+next;
+mes "O que? Quer treinar comigo? *-*";
+menu "Quero",-,"Não",nao;
+mes "Beleza! vamos lá! *sinal de positivo*";
+next;
+mes "Ahh dei um jeito nas minhas costas... pega estes pergaminhos e estuda que você aprende!";
+next;
+mes "*Estudando*";
+mes "Yosh! Já aprendi as habilidades Lee!";
+skill 412,1,0;
+skill 414,1,0;
+skill 416,1,0;
+skill 418,1,0;
+set Treino_Lee,1;
+close;
+
+treino_feito:
+mes "Você já fez este treinamento!";
+close;
+
+nao:
+close;
+
+L_class:
+mes "Você não é um Lee!";
+close;
+
+}
+
+morocc_in,70,95,4	duplicate(T_lee)	Treinamento Lee#1	734
+payon_in01,9,57,4	duplicate(T_lee)	Treinamento Lee#2	734
+prt_monk,225,257,4	duplicate(T_lee)	Treinamento Lee#3	734

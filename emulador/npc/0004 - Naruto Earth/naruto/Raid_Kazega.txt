@@ -1,0 +1,98 @@
+dali,65,112,3	script	Kazekage	 707 ,{
+mes "Droga!! Akatsuki ataca novamente, agora eles atacaram aldeia da areia e levaram o Quinto Kazekage";
+menu "- Que?! eu quero ajudar a resgata..",ajuda,"- Cancelar",exit;
+
+ajuda:
+next;
+mes "Não sei, é muito perigoso mandar você lá, mas pensando bem não tenho outra escolha.";
+next;
+mes "Vá até portão da vila e fale com o kakashi que ele ira ajudar nessa missão";
+set #raidon,1;
+close;
+exit:
+next;
+mes "Você não iria conseguir mesmo!";
+close;
+
+
+
+
+}
+
+dali,70,113,3	script	Kakashi	 843 ,{
+if(#raidon < 1){mes "Nao tenho nada para falar com voce!"; close;}
+mes "Esta pronto para ir suna?";
+menu "- Sim",sim,"- Não",nao;
+
+sim:
+next;
+mes "Pois bem, vou leva-lo ate la";
+next;
+warp "moc_fild01",222,370;
+close;
+
+nao: 
+next;
+mes "Você não iria conseguir mesmo!";
+close;
+}
+
+moc_fild01,221,374,3	script	Shinobi Suna	 48 ,{
+if(#raidon < 1){mes "Nao tenho nada para falar com voce!"; close;}
+mes "Você é o shinobi que o mensageiro me falou?";
+menu "- Sim, sou eu",sim1;
+
+
+sim1:
+next;
+mes "Você não parece forte o bastante para derrotar Akatsuki e salvar nosso Kazekage-sama";
+menu "- Sou mais forte da minha Vila",vila;
+
+vila:
+next;
+mes "Mandamos os Anbus para procurar pistas onde os akatsuki levaram o Kazekage-sama, iremos levar você até lá.";
+next;
+warp "pay_fild01",264,117;
+close;
+}
+
+
+pay_fild01,263,114,3	script	Anbu	 46 ,{
+if(#raidon < 1){mes "Nao tenho nada para falar com voce!"; close;}
+mes "Descobri onde levaram o kazekage-sama.";
+next;
+mes "Vou leva-lo la!";
+next;
+warp "prt_maze01",195,140;
+close;
+
+}
+
+prt_maze01,185,139,3	script	Deidara	  62 ,{
+//if(#raidon < 1){mes "Nao tenho nada para falar com voce!"; close;}
+if(.mobon == 1){mes "Ja fui invocado!"; close;}
+
+mes "Derrote=me se for Capaz!";
+next;
+set .mobon,1;
+areamonster "prt_maze01",187,141,187,141,"Deidara",1091,1,"deidara::OnMobKilled";
+close;
+
+
+fina:
+next;
+mes "Aqui estao seus premios!";
+set mobmot,0;
+close;
+}
+
+
+-	script	deidara	-1,{
+
+OnMobKilled:
+dispbottom "Deidara : OHHHH, voce me derrotou!";
+set .mobon,0;
+set #raidon,0;
+warp "SavePoint",0,0;
+close;
+}

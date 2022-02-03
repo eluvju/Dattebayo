@@ -1,0 +1,53 @@
+// ===== Cronus Script =======================================
+// == Deus-Sol ues (NPC Script)
+// ===== Categoria: ===========================================
+// == Custom
+// ===== Idioma: ==============================================
+// == Português (Brasil)
+// ===== Por: =================================================
+// == Cadinhu (V. 1.0)
+// ===== Versão Atual: ========================================
+// == 1.0 (05/10/2007)
+// ===== Compactível Com: =====================================
+// == Cronus
+// ===== Descrição Parcial: ===================================
+// == Quest da Coroa do Deus-Sol
+// ===== Comentários adicionais: ==============================
+// == 1.0 - NPC Criado ........................ [by Cadinhu]
+// ============================================================
+// == Agradecimentos: =]
+// ============================================================
+
+konoha3,153,126,7	script	Armazém Shinobi::kafra	828,{
+
+if (checkquest(2018) == 1) goto L_go;
+
+mes "[^008000Armazém Shinobi^000000]";
+mes "Gostaria de utilizar o armazém shinobi?";
+menu "Não,não gostaria !",nem,"Claro, porque não?",sim;
+
+sim:
+openstorage;
+close;	
+
+nem:
+close;
+
+L_go:
+mes "Olá novato, aqui no armazém você pode guardar seus pertences sempre que precisar";
+mes "tente não ficar com muitos itens de uma só vez para não ficar muito pesado";
+completequest 2018;
+set newbie,2;
+close;
+
+}
+
+sunagakure,210,130,7	duplicate(kafra)	Armazém#a	828
+kiragakure,149,203,7	duplicate(kafra)	Armazém#b	828
+kumogakure,135,77,7	duplicate(kafra)	Armazém#c	828
+akatsuki,215,187,7	duplicate(kafra)	Armazém#e	828
+lou_in02,249,165,7	duplicate(kafra)	Armazém#f	828
+nuvem,75,185,7	duplicate(kafra)	Armazém#g	828
+konoha,243,182,7	duplicate(kafra)	Armazém#h	828
+nevoa,136,213,7	duplicate(kafra)	Armazém#i	828
+areia,104,171,7	duplicate(kafra)	Armazém#j	828

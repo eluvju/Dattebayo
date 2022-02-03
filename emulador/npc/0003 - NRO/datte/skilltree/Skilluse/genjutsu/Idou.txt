@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillidou	-1,{
+    end;
+//When a Character uses a skill
+
+//Idou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 322) {
+
+
+if (getskilllv(322) == 1) {
+
+if (Idou != 1) {end;}
+if (skill322 >= 50) {skill 322,2,0; set skill322,0; dispbottom "[Sys] Level up"; end; }
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 1: "+skill322+" de 50";
+
+end;
+
+}
+
+if (getskilllv(322) == 2) {
+if (Idou != 1) {end;}
+if (skill322 >= 100) {skill 322,3,0; set skill322,0; dispbottom "[Sys] Level up"; end;}
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 2: "+skill322+" de 100";
+
+end;
+
+}
+
+if (getskilllv(322) == 3) {
+
+if (Idou != 1) {end;}
+if (skill322 >= 150) {skill 322,4,0; set skill322,0; dispbottom "[Sys] Level up"; end;}
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 3: "+skill322+" de 150";
+
+end;
+
+}
+
+if (getskilllv(322) == 4) {
+if (Idou != 1) {end;}
+if (skill322 >= 200) {skill 322,5,0; set skill322,0; dispbottom "[Sys] Level up"; end;}
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 4: "+skill322+" de 200";
+
+end;
+
+}
+
+if (getskilllv(322) == 5) {
+if (Idou != 1) {end;}
+if (skill322 >= 250) {skill 322,6,0; set skill322,0; dispbottom "[Sys] Level up"; end;}
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 5: "+skill322+" de 250";
+
+end;
+
+}
+
+if (getskilllv(322) == 6) {
+if (Idou != 1) {end;}
+if (skill322 >= 300) {skill 322,7,0; set skill322,0; dispbottom "[Sys] Level up"; end;}
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 6: "+skill322+" de 300";
+
+end;
+
+}
+
+if (getskilllv(322) == 7) {
+if (Idou != 1) {end;}
+if (skill322 >= 500) {skill 322,8,0; set skill322,0; dispbottom "[Sys] Level up"; end;}
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 7: "+skill322+" de 500";
+
+end;
+
+}
+
+if (getskilllv(322) == 8) {
+if (Idou != 1) {end;}
+if (skill322 >= 700) {skill 322,9,0; set skill322,0; dispbottom "[Sys] Level up"; end;}
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 8: "+skill322+" de 700";
+
+end;
+
+}
+
+if (getskilllv(322) == 9) {
+if (Idou != 1) {end;}
+if (skill322 >= 1000) {skill 322,10,0; set skill322,0; dispbottom "[Sys] Level up"; end;}
+set skill322,skill322 +1;
+dispbottom "[Jutsu level] Idou no Kaibutsu level 9: "+skill322+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

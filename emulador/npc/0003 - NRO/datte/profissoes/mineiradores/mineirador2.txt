@@ -1,0 +1,117 @@
+einbech,42,216,4	script	Mineirador experiente::min2	990,{
+
+mes "Olá, eu sou o mineirador experiente";
+mes "Eu posso lhe ajudar com melhoramentos pros seus equipamentos";
+next;
+mes "Em que posso ajudar-lo?";
+menu "Quero desfazer um selo",L_slot,"Quero refinar um metal",L_refine,"Me explique sobre seus serviços",L_guia;
+
+L_slot:
+next;
+mes "Certo, vamos iniciar o processo de desfazer um dos selos do seu equipamento";
+next;
+mes "Lembre-se que precisa estar com o item equipado e que a chance de desfazer o selo é de 5% e pra vip é 8%";
+mes "Se falhar ao desfazer o selo, o item usado pra desfazer o selo será perdido e seu equipamento estará seguro";
+next;
+mes "Escolha um tipo de equipamento que gostaria de desfazer o selo";
+menu "Arma",L_weapon,"Colete",L_armor,"Calçado",L_sapato,"Capa",L_capa,"Arma elemental",L_element;
+
+L_weapon:
+if (countitem(576) < 1) {next; mes "Você não possui o selo necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; addslot EQI_HAND_R; mes "Conseguimos, o selo foi desfeito com sucesso!";  delitem 576,1; close;} else {next; mes "Infelizmente o processo de desfazer o selo falhou";  delitem 576,1; close;}
+close;
+
+L_armor:
+if (countitem(559) < 1) {next; mes "Você não possui o selo necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; addslot EQI_ARMOR; mes "Conseguimos, o selo foi desfeito com sucesso!";  delitem 559,1; close;} else {next; mes "Infelizmente o processo de desfazer o selo falhou"; delitem 559,1; close;}
+close;
+
+L_sapato:
+if (countitem(560) < 1) {next; mes "Você não possui o selo necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; addslot EQI_SHOES; mes "Conseguimos, o selo foi desfeito com sucesso!";  delitem 560,1; close;} else {next; mes "Infelizmente o processo de desfazer o selo falhou"; delitem 560,1; close;}
+close;
+
+L_capa:
+if (countitem(561) < 1) {next; mes "Você não possui o selo necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; addslot EQI_GARMENT; mes "Conseguimos, o selo foi desfeito com sucesso!"; delitem 561,1; close; } else {next; mes "Infelizmente o processo de desfazer o selo falhou"; delitem 561,1; close;}
+close;
+
+L_element:
+if (countitem(577) < 1) {next; mes "Você não possui o selo necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; addslot EQI_HAND_L; mes "Conseguimos, o selo foi desfeito com sucesso!"; delitem 577,1; close; } else {next; mes "Infelizmente o processo de desfazer o selo falhou"; delitem 577,1; close; }
+close;
+
+L_refine:
+next;
+mes "Vamos refinar alguns materiais então";
+mes "Eu sou o mineirador responsável por refinar materiais nível 2";
+mes "Lembre-se que ao tentar refinar os cristais existe uma grande chance de não dar certo e quebrar";
+mes "A chance de acerto é de 5% pra jogadores normais e 8% pra jogadores vip";
+next;
+mes "Escolha um material que gostaria de refinar";
+menu "Fragmento de força 1",L_str,"Fragmento de agilidade 1",L_agi,"Fragmento de inteligência 1",L_int,"Fragmento de Vitalidade 1",L_vit,"Fragmento de Destreza 1",L_dex,"Fragmento de sorte 1",L_luk,"Fragmento de Resistência 1",L_resis,"Fragmento de proteção 1",L_def,"Fragmento elemental 1",L_felement;
+
+L_str:
+if (countitem(13100) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4002,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13100,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13100,1; close;}
+close;
+
+L_agi:
+if (countitem(13101) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4006,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13101,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13101,1; close;}
+close;
+
+L_int:
+if (countitem(13102) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4010,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13102,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13102,1; close;}
+close;
+
+L_vit:
+if (countitem(13103) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4014,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13103,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13103,1; close;}
+close;
+
+L_dex:
+if (countitem(13104) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4018,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13104,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13104,1; close;}
+close;
+
+L_luk:
+if (countitem(13105) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4022,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13105,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13105,1; close;}
+close;
+
+L_resis:
+if (countitem(13106) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4026,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13106,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13106,1; close;}
+close;
+
+L_def:
+if (countitem(13150) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4030,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13150,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13150,1; close;}
+close;
+
+L_felement:
+if (countitem(13151) < 1) {next; mes "Você não possui o cristal necessário pra esse refinamento"; close;}
+if (rand(1,100) == 5) {next; getitem 4034,1; mes "Parabéns, o refinamento foi um sucesso!";  delitem 13151,1; close;} else {next; mes "Infelizmente o processo de refinamento falhou"; delitem 13151,1; close;}
+close;
+
+
+L_guia:
+next;
+mes "Eu sou um dos 4 mineiradores que possuem o serviço de refinar materiais brutos conhecido como cristais de chakra.";
+next;
+mes "Eu também posso desfazer os selos contidos em vários equipamentos, liberando assim uma vaga pra você fundir um cristal junto ao seu equipamento";
+next;
+mes "Cada um dos 2 serviços possuem uma chance de 5% de dar certo, mesmo nós sendo especialistas é um material extremamente raro e delicado, pra jogadores vip a chance é de 8%";
+next;
+mes "Cada cristal de chakra possui quatro níveis, sendo cada nível melhor e mais raro que o anterior";
+next;
+mes "Cada cristal precisa ser refinado antes, pra refinar basta você levar o fragmento do cristal pro mineirador respectivo";
+next;
+mes "Se o processo de desfazer um selo ou de refinar um material falhar, você não perderá seu equipamento, somente o material usado na tentativa";
+next;
+mes "Esse é o fim desse tutorial!";
+close;
+
+}

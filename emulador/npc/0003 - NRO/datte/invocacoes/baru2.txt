@@ -1,0 +1,51 @@
+prt_fild00,228,210,5	script	Kakashi::baru2	843,{
+
+if( title$ == "RankE") {mes "É necessário no mínimo Rank C para fazer essa quest"; close;}
+if( title$ == "RankD") {mes "É necessário no mínimo Rank C para fazer essa quest"; close;}
+if (quest_baru2_um == 1) goto L_go;
+if(Baru1 != 1) {mes "Você precisa ter contrato com os Ninkens para aparender esse jutsu"; close;}
+if(Baru2 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(jounin == 1) goto L_SS;
+if(chunin != 1) {mes "Você precisa ser Chunin para aprender esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo.";
+next;
+mes "Posso te ajudar a aperfeiçoar seu Kuchiyose no Jutsu!";
+mes "Gostaria de treinar o Kuchiyose: Pakkun?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Pakkun
+//========================================================================
+
+L_SS:
+set quest_baru2_um,1;
+mes "Para esse treinamento,você deve provar ser fiel aos Ninkens:";
+mes "- Obter 1 Cadáver do Zabuza";
+mes "- Obter 1 Cadáver do Haku";
+setquest 12100;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7244) < 1) goto No_Item;
+if (countitem(7245) < 1) goto No_Item;
+mes "Você completou seu treinamento,parabéns.";
+delitem 7244,1;
+delitem 7245,1;
+skill 739,4,0;
+set Baru2,1;
+completequest 12100;
+erasequest 12100;
+close;
+
+L_no:
+close;
+
+No_Item:
+mes "Você não pegou o pergaminho ainda, volte quando pegar!";
+close;
+}

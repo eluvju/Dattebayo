@@ -1,0 +1,8 @@
+xmas,158,43,5	script	Ninja da Névoa	87,{
+	mes "[Ninja]";
+	mes "ahm, o que foi, não vê que está atrapalhando o meu treino. O treino é muito arduo aqui na vila da névoa se você não sabe, estou treinando para matar todos e passar no treino";
+	mes "Se eu matar meus colegas,eu poderei evoluir e virar um Jounnin quem sabe.";
+	mes "Talvez eu comece por voce, quer me enfrentar? Acho que não né, você parece ser ruim demais.";
+	mes "deixe-me treinar agora e suma daqui antes que eu mude de idéia e te mate...";
+close;
+}

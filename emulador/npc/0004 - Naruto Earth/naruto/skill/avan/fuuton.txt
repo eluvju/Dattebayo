@@ -1,0 +1,137 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+mjolnir_05,139,100,4	script	Fuuton Avançado	62,{
+if(checkquest(30061) == 1) goto skillfuto1;
+if(checkquest(30062) == 1) goto skillfuto2;
+if(checkquest(30063) == 1) goto skillfuto3;
+if(checkquest(30064) == 1) goto skillfuto4;
+if(elementofuuton != 1) { mes "[Fuuton Avançado]"; mes "Esse elemento não é de sua natureza"; close;}
+if(treino_nin_avan != 1) { mes "[Fuuton Avançado]"; mes "Você precisa estudar Ninjutsu Avançado antes de aprender as skills"; close;}
+if(fut_skill_avan >= 2) { mes "[Fuuton Avançado]"; mes "Você já aprendeu duas skill de Fuuton Avançado, esse é o limite"; close; }
+	mes "[Fuuton Avançado]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Fuuton Avançado. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Fuuton Avançado]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Fuuton Avançado]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Fuuton Avançado]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808AFuuton Onda de Choque^000000:^8A0808AFuuton Neutralizante^000000:^8A0808AFuuton Nepeta^000000"))
+	{
+	case 1:
+		if (f1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Fuuton Onda de Choque";
+		next;
+		mes "[Fuuton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Fuuton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillfuto1:
+		setquest 30061;
+		if(checkquest(30061,hunting) == 2 && countitem(32144) >= 1)
+		{
+			completequest 30061;
+			erasequest 30061;
+			delitem 32144,1;
+			set fut_skill_avan,fut_skill_avan +1;
+			skill 2002,5,3;
+			set f1,1;
+			mes "[Fuuton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (f2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Fuuton Neutralizante";
+		next;
+		mes "[Fuuton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Fuuton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Fuuton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillfuto2:
+		setquest 30062;
+		if(checkquest(30062,hunting) == 2 && countitem(32144) >= 1)
+		{
+			completequest 30062;
+			erasequest 30062;
+			delitem 32144,1;
+			set fut_skill_avan,fut_skill_avan +1;
+			skill 2554,5,3;
+			set f2,1;
+			mes "[Fuuton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (f3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Fuuton Nepeta";
+		next;
+		mes "[Fuuton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Fuuton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Fuuton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillfuto3:
+		setquest 30063;
+		if(checkquest(30063,hunting) == 2 && countitem(32144) >= 1)
+		{
+			completequest 30063;
+			erasequest 30063;
+			delitem 32144,1;
+			set fut_skill_avan,fut_skill_avan +1;
+			set f3,1;
+			skill 5028,5,3;
+			mes "[Fuuton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Fuuton Avançado]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Fuuton Avançado]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de fuuton avançado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

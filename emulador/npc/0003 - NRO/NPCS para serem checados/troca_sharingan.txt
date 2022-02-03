@@ -1,0 +1,49 @@
+kakashi,90,144,1	script	Trocar de Sharingan	99,{
+
+if (sharingan_3 != 1) {mes "Apenas quem tem o sharingan do poder pode efetuar essa troca"; close;}
+if (troca_sharingan == 1) {mes "É possível trocar apenas uma vez de sharingan"; close;}
+mes "Olá, devido as mudanças recentes em Sharingan, você que possui o Sharingan do poder pode trocar uma vez seu sharingan para uma das opções abaixo, qual delas gostaria?";
+menu "Percepção",Perceptivo,"Hipnotismo",Hipnotico,"Proteção",Protetor,"Nenhum, quero continuar com esse",fechar;
+
+Perceptivo:
+next;
+set OlhoPerceptivo,1;
+set sharingan_3,0;
+set sharingan_1,1;
+set troca_sharingan,1;
+set quest_mangekyou,4;
+mes "Sharingan trocado com sucesso para: Olho da percepção";
+close;
+
+Hipnotico:
+next;
+set OlhoHipnotico,1;
+set sharingan_3,0;
+set sharingan_2,1;
+set troca_sharingan,1;
+set quest_mangekyou,4;
+mes "Sharingan trocado com sucesso para: Olho da hipnotismo";
+close;
+
+Protetor:
+next;
+set OlhoProtetor,1;
+set sharingan_3,0;
+set sharingan_4,1;
+set troca_sharingan,1;
+set quest_mangekyou,4;
+mes "Sharingan trocado com sucesso para: Olho da proteção";
+close;
+
+fechar:
+close;
+
+OnInit:
+	waitingroom "",0;
+OnTimer1000:
+	setarray .@RoomDisplay$,"Trocar Sharingan","Trocar Sharingan","Trocar Sharingan","Trocar Sharingan";
+	delwaitingroom;
+	waitingroom .@RoomDisplay$[rand(0,3)],0;
+	initnpctimer;
+
+}

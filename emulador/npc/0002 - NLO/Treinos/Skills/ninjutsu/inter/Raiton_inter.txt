@@ -1,0 +1,489 @@
+academia,60,149,5	script	Raiton Intermediario	1_m_innkeeper,{
+
+if(elementoraiton != 1) { mes "[Raiton Intermediário]"; mes "Esse elemento não é de sua natureza"; close;}
+
+	if(Class == 7 || Class == 8 || Class == 9 || Class == 10 || Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+	
+	mes "[Raiton Intermediário]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Raiton escolha qual habilidade você gostaria de aprender.";
+	switch( select( "- Gian:- Jibashiri:- Chidori:- Adoramus:- Kaminariyari" ) ){
+
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 1:
+			next;
+			if(checkquest(5070) == 1) goto 1_go;
+			if(Gian == 1) goto 1_delete;
+			if(skill_intermediaria >= 6) { mes "[Raiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Raiton Intermediário]";
+			mes "Gian?";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+			
+			//========================================================================
+			//	Gian
+			//========================================================================
+			
+			1_delete:
+				mes "[Raiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+			
+			delete_1:
+				mes "[Raiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+			
+			quero_1:
+				mes "[Raiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Gian,0;
+				skill 20,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_1:
+				close;
+			
+			1_SS:
+				mes "[Raiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5070;
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			1_go:
+				if(checkquest(5070) >= 1) {
+					mes "[Raiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+							if(checkquest(5070) >= 1) { completequest 5070; erasequest 5070; }
+							if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+							mes "[Raiton Intermediário]";
+							mes "Missão Cancelada com Sucesso"; 
+							close;
+							
+							case 1:
+								if(checkquest(5070,hunting) != 2) { mes "[Raiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Raiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5070; 
+									erasequest 5070;
+									skill 20,1,3;
+									set Gian,1;
+									close;
+								}
+								mes "[Raiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+				
+			1_no:
+				close;
+			
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 2:
+			next;
+			if(checkquest(5071) == 1) goto 2_go;
+			if(Jibashiri == 1) goto 2_delete;
+			if(skill_intermediaria >= 6) { mes "[Raiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Raiton Intermediário]";
+			mes "Jibashiri?";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+			
+			//========================================================================
+			//	Jibashiri
+			//========================================================================
+			
+			2_delete:
+				mes "[Raiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+			
+			delete_2:
+				mes "[Raiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+			
+			quero_2:
+				mes "[Raiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Jibashiri,0;
+				skill 187,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_2:
+				close;
+			
+			2_SS:
+				mes "[Raiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5071;
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			2_go:
+				if(checkquest(5071) >= 1) {
+					mes "[Raiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5071) >= 1) { completequest 5071; erasequest 5071; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Raiton Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+								
+							case 1:
+								if(checkquest(5071,hunting) != 2) { mes "[Raiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Raiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5071; 
+									erasequest 5071;
+									skill 187,1,3;
+									set Jibashiri,1;
+									close;
+								}
+								mes "[Raiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			2_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 3:
+			next;
+			if(checkquest(5072) == 1) goto 3_go;
+			if(Chidori == 1) goto 3_delete;
+			if(skill_intermediaria >= 6) { mes "[Raiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Raiton Intermediário]";
+			mes "Chidori?";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+			
+			//========================================================================
+			//	Chidori
+			//========================================================================
+			
+			3_delete:
+				mes "[Raiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+			
+			delete_3:
+				mes "[Raiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+			
+			quero_3:
+				mes "[Raiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Chidori,0;
+				skill 84,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_3:
+				close;
+			
+			3_SS:
+				mes "[Raiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5072;
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			3_go:
+				if(checkquest(5072) >= 1) {
+					mes "[Raiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5072) >= 1) { completequest 5072; erasequest 5072; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Raiton Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5072,hunting) != 2) { mes "[Raiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Raiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5072; 
+									erasequest 5072;
+									skill 84,1,3;
+									set Chidori,1;
+									close;
+								}
+								mes "[Raiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			3_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 4:
+			next;
+			if(checkquest(5073) == 1) goto 4_go;
+			if(Adoramus == 1) goto 4_delete;
+			if(skill_intermediaria >= 6) { mes "[Raiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Raiton Intermediário]";
+			mes "Adoramus?";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+			
+			//========================================================================
+			//	Adoramus
+			//========================================================================
+			
+			4_delete:
+				mes "[Raiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+			
+			delete_4:
+				mes "[Raiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+			
+			quero_4:
+				mes "[Raiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Adoramus,0;
+				skill 2040,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_4:
+				close;
+			
+			4_SS:
+				mes "[Raiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5073;
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			4_go:
+				if(checkquest(5073) >= 1) {
+					mes "[Raiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5073) >= 1) { completequest 5073; erasequest 5073; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Raiton Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+								
+							case 1:
+								if(checkquest(5073,hunting) != 2) { mes "[Raiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Raiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5073; 
+									erasequest 5073;
+									skill 2040,1,3;
+									set Adoramus,1;
+									close;
+								}
+								mes "[Raiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+				
+			4_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 5:
+			next;
+			if(checkquest(5074) == 1) goto 5_go;
+			if(Kaminariyari == 1) goto 5_delete;
+			if(skill_intermediaria >= 6) { mes "[Raiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Raiton Intermediário]";
+			mes "Kaminariyari?";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Raiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",5_SS,"Agora não",5_no;
+			
+			//========================================================================
+			//	Kaminariyari
+			//========================================================================
+			
+			5_delete:
+				mes "[Raiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_5,"Nada não, só papo furado",naoquero_5;
+			
+			delete_5:
+				mes "[Raiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_5,"Não, não quero",naoquero_5;
+			
+			quero_5:
+				mes "[Raiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Kaminariyari,0;
+				skill 2454,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_5:
+				close;
+			
+			5_SS:
+				mes "[Raiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5074;
+				next;
+				mes "[Raiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			5_go:
+				if(checkquest(5074) >= 1) {
+					mes "[Raiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5074) >= 1) { completequest 5074; erasequest 5074; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Raiton Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+						
+							case 1:
+								if(checkquest(5074,hunting) != 2) { mes "[Raiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Raiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5074; 
+									erasequest 5074;
+									skill 2454,1,3;
+									set Kaminariyari,1;
+									close;
+								}
+								mes "[Raiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+			5_no:
+				close;
+	}
+	}
+	mes "[Raiton Intermediário]"; 
+	mes "Você precisa ser Chunin ou superior."; 
+	close;
+OnInit:
+	waitingroom "[Raiton Intermediário]",0;
+		
+}

@@ -1,0 +1,253 @@
+kiragakure,210,156,5	script	Saída da Névoa#1	837,{
+	mes "[Saída da Névoa]";
+	mes "Se cuida la fora...";
+	close;
+}
+
+areia,106,253,5	script	Entrada do Esgoto#2	837,{
+	mes "[Entrada do esgoto]";
+	mes "Uma entrada para um esgoto misterioso...";
+	close;
+}
+
+sunagakure,194,69,5	script	Saída da Areia#1	837,{
+	mes "[Saída da Areia]";
+	mes "Se cuida la fora...";
+	close;
+}
+
+kumogakure,184,23,5	script	Saída da Núvem#1	837,{
+	mes "[Saída da Núvem]";
+	mes "Se cuida la fora...";
+	close;
+}
+
+sunagakure,299,212,5	script	Equipamentos#2	837,{
+	mes "[Loja de Equipamentos]";
+	mes "Bem-vindo a loja de equipamentos da Areia.";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Boas compras!";
+	close;
+}
+
+kiragakure,163,279,5	script	Equipamentos#3	837,{
+	mes "[Loja de Equipamentos]";
+	mes "Bem-vindo a loja de equipamentos da Névoa.";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Boas compras!";
+	close;
+}
+
+kiragakure,212,289,5	script	Bonecos de Treino#4	837,{
+	mes "[Bonecos de Treino]";
+	mes "Um belo local para treinar seus jutsus!";
+	close;
+}
+
+konoha3,103,250,5	script	Bonecos de Treino#3	837,{
+	mes "[Bonecos de Treino]";
+	mes "Um belo local para treinar seus jutsus!";
+	close;
+}
+
+kumogakure,163,219,5	script	Equipamentos#4	837,{
+	mes "[Loja de Equipamentos]";
+	mes "Bem-vindo a loja de equipamentos da Nuvem.";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi";
+	next;
+	mes "[Loja de Equipamentos]";
+	mes "Boas compras!";
+	close;
+}
+
+areia,180,165,5	script	Hospital da Suna#1	837,{
+	mes "[Hospital da Suna]";
+	mes "Está ferido? Aqui cuidaremos de você!";
+	close;
+}
+
+//sunagakure,164,122,5	script	Central de Jutsus#1	837,{
+//	mes "[Central de Jutsus]";
+//	mes "Aqui estão os mestres em todos os tipos de jutsus, aprenda com eles!";
+//	close;
+//}
+
+
+//konoha3,155,197,5	script	Central de Jutsus#2	837,{
+//	mes "[Central de Jutsus]";
+//	mes "Aqui estão os mestres em todos os tipos de jutsus, aprenda com eles!";
+//	close;
+//}
+
+//nuvem,55,64,5	script	Central de Jutsus#3	837,{
+//	mes "[Central de Jutsus]";
+//	mes "Aqui estão os mestres em todos os tipos de jutsus, aprenda com eles!";
+//	close;
+//}
+
+//kiragakure,270,258,5	script	Central de Jutsus#4	837,{
+//	mes "[Central de Jutsus]";
+//	mes "Aqui estão os mestres em todos os tipos de jutsus, aprenda com eles!";
+//	close;
+//}
+
+konoha3,191,232,5	script	Escritório do Kage#1	837,{
+	mes "[Escritório do Kage]";
+	mes "Receba aqui missões e fale com o Hokage!";
+	close;
+}
+
+sunagakure,201,187,5	script	Escritório do Kage#2	837,{
+	mes "[Escritório do Kage]";
+	mes "Receba aqui missões e fale com o Kazekage!";
+	close;
+}
+
+kiragakure,204,221,5	script	Escritório do Kage#3	837,{
+	mes "[Escritório do Kage]";
+	mes "Receba aqui missões e fale com o Mizuage!";
+	close;
+}
+
+kumogakure,164,135,5	script	Escritório do Kage#4	837,{
+	mes "[Escritório do Kage]";
+	mes "Receba aqui missões e fale com o Raikage!";
+	close;
+}
+
+konoha,106,257,5	script	Hospital de Konoha#1	837,{
+	mes "[Hospital de Konoha]";
+	mes "Está ferido? Aqui cuidaremos de você!";
+	close;
+}
+
+konoha3,212,70,5	script	Saída de Konoha#1	837,{
+	mes "[Saída de Konoha]";
+	mes "Se cuida la fora...";
+	close;
+}
+
+
+kiragakure,149,224,5	script	Hospital da Névoa#1	837,{
+	mes "[Hospital de Konoha]";
+	mes "Está ferido? Aqui cuidaremos de você!";
+	close;
+}
+
+nevoa,18,116,5	script	Entrada para esgoto#1	837,{
+	mes "[Entrada para esgoto]";
+	mes "Esgoto, entre com cuidado!";
+	close;
+}
+
+konoha,193,231,5	script	Entrada para esgoto#2	837,{
+	mes "[HEntrada para esgoto]";
+	mes "Esgoto, entre com cuidado!";
+	close;
+}
+
+nuvem,22,57,5	script	Entrada para esgoto#3	837,{
+	mes "[Entrada para esgoto]";
+	mes "Esgoto, entre com cuidado!";
+	close;
+}
+
+nuvem,208,242,5	script	Hospital da Núvem#1	837,{
+	mes "[Hospital da Núvem]";
+	mes "Está ferido? Aqui cuidaremos de você!";
+	close;
+}
+
+//ama_fild01,178,213,5	script	Garganta da Núvem	837,{
+//	mes "[Garganta da Núvem Trovejante]";
+//	mes "Cuidado com essa caverna!";
+//	close;
+//}
+
+konoha3,279,160,5	script	Biblioteca de Konoha	837,{
+	mes "[Biblioteca de Konoha]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+sunagakure,212,162,5	script	Biblioteca da Suna	837,{
+	mes "[Biblioteca da Suna]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+kiragakure,250,174,5	script	Biblioteca da Névoa	837,{
+	mes "[Biblioteca da Névoa]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+kumogakure,137,38,5	script	Biblioteca da Nuvem	837,{
+	mes "[Biblioteca da Nuvem]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+acad_01,96,83,5	script	Biblioteca	837,{
+	mes "[Biblioteca]";
+	mes "Aumente seu conhecimento, venha ver nossa coleção de livros";
+	close;
+}
+
+acad_01,102,83,5	script	Sala 1	837,{
+	mes "[Sala 1]";
+	mes "Venha estudar, não se atrase!";
+	close;
+}
+
+acad_01,94,111,5	script	Sala 3	837,{
+	mes "[Sala 1]";
+	mes "Venha estudar, não se atrase!";
+	close;
+}
+
+acad_01,103,111,5	script	Sala 2	837,{
+	mes "[Sala 1]";
+	mes "Venha estudar, não se atrase!";
+	close;
+}
+
+acad_01,97,114,5	script	Campo de Treinamento#10	837,{
+	mes "[Campo de Treinamento]";
+	mes "É hora de praticar!";
+	close;
+}
+
+konoha,194,276,5	script	Entrada pra Konoha#3	837,{
+	mes "[Entrada pra Konoha]";
+	mes "Bem-vindo de volta!";
+	close;
+}
+
+areia,113,270,5	script	Entrada pra Suna#3	837,{
+	mes "[Entrada pra Suna]";
+	mes "Bem-vindo de volta!";
+	close;
+}
+
+nuvem,155,291,5	script	Entrada pra Nuvem#3	837,{
+	mes "[Entrada pra Nuvem]";
+	mes "Bem-vindo de volta!";
+	close;
+}
+
+nevoa,69,286,5	script	Entrada pra Névoa#3	837,{
+	mes "[Entrada pra Névoa]";
+	mes "Bem-vindo de volta!";
+	close;
+}

@@ -1,0 +1,103 @@
+pay_fild07,104,185,5	script	Suffragium::fuuint3	831,{
+
+if (getskilllv(67) >= 1) goto L_delete;
+if (checkquest(2112) == 1) goto L_go;
+if(fuuin_intermediario != 1) {mes "Você precisa estudar fuuinjutsu intermediário antes de aprender esse fuuinjutsu"; close;}
+if(fuu_skill_int >= 3) {mes "Você já aprendeu três fuuinjutsus intermediários, esse é o limite"; close;}
+if(Suffragium == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(accept_fuu_int == 3) {mes "Você já aceitou três treinamentos pra realizar de fuuinjutsu"; close;}
+if (WeaponLvl5 < 40) {mes "Seu nível de fuuinjutsu está baixo demais, é preciso ter nível 40 pra aprender esse fuuinjutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de fuuinjutsu espalhados pelo mundo, eu posso lhe ensinar um fuuinjutsu intermediário";
+next;
+mes "O fuuinjutsu que eu ensino é o: Suffragium";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Suffragium
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(67) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(67) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 67,0,0;
+set Suffragium,0;
+erasequest 2112;
+if(accept_fuu_int > 0) {set accept_fuu_int,accept_fuu_int -1;}
+if(fuu_skill_int > 0) {set fuu_skill_int,fuu_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_fuu_int_tres,1;
+set accept_fuu_int,accept_fuu_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter fuuinjutsu intermedário level 40";
+mes "- Derrotar 30 Namekuji.";
+mes "- Obter 20 Scell";
+mes "- Obter 100 Carvão";
+mes "- Obter 15 Brigan";
+setquest 2112;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(fuu_skill_int >= 4) {mes "Você já aprendeu quatro fuuinjutsus intermediario, esse é o limite"; close;}
+if(fuu_int_mobs_tres < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(911) <20) {next; mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1003) < 100) {next; mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7054) < 15) {next; mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 911,20;
+delitem 1003,100;
+delitem 7054,15;
+skill 67,1,0;
+set Suffragium,1;
+set quest_fuu_int_tres,0;
+set fuu_int_mobs_tres, 0;
+completequest 2112;
+erasequest 2112;
+set fuu_skill_int,fuu_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuinjutsu Intermedíario]",0;
+}
+
+
+
+-	script	fuuint#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1031 && quest_fuu_int_tres == 1) {set fuu_int_mobs_tres,fuu_int_mobs_tres +1; announce "[Fuuinjutsu Quest] Você já derrotou "+fuu_int_mobs_tres+" / 30 Namekuji",bc_blue|bc_self; end;}
+
+}
+
+moc_fild17,206,143,5	duplicate(fuuint3)	Suffragium#31	831,{
+prt_fild03,199,108,5	duplicate(fuuint3)	Suffragium#32	831,{
+ein_fild07,250,256,5	duplicate(fuuint3)	Suffragium#33	831,{

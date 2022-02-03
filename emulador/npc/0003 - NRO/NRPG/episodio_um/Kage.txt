@@ -1,0 +1,56 @@
+//===== eAthena Script ========================================
+//= Kage
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= Introdutor ao Primeiro Episódio.
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+jawaii_in,37,123,4	script	Informante	402,{
+//==========Variavéis=========================================
+set @npc$,"[^000080Informante^000000]";
+//============================================================
+
+if (EPI >= 1) goto done;
+if (KAGEOK == 1) goto EPI1;
+if (KAGEOK != 1) goto fail;
+
+EPI1:
+mes @npc$;
+mes "^BEBEBE"+strcharinfo(0)+"^000000, você deve saber do que se trata a missão,como foi explicado pelo nosso Introdutor.";
+next;
+mes @npc$;
+mes "A missão consiste em escoltar o Tazuna até o País das ^0000FFOndas^000000";
+next;
+mes @npc$;
+mes "Você deverá levar consigo itens de cura,e estar preparado pois se ele necessita de escolta devemos nos Precaver para qualquer situação";
+menu "-^0000FFOk Estou preparado^000000",S,"-^FF0000Não estou preparado Ainda^000000",N;
+
+S:
+next;
+mes @npc$;
+mes "Ok,vá até o Porto Shinobi e lá terá a opção País das Ondas";
+set KAGEOK,0;
+set EPI,1;
+set PORTO,1;
+mes "^BEBEBE"+strcharinfo(0)+"^000000 Boa Sorte em Sua Jornada!";
+close;
+
+N:
+next;
+mes @npc$;
+mes "Ok,^BEBEBE"+strcharinfo(0)+"^000000 volte quando se achar apto";
+close;
+
+done:
+mes "Não tenho mais nada a falar pra voce!";
+close;
+
+fail:
+mes "Você precisa falar com o indrodutor antes!";
+close;
+
+}

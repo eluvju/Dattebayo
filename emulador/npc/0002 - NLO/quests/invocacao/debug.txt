@@ -1,0 +1,4 @@
+sec_in02,147,178,5	script	DebugKuchi	99,{
+mes "Desbugando...";
+set kuchiyose,0;
+}

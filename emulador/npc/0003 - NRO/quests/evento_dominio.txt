@@ -1,0 +1,5 @@
+ayothaya,132,99,5	script	Base 1	45,1,1,{
+
+announce ""+strcharinfo(0)+" do grupo "+strcharinfo(1)+" acaba de conquistar a base 1!",bc_blue|bc_all;
+end;
+}

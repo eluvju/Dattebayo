@@ -1,0 +1,90 @@
+payon_in03,33,89,5	script	Dekopin::taibas8	51,{
+
+if (getskilllv(509) >= 1) goto L_delete;
+if (checkquest(2131) == 1) goto L_go;
+if(tai_basico != 1) {mes "Você precisa estudar taijutsu básico antes de aprender um taijutsu"; close;}
+if(tai_skill_bas >= 3) {mes "Você já aprendeu três taijutsus básicos, esse é o limite"; close;}
+if(accept_tai == 3) {mes "Você já aceitou três treinamentos pra realizar de taijutsu"; close;}
+if(Dekopin == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de taijutsu espalhado pelo mundo, eu posso lhe ensinar um taijutsu básico";
+next;
+mes "O taijutsu que eu ensino é o: Dekopin";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Dekopin
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(509) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(509) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 509,0,0;
+set Dekopin,0;
+erasequest 2131;
+if(accept_tai > 0) {set accept_tai,accept_tai -1;}
+if(tai_skill_bas > 0) {set tai_skill_bas,tai_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_tai_base_oito,1;
+set accept_tai_bas,accept_tai_bas +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 50 Barata.";
+setquest 2131;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(tai_bas_mobs_oito < 50) {mes "Você ainda não completou seu treinamento, falta matar baratas"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 509,1,0;
+set Dekopin,1;
+set quest_tai_base_oito,0;
+set tai_bas_mobs_oito, 0;
+completequest 2131;
+erasequest 2131;
+set tai_skill_bas,tai_skill_bas +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Taijutsu Básico]",0;
+}
+
+-	script	taibas#8	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1618 && quest_tai_base_oito == 1) {set tai_bas_mobs_oito,tai_bas_mobs_oito +1; announce "[Taijutsu Quest] Você já derrotou "+tai_bas_mobs_oito+" / 50 Barata",bc_blue|bc_self; end;}
+
+}
+
+
+morocc_in,47,174,5	duplicate(taibas8)	Dekopin#41	51,{
+payon_in01,6,56,5	duplicate(taibas8)	Dekopin#42	51,{
+payon_in01,181,91,5	duplicate(taibas8)	Dekopin#43	51,{

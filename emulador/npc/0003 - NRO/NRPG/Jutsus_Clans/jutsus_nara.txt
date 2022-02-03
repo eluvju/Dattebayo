@@ -1,0 +1,823 @@
+nevoa,109,168,3	script	Mestre Nara::nar	734,{
+	mes "[Mestre Nara]";
+	if(nara == 1){goto L_lista;}else{goto L_Wrong;}
+
+	
+	L_lista:
+	mes "Você membro do clã Nara";
+	mes "Gostaria de ver as skills de qual graduação?";
+	menu "Genin",geninnara,"Chunin",chuninnara,"Jounin",jouninnara;
+	
+	
+	geninnara:
+	if(genin != 1) goto L_NoJutsu;
+	next;
+	mes "[Mestre nara]";
+	mes "Você que é nara Genin, pode aprender os seguintes Jutsus!";
+	menu "Coluna de Fogo nv 10 ",skill1narag,"Dilema nv5 (Kage Mane no Jutsu)",skill2narag;
+
+	skill1narag:
+	if(Jutsugenin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Genin:Coluna de Fogo nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "200 Pinças de Escorpião";
+	mes "200 Casco Arco- Íris";
+	mes "20 Língua de Reptil";
+	mes "E terá que derrotar 20 Girinos";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_narag1,1;	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7125) < 200) goto L_SemItem;
+	if (countitem(1013) < 200) goto L_SemItem;
+	if (countitem(903) < 20) goto L_SemItem;
+	if(skillg1naramobs < 20) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7125,200;
+	delitem 1013,200;
+	delitem 903,20;
+	skill 80,10,0;
+	set Jutsugenin1,0;
+	set Jutsugenin2,1;
+	set skillg1naramobs,0;
+	set quest_narag1,0;
+	close;
+
+	skill2narag:
+	if(Jutsugenin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Genin: Dilema nv5 (Kage Mane no Jutsu";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "200 Pinças de Escorpião";
+	mes "150 leites";
+	mes "150 Armadura Destruídas";
+	mes "50 Tendões";
+	mes "E terá que derrotar 20 Morcego";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_narag2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7125) < 200) goto L_SemItem;
+	if (countitem(519) < 150) goto L_SemItem;
+	if (countitem(7069) < 150) goto L_SemItem;
+	if (countitem(1050) < 50) goto L_SemItem;
+	if(skillg2naramobs < 20) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7125,200;
+	delitem 519,150;
+	delitem 7069,150;
+	delitem 1050,50;
+	skill 269,5,0;
+	set Jutsugenin2,0;
+	set Jutsuchunin1,1;
+	set skillg2naramobs,0;
+	set quest_narag2,0;
+	close;
+	
+	
+	chuninnara:
+	if(chunin != 1) goto L_NoJutsu;
+	next;
+	mes "[Mestre Nara]";
+	mes "Você que é um nara chunin, pode aprender os seguintes Jutsus!";
+	menu "Kage Kubi Shibari no Jutsu nv 1",skill1narac,"Coluna de Fogo nv 15",skill2narac,"Ataque Espiritual nv 10 (Elemento Sombra) (Kage Mane Shuriken no Jutsu)",skill3narac,"Lâmina de Aura nv 5 (Hien)",skill4narac;
+
+	skill1narac:
+	if(Jutsuchunin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Kage Kubi Shibari no Jutsu nv 1";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "200 Shuriken Gasto";
+	mes "100 Ovas de Sapo";
+	mes "150 Patas de Besouro";
+	mes "300 Casco Arco –Íris";
+	mes "100 Garras de Rato";
+	mes "20 União da Tribo";
+	mes "E matar 50 Ratasanas";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_narac1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7072) < 200) goto L_SemItem;
+	if (countitem(908) < 100) goto L_SemItem;
+	if (countitem(7202) < 150) goto L_SemItem;
+	if (countitem(1013) < 300) goto L_SemItem;
+	if (countitem(7007) < 100) goto L_SemItem;
+	if (countitem(658) < 20) goto L_SemItem;
+	if(skillc1naramobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7072,200;
+	delitem 908,100;
+	delitem 7202,150;
+	delitem 1013,300;
+	delitem 7007,100;
+	delitem 658,20;
+	skill 1005,1,0;
+	set Jutsuchunin1,0;
+	set Jutsuchunin2,1;
+	set skillc1naramobs,0;
+	set quest_narac1,0;
+
+	skill2narac:
+	if(Jutsuchunin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Coluna de Fogo nv 15";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "150 Língua de Reptil";
+	mes "400 Garra de Lobo do Deserto";
+	mes "200 Teia de Aranha";
+	mes "300 Antenas de Inseto";
+	mes "50 Gema Vermelha";
+	mes "50 Galertas";
+	mes "30 Minhoca Boa Pinta";
+	mes "E matar 30 Baratas macho";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_narac2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(903) < 150) goto L_SemItem;
+	if (countitem(7030) < 400) goto L_SemItem;
+	if (countitem(1025) < 200) goto L_SemItem;
+	if (countitem(928) < 300) goto L_SemItem;
+	if (countitem(716) < 50) goto L_SemItem;
+	if (countitem(910) < 50) goto L_SemItem;	
+	if (countitem(623) < 30) goto L_SemItem;		
+	if(skillc2naramobs < 30) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 903,150;
+	delitem 7030,400;
+	delitem 1025,200;
+	delitem 928,300;
+	delitem 716,50;
+	delitem 910,50;
+	delitem 623,30;
+	skill 80,15,0;
+	set Jutsuchunin2,0;
+	set Jutsuchunin3,1;
+	set skillc2naramobs,0;
+	set quest_narac2,0;
+	close;
+
+	skill3narac:
+	if(Jutsuchunin3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre Nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Ataque Espiritual nv 10 (Elemento Sombra) (Kage Mane Shuriken no Jutsu)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "500 Patas Pegajosas";
+	mes "300 Retrato Velhos";
+	mes "300 Tranças";
+	mes "50 Luvas do Carrasco";
+	mes "50 Vida Verdejantes";
+	mes "150 Avelãs";
+	mes "15 Coração Imortal";
+	mes "E matar 50 Operários";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_narac3,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(918) < 500) goto L_SemItem;
+	if (countitem(7014) < 300) goto L_SemItem;
+	if (countitem(901) < 300) goto L_SemItem;
+	if (countitem(7017) < 50) goto L_SemItem;
+	if (countitem(993) < 50) goto L_SemItem;
+	if (countitem(1026) < 150) goto L_SemItem;
+	if (countitem(929) < 15) goto L_SemItem;
+	if(skillc3naramobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 918,500;
+	delitem 7014,300;
+	delitem 901,300;
+	delitem 7017,50;
+	delitem 993,50;
+	delitem 1026,150;
+	delitem 929,15;
+	skill 11,10,0;
+	set Jutsuchunin3,0;
+	set Jutsuchunin4,1;
+	set skillc3naramobs,0;
+	set quest_narac3,0;
+	close;
+	
+	skill4narac:
+	if(Jutsuchunin4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Lâmina de Aura nv 5 (Hien)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "20 Espetos Quebrados";
+	mes "300 Ossos";
+	mes "300 Escamas Brilhantes";
+	mes "200 galho";
+	mes "150 algemas";
+	mes "300 Sangue de animal";
+	mes "100 raiz marrom";
+	mes "E matar 50 Escaravelhos";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_narac4,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7215) < 20) goto L_SemItem;
+	if (countitem(932) < 300) goto L_SemItem;
+	if (countitem(954) < 300) goto L_SemItem;
+	if (countitem(7203) < 200) goto L_SemItem;
+	if (countitem(1098) < 150) goto L_SemItem;
+	if (countitem(702) < 300) goto L_SemItem;
+	if (countitem(7188) < 100) goto L_SemItem;
+	if(skillc4naramobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7215,20;
+	delitem 932,300;
+	delitem 954,300;
+	delitem 7203,200;
+	delitem 1098,150;
+	delitem 702,300;
+	delitem 7188,100;
+	skill 355,5,0;
+	set Jutsuchunin4,0;
+	set Jutsujounin1,1;
+	set skillc4naramobs,0;
+	set quest_narac4,0;
+	close;
+
+
+	jouninnara:
+	if(jounin != 1) goto L_NoJutsu;
+	next;
+	mes "[Mestre Nara]";
+	mes "Você que é um Nara Jounin, pode aprender os seguintes Jutsus!";
+	menu "Ataque Espiritual nv 15 (Elemento Sombra) (Kage Mane Shuriken no Jutsu)",skill1naraj,"Prisão de Teia (Kumosouka) nv 1",skill2naraj,"Espreitar nv 5 (Toutoun no Jutsu)",skill3naraj,"Impacto Psíquico nv 5 (Chakra no Mesu)",skill4naraj,"Corpo Fechado nv 5 (Muralha de Chakra)",skill5naraj,"Proteger Terreno nv 5 (Kekkai Houjin)",skill6naraj;
+
+	skill1naraj:
+	if(Jutsujounin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Ataque Espiritual nv 15 (Elemento Sombra) (Kage Mane Shuriken no Jutsu)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "500 Bandagem Estragada";
+	mes "150 pernas de gafanhoto";
+	mes "150 Muco Pegajoso";
+	mes "100 Ametista";
+	mes "200 Casca Quebrada";
+	mes "E matar 30 Gremlins";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_naraj1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(930) < 500) goto L_SemItem;
+	if (countitem(940) < 150) goto L_SemItem;
+	if (countitem(938) < 150) goto L_SemItem;
+	if (countitem(719) < 100) goto L_SemItem;
+	if (countitem(7070) < 200) goto L_SemItem;
+	if(skillj1naramobs < 30) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 930,500;
+	delitem 940,150;
+	delitem 938,150;
+	delitem 719,100;
+	delitem 7070,200;
+	skill 11,15,0;
+	set Jutsujounin1,0;
+	set Jutsujounin2,1;
+	set skillj1naramobs,0;
+	set quest_naraj1,0;
+	close;
+
+	skill2naraj:
+	if(Jutsujounin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Prisão de Teia (Kumosouka) nv 1";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "800 Garras de Leopardo";
+	mes "400 Sopa de Tinta de Lula e Ovos de Sapo";
+	mes "300 Lamina Perdida das Trevas";
+	mes "500 Mascara Ninja";
+	mes "400 Mascara do Festival";
+	mes "400 gás tóxico";
+	mes "E matar 40 Gafanhotos";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_naraj2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7172) < 800) goto L_SemItem;
+	if (countitem(12056) < 400) goto L_SemItem;
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7157) < 500) goto L_SemItem;
+	if (countitem(7187) < 400) goto L_SemItem;
+	if (countitem(7322) < 400) goto L_SemItem;
+	if(skillj2naramobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7172,800;
+	delitem 12056,400;
+	delitem 7023,300;
+	delitem 7157,500;
+	delitem 7187,400;
+	delitem 7322,400;
+	skill 405,1,0;
+	set Jutsujounin2,0;
+	set Jutsujounin3,1;
+	set skillj2naramobs,0;
+	set quest_naraj2,0;
+	close;
+
+	skill3naraj:
+	if(Jutsujounin3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Espreitar nv 5 (Toutoun no Jutsu)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "400 Esfera das Sombras";
+	mes "50 Cachimbo";
+	mes "300 Pedra do Sabio";
+	mes "500 Cyfar";
+	mes "200 Pedra do Pesadelo";
+	mes "200 Insígnia de Herói";
+	mes "300 rosa eterna";
+	mes "E matar 30 Ninkames";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_naraj3,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7524) < 400) goto L_SemItem;
+	if (countitem(2268) < 50) goto L_SemItem;
+	if (countitem(12040) < 300) goto L_SemItem;
+	if (countitem(7053) < 500) goto L_SemItem;
+	if (countitem(7102) < 200) goto L_SemItem;
+	if (countitem(968) < 200) goto L_SemItem;
+	if (countitem(748) < 300) goto L_SemItem;
+	if(skillj3naramobs < 30) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7524,400;
+	delitem 2268,50;
+	delitem 12040,300;
+	delitem 7053,500;
+	delitem 7102,200;
+	delitem 968,200;
+	delitem 748,300;
+	skill 369,5,0;
+	set Jutsujounin3,0;
+	set Jutsujounin4,1;
+	set skillj1naramobs,0;
+	set quest_naraj3,0;
+	close;
+
+
+	skill4naraj:
+	if(Jutsujounin4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Impacto Psíquico nv 5 (Chakra no Mesu)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "400 Relógio de Bolso";
+	mes "400 Bracelete da Obediência";
+	mes "400 Ba Gua";
+	mes "300 Esmeralda";
+	mes "400 Garra de Macaco";
+	mes "500 Cabelos Horrendos";
+	mes "300 lanterna";
+	mes "E matar 40 Doki's";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_naraj4,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7513) < 400) goto L_SemItem;
+	if (countitem(639) < 400) goto L_SemItem;
+	if (countitem(7169) < 400) goto L_SemItem;
+	if (countitem(721) < 300) goto L_SemItem;
+	if (countitem(7011) < 400) goto L_SemItem;
+	if (countitem(1048) < 500) goto L_SemItem;
+	if (countitem(7191) < 300) goto L_SemItem;
+	if(skillj4naramobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7513,400;
+	delitem 639,400;
+	delitem 7169,400;
+	delitem 721,300;
+	delitem 7011,400;
+	delitem 1048,500;
+	delitem 7191,300;
+	skill 266,5,0;
+	set Jutsujounin4,0;
+	set Jutsujounin5,1;
+	set skillj4naramobs,0;
+	set quest_naraj4,0;
+	close;
+
+	skill5naraj:
+	if(Jutsujounin5 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Corpo Fechado nv 5 (Muralha de Chakra)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "300 Colar do Oblívio";
+	mes "500 Fragmento da Desgraça";
+	mes "500 Selo Maldito";
+	mes "30 Plantas da Névoa";
+	mes "30 plantas de Konoha";
+	mes "30 Plantas da Suna";
+	mes "10 Símbolo do Guerreiro";
+	mes "20 Ouros";
+	mes "E matar 40 Camaleons";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_naraj5,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(1008) < 300) goto L_SemItem;
+	if (countitem(7437) < 500) goto L_SemItem;
+	if (countitem(7442) < 500) goto L_SemItem;
+	if (countitem(710) < 30) goto L_SemItem;
+	if (countitem(712) < 30) goto L_SemItem;
+	if (countitem(704) < 30) goto L_SemItem;
+	if (countitem(7484) < 10) goto L_SemItem;
+	if (countitem(969) < 20) goto L_SemItem;
+	if(skillj5naramobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 1008,300;
+	delitem 7437,500;
+	delitem 7442,500;
+	delitem 710,30;
+	delitem 712,30;
+	delitem 704,30;
+	delitem 7484,10;
+	delitem 969,20;
+	skill 268,5,0;
+	set Jutsujounin5,0;
+	set Jutsujounin6,1;
+	set skillj5naramobs,0;
+	set quest_naraj5,0;
+	close;
+
+
+	skill6naraj:
+	if(Jutsujounin6 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Proteger Terreno nv 5 (Kekkai Houjin)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "300 Lamina Perdida das Trevas";
+	mes "300 Fragmento da Desgraça";
+	mes "20 Plantas da Névoa";
+	mes "20 plantas de Konoha";
+	mes "20 Plantas da Suna";
+	mes "15 símbolo de guerreiro";
+	mes "10 Fragmento de Espírito";
+	mes "40 ouro";
+	mes "E matar 40 Jounins";
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_naraj6,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7437) < 300) goto L_SemItem;
+	if (countitem(710) < 20) goto L_SemItem;
+	if (countitem(712) < 20) goto L_SemItem;
+	if (countitem(704) < 20) goto L_SemItem;
+	if (countitem(7484) < 15) goto L_SemItem;
+	if (countitem(7306) < 10) goto L_SemItem;
+	if (countitem(969) < 40) goto L_SemItem;
+	if(skillj6naramobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre nara^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7023,300;
+	delitem 7437,300;
+	delitem 710,20;
+	delitem 712,20;
+	delitem 704,20;
+	delitem 7484,15;
+	delitem 7306,10;
+	delitem 969,40;
+	skill 288,5,0;
+	set Jutsujounin6,0;
+	set Jutsujounin7,1;
+	set skillj5naramobs,0;
+	set quest_naraj6,0;
+	close;
+	
+L_SemItem:
+	next;
+	mes "[^FF0000Mestre nara^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+		
+L_nogradu:
+	next;
+	mes "Você não é desta graduação.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Mestre nara^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_NoJutsu:
+	next;
+	mes "[^FF0000Mestre nara^000000]";
+	mes "Você não está preparado para este Jutsu ainda ou ja fez este treinamento!";
+	close;
+
+L_Wrong:
+	mes "[^FF0000Mestre nara^000000]";
+	mes "Você não é deste clã";
+	close;
+
+}
+
+-	script	OnNPCKill_narag1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_narag1 == 1){goto nara_g1;} else {end;}
+
+nara_g1:
+switch (killedrid) {
+case 1034:
+set skillg1naramobs, skillg1naramobs + 1;
+dispbottom "Você ja matou "+skillg1naramobs+" Girino(s)";
+end;
+
+}
+}
+
+-	script	OnNPCKill_narag2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_narag2 == 1){goto nara_g2;} else {end;}
+
+nara_g2:
+switch (killedrid) {
+case 1005:
+set skillg2naramobs, skillg2naramobs + 1;
+dispbottom "Você ja matou "+skillg2naramobs+" Morcego(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_narac1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_narac1 == 1){goto nara_c1;} else {end;}
+
+nara_c1:
+switch (killedrid) {
+case 1209:
+set skillc1naramobs, skillc1naramobs + 1;
+dispbottom "Você ja matou "+skillc1naramobs+" Ratasana(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_narac2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_narac2 == 1){goto nara_c2;} else {end;}
+
+nara_c2:
+switch (killedrid) {
+case 1053:
+set skillc2naramobs, skillc2naramobs + 1;
+dispbottom "Você ja matou "+skillc2naramobs+" Barata(s) Macho";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_narac3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_narac3 == 1){goto nara_c3;} else {end;}
+
+nara_c3:
+switch (killedrid) {
+case 1169:
+set skillc3naramobs, skillc3naramobs + 1;
+dispbottom "Você ja matou "+skillc3naramobs+" Operário(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_narac4	-1,{
+
+OnNPCKillEvent:
+
+if(quest_narac4 == 1){goto nara_c4;} else {end;}
+
+nara_c4:
+switch (killedrid) {
+case 1211:
+set skillc4naramobs, skillc4naramobs + 1;
+dispbottom "Você ja matou "+skillc4naramobs+" Escaravelho(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_naraj1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_naraj1 == 1){goto nara_j1;} else {end;}
+
+nara_j1:
+switch (killedrid) {
+case 1632:
+set skillj1naramobs, skillj1naramobs + 1;
+dispbottom "Você ja matou "+skillj1naramobs+" Gremlin(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_naraj2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_naraj2 == 1){goto nara_j2;} else {end;}
+
+nara_j2:
+switch (killedrid) {
+case 1058:
+set skillj2naramobs, skillj2naramobs + 1;
+dispbottom "Você ja matou "+skillj2naramobs+" Gafanhoto(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_naraj3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_naraj3 == 1){goto nara_j3;} else {end;}
+
+nara_j3:
+switch (killedrid) {
+case 1315:
+set skillj3naramobs, skillj3naramobs + 1;
+dispbottom "Você ja matou "+skillj3naramobs+" Ninkame(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_naraj4	-1,{
+
+OnNPCKillEvent:
+
+if(quest_naraj4 == 1){goto nara_j4;} else {end;}
+
+nara_j4:
+switch (killedrid) {
+case 1177:
+set skillj4naramobs, skillj4naramobs + 1;
+dispbottom "Você ja matou "+skillj4naramobs+" Doki(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_naraj5	-1,{
+
+OnNPCKillEvent:
+
+if(quest_naraj5 == 1){goto nara_j5;} else {end;}
+
+nara_j5:
+switch (killedrid) {
+case 1831:
+set skillj5naramobs, skillj5naramobs + 1;
+dispbottom "Você ja matou "+skillj5naramobs+" Camaleon(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_naraj6	-1,{
+
+OnNPCKillEvent:
+
+if(quest_naraj6 == 1){goto nara_j6;} else {end;}
+
+nara_j6:
+switch (killedrid) {
+case 1634:
+set skillj6naramobs, skillj6naramobs + 1;
+dispbottom "Você ja matou "+skillj6naramobs+" Jounin(s)";
+
+end;
+
+
+}
+}
+
+
+morocc_in,81,91,4	duplicate(nar)	Mestre Nara#1	734
+payon_in01,13,53,4	duplicate(nar)	Mestre Nara#2	734
+prt_monk,217,249,4	duplicate(nar)	Mestre Nara#3	734

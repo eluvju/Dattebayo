@@ -1,0 +1,101 @@
+mjolnir_07,71,209,5	script	Meditação::medint10	831,{
+
+if (getskilllv(363) >= 1) goto L_delete;
+if(med_intermediario != 1) {mes "Você precisa estudar medicina intermediária antes de aprender essa técnica de medicina"; close;}
+if (checkquest(2014) == 1) goto L_go;
+if(med_skill_int >= 3) {mes "Você já aprendeu três técnicas de medicinas intermediárias, esse é o limite"; close;}
+if(Meditacao == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(accept_med_int == 3) {mes "Você já aceitou três treinamentos pra realizar de medicina"; close;}
+if (WeaponLvl4 < 40) {mes "Seu nível de Medicina está baixo demais, é preciso ter nível 40 ou mais pra aprender esse Medicina"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de medicina espalhado pelo mundo, eu posso lhe ensinar um técnica de medicina intermediária";
+next;
+mes "a técnica de medicina que eu ensino é o: Meditação";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Meditação
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(363) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(363) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 363,0,0;
+set Meditacao,0;
+erasequest 2014;
+if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}
+if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_med_int_dez,1;
+set accept_med_int,accept_med_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter Medicina intermediária (Level 40 ou Superior)";
+mes "- Derrotar 35 Operário.";
+mes "- Obter 100 Chifre Firme";
+mes "- Obter 25 Brigan";  
+mes "- Obter 5 Aquamarina"; 
+setquest 2014;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(med_skill_int >= 3) {mes "Você já aprendeu três medicinas intermediarias, esse é o limite"; close;}
+if(med_int_mobs_dez < 35) {mes "Você ainda não derrotou os Operários!"; close;}
+if (countitem(7008) <100) {mes "Onde está os 100 Chifres firmes?"; close;}
+if (countitem(7054) < 25) {mes "Onde está os 25 Brigans?"; close;}
+if (countitem(720) < 5) {mes "Onde está as 5 Aquamarinas?"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7008,100;
+delitem 7054,25;
+delitem 720,5;
+skill 363,1,0;
+set Meditacao,1;
+set quest_med_int_dez,0;
+set med_int_mobs_dez, 0;
+completequest 2014;
+erasequest 2014;
+set med_skill_int,med_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Medicina Intermediária]",0;
+}
+
+-	script	medint#10	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1169 && quest_med_int_dez == 1) {set med_int_mobs_dez,med_int_mobs_dez +1; announce "[Medinin Quest] Você já derrotou "+med_int_mobs_dez+" / 35 Operários",bc_blue|bc_self; end;}
+
+}
+
+moc_fild08,32,51,5	duplicate(medint10)	Meditação#31	831,{
+mjolnir_02,81,218,5	duplicate(medint10)	Meditação#32	831,{
+hu_fild07,212,277,5	duplicate(medint10)	Meditação#33	831,{

@@ -1,0 +1,96 @@
+ondular.gat,82,87,5	script	Miura	59,{
+
+mes "[Miura]";
+mes "Ei você... sabia que eu vi o Zabuza lutar uma vez?";
+mes "Pois é, e durante a luta ele deixou as botas dele cair!";
+mes "Eu como sou esperto esperei a luta acabar e roubei dele!";
+next;
+mes "[Miura]";
+mes "Isso que dá trabalhar pro Gatou...";
+mes "Mas eu acho que ele sabe que fui eu que peguei x_x";
+mes "Agora preciso me livrar delas, quer fazer uma troca?";
+menu "Quero",A,"Não",B;
+
+A:
+next;
+mes "[Miura]";
+mes "Ótimo, eu quero em troca das botas do Zabuza:";
+mes "1x Garrafa D'agua";
+mes "1x Lasca de zambatou";
+next;
+mes "O que me diz, aceita a troca?";
+menu "Aceito",C,"Agora não...",B;
+
+B:
+close;
+
+C:
+next;
+mes "[Miura]";
+mes "Beleza, vamos lá";
+if (countitem(19160) < 1) goto SemItem;
+if (countitem(19162) < 1) goto SemItem;
+next;
+mes "Que bom, você tem sua parte, aqui está a minha";
+delitem 19160,1;
+delitem 19162,1;
+getitem 19158,1;
+announce "O Shinobi " + strcharinfo(0) + " fez uma troca com o Miura e recebeu Botas Zabuza.",0;
+close;
+
+SemItem:
+next;
+mes "[Miura]";
+mes "Você não tem os itens que eu quero!";
+close;
+
+}
+
+ondular.gat,151,163,5	script	Arai	59,{
+
+mes "[Arai]";
+mes "Conhece aquele shinobi chamado Haku?";
+mes "Pois é, eu era um capanga do Gatou";
+mes "E eu estava sem calçado, pois sou bem pobre";
+next;
+mes "[Arai]";
+mes "Ele teve a gentiliza de me dar um par de sandálias";
+mes "Mas como eu não sou a pessoa mais honesta do mundo...";
+mes "eu gostaria de propor uma troca, quer?";
+menu "Quero",A,"Não",B;
+
+A:
+next;
+mes "[Arai]";
+mes "Ótimo, eu quero em troca das Sandálias Haku:";
+mes "1x Senbons Haku";
+mes "1x Máscara Haku";
+next;
+mes "[Arai]";
+mes "O que me diz, aceita a troca?";
+menu "Aceito",C,"Agora não...",B;
+
+B:
+close;
+
+C:
+next;
+mes "[Arai]";
+mes "Beleza, vamos lá";
+if (countitem(19167) < 1) goto SemItem;
+if (countitem(19163) < 1) goto SemItem;
+next;
+mes "Que bom, você tem sua parte, aqui está a minha";
+delitem 19167,1;
+delitem 19163,1;
+getitem 19166,1;
+announce "O Shinobi " + strcharinfo(0) + " fez uma troca com o Arai e recebeu Sandálias Haku.",0;
+close;
+
+SemItem:
+next;
+mes "[Arai]";
+mes "Você não tem os itens que eu quero!";
+close;
+
+}

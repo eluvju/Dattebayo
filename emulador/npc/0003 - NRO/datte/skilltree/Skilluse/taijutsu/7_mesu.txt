@@ -1,0 +1,55 @@
+-	script	on_PC_UseSkilltai11	-1,{
+    end;
+//When a Character uses a skill
+
+//Asshou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 266) {
+
+
+if (getskilllv(266) == 1) {
+
+if (ChakraM != 1) {end;}
+if (skill266 >= 50) {skill 266,2,0; set skill266,0; dispbottom "[Sys] Level up"; end; }
+set skill266,skill266 +1;
+dispbottom "[Jutsu level] Chakra no Mesu level 1: "+skill266+" de 50";
+
+end;
+
+}
+
+if (getskilllv(266) == 2) {
+if (ChakraM != 1) {end;}
+if (skill266 >= 100) {skill 266,3,0; set skill266,0; dispbottom "[Sys] Level up"; end;}
+set skill266,skill266 +1;
+dispbottom "[Jutsu level] Chakra no Mesu level 2: "+skill266+" de 100";
+
+end;
+
+}
+
+if (getskilllv(266) == 3) {
+
+if (ChakraM != 1) {end;}
+if (skill266 >= 150) {skill 266,4,0; set skill266,0; dispbottom "[Sys] Level up"; end;}
+set skill266,skill266 +1;
+dispbottom "[Jutsu level] Chakra no Mesu level 3: "+skill266+" de 150";
+
+end;
+
+}
+
+if (getskilllv(266) == 4) {
+if (ChakraM != 1) {end;}
+if (skill266 >= 200) {skill 266,5,0; set skill266,0; dispbottom "[Sys] Level up"; end;}
+set skill266,skill266 +1;
+dispbottom "[Jutsu level] Chakra no Mesu level 4: "+skill266+" de 200";
+
+end;
+
+}
+                end;
+            }    
+}

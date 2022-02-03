@@ -1,0 +1,337 @@
+dic_dun01,0,0,0,0	monster	Kyodaija		1025,25,0,0,0
+dic_dun01,0,0,0,0	monster	Manda		1418,50,0,0,0
+
+dic_dun01	mapflag	nosave	SavePoint
+dic_dun01	mapflag	nomemo
+payg_cas03	mapflag	nosave	SavePoint
+payg_cas03	mapflag	nomemo
+
+
+dic_dun01,88,212,0	warp	dimensao_cobra#1	2,2,dic_dun01,168,228
+dic_dun01,164,228,0	warp	dimensao_cobra#2	2,2,dic_dun01,84,212
+
+dic_dun01,371,227,0	warp	dimensao_cobra#3	2,2,dic_dun01,32,155
+dic_dun01,28,155,0	warp	dimensao_cobra#4	2,2,dic_dun01,368,227
+
+dic_dun01,371,172,0	warp	dimensao_cobra#5	2,2,dic_dun01,32,100
+dic_dun01,28,100,0	warp	dimensao_cobra#6	2,2,dic_dun01,368,172
+
+dic_dun01,290,107,0	warp	dimensao_cobra#7	2,2,payg_cas03,159,167
+payg_cas03,159,164,0	warp	dimensao_cobra#8	2,2,dic_dun01,290,104
+
+
+dic_dun01,370,100,0	warp	dimensao_cobra#9	2,2,dic_dun01,33,44
+dic_dun01,29,44,0	warp	dimensao_cobra#10	2,2,dic_dun01,366,100
+dic_dun01,371,44,0	warp	dimensao_cobra#11	2,2,dic_dun01,28,212
+
+payg_cas03,159,172,5	script	Mestre Cobra	1418,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@quest3kuchy1 = 50204;
+	.@quest3kuchy2 = 50205;
+
+	if(checkquest(.@quest3kuchy2) == 1) {
+		if(checkquest(.@quest3kuchy2,HUNTING) == 2) {
+			if(countitem(736) >= 40 && countitem(755) >= 40 && countitem(756) >= 40 && countitem(753) >= 1) {
+				if(Zeny >= 100000000){
+					mes .@npc$;
+					mes "Parabéns você completou seu treinamento.";
+					mes "Agora você já pode invocar sua kuchiyose.";
+					delitem 736,40;
+					delitem 755,40;
+					delitem 756,40;
+					delitem 753,1;
+					set Zeny, Zeny - 100000000;
+					skill 2501,3,3;
+					completequest .@quest3kuchy2; 
+					erasequest .@quest3kuchy2;
+					close;
+				}
+				mes .@npc$;
+				mes "Você nao tem zeny suficiente.";
+				close;
+			}
+			mes .@npc$;
+			mes "Você nao tem todos os itens ainda";
+			close;
+		}
+		mes .@npc$;
+		mes "Você nao completou seu treinamento ainda";
+		close;
+	}
+
+	
+
+	if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Vejo que você já aprendeu bem a dominar a invocação da minha espécie.";
+		next;
+		mes .@npc$;
+		mes "Mas um contrato comigo não vai ser tão simples assim.";
+		next;
+		mes .@npc$;
+		mes "Gostaria de tentar?";
+		if(select("- Sim:- Não") == 2) { next; mes .@npc$; mes "Tudo bem."; close; }
+			next;
+			mes .@npc$;
+			mes "Eu só aceito como meu mestre aqueles que tem como objetivo proteger seus amigos e sua vila.";
+			next;
+			mes .@npc$;
+			mes "Mas para isso você terá q me provar. Traga me os seguinte itens:";
+			mes "40x Pergaminho em Branco";
+			mes "40x Pergaminho em Branco Lendário";
+			mes "40x Segredo Shinobi";
+			mes "1x Fuuin no Sho";
+			mes "100.000.000 zeny";
+			mes "Matar 100 Manda";
+			completequest .@quest3kuchy1; 
+			erasequest .@quest3kuchy1;
+			setquest .@quest3kuchy2;
+			close;
+	}
+
+
+
+	mes .@npc$;
+
+	mes "Estou ocupado no momento volte mais tarde";
+
+	close;
+
+
+
+}
+
+
+
+pay_fild02,16,177,0	script	Dimensão Paralela#4	58,{
+
+	if(countitem(754) >= 1) {
+		mes "Vejo que você possui um pergaminho reverso. Lembre-se o seu pergaminho será consumido ao entrar no dimensão paralelo.";
+		if(select("- Sim:- Não") == 2) close;
+		close2;
+		delitem 754,1;
+		warp "dic_dun01",28,212;
+		end;
+	}
+
+	
+
+	mes "Você não está autorizado a ir para outra dimensão";
+
+	close;
+
+
+
+}
+
+treinamento,65,77,5	script	Orochimaru	70,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questkuchy1 = 50004;
+	.@questkuchy2 = 50005;
+	.@quest2kuchy1 = 50102;
+	.@quest3kuchy1 = 50204;
+
+	if(getskilllv(2501) == 3 ) {
+		mes .@npc$;
+		mes "Você ja está no nivel máximo.";
+		close;
+	}
+
+		if(kuchiyose2 == 1 || kuchiyose == 1 || kuchiyose4 == 1	|| kuchiyose5 == 1) { 
+		mes .@npc$; 
+		mes "Você já tem um contrato"; 
+		close; 
+		}
+
+
+	if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Você precisa ir ao mundo paralelo conversar com o Mestre Cobra";
+		close;
+	}
+
+	
+
+	if(getskilllv(2501) == 2 ) {
+
+		if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+
+			mes .@npc$;
+
+			mes "Vejo que você já possui um contrato, você gostaria de se tornar um Mestre?";
+
+			if(select("- Sim:- Não") == 2) { close; }
+
+				mes .@npc$;
+
+				mes "Para se tornar um mestre kuchiyose você precisa ir até o mundo paralelo das cobras e falar com o Mestre Cobra.";
+
+				next;
+
+				mes .@npc$;
+
+				mes "Para entrar nesse mundo você vai precisar de um Pergaminho Reverso e ir até o local que conecta esse mundo com o outro.";
+
+				next;
+
+				mes .@npc$;
+
+				mes "Já vou logo avisando que não será nada facil controlar totalmente sua invocação.";
+
+				next;
+
+				mes .@npc$;
+
+				mes "Então vamos continuar com o treinamento.";
+
+				setquest .@quest3kuchy1;
+
+				close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";
+
+		close;
+
+	}
+
+	//----------------------------------------------------------------------------------------------------
+	
+	if(checkquest(.@quest2kuchy1) == 1) {
+		if(countitem(736) >= 20 && countitem(755) >= 20 && countitem(756) >= 20) {
+			if(checkquest(.@quest2kuchy1,HUNTING) == 2) {
+				if(Zeny >= 30000000){
+					mes .@npc$;
+					mes "Parabéns você completou seu treinamento.";
+					mes "Agora você já pode invocar sua kuchiyose.";
+					delitem 736,20;
+					delitem 755,20;
+					delitem 756,20;
+					set Zeny, Zeny - 30000000;
+					skill 2501,2,3;
+					completequest .@quest2kuchy1; 
+					erasequest .@quest2kuchy1;
+					close;
+				}
+				mes .@npc$;
+				mes "Você não tem zeny suficiente.";
+				close;
+			}
+			mes .@npc$;
+			mes "Você não completou seu treinamento ainda.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não completou seu treinamento ainda.";
+		close;
+	}
+
+	
+
+	if(getskilllv(2501) == 1) {
+		if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+			mes .@npc$;
+			mes "Vejo que você já possui um contrato, você gostaria de evolui-lo?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Então vamos continuar com o treinamento.";
+				next;
+				mes "Traga-me:";
+				mes "20x Pergaminho em Branco";
+				mes "20x Pergaminho Branco Lendário";
+				mes "20x Segredo Shinobi";
+				mes "30,000,000 Zeny";
+				mes "Mate 100 Cobras";
+				setquest .@quest2kuchy1;
+				close;
+		}
+		mes .@npc$;
+		mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";
+		close;
+	}
+	
+	//----------------------------------------------------------------------------------------------------
+
+	if(checkquest(.@questkuchy2) == 1) {
+		if(checkquest(.@questkuchy2,HUNTING) == 2) {
+			mes .@npc$;
+			mes "Parabéns você derrotou todos os monstros!";
+			mes "Vou verificar se você tem os outros items e o Zeny...";
+			if(countitem(736) < 10 || Zeny < 5000000) { close; }
+			next;
+			mes .@npc$;
+			mes "Parabéns!";
+			set Zeny,Zeny - 5000000;
+			delitem 736,10;
+			skill 2501,1,3;
+			completequest .@questkuchy2; 
+			erasequest .@questkuchy2;
+			close;
+		}
+		mes .@npc$;
+		mes "Você não completou seu treinamento ainda.";
+		close;
+	}
+	
+	if(Class > 5) {
+		if(livrocobra >= 1) {
+			mes .@npc$;
+			mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+			mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com as Cobras";
+			next;
+			mes .@npc$;
+			mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+			mes "Gostaria de treinar o Kuchiyose: Cobra?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Não vai ser nada facil, será um treinamento arduo.";
+				next;
+				mes .@npc$;
+				mes "Vou precisar que você me traga:";
+				mes "10x Pergaminho em Branco.";
+				mes "5.000.000 zenys.";
+				mes "E mate 100x Cobras.";
+				next;
+				mes .@npc$;
+				mes "Boa sorte!";
+				setquest .@questkuchy2;
+				set kuchiyose3,1;
+				close;
+		}
+		mes .@npc$;
+		mes "Antes de falar comigo leia na biblioteca mais a respeito das invocações.";
+		close;
+	}
+	mes .@npc$;
+	mes "Você precisa ser Chunin ou superior para aprender Kuchiyose.";
+	close;
+}
+
+
+
+bibli_01,45,56,0	script	Livro Sobre Cobras::livrocobra	58,{
+
+
+
+	mes "Livro Sobre Cobras";
+
+	mes "As cobras são excelentes para quem quer uma invocação que de dano e diminua a velocidade do seu inimigo, impossível fugir dela graças a sua grande agilidade, seu maior usuário no mundo ninja é Orochimaru.";
+
+	set livrocobra,1;
+
+	close;
+
+}
+
+bibli_02,45,56,3	duplicate(livrocobra)	Livro Sobre Cobras#2	58
+
+bibli_03,45,56,3	duplicate(livrocobra)	Livro Sobre Cobras#3	58
+
+bibli_04,45,56,3	duplicate(livrocobra)	Livro Sobre Cobras#4	58

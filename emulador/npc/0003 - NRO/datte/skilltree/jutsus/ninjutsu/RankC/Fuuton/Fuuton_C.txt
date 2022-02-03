@@ -1,0 +1,96 @@
+ve_fild04,169,66,5	script	Fuuton Renkuudan::fuuc1	831,{
+if (nin_intermediario != 1) {mes "Você precisa de ninjutsu intermediário para aprender esse jutsu"; close;}
+if(elementofuuton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(jounin == 1) goto L_RK;
+//if(chunin != 1) {mes "Você precisa ser Chunin pra aprender esse jutsu"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Eu sou um dos senseis elementais de fuuton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Fuuton Renkuudan";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_RK,"Agora não",L_no;
+
+//========================================================================
+//	Fuuton Renkuudan
+//========================================================================
+
+L_RK:
+if (Renkuudan == 1) {next; mes "Você já aprendeu esse jutsu"; close;}
+if (checkquest(1014) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 10x Ouro";
+mes "- Derrotar 100x Genin";
+mes "- Derrotar 50x Chunin";
+setquest 1014;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1014,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(969) < 10) {next; mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 969,10;
+skill 542,1,0;
+completequest 1014;
+set Renkuudan,1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuton]",0;
+}
+//=========================================================================
+//	Fuuton Nindou
+//=========================================================================
+gl_dun01,254,188,5	script	Fuuton Nindou::fuuc2	831,{
+if (nin_intermediario != 1) {mes "Você precisa de ninjutsu intermediário para aprender esse jutsu"; close;}
+if(elementofuuton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+if(jounin == 1) goto L_KS;
+if(chunin != 1) {mes "Você precisa ser Chunin pra aprender esse jutsu"; close;}
+if (atsugai == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+mes "Eu sou um dos senseis elementais de fuuton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Fuuton Nindou";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_KS,"Agora não",L_no;
+
+L_KS:
+if (checkquest(1015) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 100x Algemas";
+mes "- Derrotar 200x Chunin";
+mes "- Estudar ninjutsu intermediario.";
+setquest 1015;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1015,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+if (countitem(1098) < 100) {next; mes "Você não completou seu treinamento."; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 1098,100;
+skill 148,1,0;
+set atsugai,1;
+completequest 1015;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuton]",0;
+}
+
+pay_fild10,293,265,5	duplicate(fuuc1)	Fuuton Renkuudan#11	831,{
+mjolnir_08,222,73,5	duplicate(fuuc1)	Fuuton Renkuudan#12	831,{
+ein_fild01,134,72,5	duplicate(fuuc1)	Fuuton Renkuudan#13	831,{
+
+alde_dun02,191,230,5	duplicate(fuuc2)	Fuuton Nindou#11	831,{
+tha_t06,127,128,5	duplicate(fuuc2)	Fuuton Nindou#12	831,{
+gl_dun02,273,96,5	duplicate(fuuc2)	Fuuton Nindou#13	831,{

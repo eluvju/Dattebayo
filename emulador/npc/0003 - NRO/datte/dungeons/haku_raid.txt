@@ -1,0 +1,357 @@
+um_fild01,118,280,4	script	Estranho Desesperado	412,5,5,{
+
+if (haku_raid >= 1) {mes "Vingue-os!"; close;}
+mes "[Estranho Desesperado]";
+mes "Ei! Você aí! Por favor, me ajude,";
+next;
+mes "[Estranho Desesperado]";
+mes "Meu návio que se encontra ancorado";
+mes "próximo a entrada da Vila oculta da Névoa";
+mes "Foi atacado por uma pessoa";
+next;
+mes "[Estranho Desesperado]";
+mes "O mesmo matou praticamente todos do návio...";
+sleep2 2000;
+mes "Apenas eu...";
+sleep2 100;
+mes "... sobrevivi...";
+next;
+mes "[Estranho Desesperado]";
+mes "Eu imploro! Vingue meus amigos!";
+next;
+menu "Sim, claro que te ajudarei",L_sim,"Não vai dar",L_nao;
+
+L_sim:
+next;
+mes "[Estranho Desesperado]";
+mes "Obrigado! Venha comigo, rápido.";
+set haku_raid,1;
+next;
+warp "gef_fild04" ,113,90;
+close;
+
+L_nao:
+next;
+mes "[Estranho Desesperado]";
+mes "Por favor...";
+sleep2 1000;
+mes "... Reconsidere";
+close;
+
+}
+
+gef_fild04,113,93,5	script	Água	111,3,3,{
+	if(haku_raid != 1) {mes "O mar... tão calmo."; close;}
+	mes "- ^3366FFVocê vê um návio^000000 -";
+	next;
+	menu "Ir ao Návio",chakra,"Não fazer nada",nada;
+	
+	chakra:
+	mes "[^3366FF"+strcharinfo(0)+"^000000]";
+	mes "Vou concentrar meu chakra nos pés";
+	mes "para ir até o seu barco, talvez eu ache alguma pista lá dentro";
+	next;
+	mes "[Estranho Desesperado]";
+	mes "Ok! Obrigado novamente.";
+	next;
+	mes "[^3366FF"+strcharinfo(0)+"^000000]";
+	mes "Concentrar chakra nos pés";
+	specialeffect2 488;
+	close2;
+	warp "treasure01" ,69,26;
+	end;
+
+nada:
+close;
+
+}
+	
+
+treasure01,76,64,4	script	Senbon	111,3,3,{
+
+if(haku_raid != 1) {mes "- ^3366FFApenas uma Senbon^000000 -"; close;}
+if (countitem(610) > 0) {mes "Nada de útil aqui"; close;}
+getitem 610,1;
+set haku_raid,2;
+mes "- ^3366FFVocê encontra uma senbon antiga no chão^000000 -";
+next;
+mes "^3366FFClique com botão direito do mouse^000000";
+mes "^3366FFsobre o item achado para descobrir^000000";
+mes "^3366FFpara descobrir informações sobre o mesmo.^000000";
+close;
+
+//duplicates: treasure01,115,43 || treasure01,32,43
+
+}
+
+gef_fild04,260,346,4	script	Shinobi da Névoa	57,{
+
+if (haku_raid != 2) {mes "Que dia chato..."; close;}
+mes "[Shinobi da Névoa]";
+mes "Já está ficando tarde... Melhor eu ir indo, Kaishin só estará em casa à noite.";
+mes "E ainda preciso que ele crie umas armas para mim";
+next;
+menu "Interrogar o shinobi",L_sim,"Ignorar",L_nao;
+
+L_sim:
+next;
+mes "[^3366FF"+strcharinfo(0)+"^000000]";
+mes "Onde eu posso encontrar esse tal Kaishin?";
+next;
+mes "Você realmente acha que eu entregaria um companheiro tão facilmente? tome isto!";
+next;
+mes "- ^FF9900Você é atacado por trás enquanto estava com a guarda baixa^000000 -";
+next;
+specialeffect2 EF_HIT5;
+percentheal -15,0;
+next;
+emotion 4;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+next;
+mes "O que? Este era meu golpe mais poderoso! Não posso com você... tudo bem, direi tudo que sei";
+next;
+mes "Ele está atualmente morando na névoa. Perto da sala de treinamento, e só está em casa das 06:00 às 18:00, é so isso que sei!";
+set haku_raid,3;
+close;
+//hideonnpc "Shinobis da Névoa";
+//monster "gef_fild04",261,345,"Shinobi da Névoa",1004,1,"raid_1::OnMapRaid1";
+
+
+L_nao:
+close;
+
+end;
+}
+
+-	script	raid_1	1083,{
+
+OnMapRaid1:
+if (haku_raid != 2) {end; }
+set haku_raid_mobs,haku_raid_mobs +1;
+if (haku_raid_mobs >= 1) {mes "[Shinobi da Névoa]"; mes "arg... Irei falar!"; mes "Ele está atualmente morando na névoa. Perto da sala de treinamento, e só está em casa das 06:00 às 18:00, é so isso que sei!"; set haku_raid,3; close;}
+hideoffnpc "Shinobis da Névoa";
+end;
+
+}
+
+nevoa,272,69,4	script	Entrada#15	45,2,2,{
+if($EEinfo[1] == 1) && (#nevoa != 1) {mes "Você foi impedido de saír da vila"; close;}
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) && ($EEinfo[1] == 1) {mes "Você foi impedido de saír da vila"; close;}
+if (haku_raid > 4) {mes "A porta está trancada"; close;}
+//if (gettime(3) >= 06 && gettime(3) <= 18) {mes "Não parece ter ninguém em casa, melhor vir outra hora"; close;}
+warp "ama_in01",81,177;
+end;
+
+}
+
+ama_in01,84,186,4	script	Kaishin	939,3,3,{
+
+if(haku_raid != 3) {mes "[Kaishin]"; mes "Olá! Eu sou Kaishin~ Criador de Armas Ninjas da Vila oculta da Névoa."; close;}
+if (countitem(1001) < 0) {mes "[Kaishin]"; mes "Olá! Eu sou Kaishin~ Criador de Armas Ninjas da Vila oculta da Névoa."; close;}
+mes "[Kaishin]";
+mes "Sou Kaishin, Criador de Armas Ninjas da Vila oculta da Névoa";
+mes "O que você deseja?";
+next;
+menu "Eu quero saber sobre esta Senbon.",infosenbon,"Nada, só estou de passagem.",L_nao;
+
+	infosenbon:
+	mes "[Kaishin]";
+	mes "Hm...";
+	mes "Está é uma Senbon feita por mim";
+	mes "Por quê a pergunta?";
+	next;
+	menu "Para quem você fez esta?",L_case1;
+
+L_case1:
+
+	mes "[Kaishin]";
+	mes "Desculpe. Eu não revelo meus clientes!";
+	next;
+	menu "Tem certeza? Talvez isto faça você falar!",L_case2;
+
+
+L_case2:
+
+	specialeffect EF_HIT1;
+	sleep2 500;
+	specialeffect EF_HIT2;
+	sleep2 500;
+	specialeffect EF_HIT3;
+	sleep2 500;
+	mes "[Kaishin]";
+	mes "Ahhhhh! Pare!!! Eu irei falar!";
+	next;
+	mes "[Kaishin]";
+	mes "Esta senbon foi feito para uma pessoa Chamada ^3366FFHaku^000000";
+	mes "Eu não sei como seu rosto é, pois ele usa máscara.";
+	mes "E ele vive aqui na vila oculta da névoa em uma região";
+	mes "Que há diversos bandidos.";
+	mes "Isso é tudo que sei.";
+	next;
+	mes "[^3366FF"+strcharinfo(0)+"^000000]";
+	mes "Tudo bem... Irei acreditar em você.";
+	mes "Até logo!";
+	set haku_raid,4;
+	close;
+
+	L_nao:
+	close;
+
+}
+
+ama_in01,77,177,4	script	Saída#Kaishin	45,2,2,{
+if($EEinfo[1] == 1) && (#nevoa != 1) {mes "Você foi impedido de saír da vila"; close;}
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) && ($EEinfo[1] == 1) {mes "Você foi impedido de saír da vila"; close;}
+if (haku_raid != 4) {	warp "nevoa" ,272,74; }
+	mes "[Kaishin]";
+	mes "Achou que fosse te deixar ir embora assim tão fácil?";
+	next;
+	mes "- ^3366FFKaishin usa um Genjutsu em Você^000000 -";
+	specialeffect2 461;
+	close2;
+	warp "moc_pryd01" ,195,9;
+	close;
+} 
+
+moc_pryd01,195,9,4	script	Genjutsu#1	111,2,2,{
+mes "Você está preso em um genjutsu, ache a saída para se libertar!";
+close;
+
+}
+
+moc_pryd01,9,195,4	script	Saída#genjutsu	45,2,2,{
+	mes "[Kaishin]";
+	mes "Como você conseguiu escapar?";
+	if (countitem(610) >= 1) {delitem 610,1;}
+	set haku_raid,5;
+	next;
+	warp "nevoa",272,74;
+	close;
+}
+
+nevoa,272,74,4	script	-#1	111,2,2,{
+
+if (haku_raid != 5) {end;}
+mes "[Conversa da casa vizinha]";
+mes "Eu ouvi dizer que um homem chamado Haku";
+mes "está matando várias pessoas na";
+mes "na ^3366FFVila oculta da Grama^000000";
+next;
+mes "[Mulher]";
+mes "Esse tal de Haku deve ser uma pessoa sem coração";
+mes "matar logo habitantes de uma vila como essa";
+mes "tão passiva...";
+emotion e_pif;
+set haku_raid,6;
+close;
+
+}
+
+umbala,130,100,5	script	Yume	703,{
+	if (haku_raid > 0) {
+	mes "[Yume]";
+	mes "O homem sem coração...";
+	mes "Ele está ao sul da vila, após o portão";
+	close;
+	}
+	else {
+	mes "[Yume]";
+	mes "Olá visitante!";
+	mes "Meu sensei me ensinou a usar isto";
+	mes "em todos os visitantes";
+	sc_start SC_SpeedUp1,5000,0;
+	specialeffect2 14;
+	specialeffect 54;
+	close;
+}
+}
+
+mjolnir_04,175,129,5	script	Homem Abatido	849,{
+	if (haku_raid > 0) {
+	mes "[Homem Abatido]";
+	mes "Maldito ^3366FFhaku^000000...";
+	close;
+	} 
+	else {mes "[Homem Abatido]"; mes "Nunca mais vou beber"; close; }
+}
+
+umbala,143,210,5	script	Criança Orfã	877,{
+	if (haku_raid > 0) {
+	mes "[Criança Orfã]";
+	mes "^3366FFHaku^000000...";
+	mes "matou meus pais...";
+	close;
+	}
+	else { mes "[Garotinha]"; mes "Que dia triste..."; close; }
+}
+
+um_fild04,222,290,5	script	Idoso	765,{
+	if (haku_raid > 0) {
+	mes "[Idoso]";
+	mes "Ei jovem, há uma pessoa chamada";
+	mes "^3366FFHaku^000000 matando várias pessoas";
+	mes "Vou mostrar para você por onde ele foi...";
+	mes "Vá atraz dele, por favor.";
+	viewpoint 1,183,27,1,0xFF0000;
+	close;
+	}
+	else { mes "[Idoso]"; mes "Ah! Que dor nas costas..."; close; }
+}
+
+
+cmd_fild03,149,370,5	script	Pista#1	111,5,5,{
+
+if (haku_raid < 6) {end;}
+mes "Hmm, umas pegadas frescas, elas estão indo ao sul";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+cmd_fild03,153,302,5	script	Pista#2	111,5,5,{
+
+if (haku_raid < 6) {end;}
+mes "Marcas de sangue, parecem ir ao leste";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+cmd_fild03,208,258,5	script	Pista#3	111,5,5,{
+
+if (haku_raid < 6) {end;}
+mes "Pegadas frescas, estão indo ao sul";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+cmd_fild03,196,189,5	script	Pista#4	111,5,5,{
+
+if (haku_raid < 6) {end;}
+mes "Marcas de sangue, estão indo ao oeste";
+close;
+
+	OnTouch:
+	specialeffect 58;
+}
+
+//cmd_fild03,149,370
+//cmd_fild03,153,302
+//cmd_fild03,208,258
+//cmd_fild03,196,189
+//
+//Esconderijo dele poderia ser:
+//cmd_fild03,129,187
+
+
+
+//prt_fild00,0,0,0,0	monster	Líder Jounin	1391,1,0,0,0
+//prt_fild00,0,0,0,0	monster	Líder Jounin	1391,1,0,0,0
+//prt_fild00,0,0,0,0	monster	Líder Jounin	1391,1,0,0,0

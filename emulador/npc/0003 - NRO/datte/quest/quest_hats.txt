@@ -1,0 +1,389 @@
+ayo_dun02,150,245,5	script	Quests de Hats	831,{
+
+mes "[Quests de Hats]";
+mes "Olá, tenho vários hats pra você mudar sua aparência!";
+mes "Então qual deseja obter?";
+menu "Cigarro",L_OB,"Óculos Escuros",L_MA,"Máscara de Fugitivo",L_MU,"Boina Alada",L_CS,"Folha Romantica",L_roman,"Boina",L_boina,"Máscara de bandido",L_bandido,"Máscara de Kabuki",L_kubiki,"Capuz da Escuridão",L_escuro,"Mais hats",mais1;
+
+mais1:
+next;
+mes "[Quests de Hats]";
+mes "Mais hats? Claro que temos mais";
+mes "Então qual deseja obter?";
+menu "Chapeu do Velho Oeste",L_oeste,"Chapeu Chines",L_chines,"Barba de bandido",L_barba,"Laço Meigo",L_meigo,"Oculos Ultra-Violeta",L_ultra;
+
+L_OB:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer o cigarro, você precisa me entregar:";
+mes " - 10x erva amarela";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_OBB,"Deixa para depois",L_N;
+close;
+
+L_OBB:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(508) < 10) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 508,10;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2267,1;
+close;
+
+L_MA:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer o Óculos Escuros, você precisa me entregar:";
+mes " - 50x armadura destruida";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_MAA,"Deixa para depois",L_N;
+close;
+
+L_MAA:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7069) < 50) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 7069,50;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2201,1;
+close;
+
+L_MU:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer a Máscara de Fugitivo, você precisa me entregar:";
+mes " - 10x pedra do sabio";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_MUU,"Deixa para depois",L_N;
+close;
+
+L_MUU:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(12040) < 10) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 12040,10;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 5361,1;
+close;
+
+L_CS:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer a Boina Alada, você precisa de:";
+mes " - 20x pluma de ave";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_CSS,"Deixa para depois",L_N;
+close;
+
+L_CSS:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(916) < 20) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 916,20;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 5170,1;
+close;
+
+L_roman:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer a Folha Romantica, você precisa de:";
+mes " - 5x geleia real";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_roman2,"Deixa para depois",L_N;
+close;
+
+L_roman2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(526) < 5) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 526,5;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2270,1;
+close;
+
+L_boina:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer a Boina, você precisa de:";
+mes " - 20x shurikens despedaçado";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_boina2,"Deixa para depois",L_N;
+close;
+
+L_boina2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7156) < 20) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 7156,20;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 5172,1;
+close;
+
+L_bandido:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer a Mascara de bandido, você precisa de:";
+mes " - 10x mascara de festival";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_bandido2,"Deixa para depois",L_N;
+close;
+
+L_bandido2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7187) < 10) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 7187,10;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2263,1;
+close;
+
+L_kubiki:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer a Máscara de Kabuki, você precisa de:";
+mes " - 10x mascara ninja";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_kubiki2,"Deixa para depois",L_N;
+close;
+
+L_kubiki2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7157) < 10) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 7157,10;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 5143,1;
+close;
+
+L_escuro:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer a Capuz da Escuridão, você precisa de:";
+mes " - 200x cranio";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_escuro2,"Deixa para depois",L_N;
+close;
+
+L_escuro2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7005) < 200) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 7005,200;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 5304,1;
+close;
+
+L_oeste:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer o Chapeu do Velho Oeste, você precisa de:";
+mes " - 5x grande asas de borboleta";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_oeste2,"Deixa para depois",L_N;
+close;
+
+L_oeste2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7168) < 5) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 7168,5;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2248,1;
+close;
+
+L_chines:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer o Chapeu Chines, você precisa de:";
+mes " - 100x Madeira Queimada";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_chines2,"Deixa para depois",L_N;
+close;
+
+L_chines2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7068) < 100) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 7068,100;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2280,1;
+close;
+
+L_barba:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer o Barba de bandido, você precisa de:";
+mes " - 150x trança";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_barba2,"Deixa para depois",L_N;
+close;
+
+L_barba2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(901) < 150) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 901,150;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2237,1;
+close;
+
+L_meigo:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer o Laço Meigo, você precisa de:";
+mes " - 30x vida verdejante";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_meigo2,"Deixa para depois",L_N;
+close;
+
+L_meigo2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(993) < 30) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 993,30;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2250,1;
+close;
+
+L_ultra:
+next;
+mes "[Quests de Hats]";
+mes "Para fazer o Oculos Ultra-Violeta, você precisa de:";
+mes " - 10x esferas das sombras";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_ultra2,"Deixa para depois",L_N;
+close;
+
+L_ultra2:
+next;
+mes "[Quests de Hats]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7524) < 10) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Quests de Hats]";
+mes "Parabéns, tudo certo!";
+delitem 7524,10;
+set Zeny,Zeny-5000000;
+next;
+mes "[Quests de Hats]";
+mes "Muito bom, aqui está o seu item";
+getitem 2242,1;
+close;
+
+No_Item:
+next;
+mes "[Quests de Hats]";
+mes "Desculpe, mas você precisa de todos os itens.";
+close;
+
+L_N:
+next;
+mes "[Quests de Hats], Tudo bem, volte quando quiser... ";
+close;
+}

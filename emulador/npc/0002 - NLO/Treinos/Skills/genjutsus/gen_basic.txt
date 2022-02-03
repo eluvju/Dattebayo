@@ -1,0 +1,434 @@
+academia,40,174,5	script	Genjutsu Básico	4_m_thaiongbak,{
+
+	mes "[Genjutsu Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Genjutsu escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Fukai Yasumi:- Kokubanjou no Jutsu:- Magen Kasegui no Jutsu:- Mahi no Jutsu:- Shikumi no Jutsu" ) ){
+		
+	case 1:
+		next;
+		if(checkquest(1041) == 1) goto 1_go;
+		if(checkquest(2041) == 1) goto 1_go;
+		if(checkquest(3041) == 1) goto 1_go;
+		if(checkquest(4041) == 1) goto 1_go;
+		if(FukaiYasumi == 1) goto 1_delete;
+		if(skill_basica >= 9) { mes "[Genjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(gen_basico != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu básico antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Genjutsu Básico]";
+		mes "Fukai Yasumi?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Fukai Yasumi
+		//========================================================================
+		
+		1_delete:
+		mes "[Genjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Genjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Genjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 182,0,3;
+		set FukaiYasumi,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Genjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1041; }
+		if(#suna == 1) {  setquest 2041; }
+		if(#nevoa == 1) { setquest 3041; }
+		if(#nuvem == 1) { setquest 4041; }
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1041,hunting) == 1 || 
+			checkquest(2041,hunting) == 1 || 
+			checkquest(3041,hunting) == 1 || 
+			checkquest(4041,hunting) == 1	) { 				mes "[Genjutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1041) >= 1) { completequest 1041; erasequest 1041; }						if(checkquest(2041) >= 1) { completequest 2041; erasequest 2041; }						if(checkquest(3041) >= 1) { completequest 3041; erasequest 3041; }						if(checkquest(4041) >= 1) { completequest 4041; erasequest 4041; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Genjutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}									mes "[Genjutsu Básico]";				mes "Você ainda não completou seu treinamento."; close; 			}
+		mes "[Genjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 182,1,3;
+		set FukaiYasumi,1;
+		if(checkquest(1041) >= 1) { completequest 1041; erasequest 1041; }
+		if(checkquest(2041) >= 1) { completequest 2041; erasequest 2041; }
+		if(checkquest(3041) >= 1) { completequest 3041; erasequest 3041; }
+		if(checkquest(4041) >= 1) { completequest 4041; erasequest 4041; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(checkquest(1042) == 1) goto 2_go;
+		if(checkquest(2042) == 1) goto 2_go;
+		if(checkquest(3042) == 1) goto 2_go;
+		if(checkquest(4042) == 1) goto 2_go;
+		if(Kokubanjou == 1) goto 2_delete;
+		if(skill_basica >= 9) { mes "[Genjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(gen_basico != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu básico antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Genjutsu Básico]";
+		mes "Kokubanjou no Jutsu?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Kokubanjou no Jutsu
+		//========================================================================
+		
+		2_delete:
+		mes "[Genjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Genjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Genjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 181,0,3;
+		set Kokubanjou,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Genjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1042; }
+		if(#suna == 1) {  setquest 2042; }
+		if(#nevoa == 1) { setquest 3042; }
+		if(#nuvem == 1) { setquest 4042; }
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1042,hunting) == 1 || 
+			checkquest(2042,hunting) == 1 || 
+			checkquest(3042,hunting) == 1 || 
+			checkquest(4042,hunting) == 1	) { 				mes "[Genjutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1042) >= 1) { completequest 1042; erasequest 1042; }						if(checkquest(2042) >= 1) { completequest 2042; erasequest 2042; }						if(checkquest(3042) >= 1) { completequest 3042; erasequest 3042; }						if(checkquest(4042) >= 1) { completequest 4042; erasequest 4042; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Genjutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Genjutsu Básico]";				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Genjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 181,1,3;
+		set Kokubanjou,1;
+		if(checkquest(1042) >= 1) { completequest 1042; erasequest 1042; }
+		if(checkquest(2042) >= 1) { completequest 2042; erasequest 2042; }
+		if(checkquest(3042) >= 1) { completequest 3042; erasequest 3042; }
+		if(checkquest(4042) >= 1) { completequest 4042; erasequest 4042; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(checkquest(1043) == 1) goto 3_go;
+		if(checkquest(2043) == 1) goto 3_go;
+		if(checkquest(3043) == 1) goto 3_go;
+		if(checkquest(4043) == 1) goto 3_go;
+		if(Kasegui == 1) goto 3_delete;
+		if(skill_basica >= 9) { mes "[Genjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(gen_basico != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu básico antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Genjutsu Básico]";
+		mes "Magen: Kasegui no Jutsu?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Magen: Kasegui no Jutsu
+		//========================================================================
+		
+		3_delete:
+		mes "[Genjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Genjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Genjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 672,0,3;
+		set Kasegui,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Genjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1043; }
+		if(#suna == 1) {  setquest 2043; }
+		if(#nevoa == 1) { setquest 3043; }
+		if(#nuvem == 1) { setquest 4043; }
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		3_go:
+		if(	checkquest(1043,hunting) == 1 || 
+			checkquest(2043,hunting) == 1 || 
+			checkquest(3043,hunting) == 1 || 
+			checkquest(4043,hunting) == 1	) { 				mes "[Genjutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1043) >= 1) { completequest 1043; erasequest 1043; }						if(checkquest(2043) >= 1) { completequest 2043; erasequest 2043; }						if(checkquest(3043) >= 1) { completequest 3043; erasequest 3043; }						if(checkquest(4043) >= 1) { completequest 4043; erasequest 4043; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Genjutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Genjutsu Básico]";				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Genjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 672,1,3;
+		set Kasegui,1;
+		if(checkquest(1043) >= 1) { completequest 1043; erasequest 1043; }
+		if(checkquest(2043) >= 1) { completequest 2043; erasequest 2043; }
+		if(checkquest(3043) >= 1) { completequest 3043; erasequest 3043; }
+		if(checkquest(4043) >= 1) { completequest 4043; erasequest 4043; }
+		close;
+		
+		3_no:
+		close;
+
+	case 4:
+		next;
+		if(checkquest(1044) == 1) goto 4_go;
+		if(checkquest(2044) == 1) goto 4_go;
+		if(checkquest(3044) == 1) goto 4_go;
+		if(checkquest(4044) == 1) goto 4_go;
+		if(Mahi == 1) goto 4_delete;
+		if(skill_basica >= 9) { mes "[Genjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(gen_basico != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu básico antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Genjutsu Básico]";
+		mes "Mahi no Jutsu?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+		//========================================================================
+		//	Mahi no Jutsu
+		//========================================================================
+		
+		4_delete:
+		mes "[Genjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+		
+		delete_4:
+		mes "[Genjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+		
+		quero_4:
+		mes "[Genjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 30,0,3;
+		set Mahi,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_4:
+		close;
+		
+		4_SS:
+		mes "[Genjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1044; }
+		if(#suna == 1) {  setquest 2044; }
+		if(#nevoa == 1) { setquest 3044; }
+		if(#nuvem == 1) { setquest 4044; }
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		4_go:
+		if(	checkquest(1044,hunting) == 1 || 
+			checkquest(2044,hunting) == 1 || 
+			checkquest(3044,hunting) == 1 || 
+			checkquest(4044,hunting) == 1	) { 				mes "[Genjutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1044) >= 1) { completequest 1044; erasequest 1044; }						if(checkquest(2044) >= 1) { completequest 2044; erasequest 2044; }						if(checkquest(3044) >= 1) { completequest 3044; erasequest 3044; }						if(checkquest(4044) >= 1) { completequest 4044; erasequest 4044; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Genjutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Genjutsu Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Genjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 30,1,3;
+		set Mahi,1;
+		if(checkquest(1044) >= 1) { completequest 1044; erasequest 1044; }
+		if(checkquest(2044) >= 1) { completequest 2044; erasequest 2044; }
+		if(checkquest(3044) >= 1) { completequest 3044; erasequest 3044; }
+		if(checkquest(4044) >= 1) { completequest 4044; erasequest 4044; }
+		close;
+		
+		4_no:
+		close;
+		
+	case 5:
+		next;
+		if(checkquest(1045) == 1) goto 5_go;
+		if(checkquest(2045) == 1) goto 5_go;
+		if(checkquest(3045) == 1) goto 5_go;
+		if(checkquest(4045) == 1) goto 5_go;
+		if(Shikumi == 1) goto 5_delete;
+		if(skill_basica >= 9) { mes "[Genjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(gen_basico != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu básico antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Genjutsu Básico]";
+		mes "Shikumi no Jutsu?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",5_SS,"Agora não",5_no;
+		//========================================================================
+		//	Shikumi no Jutsu
+		//========================================================================
+		
+		5_delete:
+		mes "[Genjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_5,"Nada não, só papo furado",naoquero_5;
+		
+		delete_5:
+		mes "[Genjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_5,"Não, não quero",naoquero_5;
+		
+		quero_5:
+		mes "[Genjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 179,0,3;
+		set Shikumi,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_5:
+		close;
+		
+		5_SS:
+		mes "[Genjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1045; }
+		if(#suna == 1) {  setquest 2045; }
+		if(#nevoa == 1) { setquest 3045; }
+		if(#nuvem == 1) { setquest 4045; }
+		next;
+		mes "[Genjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		5_go:
+		if(	checkquest(1045,hunting) == 1 || 
+			checkquest(2045,hunting) == 1 || 
+			checkquest(3045,hunting) == 1 || 
+			checkquest(4045,hunting) == 1	) { 				mes "[Genjutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1045) >= 1) { completequest 1045; erasequest 1045; }						if(checkquest(2045) >= 1) { completequest 2045; erasequest 2045; }						if(checkquest(3045) >= 1) { completequest 3045; erasequest 3045; }						if(checkquest(4045) >= 1) { completequest 4045; erasequest 4045; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Genjutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Genjutsu Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Genjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 179,1,3;
+		set Shikumi,1;
+		if(checkquest(1045) >= 1) { completequest 1045; erasequest 1045; }
+		if(checkquest(2045) >= 1) { completequest 2045; erasequest 2045; }
+		if(checkquest(3045) >= 1) { completequest 3045; erasequest 3045; }
+		if(checkquest(4045) >= 1) { completequest 4045; erasequest 4045; }
+		close;
+		
+		5_no:
+		close;
+	}
+OnInit:
+	waitingroom "[Genjutsu Básico]",0;
+}

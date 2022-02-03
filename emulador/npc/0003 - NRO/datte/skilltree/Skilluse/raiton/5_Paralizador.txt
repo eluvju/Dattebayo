@@ -1,0 +1,35 @@
+-	script	on_PC_UseSkill005	-1,{
+    end;
+//When a Character uses a skill
+
+//paralisador
+
+onPcUseSkillEvent:
+
+           if(lskillid == 118) {
+
+
+if (getskilllv(118) == 1) {
+
+if (paralisador != 1) {end;}
+if (skill118 >= 100) {skill 118,2,0; set skill118,0; dispbottom "[Sys] Level up"; end; }
+set skill118,skill118 +1;
+dispbottom "[Jutsu level] Pergaminho paralisador level 1: "+skill118+" de 100";
+
+end;
+
+}
+
+if (getskilllv(118) == 2) {
+if (paralisador != 1) {end;}
+if (skill118 >= 250) {skill 118,3,0; set skill118,0; dispbottom "[Sys] Level up"; end;}
+set skill118,skill118 +1;
+dispbottom "[Jutsu level] Pergaminho paralisador level 2: "+skill118+" de 250";
+
+end;
+
+}
+
+                end;
+            }    
+}

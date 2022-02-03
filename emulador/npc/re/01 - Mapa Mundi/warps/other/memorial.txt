@@ -1,0 +1,14 @@
+//Permissão Rank D Konoha e Suna
+
+prt_fild03,372,256,2	script	 #entermemorial01	10309,2,2,{
+	
+	OnTouch:
+	callfunc("warps"),	// Função
+	"prt_monk",			// Mapa
+	29,				// Coordenada X
+	248,				// Coordenada Y
+	0,				// Quest (default +1000_
+	502,					// Item (Default 0)
+	1;					// Item Quantidade
+}
+prt_monk,24,248,0	warp	memorial#01	2,2,prt_fild03,368,256

@@ -1,0 +1,370 @@
+prt_fild06,147,158,5	script	Akahiro	766,{
+
+	//if (quest_mangekyou == 1) && (kg_sharingan != 4) {set quest_mangekyou,0; end;}
+	//if (quest_mangekyou == 2) && (kg_sharingan != 4) {set quest_mangekyou,0; end;}
+	//if (quest_mangekyou == 3) && (kg_sharingan != 4) {set quest_mangekyou,0; end;}
+	//if (quest_mangekyou == 4) && (kg_sharingan != 4) {set quest_mangekyou,0; end;}
+	if (quest_mangekyou == 4) {npctalk "Passeando, "+strcharinfo(0)+"-sama? >.<"; end;}
+	if (quest_mangekyou == 3) goto OlhoFinal;
+	if (quest_olhohip == 1)	{mes "[^FF3366Akahiro^000000]"; mes "Procure o 'Ilusionista'. Ele mora em uma casa na Vila oculta da Névoa."; close;}
+	if (quest_olhopo == 1)	{mes "[^FF3366Akahiro^000000]"; mes "Procure o 'Incendiário'. Ele mora em uma casa na Vila oculta da Folha."; close;}
+	if (quest_olhoper == 1)	{mes "[^FF3366Akahiro^000000]"; mes "Procure o 'Kaminari'. Ele mora em uma casa na Vila oculta da Nuvem."; close;}
+	if (quest_olhopro == 1)	{mes "[^FF3366Akahiro^000000]"; mes "Procure o 'Protetor'. Ele mora em uma casa na Vila oculta da Areia."; close;}
+	if (quest_mangekyou == 1) goto Iniciar3;
+	if (kg_sharingan != 4) {npctalk "Uchihas... tão poderosos, porém tão cheios de ódio."; end;}
+
+	mes "[^FF3366Akahiro^000000]";
+	mes "Hm... eu acho que te conheço.";
+	mes "Você é o "+strcharinfo(0)+"-sama?!";
+	menu "Sim, eu sou.",Reconhecimento,"Não, quem é esse?",Desconhecimento;
+	close;
+
+     Reconhecimento:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Hmm... Eu servi ao clã uchiha por anos. Estou honrado em conhece-lo.";
+	mes "Então, o que faz aqui?";
+	menu "Estou tentando atingir o 'Mangekyou Sharingan'",Iniciar,"Estou perdido por aqui.",Perdido;
+	close;
+
+     Iniciar:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Interessante... Eu era o ninja médico particular do clã uchiha.";
+	mes "Fazia transplantes de olhos para aqueles que queriam atingir o 'Mangekyou Sharingan'.";
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Bem... pelos velhos tempos, se você me trouxer o necessário mais um pagamento";
+	mes "Eu posso fazer o seu transplante.";
+	menu "Eu aceito.",Iniciar2,"Não por agora...",Recuse;
+	close;
+
+      Iniciar2:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Excelente! Irei dizer os itens, preste bem atenção.";
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "50 'Vasilhas de Misturas' para a água quente e para o sangue.";
+	mes "100 'Bandagens Estragadas' para seus olhos, porque elas rasgam fácil.";
+	mes "1 'Kit Cirurgico' para realizar o Transplante.";
+	mes "Olhos de Uchiha derrotado para implantar.";
+	mes "E 5 NRO Points como meu pagamento...";
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Bom, é isso por enquanto. Quando você me trouxer, eu direi os próximos passos.";
+	set quest_mangekyou,1;
+	close;
+
+      Iniciar3:
+	if (countitem(930) < 100) {npctalk "Você ainda não possui 100 'Bandagens Estragadas'!"; end;}
+	if (countitem(7134) < 50) {npctalk "Você ainda não possui 50 'Vasilhas de Misturas'"; end;}
+	if (countitem(529) < 1) {npctalk "Você ainda não me trouxe o 'Kit Cirurgico', como quer que eu realize a cirurgia?"; end;}
+	if (countitem(663) < 1) {npctalk "Cadê os olhos de uchihas derrotados? O que eu vou transplantar?!"; end;}
+	if (countitem(7116) < 5) {npctalk "E meu pagamento... ?! Os 5 NRO Points prometidos."; end;}
+	mes "[^FF3366Akahiro^000000]";
+	mes "Tudo OK! Vou pegar os itens.";
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Pronto. Peguei os itens! Obrigado.";
+	delitem 930,100;
+	delitem 7134,50;
+	delitem 529,1;
+	delitem 663,1;
+	delitem 7116,5;
+	set quest_mangekyou,2;
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Agora, preciso que você vá conversar com uma pessoa...";
+	mes "Porém... A pessoa varia do tipo de sharingan que você deseja ter.";
+	menu "Olho do Hipnotismo",OlhoHip,"Olho do Poder",OlhoPo,"Olho da Proteção",OlhoPro,"Olho da Percepção",OlhoPer;
+	close;
+
+     OlhoHip:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Olho do Hipnotismo...";
+	mes "O olho que pode contralar mentes, criar genjutsus poderosos....";
+	mes "Procure o 'Ilusionista'. Ele mora em uma casa na Vila oculta da Névoa!";
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Porém, para entrar. você precisa dizer que eu que enviei você, caso contrário. Ele não abrirá a porta.";
+	set quest_olhohip,1;
+	close;
+
+     OlhoPo:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Olho do Poder... ";
+	mes "O olho dos Uchihas obcecados por poder. Controlam o Enton fácilmente e causam danos desvastadores.";
+	mes "Procure o 'Incendiário'. Ele mora em uma casa na Vila oculta da Folha!";
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Porém, para entrar. você precisa dizer que eu que enviei você, caso contrário. Ele não abrirá a porta.";
+	set quest_olhopo,1;
+	close;
+
+     OlhoPro:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Olho da Proteção...";
+	mes "O olho dos Uchihas que seu ódio provém do amor. Consegue usar o susano'o e tem uma alta quantidade de chakra.";
+	mes "Procure o 'Protetor'. Ele mora em uma casa na Vila oculta da Areia.";
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Porém, para entrar. você precisa dizer que eu que enviei você, caso contrário. Ele não abrirá a porta.";
+	set quest_olhopro,1;
+	close;
+
+     OlhoPer:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Olho da Percepção";
+	mes "O olho dos uchihas mais precisos e ágeis de todo o clã. Estes membros tem alta esquiva e a capacidade de usar o 'Kamui'.";
+	mes "Procure o 'Kaminari'. Ele mora em uma casa na Vila oculta da Nuvem.";
+	next;
+	mes "Porém, para entrar. você precisa dizer que eu que enviei você, caso contrário. Ele não abrirá a porta.";
+	set quest_olhoper,1;
+	close;
+
+     OlhoFinal:
+	mes "[^FF3366Akahiro^000000]";
+	mes "É bom vê-lo novamente...";
+	mes "Bom. Como você já sabe sobre o seu tipo de Mangekyou, vamos começar a cirurgia.";
+	next;
+	mes "... cirurgia ocorrendo ... ";
+	sleep2 2000;
+	mes "... não se mova ...";
+	sleep2 2000;
+	mes "... quase acabando ... ";
+	sleep2 3000;
+	mes "Acabado.";
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Parabéns! Cirurgia concluída com sucesso.";
+	delitem 19070,1; //ID do item sharingan 3
+	getitem 19003,1; //ID do Mangekyou
+	set quest_mangekyou,4;
+	specialeffect2 169;
+	announce "[Sharingan] "+strcharinfo(0)+" acaba de despertar o Mangekyou Sharingan!",bc_blue|bc_all;
+	if (quest_olhohip == 2)	{set correcaosharingan,1; set quest_olhohip,0; set OlhoHipnotico,1; set kg_sharingan,5; set sharingan_2,1; close; } 
+	if (quest_olhopo == 2)	{set correcaosharingan,1; set quest_olhopo,0; set OlhoPoderoso,1; set kg_sharingan,5; set sharingan_3,1; close; }
+	if (quest_olhopro == 2)	{set correcaosharingan,1; set quest_olhopro,0; set OlhoProtetor,1; set kg_sharingan,5; set sharingan_4,1; close; }
+	if (quest_olhoper == 2)	{set correcaosharingan,1; set quest_olhoper,0; set OlhoPerceptivo,1; set kg_sharingan,5; set sharingan_1,1; close; }
+	close;
+
+//Negative Answers
+
+       Desconhecimento:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "o_o tenso...";
+	close;
+
+       Perdido:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Só ir para o norte que chegará à vila oculta da folha... :x";
+	close;
+
+       Recuse:
+	next;
+	mes "[^FF3366Akahiro^000000]";
+	mes "Tudo bem, volte quando precisar. >.<";
+	close;
+
+}
+
+//	N P C S
+//	  DE
+//                INFORMAÇÃO
+
+payon_in02,57,10,3	script	Incendiário	731,{
+
+	if (quest_mangekyou != 2) {npctalk "Olá..."; end;}
+	if (quest_olhopo != 1) {npctalk "Olá..."; end;}
+	npctalk "Olá... se o Akahiro te mandou aqui é para saber sobre o 'Olho do Poder'.";
+	sleep2 2000;
+	npctalk "Eu custumava falar sobre isso com os Uchihas antigamente... que nostálgico.";
+	sleep2 2000;
+	npctalk "Bom... O olho do poder é o Olho dos Uchihas obcecados por poder, aqueles que desejam poder a qualquer custo.";
+	sleep2 2000;
+	npctalk "Com este olho, o Controle do Enton (Elemento Chama) torna muito mais fácil, assim podendo usar várias habilidades derivadas";
+	sleep2 2000;
+	npctalk "Tais como Enton: Amaterasu e Enton: Yakasa no Magatama";
+	sleep2 2000;
+	npctalk "Enton: Yakasa no Magatama é uma habilidade que o usuário espalha esferas de enton ao redor do seu corpo, assim empurrando";
+	npctalk "Alvos próximos e causando dano devastador.";
+	sleep2 2000;
+	npctalk "Enton: Amaterasu criada chamas negras que queimam rapidamente quem toca-las.";
+	sleep2 2000;
+	npctalk "Ao ativar o mangekyou sharingan o usuário pode usar as 2 habilidades citadas à cima.";
+	sleep2 2000;
+	npctalk "Bom... é isto! Volte a falar com o Akahiro. Boa sorte, jovem uchiha.";
+	set quest_olhopo,2;
+	set quest_mangekyou,3;
+	end;
+}
+
+hu_in01,11,25,3	script	Ilusionista	405,{
+
+	if (quest_mangekyou != 2) {npctalk "Olá..."; end;}
+	if (quest_olhohip != 1) {npctalk "Olá..."; end;}
+	npctalk "Oi! Bom, já que o Akahiro te mandou aqui... vou deduzir que é pra saber sobre o 'Olho do Hipnotismo";
+	sleep2 2000;
+	npctalk "Eu custumava aconselhar jovens uchiha nos tempos antigos.";
+	sleep2 2000;
+	npctalk "O olho do hipnotismo é um olho que tem o poder de iludir seus inimigos e até si npctalkmo!";
+	sleep2 2000;
+	npctalk "Tem afinidade com Genjutsus, alta resistência à eles e também pode usar o Genjutsu: Sharingan e o Tsukuyomi.";
+	sleep2 2000;
+	npctalk "O Genjutsu: Sharingan faz com que ao receber ataque físico o atacante tem chance de ficar confuso.";
+	sleep2 2000;
+	npctalk "O tsukuyomi é o Genjutsu Supremo do Clã Uchiha... Ele pode fazer uma pessoa sofrer coisas horríveis, passar horas";
+	npctalk "dentro dele (aparentemente), porém essas 'horas' são apenas segundos no mundo real... Causa um atordoamento";
+	npctalk "Na mente do alvo e causa dano continuo.";
+	sleep2 2000;
+	npctalk "Ao ativar o Mangekyou Sharingan o usuário torna-se imune à genjutsus e todo atacante que o atacar com ataques físicos";
+	sleep2 2000;
+	npctalk "Serão pegos em um genjutsus na qual os npctalkmos perdem o controle sobre seu corpo, assim não conseguindo andar normalmente.";
+	sleep2 2000;
+	npctalk "É isto! Boa sorte, e retorne à Akihiro.";
+	set quest_olhohip,2;
+	set quest_mangekyou,3;
+	end;
+}
+
+yuno_in03,241,101,3	script	Kaminari	459,{
+
+
+	if (quest_mangekyou != 2) {npctalk "Olá..."; end;}
+	if (quest_olhoper != 1) {npctalk "Olá..."; end;}
+	npctalk "Eae! Akihiro te mandou para conversar sobre o 'Olho da Percepção', certo?!";
+	sleep2 2000;
+	npctalk "Eu já fui um membro honrado do clã uchiha, um conselheiro e professor de alguns uchihas..";
+	sleep2 2000;
+	npctalk "O olho da percepção é um olho que concede o poder de deixar o usuário mais rápido, ágil e certeiro.";
+	sleep2 2000;
+	npctalk "Este olho concede a Habilidade Kamui, que permite esquivar de uma técnica ninja qualquer..";
+	sleep2 2000;
+	npctalk "Ao ativar o mangekyou sharingan, o Olho da Percepção faz com que você copie e re-mande devolta qualquer jutsu.";
+	npctalk "que foi lançado em você.";
+	sleep2 2000;
+	npctalk "É isto! Boa sorte, e retorne à Akihiro.";
+	set quest_olhoper,2;
+	set quest_mangekyou,3;
+	end;
+}
+
+morocc_in,79,164,3	script	Protetor	448,{
+
+
+	if (quest_mangekyou != 2) {npctalk "Olá..."; end;}
+	if (quest_olhopro != 1) {npctalk "Olá..."; end;}
+	npctalk "Bem vindo. Akihiro te mandou para eu explicar sobre 'Olho da Proteção', não foi?!";
+	sleep2 2000;
+	npctalk "Antigamente... eu era o líder do esquadrão de defesa do clã uchiha";
+	sleep2 2000;
+	npctalk "O clã uchiha apesar de ser um clã tomado por ódio, o ódio do olho da proteção provém do amor.";
+	sleep2 2000;
+	npctalk "O amor que o usuário do olho sente por seus amigos e familiares... A vontade de protegê-los.";
+	sleep2 2000;
+	npctalk "Usuários deste mangekyou tem alta resistência e podem usar o Susano'o a Defesa Absoluta do Clã Uchiha";
+	sleep2 2000;
+	npctalk "Além disso, quando ativa o mangekyou sharingan, o seu chakra é aumentado.";
+	sleep2 2000;
+	npctalk "É isto! Boa sorte, e retorne à Akihiro.";
+	set quest_olhopro,2;
+	set quest_mangekyou,3;
+	end;
+}
+
+
+//	Entradas
+//	   para 
+//                 casas
+
+konoha,116,186,5	script	Entrada::Sharingan1	45,2,2,{
+
+	if($EEinfo[1] == 1) && (#konoha != 1) {mes "Você foi impedido de saír da vila"; close;}
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) && ($EEinfo[1] == 1) {mes "Você foi impedido de saír da vila"; close;}
+	if (quest_olhopo != 1) && (quest_mangekyou != 2) {end;}
+	mes "^3366FF Uma voz berrante grita dizendo...^000000";
+	next;
+	mes "[?????]";
+	mes "- ^3366FFQuem te mandou aqui?^000000 -";
+	input @Akahiro$;
+	next;
+	if (@Akahiro$ != "Akahiro") {mes "[?????]"; mes ""+@Akahiro$+"?!? Desconheço esta pessoa! Vá embora."; close2; }
+	mes "[?????]";
+	mes "A porta é aberta lentamente...";
+	close2;
+	warp "payon_in02",50,6;
+	end;
+}
+
+nevoa,89,91,5	script	Entrada::Sharingan2	45,2,2,{
+
+	if($EEinfo[1] == 1) && (#nevoa != 1) {mes "Você foi impedido de saír da vila"; close;}
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) && ($EEinfo[1] == 1) {mes "Você foi impedido de saír da vila"; close;}
+	if (quest_olhohip != 1) && (quest_mangekyou != 2) {end;}
+	mes "^3366FF Uma voz berrante grita dizendo...^000000";
+	next;
+	mes "[?????]";
+	mes "- ^3366FFQuem te mandou aqui?^000000 -";
+	input @Akahiro$;
+	next;
+	if (@Akahiro$ != "Akahiro") {mes "[?????]"; mes ""+@Akahiro$+"?!? Desconheço esta pessoa! Vá embora."; close2; }
+	mes "[?????]";
+	mes "A porta é aberta lentamente...";
+	close2;
+	warp "hu_in01",15,25;
+	end;
+}
+
+areia,207,72,5	script	Entrada::Sharingan3	45,2,2,{
+
+	if($EEinfo[1] == 1) && (#suna != 1) {mes "Você foi impedido de saír da vila"; close;}
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) && ($EEinfo[1] == 1) {mes "Você foi impedido de saír da vila"; close;}
+	if (quest_olhopro != 1) && (quest_mangekyou != 2) {end;}
+	mes "^3366FF Uma voz berrante grita dizendo...^000000";
+	next;
+	mes "[?????]";
+	mes "- ^3366FFQuem te mandou aqui?^000000 -";
+	input @Akahiro$;
+	next;
+	if (@Akahiro$ != "Akahiro") {mes "[?????]"; mes ""+@Akahiro$+"?!? Desconheço esta pessoa! Vá embora."; close2; }
+	mes "[?????]";
+	mes "A porta é aberta lentamente...";
+	close2;
+	warp "morocc_in",73,162;
+	end;
+}
+
+nuvem,62,220,5	script	Entrada::Sharingan4	45,2,2,{
+
+	if($EEinfo[1] == 1) && (#nuvem != 1) {mes "Você foi impedido de saír da vila"; close;}
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) && ($EEinfo[1] == 1) {mes "Você foi impedido de saír da vila"; close;}
+	if (quest_olhoper != 1) && (quest_mangekyou != 2) {end;}
+	mes "^3366FF Uma voz berrante grita dizendo...^000000";
+	next;
+	mes "[?????]";
+	mes "- ^3366FFQuem te mandou aqui?^000000 -";
+	input @Akahiro$;
+	next;
+	if (@Akahiro$ != "Akahiro")  || (@Akahiro$ != "akahiro") {mes "[?????]"; mes ""+@Akahiro$+"?!? Desconheço esta pessoa! Vá embora."; close2; }
+	mes "[?????]";
+	mes "A porta é aberta lentamente...";
+	close2;
+	warp "yuno_in03",234,94;
+	end;
+}
+
+//	Portais
+//	  Para sair
+//	    das casas
+
+payon_in02,49,4,1	warp	sharin1	1,1,konoha3,226,89
+hu_in01,15,29,1	warp	sharin2	1,1,nevoa,89,84
+yuno_in03,234,90,1	warp	sharin3	1,1,nuvem,16,196
+morocc_in,70,162,1	warp	sharin4	1,1,sunagakure,184,232	

@@ -1,0 +1,62 @@
+-	script	removeakat	-1,{
+
+OnPCLoginEvent:
+
+		if (countitem(30082) == 1) || (countitem(30083) == 1) || (countitem(30084) == 1) || (countitem(30085) == 1) {
+		set #akatsuki,1;
+		set #konoha,0;
+		set #suna,0;
+		set #nevoa,0;
+		set #nuvem,0;
+		savepoint "akatsuki",149,180;
+		end;
+		}
+
+	if (Class == 1) || (Class == 7) || (Class == 4008) {
+		if (countitem(30082) == 0) || (countitem(30083) == 0) || (countitem(30084) == 0) || (countitem(30085) == 0) {
+		set #akatsuki,0;
+		set #konoha,1;
+		set #suna,0;
+		set #nevoa,0;
+		set #nuvem,0;
+		savepoint "hospital",55,62;
+		end;
+		}
+	}
+	
+	if (Class == 2) || (Class == 8) || (Class == 4009) {
+		if (countitem(30082) == 0) || (countitem(30083) == 0) || (countitem(30084) == 0) || (countitem(30085) == 0) {
+		set #akatsuki,0;
+		set #konoha,0;
+		set #suna,1;
+		set #nevoa,0;
+		set #nuvem,0;
+		savepoint "hospital2",55,62;
+		end;
+		}
+	}
+	
+	if (Class == 3) || (Class == 9) || (Class == 4010) {
+		if (countitem(30082) == 0) || (countitem(30083) == 0) || (countitem(30084) == 0) || (countitem(30085) == 0) {
+		set #akatsuki,0;
+		set #konoha,0;
+		set #suna,0;
+		set #nevoa,1;
+		set #nuvem,0;
+		savepoint "hospital3",55,62;
+		end;
+		}
+	}
+	
+	if (Class == 4) || (Class == 10) || (Class == 4011) {
+		if (countitem(30082) == 0) || (countitem(30083) == 0) || (countitem(30084) == 0) || (countitem(30085) == 0) {
+		set #akatsuki,0;
+		set #konoha,0;
+		set #suna,0;
+		set #nevoa,0;
+		set #nuvem,1;
+		savepoint "hospital4",55,62;
+		end;
+		}
+	}
+}

@@ -1,0 +1,102 @@
+biblioteca,25,19,4	script	Sasuke Uchiha	120,{
+if (treinos_escolhar < 2) && (academia_treinor != 1) {
+set treinoninjutsu,0;
+set treinotaijutsu,0;
+set treinogenjutsu,0;
+set treinomedicina,0;
+set treinovelocidade,0;
+set treinos_escolhar,0;
+}
+
+if(treino != 1) {mes "Você primeiro precisa ter treino basico., "+strcharinfo(0)+"-san!"; end;}
+if (treinos_inter > 0) {mes "[^DC143CTreinamento Intermediario^000000]"; mes "Vejo que você ja escolheu quais treinos você ira evoluir pra intermediario"; close;}
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Ótimo, agora você possui todas as informações necessárias para escolher seus dois treinamentos intermediários, qual treinamento deseja evoluir?";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Muito bem, qual o primeiro treinamento que você deseja evoluir?";
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_nin:
+if (WeaponLvl2 < 50) {mes "Você não está pronto pra aprender Ninjutsu Intermediario, é preciso nível 50 de Ninjutsu."; close;}
+if (treinoninjutsu == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolhar de seus treinamentos"; close;}
+set treinoninjutsu,1;
+set treinos_escolhar, treinos_escolhar +1;
+if (treinos_escolhar == 2) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolhar == 1) {mes "Ninjutsu né?, Boa escolhar, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolhar == 2) {mes "Ninjutsu né?, Boa escolhar, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_tai:
+if (WeaponLvl1 < 50) {mes "Você não está pronto pra aprender Taijutsu Intermediario, é preciso nível 50 de Taijutsu."; close;}
+if (treinotaijutsu == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolhar de seus treinamentos"; close;}
+set treinotaijutsu,1;
+set treinos_escolhar, treinos_escolhar +1;
+if (treinos_escolhar == 2) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolhar == 1) {mes "Taijutsu né?, Boa escolhar, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolhar == 2) {mes "Taijutsu né?, Boa escolhar, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_gen:
+if (WeaponLvl3 < 50) {mes "Você não está pronto pra aprender Genjutsu Intermediario, é preciso nível 50 de Genjutsu."; close;}
+if (treinogenjutsu == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolhar de seus treinamentos"; close;}
+set treinogenjutsu,1;
+set treinos_escolhar, treinos_escolhar +1;
+if (treinos_escolhar == 2) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolhar == 1) {mes "Genjutsu né?, Boa escolhar, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolhar == 2) {mes "Genjutsu né?, Boa escolhar, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_med:
+if (WeaponLvl5 < 50) {mes "Você não está pronto pra aprender Medicina Intermediario, é preciso nível 50 de Medicina."; close;}
+if (treinomedicina == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolhar de seus treinamentos"; close;}
+set treinomedicina,1;
+set treinos_escolhar, treinos_escolhar +1;
+if (treinos_escolhar >= 2) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolhar == 1) {mes "Medicina né?, Boa escolhar, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolhar == 2) {mes "Medicina né?, Boa escolhar, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Velocidade",escolher_velo;
+
+escolher_velo:
+if (WeaponLvl4 < 50) {mes "Você não está pronto pra aprender Velocidade Intermediario, é preciso nível 50 de Velocidade."; close;}
+if (treinovelocidade == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolhar de seus treinamentos"; close;}
+set treinovelocidade,1;
+set treinos_escolhar, treinos_escolhar +1;
+if (treinos_escolhar >= 2) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolhar == 1) {mes "Velocidade né?, Boa escolhar, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolhar == 2) {mes "Velocidade né?, Boa escolhar, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med;
+
+finalizado:
+next;
+if (treinos_escolhar != 2) {end;}
+if (treinos_inter == 2) {mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu seus três treinamentos"; close;}
+if (treinoninjutsu == 1) {skill 738,0,3; skill 744,10,3; set treino_nin_inter,1; set treinos_inter, treinos_inter +1;}
+if (treinotaijutsu == 1) {skill 735,0,3; skill 741,10,3; set treino_tai_inter,1; set treinos_inter, treinos_inter +1;}
+if (treinogenjutsu == 1) {skill 739,0,3; skill 745,10,3; set treino_gen_inter,1; set treinos_inter, treinos_inter +1;}
+if (treinomedicina == 1) {skill 737,0,3; skill 743,10,3; set treino_med_inter,1; set treinos_inter, treinos_inter +1;}
+if (treinovelocidade == 1) {skill 736,0,3; skill 742,10,3; set treino_velo_inter,1; set treinos_inter, treinos_inter +1;}
+set academia_treinor,1;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Muito bem, agora você poder evoluir seu treino basta matar monstros";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "E lembre-se, se precisar de informações pode consultar a sala aqui!";
+set treinor,1;
+close;
+
+OnInit:
+	waitingroom "[Treino Intermediario]",0;
+
+}
+

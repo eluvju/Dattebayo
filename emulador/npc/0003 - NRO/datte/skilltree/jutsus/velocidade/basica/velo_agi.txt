@@ -1,0 +1,101 @@
+payon_in03,74,187,5	script	Conc. chakra no pé::v6	831,{
+
+if (getskilllv(29) >= 1) goto L_delete;
+if(velo_basico != 1) {mes "Você precisa estudar velocidade básico antes de aprender um técnica de velocidade"; close;}
+if (checkquest(3056) == 1) goto L_go;
+if(velo_skill_bas >= 3) {mes "Você já aprendeu três técnicas de velocidade básico, esse é o limite"; close;}
+if(accept_velo == 3) {mes "Você já aceitou três treinamentos pra realizar de velocidade"; close;}
+if(Aumentar_agi == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de velocidade espalhado pelo mundo, eu posso lhe ensinar um técnica de velocidade básico";
+next;
+mes "A técnica de velocidade que eu ensino é o: Concentrar chakra nos pés";
+next;
+mes "Descrição: O ninja concentra seu chakra nas solas dos pés, aumentando sua velocidade de locomoção.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Concentrar chakra nos pés
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(29) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(29) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 29,0,0;
+set Aumentar_agi,0;
+erasequest 3056;
+if(accept_velo > 0) {set accept_velo,accept_velo -1;}
+if(velo_skill_bas > 0) {set velo_skill_bas,velo_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set questveloseis,1;
+set accept_velo,accept_velo +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 100 Bikouchuu.";
+setquest 3056;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(velo_skill_bas >= 3) {mes "Você já aprendeu três técnicas de velocidade básico, esse é o limite"; close;}
+if(velomobsseis < 100) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 29,1,0;
+set Aumentar_agi,1;
+set Agi_Corrigida,1;
+set questveloseis,0;
+set velomobsseis, 0;
+completequest 3056;
+erasequest 3056;
+set velo_skill_bas,velo_skill_bas +1;
+announce "[Velocidade Quest] "+strcharinfo(0)+" completou a quest de velocidade Concentrar chakra nos pés",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Velocidade Básico]",0;
+}
+
+
+-	script	velobas#20	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1051) {
+if (questveloseis != 1) {end;}
+set velomobsseis,velomobsseis +1;
+announce "[Velocidade Quest] Você já derrotou "+velomobsseis+" / 100 Bikouchuu",bc_blue|bc_self;
+end;
+}
+}
+
+//ama_in02,32,25,5	duplicate(v6)	Conc. chakra no pé#1	51,{
+//lou_in01,82,148,5	duplicate(v6)	Conc. chakra no pé#2	51,{
+//ve_in,76,218,5	duplicate(v6)	Conc. chakra no pé#3	51,{
+//izlude_in,67,129,5	duplicate(v6)	Conc. chakra no pé#4	51,{

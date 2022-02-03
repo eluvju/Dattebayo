@@ -1,0 +1,612 @@
+-	script	Evento#DJ	Dojo#DJ -1,{
+OnInit:
+// Máximo de integrantes na fila
+set $DJmaxfila, 50;
+// Mapa do Dojo
+set $DJmap$, "poring_c01"; //job_sage
+// Mapa pra enviar os perdedores
+set $DJmap2$, "kakashi";
+end;
+
+
+
+OnClock1000:
+OnClock1400:
+OnClock2200:
+set $DJfilanum, 1;
+for( set .i, 1; .i < $DJmaxfila; set .i, .i + 1 ){
+set $DJfilaid[.i], 0;
+set $DJfilaname$[.i], 0;
+}
+Announce "[Dojo]: O Dojo está aberto, boa sorte aos desafiantes!",0;
+enablenpc "Juiz#DJ";
+disablenpc "Juiz#2DJ";
+set $DJstatus, 1;
+set $DJcharid[1], 0;
+set $DJcharid[2], 0;
+set $DJcharname$[1], 0;
+set $DJcharname$[2], 0;
+end;
+
+OnTimer500:
+enablenpc "Juiz#DJ";
+if($DJjuiz == 1){
+disablenpc "Juiz#2DJ";
+setnpctimer 300000;
+set $DJjuiz, 0;
+} 
+if($DJnew2 == 1){
+stopnpctimer;
+setnpctimer 0;
+set .DJneed, 2;
+callsub OnNewDuel;
+}
+end;
+
+
+OnClock1100:
+OnClock1500:
+OnClock2300:
+set $DJstatus, 0;
+for( set .i, 1; .i < $DJmaxfila+1; set .i, .i + 1 ){
+set $DJfilaid[.i], 0;
+set $DJfilaname$[.i], 0;
+}
+set $DJcharid[1], 0;
+set $DJcharid[2], 0;
+set $DJcharname$[1], 0;
+set $DJcharname$[2], 0;
+pvpoff $DJmap$;
+Announce "[Dojo]: A Arena Dojo está fechada. Esperem o próximo evento.",0;
+close;
+end;
+
+
+OnTimer1000: 
+MapAnnounce $DJmap$,"[Dojo]: O jogador "+$DJcharname$[2]+" acaba de desafiar "+$DJcharname$[1]+" pela liderança do Dojo. Boa sorte aos combatentes!",0;
+set $DJwinner, 0;
+set $DJloser, 0;
+end;
+
+OnTimer5000: 
+MapAnnounce $DJmap$,"[Dojo]: Preparem-se, a batalha irá começar em 5 segundos. Vocês terão 5 minutos para defini-la, ou ambos serão desqualificados.",0;
+end;
+
+OnTimer10000: 
+disablenpc "Juiz#DJ";
+MapAnnounce $DJmap$,"[Dojo]: Duelo iniciado. Boa sorte!",0;
+pvpon $DJmap$;
+if(getmapusers($DJmap$) == 1){
+sleep2(2000);
+setnpctimer 300000;
+}
+end;
+
+OnTimer305000:
+stopnpctimer;
+setnpctimer 0;
+set .DJneed, 1;
+if($DJwinner == 0){
+if(getmapusers($DJmap$) >1){
+MapAnnounce $DJmap$,"[Dojo]: Os jogadores "+$DJcharname$[1]+" e "+$DJcharname$[2]+" foram desqualificados do Dojo, por excesso de tempo.",0;
+warpchar $DJmap2$,0,0,$DJcharid[1];
+warpchar $DJmap2$,0,0,$DJcharid[2];
+set .DJneed, 2;
+}else if(getmapusers($DJmap$) == 1){
+MapAnnounce $DJmap$,"[Dojo]: Desculpe, mas seu opontente não foi encontrado. Logo um novo desafiante entrará no Dojo.",0;
+}else if(getmapusers($DJmap$) == 0){
+set .DJneed, 2;
+}
+}
+set .DJupdate, 1;
+for(set .i, 1; .i < $DJmaxfila+1; set .i, .i + 1 ){
+	if($DJfilaid[.i] > 0){
+		set .@DJfilaid2[.DJupdate], $DJfilaid[.i];
+		set .@DJfilaname2$[.DJupdate], $DJfilaname$[.i];
+		set .DJupdate, .DJupdate + 1;
+	}
+}
+for(set .i, 1; .i < $DJmaxfila+1; set .i, .i + 1 ){
+		set $DJfilaid[.i], .@DJfilaid2[.i];
+		set $DJfilaname$[.i], .@DJfilaname2$[.i];
+}
+set $DJfilanum, getarraysize($DJfilaid);
+
+if($DJfilaid[1] > 0 && .DJneed == 1 || $DJfilaid[1] > 0 && $DJfilaid[2] > 0 && .DJneed == 2){
+callsub OnNewDuel;
+}else{
+if($DJfilaid[1] == 0 && $DJfilaid[2] == 0 && .DJneed == 2){
+Announce "[Dojo]: O Dojo está temporariamente sem Líder.",0;
+set $DJcharid[2], 0;
+set $DJcharname$[2], 0;
+set $DJcharid[1], 0;
+set $DJcharname$[1], 0;
+}else if($DJfilaid[1] == 0 && .DJneed == 1){
+Announce "[Dojo]: O jogador "+$DJcharname$[1]+" (atual líder do Dojo) está a espera de um rival.",0;
+set $DJcharid[2], 0;
+set $DJcharname$[2], 0;
+}else if($DJfilaid[1] > 0 && $DJfilaid[2] == 0 && .DJneed == 2){
+Announce "[Dojo]: O jogador "+$DJfilaname$[1]+" (atual líder do Dojo) está a espera de um rival.",0;
+set $DJcharid[2], 0;
+set $DJcharname$[2], 0;
+set $DJcharid[1], 0;
+set $DJcharname$[1], 0;
+}
+}
+end;
+
+
+OnNewDuel:
+set $DJnew2, 0;
+for( set .i, 1; .i < .DJneed+1; set .i, .i + 1 ){
+warpchar $DJmap$,0,0,$DJfilaid[.DJneed+1-.i];
+set $DJcharid[3-.i], $DJfilaid[.DJneed+1-.i];
+set $DJcharname$[3-.i], $DJfilaname$[.DJneed+1-.i];
+set $DJfilaid[.DJneed+1-.i], 0;
+set $DJfilaname$[.DJneed+1-.i], 0;
+}
+pvpoff $DJmap$;
+set $DJfilanum, $DJfilanum - .DJneed;
+if($DJstatus == 1) initnpctimer;
+end;
+
+OnPCLogoutEvent:
+if(getcharid(0) == $DJcharid[1]){
+set $DJcharid[1], $DJcharid[2];
+set $DJcharname$[1], $DJcharname$[2];
+set $DJcharid[2], 0;
+set $DJcharname$[2], 0;
+setnpctimer 300000;
+}
+if(getcharid(0) == $DJcharid[2]){
+set $DJcharid[2], 0;
+set $DJcharname$[2], 0;
+setnpctimer 300000;
+}
+for( set .i, 1; .i < $DJmaxfila+1; set .i, .i + 1 ){
+if(getcharid(0) == $DJfilaid[.i]){
+set $DJfilaid[.i], 0;
+set $DJfilaname$[.i], 0;
+}
+}
+end;
+
+OnPCDieEvent:
+if(getcharid(0) == $DJcharid[1] && strcharinfo(3) == $DJmap$ || getcharid(0) == $DJcharid[2] && strcharinfo(3) == $DJmap$){
+query_sql "UPDATE `rank_death` SET `DeathDojo` = `DeathDojo`+1 WHERE `char_id`='"+getcharid(0)+"'";
+warp $DJmap2$,0,0;
+end;
+}
+if(strcharinfo(3) == $DJmap$) warp $DJmap2$,0,0;
+end;
+
+OnPCKillEvent:
+if(getcharid(0) == $DJcharid[1] && strcharinfo(3) == $DJmap$ || getcharid(0) == $DJcharid[2] && strcharinfo(3) == $DJmap$){
+query_sql "UPDATE `rank_death` SET `KillsDojo` = `KillsDojo`+1 WHERE `char_id`='"+getcharid(0)+"'";
+MapAnnounce $DJmap$,"[Dojo]: Parabéns, você é o vencedor! Para continuar no Dojo, fale com o Juiz nos próximos 10 segundos.",0;
+stopnpctimer;
+setnpctimer 0;
+pvpoff $DJmap$;
+enablenpc "Juiz#2DJ";
+initnpctimer "Juiz#2DJ";
+set @DJtalk, 0;
+}
+end;
+
+OnClock0959:
+OnClock1559:
+OnClock2059:
+Announce "[Dojo]: A Arena Dojo está fechada. Esperem o próximo evento.",0;
+set $DJstatus, 0;
+for( set .i, 1; .i < $DJmaxfila+1; set .i, .i + 1 ){
+set $DJfilaid[.i], 0;
+set $DJfilaname$[.i], 0;
+}
+set $DJcharid[1], 0;
+set $DJcharid[2], 0;
+set $DJcharname$[1], 0;
+set $DJcharname$[2], 0;
+pvpoff $DJmap$;
+end;
+
+OnPCLoadMapEvent:
+if(strcharinfo(3) == $DJmap$){
+for( set .i, 1; .i < (getarraysize($DJcargo)+1); set .i, .i + 1 ){
+for( set .j, 1; .j < 11; set .j, .j + 1 ){
+if(getequipid(.j) == $DJcargo[.i]) unequip .j;
+}
+}
+end;
+}
+//if(strcharinfo(3) == "poring_c01"){unequip ID; percentheal -100, 0;}
+}
+
+//===== Script: ==============================================
+kakashi.gat,79,172,4	script	Dojo	953,{
+
+// Nome do npc
+set .npc$,"^800000[Dojo]^000000";
+
+if(getgmlevel() < 5){
+mes .npc$;
+mes "Olá caro shinobi, em que posso ajudar?";
+next;
+switch(select("Entrar na Fila:Ver Fila:Ranking:Informações")){
+case 1:
+if($DJstatus == 0){
+mes .npc$;
+mes "Desculpe, o dojo está fechado.";
+close;
+end;
+}
+
+if(jounin != 1){
+mes .npc$;
+mes "Desculpe, apenas Jounins podem entrar no Dojo.";
+close;
+end;
+}
+
+
+query_sql "SELECT `Kills` FROM `rank_death` WHERE `char_id`='"+getcharid(0)+"'", .@kills;
+query_sql "SELECT `Death` FROM `rank_death` WHERE `char_id`='"+getcharid(0)+"'", .@death;
+if(!.@kills && !.@death){
+mes .npc$;
+mes "Desculpe, é necessário certa experiência na Arena de Guerras antes de ingressar no Dojo.";
+close;
+end;
+}
+
+
+for( set .i, 1; .i < $DJmaxfila+1; set .i, .i + 1 ){
+if($DJfilaid[.i] == getcharid(0)){
+mes .npc$;
+mes "Você já está na Fila. Sua atual posição é ["+.i+"].";
+close;
+end;
+}
+}
+if(getarraysize($DJfilaid) >= $DJmaxfila){
+mes .npc$;
+mes "Desculpe, a fila está na lotação máxima. Logo abrirá uma vaga.";
+close;
+end;
+}
+if($DJcharid[1] == 0 && $DJfilaid[1] == 0){
+set $DJcharid[1], getcharid(0);
+set $DJcharname$[1], strcharinfo(0);
+mes .npc$;
+mes "Inscrição feita com sucesso. Você irá entrar no Dojo imediatamente.";
+Announce "[Dojo]: O jogador "+$DJcharname$[1]+" se inscreveu na Arena Dojo e está a espera de um rival.",0;
+close2;
+warpchar $DJmap$,0,0,$DJcharid[1];
+end;
+}
+if($DJcharid[2] == 0 && $DJcharid[1] != getcharid(0) && $DJfilaid[1] == 0){
+set $DJcharid[2], getcharid(0);
+set $DJcharname$[2], strcharinfo(0);
+mes .npc$;
+mes "Inscrição feita com sucesso. Você irá entrar no Dojo imediatamente.";
+close2;
+warpchar $DJmap$,0,0,$DJcharid[2];
+initnpctimer "Evento#DJ";
+end;
+}
+if(getcharid(0) != $DJcharid[1] && getcharid(0) != $DJcharid[2]){
+set $DJfilaname$[$DJfilanum], strcharinfo(0);
+set $DJfilaid[$DJfilanum], getcharid(0);
+if($DJcharid[1] == 0 && $DJcharid[2] == 0 && $DJfilaid[1] > 0 && $DJfilaid[2] > 0){
+mes .npc$;
+mes "Inscrição feita com sucesso. Você irá entrar no Dojo imediatamente.";
+close2;
+initnpctimer "Evento#DJ";
+set $DJnew2, 1;
+}else{
+mes .npc$;
+mes "Inscrição feita com sucesso. Sua posição é ["+$DJfilanum+"].";
+}
+set $DJfilanum, $DJfilanum +1;
+}
+close;
+end;
+
+case 2:
+for( set .i, 1; .i < 11; set .i, .i + 1 ){
+mes "["+.i+"] "+$DJfilaname$[.i]+"";
+}
+if($DJfilaid[11]>0){
+next;
+for( set .i, 11; .i < 21; set .i, .i + 1 ){
+mes "["+.i+"] "+$DJfilaname$[.i]+"";
+}
+if($DJfilaid[21]>0){
+next;
+for( set .i, 21; .i < 31; set .i, .i + 1 ){
+mes "["+.i+"] "+$DJfilaname$[.i]+"";
+}
+}
+}
+close;
+end;
+
+case 3:
+//query_sql "SELECT `char_name`, `KillsDojo` FROM `rank_death` ORDER BY `KillsDojo` DESC, `DeathDojo` ASC, `char_id` DESC LIMIT 10", .@name$,.@kills;
+//for (set .@i,0; .@i<11; set .@i,.@i+1)
+//mes "["+.@i+"] "+.@name$[.@i]+": "+.@kills[.@i]+" Pontos.";
+//close;
+	query_sql "SELECT char_name, `KillsDojo`, `DeathDojo` FROM rank_death ORDER BY `KillsDojo` DESC LIMIT 10",@nome$,@kills,@mortes;
+
+		mes "Ranking PvP ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Matou - Morreu";
+		mes " ";
+		FOR (SET .@i,0; .@i < 10; SET .@i, .@i + 1)
+		mes (.@i+1)+"º - "+@nome$[.@i]+" - "+@kills[.@i]+" - "+@mortes[.@i];
+		close;
+end;
+
+case 4:
+mes .npc$;
+mes "O Dojo é uma arena 1x1, onde os dois primeiros inscritos batalharão para decidir quem é o Líder do Dojo.";
+next;
+mes .npc$;
+mes "Após isso, o perdedor será retirado do Dojo e o próximo da fila entrará para disputar a liderança do Dojo.";
+next;
+mes .npc$;
+mes "Cada batalha tem um limite de 5 minutos. Desclassificando os dois, caso o tempo estoure.";
+next;
+mes .npc$;
+mes "A fila para novos desafiantes tem um limite de "+$DJmaxfila+" candidatos.";
+next;
+mes .npc$;
+mes "Cada vitória dará ao vencedor 1 ponto na Arena Dojo, podendo assim, troca-los por grande recompensas.";
+next;
+mes .npc$;
+mes "A Arena Dojo abre nos seguintes Horários:";
+mes "Manhã: 9h e 11h";
+mes "Tarde: 11h, 13h, 15h e 17h";
+mes "Noite: 20h e 22h";
+close;
+}
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if(getgmlevel() >= 5){
+mes .npc$;
+mes "Olá caro shinobi, em que posso ajudar?";
+next;
+switch(select("Entrar na Fila:Ver Fila:Ranking:Resetar Ranking:Informações:Abrir Evento:Fechar Evento")){
+case 1:
+if($DJstatus == 0){
+mes .npc$;
+mes "Desculpe, o dojo está fechado.";
+close;
+end;
+}
+
+for( set .i, 1; .i < $DJmaxfila+1; set .i, .i + 1 ){
+if($DJfilaid[.i] == getcharid(0)){
+mes .npc$;
+mes "Você já está na Fila. Sua atual posição é ["+.i+"].";
+close;
+end;
+}
+}
+if(getarraysize($DJfilaid) >= $DJmaxfila){
+mes .npc$;
+mes "Desculpe, a fila está na lotação máxima. Logo abrirá uma vaga.";
+close;
+end;
+}
+if($DJcharid[1] == 0 && $DJfilaid[1] == 0){
+set $DJcharid[1], getcharid(0);
+set $DJcharname$[1], strcharinfo(0);
+mes .npc$;
+mes "Inscrição feita com sucesso. Você irá entrar no Dojo imediatamente.";
+Announce "[Dojo]: O jogador "+$DJcharname$[1]+" se inscreveu na Arena Dojo e está a espera de um rival.",0;
+close2;
+warpchar $DJmap$,0,0,$DJcharid[1];
+end;
+}
+if($DJcharid[2] == 0 && $DJcharid[1] != getcharid(0) && $DJfilaid[1] == 0){
+set $DJcharid[2], getcharid(0);
+set $DJcharname$[2], strcharinfo(0);
+mes .npc$;
+mes "Inscrição feita com sucesso. Você irá entrar no Dojo imediatamente.";
+close2;
+warpchar $DJmap$,0,0,$DJcharid[2];
+initnpctimer "Evento#DJ";
+end;
+}
+if(getcharid(0) != $DJcharid[1] && getcharid(0) != $DJcharid[2]){
+set $DJfilaname$[$DJfilanum], strcharinfo(0);
+set $DJfilaid[$DJfilanum], getcharid(0);
+if($DJcharid[1] == 0 && $DJcharid[2] == 0 && $DJfilaid[1] > 0 && $DJfilaid[2] > 0){
+mes .npc$;
+mes "Inscrição feita com sucesso. Você irá entrar no Dojo imediatamente.";
+close2;
+initnpctimer "Evento#DJ";
+set $DJnew2, 1;
+}else{
+mes .npc$;
+mes "Inscrição feita com sucesso. Sua posição é ["+$DJfilanum+"].";
+}
+set $DJfilanum, $DJfilanum +1;
+}
+close;
+end;
+
+case 2:
+for( set .i, 1; .i < 11; set .i, .i + 1 ){
+mes "["+.i+"] "+$DJfilaname$[.i]+" "+$DJfilaid[.i]+".";
+}
+if($DJfilaid[11]>0){
+next;
+for( set .i, 11; .i < 21; set .i, .i + 1 ){
+mes "["+.i+"] "+$DJfilaname$[.i]+" "+$DJfilaid[.i]+".";
+}
+if($DJfilaid[21]>0){
+next;
+for( set .i, 21; .i < 31; set .i, .i + 1 ){
+mes "["+.i+"] "+$DJfilaname$[.i]+" "+$DJfilaid[.i]+".";
+}
+}
+}
+close;
+end;
+
+case 3:
+//query_sql "SELECT `char_name`, `KillsDojo` FROM `rank_death` ORDER BY `KillsDojo` DESC, `DeathDojo` ASC, `char_id` DESC LIMIT 10", .@name$,.@kills;
+//for (set .@i,0; .@i<11; set .@i,.@i+1)
+//mes "["+.@i+"] "+.@name$[.@i]+": "+.@kills[.@i]+" Pontos.";
+//close;
+	query_sql "SELECT char_name, `KillsDojo`, `DeathDojo` FROM rank_death ORDER BY `KillsDojo` DESC LIMIT 10",@nome$,@kills,@mortes;
+
+		mes "Ranking PvP ^CD9B1D[TOP 10]^000000";
+		mes " ";
+		mes "Posição - Nome - Matou - Morreu";
+		mes " ";
+		FOR (SET .@i,0; .@i < 10; SET .@i, .@i + 1)
+		mes (.@i+1)+"º - "+@nome$[.@i]+" - "+@kills[.@i]+" - "+@mortes[.@i];
+		close;
+end;
+
+case 4:
+if(getgmlevel() >= 98){
+query_sql "UPDATE `rank_death` SET `KillsDojo` = 0";
+query_sql "UPDATE `rank_death` SET `DeathDojo` = 0";
+}else{
+mes "Você não está autorizado a fazer isso.";
+}
+close;
+end;
+
+case 5:
+mes .npc$;
+mes "O Dojo é uma arena 1x1, onde os dois primeiros inscritos batalharão para decidir quem é o Líder do Dojo.";
+next;
+mes .npc$;
+mes "Após isso, o perdedor será retirado do Dojo e o próximo da fila entrará para disputar a liderança do Dojo.";
+next;
+mes .npc$;
+mes "Cada batalha tem um limite de 5 minutos. Desclassificando os dois, caso o tempo estoure.";
+next;
+mes .npc$;
+mes "A fila para novos desafiantes tem um limite de "+$DJmaxfila+" candidatos.";
+next;
+mes .npc$;
+mes "Cada vitória dará ao vencedor 1 ponto na Arena Dojo, podendo assim, troca-los por grande recompensas.";
+next;
+mes .npc$;
+mes "A Arena Dojo abre nos seguintes Horários:";
+mes "Manhã: 9h e 11h";
+mes "Tarde: 11h, 13h, 15h e 17h";
+mes "Noite: 20h e 22h";
+close;
+
+case 6:
+set $DJfilanum, 1;
+for( set .i, 1; .i < $DJmaxfila; set .i, .i + 1 ){
+set $DJfilaid[.i], 0;
+set $DJfilaname$[.i], 0;
+}
+Announce "[Dojo]: O Dojo está aberto, boa sorte aos desafiantes!",0;
+enablenpc "Juiz#DJ";
+disablenpc "Juiz#2DJ";
+set $DJstatus, 1;
+set $DJcharid[1], 0;
+set $DJcharid[2], 0;
+set $DJcharname$[1], 0;
+set $DJcharname$[2], 0;
+close;
+end;
+
+case 7:
+set $DJstatus, 0;
+for( set .i, 1; .i < $DJmaxfila+1; set .i, .i + 1 ){
+set $DJfilaid[.i], 0;
+set $DJfilaname$[.i], 0;
+}
+set $DJcharid[1], 0;
+set $DJcharid[2], 0;
+set $DJcharname$[1], 0;
+set $DJcharname$[2], 0;
+pvpoff $DJmap$;
+Announce "[Dojo]: A Arena Dojo está fechada. Esperem o próximo evento.",0;
+close;
+end;
+
+}
+}
+end;
+}
+
+poring_c01.gat,103,110,4	script	Juiz#DJ	953,{
+
+// Nome do npc
+set .npc$,"^800000[Juiz]^000000";
+
+mes .npc$;
+mes "Oque deseja?";
+switch(select("Curar:Sair")){
+case 1:
+percentheal 100, 100;
+close;
+end;
+
+case 2:
+close2;
+warp $DJmap2$,0,0;
+end;
+}
+end;
+}
+
+poring_c01.gat,104,110,4	script	Juiz#2DJ	953,{
+
+if(@DJtalk) end;
+
+if(getcharid(0) == $DJcharid[1]){
+set $DJwinner, 1;
+set $DJloser, 2;
+}else if(getcharid(0) == $DJcharid[2]){
+set $DJwinner, 2;
+set $DJloser, 1;
+}
+
+query_sql "SELECT `KillsDojo` FROM `rank_death` WHERE `char_id`='"+getcharid(0)+"'", .@kills;
+Announce "[Dojo]: O jogador "+$DJcharname$[$DJwinner]+" venceu o duelo contra "+$DJcharname$[$DJloser]+", somando "+.@kills+" pontos.",0;
+if(!.@kills)
+dispbottom "Para iniciar sua contagem de Kills no Dojo, você precisa obter certa experiência na Arena de Guerras";
+set @DJtalk, 1;
+getitem 664,1;
+stopnpctimer;
+setnpctimer 0;
+
+if($DJwinner == 2){
+set $DJcharid[1], $DJcharid[2];
+set $DJcharname$[1], $DJcharname$[2];
+}
+set $DJjuiz, 1;
+initnpctimer "Evento#DJ";//	Dojo#DJ
+end;
+
+OnTimer10000:
+warpchar $DJmap2$,0,0,$DJcharid[1];
+set $DJcharid[1], 0;
+set #DJcharname$[1], 0;
+set $DJjuiz, 1;
+initnpctimer "Evento#DJ";//	Dojo#DJ
+end;
+}
+
+poring_c01	mapflag	nowarp
+poring_c01	mapflag	noteleport
+poring_c01	mapflag	nowarpto
+poring_c01	mapflag	nobranch
+poring_c01	mapflag	nosave	SavePoint
+poring_c01	mapflag	nomemo
+poring_c01	mapflag	nopenalty
+poring_c01	mapflag	pvp
+poring_c01	mapflag	noexp

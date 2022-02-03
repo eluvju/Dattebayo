@@ -1,0 +1,96 @@
+payon_in03,126,156,5	script	Aura Ninja::fuu3	831,{
+
+if (seloskill543 >= 1) goto L_delete;
+if(fuu_basico != 1) {mes "Você precisa estudar fuuinjutsu básico antes de aprender um técnica de fuuinjutsu"; close;}
+if (checkquest(2095) == 1) goto L_go;
+if(fuu_skill_bas >= 3) {mes "Você já aprendeu três fuuinjutsus básicos, esse é o limite"; close;}
+if(accept_fuu == 3) {mes "Você já aceitou três treinamentos pra realizar de fuuinjutsu"; close;}
+if(Aura == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de fuuinjutsu espalhado pelo mundo, eu posso lhe ensinar um técnica de fuuinjutsu básico";
+next;
+mes "A técnica de fuuinjutsu que eu ensino é o: Aura Ninja";
+next;
+mes "Descrição: Aumenta pontos de Inteligencia (INT) e Força (STR) do usuário.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no,"Remover este Jutsu",delete;
+//========================================================================
+//	Aura Ninja
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (seloskill543 == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (seloskill543 >= 1) {
+mes "Jutsu removido com sucesso";
+set Aura,0;
+set seloskill543,0;
+erasequest 2095;
+if(accept_fuu > 0) {set accept_fuu,accept_fuu -1;}
+if(fuu_skill_bas > 0) {set fuu_skill_bas,fuu_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_fuu_tres,1;
+set accept_fuu,accept_fuu +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 30 Kyodaigumo.";
+setquest 2095;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(fuu_skill_bas >= 3) {mes "Você já aprendeu três fuuinjutsus básicos, esse é o limite"; close;}
+if(fuu_mobs_tres < 30) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento, parabéns.";
+set seloskill543,1;
+set Aura,1;
+set quest_fuu_tres,0;
+set gen_fuu_tres, 0;
+completequest 2095;
+erasequest 2095;
+set fuu_skill_bas,fuu_skill_bas +1;
+announce "[Fuuinjutsu Quest] "+strcharinfo(0)+" completou a quest do fuuinjutsu Aura Ninja",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuinjutsu Básico]",0;
+
+}
+
+-	script	fuuinbas#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1304 && quest_fuu_tres == 1) {set fuu_mobs_tres,fuu_mobs_tres +1; announce "[Fuuinjutsu Quest] Você já derrotou "+fuu_mobs_tres+" / 30 Kyodaigumo",bc_blue|bc_self; end;}
+
+}
+
+//ve_in,94,222,5	duplicate(fuu3)	Aura Ninja#31	51,{
+//payon_in03,123,161,5	duplicate(fuu3)	Aura Ninja#32	51,{
+//lou_in01,117,148,5	duplicate(fuu3)	Aura Ninja#33	51,{
+//izlude_in,73,106,5	duplicate(fuu3)	Aura Ninja#34	51,{

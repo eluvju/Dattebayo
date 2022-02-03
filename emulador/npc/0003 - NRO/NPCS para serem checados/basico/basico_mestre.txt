@@ -1,0 +1,237 @@
+jawaii_in.gat,22,121,2	script	Expert Quest	73,{
+
+mes "[Expert Quest]";
+	if(BaseLevel<700) goto level;
+			if(veteran_enable == 0) {
+				mes "Seja bem vindo Expert.Digite npc:expert na barra de PM,e diga alguma coisa,para ver seu nível e experiência.";
+				npctalk "Parabéns "+strcharinfo(0)+"! Você agora é um Expert.";
+				set veteran_enable,1;
+				set veteran_level,1;
+				set veteran_exp,0;
+				set veteran_maxexp,BaseExp*veteran_level;
+				close;
+			} else {
+				mes "Você já é um Expert!";
+				mes "Procure pelo Expert Quest quando você chegar nível 700 de Expert.";
+				mes "ou digite npc:expert na barra de pm, e diga alguma coisa na barra de chat, e pressione enter, para saber seu nivel e exp de Expert.";
+				close;
+
+				level:
+				mes "Você precisa ter nível 700.";
+				close;
+			}
+		}
+
+
+
+kakashi.gat,147,157,2	script	Elite Quest	73,{
+mes "[Elite Quest]";
+	if(veteran_level >=100) goto L_acesso;
+	if(BaseLevel<700) goto level;
+	if(veteran_enable == 0) goto L_nelite;
+
+
+level:				
+mes "Você precisa ter nível 700 e pegar a promoção de Elite.";
+close;
+
+L_nelite:
+mes "Você precisa ter nível 700, e ter promoção para Elite.";
+close;
+
+				L_acesso:
+				if(veteran_level ==100) {
+				if(expert_enable == 0) {
+					mes "Seja bem vindo Elite. Digite npc:elite na barra de PM, e diga alguma coisa, para ver seu nível e exp.";
+					npctalk "Parabéns "+strcharinfo(0)+"! Você agora é Elite.";
+					set expert_enable,1;
+					set expert_level,1;
+					set expert_exp,0;
+					set expert_maxexp,BaseExp*expert_level+veteran_maxexp;
+					close;
+				} else {
+					mes "Você já é Elite! Digite npc:elite na barra de PM, e diga alguma coisa, para ver seu nível e exp.";
+					close;
+				}
+			} else {
+				mes "Você é de graduação alta, mas precisa pegar nível de Expert 100.";
+				close;
+			}
+		}
+
+prontera.gat,174,155,2	script	Master Quest	1083,{
+mes "[Master Quest]";
+	if(BaseLevel<700) {
+		if(Upper==0){
+			if(expert_enable == 0) {
+				mes "Você precisa de nível 700 e pegar a promoção para Elite.";
+				close;
+			} else {
+				mes "Você precisa ser nível 700 e pegar Elite no nível 300.";
+				close;
+			}
+		} else {
+			if(expert_enable == 0) {
+				mes "Ainda não é nível 700 e ainda não pegou a promoção para Elite ainda.";
+				close;
+			} else {
+				mes "Você tem que pegar nível 300 de Elite.";
+				close;
+			}
+		}
+	} else {
+		if(Upper==0){
+			if(expert_enable == 0) {
+				mes "Você é nível 700.";
+				close;
+			} else {
+				mes "Você é nível 700";
+				close;
+			}
+		} else {
+			if(expert_level == 300) {
+				if(master_enable == 0) {
+					mes "Seja bem vindo master. Digite npc:master na barra de PM, e diga alguma coisa,para ver seu nível e exp.";
+					npctalk "Parabéns "+strcharinfo(0)+"! Você agora é Master.";
+					announce "Wow! "+strcharinfo(0)+" pegou a promoção para ser Master!",0;
+					set master_enable,1;
+					set master_level,1;
+					set master_exp,0;
+					set master_maxexp,BaseExp*master_level+expert_maxexp;
+					close;
+				} else {
+					mes "Você já é master! Digite npc:master na barra de PM, e diga alguma coisa, para ver seu nível e exp.";
+					close;
+				}
+			} else {
+				mes "Você é de graduação alta, mas você tem que pegar nível 300 de Elite.";
+				close;
+			}
+		}
+	}
+}
+
+-	script	expert	-1,{
+OnPCLogInEvent:
+	if(veteran_enable == 1) {
+		dispbottom "-----------------";
+		dispbottom "Nível Expert:"+veteran_level;
+		dispbottom "Exp:"+veteran_exp+"/"+veteran_maxexp;
+		dispbottom "Digite npc:expert na barra de pm, e diga algo, para ver seu nível e exp.";
+		set veteran_maxexp,BaseExp*veteran_level;
+		close;
+	}
+	end;
+OnWhisperGlobal:
+	if(veteran_enable == 1) {
+		dispbottom "-----------------";
+		dispbottom "Expert level:"+veteran_level;
+		dispbottom "Exp:"+veteran_exp+"/"+veteran_maxexp;
+		close;
+	}
+	end;
+OnNPCKillEvent:
+	if(veteran_enable == 1) {
+		set veteran_exp,veteran_exp+getmonsterinfo(killedrid,3);
+		dispbottom "Exp:"+veteran_exp+"/"+veteran_maxexp;
+		if(veteran_exp >= veteran_maxexp) {			
+			if(veteran_level < 100) {
+				set veteran_exp,veteran_exp-veteran_maxexp;
+				set veteran_level,veteran_level+1;
+				set veteran_maxexp,BaseExp*veteran_level;
+				dispbottom "Level up de Expert! Agora level "+veteran_level;
+				atcommand "@effect 183";
+				atcommand "@effect 338";
+				end;
+			}
+		end;
+		}
+	}
+}
+
+-	script	elite	-1,{
+OnPCLogInEvent:
+	if(expert_enable == 1) {
+		dispbottom "-----------------";
+		dispbottom "Elite level:"+expert_level;
+		dispbottom "Exp:"+expert_exp+"/"+expert_maxexp;
+		dispbottom "Digite npc:elite na barra de pm, e diga alguma coisa, para ver seu nível e exp.";
+		set expert_maxexp,BaseExp*expert_level+veteran_maxexp;
+		close;
+	}
+	end;
+OnWhisperGlobal:
+	if(expert_enable == 1) {
+		dispbottom "-----------------";
+		dispbottom "Elite level:"+expert_level;
+		dispbottom "Exp:"+expert_exp+"/"+expert_maxexp;
+		close;
+	}
+	end;
+OnNPCKillEvent:
+	if(expert_enable == 1) {
+		set expert_exp,expert_exp+getmonsterinfo(killedrid,3);
+		dispbottom "Exp:"+expert_exp+"/"+expert_maxexp;
+		if(expert_exp >= expert_maxexp) {			
+			if(expert_level < 300) {
+				set expert_exp,expert_exp-expert_maxexp;
+				set expert_level,expert_level+1;
+				set expert_maxexp,BaseExp*expert_level+veteran_maxexp;
+				atcommand "@effect 183";
+				atcommand "@effect 225";
+				atcommand "@effect 303";
+				atcommand "@effect 325";
+				atcommand "@effect 338";
+				dispbottom "Elite level UP! Agora level "+expert_level;
+				end;
+			}
+		end;
+		}
+	}
+}
+
+-	script	master	-1,{
+OnPCLogInEvent:
+	if(master_enable == 1) {
+		dispbottom "-----------------";
+		dispbottom "Master level:"+master_level;
+		dispbottom "Exp:"+master_exp+"/"+master_maxexp;
+		dispbottom "Digite npc:master na barra de pm, e diga algo, para ver seu nível e exp.";
+		set master_maxexp,BaseExp*master_level+expert_maxexp;
+		close;
+	}
+	end;
+OnWhisperGlobal:
+	if(master_enable == 1) {
+		dispbottom "-----------------";
+		dispbottom "Master level:"+master_level;
+		dispbottom "Exp:"+master_exp+"/"+master_maxexp;
+		close;
+	}
+	end;
+OnNPCKillEvent:
+	if(master_enable == 1) {
+		set master_exp,master_exp+getmonsterinfo(killedrid,3);
+		dispbottom "Exp:"+master_exp+"/"+master_maxexp;
+		if(master_exp >= master_maxexp) {			
+			if(master_level < 700) {
+				set master_exp,master_exp-master_maxexp;
+				set master_level,master_level+1;
+				set master_maxexp,BaseExp*master_level+expert_maxexp;
+				dispbottom "Master level UP! Agora level "+master_level;
+				atcommand "@effect 183";
+				atcommand "@effect 225";
+				atcommand "@effect 303";
+				atcommand "@effect 325";
+				atcommand "@effect 338";
+				atcommand "@effect 371";
+				atcommand "@effect 411";
+				atcommand "@effect 414";
+				atcommand "@effect 553";
+				atcommand "@effect 554";
+				end;
+			}
+		end;
+		}
+	}
+}

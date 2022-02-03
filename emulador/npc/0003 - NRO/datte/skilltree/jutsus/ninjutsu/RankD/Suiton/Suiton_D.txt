@@ -1,0 +1,104 @@
+prt_sewb3,159,182,5	script	Suiryuudan no Jutsu::suiton3	831,{
+if(elementosuiton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 3) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (WeaponLvl2 < 20) {mes "Você precisa de ninjutsu level 20 pra aprender esse jutsu"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Suiton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Suiryuudan no Jutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SR,"Agora não",L_no;
+
+//========================================================================
+//	Suiryuudan no Jutsu
+//========================================================================
+
+L_SR:
+if (suiryuudan == 1) {next; mes "Você já aprendeu esse jutsu"; close;}
+set skillprotect,1;
+if (checkquest(1012) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Rabo de cobra";
+mes "- Derrotar 10x Girino";
+setquest 1012;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1012,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(934) < 200) {next; mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 934,200;
+skill 14,1,0;
+set suiryuudan,1;
+set skillgenin1,4;
+completequest 1012;
+erasequest 1012;
+close;
+
+L_no:
+close;
+OnInit:
+	waitingroom "[Suiton]",0;
+
+}
+//=========================================================================
+//	Pergaminho Congelante
+//=========================================================================
+gld_dun04,224,75,5	script	P. Congelante::suiton4	831,{
+if (nin_intermediario != 1) {mes "Você precisa de ninjutsu intermediário para aprender esse jutsu"; close;}
+if(elementosuiton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 4) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (WeaponLvl2 < 20) {mes "Você precisa de ninjutsu level 20 pra aprender esse jutsu"; close;}
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Suiton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Pergaminho Congelante";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SJ,"Agora não",L_no;
+
+L_SJ:
+if (P_Congelante == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+set skillprotect,1;
+if (checkquest(1013) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Pele de sapo";
+mes "- Derrotar 10x Filhote de cobra";
+mes "- Estudar ninjutsu básico.";
+setquest 1013;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1013,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+if (countitem(7155) < 200) {next; mes "Você não completou seu treinamento."; close;}
+if (nin_basico != 1) {next; mes "Você não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7155,200;
+skill 121,1,0;
+set P_Congelante,1;
+completequest 1013;
+erasequest 1013;
+set skillgenin1,5;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Suiton]",0;
+}
+
+prt_sewb4,167,74,5	duplicate(suiton3)	Suiryuudan no Jutsu#d7	831
+gl_sew02,165,108,5	duplicate(suiton4)	P. Congelante#d8	831
+
+gl_sew03,170,40,5	duplicate(suiton3)	Suiryuudan no Jutsu#d9	831
+gl_sew04,244,79,5	duplicate(suiton4)	P. Congelante#d10	831
+
+alde_dun04,153,51,5	duplicate(suiton3)	Suiryuudan no Jutsu#d11	831
+beach_dun3,39,52,5	duplicate(suiton4)	P. Congelante#d12	831

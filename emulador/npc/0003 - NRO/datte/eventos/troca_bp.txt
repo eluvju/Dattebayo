@@ -1,0 +1,400 @@
+kakashi,81,175,5	script	Troca - PB	99,{
+
+mes "Eu sou o trocador de pontos de batalha, escolha quais recompensas você quer, a quantidade de pontos de batalha necessários estão junto ao nome da recompensa, consiga PB nos eventos diários!";
+menu "- Caixa de Equipes (20 PB)",comum,"- Caixa de DNA (1000 PB)",dna,"- DNA Completo (1000 PB)",dnacompleto,"- Antígeno (3500 PB)",antigeno,"- Fragmentos de DNA (5 PB)",fragdna,"- Itens Avançados (30 PB)",itemavan,"- Fuuin no Sho (2500 PB)",fuuin,"- Chakra Lendário (170 PB)",chakra,"- Caixa de Fragmento (2 PB)",fragmento,"- Caixa de item avançado (30 PB)",avancado,"- Kill KG 3 (10 PB)",kill,"- KG - Olhos de Uchiha Derrotado (800 PB)",uchiha,"- KG - Olhos de Hyuuga Derrotado (800 PB)",hyuuga,"- KG - Liberação do 8º Portão (800 PB)",portao,"- KG - Coraçao de Sasori (800 PB)",sasori,"- KG - Chakra Oculto das Sombras (800 PB)",sombra,"- KG - Chakra Misterioso (800 PB)",koori,"- KG - Pilula Suprema (800 PB)",baika,"- KG - Pergaminho Secreto do Céu (800 PB)",ceu,"- KG - Pergaminho Secreto da Terra (800 PB)",terra,"- Manual Avançado (5 PB)",manu,"- Pergaminho Rank S (100 PB)",perg,"- Caixa da Riqueza (80 PB)",riqueza,"- Liberação de caixas incomuns (OFF)",raro,"- Caixa de Hats (4000 PB)",hats,"- Nenhum",L_close;
+
+comum:
+next;
+if(countitem(664) < 20) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,20;
+getitem 7246,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 20 PB por uma Caixa de equipamentos",bc_blue|bc_all;
+close;
+
+dna:
+next;
+if(countitem(664) < 1000) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,1000;
+getitem 7249,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 1000 PB por uma caixa de DNA completa",bc_blue|bc_all;
+close;
+
+antigeno:
+next;
+if(countitem(664) < 3500) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+getitem 973,1;
+delitem 664,3500;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 3500 PB por um Antígeno",bc_blue|bc_all;
+close;
+
+fuuin:
+next;
+if(countitem(664) < 2500) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+getitem 749,1;
+delitem 664,2500;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 2500 PB por um Fuuin no Sho",bc_blue|bc_all;
+close;
+
+chakra:
+next;
+if(countitem(664) < 170) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+getitem 1079,1;
+delitem 664,170;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 170 PB por um Chakra Lendário",bc_blue|bc_all;
+close;
+
+fragmento:
+next;
+if(countitem(664) < 5) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,5;
+getitem 7250,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 5 PB por uma Caixa de fragmento de DNA",bc_blue|bc_all;
+close;
+
+avancado:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 7251,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por uma Caixa de item avançado",bc_blue|bc_all;
+close;
+
+kill:
+next;
+if(countitem(664) < 10) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+getitem 554,1;
+delitem 664,10;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 10 PB por um Kill KG 3",bc_blue|bc_all;
+close;
+
+manu:
+next;
+if(countitem(664) < 5) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+getitem 7206,1;
+delitem 664,5;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 5 PB por um Manual avançado",bc_blue|bc_all;
+close;
+
+perg:
+next;
+if(countitem(664) < 100) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+getitem 7195,1;
+delitem 664,100;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 100 PB por Pergaminho Rank S",bc_blue|bc_all;
+close;
+
+raro:
+next;
+mes "Opção ainda não disponível";
+close;
+//next;
+//if(countitem(664) < 1344) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+//getitem 7195,1;
+//delitem 664,1344;
+//announce "[Troca de PB] "+strcharinfo(0)+" trocou 1344 PB por liberação da Quest de equipamentos incomuns",bc_blue|bc_all;
+close;
+
+hats:
+next;
+if(countitem(664) < 4000) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,4000;
+getitem 7248,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 4000 PB por uma caixa de Hats",bc_blue|bc_all;
+close;
+
+//------DNA FULL
+
+dnacompleto:
+next;
+menu "- DNA Mitsashi",mitsashi,"- DNA Kikaichu",kikaichu,"- DNA Kibaku",kibaku,"- DNA Flauta",flauta,"- DNA Ibuse",ibuse,"- DNA Jashin",jashin,"- Nenhum",L_close;
+
+mitsashi:
+next;
+if(countitem(664) < 1000) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,1000;
+getitem 12954,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 1000 PB por um DNA - Mitsashi",bc_blue|bc_all;
+close;
+
+kikaichu:
+next;
+if(countitem(664) < 1000) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,1000;
+getitem 12950,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 1000 PB por um DNA - Kikaichu",bc_blue|bc_all;
+close;
+
+kibaku:
+next;
+if(countitem(664) < 1000) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,1000;
+getitem 12953,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 1000 PB por um DNA - Kibaku",bc_blue|bc_all;
+close;
+
+flauta:
+next;
+if(countitem(664) < 1000) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,1000;
+getitem 12951,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 1000 PB por um DNA - Flauta",bc_blue|bc_all;
+close;
+
+ibuse:
+next;
+if(countitem(664) < 1000) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,1000;
+getitem 12952,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 1000 PB por um DNA - Ibuse",bc_blue|bc_all;
+close;
+
+jashin:
+next;
+if(countitem(664) < 1000) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,1000;
+getitem 12949,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 1000 PB por um DNA - Jashin",bc_blue|bc_all;
+close;
+
+//-------Frag DNA
+fragdna:
+next;
+menu "-DNA Mitsashi",fragmit,"- DNA Kikaichu",fragkikai,"- DNA Kibaku",fragkiba,"- DNA Flauta",fragflauta,"- DNA Ibuse",fragibuse,"- DNA Jashin",fragjashin,"- Nenhum",L_close;
+
+fragmit:
+next;
+if(countitem(664) < 5) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,5;
+getitem 12944,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 5 PB por um Frag DNA - Mitsashi",bc_blue|bc_all;
+close;
+
+fragkikai:
+next;
+if(countitem(664) < 5) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,5;
+getitem 12940,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 5 PB por um Frag DNA - Kikaichu",bc_blue|bc_all;
+close;
+
+fragkiba:
+next;
+if(countitem(664) < 5) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,5;
+getitem 12943,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 5 PB por um Frag DNA - Kibaku",bc_blue|bc_all;
+close;
+
+fragflauta:
+next;
+if(countitem(664) < 5) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,5;
+getitem 12941,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 5 PB por um Frag DNA - Flauta",bc_blue|bc_all;
+close;
+
+fragibuse:
+next;
+if(countitem(664) < 5) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,5;
+getitem 12942,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 5 PB por um Frag DNA - Ibuse",bc_blue|bc_all;
+close;
+
+fragjashin:
+next;
+if(countitem(664) < 5) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,5;
+getitem 12939,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 5 PB por um Frag DNA - Jashin",bc_blue|bc_all;
+close;
+
+//------ Item avan
+
+itemavan:
+next;
+menu "- Rubi Amaldiçoado",rubi,"- Máscara Destruída",mascara,"- Selo Maldito",selo,"- Livro Desconhecido",livro,"- Colar do Oblívio",colar,"- Lamina Perdida nas Trevas",lamina,"- Mandíbula de Formiga",mand,"- Chave para o Subterraneo",chave,"- Esfera das Sombras",esfera,"- Relógio de Bolso",relogio,"- Uniao da Tribo",uniao,"- Ba_Gua",bagua,"- Nenhum",L_close;
+
+rubi:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 724,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Rubi Amaldiçoado",bc_blue|bc_all;
+close;
+
+mascara:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 7611,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Máscara Destruída",bc_blue|bc_all;
+close;
+
+selo:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 7442,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Selo Maldito",bc_blue|bc_all;
+close;
+
+livro:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 7481,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Livro Desconhecido",bc_blue|bc_all;
+close;
+
+colar:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 1008,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Colar do Oblívio",bc_blue|bc_all;
+close;
+
+lamina:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 7023,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Lamina Perdida nas Trevas",bc_blue|bc_all;
+close;
+
+mand:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 1014,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Mandíbula de Formiga",bc_blue|bc_all;
+close;
+
+chave:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 7027,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Chave para o Subterraneo",bc_blue|bc_all;
+close;
+
+esfera:
+next;
+if(countitem(664) < 15) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,15;
+getitem 7524,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 15 PB por um Item - Esfera das Sombras",bc_blue|bc_all;
+close;
+
+relogio:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 7513,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Relógio de Bolso",bc_blue|bc_all;
+close;
+
+uniao:
+next;
+if(countitem(664) < 15) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,15;
+getitem 658,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 15 PB por um Item - Uniao da Tribo",bc_blue|bc_all;
+close;
+
+bagua:
+next;
+if(countitem(664) < 30) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,30;
+getitem 7169,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 30 PB por um Item - Rubi Amaldiçoado",bc_blue|bc_all;
+close;
+
+//------Box Riqueza
+
+riqueza:
+next;
+if(countitem(664) < 80) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,80;
+getitem 7247,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 80 PB por uma caixa da Riqueza",bc_blue|bc_all;
+
+//--------- Item KG
+
+uchiha:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 663,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Olhos de Uchiha Derrotado",bc_blue|bc_all;
+close;
+
+hyuuga:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 659,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Olhos de Hyuuga Derrotado",bc_blue|bc_all;
+close;
+
+portao:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 735,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Liberação do 8º Portão",bc_blue|bc_all;
+close;
+
+sasori:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 744,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Coraçao de Sasori",bc_blue|bc_all;
+close;
+
+sombra:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 7328,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Chakra Oculto das Sombras",bc_blue|bc_all;
+close;
+
+koori:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 745,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Chakra Misterioso",bc_blue|bc_all;
+close;
+
+baika:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 685,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Pilula Suprema",bc_blue|bc_all;
+close;
+
+ceu:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 669,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Pergaminho Secreto do Céu",bc_blue|bc_all;
+close;
+
+terra:
+next;
+if(countitem(664) < 800) {mes "Você não tem a quantidade necessária de pontos de batalha pra receber este item"; close;}
+delitem 664,800;
+getitem 681,1;
+announce "[Troca de PB] "+strcharinfo(0)+" trocou 800 PB por um Item KG - Pergaminho Secreto da Terra",bc_blue|bc_all;
+close;
+
+L_close:
+close;
+
+}

@@ -1,0 +1,99 @@
+hu_fild07,237,44,5	script	Byakugo No Jutsu::medint7	831,{
+
+if (getskilllv(307) >= 1) goto L_delete;
+if(med_intermediario != 1) {mes "Você precisa estudar medicina intermediária antes de aprender essa técnica de medicina"; close;}
+if (checkquest(2090) == 1) goto L_go;
+if(med_skill_int >= 3) {mes "Você já aprendeu três técnicas de medicinas intermediárias, esse é o limite"; close;}
+if(accept_med_int == 3) {mes "Você já aceitou três treinamentos pra realizar de medicina"; close;}
+if(Byakugo == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if (WeaponLvl4 < 40) {mes "Seu nível de Medicina está baixo demais, é preciso ter nível 40 ou mais pra aprender esse Medicina"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Medicina espalhado pelo mundo, eu posso lhe ensinar um Medicina intemediária";
+next;
+mes "A técnica de medicina que eu ensino é o: Byakugo No Jutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Byakugo No Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(307) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(307) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 307,0,0;
+set Byakugo,0;
+erasequest 2090;
+if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}
+if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+
+L_SS:
+set quest_med_int_sete,1;
+set accept_med_int,accept_med_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter medicina intermediário level 40";
+mes "- Derrotar 25 Ratasana.";
+mes "- Obter 20 Madeira Queimada";
+mes "- Obter 3 Selo Maldito";
+setquest 2090;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(med_skill_int >= 3) {mes "Você já aprendeu três técnicas de medicinas intermediárias, esse é o limite"; close;}
+if(med_int_mobs_sete < 25) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7068) <20) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7442) < 3) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7068,20;
+delitem 7442,3;
+skill 307,1,0;
+set Byakugo,1;
+set quest_med_int_sete,0;
+set med_int_mobs_sete, 0;
+completequest 2090;
+erasequest 2090;
+set med_skill_int,med_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Medicina Intermediária]",0;
+}
+
+-	script	medint#7	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1209 && quest_med_int_sete == 1) {set med_int_mobs_sete,med_int_mobs_sete +1; announce "[Medinin Quest] Você já derrotou "+med_int_mobs_sete+" / 25 Ratasana",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_07,43,363,5	duplicate(medint7)	Byakugo No Jutsu#31	831,{
+mjolnir_02,70,312,5	duplicate(medint7)	Byakugo No Jutsu#32	831,{
+moc_fild08,149,112,5	duplicate(medint7)	Byakugo No Jutsu#33	831,{

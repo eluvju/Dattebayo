@@ -1,0 +1,229 @@
+prt_maze02,97,129,3	script	Ebisu	734,{
+	mes "[^A52A2AEbisu^000000]";
+	if(basico_done == 1){goto L_Done;}
+	if(jutsus_basicos_enabled == 1){goto L_lista;}else{mes "Quem é você?? Saia daqui!"; close;}
+
+	
+	L_lista:
+	mes "Olá aprendiz de shinobi,eu serei seu primeiro instrutor";
+	mes "Será de mim que aprenderá seus primeiros Jutsus";
+	mes "Gostaria de ver os Jutsus que pode aprender e como conseguir-los?";
+	menu "- Sim",L_Lista2,"- Não",L_nao;
+	
+	L_Lista2:
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Então vamos la aprendiz, Estes são os Ebisu que voce pode aprender!";
+	menu "- Salto Ninja",salto,"- Aumentar recuperação de Chakra",recuchakra,"- Aumentar recuperação de HP",recuhp,"- Aumentar Agilidade",agilidade;
+
+	salto:
+	if(Jutsu_basicos1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Aprendiz: Salto Ninja";
+	mes "Neste treinamento você terá que fazer o seguinte:";
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Matar 10 Girinos";
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(skillbasico1mobs < 10) goto L_SemItem;
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	skill 426,5,0;
+	set Jutsu_basicos1,0;
+	set Jutsu_basicos2,1;
+	set skillbasico1mobs,0;
+	close;
+
+	recuchakra:
+	if(Jutsu_basicos2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Aprendiz: Recuperação de Chakra";
+	mes "Neste treinamento você terá que fazer o seguinte:";
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Matar 20 Filhotes de Cobra";
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(skillbasico2mobs < 20) goto L_SemItem;
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	skill 9,10,0;
+	set Jutsu_basicos2,0;
+	set Jutsu_basicos3,1;
+	set skillbasico2mobs,0;
+	close;
+
+	recuhp:
+	if(Jutsu_basicos3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Aprendiz: Recuperação de HP";
+	mes "Neste treinamento você terá que fazer o seguinte:";
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Matar 50 Bichouji's";
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(skillbasico3mobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	skill 4,10,0;
+	set Jutsu_basicos3,0;
+	set Jutsu_basicos4,1;
+	set skillbasico3mobs,0;
+	close;
+
+	agilidade:
+	if(Jutsu_basicos4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Aprendiz: Aumentar Agilidade";
+	mes "Neste treinamento você terá que fazer o seguinte:";
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Matar 70 Bichouji's";
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(skillbasico4mobs < 70) goto L_SemItem;
+	next;
+	mes "[^A52A2AEbisu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	skill 29,10,0;
+	set Jutsu_basicos4,0;
+	set skillbasico4mobs,0;
+	set jutsus_basicos_enabled,0;
+	set basico_done, 1;
+	close;
+
+
+L_SemItem:
+	next;
+	mes "[^FF0000Ebisu^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+		
+L_nogradu:
+	next;
+	mes "Você não é desta graduação.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Ebisu^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_NoJutsu:
+	next;
+	mes "[^FF0000Ebisu^000000]";
+	mes "Você não está preparado para este Jutsu ainda ou ja fez este treinamento!";
+	close;
+
+L_nao:
+	next;
+	mes "[^FF0000Ebisu^000000]";
+	mes "Tudo bem, volte quando quiser aprender!";
+	close;
+
+L_Done:
+	mes "Você completou seu treinamento básico";
+	mes "Fale com o Instrutor Shinobi aqui do meu lado";
+	mes "para começar sua vida shinobi!!";
+	mes "Boa sorte!";
+	close;
+	
+
+}
+
+-	script	OnNPCKill_basico1	-1,{
+
+OnNPCKillEvent:
+
+if(Jutsu_basicos1 == 1){goto basico_1;} else {end;}
+
+basico_1:
+switch (killedrid) {
+case 1034:
+set skillbasico1mobs, skillbasico1mobs + 1;
+dispbottom "Você ja matou "+skillbasico1mobs+" Girino(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_basico2	-1,{
+
+OnNPCKillEvent:
+
+if(Jutsu_basicos2 == 1){goto basico_2;} else {end;}
+
+basico_2:
+switch (killedrid) {
+case 1037:
+set skillbasico2mobs, skillbasico2mobs + 1;
+dispbottom "Você ja matou "+skillbasico2mobs+" Filhote(s) de Cobra";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_basico3	-1,{
+
+OnNPCKillEvent:
+
+if(Jutsu_basicos3 == 1){goto basico_3;} else {end;}
+
+basico_3:
+switch (killedrid) {
+case 1051:
+set skillbasico3mobs, skillbasico3mobs + 1;
+dispbottom "Você ja matou "+skillbasico3mobs+" Bichouji(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_basico4	-1,{
+
+OnNPCKillEvent:
+
+if(Jutsu_basicos4 == 1){goto basico_4;} else {end;}
+
+basico_4:
+switch (killedrid) {
+case 1051:
+set skillbasico4mobs, skillbasico4mobs + 1;
+dispbottom "Você ja matou "+skillbasico4mobs+" Bichouji(s)";
+
+end;
+
+
+}
+}

@@ -1,0 +1,74 @@
+ama_in01,87,22,5	script	Saída#elemento	825,{
+
+mes "[^FF0000Saída^000000]";
+mes "Gostaria de sair ir para sua vila?";
+menu "- Sim, vamos la",L_Sim,"- Não, Ainda não",L_Nao;
+
+L_Sim:
+if (elemento != 1) goto L_elemento;
+next;
+mes "[Saída]";
+mes "Boa escolha, vamos la!";
+if (##faction == 1) goto warp_konoha;
+if (##faction == 2) goto warp_suna;
+if (##faction == 3) goto warp_nevoa;
+close;
+
+warp_konoha:
+savepoint "konoha",196,206; 
+warp "konoha",196,206;
+close;
+
+warp_suna:
+savepoint "areia",200,166;
+warp "areia",216,153;
+close;
+
+warp_nevoa:
+savepoint "nevoa",203,166;
+warp "nevoa",128,275;
+close;
+
+L_Nao:
+next;
+mes "[^FF0000Saída^000000]";
+mes "Tudo bem, quando quiser saír só falar comigo!";
+close;
+
+L_elemento:
+next;
+mes "[^FF0000Saída^000000]";
+mes "Você ainda não escolheu nenhum estilo de luta, escolhe e volte a falar comigo!";
+close;
+
+}
+
+que_ng,25,15,5	script	Saída#cla	825,{
+
+mes "[^FF0000Saída^000000]";
+mes "Gostaria de sair e falar com o instrutor final?";
+menu "- Sim, vamos la",L_Sim1,"- Não, Ainda não",L_Nao1;
+
+L_Sim1:
+if (cla != 1) goto L_elemento1;
+next;
+mes "[^FF0000Saída^000000]";
+mes "Boa escolha, vamos la!";
+if (##faction == 1) {savepoint "konoha",196,206; warp "konoha",196,206; close;}
+if (##faction == 2) {savepoint "areia",216,153; warp "areia",216,153; close;}
+if (##faction == 3) {savepoint "nevoa",128,275; warp "nevoa",128,275; close;}
+close;
+
+L_Nao1:
+next;
+mes "[^FF0000Saída^000000]";
+mes "Tudo bem, quando quiser saír só falar comigo!";
+close;
+
+L_elemento1:
+next;
+mes "[^FF0000Saída^000000]";
+mes "Você ainda não escolheu nenhum estilo de luta, escolhe e volte a falar comigo!";
+close;
+
+}

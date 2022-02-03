@@ -1,0 +1,25 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Description: =========================================
+//= NPC Placas de Sinalização
+//= 
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 20/07/2021 as 07:30
+//=
+//===== Estrutura do Script: =================================
+//=
+//=
+//=
+//################################################################
+// Placas de Sinalização
+
+academia,98,46,5	script	Sala 1	837,{end;}
+academia,111,46,5	script	Sala 2	837,{end;}
+academia,98,64,5	script	Sala 3	837,{end;}
+academia,111,64,5	script	Sala 4	837,{end;}
+academia,108,88,5	script	Sala de Exame	837,{end;}
+academia,121,15,5	script	2° Andar	837,{end;}
+academia,76,147,5	script	1° Andar	837,{end;}

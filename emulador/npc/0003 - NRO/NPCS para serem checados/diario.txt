@@ -1,0 +1,224 @@
+//Made by: Katazui
+//5/21/2011
+//Version 2.50
+prontera,136,171,4	script	Daily Quest	102,{
+	if (getgmlevel() >= 80) goto GM_Menu;
+	L_START:
+	if (getgmlevel() >= 80) next;
+	mes "[Daily  Quest]";
+	mes "Hello "+strcharinfo(0)+"!";
+	mes "Do you want to start today's Quest?";
+	mes " ";
+	mes "Total Daily Quests Finished: ^008800"+$DailyQuestTotal+"^000000.";
+	mes "Today Daily Quests Finished: ^0000FF"+$DailyQuestToday+"^000000.";
+	menu "Yes!",-,"Nahh",L_Close;
+	next;
+	mes "[Daily Quest]";
+	mes "You'll need these item for Today's Quest:";
+	mes "^FF0000"+getitemname($QuestItem1)+"^000000 x "+$QuestItem1HM+"";
+	mes "^FF0000"+getitemname($QuestItem2)+"^000000 x "+$QuestItem2HM+"";
+	mes "^FF0000"+getitemname($QuestItem3)+"^000000 x "+$QuestItem3HM+"";
+	mes "In exchange you will get ^0000FF"+getitemname($DailyQuestPrize)+"^000000 x "+$DailyQuestPrizeHM+"";
+	next;
+	mes "[Daily Quest]";
+	mes "Do you have the items?";
+	menu "Yes! I do.",-,"Gimme some time.",L_Close;
+	if(countitem($QuestItem1) >= $QuestItem1HM) && (countitem($QuestItem2) >= $QuestItem2HM) && (countitem($QuestItem3) >= $QuestItem3HM) goto FinishQuest;
+	next;
+	mes "[Daily Quest]";
+	mes "You only have "+countitem($QuestItem1HM)+" of ^FF0000"+getitemname($QuestItem1)+"^000000, "+countitem($QuestItem2HM)+" of ^FF0000"+getitemname($QuestItem2)+"^000000, "+countitem($QuestItem3HM)+" of ^FF0000"+getitemname($QuestItem3)+"^000000.";
+	mes "Come back when you have it! Better get the items quickly. It's gonna change in a Day!";
+	close;
+	end;
+
+	L_Close:
+	next;
+	mes "[Daily Quest]";
+	mes "Come back again! Get the Items!";
+	mes "Goodbye!";
+	close;
+	end;
+
+	GM_Menu:
+	mes "[Daily Quest]";
+	mes "Hello GM "+strcharinfo(0)+"!";
+	mes "What can I do for you today?";
+	menu "Player Menu",L_START,"Change Today's Quest/Prize",L_ChangeQuest,"Close",L_Close;
+	end;
+
+	L_ChangeQuest:
+	next;
+	mes "[Daily Quest]";
+	mes "What will you like to change?";
+	next;
+	menu "Go back.",GM_Menu,"Prize [^0000FF"+getitemname($DailyQuestPrize)+"^000000 x "+$DailyQuestPrizeHM+"]",L_ChangePrize,"Change Quest Randomly",L_ChangeQuestRandom,"Change Quest by Myself",L_ChangeQuestMyself;
+	end;
+
+	L_ChangeQuestMyself:
+	next;
+	mes "[Daily Quest]";
+	mes "Which item would you like to change first?";
+	menu "Go Back.",L_ChangeQuest,"Item 1 [^FF0000"+getitemname($QuestItem1)+"^000000 x "+$QuestItem1HM+"]",L_ChangeItem1,"Item 2 [^FF0000"+getitemname($QuestItem2)+"^000000 x "+$QuestItem2HM+"]",L_ChangeItem2,"Item 3 [^FF0000"+getitemname($QuestItem3)+"^000000 x "+$QuestItem3HM+"]",L_ChangeItem3;
+//
+	L_ChangeItem1:
+	next;
+	mes "[Daily Quest]";
+	mes "Alright. What will be the item?";
+	next;
+	input $QuestItem1;
+	next;
+	L_ChangeItem12:
+	mes "[Daily Quest]";
+	mes "How much of ^ff0000"+getitemname($QuestItem1)+"^000000 do you want?";
+	mes "It must be in the range of ^0088001 ~ 200^000000.";
+	next;
+	input $QuestItem1HM;
+	next;
+	if ($QuestItem1HM > 200) goto L_HMItem1Denied;
+	mes "[Daily Quest]";
+	mes "Item 1 Set.";
+	set $DailyQuestToday,0;
+	mes "^FF0000"+getitemname($QuestItem1)+"^000000 x "+$QuestItem1HM+".";
+	next;
+	goto L_ChangeQuest;
+	end;
+
+	L_HMItem1Denied:
+	mes "[Daily Quest]";
+	mes "This item (^ff0000"+getitemname($QuestItem1)+"^000000) must be in a range of ^0088001 ~ 200^000000.";
+	next;
+	goto L_ChangeItem12;
+	end;	
+//
+	L_ChangeItem2:
+	next;
+	mes "[Daily Quest]";
+	mes "Alright. What will be the item?";
+	next;
+	input $QuestItem2;
+	next;
+	L_ChangeItem22:
+	mes "[Daily Quest]";
+	mes "How much of ^ff0000"+getitemname($QuestItem2)+"^000000 do you want?";
+	mes "It must be in the range of ^0088001 ~ 150^000000.";
+	next;
+	input $QuestItem2HM;
+	next;
+	if ($QuestItem2HM > 150) goto L_HMItem2Denied;
+	mes "[Daily Quest]";
+	mes "Item 2 Set.";
+	set $DailyQuestToday,0;
+	mes "^FF0000"+getitemname($QuestItem2)+"^000000 x "+$QuestItem2HM+".";
+	next;
+	goto L_ChangeQuest;
+	end;
+
+	L_HMItem2Denied:
+	mes "[Daily Quest]";
+	mes "This item (^ff0000"+getitemname($QuestItem2)+"^000000) must be in a range of ^0088001 ~ 150^000000.";
+	next;
+	goto L_ChangeItem22;
+	end;
+//
+	L_ChangeItem3:
+	next;
+	mes "[Daily Quest]";
+	mes "Alright. What will be the item?";
+	next;
+	input $QuestItem3;
+	next;
+	L_ChangeItem32:
+	mes "[Daily Quest]";
+	mes "How much of ^ff0000"+getitemname($QuestItem3)+"^000000 do you want?";
+	mes "It must be in the range of ^0088001 ~ 50^000000.";
+	next;
+	input $QuestItem3HM;
+	next;
+	if ($QuestItem3HM > 50) goto L_HMItem3Denied;
+	mes "[Daily Quest]";
+	mes "Item 3 Set.";
+	set $DailyQuestToday,0;
+	mes "^FF0000"+getitemname($QuestItem3)+"^000000 x "+$QuestItem3HM+".";
+	next;
+	goto L_ChangeQuest;
+	end;
+
+	L_HMItem3Denied:
+	mes "[Daily Quest]";
+	mes "This item (^ff0000"+getitemname($QuestItem3)+"^000000) must be in a range of ^0088001 ~ 50^000000.";
+	next;
+	goto L_ChangeItem32;
+	end;
+//
+	L_ChangeQuestRandom:
+	set $QuestItem1, rand(701,1065);
+	set $QuestItem1HM, rand(1,200);
+	set $QuestItem2, rand(701,1065);
+	set $QuestItem2HM, rand(1,150);
+	set $QuestItem3, rand(701,1065);
+	set $QuestItem3HM, rand(1,50);
+	set $DailyQuestToday,0;
+	mes "[Daily Quest]";
+	mes "This is the Daily Quest:";
+	mes "^FF0000"+getitemname($QuestItem1)+"^000000 x "+$QuestItem1HM+"";
+	mes "^FF0000"+getitemname($QuestItem2)+"^000000 x "+$QuestItem2HM+"";
+	mes "^FF0000"+getitemname($QuestItem3)+"^000000 x "+$QuestItem3HM+"";
+	next;
+	goto GM_Menu;
+	end;
+
+	L_ChangePrize:
+	next;
+	mes "[Daily Quest]";
+	mes "Input the Prize";
+	next;
+	input $DailyQuestPrize;
+	next;
+	mes "[Daily Quest]";
+	mes "The Prize: "+getitemname($DailyQuestPrize)+" x How many?";
+	next;
+	input $DailyQuestPrizeHM;
+	next;
+	mes "[Daily Quest]";
+	mes "This is what you like?";
+	mes "^0000ff"+getitemname($DailyQuestPrize)+"^000000 x "+$DailyQuestPrizeHM+".";
+	menu "Yup, Thanks.",GM_Menu,"Noo! I made a mistake!",L_ChangePrize;
+	end;
+
+	FinishQuest:
+	next;
+	mes "[Daily Quest]";
+	mes "You got ^0000FF"+getitemname($DailyQuestPrize)+"^000000 x "+$DailyQuestPrizeHM+".";
+	delitem $QuestItem1,$QuestItem1HM;
+	delitem $QuestItem2,$QuestItem2HM;
+	delitem $QuestItem3,$QuestItem3HM;
+	getitem $DailyQuestPrize,$DailyQuestPrizeHM;
+	set $DailyQuestTotal,$DailyQuestTotal +1;
+	set $DailyQuestToday,$DailyQuestToday +1;
+	close;
+	end;
+	
+}
+
+-	script	DailyQuestItemChanger	-1,{
+	OnInit:
+	Start:
+	set $QuestItem1, rand(701,1065);
+	set $QuestItem1HM, rand(1,200);
+	set $QuestItem2, rand(701,1065);
+	set $QuestItem2HM, rand(1,150);
+	set $QuestItem3, rand(701,1065);
+	set $QuestItem3HM, rand(1,50);
+	set $DailyQuestToday,0;
+	OnHour24:
+	set $QuestItem1, rand(701,1065);
+	set $QuestItem1HM, rand(1,200);
+	set $QuestItem2, rand(701,1065);
+	set $QuestItem2HM, rand(1,150);
+	set $QuestItem3, rand(701,1065);
+	set $QuestItem3HM, rand(1,50);
+	set $DailyQuestToday,0;
+	goto Start;
+	end;
+
+}

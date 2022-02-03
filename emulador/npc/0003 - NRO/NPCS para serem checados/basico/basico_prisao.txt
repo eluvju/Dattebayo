@@ -1,0 +1,10 @@
+-	script	prisaonukenin	-1,{
+
+OnPCDieEvent:
+	if(nukenin == 1 || getcharid(2) == 0)
+	{
+		atcommand "@jailfor 5mn "+strcharinfo(0);
+		message strcharinfo(0), "Você foi capturado em uma vila e foi enviado para a prisão.";
+	}
+	end;
+}

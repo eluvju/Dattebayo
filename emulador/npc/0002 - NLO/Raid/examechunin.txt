@@ -1,0 +1,224 @@
+treinamento,73,163,5	script	Anko#1	4_f_sitdown,{
+
+	set .@instance$, "Exame Chunin";
+	mes "^ff0000[Anko]^000000";
+	mes "Olá, shinobi! Está pronto para começar sua aventura?";
+	menu "Iniciar Raid.",inicio,"Removedor de Raid.",removedor;
+	removedor:
+next;
+if(questmade11 == GetTime(8)) {
+mes "^ff0000[Anko]^000000";
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+
+if(vip_status(1)) {
+mes "^ff0000[Anko]^000000";
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid do Exame Chunin. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "^ff0000[Anko]^000000";
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7016,1;
+set questmade11, GetTime(8);
+close;
+	
+r2:
+next;
+mes "^ff0000[Anko]^000000";
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}
+
+inicio:
+if(questmade1 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:	
+mes "^ff0000[Anko]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7016) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Anko]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set questmade1, 0;
+delitem 7016,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Anko]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Fale comigo novamente!";
+close;
+}
+
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	if($@partymembercount > 5) {
+	mes "Você não pode iniciar a Raid com mais de 5 membros no grupo.";
+	close;
+	}
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos do ^FF0000Exame Chunin^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if(getpartyleader(getcharid(1),2) != getcharid(0)) goto naocria;
+
+		if (instance_create(.@instance$) < 0) {
+		mes "Você não atende aos requisitos do ^FF0000Exame Chunin^000000.";
+		close;
+
+		naocria:
+		mes "Você precisa ser o líder do grupo para criar a raid ^FF0000Exame Chunin^000000.";
+		close;
+		}
+
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		getpartymember getcharid(1),2;
+		for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		}
+		attachrid(getpartyleader(getcharid(1),1));
+		// Começo da Raid
+		hideonnpc ""+instance_npcname("Anko#2")+"";
+		hideonnpc ""+instance_npcname("Ninja Misterioso#3")+"";
+		instance_announce instance_id(),"Raid: Floresta da Morte.",0;
+		sleep2 5000;
+		instance_announce instance_id(),"Vamos ver se vocês são capazes de passar da 2° parte do Exame Chunin.",0;
+		sleep2 5000;
+		instance_announce instance_id(),"Regra N°1 - Seu grupo deve obter um Pergaminho do Céu e da Terra.",0;
+		sleep2 5000;
+		instance_announce instance_id(),"Regra N°2 - Nunca em hipótese alguma abra os pergaminhos.",0;
+		sleep2 5000;
+		instance_announce instance_id(),"E por último: tente sair VIVO!",0;
+		sleep2 5000;
+		instance_announce instance_id(),"Então vamos começar!",0;
+		areamonster ""+instance_mapname("1@exame",instance_id())+"",43,63,103,210,"Ninja da Grama",1228,50,"exameinstance::OnCapangaDie1";
+		end;
+	}
+}
+
+1@exame,0,0,0	script	exameinstance	-1,{
+	OnCapangaDie1:
+		if(!mobcount(""+instance_mapname("1@exame",instance_id())+"","exameinstance::OnCapangaDie1")) {
+			instance_announce instance_id(),"Líder do Grupo: Esses ninjas não tinham nenhum pergaminho, vamos procurar mais!",0;
+			sleep2 5000;
+			instance_announce instance_id(),"Líder do Grupo: São ninjas da Vila da Chuva. Fiquem atentos!",0;
+			areamonster ""+instance_mapname("1@exame",instance_id())+"",180,44,230,83,"Ninja da Chuva",1231,50,"exameinstance::OnCapangaDie2";
+			end;
+		}
+		else
+			instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("1@exame",instance_id())+"",
+			"exameinstance::OnCapangaDie1"))+" capangas mortos",0;
+		end;
+	OnCapangaDie2:
+		if(!mobcount(""+instance_mapname("1@exame",instance_id())+"","exameinstance::OnCapangaDie2")) {	
+			instance_announce instance_id(),"Um Ninja Misterioso acaba de aparecer no centro do mapa!",0;
+			hideoffnpc ""+instance_npcname("Ninja Misterioso#3")+"";
+			end;
+		}
+		else
+			instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("1@exame",instance_id())+"","exameinstance::OnCapangaDie2"))+" capangas mortos",0;
+		end;
+	OnKuchiCobraDie:
+		instance_announce instance_id(),"Ninja Misterioso: Agora é a minha vez!",0;
+		sleep2 5000;
+		monster ""+instance_mapname("1@exame",instance_id())+"",146,150,"Ninja Misterioso",1242,1,"exameinstance::OnNinjaMisDie";
+		end;
+	OnNinjaMisDie:
+		instance_announce instance_id(),"Líder do Grupo: Vamos entregar os nossos pergaminhos!",0;
+		sleep2 3000;
+		instance_announce instance_id(),"Anko: Atenção líder do grupo, aguarde os outros shinobis pegarem a premiação!",0;
+		sleep2 3000;
+		instance_announce instance_id(),"Anko: Vocês tem 45 segundos antes da raid ser destruída!",0;
+		hideoffnpc ""+instance_npcname("Anko#2")+"";
+		sleep2 35000;
+		instance_announce instance_id(),"Anko: Vocês tem 10 segundos antes da raid ser destruída!",0;
+		sleep2 10000;
+		instance_destroy;
+		end;	
+}
+1@exame,146,150,4	script	Ninja Misterioso#3	1002,{
+	if(getpartyleader(getcharid(1),2) != getcharid(0)) {
+		mes .@npc$;
+		mes "Só falo com o lider de seu grupo.";
+		close;
+	}
+	hideonnpc ""+instance_npcname("Ninja Misterioso#3")+"";
+	instance_announce instance_id(),"Ninja Misterioso: Então vocês querem meu pergaminho, certo?",0;
+	sleep2 5000;
+	instance_announce instance_id(),"Ninja Misterioso: Agora vamos começar a batalhar por nossos pergaminhos...",0;
+	sleep2 5000;
+	instance_announce instance_id(),"Ninja Misterioso: Com nossas vidas em jogo!",0;
+	sleep2 5000;
+	instance_announce instance_id(),"Ninja Misterioso: KUCHIYOSE NO JUTSU!",0;
+	areamonster ""+instance_mapname("1@exame",instance_id())+"",145,149,147,151,"Cobra Gigante",1235,1,"exameinstance::OnKuchiCobraDie";
+	end;
+}
+1@exame,222,184,4	script	Anko#2	4_f_sitdown,{	
+
+	if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "Parabéns por completar a missão, aqui está sua premiação!";
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 150 WHERE `char_id` = '"+getcharid(0)+"'");
+		dispbottom "Você ganhou 150 pontos de missão.";
+		next;
+		mes "Até a próxima aventura!";
+		getitem 734,1;
+		set questmade1, GetTime(8);
+		close2;
+		warp "SavePoint",0,0;
+	}
+
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 5) {
+			mes "Seu Grupo é muito grande. Reduza a quantidade de membros. Só é permitido 5 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+	mes "^ff0000[Anko]^000000";
+	mes "Atenção líder, você deve ser o último a confirmar a saída comigo! Aguarde os membros do seu grupo pegarem a premiação...";
+	instance_announce instance_id(),"Anko: Atenção shinobis, vocês devem pegar a premiação antes do líder!",0;
+	next;
+	mes "^ff0000[Anko]^000000";
+	mes "Verificou se todos pegaram a premiação, líder?";
+	menu "Não.",saida,"Sim.",sim;
+
+	sim:
+	close2;
+	query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 150 WHERE `char_id` = '"+getcharid(0)+"'");
+	dispbottom "Você ganhou 150 pontos de missão.";
+	getitem 734,1;
+	set questmade1, GetTime(8);	
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Raid Exame Chunin.",bc_all;	
+	instance_destroy;
+	end;
+
+	saida:
+	next;
+	mes "^ff0000[Anko]^000000";
+	mes "Aguarde todos jogadores pegarem o prêmio!";
+	close;
+}
+
+1@exame	mapflag	partylock
+1@exame	mapflag	nomemo
+1@exame	mapflag	nosave	SavePoint

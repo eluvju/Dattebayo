@@ -1,0 +1,1515 @@
+-	script	correcaoskillinicial	-1,{
+
+OnPCLoginEvent:	
+	if(getskilllv(4) < 1 && quest_basic_inicio > 1) {	
+		skill 4,1,3;	
+	}	
+	if(getskilllv(9) < 1 && quest_basic_inicio > 1) {	
+		skill 9,1,3;	
+	}	
+	if(getskilllv(523) < 1 && quest_basic_inicio > 1) {	
+		skill 523,1,3;	
+	}	
+	if(getskilllv(524) < 1 && quest_basic_inicio > 1) {	
+		skill 524,1,3;	
+	}	
+	if(getskilllv(3012) < 1 && quest_basic_inicio > 1) {	
+		skill 3012,1,3;	
+	}	
+	if(getskilllv(426) < 1 && quest_basic_inicio > 1) {	
+		skill 426,1,3;	
+	}	
+	if(getskilllv(278) < 1 && quest_basic_inicio > 1) {	
+		skill 278,1,3;	
+	}	
+	if(getskilllv(213) < 1 && quest_basic_inicio > 1) {	
+		skill 213,1,3;	
+	}	
+	if(getskilllv(117) < 1 && quest_basic_inicio > 1) {	
+		skill 117,1,3;	
+	}	
+	if(getskilllv(8) < 1 && quest_basic_inicio > 1) {	
+		skill 8,1,3;	
+	}	
+end;
+}
+-	script	correcaotrocadevila	-1,{
+
+OnPCLoginEvent:
+
+	if(Class == 0 || Class > 4 && Class < 7 || Class > 4001 && Class < 4008 || Class > 4011) { end; }
+	
+	if(#konoha == 1) { 
+		if(Class == 2 || Class == 3 || Class == 4
+		|| Class == 8 || Class == 9 || Class == 10
+		|| Class == 4009 || Class == 4010 || Class == 4011)
+		{
+		if(Class == 2 || Class == 3 || Class == 4) { atcommand "@job 1";} 
+		if(Class == 8 || Class == 9 || Class == 10) { atcommand "@job 7";} 
+		if(Class == 4009 || Class == 4010 || Class == 4011) { atcommand "@job 4008";}
+		savepoint "hospital",55,62;
+		goto trocando;
+		}
+		end;
+	}
+	
+	if(#suna == 1)   {
+		if(Class == 1 || Class == 3 || Class == 4
+		|| Class == 7 || Class == 9 || Class == 10
+		|| Class == 4008 || Class == 4010 || Class == 4011)
+		{
+		if(Class == 1 || Class == 3 || Class == 4) { atcommand "@job 2";} 
+		if(Class == 7 || Class == 9 || Class == 10) { atcommand "@job 8";} 
+		if(Class == 4008 || Class == 4010 || Class == 4011) { atcommand "@job 4009";}
+		savepoint "hospital2",55,62; 
+		goto trocando;
+		}
+		end;
+	}
+	
+	if(#nevoa == 1)  { 
+		if(Class == 1 || Class == 2 || Class == 4
+		|| Class == 7 || Class == 8 || Class == 10
+		|| Class == 4008 || Class == 4009 || Class == 4011)
+		{
+		if(Class == 1 || Class == 2 || Class == 4) { atcommand "@job 3";} 
+		if(Class == 7 || Class == 8 || Class == 10) { atcommand "@job 9";} 
+		if(Class == 4008 || Class == 4009 || Class == 4011) { atcommand "@job 4010";}
+		savepoint "hospital3",55,62; 
+		goto trocando;
+		}
+		end;
+	}
+	
+	if(#nuvem == 1)  { 
+		if(Class == 1 || Class == 2 || Class == 3
+		|| Class == 7 || Class == 8 || Class == 9
+		|| Class == 4008 || Class == 4009 || Class == 4010)
+		{
+		if(Class == 1 || Class == 2 || Class == 3) { atcommand "@job 4";} 
+		if(Class == 7 || Class == 8 || Class == 9) { atcommand "@job 10";} 
+		if(Class == 4008 || Class == 4009 || Class == 4010) { atcommand "@job 4011";}
+		savepoint "hospital4",55,62; 
+		goto trocando;
+		}
+		end;
+	}
+	end;
+	
+	trocando:
+	if(countitem(30000) == 1) {delitem 30000,1;}
+	if(countitem(30010) == 1) {delitem 30010,1;}
+	if(countitem(30030) == 1) {delitem 30030,1;}
+	if(countitem(30020) == 1) {delitem 30020,1;}
+	
+	if(countitem(30005) == 1) {delitem 30005,1;}
+	if(countitem(30015) == 1) {delitem 30015,1;}
+	if(countitem(30025) == 1) {delitem 30025,1;}
+	if(countitem(30035) == 1) {delitem 30035,1;}
+	
+	if(countitem(30001) == 1) {delitem 30001,1;}
+	if(countitem(30011) == 1) {delitem 30011,1;}
+	if(countitem(30021) == 1) {delitem 30021,1;}
+	if(countitem(30031) == 1) {delitem 30031,1;}
+	
+	if(countitem(30002) == 1) {delitem 30002,1;}
+	if(countitem(30012) == 1) {delitem 30012,1;}
+	if(countitem(30022) == 1) {delitem 30022,1;}
+	if(countitem(30032) == 1) {delitem 30032,1;}
+	
+	if(countitem(30003) == 1) {delitem 30003,1;}
+	if(countitem(30013) == 1) {delitem 30013,1;}
+	if(countitem(30023) == 1) {delitem 30023,1;}
+	if(countitem(30033) == 1) {delitem 30033,1;}
+	
+	if(countitem(30004) == 1) {delitem 30004,1;}
+	if(countitem(30014) == 1) {delitem 30014,1;}
+	if(countitem(30024) == 1) {delitem 30024,1;}
+	if(countitem(30034) == 1) {delitem 30034,1;}
+	
+	mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+	menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+	normal:
+		if(#konoha == 1) {getitem 30000,1;}
+		if(#suna == 1) {getitem 30010,1;}
+		if(#nevoa == 1) {getitem 30020,1;}
+		if(#nuvem == 1) {getitem 30030,1;}
+		end;
+
+	kakashi:
+		if(#konoha == 1) {getitem 30005,1;}
+		if(#suna == 1) {getitem 30015,1;}
+		if(#nevoa == 1) {getitem 30025,1;}
+		if(#nuvem == 1) {getitem 30035,1;}
+		end;
+
+	lado:
+		if(#konoha == 1) {getitem 30001,1;}
+		if(#suna == 1) {getitem 30011,1;}
+		if(#nevoa == 1) {getitem 30021,1;}
+		if(#nuvem == 1) {getitem 30031,1;}
+		end;
+
+	pescoco:
+		if(#konoha == 1) {getitem 30002,1;}
+		if(#suna == 1) {getitem 30012,1;}
+		if(#nevoa == 1) {getitem 30022,1;}
+		if(#nuvem == 1) {getitem 30032,1;}
+		end;
+
+	yamato:
+		if(#konoha == 1) {getitem 30003,1;}
+		if(#suna == 1) {getitem 30013,1;}
+		if(#nevoa == 1) {getitem 30023,1;}
+		if(#nuvem == 1) {getitem 30033,1;}
+		end;
+
+	kisame:
+		if(#konoha == 1) {getitem 30004,1;}
+		if(#suna == 1) {getitem 30014,1;}
+		if(#nevoa == 1) {getitem 30024,1;}
+		if(#nuvem == 1) {getitem 30034,1;}
+		end;
+
+}
+
+-	script	correcaocargos	-1,{
+
+OnPCLoginEvent:
+
+// -----------------------------------------------------------------------------------------------------------------
+// Kages
+// -----------------------------------------------------------------------------------------------------------------
+if($hokage$ == strcharinfo(0)   && countitem(30060) == 0) {getitem 30060,1;}
+if($kazekage$ == strcharinfo(0) && countitem(30061) == 0) {getitem 30061,1;}
+if($mizukage$ == strcharinfo(0) && countitem(30062) == 0) {getitem 30062,1;}
+if($raikage$ == strcharinfo(0)  && countitem(30063) == 0) {getitem 30063,1;}
+
+if($hokage$ != strcharinfo(0)   && countitem(30060) >= 1) {delitem 30060,1;}
+if($kazekage$ != strcharinfo(0) && countitem(30061) >= 1) {delitem 30061,1;}
+if($mizukage$ != strcharinfo(0) && countitem(30062) >= 1) {delitem 30062,1;}
+if($raikage$ != strcharinfo(0)  && countitem(30063) >= 1) {delitem 30063,1;}
+
+// -----------------------------------------------------------------------------------------------------------------
+// Jinchuuriki
+// -----------------------------------------------------------------------------------------------------------------
+if($jinkonoha$ == strcharinfo(0) && countitem(30086) == 0) { getitem 30086,1; }
+if($jinnevoa$ == strcharinfo(0)  && countitem(31056) == 0) { getitem 31056,1; }
+if($jinsuna$ == strcharinfo(0)   && countitem(30086) == 0) { getitem 30086,1; }
+if($jinnuvem$ == strcharinfo(0)  && countitem(30086) == 0) { getitem 30086,1; }
+
+if(#konoha){ if($jinkonoha$ != strcharinfo(0) && countitem(30086) >= 1) { delitem 30086,1; } }
+if(#suna)  { if($jinsuna$ != strcharinfo(0)   && countitem(30086) >= 1) { delitem 30086,1; } }
+if(#nevoa) { if($jinnevoa$ != strcharinfo(0)  && countitem(31056) >= 1) { delitem 31056,1; } }
+if(#nuvem) { if($jinnuvem$ != strcharinfo(0)  && countitem(30086) >= 1) { delitem 30086,1; } }
+
+// -----------------------------------------------------------------------------------------------------------------
+// Esquadrão ANBU
+// -----------------------------------------------------------------------------------------------------------------
+	
+	if($anbuko1$ == strcharinfo(0) || $anbuko2$ == strcharinfo(0) || $anbuko3$ == strcharinfo(0) || $anbuko4$ == strcharinfo(0) || $anbuko5$ == strcharinfo(0) || $anbukocap$ == strcharinfo(0) ||
+	   $anbune1$ == strcharinfo(0) || $anbune2$ == strcharinfo(0) || $anbune3$ == strcharinfo(0) || $anbune4$ == strcharinfo(0) || $anbune5$ == strcharinfo(0) || $anbusucap$ == strcharinfo(0) ||
+	   $anbusu1$ == strcharinfo(0) || $anbusu2$ == strcharinfo(0) || $anbusu3$ == strcharinfo(0) || $anbusu4$ == strcharinfo(0) || $anbusu5$ == strcharinfo(0) || $anbunecap$ == strcharinfo(0) ||
+	   $anbunu1$ == strcharinfo(0) || $anbunu2$ == strcharinfo(0) || $anbunu3$ == strcharinfo(0) || $anbunu4$ == strcharinfo(0) || $anbunu5$ == strcharinfo(0) || $anbunucap$ == strcharinfo(0)){ 
+	   
+		if(countitem(30066) == 0) && (countitem(30067) == 0) && (countitem(30068) == 0) && (countitem(30069) == 0) && (countitem(30070) == 0) && (countitem(30071) == 0) && (countitem(30072) == 0) {
+			mes "Eu sou o entregador de Máscaras ANBU";
+			mes "Qual Máscara você gostaria de ter?";
+			menu "Máscara 1",mascara1,"Máscara 2",mascara2,"Máscara 3",mascara3,"Máscara 4",mascara4,"Máscara 5",mascara5,"Máscara 6",mascara6,"Máscara 7",mascara7;
+		
+			mascara1:
+				close2;
+				getitem 30066,1;
+				if($anbukocap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbusucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunecap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				end;
+			
+			mascara2:
+				close2;
+				getitem 30067,1;
+				if($anbukocap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbusucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunecap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				end;
+			
+			mascara3:
+				close2;
+				getitem 30068,1;
+				if($anbukocap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbusucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunecap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				end;
+			
+			mascara4:
+				close2;
+				getitem 30069,1;
+				if($anbukocap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbusucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunecap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				end;
+			
+			mascara5:
+				close2;
+				getitem 30070,1;
+				if($anbukocap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbusucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunecap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				end;
+			
+			mascara6:
+				close2;
+				getitem 30071,1;
+				if($anbukocap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbusucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunecap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				end;
+			
+			mascara7:
+				close2;
+				getitem 30072,1;
+				if($anbukocap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbusucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunecap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				if($anbunucap$ == strcharinfo(0) && countitem(30065) == 0) { getitem 30065,1; }
+				end;
+	
+		}
+	}
+
+	if(#konoha){
+		if ($anbuko1$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {		
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbuko2$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {		
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30067) >= 1) {delitem 30067,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbuko3$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {		if (countitem(30066) >= 1) {delitem 30066,1;}
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbuko4$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {		if (countitem(30066) >= 1) {delitem 30066,1;}
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbuko5$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {		if (countitem(30066) >= 1) {delitem 30066,1;}
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if($anbukocap$ != strcharinfo(0) && countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1 || countitem(30065) >= 1) {
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			//
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if(countitem(30065) >= 1) { delitem 30065,1; }
+			if(countitem(30066) >= 1) { delitem 30066,1; }
+			if(countitem(30067) >= 1) { delitem 30067,1; }
+			if(countitem(30068) >= 1) { delitem 30068,1; }
+			if(countitem(30069) >= 1) { delitem 30069,1; }
+			if(countitem(30070) >= 1) { delitem 30070,1; }
+			if(countitem(30071) >= 1) { delitem 30071,1; }
+			if(countitem(30072) >= 1) { delitem 30072,1; }
+		}
+	}
+	
+	if(#suna){
+		if ($anbusu1$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbusu2$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }		
+			//
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbusu3$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbusu4$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbusu5$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusucap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if($anbusucap$ != strcharinfo(0) && countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1 || countitem(30065) >= 1) {
+			if($anbusu1$ == strcharinfo(0)) { end; }
+			if($anbusu2$ == strcharinfo(0)) { end; }
+			if($anbusu3$ == strcharinfo(0)) { end; }
+			if($anbusu4$ == strcharinfo(0)) { end; }
+			if($anbusu5$ == strcharinfo(0)) { end; }
+			//
+			if($anbuko1$ == strcharinfo(0)) { end; }
+			if($anbuko2$ == strcharinfo(0)) { end; }
+			if($anbuko3$ == strcharinfo(0)) { end; }
+			if($anbuko4$ == strcharinfo(0)) { end; }
+			if($anbuko5$ == strcharinfo(0)) { end; }
+			if($anbukocap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30065) >= 1) { delitem 30065,1; }
+			if(countitem(30066) >= 1) { delitem 30066,1; }
+			if(countitem(30067) >= 1) { delitem 30067,1; }
+			if(countitem(30068) >= 1) { delitem 30068,1; }
+			if(countitem(30069) >= 1) { delitem 30069,1; }
+			if(countitem(30070) >= 1) { delitem 30070,1; }
+			if(countitem(30071) >= 1) { delitem 30071,1; }
+			if(countitem(30072) >= 1) { delitem 30072,1; }
+		}
+
+	}
+	
+	if(#nevoa){
+		if ($anbune1$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbune2$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbune3$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }		
+			//
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbune4$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbune5$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30066) >= 1) {delitem 30066,1;}
+			if(countitem(30067) >= 1) {delitem 30067,1;}
+			if(countitem(30068) >= 1) {delitem 30068,1;}
+			if(countitem(30069) >= 1) {delitem 30069,1;}
+			if(countitem(30070) >= 1) {delitem 30070,1;}
+			if(countitem(30071) >= 1) {delitem 30071,1;}
+			if(countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if($anbunecap$ != strcharinfo(0) && countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1 || countitem(30065) >= 1) {
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			//
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }
+			//
+			if(countitem(30065) >= 1) { delitem 30065,1; }
+			if(countitem(30066) >= 1) { delitem 30066,1; }
+			if(countitem(30067) >= 1) { delitem 30067,1; }
+			if(countitem(30068) >= 1) { delitem 30068,1; }
+			if(countitem(30069) >= 1) { delitem 30069,1; }
+			if(countitem(30070) >= 1) { delitem 30070,1; }
+			if(countitem(30071) >= 1) { delitem 30071,1; }
+			if(countitem(30072) >= 1) { delitem 30072,1; }
+		}
+	}
+	if(#nuvem){
+		if ($anbunu1$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if (countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30067) >= 1) {delitem 30067,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbunu2$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//	
+			if (countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30067) >= 1) {delitem 30067,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbunu3$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if (countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30067) >= 1) {delitem 30067,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbunu4$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {	
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }	
+			//
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if (countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30067) >= 1) {delitem 30067,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if ($anbunu5$ != strcharinfo(0) && (countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1)) {
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunucap$ == strcharinfo(0)) { end; }
+			//
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if (countitem(30066) >= 1) {delitem 30066,1;}
+			if (countitem(30067) >= 1) {delitem 30067,1;}
+			if (countitem(30068) >= 1) {delitem 30068,1;}
+			if (countitem(30069) >= 1) {delitem 30069,1;}
+			if (countitem(30070) >= 1) {delitem 30070,1;}
+			if (countitem(30071) >= 1) {delitem 30071,1;}
+			if (countitem(30072) >= 1) {delitem 30072,1;}
+		}
+		if($anbunucap$ != strcharinfo(0) && countitem(30066) >= 1 || countitem(30067) >= 1 || countitem(30068) >= 1 || countitem(30069) >= 1 || countitem(30070) >= 1 || countitem(30071) >= 1 || countitem(30072) >= 1 || countitem(30065) >= 1) {
+			if($anbunu1$ == strcharinfo(0)) { end; }
+			if($anbunu2$ == strcharinfo(0)) { end; }
+			if($anbunu3$ == strcharinfo(0)) { end; }
+			if($anbunu4$ == strcharinfo(0)) { end; }
+			if($anbunu5$ == strcharinfo(0)) { end; }
+			//
+			if($anbune1$ == strcharinfo(0)) { end; }
+			if($anbune2$ == strcharinfo(0)) { end; }
+			if($anbune3$ == strcharinfo(0)) { end; }
+			if($anbune4$ == strcharinfo(0)) { end; }
+			if($anbune5$ == strcharinfo(0)) { end; }
+			if($anbunecap$ == strcharinfo(0)) { end; }	
+			//
+			if(countitem(30065) >= 1) { delitem 30065,1; }
+			if(countitem(30066) >= 1) { delitem 30066,1; }
+			if(countitem(30067) >= 1) { delitem 30067,1; }
+			if(countitem(30068) >= 1) { delitem 30068,1; }
+			if(countitem(30069) >= 1) { delitem 30069,1; }
+			if(countitem(30070) >= 1) { delitem 30070,1; }
+			if(countitem(30071) >= 1) { delitem 30071,1; }
+			if(countitem(30072) >= 1) { delitem 30072,1; }
+		}
+	}
+
+	
+
+
+// -----------------------------------------------------------------------------------------------------------------
+// Akatsuki
+// -----------------------------------------------------------------------------------------------------------------
+
+if($aka1$ == strcharinfo(0) || $aka2$ == strcharinfo(0) || $aka3$ == strcharinfo(0) || 
+   $aka4$ == strcharinfo(0) || $aka5$ == strcharinfo(0) || $aka6$ == strcharinfo(0) || 
+   $aka7$ == strcharinfo(0) || $aka8$ == strcharinfo(0) || $aka9$ == strcharinfo(0) || 
+   $aka10$ == strcharinfo(0)) { 
+		if (countitem(30082) == 0) && (countitem(30083) == 0) && (countitem(30084) == 0) && (countitem(30085) == 0) {
+			getitem 30082,1;
+		} 
+}
+
+	if($aka1$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka2$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka3$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka4$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka5$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka6$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka7$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka8$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka9$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka10$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	
+	if($aka10$ != strcharinfo(0) && countitem(30082) >= 1 || countitem(30083) >= 1 || countitem(30084) >= 1 || countitem(30085) >= 1) {
+			if($aka1$ == strcharinfo(0)) { end; }
+			if($aka2$ == strcharinfo(0)) { end; }
+			if($aka3$ == strcharinfo(0)) { end; }
+			if($aka4$ == strcharinfo(0)) { end; }
+			if($aka5$ == strcharinfo(0)) { end; }
+			if($aka6$ == strcharinfo(0)) { end; }
+			if($aka7$ == strcharinfo(0)) { end; }
+			if($aka8$ == strcharinfo(0)) { end; }
+			if($aka9$ == strcharinfo(0)) { end; }
+			if(countitem(30082) >= 1) { delitem 30082,1; }
+			if(countitem(30083) >= 1) { delitem 30083,1; }
+			if(countitem(30084) >= 1) { delitem 30084,1; }
+			if(countitem(30085) >= 1) { delitem 30085,1; }
+	}
+	end;
+}
+
+in_hunter,95,95,5	script	Registrar Cargos	100,{
+
+if(getgroupid() < 10) {mes "Apenas GMs podem usar este npc"; close;}
+
+mes "Digite o nome exatamente como ele é, caso tenha qualquer coisa diferente, o dono do cargo irá perder o item do cargo, para ter certeza assim que registrar ele, pede pra ele relogar, se não sumir, estará certo";
+menu "Registrar Hokage",hokage,"Registrar Mizukage",mizukage,"Registrar Kazekage",kazekage,"Registrar Raikage",raikage,"Registrar Akatsukis",akatsuki,"Registrar Anbu konoha",anbuko,"Registrar Anbu Névoa",anbune,"Registrar Anbu Nuvem",anbunu,"Registrar Anbu Suna",anbusu,"Jinchuuriki Konoha",jin1,"Jinchuuriki Kiri",jin2,"Jinchuuriki Suna",jin3,"Jinchuuriki Nuvem",jin4,"Close",fechar;
+
+
+hokage:
+next;
+mes "Atual Hokage registrado: "+$hokage$+"";
+mes "Deseja alterá-lo ?";
+if(select("- Sim:- Não") == 2) { close; }
+next;
+mes "Digite o nick exato do novo:";
+input @hokage$;
+set $hokage$, @hokage$;
+set $kage_konoha_dias, 0;
+set $kage_konoha_points, 0;
+next;
+mes "Novo hokage registrado: "+$hokage$+"";
+close;
+
+mizukage:
+next;
+mes "Atual mizukage registrado: "+$mizukage$+"";
+mes "Deseja alterá-lo ?";
+if(select("- Sim:- Não") == 2) { close; }
+next;
+mes "Digite o nick exato do novo:";
+input @mizukage$;
+set $mizukage$, @mizukage$;
+set $kage_nevoa_dias, 0;
+set $kage_nevoa_points, 0;
+next;
+mes "Novo mizukage registrado: "+$mizukage$+"";
+close;
+
+raikage:
+next;
+mes "Atual raikage registrado: "+$raikage$+"";
+mes "Deseja alterá-lo ?";
+if(select("- Sim:- Não") == 2) { close; }
+next;
+mes "Digite o nick exato do novo:";
+input @raikage$;
+set $raikage$, @raikage$;
+set $kage_nuvem_dias, 0;
+set $kage_nuvem_points, 0;
+next;
+mes "Novo raikage registrado: "+$raikage$+"";
+close;
+
+kazekage:
+next;
+mes "Atual kazekage registrado: "+$kazekage$+"";
+mes "Deseja alterá-lo ?";
+if(select("- Sim:- Não") == 2) { close; }
+next;
+mes "Digite o nick exato do novo:";
+input @kazekage$;
+set $kazekage$, @kazekage$;
+set $kage_areia_dias, 0;
+set $kage_suna_points, 0;
+next;
+mes "Novo kazekage registrado: "+$kazekage$+"";
+close;
+
+// -----------------------------------------------------------
+// Akatsuki
+// -----------------------------------------------------------
+akatsuki:
+next;
+mes "Atuais Akatsukis:";
+mes "Akatsuki 1: "+$aka1$+"";
+mes "Akatsuki 2: "+$aka2$+"";
+mes "Akatsuki 3: "+$aka3$+"";
+mes "Akatsuki 4: "+$aka4$+"";
+mes "Akatsuki 5: "+$aka5$+"";
+mes "Akatsuki 6: "+$aka6$+"";
+mes "Akatsuki 7: "+$aka7$+"";
+mes "Akatsuki 8: "+$aka8$+"";
+mes "Akatsuki 9: "+$aka9$+"";
+mes "Akatsuki 10: "+$aka10$+"";
+next;
+mes "Quer registrar qual akatsuki?";
+menu "Líder",aka1,"2",aka2,"3",aka3,"4",aka4,"5",aka5,"6",aka6,"7",aka7,"8",aka8,"9",aka9,"10",aka10,"Nenhum",fechar;
+
+aka1:
+next;
+mes "Digite o nome do novo Akatsuki 1";
+input @aka1$;
+set $aka1$, @aka1$;
+next;
+mes "Novo Akatsuki 1 registrado: "+$aka1$+"";
+close;
+
+aka2:
+next;
+mes "Digite o nome do novo Akatsuki 2";
+input @aka2$;
+set $aka2$, @aka2$;
+next;
+mes "Novo Akatsuki 2 registrado: "+$aka2$+"";
+close;
+
+aka3:
+next;
+mes "Digite o nome do novo Akatsuki 3";
+input @aka3$;
+set $aka3$, @aka3$;
+next;
+mes "Novo Akatsuki 3 registrado: "+$aka3$+"";
+close;
+
+aka4:
+next;
+mes "Digite o nome do novo Akatsuki 4";
+input @aka4$;
+set $aka4$, @aka4$;
+next;
+mes "Novo Akatsuki 4 registrado: "+$aka4$+"";
+close;
+
+aka5:
+next;
+mes "Digite o nome do novo Akatsuki 5";
+input @aka5$;
+set $aka5$, @aka5$;
+next;
+mes "Novo Akatsuki 5 registrado: "+$aka5$+"";
+close;
+
+aka6:
+next;
+mes "Digite o nome do novo Akatsuki 6";
+input @aka6$;
+set $aka6$, @aka6$;
+next;
+mes "Novo Akatsuki 6 registrado: "+$aka6$+"";
+close;
+
+aka7:
+next;
+mes "Digite o nome do novo Akatsuki 7";
+input @aka7$;
+set $aka7$, @aka7$;
+next;
+mes "Novo Akatsuki 7 registrado: "+$aka7$+"";
+close;
+
+aka8:
+next;
+mes "Digite o nome do novo Akatsuki 8";
+input @aka8$;
+set $aka8$, @aka8$;
+next;
+mes "Novo Akatsuki 8 registrado: "+$aka8$+"";
+close;
+
+aka9:
+next;
+mes "Digite o nome do novo Akatsuki 9";
+input @aka9$;
+set $aka9$, @aka9$;
+next;
+mes "Novo Akatsuki 9 registrado: "+$aka9$+"";
+close;
+
+aka10:
+next;
+mes "Digite o nome do novo Akatsuki 10";
+input @aka10$;
+set $aka10$, @aka10$;
+next;
+mes "Novo Akatsuki 10 registrado: "+$aka10$+"";
+close;
+
+// ----------------------------------------------------------------------------------
+// Esquadrão ANBU
+// ----------------------------------------------------------------------------------
+
+anbuko:
+next;
+mes "Atuais Anbus Konoha:";
+mes "Líder ANBU: "+$anbukocap$+"";
+mes "Anbu 1: "+$anbuko1$+"";
+mes "Anbu 2: "+$anbuko2$+"";
+mes "Anbu 3: "+$anbuko3$+"";
+mes "Anbu 4: "+$anbuko4$+"";
+mes "Anbu 5: "+$anbuko5$+"";
+next;
+mes "Qual ANBU quer registrar?";
+menu "Líder",liderko,"Anbu 1",ko1,"Anbu 2",ko2,"Anbu 3",ko3,"Anbu 4",ko4,"Anbu 5",ko5,"Nenhum",fechar;
+
+liderko:
+next;
+mes "Digite o nome do novo Líder ANBU";
+input @anbucap$;
+set $anbukocap$, @anbucap$;
+next;
+mes "Novo Líder registrado: "+$anbukocap$+"";
+close;
+
+ko1:
+next;
+mes "Digite o nome do novo ANBU 1";
+input @anbu1$;
+set $anbuko1$, @anbu1$;
+next;
+mes "Novo anbu 1 registrado: "+$anbuko1$+"";
+close;
+
+ko2:
+next;
+mes "Digite o nome do novo ANBU 2";
+input @anbu2$;
+set $anbuko2$, @anbu2$;
+next;
+mes "Novo anbu 2 registrado: "+$anbuko2$+"";
+close;
+
+ko3:
+next;
+mes "Digite o nome do novo ANBU 3";
+input @anbu3$;
+set $anbuko3$, @anbu3$;
+next;
+mes "Novo anbu 3 registrado: "+$anbuko3$+"";
+close;
+
+ko4:
+next;
+mes "Digite o nome do novo ANBU 4";
+input @anbu4$;
+set $anbuko4$, @anbu4$;
+next;
+mes "Novo anbu 4 registrado: "+$anbuko4$+"";
+close;
+
+ko5:
+next;
+mes "Digite o nome do novo ANBU 5";
+input @anbu5$;
+set $anbuko5$, @anbu5$;
+next;
+mes "Novo anbu 5 registrado: "+$anbuko5$+"";
+close;
+
+//-----------------------------------------------
+
+anbune:
+next;
+mes "Atuais Anbus Névoa:";
+mes "Líder ANBU: "+$anbunecap$+"";
+mes "Anbu 1: "+$anbune1$+"";
+mes "Anbu 2: "+$anbune2$+"";
+mes "Anbu 3: "+$anbune3$+"";
+mes "Anbu 4: "+$anbune4$+"";
+mes "Anbu 5: "+$anbune5$+"";
+next;
+mes "Qual ANBU quer registrar?";
+menu "Líder",liderne,"Anbu 1",ne1,"Anbu 2",ne2,"Anbu 3",ne3,"Anbu 4",ne4,"Anbu 5",ne5,"Nenhum",fechar;
+
+liderne:
+next;
+mes "Digite o nome do novo Líder ANBU";
+input @anbucap$;
+set $anbunecap$, @anbucap$;
+next;
+mes "Novo Líder registrado: "+$anbunecap$+"";
+close;
+
+ne1:
+next;
+mes "Digite o nome do novo ANBU 1";
+input @anbu1$;
+set $anbune1$, @anbu1$;
+next;
+mes "Novo anbu 1 registrado: "+$anbune1$+"";
+close;
+
+ne2:
+next;
+mes "Digite o nome do novo ANBU 2";
+input @anbu2$;
+set $anbune2$, @anbu2$;
+next;
+mes "Novo anbu 2 registrado: "+$anbune2$+"";
+close;
+
+ne3:
+next;
+mes "Digite o nome do novo ANBU 3";
+input @anbu3$;
+set $anbune3$, @anbu3$;
+next;
+mes "Novo anbu 3 registrado: "+$anbune3$+"";
+close;
+
+ne4:
+next;
+mes "Digite o nome do novo ANBU 4";
+input @anbu4$;
+set $anbune4$, @anbu4$;
+next;
+mes "Novo anbu 4 registrado: "+$anbune4$+"";
+close;
+
+ne5:
+next;
+mes "Digite o nome do novo ANBU 5";
+input @anbu5$;
+set $anbune5$, @anbu5$;
+next;
+mes "Novo anbu 5 registrado: "+$anbune5$+"";
+close;
+
+//-------------------------------
+
+anbunu:
+next;
+mes "Atuais Anbus Nuvem:";
+mes "Líder: "+$anbunucap$+"";
+mes "Anbu 1: "+$anbunu1$+"";
+mes "Anbu 2: "+$anbunu2$+"";
+mes "Anbu 3: "+$anbunu3$+"";
+mes "Anbu 4: "+$anbunu4$+"";
+mes "Anbu 5: "+$anbunu5$+"";
+next;
+mes "Qual ANBU quer registrar?";
+menu "Líder",lidernu,"Anbu 1",nu1,"Anbu 2",nu2,"Anbu 3",nu3,"Anbu 4",nu4,"Anbu 5",nu5,"Nenhum",fechar;
+
+lidernu:
+next;
+mes "Digite o nome do novo Líder ANBU";
+input @anbucap$;
+set $anbunucap$, @anbucap$;
+next;
+mes "Novo Líder registrado: "+$anbunucap$+"";
+close;
+
+nu1:
+next;
+mes "Digite o nome do novo ANBU 1";
+input @anbu1$;
+set $anbunu1$, @anbu1$;
+next;
+mes "Novo anbu 1 registrado: "+$anbunu1$+"";
+close;
+
+nu2:
+next;
+mes "Digite o nome do novo ANBU 2";
+input @anbu2$;
+set $anbunu2$, @anbu2$;
+next;
+mes "Novo anbu 2 registrado: "+$anbunu2$+"";
+close;
+
+nu3:
+next;
+mes "Digite o nome do novo ANBU 3";
+input @anbu3$;
+set $anbunu3$, @anbu3$;
+next;
+mes "Novo anbu 3 registrado: "+$anbunu3$+"";
+close;
+
+nu4:
+next;
+mes "Digite o nome do novo ANBU 4";
+input @anbu4$;
+set $anbunu4$, @anbu4$;
+next;
+mes "Novo anbu 4 registrado: "+$anbunu4$+"";
+close;
+
+nu5:
+next;
+mes "Digite o nome do novo ANBU 5";
+input @anbu5$;
+set $anbunu5$, @anbu5$;
+next;
+mes "Novo anbu 5 registrado: "+$anbunu5$+"";
+close;
+
+
+//-------------------------------
+
+anbusu:
+next;
+mes "Atuais Anbus Suna:";
+mes "Líder: "+$anbusucap$+"";
+mes "Anbu 1: "+$anbusu1$+"";
+mes "Anbu 2: "+$anbusu2$+"";
+mes "Anbu 3: "+$anbusu3$+"";
+mes "Anbu 4: "+$anbusu4$+"";
+mes "Anbu 5: "+$anbusu5$+"";
+next;
+mes "Qual ANBU quer registrar?";
+menu "Lider",lidersu,"Anbu 1",su1,"Anbu 2",su2,"Anbu 3",su3,"Anbu 4",su4,"Líder",su5,"Nenhum",fechar;
+
+lidersu:
+next;
+mes "Digite o nome do novo Líder ANBU";
+input @anbucap$;
+set $anbusucap$, @anbucap$;
+next;
+mes "Novo líder registrado: "+$anbusucap$+"";
+close;
+
+su1:
+next;
+mes "Digite o nome do novo ANBU 1";
+input @anbu1$;
+set $anbusu1$, @anbu1$;
+next;
+mes "Novo anbu 1 registrado: "+$anbusu1$+"";
+close;
+
+su2:
+next;
+mes "Digite o nome do novo ANBU 2";
+input @anbu2$;
+set $anbusu2$, @anbu2$;
+next;
+mes "Novo anbu 2 registrado: "+$anbusu2$+"";
+close;
+
+su3:
+next;
+mes "Digite o nome do novo ANBU 3";
+input @anbu3$;
+set $anbusu3$, @anbu3$;
+next;
+mes "Novo anbu 3 registrado: "+$anbusu3$+"";
+close;
+
+su4:
+next;
+mes "Digite o nome do novo ANBU 4";
+input @anbu4$;
+set $anbusu4$, @anbu4$;
+next;
+mes "Novo anbu 4 registrado: "+$anbusu4$+"";
+close;
+
+su5:
+next;
+mes "Digite o nome do novo ANBU 5";
+input @anbu5$;
+set $anbusu5$, @anbu5$;
+next;
+mes "Novo anbu 5 registrado: "+$anbusu5$+"";
+close;
+
+
+// -------------------------------------------------
+// Jinchuuriki
+// -------------------------------------------------
+
+jin1:
+next;
+mes "Atual Jinchuuriki Konoha: "+$jinkonoha$+"";
+mes "Deseja alterá-lo ?";
+if(select("- Sim:- Não") == 2) { close; }
+input @jin$;
+set $jinkonoha$, @jin$;
+next;
+mes "Novo Jinchuuriki registrado: "+$jinkonoha$+"";
+close;
+
+jin2:
+next;
+mes "Atual Jinchuuriki Névoa: "+$jinnevoa$+"";
+mes "Deseja alterá-lo ?";
+if(select("- Sim:- Não") == 2) { close; }
+input @jin$;
+set $jinnevoa$, @jin$;
+next;
+mes "Novo Jinchuuriki registrado: "+$jinnevoa$+"";
+close;
+
+jin3:
+next;
+mes "Atual Jinchuuriki Suna: "+$jinsuna$+"";
+mes "Deseja alterá-lo ?";
+if(select("- Sim:- Não") == 2) { close; }
+input @jin$;
+set $jinsuna$, @jin$;
+next;
+mes "Novo Jinchuuriki registrado: "+$jinsuna$+"";
+close;
+
+jin4:
+next;
+mes "Atual Jinchuuriki Nuvem: "+$jinnuvem$+"";
+mes "Deseja alterá-lo ?";
+if(select("- Sim:- Não") == 2) { close; }
+input @jin$;
+set $jinnuvem$, @jin$;
+next;
+mes "Novo Jinchuuriki registrado: "+$jinnuvem$+"";
+close;
+
+fechar:
+close;
+
+}

@@ -1,0 +1,137 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+prt_fild09,30,303,4	script	Raiton Avançado	453,{
+if(checkquest(30069) == 1) goto skillrai1;
+if(checkquest(30070) == 1) goto skillrai2;
+if(checkquest(30071) == 1) goto skillrai3;
+if(checkquest(30072) == 1) goto skillrai4;
+if(elementoraiton != 1) { mes "[Raiton Avançado]"; mes "Esse elemento não é de sua natureza"; close;}
+if(treino_nin_avan != 1) { mes "[Raiton Avançado]"; mes "Você precisa estudar Ninjutsu Avançado antes de aprender as skills"; close;}
+if(rai_skill_avan >= 2) { mes "[Raiton Avançado]"; mes "Você já aprendeu duas skill de Raiton Avançado, esse é o limite"; close; }
+	mes "[Raiton Avançado]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Raiton Avançado. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Raiton Avançado]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Raiton Avançado]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Raiton Avançado]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808ARaiton Chidori Nagashi^000000:^8A0808ARaiton Kirin^000000:^8A0808ARaiton Relampago Explosivo^000000"))
+	{
+	case 1:
+		if (r1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Raiton Chidori Nagashi";
+		next;
+		mes "[Raiton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Raiton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillrai1:
+		setquest 30069;
+		if(checkquest(30069,hunting) == 2 && countitem(32141) >= 1)
+		{
+			completequest 30069;
+			erasequest 30069;
+			delitem 32141,1;
+			set rai_skill_avan,rai_skill_avan +1;
+			skill 541,5,3;
+			set r1,1;
+			mes "[Raiton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (r2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Raiton Kirin";
+		next;
+		mes "[Raiton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Raiton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Raiton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillrai2:
+		setquest 30070;
+		if(checkquest(30070,hunting) == 2 && countitem(32141) >= 1)
+		{
+			completequest 30070;
+			erasequest 30070;
+			delitem 32141,1;
+			set rai_skill_avan,rai_skill_avan +1;
+			skill 85,10,3;
+			set r2,1;
+			mes "[Raiton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (r3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Raiton Relampago Explosivo";
+		next;
+		mes "[Raiton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Raiton Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Raiton Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillrai3:
+		setquest 30071;
+		if(checkquest(30071,hunting) == 2 && countitem(32141) >= 1)
+		{
+			completequest 30071;
+			erasequest 30071;
+			delitem 32141,1;
+			set rai_skill_avan,rai_skill_avan +1;
+			set r3,1;
+			skill 2202,5,3;
+			mes "[Raiton Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Raiton Avançado]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Raiton Avançado]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de raiton avançado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

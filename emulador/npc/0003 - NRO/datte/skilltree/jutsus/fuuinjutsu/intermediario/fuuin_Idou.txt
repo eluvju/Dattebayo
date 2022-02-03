@@ -1,0 +1,104 @@
+cmd_fild09,125,172,5	script	Idou no Kaibutsu::fuuininter6	831,{
+
+if (Idou == 1) goto L_delete;
+if(fuuin_intermediario != 1) {mes "Você precisa estudar fuuinjutsu intermediário antes de aprender esse fuuinjutsu"; close;}
+if (checkquest(2052) == 1) goto L_go;
+if(fuu_skill_int >= 3) {mes "Você já aprendeu três fuuinjutsus intermediários, esse é o limite"; close;}
+if(accept_fuu_int == 3) {mes "Você já aceitou três treinamentos pra realizar de fuuinjutsu"; close;}
+if (WeaponLvl5 < 40) {mes "Seu nível de fuuinjutsu está baixo demais, é preciso ter nível 40 pra aprender esse fuuinjutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de fuuinjutsu espalhados pelo mundo, eu posso lhe ensinar um fuuinjutsu intermediário";
+next;
+mes "O fuuinjutsu que eu ensino é o: Idou no Kaibutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Idou no Kaibutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(322) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(322) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 322,0,0;
+set Idou,0;
+erasequest 2052;
+if(accept_fuu_int > 0) {set accept_fuu_int,accept_fuu_int -1;}
+if(fuu_skill_int > 0) {set fuu_skill_int,fuu_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_fuu_int_seis,1;
+set accept_fuu_int,accept_fuu_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter fuuinjutsu intermediário level 40";
+mes "- Derrotar 35 Saru.";
+mes "- Obter 10 Bigode de Anão Ancião";
+mes "- Obter 50 Carvão";
+mes "- Obter 100 zargonio";
+mes "- Obter 20 Casco de Tartaruga";
+
+setquest 2052;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(fuu_skill_int >= 3) {mes "Você já aprendeu três fuuinjutsus intermediários, esse é o limite"; close;}
+if(fuu_int_mobs_seis < 35) {mes "Você ainda não completou seu treinamento"; next; mes "É preciso ter:"; mes "- Ter fuuinjutsu intermediário level 40"; mes "- Derrotar 35 Saru."; mes "- Obter 10 Bigode de Anão Ancião"; mes "- Obter 50 Carvão";  mes "- Obter 100 zargonio"; mes "- Obter 20 Casco de Tartaruga";close;}
+if (countitem(1040) <10) {mes "Você ainda não completou seu treinamento"; next; mes "É preciso ter:"; mes "- Ter fuuinjutsu intermediário level 40"; mes "- Derrotar 35 Saru."; mes "- Obter 10 Bigode de Anão Ancião"; mes "- Obter 50 Carvão";  mes "- Obter 100 zargonio"; mes "- Obter 20 Casco de Tartaruga";close;}
+if (countitem(1003) < 50) {mes "Você ainda não completou seu treinamento"; next; mes "É preciso ter:"; mes "- Ter fuuinjutsu intermediário level 40"; mes "- Derrotar 35 Saru."; mes "- Obter 10 Bigode de Anão Ancião"; mes "- Obter 50 Carvão";  mes "- Obter 100 zargonio"; mes "- Obter 20 Casco de Tartaruga";close;}
+if (countitem(912) < 100) {mes "Você ainda não completou seu treinamento"; next; mes "É preciso ter:"; mes "- Ter fuuinjutsu intermediário level 40"; mes "- Derrotar 35 Saru."; mes "- Obter 10 Bigode de Anão Ancião"; mes "- Obter 50 Carvão";  mes "- Obter 100 zargonio"; mes "- Obter 20 Casco de Tartaruga";close;}
+if (countitem(967) < 20) {mes "Você ainda não completou seu treinamento"; next; mes "É preciso ter:"; mes "- Ter fuuinjutsu intermediário level 40"; mes "- Derrotar 35 Saru."; mes "- Obter 10 Bigode de Anão Ancião"; mes "- Obter 50 Carvão";  mes "- Obter 100 zargonio"; mes "- Obter 20 Casco de Tartaruga";close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 1040,10;
+delitem 1003,50;
+delitem 912,100;
+delitem 967,20;
+skill 322,1,0;
+set Idou,1;
+set quest_fuu_int_seis,0;
+set fuu_int_mobs_seis, 0;
+completequest 2052;
+erasequest 2052;
+set fuu_skill_int,fuu_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuinjutsu Intermedíario]",0;
+}
+
+-	script	fuuint#6	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1628 && quest_fuu_int_seis == 1) {set fuu_int_mobs_seis,fuu_int_mobs_seis +1; announce "[Fuuinjutsu Quest] Você já derrotou "+fuu_int_mobs_seis+" / 35 Saru",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_01,297,111,5	duplicate(fuuininter6)	Idou no Kaibutsu#21	831,{
+prt_fild01,365,152,5	duplicate(fuuininter6)	Idou no Kaibutsu#22	831,{
+ein_fild08,256,82,5	duplicate(fuuininter6)	Idou no Kaibutsu#23	831,{

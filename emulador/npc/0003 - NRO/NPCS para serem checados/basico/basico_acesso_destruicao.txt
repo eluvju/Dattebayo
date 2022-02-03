@@ -1,0 +1,78 @@
+nevoa,236,268,4	script	Acesso ao prédio#1	45,1,1,{
+if(BaseLevel < 400) {mes "Você não é forte o bastante para entrar aqui"; close;}
+if(getequipid(EQI_HEAD_MID)==19012) {warp "job_wiz", 113,158; end;}
+if(getequipid(EQI_HEAD_MID)==19001) {warp "job_wiz", 113,158; end;}
+if (countitem(19171) < 1) goto SemItem;
+
+mes "A chave desaparece após ser usada!";
+next;
+delitem 19171,1;
+warp "job_wiz", 113,158;
+close;
+
+SemItem:
+mes "Você precisa de uma chave para entrar nesse mapa";
+close;
+
+
+}
+
+
+konoha,48,177,4	script	Acesso ao prédio#2	45,1,1,{
+if(BaseLevel < 400) {mes "Você não é forte o bastante para entrar aqui"; close;}
+if(getequipid(EQI_HEAD_MID)==19009) {warp "job_wiz", 115,86; end;}
+if(getequipid(EQI_HEAD_MID)==19008) {warp "job_wiz", 115,86; end;}
+if (countitem(19171) < 1) goto SemItem;
+
+mes "A chave desaparece após ser usada!";
+next;
+delitem 19171,1;
+warp "job_wiz", 115,86;
+close;
+
+SemItem:
+mes "Você precisa de uma chave para entrar nesse mapa";
+close;
+
+
+}
+
+areia,97,234,4	script	Acesso ao prédio#3	45,1,1,{
+if(BaseLevel < 400) {mes "Você não é forte o bastante para entrar aqui"; close;}
+if(getequipid(EQI_HEAD_MID)==19148) {warp "job_wiz", 45,86; end;}
+if(getequipid(EQI_HEAD_MID)==19006) {warp "job_wiz", 45,86; end;}
+if (countitem(19171) < 1) goto SemItem;
+
+mes "A chave desaparece após ser usada!";
+next;
+delitem 19171,1;
+warp "job_wiz", 45,86;
+close;
+
+SemItem:
+mes "Você precisa de uma chave para entrar nesse mapa";
+close;
+
+
+}
+
+
+prt_monk,256,257,4	script	Acesso ao prédio#4	45,1,1,{
+if(BaseLevel < 400) {mes "Você não é forte o bastante para entrar aqui"; close;}
+if(getequipid(EQI_HEAD_MID)==19079) {warp "monk_test", 329,51; end;}
+if(getequipid(EQI_HEAD_MID)==19078) {warp "monk_test", 329,51; end;}
+if(getequipid(EQI_HEAD_MID)==19081) {warp "monk_test", 329,51; end;}
+if (countitem(19172) < 1) goto SemItem;
+
+mes "A chave desaparece após ser usada!";
+next;
+delitem 19172,1;
+warp "monk_test", 329,51;
+close;
+
+SemItem:
+mes "Você precisa de uma chave para entrar nesse mapa";
+close;
+
+
+}

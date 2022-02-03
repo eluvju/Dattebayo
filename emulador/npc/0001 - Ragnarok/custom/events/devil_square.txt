@@ -1,0 +1,226 @@
+//===== rAthena Script =======================================
+//= Devil Square
+//===== By: ==================================================
+//= Kirlein, Stillhard (translation), AnnieRuru (rewrite)
+//===== Current Version: =====================================
+//= 1.0
+//===== Compatible With: =====================================
+//= rAthena Project
+//===== Description: =========================================
+//= Devil Square, based on the event in MU Online.
+//= Defeat three waves of monsters for treasure.
+//===== Additional Comments: =================================
+//= 1.0 First version, edited. [Euphy]
+//============================================================
+
+job_monk,252,116,5	script	Covil do Orochimaru	70,{
+	set .@gm_level, 99; // GM level required to start/stop the event
+
+	mes "[Covil do Orochimaru]";
+	mes "Ola esta e a instancia ^FF0000Covil do Orochimaru^000000.";
+	mes "Aqui voce descobrira o quao perverso pode ser um shinobi renegado, o que voce deseja?.";
+	next;
+	switch(select("Enter.:Information.:" + ((getgmlevel() >= .@gm_level) ? "GM Menu." : "") + ":Cancel.")) {
+	case 1:
+		if (.start != 1) { // registration period
+			mes "[Covil do Orochimaru]";
+			mes "Covil do Orochimaru esta fechado.";
+			mes "ele estara aberto as:";
+			mes "00:00 , 02:00 , 04:00 , 06:00"; // display your times here
+			mes "08:00 , 10:00 , 12:00 , 14:00";
+			mes "16:00 , 18:00 , 20:00 , 22:00";
+			close;
+		}
+		if (BaseLevel < 200 || Zeny < 20000) { // requirements
+			mes "[Covil do Orochimaru]";
+			mes "Voce não atende aos requisitos para entrar no Covil do Orochimaru.";
+			mes " ";
+			mes "Requerimentos:";
+			mes " - Base Level 200";
+			mes " - Registration fee 20,000z";
+			close;
+		}
+		Zeny -= 20000;
+		announce strcharinfo(0)+" ingressou no Covil do Orochimaru.", bc_npc;
+		percentheal 100,100;
+		warp "ordeal_1-1",183,182;
+		close;
+	case 2:
+		mes "[Covil do Orochimaru]";
+		mes "La dentro, voce encontrara 3 ondas de Renegados. Os Renegados ficarao mais fortes a cada onda.";
+		next;
+		mes "[Covil do Orochimaru]";
+		mes "Se você derrotar todos os Renegados, você tera a oportunidade de abrir 10 espolios de Tesouro com itens, equipamentos e cartoes raros dentro!";
+		close;
+	case 3:
+		mes "[Covil do Orochimaru]";
+		switch (.start) { // event states
+			case 0: mes "Covil do Orochimaru ainda nao foi iniciado."; break;
+			case 1: mes "Covil do Orochimaru esta atualmente aceitando participantes."; break;
+			case 2: mes "Covil do Orochimaru O evento esta sendo executado na Rodada "+ .round +" with "+ .mob +" monsters remaining."; break;
+		}
+		next;
+		switch(select("Start event.:Stop event.:Cancel.")) {
+		case 1:
+			mes "[Covil do Orochimaru]";
+			if (.start)
+				mes "Covil do Orochimaru ja começou.";
+			else {
+				mes "Starting Devil Square...";
+				donpcevent strnpcinfo(0)+"::OnStartEvent";
+			}
+			close;
+		case 2:
+			mes "[Covil do Orochimaru]";
+			if (!.start)
+				mes "Covil do Orochimaru ainda nao começou.";
+			else {
+				mes "Stopping Devil Square...";
+				donpcevent strnpcinfo(0)+"::OnStopEvent";
+			}
+			close;
+		case 3:
+			break;
+		}
+		break;
+	case 4:
+		break;
+	}
+	mes "[Covil do Orochimaru]";
+	mes "Farewell.";
+	close;
+
+OnStartEvent:
+OnClock0000:
+OnClock0200:
+OnClock0400:
+OnClock0600:
+OnClock0800:
+OnClock1000:
+OnClock1200:
+OnClock1400:
+OnClock1600:
+OnClock1800:
+OnClock2000:
+OnClock2200:
+	.start = 1;
+	disablenpc "ord11-12"; //from npc/warps/pvp.txt
+	disablenpc "Covil do Orochimaru#2";
+	mapannounce "ordeal_1-1","Covil do Orochimaru agora esta fechado.", bc_map;
+	getmapxy .@map$, .@x, .@y, BL_NPC;
+	mapwarp "ordeal_1-1", .@map$, .@x, .@y;
+	killmonsterall "ordeal_1-1";
+	announce "Covil do Orochimaru esta aberto. O evento comecara em 5 minutos.", bc_all;
+	sleep 60000;
+	announce "Covil do Orochimaru esta aberto. O evento comecara em 4 minutos.", bc_all;
+	sleep 60000;
+	announce "Covil do Orochimaru esta aberto. O evento comecara em 3 minutos.", bc_all;
+	sleep 60000;
+	announce "Covil do Orochimaru esta aberto. O evento comecara em 2 minutos.", bc_all;
+	sleep 60000;
+	announce "Covil do Orochimaru esta aberto. O evento comecara em 1 minutos.", bc_all;
+	sleep 60000;
+	announce "Covil do Orochimaru comecou!", bc_all;
+	if ( !getmapusers("ordeal_1-1") )
+		goto OnStopEvent;
+	.start = 2;
+	.round = 1;
+	.mob = 75;
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Bandido do Som",1372,35,strnpcinfo(0)+"::OnDevilDead";
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Shinobi do Som",1656,30,strnpcinfo(0)+"::OnDevilDead";
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Ninja Oculto",1201,10,strnpcinfo(0)+"::OnDevilDead";
+	end;
+
+OnDevilDead:
+	.mob--;
+	if ( .mob == 25 || .mob == 5 )
+		announce "Covil do Orochimaru : "+ .mob +" monsters remaining in round 1.", bc_map;
+	else if ( .mob <= 0 ) {
+		announce "Covil do Orochimaru is entering round 2...", bc_map;
+		goto OnDevil2;
+	}
+	end;
+
+OnDevil2:
+	.round = 2;
+	.mob = 70;
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Experiencia",1257,35,strnpcinfo(0)+"::OnDevilDead2";
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Genma Pupilo",2031,20,strnpcinfo(0)+"::OnDevilDead2";
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Aranha Kidoumaru",1250,15,strnpcinfo(0)+"::OnDevilDead2";
+	end;
+
+OnDevilDead2:
+	.mob--;
+	if ( .mob == 25 || .mob == 5 )
+		announce "Covil do Orochimaru : "+ .mob +" monsters remaining in round 2.", bc_map;
+	else if ( .mob <= 0 ) {
+		announce "Covil do Orochimaru is entering round 3...", bc_map;
+		goto OnDevil3;
+	}
+	end;
+
+OnDevil3:
+	.round = 3;
+	.mob = 76;
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Akatsuki Bushin",1088,40,strnpcinfo(0)+"::OnDevilDead3";
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Manda",1418,35,strnpcinfo(0)+"::OnDevilDead3";
+	areamonster "ordeal_1-1",183,182,246,244,"[CO] Orochimaru",1398,1,strnpcinfo(0)+"::OnDevilDead3";
+	end;
+
+OnDevilDead3:
+	.mob--;
+	if ( .mob == 25 || .mob == 5 )
+		announce "Covil do Orochimaru : "+ .mob +" monsters remaining in the final round.", bc_map;
+	else if ( .mob <= 0 ) {
+		announce "Covil do Orochimaru : CONGRATULATIONS. These 10 Treasure Chests are yours.", bc_map;
+		goto OnDevil4;
+	}
+	end;
+
+OnDevil4:
+	.round = 4;
+	.mob = 10;
+	monster "ordeal_1-1",231,250,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",234,247,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",237,244,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",240,241,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",243,238,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",246,235,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",249,232,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",252,229,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",249,241,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	monster "ordeal_1-1",240,249,"Treasure Chest",1324,1,strnpcinfo(0)+"::OnTreasureDead";
+	end;
+
+OnTreasureDead:
+	.mob--;
+	announce "Covil do Orochimaru : "+ strcharinfo(0) +" has opened the Treasure Chest at Devil Square.", bc_all;
+	if ( .mob <= 0 )
+		goto OnStopEvent;
+	end;
+
+OnStopEvent:
+	killmonsterall "ordeal_1-1";
+	enablenpc "ord11-12"; //from npc/warps/pvp.txt
+	enablenpc "Covil do Orochimaru#2";
+	.start = .round = .mob = 0;
+	end;
+}
+
+ordeal_1-1,246,245,7	script	Covil do Orochimaru#2	406,{
+	mes "[Exit]";
+	mes "Farewell.";
+	close2;
+	warp "SavePoint",0,0;
+	end;
+}
+
+ordeal_1-1	mapflag	nowarp
+ordeal_1-1	mapflag	nowarpto
+ordeal_1-1	mapflag	noteleport
+ordeal_1-1	mapflag	monster_noteleport
+ordeal_1-1	mapflag	nosave	SavePoint
+ordeal_1-1	mapflag	nomemo
+ordeal_1-1	mapflag	nobranch
+ordeal_1-1	mapflag	nopenalty
+ordeal_1-1	mapflag	noicewall

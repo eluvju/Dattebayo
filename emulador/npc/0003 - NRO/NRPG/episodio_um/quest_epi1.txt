@@ -1,0 +1,240 @@
+alberta_in.gat,126,98,5	script	Beth	90,{
+
+if(q_epi1 > 2) goto C;
+if(q_epi1 == 1) goto A;
+if(q_epi1 == 2) goto B;
+
+mes "Você é um shinobi?!";
+mes "Ah que bom!, preciso de sua ajuda!";
+mes "Estamos tendo problemas com piratas no porto daqui";
+mes "Já estamos desesperados, pode nos ajudar?!";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+next;
+mes "Ok!, procure e fale com o Guarda Thomas, ele irá te registrar para nos ajudar";
+set q_epi1,1;
+close;
+
+L_nao:
+mes "Tudo bem então, volte quando estiver pronto";
+close;
+
+A:
+mes "Vá falar com o Guarda Thomas!";
+close;
+
+B:
+mes "Vejo que já se alistou, ótimo!";
+mes "Você agora ganhou acesso aos npc's da cidade!";
+mes "Agora é hora de você nos ajuda, fale com o Capitão Oliver, vá e vença!";
+close;
+
+C:
+mes "Me desculpe, estou ocupada agora.";
+close;
+
+}
+
+ondular.gat,61,113,5	script	Guarda Thomas	65,{
+
+if(q_epi1 == 1) goto B;
+if(q_epi1 != 1) goto A;
+
+B:
+mes "Hmm, então você quer se alistar para nos ajudar?";
+menu "Sim, eu quero",alistar,"Não, ainda não",fail;
+
+alistar:
+next;
+set q_epi1,2;
+mes "Pronto, você está alistado, agora procure a Beth, ela irá te dar suas novas instruções";
+close;
+
+fail:
+close;
+
+A:
+mes "Ou você ainda não falou com a Beth, ou já falou comigo";
+close;
+
+}
+
+ondular.gat,225,217,5	script	Capitão Oliver	709,{
+
+if(q_epi1 == 7) goto G;
+if(q_epi1 == 6) goto F;
+if(q_epi1 == 4) goto E;
+if(q_epi1 == 2) goto A;
+if(q_epi1 != 2) goto B;
+
+A:
+mes "Olá Shinobi, que bom que decidiu nos ajudar";
+mes "Vou agora explicar a situação em que nos encontramos";
+mes "Estamos sendo constantemente sendo atacados por piratas, e eles roubam nossas mercadorias";
+mes "suspeito que o Gatou esteja por trás disso...";
+next;
+mes "Enfim, Poderia por favor derrotar O sub-líder deles? O nome dele é Shin... E é bastante complicado de matar, eu mesmo não dou conta";
+mes "O paradeiro dele eu não sei... mas sei que eles guardam as mercadorias em um local fechado... Por favor... ajude-nos!";
+menu "Ajudar o Capitão",C,"Não ajudar",D;
+
+B:
+mes "Bem-vindo ao País das ondas!";
+mes "Queria poder conversar mais, mas estamos com bastantes problemas...";
+close;
+
+C:
+next;
+mes "Graças a Deus!";
+set q_epi1,3;
+mes "Vá e salve nos desses piratas!";
+close;
+
+D:
+close;
+
+E:
+mes "Muito obrigado pela sua ajuda!";
+mes "Agora que derrotou o sub-líder as coisas vão melhorar para nós";
+mes "Mas ainda tem o problema do líder dos piratas, o Akio...";
+next;
+mes "Com ele ainda vivo teremos problemas cedo ou tarde, por favor derrote o Akio!";
+mes "Fiquei sabendo que ele irá visitar o esconderijo dos piratas em breve, espere por ele!";
+set q_epi1,5;
+close;
+
+F:
+set q_epi1,7;
+mes "Yataaa! Você é demais, agora podemos melhorar um pouco nossa economia!";
+mes "Muito obrigado mesmo!, é claro que você vai receber um prêmio pelo seu esforço";
+mes "Aqui estão algumas coisas como um agradecimento nosso";
+getitem 12958,5;
+getitem 12208,1;
+getitem 12210,1;
+close;
+
+G:
+mes "Obrigado denovo por nos ajudar!";
+close;
+
+}
+
+mjo_dun02.gat,289,323,5	script	Pedra	844,{
+
+if(q_epi1 == 7) goto G;
+
+mes "Você vê uma pedra, deseja tentar empurrar?";
+menu "Sim",A,"Não",B;
+
+A:
+if (forca < 100) goto fraco;
+mes "Grrrrr... AAAAAAAAA";
+mes "* A pedra está se mexendo *";
+next;
+mes "Você empurrou a pedra e tem uma pequena entrada";
+mes "Deseja entrar?";
+menu "Claro",C,"Não...",D;
+
+B:
+close;
+
+C:
+warp "iz_dun00",168,166;
+end;
+
+D:
+close;
+
+fraco:
+mes "você não está forte o bastante pra empurrar esta pedra";
+close;
+
+G:
+mes "Você já fez essa quest";
+close;
+
+}
+
+iz_dun00.gat,191,203,5	script	Guarda adormecido	457,{
+
+if(q_epi1 != 3) goto D;
+if(q_epi1 == 7) goto G;
+
+mes "O guarda está dormindo";
+mes "Deseja tentar passar por ele correndo ou devagar?";
+menu "Correndo!",correndo,"Devagar",B;
+
+correndo:
+if(speed < 10) goto C;
+next;
+mes "Você passou pelo guarda!";
+mes "Olha, ali está o Shin!";
+monster     "iz_dun00",191,203,"Shin",1371,1,"Guarda adormecido::OnMyMobDeads1";
+close;
+end;
+
+B:
+dispbottom "Você tenta passar pelo guarda devagar...";
+dispbottom "Ó não, ele acordou!";
+dispbottom "Você foi capturado pelos piratas";
+AtCommand "@die";
+end;
+
+C:
+dispbottom "Você tentou correr pelo guarda mas foi muito devagar...";
+dispbottom "Ele acabou acordando e alertando todos os piratas!";
+dispbottom "Você foi capturado pelos piratas";
+AtCommand "@die";
+end;
+
+OnMyMobDeads1:
+if(q_epi1 != 3) end;
+dispbottom "Você derrotou o Shin, volte e fale com o Capitão";
+set q_epi1,4;
+end;
+
+G:
+mes "Você já fez essa quest";
+close;
+
+D:
+mes "Você vê um guarda adormecido, melhor evitar-lo.";
+close;
+
+}
+
+iz_dun00.gat,356,170,5	script	Pirata	456,{
+
+if(q_epi1 != 5) goto A;
+if(q_epi1 == 7) goto G;
+
+mes "Mas o que é isso?";
+mes "O Shin foi derrotado... não acredito!";
+mes "Akio-Sama, estamos com problemas!";
+next;
+mes "[Akio]";
+mes "Hmm... que problemático, olha, parece que temos compania";
+next;
+mes "[Akio]";
+mes "Ei você aí, foi você que fez isso?";
+mes "Bom, não importa, vou te esmagar!!";
+monster     "iz_dun00",356,170,"Akio",1372,1,"Pirata::OnMyMobDeads2";
+close;
+end;
+
+OnMyMobDeads2:
+if(q_epi1 != 5) end;
+dispbottom "Você derrotou o Akio, volte e fale com o Capitão";
+set q_epi1,6;
+close;
+end;
+
+A:
+mes "Você vê um guarda... melhor evitar-lo";
+close;
+
+G:
+mes "Você já fez essa quest";
+close;
+
+}

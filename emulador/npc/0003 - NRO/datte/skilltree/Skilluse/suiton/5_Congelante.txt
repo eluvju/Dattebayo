@@ -1,0 +1,34 @@
+-	script	on_PC_UseSkills05	-1,{
+    end;
+//When a Character uses a skill
+
+//congelante
+
+onPcUseSkillEvent:
+
+           if(lskillid == 121) {
+
+
+if (getskilllv(121) == 1) {
+
+if (P_Congelante != 1) {end;}
+if (skill121 >= 100) {skill 121,2,0; set skill121,0; dispbottom "[Sys] Level up"; end; }
+set skill121,skill121 +1;
+dispbottom "[Jutsu level] Pergaminho congelante level 1: "+skill121+" de 100";
+
+end;
+
+}
+
+if (getskilllv(121) == 2) {
+if (P_Congelante != 1) {end;}
+if (skill121 >= 250) {skill 121,3,0; set skill121,0; dispbottom "[Sys] Level up"; end;}
+set skill121,skill121 +1;
+dispbottom "[Jutsu level] Pergaminho congelante level 2: "+skill121+" de 250";
+
+end;
+
+}
+                end;
+            }    
+}

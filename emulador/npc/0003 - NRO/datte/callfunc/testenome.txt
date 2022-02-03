@@ -1,0 +1,6 @@
+prontera,156,179,5	script	kdjsfkdfj	100,{
+    set .@s, select("Ice:Earth:Fire:Wind");
+    getitem2 1201, 1,1,0,0, 255, .@s, getcharid(0) % pow(2,16), getcharid(0) / pow(2,16);
+	rentitem 1201,60;
+    close;
+}

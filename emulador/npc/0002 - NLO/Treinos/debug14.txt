@@ -1,0 +1,8 @@
+sec_in02,145,176,5	script	DebugSkill#9	99,{
+if(debugnazuki == 1 ) { close;}
+mes "Debug.";
+skill 2211,0,3;
+skill 469,1,3;
+set debugnazuki,1;
+close;
+}

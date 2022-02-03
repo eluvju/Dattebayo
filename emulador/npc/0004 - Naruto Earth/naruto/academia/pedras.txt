@@ -1,0 +1,259 @@
+//sec_in01,141,111,4	script	Kakashi Hatake	4_m_thaiongbak,{
+if(elemento1 != 1) {mes "Você primeiro precisa escolher seu elemento., "+strcharinfo(0)+"-san!"; end;}
+if (treinos_escolha < 3) && (academia_treinos != 1) {
+set treinonin,0;
+set treinotai,0;
+set treinogen,0;
+set treinomed,0;
+set treinovelo,0;
+set treinos_escolha,0;
+}
+mes "Olá, jovem ninja! Desculpe o atraso! Eu sou o Kakashi Sensei e você está na sala de treinamentos do NERPG! Aqui vou te ensinar tudo o que precisa saber sobre treinamentos!";
+next;
+mes "Treinamentos são os estilos de batalha que você poderá ter. Existem 4 treinamentos: Ninjutsu, Taijutsu, Velocidade, Genjutsu e Medicina e você deverá escolher quais você irá evoluir! Ao todo, você definirá um treinamento para ficar no nível básico e um segundo para evoluir para o nível intermediário e avançado.";
+next;
+mes "Os detalhes e características de cada treinamento você pode conferir abaixo:";
+menu "- Ninjutsu",ninjutsu,"- Taijutsu",taijutsu,"- Genjutsu",genjutsu,"- Medicina",medicina,"- Velocidade",velocidade,"- Ok, já entendi!",entendi;
+
+ninjutsu:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal são ataques mágicos e o atributo inteligência (int), possui habilidades focadas em ataques de médio e longo alcance.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seus ataques são de acordo com o elemento que pertence a você (para saber mais sobre elemento, vá para a sala de elementos), e é um treino totalmente ofensivo.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores que gostam de jogar mais recuados, e que gostem de causar danos massivos";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Não é aconselhado que este treinamento seja escolhido juntamente de Taijutsu";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+taijutsu:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal são ataque físicos e o atributo força (str), possui habilidades focadas em ataques de curto e médio alcance";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Alguns deles também ignoram esquivas, é um treino totalmente ofensivo";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores mais agressivos e que seja aliado a um personagem que aguente segurar muito dano, pois sempre estará a frente nas batalhas.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Não é aconselhado que este treinamento seja escolhido juntamente de Ninjutsu";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+genjutsu:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal é debuffs e o atributo Sorte (luk), possui habilidades que causam anormalidades nos inimigos como: cegueira, slow (lerdeza),atordoamento, sangramento, silêncio, maldição, sono, etc...";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Serve tanto para suporte como para jogadores mais ofensivos e é uma ótima maneira para impedir que seus inimigos possam se mover ou atacar";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado tanto para jogadores que gostam de dar suporte aos aliados, pois podem impedir os inimigos de atacarem e de se moverem, quanto para jogadores mais ofensivos, pois um genjutsu bem aplicado pode ser o diferencial na luta contra um inimigo poderoso";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+medicina:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal é suporte e o atributo vitalidade (vit)";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Auxilia você e seus aliados utilizando curas, remoções de armadilhas e habilidades que removem anormalidades como: congelamento, petrificação, atordoamento, sono,etc... Possui algumas habilidades ofensivas como ataques com veneno e buffs que dão aumento de ataque.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores de suporte, pois podem manter os aliados vivos e livres de anormalidades";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+velocidade:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal é a agilidade (agi)";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Aumenta sua velocidade de movimento, velocidade de ataque, e diminui o delay (tempo de espera entre habilidades), possui habilidades que aumentam a esquiva, teleportes e possui poucas habilidades ofensivas.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores que queiram se mover rapidamente enquanto possam dar suporte ou distribuir dano sem sofrer muito dano";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+entendi:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Antes de definir os seus três treinamentos, vou dar mais algumas explicações gerais sobre treinamentos, leia com cuidado pois são importantes!";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Qual informação sobre treinamentos você gostaria de saber?";
+menu "- Como melhorar meu treinamento",melhorar_t,"- Como mudar de treinamento",mudar_t,"- Pedras de treinamentos",pedras_t,"- Ok, já entendi tudo",entendi2;
+
+melhorar_t:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Os treinamentos são todos divididos por nível de aprendizado, Ao escolher seus treinamentos eles virão no estágio mais baixo, conhecido como básico";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É possivel dominar os treinamentos elevando o estágio dele para treinamento intermediário ou avançado, o que fará que liberem novos jutsus para você aprender, mais poderosos que os do estágio anterior";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Porém não é possivel dominar todos os seus três treinamentos, você poderá elevar apenas um treinamento para o estágio mais alto, o avançado. Poderá também evoluir outro treinamento até o intermediário e último ficará como básico mesmo";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Sendo assim, É possível ter um treinamento no estágio avançado, um no estágio intermediário e um no estágio básico";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para elevar o estágio de seus treinamentos, é preciso antes aumentar o nível base de seus treinamentos, cada treinamento poderá aumentar o nível do 1 ao 100.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Este nível é usado como requisito para elevar o estágio do seu treinamento, o nível necessário para aumentar o estágio do básico para intermediário é 40, e o nível necessário para do intermediário para avançado é 75";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para aumentar o nível dos treinamentos é preciso matar monstros, cada monstro dá uma quantia diferente de experiência de treinamento e pode ser encontrado no nosso fórum";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "E para escolher qual treinamento deseja aumentar o nível, é só falar com a Kurenai na entrada dessa academia!";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Caso queira ver os niveis de seus treinamentos, é só digitar @treinos";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Caso não entendeu algo é só procurar o npc de treinamentos na biblioteca de tutoriais! Ou se preferir, pode nos procurar no skype ou suporte dentro do jogo";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar aprendendo sobre os treinamentos ou para já ir escolher seus treinamentos, é só falar comigo denovo e ir na última opção";
+close;
+
+mudar_t:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Caso você não gostou ou simplesmente queira mudar de treinamento é preciso antes possuir alguns itens especiais";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "caso você escolheu errado ou mudou de ideia e seu personagem está apenas no início é aconselhado criar um novo personagem pois é mais fácil que conseguir os itens de remoção";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "O nome dos itens de remoção são removedor de treino básico, intermediário e avançado, cada um serve pra remover um estágio do treinamento e o modo de os obter são por troca com outros jogadores ou com doações para o servidor";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar aprendendo sobre os treinamentos ou para já ir escolher seus treinamentos, é só falar comigo denovo e ir na última opção";
+close;
+
+pedras_t:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "As pedras de treinamentos são itens que são recebidos ao escolher ou melhorar o seu treinamento, eles possuem poderes que aumentam a força de seu personagem, uma pedra avançada por exemplo possui muito mais força que uma básica";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Essas pedras são ligadas aos seus treinamentos e só possui uma pedra avançada de ninjutsu por exemplo quem possuir o treinamento ninjutsu avançado.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Elas não precisam de nenhum comando do usuário para ter efeito, o efeito é automático";
+mes "Para continuar aprendendo sobre os treinamentos ou para já ir escolher seus treinamentos, é só falar comigo denovo e ir na última opção";
+close;
+
+entendi2:
+next;
+if (treinos_bilbioteca == 1) {mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Vejo que você começou a escolher seus treinamentos na biblioteca de sua vila, não tem porque falar comigo então, volte lá e complete seus estudos"; close;}
+if (treinos_basicos > 0) {mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Vejo que você começou a escolher seus treinamentos na biblioteca de sua vila, não tem porque falar comigo então, volte lá e complete seus estudos"; close;}
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Ótimo, agora você possui todas as informações necessárias para escolher seus três treinamentos, agora eu irei perguntar os três treinamentos que deseja escolher, caso queira pensar mais, clique em (Quero pensar mais)";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Muito bem, qual o primeiro treinamento que gostaria de ter?";
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_nin:
+if (treinonin == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinonin,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Ninjutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Ninjutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_tai:
+if (treinotai == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinotai,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Taijutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Taijutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_gen:
+if (treinogen == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinogen,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Genjutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Genjutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_med:
+if (treinomed == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinomed,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha >= 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Medicina né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Medicina né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Velocidade",escolher_velo;
+
+escolher_velo:
+if (treinovelo == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinovelo,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha >= 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Velocidade né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Velocidade né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med;
+
+finalizado:
+next;
+if (treinos_escolha != 3) {end;}
+if (treinos_basicos == 3) {mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu seus três treinamentos"; close;}
+if (treinonin == 1) {skill 738,10,3; set nin_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinotai == 1) {skill 735,10,3; set tai_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinogen == 1) {skill 739,10,3; set gen_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinomed == 1) {skill 737,10,3; set med_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinovelo == 1) {skill 736,10,3; set vel_basico,1; set treinos_basicos, treinos_basicos +1;}
+set academia_treinos,1;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Muito bem, agora você tem seus três treinamentos escolhidos e entregues, você poderá agora escolher seus jutsus baseado nos treinamentos";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "E lembre-se, se precisar de informações pode consultar a sala aqui na academia chamada de biblioteca, é lá que se encontram nossos tutoriais!";
+set treinos,1;
+close;
+
+OnInit:
+	waitingroom "[Instrutor Treinamento]",0;
+
+}

@@ -1,0 +1,69 @@
+konoha3,283,215,5	script	Agricultor::pro_agri	59,{
+
+if (jatemsub == 1) goto L_no;
+if(agricultor == 1) goto L_temprofissao;
+if (checkquest(2033) == 1) goto L_go;
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá, Você parece ser bom com as mãos, já pensou em ser um agricultor? Se quiser, eu posso te ensinar";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Agricultor
+//========================================================================
+
+L_SS:
+next;
+mes "Muito bem, preciso que você faça algumas tarefas pra mim, e em troca eu lhe ensinarei como ser um agricultor";
+next;
+mes "Aqui está a lista de tarefas:";
+next;
+mes "- Obter 100x Raiz Marrom."; //(Id: 909)
+mes "- Obter 100x Folha de Hinalle."; //(Id: 520)
+mes "- Obter 30x Raiz de Planta Carnívora."; //(id: 935 )
+mes "- Obter 1x Flor Cantante."; //(Id: 692)
+mes "- Matar 100x Plantas Medicinais"; //(Id: 1082)
+setquest 2033;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2033,hunting) != 2) {mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(7188) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(520) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1033) < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(629) < 1) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Ah, você já retornou, rs! Ótimo, aqui estão uma luva de agricultor pra você começar a colher uns frutos.";
+next;
+mes "Você agora é um agricultor";
+completequest 2033;
+delitem 7188,100;
+delitem 520,100;
+delitem 1033,30;
+delitem 629,1;
+getitem 1803,1;
+getitem 5062,1;
+set agricultor,1;
+set jatemsub,1;
+announce "[Profissão] "+strcharinfo(0)+" completou a quest de agricultor",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Precisa de algo Jovem Agricultor?";
+menu "Não",L_no,"Quero receber outra luva",luva;
+
+luva:
+if (countitem(1803) >= 1) {mes "Você não precisa de outra luva"; close;}
+mes "Aqui está";
+getitem 1803,1;
+close;
+
+}
+
+sunagakure,300,246,5	duplicate(pro_agri)	Agricultor#1	59,{
+kiri,290,372,5	duplicate(pro_agri)	Agricultor#2	59,{
+nuvem,99,135,5	duplicate(pro_agri)	Agricultor#3	59,{

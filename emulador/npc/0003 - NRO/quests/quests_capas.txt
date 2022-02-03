@@ -1,0 +1,228 @@
+nevoa.gat,119,242,5	script	Capas Ninja Lendários::capas	59,{
+mes "[Capas Lendárias]";
+mes "Olá "+strcharinfo(0)+"! eu tenho alguns dos items mais raros do mundo.";
+mes "São equipamentos usados pelos ninjas mais poderosos no mundo, e que são muito cobiçados";
+mes "Eu sempre sonhei em ser um ninja e proteger minha vila, mas sou muito fraco e por isso virei colecionador";
+mes "Mas ja cansei dessa vida tambem e acho que vou me casar e formar uma familia";
+mes "Então vou lhe dar uma força, se você me trouxer uns suprimentos que preciso eu lhe dou um deles!.";
+menu "Capa Yondaime (lvl 180)",yondaime,"Capa Sasuke (lvl 180)",sasuke,"Manto Haku (lvl 180)",haku,"Manto Kazekage (lvl 180)",kazekage,"Capa Jiraya (lvl 180)",jiraya;
+
+yondaime:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Capas Lendárias]";
+mes "Uma Capa grande e branca com um desenho de fogo em sua ponta.";
+next;
+mes "Fornece ao usuário +15% de resistência contra o elemento fuuton(vento), + 15 de agilidade e +5 de vitalidade.";
+next;
+mes "[Capas Lendárias]";
+mes "Me mostre sua força! Sua missão é buscar os seguintes items";
+mes "^FF0000200^000000  Scell";
+mes "^FF0000200^000000  Casca Escamada";
+mes "^FF0000200^000000  Antenas de Inseto";
+mes "^FF00001^000000  Planta de Konoha";
+mes "^FF000020^000000  Pernas de Gafanhoto";
+next;
+mes "[Capas Lendárias]";
+mes "Terminou a Missão?";
+next;
+menu "Sim",-,"Nao",NAO1;
+mes "[Capas Lendárias]";
+mes "hum... deixe me ver....";
+next;
+if (countitem(911) < 200) goto SemItem;
+if (countitem(936) < 200) goto SemItem;
+if (countitem(928) < 200) goto SemItem;
+if (countitem(712) < 1) goto SemItem;
+if (countitem(940) < 20) goto SemItem;
+mes "[Capas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está a sua recompensa!";
+next;
+delitem 911,200;
+delitem 936,200;
+delitem 928,200;
+delitem 712,1;
+delitem 940,20;
+getitem 2525,1;
+announce "O Shinobi " + strcharinfo(0) + " terminou a missão da Capa Yondaime",0;
+mes "[Capas Lendárias]";
+mes "Parabens Garoto!!";
+close;
+
+
+sasuke:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Capas Lendárias]";
+mes "Capa utilizada por sasuke,em um estilo tradicional de vestes japonesas, muito util para a movimentação do corpo.";
+next;
+mes "Fornece ao usuário +15% de defesa contra o elemento katon(fogo), +15 de inteligência e +10 de destreza.";
+next;
+mes "[Capas Lendárias]";
+mes "^FF0000200^000000 Pinças de Escorpião";
+mes "^FF0000200^000000 Pata de Besouro";
+mes "^FF0000100^000000 Poeira Venenosa";
+mes "^FF00001^000000  Planta de Konoha";
+mes "^FF000020^000000  Pernas de Gafanhoto";
+next;
+mes "[Capas Lendárias]";
+mes "Terminou?";
+next;
+mes "[Capas Lendárias]";
+mes "Deixe me ver.";
+next;
+if (countitem(7125) < 200) goto SemItem;
+if (countitem(7202) < 200) goto SemItem;
+if (countitem(7154) < 100) goto SemItem;
+if (countitem(712) < 1) goto SemItem;
+if (countitem(940) < 20) goto SemItem;
+mes "[Capas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 7125,200;
+delitem 7202,200;
+delitem 7154,100;
+delitem 712,1;
+delitem 940,20;
+getitem 2508,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão da Capa Sasuke! ",0;
+mes "[Capas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+haku:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Capas Lendárias]";
+mes "Manto capaz de proteger do frio, utilizado por Haku, um shinobi da Vila Oculta da névoa que anda com Zabuza, um garoto com extrema habilidade.";
+next;
+mes "Fornece ao usuário +15% de defesa contra o elemento suiton(água), +15 de vitalidade, +5 de destreza e +2 de sorte.";
+next;
+mes "[Capas Lendárias]";
+mes "^FF0000100^000000 Teia de Aranha";
+mes "^FF000050^000000 Dente Fossilizado";
+mes "^FF0000300^000000 Ova de Sapo";
+mes "^FF00001^000000 Planta da Névoa";
+mes "^FF000020^000000  Pernas de Gafanhoto";
+next;
+mes "[Capas Lendárias]";
+mes "Terminou? Foi facil ne";
+mes "Deixe ver se você terminou mesmo!";
+next;
+if (countitem(1025) < 100) goto SemItem;
+if (countitem(1053) < 50) goto SemItem;
+if (countitem(908) < 300) goto SemItem;
+if (countitem(710) < 1) goto SemItem;
+if (countitem(940) < 20) goto SemItem;
+mes "[Capas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 1025,100;
+delitem 1053,50;
+delitem 908,300;
+delitem 710,1;
+delitem 940,20;
+getitem 2518,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Manto do Haku! ",0;
+mes "[Capas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+
+kazekage:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Capas Lendárias]";
+mes "Manto so utilizado por aqueles que se tornam Kage Da Vila Oculta da Areia, serve também para proteger das tempestades de Areia";
+next;
+mes "Fornece ao usuário +15% de defesa contra o elemento doton(terra), +10 de força e +10 de destreza.";
+next;
+mes "[Capas Lendárias]";
+mes "^FF0000200^000000 Casco Arco-Íris";
+mes "^FF000025^000000 Língua de Réptil";
+mes "^FF000050^000000 Banana";
+mes "^FF00001^000000 Planta de Suna";
+mes "^FF000020^000000  Pernas de Gafanhoto";
+next;
+mes "[Capas Lendárias]";
+mes "Terminou? Foi facil ne";
+mes "Deixe ver se você terminou mesmo!";
+next;
+if (countitem(1013) < 200) goto SemItem;
+if (countitem(903) < 25) goto SemItem;
+if (countitem(513) < 50) goto SemItem;
+if (countitem(704) < 1) goto SemItem;
+if (countitem(940) < 20) goto SemItem;
+mes "[Capas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 1013,200;
+delitem 903,25;
+delitem 513,50;
+delitem 704,1;
+delitem 940,20;
+getitem 2519,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Manto do Kazekage! ",0;
+mes "[Capas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+jiraya:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Capas Lendárias]";
+mes "Capa usada pelo jiraya em missões perigosas";
+next;
+mes "Fornece ao usuário +15% de defesa contra danos neutros, +15 de vitalidade e +10 de agilidade";
+next;
+mes "[Capas Lendárias]";
+mes "^FF0000200^000000 Trança";
+mes "^FF0000100^000000 Leite";
+mes "^FF00005^000000 Muco Pegajoso";
+mes "^FF0000300^000000 Pata de Inseto";
+mes "^FF000020^000000  Pernas de Gafanhoto";
+next;
+mes "[Capas Lendárias]";
+mes "Terminou? Foi facil ne";
+mes "Deixe ver se você terminou mesmo!";
+next;
+if (countitem(901) < 200) goto SemItem;
+if (countitem(519) < 100) goto SemItem;
+if (countitem(938) < 5) goto SemItem;
+if (countitem(1042) < 300) goto SemItem;
+if (countitem(940) < 20) goto SemItem;
+mes "[Capas Lendárias]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 901,200;
+delitem 519,100;
+delitem 938,5;
+delitem 1042,300;
+delitem 940,20;
+getitem 2505,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão da Capa Jiraya! ",0;
+mes "[Capas Lendárias]";
+mes "Volte Sempre!!";
+close;
+
+SemItem:
+next;
+mes "[Capas Lendárias]";
+mes "Desculpe, mas você ainda não completou a sua missão!";
+close;
+
+NAO:
+next;
+mes "Você não tem o level necessário para essa missão ou não tem todos os items requeridos";
+close;
+
+NAO1:
+next;
+mes "Então volte quando tiver os itens!";
+close;
+
+}
+
+konoha.gat,166,216,5	duplicate(capas)	Capas Ninja Lendárias#x	59
+areia.gat,166,235,5	duplicate(capas)	Capas Ninja Lendárias#m	59
+prt_monk.gat,227,166,5	duplicate(capas)	Capas Ninja Lendárias#z	59

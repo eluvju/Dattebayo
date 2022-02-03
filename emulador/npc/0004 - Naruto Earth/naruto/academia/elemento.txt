@@ -1,0 +1,13 @@
+sec_in01,25,99,5	script	Anko	4_f_sitdown,{
+if(iruka != 1) {mes "Você primeiro precisa falar com Iruka Umino., "+strcharinfo(0)+"-san!"; end;}
+mes "Olá, seu verme! Eu sou Anko e você infelizmente chegou na minha sala. Não que você vá entender, mas vou te explicar um pouco sobre os elementos da natureza!";
+next;
+mes "Essencialmente, todo shinobi possui um elemento da natureza regendo dentro de si. Se você for ninjutsu, o seu dano é vinculado à manipulação do elemento de sua natureza juntamente de seu chakra. Os seus jutsus são frutos dessa combinação.";
+mes "Os elementos da natureza são 5: Katon (fogo), Suiton (água), Raiton (raio), Fuuton (vento) e Doton (terra).";
+next;
+mes "Aqui você encontrará grandes mestres de cada um desses elementos da natureza e poderá fixar um dos elementos como seu principal";
+next;
+mes "Agora vai escolher logo, seu verme. Some daqui!";
+set elemento1,1;
+   close;
+}

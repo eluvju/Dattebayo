@@ -1,0 +1,113 @@
+//===== Cronus Script ========================================
+//= Propagana
+//===== Por: =================================================
+//= Shanx
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Compatível Com: ======================================
+//= 600+/TxT/SQl
+//===== Descrição: ===========================================
+//= Faz propaganda em broadcast(mensagem ao server) de uma em uma hora
+//===== Comentários Adicionais: ==============================
+//= Onde está "Sua propaganda aqui!" Ponha sua propaganda!
+//============================================================
+
+prontera.gat,0,0,0	script	Propaganda	-1,{
+
+OnHour00:
+announce "Dica NRO: Não digite seus dados em sites suspeitos, os sites do NRO terminam sempre em .nnfro.net, não seja enganado!",8;
+end;
+
+OnHour01:
+announce "Dica NRO: Não passe sua senha ou conta para ninguém, e nunca esqueça de ativar o @lock em sua conta",8;
+end;
+
+OnHour02:
+announce "Dica NRO: Não digite seus dados em sites suspeitos, os sites do NRO terminam sempre em .nnfro.net, não seja enganado!",8;
+end;
+
+OnHour03:
+announce "Dica NRO: O NRO é contra e não se responsabiliza por venda de contas ou itens.",8;
+end;
+
+OnHour04:
+announce "Dica NRO: Está com problemas no servidor? Procure ou poste no fórum!",8;
+end;
+
+OnHour05:
+announce "Dica NRO: Não digite seus dados em sites suspeitos, os sites do NRO terminam sempre em .nnfro.net, não seja enganado!",8;
+end;
+
+OnHour06:
+announce "Dica NRO: Não passe sua senha ou conta para ninguém, e nunca esqueça de ativar o @lock em sua conta",8;
+end;
+
+OnHour07:
+announce "Dica NRO: O NRO é contra e não se responsabiliza por venda de contas ou itens.",8;
+end;
+
+OnHour08:
+announce "Dica NRO: Está com problemas no servidor? Procure ou poste no fórum!",8;
+end;
+
+OnHour09:
+announce "Dica NRO: Não digite seus dados em sites suspeitos, os sites do NRO terminam sempre em .nnfro.net, não seja enganado!",8;
+end;
+
+OnHour10:
+announce "Dica NRO: Não passe sua senha ou conta para ninguém, e nunca esqueça de ativar o @lock em sua conta",8;
+end;
+
+OnHour11:
+announce "Dica NRO: O NRO é contra e não se responsabiliza por venda de contas ou itens.",8;
+end;
+
+OnHour12:
+announce "Dica NRO: Não digite seus dados em sites suspeitos, os sites do NRO terminam sempre em .nnfro.net, não seja enganado!",8;
+end;
+
+OnHour13:
+announce "Dica NRO: Não passe sua senha ou conta para ninguém, e nunca esqueça de ativar o @lock em sua conta",8;
+end;
+
+OnHour14:
+announce "Dica NRO: O NRO é contra e não se responsabiliza por venda de contas ou itens.",8;
+end;
+
+OnHour15:
+announce "Dica NRO: Está com problemas no servidor? Procure ou poste no fórum!",8;
+end;
+
+OnHour16:
+announce "Dica NRO: Não digite seus dados em sites suspeitos, os sites do NRO terminam sempre em .nnfro.net, não seja enganado!",8;
+end;
+
+OnHour17:
+announce "Dica NRO: Não passe sua senha ou conta para ninguém, e nunca esqueça de ativar o @lock em sua conta",8;
+end;
+
+OnHour18:
+announce "Dica NRO: Não digite seus dados em sites suspeitos, os sites do NRO terminam sempre em .nnfro.net, não seja enganado!",8;
+end;
+
+OnHour19:
+announce "Dica NRO: Está com problemas no servidor? Procure ou poste no fórum!",8;
+end;
+
+OnHour20:
+announce "Dica NRO: Não passe sua senha ou conta para ninguém, e nunca esqueça de ativar o @lock em sua conta",8;
+end;
+
+OnHour21:
+announce "Dica NRO: O NRO é contra e não se responsabiliza por venda de contas ou itens.",8;
+end;
+
+OnHour22:
+announce "Dica NRO: Não digite seus dados em sites suspeitos, os sites do NRO terminam sempre em .nnfro.net, não seja enganado!",8;
+end;
+
+OnHour23:
+announce "Dica NRO: Não passe sua senha ou conta para ninguém, e nunca esqueça de ativar o @lock em sua conta",8;
+end;
+
+}

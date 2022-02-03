@@ -1,0 +1,66 @@
+-	script	useKaupe	-1,{
+    end;
+//When a Character uses a skill
+
+//Kaupe
+
+onPcUseSkillEvent:
+
+           if(lskillid == 464) {
+
+
+if (getskilllv(464) == 1) {
+
+if (Kaupe != 1) {end;}
+if (skill464 >= 50) {skill 464,2,0; set skill464,0; dispbottom "[Sys] Level up"; end; }
+set skill464,skill464 +1;
+dispbottom "[Jutsu level] Kaupe level 1: "+skill464+" de 50";
+
+end;
+
+}
+
+if (getskilllv(464) == 2) {
+if (Kaupe != 1) {end;}
+if (skill464 >= 100) {skill 464,3,0; set skill464,0; dispbottom "[Sys] Level up"; end;}
+set skill464,skill464 +1;
+dispbottom "[Jutsu level] Kaupe level 2: "+skill464+" de 100";
+
+end;
+
+}
+
+if (getskilllv(464) == 3) {
+if (Kaupe != 1) {end;}
+if (skill464 >= 150) {skill 464,4,0; set skill464,0; dispbottom "[Sys] Level up"; end;}
+set skill464,skill464 +1;
+dispbottom "[Jutsu level] Kaupe level 3: "+skill464+" de 150";
+
+end;
+
+}
+//
+//if (getskilllv(464) == 4) {
+//if (Kaupe != 1) {end;}
+//if (skill464 >= 200) {skill 464,5,0; set skill464,0; dispbottom "[Sys] Level up"; end;}
+//set skill464,skill464 +1;
+//dispbottom "[Jutsu level] Kaupe level 4: "+skill464+" de 200";
+//
+//end;
+//
+//}
+//
+//if (getskilllv(464) == 5) {
+//if (Kaupe != 1) {end;}
+//if (skill464 >= 250) {skill 464,6,0; set skill464,0; dispbottom "[Sys] Level up"; end;}
+//set skill464,skill464 +1;
+//dispbottom "[Jutsu level] Kaupe level 5: "+skill464+" de 250";
+//
+//end;
+//
+//}
+
+
+                end;
+            }    
+}

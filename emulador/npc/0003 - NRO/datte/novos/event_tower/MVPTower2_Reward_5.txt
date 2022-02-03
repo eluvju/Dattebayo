@@ -1,0 +1,18 @@
+function	script	MVPTower2_Reward_5	{
+	getitem 12937,10;
+	getitem 7247,1;
+	set torrefeita,1;
+if ($ladder_1 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_1` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_1` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_1` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+}
+instance_warpall "savepoint",0,0;
+warp "SavePoint", 0, 0;
+return;
+}

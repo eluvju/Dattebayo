@@ -1,0 +1,54 @@
+-	script	espiritoninja	-1,{
+    end;
+//When a Character uses a skill
+
+//espiritoninja
+
+OnNPCKillEvent:
+
+if (getskilllv(481) == 1) {
+
+if (espiritoninja != 1) {end;}
+if (skill481 >= 50) {skill 481,2,0; set skill481,0; dispbottom "[Sys] Level up"; end; }
+set skill481,skill481 +1;
+dispbottom "[Jutsu level] Espírito Ninja level 1: "+skill481+" de 50";
+
+end;
+
+}
+
+if (getskilllv(481) == 2) {
+if (espiritoninja != 1) {end;}
+if (skill481 >= 100) {skill 481,3,0; set skill481,0; dispbottom "[Sys] Level up"; end;}
+set skill481,skill481 +1;
+dispbottom "[Jutsu level] Espírito Ninja level 2: "+skill481+" de 100";
+
+end;
+
+}
+
+if (getskilllv(481) == 3) {
+if (fuuin_avan != 1) {end;}
+if (espiritoninja != 1) {end;}
+if (skill481 >= 150) {skill 481,4,0; set skill481,0; dispbottom "[Sys] Level up"; end;}
+set skill481,skill481 +1;
+dispbottom "[Jutsu level] Espírito Ninja level 3: "+skill481+" de 150";
+
+end;
+
+}
+
+if (getskilllv(481) == 4) {
+if (fuuin_avan != 1) {end;}
+if (espiritoninja != 1) {end;}
+if (skill481 >= 200) {skill 481,5,0; set skill481,0; dispbottom "[Sys] Level up"; end;}
+set skill481,skill481 +1;
+dispbottom "[Jutsu level] Espírito Ninja level 4: "+skill481+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    

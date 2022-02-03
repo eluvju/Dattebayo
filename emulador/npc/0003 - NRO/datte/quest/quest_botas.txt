@@ -1,0 +1,145 @@
+konoha,33,276,5	script	Yoroshimitsu::questbota	831,{
+
+mes "[Yoroshimitsu]";
+mes "Olá, eu posso criar alguns calçados";
+mes "Então qual deseja obter?";
+menu "Sandálias Taijutsu",L_OB,"Sandálias Ninjutsu",L_MA,"Botas de Esquiva",L_MU,"Botas da Velocidade",L_CS,"Nenhum, obrigado!",L_N;
+
+L_OB:
+mes "[Yoroshimitsu]";
+mes "Para fazer a Sandálias Taijutsu, você precisa me entregar:";
+mes " - 1 Folha Gigante";
+mes " - 15 Garra de Leopardo";
+mes " - 1 Ninja-to Intermediária";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_OBB,"Deixa para depois",L_N;
+close;
+
+L_OBB:
+mes "[Yoroshimitsu]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(7198) < 1) goto No_Item;
+if (countitem(7172) < 15) goto No_Item;
+if (countitem(1260) < 1) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Yoroshimitsu]";
+mes "Parabéns, tudo certo!";
+delitem 7198,1;
+delitem 7172,15;
+delitem 1260,1;
+set Zeny,Zeny-5000000;
+next;
+mes "[Yoroshimitsu]";
+mes "Muito bom, aqui está o seu item";
+getitem 2404,1;
+close;
+
+L_MA:
+mes "[Yoroshimitsu]";
+mes "Para fazer a Sandálias Ninjutsu, você precisa me entregar:";
+mes " - 1 Orelha de Gato";
+mes " - 15 Dente Fossilizado";
+mes " - 1 Zambatou Intermediária";
+mes " - 5.000,000z";
+menu "Ja tenho tudo",L_MAA,"Deixa para depois",L_N;
+close;
+
+L_MAA:
+mes "[Yoroshimitsu]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(2213) < 1) goto No_Item;
+if (countitem(1053) < 15) goto No_Item;
+if (countitem(1303) < 1) goto No_Item;
+if (Zeny < 5000000) goto No_Item;
+next;
+mes "[Yoroshimitsu]";
+mes "Parabéns, tudo certo!";
+delitem 2213,1;
+delitem 1053,15;
+delitem 1303,1;
+set Zeny,Zeny-5000000;
+next;
+mes "[Yoroshimitsu]";
+mes "Muito bom, aqui está o seu item";
+getitem 2405,1;
+close;
+
+L_MU:
+mes "[Yoroshimitsu]";
+mes "Para fazer a Bota da Esquiva, você precisa me entregar:";
+mes " - 40 Zargônio";
+mes " - 15 Tanga de Tigre";
+mes " - 20 Bolinha de Gude";
+mes " - 20 Faca Enferrujada";
+mes " - 6.000,000z";
+menu "Ja tenho tudo",L_MUU,"Deixa para depois",L_N;
+close;
+
+L_MUU:
+mes "[Yoroshimitsu]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(912) < 40) goto No_Item;
+if (countitem(7267) < 15) goto No_Item;
+if (countitem(746) < 20) goto No_Item;
+if (countitem(7208) < 20) goto No_Item;
+if (Zeny < 6000000) goto No_Item;
+next;
+mes "[Yoroshimitsu]";
+mes "Parabéns, tudo certo!";
+delitem 912,40;
+delitem 7267,15;
+delitem 746,20;
+delitem 7208,20;
+set Zeny,Zeny-6000000;
+next;
+mes "[Yoroshimitsu]";
+mes "Muito bom, aqui está o seu item";
+getitem 2406,1;
+close;
+
+L_CS:
+mes "[Yoroshimitsu]";
+mes "Para fazer a Bota da Velocidade, você precisa de:";
+mes " - 40 Coração de Pedra";
+mes " - 15 Tanga de Tigre";
+mes " - 20 Bolinha de Gude";
+mes " - 10 Ouro";
+mes " - 6.000,000z";
+menu "Ja tenho tudo",L_CSS,"Deixa para depois",L_N;
+close;
+
+L_CSS:
+mes "[Yoroshimitsu]";
+mes "Deixe-me verificar se você tem o necessário...";
+if (countitem(953) < 40) goto No_Item;
+if (countitem(7267) < 15) goto No_Item;
+if (countitem(746) < 20) goto No_Item;
+if (countitem(969) < 10) goto No_Item;
+if (Zeny < 6000000) goto No_Item;
+next;
+mes "[Yoroshimitsu]";
+mes "Parabéns, tudo certo!";
+delitem 953,40;
+delitem 7267,15;
+delitem 746,20;
+delitem 969,10;
+set Zeny,Zeny-6000000;
+next;
+mes "[Yoroshimitsu]";
+mes "Muito bom, aqui está o seu item";
+getitem 2407,1;
+close;
+
+No_Item:
+mes "[Yoroshimitsu]";
+mes "Desculpe, mas você precisa de todos os itens.";
+close;
+
+L_N:
+mes "[Yoroshimitsu], Tudo bem, volte quando quiser... ";
+close;
+}
+areia,62,266,5	duplicate(questbota)	Yoroshimitsu#1	831
+kiri,100,369,5	duplicate(questbota)	Yoroshimitsu#2	831
+nuvem,246,288,5	duplicate(questbota)	Yoroshimitsu#3	831

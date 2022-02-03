@@ -1,0 +1,78 @@
+moc_fild02,332,18,0	script	 #entradatakumi1A	45,2,2,{
+
+	.@npc$ = "^000080[ Vila Takumi ]^000000";
+
+	mes .@npc$;
+	mes " ";
+	mes "Voce Aqui? que prazer ter voce de volta ^FFA500"+strcharinfo(0)+"^000000.";
+	next;
+	menu "Quero Entrar",entrar,"Nao Estou preparado",saida;
+
+	entrar:
+	
+	warp "pay_gld",20,274;
+	end;
+	
+	saida:
+	mes .@npc$;
+	mes " ";
+	mes "Estaremos ansioso para te-lo de volta.";
+	close;
+
+	end;
+
+}
+
+pay_fild10,16,291,0	script	 #entradatakumi1B	45,2,2,{
+
+	.@npc$ = "^000080[ Vila Takumi ]^000000";
+
+	mes .@npc$;
+	mes " ";
+	mes "Voce Aqui? que prazer ter voce de volta ^FFA500"+strcharinfo(0)+"^000000.";
+	next;
+	menu "Quero Entrar",entrar,"Nao Estou preparado",saida;
+
+	entrar:
+	
+	warp "pay_gld",370,150;
+	end;
+	
+	saida:
+	mes .@npc$;
+	mes " ";
+	mes "Estaremos ansioso para te-lo de volta.";
+	close;
+
+	end;
+
+}
+
+moc_fild03,69,341,0	script	 #entradatakumi1C	45,2,2,{
+
+	.@npc$ = "^000080[ Vila Takumi ]^000000";
+
+	mes .@npc$;
+	mes " ";
+	mes "Voce Aqui? que prazer ter voce de volta ^FFA500"+strcharinfo(0)+"^000000.";
+	next;
+	menu "Quero Entrar",entrar,"Nao Estou preparado",saida;
+
+	entrar:
+	
+	warp "pay_gld",139,159;
+	end;
+	
+	saida:
+	mes .@npc$;
+	mes " ";
+	mes "Estaremos ansioso para te-lo de volta.";
+	close;
+
+	end;
+
+}
+
+pay_gld,15,275,0	warp	takumi#02	2,2,moc_fild02,332,25
+pay_gld,374,150,0	warp	takumi#03	2,2,pay_fild10,21,291
+pay_gld,140,155,0	warp	fild_rio#01	2,2,moc_fild03,69,335

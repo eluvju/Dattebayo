@@ -1,0 +1,44 @@
+-	script	Killmedusa	-1,{
+
+OnNPCKillEvent:
+if(killedrid == 1148 && missaomedusa == 1) set killmedusa,killmedusa + 1;
+if(killedrid == 1148 && missaomedusa == 1) dispbottom "Você já matou "+killmedusa+" Medusa(s).";
+end;
+
+}
+
+gon_fild01,268,217,5	script	Comerciante#15	825,{
+
+if(killmedusa < 60 && missaomedusa == 1){
+    mes "[Comerciante]";
+    mes "Vejo que você não matou ainda.";
+    mes "Mate as restantes. Ainda faltam "+(60 - killmedusa)+" Medusa(s)!";
+    close;
+    }
+	mes "[Comerciante]";
+	mes "Você quer ganhar uma caixa com algumas Pílulas de Velocidade? Posso lhe oferecer em troca de um favor.";
+	if(select("Claro!:Não, obrigado.")==2)close;
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, preciso que você mate 60 Medusa(s).";
+	mes "Elas atrapalham meu negócio, estão espalhadas pelo mapa.";
+	set missaomedusa,1;
+
+	if(killmedusa < 60){
+	next;
+	mes "Vejo que você não matou ainda.";
+	mes "Mate as restantes. Ainda faltam "+(60 - killmedusa)+" Medusa(s)!";
+	close;
+	}
+
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, você matou as 60 Medusa(s)!";
+	mes "Aqui estão suas Pílulas de Velocidade!";
+	set killmedusa, 0;
+	set missaomedusa,0;
+	getitem 1310,1;
+	query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 10 WHERE `char_id` = '"+getcharid(0)+"'");
+	dispbottom "10 Pontos de Missão adquiridos.";
+	close;
+	}

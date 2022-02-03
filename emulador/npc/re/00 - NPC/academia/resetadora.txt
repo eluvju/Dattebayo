@@ -1,0 +1,201 @@
+///////////////////////////////////////////////////////////////////
+//===== Cronus Script ===========================================//
+//= 							 	=//
+//= Reparador							=//
+//= 								=//
+//===== Por: ====================================================//
+//=								=//
+//=       KIRA THE CAT
+//=								=//
+//===== Changelog: ========================== Versão Atual ======//
+// Criado em 28/02/2021 
+// Alteração Dia 22/06/2021
+// 		Alterada estrutura do NPC para compor o novo modelo de Kafra Pass
+// 		Alterado o modelo de estrutura do NPC para uma forma mais organizada
+//		Criado Interações Especiais Para VIP's
+//      Finalizado 23/06/2021 - 16:31
+//===== Descrição: ==============================================//
+// == NPC armazem com Desconto para PASSE e VIP FREE
+// ============================================================
+louyang,135,176,3	script	Reset Girl::reset	575,{
+// ============================================================
+
+	set .@t, 3,5;	// Delay Seconds.
+	
+	.@costResetadora = 7500;
+	.@passecomercio = 1084;	
+	.@npc$ = "                     ^cfa417[ "+strnpcinfo(1)+" ]^000000";
+	.@zeny$ = "Com o ^800080"+getitemname(.@passecomercio)+"^000000 você pode utilizar o serviço sem pagar^808080(O item é consumido)^000000 e ^FF0000VIP não paga!^000000";
+
+// ============================================================
+
+	if (isbegin_quest(1001) == 1) { goto novato;} // Quest " Complete a Academia "
+	else {goto veterano;}
+
+// ============================================================
+	
+	veterano:
+	if (getgmlevel() >= 5) {goto vip;}
+	mes .@npc$;
+	mes "Eu sou a Reset Girl, eu possuo um ninjutsu unico que ^0000FFreseta seus atributos^000000!";
+	mes " ";
+	mes "Meus serviços não são de graça,";
+	mes "eles custam: ^FF0000" + .@costResetadora + "z^000000";
+	next;	
+	mes .@npc$;
+	mes .@zeny$;
+	mes " ";	
+	mes "Deseja utilizar meus serviços?";
+	switch(select("Sim, por favor:Não quero")) {
+
+	case 1:
+	if (countitem(.@passecomercio) >= 1) { goto passe; }
+	if (0 >= (.@costResetadora - Zeny)) { goto rica; }
+	if (0 < (.@costResetadora - Zeny)) { goto pobre; }
+	else { 	mes .@npc$;
+			mes " ";
+			mes "Um erro inesperado ocorreu!";
+			close;}
+
+//=======================================================================================
+//
+// PASSE
+//
+//=======================================================================================
+							
+	passe:
+	next;
+	mes .@npc$;
+	mes "Vejo que voce possui o ^800080"+getitemname(.@passecomercio)+"^000000.";
+	mes " ";
+	mes "Você pode utilizar o serviço sem pagar^808080(O item será consumido)^000000...";
+	switch(select("^800080Usar o Passe^000000:^FF0000Quero pagar^000000:Nao, Esquece"))  {
+	
+	case 1:
+	next;
+	delitem .@passecomercio,1;
+	mes .@npc$;
+	mes "Espere alguns segundos enquanto eu aplico meu ninjutsu...";
+	while ( .@t ) {
+		mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+		sleep2 1000 ;
+		set .@t, .@t - 1;
+					}
+	atcommand "@effect 55 "+@player$;
+	ResetStatus;
+	dispbottom "[Servidor] Dattebayo: Seus Atributos foram resetados.";
+	dispbottom "[Servidor] Dattebayo: Item ^800080"+getitemname(.@passecomercio)+"^000000 foi Removido!";
+	close;
+	
+	case 2:
+	if (0 >= (.@costResetadora - Zeny)) { goto rica; }
+	if (0 < (.@costResetadora - Zeny)) { goto pobre; }
+	else { 	mes .@npc$;
+			mes " ";
+			mes "Um erro inesperado ocorreu!";
+			close;}
+	
+	case 3:
+	close;
+	
+	}
+
+//=======================================================================================
+//
+// PAGAMENTO
+//
+//=======================================================================================
+
+	pobre:
+	next;
+	mes .@npc$;
+	mes "Voce nao possui zeny suficiente meus serviços";
+	mes " ";
+	mes "Torne-se ^FF0000VIP^000000 agora mesmo e utilize nossos servicos de graça!";
+	close;
+	
+	rica:
+	next;
+	set Zeny,Zeny - .@costResetadora;
+	mes .@npc$;
+	mes "Espere alguns segundos enquanto eu aplico meu ninjutsu...";
+	while ( .@t ) {
+		mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+		sleep2 1000 ;
+		set .@t, .@t - 1;
+					}
+	atcommand "@effect 55 "+@player$;
+	ResetStatus;
+	dispbottom "[Servidor] Dattebayo: Seus Atributos foram resetados.";
+	dispbottom "[Servidor] Dattebayo: -" + .@costResetadora + "z";
+	close;	
+
+//=======================================================================================
+//
+// VIP
+//
+//=======================================================================================								
+									
+	vip:							
+	if (getgmlevel() >= 5) {	atcommand "@effect 55 "+@player$;
+								ResetStatus;
+								sleep2 750;
+								npctalk ""+strnpcinfo(1)+": Atributos resetados, volte sempre "+ strcharinfo ( 0 ) +"", "", bc_self;
+								close;	}
+
+//=======================================================================================
+//
+// QUEST NOVATO
+//
+//=======================================================================================
+
+	novato:
+	mes .@npc$;
+	mes "Eu sou a Reset Girl, eu possuo um ninjutsu unico que ^0000FFreseta seus atributos^000000!";
+	mes " ";
+	mes "Por isso me chamam assim, Reset Girl... HIHIHIHIHIIH!";
+	mes " ";
+	mes "Deseja utilizar meus serviços?";
+	switch(select("^FF0000Quero pagar^000000:Nao, Esquece"))  {
+	
+	case 1:
+	next;
+	mes .@npc$;
+	mes "A primeira vez será de ^FF0000graça^000000.";
+	mes " ";
+	mes "Apos isso torne-se ^FF0000VIP^000000 para utilizar meus serviços gratuitamente.";
+	next;
+	set primeiravezresetadora,1;
+	mes .@npc$;
+	mes "Espere alguns segundos enquanto eu aplico meu ninjutsu...";
+	while ( .@t ) {
+		mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+		sleep2 1000 ;
+		set .@t, .@t - 1;
+					}
+	atcommand "@effect 55 "+@player$;
+	ResetStatus;
+	dispbottom "[Servidor] Dattebayo: Seus Atributos foram resetados.";
+	close;
+	
+	case 2:
+	close;
+	}
+
+//=======================================================================================
+//
+// FIM do Dialogo
+//
+//=======================================================================================
+	
+	case 2:
+	close;
+	
+end;
+}
+}
+//===== NPC: ====================================================//
+
+prontera,149,159,4	duplicate(reset)	Resetadora#Resetadora_academia	575
+
+//==============================================================//

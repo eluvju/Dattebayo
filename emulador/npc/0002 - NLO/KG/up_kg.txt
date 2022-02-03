@@ -1,0 +1,261 @@
+function	script	setkillparty	{
+
+	getmapxy .@map1$, .@x1, .@y1, 0;
+	getpartymember getcharid(1), 1;
+	getpartymember getcharid(1), 2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+        attachrid($@partymemberaid[.@i]);
+		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
+			getmapxy .@map2$, .@x2, .@y2, 0;
+			if ( .@map1$ == .@map2$ && distance(.@x1,.@y1,.@x2,.@y2) <= 30 ) {
+			
+				if(expkg <= 7000000) {
+					if(pegoukg == 3) {
+						set expkg,expkg+strmobinfo(3,killedrid);
+						if(showkg == 1) { 
+							dispbottom "EXP Adquirida a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";
+							dispbottom "EXP Kekkei Genkai ["+expkg+"/7000000]";
+							break;
+						}
+						break;
+					}
+				}
+				
+					if(pegoukg == 2) {
+						set expkg,expkg+strmobinfo(3,killedrid);
+						if(showkg == 1) { 
+							dispbottom "EXP Adquirida a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";
+							dispbottom "EXP Kekkei Genkai ["+expkg+"/3000000]";
+							break;
+						}
+						break;
+					}
+					
+					if(pegoukg == 1) {
+						set expkg,expkg+strmobinfo(3,killedrid);
+						if(showkg == 1) {
+							dispbottom "EXP Adquirida a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";
+							dispbottom "EXP Kekkei Genkai ["+expkg+"/150000]";
+							break;
+						}
+						break;
+					}
+					
+					if(despertarkg == 1) {
+						set expkg,expkg+strmobinfo(3,killedrid);
+						if(showkg == 1) {
+							dispbottom "EXP Adquirida a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";
+							dispbottom "EXP Kekkei Genkai ["+expkg+"/1500]";
+							break;
+						}
+						break;
+					}
+			}
+		}
+	}
+	end;
+}
+
+-	script	questpegarkg	-1,{
+
+OnNPCKillEvent:
+	if(expkg <= 7000000) {
+		if(pegoukg == 3) {
+			set expkg,expkg+strmobinfo(3,killedrid);
+			if(showkg == 1) { 
+				dispbottom "EXP Adquirida a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";
+				dispbottom "EXP Kekkei Genkai ["+expkg+"/7000000]";
+			}
+			end;
+		}
+	}
+		
+		if(pegoukg == 2) {
+			set expkg,expkg+strmobinfo(3,killedrid);
+			if(showkg == 1) { 
+				dispbottom "EXP Adquirida a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";
+				dispbottom "EXP Kekkei Genkai ["+expkg+"/3000000]";
+			}
+			end;
+		}
+		
+		if(pegoukg == 1) {
+			set expkg,expkg+strmobinfo(3,killedrid);
+			if(showkg == 1) {
+				dispbottom "EXP Adquirida a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";
+				dispbottom "EXP Kekkei Genkai ["+expkg+"/150000]";
+			}
+			end;
+		}
+		
+		if(despertarkg == 1) {
+			set expkg,expkg+strmobinfo(3,killedrid);
+			if(showkg == 1) {
+				dispbottom "EXP Adquirida a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";
+				dispbottom "EXP Kekkei Genkai ["+expkg+"/1500]";
+			}
+			end;
+		}
+	if(getcharid(1)) { callfunc("setkillparty"); }
+	end;
+}
+
+-	script	questpegarkg2	-1,{
+
+OnNPCKillEvent:
+
+if(SHARINGAN == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set SHARINGAN,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all; getitem2 30101,1,1,0,0,30090,0,0,0; equip 30101; end; } end; }
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30101)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan para o Nível 2!",bc_blue|bc_all; delitem 30101,1; getitem2 30102,1,1,0,0,30091,0,0,0; equip 30102;  end;  } end; }	}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30102)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o Nível 3!",bc_blue|bc_all; delitem 30102,1; getitem2 30103,1,1,0,0,30092,0,0,0; equip 30103; end; } end; } }
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30103)) { if(expkg >= 7000000) { end; } end; } }
+
+if(KUGUTSU == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set KUGUTSU,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Marionetes!",bc_blue|bc_all; getitem2 30105,1,1,0,0,30090,0,0,0; equip 30105; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30105)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Marionetes para o Nível 2!",bc_blue|bc_all; delitem 30105,1; getitem2 30105,1,1,0,0,30091,0,0,0; equip 30105; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30105)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Marionetes para o Nível 3!",bc_blue|bc_all; delitem 30105,1; getitem2 30105,1,1,0,0,30092,0,0,0; equip 30105; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30105)) { if(expkg >= 7000000) { end;} end; }}
+
+if(BYAKUGAN == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set BYAKUGAN,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; getitem2 30106,1,1,0,0,30090,0,0,0; equip 30106; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30106)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o Nível 2!",bc_blue|bc_all; delitem 30106,1; getitem2 30106,1,1,0,0,30091,0,0,0; equip 30106; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30106)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o Nível 3!",bc_blue|bc_all; delitem 30106,1; getitem2 30106,1,1,0,0,30092,0,0,0; equip 30106; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30106)) { if(expkg >= 7000000) { end; } end; } }
+
+if(PORTOES == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set PORTOES,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seus Portão de Chakra!",bc_blue|bc_all; getitem2 30107,1,1,0,0,30090,0,0,0; equip 30107; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30107)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus Portão de Chakra para o Nível 2!",bc_blue|bc_all; delitem 30107,1; getitem2 30107,1,1,0,0,30091,0,0,0; equip 30107; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30107)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus Portão de Chakra para o Nível 3!",bc_blue|bc_all; delitem 30107,1; getitem2 30107,1,1,0,0,30092,0,0,0; equip 30107; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30107)) { if(expkg >= 7000000) { end;} end; }}
+
+if(AKIMICHI == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set AKIMICHI,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all; getitem2 30108,1,1,0,0,30090,0,0,0; equip 30108; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30108)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o Nível 2!",bc_blue|bc_all; delitem 30108,1; getitem2 30108,1,1,0,0,30091,0,0,0; equip 30108; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30108)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o Nível 3!",bc_blue|bc_all; delitem 30108,1; getitem2 30108,1,1,0,0,30092,0,0,0; equip 30108; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30108)) { if(expkg >= 7000000) { end; } end;}}
+
+if(NARA == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set NARA,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Sombras!",bc_blue|bc_all; getitem2 30109,1,1,0,0,30090,0,0,0; equip 30109; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30109)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação com Sombras para o Nível 2!",bc_blue|bc_all; delitem 30109,1; getitem2 30109,1,1,0,0,30091,0,0,0; equip 30109; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30109)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação com Sombras para o Nível 3!",bc_blue|bc_all; delitem 30109,1; getitem2 30109,1,1,0,0,30092,0,0,0; equip 30109; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30109)) { if(expkg >= 7000000) { end; } end; }}
+
+if(SELOCEU == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set SELOCEU,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo Amaldiçoado do Céu!",bc_blue|bc_all; getitem2 30110,1,1,0,0,30090,0,0,0; equip 30110; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30110)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do Céu para o Nível 2!",bc_blue|bc_all; delitem 30110,1; getitem2 30110,1,1,0,0,30091,0,0,0; equip 30110; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30110)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do Céu para o Nível 3!",bc_blue|bc_all; delitem 30110,1; getitem2 30110,1,1,0,0,30092,0,0,0; equip 30110; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30110)) { if(expkg >= 7000000) { end; } end; }}
+
+if(SELOTERRA == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set SELOTERRA,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo Amaldiçoado da Terra!",bc_blue|bc_all; getitem2 30111,1,1,0,0,30090,0,0,0; equip 30111; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30111)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo Amaldiçoado da Terra para o Nível 2!",bc_blue|bc_all; delitem 30111,1; getitem2 30111,1,1,0,0,30091,0,0,0; equip 30111; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30111)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo Amaldiçoado da Terra para o Nível 3!",bc_blue|bc_all; delitem 30111,1; getitem2 30111,1,1,0,0,30092,0,0,0; equip 30111; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30111)) { if(expkg >= 7000000) { end; } end; }}
+
+if(HYOUTON == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set HYOUTON,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Hyouton!",bc_blue|bc_all; getitem2 30112,1,1,0,0,30090,0,0,0; equip 30112; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30112)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação com Hyouton para o Nível 2!",bc_blue|bc_all; delitem 30112,1; getitem2 30112,1,1,0,0,30091,0,0,0; equip 30112; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30112)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação com Hyouton para o Nível 3!",bc_blue|bc_all; delitem 30112,1; getitem2 30112,1,1,0,0,30092,0,0,0; equip 30112; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30112)) { if(expkg >= 7000000) { end; } end; }}
+
+if(MITSASHI == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set MITSASHI,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas Habilidade como membro do Clã Mitsashi!",bc_blue|bc_all; getitem2 30113,1,1,0,0,30090,0,0,0; equip 30113; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30113)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades como membro do Clã Mitsashi para o Nível 2!",bc_blue|bc_all; delitem 30113,1; getitem2 30113,1,1,0,0,30091,0,0,0; equip 30113; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30113)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades como membro do Clã Mitsashi para o Nível 3!",bc_blue|bc_all; delitem 30113,1; getitem2 30113,1,1,0,0,30092,0,0,0; equip 30113; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30113)) { if(expkg >= 7000000) { end; } end; }}
+
+if(KIBAKU == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set KIBAKU,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Kibaku Socho!",bc_blue|bc_all; getitem2 30114,1,1,0,0,30090,0,0,0; equip 30114; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30114)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kibaku Socho para o Nível 2!",bc_blue|bc_all; delitem 30114,1; getitem2 30114,1,1,0,0,30091,0,0,0; equip 30114; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30114)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kibaku Socho para o Nível 3!",bc_blue|bc_all; delitem 30114,1; getitem2 30114,1,1,0,0,30092,0,0,0; equip 30114; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30114)) { if(expkg >= 7000000) { end; } end; }}
+
+if(ABURAME == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set ABURAME,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle com Insetos!",bc_blue|bc_all; getitem2 30115,1,1,0,0,30090,0,0,0; equip 30115; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30115)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle com Insetos para o Nível 2!",bc_blue|bc_all; delitem 30115,1; getitem2 30115,1,1,0,0,30091,0,0,0; equip 30115; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30115)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle com Insetos para o Nível 3!",bc_blue|bc_all; delitem 30115,1; getitem2 30115,1,1,0,0,30092,0,0,0; equip 30115; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30115)) { if(expkg >= 7000000) { end; } end; }}
+
+if(JASHIN == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set JASHIN,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Crença em Jashin!",bc_blue|bc_all; getitem2 30116,1,1,0,0,30090,0,0,0; equip 30116; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30116)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Crença em Jashin para o Nível 2!",bc_blue|bc_all; delitem 30116,1; getitem2 30116,1,1,0,0,30091,0,0,0; equip 30116; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30116)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Crença em Jashin para o Nível 3!",bc_blue|bc_all; delitem 30116,1; getitem2 30116,1,1,0,0,30092,0,0,0; equip 30116; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30116)) { if(expkg >= 7000000) { end; } end; }}
+
+if(TAYUYA == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set TAYUYA,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Habilidade com a Flauta Demoniaca!",bc_blue|bc_all; getitem2 30117,1,1,0,0,30090,0,0,0; equip 30117; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30117)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Flauta Demoniaca para o Nível 2!",bc_blue|bc_all; delitem 30117,1; getitem2 30117,1,1,0,0,30091,0,0,0; equip 30117; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30117)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Flauta Demoniaca para o Nível 3!",bc_blue|bc_all; delitem 30117,1; getitem2 30117,1,1,0,0,30092,0,0,0; equip 30117; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30117)) { if(expkg >= 7000000) { end; } end; }}
+
+if(IBUSE == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set IBUSE,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Habilidade com Veneno!",bc_blue|bc_all; getitem2 30118,1,1,0,0,30090,0,0,0; equip 30118; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30118)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Veneno para o Nível 2!",bc_blue|bc_all; delitem 30118,1; getitem2 30118,1,1,0,0,30091,0,0,0; equip 30118; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30118)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Veneno para o Nível 3!",bc_blue|bc_all; delitem 30118,1; getitem2 30118,1,1,0,0,30092,0,0,0; equip 30118; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30118)) { if(expkg >= 7000000) { end; } end; }}
+
+if(BYAKUGO == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set BYAKUGO,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Byakugo no In!",bc_blue|bc_all; getitem2 30119,1,1,0,0,30090,0,0,0; equip 30119; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30119)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades de Byakugo no In para o Nível 2!",bc_blue|bc_all; delitem 30119,1; getitem2 30119,1,1,0,0,30091,0,0,0; equip 30119; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30119)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades de Byakugo no In para o Nível 3!",bc_blue|bc_all; delitem 30119,1; getitem2 30119,1,1,0,0,30092,0,0,0; equip 30119; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30119)) { if(expkg >= 7000000) { end; } end; }}
+
+if(BYAKUGAN2 == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set BYAKUGAN2,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; getitem2 30120,1,1,0,0,30090,0,0,0; equip 30120; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30120)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o Nível 2!",bc_blue|bc_all; delitem 30120,1; getitem2 30120,1,1,0,0,30091,0,0,0; equip 30120; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30120)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o Nível 3!",bc_blue|bc_all; delitem 30120,1; getitem2 30120,1,1,0,0,30092,0,0,0; equip 30120; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30120)) { if(expkg >= 7000000) { end; } end; }}
+
+if(KAGUYA == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set KAGUYA,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas Habilidades com Ossos!",bc_blue|bc_all; getitem2 30121,1,1,0,0,30090,0,0,0; equip 30121; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30121)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Ossos para o Nível 2!",bc_blue|bc_all; delitem 30121,1; getitem2 30121,1,1,0,0,30091,0,0,0; equip 30121; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30121)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Ossos para o Nível 3!",bc_blue|bc_all; delitem 30121,1; getitem2 30121,1,1,0,0,30092,0,0,0; equip 30121; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30121)) { if(expkg >= 7000000) { end; } end; }}
+
+if(SHAKUTON == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set SHAKUTON,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Shakuton!",bc_blue|bc_all; getitem2 30122,1,1,0,0,30090,0,0,0; equip 30122; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30122)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação com Shakuton para o Nível 2!",bc_blue|bc_all; delitem 30122,1; getitem2 30122,1,1,0,0,30091,0,0,0; equip 30122; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30122)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação com Shakuton para o Nível 3!",bc_blue|bc_all; delitem 30122,1; getitem2 30122,1,1,0,0,30092,0,0,0; equip 30122; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30122)) { if(expkg >= 7000000) { end; } end; }}
+
+if(JINTON == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set JINTON,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Jinton!",bc_blue|bc_all; getitem2 30123,1,1,0,0,30090,0,0,0; equip 30123; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30123)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação com Jinton para o Nível 2!",bc_blue|bc_all; delitem 30123,1; getitem2 30123,1,1,0,0,30091,0,0,0; equip 30123; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30123)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação com Jinton para o Nível 3!",bc_blue|bc_all; delitem 30123,1; getitem2 30123,1,1,0,0,30092,0,0,0; equip 30123; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30123)) { if(expkg >= 7000000) { end; } end; }}
+
+
+if(RESSONANTE == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set RESSONANTE,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas Habilidades com Ressonância!",bc_blue|bc_all; getitem2 30124,1,1,0,0,30090,0,0,0; equip 30124; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30124)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Ressonância para o Nível 2!",bc_blue|bc_all; delitem 30124,1; getitem2 30124,1,1,0,0,30091,0,0,0; equip 30124; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30124)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Ressonância para o Nível 3!",bc_blue|bc_all; delitem 30124,1; getitem2 30124,1,1,0,0,30092,0,0,0; equip 30124; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30124)) { if(expkg >= 7000000) { end; } end; }}
+
+
+if(KIDOUMARU == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set KIDOUMARU,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas Habilidades com Arco!",bc_blue|bc_all; getitem2 30125,1,1,0,0,30090,0,0,0; getitem2 1233,1,1,0,0,30090,0,0,0; equip 30125; equip 1233; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30125)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Arco para o Nível 2!",bc_blue|bc_all; delitem 30125,1; getitem2 30125,1,1,0,0,30091,0,0,0; delitem 1233,1; getitem2 1233,1,1,0,0,30091,0,0,0; equip 30125; equip 1233; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30125)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades com Arco para o Nível 3!",bc_blue|bc_all; delitem 30125,1; getitem2 30125,1,1,0,0,30092,0,0,0; delitem 1233,1; getitem2 1233,1,1,0,0,30092,0,0,0; equip 30125; equip 1233; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30125)) { if(expkg >= 7000000) { end; } end; }}
+
+
+if(RAIKAGE == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set RAIKAGE,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação Raiton!",bc_blue|bc_all; getitem2 30126,1,1,0,0,30090,0,0,0; equip 30126; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30126)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação Raiton para o Nível 2!",bc_blue|bc_all; delitem 30126,1; getitem2 30126,1,1,0,0,30091,0,0,0; equip 30126; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30126)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar sua Manipulação Raiton para o Nível 3!",bc_blue|bc_all; delitem 30126,1; getitem2 30126,1,1,0,0,30092,0,0,0; equip 30126; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30126)) { if(expkg >= 7000000) { end; } end; }}
+
+
+if(SELOSENJUTSU == 1) { if(expkg >= 1500) {  set pegoukg,1; set despertarkg,0; set SELOSENJUTSU,0; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo Amaldiçoado Senjutsu!",bc_blue|bc_all; getitem2 30127,1,1,0,0,30090,0,0,0; equip 30127; end;} end;}
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30127)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo Amaldiçoado Senjutsu para o Nível 2!",bc_blue|bc_all; delitem 30127,1; getitem2 30127,1,1,0,0,30091,0,0,0; equip 30127; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30127)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo Amaldiçoado Senjutsu para o Nível 3!",bc_blue|bc_all; delitem 30127,1; getitem2 30127,1,1,0,0,30092,0,0,0; equip 30127; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30127)) { if(expkg >= 7000000) { end; } end; }}
+
+// Uzumaki
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30128)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades de Selamento Nível 2!",bc_blue|bc_all; delitem 30128,1; getitem2 30128,1,1,0,0,30091,0,0,0; equip 30128; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30128)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades de Selamento Nível 3!",bc_blue|bc_all; delitem 30128,1; getitem2 30128,1,1,0,0,30092,0,0,0; equip 30128; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30128)) { if(expkg >= 7000000) { end; } end; }}
+
+// Suigetsu
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30129)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades para o Nível 2!",bc_blue|bc_all; delitem 30129,1; getitem2 30129,1,1,0,0,30091,0,0,0; equip 30129; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30129)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidades para o Nível 3!",bc_blue|bc_all; delitem 30129,1; getitem2 30129,1,1,0,0,30092,0,0,0; equip 30129; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30129)) { if(expkg >= 7000000) { end; } end; }}
+
+// Kenjutsu
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30130)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kenjutsu para o Nível 2!",bc_blue|bc_all; delitem 30130,1; getitem2 30130,1,1,0,0,30091,0,0,0; equip 30130; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30130)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kenjutsu para o Nível 3!",bc_blue|bc_all; delitem 30130,1; getitem2 30130,1,1,0,0,30092,0,0,0; equip 30130; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30130)) { if(expkg >= 7000000) { end; } end; }}
+
+// Kibaku Nendo
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30131)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kibaku Nendo para o Nível 2!",bc_blue|bc_all; delitem 30131,1; getitem2 30131,1,1,0,0,30091,0,0,0; delitem 1236,1; getitem2 1236,1,1,0,0,30091,0,0,0; equip 30131; equip 1236; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30131)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kibaku Nendo para o Nível 3!",bc_blue|bc_all; delitem 30131,1; getitem2 30131,1,1,0,0,30092,0,0,0; delitem 1236,1; getitem2 1236,1,1,0,0,30092,0,0,0; equip 30131; equip 1236; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30131)) { if(expkg >= 7000000) { end; } end; }}
+
+// Shouton
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30132)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Shouton para o Nível 2!",bc_blue|bc_all; delitem 30132,1; getitem2 30132,1,1,0,0,30091,0,0,0; equip 30132; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30132)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Shouton para o Nível 3!",bc_blue|bc_all; delitem 30132,1; getitem2 30132,1,1,0,0,30092,0,0,0; equip 30132; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30132)) { if(expkg >= 7000000) { end; } end; }}
+
+// Youton
+if(getequipcardid(EQI_HEAD_MID,0) == 30090 ) { if(countitem(30133)) { if(expkg >= 150000)  { set pegoukg,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Youton para o Nível 2!",bc_blue|bc_all; delitem 30133,1; getitem2 30133,1,1,0,0,30091,0,0,0; equip 30133; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30091 ) { if(countitem(30133)) { if(expkg >= 3000000) { set pegoukg,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Youton para o Nível 3!",bc_blue|bc_all; delitem 30133,1; getitem2 30133,1,1,0,0,30092,0,0,0; equip 30133; end;} end;}}
+if(getequipcardid(EQI_HEAD_MID,0) == 30092 ) { if(countitem(30133)) { if(expkg >= 7000000) { end; } end; }}
+
+}

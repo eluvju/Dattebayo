@@ -1,0 +1,66 @@
+bibli_01,37,52,5	script	Medicina básica::medbas	121,{
+//	if (treinos_aceitos >= 3) {mes "Você já aceitou a missão de três treinamentos, complete-os para dominar o treinamento, o andamento deles você pode ver no alt u"; close;}
+	if(treinos_basicos >= 3) {mes "Você já aprendeu três trienos básicos, é o limite."; close;}
+	if(med_basico == 1) {mes "Agora que você sabe o Medicina básica você só tem a crescer!"; close;}
+	if (checkquest(2121) == 1) goto L_go;
+
+	
+	mes "Antes de escolher seus treinamentos, dê uma olhadinha nessa tela que explica a interface do jogo, sempre que quiser ver essa imagem novamente, basta digitar @interface no chat";
+	next;
+	cutin "tela",3;
+	next;
+	cutin "",255;
+	mes "ATENÇÃO: Antes que continue, é bom lembrar que só pode ter três treinamentos básicos, tem certeza que quer esse treino?";
+	menu "Sim, eu quero",L_sim,"Não, quero outro",nao;
+
+	nao:
+	close;
+
+	L_sim:
+	mes "[ Instrutor de Medicina] ";
+	mes "Olá, vamos aprender o básico do Medicina";
+	next;
+	mes "As técnicas de Medicina assim como ninjutsus precisam de chakra pra ser usado, se você não tiver chakra o suficiente, a técnica não irá funcionar";
+	next;
+	mes "Medicinas são técnicas que ajudam os shinobis durante as lutas com curas em si mesmo e em aliados, são de grande utilidade, nos quais são essenciais em batalhas";
+	next;
+	mes "Toda técnica de medicina aprendida vem no nível 1, e você tem que evoluir todas suas medicinas pra se tornarem mais fortes";
+	next;
+	mes "Depois que você fizer esse treinamento, você poderá treinar sua medicina e a cada nível aumentado receberá pontos em vitalidade, que é o atributo que dá mais hp";
+	next;
+	mes "Agora que já sabe o básico da Medicina, vamos fazer um treinamento rápido pra você começar a evoluir sua medicina";
+	next;
+	mes "Vá e derrote 40 vermes";
+	setquest 2121;
+		set treinos_aceitos, treinos_aceitos +1;
+	close;
+
+L_go:
+if(checkquest(2121,hunting) != 2) {mes "Você ainda não completou seu treinamento"; close;}
+//if (countitem(520) < 7) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Parabéns, você completou seu treinamento";
+mes "você agora pode treinar Medicina";
+//delitem 520,7;
+getitem 1027,1;
+completequest 2121;
+erasequest 2121;
+set med_basico,1;
+set treinos_bilbioteca,1;
+set treinos_basicos, treinos_basicos +1;
+close;
+
+OnInit:
+	waitingroom "",0;
+OnTimer1000:
+	setarray .@RoomDisplay$,"Aprender Medicina","Aprender Medicina","Aprender Medicina","Aprender Medicina";
+	delwaitingroom;
+	waitingroom .@RoomDisplay$[rand(0,3)],0;
+	initnpctimer;
+
+}
+
+bibli_02,37,52,5	duplicate(medbas)	Medicina básica#2	121
+bibli_03,37,52,5	duplicate(medbas)	Medicina básica#3	121
+bibli_04,37,52,5	duplicate(medbas)	Medicina básica#4	121
+lou_in02,178,88,5	duplicate(medbas)	Medicina básica#5	121
+izlude_in,152,133,5	duplicate(medbas)	Medicina básica#6	121

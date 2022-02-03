@@ -1,0 +1,68 @@
+kh_kiehl02,44,43,5	script	Treinamento de Ninjutsu	857,{
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+OnStart:
+mes "[Treinamento de Ninjutsu]";
+mes "Você possui [^0000FF" + AtrPoints2 + "^000000] pontos em Ninjutsu";
+next;
+mes "Gostaria de adicionar seus pontos em Ninjutsu agora?";
+next;
+menu "Sim, gostaria",-,"Não, deixa pra depois",fecha;
+if(AtrPoints2 < 1) {set AtrPoints2,0;}
+mes "[Treinamento de Ninjutsu]";
+mes "Quantos pontos gostaria de adicionar? ["+AtrPoints2+"]";
+next;
+input .@ninpoints;
+if(.@ninpoints <= AtrPoints2) goto go_tai;
+if(.@ninpoints > AtrPoints2) {mes "Você não possui essa quantidade de pontos"; close;}
+mes "^FF0000Digite um numero entre 1 e " + AtrPoints2;
+close;
+
+go_tai:
+set AtrPoints2, AtrPoints2 - .@ninpoints;
+atcommand strcharinfo(0)+":@"+.IndexToStat$[@menu] + " " + .@ninpoints;
+mes "Os seus pontos foram adicionados";
+close;
+
+fecha:
+close;
+
+OnInit:
+
+//How much exp needed per lvl (make sure each number is bigger than the next)
+setArray .WLvl[0],
+1, 2, 3, 10, 2500, 4000, 5000, 7500, 10000, 15000,
+20000, 30000, 40000, 50000, 100000, 125000, 150000, 175000, 200000, 250000;
+
+//How many status points each weapon lvl up
+setArray .Wpoints2[0],
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+4, 4, 4, 4, 4, 4, 4, 4, 4, 14;
+
+set .ExpPerKill, 1;
+set .MaxLvl2, getarraysize(.WLvl);
+
+setArray .IndexToStat$[1], "int", "int", "int", "int", "int", "int";
+set .statMenu$, "Str:Agi:Vit:Int:Dex:Luk";
+
+set .init, 1;
+end;
+
+OnNPCKillEvent:
+
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+set WeaponExp, WeaponExp + .ExpPerKill;
+if(.WLvl[WeaponLvl2] <= WeaponExp && WeaponLvl2 < .MaxLvl2)
+{
+set AtrPoints2, AtrPoints2 + .Wpoints2[WeaponLvl2];
+set WeaponLvl2, WeaponLvl2 + 1;
+dispbottom "[Level up] Seu Ninjutsu agora é level " + WeaponLvl2;
+dispbottom "[Level up] fale com o fulano pra receber seus pontos";
+if(WeaponLvl2 == .MaxLvl2) {
+dispbottom "Seu Ninjutsu está no level máximo.";
+}
+dispbottom "Você recebeu [" + .Wpoints2[WeaponLvl2 - 1] + "] pontos em Ninjutsu, fale com o fulano.";
+}
+end;
+}

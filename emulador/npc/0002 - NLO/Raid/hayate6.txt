@@ -1,0 +1,225 @@
+treinamento,73,166,5	script	Hayate#1	4_m_across,{
+
+	set .@instance$, "Torneio Chunin";
+	mes "^ff0000[Hayate]^000000";
+	mes "Olá, shinobi! Está pronto para começar o Torneio Chunin?";
+	menu "Iniciar Raid.",inicio,"Removedor de Raid.",removedor;
+	removedor:
+next;
+if(questmade33 == GetTime(8)) {
+mes "^ff0000[Hayate]^000000";
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+
+if(vip_status(1)) {
+mes "^ff0000[Hayate]^000000";
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid do Torneio Chunin. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "^ff0000[Hayate]^000000";
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7027,1;
+set questmade33, GetTime(8);
+close;
+	
+r2:
+next;
+mes "^ff0000[Hayate]^000000";
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}
+
+inicio:
+if(questmade3 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:	
+mes "^ff0000[Hayate]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7027) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Hayate]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set questmade3, 0;
+delitem 7027,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Hayate]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Fale comigo novamente!";
+close;
+}
+
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	if($@partymembercount > 5) {
+	mes "Você não pode iniciar a Raid com mais de 5 membros no grupo.";
+	close;
+	}
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos do ^FF0000Torneio Chunin^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if(getpartyleader(getcharid(1),2) != getcharid(0)) goto naocria;
+
+		if (instance_create(.@instance$) < 0) {
+		mes "Você não atende aos requisitos do ^FF0000Torneio Chunin^000000.";
+		close;
+
+		naocria:
+		mes "Você precisa ser o líder do grupo para criar a raid ^FF0000Torneio Chunin^000000.";
+		close;
+		}
+
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		getpartymember getcharid(1),2;
+		for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		}
+		attachrid(getpartyleader(getcharid(1),1));
+		// Começo da Raid
+		hideonnpc ""+instance_npcname("Hayate#2")+"";
+		hideonnpc ""+instance_npcname("Rock Lee#5")+"";
+		hideonnpc ""+instance_npcname("Uchiha Sasuke#5")+"";
+		sleep2 5000;
+		instance_announce instance_id(),"Chegamos as fases eliminatórias do Torneio Chunin!",0;
+		sleep2 5000;
+		instance_announce instance_id(),"Vamos ver se vocês são capazes de enfrentar os genins mais poderosos!",0;
+		sleep2 5000;
+		instance_announce instance_id(),"Vamos começar!",0;
+		sleep2 5000;
+		instance_announce instance_id(),"[MISSÃO] Derrote Akimichi Chouji!",0;
+		monster ""+instance_mapname("exame",instance_id())+"",103,117,"Akimichi Chouji",3571,1,"torneioinstance::OnChoujiDie1";
+		end;
+	}
+}
+
+exame,0,0,0	script	torneioinstance	-1,{
+	OnChoujiDie1:
+		if(!mobcount(""+instance_mapname("exame",instance_id())+"","torneioinstance::OnChoujiDie1")) {
+			instance_announce instance_id(),"[MISSÃO] Derrotar Akimichi Chouji foi completa!",0;
+			sleep2 3000;
+			instance_announce instance_id(),"Hayate: Parabéns pela vitória, seu próximo adversário será:",0;
+			sleep2 3000;
+			instance_announce instance_id(),"[MISSÃO] Derrote Rock Lee!",0;
+			hideoffnpc ""+instance_npcname("Rock Lee#5")+"";
+			end;
+		}
+
+	OnRockLeeDie:
+		instance_announce instance_id(),"[MISSÃO] Derrotar Rock Lee foi completa!",0;
+		sleep2 3000;
+		instance_announce instance_id(),"Hayate: Parabéns pela vitória, seu próximo adversário será:",0;
+		sleep2 3000;
+		instance_announce instance_id(),"[MISSÃO] Derrote Uchiha Sasuke!",0;
+		hideoffnpc ""+instance_npcname("Uchiha Sasuke#5")+"";
+		end;
+
+	OnSasukeDie:
+		instance_announce instance_id(),"Hayate: Parabéns pela vitória shinobis!",0;
+		sleep2 3000;
+		instance_announce instance_id(),"Hayate: Atenção líder do grupo, aguarde os outros shinobis pegarem a premiação!",0;
+		hideoffnpc ""+instance_npcname("Hayate#2")+"";
+		end;	
+}
+exame,103,117,4	script	Rock Lee#5	3588,{
+	if(getpartyleader(getcharid(1),2) != getcharid(0)) {
+		mes "[Rock Lee]";
+		mes "Apesar o líder do grupo pode me desafiar!";
+		close;
+	}
+	hideonnpc ""+instance_npcname("Rock Lee#5")+"";
+	instance_announce instance_id(),"Rock Lee: Vou me tornar Chunin e ser o ninja mais forte!",0;
+	sleep2 300;
+	instance_announce instance_id(),"Rock Lee: Hachimon Tonkou...",0;
+	sleep2 3000;
+	instance_announce instance_id(),"Rock Lee: KAAAAAI!",0;
+	monster ""+instance_mapname("exame",instance_id())+"",103,117,"Rock Lee",3588,1,"torneioinstance::OnRockLeeDie";
+	end;
+}
+
+exame,103,117,4	script	Uchiha Sasuke#5	3593,{
+	if(getpartyleader(getcharid(1),2) != getcharid(0)) {
+		mes "[Uchiha Sasuke]";
+		mes "Apesar o líder do grupo pode me desafiar!";
+		close;
+	}
+	hideonnpc ""+instance_npcname("Uchiha Sasuke#5")+"";
+	instance_announce instance_id(),"Uchiha Sasuke: Chunin? Só os fracos ligam para isso!",0;
+	sleep2 3000;
+	instance_announce instance_id(),"Uchiha Sasuke: Venha, você será um bom teste para meu poder!",0;
+	sleep2 3000;
+	instance_announce instance_id(),"Uchiha Sasuke: SHARINGAN!",0;
+	monster ""+instance_mapname("exame",instance_id())+"",103,117,"Uchiha Sasuke",3593,1,"torneioinstance::OnSasukeDie";
+	end;
+}
+
+exame,91,9,4	script	Hayate#2	4_m_across,{	
+
+	if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "Parabéns por completar a missão, aqui está sua premiação!";
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 250 WHERE `char_id` = '"+getcharid(0)+"'");
+		dispbottom "Você ganhou 250 pontos de missão.";
+		next;
+		mes "Até a próxima aventura!";
+		getitem 734,2;
+		set questmade3, GetTime(8);
+		close2;
+		warp "SavePoint",0,0;
+	}
+
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 5) {
+			mes "Seu Grupo é muito grande. Reduza a quantidade de membros. Só é permitido 5 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+	mes "^ff0000[Hayate]^000000";
+	mes "Atenção líder, você deve ser o último a confirmar a saída comigo! Aguarde os membros do seu grupo pegarem a premiação...";
+	instance_announce instance_id(),"Hayate: Atenção shinobis, vocês devem pegar a premiação antes do líder!",0;
+	next;
+	mes "^ff0000[Hayate]^000000";
+	mes "Verificou se todos pegaram a premiação, líder?";
+	menu "Não.",saida,"Sim.",sim;
+
+	sim:
+	close2;
+	query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 250 WHERE `char_id` = '"+getcharid(0)+"'");
+	dispbottom "Você ganhou 250 pontos de missão.";
+	getitem 734,2;
+	set questmade3, GetTime(8);	
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Raid Torneio Chunin.",bc_all;	
+	instance_destroy;
+	end;
+
+	saida:
+	next;
+	mes "^ff0000[Hayate]^000000";
+	mes "Aguarde todos jogadores pegarem o prêmio!";
+	close;
+}
+
+exame	mapflag	partylock
+exame	mapflag	nomemo
+exame	mapflag	nosave	SavePoint

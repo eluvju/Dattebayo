@@ -1,0 +1,56 @@
+-	script	on_PC_UseSkilltai181	-1,{
+    end;
+//When a Character uses a skill
+
+//Asshou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 357) {
+
+
+if (getskilllv(357) == 1) {
+
+if (DSenkou != 1) {end;}
+if (skill357 >= 50) {skill 357,2,0; set skill357,0; dispbottom "[Sys] Level up"; end; }
+set skill357,skill357 +1;
+dispbottom "[Jutsu level] Dai Senkou level 1: "+skill357+" de 50";
+
+end;
+
+}
+
+if (getskilllv(357) == 2) {
+if (DSenkou != 1) {end;}
+if (skill357 >= 100) {skill 357,3,0; set skill357,0; dispbottom "[Sys] Level up"; end;}
+set skill357,skill357 +1;
+dispbottom "[Jutsu level] Dai Senkou level 2: "+skill357+" de 100";
+
+end;
+
+}
+
+if (getskilllv(357) == 3) {
+if (tai_avan != 1) {end;}
+if (DSenkou != 1) {end;}
+if (skill357 >= 150) {skill 357,4,0; set skill357,0; dispbottom "[Sys] Level up"; end;}
+set skill357,skill357 +1;
+dispbottom "[Jutsu level] Dai Senkou level 3: "+skill357+" de 150";
+
+end;
+
+}
+
+if (getskilllv(357) == 4) {
+if (tai_avan != 1) {end;}
+if (DSenkou != 1) {end;}
+if (skill357 >= 200) {skill 357,5,0; set skill357,0; dispbottom "[Sys] Level up"; end;}
+set skill357,skill357 +1;
+dispbottom "[Jutsu level] Dai Senkou level 4: "+skill357+" de 200";
+
+end;
+
+}
+                end;
+            }    
+}

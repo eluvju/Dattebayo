@@ -1,0 +1,105 @@
+-	script	on_PC_UseSkills03	-1,{
+    end;
+//When a Character uses a skill
+
+//suiryuudan
+
+onPcUseSkillEvent:
+
+           if(lskillid == 14) {
+
+
+if (getskilllv(14) == 1) {
+
+if (suiryuudan != 1) {end;}
+if (skill14 >= 50) {skill 14,2,0; set skill14,0; dispbottom "[Sys] Level up"; end; }
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 1: "+skill14+" de 50";
+
+end;
+
+}
+
+if (getskilllv(14) == 2) {
+if (suiryuudan != 1) {end;}
+if (skill14 >= 100) {skill 14,3,0; set skill14,0; dispbottom "[Sys] Level up"; end;}
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 2: "+skill14+" de 100";
+
+end;
+
+}
+
+if (getskilllv(14) == 3) {
+if (suiryuudan != 1) {end;}
+if (skill14 >= 150) {skill 14,4,0; set skill14,0; dispbottom "[Sys] Level up"; end;}
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 3: "+skill14+" de 150";
+
+end;
+
+}
+
+if (getskilllv(14) == 4) {
+if (suiryuudan != 1) {end;}
+if (skill14 >= 200) {skill 14,5,0; set skill14,0; dispbottom "[Sys] Level up"; end;}
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 4: "+skill14+" de 200";
+
+end;
+
+}
+
+if (getskilllv(14) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill14 >= 250) {skill 14,6,0; set skill14,0; dispbottom "[Sys] Level up"; end;}
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 5: "+skill14+" de 250";
+
+end;
+
+}
+
+if (getskilllv(14) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill14 >= 300) {skill 14,7,0; set skill14,0; dispbottom "[Sys] Level up"; end;}
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 6: "+skill14+" de 300";
+
+end;
+
+}
+
+if (getskilllv(14) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill14 >= 500) {skill 14,8,0; set skill14,0; dispbottom "[Sys] Level up"; end;}
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 7: "+skill14+" de 500";
+
+end;
+
+}
+
+if (getskilllv(14) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill14 >= 700) {skill 14,9,0; set skill14,0; dispbottom "[Sys] Level up"; end;}
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 8: "+skill14+" de 700";
+
+end;
+
+}
+
+if (getskilllv(14) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill14 >= 1000) {skill 14,10,0; set skill14,0; dispbottom "[Sys] Level up"; end;}
+set skill14,skill14 +1;
+dispbottom "[Jutsu level] Suiryuudan no Jutsu level 9: "+skill14+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

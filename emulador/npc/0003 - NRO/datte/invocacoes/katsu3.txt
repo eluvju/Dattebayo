@@ -1,0 +1,90 @@
+pay_fild06,57,134,5	script	Tsunade::katsu3	423,{
+
+if (quest_katsu3_um == 1) goto L_go;
+if(Katsu1 != 1) {mes "Você precisa ter contrato com as Namekujis para aparender esse jutsu"; close;}
+if(Katsu2 != 1) {mes "Você precisa aprender o Segundo Nível de Kuchiyose para aprender esse jutsu"; close;}
+if(jounin != 1) {mes "Você precisa ser Jounin para aprender esse jutsu"; close;}
+if(Katsu3 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo.";
+next;
+mes "Posso te ajudar a aperfeiçoar seu Kuchiyose no Jutsu!";
+mes "Gostaria de treinar o Kuchiyose: Katsuyo?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Katsuyo
+//========================================================================
+
+L_SS:
+set quest_katsu3_um,1;
+mes "Para esse treinamento,você deve provar ser fiel as Namekujis:";
+mes "- Derrote 1000 Manda";
+mes "- Derrote 1000 Gama-Bunta";
+mes "- Derrote 1000 Baru";
+mes "- Derrote 1000 Enma";
+setquest 12098;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(katsu3_mobs_um < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(katsu3_mobs_dois < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(katsu3_mobs_tres < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(katsu3_mobs_quatro < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 730,4,0;
+set Katsu3,1;
+set quest_katsu3_um,0;
+set katsu3_mobs_um, 0;
+set katsu3_mobs_dois, 0;
+set katsu3_mobs_tres, 0;
+set katsu3_mobs_quatro, 0;
+completequest 12098;
+erasequest 12098;
+close;
+
+L_no:
+close;
+}
+
+
+moc_fild13,259,34,5	duplicate(katsu3)	Tsunade#311	423
+cmd_fild05,188,52,5	duplicate(katsu3)	Tsunade#312	423
+mjolnir_10,281,34,5	duplicate(katsu3)	Tsunade#313	423
+
+
+-	script	katsu3#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1418 && quest_katsu3_um == 1) {set katsu3_mobs_um,katsu3_mobs_um +1; announce "Você já derrotou "+katsu3_mobs_um+" / 1000 Manda",bc_blue|bc_self; end;}
+
+}
+
+-	script	katsu3#2	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1089 && quest_katsu3_um == 1) {set katsu3_mobs_dois,katsu3_mobs_dois +1; announce "Você já derrotou "+katsu3_mobs_dois+" / 1000 Gama-Bunta",bc_blue|bc_self; end;}
+
+}
+
+-	script	katsu3#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1032 && quest_katsu3_um == 1) {set katsu3_mobs_tres,katsu3_mobs_tres +1; announce "Você já derrotou "+katsu3_mobs_tres+" / 1000 Baru",bc_blue|bc_self; end;}
+
+}
+
+-	script	katsu3#4	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1057 && quest_katsu3_um == 1) {set katsu3_mobs_quatro,katsu3_mobs_quatro +1; announce "Você já derrotou "+katsu3_mobs_quatro+" / 1000 Enma",bc_blue|bc_self; end;}
+
+}

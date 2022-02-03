@@ -1,0 +1,105 @@
+-	script	on_PC_UseSkillk03	-1,{
+    end;
+//When a Character uses a skill
+
+//Gougakyuu no Jutsu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 19) {
+
+
+if (getskilllv(19) == 1) {
+
+if (gougakyuu != 1) {end;}
+if (skill19 >= 50) {skill 19,2,0; set skill19,0; dispbottom "[Sys] Level up"; end; }
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 1: "+skill19+" de 50";
+
+end;
+
+}
+
+if (getskilllv(19) == 2) {
+if (gougakyuu != 1) {end;}
+if (skill19 >= 100) {skill 19,3,0; set skill19,0; dispbottom "[Sys] Level up"; end;}
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 2: "+skill19+" de 100";
+
+end;
+
+}
+
+if (getskilllv(19) == 3) {
+if (gougakyuu != 1) {end;}
+if (skill19 >= 150) {skill 19,4,0; set skill19,0; dispbottom "[Sys] Level up"; end;}
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 3: "+skill19+" de 150";
+
+end;
+
+}
+
+if (getskilllv(19) == 4) {
+if (gougakyuu != 1) {end;}
+if (skill19 >= 200) {skill 19,5,0; set skill19,0; dispbottom "[Sys] Level up"; end;}
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 4: "+skill19+" de 200";
+
+end;
+
+}
+
+if (getskilllv(19) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill19 >= 250) {skill 19,6,0; set skill19,0; dispbottom "[Sys] Level up"; end;}
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 5: "+skill19+" de 250";
+
+end;
+
+}
+
+if (getskilllv(19) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill19 >= 300) {skill 19,7,0; set skill19,0; dispbottom "[Sys] Level up"; end;}
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 6: "+skill19+" de 300";
+
+end;
+
+}
+
+if (getskilllv(19) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill19 >= 500) {skill 19,8,0; set skill19,0; dispbottom "[Sys] Level up"; end;}
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 7: "+skill19+" de 500";
+
+end;
+
+}
+
+if (getskilllv(19) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill19 >= 700) {skill 19,9,0; set skill19,0; dispbottom "[Sys] Level up"; end;}
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 8: "+skill19+" de 700";
+
+end;
+
+}
+
+if (getskilllv(19) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill19 >= 1000) {skill 19,10,0; set skill19,0; dispbottom "[Sys] Level up"; end;}
+set skill19,skill19 +1;
+dispbottom "[Jutsu level] Gougakyuu no Jutsu level 9: "+skill19+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

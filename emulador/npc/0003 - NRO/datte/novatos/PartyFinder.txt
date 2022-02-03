@@ -1,0 +1,1820 @@
+kakashi.gat,73,162,4	script	Party Finder	882,{
+
+// Nome do npc
+set .npc$,"^800000[Party Finder]^000000";
+
+//Máximo de players em cada lista
+set .max, 100;
+
+mes .npc$;
+mes "O que gostaria de fazer?";
+switch(select("- Ver Inscritos:- Se Registrar para um grupo:- Auto invite:- Apagar Registros:- Informações"))
+{
+case 1:
+next;
+
+if(chunin != 1 && jounin != 1 || BaseLevel < 999){
+mes .npc$;
+mes "Só Chunins e Jounins podem utilizar este serviço.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Qual lista gostaria de ver?";
+switch(select("- Torre Sangrenta:- Zabuza Easy:- Haku Normal:- Haku Hard")){
+case 1:
+next;
+if(getarraysize($PFtorrename$) == 0){
+mes .npc$;
+mes "Desculpe, estamos sem inscrições no momento.";
+close;
+end;
+}
+set .@i, 1;
+while(.@i < (.max+1)){
+if($PFtorreid[.@i] > 0){
+mes .npc$;
+mes "Nick: "+$PFtorrename$[.@i];
+mes "Descrição: "+$PFtorremsg$[.@i];
+mes "Jutsu: "+$PFtorresk1$[.@i]+" [Nv "+$PFtorresk1[.@i]+"]";
+mes "Jutsu: "+$PFtorresk2$[.@i]+" [Nv "+$PFtorresk2[.@i]+"]";
+if(select("- Ver próximo inscrito:- Convidar para o grupo")==2){
+if(getcharid(1) == 0){
+next;
+mes .npc$;
+mes "Você precisa de um grupo para fazer isto.";
+close;
+end;
+}
+if(getpartyleader(getcharid(1)) != strcharinfo(0)){
+next;
+mes .npc$;
+mes "Você precisa ser o líder do grupo para fazer isto.";
+close;
+end;
+}
+if($PFtorreid[.@i] == 0){
+mes .npc$;
+mes "Candidato não encontrado.";
+close;
+end;
+}
+partyinvitecharname($PFtorrename$[.@i]);
+}
+next;
+}
+set .@i, .@i + 1;
+}
+close;
+end;
+
+case 2:
+next;
+if(getarraysize($PFzabuzaeasyname$) == 0){
+mes .npc$;
+mes "Desculpe, estamos sem inscrições no momento.";
+close;
+end;
+}
+set .@i, 1;
+while(.@i < (.max+1)){
+if($PFzabuzaeasyid[.@i] > 0){
+mes .npc$;
+mes "Nick: "+$PFzabuzaeasyname$[.@i];
+mes "Descrição: "+$PFzabuzaeasymsg$[.@i];
+mes "Jutsu que o jogador possui (Se o nível estiver 0, ele não possui): "+$PFzabuzaeasysk1$[.@i]+" [Nv "+$PFzabuzaeasysk1[.@i]+"]";
+mes "Jutsu que o jogador possui (Se o nível estiver 0, ele não possui): "+$PFzabuzaeasysk2$[.@i]+" [Nv "+$PFzabuzaeasysk2[.@i]+"]";
+if(select("- Ver próximo inscrito:- Convidar para o grupo")==2){
+if(getcharid(1) == 0){
+next;
+mes .npc$;
+mes "Você precisa de um grupo para fazer isto.";
+close;
+end;
+}
+if(getpartyleader(getcharid(1)) != strcharinfo(0)){
+next;
+mes .npc$;
+mes "Você precisa ser o líder do grupo para fazer isto.";
+close;
+end;
+}
+if($PFzabuzaeasyid[.@i] == 0){
+mes .npc$;
+mes "Candidato não encontrado.";
+close;
+end;
+}
+partyinvitecharname($PFzabuzaeasyname$[.@i]);
+}
+next;
+}
+set .@i, .@i + 1;
+}
+close;
+end;
+
+case 3:
+next;
+if(getarraysize($PFhakunormalname$) == 0){
+mes .npc$;
+mes "Desculpe, estamos sem inscrições no momento.";
+close;
+end;
+}
+set .@i, 1;
+while(.@i < (.max+1)){
+if($PFhakunormalid[.@i] > 0){
+mes .npc$;
+mes "Nick: "+$PFhakunormalname$[.@i];
+mes "Descrição: "+$PFhakunormalmsg$[.@i];
+mes "Jutsu que o jogador possui (Se o nível estiver 0, ele não possui): "+$PFhakunormalsk1$[.@i]+" [Nv "+$PFhakunormalsk1[.@i]+"]";
+mes "Jutsu que o jogador possui (Se o nível estiver 0, ele não possui): "+$PFhakunormalsk2$[.@i]+" [Nv "+$PFhakunormalsk2[.@i]+"]";
+if(select("- Ver próximo inscrito:- Convidar para o grupo")==2){
+if(getcharid(1) == 0){
+next;
+mes .npc$;
+mes "Você precisa de um grupo para fazer isto.";
+close;
+end;
+}
+if(getpartyleader(getcharid(1)) != strcharinfo(0)){
+next;
+mes .npc$;
+mes "Você precisa ser o líder do grupo para fazer isto.";
+close;
+end;
+}
+if($PFhakunormalid[.@i] == 0){
+mes .npc$;
+mes "Candidato não encontrado.";
+close;
+end;
+}
+partyinvitecharname($PFhakunormalname$[.@i]);
+}
+next;
+}
+set .@i, .@i + 1;
+}
+close;
+end;
+
+case 4:
+next;
+if(getarraysize($PFhakuhardname$) == 0){
+mes .npc$;
+mes "Desculpe, estamos sem inscrições no momento.";
+close;
+end;
+}
+set .@i, 1;
+while(.@i < (.max+1)){
+if($PFhakuhardid[.@i] > 0){
+mes .npc$;
+mes "Nick: "+$PFhakuhardname$[.@i];
+mes "Descrição: "+$PFhakuhardmsg$[.@i];
+mes "Jutsu que o jogador possui (Se o nível estiver 0, ele não possui): "+$PFhakuhardsk1$[.@i]+" [Nv "+$PFhakuhardsk1[.@i]+"]";
+mes "Jutsu que o jogador possui (Se o nível estiver 0, ele não possui): "+$PFhakuhardsk2$[.@i]+" [Nv "+$PFhakuhardsk2[.@i]+"]";
+if(select("- Ver próximo inscrito:- Convidar para o grupo")==2){
+if(getcharid(1) == 0){
+next;
+mes .npc$;
+mes "Você precisa de um grupo para fazer isto.";
+close;
+end;
+}
+if(getpartyleader(getcharid(1)) != strcharinfo(0)){
+next;
+mes .npc$;
+mes "Você precisa ser o líder do grupo para fazer isto.";
+close;
+end;
+}
+if($PFhakuhardid[.@i] == 0){
+mes .npc$;
+mes "Candidato não encontrado.";
+close;
+end;
+}
+partyinvitecharname($PFhakuhardname$[.@i]);
+}
+next;
+}
+set .@i, .@i + 1;
+}
+close;
+end;
+}
+end;
+
+case 2:
+next;
+
+if(chunin != 1 && jounin != 1 || BaseLevel < 999){
+mes .npc$;
+mes "Só Chunins e Jounins podem utilizar este serviço.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Em qual lista gostaria de se registrar?";
+switch(select("- Torre Sangrenta:- Zabuza Easy:- Haku Normal:- Haku Hard")){
+case 1:
+for( set .@i, 1; .@i <.max+1; set .@i, .@i + 1 ){
+if($PFtorreid[.@i] == getcharid(0)){
+mes .npc$;
+mes "Você já está cadastrado nesta opção.";
+close;
+end;
+}
+}
+if($PFtorreid[.max]>0){
+mes .npc$;
+mes "Desculpe, esta fila está lotada.";
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Digíte uma mensagem com suas características (Habilidades, Treinos, Etc...)";
+input .@msg$;
+next;
+mes .npc$;
+mes "Digíte um Jutsu seu que será útil para a Party, Digite exatamente como está no seu alt s";
+input .@sk1$;
+next;
+mes .npc$;
+mes "Digíte outro Jutsu seu que será útil para a Party, Digite exatamente como está no seu alt s";
+input .@sk2$;
+
+for( set .@i, 1; $PFtorreid[.@i] > 0 && .@i < .max+2; set .@i, .@i + 1 );
+if(.@i>.max){
+mes .npc$;
+mes "Desculpe, esta fila está lotada.";
+close;
+end;
+}
+next;
+set $PFtorreid[.@i], getcharid(0);
+set $PFtorrename$[.@i], strcharinfo(0);
+set $PFtorremsg$[.@i], .@msg$;
+set $PFtorresk1$[.@i], .@sk1$;
+set $PFtorresk2$[.@i], .@sk2$;
+set $PFtorresk1[.@i], getskilllv(getidskilldesc(.@sk1$));
+set $PFtorresk2[.@i], getskilllv(getidskilldesc(.@sk2$));
+
+mes .npc$;
+mes "Inscrição feita com sucesso.";
+close;
+end;
+
+case 2:
+for( set .@i, 1; .@i <.max+1; set .@i, .@i + 1 ){
+if($PFzabuzaeasyid[.@i] == getcharid(0)){
+mes .npc$;
+mes "Você já está cadastrado nesta opção.";
+close;
+end;
+}
+}
+if($PFzabuzaeasyid[.max]>0){
+mes .npc$;
+mes "Desculpe, esta fila está lotada.";
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Digíte uma mensagem com suas características (Habilidades, Treinos, Etc...)";
+input .@msg$;
+next;
+mes .npc$;
+mes "Digíte um Jutsu seu que será útil para a Party, Digite exatamente como está no seu alt s";
+input .@sk1$;
+next;
+mes .npc$;
+mes "Digíte outro Jutsu seu que será útil para a Party, Digite exatamente como está no seu alt s";
+input .@sk2$;
+
+for( set .@i, 1; $PFzabuzaeasyid[.@i] > 0 && .@i < .max+2; set .@i, .@i + 1 );
+if(.@i>.max){
+mes .npc$;
+mes "Desculpe, esta fila está lotada.";
+close;
+end;
+}
+next;
+set $PFzabuzaeasyid[.@i], getcharid(0);
+set $PFzabuzaeasyname$[.@i], strcharinfo(0);
+set $PFzabuzaeasymsg$[.@i], .@msg$;
+set $PFzabuzaeasysk1$[.@i], .@sk1$;
+set $PFzabuzaeasysk2$[.@i], .@sk2$;
+set $PFzabuzaeasysk1[.@i], getskilllv(getidskilldesc(.@sk1$));
+set $PFzabuzaeasysk2[.@i], getskilllv(getidskilldesc(.@sk2$));
+
+mes .npc$;
+mes "Inscrição feita com sucesso.";
+close;
+end;
+
+case 3:
+for( set .@i, 1; .@i <.max+1; set .@i, .@i + 1 ){
+if($PFhakunormalid[.@i] == getcharid(0)){
+mes .npc$;
+mes "Você já está cadastrado nesta opção.";
+close;
+end;
+}
+}
+if($PFhakunormalid[.max]>0){
+mes .npc$;
+mes "Desculpe, esta fila está lotada.";
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Digíte uma mensagem com suas características (Habilidades, Treinos, Etc...)";
+input .@msg$;
+next;
+mes .npc$;
+mes "Digíte um Jutsu seu que será útil para a Party, Digite exatamente como está no seu alt s";
+input .@sk1$;
+next;
+mes .npc$;
+mes "Digíte outro Jutsu seu que será útil para a Party, Digite exatamente como está no seu alt s";
+input .@sk2$;
+
+for( set .@i, 1; $PFhakunormalid[.@i] > 0 && .@i < .max+2; set .@i, .@i + 1 );
+if(.@i>.max){
+mes .npc$;
+mes "Desculpe, esta fila está lotada.";
+close;
+end;
+}
+next;
+set $PFhakunormalid[.@i], getcharid(0);
+set $PFhakunormalname$[.@i], strcharinfo(0);
+set $PFhakunormalmsg$[.@i], .@msg$;
+set $PFhakunormalsk1$[.@i], .@sk1$;
+set $PFhakunormalsk2$[.@i], .@sk2$;
+set $PFhakunormalsk1[.@i], getskilllv(getidskilldesc(.@sk1$));
+set $PFhakunormalsk2[.@i], getskilllv(getidskilldesc(.@sk2$));
+
+mes .npc$;
+mes "Inscrição feita com sucesso.";
+close;
+end;
+
+case 4:
+for( set .@i, 1; .@i <.max+1; set .@i, .@i + 1 ){
+if($PFhakuhardid[.@i] == getcharid(0)){
+mes .npc$;
+mes "Você já está cadastrado nesta opção.";
+close;
+end;
+}
+}
+if($PFhakuhardid[.max]>0){
+mes .npc$;
+mes "Desculpe, esta fila está lotada.";
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Digíte uma mensagem com suas características (Habilidades, Treinos, Etc...)";
+input .@msg$;
+next;
+mes .npc$;
+mes "Digíte um Jutsu seu que será útil para a Party, Digite exatamente como está no seu alt s";
+input .@sk1$;
+next;
+mes .npc$;
+mes "Digíte outro Jutsu seu que será útil para a Party, Digite exatamente como está no seu alt s";
+input .@sk2$;
+
+for( set .@i, 1; $PFhakuhardid[.@i] > 0 && .@i < .max+2; set .@i, .@i + 1 );
+if(.@i>.max){
+mes .npc$;
+mes "Desculpe, esta fila está lotada.";
+close;
+end;
+}
+next;
+set $PFhakuhardid[.@i], getcharid(0);
+set $PFhakuhardname$[.@i], strcharinfo(0);
+set $PFhakuhardmsg$[.@i], .@msg$;
+set $PFhakuhardsk1$[.@i], .@sk1$;
+set $PFhakuhardsk2$[.@i], .@sk2$;
+set $PFhakuhardsk1[.@i], getskilllv(getidskilldesc(.@sk1$));
+set $PFhakuhardsk2[.@i], getskilllv(getidskilldesc(.@sk2$));
+
+mes .npc$;
+mes "Inscrição feita com sucesso.";
+close;
+end;
+}
+
+case 3:
+next;
+
+if(chunin != 1 && jounin != 1 || BaseLevel < 999){
+mes .npc$;
+mes "Só Chunins e Jounins podem utilizar este serviço.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Oque gostaria de fazer?.";
+if(select("Nova Party:Ver Partys") == 1){
+next;
+if(getpartyleader(getcharid(1)) != strcharinfo(0) || getcharid(1) == 0){
+mes .npc$;
+mes "Você deve ser o líder de um grupo para utilizar esta opção.";
+close;
+end;
+}
+
+if(getgmlevel() < 1){
+mes .npc$;
+mes "Você deve ser Vip Account para utilizar esta opção.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Qual lista gostaria de registrar sua party?";
+switch(select("- Torre Sangrenta:- Zabuza Easy:- Haku Normal:- Haku Hard")){
+case 1:
+next;
+for( set .@i, 1; $PFtorre2id[.@i] > 0 && .@i < 26; set .@i, .@i + 1 );
+if(.@i > 25){
+mes .npc$;
+mes "Estamos lotados neste momento.";
+close;
+end;
+}
+mes .npc$;
+mes "Quantos perfis deseja cadastrar? (1 à 4)";
+input .@np;
+
+if(.@np < 1 || .@np > 4){
+mes .npc$;
+mes "Mínimo 1 e Máximo 4 inscrições.";
+close;
+end;
+}
+next;
+for( set .@i2, 1; .@i2 < .@np+1; set .@i2, .@i2 + 1 ){
+mes .npc$;
+mes "Nome do Jutsu requisíto para o perfil de número (Digite igual está no alt s) ["+.@i2+"]:";
+input .@sk$[.@i2];
+next;
+mes .npc$;
+mes "Level do Jutsu requisíto para o perfil de número ["+.@i2+"]:";
+input .@sklv[.@i2];
+if(.@sklv[.@i2] < 1){
+mes .npc$;
+mes "Este número deve ser maior que 0.";
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Número de vagas para o Jutsu requisito do perfil de número ["+.@i2+"]:";
+input .@sk[.@i2];
+if(.@sk[.@i2] < 1){
+mes .npc$;
+mes "Este número deve ser maior que 0.";
+close;
+end;
+}
+next;
+}
+
+mes .npc$;
+mes "Você deseja criar uma Auto Party com os seguintes perfis:";
+mes "["+.@sk$[1]+"] Nv "+.@sklv[1]+" - "+.@sk[1]+" Vagas";
+if(.@sk[2] > 0) mes "["+.@sk$[2]+"] Nv "+.@sklv[2]+" - "+.@sk[2]+" Vagas"; 
+if(.@sk[3] > 0) mes "["+.@sk$[3]+"] Nv "+.@sklv[3]+" - "+.@sk[3]+" Vagas";
+if(.@sk[4] > 0) mes "["+.@sk$[4]+"] Nv "+.@sklv[4]+" - "+.@sk[4]+" Vagas";
+
+if(select("- Sim:- Não") == 2) close;
+for( set .@i, 1; $PFtorre2id[.@i] > 0 && .@i < 26; set .@i, .@i + 1 );
+if(.@i > 25){
+mes .npc$;
+mes "Estamos lotados neste momento.";
+close;
+end;
+}
+set $PFtorre2id[.@i], getcharid(0);
+set $PFtorre2name$[.@i], strcharinfo(0);
+set $PFtorre2skill$[.@i], .@sk$[1];
+set $PFtorre2skill$[.@i+25], .@sk$[2];
+set $PFtorre2skill$[.@i+50], .@sk$[3];
+set $PFtorre2skill$[.@i+75], .@sk$[4];
+set $PFtorre2vagas[.@i], .@sk[1];
+set $PFtorre2vagas[.@i+25], .@sk[2];
+set $PFtorre2vagas[.@i+50], .@sk[3];
+set $PFtorre2vagas[.@i+75], .@sk[4];
+set $PFtorre2lvl[.@i], .@sklv[1];
+set $PFtorre2lvl[.@i+25], .@sklv[2];
+set $PFtorre2lvl[.@i+50], .@sklv[3];
+set $PFtorre2lvl[.@i+75], .@sklv[4];
+close;
+end;
+
+case 2:
+next;
+for( set .@i, 1; $PFzabuzaeasy2id[.@i] > 0 && .@i < 26; set .@i, .@i + 1 );
+if(.@i > 25){
+mes .npc$;
+mes "Estamos lotados neste momento.";
+close;
+end;
+}
+mes .npc$;
+mes "Quantos perfis deseja cadastrar? (1 à 4)";
+input .@np;
+
+if(.@np < 1 || .@np > 4){
+mes .npc$;
+mes "Mínimo 1 e Máximo 4 inscrições.";
+close;
+end;
+}
+next;
+for( set .@i2, 1; .@i2 < .@np+1; set .@i2, .@i2 + 1 ){
+mes .npc$;
+mes "Nome do Jutsu requisíto para o perfil de número (Digite igual está no alt s) ["+.@i2+"]:";
+input .@sk$[.@i2];
+next;
+mes .npc$;
+mes "Level do Jutsu requisíto para o perfil de número (Digite igual está no alt s) ["+.@i2+"]:";
+input .@sklv[.@i2];
+if(.@sklv[.@i2] < 1){
+mes .npc$;
+mes "Este número deve ser maior que 0.";
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Número de vagas para o Jutsu requisito do perfil de número ["+.@i2+"]:";
+input .@sk[.@i2];
+if(.@sk[.@i2] < 1){
+mes .npc$;
+mes "Este número deve ser maior que 0.";
+close;
+end;
+}
+next;
+}
+
+mes .npc$;
+mes "Você deseja criar uma Auto Party com os seguintes perfis:";
+mes "["+.@sk$[1]+"] Nv "+.@sklv[1]+" - "+.@sk[1]+" Vagas";
+if(.@sk[2] > 0) mes "["+.@sk$[2]+"] Nv "+.@sklv[2]+" - "+.@sk[2]+" Vagas"; 
+if(.@sk[3] > 0) mes "["+.@sk$[3]+"] Nv "+.@sklv[3]+" - "+.@sk[3]+" Vagas";
+if(.@sk[4] > 0) mes "["+.@sk$[4]+"] Nv "+.@sklv[4]+" - "+.@sk[4]+" Vagas";
+
+if(select("Sim:Não") == 2) close;
+for( set .@i, 1; $PFzabuzaeasy2id[.@i] > 0 && .@i < 26; set .@i, .@i + 1 );
+if(.@i > 25){
+mes .npc$;
+mes "Estamos lotados neste momento.";
+close;
+end;
+}
+set $PFzabuzaeasy2id[.@i], getcharid(0);
+set $PFzabuzaeasy2name$[.@i], strcharinfo(0);
+set $PFzabuzaeasy2skill$[.@i], .@sk$[1];
+set $PFzabuzaeasy2skill$[.@i+25], .@sk$[2];
+set $PFzabuzaeasy2skill$[.@i+50], .@sk$[3];
+set $PFzabuzaeasy2skill$[.@i+75], .@sk$[4];
+set $PFzabuzaeasy2vagas[.@i], .@sk[1];
+set $PFzabuzaeasy2vagas[.@i+25], .@sk[2];
+set $PFzabuzaeasy2vagas[.@i+50], .@sk[3];
+set $PFzabuzaeasy2vagas[.@i+75], .@sk[4];
+set $PFzabuzaeasy2lvl[.@i], .@sklv[1];
+set $PFzabuzaeasy2lvl[.@i+25], .@sklv[2];
+set $PFzabuzaeasy2lvl[.@i+50], .@sklv[3];
+set $PFzabuzaeasy2lvl[.@i+75], .@sklv[4];
+close;
+end;
+
+case 3:
+next;
+for( set .@i, 1; $PFhakunormal2id[.@i] > 0 && .@i < 26; set .@i, .@i + 1 );
+if(.@i > 25){
+mes .npc$;
+mes "Estamos lotados neste momento.";
+close;
+end;
+}
+mes .npc$;
+mes "Quantos perfis deseja cadastrar? (1 à 4)";
+input .@np;
+
+if(.@np < 1 || .@np > 4){
+mes .npc$;
+mes "Mínimo 1 e Máximo 4 inscrições.";
+close;
+end;
+}
+next;
+for( set .@i2, 1; .@i2 < .@np+1; set .@i2, .@i2 + 1 ){
+mes .npc$;
+mes "Nome do Jutsu requisíto para o perfil de número ["+.@i2+"]:";
+input .@sk$[.@i2];
+next;
+mes .npc$;
+mes "Level do Jutsu requisíto para o perfil de número ["+.@i2+"]:";
+input .@sklv[.@i2];
+if(.@sklv[.@i2] < 1){
+mes .npc$;
+mes "Este número deve ser maior que 0.";
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Número de vagas para o Jutsu requisito do perfil de número ["+.@i2+"]:";
+input .@sk[.@i2];
+if(.@sk[.@i2] < 1){
+mes .npc$;
+mes "Este número deve ser maior que 0.";
+close;
+end;
+}
+next;
+}
+
+mes .npc$;
+mes "Você deseja criar uma Auto Party com os seguintes perfis:";
+mes "["+.@sk$[1]+"] Nv "+.@sklv[1]+" - "+.@sk[1]+" Vagas";
+if(.@sk[2] > 0) mes "["+.@sk$[2]+"] Nv "+.@sklv[2]+" - "+.@sk[2]+" Vagas"; 
+if(.@sk[3] > 0) mes "["+.@sk$[3]+"] Nv "+.@sklv[3]+" - "+.@sk[3]+" Vagas";
+if(.@sk[4] > 0) mes "["+.@sk$[4]+"] Nv "+.@sklv[4]+" - "+.@sk[4]+" Vagas";
+
+if(select("Sim:Não") == 2) close;
+for( set .@i, 1; $PFhakunormal2id[.@i] > 0 && .@i < 26; set .@i, .@i + 1 );
+if(.@i > 25){
+mes .npc$;
+mes "Estamos lotados neste momento.";
+close;
+end;
+}
+set $PFhakunormal2id[.@i], getcharid(0);
+set $PFhakunormal2name$[.@i], strcharinfo(0);
+set $PFhakunormal2skill$[.@i], .@sk$[1];
+set $PFhakunormal2skill$[.@i+25], .@sk$[2];
+set $PFhakunormal2skill$[.@i+50], .@sk$[3];
+set $PFhakunormal2skill$[.@i+75], .@sk$[4];
+set $PFhakunormal2vagas[.@i], .@sk[1];
+set $PFhakunormal2vagas[.@i+25], .@sk[2];
+set $PFhakunormal2vagas[.@i+50], .@sk[3];
+set $PFhakunormal2vagas[.@i+75], .@sk[4];
+set $PFhakunormal2lvl[.@i], .@sklv[1];
+set $PFhakunormal2lvl[.@i+25], .@sklv[2];
+set $PFhakunormal2lvl[.@i+50], .@sklv[3];
+set $PFhakunormal2lvl[.@i+75], .@sklv[4];
+close;
+end;
+
+case 4:
+next;
+for( set .@i, 1; $PFhakuhard2id[.@i] > 0 && .@i < 26; set .@i, .@i + 1 );
+if(.@i > 25){
+mes .npc$;
+mes "Estamos lotados neste momento.";
+close;
+end;
+}
+mes .npc$;
+mes "Quantos perfis deseja cadastrar? (1 à 4)";
+input .@np;
+
+if(.@np < 1 || .@np > 4){
+mes .npc$;
+mes "Mínimo 1 e Máximo 4 inscrições.";
+close;
+end;
+}
+next;
+for( set .@i2, 1; .@i2 < .@np+1; set .@i2, .@i2 + 1 ){
+mes .npc$;
+mes "Nome do Jutsu requisíto para o perfil de número ["+.@i2+"]:";
+input .@sk$[.@i2];
+next;
+mes .npc$;
+mes "Level do Jutsu requisíto para o perfil de número ["+.@i2+"]:";
+input .@sklv[.@i2];
+if(.@sklv[.@i2] < 1){
+mes .npc$;
+mes "Este número deve ser maior que 0.";
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Número de vagas para o Jutsu requisito do perfil de número ["+.@i2+"]:";
+input .@sk[.@i2];
+if(.@sk[.@i2] < 1){
+mes .npc$;
+mes "Este número deve ser maior que 0.";
+close;
+end;
+}
+next;
+}
+
+mes .npc$;
+mes "Você deseja criar uma Auto Party com os seguintes perfis:";
+mes "["+.@sk$[1]+"] Nv "+.@sklv[1]+" - "+.@sk[1]+" Vagas";
+if(.@sk[2] > 0) mes "["+.@sk$[2]+"] Nv "+.@sklv[2]+" - "+.@sk[2]+" Vagas"; 
+if(.@sk[3] > 0) mes "["+.@sk$[3]+"] Nv "+.@sklv[3]+" - "+.@sk[3]+" Vagas";
+if(.@sk[4] > 0) mes "["+.@sk$[4]+"] Nv "+.@sklv[4]+" - "+.@sk[4]+" Vagas";
+
+if(select("Sim:Não") == 2) close;
+for( set .@i, 1; $PFhakuhard2id[.@i] > 0 && .@i < 26; set .@i, .@i + 1 );
+if(.@i > 25){
+mes .npc$;
+mes "Estamos lotados neste momento.";
+close;
+end;
+}
+set $PFhakuhard2id[.@i], getcharid(0);
+set $PFhakuhard2name$[.@i], strcharinfo(0);
+set $PFhakuhard2skill$[.@i], .@sk$[1];
+set $PFhakuhard2skill$[.@i+25], .@sk$[2];
+set $PFhakuhard2skill$[.@i+50], .@sk$[3];
+set $PFhakuhard2skill$[.@i+75], .@sk$[4];
+set $PFhakuhard2vagas[.@i], .@sk[1];
+set $PFhakuhard2vagas[.@i+25], .@sk[2];
+set $PFhakuhard2vagas[.@i+50], .@sk[3];
+set $PFhakuhard2vagas[.@i+75], .@sk[4];
+set $PFhakuhard2lvl[.@i], .@sklv[1];
+set $PFhakuhard2lvl[.@i+25], .@sklv[2];
+set $PFhakuhard2lvl[.@i+50], .@sklv[3];
+set $PFhakuhard2lvl[.@i+75], .@sklv[4];
+close;
+end;
+}
+end;
+}else{
+next;
+mes .npc$;
+mes "Em qual lista estaria interessado?.";
+switch(select("- Torre Sangrenta:- Zabuza Easy:- Haku Normal:- Haku Hard")){
+case 1:
+next;
+if(getarraysize($PFtorre2id) == 0){
+mes .npc$;
+mes "Desculpe, estamos sem inscrições no momento.";
+close;
+end;
+}
+set .@i, 1;
+while(.@i < (26)){
+if($PFtorre2id[.@i] > 0){
+mes "Líder: "+$PFtorre2name$[.@i];
+if($PFtorre2vagas[.@i] > 0) mes "Jutsu: "+$PFtorre2skill$[.@i]+" [Nv "+$PFtorre2lvl[.@i]+"] - Vagas: "+$PFtorre2vagas[.@i];
+if($PFtorre2vagas[.@i+25] > 0) mes "Jutsu: "+$PFtorre2skill$[.@i+25]+" [Nv "+$PFtorre2lvl[.@i+25]+"] - Vagas: "+$PFtorre2vagas[.@i+25];
+if($PFtorre2vagas[.@i+50] > 0) mes "Jutsu: "+$PFtorre2skill$[.@i+50]+" [Nv "+$PFtorre2lvl[.@i+50]+"] - Vagas: "+$PFtorre2vagas[.@i+50];
+if($PFtorre2vagas[.@i+75] > 0) mes "Jutsu: "+$PFtorre2skill$[.@i+75]+" [Nv "+$PFtorre2lvl[.@i+75]+"] - Vagas: "+$PFtorre2vagas[.@i+75];
+if(select("Continuar:Ingressar")==2){
+if(getcharid(1) > 0){
+next;
+mes .npc$;
+mes "Você já está em um grupo.";
+close;
+end;
+}
+if($PFtorre2id[.@i] == 0){
+mes .npc$;
+mes "Party não encontrada.";
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFtorre2skill$[.@i])) >= $PFtorre2lvl[.@i] && $PFtorre2vagas[.@i] > 0){
+partyinvitecharname2($PFtorre2name$[.@i]);
+set $PFtorre2vagas[.@i], $PFtorre2vagas[.@i] - 1;
+if($PFtorre2vagas[.@i] == 0 && $PFtorre2vagas[.@i+25] == 0 && $PFtorre2vagas[.@i+50] == 0 && $PFtorre2vagas[.@i+75] == 0){
+set $PFtorre2id[.@i], 0;
+set $PFtorre2name$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFtorre2skill$[.@i+25])) >= $PFtorre2lvl[.@i+25] && $PFtorre2vagas[.@i+25] > 0){
+partyinvitecharname2($PFtorre2name$[.@i]);
+set $PFtorre2vagas[.@i+25], $PFtorre2vagas[.@i+25] - 1;
+if($PFtorre2vagas[.@i] == 0 && $PFtorre2vagas[.@i+25] == 0 && $PFtorre2vagas[.@i+50] == 0 && $PFtorre2vagas[.@i+75] == 0){
+set $PFtorre2id[.@i], 0;
+set $PFtorre2name$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFtorre2skill$[.@i+50])) >= $PFtorre2lvl[.@i+50] && $PFtorre2vagas[.@i+50] > 0){
+partyinvitecharname2($PFtorre2name$[.@i]);
+set $PFtorre2vagas[.@i+50], $PFtorre2vagas[.@i+50] - 1;
+if($PFtorre2vagas[.@i] == 0 && $PFtorre2vagas[.@i+25] == 0 && $PFtorre2vagas[.@i+50] == 0 && $PFtorre2vagas[.@i+75] == 0){
+set $PFtorre2id[.@i], 0;
+set $PFtorre2name$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFtorre2skill$[.@i+75])) >= $PFtorre2lvl[.@i+75] && $PFtorre2vagas[.@i+75] > 0){
+partyinvitecharname2($PFtorre2name$[.@i]);
+set $PFtorre2vagas[.@i+75], $PFtorre2vagas[.@i+75] - 1;
+if($PFtorre2vagas[.@i] == 0 && $PFtorre2vagas[.@i+25] == 0 && $PFtorre2vagas[.@i+50] == 0 && $PFtorre2vagas[.@i+75] == 0){
+set $PFtorre2id[.@i], 0;
+set $PFtorre2name$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2skill$[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2vagas[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+set $PFtorre2lvl[.@i], 0;
+}
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Você não possui os requisitos necessários para entrar neste grupo.";
+close;
+end;
+}
+next;
+}
+set .@i, .@i + 1;
+}
+close;
+end;
+
+case 2:
+next;
+if(getarraysize($PFzabuzaeasy2id) == 0){
+mes .npc$;
+mes "Desculpe, estamos sem inscrições no momento.";
+close;
+end;
+}
+set .@i, 1;
+while(.@i < (26)){
+if($PFzabuzaeasy2id[.@i] > 0){
+mes "Líder: "+$PFzabuzaeasy2name$[.@i];
+if($PFzabuzaeasy2vagas[.@i] > 0) mes "Jutsu: "+$PFzabuzaeasy2skill$[.@i]+" [Nv "+$PFzabuzaeasy2lvl[.@i]+"] - Vagas: "+$PFzabuzaeasy2vagas[.@i];
+if($PFzabuzaeasy2vagas[.@i+25] > 0) mes "Jutsu: "+$PFzabuzaeasy2skill$[.@i+25]+" [Nv "+$PFzabuzaeasy2lvl[.@i+25]+"] - Vagas: "+$PFzabuzaeasy2vagas[.@i+25];
+if($PFzabuzaeasy2vagas[.@i+50] > 0) mes "Jutsu: "+$PFzabuzaeasy2skill$[.@i+50]+" [Nv "+$PFzabuzaeasy2lvl[.@i+50]+"] - Vagas: "+$PFzabuzaeasy2vagas[.@i+50];
+if($PFzabuzaeasy2vagas[.@i+75] > 0) mes "Jutsu: "+$PFzabuzaeasy2skill$[.@i+75]+" [Nv "+$PFzabuzaeasy2lvl[.@i+75]+"] - Vagas: "+$PFzabuzaeasy2vagas[.@i+75];
+if(select("Continuar:Ingressar")==2){
+if(getcharid(1) > 0){
+next;
+mes .npc$;
+mes "Você já está em um grupo.";
+close;
+end;
+}
+if($PFzabuzaeasy2id[.@i] == 0){
+mes .npc$;
+mes "Party não encontrada.";
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFzabuzaeasy2skill$[.@i])) >= $PFzabuzaeasy2lvl[.@i] && $PFzabuzaeasy2vagas[.@i] > 0){
+partyinvitecharname2($PFzabuzaeasy2name$[.@i]);
+set $PFzabuzaeasy2vagas[.@i], $PFzabuzaeasy2vagas[.@i] - 1;
+if($PFzabuzaeasy2vagas[.@i] == 0 && $PFzabuzaeasy2vagas[.@i+25] == 0 && $PFzabuzaeasy2vagas[.@i+50] == 0 && $PFzabuzaeasy2vagas[.@i+75] == 0){
+set $PFzabuzaeasy2id[.@i], 0;
+set $PFzabuzaeasy2name$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFzabuzaeasy2skill$[.@i+25])) >= $PFzabuzaeasy2lvl[.@i+25] && $PFzabuzaeasy2vagas[.@i+25] > 0){
+partyinvitecharname2($PFzabuzaeasy2name$[.@i]);
+set $PFzabuzaeasy2vagas[.@i+25], $PFzabuzaeasy2vagas[.@i+25] - 1;
+if($PFzabuzaeasy2vagas[.@i] == 0 && $PFzabuzaeasy2vagas[.@i+25] == 0 && $PFzabuzaeasy2vagas[.@i+50] == 0 && $PFzabuzaeasy2vagas[.@i+75] == 0){
+set $PFzabuzaeasy2id[.@i], 0;
+set $PFzabuzaeasy2name$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFzabuzaeasy2skill$[.@i+50])) >= $PFzabuzaeasy2lvl[.@i+50] && $PFzabuzaeasy2vagas[.@i+50] > 0){
+partyinvitecharname2($PFzabuzaeasy2name$[.@i]);
+set $PFzabuzaeasy2vagas[.@i+50], $PFzabuzaeasy2vagas[.@i+50] - 1;
+if($PFzabuzaeasy2vagas[.@i] == 0 && $PFzabuzaeasy2vagas[.@i+25] == 0 && $PFzabuzaeasy2vagas[.@i+50] == 0 && $PFzabuzaeasy2vagas[.@i+75] == 0){
+set $PFzabuzaeasy2id[.@i], 0;
+set $PFzabuzaeasy2name$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFzabuzaeasy2skill$[.@i+75])) >= $PFzabuzaeasy2lvl[.@i+75] && $PFzabuzaeasy2vagas[.@i+75] > 0){
+partyinvitecharname2($PFzabuzaeasy2name$[.@i]);
+set $PFzabuzaeasy2vagas[.@i+75], $PFzabuzaeasy2vagas[.@i+75] - 1;
+if($PFzabuzaeasy2vagas[.@i] == 0 && $PFzabuzaeasy2vagas[.@i+25] == 0 && $PFzabuzaeasy2vagas[.@i+50] == 0 && $PFzabuzaeasy2vagas[.@i+75] == 0){
+set $PFzabuzaeasy2id[.@i], 0;
+set $PFzabuzaeasy2name$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2skill$[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2vagas[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+set $PFzabuzaeasy2lvl[.@i], 0;
+}
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Você não possui os requisitos necessários para entrar neste grupo.";
+close;
+end;
+}
+next;
+}
+set .@i, .@i + 1;
+}
+close;
+end;
+
+case 3:
+next;
+if(getarraysize($PFhakunormal2id) == 0){
+mes .npc$;
+mes "Desculpe, estamos sem inscrições no momento.";
+close;
+end;
+}
+set .@i, 1;
+while(.@i < (26)){
+if($PFhakunormal2id[.@i] > 0){
+mes "Líder: "+$PFhakunormal2name$[.@i];
+if($PFhakunormal2vagas[.@i] > 0) mes "Jutsu: "+$PFhakunormal2skill$[.@i]+" [Nv "+$PFhakunormal2lvl[.@i]+"] - Vagas: "+$PFhakunormal2vagas[.@i];
+if($PFhakunormal2vagas[.@i+25] > 0) mes "Jutsu: "+$PFhakunormal2skill$[.@i+25]+" [Nv "+$PFhakunormal2lvl[.@i+25]+"] - Vagas: "+$PFhakunormal2vagas[.@i+25];
+if($PFhakunormal2vagas[.@i+50] > 0) mes "Jutsu: "+$PFhakunormal2skill$[.@i+50]+" [Nv "+$PFhakunormal2lvl[.@i+50]+"] - Vagas: "+$PFhakunormal2vagas[.@i+50];
+if($PFhakunormal2vagas[.@i+75] > 0) mes "Jutsu: "+$PFhakunormal2skill$[.@i+75]+" [Nv "+$PFhakunormal2lvl[.@i+75]+"] - Vagas: "+$PFhakunormal2vagas[.@i+75];
+if(select("Continuar:Ingressar")==2){
+if(getcharid(1) > 0){
+next;
+mes .npc$;
+mes "Você já está em um grupo.";
+close;
+end;
+}
+if($PFhakunormal2id[.@i] == 0){
+mes .npc$;
+mes "Party não encontrada.";
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFhakunormal2skill$[.@i])) >= $PFhakunormal2lvl[.@i] && $PFhakunormal2vagas[.@i] > 0){
+partyinvitecharname2($PFhakunormal2name$[.@i]);
+set $PFhakunormal2vagas[.@i], $PFhakunormal2vagas[.@i] - 1;
+if($PFhakunormal2vagas[.@i] == 0 && $PFhakunormal2vagas[.@i+25] == 0 && $PFhakunormal2vagas[.@i+50] == 0 && $PFhakunormal2vagas[.@i+75] == 0){
+set $PFhakunormal2id[.@i], 0;
+set $PFhakunormal2name$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFhakunormal2skill$[.@i+25])) >= $PFhakunormal2lvl[.@i+25] && $PFhakunormal2vagas[.@i+25] > 0){
+partyinvitecharname2($PFhakunormal2name$[.@i]);
+set $PFhakunormal2vagas[.@i+25], $PFhakunormal2vagas[.@i+25] - 1;
+if($PFhakunormal2vagas[.@i] == 0 && $PFhakunormal2vagas[.@i+25] == 0 && $PFhakunormal2vagas[.@i+50] == 0 && $PFhakunormal2vagas[.@i+75] == 0){
+set $PFhakunormal2id[.@i], 0;
+set $PFhakunormal2name$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFhakunormal2skill$[.@i+50])) >= $PFhakunormal2lvl[.@i+50] && $PFhakunormal2vagas[.@i+50] > 0){
+partyinvitecharname2($PFhakunormal2name$[.@i]);
+set $PFhakunormal2vagas[.@i+50], $PFhakunormal2vagas[.@i+50] - 1;
+if($PFhakunormal2vagas[.@i] == 0 && $PFhakunormal2vagas[.@i+25] == 0 && $PFhakunormal2vagas[.@i+50] == 0 && $PFhakunormal2vagas[.@i+75] == 0){
+set $PFhakunormal2id[.@i], 0;
+set $PFhakunormal2name$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFhakunormal2skill$[.@i+75])) >= $PFhakunormal2lvl[.@i+75] && $PFhakunormal2vagas[.@i+75] > 0){
+partyinvitecharname2($PFhakunormal2name$[.@i]);
+set $PFhakunormal2vagas[.@i+75], $PFhakunormal2vagas[.@i+75] - 1;
+if($PFhakunormal2vagas[.@i] == 0 && $PFhakunormal2vagas[.@i+25] == 0 && $PFhakunormal2vagas[.@i+50] == 0 && $PFhakunormal2vagas[.@i+75] == 0){
+set $PFhakunormal2id[.@i], 0;
+set $PFhakunormal2name$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2skill$[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2vagas[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+set $PFhakunormal2lvl[.@i], 0;
+}
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Você não possui os requisitos necessários para entrar neste grupo.";
+close;
+end;
+}
+next;
+}
+set .@i, .@i + 1;
+}
+close;
+end;
+
+case 4:
+next;
+
+if(chunin != 1 && jounin != 1 || BaseLevel < 999){
+mes .npc$;
+mes "Só Chunins e Jounins podem utilizar este serviço.";
+close;
+end;
+}
+
+if(getarraysize($PFhakuhard2id) == 0){
+mes .npc$;
+mes "Desculpe, estamos sem inscrições no momento.";
+close;
+end;
+}
+set .@i, 1;
+while(.@i < (26)){
+if($PFhakuhard2id[.@i] > 0){
+mes "Líder: "+$PFhakuhard2name$[.@i];
+if($PFhakuhard2vagas[.@i] > 0) mes "Jutsu: "+$PFhakuhard2skill$[.@i]+" [Nv "+$PFhakuhard2lvl[.@i]+"] - Vagas: "+$PFhakuhard2vagas[.@i];
+if($PFhakuhard2vagas[.@i+25] > 0) mes "Jutsu: "+$PFhakuhard2skill$[.@i+25]+" [Nv "+$PFhakuhard2lvl[.@i+25]+"] - Vagas: "+$PFhakuhard2vagas[.@i+25];
+if($PFhakuhard2vagas[.@i+50] > 0) mes "Jutsu: "+$PFhakuhard2skill$[.@i+50]+" [Nv "+$PFhakuhard2lvl[.@i+50]+"] - Vagas: "+$PFhakuhard2vagas[.@i+50];
+if($PFhakuhard2vagas[.@i+75] > 0) mes "Jutsu: "+$PFhakuhard2skill$[.@i+75]+" [Nv "+$PFhakuhard2lvl[.@i+75]+"] - Vagas: "+$PFhakuhard2vagas[.@i+75];
+if(select("Continuar:Ingressar")==2){
+if(getcharid(1) > 0){
+next;
+mes .npc$;
+mes "Você já está em um grupo.";
+close;
+end;
+}
+if($PFhakuhard2id[.@i] == 0){
+mes .npc$;
+mes "Party não encontrada.";
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFhakuhard2skill$[.@i])) >= $PFhakuhard2lvl[.@i] && $PFhakuhard2vagas[.@i] > 0){
+partyinvitecharname2($PFhakuhard2name$[.@i]);
+set $PFhakuhard2vagas[.@i], $PFhakuhard2vagas[.@i] - 1;
+if($PFhakuhard2vagas[.@i] == 0 && $PFhakuhard2vagas[.@i+25] == 0 && $PFhakuhard2vagas[.@i+50] == 0 && $PFhakuhard2vagas[.@i+75] == 0){
+set $PFhakuhard2id[.@i], 0;
+set $PFhakuhard2name$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFhakuhard2skill$[.@i+25])) >= $PFhakuhard2lvl[.@i+25] && $PFhakuhard2vagas[.@i+25] > 0){
+partyinvitecharname2($PFhakuhard2name$[.@i]);
+set $PFhakuhard2vagas[.@i+25], $PFhakuhard2vagas[.@i+25] - 1;
+if($PFhakuhard2vagas[.@i] == 0 && $PFhakuhard2vagas[.@i+25] == 0 && $PFhakuhard2vagas[.@i+50] == 0 && $PFhakuhard2vagas[.@i+75] == 0){
+set $PFhakuhard2id[.@i], 0;
+set $PFhakuhard2name$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFhakuhard2skill$[.@i+50])) >= $PFhakuhard2lvl[.@i+50] && $PFhakuhard2vagas[.@i+50] > 0){
+partyinvitecharname2($PFhakuhard2name$[.@i]);
+set $PFhakuhard2vagas[.@i+50], $PFhakuhard2vagas[.@i+50] - 1;
+if($PFhakuhard2vagas[.@i] == 0 && $PFhakuhard2vagas[.@i+25] == 0 && $PFhakuhard2vagas[.@i+50] == 0 && $PFhakuhard2vagas[.@i+75] == 0){
+set $PFhakuhard2id[.@i], 0;
+set $PFhakuhard2name$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+}
+close;
+end;
+}
+if(getskilllv(getidskilldesc($PFhakuhard2skill$[.@i+75])) >= $PFhakuhard2lvl[.@i+75] && $PFhakuhard2vagas[.@i+75] > 0){
+partyinvitecharname2($PFhakuhard2name$[.@i]);
+set $PFhakuhard2vagas[.@i+75], $PFhakuhard2vagas[.@i+75] - 1;
+if($PFhakuhard2vagas[.@i] == 0 && $PFhakuhard2vagas[.@i+25] == 0 && $PFhakuhard2vagas[.@i+50] == 0 && $PFhakuhard2vagas[.@i+75] == 0){
+set $PFhakuhard2id[.@i], 0;
+set $PFhakuhard2name$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2skill$[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2vagas[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+set $PFhakuhard2lvl[.@i], 0;
+}
+close;
+end;
+}
+next;
+mes .npc$;
+mes "Você não possui os requisitos necessários para entrar neste grupo.";
+close;
+end;
+}
+next;
+}
+set .@i, .@i + 1;
+}
+close;
+end;
+}
+end;
+}
+end;
+
+case 4:
+for( set .i, 1; .i < 101; set .i, .i + 1 ){
+if($PFtorreid[.i] == getcharid(0)){
+set $PFtorreid[.i], 0;
+set $PFtorrename$[.i], 0;
+set $PFtorremsg$[.i], 0;
+set $PFtorresk1[.i], 0;
+set $PFtorresk2[.i], 0;
+set $PFtorresk1$[.i], 0;
+set $PFtorresk2$[.i], 0;
+}
+if($PFtorre2id[.i] == getcharid(0)){
+set $PFtorre2id[.i], 0;
+set $PFtorre2name$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+}
+if($PFzabuzaeasyid[.i] == getcharid(0)){
+set $PFzabuzaeasyid[.i], 0;
+set $PFzabuzaeasyname$[.i], 0;
+set $PFzabuzaeasymsg$[.i], 0;
+set $PFzabuzaeasysk1[.i], 0;
+set $PFzabuzaeasysk2[.i], 0;
+set $PFzabuzaeasysk1$[.i], 0;
+set $PFzabuzaeasysk2$[.i], 0;
+}
+if($PFzabuzaeasy2id[.i] == getcharid(0)){
+set $PFzabuzaeasy2id[.i], 0;
+set $PFzabuzaeasy2name$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+}
+if($PFhakunormalid[.i] == getcharid(0)){
+set $PFhakunormalid[.i], 0;
+set $PFhakunormalname$[.i], 0;
+set $PFhakunormalmsg$[.i], 0;
+set $PFhakunormalsk1[.i], 0;
+set $PFhakunormalsk2[.i], 0;
+set $PFhakunormalsk1$[.i], 0;
+set $PFhakunormalsk2$[.i], 0;
+}
+if($PFhakunormal2id[.i] == getcharid(0)){
+set $PFhakunormal2id[.i], 0;
+set $PFhakunormal2name$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+}
+if($PFhakuhardid[.i] == getcharid(0)){
+set $PFhakuhardid[.i], 0;
+set $PFhakuhardname$[.i], 0;
+set $PFhakuhardmsg$[.i], 0;
+set $PFhakuhardsk1[.i], 0;
+set $PFhakuhardsk2[.i], 0;
+set $PFhakuhardsk1$[.i], 0;
+set $PFhakuhardsk2$[.i], 0;
+}
+if($PFhakuhard2id[.i] == getcharid(0)){
+set $PFhakuhard2id[.i], 0;
+set $PFhakuhard2name$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+}
+}
+close;
+end;
+
+case 5:
+next;
+mes .npc$;
+mes "O Party Finder é um sistema para procurar grupos para determinadas aventuras.";
+next;
+mes .npc$;
+mes "Apenas Chunins e Jounins com nível 999 podem se inscrever.";
+next;
+mes .npc$;
+mes "Atualmente o sistema disponibiliza as seguintes opções:";
+mes "Instance: Torre";
+mes "Raid: Zabuza Easy";
+mes "Raid: Haku Normal";
+mes "Raid: Haku Hard";
+next;
+mes .npc$;
+mes "Para evitar acúmulos de inscrições, as listas são resetadas a cada hora.";
+
+if(getgmlevel() > 5){
+next;
+mes .npc$;
+mes "Gostaria de resetar as listas?";
+if(select("Não:Sim")==2){
+for( set .i, 1; .i < 101; set .i, .i + 1 ){
+set $PFtorreid[.i], 0;
+set $PFtorrename$[.i], 0;
+set $PFtorremsg$[.i], 0;
+set $PFtorresk1[.i], 0;
+set $PFtorresk2[.i], 0;
+set $PFtorresk1$[.i], 0;
+set $PFtorresk2$[.i], 0;
+
+set $PFtorre2id[.i], 0;
+set $PFtorre2name$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+
+set $PFzabuzaeasyid[.i], 0;
+set $PFzabuzaeasyname$[.i], 0;
+set $PFzabuzaeasymsg$[.i], 0;
+set $PFzabuzaeasysk1[.i], 0;
+set $PFzabuzaeasysk2[.i], 0;
+set $PFzabuzaeasysk1$[.i], 0;
+set $PFzabuzaeasysk2$[.i], 0;
+
+set $PFzabuzaeasy2id[.i], 0;
+set $PFzabuzaeasy2name$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+
+set $PFhakunormalid[.i], 0;
+set $PFhakunormalname$[.i], 0;
+set $PFhakunormalmsg$[.i], 0;
+set $PFhakunormalsk1[.i], 0;
+set $PFhakunormalsk2[.i], 0;
+set $PFhakunormalsk1$[.i], 0;
+set $PFhakunormalsk2$[.i], 0;
+
+set $PFhakunormal2id[.i], 0;
+set $PFhakunormal2name$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+
+set $PFhakuhardid[.i], 0;
+set $PFhakuhardname$[.i], 0;
+set $PFhakuhardmsg$[.i], 0;
+set $PFhakuhardsk1[.i], 0;
+set $PFhakuhardsk2[.i], 0;
+set $PFhakuhardsk1$[.i], 0;
+set $PFhakuhardsk2$[.i], 0;
+
+set $PFhakuhard2id[.i], 0;
+set $PFhakuhard2name$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+}
+next;
+mes .npc$;
+mes "Listas resetadas com sucesso.";
+}
+} //getgm5
+close;
+end;
+}
+end;
+}
+
+-	script	Evento#PF	PartyFinder#PF -1,{
+OnMinute00:
+for( set .i, 1; .i < 101; set .i, .i + 1 ){
+set $PFtorreid[.i], 0;
+set $PFtorrename$[.i], 0;
+set $PFtorremsg$[.i], 0;
+set $PFtorresk1[.i], 0;
+set $PFtorresk2[.i], 0;
+set $PFtorresk1$[.i], 0;
+set $PFtorresk2$[.i], 0;
+
+set $PFtorre2id[.i], 0;
+set $PFtorre2name$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+
+set $PFzabuzaeasyid[.i], 0;
+set $PFzabuzaeasyname$[.i], 0;
+set $PFzabuzaeasymsg$[.i], 0;
+set $PFzabuzaeasysk1[.i], 0;
+set $PFzabuzaeasysk2[.i], 0;
+set $PFzabuzaeasysk1$[.i], 0;
+set $PFzabuzaeasysk2$[.i], 0;
+
+set $PFzabuzaeasy2id[.i], 0;
+set $PFzabuzaeasy2name$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+
+set $PFhakunormalid[.i], 0;
+set $PFhakunormalname$[.i], 0;
+set $PFhakunormalmsg$[.i], 0;
+set $PFhakunormalsk1[.i], 0;
+set $PFhakunormalsk2[.i], 0;
+set $PFhakunormalsk1$[.i], 0;
+set $PFhakunormalsk2$[.i], 0;
+
+set $PFhakunormal2id[.i], 0;
+set $PFhakunormal2name$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+
+set $PFhakuhardid[.i], 0;
+set $PFhakuhardname$[.i], 0;
+set $PFhakuhardmsg$[.i], 0;
+set $PFhakuhardsk1[.i], 0;
+set $PFhakuhardsk2[.i], 0;
+set $PFhakuhardsk1$[.i], 0;
+set $PFhakuhardsk2$[.i], 0;
+
+set $PFhakuhard2id[.i], 0;
+set $PFhakuhard2name$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+}
+end;
+
+OnPCLogoutEvent:
+for( set .i, 1; .i < 101; set .i, .i + 1 ){
+if($PFtorreid[.i] == getcharid(0)){
+set $PFtorreid[.i], 0;
+set $PFtorrename$[.i], 0;
+set $PFtorremsg$[.i], 0;
+set $PFtorresk1[.i], 0;
+set $PFtorresk2[.i], 0;
+set $PFtorresk1$[.i], 0;
+set $PFtorresk2$[.i], 0;
+}
+if($PFtorre2id[.i] == getcharid(0)){
+set $PFtorre2id[.i], 0;
+set $PFtorre2name$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2skill$[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2vagas[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+set $PFtorre2lvl[.i], 0;
+}
+if($PFzabuzaeasyid[.i] == getcharid(0)){
+set $PFzabuzaeasyid[.i], 0;
+set $PFzabuzaeasyname$[.i], 0;
+set $PFzabuzaeasymsg$[.i], 0;
+set $PFzabuzaeasysk1[.i], 0;
+set $PFzabuzaeasysk2[.i], 0;
+set $PFzabuzaeasysk1$[.i], 0;
+set $PFzabuzaeasysk2$[.i], 0;
+}
+if($PFzabuzaeasy2id[.i] == getcharid(0)){
+set $PFzabuzaeasy2id[.i], 0;
+set $PFzabuzaeasy2name$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2skill$[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2vagas[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+set $PFzabuzaeasy2lvl[.i], 0;
+}
+if($PFhakunormalid[.i] == getcharid(0)){
+set $PFhakunormalid[.i], 0;
+set $PFhakunormalname$[.i], 0;
+set $PFhakunormalmsg$[.i], 0;
+set $PFhakunormalsk1[.i], 0;
+set $PFhakunormalsk2[.i], 0;
+set $PFhakunormalsk1$[.i], 0;
+set $PFhakunormalsk2$[.i], 0;
+}
+if($PFhakunormal2id[.i] == getcharid(0)){
+set $PFhakunormal2id[.i], 0;
+set $PFhakunormal2name$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2skill$[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2vagas[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+set $PFhakunormal2lvl[.i], 0;
+}
+if($PFhakuhardid[.i] == getcharid(0)){
+set $PFhakuhardid[.i], 0;
+set $PFhakuhardname$[.i], 0;
+set $PFhakuhardmsg$[.i], 0;
+set $PFhakuhardsk1[.i], 0;
+set $PFhakuhardsk2[.i], 0;
+set $PFhakuhardsk1$[.i], 0;
+set $PFhakuhardsk2$[.i], 0;
+}
+if($PFhakuhard2id[.i] == getcharid(0)){
+set $PFhakuhard2id[.i], 0;
+set $PFhakuhard2name$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2skill$[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2vagas[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+set $PFhakuhard2lvl[.i], 0;
+}
+}
+end;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//Add ao script.c para invitar um player para a party, através de Npc Script. [Brunno Thadeu]
+//BUILDIN_FUNC(partyinvitecharname) //rid = alvo, rid2 = getcharid(0)
+//{
+//	struct map_session_data* sd;//TBL_PC *sd;
+//	const char* name = script_getstr(st,2);	
+//	struct map_session_data* dstsd = map_nick2sd(name);
+//	sd = script_rid2sd(st);
+//	if (!sd) {
+//		script_pushint(st,0);
+//		return 0;
+//	}
+//	if (!dstsd) {
+//		script_pushint(st,0);
+//		return 0;
+//	}
+//	if(sd->status.party_id == 0){
+//		script_pushint(st,0);
+//		return 0;	
+//	}
+//	party_invite(sd,dstsd);
+//	script_pushint(st,1);
+//	return 0;
+//}
+//BUILDIN_DEF(partyinvitecharname,"i"),
+
+
+//Add ao script.c para invitar um player para a party, através de Npc Script (Inverso do primeiro modo = dstsd invita sd). [Brunno Thadeu]
+//BUILDIN_FUNC(partyinvitecharname2) //rid = alvo, rid2 = getcharid(0)
+//{
+//	struct map_session_data* dstsd;//TBL_PC *sd;
+//	const char* name = script_getstr(st,2);	
+//	struct map_session_data* sd = map_nick2sd(name);
+//	dstsd = script_rid2sd(st);
+//	if (!sd) {
+//		script_pushint(st,0);
+//		return 0;
+//	}
+//	if (!dstsd) {
+//		script_pushint(st,0);
+//		return 0;
+//	}
+//	if(sd->status.party_id == 0){
+//		script_pushint(st,0);
+//		return 0;	
+//	}
+//	party_invite(sd,dstsd);
+//	script_pushint(st,1);
+//	return 0;
+//}
+//BUILDIN_DEF(partyinvitecharname2,"i"),
+
+
+//getidskilldesc(desc) ~ Retorna o ID de uma skill utilizando a Desc da mesma [Brunno Thadeu]
+//BUILDIN_FUNC(getidskilldesc)
+//{
+//	int skillen, idx;
+//	const char* msg;
+//	msg	= script_getstr(st,2);	
+//	
+//	skillen = strlen(msg);
+//
+//	for (idx = 0; idx < MAX_skill_DB; idx++) {
+//		if (strnicmp(skill_db[idx].name, msg, skillen) == 0 || strnicmp(skill_db[idx].desc, msg, skillen) == 0)
+//		{
+//			script_pushint(st,idx);
+//			return 0;
+//		}
+//	}
+//
+//	return 0;
+//}
+//BUILDIN_DEF(getidskilldesc,"i"),

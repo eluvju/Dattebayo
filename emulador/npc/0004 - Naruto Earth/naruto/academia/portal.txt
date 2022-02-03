@@ -1,0 +1,2 @@
+sec_in01,86,133,0	warp	entrada	1,1,sec_in01,85,148
+sec_in01,86,144,0	warp	saida	1,1,sec_in01,86,130

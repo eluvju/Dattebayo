@@ -1,0 +1,91 @@
+bibli_01,37,52,5	script	Mestre Medicina::medbas	121,{
+
+//-----------------------------------------------------------------------------------------------------------
+//											Avançado
+//-----------------------------------------------------------------------------------------------------------
+if(countitem(6010)) {
+
+	if (limite_avan == 1) {mes "Você já chegou a um treinamento avançado, esse é o limite."; close;}
+	if (med_avan == 1) {mes "Já não há mais nada que posso lhe ensinar."; close;}
+	if(resis_basico == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if (resis_intermediario == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if (resis_avan == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if(gen_basico == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+	if (gen_intermediario == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+	if (gen_avan == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+	if(Class < 4008 || Class > 4011) { mes "Você precisa ser Jounin.";  close; }
+
+	mes "Olá jovem, vejo que você é um treinador de medicina. Gostaria de evoluir ele ainda mais para se tornar um mestre medicina avançado?";
+	if(select("- Sim:- Não") == 2) { close; }
+		set med_avan,1;
+		getitem 6016,1;
+		if (countitem(6010) >= 1) {delitem 6010,1;}
+		set limite_avan, limite_avan +1;
+		announce "[...] Uma força enorme é sentida em todo o mundo, alguém assim só pode ter Medicina Avançado!",bc_blue|bc_all;
+		close;
+}
+//-----------------------------------------------------------------------------------------------------------
+//											Intermediário
+//-----------------------------------------------------------------------------------------------------------
+if(countitem(6004)) {
+	if (med_intermediario == 1) {mes "Já não há mais nada que posso lhe ensinar"; close;}
+	if (limite_inter == 2) {mes "Você já chegou a dois treinamentos intermediários, esse é o limite"; close;}
+	if(resis_basico == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if (resis_intermediario == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if (resis_avan == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if(gen_basico == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+	if (gen_intermediario == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+	if (gen_avan == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+	if(Class < 5) { mes "Você precisa ser Chunin ou superior.";  close; }
+	
+	mes "Olá jovem, vejo que você é um treinador de medicina. Gostaria de evoluir ele ainda mais para se tornar um mestre medicina intermediário?";
+	if(select("- Sim:- Não") == 2) { close; }
+		set med_intermediario,1;
+		if(countitem(6004) > 0) {delitem 6004,1;}
+		getitem 6010,1;
+		set limite_inter, limite_inter +1;
+		announce "[...] Um poder é sentido de longe, alguém com chakra considerável, alguém assim só pode ter Medicina intermediário!",bc_blue|bc_all;
+		close;
+}
+//-----------------------------------------------------------------------------------------------------------
+//											Básico
+//-----------------------------------------------------------------------------------------------------------
+	if(treinos_basicos >= 3) {mes "Você já aprendeu três trienos básicos, é o limite."; close;}
+	if(med_basico == 1) {mes "Agora que você sabe o Medicina básica você só tem a crescer!"; close;}
+	if(resis_basico == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if (resis_intermediario == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if (resis_avan == 1) {mes "Você não pode treinar Medicina sendo tanker!"; close;}
+	if(gen_basico == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+	if (gen_intermediario == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+	if (gen_avan == 1) {mes "Você não pode treinar Medicina sendo genjutsu!"; close;}
+
+	mes "[ Instrutor de Medicina] ";
+	mes "ATENÇÃO: Antes que continue, é bom lembrar que só pode ter três treinamentos básicos, tem certeza que quer esse treino?";
+	menu "Sim, eu quero",L_sim,"Não, quero outro",nao;
+
+	nao:
+	close;
+
+	L_sim:
+	mes "[ Instrutor de Medicina] ";
+	mes "Parabéns, você completou seu treinamento";
+	mes "você agora pode treinar Medicina";
+	getitem 6004,1;
+	set med_basico,1;
+	set treinos_basicos, treinos_basicos +1;
+	close;
+
+OnInit:
+	waitingroom "",0;
+OnTimer1000:
+	setarray .@RoomDisplay$,"Aprender Medicina","Evoluir Medicina";
+	delwaitingroom;
+	waitingroom .@RoomDisplay$[rand(0,1)],0;
+	initnpctimer;
+
+}
+
+bibli_02,37,52,5	duplicate(medbas)	Mestre Medicina#2	121
+bibli_03,37,52,5	duplicate(medbas)	Mestre Medicina#3	121
+bibli_04,37,52,5	duplicate(medbas)	Mestre Medicina#4	121
+akatsuki,250,216,5	duplicate(medbas)	Mestre Medicina#5	121

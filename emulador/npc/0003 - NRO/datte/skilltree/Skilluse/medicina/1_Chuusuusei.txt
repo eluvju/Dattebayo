@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillM01	-1,{
+    end;
+//When a Character uses a skill
+
+//Chuusuusei
+
+onPcUseSkillEvent:
+
+           if(lskillid == 320) {
+
+
+if (seloskill320 == 1) {
+
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 50) {set seloskill320,2; set skill320,0; dispbottom "[Sys] Level up"; end; }
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 1: "+skill320+" de 50";
+
+end;
+
+}
+
+if (seloskill320 == 2) {
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 100) {set seloskill320,3; set skill320,0; dispbottom "[Sys] Level up"; end;}
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 2: "+skill320+" de 100";
+
+end;
+
+}
+
+if (seloskill320 == 3) {
+
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 150) {set seloskill320,4; set skill320,0; dispbottom "[Sys] Level up"; end;}
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 3: "+skill320+" de 150";
+
+end;
+
+}
+
+if (seloskill320 == 4) {
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 200) {set seloskill320,5; set skill320,0; dispbottom "[Sys] Level up"; end;}
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 4: "+skill320+" de 200";
+
+end;
+
+}
+
+if (seloskill320 == 5) {
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 250) {set seloskill320,6; set skill320,0; dispbottom "[Sys] Level up"; end;}
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 5: "+skill320+" de 250";
+
+end;
+
+}
+
+if (seloskill320 == 6) {
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 300) {set seloskill320,7; set skill320,0; dispbottom "[Sys] Level up"; end;}
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 6: "+skill320+" de 300";
+
+end;
+
+}
+
+if (seloskill320 == 7) {
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 500) {set seloskill320,8; set skill320,0; dispbottom "[Sys] Level up"; end;}
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 7: "+skill320+" de 500";
+
+end;
+
+}
+
+if (seloskill320 == 8) {
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 700) {set seloskill320,9; set skill320,0; dispbottom "[Sys] Level up"; end;}
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 8: "+skill320+" de 700";
+
+end;
+
+}
+
+if (seloskill320 == 9) {
+if (Chuusuusei != 1) {end;}
+if (skill320 >= 1000) {set seloskill320,10; set skill320,0; dispbottom "[Sys] Level up"; end;}
+set skill320,skill320 +1;
+dispbottom "[Jutsu level] Chuusuusei Biribiri level 9: "+skill320+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

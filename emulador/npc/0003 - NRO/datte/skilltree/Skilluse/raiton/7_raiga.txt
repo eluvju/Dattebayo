@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkill007	-1,{
+    end;
+//When a Character uses a skill
+
+//raiga
+
+onPcUseSkillEvent:
+
+           if(lskillid == 515) {
+
+
+if (getskilllv(515) == 1) {
+
+if (oroshi != 1) {end;}
+if (skill515 >= 50) {skill 515,2,0; set skill515,0; dispbottom "[Sys] Level up"; end; }
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 1: "+skill515+" de 50";
+
+end;
+
+}
+
+if (getskilllv(515) == 2) {
+if (oroshi != 1) {end;}
+if (skill515 >= 100) {skill 515,3,0; set skill515,0; dispbottom "[Sys] Level up"; end;}
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 2: "+skill515+" de 100";
+
+end;
+
+}
+
+if (getskilllv(515) == 3) {
+
+if (nin_intermediario != 1) {end;}
+if (skill515 >= 150) {skill 515,4,0; set skill515,0; dispbottom "[Sys] Level up"; end;}
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 3: "+skill515+" de 150";
+
+end;
+
+}
+
+if (getskilllv(515) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill515 >= 200) {skill 515,5,0; set skill515,0; dispbottom "[Sys] Level up"; end;}
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 4: "+skill515+" de 200";
+
+end;
+
+}
+
+if (getskilllv(515) == 5) {
+if (nin_avan != 1) {end;}
+if (skill515 >= 250) {skill 515,6,0; set skill515,0; dispbottom "[Sys] Level up"; end;}
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 5: "+skill515+" de 250";
+
+end;
+
+}
+
+if (getskilllv(515) == 6) {
+if (nin_avan != 1) {end;}
+if (skill515 >= 300) {skill 515,7,0; set skill515,0; dispbottom "[Sys] Level up"; end;}
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 6: "+skill515+" de 300";
+
+end;
+
+}
+
+if (getskilllv(515) == 7) {
+if (nin_avan != 1) {end;}
+if (skill515 >= 500) {skill 515,8,0; set skill515,0; dispbottom "[Sys] Level up"; end;}
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 7: "+skill515+" de 500";
+
+end;
+
+}
+
+if (getskilllv(515) == 8) {
+if (nin_avan != 1) {end;}
+if (skill515 >= 700) {skill 515,9,0; set skill515,0; dispbottom "[Sys] Level up"; end;}
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 8: "+skill515+" de 700";
+
+end;
+
+}
+
+if (getskilllv(515) == 9) {
+if (nin_avan != 1) {end;}
+if (skill515 >= 1000) {skill 515,10,0; set skill515,0; dispbottom "[Sys] Level up"; end;}
+set skill515,skill515 +1;
+dispbottom "[Jutsu level] Raiton: Raiga Bakuretsu level 9: "+skill515+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

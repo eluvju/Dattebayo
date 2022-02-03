@@ -1,0 +1,228 @@
+//===== Cronus Script ======================================== 
+//= Lojas
+//===== Por: =================================================
+//= Rafael (1.0)
+//===== Versão Atual: ======================================== 
+//= 1.0
+//===== Descrição: =========================================== 
+//= Local onde vende vários ítens
+//===== Changelog: =========================================== 
+//= 1.0 Iniciado Npc [Rafael]
+//============================================================
+ama_in01.gat,22,26,4	shop	Suplementos Konoha		726,13254:5,13256:10,7193:50,7194:50,611:1000,632:100,537:5,621:2500
+ama_in01,169,173,4	shop	Suplementos Névoa		726,13254:5,13256:10,7193:50,7194:50,611:1000,632:100,537:5,621:2500
+ama_in01.gat,98,20,4	shop	Suplementos Suna		726,13254:5,13256:10,7193:50,7194:50,611:1000,632:100,537:5,621:2500
+ama_in01,172,131,4	shop	Suplementos Nuvem		726,13254:5,13256:10,7193:50,7194:50,611:1000,632:100,537:5,621:2500
+akatsuki,90,205,4	shop	Suplementos Akatsuki		726,13254:5,13256:10,7193:50,7194:50,611:1000,632:100,537:5,621:2500
+lou_in02,217,82,4	shop	Suplementos Nukenin		726,13254:5,13256:10,7193:50,7194:50,611:1000,632:100,537:5,621:2500
+hospital,101,176,4	shop	Chefe de Konoha		931,12125:20,12126:40,12127:60,12128:80,12129:100
+hospital2,101,176,4	shop	Chefe de Kiri		931,12125:20,12126:40,12127:60,12128:80,12129:100
+hospital3,101,176,4	shop	Chefe da Suna		931,12125:20,12126:40,12127:60,12128:80,12129:100
+hospital4,101,176,4	shop	Chefe da Nuvem		931,12125:20,12126:40,12127:60,12128:80,12129:100
+
+hospital,72,14,4	shop	Cozinheiro da Konoha		931,693:120000,694:180000,695:220000,696:260000,697:300000
+hospital2,72,14,4	shop	Cozinheiro de Kiri		931,693:120000,694:180000,695:220000,696:260000,697:300000
+hospital3,72,14,4	shop	Cozinheiro da Suna		931,693:120000,694:180000,695:220000,696:260000,697:300000
+hospital4,72,14,4	shop	Cozinheiro da Nuvem		931,693:120000,694:180000,695:220000,696:260000,697:300000
+
+//ama_in01,185,173,4	shop	Montarias#1		931,2641:100000000,2642:100000000
+//ama_in01,16,22,4	shop	Montarias#2		931,2641:100000000,2642:100000000
+//ama_in01,96,16,4	shop	Montarias#3		931,2641:100000000,2642:100000000
+//ama_in01,180,122,4	shop	Montarias#4		931,2641:100000000,2642:100000000
+
+//ama_in01,103,16,4	shop	Ferramentas#1		931,13749:5000,13750:10000,13751:15000,13752:20000,13753:25000,13754:30000,13755:35000,13756:40000,13757:50000,13742:10000,13743:20000,13744:30000,13745:40000
+//ama_in01,185,172,4	shop	Ferramentas#2		931,13749:5000,13750:10000,13751:15000,13752:20000,13753:25000,13754:30000,13755:35000,13756:40000,13757:50000,13742:10000,13743:20000,13744:30000,13745:40000
+//ama_in01,33,25,4	shop	Ferramentas#3		931,13749:5000,13750:10000,13751:15000,13752:20000,13753:25000,13754:30000,13755:35000,13756:40000,13757:50000,13742:10000,13743:20000,13744:30000,13745:40000
+//ama_in01,170,122,4	shop	Ferramentas#4		931,13749:5000,13750:10000,13751:15000,13752:20000,13753:25000,13754:30000,13755:35000,13756:40000,13757:50000,13742:10000,13743:20000,13744:30000,13745:40000
+
+//ama_in01,96,29,5	shop	Venda de Ferramentas#1	59,1452:1000000,13749:3000000,13750:5000000,13751:7000000,1803:1000000,1804:3000000,1805:5000000,1806:7000000,13021:1000000,13019:5000000
+//ama_in01,25,26,5	shop	Venda de Ferramentas#2	59,1452:1000000,13749:3000000,13750:5000000,13751:7000000,1803:1000000,1804:3000000,1805:5000000,1806:7000000,13021:1000000,13019:5000000
+//ama_in01,178,130,5	shop	Venda de Ferramentas#3	59,1452:1000000,13749:3000000,13750:5000000,13751:7000000,1803:1000000,1804:3000000,1805:5000000,1806:7000000,13021:1000000,13019:5000000
+//ama_in01,175,181,5	shop	Venda de Ferramentas#4	59,1452:1000000,13749:3000000,13750:5000000,13751:7000000,1803:1000000,1804:3000000,1805:5000000,1806:7000000,13021:1000000,13019:5000000
+
+//ama_in01,93,28,4	shop	Vendedor de Armas#1		931,26245:15000,26246:20000,26247:5000,26248:10000,26249:1000
+//ama_in01,31,23,4	shop	Vendedor de Armas#2		931,26245:15000,26246:20000,26247:5000,26248:10000,26249:1000
+//ama_in01,164,185,4	shop	Vendedor de Armas#3		931,26245:15000,26246:20000,26247:5000,26248:10000,26249:1000
+//ama_in01,180,129,4	shop	Vendedor de Armas#4		931,26245:15000,26246:20000,26247:5000,26248:10000,26249:1000
+nrpg_sell,58,22,4	shop	Vendedor de Armas#5		931,27902:10000000,27139:8000000,26363:300000,27889:150000,27145:100000,26818:50000
+
+//ama_in01,99,28,4	shop	Venda de Pergaminhos#11		931,16772:10000,16773:15000,16774:25000,16775:50000,16776:16000
+//ama_in01,26,23,4	shop	Venda de Pergaminhos#21		931,16772:10000,16773:15000,16774:25000,16775:50000,16776:16000
+//ama_in01,172,178,4	shop	Venda de Pergaminhos#31		931,16772:10000,16773:15000,16774:25000,16775:50000,16776:16000
+//ama_in01,176,130,4	shop	Venda de Pergaminhos#41		931,16772:10000,16773:15000,16774:25000,16775:50000,16776:16000
+nrpg_sell,61,22,4	shop	Venda de Pergaminhos#51		931,11338:1000000,11010:1000000,17638:400000,17164:300000,17329:300000,11012:150000,17641:100000,11027:100000,16772:10000,16773:10000,16775:10000
+nrpg_sell,61,24,4	shop	Venda de Pergaminhos#511		931,17334:100000,17335:100000,17336:100000,17337:100000,17338:100000,17490:400000,17491:400000,17492:400000,17493:400000,17494:400000,11336:1000000,11337:1000000,11339:1000000,11340:1000000
+
+//ama_in01,103,25,4	shop	Vendedor de Amuletos#1		931,20396:5000,20398:25000,20400:15000
+//ama_in01,18,18,4	shop	Vendedor de Amuletos#2		931,20396:5000,20398:25000,20400:15000
+//ama_in01,177,178,4	shop	Vendedor de Amuletos#3		931,20396:5000,20398:25000,20400:15000
+//ama_in01,183,128,4	shop	Vendedor de Amuletos#4		931,20396:5000,20398:25000,20400:15000
+nrpg_sell,64,22,4	shop	Vendedor de Amuletos#5		931,21796:20000,21366:20000,20941:100000,20944:50000,21197:50000,21551:50000,21827:50000,21874:50000,21470:50000,22163:50000
+
+//ama_in01,103,20,4	shop	Vendedor de Capas#1		931,14026:25000,14027:25000,14028:25000,14029:25000,14030:25000
+//ama_in01,31,23,4	shop	Vendedor de Capas#2		931,14026:25000,14027:25000,14028:25000,14029:25000,14030:25000
+//ama_in01,181,175,4	shop	Vendedor de Capas#3		931,14026:25000,14027:25000,14028:25000,14029:25000,14030:25000
+//ama_in01,183,127,4	shop	Vendedor de Capas#4		931,14026:25000,14027:25000,14028:25000,14029:25000,14030:25000
+nrpg_sell,64,26,4	shop	Vendedor de Capas#5		931,14623:500000,14700:400000,14691:400000,14656:1000000,14833:350000,14767:250000,14026:100000,14027:100000,14028:100000,14029:100000,14030:100000
+
+//ama_in01,102,18,4	shop	Vendedor de Botas#1		931,20104:4500,20105:9000,20106:10000,20107:45000,20108:10000
+//ama_in01,19,26,4	shop	Vendedor de Botas#2		931,20104:4500,20105:9000,20106:10000,20107:45000,20108:10000
+//ama_in01,175,176,4	shop	Vendedor de Botas#3		931,20104:4500,20105:9000,20106:10000,20107:45000,20108:10000
+//ama_in01,175,133,4	shop	Vendedor de Botas#4		931,20104:4500,20105:9000,20106:10000,20107:45000,20108:10000
+nrpg_sell,68,29,4	shop	Vendedor de Botas#5		931,20222:500000,20219:500000,20230:600000,20193:450000,20259:300000,20235:150000,20170:100000,20197:90000
+
+//ama_in01,93,18,4	shop	Vendedor de Armadura#1		931,15062:14000,15063:40000,15064:40000,15065:10000,15066:4000
+//ama_in01,27,26,4	shop	Vendedor de Armadura#2		931,15062:14000,15063:40000,15064:40000,15065:10000,15066:4000
+//ama_in01,185,184,4	shop	Vendedor de Armadura#3		931,15062:14000,15063:40000,15064:40000,15065:10000,15066:4000
+//ama_in01,171,129,4	shop	Vendedor de Armadura#4		931,15062:14000,15063:40000,15064:40000,15065:10000,15066:4000
+nrpg_sell,71,29,4	shop	Vendedor de Armadura#5		931,15500:300000,15681:400000,15775:500000,15683:600000,15778:250000,15546:100000,15322:100000,15904:50000,15763:200000
+
+mjo_dun01,24,92,4	shop	Mercador Misterioso#1		931,7135:300000,7218:1000
+
+
+ama_in01,103,23,4	script	Criador de Molhos::molho	85,{
+mes "Olá meu jovem, gostaria de criar um molho?";
+next;
+mes "É necessário 10 ervas vermelhas e 5 ervas amarelas, quer fazer?";
+menu "Sim",L_sim,"Não",L_no;
+
+L_sim:
+
+if(countitem(507) < 10) {next; mes "Você não tem as ervas vermelhas necessárias"; close;}
+if(countitem(508) < 5) {next; mes "Você não tem as ervas amarelas necessárias"; close;}
+next; 
+mes "Vamos lá então";
+delitem 507,10;
+delitem 508,5;
+getitem 7453,1;
+close;
+
+L_no:
+close;
+
+}
+
+kakashi,78,115,4	script	Aluguel de Montaria::rentmontaria	85,{
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Olá meu jovem, gostaria de alugar uma montaria?";
+	menu "- Sim",L_sim,"- Não",L_no;
+
+L_sim:
+	next;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Que beleza! Aqui estão as montarias disponíveis";
+	menu "- Montaria Sapo",sapo,"- Montaria Cachorro",cachorro,"- Deixa pra outra hora",L_no;
+
+sapo:
+	set @escolha, 1;
+	next;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Boa escolha, aqui estão os preços para essa montaria";
+	menu "- 1 dia (500k)",um,"- 7 dias (3kk)",sete,"- 1 dia (6 fidelidade)",um_fidelidade,"- 7 dias (30 fidelidade)",sete_fidelidade,"- Deixa pra outra hora",L_no;
+
+cachorro:
+	set @escolha, 2;
+	next;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Boa escolha, aqui estão os preços para essa montaria";
+	menu "- 1 dia (500k)",um,"- 7 dias (3kk)",sete,"- 1 dia (6 fidelidade)",um_fidelidade,"- 7 dias (30 fidelidade)",sete_fidelidade,"- Deixa pra outra hora",L_no;
+
+um:
+	next;
+	if (Zeny < 500000) {
+		mes "[^DC143CAluguel de Montaria^000000]";
+		mes "Você não possui o zeny necessário";
+		close;
+	}
+	set Zeny, Zeny - 500000;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Muito bem, aqui está sua montaria";
+	if (@escolha == 1) {
+		rentitem 2641,86400;
+	}
+	if (@escolha == 2) {
+		rentitem 2642,86400;
+	}
+	close;
+
+um_fidelidade:
+	next;
+	if (#NRPGPOINTS < 6) {
+		mes "[^DC143CAluguel de Montaria^000000]";
+		mes "Você não possui a fidelidade necessária";
+		close;
+	}
+	set #NRPGPOINTS, #NRPGPOINTS - 6;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Muito bem, aqui está sua montaria";
+	if (@escolha == 1) {
+		rentitem 2641,86400;
+	}
+	if (@escolha == 2) {
+		rentitem 2642,86400;
+	}
+	close;
+
+sete_fidelidade:
+	next;
+	if (#NRPGPOINTS < 30) {
+		mes "[^DC143CAluguel de Montaria^000000]";
+		mes "Você não possui a fidelidade necessária";
+		close;
+	}
+	set #NRPGPOINTS, #NRPGPOINTS - 30;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Muito bem, aqui está sua montaria";
+	if (@escolha == 1) {
+		rentitem 2641,604800;
+	}
+	if (@escolha == 2) {
+		rentitem 2642,604800;
+	}
+	close;
+
+sete:
+	next;
+	if (Zeny < 3000000) {
+		mes "[^DC143CAluguel de Montaria^000000]";
+		mes "Você não possui o zeny necessário";
+		close;
+	}
+	set Zeny, Zeny - 3000000;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Muito bem, aqui está sua montaria";
+	if (@escolha == 1) {
+		rentitem 2641,604800;
+	}
+	if (@escolha == 2) {
+		rentitem 2642,604800;
+	}
+	close;
+
+L_no:
+	close;
+
+}
+
+kakashi,93,106,4	script	Comércio Shinobi	505,{
+	mes "[^DC143CComércio Shinobi^000000]";
+	mes "Olá aventureiro, meu nome é Yuuin.";
+	next;
+	mes "[^DC143CComércio Shinobi^000000]";
+	mes "Vou te enviar para o Comércio Shinobi";
+	next;                
+	warp "nrpg_sell",50,72;    
+	end;                  
+} 
+
+nrpg_sell,46,72,4	script	Voltar	505,{
+
+mes "Vou te enviar para o centro de treinamento";
+close2;                
+warp "kakashi",90,106;    
+end;                  
+} 
+
+ama_in01,172,127,5	duplicate(molho)	Criador de Molhos#1	85,{
+ama_in01,181,182,5	duplicate(molho)	Criador de Molhos#2	85,{
+ama_in01,29,19,5	duplicate(molho)	Criador de Molhos#3	85,{

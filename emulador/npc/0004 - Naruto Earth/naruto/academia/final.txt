@@ -1,0 +1,32 @@
+aldeg_cas04,163,65,5	script	Hokage	718,{
+if(Class != 1) {mes "Você não é dessa vila, seu intruso! Fale com o Kage da sua vila, "+strcharinfo(0)+"-san!"; end;}
+mes "Hum...Não é que você conseguiu passar pelo Exame Final e se tornar Genin? Quem diria hein!?";
+next;
+mes "Agora venha, vou levar você para a minha sala.";
+	savepoint "inicio",29,22;
+	warp "1@ecl",52,76;
+	set final,1;
+   close;
+}
+
+aldeg_cas04,167,65,5	script	Raikage	4_m_moc_soldier,{
+if(Class != 4) {mes "Você não é dessa vila, seu intruso! Fale com o Kage da sua vila, "+strcharinfo(0)+"-san!"; end;}
+mes "Hum...Não é que você conseguiu passar pelo Exame Final e se tornar Genin? Quem diria hein!?";
+next;
+mes "Agora venha, vou levar você para a minha sala.";
+	savepoint "inicio3",29,22;
+	warp "3@ecl",52,76;
+	set final,1;
+   close;
+}
+
+aldeg_cas04,171,65,5	script	Mizukage	4_f_monk,{
+if(Class != 3) {mes "Você não é dessa vila, seu intruso! Fale com o Kage da sua vila, "+strcharinfo(0)+"-san!"; end;}
+mes "Hum...Não é que você conseguiu passar pelo Exame Final e se tornar Genin? Quem diria hein!?";
+next;
+mes "Agora venha, vou levar você para a minha sala.";
+	savepoint "inicio2",29,22;
+	warp "2@ecl",52,76;
+	set final,1;
+   close;
+}

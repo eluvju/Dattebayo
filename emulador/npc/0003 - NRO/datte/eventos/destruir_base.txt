@@ -1,0 +1,1344 @@
+////////////////////////////////////////////////KONOHA//////////////////////////////////////////
+
+konoha,201,121,5	script	Reparar Edifício#11	100,{
+
+if (#konoha != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19009) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($kon1dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000edifício de Prisão Bijuu^000000 rapidamente, o custo será de 150 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($konoha_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $konoha_ryous, $konoha_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $kon1dest,0;
+announce ""+strcharinfo(0)+" acaba de consertar o edifício de Prisão Bijuu de konoha, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+konoha,247,166,5	script	Reparar Edifício#21	100,{
+
+if (#konoha != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19009) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($kon2dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000edifício de inteligência^000000 rapidamente, o custo será de 150 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($konoha_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $konoha_ryous, $konoha_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $kon2dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício de inteligência de konoha, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+konoha,60,186,5	script	Reparar Edifício#31	100,{
+
+if (#konoha != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19009) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($kon3dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000edifício principal^000000 rapidamente, o custo será de 150 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($konoha_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $konoha_ryous, $konoha_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $kon3dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício principal de konoha, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+////////////////////////////////////////////////SUNA//////////////////////////////////////////
+
+areia,93,193,5	script	Reparar Edifício#12	100,{
+
+if (#suna != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19148) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($sun1dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000edifício de Prisão Bijuu^000000 rapidamente, o custo será de 150 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($areia_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $areia_ryous, $areia_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $sun1dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício de Prisão Bijuu da Suna, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+areia,216,132,5	script	Reparar Edifício#22	100,{
+
+if (#suna != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19148) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($sun2dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000edifício de inteligência^000000 rapidamente, o custo será de 150 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($areia_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $areia_ryous, $areia_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $sun2dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício de inteligência da Suna, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+areia,132,87,5	script	Reparar Edifício#32	100,{
+
+if (#suna != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19148) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($sun3dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça... Acho melhor eu consertar esse ^FF0000edifício principal^000000 rapidamente";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($areia_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $areia_ryous, $areia_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $sun3dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício principal da Suna, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+/////////////////////////////////////////////////////NEVOA///////////////////////////////////////////////
+
+nevoa,234,187,5	script	Reparar Edifício#13	100,{
+
+if (#nevoa != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19012) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($nev1dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça... Acho melhor eu consertar esse ^FF0000edifício de Prisão Bijuu^000000 rapidamente";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($nevoa_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $nevoa_ryous, $nevoa_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $nev1dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício de Prisão Bijuu da Névoa, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+nevoa,247,269,5	script	Reparar Edifício#23	100,{
+
+if (#nevoa != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19012) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($nev2dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça... Acho melhor eu consertar esse ^FF0000edifício de inteligência^000000 rapidamente";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($nevoa_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $nevoa_ryous, $nevoa_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $nev2dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício de inteligência da Névoa, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+nevoa,74,169,5	script	Reparar Edifício#33	100,{
+
+if (#nevoa != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19012) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($nev3dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça... Acho melhor eu consertar esse ^FF0000edifício principal^000000 rapidamente";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($nevoa_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $nevoa_ryous, $nevoa_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $nev3dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício principal da Névoa, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+
+//////////////////////////////////////////////NUVEM////////////////////////////////////////////////////
+
+nuvem,32,224,5	script	Reparar Edifício#14	100,{
+
+if (#nuvem != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19036) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($nuv1dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça... Acho melhor eu consertar esse ^FF0000edifício de Prisão Bijuu^000000 rapidamente";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($nuvem_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $nuvem_ryous, $nuvem_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $nuv1dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício de Prisão Bijuu da Nuvem, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+nuvem,189,54,5	script	Reparar Edifício#24	100,{
+
+if (#nuvem != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19036) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($nuv2dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça... Acho melhor eu consertar esse ^FF0000edifício de inteligência^000000 rapidamente";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($nuvem_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $nuvem_ryous, $nuvem_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $nuv2dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício de inteligência da Nuvem, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+
+nuvem,121,140,5	script	Reparar Edifício#34	100,{
+if (#nuvem != 1) {mes "Você não é desta vila"; close;}
+if (countitem(19036) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($nuv3dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça... Acho melhor eu consertar esse ^FF0000edifício principal^000000 rapidamente";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($nuvem_ryous < 150) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $nuvem_ryous, $nuvem_ryous -150;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $nuv3dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício principal da Nuvem, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+////////////////////////////////////FINAL/////////////////////////
+
+-	script	dest_kon2	1083,{
+
+OnMapConquisted91:
+
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "konoha3",140,81,"Edifício de Inteligência",1331,1,"dest_kon2::OnMapConquisted91"; end;}
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício de inteligência de Konoha!",bc_blue|bc_all;
+	sleep 4000;
+	announce "Os funcionários da inteligência estão feridos e indispostos a exercer seus cargos, com isso o teleportador, e entradas para os eventos na vila estão fechadas",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Konoha] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $kon2dest,1;
+	end;
+
+
+}
+
+-	script	dest_kon3	1083,{
+
+OnMapConquisted92:
+
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "konoha3",141,158,"Edifício Principal",1332,1,"dest_kon3::OnMapConquisted92"; end;}
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício principal de Konoha!",bc_blue|bc_all;
+	set @konoha_ryou,$konoha_ryous;
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {sleep 4000; announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all; sleep 4000; announce "[Konoha] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all; set $kon3dest,1; sleep 4000; end;}
+	if (#suna == 1) {sleep2 2000; set $areia_ryous, $areia_ryous + @konoha_ryou / 2; set $konoha_ryous, @konoha_ryou/2; 	announce "Após a destruição, a Vila Oculta da Suna saqueou metade dos ryous de Konoha",bc_blue|bc_all;}
+	if (#nuvem == 1) {sleep2 2000; set $nuvem_ryous, $nuvem_ryous + @konoha_ryou / 2; set $konoha_ryous, @konoha_ryou/2; 	announce "Após a destruição, a Vila Oculta da Nuvem saqueou metade dos ryous de Konoha",bc_blue|bc_all;}
+	if (#nevoa == 1) {sleep2 2000; set $nevoa_ryous, $nevoa_ryous + @konoha_ryou / 2; set $konoha_ryous, @konoha_ryou/2; 	announce "Após a destruição, a Vila Oculta da Névoa saqueou metade dos ryous de Konoha",bc_blue|bc_all;}
+	sleep 4000;
+	announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Konoha] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $kon3dest,1;
+	end;
+
+
+}
+
+-	script	dest_sun2	1083,{
+
+OnMapConquisted94:
+
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "sunagakure",175,279,"Edifício de Inteligência",1334,1,"dest_sun2::OnMapConquisted94"; end;}
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício de inteligência da Suna!",bc_blue|bc_all;
+	sleep 4000;
+	announce "Os funcionários da inteligência estão feridos e indispostos a exercer seus cargos, com isso o teleportador, e entradas para os eventos na vila estão fechadas",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Suna] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $sun2dest,1;
+	end;
+
+
+}
+
+-	script	dest_sun3	1083,{
+
+OnMapConquisted95:
+
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "sunagakure",233,206,"Edifício Principal",1335,1,"dest_sun3::OnMapConquisted95"; end;}
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício principal da Suna!",bc_blue|bc_all;
+	set @areia_ryou,$areia_ryous;
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {sleep 4000; announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all; sleep 4000; announce "[Suna] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all; set $sun3dest,1; sleep 4000; end;}
+	if (#konoha == 1) {sleep2 2000; set $konoha_ryous, $konoha_ryous + @areia_ryou / 2; set $areia_ryous, @areia_ryou/2; 	announce "Após a destruição, a Vila Oculta de Konoha saqueou metade dos ryous da Suna",bc_blue|bc_all;}
+	if (#nuvem == 1) {sleep2 2000; set $nuvem_ryous, $nuvem_ryous + @areia_ryou / 2; set $areia_ryous, @areia_ryou/2; 	announce "Após a destruição, a Vila Oculta da Nuvem saqueou metade dos ryous da Suna",bc_blue|bc_all;}
+	if (#nevoa == 1) {sleep2 2000; set $nevoa_ryous, $nevoa_ryous + @areia_ryou / 2; set $areia_ryous, @areia_ryou/2; 	announce "Após a destruição, a Vila Oculta da Névoa saqueou metade dos ryous da Suna",bc_blue|bc_all;}
+	sleep 4000;
+	announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Suna] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $sun3dest,1;
+	end;
+
+
+}
+
+-	script	dest_nev2	1083,{
+
+OnMapConquisted97:
+
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "kiri",47,172,"Edifício de Inteligência",1337,1,"dest_nev2::OnMapConquisted97"; end;}
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício de inteligência da Névoa!",bc_blue|bc_all;
+	sleep 4000;
+	announce "Os funcionários da inteligência estão feridos e indispostos a exercer seus cargos, com isso o teleportador, e entradas para os eventos na vila estão fechadas",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Névoa] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $nev2dest,1;
+	end;
+
+
+}
+
+-	script	dest_nev3	1083,{
+
+OnMapConquisted98:
+
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "kiri",278,38,"Edifício Principal",1338,1,"dest_nev3::OnMapConquisted98"; end;}
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício principal da Névoa!",bc_blue|bc_all;
+	set @nevoa_ryou,$nevoa_ryous;
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {sleep 4000; announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all; sleep 4000; announce "[Névoa] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all; set $nev3dest,1; sleep 4000; end;}
+	if (#konoha == 1) {sleep2 2000; set $konoha_ryous, $konoha_ryous + @nevoa_ryou / 2; set $nevoa_ryous, @nevoa_ryou/2; 	announce "Após a destruição, a Vila Oculta de Konoha saqueou metade dos ryous da Névoa",bc_blue|bc_all;}
+	if (#nuvem == 1) {sleep2 2000; set $nuvem_ryous, $nuvem_ryous + @nevoa_ryou / 2; set $nevoa_ryous, @nevoa_ryou/2; 	announce "Após a destruição, a Vila Oculta da Nuvem saqueou metade dos ryous da Névoa",bc_blue|bc_all;}
+	if (#suna == 1) {sleep2 2000; set $areia_ryous, $areia_ryous + @nevoa_ryou / 2; set $nevoa_ryous, @nevoa_ryou/2; 	announce "Após a destruição, a Vila Oculta da Suna saqueou metade dos ryous da Névoa",bc_blue|bc_all;}
+	sleep 4000;
+	announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Névoa] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $nev3dest,1;
+	end;
+
+
+}
+
+-	script	dest_nuv2	1083,{
+
+OnMapConquisted100:
+
+if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "nuvem",99,67,"Edifício de Inteligência",1340,1,"dest_nuv2::OnMapConquisted100"; end;}
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício de inteligência da Nuvem!",bc_blue|bc_all;
+	sleep 4000;
+	announce "Os funcionários da inteligência estão feridos e indispostos a exercer seus cargos, com isso o teleportador, e entradas para os eventos na vila estão fechadas",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Nuvem] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $nuv2dest,1;
+	end;
+
+}
+
+-	script	dest_nuv3	1083,{
+
+OnMapConquisted101:
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "nuvem",244,189,"Edifício Principal",1341,1,"dest_nuv3::OnMapConquisted101"; end;}
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "nuvem",244,189,"Edifício Principal",1341,1,"dest_nuv3::OnMapConquisted101"; end;}
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício principal da Nuvem!",bc_blue|bc_all;
+	set @nuvem_ryou,$nuvem_ryous;
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {sleep 4000; announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all; sleep 4000; announce "[Nuvem] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all; set $nuv3dest,1; sleep 4000; end;}
+	if (#konoha == 1) {sleep2 2000; set $konoha_ryous, $konoha_ryous + @nuvem_ryou / 2; set $nuvem_ryous, @nuvem_ryou/2; 	announce "Após a destruição, a Vila Oculta de Konoha saqueou metade dos ryous da Nuvem",bc_blue|bc_all;}
+	if (#nevoa == 1) {sleep2 2000; set $nevoa_ryous, $nevoa_ryous + @nuvem_ryou / 2; set $nuvem_ryous, @nuvem_ryou/2; 	announce "Após a destruição, a Vila Oculta de Névoa saqueou metade dos ryous da Nuvem",bc_blue|bc_all;}
+	if (#suna == 1) {sleep2 2000; set $areia_ryous, $areia_ryous + @nuvem_ryou / 2; set $nuvem_ryous, @nuvem_ryou/2; 	announce "Após a destruição, a Vila Oculta de Areia saqueou metade dos ryous da Nuvem",bc_blue|bc_all;}
+	sleep 4000;
+	announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Nuvem] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $nuv3dest,1;
+	sleep 4000;
+	end;
+
+
+
+
+}
+
+-	script	desbugquebra	1083,{
+
+//OnClock1830:
+OnMon1930:
+OnTue1930:
+OnWed1930:
+OnThu1930:
+OnFri1930:
+OnSat1930:
+announce "[Edifícios] O horário de guerra entre as vilas está pausado, com isso os edifícios estão protegidos até 18:00 de amanhã.",bc_blue|bc_all;
+killmonster "areia","dest_sun2::OnMapConquisted94";
+killmonster "areia","dest_sun3::OnMapConquisted95";
+
+killmonster "konoha","dest_kon2::OnMapConquisted91";
+killmonster "konoha","dest_kon3::OnMapConquisted92";
+
+killmonster "nevoa","dest_nev2::OnMapConquisted97";
+killmonster "nevoa","dest_nev3::OnMapConquisted98";
+
+killmonster "nuvem","dest_nuv2::OnMapConquisted100";
+killmonster "nuvem","dest_nuv3::OnMapConquisted101";
+set $edificios_block,1;
+end;
+
+//OnClock2130:
+//announce "[Edifícios] O horário de guerra entre as vilas está encerrado, com isso os edifícios estão protegidos até 17:00 de amanhã.",bc_blue|bc_all;
+//killmonster "areia","dest_sun2::OnMapConquisted94";
+//killmonster "areia","dest_sun3::OnMapConquisted95";
+//
+//killmonster "konoha","dest_kon2::OnMapConquisted91";
+//killmonster "konoha","dest_kon3::OnMapConquisted92";
+//
+//killmonster "nevoa","dest_nev2::OnMapConquisted97";
+//killmonster "nevoa","dest_nev3::OnMapConquisted98";
+//
+//killmonster "veins","dest_nuv2::OnMapConquisted100";
+//killmonster "veins","dest_nuv3::OnMapConquisted101";
+//set $edificios_block,1;
+//end;
+
+
+OnMon1800:
+OnTue1800:
+OnWed1800:
+OnThu1800:
+OnFri1800:
+OnSat1800:
+//OnSun1800:
+killmonster "areia","on_PC_UseSkill513::OnGuarConquisted100";
+killmonster "konoha","on_PC_UseSkill513::OnGuarConquisted100";
+killmonster "nevoa","on_PC_UseSkill513::OnGuarConquisted100";
+killmonster "nuvem","on_PC_UseSkill513::OnGuarConquisted100";
+
+killmonster "areia","on_PC_UseSkill514::OnGuarConquisted101";
+killmonster "konoha","on_PC_UseSkill514::OnGuarConquisted101";
+killmonster "nevoa","on_PC_UseSkill514::OnGuarConquisted101";
+killmonster "nuvem","on_PC_UseSkill514::OnGuarConquisted101";
+
+killmonster "areia","on_PC_UseSkill515::OnGuarConquisted102";
+killmonster "konoha","on_PC_UseSkill515::OnGuarConquisted102";
+killmonster "nevoa","on_PC_UseSkill515::OnGuarConquisted102";
+killmonster "nuvem","on_PC_UseSkill515::OnGuarConquisted102";
+
+killmonster "areia","on_PC_UseSkill516::OnGuarConquisted103";
+killmonster "konoha","on_PC_UseSkill516::OnGuarConquisted103";
+killmonster "nevoa","on_PC_UseSkill516::OnGuarConquisted103";
+killmonster "nuvem","on_PC_UseSkill516::OnGuarConquisted103";
+
+killmonster "areia","dest_sun2::OnMapConquisted94";
+killmonster "areia","dest_sun3::OnMapConquisted95";
+
+killmonster "konoha","dest_kon2::OnMapConquisted91";
+killmonster "konoha","dest_kon3::OnMapConquisted92";
+
+killmonster "nevoa","dest_nev2::OnMapConquisted97";
+killmonster "nevoa","dest_nev3::OnMapConquisted98";
+
+killmonster "nuvem","dest_nuv2::OnMapConquisted100";
+killmonster "nuvem","dest_nuv3::OnMapConquisted101";
+
+monster "nuvem",197,46,"Edifício de Inteligência",1340,1,"dest_nuv2::OnMapConquisted100";
+monster "nuvem",131,145,"Edifício Principal",1341,1,"dest_nuv3::OnMapConquisted101";
+
+monster "nevoa",236,258,"Edifício de Inteligência",1337,1,"dest_nev2::OnMapConquisted97";
+monster "nevoa",88,176,"Edifício Principal",1338,1,"dest_nev3::OnMapConquisted98";
+
+monster "areia",213,126,"Edifício de Inteligência",1334,1,"dest_sun2::OnMapConquisted94";
+monster "areia",124,91,"Edifício Principal",1335,1,"dest_sun3::OnMapConquisted95";
+
+monster "konoha",240,176,"Edifício de Inteligência",1331,1,"dest_kon2::OnMapConquisted91";
+monster "konoha",52,175,"Edifício Principal",1332,1,"dest_kon3::OnMapConquisted92";
+
+set $edificios_block,0;
+announce "[Edifícios] O horário de guerra entre as vilas está aberto, com isso os edifícios estão desprotegidos até 19:30",bc_blue|bc_all;
+end;
+
+//OnClock2000:
+//killmonster "areia","on_PC_UseSkill513::OnGuarConquisted100";
+//killmonster "konoha","on_PC_UseSkill513::OnGuarConquisted100";
+//killmonster "nevoa","on_PC_UseSkill513::OnGuarConquisted100";
+//killmonster "nuvem","on_PC_UseSkill513::OnGuarConquisted100";
+//
+//killmonster "areia","on_PC_UseSkill514::OnGuarConquisted101";
+//killmonster "konoha","on_PC_UseSkill514::OnGuarConquisted101";
+//killmonster "nevoa","on_PC_UseSkill514::OnGuarConquisted101";
+//killmonster "nuvem","on_PC_UseSkill514::OnGuarConquisted101";
+//
+//killmonster "areia","on_PC_UseSkill515::OnGuarConquisted102";
+//killmonster "konoha","on_PC_UseSkill515::OnGuarConquisted102";
+//killmonster "nevoa","on_PC_UseSkill515::OnGuarConquisted102";
+//killmonster "nuvem","on_PC_UseSkill515::OnGuarConquisted102";
+//
+//killmonster "areia","on_PC_UseSkill516::OnGuarConquisted103";
+//killmonster "konoha","on_PC_UseSkill516::OnGuarConquisted103";
+//killmonster "nevoa","on_PC_UseSkill516::OnGuarConquisted103";
+//killmonster "nuvem","on_PC_UseSkill516::OnGuarConquisted103";
+//
+//killmonster "areia","dest_sun2::OnMapConquisted94";
+//killmonster "areia","dest_sun3::OnMapConquisted95";
+//
+//killmonster "konoha","dest_kon2::OnMapConquisted91";
+//killmonster "konoha","dest_kon3::OnMapConquisted92";
+//
+//killmonster "nevoa","dest_nev2::OnMapConquisted97";
+//killmonster "nevoa","dest_nev3::OnMapConquisted98";
+//
+//killmonster "nuvem","dest_nuv2::OnMapConquisted100";
+//killmonster "nuvem","dest_nuv3::OnMapConquisted101";
+//
+//monster "nuvem",221,105,"Edifício de Inteligência",1340,1,"dest_nuv2::OnMapConquisted100";
+//monster "nuvem",324,189,"Edifício Principal",1341,1,"dest_nuv3::OnMapConquisted101";
+//
+//monster "nevoa",147,140,"Edifício de Inteligência",1337,1,"dest_nev2::OnMapConquisted97";
+//monster "nevoa",61,23,"Edifício Principal",1338,1,"dest_nev3::OnMapConquisted98";
+//
+//monster "areia",213,126,"Edifício de Inteligência",1334,1,"dest_sun2::OnMapConquisted94";
+//monster "areia",124,91,"Edifício Principal",1335,1,"dest_sun3::OnMapConquisted95";
+//
+//monster "konoha",240,176,"Edifício de Inteligência",1331,1,"dest_kon2::OnMapConquisted91";
+//monster "konoha",52,175,"Edifício Principal",1332,1,"dest_kon3::OnMapConquisted92";
+//
+//set $edificios_block,0;
+//announce "[Edifícios] O horário de guerra entre as vilas está aberto, com isso os edifícios estão desprotegidos até 21:30",bc_blue|bc_all;
+//end;
+
+
+}
+
+
+//konoha3,256,109,0,0	monster	Edifício de Prisão Bijuu	1330,1,1,36000000,"dest_kon1::OnMapConquisted90"
+//konoha,240,176,0,0	monster	Edifício de Inteligência	1331,1,1,36000000,"dest_kon2::OnMapConquisted91"
+//konoha,52,175,0,0	monster	Edifício Principal	1332,1,1,36000000,"dest_kon3::OnMapConquisted92"
+
+//areia,221,125,0,0	monster	Edifício de Prisão Bijuu	1333,1,1,36000000,"dest_sun1::OnMapConquisted93"
+//areia,213,126,0,0	monster	Edifício de Inteligência	1334,1,1,36000000,"dest_sun2::OnMapConquisted94"
+//areia,124,91,0,0	monster	Edifício Principal	1335,1,1,36000000,"dest_sun3::OnMapConquisted95"
+
+//nevoa,63,20,0,0	monster	Edifício de Prisão Bijuu	1336,1,1,36000000,"dest_nev1::OnMapConquisted96"
+//nevoa,147,140,0,0	monster	Edifício de Inteligência	1337,1,1,36000000,"dest_nev2::OnMapConquisted97"
+//nevoa,61,23,0,0	monster	Edifício Principal	1338,1,1,36000000,"dest_nev3::OnMapConquisted98"
+
+//
+//if( (gettime(3) > 15 ) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "nuvem",244,189,"Edifício Principal",1341,1,"dest_nuv3::OnMapConquisted101"; end;}
+//nuvem,140,147,0,0	monster	Edifício de Prisão Bijuu	1339,1,1,36000000,"dest_nuv1::OnMapConquisted99"
+//nuvem,221,105,0,0	monster	Edifício de Inteligência	1340,1,1,36000000,"dest_nuv2::OnMapConquisted100"
+//nuvem,324,189,0,0	monster	Edifício Principal	1341,1,1,36000000,"dest_nuv3::OnMapConquisted101"
+
+areia	mapflag	presuna
+konoha	mapflag	prekonoha
+nevoa	mapflag	prenevoa
+nuvem	mapflag	prenuvem
+
+-	script	Evento#EEg	EventoEdificios#EEg -1,{
+
+OnInit:
+disablenpc "Entrada Kiri";
+disablenpc "Entrada Kumo";
+disablenpc "Entrada Areia";
+disablenpc "Entrada Folha";
+setarray .EEmap$[1],"konoha","nevoa","nuvem","areia";
+setarray .EEgid[1],1,4,29,41;
+end;
+
+OnMon1800:
+OnTue1800:
+OnWed1800:
+OnThu1800:
+OnFri1800:
+OnSat1800:
+maprespawnguildid .EEmap$[1],.EEgid[1],2;
+maprespawnguildid .EEmap$[2],.EEgid[2],2;
+maprespawnguildid .EEmap$[3],.EEgid[3],2;
+maprespawnguildid .EEmap$[4],.EEgid[4],2;
+for( set .u, 1; .u<7; set .u, .u + 1 ){
+set $EEinfo1[10+.u],0;
+set $EEinfo2[10+.u],0;
+set $EEinfo3[10+.u],0;
+set $EEinfo4[10+.u],0;
+}
+set $EEinfo[1], 1;
+disablenpc "Entrada pra Konoha";
+disablenpc "Entrada pra Suna";
+disablenpc "Entrada pra Nuvem";
+disablenpc "Entrada pra Névoa";
+//disablenpc "Entrada pra Konoha#1";
+//disablenpc "Entrada pra Suna#1";
+//disablenpc "Entrada pra Nuvem#1";
+//disablenpc "Entrada pra Névoa#1";
+enablenpc "Entrada Folha";
+enablenpc "Entrada Kiri";
+enablenpc "Entrada Kumo";
+enablenpc "Entrada Areia";
+end;
+
+//desligar
+//OnClock1830:
+//OnClock2130:
+OnMon1930:
+OnTue1930:
+OnWed1930:
+OnThu1930:
+OnFri1930:
+OnSat1930:
+set $EEinfo[1], 0;
+enablenpc "Entrada pra Konoha";
+enablenpc "Entrada pra Suna";
+enablenpc "Entrada pra Nuvem";
+enablenpc "Entrada pra Névoa";
+//enablenpc "Entrada pra Konoha#1";
+//enablenpc "Entrada pra Suna#1";
+//enablenpc "Entrada pra Nuvem#1";
+//enablenpc "Entrada pra Névoa#1";
+disablenpc "Entrada Folha";
+disablenpc "Entrada Kiri";
+disablenpc "Entrada Kumo";
+disablenpc "Entrada Areia";
+end;
+
+
+OnPCDieEvent:
+if($EEinfo[1] == 0) end;
+set .@map, 0;
+if(strcharinfo(3) != "konoha" && strcharinfo(3) != "nevoa" && strcharinfo(3) != "nuvem" && strcharinfo(3) != "areia") end;
+if(strcharinfo(3) == "konoha") set .@map, 1;
+if(strcharinfo(3) == "nevoa") set .@map, 2;
+if(strcharinfo(3) == "nuvem") set .@map, 3;
+if(strcharinfo(3) == "areia") set .@map, 4;
+if(#konoha == 1 && nukenin != 1){ //konoha
+set .@i, 1;
+}else if(#nevoa == 1 && nukenin != 1){ //Névoa
+set .@i, 2;
+}else if(#nuvem == 1 && nukenin != 1){ //Núvem
+set .@i, 3;
+}else if(#suna == 1 && nukenin != 1){ //suna
+set .@i, 4;
+}else if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0){ //akat
+set .@i, 5;
+}else if(getcharid(2) == 0){ //evitar bugs = nuke sem guild
+set .@i, 6;
+}else{ //nukes
+set .@i, 6;
+}
+if(.@map == 1 && .@i == 1 || .@map == 2 && .@i == 2 || .@map == 3 && .@i == 3 || .@map == 4 && .@i == 4) end;
+if(.@map == 1)
+set $EEinfo1[10+.@i], $EEinfo1[10+.@i]-1;
+if(.@map == 2)
+set $EEinfo2[10+.@i], $EEinfo2[10+.@i]-1;
+if(.@map == 3)
+set $EEinfo3[10+.@i], $EEinfo3[10+.@i]-1;
+if(.@map == 4)
+set $EEinfo4[10+.@i], $EEinfo4[10+.@i]-1;
+warp "kakashi",0,0;
+end;
+
+OnPCLogoutEvent:
+if($EEinfo[1] == 0) end;
+set .@map, 0;
+if(strcharinfo(3) != "konoha" && strcharinfo(3) != "nevoa" && strcharinfo(3) != "nuvem" && strcharinfo(3) != "areia") end;
+if(strcharinfo(3) == "konoha") set .@map, 1;
+if(strcharinfo(3) == "nevoa") set .@map, 2;
+if(strcharinfo(3) == "nuvem") set .@map, 3;
+if(strcharinfo(3) == "areia") set .@map, 4;
+if(#konoha == 1 && nukenin != 1){ //konoha
+set .@i, 1;
+}else if(#nevoa == 1 && nukenin != 1){ //Névoa
+set .@i, 2;
+}else if(#nuvem == 1 && nukenin != 1){ //Núvem
+set .@i, 3;
+}else if(#suna == 1 && nukenin != 1){ //suna
+set .@i, 4;
+}else if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0){ //akat
+set .@i, 5;
+}else if(getcharid(2) == 0){ //evitar bugs = nuke sem guild
+set .@i, 6;
+}else{ //nukes
+set .@i, 6;
+}
+if(.@map == 1 && .@i == 1 || .@map == 2 && .@i == 2 || .@map == 3 && .@i == 3 || .@map == 4 && .@i == 4) end;
+if(.@map == 1)
+set $EEinfo1[10+.@i], $EEinfo1[10+.@i]-1;
+if(.@map == 2)
+set $EEinfo2[10+.@i], $EEinfo2[10+.@i]-1;
+if(.@map == 3)
+set $EEinfo3[10+.@i], $EEinfo3[10+.@i]-1;
+if(.@map == 4)
+set $EEinfo4[10+.@i], $EEinfo4[10+.@i]-1;
+end;
+
+
+}
+
+//============== Konoha ===============
+
+prt_fild02,178,375,4	script	Entrada Folha	119,{
+
+set .@EEinfo[2], 1;
+
+// Nome do npc
+set .npc$,"^800000[Entrada Konoha]^000000";
+// Limíte de Entradas
+set .EEmaxp,11;
+// Coldown entre entradas (segundos)
+set .EEcdentry, 0; 
+//Mapas das Vilas
+setarray .EEmap$[1],"konoha","nevoa","nuvem","areia";
+
+mes .npc$;
+mes "Registro de entradas:";
+//mes "Konoha: ["+$EEinfo1[11]+"]";
+mes "Névoa: ["+$EEinfo1[12]+"]";
+mes "Núvem: ["+$EEinfo1[13]+"]";
+mes "Suna: ["+$EEinfo1[14]+"]";
+mes "Akatsuki: ["+$EEinfo1[15]+"]";
+mes "Nukenin: ["+$EEinfo1[16]+"]";
+
+if(select("Entrar:Sair") == 2) close;
+
+if(#konoha == 1 && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197) && !nukenin){
+close2;
+warp .EEmap$[.@EEinfo[2]],0,0;
+end;
+}
+
+if($EEinfo[1] == 0){
+next;
+mes .npc$;
+mes "Esta entrada é utilizada apenas no período de edifícios, O evento está fechado.";
+close;
+end;
+}
+
+//if(getcharid(2) == 0 && nukenin != 1){
+//next;
+//mes .npc$;
+//mes "Você precisa de uma Guild para entrar aqui.";
+//close;
+//end;
+//}
+
+//if(getcharid(2) != 9 && countitem(19020) == 1 || getcharid(2) != 9 && countitem(19195) == 1 || getcharid(2) != 9 && countitem(19196) == 1 || getcharid(2) != 9 && countitem(19197) == 1){
+//next;
+//mes .npc$;
+//mes "Você precisa estar na guild da Akatsuki.";
+//close;
+//end;
+//}
+
+//if($EEinfo1[5] == 1){
+//next;
+//mes .npc$;
+//mes "A entrada está bloqueada, e será liberada em breve.";
+//close;
+//end;
+//}
+
+if(#konoha == 1 && nukenin != 1){ //konoha
+set .@i, 1;
+}else if(#nevoa == 1 && nukenin != 1){ //Névoa
+set .@i, 2;
+}else if(#nuvem == 1 && nukenin != 1){ //Núvem
+set .@i, 3;
+}else if(#suna == 1 && nukenin != 1){ //suna
+set .@i, 4;
+}else if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0){ //akat
+set .@i, 5;
+}else if(getcharid(2) == 0){ //evitar bugs = nuke sem guild
+set .@i, 6;
+}else{ //nukes
+set .@i, 6;
+}
+//close2;
+if($EEinfo1[10+.@i] >= .EEmaxp){
+next;
+mes .npc$;
+mes "Sua vila já atingiu o número máximo de integrantes dentro do evento.";
+close;
+end;
+}
+
+if($EEinfo1[16+.@i] > 0){
+next;
+mes .npc$;
+mes "Sua vila deve esperar "+$EEinfo1[16+.@i]+" segundos para enviar um novo integrante.";
+close;
+end;
+}
+
+if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0) {announce "[Edifícios] "+strcharinfo(0)+" da Akatsuki acaba de invadir Konoha!",bc_blue|bc_all;}
+if (#nevoa == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Névoa acaba de invadir Konoha!",bc_blue|bc_all;}
+if (#nuvem == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Nuvem acaba de invadir Konoha!",bc_blue|bc_all;}
+if (#suna == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Suna acaba de invadir Konoha!",bc_blue|bc_all;}
+//if (#konoha == 1) {announce "[Edifícios] "+strcharinfo(0)+" de Konoha acaba de invadir Konoha!",bc_blue|bc_all;}
+if (nukenin == 1 && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] O Nukenin "+strcharinfo(0)+" acaba de invadir Konoha!",bc_blue|bc_all;}
+warp .EEmap$[.@EEinfo[2]],0,0;
+set $EEinfo1[10+.@i], $EEinfo1[10+.@i]+1;
+set $EEinfo1[16+.@i], .EEcdentry;
+end;
+}
+
+
+//============== Nevoa ===============
+
+gef_fild04,259,358,4	script	Entrada Kiri	119,{
+
+set .@EEinfo[2], 2;
+
+// Nome do npc
+set .npc$,"^800000[Entrada Nevoa]^000000";
+// Limíte de Entradas
+set .EEmaxp,10;
+// Coldown entre entradas (segundos)
+set .EEcdentry, 0; 
+//Mapas das Vilas
+setarray .EEmap$[1],"konoha","nevoa","nuvem","areia";
+
+mes .npc$;
+mes "Registro de entradas:";
+mes "Konoha: ["+$EEinfo2[11]+"]";
+//mes "Névoa: ["+$EEinfo2[12]+"]";
+mes "Núvem: ["+$EEinfo2[13]+"]";
+mes "Suna: ["+$EEinfo2[14]+"]";
+mes "Akatsuki: ["+$EEinfo2[15]+"]";
+mes "Nukenin: ["+$EEinfo2[16]+"]";
+
+if(select("Entrar:Sair") == 2) close;
+
+if(#nevoa == 1 && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197) && !nukenin){
+close2;
+warp .EEmap$[.@EEinfo[2]],0,0;
+end;
+}
+
+if($EEinfo[1] == 0){
+next;
+mes .npc$;
+mes "Esta entrada é utilizada apenas no período de edifícios, O evento está fechado.";
+close;
+end;
+}
+
+//if(getcharid(2) == 0 && nukenin != 1){
+//next;
+//mes .npc$;
+//mes "Você precisa de uma Guild para entrar aqui.";
+//close;
+//end;
+//}
+
+//if(getcharid(2) != 9 && countitem(19020) == 1 || getcharid(2) != 9 && countitem(19195) == 1 || getcharid(2) != 9 && countitem(19196) == 1 || getcharid(2) != 9 && countitem(19197) == 1){
+//next;
+//mes .npc$;
+//mes "Você precisa estar na guild da Akatsuki.";
+//close;
+//end;
+//}
+
+//if($EEinfo2[5] == 1){
+//next;
+//mes .npc$;
+//mes "A entrada está bloqueada, e será liberada em breve.";
+//close;
+//end;
+//}
+
+if(#konoha == 1 && nukenin != 1){ //konoha
+set .@i, 1;
+}else if(#nevoa == 1 && nukenin != 1){ //Névoa
+set .@i, 2;
+}else if(#nuvem == 1 && nukenin != 1){ //Núvem
+set .@i, 3;
+}else if(#suna == 1 && nukenin != 1){ //suna
+set .@i, 4;
+}else if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0){ //akat
+set .@i, 5;
+}else if(getcharid(2) == 0){ //evitar bugs = nuke sem guild
+set .@i, 6;
+}else{ //nukes
+set .@i, 6;
+}
+//close2;
+if($EEinfo2[10+.@i] >= .EEmaxp){
+next;
+mes .npc$;
+mes "Sua vila já atingiu o número máximo de integrantes dentro do evento.";
+close;
+end;
+}
+
+if($EEinfo2[16+.@i] > 0){
+next;
+mes .npc$;
+mes "Sua vila deve esperar "+$EEinfo2[16+.@i]+" segundos para enviar um novo integrante.";
+close;
+end;
+}
+
+if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0) {announce "[Edifícios] "+strcharinfo(0)+" da Akatsuki acaba de invadir a Nevoa!",bc_blue|bc_all;}
+//if (#nevoa == 1) {announce "[Edifícios] "+strcharinfo(0)+" da Névoa acaba de invadir a Nevoa!",bc_blue|bc_all;}
+if (#nuvem == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Nuvem acaba de invadir a Nevoa!",bc_blue|bc_all;}
+if (#suna == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Suna acaba de invadir a Nevoa!",bc_blue|bc_all;}
+if (#konoha == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" de Konoha acaba de invadir a Nevoa!",bc_blue|bc_all;}
+if (nukenin == 1 && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] O Nukenin "+strcharinfo(0)+" acaba de invadir a Nevoa!",bc_blue|bc_all;}
+warp .EEmap$[.@EEinfo[2]],0,0;
+set $EEinfo2[10+.@i], $EEinfo2[10+.@i]+1;
+set $EEinfo2[16+.@i], .EEcdentry;
+end;
+}
+
+
+//============== Nuvem ===============
+
+yuno_fild08,289,383,4	script	Entrada Kumo	119,{
+
+set .@EEinfo[2], 3;
+
+// Nome do npc
+set .npc$,"^800000[Entrada Nuvem]^000000";
+// Limíte de Entradas
+set .EEmaxp,15;
+// Coldown entre entradas (segundos)
+set .EEcdentry, 0; 
+//Mapas das Vilas
+setarray .EEmap$[1],"konoha","nevoa","nuvem","areia";
+
+mes .npc$;
+mes "Registro de entradas:";
+mes "Konoha: ["+$EEinfo3[11]+"]";
+mes "Névoa: ["+$EEinfo3[12]+"]";
+//mes "Núvem: ["+$EEinfo3[13]+"]";
+mes "Suna: ["+$EEinfo3[14]+"]";
+mes "Akatsuki: ["+$EEinfo3[15]+"]";
+mes "Nukenin: ["+$EEinfo3[16]+"]";
+
+if(select("Entrar:Sair") == 2) close;
+
+if(#nuvem == 1 && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197) && !nukenin){
+close2;
+warp .EEmap$[.@EEinfo[2]],0,0;
+end;
+}
+
+if($EEinfo[1] == 0){
+next;
+mes .npc$;
+mes "Esta entrada é utilizada apenas no período de edifícios, O evento está fechado.";
+close;
+end;
+}
+
+//if(getcharid(2) == 0 && nukenin != 1){
+//next;
+//mes .npc$;
+//mes "Você precisa de uma Guild para entrar aqui.";
+//close;
+//end;
+//}
+
+//if(getcharid(2) != 9 && countitem(19020) == 1 || getcharid(2) != 9 && countitem(19195) == 1 || getcharid(2) != 9 && countitem(19196) == 1 || getcharid(2) != 9 && countitem(19197) == 1){
+//next;
+//mes .npc$;
+//mes "Você precisa estar na guild da Akatsuki.";
+//close;
+//end;
+//}
+
+//if($EEinfo3[5] == 1){
+//next;
+//mes .npc$;
+//mes "A entrada está bloqueada, e será liberada em breve.";
+//close;
+//end;
+//}
+
+if(#konoha == 1 && nukenin != 1){ //konoha
+set .@i, 1;
+}else if(#nevoa == 1 && nukenin != 1){ //Névoa
+set .@i, 2;
+}else if(#nuvem == 1 && nukenin != 1){ //Núvem
+set .@i, 3;
+}else if(#suna == 1 && nukenin != 1){ //suna
+set .@i, 4;
+}else if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0){ //akat
+set .@i, 5;
+}else if(getcharid(2) == 0){ //evitar bugs = nuke sem guild
+set .@i, 6;
+}else{ //nukes
+set .@i, 6;
+}
+//close2;
+if($EEinfo3[10+.@i] >= .EEmaxp){
+next;
+mes .npc$;
+mes "Sua vila já atingiu o número máximo de integrantes dentro do evento.";
+close;
+end;
+}
+
+if($EEinfo3[16+.@i] > 0){
+next;
+mes .npc$;
+mes "Sua vila deve esperar "+$EEinfo3[16+.@i]+" segundos para enviar um novo integrante.";
+close;
+end;
+}
+
+if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0) {announce "[Edifícios] "+strcharinfo(0)+" da Akatsuki acaba de invadir a Nuvem!",bc_blue|bc_all;}
+if (#nevoa == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Névoa acaba de invadir a Nuvem!",bc_blue|bc_all;}
+//if (#nuvem == 1) {announce "[Edifícios] "+strcharinfo(0)+" da Nuvem acaba de invadir a Nuvem!",bc_blue|bc_all;}
+if (#suna == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Suna acaba de invadir a Nuvem!",bc_blue|bc_all;}
+if (#konoha == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" de Konoha acaba de invadir a Nuvem!",bc_blue|bc_all;}
+if (nukenin == 1 && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] O Nukenin "+strcharinfo(0)+" acaba de invadir a Nuvem!",bc_blue|bc_all;}
+warp .EEmap$[.@EEinfo[2]],0,0;
+set $EEinfo3[10+.@i], $EEinfo3[10+.@i]+1;
+set $EEinfo3[16+.@i], .EEcdentry;
+end;
+}
+
+
+//============== Suna ===============
+
+moc_fild01,239,382,4	script	Entrada Areia	119,{
+
+set .@EEinfo[2], 4;
+
+// Nome do npc
+set .npc$,"^800000[Entrada Suna]^000000";
+// Limíte de Entradas
+set .EEmaxp,12;
+// Coldown entre entradas (segundos)
+set .EEcdentry, 0; 
+//Mapas das Vilas
+setarray .EEmap$[1],"konoha","nevoa","nuvem","areia";
+
+mes .npc$;
+mes "Registro de entradas:";
+mes "Konoha: ["+$EEinfo4[11]+"]";
+mes "Névoa: ["+$EEinfo4[12]+"]";
+mes "Núvem: ["+$EEinfo4[13]+"]";
+//mes "Suna: ["+$EEinfo4[14]+"]";
+mes "Akatsuki: ["+$EEinfo4[15]+"]";
+mes "Nukenin: ["+$EEinfo4[16]+"]";
+
+if(select("Entrar:Sair") == 2) close;
+
+if(#suna == 1 && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197) && !nukenin){
+close2;
+warp .EEmap$[.@EEinfo[2]],0,0;
+end;
+}
+
+if($EEinfo[1] == 0){
+next;
+mes .npc$;
+mes "Esta entrada é utilizada apenas no período de edifícios, O evento está fechado.";
+close;
+end;
+}
+
+//if(getcharid(2) == 0 && nukenin != 1){
+//next;
+//mes .npc$;
+//mes "Você precisa de uma Guild para entrar aqui.";
+//close;
+//end;
+//}
+
+//if(getcharid(2) != 9 && countitem(19020) == 1 || getcharid(2) != 9 && countitem(19195) == 1 || getcharid(2) != 9 && countitem(19196) == 1 || getcharid(2) != 9 && countitem(19197) == 1){
+//next;
+//mes .npc$;
+//mes "Você precisa estar na guild da Akatsuki.";
+//close;
+//end;
+//}
+
+//if($EEinfo4[5] == 1){
+//next;
+//mes .npc$;
+//mes "A entrada está bloqueada, e será liberada em breve.";
+//close;
+//end;
+//}
+
+if(#konoha == 1 && nukenin != 1){ //konoha
+set .@i, 1;
+}else if(#nevoa == 1 && nukenin != 1){ //Névoa
+set .@i, 2;
+}else if(#nuvem == 1 && nukenin != 1){ //Núvem
+set .@i, 3;
+}else if(#suna == 1 && nukenin != 1){ //suna
+set .@i, 4;
+}else if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0){ //akat
+set .@i, 5;
+}else if(getcharid(2) == 0){ //evitar bugs = nuke sem guild
+set .@i, 6;
+}else{ //nukes
+set .@i, 6;
+}
+//close2;
+if($EEinfo4[10+.@i] >= .EEmaxp){
+next;
+mes .npc$;
+mes "Sua vila já atingiu o número máximo de integrantes dentro do evento.";
+close;
+end;
+}
+
+if($EEinfo4[16+.@i] > 0){
+next;
+mes .npc$;
+mes "Sua vila deve esperar "+$EEinfo4[16+.@i]+" segundos para enviar um novo integrante.";
+close;
+end;
+}
+
+if(countitem(19020) > 0 || countitem(19195) > 0 || countitem(19196) > 0 || countitem(19197) > 0) {announce "[Edifícios] "+strcharinfo(0)+" da Akatsuki acaba de invadir a Suna!",bc_blue|bc_all;}
+if (#nevoa == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Névoa acaba de invadir a Suna!",bc_blue|bc_all;}
+//if (#suna == 1) {announce "[Edifícios] "+strcharinfo(0)+" da Nuvem acaba de invadir a Suna!",bc_blue|bc_all;}
+if (#nuvem == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" da Nuvem acaba de invadir a Suna!",bc_blue|bc_all;}
+if (#konoha == 1 && !nukenin && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] "+strcharinfo(0)+" de Konoha acaba de invadir a Suna!",bc_blue|bc_all;}
+if (nukenin == 1 && !countitem(19020) && !countitem(19195) && !countitem(19196) && !countitem(19197)) {announce "[Edifícios] O Nukenin "+strcharinfo(0)+" acaba de invadir a Suna!",bc_blue|bc_all;}
+warp .EEmap$[.@EEinfo[2]],0,0;
+set $EEinfo4[10+.@i], $EEinfo4[10+.@i]+1;
+set $EEinfo4[16+.@i], .EEcdentry;
+end;
+}

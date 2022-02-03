@@ -1,0 +1,75 @@
+konoha,26,263,5	script	Kiichi::equipe_oito	831,{
+
+if (checkquest(2011) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Sou Kiichi, não gosto de companhia, então serei direto, se quiser uma Waki é comigo";
+next;
+mes "Wakizashi Refinada,por si só é uma espada pequena,leve e precisa, mais resistente e leve que o normal pode transpaçar até mesmo um javali.";
+next;
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Waki Refinada
+//========================================================================
+
+L_SS:
+next;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Muco Pegajoso.";
+mes "- Obter 25x Casca.";
+mes "- Obter 50x Garleta.";
+mes "- Matar 50 Morcegos";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2011;
+set quest_equipe_oito,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(equipe_mobs_oito < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(938) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(935) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(910) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) { mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Argh, ainda está vivo! Você é mesmo persistente como prometido aqui está sua arma, boa sorte em sua nova jornada.";
+completequest 2011;
+erasequest 2011;
+set galinha1,0;
+set galinha2,0;
+set galinha3,0;
+set vaca1,0;
+set vaca2,0;
+set vaca3,0;
+set galinhafeed,0;
+set vacafeed,0;
+set quest_equipe_oito,0;
+set equipe_mobs_oito,0;
+delitem 938,25;
+delitem 935,25;
+delitem 910,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1237,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	equipe#8	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1005 && quest_equipe_oito == 1) {set equipe_mobs_oito,equipe_mobs_oito +1; announce "[Quest de equipamento] Você já derrotou "+equipe_mobs_oito+" / 50 Morcego",bc_blue|bc_self; end;}
+
+}
+
+areia,30,231,5	duplicate(equipe_oito)	Kiichi#1	831
+kiri,319,38,5	duplicate(equipe_oito)	Kiichi#2	831
+nuvem,68,275,5	duplicate(equipe_oito)	Kiichi#3	831

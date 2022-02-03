@@ -1,0 +1,6 @@
+sec_in02,180,184,5	script	Debug#70	99,{
+mes "Debug.";
+set $konoha_ryous, $konoha_ryous -21557;
+set $nevoa_ryous, $nevoa_ryous -46970;
+close;
+}

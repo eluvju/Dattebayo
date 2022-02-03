@@ -1,0 +1,36 @@
+ama_in01,93,22,3	script	Elemento Suiton	734,{
+	show "[Elemento Suiton]";
+	if(getskilllv(535)) goto L_alreadyhave;
+	if(elemento >= 2){goto L_elementos;}
+	if(elementoagua == 1){goto L_alreadyhave;}	
+	if(elemento == 0){goto aprenderagua;}
+	if(elemento == 1){goto aprenderagua;}
+
+
+	aprenderagua:
+	show "Olá caro shinobi, voce gostaria de aprender o elemento Suiton (Água) ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	next;
+	show "[Elemento Suiton]";
+	show "Muito bem, muito sábia essa escolha!";
+	set elementoagua,elementoagua + 1;
+	set elemento,elemento + 1;
+	set genin,1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

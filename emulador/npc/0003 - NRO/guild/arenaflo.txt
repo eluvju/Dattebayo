@@ -1,0 +1,116 @@
+// Guild Flag (Town)
+//============================================================
+prontera,152,166,4	script	Stonez	722,{
+    end;
+
+OnRecvCastleSt01:
+    FlagEmblem GetCastleData("arenaflo",1);
+    end;
+}
+
+// Guild Flag (Outside Castle)
+//============================================================
+bat_a02,161,56,4	script	Stonez1	722,{
+    set .@GID, GetCastleData("arenaflo",1);
+    if (.@GID == 0) {
+        mes " [ Edict of the Divine Rune Midgard Kingdom ]";
+        mes " ";
+        mes "1. Follow the ordinance of The Divine Rune Midgard Kingdom, ";
+        mes "We declare that";
+        mes "there is no formal master of this castle.";
+        mes " ";
+        mes "2. To the one who can ";
+        mes "overcome all trials";
+        mes "and destroy the Emperium,";
+        mes "the king will endow the one with";
+        mes "ownership of this castle.";
+    }
+    else {
+        if (getcharid(2) == .@GID) {
+            mes "Brave ones...";
+            mes "Do you wish to return to your honorable place?";
+            next;
+            if (select("Return to the guild castle.:Quit.") == 1) {
+                if (getcharid(2) == GetCastleData("arenaflo",1)) {
+                    warp "arenaflo",52,41;
+                    end;
+                }
+            }
+            close;
+        }
+        mes "[ Edict of the Divine Rune Midgard Kingdom ]";
+        mes " ";
+        mes "1. Following the ordinance of the";
+        mes "Divine Rune Midgard Kingdom,";
+        mes "we approve that this place is in";
+        mes "the private possession of ^ff0000" + GetGuildName(.@GID) + "^000000 Guild.";
+        mes " ";
+        mes "2. The guild Master of ^ff0000"+ GetGuildName(.@GID) + "^000000 Guild is";
+        mes "^FF0000" + GetGuildMaster(.@GID) + "^000000";
+        mes "If there is anyone who objects to this,";
+        mes " prove your strength and honor with a steel blade in your hand.";
+    }
+    close;
+
+OnRecvCastleSt01:
+    FlagEmblem GetCastleData("arenaflo",1);
+    end;
+}
+
+
+// Guild Flag (Inside Castle)
+//============================================================
+arenaflo,19,247,4	script	Terra#p5-6::Terra3	722,{
+	end;
+
+OnRecvCastlePt05:
+	FlagEmblem GetCastleData("arenaflo",1);
+	end;
+}
+
+arenaflo,34,51,4	duplicate(Terra3)	Terra#p5-7	722
+arenaflo,34,51,4	duplicate(Terra3)	Terra#p5-8	722
+arenaflo,34,51,4	duplicate(Terra3)	Terra#p5-9	722
+arenaflo,34,51,4	duplicate(Terra3)	Terra#p5-10	722
+arenaflo,34,51,4	duplicate(Terra3)	Terra#p5-11	722
+arenaflo,34,51,4	duplicate(Terra3)	Terra#p5-12	722
+arenaflo,34,51,4	duplicate(Terra3)	Terra#p5-13	722
+
+// AGIT Manager
+//============================================================
+arenaflo,34,51,4,0	duplicate(Gld_Agit_Manager)	Agit#arenaflo	-1
+
+// Steward
+//============================================================
+arenaflo,36,37,4	duplicate(Gld_Mngr_Template)	Raynor#arenaflo	55
+
+// Guardians
+//============================================================
+arenaflo,36,37,4	duplicate(Gld_Guard_Template)	Guardian#arenaflo	-1
+
+// Kafra Staff
+//============================================================
+arenaflo,52,41,4	duplicate(Gld_Kafra_Template)	Kafra Staff#arenaflo	117
+
+// Master's Room Exit
+//============================================================
+arenaflo,34,52,0	script	#switch_TnT	111,{
+	mes " ";
+	mes "There's a small lever. Will you pull it? ";
+	next;
+	if(select("Pull.o not.") == 2) close;
+	warp "arenaflo",36,38;
+	end;
+}
+
+// Guild Treasure Protection
+//============================================================
+arenaflo,34,51,4	duplicate(Gld_Trea_Protect)	ban_warp#arenaflo	-1,6,6
+
+// Guild Treasure Spawns
+//============================================================
+arenaflo,34,51,4	duplicate(Gld_Trea_Spawn)	Treasure#arenaflo	-1
+
+// Guild Dungeon Switch
+//============================================================
+arenaflo,34,51,4	duplicate(Gld_Dun_Template)	#arenaflo	111

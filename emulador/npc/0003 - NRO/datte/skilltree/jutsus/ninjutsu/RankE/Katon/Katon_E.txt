@@ -1,0 +1,104 @@
+payon_in03,98,186,5	script	Hana Shuriken::katon1	831,{
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if (hanashuriken == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(elementokaton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Katon, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Hana Shuriken";
+next;
+mes "Descrição: O ninja solta Uma chuva de shurikens em chamas no oponente";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_HS,"Agora não",L_no;
+
+//========================================================================
+//Hana Shuriken
+//========================================================================
+
+L_HS:
+set skillprotect,1;
+if (checkquest(1010) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 100x Girino";
+setquest 1010;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1010,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 534,1,0;
+set hanashuriken,1;
+completequest 1010;
+erasequest 1010;
+set skillgenin1,2;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Katon]",0;
+}
+//=========================================================================
+//	Housenka
+//=========================================================================
+payon_in03,101,185,5	script	Housenka::katon2	831,{
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if(elementokaton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 2) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (housenka == 1) {mes "Você já aprendeu esse jutsu."; close;}
+
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Katon, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Housenka";
+next;
+mes "Descrição: O ninja solta várias bolas de fogo pela boca, atingindo varios inimigos a sua frente";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_GK,"Agora não",L_no;
+
+L_GK:
+if (checkquest(1011) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 150x Filhote de cobra";
+setquest 1011;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1011,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 17,1,0;
+set housenka,1;
+completequest 1011;
+erasequest 1011;
+set skillgenin1,3;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Katon]",0;
+}
+
+//ama_in02,55,36,5	duplicate(katon1)	Hana Shuriken#e1	831
+//ama_in02,60,36,5	duplicate(katon2)	Housenka#e2	831
+//
+//payon_in03,105,174,5	duplicate(katon1)	Hana Shuriken#e3	831
+//payon_in03,105,171,5	duplicate(katon2)	Housenka#e4	831
+//
+//ve_in,102,219,5	duplicate(katon1)	Hana Shuriken#e5	831
+//ve_in,105,219,5	duplicate(katon2)	Housenka#e6	831
+//
+//izlude_in,60,94,5	duplicate(katon1)	Hana Shuriken#e7	831
+//izlude_in,69,94,5	duplicate(katon2)	Housenka#e8	831

@@ -1,0 +1,77 @@
+-	script	on_PC_UseSkillfKokohi	-1,{
+    end;
+//When a Character uses a skill
+
+//Kokohi
+
+onPcUseSkillEvent:
+
+           if(lskillid == 663) {
+
+
+if (getskilllv(663) == 1) {
+
+if (Kokohi != 1) {end;}
+if (skill663 >= 50) {skill 663,2,0; set skill663,0; dispbottom "[Sys] Level up"; end; }
+set skill663,skill663 +1;
+dispbottom "[Jutsu level] Kokohi Kemuri level 1: "+skill663+" de 50";
+
+end;
+
+}
+
+if (getskilllv(663) == 2) {
+if (Kokohi != 1) {end;}
+if (skill663 >= 150) {skill 663,3,0; set skill663,0; dispbottom "[Sys] Level up"; end;}
+set skill663,skill663 +1;
+dispbottom "[Jutsu level] Kokohi Kemuri level 2: "+skill663+" de 150";
+
+end;
+
+}
+
+if (getskilllv(663) == 3) {
+
+if (Kokohi != 1) {end;}
+if (skill663 >= 200) {skill 663,4,0; set skill663,0; dispbottom "[Sys] Level up"; end;}
+set skill663,skill663 +1;
+dispbottom "[Jutsu level] Kokohi Kemuri level 3: "+skill663+" de 200";
+
+end;
+
+}
+
+if (getskilllv(663) == 4) {
+if (Kokohi != 1) {end;}
+if (skill663 >= 250) {skill 663,5,0; set skill663,0; dispbottom "[Sys] Level up"; end;}
+set skill663,skill663 +1;
+dispbottom "[Jutsu level] Kokohi Kemuri level 4: "+skill663+" de 250";
+
+end;
+
+}
+
+if (getskilllv(663) == 5) {
+if (Kokohi != 1) {end;}
+if (skill663 >= 300) {skill 663,6,0; set skill663,0; dispbottom "[Sys] Level up"; end;}
+set skill663,skill663 +1;
+dispbottom "[Jutsu level] Kokohi Kemuri level 5: "+skill663+" de 300";
+
+end;
+
+}
+
+if (getskilllv(663) == 6) {
+if (Kokohi != 1) {end;}
+if (skill663 >= 500) {skill 663,7,0; set skill663,0; dispbottom "[Sys] Level up"; end;}
+set skill663,skill663 +1;
+dispbottom "[Jutsu level] Kokohi Kemuri level 6: "+skill663+" de 500";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

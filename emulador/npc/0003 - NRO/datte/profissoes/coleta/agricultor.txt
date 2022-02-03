@@ -1,0 +1,1818 @@
+//===== eAthena Script =============================================================================
+//= Mining Script
+//===== By: ========================================================================================
+//= Precious (1.4)
+//===== Edited to work with current versions of eAthena by: ========================================
+//= ChrisBowen (1.5)
+//===== Current Version: ===========================================================================
+//= 1.5
+//===== Compatible With: ===========================================================================
+//= Any eAthena Version
+//===== Description: ===============================================================================
+//= Enables the player to "mine" in certain Mineraçãos.
+//= There are three levels to the mines
+//= To mine at lvl 1 area you have to have lvl 1 pick axe, to mine at lvl 2, level 2 pickaxe.
+//= Player will have to "learn to mine" and when they do, they will be given lvl 1 pickaxe.
+//===== Additional Comments: =======================================================================
+//= 6/14/05 - Started writing the script
+//= 6/15/05 - v.1.1 worked out the bugs and messed with the random.
+//= 6/16/05 - v.1.3 testesd all spots and added the dup coords. enjoy my script happy.gif
+//= 6/19/05 - v.1.4 fixed last minute bugs, added variables.
+//= 4/18/07 - v.1.5 added new spots to mine (ChrisBowen)
+//==================================================================================================
+//Mining quest===========================================================
+//=======================================================================
+//first level of the mine================================================
+//=======================================================================
+//= Edited script by: ===================================================
+//= ChrisBowen (1.5) (for download go to http://nopaste.php-q.net/290213=
+//=======================================================================
+prt_fild02,214,355,1	script	Árvore Frutífera::fruta	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto tryagain;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1803,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto erva;
+if (found == 6) goto erva;
+if (found == 7) goto erva;
+if (found == 8) goto erva;
+if (found == 9) goto erva;
+if (found == 10) goto erva;
+if (found == 11) goto erva;
+if (found == 12) goto erva;
+if (found == 13) goto erva2;
+close;
+
+erva:
+getitem 507,1;
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor (Nível : "+level_agricultor+") : "+agricultorexp+" / 500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+getitem 508,1;
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl1:
+mes "Você precisa de uma luva básica para minerar.";
+close;
+
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+prt_fild02,178,204,1	duplicate(fruta)	Árvore Frutífera#1	754
+prt_fild02,200,290,1	duplicate(fruta)	Árvore Frutífera#2	754
+prt_fild02,91,196,1	duplicate(fruta)	Árvore Frutífera#3	754
+prt_fild02,119,89,1	duplicate(fruta)	Árvore Frutífera#4	754
+
+//Second level of the mine===========================================
+//===================================================================
+prt_fild01,224,131,1	script	Árvore Frutífera::fruta2	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 10) {mes "Seu nível de agricultor está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1803,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto erva;
+if (found == 6) goto erva;
+if (found == 7) goto erva;
+if (found == 8) goto erva;
+if (found == 9) goto erva;
+if (found == 10) goto erva;
+if (found == 11) goto erva;
+if (found == 12) goto erva3;
+if (found == 13) goto erva2;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12971,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 508,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 509,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl1:
+mes "Você precisa de uma luva.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+prt_fild01,159,243,1	duplicate(fruta2)	Árvore Frutífera#5	754
+prt_fild01,165,125,1	duplicate(fruta2)	Árvore Frutífera#6	754
+prt_fild01,100,199,1	duplicate(fruta2)	Árvore Frutífera#7	754
+prt_fild01,178,204,1	duplicate(fruta2)	Árvore Frutífera#8	754
+
+//third level of the mine============================================
+//===================================================================
+moc_fild03,249,273,1	script	Árvore Frutífera::fruta3	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 20) {mes "Seu nível de agricultor está muito baixo, é preciso nível 20 para minerar nesse ponto"; close;}
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1803,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(15);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto erva;
+if (found == 6) goto erva;
+if (found == 7) goto erva;
+if (found == 8) goto erva;
+if (found == 9) goto erva;
+if (found == 10) goto erva3;
+if (found == 11) goto erva2;
+if (found == 12) goto erva4;
+if (found == 13) goto erva;
+if (found == 14) goto erva;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 507,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 508,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 509,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva4:
+set agricultorexp,agricultorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 510,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl1:
+mes "Você precisa de uma luva.";
+close;
+
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+moc_fild03,249,273,1	duplicate(fruta3)	Árvore Frutífera#9	754
+moc_fild03,169,227,1	duplicate(fruta3)	Árvore Frutífera#10	754
+moc_fild03,150,47,1	duplicate(fruta3)	Árvore Frutífera#11	754
+moc_fild03,225,164,1	duplicate(fruta3)	Árvore Frutífera#12	754
+
+//fourth level of the mine============================================
+//===================================================================
+mjolnir_07,156,363,1	script	Árvore Frutífera::fruta4	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 30) {mes "Seu nível de agricultor está muito baixo, é preciso nível 30 para minerar nesse ponto"; close;}
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1803,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1803) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(16);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto erva;
+if (found == 6) goto erva;
+if (found == 7) goto erva3;
+if (found == 8) goto erva2;
+if (found == 9) goto erva5;
+if (found == 10) goto erva4;
+if (found == 11) goto erva3;
+if (found == 12) goto erva2;
+if (found == 13) goto erva2;
+if (found == 14) goto erva;
+if (found == 15) goto erva;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 507,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 508,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 509,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva4:
+set agricultorexp,agricultorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 510,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva5:
+set agricultorexp,agricultorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 511,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl1:
+mes "Você precisa de uma luva.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+mjolnir_07,105,303,1	duplicate(fruta4)	Árvore Frutífera#13	754
+mjolnir_07,48,274,1	duplicate(fruta4)	Árvore Frutífera#14	754
+mjolnir_07,247,188,1	duplicate(fruta4)	Árvore Frutífera#15	754
+mjolnir_07,93,101,1	duplicate(fruta4)	Árvore Frutífera#16	754
+
+//fifth level of the mine============================================
+//===================================================================
+mjolnir_08,187,182,1	script	Árvore Frutífera::fruta5	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 40) {mes "Seu nível de agricultor está muito baixo, é preciso nível 40 para minerar nesse ponto"; close;}
+if (countitem(1804) < 1) goto needpickaxelvl2;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1804,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1804) < 1) goto needpickaxelvl2;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto erva;
+if (found == 6) goto erva;
+if (found == 7) goto erva;
+if (found == 8) goto uva;
+if (found == 9) goto erva5;
+if (found == 10) goto erva4;
+if (found == 11) goto erva3;
+if (found == 12) goto erva;
+if (found == 13) goto erva2;
+if (found == 14) goto erva3;
+if (found == 15) goto erva2;
+if (found == 16) goto erva;
+if (found == 17) goto erva;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12971,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12972,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12973,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva4:
+set agricultorexp,agricultorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12974,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva5:
+set agricultorexp,agricultorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12975,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+uva:
+set agricultorexp,agricultorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 514,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl2:
+mes "Você precisa de uma luva.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+mjolnir_08,175,252,1	duplicate(fruta5)	Árvore Frutífera#17	754
+mjolnir_08,87,316,1	duplicate(fruta5)	Árvore Frutífera#18	754
+mjolnir_08,248,365,1	duplicate(fruta5)	Árvore Frutífera#19	754
+mjolnir_08,159,243,1	duplicate(fruta5)	Árvore Frutífera#20	754
+
+//sixth level of the mine============================================
+//===================================================================
+prt_fild05,252,103,1	script	Árvore Frutífera::fruta6	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 50) {mes "Seu nível de agricultor está muito baixo, é preciso nível 50 para minerar nesse ponto"; close;}
+if (countitem(1804) < 1) goto needpickaxelvl2;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1804,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1804) < 1) goto needpickaxelvl2;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto erva;
+if (found == 6) goto erva;
+if (found == 7) goto mastela;
+if (found == 8) goto erva;
+if (found == 9) goto erva;
+if (found == 10) goto erva;
+if (found == 11) goto erva3;
+if (found == 12) goto ferro;
+if (found == 13) goto ferr5;
+if (found == 14) goto erva5;
+if (found == 15) goto erva4;
+if (found == 16) goto erva;
+if (found == 17) goto erva;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12971,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12972,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12973,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva4:
+set agricultorexp,agricultorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12974,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva5:
+set agricultorexp,agricultorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12975,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+uva:
+set agricultorexp,agricultorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 514,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+mastela:
+set agricultorexp,agricultorexp +7;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 522,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl2:
+mes "Você precisa de uma luva.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+prt_fild05,147,176,1	duplicate(fruta6)	Árvore Frutífera#21	754
+prt_fild05,302,282,1	duplicate(fruta6)	Árvore Frutífera#22	754
+prt_fild05,223,247,1	duplicate(fruta6)	Árvore Frutífera#23	754
+prt_fild05,88,354,1	duplicate(fruta6)	Árvore Frutífera#24	754
+
+//seventh level of the mine============================================
+//===================================================================
+cmd_fild01,143,162,1	script	Árvore Frutífera::fruta7	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 60) {mes "Seu nível de agricultor está muito baixo, é preciso nível 60 para minerar nesse ponto"; close;}
+if (countitem(1804) < 1) goto needpickaxelvl2;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1804,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1804) < 1) goto needpickaxelvl2;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto erva;
+if (found == 6) goto erva;
+if (found == 7) goto limao;
+if (found == 8) goto erva4;
+if (found == 9) goto erva5;
+if (found == 10) goto uva;
+if (found == 11) goto erva3;
+if (found == 12) goto ferro;
+if (found == 13) goto mastela;
+if (found == 14) goto erva;
+if (found == 15) goto erva;
+if (found == 16) goto erva;
+if (found == 17) goto erva;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12971,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12972,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12973,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva4:
+set agricultorexp,agricultorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12974,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva5:
+set agricultorexp,agricultorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12975,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+uva:
+set agricultorexp,agricultorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 514,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+mastela:
+set agricultorexp,agricultorexp +7;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 522,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+
+limao:
+set agricultorexp,agricultorexp +8;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 568,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl2:
+mes "Você precisa de uma luva.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+cmd_fild01,309,248,1	duplicate(fruta7)	Árvore Frutífera#25	754
+cmd_fild01,72,247,1	duplicate(fruta7)	Árvore Frutífera#26	754
+cmd_fild01,55,57,1	duplicate(fruta7)	Árvore Frutífera#27	754
+cmd_fild01,143,39,1	duplicate(fruta7)	Árvore Frutífera#28	754
+
+//eighth level of the mine============================================
+//===================================================================
+prt_fild06,132,170,1	script	Árvore Frutífera::fruta8	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 70) {mes "Seu nível de agricultor está muito baixo, é preciso nível 70 para minerar nesse ponto"; close;}
+if (countitem(1805) < 1) goto needpickaxelvl3;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1805,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1805) < 1) goto needpickaxelvl3;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto limao;
+if (found == 6) goto mastela;
+if (found == 7) goto macaverde;
+if (found == 8) goto uva;
+if (found == 9) goto erva5;
+if (found == 10) goto erva;
+if (found == 11) goto erva3;
+if (found == 12) goto ferro;
+if (found == 13) goto erva4;
+if (found == 14) goto erva;
+if (found == 15) goto erva;
+if (found == 16) goto erva;
+if (found == 17) goto erva;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12971,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12972,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12973,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva4:
+set agricultorexp,agricultorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12974,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva5:
+set agricultorexp,agricultorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12975,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+uva:
+set agricultorexp,agricultorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 514,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+mastela:
+set agricultorexp,agricultorexp +7;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 522,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+
+limao:
+set agricultorexp,agricultorexp +8;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 568,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+macaverde:
+set agricultorexp,agricultorexp +9;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 619,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl3:
+mes "Você precisa de uma luva.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+prt_fild06,200,99,1	duplicate(fruta8)	Árvore Frutífera#29	754
+prt_fild06,289,155,1	duplicate(fruta8)	Árvore Frutífera#30	754
+prt_fild06,152,305,1	duplicate(fruta8)	Árvore Frutífera#31	754
+prt_fild06,47,258,1	duplicate(fruta8)	Árvore Frutífera#32	754
+
+//ninth level of the mine============================================
+//===================================================================
+prt_fild00,291,348,1	script	Árvore Frutífera::fruta9	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 80) {mes "Seu nível de agricultor está muito baixo, é preciso nível 80 para minerar nesse ponto"; close;}
+if (countitem(1805) < 1) goto needpickaxelvl3;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1805,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1805) < 1) goto needpickaxelvl3;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto erva;
+if (found == 5) goto macaverde;
+if (found == 6) goto limao;
+if (found == 7) goto banana;
+if (found == 8) goto mastela;
+if (found == 9) goto uva;
+if (found == 10) goto erva5;
+if (found == 11) goto erva3;
+if (found == 12) goto ferro;
+if (found == 13) goto erva4;
+if (found == 14) goto erva;
+if (found == 15) goto erva;
+if (found == 16) goto erva;
+if (found == 17) goto erva;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12971,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12972,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12973,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva4:
+set agricultorexp,agricultorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12974,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva5:
+set agricultorexp,agricultorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12975,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+uva:
+set agricultorexp,agricultorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 514,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+mastela:
+set agricultorexp,agricultorexp +7;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 522,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+
+limao:
+set agricultorexp,agricultorexp +8;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 568,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+macaverde:
+set agricultorexp,agricultorexp +9;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 619,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+banana:
+set agricultorexp,agricultorexp +10;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")";}
+getitem 513,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl3:
+mes "Você precisa de uma luva.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+prt_fild00,213,182,1	duplicate(fruta9)	Árvore Frutífera#33	754
+prt_fild00,210,43,1	duplicate(fruta9)	Árvore Frutífera#34	754
+prt_fild00,74,265,1	duplicate(fruta9)	Árvore Frutífera#35	754
+prt_fild00,105,145,1	duplicate(fruta9)	Árvore Frutífera#36	754
+
+//tenth level of the mine============================================
+//===================================================================
+prt_fild07,60,357,1	script	Árvore Frutífera::fruta10	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (agricultor != 1) {mes "Você ainda não é agricultor, faça a quest em sua vila"; close;}
+if (level_agricultor < 90) {mes "Seu nível de agricultor está muito baixo, é preciso nível 90 para minerar nesse ponto"; close;}
+if (countitem(1806) < 1) goto needpickaxelvl4;
+mes "Você encontrou com ponto de colheita.";
+mes "Gostaria de coletar frutos/ervas?.";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua luva rasgou...espero que tenha outra..";
+delitem 1806,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(1806) < 1) goto needpickaxelvl4;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto erva;
+if (found == 1) goto erva;
+if (found == 2) goto erva;
+if (found == 3) goto erva;
+if (found == 4) goto banana;
+if (found == 5) goto macaverde;
+if (found == 6) goto limao;
+if (found == 7) goto mel;
+if (found == 8) goto mastela;
+if (found == 9) goto uva;
+if (found == 10) goto erva4;
+if (found == 11) goto erva3;
+if (found == 12) goto ferro;
+if (found == 13) goto erva5;
+if (found == 14) goto erva;
+if (found == 15) goto erva;
+if (found == 16) goto erva;
+if (found == 17) goto erva;
+close;
+
+erva:
+set agricultorexp,agricultorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12971,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva2:
+set agricultorexp,agricultorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12972,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva3:
+set agricultorexp,agricultorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12973,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva4:
+set agricultorexp,agricultorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12974,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+erva5:
+set agricultorexp,agricultorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 12975,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+uva:
+set agricultorexp,agricultorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 514,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+mastela:
+set agricultorexp,agricultorexp +7;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 522,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+
+limao:
+set agricultorexp,agricultorexp +8;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 568,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+macaverde:
+set agricultorexp,agricultorexp +9;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")"; }
+getitem 619,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+banana:
+set agricultorexp,agricultorexp +10;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")";}
+getitem 513,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+mel:
+set agricultorexp,agricultorexp +11;
+next;
+mes "Material coletado com sucesso, experiência de agricultor: "+agricultorexp+"/500";
+if (agricultorexp >= 500) {set level_agricultor, level_agricultor +1; set agricultorexp,0; dispbottom "Profissão: agricultor, level up (nível atual: "+level_agricultor+")";}
+getitem 518,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl4:
+mes "Você precisa de uma luva.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+prt_fild07,112,195,1	duplicate(fruta10)	Árvore Frutífera#37	754
+prt_fild07,207,188,1	duplicate(fruta10)	Árvore Frutífera#38	754
+prt_fild07,307,80,1	duplicate(fruta10)	Árvore Frutífera#39	754
+prt_fild07,317,329,1	duplicate(fruta10)	Árvore Frutífera#40	754

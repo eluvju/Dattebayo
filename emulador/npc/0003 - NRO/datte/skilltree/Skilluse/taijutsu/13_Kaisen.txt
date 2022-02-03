@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkilltai17	-1,{
+    end;
+//When a Character uses a skill
+
+//Kaisen
+
+onPcUseSkillEvent:
+
+           if(lskillid == 517) {
+
+
+if (getskilllv(517) == 1) {
+
+if (Kaisen != 1) {end;}
+if (skill517 >= 50) {skill 517,2,0; set skill517,0; dispbottom "[Sys] Level up"; end; }
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 1: "+skill517+" de 50";
+
+end;
+
+}
+
+if (getskilllv(517) == 2) {
+if (Kaisen != 1) {end;}
+if (skill517 >= 100) {skill 517,3,0; set skill517,0; dispbottom "[Sys] Level up"; end;}
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 2: "+skill517+" de 100";
+
+end;
+
+}
+
+if (getskilllv(517) == 3) {
+
+if (Kaisen != 1) {end;}
+if (skill517 >= 150) {skill 517,4,0; set skill517,0; dispbottom "[Sys] Level up"; end;}
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 3: "+skill517+" de 150";
+
+end;
+
+}
+
+if (getskilllv(517) == 4) {
+if (Kaisen != 1) {end;}
+if (skill517 >= 200) {skill 517,5,0; set skill517,0; dispbottom "[Sys] Level up"; end;}
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 4: "+skill517+" de 200";
+
+end;
+
+}
+
+if (getskilllv(517) == 5) {
+if (Kaisen != 1) {end;}
+if (skill517 >= 250) {skill 517,6,0; set skill517,0; dispbottom "[Sys] Level up"; end;}
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 5: "+skill517+" de 250";
+
+end;
+
+}
+
+if (getskilllv(517) == 6) {
+if (Kaisen != 1) {end;}
+if (skill517 >= 300) {skill 517,7,0; set skill517,0; dispbottom "[Sys] Level up"; end;}
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 6: "+skill517+" de 300";
+
+end;
+
+}
+
+if (getskilllv(517) == 7) {
+if (Kaisen != 1) {end;}
+if (skill517 >= 400) {skill 517,8,0; set skill517,0; dispbottom "[Sys] Level up"; end;}
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 7: "+skill517+" de 400";
+
+end;
+
+}
+
+if (getskilllv(517) == 8) {
+if (Kaisen != 1) {end;}
+if (skill517 >= 500) {skill 517,9,0; set skill517,0; dispbottom "[Sys] Level up"; end;}
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 8: "+skill517+" de 500";
+
+end;
+
+}
+
+if (getskilllv(517) == 9) {
+if (Kaisen != 1) {end;}
+if (skill517 >= 700) {skill 517,10,0; set skill517,0; dispbottom "[Sys] Level up"; end;}
+set skill517,skill517 +1;
+dispbottom "[Jutsu level] Kaisen level 9: "+skill517+" de 700";
+
+end;
+
+}
+
+                end;
+            }    
+}

@@ -1,0 +1,447 @@
+bra_fild01,118,34,4	script	Buraco	111,1,1,{
+
+if (countitem(7218) >= 1) goto descer;
+mes "Você vê um buraco fundo no chão, isso é perigoso, melhor se afastar";
+close;
+
+descer:
+mes "Você vê um buraco fundo no chão, isso é perigoso";
+next;
+mes "Hm.. e se eu usar essa corda pra descer?";
+next;
+mes "Qual será sua ação?";
+menu "Tentar descer com a corda",corda,"Se afastar",afastar;
+
+corda:
+delitem 7218,1;
+mes "Essa corda não parece muito segura... mas vamos em frente";
+next;
+warp "Orochimaru",78,109;
+close;
+
+afastar:
+close;
+
+}
+
+einbech,157,184,4	script	Buraco#3	111,1,1,{
+
+if (countitem(662) >= 1) goto descer;
+mes "Você vê um buraco fundo no chão, isso é perigoso, melhor se afastar";
+close;
+
+descer:
+mes "Você vê um buraco fundo no chão, isso é perigoso";
+next;
+mes "Hm.. Será que devo descer?";
+next;
+mes "Qual será sua ação?";
+menu "Tentar descer",corda,"Se afastar",afastar;
+
+corda:
+next;
+mes "[Voz Estranha]";
+mes "Isso é um emblema? Você pode entrar, seja bem-vindo!";
+next;
+warp "yuno_in02",93,203;
+close;
+
+afastar:
+close;
+
+}
+
+prt_fild05,203,309,4	script	Buraco#2	111,1,1,{
+
+if (countitem(7218) >= 1) goto descer;
+mes "Você vê um buraco fundo no chão, isso é perigoso, melhor se afastar";
+close;
+
+descer:
+mes "Você vê um buraco fundo no chão, isso é perigoso";
+next;
+mes "Hm.. e se eu usar essa corda pra descer?";
+next;
+mes "Qual será sua ação?";
+menu "Tentar descer com a corda",corda,"Se afastar",afastar;
+
+corda:
+delitem 7218,1;
+mes "Essa corda não parece muito segura... mas vamos em frente";
+next;
+warp "floresta",178,343;
+close;
+
+afastar:
+close;
+
+}
+
+gef_fild07,329,251,4	script	Buraco#1	111,1,1,{
+
+mes "Você vê um buraco atrás da parede, isso é perigoso";
+next;
+mes "Hm.. e se eu tentar entrar aqui?";
+next;
+mes "Qual será sua ação?";
+menu "Tentar entrar",corda,"Se afastar",afastar;
+
+corda:
+mes "Tomara que eu não morra...";
+next;
+warp "valedofim",104,74;
+close;
+
+afastar:
+close;
+
+}
+
+gef_fild07,184,245,4	script	Usar Binóculos	111,1,1,{
+
+mes "Pff, só vejo água..";
+next;
+mes "Calma aí... aquilo é um buraco?";
+close;
+
+}
+
+gef_fild03,43,201,4	script	Entrada pra Caverna#dun1	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "abyss_03", 115,24;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+mosk_dun03,233,230,4	script	Entrada pra Caverna#dun2	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "iz_dun01", 255,54;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+gef_fild10,63,337,4	script	Entrada pra Caverna#dun3	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "mag_dun01", 238,54;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+gef_fild07,177,244,4	script	Entrada pra Caverna#dun4	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "mag_dun02", 48,28;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+gl_prison,10,70,4	script	Entrada pra Caverna#dun5	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "ra_san05", 150,7;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+ayo_dun01,273,287,4	script	Entrada pra Caverna#dun6	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "tur_dun01", 163,33;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+ayo_dun02,275,22,4	script	Entrada pra Caverna#dun7	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "tur_dun02", 148,267;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+pay_dun04,32,205,4	script	Entrada pra Caverna#dun8	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "tur_dun03", 132,194;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+moc_fild20,270,24,4	script	Entrada pra Caverna#dun9	45,1,1,{
+if (countitem(7329) < 1) {mes "Você precisa de uma chave de bronze pra entrar neste local"; close;}
+
+mes "Você vê uma caverna escura, é necessário uma chave de bronze para entrar, gostaria de entrar?";
+next;
+mes "Tenha em mente, é uma caverna muito perigosa, qual é sua decisão?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "thor_v03", 328,262;
+delitem 7329,1;
+close;
+
+nao:
+close;
+
+}
+
+ve_fild05,224,118,4	script	Gaara	985,{
+if (countitem(724) < 1) {mes "O que você quer? Me deixe em paz!"; close;}
+mes "Aaaah... Não consigo me segurar!";
+next;
+mes "Fuja...agora....AAAAAAAAAAH";
+delitem 724,1;
+monster "ve_fild05",224,118,"Shukaku",1737,1,"update_nnfro::OnIchibiKilled";
+close;
+
+
+}
+
+-	script	update_nnfro	-1,{
+
+OnIchibiKilled:
+announce "Gaara: Aaaaah! Essa não é última vez que nos enfrentaremos "+strcharinfo(0)+", eu voltarei!",0;
+end;
+
+}
+
+cmd_fild03,129,187,4	script	Analisar Entrada#dun10	111,1,1,{
+if (haku_raid < 6) {mes "Você precisa finalizar uma quest antes de poder entrar neste local"; close;}
+
+mes "Você vê uma entrada secreta, Gostaria de entrar?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "pay_dun03", 114,63;
+close;
+
+nao:
+close;
+
+}
+
+pay_dun03,110,67,4	script	Voltar#dun11	45,1,1,{
+
+mes "Gostaria de voltar pras minas shinobi?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "mjo_dun03", 71,169;
+close;
+
+nao:
+close;
+
+}
+
+
+hospital,141,2,4	script	Passagem secreta#1	45,1,1,{
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+if (#konoha != 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+mes "Gostaria de entrar na passagem secreta pra ir pra vila com segurança?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "konoha3", 88,226;
+close;
+
+nao:
+close;
+}
+
+hospital2,141,2,4	script	Passagem secreta#2	45,1,1,{
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+if (#suna != 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+mes "Gostaria de entrar na passagem secreta pra ir pra vila com segurança?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "sunagakure", 264,280;
+close;
+
+nao:
+close;
+}
+
+hospital3,141,2,4	script	Passagem secreta#3	45,1,1,{
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+if (#nevoa != 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+mes "Gostaria de entrar na passagem secreta pra ir pra vila com segurança?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "kiragakure", 151,222;
+close;
+
+nao:
+close;
+}
+
+hospital4,141,2,4	script	Passagem secreta#4	45,1,1,{
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+if (#nuvem != 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+mes "Gostaria de entrar na passagem secreta pra ir pra vila com segurança?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "kumogakure",100,99;
+close;
+
+nao:
+close;
+}
+
+sunagakure,266,282,4	script	Hospital#2	45,1,1,{
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+if (#suna != 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+mes "Gostaria de entrar na passagem secreta pra ir pro hospital?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "hospital2", 138,4;
+close;
+
+nao:
+close;
+}
+
+kiragakure,153,226,4	script	Hospital#3	45,1,1,{
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+if (#nevoa != 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+mes "Gostaria de entrar na passagem secreta pra ir pro hospital?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "hospital3", 138,4;
+close;
+
+nao:
+close;
+}
+
+kumogakure,100,96,4	script	Hospital#4	45,1,1,{
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+if (#nuvem != 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+mes "Gostaria de entrar na passagem secreta pra ir pro hospital?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "hospital4", 138,4;
+close;
+
+nao:
+close;
+}
+
+konoha3,88,230,4	script	Hospital#5	45,1,1,{
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+if (#konoha != 1) {mes "Você não era para estar aqui! Guardas!"; next; atcommand "@die"; close;}
+mes "Gostaria de entrar na passagem secreta pra ir pro hospital?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "hospital", 138,4;
+close;
+
+nao:
+close;
+}

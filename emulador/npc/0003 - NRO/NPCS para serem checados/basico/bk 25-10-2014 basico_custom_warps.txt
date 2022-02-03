@@ -1,0 +1,559 @@
+//WarpsKonoha
+//konoha,149,16,0	warp	gen001	1,1,prt_fild02,173,378
+
+konoha3,162,253,0	warp	rosto1	1,1,konoha3,194,289
+konoha3,194,284,0	warp	rosto2	1,1,konoha3,163,249
+
+
+//Hospital
+//konoha3,88,233,0	warp	nuv118	1,1,hospital,103,8
+hospital,103,3,0	warp	nuv119	1,1,konoha,110,257
+
+//Academia
+//konoha3,276,240,0	warp	kyu118	1,1,payon_in01,56,53
+payon_in01,56,50,0	warp	kyu116	1,1,konoha3,275,238
+
+//Central de Jutsus
+//konoha3,159,197,0	warp	cus031	1,1,payon_in01,18,128
+lou_in01,78,140,0	warp	kyu916	1,1,konoha3,159,193
+payon_in01,13,137,0	warp	cus030#1	1,1,payon_in01,10,41
+payon_in01,9,38,0	warp	cus030#2	1,1,payon_in01,13,134
+
+//Esgoto entrada
+konoha,190,230,0	warp	cus047	1,1,gl_sew01,258,255
+//gl_sew01,258,263,0	warp	cus065	1,1,konoha3,266,256
+
+//Bonecos de Treino
+//konoha3,105,253,0	warp	bon012	1,1,yuno_in01,169,102
+yuno_in01,169,104,0	warp	bon011	1,1,konoha3,105,250
+
+//Loja de Equipamentos
+//konoha3,148,226,0	warp	nuv116	1,1,ama_in01,23,19
+ama_in01,23,16,0	warp	nuv117	1,1,konoha3,146,224
+
+//Prisão dos Bijuus
+//konoha3,172,154,0	warp	pri088	1,1,biju_pri1,19,20
+biju_pri1,18,16,0	warp	pri089	1,1,konoha3,172,151
+
+//Sala do Kage
+//konoha3,194,234,0	warp	nuve210	1,1,salakagea,31,8
+salakagea,31,2,0	warp	cust021-2	1,1,konoha3,194,230
+
+//Biblioteca
+//konoha3,281,163,0	warp	kbib005	1,1,bibli_01,52,41
+bibli_01,52,37,0	warp	sbib006	1,1,konoha3,281,160
+
+//[NOVO] Arena de Konoha
+konoha3,117,172,0	warp	csknh01	1,1,konoha3,110,177
+konoha3,112,175,0	warp	csknh02	1,1,konoha3,119,170
+
+yggdrasil01,134,55,0	warp	scus046	1,1,yggdrasil01,29,195
+yggdrasil01,26,195,0	warp	sbon011	1,1,yggdrasil01,132,53
+yggdrasil01,134,55,0	warp	sbon012	1,1,yggdrasil01,29,197
+
+
+mjolnir_02,118,348,0	warp	scus047	1,1,pay_fild10,108,49
+pay_fild10,108,46,0	warp	ssbon012	1,1,mjolnir_02,118,345
+
+//SistemaDeDestruiçãoDeCasasKonoha
+//job_wiz,115,82,0	warp	kyu115	1,1,konoha,52,177
+
+//EsgotoKonoha
+gl_sew01,19,17,0	warp	cus048	1,1,gl_sew03,168,286
+gl_sew03,172,286,0	warp	cus066	1,1,gl_sew01,21,17
+gl_sew03,64,11,0	warp	cus049	1,1,gl_sew04,101,79
+gl_sew04,105,79,0	warp	cus067	1,1,gl_sew03,64,16
+gl_sew04,67,280,0	warp	cts050	1,1,tha_t06,119,8
+tha_t06,119,3,0	warp	cts068	1,1,gl_sew04,69,280
+tha_t06,120,234,0	warp	ctss050	1,1,gl_prison,148,180
+gl_prison,148,183,0	warp	ctss051	1,1,tha_t06,120,231
+
+//FieldsKonoha
+//prt_fild02,173,381,0	warp	gen002	1,1,konoha3,207,55
+prt_fild02,17,303,0	warp	gen003	1,1,prt_fild01,379,303
+prt_fild01,382,304,0	warp	gen004	1,1,prt_fild02,20,303
+prt_fild02,306,17,0	warp	gen005	1,1,prt_fild06,276,315
+prt_fild06,276,319,0	warp	gen006	1,1,prt_fild02,306,20
+prt_fild06,25,193,0	warp	gen007	1,1,moc_fild03,300,172
+moc_fild03,303,172,0	warp	gen008	1,1,prt_fild06,28,193
+prt_fild01,200,22,0	warp	2gen009	1,1,moc_fild03,244,317
+moc_fild03,244,320,0	warp	1gen009	1,1,prt_fild01,200,25
+prt_fild01,261,372,0	warp	gen010	1,1,cmd_fild01,222,28
+cmd_fild01,222,25,0	warp	gen011	1,1,prt_fild01,261,369
+cmd_fild01,178,369,0	warp	gen012	1,1,mjolnir_05,236,20
+mjolnir_05,236,16,0	warp	gen013	1,1,cmd_fild01,176,367
+mjolnir_05,369,212,0	warp	gen014	1,1,odin_tem02,27,181
+odin_tem02,24,181,0	warp	gen015	1,1,mjolnir_05,366,212
+odin_tem02,260,372,0	warp	gen016	1,1,mosk_dun01,189,45
+mosk_dun01,189,42,0	warp	gen017	1,1,odin_tem02,262,368
+mosk_dun01,200,270,0	warp	gen018	1,1,gef_fild10,105,23
+cmd_fild01,26,318,0	warp	gen021	1,1,mjolnir_04,370,174
+mjolnir_04,373,174,0	warp	gen022	1,1,cmd_fild01,29,318
+mjolnir_04,160,62,0	warp	gen023	1,1,prt_fild05,292,382
+prt_fild05,292,385,0	warp	gen024	1,1,mjolnir_04,160,65
+moc_fild03,18,37,0	warp	gen025	1,1,mjolnir_06,380,78
+mjolnir_06,383,78,0	warp	gen026	1,1,moc_fild03,21,37
+prt_fild05,253,14,0	warp	gen027	1,1,mjolnir_06,365,380
+mjolnir_06,365,383,0	warp	gen028	1,1,prt_fild05,253,17
+pay_fild02,283,109,0	warp	gen029	1,1,mjolnir_06,22,332
+mjolnir_06,19,332,0	warp	gen030	1,1,pay_fild02,280,109
+prt_fild05,374,206,0	warp	gen031	1,1,prt_fild01,23,293
+prt_fild01,20,293,0	warp	gen032	1,1,prt_fild05,370,206
+prt_fild05,14,332,0	warp	gen033	1,1,gef_fild01,380,111
+cmd_fild01,361,263,0	warp	gen0340	1,1,anthell01,35,263
+moc_fild03,180,16,0	warp	gen0300	1,1,mjolnir_07,214,379
+mjolnir_07,214,382,0	warp	gen0310	1,1,moc_fild03,180,19
+mjolnir_07,383,232,0	warp	gen0320	1,1,mjolnir_08,33,236
+mjolnir_08,30,235,0	warp	gen0330	1,1,mjolnir_07,380,232
+mjolnir_08,188,28,0	warp	gen0130	1,1,prt_fild00,158,380
+prt_fild00,158,383,0	warp	gen0140	1,1,mjolnir_08,188,31
+prt_fild00,383,250,0	warp	gen0150	1,1,mjolnir_11,23,221
+mjolnir_11,20,221,0	warp	gen0160	1,1,prt_fild00,380,250
+mjolnir_11,173,20,0	warp	gen0170	1,1,gef_fild02,220,353
+gef_fild02,220,356,0	warp	gen0180	1,1,mjolnir_11,173,23
+gef_fild02,268,18,0	warp	gen0210	1,1,prt_fild07,133,376
+prt_fild07,133,380,0	warp	gen0220	1,1,gef_fild02,267,21
+prt_fild07,85,14,0	warp	gen0230	1,1,gef_fild03,66,367
+gef_fild03,66,372,0	warp	gen0240	1,1,prt_fild07,85,17
+gef_fild03,18,52,0	warp	gen0250	1,1,gef_fild12,363,51
+gef_fild12,368,50,0	warp	gen0260	1,1,gef_fild03,21,52
+gef_fild12,260,15,0	warp	gen0270	1,1,payon,227,325
+payon,227,328,0	warp	gen0280	1,1,gef_fild12,260,18
+payon,121,28,0	warp	gen0290	1,1,prt_fild03,196,278
+
+
+
+
+
+
+//KamiKonoha
+anthell01,35,267,0	warp	kyu106	1,1,cmd_fild01,358,261
+anthell01,253,32,0	warp	cus082	1,1,anthell02,168,171
+anthell02,33,265,0	warp	cus083	1,1,gld_dun03,238,271
+gld_dun03,238,275,0	warp	cus088	1,1,anthell02,33,262
+anthell02,171,170,0	warp	cus089	1,1,anthell01,254,36
+
+//Otogakure (Vila oculta do Som)
+Orochimaru,80,144,0	warp	gen0211	1,1,ayo_dun01,8,148
+ayo_dun01,6,148,0	warp	gen0251	1,1,Orochimaru,80,140
+ayo_dun01,293,148,0	warp	gen0221	1,1,moc_prydb1,100,59
+moc_prydb1,100,55,0	warp	gen0231	1,1,ayo_dun01,289,148
+moc_prydb1,100,191,0	warp	gen0241	1,1,gef_dun01,115,239
+gef_dun01,115,242,0	warp	gen0261	1,1,moc_prydb1,100,188
+moc_prydb1,88,116,0	warp	gen0271	1,1,moc_prydb1,55,115
+moc_prydb1,59,115,0	warp	gen0281	1,1,moc_prydb1,92,116
+moc_prydb1,111,116,0	warp	gen0291	1,1,moc_prydb1,146,116
+moc_prydb1,142,116,0	warp	gen0091	1,1,moc_prydb1,108,116
+
+//Vila oculta da Grama
+mjolnir_04,180,133,0	warp	gen0092	1,1,umbala,109,285
+umbala,106,286,0	warp	genj0091	1,1,mjolnir_04,177,133
+umbala,129,78,0	warp	haku01	1,1,cmd_fild03,150,373
+cmd_fild03,150,376,0	warp	haku02	1,1,umbala,130,82
+
+
+//Névoa
+//kiri,205,155,0	warp	kyu090	1,1,salakagen,31,7 // ENTRADA SALA KAGE
+salakagen,31,2,0	warp	cus021-2	1,1,kiragakure,201,221 // SAIDA SALA KAGE
+
+kiri,77,346,0	warp	cus042	1,1,prt_sewb1,131,248 //ENTRADA ESGOTO
+//kiri,193,102,0	warp	dkc043	1,1,prt_in,60,73 // ENTRADA ACADEMIA NEVOA
+//kiri,255,370,0	warp	dkc694	1,1,yuno_in01,174,34
+//kiri,47,126,0	warp	dkc044	1,1,payon_in03,20,63
+payon_in03,100,148,0	warp	dkc045	1,1,kiragakure,267,259
+payon_in03,20,86,0	warp	cah68	1,1,payon_in03,20,70
+payon_in03,20,73,0	warp	cah69	1,1,payon_in03,20,89
+
+//LOJA DE EQUIP NEVOA
+//kiri,27,88,0	warp	dkc047	1,1,ama_in01,175,173
+ama_in01,175,170,0	warp	dkc0473	1,1,kiragakure,160,274
+
+//CasasNevoa
+yuno_in01,177,34,0	warp	dkc699	1,1,kiragakure,210,287 
+prt_in,60,77,0	warp	kyu088	1,1,kiragakure,182,288
+prt_in,68,65,0	warp	kyu087	1,1,prt_in,84,65
+prt_in,82,65,0	warp	kyu086	1,1,prt_in,66,65
+prt_in,49,65,0	warp	kyu085	1,1,prt_in,34,65
+prt_in,37,65,0	warp	kyu084	1,1,prt_in,51,65
+//kiri,34,181,0	warp	bib005	1,1,bibli_03,52,41
+bibli_03,52,37,0	warp	bib006	1,1,kiragakure,248,173
+//kiri,151,111,0	warp	hosp120	1,1,hospital3,103,8
+hospital3,103,3,0	warp	hosp121	1,1,kiri,196,104
+//kiri,288,64,0	warp	pri077	1,1,biju_pri3,19,20
+biju_pri3,18,16,0	warp	pri078	1,1,kiragakure,223,162
+
+
+
+//SistemaDeDestruiçãoDeCasasNevoa
+//job_wiz,113,154,0	warp	kyu083	1,1,nevoa,236,264
+
+//EsgotoNévoa
+//prt_sewb1,136,247,0	warp	cus060	1,1,kiri,384,101
+prt_sewb1,187,248,0	warp	cus043	1,1,prt_sewb3,178,173
+prt_sewb3,180,173,0	warp	cus061	1,1,prt_sewb1,190,248
+prt_sewb3,19,182,0	warp	cus046x	1,1,gld_dun04,105,19
+gld_dun04,107,19,0	warp	cus064x	1,1,prt_sewb3,19,180
+gld_dun04,40,230,0	warp	cus045	1,1,gl_dun01,223,18
+gl_dun01,225,18,13,0	warp	cus063	1,1,gld_dun04,42,230
+gl_dun01,133,276,0	warp	cust063	1,1,gl_prison,16,33
+gl_prison,13,33,0	warp	cust064	1,1,gl_dun01,133,273
+//NévoaFields
+//kiri,163,6,0	warp	gen0412	1,1,gef_fild04,263,354
+//gef_fild04,263,362,0	warp	gen0413	1,1,kiri,163,10
+gef_fild04,187,41,0	warp	gen0414	1,1,mjolnir_01,166,359
+mjolnir_01,166,362,0	warp	gen0422	1,1,gef_fild04,187,44
+mjolnir_01,287,20,0	warp	gen0432	1,1,mjolnir_03,313,355
+mjolnir_03,313,358,0	warp	gen0442	1,1,mjolnir_01,287,23
+mjolnir_01,381,256,0	warp	gen0452	1,1,gef_fild05,18,202
+gef_fild05,15,202,0	warp	gen0462	1,1,mjolnir_01,378,256
+gef_fild05,364,312,0	warp	gen0472	1,1,mjolnir_02,32,258
+mjolnir_02,29,258,0	warp	gen0482	1,1,gef_fild05,361,312
+mjolnir_02,79,365,0	warp	kyu0712	1,1,mjo_dun01,52,18
+gef_fild04,17,312,0	warp	gen0492	1,1,prt_fild04,381,155
+prt_fild04,385,155,0	warp	gen0502	1,1,gef_fild04,20,312
+prt_fild04,16,115,0	warp	gen0512	1,1,gef_fild09,366,92
+gef_fild09,368,94,0	warp	gen0483	1,1,prt_fild04,20,115
+gef_fild09,22,56,0	warp	gen0499	1,1,odin_tem01,375,183
+odin_tem01,378,183,0	warp	gen0509	1,1,gef_fild09,25,56
+gef_fild04,361,323,0	warp	gen0519	1,1,um_fild01,35,275
+um_fild01,32,275,0	warp	1gen1519	1,1,gef_fild04,358,323
+um_fild01,369,274,0	warp	1gen2519	1,1,pay_fild10,19,291
+pay_fild10,16,291,0	warp	1gen3515	1,1,um_fild01,365,276
+pay_fild10,112,381,0	warp	1gen4516	1,1,ama_fild01,76,32
+ama_fild01,76,29,0	warp	1gen5517	1,1,pay_fild10,112,378
+
+//MinasNévoa
+mjo_dun01,52,14,0	warp	kyu071	1,1,mjolnir_02,79,362
+mjo_dun01,14,285,0	warp	cus080	1,1,mjo_dun02,370,345
+mjo_dun02,31,21,0	warp	cus081	1,1,mjo_dun03,308,261
+mjo_dun03,308,264,0	warp	cus086	1,1,mjo_dun02,31,25
+mjo_dun02,381,345,0	warp	cus087	1,1,mjo_dun01,19,285
+
+
+//Suna
+//areia,153,21,0	warp	cus013	1,1,moc_fild01,235,379
+//areia,149,94,0	warp	cus034	1,1,morocc_in,134,73
+//areia,178,163,0	warp	cus037#1	1,1,morocc_in,174,146
+areia,108,250,0	warp	cus051	1,1,prt_sewb2,20,17
+//areia,95,72,0	warp	css051	1,1,morocc_in,68,72
+//areia,189,73,0	warp	bon013	1,1,yuno_in01,32,33
+
+//SunaCasa
+morocc_in,68,75,0	warp	kyu103	1,1,sunagakure,167,208
+morocc_in,68,62,0	warp	kyu102	1,1,morocc_in,68,38
+morocc_in,68,41,0	warp	kyu101	1,1,morocc_in,68,65
+morocc_in,173,123,0	warp	cus037#4	1,1,morocc_in,44,170
+morocc_in,44,147,0	warp	cus037#5	1,1,morocc_in,86,95
+ama_in02,53,14,0	warp	cus037#2	1,1,sunagakure,168,121
+morocc_in,44,175,0	warp	cus037#3	1,1,morocc_in,173,127
+morocc_in,86,101,2	warp	cus037#6	1,1,morocc_in,44,150
+//morocc_in,134,77,0	warp	cus035	1,1,areia,151,94
+yuno_in01,32,37,0	warp	mon014	1,1,sunagakure,161,286
+//sunagakure,301,217,0	warp	nuv122	1,1,ama_in01,90,22
+ama_in01,87,22,0	warp	nuv123	1,1,sunagakure,298,216
+//areia,219,244,0	warp	nuv220	1,1,hospital2,103,8
+hospital2,103,3,0	warp	nuv121	1,1,areia,179,162
+//areia,208,72,0	warp	bib003	1,1,bibli_02,52,41
+bibli_02,52,37,0	warp	bib004	1,1,sunagakure,212,157
+//areia,62,199,0	warp	pri096	1,1,biju_pri2,19,20
+biju_pri2,18,16,0	warp	pri097	1,1,sunagakure,166,185
+//sunagakure,199,191,0	warp	nuv210	1,1,salakage,31,8 //kage
+salakage,31,2,0	warp	custom021-2	1,1,sunagakure,199,188 // SAIDA SALA KAGE
+
+
+//SistemaDeDestruiçãoDeCasasSuna
+//job_wiz,45,82,0	warp	kyu100	1,1,areia,97,231
+
+//EsgotoSuna
+//prt_sewb2,20,12,0	warp	cus069	1,1,areia,31,68
+prt_sewb2,20,175,0	warp	cus052a	1,1,prt_sewb2,60,28
+prt_sewb2,60,24,0	warp	cus052av	1,1,prt_sewb2,20,166
+prt_sewb2,101,176,0	warp	cus052b	1,1,prt_sewb2,141,31
+prt_sewb2,141,24,0	warp	cus052bv	1,1,prt_sewb2,99,167
+prt_sewb2,180,24,0	warp	cus052	1,1,prt_sewb4,101,94
+prt_sewb4,99,94,0	warp	cus070	1,1,prt_sewb2,182,24
+prt_sewb4,99,16,0	warp	cus053	1,1,gl_sew02,31,275
+gl_sew02,29,275,0	warp	cus071	1,1,prt_sewb4,101,16
+gl_sew02,299,293,0	warp	cus054	1,1,alde_dun02,41,23
+alde_dun02,43,23,0	warp	cus072	1,1,gl_sew02,297,293
+alde_dun02,123,170,0	warp	cust072	1,1,gl_prison,186,47
+gl_prison,189,47,0	warp	cust073	1,1,alde_dun02,126,170
+
+//SunaFields
+//moc_fild01,235,382,0	warp	1cus013	1,1,areia,153,10
+cmd_fild09,369,165,0	warp	1gen041	1,1,pay_fild06,37,291
+cmd_fild09,309,381,0	warp	1gen042	1,1,moc_fild13,266,41
+moc_fild13,264,39,0	warp	1gen043	1,1,cmd_fild09,309,378
+cmd_fild09,76,382,0	warp	1gen044	1,1,moc_fild13,33,31
+moc_fild13,32,29,0	warp	1gen045	1,1,cmd_fild09,76,379
+moc_fild02,331,18,0	warp	1gen046	1,1,moc_fild13,299,370
+moc_fild13,302,370,0	warp	1gen047	1,1,moc_fild02,331,21
+moc_fild02,70,18,0	warp	1gen048	1,1,moc_fild13,144,365
+moc_fild13,145,368,0	warp	1gen049	1,1,moc_fild02,70,21
+cmd_fild09,12,175,0	warp	1gen1048	1,1,moc_fild01,376,162
+moc_fild01,379,162,0	warp	1gen1049	1,1,cmd_fild09,15,175
+//moc_fild01,235,382,0	warp	1gen1050	1,1,areia,153,10
+moc_fild13,29,172,0	warp	1gen1051	1,1,moc_fild08,380,212
+moc_fild08,383,212,0	warp	1gen1052	1,1,moc_fild13,32,172
+moc_fild08,170,383,0	warp	1gen2051	1,1,ve_fild04,116,53
+ve_fild04,116,50,0	warp	1gen3051	1,1,moc_fild08,170,380
+ve_fild04,44,250,0	warp	1gen4051	1,1,ra_fild03,370,171
+ra_fild03,373,171,0	warp	1gen5051	1,1,ve_fild04,47,250
+ra_fild03,23,293,0	warp	1gen6051	1,1,ve_fild03,353,220
+ve_fild03,355,222,0	warp	1gen7051	1,1,ra_fild03,26,293
+ve_fild03,168,240,0	warp	1gen8050	1,1,ve_fild02,191,24
+ve_fild02,191,21,0	warp	1gen9051	1,1,ve_fild03,168,237
+ve_fild02,32,262,0	warp	1gen0051	1,1,moc_fild15,363,276
+moc_fild15,366,276,0	warp	1gen1251	1,1,ve_fild02,35,262
+moc_fild15,157,363,0	warp	2gen0241	1,1,ra_fild02,168,38
+ve_fild04,44,250,0	warp	2gen0511	1,1,ra_fild03,370,171
+ra_fild03,373,171,0	warp	2gen9151	1,1,ve_fild04,47,250
+ra_fild03,23,293,0	warp	2gen12051	1,1,ve_fild03,353,220
+ve_fild03,355,222,0	warp	2gen14051	1,1,ra_fild03,26,293
+moc_fild01,22,242,0	warp	2new037	1,1,moc_fild17,364,272
+moc_fild17,369,272,0	warp	new038	1,1,moc_fild01,25,242
+moc_fild17,30,301,0	warp	kyu0980	1,1,moc_fild06,368,311
+moc_fild14,196,381,0	warp	cus0110	1,1,moc_fild06,210,26
+moc_fild06,210,20,0	warp	1cus0110	1,1,moc_fild14,195,377
+moc_fild06,377,311,0	warp	2kyu0990	1,1,moc_fild17,34,297
+moc_fild14,16,277,0	warp	3kyu0990	1,1,moc_pryd05,221,10
+moc_pryd05,224,10,0	warp	4kyu0990	1,1,moc_fild14,19,277
+moc_fild17,217,369,0	warp	kyu0960	1,1,prt_fild09,246,20
+prt_fild09,246,16,0	warp	kyu0930	1,1,moc_fild17,219,365
+prt_fild09,85,380,0	warp	kyu0940	1,1,um_dun01,154,201
+
+//KamiSuna
+um_dun01,149,198,0	warp	kyu092	1,1,prt_fild09,85,376
+um_dun01,48,27,0	warp	cus078	1,1,um_dun02,126,148
+um_dun02,55,18,0	warp	cus079	1,1,yggdrasil01,39,63
+yggdrasil01,36,63,0	warp	cus084	1,1,um_dun02,53,22
+um_dun02,126,153,0	warp	cus085	1,1,um_dun01,48,30
+
+
+//nuvem - vila
+//veins,144,24,0	warp	nuv008	1,1,yuno_fild08,285,378
+//nuvem,156,212,0	warp	nuvem210	1,1,salakagex,31,8 //kage
+salakagex,31,4,0	warp	nuv211	1,1,nuvem,155,205
+//nuvem,205,244,0	warp	nuv212	1,1,hospital4,103,8
+hospital4,103,3,0	warp	nuv113	1,1,veins,199,162
+//nuvem,75,188,0	warp	nuv114	1,1,ama_in01,174,124
+ama_in01,174,121,0	warp	nuv115	1,1,nuvem,74,183
+//nuvem,60,66,0	warp	nlo986	1,1,payon_in01,181,75
+//payon_in01,181,70,0	warp	nlo985	1,1,nuvem,59,62
+ve_in,87,218,0	warp	nlo985	1,1,nuvem,59,62
+//nuvem,120,141,0	warp	nuv666	1,1,yuno_in01,116,37
+yuno_in01,116,41,0	warp	nuv669	1,1,nuvem,120,137
+//nuvem,160,99,0	warp	acad001	1,1,geffen_in,114,65
+geffen_in,113,60,0	warp	acad002	1,1,nuvem,160,103
+//nuvem,192,142,0	warp	bib007	1,1,bibli_04,52,41
+bibli_04,52,37,0	warp	bib008	1,1,nuvem,192,139
+//nuvem,69,158,0	warp	pri098	1,1,biju_pri4,19,20
+biju_pri4,18,16,0	warp	pri099	1,1,nuvem,69,153
+
+//EsgotoNuvem
+veins,206,339,0	warp	nuv019	1,1,alde_dun01,167,164
+//alde_dun01,168,158,0	warp	nuv020	1,1,nuvem,30,62
+
+alde_dun01,303,25,0	warp	nuv0212	1,1,alde_dun04,80,276
+alde_dun04,80,280,0	warp	nuv0222	1,1,alde_dun01,300,25
+
+alde_dun04,209,58,0	warp	nuv0232	1,1,beach_dun3,21,264
+beach_dun3,18,266,0	warp	nuv0242	1,1,alde_dun04,205,61
+
+beach_dun3,284,57,0	warp	nuv0252	1,1,gl_dun02,224,274
+gl_dun02,224,277,0	warp	nuv0262	1,1,beach_dun3,281,57
+gl_dun02,268,32,0	warp	nut0262	1,1,gl_prison,15,183
+gl_prison,12,183,0	warp	nut0263	1,1,gl_dun02,268,35
+
+//NuvemFields
+//yuno_fild08,285,386,0	warp	1nuv008	1,1,nuvem,155,12
+yuno_fild09,20,194,0	warp	2gen051	1,1,gef_fild08,357,187
+yuno_fild09,48,375,0	warp	3gen051	1,1,yuno_fild07,91,16
+yuno_fild07,91,13,0	warp	4gen051	1,1,yuno_fild09,48,372
+yuno_fild07,349,289,0	warp	1new037	1,1,yuno_fild11,32,267
+yuno_fild11,29,267,0	warp	1new038	1,1,yuno_fild07,347,287
+yuno_fild11,91,370,0	warp	1kyu099	1,1,ein_fild01,109,37
+ein_fild01,109,34,0	warp	1kyu098	1,1,yuno_fild11,91,367
+yuno_fild11,299,116,0	warp	2kyu099	1,1,tur_dun01,161,34
+tur_dun01,163,31,0	warp	3kyu098	1,1,yuno_fild11,299,119
+ein_fild01,350,372,0	warp	1cus011	1,1,hu_fild07,59,39
+hu_fild07,57,37,0	warp	12kyu099	1,1,ein_fild01,348,370
+hu_fild07,81,370,0	warp	23kyu099	1,1,yuno_fild05,61,32
+yuno_fild05,41,351,0	warp	7kyu099	1,1,ein_fild08,360,130
+yuno_fild05,60,29,0	warp	6kyu099	1,1,hu_fild07,81,367
+ein_fild08,363,128,0	warp	34kyu099	1,1,yuno_fild05,43,348
+yuno_fild08,375,194,0	warp	45kyu099	1,1,ein_fild08,29,276
+ein_fild08,26,276,0	warp	56kyu099	1,1,yuno_fild08,372,194
+yuno_fild05,370,320,0	warp	8kyu099	1,1,hu_fild06,30,119
+hu_fild06,30,116,0	warp	9kyu099	1,1,yuno_fild05,367,320
+hu_fild06,199,373,0	warp	garg005	1,1,bra_fild01,76,33
+bra_fild01,72,34,0	warp	garg006	1,1,hu_fild06,199,369
+
+
+//GargantaNuvem
+tur_dun01,164,31,0	warp	tkyu099	1,1,yuno_fild11,299,119
+tur_dun01,154,242,0	warp	ykyu099	1,1,tur_dun02,167,23
+tur_dun02,167,20,0	warp	ukyu099	1,1,tur_dun01,154,239
+tur_dun02,148,267,0	warp	qkyu099	1,1,tur_dun03,218,74
+tur_dun03,218,71,0	warp	wkyu099	1,1,tur_dun02,148,263
+//tur_dun03,132,194,0	warp	egarg005	1,1,tur_dun04,100,200
+//tur_dun04,100,196,0	warp	dgarg006	1,1,tur_dun03,132,191
+tur_dun03,45,205,0	warp	dgarg007	1,1,hu_fild05,308,142
+hu_fild05,310,142,0	warp	dgarg008	1,1,tur_dun03,41,202
+
+//etcFields
+gef_fild10,105,21,0	warp	1gen019	1,1,mosk_dun01,200,267
+gef_fild10,26,219,0	warp	2gen020	1,1,Orochimaru,197,63
+Orochimaru,197,67,0	warp	2gen000	1,1,gef_fild10,30,219,0
+gef_fild10,251,370,0	warp	3gen020	1,1,gef_fild08,216,20
+gef_fild08,216,17,0	warp	4gen020	1,1,gef_fild10,249,368
+gef_fild08,360,187,0	warp	5gen020	1,1,yuno_fild09,23,194
+gef_fild08,201,355,0	warp	gen0201	1,1,gef_fild06,218,21
+gef_fild06,218,18,0	warp	gen0202	1,1,gef_fild08,201,352
+gef_fild06,22,303,0	warp	gen0203	1,1,glast_01,374,304
+glast_01,377,304,0	warp	gen0204	1,1,gef_fild06,25,303
+gef_fild10,370,55,0	warp	gen0205	1,1,um_fild03,35,147
+um_fild03,32,147,0	warp	gen0206	1,1,gef_fild10,368,57
+um_fild03,238,25,0	warp	gen0207	1,1,pay_fild05,125,375
+pay_fild05,127,378,0	warp	gen0208	1,1,um_fild03,238,28
+pay_fild01,350,15,0	warp	gen0209	1,1,alb2trea,46,87
+alb2trea,48,89,0	warp	gen0120	1,1,pay_fild01,350,18
+alb2trea,53,62,0	warp	1gen0220	1,1,odin_tem01,94,146
+odin_tem01,91,146,0	warp	2gen0320	1,1,alb2trea,56,64
+gef_fild01,384,111,0	warp	3gen0434	1,1,prt_fild05,18,332
+gef_fild01,70,17,0	warp	4gen0535	1,1,pay_fild02,81,385
+pay_fild02,81,388,0	warp	5gen0635	1,1,gef_fild01,70,20
+gef_fild01,16,103,0	warp	gen0835	1,1,einbech,252,110
+einbech,255,110	warp	gen9035	1,1,gef_fild01,19,103
+einbech,138,253,0	warp	g1en035	1,1,moc_fild04,174,22
+moc_fild04,174,19,0	warp	g2en035	1,1,einbech,138,250
+einbech,62,29,0	warp	g3en035	1,1,que_job03,14,84
+que_job03,14,87,0	warp	g4en035	1,1,einbech,62,32
+que_job03,78,82,0	warp	g5en035	1,1,bossnia_01,201,200
+bossnia_01,203,203,0	warp	g6en035	1,1,que_job03,74,82
+pay_fild02,133,17,0	warp	g8en036	1,1,pay_fild03,174,279
+pay_fild03,172,281,0	warp	g9en037	1,1,pay_fild02,134,19
+pay_fild03,313,16,0	warp	ge1n038	1,1,pay_fild06,307,372
+pay_fild06,307,375,0	warp	ge2n039	1,1,pay_fild03,313,20
+pay_fild06,34,291,0	warp	ge3n040	1,1,cmd_fild09,365,165
+pay_fild02,16,176,0	warp	ge4n040	1,1,moc_fild02,374,272
+pay_fild03,15,111,0	warp	ge5n040	1,1,moc_fild13,305,50
+moc_fild04,19,207,0	warp	ge6n037	1,1,hu_fild04,378,181
+hu_fild04,381,181,0	warp	ge7n038	1,1,moc_fild04,22,207
+hu_fild04,43,364,0	warp	ge8n039	1,1,ra_fild04,360,353
+ra_fild04,363,353  	warp	ge9n040	1,1,hu_fild04,47,364
+pay_fild02,16,176,0	warp	gen10040	1,1,moc_fild02,374,272
+moc_fild13,308,50,0	warp	ge11n040	1,1,pay_fild03,18,111
+ra_fild02,168,35,0	warp	ge12n040	1,1,moc_fild15,159,360
+ra_fild02,372,273,0	warp	ge13n040	1,1,ra_fild13,31,311
+ra_fild13,28,313,0	warp	ge14n040	1,1,ra_fild02,370,271
+ra_fild13,316,228,0	warp	ge15n040	1,1,ra_fild04,27,174
+ra_fild04,24,174,0	warp	ge16n040	1,1,ra_fild13,314,226
+ra_fild04,264,54,0	warp	ge17n040	1,1,lhz_fild02,164,362
+lhz_fild02,165,365,0	warp	ge18n040	1,1,ra_fild04,264,57
+lhz_fild02,164,38,0	warp	ge21n040	1,1,ra_fild03,186,351
+ra_fild03,186,354,0	warp	ge22n040	1,1,lhz_fild02,164,41
+lhz_fild02,26,215,0	warp	ge23n040	1,1,ve_fild02,380,308
+ve_fild02,383,308,0	warp	ge24n040	1,1,lhz_fild02,29,218
+pay_fild05,271,284,0	warp	kyu004	1,1,pay_fild01,19,151
+pay_fild01,14,151,0	warp	kyu003	1,1,pay_fild05,267,284
+ra_fild11,235,26,0	warp	ge26n035	1,1,moc_fild04,319,378
+ra_fild04,322,378,0	warp	ge27n040	1,1,ra_fild01,306,41
+ra_fild01,306,38,0	warp	ge28n040	1,1,ra_fild04,322,375
+ra_fild01,234,331,0	warp	ge29n040	1,1,ein_fild02,169,33
+ein_fild02,169,30,0	warp	ge30n040	1,1,ra_fild01,234,328
+ein_fild02,256,347,0	warp	ge31n040	1,1,yuno_fild04,251,24
+yuno_fild04,251,21,0	warp	ky32u004	1,1,ein_fild02,256,344
+yuno_fild04,232,288,0	warp	ky33u003	1,1,ein_dun01,21,16
+ein_dun01,21,13,0	warp	ge45n035	1,1,yuno_fild04,232,285
+prt_fild03,196,281,0	warp	ge35n029	1,1,payon,121,31
+prt_fild03,372,256,0	warp	ge36n029	1,1,prt_fild11,20,281
+prt_fild11,17,281,0	warp	gen37029	1,1,prt_fild03,369,256
+
+//Nukes_Takas_Gatos
+pay_fild06,176,207,0	warp	ge38n029	1,1,gl_prison,13,70
+gl_prison,10,70,0	warp	ge69n029	1,1,pay_fild06,179,207
+gl_prison,148,183,0	warp	ge39n029	1,1,ayo_dun02,24,24
+ayo_dun02,24,21,0	warp	ge40n029	1,1,gl_prison,148,180
+
+mjolnir_07,17,77,0	warp	mes001	1,1,gef_fild00,379,140
+gef_fild00,382,140,0	warp	mes002	1,1,mjolnir_07,20,77
+
+ama_fild01,353,141,0	warp	mes003	1,1,ama_dun03,120,12 
+ama_dun03,120,9,0	warp	mes004	1,1,ama_fild01,353,138
+
+yuno_fild04,375,85,0	warp	mes005	1,1,yuno_fild10,41,184 
+yuno_fild10,38,184,0	warp	mes006	1,1,yuno_fild04,373,84
+
+yuno_fild09,363,327,0	warp	mes007	1,1,ein_fild09,72,351
+ein_fild09,70,353,0	warp	mes008	1,1,yuno_fild09,360,327
+
+moc_fild04,219,328,0	warp	mes009	1,1,cmd_fild07,268,329
+cmd_fild07,271,329,0	warp	mes010	1,1,moc_fild04,216,328
+
+pay_fild01,334,372,0	warp	mes011	1,1,gon_fild01,222,236
+gon_fild01,222,239,0	warp	mes012	1,1,pay_fild01,334,369
+
+um_fild03,362,216,0	warp	mes013	1,1,lou_fild01,136,282
+lou_fild01,136,285,0	warp	mes014	1,1,um_fild03,359,213
+
+mosk_dun01,101,265,0	warp	mes015	1,1,mosk_que,47,214
+mosk_que,47,218,0	warp	mes016	1,1,mosk_dun01,101,262
+
+prt_fild03,322,64,0	warp	mes017	1,1,lhz_fild03,66,140
+lhz_fild03,65,142,0	warp	mes018	1,1,prt_fild03,325,64
+
+gl_prison,126,10,0	warp	mes019	1,1,gl_church,16,296
+gl_church,16,299,0	warp	mes020	1,1,gl_prison,126,13
+
+//Bijuus
+ra_fild13,295,347,0	warp	bijuu01	1,1,moc_fild22,32,198
+yuno_fild07,202,176,0	warp	bijuu02	1,1,gef_dun00,106,168
+gef_fild09,221,222,0	warp	bijuu03	1,1,iz_dun04,26,28
+einbech,177,138,0	warp	bijuu04	1,1,gld_dun01,120,13
+um_fild03,137,353,0	warp	bijuu05	1,1,mosk_dun03,27,131
+gef_fild02,16,275,0	warp	bijuu06	1,1,mosk_dun02,266,118
+hu_fild04,282,11,0	warp	bijuu07	1,1,ayo_fild01,33,238
+glast_01,77,194,0	warp	bijuu08	1,1,ama_dun02,196,123
+odin_tem02,152,350,0	warp	bijuu09	1,1,thor_v02,72,207
+
+
+lou_in02,35,186,0	warp	nukes1	1,1,izlude_in,65,87
+izlude_in,65,84,0	warp	nukes2	1,1,lou_in02,35,183
+6@tower,164,113,0	warp	nukes3	1,1,izlude_in,65,87
+
+6@tower,147,112,0	warp	nukes4	1,1,izlude_in,172,119
+izlude_in,172,116,0	warp	nukes5	1,1,6@tower,150,112
+
+prt_fild04,261,174,0	warp	brun01	1,1,prt_fild04,279,255
+prt_fild04,277,253,0	warp	brun02	1,1,prt_fild04,261,172
+
+//raid
+treasure01,69,23,0	warp	raidh1	1,1,gef_fild04,114,84
+
+//laboratorio
+lhz_dun03,159,124,0	warp	lab001	1,1,lhz_dun02,150,145
+
+konoha3,207,52,0	warp	pre002	1,1,konoha,197,273
+
+sunagakure,200,69,0	warp	pre003	1,1,areia,116,267
+
+nuvem,155,9,0	warp	pre004	1,1,veins,218,358
+
+kiragakure,208,152,0	warp	pre005	1,1,kiri,67,371
+
+//konoha3,88,230,0	warp	hosp01	1,1,hospital,138,4
+
+konoha3,88,230,4	script	Hospital#5	45,1,1,{
+
+mes "Gostaria de entrar na passagem secreta pra ir pro hospital?";
+next;
+menu "Sim",sim,"Não",nao;
+
+sim:
+warp "hospital", 138,4;
+close;
+
+nao:
+close;
+}

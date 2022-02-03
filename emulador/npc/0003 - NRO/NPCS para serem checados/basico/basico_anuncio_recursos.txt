@@ -1,0 +1,216 @@
+-	script	anun_recursos	-1,{
+OnClock1000:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+end;
+
+OnClock1200:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+end;
+
+OnClock1400:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+end;
+
+OnClock1600:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+end;
+
+OnClock1800:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+end;
+
+OnClock2000:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+end;
+
+OnClock0000:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+set $peixesnev, $peixesnev -10;
+set $peixesnuk, $peixesnuk -10;
+set $peixeskon, $peixeskon -10;
+set $peixesaka, $peixesaka -10;
+set $peixessun, $peixessun -10;
+announce "Os hospitais precisam de peixes para funcionar, foram pegos 10 peixes",bc_blue|bc_all;
+announce "para repor o estoque",bc_blue|bc_all;
+end;
+
+OnClock0200:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+end;
+
+OnClock0400:
+announce "Relatório dos armazéns das vilas",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$troncosKon+" troncos",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$peixesKon+" peixes",bc_blue|bc_all;
+announce "A vila oculta de Konoha possui: "+$ferrosKon+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$troncossun+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$peixessun+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Areia possui: "+$ferrossun+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$troncosnev+" troncos",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$peixesnev+" peixes",bc_blue|bc_all;
+announce "A vila oculta da Névoa possui: "+$ferrosnev+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Nukenin possui: "+$troncosnuk+" troncos",bc_blue|bc_all;
+announce "A Nukenin possui: "+$peixesnuk+" peixes",bc_blue|bc_all;
+announce "A Nukenin possui: "+$ferrosnuk+" ferros",bc_blue|bc_all;
+announce "-----------------",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$troncosaka+" troncos",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$peixesaka+" peixes",bc_blue|bc_all;
+announce "A Akatsuki possui: "+$ferrosaka+" ferros",bc_blue|bc_all;
+end;
+
+}

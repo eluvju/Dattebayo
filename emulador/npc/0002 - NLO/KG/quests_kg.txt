@@ -1,0 +1,3276 @@
+//--------------------------------------------------------------------------------------------------------------
+
+//			Uchiha
+
+//--------------------------------------------------------------------------------------------------------------
+
+payon,142,229,4	script	Líder Uchiha	1_m_pubmaster,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questid = 40000;
+	.@item1 = 900;
+	.@item2 = 901;
+	.@itemqnt1 = 1;
+	.@itemqnt2 = 1;
+
+
+	if(countitem(30104)) {
+		mes .@npc$;
+		mes "Você já pegou o Mangekyou Sharingan";
+		close;
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+			mes .@npc$;
+			mes "Bom, muito bom...provou que está preparado, mas duvido que consiga completar seu treinamento.";
+			next;
+			mes .@npc$;
+			mes "Digame...Qual Mangekyou Sharingan voce gostaria de despertar?";
+			switch(select("- Mangekyou Itachi:- Mangekyou Sasuke:- Mangekyou Obito")) {
+				case 1:
+					mes .@npc$;
+					mes "Parabéns, você acabou de despertar seu Mangekyou Sharingan.";
+					close2;
+					set pegoukg,4;
+					set expkg,0;
+					announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o Mangekyou Sharingan!",bc_blue|bc_all; 
+					delitem 30103,1;
+					getitem2 30104,1,1,0,0,30094,0,0,0;
+					equip 30104;
+					delitem .@item1,.@itemqnt1;
+					delitem .@item2,.@itemqnt2;
+					Zeny = Zeny - 30000000;
+					completequest .@questid;
+					erasequest .@questid;
+					end;
+					
+				case 2:
+					mes .@npc$;
+					mes "Parabéns, você acabou de despertar seu Mangekyou Sharingan.";
+					close2;
+					set pegoukg,4;
+					set expkg,0;
+					announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o Mangekyou Sharingan!",bc_blue|bc_all; 
+					delitem 30103,1;
+					getitem2 30104,1,1,0,0,30095,0,0,0;
+					equip 30104;
+					delitem .@item1,.@itemqnt1;
+					delitem .@item2,.@itemqnt2;
+					Zeny = Zeny - 30000000;
+					completequest .@questid;
+					erasequest .@questid;
+					end;
+					
+				case 3:
+					mes .@npc$;
+					mes "Parabéns, você acabou de despertar seu Mangekyou Sharingan.";
+					close2;
+					set pegoukg,4;
+					set expkg,0;
+					announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o Mangekyou Sharingan!",bc_blue|bc_all; 
+					delitem 30103,1;
+					getitem2 30104,1,1,0,0,30096,0,0,0;
+					equip 30104;
+					delitem .@item1,.@itemqnt1;
+					delitem .@item2,.@itemqnt2;
+					Zeny = Zeny - 30000000;
+					completequest .@questid;
+					erasequest .@questid;
+					end;
+			}
+		}
+
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+
+	}
+
+	if(countitem(30103) && expkg >= 7000000) {
+		mes .@npc$;
+		mes "Vejo que voce possui poderosos poderes oculares, porem ainda nao os consegue controlar.";
+		next;
+		mes .@npc$;
+		mes "Mas eu posso lhe submeter a alguns treinamentos que podem custar a sua vida, esta preparado?";
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Bom entao vamos começar, vou precisar de uma prova de que voce aguentara o que esta por vir.";
+				next;
+				mes .@npc$;
+				mes "Volte aqui com os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "1 Olho de Uchiha Derrotado";
+				mes "30.000.000 Zeny";
+				setquest .@questid;
+				close;
+	}
+
+	mes .@npc$;
+	mes "Você não é Sharingan ou não está pronto para evolui-lo.";
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Hyuuga
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,139,229,5	script	Líder Hyuuga	4_f_valkyrie,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40001;
+
+	.@item1 = 900;
+
+	.@item2 = 902;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Hyuuga.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 4!",bc_blue|bc_all; 
+			if(countitem(30106)) { delitem 30106,1; getitem2 30106,1,1,0,0,30093,0,0,0; equip 30106; }
+			if(countitem(30120)) { delitem 30120,1; getitem2 30120,1,1,0,0,30093,0,0,0; equip 30120; }
+			delitem .@item1,.@itemqnt1;
+			delitem .@item2,.@itemqnt2;
+			Zeny = Zeny - 30000000;
+			completequest .@questid;
+			erasequest .@questid;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Hyuuga.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30106) || countitem(30120) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente nosso clã é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Olho Hyuuga Derrotado";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Hyuuga ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Akimichi
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,165,227,4	script	Líder Akimichi	966,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40004;
+
+	.@item1 = 900;
+
+	.@item2 = 905;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Akimichi";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30108,1; 
+			getitem2 30108,1,1,0,0,30093,0,0,0;
+
+			equip 30108;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Akimichi.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30108) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Olha só, voce esta dando o que falar no clã, finalmente chegou até mim...Será que é tão forte o quanto comentam por ai?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Bom, veremos se voce é merecedor dos segredos do Clã Akimichi, esta preparado para o inicio do treinamento?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Pilula Suprema";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Akimichi ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Kugutsu
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+payon,171,218,4	script	Líder Kugutsu	4_m_2ndprin2,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40002;
+
+	.@item1 = 900;
+
+	.@item2 = 903;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Kugutsu";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30105,1; 
+			getitem2 30105,1,1,0,0,30093,0,0,0;
+
+			equip 30105;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Kugutsu.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30105) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Olha só, que raridade um habilidoso Ninja Kugutsu, posso reconhecer um de longe.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Se voce acha que vou lhe contar os segredos da arte das marionetes assim de mão beijada, esqueça!";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Voce tem que merecer isso, acha que consegue?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Tudo bem então, veremos se é capaz de passar ao menos da primeira etapa do treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Traga-me os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Coração do Sasori";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Kugutsu ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Hyouton
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,141,218,5	script	Líder Hyouton	2_m_thiefmaster,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40008;
+
+	.@item1 = 900;
+
+	.@item2 = 909;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Hyouton";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30112,1; 
+			getitem2 30112,1,1,0,0,30093,0,0,0;
+
+			equip 30112;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Hyouton.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30112) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Olá jovem, voce recebeu um dom maravilhoso, poder controlar o 'elemento' Hyouton é algo para poucas pessoas.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Mas vejo que voce ainda esta desenvolvendo suas habilidades, eu posso te ajudar...";
+
+		next;
+
+		mes .@npc$;
+
+		mes "porem voce precisa mostrar que realmente merece saber nossos segredos, está disposto?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Eu sabia que voce tinha potencial, certo vamos começar!";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Preciso que colete alguns materiais enquanto preparo nosso treinamento final:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Chakra Congelado";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Hyouton ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Portões
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,170,227,4	script	Líder Portões	1_m_pastor,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40003;
+
+	.@item1 = 900;
+
+	.@item2 = 904;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Portões";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0;
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 4!",bc_blue|bc_all;
+
+			delitem 30107,1; 
+			getitem2 30107,1,1,0,0,30093,0,0,0;
+
+			equip 30107;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Portões.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30107) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Ahhhaaa! Mais um garoto na flor da juventude! Sabe o que eu penso garoto?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Que se nós queremos muito algo temos que trabalhar duro por isso!";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Então se você acha que vou te contar os segredos sobre minha técnica tão facilmente, voce esta enganado!";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Haha... Será que voce aguenta uma sessão de treinamento comigo?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Eu sabia que voce tinha potencial, certo vamos começar!";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Preciso que colete alguns materiais enquanto preparo nosso treinamento final:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Liberação do 8º Portão";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Portões ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Selo Amaldiçoado
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,188,233,4	script	Pesquisador#2	1_f_gypsy,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40006;
+
+	.@questid2 = 40007;
+	
+	.@questid3 = 40022;
+
+	.@item1 = 900;
+
+	.@item2 = 907;
+
+	.@item3 = 908;
+	
+	.@item4 = 923;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	.@itemqnt3 = 1;
+	
+	.@itemqnt4 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo do Selo Amaldiçoado.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+				set pegoukg,4;
+
+				set expkg,0;
+
+				announce " "+strcharinfo(0)+" acaba de melhorar seu Selo Amaldiçoado do céu para o nível 4!",bc_blue|bc_all; 
+
+				delitem 30110,1; 
+				getitem2 30110,1,1,0,0,30093,0,0,0;
+
+				equip 30110;
+
+				delitem .@item1,.@itemqnt1;
+
+				delitem .@item2,.@itemqnt2;
+
+				Zeny = Zeny - 30000000;
+
+				completequest .@questid;
+
+				erasequest .@questid;
+
+				mes .@npc$;
+
+				mes "Parabéns, você acabou de liberar seu poder Selo Amaldiçoado.";
+
+				close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid2) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item3) >= .@itemqnt3 && Zeny >= 30000000) {
+
+				set pegoukg,4; 
+
+				set expkg,0; 
+
+				announce " "+strcharinfo(0)+" acaba de melhorar seu Selo amaldiçoado da terra para o nível 4!",bc_blue|bc_all; 
+
+				delitem 30111,1; 
+				getitem2 30111,1,1,0,0,30093,0,0,0;
+
+				equip 30111;
+
+				delitem .@item1,.@itemqnt1;
+
+				delitem .@item3,.@itemqnt3;
+
+				Zeny = Zeny - 30000000;
+
+				completequest .@questid2;
+
+				erasequest .@questid2;
+
+				mes .@npc$;
+
+				mes "Parabéns, você acabou de liberar seu poder Selo Amaldiçoado.";
+
+				close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+	
+	if(checkquest(.@questid3) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item4) >= .@itemqnt4 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 4!",bc_blue|bc_all; 
+			delitem 30127,1; 
+			getitem2 30127,1,1,0,0,30093,0,0,0;
+			equip 30127;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item4,.@itemqnt4;
+			Zeny = Zeny - 30000000;
+			completequest .@questid3;
+			erasequest .@questid3;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Selo Amaldiçoado.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+
+	}
+
+	
+
+	if(countitem(30110) || countitem(30111) || countitem(30127) && expkg >= 7000000) {
+
+		mes .@npc$;
+		mes "Hehehe eu sabia que você não ia resistir, que a sede por mais poder nao iria acabar, e olhe só aqui esta voce...";
+		next;
+		mes .@npc$;
+		mes "em busca de mais e mais poder, mas pra isso voce terá que provar que é fiel a mim, esta disposto a isso?";
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Ótimo, então para provar sua fidelidade a mim.";
+				next;
+				mes .@npc$;
+				mes "Traga-me os seguintes itens:";
+				mes "1 Kit Cirúrgico";
+				mes "30.000.000 Zeny";
+				next;
+				mes "Caso seja Selo do Céu:";
+				mes "1 Pergaminho Secreto do Céu";
+				next;
+				mes "Caso seja Selo da Terra:";
+				mes "1 Pergaminho Secreto da Terra";
+				next;
+				mes "Boa sorte!";
+				if(countitem(30111) == 1) goto terra;
+				if(countitem(30110) == 1) goto ceu;
+				
+				terra:
+				mes "Quest - Selo Amaldiçoado Terra ativada.";
+				setquest .@questid2;	
+				close;
+				
+				ceu:
+				mes "Quest - Selo Amaldiçoado Céu ativada.";
+				setquest .@questid;
+				close;
+	}
+	mes .@npc$;
+	mes "Você não é Selo Amaldiçoado ou não está pronto para evolui-lo.";
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Nara
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,175,227,4	script	Líder Nara	1_m_youngknight,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40005;
+
+	.@item1 = 900;
+
+	.@item2 = 906;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Nara";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0;
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30109,1; 
+			getitem2 30109,1,1,0,0,30093,0,0,0;
+
+			equip 30109;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Nara.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30109) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Ahhh que saco, mais um aspirante...Bom, fazer o que né!?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Olha só vou ser bem direto, não sao os boatos sobre voce que vao fazer eu entregar os segredos do Clã Nara de bandeija.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Esta preparado para iniciar o treinamento?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vamos ver se o que dizem sobre voce realmente são verdades.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Traga-me alguns itens para começarmos:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Controle das Sombras";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Nara ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Mitsashi
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,133,234,4	script	Líder Mitsashi	1_m_knightmaster,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40009;
+
+	.@item1 = 900;
+
+	.@item2 = 910;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Mitsashi.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Mitsashi para o nível 4!",bc_blue|bc_all; 
+
+			
+			delitem 30113,1; 
+			getitem2 30113,1,1,0,0,30093,0,0,0;
+
+			equip 30113;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Mitsashi.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30113) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente nosso clã é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Pergaminho Mitsashi";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Mitsashi ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Kibaku Nendo
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,142,238,5	script	Líder Kibaku	630,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40010;
+
+	.@item1 = 900;
+
+	.@item2 = 911;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo do Kibaku.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Kibaku para o nível 4!",bc_blue|bc_all; 
+
+			if(countitem(30114)) { delitem 30114,1; getitem2 30114,1,1,0,0,30093,0,0,0; equip 30114; }
+			if(countitem(30131)) { delitem 30131,1; getitem2 30131,1,1,0,0,30093,0,0,0; equip 30131; }
+			if(countitem(1236)) { delitem 1236,1; getitem2 1236,1,1,0,0,30093,0,0,0; equip 1236; }
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Kibaku.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30114) || countitem(30131) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente nosso clã é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Argila Modificada";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Kibaku ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Aburame
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,123,229,4	script	Líder Aburame	637,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40011;
+
+	.@item1 = 900;
+
+	.@item2 = 912;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Aburame";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Aburame para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30115,1; 
+			getitem2 30115,1,1,0,0,30093,0,0,0;
+
+			equip 30115;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Aburame.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30115) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente nosso clã é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Inseto Modificado";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Aburame ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Tayuya
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,180,242,4	script	Líder Tayuya	4_m_chnsoldier,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40012;
+
+	.@item1 = 900;
+
+	.@item2 = 913;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Tayuya";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Tayuya para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30117,1; 
+			getitem2 30117,1,1,0,0,30093,0,0,0;
+
+			equip 30117;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Tayuya.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30117) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente nosso clã é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Flauta Demoniaca";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Tayuya ou não está pronto para evolui-lo";
+
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Ibuse
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,171,209,4	script	Líder Ibuse	880,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40012;
+
+	.@item1 = 900;
+
+	.@item2 = 914;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Ibuse";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Ibuse para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30118,1; 
+			getitem2 30118,1,1,0,0,30093,0,0,0;
+
+			equip 30118;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Ibuse.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30118) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente nosso clã é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Máscara de Gás";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Ibuse ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Jashin
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,169,238,4	script	Líder Jashin	636,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40018;
+
+	.@item1 = 900;
+
+	.@item2 = 915;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Jashin";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar sua Crença Jashin para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30116,1; 
+			getitem2 30116,1,1,0,0,30093,0,0,0;
+
+			equip 30116;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Jashin.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30116) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Olha só, voce esta dando o que falar no clã, finalmente chegou até mim...Será que é tão forte o quanto comentam por ai?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Bom, veremos se voce é merecedor dos segredos da Crença Jashin, esta preparado para o inicio do treinamento?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Coração Perverso";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Jashin ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Byakugo
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,127,238,4	script	Líder Byakugo	629,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40014;
+
+	.@item1 = 900;
+
+	.@item2 = 916;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo dos Byakugo";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugo no jutsu para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30119,1; 
+			getitem2 30119,1,1,0,0,30093,0,0,0;
+
+			equip 30119;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Byakugo.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30119) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Selo Byakugo";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Byakugo ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Kaguya
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,186,242,4	script	Líder Kaguya	4_m_chnsoldier,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40015;
+
+	.@item1 = 900;
+
+	.@item2 = 917;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Kaguya para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30121,1; 
+			getitem2 30121,1,1,0,0,30093,0,0,0;
+
+			equip 30121;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Kaguya.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30121) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Kit Cirurgico";
+
+					mes "1 Ossos Kaguya";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Kaguya ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+
+//			Shakuton
+
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,141,209,4	script	Mestre Shakuton	915,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40016;
+
+	.@item1 = 900;
+
+	.@item2 = 918;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+			set pegoukg,4; 
+
+			set expkg,0; 
+
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades Shakuton para o nível 4!",bc_blue|bc_all; 
+
+			delitem 30122,1; 
+			getitem2 30122,1,1,0,0,30093,0,0,0;
+
+			equip 30122;
+
+			delitem .@item1,.@itemqnt1;
+
+			delitem .@item2,.@itemqnt2;
+
+			Zeny = Zeny - 30000000;
+
+			completequest .@questid;
+
+			erasequest .@questid;
+
+			mes .@npc$;
+
+			mes "Parabéns, você acabou de liberar seu poder Shakuton.";
+
+			close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(countitem(30122) && expkg >= 7000000) {
+
+		mes .@npc$;
+
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+
+		next;
+
+		mes .@npc$;
+
+		mes "Sera voce digno de saber nossos segredos?";
+
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+
+			next;
+
+			mes .@npc$;
+
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+
+			mes "Gostaria de continuar o treinamento?";
+
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+
+					next;
+
+					mes .@npc$;
+
+					mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+
+					next;
+
+					mes .@npc$;
+
+					mes "Para iniciar me traga os seguintes itens:";
+
+					mes "1 Chakra Aquecido";
+
+					mes "1 ";
+
+					mes "30.000.000 Zeny";
+
+					setquest .@questid;
+
+					close;
+
+	}
+
+	mes .@npc$;
+
+	mes "Você não é Shakuton ou não está pronto para evolui-lo.";
+
+	close;
+
+}
+
+
+
+//--------------------------------------------------------------------------------------------------------------
+//			Jinton
+//--------------------------------------------------------------------------------------------------------------
+
+
+
+payon,176,203,4	script	Mestre Jinton	964,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questid = 40017;
+	.@item1 = 900;
+	.@item2 = 919;
+	.@itemqnt1 = 1;
+	.@itemqnt2 = 1;
+
+	if(pegoukg == 4) {
+		mes .@npc$;
+		mes "Você já chegou no nivel máximo.";
+		close;
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades Jinton para o nível 4!",bc_blue|bc_all; 
+			delitem 30123,1; 
+			getitem2 30123,1,1,0,0,30093,0,0,0;
+			equip 30123;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item2,.@itemqnt2;
+			Zeny = Zeny - 30000000;
+			completequest .@questid;
+			erasequest .@questid;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Jinton.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+	}
+
+	
+
+	if(countitem(30123) && expkg >= 7000000) {
+		mes .@npc$;
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+		next;
+		mes .@npc$;
+		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+		next;
+		mes .@npc$;
+		mes "Sera voce digno de saber nossos segredos?";
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+				next;
+				mes .@npc$;
+				mes "Para iniciar me traga os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "1 Chakra em Pó";
+				mes "30.000.000 Zeny";
+				setquest .@questid;
+				close;
+	}
+
+	mes .@npc$;
+	mes "Você não é Jinton ou não está pronto para evolui-lo.";
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+//	Ressonante
+//--------------------------------------------------------------------------------------------------------------
+payon,130,204,4	script	Mestre Ressonante	963,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questid = 40019;
+	.@item1 = 900;
+	.@item2 = 920;
+	.@itemqnt1 = 1;
+	.@itemqnt2 = 1;
+
+	if(pegoukg == 4) {
+		mes .@npc$;
+		mes "Você já chegou no nivel máximo.";
+		close;
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades Ressonante para o nível 4!",bc_blue|bc_all; 
+			delitem 30124,1; 
+			getitem2 30124,1,1,0,0,30093,0,0,0;
+			equip 30124;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item2,.@itemqnt2;
+			Zeny = Zeny - 30000000;
+			completequest .@questid;
+			erasequest .@questid;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Ressonante.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+	}
+
+	
+
+	if(countitem(30124) && expkg >= 7000000) {
+		mes .@npc$;
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+		next;
+		mes .@npc$;
+		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+		next;
+		mes .@npc$;
+		mes "Sera voce digno de saber nossos segredos?";
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+				next;
+				mes .@npc$;
+				mes "Para iniciar me traga os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "1 Ressonante Eco";
+				mes "30.000.000 Zeny";
+				setquest .@questid;
+				close;
+	}
+
+	mes .@npc$;
+	mes "Você não é Ressonante ou não está pronto para evolui-lo";
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+//	Kidoumaru
+//--------------------------------------------------------------------------------------------------------------
+payon,183,242,4	script	Líder Kidoumaru	4_m_chnsoldier,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questid = 40020;
+	.@item1 = 900;
+	.@item2 = 921;
+	.@itemqnt1 = 1;
+	.@itemqnt2 = 1;
+
+	if(pegoukg == 4) {
+		if(countitem(30125) >= 1) {
+			mes "["+strnpcinfo(3)+"]";
+			mes "Olá, vejo que você ja tem sua Habilidade Hiden no nível máximo.";
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			mes "Sou um especialista em arcos, para se fazer um arco bom é preciso dedicação, material e habilidade.";
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			mes "Vejo que você é um arqueiro, gostaria que eu fizesse um arco para você ?";
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			mes "Irei precisar de certos itens:";
+			mes "2x Arco Reforçado";
+			mes "2x 2 Enchant de Arma Dano Humanoide";
+			mes "50,000,000 Zeny";
+			mes "Gostaria de fazer?";
+			switch(select("- Sim, Já tenho todos os itens.:- Não, muito obrigado.")){
+				case 1:
+					if(countitem(921) >= 2 && countitem(4001) >= 2) {
+						if(Zeny >= 50000000) {
+							mes "["+strnpcinfo(3)+"]";
+							mes "Parabéns, você completou o arco. Aqui está ele!";
+							delitem 921,2;
+							delitem 4001,2;
+							getitem 1235,1;
+							set Zeny,Zeny - 50000000;
+							close;
+						}
+						mes "["+strnpcinfo(3)+"]";
+						mes "Você não tem zeny suficiente.";
+						close;
+					}
+					mes "["+strnpcinfo(3)+"]";
+					mes "Você não tem todos os itens.";
+					close;
+					
+				case 2:
+					mes "["+strnpcinfo(3)+"]";
+					mes "Volte quando tiver os itens.";
+					close;
+			}
+		}
+		mes .@npc$;
+		mes "Você já chegou no nivel máximo.";
+		close;
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com Arco para o nível 4!",bc_blue|bc_all; 
+			delitem 30125,1;
+			getitem2 30125,1,1,0,0,30093,0,0,0;
+			equip 30125;
+			
+			delitem 1233,1;
+			getitem2 1233,1,1,0,0,30093,0,0,0;
+			equip 1233;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item2,.@itemqnt2;
+			Zeny = Zeny - 30000000;
+			completequest .@questid;
+			erasequest .@questid;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder com Arco.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+	}
+
+	
+
+	if(countitem(30125) && expkg >= 7000000) {
+		mes .@npc$;
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+		next;
+		mes .@npc$;
+		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+		next;
+		mes .@npc$;
+		mes "Sera voce digno de saber nossos segredos?";
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+				next;
+				mes .@npc$;
+				mes "Para iniciar me traga os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "1 Arco Reforçado";
+				mes "30.000.000 Zeny";
+				setquest .@questid;
+				close;
+	}
+
+	mes .@npc$;
+	mes "Você não é Kidoumaru ou não está pronto para evolui-lo.";
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+//	Manipulação Raiton
+//--------------------------------------------------------------------------------------------------------------
+payon,133,195,4	script	Manipulador Raiton	870,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questid = 40021;
+	.@item1 = 900;
+	.@item2 = 922;
+	.@itemqnt1 = 1;
+	.@itemqnt2 = 1;
+
+	if(pegoukg == 4) {
+		mes .@npc$;
+		mes "Você já chegou no nivel máximo da Manipulação Raiton.";
+		close;
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades Manipulação Raiton para o nível 4!",bc_blue|bc_all; 
+			delitem 30126,1; 
+			getitem2 30126,1,1,0,0,30093,0,0,0;
+			equip 30126;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item2,.@itemqnt2;
+			Zeny = Zeny - 30000000;
+			completequest .@questid;
+			erasequest .@questid;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Manto Raiton.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+	}
+
+	
+
+	if(countitem(30126) && expkg >= 7000000) {
+		mes .@npc$;
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+		next;
+		mes .@npc$;
+		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+		next;
+		mes .@npc$;
+		mes "Sera voce digno de saber nossos segredos?";
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+				next;
+				mes .@npc$;
+				mes "Para iniciar me traga os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "1 Chakra Raiton";
+				mes "30.000.000 Zeny";
+				setquest .@questid;
+				close;
+	}
+
+	mes .@npc$;
+	mes "Você não é Manipulador Raiton ou não está pronto para evolui-lo.";
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+//      Kenjutsu
+//--------------------------------------------------------------------------------------------------------------
+payon,188,225,4	script	Líder Kenjutsu	904,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questid = 40025;
+	.@item1 = 900;
+	.@item2 = 926;
+	.@itemqnt1 = 1;
+	.@itemqnt2 = 1;
+
+	if(pegoukg == 4) {
+		mes .@npc$;
+		mes "Você já chegou no nivel máximo do Kenjutsu.";
+		close;
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades Kenjutsu para o nível 4!",bc_blue|bc_all; 
+			delitem 30130,1; 
+			getitem2 30130,1,1,0,0,30093,0,0,0;
+			equip 30130;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item2,.@itemqnt2;
+			Zeny = Zeny - 30000000;
+			completequest .@questid;
+			erasequest .@questid;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Kenjutsu.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+	}
+
+	
+
+	if(countitem(30130) && expkg >= 7000000) {
+		mes .@npc$;
+		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+		next;
+		mes .@npc$;
+		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+		next;
+		mes .@npc$;
+		mes "Sera voce digno de saber nossos segredos?";
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+				next;
+				mes .@npc$;
+				mes "Para iniciar me traga os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "1 Adaga Enferrujada";
+				mes "30.000.000 Zeny";
+				setquest .@questid;
+				close;
+	}
+
+	mes .@npc$;
+	mes "Você não é Kenjutsu ou não está pronto para evolui-lo.";
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+//      Shouton
+//--------------------------------------------------------------------------------------------------------------
+payon,141,201,4	script	Mestre Shouton	920,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questid = 40026;
+	.@item1 = 900;
+	.@item2 = 923;
+	.@itemqnt1 = 1;
+	.@itemqnt2 = 1;
+
+	if(pegoukg == 4) {
+		mes .@npc$;
+		mes "Você já chegou no nivel máximo de Shouton.";
+		close;
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades de Shouton para o nível 4!",bc_blue|bc_all; 
+			delitem 30132,1; 
+			getitem2 30132,1,1,0,0,30093,0,0,0;
+			equip 30132;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item2,.@itemqnt2;
+			Zeny = Zeny - 30000000;
+			completequest .@questid;
+			erasequest .@questid;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Shouton.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+	}
+
+	
+
+	if(countitem(30132) && expkg >= 7000000) {
+		mes .@npc$;
+		mes "Apenas os escolhidos podem liberar esse poder misterioso que consome seus inimigos.";
+		next;
+		mes .@npc$;
+		mes "Você parecer ser um deles, tenho fé.";
+		next;
+		mes .@npc$;
+		mes "Quer finalizar seu treinamento?";
+		if(select("- Sim, estou pronto.:- Não estou pronto ainda.") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Certo, vejo a determinação em seu olhar, vamos começar.";
+				next;
+				mes .@npc$;
+				mes "Para iniciar me traga os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "1 Lança de Cristal";
+				mes "30.000.000 Zeny";
+				setquest .@questid;
+				close;
+	}
+
+	mes .@npc$;
+	mes "Você não é Shouton ou não está pronto para evolui-lo.";
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+//      Youton
+//--------------------------------------------------------------------------------------------------------------
+payon,171,201,4	script	Mestre Youton	970,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questid = 40027;
+	.@item1 = 900;
+	.@item2 = 924;
+	.@itemqnt1 = 1;
+	.@itemqnt2 = 1;
+
+	if(pegoukg == 4) {
+		mes .@npc$;
+		mes "Você já chegou no nivel máximo de Youton.";
+		close;
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades de Youton para o nível 4!",bc_blue|bc_all; 
+			delitem 30133,1; 
+			getitem2 30133,1,1,0,0,30093,0,0,0;
+			equip 30132;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item2,.@itemqnt2;
+			Zeny = Zeny - 30000000;
+			completequest .@questid;
+			erasequest .@questid;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Youton.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+	}
+
+	
+
+	if(countitem(30133) && expkg >= 7000000) {
+		mes .@npc$;
+		mes "Apenas os escolhidos podem liberar esse poder misterioso que consome seus inimigos.";
+		next;
+		mes .@npc$;
+		mes "Você parecer ser um deles, tenho fé.";
+		next;
+		mes .@npc$;
+		mes "Quer finalizar seu treinamento?";
+		if(select("- Sim, estou pronto.:- Não estou pronto ainda.") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Certo, vejo a determinação em seu olhar, vamos começar.";
+				next;
+				mes .@npc$;
+				mes "Para iniciar me traga os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "1 Lava Endurecida";
+				mes "30.000.000 Zeny";
+				setquest .@questid;
+				close;
+	}
+
+	mes .@npc$;
+	mes "Você não é Youton ou não está pronto para evolui-lo.";
+	close;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------
+//	Uzumaki
+//--------------------------------------------------------------------------------------------------------------
+//cmd_fild01,251,180,4	script	Líder Uzumaki	4_m_chnsoldier,{
+//
+//	.@npc$ = "[" + strnpcinfo(1) + "]";
+//
+//	.@questid = 40023;
+//	.@item1 = 900;
+//	.@item2 = 924;
+//	.@itemqnt1 = 1;
+//	.@itemqnt2 = 1;
+//
+//	if(pegoukg == 4) {
+//		mes .@npc$;
+//		mes "Você já chegou no nivel máximo do Clã Uzumaki";
+//		close;
+//	}
+//
+//	
+//
+//	if(checkquest(.@questid) == 1) {
+//		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+//			set pegoukg,4; 
+//			set expkg,0; 
+//			announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidade de Selamento para o nível 4!",bc_blue|bc_all; 
+//			delitem 30128,1; 
+//			getitem2 30128,1,1,0,0,30093,0,0,0;
+//			equip 30128;
+//			delitem .@item1,.@itemqnt1;
+//			delitem .@item2,.@itemqnt2;
+//			Zeny = Zeny - 30000000;
+//			completequest .@questid;
+//			erasequest .@questid;
+//			mes .@npc$;
+//			mes "Parabéns, você acabou de liberar seu poder de Selamento.";
+//			close;
+//		}
+//		mes .@npc$;
+//		mes "Você não tem todos os itens ainda.";
+//		close;
+//	}
+//
+//	
+//
+//	if(countitem(30128) && expkg >= 7000000) {
+//		mes .@npc$;
+//		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+//		next;
+//		mes .@npc$;
+//		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+//		next;
+//		mes .@npc$;
+//		mes "Sera voce digno de saber nossos segredos?";
+//		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+//			next;
+//			mes .@npc$;
+//			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+//			mes "Gostaria de continuar o treinamento?";
+//			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+//				next;
+//				mes .@npc$;
+//				mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+//				next;
+//				mes .@npc$;
+//				mes "Para iniciar me traga os seguintes itens:";
+//				mes "1 Kit Cirurgico";
+//				mes "1 Pergaminho de Selamento";
+//				mes "30.000.000 Zeny";
+//				setquest .@questid;
+//				close;
+//	}
+//
+//	mes .@npc$;
+//	mes "Você não é do Clã Uzumaki ou não está pronto para evolui-lo";
+//	close;
+//
+//}
+//
+//--------------------------------------------------------------------------------------------------------------
+//	Hozuki
+//--------------------------------------------------------------------------------------------------------------
+//mjolnir_06,230,57,4	script	Líder Hozuki	4_m_chnsoldier,{
+//
+//	.@npc$ = "[" + strnpcinfo(1) + "]";
+//
+//	.@questid = 40024;
+//	.@item1 = 900;
+//	.@item2 = 925;
+//	.@itemqnt1 = 1;
+//	.@itemqnt2 = 1;
+//
+//	if(pegoukg == 4) {
+//		mes .@npc$;
+//		mes "Você já chegou no nivel máximo do Clã Hozuki";
+//		close;
+//	}
+//
+//	
+//
+//	if(checkquest(.@questid) == 1) {
+//		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+//			set pegoukg,4; 
+//			set expkg,0; 
+//			announce " "+strcharinfo(0)+" Acaba de melhorar suas Habilidade para o Nível 4!",bc_blue|bc_all; 
+//			delitem 30129,1; 
+//			getitem2 30129,1,1,0,0,30093,0,0,0;
+//			equip 30129;
+//			delitem .@item1,.@itemqnt1;
+//			delitem .@item2,.@itemqnt2;
+//			Zeny = Zeny - 30000000;
+//			completequest .@questid;
+//			erasequest .@questid;
+//			mes .@npc$;
+//			mes "Parabéns, você acabou de liberar seu poder total.";
+//			close;
+//		}
+//		mes .@npc$;
+//		mes "Você não tem todos os itens ainda.";
+//		close;
+//	}
+//
+//	
+//
+//	if(countitem(30129) && expkg >= 7000000) {
+//		mes .@npc$;
+//		mes "Esses olhos, cheios de vida, me lembram de quando eu era jovem...Hahaha! mas enfim, veio atras de respostas não é mesmo?";
+//		next;
+//		mes .@npc$;
+//		mes "Realmente o mundo é repleto de segredos, mas apenas membros dignos podem conhece-los.";
+//		next;
+//		mes .@npc$;
+//		mes "Sera voce digno de saber nossos segredos?";
+//		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+//			next;
+//			mes .@npc$;
+//			mes "Para continuar o treinamento você precisa pagar 30.000.000 Zeny.";
+//			mes "Gostaria de continuar o treinamento?";
+//			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+//				next;
+//				mes .@npc$;
+//				mes "Certo, vejo a determinação em seu olhar, vamos começar o treinamento.";
+//				next;
+//				mes .@npc$;
+//				mes "Para iniciar me traga os seguintes itens:";
+//				mes "1 Kit Cirurgico";
+//				mes "1 Coração de Agua";
+//				mes "30.000.000 Zeny";
+//				setquest .@questid;
+//				close;
+//	}
+//
+//	mes .@npc$;
+//	mes "Você não é do Clã Hozuki ou não está pronto para evolui-lo";
+//	close;
+//
+//}

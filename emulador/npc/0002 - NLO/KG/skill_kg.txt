@@ -1,0 +1,140 @@
+-	script	Skills_KG	-1,{
+
+OnPCUseSkillEvent:
+// ====================== Susanoo ======================
+
+	if(lskillid == 157) {
+		if(getequipcardid(EQI_HEAD_MID,0) == 30094 ) { set @visu,getlook(LOOK_HEAD_MID); setlook LOOK_HEAD_MID,1482; }
+		if(getequipcardid(EQI_HEAD_MID,0) == 30095 ) { set @visu,getlook(LOOK_HEAD_MID); setlook LOOK_HEAD_MID,1483; }
+		if(getequipcardid(EQI_HEAD_MID,0) == 30096 ) { set @visu,getlook(LOOK_HEAD_MID); setlook LOOK_HEAD_MID,1484; }
+		AddTimer 30000, "FOME_SHARSKILL2::OnHPSHARSKILL22";
+		end;
+	}
+
+// ========================= Asas Akimichi =========================
+	if(lskillid == 755) {
+		AddTimer 40000, "REMOVERGORDOKG::OnHPGORDOREMOVE";
+		set @visu,getlook(LOOK_HEAD_MID);
+		setlook LOOK_HEAD_MID,1724;
+		sc_start SC_SPEEDUP1,3000,40;
+		end;
+	}
+
+// CURA PILULA AMARELA
+
+	if(lskillid == 754) {
+		percentheal 10,0;	
+		end;
+	}
+
+// 5 e 6 PORTAO
+
+	if(lskillid == 959) {
+		percentheal 5,0;	
+		end;
+	}
+
+// BYAKUGAN
+
+	if(lskillid == 949) {
+		sc_start SC_ATKPOTION,15000,4000;	
+		end;
+	}
+
+// ========================= 8º Portão =============================
+
+	if(lskillid == 2443) {
+		AddTimer 40000, "REMOVERGATEKG::OnHPGATEREMOVE";
+		set @visu,getlook(LOOK_HEAD_MID);
+		setlook LOOK_HEAD_MID,1716;
+		sc_start SC_SPEEDUP1,10000,50;
+		sc_start SC_ATKPOTION,5000,1000;
+		specialeffect2 56;
+		specialeffect2 237;
+		specialeffect2 368;
+		end;
+	}
+
+// ========================= Manto Raiton ===========================
+
+	if(lskillid == 2444) {
+		sc_start SC_SPEEDUP1,10000,50;
+		end;
+	}
+
+	if(lskillid == 2312) {
+		sc_start SC_SPEEDUP1,2000,20;
+		end;
+	}
+
+
+// ========================= Selos Amaldiçoado =========================
+	if(lskillid == 749) {
+		AddTimer 30000, "FOME_SELOSKILL::OnHPSELOSKILL12";
+		set @visu,getlook(LOOK_HEAD_MID);
+		setlook LOOK_HEAD_MID,1864;
+		end;
+	}
+	
+	if(lskillid == 750) {
+		AddTimer 30000, "FOME_SELOSKILL2::OnHPSELOSKILL22";
+		set @visu,getlook(LOOK_HEAD_MID);
+		setlook LOOK_HEAD_MID,1481;
+		end;
+	}
+}
+
+
+// ========================= Remover Susanoo =========================
+
+
+-	script	FOME_SHARSKILL2	-1,{
+	
+OnHPSHARSKILL22:	
+	setlook LOOK_HEAD_MID,@visu;
+	DelTimer "FOME_SHARSKILL2::OnHPSHARSKILL22";
+	end;
+
+}
+
+
+// ========================= Remover Selos Amaldiçoado =========================
+
+-	script	FOME_SELOSKILL	-1,{
+
+OnHPSELOSKILL12:
+	setlook LOOK_HEAD_MID,@visu;
+	DelTimer "FOME_SELOSKILL::OnHPSELOSKILL12";
+	end;
+
+}
+
+-	script	FOME_SELOSKILL2	-1,{
+
+OnHPSELOSKILL22:
+	setlook LOOK_HEAD_MID,@visu;
+	DelTimer "FOME_SELOSKILL2::OnHPSELOSKILL22";
+	end;
+
+}
+
+// ========================= Remover Asas Akimichi =========================
+
+-	script	REMOVERGORDOKG	-1,{
+		
+	OnHPGORDOREMOVE:
+		setlook LOOK_HEAD_MID,@visu;
+		DelTimer "REMOVERGORDOKG::OnHPGORDOREMOVE";
+		end;
+}
+
+// ========================= Remover Gate ===================================
+
+-	script	REMOVERGATEKG	-1,{
+		
+	OnHPGATEREMOVE:
+		setlook LOOK_HEAD_MID,@visu;
+		DelTimer "REMOVERGATEKG::OnHPGATEREMOVE";
+		end;
+}
+

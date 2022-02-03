@@ -1,0 +1,93 @@
+konoha3,234,245,5	script	Guia de Konoha	805,{
+
+//OnPCLoginEvent:
+
+//OnPCLoadMapEvent:
+//getmapxy(.@mapname$,.@mapx,.@mapy,0);
+//if( .@mapname$ == "konoha")
+
+	if (BaseLevel >= 999) {mes "Apenas novatos podem fazer esse passeio..."; close;}
+//pcblockmove getcharid(0),1;	// Will prevent the player from moving.
+
+//L_start:
+//mes "[Guia e regras]";
+//mes "Antes de você iniciar sua aventura no Naruto RPG Online vamos fazer um rápido passeio pela vila.";
+//next;
+//goto L_guia;
+// Tour. This is pretty self explanatory.
+
+mes "[^ff0000Guia^000000]";
+mes "Seja bem-vindo ao NRO, gostaria de fazer um passeio pela vila?";
+menu "Sim, quero",L_guia2,"Não e me deixe em paz",L_nao;
+
+	L_guia2:
+	next;
+	// Tour starts here.
+	warp "konoha3",153,126;
+	sleep2 100;
+	mes "[^ff0000Guia^000000]";
+	mes "Este é o armazém shinobi, você pode depositar seus pertences pra não ficar pesado de tantos itens em seu inventário.";
+	mes "^ff0000-----------------------------------^000000";
+	mes "Você será levado ao próximo npc em 10 segundos.";
+	sleep2 10000;
+	warp "konoha3",195,231;
+	sleep2 100;
+	mes "[^ff0000Guia^000000]";
+	mes "Este é o escritório do kage, aqui você recebe algumas missões.";
+	mes "^ff0000-----------------------------------^000000";
+	mes "Você será levado ao próximo npc em 10 segundos.";
+	sleep2 10000;
+	warp "konoha3",159,194;
+	sleep2 100;
+	mes "[^ff0000Guia^000000]";
+	mes "Esta é a academia, aqui você poderá conhecer tudo sobre o mundo shinobi.";
+	mes "^ff0000-----------------------------------^000000";
+	mes "Você será levado ao próximo npc em 10 segundos.";
+	sleep2 10000;
+	warp "konoha3",88,229;
+	sleep2 100;
+	mes "[^ff0000Guia^000000]";
+	mes "Esta é a entrada pro hospital, aqui você pode se recuperar de suas batalhas.";
+	mes "^ff0000-----------------------------------^000000";
+	mes "Você será levado ao próximo npc em 10 segundos.";
+	sleep2 10000;
+	warp "konoha3",207,56;
+	sleep2 100;
+	mes "[^ff0000Guia^000000]";
+	mes "Esta é a saida da vila, cuidado ao sair porque lá fora existem animais e shinobis poderosos.";
+	mes "^ff0000-----------------------------------^000000";
+	mes "Você será levado ao próximo npc em 10 segundos.";
+	sleep2 10000;
+	warp "konoha3",265,255;
+	sleep2 100;
+	mes "[^ff0000Guia^000000]";
+	mes "Aqui é a entrada pro esgoto, cuidado que tem animais poderosos aí dentro.";
+	mes "^ff0000-----------------------------------^000000";
+	mes "Você será levado ao próximo npc em 10 segundos.";
+	sleep2 10000;
+	warp "konoha3",146,224;
+	sleep2 100;
+	mes "[^ff0000Guia^000000]";
+	mes "Aqui é a loja de equipamentos, compre aqui equipamentos básicos pras suas missões.";
+	mes "^ff0000-----------------------------------^000000";
+	mes "Este guia irá terminar em 10 segundos.";
+	sleep2 10000;
+	warp "konoha3",234,245;
+	sleep2 100;
+	pcblockmove getcharid(0),0;	//Will allow the player to move.
+	// Tour ends here.
+	end;
+
+	L_nao:
+	close2;
+	pcblockmove getcharid(0),0;
+	end;
+
+OnInit:
+setmapflag "konoha3", mf_loadevent;
+waitingroom "[Guia Konoha]",0;
+end;
+
+}
+//}
+//}

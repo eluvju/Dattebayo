@@ -1,0 +1,113 @@
+// Badge Reward Function
+//============================================================
+function	script	F_BG_Badge	{
+
+	if (getarg(2) == "Tierra") {
+		set .@badge,7828; //BF_Badge1
+		set .@amount_win,3;
+		set .@amount_lose,1;
+	} else if (getarg(2) == "Flavius") {
+		set .@badge,7829; //BF_Badge2
+		set .@amount_win,9;
+		set .@amount_lose,3;
+	} else
+		return;
+
+	if (getarg(0) == 1) {
+		set .@amount, .@amount_win;
+		if (getarg(1) == "Guillaume") {
+			mes "[Axl Rose]";
+			mes "Blessed Guillaume!";
+		} else if (getarg(1) == "Croix") {
+			mes "[Swandery]";
+			mes "Blessed Croix!";
+		}
+		mes "Let's enjoy our glorious victory!";
+		mes strcharinfo(0)+", it's a sign reflecting victory.";
+	} else {
+		set .@amount, .@amount_lose;
+		if (getarg(1) == "Guillaume") {
+			mes "[Axl Rose]";
+			mes "You lost, but you're dedicated to this battle.";
+			mes "This is a reward for your great dedication by Guillaume Marollo!";
+			mes "Just take this defeat as a lesson, and next time you will definitely win.";
+		} else if (getarg(1) == "Croix") {
+			mes "[Swandery]";
+			mes "Oh, "+strcharinfo(0)+" Don't be sad.";
+			mes "Even though we didn't win, we did our best.";
+			mes "This is a Royal gift from Croix, and please don't forget this battle. We will win the next one.";
+		}
+	}
+	close2;
+
+//	// If the VIP system is enabled, VIP players receive an extra 2 badges.
+//	if (VIP_SCRIPT && vip_status(1))
+//		set .@amount, .@amount+2;
+
+	set .@medal_gap, 500 - countitem(.@badge);
+	if (.@medal_gap >= .@amount)
+		getitem .@badge,.@amount;
+	else
+		getitem .@badge,.@medal_gap;
+	return;
+}
+
+kakashi,78,144,4	script	Batalhas Campais	882,{
+
+if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar nesse evento é 999"; close;}
+if ($bg_ligado != 1) {mes "Neste momento as batalhas campais estão fechadas, estaremos abertos na Segunda-Feira às 18:30, Quarta às 17:30, Sexta às 18:30 e Domingo às 17:00"; close;}
+
+mes "Bem-vindo as batalhas campais, aqui dois grupos disputam as batalhas pra receberem pontos de batalha (PB), este podem ser trocados por grandes recompensas";
+next;
+mes "Gostaria de entrar na sala de batalhas campais?";
+menu "- Sim",L_sim,"- Não",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+next;
+mes "Boa sorte!";
+next;
+warp "bat_room",154,150;
+close;
+
+
+
+}
+
+bat_room,157,153,4	script	Instrutor - BG	882,{
+
+
+mes "Bem-vindo as batalhas campais, aqui dois grupos disputam as batalhas pra receberem pontos de batalha (PB), este podem ser trocados por grandes recompensas";
+next;
+mes "Para participar é preciso se juntar a um dos times aqui nesta sala, e a batalha só terá início quando tiver o mínimo de jogadores necessários nas salas de espera";
+next;
+mes "Após iniciar ambas as equipes serão teleportadas para sua base, e batalha estará iniciada, boa sorte!";
+close;
+
+
+
+}
+
+-	script	ligarbg	1083,{
+
+OnMon2110:
+OnTue1230:
+OnWed2110:
+OnFri1230:
+OnSun2110:
+set $bg_ligado,1;
+announce "[BG] A sala de batalhas campais está aberta, corra para participar!",bc_blue|bc_all;
+end;
+
+OnTue0730:
+OnMon2210:
+OnTue1330:
+OnWed2210:
+OnFri1330:
+OnSun2210:
+set $bg_ligado,0;
+announce "[BG] A sala de batalhas campais está agora fechada, volte na próxima vez!",bc_blue|bc_all;
+end;
+}

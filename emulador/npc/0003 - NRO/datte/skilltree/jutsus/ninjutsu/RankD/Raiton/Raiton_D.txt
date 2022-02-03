@@ -1,0 +1,103 @@
+prt_sewb3,72,15,5	script	Gian::raiton3	831,{
+if(elementoraiton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 3) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (WeaponLvl2 < 20) {mes "Você precisa de ninjutsu level 20 pra aprender esse jutsu"; close;}
+if (Gian == 1) {next; mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elemenatis de Raiton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Gian";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_JB,"Agora não",L_no;
+
+//========================================================================
+//	Gian
+//========================================================================
+
+L_JB:
+if (checkquest(1012) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Rabo de cobra";
+mes "- Derrotar 10x Girino";
+setquest 1012;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1012,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(934) < 200) {next; mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 934,200;
+skill 20,1,0;
+set Gian,1;
+set skillgenin1,4;
+completequest 1012;
+erasequest 1012;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Raiton]",0;
+}
+//=========================================================================
+//	Pergaminho Paralizador
+//=========================================================================
+gld_dun04,237,239,5	script	P.Paralizador::raiton4	831,{
+if (nin_intermediario != 1) {mes "Você precisa de ninjutsu intermediário para aprender esse jutsu"; close;}
+if(elementoraiton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+if (WeaponLvl2 < 20) {mes "Você precisa de ninjutsu level 20 pra aprender esse jutsu"; close;}
+if (paralisador == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elemenatis de Raiton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Pergaminho Paralizador";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_RY,"Agora não",L_no;
+
+L_RY:
+if (checkquest(1013) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Pele de sapo";
+mes "- Derrotar 10x Filhote de cobra";
+mes "- Estudar ninjutsu básico.";
+setquest 1013;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1013,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+if (countitem(7155) < 200) {next; mes "Você não completou seu treinamento."; close;}
+if (nin_basico != 1) {next; mes "Você não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7155,200;
+skill 118,1,0;
+set paralisador,1;
+completequest 1013;
+erasequest 1013;
+set skillgenin1,5;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Raiton]",0;
+}
+
+prt_sewb4,123,34,5	duplicate(raiton3)	Gian#d1	831
+gl_sew02,183,45,5	duplicate(raiton4)	P.Paralizador#d2	831
+
+gl_sew03,270,47,5	duplicate(raiton3)	Gian#d3	831
+gl_sew04,253,47,5	duplicate(raiton4)	P.Paralizador#d4	831
+
+alde_dun04,32,73,5	duplicate(raiton3)	Gian#d5	831
+beach_dun3,39,185,5	duplicate(raiton4)	P.Paralizador#d6	831

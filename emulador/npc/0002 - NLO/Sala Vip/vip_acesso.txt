@@ -1,0 +1,40 @@
+kirigakure,189,189,4	script	Sala Vip::vip	922,{
+
+	if(vip_status(1)) {
+
+		mes "[Teleportador para sala vip]";
+		mes "Olá Guerreiro";
+		next;
+		mes "[Teleportador para sala vip]";
+		mes "Gostaria de entrar na Sala Vip do NRO?";
+		next;
+		menu "- Sim",r1,"- Não",r2;
+		
+		r1:
+		mes "[Teleportador para sala vip]";
+		mes "OK "+ strcharinfo(0) +"!";
+		warp "ra_in01", 209,90;
+		close;
+	
+		r2:
+		mes "[Teleportador para sala vip]";
+		mes "Ok..";
+		close;	
+	}
+	mes "Você não é vip, para se tornar vip acesse o fórum e se informe.";
+	close;
+	
+
+
+}
+
+konoha3,127,263, 4	duplicate(vip)	Sala Vip#1	922
+sunagakure,211,134, 4	duplicate(vip)	Sala Vip#2	922
+akatsuki,98,205,4	duplicate(vip)	Sala Vip#4	922
+kumogakure,92,110, 4	duplicate(vip)	Sala Vip#5	922
+
+ra_in01,213,80,5	script	Saida#Vip	WARPNPC,2,2,{
+
+OnTouch:
+	warp "SavePoint", 0, 0;
+}

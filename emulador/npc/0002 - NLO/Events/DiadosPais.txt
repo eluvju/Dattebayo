@@ -1,0 +1,87 @@
+treinamento,86,129,5	script	Removedor Hiden	99,{
+	if(!removedorpromo) {
+		mes "Esse NPC so vai ser valido até o dia 20/08/2017";
+		next;
+		mes "Você Gostaria de Remover sua Habilidade Hiden?";
+		mes "CUIDADO: AO ESCOLHER SIM SUA HIDEN IRÁ VOLTAR DO ZERO!!!";
+		mes "Lembre-se que você so pode usar esse NPC 1x. Removendo você irá perder sua Hiden Habilite";
+		if(select("- Sim:- Não") == 2) { close; }
+			if (SELOCEU > 0) {set SELOCEU,0; set pegoukg,0; if(countitem(30110) >= 1) {delitem 30110,1;} if (expkg > 0) {set expkg,0;} }
+			if (SELOTERRA > 0) {set SELOTERRA,0; set pegoukg,0; if(countitem(30111) >= 1) {delitem 30111,1;} if (expkg > 0) {set expkg,0;}}
+			if (SHARINGAN > 0) {set SHARINGAN,0; set pegoukg,0; if(countitem(30101) >= 1) {delitem 30101,1;} if(countitem(30102) >= 1) {delitem 30102,1;} if(countitem(30103) >= 1) { delitem 30103,1; } if(countitem(30104) >= 1) { delitem 30104,1; } set MANGEKYO,0; if(expkg > 0) {set expkg,0;} }
+			if (BYAKUGAN > 0) {set BYAKUGAN,0; set pegoukg,0; if(countitem(30106) >= 1) {delitem 30106,1;} if (expkg > 0) {set expkg,0;}}
+			if (HYOUTON > 0) {set HYOUTON,0; set pegoukg,0; if(countitem(30112) >= 1) {delitem 30112,1;} if (expkg > 0) {set expkg,0;}}
+			if (PORTOES > 0) {set PORTOES,0; set pegoukg,0; if(countitem(30107) >= 1) {delitem 30107,1;} if (expkg > 0) {set expkg,0;}}
+			if (KUGUTSU > 0) {set KUGUTSU,0;set pegoukg,0;if(countitem(30105) >= 1) {delitem 30105,1;} if (expkg > 0) {set expkg,0;}}
+			if (AKIMICHI > 0) {set AKIMICHI,0; set pegoukg,0; if(countitem(30108) >= 1) {delitem 30108,1;} if (expkg > 0) {set expkg,0;}}
+			if (NARA > 0) {set NARA,0; set pegoukg,0; if(countitem(30109) >= 1) {delitem 30109,1;} if (expkg > 0) {set expkg,0;}}
+			if (MITSASHI > 0) {set MITSASHI,0; set pegoukg,0; if(countitem(30113) >= 1) {delitem 30113,1;} if (expkg > 0) {set expkg,0;}}
+			if (KIBAKU > 0) {set KIBAKU,0; set pegoukg,0; if(countitem(30114) >= 1) {delitem 30114,1;} if (expkg > 0) {set expkg,0;}}
+			if (ABURAME > 0) {set ABURAME,0; set pegoukg,0; if(countitem(30115) >= 1) {delitem 30115,1;} if (expkg > 0) {set expkg,0;}}
+			if (TAYUYA > 0) {set TAYUYA,0; set pegoukg,0; if(countitem(30117) >= 1) {delitem 30117,1;} if (expkg > 0) {set expkg,0;}}
+			if (IBUSE > 0) {set IBUSE,0; set pegoukg,0; if(countitem(30118) >= 1) {delitem 30118,1;} if (expkg > 0) {set expkg,0;}}
+			set removedorpromo,1;
+			dispbottom "Kekkei Genkai removido com sucesso";
+			close;
+	}
+	mes "Você ja usou esse Npc";
+	close;
+}
+
+treinamento,89,129,5	script	Removedor Kuchiyose	99,{
+	if(!removedorkuchypromo) {
+		mes "Esse NPC so vai ser valido até o dia 20/08/2017";
+		next;
+		mes "Você Gostaria de Remover sua Kuchiyose?";
+		mes "CUIDADO: AO ESCOLHER SIM SUA KUCHIYOSE IRÁ VOLTAR DO ZERO!!!";
+		mes "Lembre-se que você so pode usar esse NPC 1x. Removendo você irá perder sua Kuchiyose";
+		if(select("- Sim:- Não") == 2) { close; }
+			set kuchiyose,0;
+			set removedorkuchypromo,1;
+			if(getskilllv(2500) >= 1) { skill 2500,0,3; }
+			if(getskilllv(2501) >= 1) { skill 2501,0,3; }
+			if(getskilllv(2502) >= 1) { skill 2502,0,3; }
+			if(getskilllv(2503) >= 1) { skill 2503,0,3; }
+			if(getskilllv(2504) >= 1) { skill 2504,0,3; }
+			if(getskilllv(2505) >= 1) { skill 2505,0,3; }
+			if(getskilllv(2506) >= 1) { skill 2506,0,3; }
+			if(checkquest(50000) >= 1) { completequest 50000; erasequest 50000; }
+			if(checkquest(50001) >= 1) { completequest 50001; erasequest 50001; }
+			if(checkquest(50002) >= 1) { completequest 50002; erasequest 50002; }
+			if(checkquest(50003) >= 1) { completequest 50003; erasequest 50003; }
+			if(checkquest(50004) >= 1) { completequest 50004; erasequest 50004; }
+			if(checkquest(50005) >= 1) { completequest 50005; erasequest 50005; }
+			if(checkquest(50006) >= 1) { completequest 50006; erasequest 50006; }
+			if(checkquest(50007) >= 1) { completequest 50007; erasequest 50007; }
+			if(checkquest(50008) >= 1) { completequest 50008; erasequest 50008; }
+			if(checkquest(50009) >= 1) { completequest 50009; erasequest 50009; }
+			if(checkquest(50010) >= 1) { completequest 50010; erasequest 50010; }
+			if(checkquest(50011) >= 1) { completequest 50011; erasequest 50011; }
+			if(checkquest(50012) >= 1) { completequest 50012; erasequest 50012; }
+			if(checkquest(50013) >= 1) { completequest 50013; erasequest 50013; }
+			if(checkquest(50100) >= 1) { completequest 50100; erasequest 50100; }
+			if(checkquest(50101) >= 1) { completequest 50101; erasequest 50101; }
+			if(checkquest(50102) >= 1) { completequest 50102; erasequest 50102; }
+			if(checkquest(50103) >= 1) { completequest 50103; erasequest 50103; }
+			if(checkquest(50104) >= 1) { completequest 50104; erasequest 50104; }
+			if(checkquest(50105) >= 1) { completequest 50105; erasequest 50105; }
+			if(checkquest(50106) >= 1) { completequest 50106; erasequest 50106; }
+			if(checkquest(50200) >= 1) { completequest 50200; erasequest 50200; }
+			if(checkquest(50201) >= 1) { completequest 50201; erasequest 50201; }
+			if(checkquest(50202) >= 1) { completequest 50202; erasequest 50202; }
+			if(checkquest(50203) >= 1) { completequest 50203; erasequest 50203; }
+			if(checkquest(50204) >= 1) { completequest 50204; erasequest 50204; }
+			if(checkquest(50205) >= 1) { completequest 50205; erasequest 50205; }
+			if(checkquest(50206) >= 1) { completequest 50206; erasequest 50206; }
+			if(checkquest(50207) >= 1) { completequest 50207; erasequest 50207; }
+			if(checkquest(50208) >= 1) { completequest 50208; erasequest 50208; }
+			if(checkquest(50209) >= 1) { completequest 50209; erasequest 50209; }
+			if(checkquest(50210) >= 1) { completequest 50210; erasequest 50210; }
+			if(checkquest(50211) >= 1) { completequest 50211; erasequest 50211; }
+			if(checkquest(50212) >= 1) { completequest 50212; erasequest 50212; }
+			if(checkquest(50213) >= 1) { completequest 50213; erasequest 50213; }
+			end;
+	}
+	mes "Você ja usou esse Npc";
+	close;
+}

@@ -1,0 +1,263 @@
+academia,60,174,5	script	Raiton Básico	1_m_innkeeper,{
+
+if(elementoraiton != 1) { mes "[Raiton Básico]"; mes "Esse elemento não é de sua natureza"; close;}
+
+	mes "[Raiton Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Raiton escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Raiton Maisou:- Raiton Kaminari Oroshi:- Raiton Corte Rapido" ) ){
+
+	case 1:
+		next;
+		if(checkquest(1071) == 1) goto 1_go;
+		if(checkquest(2071) == 1) goto 1_go;
+		if(checkquest(3071) == 1) goto 1_go;
+		if(checkquest(4071) == 1) goto 1_go;
+		if(Maisou == 1) goto 1_delete;
+		if(skill_basica >= 9) { mes "[Raiton Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Raiton Básico]";
+		mes "Maisou no Jutsu?";
+		next;
+		mes "[Raiton Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Raiton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Maisou no Jutsu
+		//========================================================================
+		
+		1_delete:
+		mes "[Raiton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Raiton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Raiton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Raiton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Raiton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 192,0,3;
+		set Maisou,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Raiton Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1071; }
+		if(#suna == 1) {  setquest 2071; }
+		if(#nevoa == 1) { setquest 3071; }
+		if(#nuvem == 1) { setquest 4071; }
+		next;
+		mes "[Raiton Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1071,hunting) == 1 || 
+			checkquest(2071,hunting) == 1 || 
+			checkquest(3071,hunting) == 1 || 
+			checkquest(4071,hunting) == 1	) { 				mes "[Raiton Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1071) >= 1) { completequest 1071; erasequest 1071; }						if(checkquest(2071) >= 1) { completequest 2071; erasequest 2071; }						if(checkquest(3071) >= 1) { completequest 3071; erasequest 3071; }						if(checkquest(4071) >= 1) { completequest 4071; erasequest 4071; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Raiton Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Raiton Básico]";  				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Raiton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 192,1,3;
+		set Maisou,1;
+		if(checkquest(1071) >= 1) { completequest 1071; erasequest 1071; }
+		if(checkquest(2071) >= 1) { completequest 2071; erasequest 2071; }
+		if(checkquest(3071) >= 1) { completequest 3071; erasequest 3071; }
+		if(checkquest(4071) >= 1) { completequest 4071; erasequest 4071; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(checkquest(1072) == 1) goto 2_go;
+		if(checkquest(2072) == 1) goto 2_go;
+		if(checkquest(3072) == 1) goto 2_go;
+		if(checkquest(4072) == 1) goto 2_go;
+		if(KaminariOroshi == 1) goto 2_delete;
+		if(skill_basica >= 9) { mes "[Raiton Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Raiton Básico]";
+		mes "Kaminari Oroshi?";
+		next;
+		mes "[Raiton Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Raiton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Kaminari Oroshi
+		//========================================================================
+		
+		2_delete:
+		mes "[Raiton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Raiton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Raiton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Raiton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Raiton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 21,0,3;
+		set KaminariOroshi,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Raiton Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1072; }
+		if(#suna == 1) {  setquest 2072; }
+		if(#nevoa == 1) { setquest 3072; }
+		if(#nuvem == 1) { setquest 4072; }
+		next;
+		mes "[Raiton Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		2_go:
+		if( checkquest(1072,hunting) == 1 ||
+            checkquest(2072,hunting) == 1 ||
+            checkquest(3072,hunting) == 1 ||
+            checkquest(4072,hunting) == 1   ) { 				mes "[Raiton Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1072) >= 1) { completequest 1072; erasequest 1072; }						if(checkquest(2072) >= 1) { completequest 2072; erasequest 2072; }						if(checkquest(3072) >= 1) { completequest 3072; erasequest 3072; }						if(checkquest(4072) >= 1) { completequest 4072; erasequest 4072; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Raiton Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Raiton Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 		}
+		mes "[Raiton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 21,1,3;
+		set KaminariOroshi,1;
+		if(checkquest(1072) >= 1) { completequest 1072; erasequest 1072; }
+		if(checkquest(2072) >= 1) { completequest 2072; erasequest 2072; }
+		if(checkquest(3072) >= 1) { completequest 3072; erasequest 3072; }
+		if(checkquest(4072) >= 1) { completequest 4072; erasequest 4072; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(checkquest(1073) == 1) goto 3_go;
+		if(checkquest(2073) == 1) goto 3_go;
+		if(checkquest(3073) == 1) goto 3_go;
+		if(checkquest(4073) == 1) goto 3_go;
+		if(CorteEspiritual == 1) goto 3_delete;
+		if(skill_basica >= 9) { mes "[Raiton Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Raiton Básico]";
+		mes "Corte Espiritual?";
+		next;
+		mes "[Raiton Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Raiton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Corte Espiritual
+		//========================================================================
+		
+		3_delete:
+		mes "[Raiton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Raiton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Raiton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Raiton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Raiton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 3005,0,3;
+		set CorteEspiritual,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Raiton Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1073; }
+		if(#suna == 1) {  setquest 2073; }
+		if(#nevoa == 1) { setquest 3073; }
+		if(#nuvem == 1) { setquest 4073; }
+		next;
+		mes "[Raiton Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		3_go:
+		if( checkquest(1073,hunting) == 1 ||
+		    checkquest(2073,hunting) == 1 ||
+		    checkquest(3073,hunting) == 1 ||
+		    checkquest(4073,hunting) == 1  ) { 				mes "[Raiton Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1073) >= 1) { completequest 1073; erasequest 1073; }						if(checkquest(2073) >= 1) { completequest 2073; erasequest 2073; }						if(checkquest(3073) >= 1) { completequest 3073; erasequest 3073; }						if(checkquest(4073) >= 1) { completequest 4073; erasequest 4073; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Raiton Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}					mes "[Raiton Básico]"; 					mes "Você ainda não completou seu treinamento."; 					close; 			}
+		mes "[Raiton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 3005,1,3;
+		set CorteEspiritual,1;
+		if(checkquest(1073) >= 1) { completequest 1073; erasequest 1073; }
+		if(checkquest(2073) >= 1) { completequest 2073; erasequest 2073; }
+		if(checkquest(3073) >= 1) { completequest 3073; erasequest 3073; }
+		if(checkquest(4073) >= 1) { completequest 4073; erasequest 4073; }
+		close;
+		
+		3_no:
+		close;
+	}
+OnInit:
+	waitingroom "[Raiton Básico]",0;
+}

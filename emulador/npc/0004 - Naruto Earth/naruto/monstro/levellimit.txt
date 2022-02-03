@@ -1,0 +1,10 @@
+-	script	LEVEL_LIMIT	-1,{
+
+	OnNPCKillEvent:
+		if (strcharinfo(3) == "pay_fild06" && BaseLevel >= 60
+			|| strcharinfo(3) == "prt_fild03" && BaseLevel >= 300) {
+			getexp2 -getmonsterinfo(killedrid, MOB_BASEEXP), -getmonsterinfo(killedrid, MOB_JOBEXP);
+			dispbottom "Você é um ninja muito forte para esse mapa, vá para o próximo rank!";
+		}
+	end;
+}

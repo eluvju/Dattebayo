@@ -1,0 +1,782 @@
+lou_fild01,179,171,5	script	Mestre Fuuinjutsu	843,{
+
+if (WeaponLvl5 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Fuuinjutsu^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Fuuinjutsu, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Fuuinjutsu
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Fuuinjutsu^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Fuuinjutsu^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Fuuinjutsu^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Fuuinjutsu^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "lou_fild01",179,171,"Mestre Fuuinjutsu",1241,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Fuuinjutsu^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+ama_dun03,119,157,5	script	Mestre Suiton	843,{
+
+if (WeaponLvl2 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Suiton^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Suiton, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Suiton
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Suiton^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Suiton^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Suiton^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Suiton^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "ama_dun03",119,157,"Mestre Suiton",1050,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Suiton^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+cmd_fild07,196,61,5	script	Mestre Fuuton	843,{
+
+if (WeaponLvl2 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Fuuton^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Fuuton, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Fuuton
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Fuuton^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Fuuton^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Fuuton^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Fuuton^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "cmd_fild07",196,61,"Mestre Fuuton",1060,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Fuuton^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+gef_fild00,346,363,5	script	Mestre Katon	843,{
+
+if (WeaponLvl2 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Katon^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Katon, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Katon
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Katon^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Katon^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Katon^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Katon^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "gef_fild00",346,363,"Mestre Katon",1101,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Katon^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+ein_fild09,295,44,5	script	Mestre Raiton	843,{
+
+if (WeaponLvl2 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Raiton^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Raiton, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Raiton
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Raiton^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Raiton^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Raiton^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Raiton^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "ein_fild09",295,44,"Mestre Raiton",1574,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Raiton^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+yuno_fild10,266,278,5	script	Mestre Doton	843,{
+
+if (WeaponLvl2 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Doton^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Doton, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Doton
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Doton^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Doton^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Doton^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Doton^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "yuno_fild10",266,278,"Mestre Doton",1575,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Doton^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+mosk_que,49,25,5	script	Mestre Genjutsu	843,{
+
+if (WeaponLvl3 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Genjutsu^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Genjutsu, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Genjutsu
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Genjutsu^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Genjutsu^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Genjutsu^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Genjutsu^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "mosk_que",49,25,"Mestre Genjutsu",1751,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Genjutsu^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+lhz_fild03,328,312,5	script	Mestre Medicina	843,{
+
+if (WeaponLvl4 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Medicina^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Medicina, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Medicina
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Medicina^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Medicina^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Medicina^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Medicina^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "lhz_fild03",328,312,"Mestre Medicina",1832,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Medicina^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+gon_fild01,190,264,5	script	Mestre Taijutsu	843,{
+
+if (WeaponLvl < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Taijutsu^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Taijutsu, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Taijutsu
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Taijutsu^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Taijutsu^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Taijutsu^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Taijutsu^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "gon_fild01",190,264,"Mestre Taijutsu",1688,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Taijutsu^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+////////////////////////
+
+gl_church,167,99,5	script	Mestre Velocidade	843,{
+
+if (WeaponLvl6 < 75) goto fail;
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CMestre Velocidade^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou o representante do Mestre Velocidade, se você atingir os requisitos você poderá enfrentá-lo, gostaria de tentar?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Mestre Velocidade
+//========================================================================
+
+L_SS:
+next;
+mes "[^DC143CMestre Velocidade^000000]";
+mes "Ótimo, mesmo eu não achando que poderá vencer, aqui estão os requisitos para enfrentar o mestre";
+next;
+mes "[^DC143CMestre Velocidade^000000]";
+mes "- 10.000.000 de Zeny";
+mes "- 2x Fragmentos de Vitalidade 1";
+mes "- 2x Fragmentos de Inteligência 1";
+mes "- 2x Fragmentos de Destreza 1";
+mes "- 2x Fragmentos de Sorte 1";
+mes "- 2x Fragmentos de Proteção 1";
+mes "- 2x Fragmentos de Resistência 1";
+mes "- 2x Fragmentos de Agilidade 1";
+mes "- 2x Fragmentos de Força 1";
+next;
+mes "[^DC143CMestre Velocidade^000000]";
+mes "Você já quer enfrentá-lo agora?";
+menu "- Sim, quero agora",L_fight,"- Ainda não",L_no;
+
+L_fight:
+next;
+if (countitem(582) < 2) goto No_Item;
+if (countitem(558) < 2) goto No_Item;
+if (countitem(578) < 2) goto No_Item;
+if (countitem(572) < 2) goto No_Item;
+if (countitem(574) < 2) goto No_Item;
+if (countitem(573) < 2) goto No_Item;
+if (countitem(556) < 2) goto No_Item;
+if (countitem(512) < 2) goto No_Item;
+if (getgmlevel() == 0 && Zeny < 10000000) {goto No_Item;}
+if (getgmlevel() == 0) {set Zeny, Zeny-10000000;}
+delitem 582,2;
+delitem 558,2;
+delitem 578,2;
+delitem 572,2;
+delitem 574,2;
+delitem 573,2;
+delitem 556,2;
+delitem 512,2;
+mes "[^DC143CMestre Velocidade^000000]";
+mes "Boa sorte então, irei chamá-lo";
+monster "gl_church",167,99,"Mestre Velocidade",1049,1,"quest_mestre::OnMestreKilled01"; 
+close;
+
+No_Item:
+mes "[^DC143CMestre Velocidade^000000]";
+mes "Você não possui todos os requisitos.";
+close;
+
+L_no:
+close;
+
+fail:
+mes "[^DC143CComércio Shinobi^000000]";
+mes "Você não possui o nível conhecimento o bastante para enfrentar o mestre [^DC143CNível 75 deste treinamento^000000]";
+close;
+
+}
+
+
+
+
+-	script	quest_mestre	1083,{
+
+OnMestreKilled01:
+	end;
+OnMestreKilled02:
+	end;
+OnMestreKilled03:
+	end;
+OnMestreKilled04:
+	end;
+OnMestreKilled05:
+	end;
+OnMestreKilled06:
+	end;
+OnMestreKilled07:
+	end;
+OnMestreKilled08:
+	end;
+
+
+}

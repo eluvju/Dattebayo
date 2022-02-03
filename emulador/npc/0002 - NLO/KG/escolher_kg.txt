@@ -1,0 +1,1488 @@
+bibli_01,62,43,3	script	Habilidades Hidden::hiddens	402,{
+
+	.@menu$ = "[^5c5c5cPesquisador^000000]";
+
+//========================================================================
+//	MENU
+//========================================================================
+	if(Class == 0) { mes .@menu$; mes "Você precisa se tornar um Genin antés de escolher sua Habilidade Hidden"; close;}
+
+	mes .@menu$;
+	mes "Olá "+strcharinfo(0)+"-chan!";
+	next;
+	mes .@menu$;
+	mes "Há vários anos que eu estou estudando sobre formas de aperfeiçoamento";
+	mes "Em outras palavras,";
+	mes "Estudando sobre Habilidaes Hiddens e outras formas de ganhar mais poder.";
+	next;
+	mes .@menu$;
+	mes "Conte-me.";
+	mes "O que você gostaria de saber?";
+	switch(select("- Adiquirir Hidden:- Trocar Hidden:- Remover Hidden") ) {
+		next;
+		case 1:
+			if(despertarkg >= 1) { mes .@menu$; mes "Você ja é um usuário de Habilidade Hidden"; close; }
+			if(pegoukg >= 1) { mes .@menu$; mes "Você ja é um usuário de Habilidade Hidden"; close; }
+			mes .@menu$;
+			mes "Escolha sua Habilidade Hidden. Lembre-se que ao escolher você não poderá mais trocar.";
+			switch(select("- Uchiha:- Kugutsu:- Hyuuga:- Portões de Chakra:- Akimichi:- Nara:- Selo Céu:- Selo Terra:- Hyouton:- Mais Opções") ) {
+				case 1:
+					mes .@menu$;
+					mes "Você tem certeza que quer se juntar aos Uchihas ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce ""+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all; 
+						getitem2 30101,1,1,0,0,30090,0,0,0; 
+						equip 30101;
+						set pegoukg,1;
+						close;
+
+				case 2:
+					mes .@menu$;
+					mes "Você tem certeza que quer se tornar um Manipulador de Marionetes ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Marionetes!",bc_blue|bc_all; 
+						getitem2 30105,1,1,0,0,30090,0,0,0; 
+						equip 30105;
+						set pegoukg,1;
+						close;
+				case 3:
+					mes .@menu$;
+					mes "Você tem certeza que quer se juntar aos Hyuuga ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; 
+						getitem2 30106,1,1,0,0,30090,0,0,0; 
+						equip 30106;
+						set pegoukg,1;
+						close;
+				case 4:
+					mes .@menu$;
+					mes "Você tem certeza que quer liberar seus Portões de Chakra ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce " "+strcharinfo(0)+" Acaba de despertar seu Portão de Chakra!",bc_blue|bc_all; 
+						getitem2 30107,1,1,0,0,30090,0,0,0; 
+						equip 30107;
+						set pegoukg,1;
+						close;
+				case 5:
+					mes .@menu$;
+					mes "Você tem certeza que quer se juntar aos Akimichi ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce " "+strcharinfo(0)+" Acaba de juntar-se aos Akimichi!",bc_blue|bc_all; 
+						getitem2 30108,1,1,0,0,30090,0,0,0; 
+						equip 30108;
+						set pegoukg,1;
+						close;
+				case 6:
+					mes .@menu$;
+					mes "Você tem certeza que quer se juntar aos Nara ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Sombras!",bc_blue|bc_all; 
+						getitem2 30109,1,1,0,0,30090,0,0,0; 
+						equip 30109;
+						set pegoukg,1;
+						close;
+				case 7:
+					mes .@menu$;
+					mes "Você tem certeza que quer se tornar um usuário Selo Céu ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce " "+strcharinfo(0)+" Acaba de despertar seu Selo Amaldiçoado do Céu!",bc_blue|bc_all; 
+						getitem2 30110,1,1,0,0,30090,0,0,0; 
+						equip 30110;
+						set pegoukg,1;
+						close;
+				case 8:
+					mes .@menu$;
+					mes "Você tem certeza que quer se tornar um usuário Selo Terra ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce " "+strcharinfo(0)+" Acaba de despertar seu Selo Amaldiçoado da Terra!",bc_blue|bc_all; 
+						getitem2 30111,1,1,0,0,30090,0,0,0; 
+						equip 30111;
+						set pegoukg,1;
+						close;
+				case 9:
+					mes .@menu$;
+					mes "Você tem certeza que quer se tornar um usuário Hyouton ?";
+					if(select("- Sim:- Não") == 2) close;
+						announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Hyouton !",bc_blue|bc_all; 
+						getitem2 30112,1,1,0,0,30090,0,0,0; 
+						equip 30112;
+						set pegoukg,1;
+						close;
+				case 10:
+					switch(select("- Mitsashi:- Kibaku Socho:- Aburame:- Jashin:- Tayuya:- Ibuse:- Senju:- Byakugan Punhos Gentis:- Kaguya:- Mais Opções") ) {
+						case 1:
+							mes .@menu$;
+							mes "Você tem certeza que quer se juntar aos Mitsashi ?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar suas Habilidade com Armas!",bc_blue|bc_all; 
+								getitem2 30113,1,1,0,0,30090,0,0,0; 
+								equip 30113;
+								set pegoukg,1;
+								close;
+						case 2:
+							mes .@menu$;
+							mes "Você tem certeza que quer ser Kibaku Socho?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar seu Kibaku Socho!",bc_blue|bc_all; 
+								getitem2 30114,1,1,0,0,30090,0,0,0; 
+								equip 30114;
+								set pegoukg,1;
+								close;
+						case 3:
+							mes .@menu$;
+							mes "Você tem certeza que quer se juntar aos Aburame ?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Insetos!",bc_blue|bc_all; 
+								getitem2 30115,1,1,0,0,30090,0,0,0; 
+								equip 30115;
+								set pegoukg,1;
+								close;
+						case 4:
+							mes .@menu$;
+							mes "Você tem certeza que quer se juntar aos Jashin ?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar sua Crença Jashin!",bc_blue|bc_all; 
+								getitem2 30116,1,1,0,0,30090,0,0,0; 
+								equip 30116;
+								set pegoukg,1;
+								close;
+						case 5:
+							mes .@menu$;
+							mes "Você tem certeza que quer ser um usuário da Flauta Amaldiçoada?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar sua Habilidade com a Flauta Demoniaca!",bc_blue|bc_all; 
+								getitem2 30117,1,1,0,0,30090,0,0,0; 
+								equip 30117;
+								set pegoukg,1;
+								close;
+						case 6:
+							mes .@menu$;
+							mes "Você tem certeza que quer se juntar aos Ibuse?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar suas Habilidades com Veneno!",bc_blue|bc_all; 
+								getitem2 30118,1,1,0,0,30090,0,0,0; 
+								equip 30118;
+								set pegoukg,1;
+								close;
+						case 7:
+							mes .@menu$;
+							mes "Você tem certeza que quer se juntar aos Senju?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugo!",bc_blue|bc_all; 
+								getitem2 30119,1,1,0,0,30090,0,0,0; 
+								equip 30119;
+								set pegoukg,1;
+								close;
+						case 8:
+							mes .@menu$;
+							mes "Você tem certeza que quer se juntar aos Hyuuga?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; 
+								getitem2 30120,1,1,0,0,30090,0,0,0; 
+								equip 30120;
+								set pegoukg,1;
+								close;
+						case 9:
+							mes .@menu$;
+							mes "Você tem certeza que quer se juntar aos Kaguya?";
+							if(select("- Sim:- Não") == 2) close;
+								announce " "+strcharinfo(0)+" Acaba de despertar suas Habilidades com Ossos!",bc_blue|bc_all; 
+								getitem2 30121,1,1,0,0,30090,0,0,0; 
+								equip 30121;
+								set pegoukg,1;
+								close;
+						case 10:
+							switch(select("- Shakuton:- Jinton:- Ressonante:- Kidoumaru:- Manipulação Raiton:- Kenjutsu:- Kibaku Nendo:- Liberação de Cristal:- Liberação de Lava")) {
+								case 1:
+									mes .@menu$;
+									mes "Você tem certeza que quer se tornar um usuário Shakuton ?";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Shakuton!",bc_blue|bc_all; 
+										getitem2 30122,1,1,0,0,30090,0,0,0; 
+										equip 30122;
+										set pegoukg,1;
+										close;
+								case 2:
+									mes .@menu$;
+									mes "Você tem certeza que quer se tornar um usuário Jinton ?";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar seu Jinton!",bc_blue|bc_all; 
+										getitem2 30123,1,1,0,0,30090,0,0,0; 
+										equip 30123;
+										set pegoukg,1;
+										close;
+								case 3:
+									mes .@menu$;
+									mes "Você tem certeza que quer se tornar um usuário Ressonancia ?";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades com Ressonância!",bc_blue|bc_all; 
+										getitem2 30124,1,1,0,0,30090,0,0,0; 
+										equip 30124;
+										set pegoukg,1;
+										close;
+								case 4:
+									mes .@menu$;
+									mes "Você tem certeza que quer ser um usuário de Arco ?";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades com Arco!",bc_blue|bc_all; 
+										getitem2 30125,1,1,0,0,30090,0,0,0; 
+										getitem2 1233,1,1,0,0,30090,0,0,0; 
+										equip 30125;
+										equip 1233;
+										set pegoukg,1;
+										close;
+								case 5:
+									mes .@menu$;
+									mes "Você tem certeza que quer ser um Manipulador Raiton ?";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar sua Manipulação com Raiton!",bc_blue|bc_all; 
+										getitem2 30126,1,1,0,0,30090,0,0,0; 
+										equip 30126;
+										set pegoukg,1;
+										close;
+								case 6:
+									mes .@menu$;
+									mes "Você tem certeza que quer se tornar um usuário de Kenjutsu?";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar sua habilidade Kenjutsu!",bc_blue|bc_all; 
+										getitem2 30130,1,1,0,0,30090,0,0,0; 
+										equip 30130;
+										set pegoukg,1;
+										close;
+								case 7:
+									mes .@menu$;
+									mes "Você tem certeza que quer se tornar usuário de Kibaku Nendo??";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar seu Kibaku Nendo!",bc_blue|bc_all; 
+										getitem2 30131,1,1,0,0,30090,0,0,0;
+										getitem2 1236,1,1,0,0,30090,0,0,0;
+										equip 30131;
+										equip 1236;
+										set pegoukg,1;
+										close;
+
+								case 8:
+									mes .@menu$;
+									mes "Você tem certeza que quer se tornar um usuário de Liberação de Cristal?";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar seu Shouton!",bc_blue|bc_all; 
+										getitem2 30132,1,1,0,0,30090,0,0,0; 
+										equip 30132;
+										set pegoukg,1;
+										close;
+
+								case 9:
+									mes .@menu$;
+									mes "Você tem certeza que quer se tornar um usuário de Liberação de Lava?";
+									if(select("- Sim:- Não") == 2) close;
+										announce " "+strcharinfo(0)+" Acaba de despertar seu Youton!",bc_blue|bc_all; 
+										getitem2 30133,1,1,0,0,30090,0,0,0; 
+										equip 30133;
+										set pegoukg,1;
+										close;
+
+
+							}
+					}
+			}
+		case 2:
+			mes .@menu$;
+			mes "Você tem certeza que quer troca sua Habilidade Hidden?";
+			if(select("- Sim:- Não") == 2) close;
+				next;
+				if(countitem(7013) < 1 ) { mes .@menu$; mes "Você precisa de 1x Ticket Troca de Hidden."; close; }
+				if(!getequipisequiped(EQI_HEAD_MID)) { mes .@menu$; mes "Você precisa estar com sua Hidden equipada."; close; }
+				
+				set .@nivel,""+getequipcardid(EQI_HEAD_MID,0)+"";
+				set .@sharinganlv,.@nivel + 11;
+				mes .@menu$;
+				mes "Qual Habilidade Hidden você gostaria de pegar?";
+					switch(select("- Uchiha:- Kugutsu:- Hyuuga:- Portões de Chakra:- Akimichi:- Nara:- Selo Céu:- Selo Terra:- Hyouton:- Mais Opções") ) {
+					
+						case 1:
+							if(getequipcardid(EQI_HEAD_MID,0) == 30093 ) {
+								mes .@menu$;
+								mes "Escolha qual Mangekyou você quer: ";
+								switch(select("- Mangekyou Itachi:- Mangekyou Sasuke:- Mangekyou Obito") ) {
+								
+									case 1:
+										getitem2 30104,1,1,0,0,30094,0,0,0;
+										equip 30104;
+										if(countitem(30105) >= 1) { delitem 30105,1; }
+										if(countitem(30106) >= 1) { delitem 30106,1; }
+										if(countitem(30107) >= 1) { delitem 30107,1; }
+										if(countitem(30108) >= 1) { delitem 30108,1; }
+										if(countitem(30109) >= 1) { delitem 30109,1; }
+										if(countitem(30110) >= 1) { delitem 30110,1; }
+										if(countitem(30111) >= 1) { delitem 30111,1; }
+										if(countitem(30112) >= 1) { delitem 30112,1; }
+										if(countitem(30113) >= 1) { delitem 30113,1; }
+										if(countitem(30114) >= 1) { delitem 30114,1; }
+										if(countitem(30115) >= 1) { delitem 30115,1; }
+										if(countitem(30116) >= 1) { delitem 30116,1; }
+										if(countitem(30117) >= 1) { delitem 30117,1; }
+										if(countitem(30118) >= 1) { delitem 30118,1; }
+										if(countitem(30119) >= 1) { delitem 30119,1; }
+										if(countitem(30120) >= 1) { delitem 30120,1; }
+										if(countitem(30121) >= 1) { delitem 30121,1; }
+										if(countitem(30122) >= 1) { delitem 30122,1; }
+										if(countitem(30123) >= 1) { delitem 30123,1; }
+										if(countitem(30124) >= 1) { delitem 30124,1; }
+										if(countitem(30125) >= 1) { delitem 30125,1; }
+										if(countitem(1233) >= 1)  { delitem 1233,1;  }
+										if(countitem(30126) >= 1) { delitem 30126,1; }
+										if(countitem(30130) >= 1) { delitem 30130,1; }
+										if(countitem(30131) >= 1) { delitem 30131,1; }
+										if(countitem(1236) >= 1)  { delitem 1236,1;  }
+										if(countitem(30132) >= 1) { delitem 30132,1; }
+										if(countitem(30133) >= 1) { delitem 30133,1; }
+										delitem 7013,1;
+										mes "Troca bem sucedida.";
+										close;
+									case 2:
+										getitem2 30104,1,1,0,0,30095,0,0,0;
+										equip 30104;
+										if(countitem(30105) >= 1) { delitem 30105,1; }
+										if(countitem(30106) >= 1) { delitem 30106,1; }
+										if(countitem(30107) >= 1) { delitem 30107,1; }
+										if(countitem(30108) >= 1) { delitem 30108,1; }
+										if(countitem(30109) >= 1) { delitem 30109,1; }
+										if(countitem(30110) >= 1) { delitem 30110,1; }
+										if(countitem(30111) >= 1) { delitem 30111,1; }
+										if(countitem(30112) >= 1) { delitem 30112,1; }
+										if(countitem(30113) >= 1) { delitem 30113,1; }
+										if(countitem(30114) >= 1) { delitem 30114,1; }
+										if(countitem(30115) >= 1) { delitem 30115,1; }
+										if(countitem(30116) >= 1) { delitem 30116,1; }
+										if(countitem(30117) >= 1) { delitem 30117,1; }
+										if(countitem(30118) >= 1) { delitem 30118,1; }
+										if(countitem(30119) >= 1) { delitem 30119,1; }
+										if(countitem(30120) >= 1) { delitem 30120,1; }
+										if(countitem(30121) >= 1) { delitem 30121,1; }
+										if(countitem(30122) >= 1) { delitem 30122,1; }
+										if(countitem(30123) >= 1) { delitem 30123,1; }
+										if(countitem(30124) >= 1) { delitem 30124,1; }
+										if(countitem(30125) >= 1) { delitem 30125,1; }
+										if(countitem(1233) >= 1)  { delitem 1233,1;  }
+										if(countitem(30126) >= 1) { delitem 30126,1; }
+										if(countitem(30130) >= 1) { delitem 30130,1; }
+										if(countitem(30131) >= 1) { delitem 30131,1; }
+										if(countitem(1236) >= 1)  { delitem 1236,1;  }
+										if(countitem(30132) >= 1) { delitem 30132,1; }
+										if(countitem(30133) >= 1) { delitem 30133,1; }
+										delitem 7013,1;
+										mes "Troca bem sucedida.";
+										close;
+									case 3:
+										getitem2 30104,1,1,0,0,30096,0,0,0; 
+										equip 30104;
+										if(countitem(30105) >= 1) { delitem 30105,1; }
+										if(countitem(30106) >= 1) { delitem 30106,1; }
+										if(countitem(30107) >= 1) { delitem 30107,1; }
+										if(countitem(30108) >= 1) { delitem 30108,1; }
+										if(countitem(30109) >= 1) { delitem 30109,1; }
+										if(countitem(30110) >= 1) { delitem 30110,1; }
+										if(countitem(30111) >= 1) { delitem 30111,1; }
+										if(countitem(30112) >= 1) { delitem 30112,1; }
+										if(countitem(30113) >= 1) { delitem 30113,1; }
+										if(countitem(30114) >= 1) { delitem 30114,1; }
+										if(countitem(30115) >= 1) { delitem 30115,1; }
+										if(countitem(30116) >= 1) { delitem 30116,1; }
+										if(countitem(30117) >= 1) { delitem 30117,1; }
+										if(countitem(30118) >= 1) { delitem 30118,1; }
+										if(countitem(30119) >= 1) { delitem 30119,1; }
+										if(countitem(30120) >= 1) { delitem 30120,1; }
+										if(countitem(30121) >= 1) { delitem 30121,1; }
+										if(countitem(30122) >= 1) { delitem 30122,1; }
+										if(countitem(30123) >= 1) { delitem 30123,1; }
+										if(countitem(30124) >= 1) { delitem 30124,1; }
+										if(countitem(30125) >= 1) { delitem 30125,1; }
+										if(countitem(1233) >= 1)  { delitem 1233,1;  }
+										if(countitem(30126) >= 1) { delitem 30126,1; }
+										if(countitem(30130) >= 1) { delitem 30130,1; }
+										if(countitem(30131) >= 1) { delitem 30131,1; }
+										if(countitem(1236) >= 1)  { delitem 1236,1;  }
+										if(countitem(30132) >= 1) { delitem 30132,1; }
+										if(countitem(30133) >= 1) { delitem 30133,1; }
+										delitem 7013,1;
+										mes "Troca bem sucedida.";
+										close;
+							
+								}
+							}
+							if(countitem(30101) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; } 
+							if(countitem(30102) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; } 
+							if(countitem(30103) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; } 
+							if(countitem(30104) >= 1) { 
+								mes .@menu$;
+								mes "Escolha qual Mangekyou você quer:";
+								switch(select("- Mangekyou Itachi:- Mangekyou Sasuke:- Mangekyou Obito") ) {
+								
+									case 1:
+										delitem 30104,1; 
+										getitem2 30104,1,1,0,0,30094,0,0,0; 
+										equip 30104;
+									case 2:
+										delitem 30104,1; 
+										getitem2 30104,1,1,0,0,30095,0,0,0;
+										equip 30104;
+									case 3:
+										delitem 30104,1; 
+										getitem2 30104,1,1,0,0,30096,0,0,0; 
+										equip 30104;
+							
+								}
+							}
+								
+							if(countitem(30105) >= 1) { delitem 30105,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30106) >= 1) { delitem 30106,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30107) >= 1) { delitem 30107,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30108) >= 1) { delitem 30108,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30109) >= 1) { delitem 30109,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30110) >= 1) { delitem 30110,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30111) >= 1) { delitem 30111,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30112) >= 1) { delitem 30112,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 .@sharinganlv,1,1,0,0,.@nivel,0,0,0; equip .@sharinganlv; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+						
+						case 2:
+							if(countitem(30105) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+							if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; } 
+							if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; } 
+							if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; } 
+							if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30105,1,1,0,0,30093,0,0,0;   equip 30105; }
+							if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30105,1,1,0,0,.@nivel,0,0,0; equip 30105; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+						
+						case 3:
+							if(countitem(30106) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+							if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; } 
+							if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; } 
+							if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; } 
+							if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30106,1,1,0,0,30093,0,0,0;   equip 30106; }
+							if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30106,1,1,0,0,.@nivel,0,0,0; equip 30106; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+						
+						case 4:
+							if(countitem(30107) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+							if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; } 
+							if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; } 
+							if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; } 
+							if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30107,1,1,0,0,30093,0,0,0;   equip 30107; }
+							if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30107,1,1,0,0,.@nivel,0,0,0; equip 30107; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+							
+						case 5:
+							if(countitem(30108) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+							if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; } 
+							if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; } 
+							if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; } 
+							if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30108,1,1,0,0,30093,0,0,0;   equip 30108; }
+							if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30108,1,1,0,0,.@nivel,0,0,0; equip 30108; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+							
+						case 6:
+							if(countitem(30109) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+							if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; } 
+							if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; } 
+							if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; } 
+							if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30109,1,1,0,0,30093,0,0,0;   equip 30109; }
+							if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30109,1,1,0,0,.@nivel,0,0,0; equip 30109; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+							
+						case 7:
+							if(countitem(30110) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+							if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; } 
+							if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; } 
+							if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; } 
+							if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30110,1,1,0,0,30093,0,0,0;   equip 30110; }
+							if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30110,1,1,0,0,.@nivel,0,0,0; equip 30110; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+						
+						case 8:
+							if(countitem(30111) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+							if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; } 
+							if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; } 
+							if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; } 
+							if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30111,1,1,0,0,30093,0,0,0;   equip 30111; }
+							if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30111,1,1,0,0,.@nivel,0,0,0; equip 30111; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+						
+						case 9:
+							if(countitem(30112) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+							if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; } 
+							if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; } 
+							if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; } 
+							if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30112,1,1,0,0,30093,0,0,0;   equip 30112; }
+							if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(1233) >= 1)  { delitem 1233,1;  }
+							if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(1236) >= 1)  { delitem 1236,1; }
+							if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30112,1,1,0,0,.@nivel,0,0,0; equip 30112; }
+							delitem 7013,1;
+							mes "Troca bem sucedida.";
+							close;
+							
+						case 10:
+							switch(select("- Mitsashi:- Kibaku Socho:- Aburame:- Jashin:- Tayuya:- Ibuse:- Senju:- Byakugan Punhos Gentis:- Kaguya:- Mais Opções") ) {
+								case 1:
+									if(countitem(30113) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30113,1,1,0,0,30093,0,0,0;   equip 30113; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30113,1,1,0,0,.@nivel,0,0,0; equip 30113; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 2:
+									if(countitem(30114) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30114,1,1,0,0,30093,0,0,0;   equip 30114; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30114,1,1,0,0,.@nivel,0,0,0; equip 30114; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 3:
+									if(countitem(30115) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30115,1,1,0,0,30093,0,0,0;   equip 30115; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30115,1,1,0,0,.@nivel,0,0,0; equip 30115; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 4:
+									if(countitem(30116) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30116,1,1,0,0,30093,0,0,0;   equip 30116; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30116,1,1,0,0,.@nivel,0,0,0; equip 30116; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 5:
+									if(countitem(30117) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30117,1,1,0,0,30093,0,0,0;   equip 30117; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30117,1,1,0,0,.@nivel,0,0,0; equip 30117; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 6:
+									if(countitem(30118) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30118,1,1,0,0,30093,0,0,0;   equip 30118; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30118,1,1,0,0,.@nivel,0,0,0; equip 30118; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 7:
+									if(countitem(30119) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30119,1,1,0,0,30093,0,0,0;   equip 30119; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30119,1,1,0,0,.@nivel,0,0,0; equip 30119; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 8:
+									if(countitem(30120) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30120,1,1,0,0,30093,0,0,0;   equip 30120; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30127) >= 1) { delitem 30127,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30128) >= 1) { delitem 30128,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30129) >= 1) { delitem 30129,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30120,1,1,0,0,.@nivel,0,0,0; equip 30120; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 9:
+									if(countitem(30121) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+									if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; } 
+									if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; } 
+									if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; } 
+									if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30121,1,1,0,0,30093,0,0,0;   equip 30121; }
+									if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(1233) >= 1)  { delitem 1233,1;  }
+									if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(1236) >= 1)  { delitem 1236,1; }
+									if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30121,1,1,0,0,.@nivel,0,0,0; equip 30121; }
+									delitem 7013,1;
+									mes "Troca bem sucedida.";
+									close;
+									
+								case 10:
+									switch(select("- Shakuton:- Jinton:- Ressonante:- Kidoumaru:- Manipulação Raiton:- Kenjutsu:- Kibaku Nendo:- Liberação de Cristal:- Liberação de Lava")) {
+										case 1:
+											if(countitem(30122) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30122,1,1,0,0,30093,0,0,0;   equip 30122; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(1233) >= 1)  { delitem 1233,1;  }
+											if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(1236) >= 1)  { delitem 1236,1; }
+											if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30122,1,1,0,0,.@nivel,0,0,0; equip 30122; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+											
+										case 2:
+											if(countitem(30123) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30123,1,1,0,0,30093,0,0,0;   equip 30123; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(1233) >= 1)  { delitem 1233,1;  }
+											if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(1236) >= 1)  { delitem 1236,1; }
+											if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30123,1,1,0,0,.@nivel,0,0,0; equip 30123; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+										case 3:
+											if(countitem(30124) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30124,1,1,0,0,30093,0,0,0;   equip 30124; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(1233) >= 1)  { delitem 1233,1;  }
+											if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(1236) >= 1)  { delitem 1236,1; }
+											if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30124,1,1,0,0,.@nivel,0,0,0; equip 30124; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+											
+										case 4:
+											if(countitem(30125) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30125,1,1,0,0,30093,0,0,0;   getitem2 1233,1,1,0,0,30093,0,0,0;   equip 30125; equip 1233; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(1236) >= 1)  { delitem 1236,1; }
+											if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30125,1,1,0,0,.@nivel,0,0,0; getitem2 1233,1,1,0,0,.@nivel,0,0,0; equip 30125; equip 1233; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+											
+										case 5:
+											if(countitem(30126) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30126,1,1,0,0,30093,0,0,0;   equip 30126; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(1233) >= 1)  { delitem 1233,1;  }
+											if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(1236) >= 1)  { delitem 1236,1; }
+											if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30126,1,1,0,0,.@nivel,0,0,0; equip 30126; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+											
+										case 6:
+											if(countitem(30130) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30130,1,1,0,0,30093,0,0,0;   equip 30130; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(1233) >= 1)  { delitem 1233,1;  }
+											if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(1236) >= 1)  { delitem 1236,1; }
+											if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30130,1,1,0,0,.@nivel,0,0,0; equip 30130; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+										case 7:
+											if(countitem(30131) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30131,1,1,0,0,30093,0,0,0; getitem2 1236,1,1,0,0,30093,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(1233) >= 1)  { delitem 1233,1;  }
+											if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30131,1,1,0,0,.@nivel,0,0,0; getitem2 1236,1,1,0,0,.@nivel,0,0,0; equip 30131; equip 1236; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+										case 8:
+											if(countitem(30132) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30132,1,1,0,0,30093,0,0,0;   equip 30132; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(1233) >= 1)  { delitem 1233,1;  }
+											if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(30133) >= 1) { delitem 30133,1; getitem2 30132,1,1,0,0,.@nivel,0,0,0; equip 30132; }
+											if(countitem(1236) >= 1)  { delitem 1236,1; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+
+										case 9:
+											if(countitem(30133) >= 1) { mes "Você não pode trocar para sua mesma Habilidade Hidden."; close; }
+											if(countitem(30101) >= 1) { delitem 30101,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; } 
+											if(countitem(30102) >= 1) { delitem 30102,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; } 
+											if(countitem(30103) >= 1) { delitem 30103,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; } 
+											if(countitem(30104) >= 1) { delitem 30104,1; getitem2 30133,1,1,0,0,30093,0,0,0;   equip 30133; }
+											if(countitem(30105) >= 1) { delitem 30105,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30106) >= 1) { delitem 30106,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30107) >= 1) { delitem 30107,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30108) >= 1) { delitem 30108,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30109) >= 1) { delitem 30109,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30110) >= 1) { delitem 30110,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30111) >= 1) { delitem 30111,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30112) >= 1) { delitem 30112,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30113) >= 1) { delitem 30113,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30114) >= 1) { delitem 30114,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30115) >= 1) { delitem 30115,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30116) >= 1) { delitem 30116,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30117) >= 1) { delitem 30117,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30118) >= 1) { delitem 30118,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30119) >= 1) { delitem 30119,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30120) >= 1) { delitem 30120,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30121) >= 1) { delitem 30121,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30122) >= 1) { delitem 30122,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30123) >= 1) { delitem 30123,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30124) >= 1) { delitem 30124,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30125) >= 1) { delitem 30125,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(1233) >= 1)  { delitem 1233,1;  }
+											if(countitem(30126) >= 1) { delitem 30126,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30130) >= 1) { delitem 30130,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30131) >= 1) { delitem 30131,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(30132) >= 1) { delitem 30132,1; getitem2 30133,1,1,0,0,.@nivel,0,0,0; equip 30133; }
+											if(countitem(1236) >= 1)  { delitem 1236,1; }
+											delitem 7013,1;
+											mes "Troca bem sucedida.";
+											close;
+
+											}
+							}
+							
+					}
+
+
+		case 3:
+			mes .@menu$;
+			mes "Você tem certeza que gostaria de remover sua Habilidade Hidden ?";
+			mes "Lembre-se que ao remover você perderá sua Hidden. Estará livre para poder escolher outra Hidden.";
+			if(select("- Sim:- Não") == 2) close;
+				next;
+				if(countitem(7007) < 1) { mes .@menu$; mes "Você precisa de 1x Ticket Removedor de Hidden."; close; }
+					if(countitem(30101) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30101,1; } 
+					if(countitem(30102) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30102,1; } 
+					if(countitem(30103) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30103,1; } 
+					if(countitem(30104) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30104,1; }
+					if(countitem(30105) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30105,1; }
+					if(countitem(30106) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30106,1; }
+					if(countitem(30107) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30107,1; }
+					if(countitem(30108) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30108,1; }
+					if(countitem(30109) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30109,1; }
+					if(countitem(30110) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30110,1; }
+					if(countitem(30111) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30111,1; }
+					if(countitem(30112) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30112,1; }
+					if(countitem(30113) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30113,1; }
+					if(countitem(30114) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30114,1; }
+					if(countitem(30115) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30115,1; }
+					if(countitem(30116) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30116,1; }
+					if(countitem(30117) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30117,1; }
+					if(countitem(30118) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30118,1; }
+					if(countitem(30119) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30119,1; }
+					if(countitem(30120) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30120,1; }
+					if(countitem(30121) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30121,1; }
+					if(countitem(30122) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30122,1; }
+					if(countitem(30123) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30123,1; }
+					if(countitem(30124) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30124,1; }
+					if(countitem(30125) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30125,1; delitem 1233,1; }
+					if(countitem(30126) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30126,1; }
+					if(countitem(30130) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30130,1; }
+					if(countitem(30131) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30131,1; delitem 1236,1; }
+					if(countitem(30132) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30132,1; }
+					if(countitem(30133) >= 1) { set pegoukg,0; set despertarkg,0; delitem 30133,1; }
+					delitem 7007,1;
+					mes "Habilidade Hidden removida com sucesso.";
+					close;
+	}
+
+	OnInit:
+	waitingroom "Habilidades Hidden",0;
+
+}
+
+bibli_02,62,43,3	duplicate(hiddens)	Habilidades Hidden#2	402
+bibli_03,62,43,3	duplicate(hiddens)	Habilidades Hidden#3	402
+bibli_04,62,43,3	duplicate(hiddens)	Habilidades Hidden#4	402

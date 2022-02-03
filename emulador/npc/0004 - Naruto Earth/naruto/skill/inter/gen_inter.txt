@@ -1,0 +1,168 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+biblioteca,121,14,5	script	Genjutsu Intermediario	4_m_thaiongbak,{
+if(checkquest(30084) == 1) goto skillgenj1;
+if(checkquest(30085) == 1) goto skillgenj2;
+if(checkquest(30086) == 1) goto skillgenj3;
+if(checkquest(30087) == 1) goto skillgenj4;
+if(treino_gen_inter != 1) { mes "[Genjutsu Intermediario]"; mes "Você precisa estudar Genjutsu Intermediario antes de aprender as skills"; close;}
+if(genj_skill_avan >= 3) { mes "[Genjutsu Intermediario]"; mes "Você já aprendeu três skill de Genjutsu Intermediario, esse é o limite"; close; }
+	mes "[Genjutsu Intermediario]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Genjutsu Intermediario. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Genjutsu Intermediario]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Genjutsu Intermediario]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Genjutsu Intermediario]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A080Jigoku Kouka^000000:^8A0808Kanashibari no Genjutsu^000000:^8A0808Jigyaku no Chakra^000000:^8A0808Fukai Kemuri^000000:^8A0808ANenhum^000000"))
+	{
+	case 1:
+		if (ge1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Jigoku Kouka";
+		next;
+		mes "[Genjutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Genjutsu Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillgenj1:
+		setquest 30084;
+		if(checkquest(30084,hunting) == 2 && countitem(32155) >= 1)
+		{
+			completequest 30084;
+			erasequest 30084;
+			delitem 32155,1;
+			set genj_skill_avan,genj_skill_avan +1;
+			skill 677,5,3;
+			set ge1,1;
+			mes "[Genjutsu Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (ge2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Kanashibari no Genjutsu";
+		next;
+		mes "[Genjutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Genjutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Genjutsu Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillgenj2:
+		setquest 30085;
+		if(checkquest(30085,hunting) == 2 && countitem(32155) >= 1)
+		{
+			completequest 30085;
+			erasequest 30085;
+			delitem 32155,1;
+			set genj_skill_avan,genj_skill_avan +1;
+			skill 678,5,3;
+			set ge2,1;
+			mes "[Genjutsu Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (ge3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Jigyaku no Chakra";
+		next;
+		mes "[Genjutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Genjutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Genjutsu Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillgenj3:
+		setquest 30086;
+		if(checkquest(30086,hunting) == 2 && countitem(32155) >= 1)
+		{
+			completequest 30086;
+			erasequest 30086;
+			delitem 32155,1;
+			set genj_skill_avan,genj_skill_avan +1;
+			set ge3,1;
+			skill 5003,5,3;
+			mes "[Genjutsu Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if (ge4 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Fukai Kemuri";
+		next;
+		mes "[Genjutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Genjutsu Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Genjutsu Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillgenj4:
+		setquest 30087;
+		if(checkquest(30087,hunting) == 2 && countitem(32155) >= 1)
+		{
+			completequest 30087;
+			erasequest 30087;
+			delitem 32155,1;
+			set ge4,1;
+			skill 668,5,3;
+			set genj_skill_avan,genj_skill_avan +1;
+			mes "[Genjutsu Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 7:
+		mes "[Genjutsu Intermediario]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Genjutsu Intermediario]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando pergaminho de genjutsu Intermediario.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

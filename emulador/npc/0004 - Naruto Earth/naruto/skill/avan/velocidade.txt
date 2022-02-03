@@ -1,0 +1,168 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+gef_fild05,244,271,4	script	Velocidade Avançado	67,{
+if(checkquest(30053) == 1) goto skillvel1;
+if(checkquest(30054) == 1) goto skillvel1;
+if(checkquest(30055) == 1) goto skillvel3;
+if(checkquest(30056) == 1) goto skillvel4;
+if(treino_velo_avan != 1) { mes "[Velocidade Avançado]"; mes "Você precisa estudar Velocidade avançado antes de aprender as skills"; close;}
+if(velo_skill_avan >= 2) { mes "[Velocidade Avançado]"; mes "Você já aprendeu duas skill de Velocidade avançado, esse é o limite"; close; }
+	mes "[Velocidade Avançado]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de velocidade avançado. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Velocidade Avançado]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Velocidade Avançado]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Velocidade Avançado]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808Salto relampago^000000:^8A0808Retaliação^000000:^8A0808Riscar fosforo^000000:^8A0808Passo Etéreo^000000:^8A0808Nenhum^000000"))
+	{
+	case 1:
+		if (v1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Velocidade Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Velocidade Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillvel1:
+		setquest 30053;
+		if(checkquest(30053,hunting) == 2 && countitem(32147) >= 1)
+		{
+			completequest 30053;
+			erasequest 30053;
+			delitem 32147,1;
+			set velo_skill_avan,velo_skill_avan +1;
+			skill 2335,5,3;
+			set v1,1;
+			mes "[Velocidade Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (v2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Velocidade Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Velocidade Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Velocidade Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillvel2:
+		setquest 30054;
+		if(checkquest(30054,hunting) == 2 && countitem(32147) >= 1)
+		{
+			completequest 30054;
+			erasequest 30054;
+			delitem 32147,1;
+			set velo_skill_avan,velo_skill_avan +1;
+			skill 2029,5,3;
+			set v2,1;
+			mes "[Velocidade Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (v3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Velocidade Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Velocidade Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Velocidade Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillvel3:
+		setquest 30055;
+		if(checkquest(30055,hunting) == 2 && countitem(32147) >= 1)
+		{
+			completequest 30055;
+			erasequest 30055;
+			delitem 32147,1;
+			set velo_skill_avan,velo_skill_avan +1;
+			set v3,1;
+			skill 5047,5,3;
+			mes "[Velocidade Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if (v4 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Velocidade Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Velocidade Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Velocidade Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillvel4:
+		setquest 30056;
+		if(checkquest(30056,hunting) == 2 && countitem(32147) >= 1)
+		{
+			completequest 30056;
+			erasequest 30056;
+			delitem 32147,1;
+			set v4,1;
+			skill 264,5,3;
+			set velo_skill_avan,velo_skill_avan +1;
+			mes "[Velocidade Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 7:
+		mes "[Velocidade Avançado]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Velocidade Avançado]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de velocidade avançado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

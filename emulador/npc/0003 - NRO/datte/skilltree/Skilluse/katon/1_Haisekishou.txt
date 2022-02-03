@@ -1,0 +1,110 @@
+-	script	on_PC_UseSkillk01	-1,{
+    end;
+//When a Character uses a skill
+
+//Haisekishou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 186) {
+
+
+if (getskilllv(186) == 1) {
+
+if (hanashuriken != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 50) {skill 186,2,0; set skill186,0; dispbottom "[Sys] Level up"; end; }
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 1: "+skill186+" de 50";
+
+end;
+
+}
+
+if (getskilllv(186) == 2) {
+if (hanashuriken != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 100) {skill 186,3,0; set skill186,0; dispbottom "[Sys] Level up"; end;}
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 2: "+skill186+" de 100";
+
+end;
+
+}
+
+if (getskilllv(186) == 3) {
+
+if (hanashuriken != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 150) {skill 186,4,0; set skill186,0; dispbottom "[Sys] Level up"; end;}
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 3: "+skill186+" de 150";
+
+end;
+
+}
+
+if (getskilllv(186) == 4) {
+if (hanashuriken != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 200) {skill 186,5,0; set skill186,0; dispbottom "[Sys] Level up"; end;}
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 4: "+skill186+" de 200";
+
+end;
+
+}
+
+if (getskilllv(186) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 250) {skill 186,6,0; set skill186,0; dispbottom "[Sys] Level up"; end;}
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 5: "+skill186+" de 250";
+
+end;
+
+}
+
+if (getskilllv(186) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 300) {skill 186,7,0; set skill186,0; dispbottom "[Sys] Level up"; end;}
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 6: "+skill186+" de 300";
+
+end;
+
+}
+
+if (getskilllv(186) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 500) {skill 186,8,0; set skill186,0; dispbottom "[Sys] Level up"; end;}
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 7: "+skill186+" de 500";
+
+end;
+
+}
+
+if (getskilllv(186) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 700) {skill 186,9,0; set skill186,0; dispbottom "[Sys] Level up"; end;}
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 8: "+skill186+" de 700";
+
+end;
+
+}
+
+if (getskilllv(186) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill186 >= 1000) {skill 186,10,0; set skill186,0; dispbottom "[Sys] Level up"; end;}
+set skill186,skill186 +1;
+dispbottom "[Jutsu level] Katon Haisekishou level 9: "+skill186+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

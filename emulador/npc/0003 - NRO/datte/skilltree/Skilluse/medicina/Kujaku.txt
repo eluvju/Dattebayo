@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillmyoho	-1,{
+    end;
+//When a Character uses a skill
+
+//Kujaku
+
+onPcUseSkillEvent:
+
+           if(lskillid == 330) {
+
+
+if (getskilllv(330) == 1) {
+
+if (Kujaku != 1) {end;}
+if (skill330 >= 100) {skill 330,2,0; set skill330,0; dispbottom "[Sys] Level up"; end; }
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 1: "+skill330+" de 100";
+
+end;
+
+}
+
+if (getskilllv(330) == 2) {
+if (Kujaku != 1) {end;}
+if (skill330 >= 500) {skill 330,3,0; set skill330,0; dispbottom "[Sys] Level up"; end;}
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 2: "+skill330+" de 500";
+
+end;
+
+}
+
+if (getskilllv(330) == 3) {
+
+if (Kujaku != 1) {end;}
+if (skill330 >= 1000) {skill 330,4,0; set skill330,0; dispbottom "[Sys] Level up"; end;}
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 3: "+skill330+" de 1000";
+
+end;
+
+}
+
+if (getskilllv(330) == 4) {
+if (Kujaku != 1) {end;}
+if (skill330 >= 3000) {skill 330,5,0; set skill330,0; dispbottom "[Sys] Level up"; end;}
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 4: "+skill330+" de 3000";
+
+end;
+
+}
+
+if (getskilllv(330) == 5) {
+if (Kujaku != 1) {end;}
+if (skill330 >= 5000) {skill 330,6,0; set skill330,0; dispbottom "[Sys] Level up"; end;}
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 5: "+skill330+" de 5000";
+
+end;
+
+}
+
+if (getskilllv(330) == 6) {
+if (Kujaku != 1) {end;}
+if (skill330 >= 7000) {skill 330,7,0; set skill330,0; dispbottom "[Sys] Level up"; end;}
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 6: "+skill330+" de 7000";
+
+end;
+
+}
+
+if (getskilllv(330) == 7) {
+if (Kujaku != 1) {end;}
+if (skill330 >= 12000) {skill 330,8,0; set skill330,0; dispbottom "[Sys] Level up"; end;}
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 7: "+skill330+" de 12000";
+
+end;
+
+}
+
+if (getskilllv(330) == 8) {
+if (Kujaku != 1) {end;}
+if (skill330 >= 15000) {skill 330,9,0; set skill330,0; dispbottom "[Sys] Level up"; end;}
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 8: "+skill330+" de 15000";
+
+end;
+
+}
+
+if (getskilllv(330) == 9) {
+if (Kujaku != 1) {end;}
+if (skill330 >= 20000) {skill 330,10,0; set skill330,0; dispbottom "[Sys] Level up"; end;}
+set skill330,skill330 +1;
+dispbottom "[Jutsu level] Kujaku Myoho level 9: "+skill330+" de 20000";
+
+end;
+
+}
+
+                end;
+            }    
+}

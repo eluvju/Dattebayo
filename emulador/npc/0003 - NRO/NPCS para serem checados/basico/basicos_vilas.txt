@@ -1,0 +1,59 @@
+job_knt,43,146,5	script	Genma	884,{
+
+if(##faction!= 0) goto L_jatem;
+
+	mes "[^800080Genma^000000]";
+	mes "Olá "+strcharinfo(0);
+	next;
+	mes "[^800080Genma^000000]";
+	mes "Chegou a hora de escolher sua vila!";
+	mes "Agora chega de papo e vamos a parte que interessa, qual vila voce vai representar?";
+	menu "^008000Konoha^000000",konoha,"^FFA500Suna^000000",suna,"^0000FFNévoa^000000",nevoa;
+	
+	konoha:
+	next;
+	mes "[^800080Genma^000000]";
+	mes "Vejo que quer se tornar da vila oculta da Folha (^008000Konoha^000000), Boa escolha.";
+	mes "Boa sorte na sua trajetoria shinobi e espero que da proxima vez que nos encontrarmos voce esteja mais forte.";
+	next;
+	getitem 19008,1;
+	set ##faction, 1;
+	savepoint "kh_school",48,74;
+	warp "kh_school",48,74;
+	end;
+
+	suna:
+	next;
+	mes "[^800080Genma^000000]";
+	mes "Vejo que quer se tornar da vila oculta da Areia (^FFA500Suna^000000), Boa escolha.";
+	mes "Boa sorte na sua trajetoria shinobi e espero que da proxima vez que nos encontrarmos voce esteja mais forte.";
+	next;
+	getitem 19006,1;
+	set ##faction, 2;
+	savepoint "kh_school",48,74;
+	warp "kh_school",48,74;
+	end;
+
+	nevoa:
+	next;
+	mes "[^800080Genma^000000]";
+	mes "Vejo que quer se tornar da vila oculta da ^0000FFNévoa^000000 , Boa escolha.";
+	mes "Boa sorte na sua trajetoria shinobi e espero que da proxima vez que nos encontrarmos voce esteja mais forte.";
+	next;
+	getitem 19001,1;
+	set ##faction, 3;
+	savepoint "kh_school",48,74;
+	warp "kh_school",48,74;
+	end;
+
+	L_jatem:
+	mes "Você ja faz parte de uma vila!";
+	next;
+	savepoint "kh_school",48,74;
+	warp "kh_school",48,74;
+	if(##faction == 1) {getitem 19008,1;}
+	if(##faction == 2) {getitem 19006,1;}
+	if(##faction == 3) {getitem 19001,1;}
+	end;
+
+}

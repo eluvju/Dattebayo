@@ -1,0 +1,1041 @@
+-	script	resetmissao	-1,{
+OnClock0000:
+	query_sql("UPDATE `char` SET `D_Dia` = '0' ");
+	query_sql("UPDATE `char` SET `C_Dia` = '0' ");
+	query_sql("UPDATE `char` SET `B_Dia` = '0' ");
+	query_sql("UPDATE `char` SET `A_Dia` = '0' ");
+	query_sql("UPDATE `char` SET `S_Dia` = '0' ");
+	end;
+}
+
+function	script	setquestparty	{
+	.@t = (getarg(0) - 10000)/1000;
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+        attachrid($@partymemberaid[.@i]);
+		query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E`, `D_DIA`, `C_DIA`, `B_DIA`, `A_DIA`, `S_DIA` FROM `char` WHERE `char_id` = '"+$@partymembercid[.@i]+"'", @qp, @s, @a, @b, @c, @d, @e, @d_dia, @c_dia, @b_dia, @a_dia, @s_dia);
+		switch(.@t) {
+			case 1:
+				if(BaseLevel >= 200 && !MissaoDAtivada) {					if(vip_status(1)) { 						if(@d_dia >= 18) {							dispbottom "Você já fez todas as missões Rank D do Dia.";							end;						}					} else { 						if(@d_dia >= 15) {							dispbottom "Você já fez todas as missões Rank D do Dia.";							end;						}					}
+					setquest getarg(0);
+					set MissaoDAtivada,1;
+					query_sql("UPDATE `char` SET `D_Dia` = `D_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+				}
+				break;
+			case 2:
+				if(BaseLevel >= 400 && @d >= 10 && !MissaoCAtivada) {					if(vip_status(1)) { 						if(@c_dia >= 15) {							dispbottom "Você já fez todas as missões Rank C do Dia.";							end;						}					} else { 						if(@c_dia >= 12) {							dispbottom "Você já fez todas as missões Rank C do Dia.";							end;						}					}
+					setquest getarg(0);
+					set MissaoCAtivada,1;
+					query_sql("UPDATE `char` SET `C_Dia` = `C_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+				}
+				break;
+			case 3:
+				if(BaseLevel >= 500 && @c >= 25 && !MissaoBAtivada) {					if(vip_status(1)) { 						if(@b_dia >= 13) {							dispbottom "Você já fez todas as missões Rank B do Dia.";							end;						}					} else { 						if(@b_dia >= 10) {							dispbottom "Você já fez todas as missões Rank B do Dia.";							end;						}					}
+					setquest getarg(0);
+					set MissaoBAtivada,1;
+					query_sql("UPDATE `char` SET `B_Dia` = `B_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+				}
+				break;
+			case 4:
+				if(BaseLevel >= 700 && @b >= 50 && !MissaoAAtivada) {					if(vip_status(1)) { 						if(@a_dia >= 10) {							dispbottom "Você já fez todas as missões Rank A do Dia.";							end;						}					} else { 						if(@a_dia >= 7) {							dispbottom "Você já fez todas as missões Rank A do Dia.";							end;						}					}
+					setquest getarg(0);
+					set MissaoAAtivada,1;
+					query_sql("UPDATE `char` SET `A_Dia` = `A_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+				}
+				break;
+			case 5:
+				if(BaseLevel >= 999 && @a >= 100 && !MissaoSAtivada) {					if(vip_status(1)) { 						if(@s_dia >= 5) {							dispbottom "Você já fez todas as missões Rank S do Dia.";							end;						}					} else { 						if(@s_dia >= 2) {							dispbottom "Você já fez todas as missões Rank S do Dia.";							end;						}					}
+					setquest getarg(0);
+					set MissaoSAtivada,1;
+					query_sql("UPDATE `char` SET `S_Dia` = `S_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+				}
+				break;
+		}
+	}
+	end;
+}
+
+-	script	Kages::points	-1,{
+	query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E`, `D_DIA`, `C_DIA`, `B_DIA`, `A_DIA`, `S_DIA` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp, @s, @a, @b, @c, @d, @e, @d_dia, @c_dia, @b_dia, @a_dia, @s_dia);
+	if(checkquest(1000) == 1) { 
+		mes "["+strnpcinfo(3)+"]";
+		mes "Olá "+strcharinfo(0);
+		mes "Olá sou o Kage da sua Vila, sou o responsável por designar as missões que serão responsáveis pela sua progressão no Mundo Ninja.";
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		mes "Cada missão da uma certa quantidade de pontos que podem ser trocados pela sua Graduação. Com 600 pontos voce pode virar Chunin e com 2000 voce pode virar Jounin.";
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		mes "Irei envia-l"+(Sex?"o":"a")+" até a biblioteca para escolher seus treinamentos!";
+		getexp 800,0;
+		completequest 1000;
+		erasequest 1000;
+		close2;
+		if(#konoha == 1) { warp "bibli_01",58,39; }
+		if(#suna == 1)   { warp "bibli_02",58,39; }
+		if(#nevoa == 1)  { warp "bibli_03",58,39; }
+		if(#nuvem == 1)  { warp "bibli_04",58,39; }
+		end;
+	}
+	
+	mes "["+strnpcinfo(3)+"]";
+	mes "Olá "+strcharinfo(0);
+	mes "Você possui "+@qp+" pontos de missão acumulados.";
+	mes "Você fez:";
+	mes "[ "+@s+" ] Missões de Ranking S";
+	mes "[ "+@a+" ] Missões de Ranking A";
+	mes "[ "+@b+" ] Missões de Ranking B";
+	mes "[ "+@c+" ] Missões de Ranking C";
+	mes "[ "+@d+" ] Missões de Ranking D";
+	mes "[ "+@e+" ] Missões de Ranking E";
+
+	switch(select("- Pegar Missão:- Completar Missão:- Desistir da Missão:- Subir de Graduação:- Trocar Pontos de Missão:- Cancelar")){
+
+	case 1:
+	next;	
+	mes "["+strnpcinfo(3)+"]";
+	mes "Escolha o Nivel da sua missão.";
+	switch(select("- Missão Rank E:- Missão Rank D:- Missão Rank C:- Missão Rank B:- Missão Rank A:- Missão Rank S")){
+	
+		case 1:
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			if( MissaoEAtivada == 1) { mes "Olá "+strcharinfo(0); mes "Você já pegou uma Missão"; close; }
+				switch(select("- Limpar Vila:- Recolher Arquivos:- Achar Gato Tora:- Tosar Ovelhas:- Alimentar Bois")) {
+				
+					case 1:
+					if(limparvila == 1) { mes "Você já completou essa missão"; close; }
+					setquest 10000;
+					set MissaoEAtivada,1;
+					mes "Mais informações da missão aperte alt+U";
+					close;
+					
+					case 2:
+					if(coletararquivo == 1) { mes "Você já completou essa missão"; close; }
+					setquest 10001;
+					set MissaoEAtivada,1;
+					mes "Mais informações da missão aperte alt+U";
+					close;
+					
+					case 3:
+					if(achougatotora == 1) { mes "Você já completou essa missão"; close; }
+					setquest 10002;
+					set MissaoEAtivada,1;
+					mes "Mais informações da missão aperte alt+U";
+					close;
+					
+					case 4:					
+					if(tosa == 10) { mes "Você já completou essa missão"; close; }
+					setquest 10003;
+					set MissaoEAtivada,1;
+					mes "Mais informações da missão aperte alt+U";
+					close;
+					
+					case 5:
+					if(alb == 5) { mes "Você já completou essa missão"; close; }
+					setquest 10004;
+					set MissaoEAtivada,1;
+					mes "Mais informações da missão aperte alt+U";
+					close;
+				}
+	
+		case 2:
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if (BaseLevel >= 200) {
+		
+			for(.@i = 11000; .@i < 11041; .@i++)
+				if(checkquest(.@i) >= 1) {
+					mes "Olá "+strcharinfo(0); mes "Você já pegou uma Missão"; 
+					close; 
+			}
+			
+			if(vip_status(1)) { 					
+				if(@d_dia >= 18) {						
+					mes "Você já fez todas as missões Rank D do Dia.";						
+					close;					
+				}				
+			} else { 					
+				if(@d_dia >= 15) {
+					mes "Você já fez todas as missões Rank D do Dia.";
+					close;					
+				}
+			}
+				mes "Lembre-se você so pode fazer 15 Missão Rank D, caso sejá VIP poderá fazer 18 Missão Rank D. Gostaria de Fazer ?";
+				if(select("- Sim:- Não") == 2) { close; }
+					next;
+					set .@missaod, rand(11000,11040);
+					if(getcharid(1)) {
+						mes "["+strnpcinfo(3)+"]";
+						mes "Lembre-se você está em grupo.";						
+						mes "Gostaria mesmo de pegar a missão ?";
+						if(select("- Não:- Sim") == 1) { close; }
+						close2;
+						setquestparty .@missaod;
+					} else {
+						setquest .@missaod;
+						set MissaoDAtivada,1;						
+						query_sql("UPDATE `char` SET `D_Dia` = `D_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+					}
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Mais informações da missão aperte alt+U";
+					close;
+		}
+		mes "Você precisa ser Nivel 200";
+		close;
+		
+		case 3:
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if (BaseLevel >= 400 && @d >= 10 ) {
+			for(.@i = 12000; .@i < 12024; .@i++)
+				if(checkquest(.@i) >= 1) { 
+					mes "Olá "+strcharinfo(0); 
+					mes "Você já pegou uma Missão"; 
+					close; 
+				}
+				if(vip_status(1)) { 					if(@c_dia >= 15) {						mes "Você já fez todas as missões Rank C do Dia.";						close;					}				} else { 					if(@c_dia >= 12) {						mes "Você já fez todas as missões Rank C do Dia.";						close;					}				}
+				mes "Lembre-se você so pode fazer 12 Missão Rank C, caso sejá VIP poderá fazer 15 Missão Rank C. Gostaria de Fazer ?";
+				if(select("- Sim:- Não") == 2) { close; }
+					next;
+					set .@missaoc, rand(12000,12021);
+					if(getcharid(1)) {
+						mes "["+strnpcinfo(3)+"]";
+						mes "Lembre-se você está em grupo.";
+						mes "Gostaria mesmo de pegar a missão ?";
+						if(select("- Não:- Sim") == 1) { close; }
+							close2;
+							setquestparty .@missaoc; 
+					} else {
+							setquest .@missaoc;
+							set MissaoCAtivada,1;
+							query_sql("UPDATE `char` SET `C_Dia` = `C_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+					}
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Mais informações da missão aperte alt+U";
+					close;
+		}
+		mes "Você precisa ser Nivel 400 e efetuar +"+(10-@d)+" Missões Rank D";
+		close;
+		
+		case 4:		
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if (BaseLevel >= 500 && @c >= 25 ) {
+			for(.@i = 13000; .@i < 13021; .@i++)
+				if(checkquest(.@i) >= 1) {  
+					mes "Olá "+strcharinfo(0); 
+					mes "Você já pegou uma Missão"; 
+					close; 
+				}
+			if(vip_status(1)) { 				
+				if(@b_dia >= 13) {					mes "Você já fez todas as missões Rank B do Dia.";					close;				}			} else { 				if(@b_dia >= 10) {					mes "Você já fez todas as missões Rank B do Dia.";					close;				}			}			mes "Lembre-se você so pode fazer 10 Missão Rank B, caso sejá VIP poderá fazer 13 Missão Rank B. Gostaria de Fazer ?";
+			if(select("- Sim:- Não") == 2) { close; }
+				next;
+				set .@missaob, rand(13000,13020);
+				if(getcharid(1)) {
+					mes "["+strnpcinfo(3)+"]";
+					mes "Lembre-se você está em grupo.";
+					mes "Gostaria mesmo de pegar a missão ?";
+					if(select("- Não:- Sim") == 1) { close; }
+						close2;
+						setquestparty .@missaob; 
+				} else {
+						setquest .@missaob;
+						set MissaoBAtivada,1;
+						query_sql("UPDATE `char` SET `B_Dia` = `B_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+				}
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Mais informações da missão aperte alt+U";
+				close;
+		}
+		mes "Você precisa ser Nivel 500 e efetuar +"+(25-@c)+" Missões Rank C";
+		close;
+		
+		case 5:
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if (BaseLevel >= 700 && @b >= 50 ) {
+			for(.@i = 14000; .@i < 14020; .@i++)
+				if(checkquest(.@i) >= 1) {  
+					mes "Olá "+strcharinfo(0);
+					mes "Você já pegou uma Missão"; 
+					close; 
+				}
+			if(vip_status(1)) { 				
+				if(@a_dia >= 10) {					
+					mes "Você já fez todas as missões Rank A do Dia.";					
+					close;				
+				}			
+			} else { 				
+				if(@a_dia >= 7) {					
+					mes "Você já fez todas as missões Rank A do Dia.";					
+					close;				
+				}		
+			}
+			mes "Lembre-se você so pode fazer 7 Missão Rank A, caso sejá VIP poderá fazer 10 Missão Rank A. Gostaria de Fazer ?";
+			if(select("- Sim:- Não") == 2) { close; }
+				next;
+				set .@missaoa, rand(14000,14019);
+				if(getcharid(1)) {
+					mes "["+strnpcinfo(3)+"]";
+					mes "Lembre-se você está em grupo.";						
+					mes "Gostaria mesmo de pegar a missão ?";
+					if(select("- Não:- Sim") == 1) { close; }
+						close2;
+						setquestparty .@missaoa; 
+				} else {
+						setquest .@missaoa;
+						set MissaoAAtivada,1;
+						query_sql("UPDATE `char` SET `A_Dia` = `A_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+				}
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Mais informações da missão aperte alt+U";
+				close;
+		}
+		mes "Você precisa ser Nivel 700 e efetuar +"+(50-@b)+" Missões Rank B";
+		close;
+		
+		case 6:
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if (BaseLevel >= 999 && @a >= 100 ) {
+			for(.@i = 15000; .@i < 15008; .@i++)
+				if(checkquest(.@i) >= 1) {
+					mes "Olá "+strcharinfo(0); 
+					mes "Você já pegou uma Missão"; 
+					close; 
+				}
+			if(vip_status(1)) { 				
+				if(@s_dia >= 5) {					
+					mes "Você já fez todas as missões Rank S do Dia.";					
+						close;				
+					}			
+				} else { 				
+				if(@s_dia >= 2) {					
+					mes "Você já fez todas as missões Rank S do Dia.";					
+					close;				
+				}			
+			}			
+			mes "Lembre-se você so pode fazer 2 Missão Rank S, caso sejá VIP poderá fazer 5 Missão Rank S. Gostaria de Fazer ?";
+			if(select("- Sim:- Não") == 2) { close; }
+				next;
+				set .@missaos, rand(15000,15007);
+				if(getcharid(1)) {
+					mes "["+strnpcinfo(3)+"]";
+					mes "Lembre-se você está em grupo.";						
+					mes "Gostaria mesmo de pegar a missão ?";
+					if(select("- Não:- Sim") == 1) { close; }
+						close2;
+						setquestparty .@missaos; 
+				} else {
+						setquest .@missaos;
+						set MissaoSAtivada,1;
+						query_sql("UPDATE `char` SET `S_Dia` = `S_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+				}
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Mais informações da missão aperte alt+U";
+				close;
+		}
+		mes "Você precisa ser Nivel 999 e efetuar +"+(100-@a)+" Missões Rank A";
+		close;
+	}
+	
+	case 2:
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		//												Completar Missão
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		next;
+		if(checkquest(10000,HUNTING) == 2) { getexp 800,0; set limparvila,1; completequest 10000; erasequest 10000; Zeny = Zeny+5000; set MissaoEAtivada,0; set .@ranking$,"E"; goto premiacao; }
+		if(checkquest(10001) == 1) { if(countitem(718) >= 15) { getexp 800,0; set coletararquivo,1; delitem 718,15; completequest 10001; erasequest 10001; Zeny = Zeny+5000; set MissaoEAtivada,0; set .@ranking$,"E"; goto premiacao; } }
+		if(checkquest(10002) == 1) { if(achougatotora == 1) { getexp 800,0; completequest 10002; erasequest 10002; Zeny = Zeny+5000; set MissaoEAtivada,0; set .@ranking$,"E"; goto premiacao; } }
+		if(checkquest(10003) == 1) { if(tosa == 10) { getexp 800,0; completequest 10003; erasequest 10003; Zeny = Zeny+5000; set MissaoEAtivada,0; set .@ranking$,"E"; goto premiacao; } }
+		if(checkquest(10004) == 1) { if(alb == 5) { getexp 800,0; completequest 10004; erasequest 10004; Zeny = Zeny+5000; set MissaoEAtivada,0; set .@ranking$,"E"; goto premiacao; } }
+		
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		// Missão Rank D
+		for(.@i = 11000; .@i < 11016; .@i++)
+            if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao;  }
+		for(.@i = 11028; .@i < 11041; .@i++)
+            if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao;  }
+			
+		// Missão Rank D Itens
+			if(checkquest(11016) == 1 && countitem(521) >= 40){ delitem 521,40; completequest 11016; erasequest 11016; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11017) == 1 && countitem(603) >= 40){ delitem 603,40; completequest 11017; erasequest 11017; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11018) == 1 && countitem(512) >= 40){ delitem 512,40; completequest 11018; erasequest 11018; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11019) == 1 && countitem(530) >= 40){ delitem 530,40; completequest 11019; erasequest 11019; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11020) == 1 && countitem(713) >= 40){ delitem 713,40; completequest 11020; erasequest 11020; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11021) == 1 && countitem(591) >= 40){ delitem 591,40; completequest 11021; erasequest 11021; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11022) == 1 && countitem(609) >= 40){ delitem 609,40; completequest 11022; erasequest 11022; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11023) == 1 && countitem(623) >= 40){ delitem 623,40; completequest 11023; erasequest 11023; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11024) == 1 && countitem(618) >= 40){ delitem 618,40; completequest 11024; erasequest 11024; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11025) == 1 && countitem(662) >= 40){ delitem 662,40; completequest 11025; erasequest 11025; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11026) == 1 && countitem(693) >= 40){ delitem 693,40; completequest 11026; erasequest 11026; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+			if(checkquest(11027) == 1 && countitem(522) >= 40){ delitem 522,40; completequest 11027; erasequest 11027; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+1; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+1; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+1; } goto premiacao; }
+
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		// Missão Rank C
+		for(.@i = 12000; .@i < 12016; .@i++)
+			if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; if(#konoha) { set $konoha_ryous,$konoha_ryous+2; } if(#suna) { set $areia_ryous,$areia_ryous+2; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+2; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+2; } goto premiacao; }
+		
+		// Missão Rank C Itens
+			if(checkquest(12016) == 1 && countitem(671) >= 60){ delitem 671,60; completequest 12016; erasequest 12016; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; if(#konoha) { set $konoha_ryous,$konoha_ryous+2; } if(#suna) { set $areia_ryous,$areia_ryous+2; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+2; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+2; } goto premiacao; }
+			if(checkquest(12017) == 1 && countitem(658) >= 60){ delitem 658,60; completequest 12017; erasequest 12017; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; if(#konoha) { set $konoha_ryous,$konoha_ryous+2; } if(#suna) { set $areia_ryous,$areia_ryous+2; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+2; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+2; } goto premiacao; }
+			if(checkquest(12018) == 1 && countitem(571) >= 60){ delitem 571,60; completequest 12018; erasequest 12018; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; if(#konoha) { set $konoha_ryous,$konoha_ryous+2; } if(#suna) { set $areia_ryous,$areia_ryous+2; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+2; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+2; } goto premiacao; }
+			if(checkquest(12019) == 1 && countitem(568) >= 60){ delitem 568,60; completequest 12019; erasequest 12019; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; if(#konoha) { set $konoha_ryous,$konoha_ryous+2; } if(#suna) { set $areia_ryous,$areia_ryous+2; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+2; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+2; } goto premiacao; }
+			if(checkquest(12020) == 1 && countitem(631) >= 60){ delitem 631,60; completequest 12020; erasequest 12020; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; if(#konoha) { set $konoha_ryous,$konoha_ryous+2; } if(#suna) { set $areia_ryous,$areia_ryous+2; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+2; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+2; } goto premiacao; }
+			if(checkquest(12021) == 1 && countitem(700) >= 60){ delitem 700,60; completequest 12021; erasequest 12021; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; if(#konoha) { set $konoha_ryous,$konoha_ryous+2; } if(#suna) { set $areia_ryous,$areia_ryous+2; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+2; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+2; } goto premiacao; }
+		
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		// Missão Rank B
+		for(.@i = 13000; .@i < 13016; .@i++)
+			if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; if(#konoha) { set $konoha_ryous,$konoha_ryous+4; } if(#suna) { set $areia_ryous,$areia_ryous+4; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+4; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+4; } goto premiacao; }
+		
+		// Missão Rank B Itens
+		for(.@i = 13016; .@i < 13021; .@i++)
+			if(checkquest(13016) == 1 && countitem(706) >= 80){ delitem 706,80; completequest 13016; erasequest 13016; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; if(#konoha) { set $konoha_ryous,$konoha_ryous+4; } if(#suna) { set $areia_ryous,$areia_ryous+4; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+4; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+4; } goto premiacao; }
+			if(checkquest(13017) == 1 && countitem(646) >= 80){ delitem 646,80; completequest 13017; erasequest 13017; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; if(#konoha) { set $konoha_ryous,$konoha_ryous+4; } if(#suna) { set $areia_ryous,$areia_ryous+4; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+4; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+4; } goto premiacao; }
+			if(checkquest(13018) == 1 && countitem(561) >= 80){ delitem 561,80; completequest 13018; erasequest 13018; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; if(#konoha) { set $konoha_ryous,$konoha_ryous+4; } if(#suna) { set $areia_ryous,$areia_ryous+4; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+4; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+4; } goto premiacao; }
+			if(checkquest(13019) == 1 && countitem(588) >= 80){ delitem 588,80; completequest 13019; erasequest 13019; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; if(#konoha) { set $konoha_ryous,$konoha_ryous+4; } if(#suna) { set $areia_ryous,$areia_ryous+4; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+4; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+4; } goto premiacao; }
+			if(checkquest(13020) == 1 && countitem(529) >= 80){ delitem 529,80; completequest 13020; erasequest 13020; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; if(#konoha) { set $konoha_ryous,$konoha_ryous+4; } if(#suna) { set $areia_ryous,$areia_ryous+4; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+4; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+4; } goto premiacao; }
+			
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		// Missão Rank A
+		for(.@i = 14000; .@i < 14016; .@i++)
+			if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; if(#konoha) { set $konoha_ryous,$konoha_ryous+1; } if(#suna) { set $areia_ryous,$areia_ryous+6; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+6; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+6; } goto premiacao; }
+		
+		// Missão Rank A
+			if(checkquest(14016) == 1 && countitem(685) >= 100){ delitem 685,100; completequest 14016; erasequest 14016; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; if(#konoha) { set $konoha_ryous,$konoha_ryous+6; } if(#suna) { set $areia_ryous,$areia_ryous+6; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+6; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+6; } goto premiacao; }
+			if(checkquest(14017) == 1 && countitem(664) >= 100){ delitem 664,100; completequest 14017; erasequest 14017; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; if(#konoha) { set $konoha_ryous,$konoha_ryous+6; } if(#suna) { set $areia_ryous,$areia_ryous+6; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+6; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+6; } goto premiacao; }
+			if(checkquest(14018) == 1 && countitem(589) >= 100){ delitem 589,100; completequest 14018; erasequest 14018; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; if(#konoha) { set $konoha_ryous,$konoha_ryous+6; } if(#suna) { set $areia_ryous,$areia_ryous+6; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+6; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+6; } goto premiacao; }
+			if(checkquest(14019) == 1 && countitem(653) >= 100){ delitem 653,100; completequest 14019; erasequest 14019; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; if(#konoha) { set $konoha_ryous,$konoha_ryous+6; } if(#suna) { set $areia_ryous,$areia_ryous+6; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+6; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+6; } goto premiacao; }
+		
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------
+		// Missão Rank S
+		for(.@i = 15000; .@i < 15008; .@i++)
+			if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+1000000; MissaoSAtivada = 0; set .@ranking$,"S"; if(#konoha) { set $konoha_ryous,$konoha_ryous+10; } if(#suna) { set $areia_ryous,$areia_ryous+10; }  if(#nevoa) { set $nevoa_ryous,$nevoa_ryous+10; }  if(#nuvem) { set $nuvem_ryous,$nuvem_ryous+10; } goto premiacao; }
+	
+		mes "["+strnpcinfo(3)+"]";
+		mes "Você não completou nenhuma missão. Certifique-se quer você tem uma missão ativada";
+		close;
+	
+	case 3:
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		mes "Você tem certeza que quer desistir da missão?";
+		if(select("- Não:- Sim") == 1) { close; }
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			mes "Escolha qual Rank você gostaria de remover?";
+			switch(select("- Missão Rank E:- Missão Rank D:- Missão Rank C:- Missão Rank B:- Missão Rank A:- Missão Rank S")){
+
+				case 1:
+					if(checkquest(10000) == 1 || checkquest(10000) == 2) { erasequest 10000; MissaoEAtivada = 0; }
+					if(checkquest(10001) == 1) { erasequest 10001; MissaoEAtivada = 0; }
+					if(checkquest(10002) == 1) { erasequest 10002; MissaoEAtivada = 0; }
+					if(checkquest(10003) == 1) { erasequest 10003; MissaoEAtivada = 0; }
+					if(checkquest(10004) == 1) { erasequest 10004; MissaoEAtivada = 0; }
+					
+				case 2:
+					// Missão Rank D
+					for(.@i = 11000; .@i < 11041; .@i++)
+						if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoDAtivada = 0; if(@d_dia >= 1) { query_sql("UPDATE `char` SET `D_Dia` = `D_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+				case 3:
+					// Missão Rank C
+					for(.@i = 12000; .@i < 12022; .@i++)
+						if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoCAtivada = 0; if(@c_dia >= 1) { query_sql("UPDATE `char` SET `C_Dia` = `C_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+				case 4:
+					// Missão Rank B
+					for(.@i = 13000; .@i < 13021; .@i++)
+						if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoBAtivada = 0; if(@b_dia >= 1) { query_sql("UPDATE `char` SET `B_Dia` = `B_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+				case 5:
+					// Missão Rank A
+					for(.@i = 14000; .@i < 14020; .@i++)
+						if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoAAtivada = 0; if(@a_dia >= 1) { query_sql("UPDATE `char` SET `A_Dia` = `A_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+				case 6:
+					// Missão Rank S
+					for(.@i = 15000; .@i < 15008; .@i++)
+						if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoSAtivada = 0; if(@s_dia >= 1) { query_sql("UPDATE `char` SET `S_Dia` = `S_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+			}
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			mes "Você não tem missão para deletar";
+			close;
+			
+			missaodeletara:
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Missão Deletada";
+				close;
+	case 4:
+	next;
+	mes "["+strnpcinfo(3)+"]";
+		if(jounin == 1 && Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) { mes "Você não pode subir de graduação."; close; }
+		switch(Class) {
+			case 1:	set @next_job, 7;	break;
+			case 2:	set @next_job, 8;	break;
+			case 3:	set @next_job, 9;	break;
+			case 4:	set @next_job, 10;	break;
+			case 7:	case 8:	case 9:	case 10: set @next_job, Class + 4001;	break;
+			default:
+				mes "Você não pode subir de graduação.";
+				close;
+		}
+		if(Class <= 4 )
+			set @price, 600;
+		else
+			set @price, 2000;
+		if(@qp < @price) {
+			mes "Você não possui pontos suficientes, ainda faltam "+(@price-@qp)+" pontos, tente efetuar mais algumas missões...";
+			close;
+		}
+		if(@price == 600) {
+			set chunin, 1;
+			set genin, 0;
+		}else{
+			set chunin, 0;
+			set jounin, 1;
+		}
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` - '"+@price+"' WHERE `char_id` = '"+getcharid(0)+"'");
+		set BaseExp,BaseExpAcomulada;
+		getexp -BaseExpAcomulada,0;
+		jobchange @next_job;
+		
+	if(chunin==1)	{announce "[Kage] "+strcharinfo(0)+" subiu de graduação e agora é Chunin em troca de 600 pontos!",bc_blue|bc_all; close;}
+	if(jounin==1)	{announce "[Kage] "+strcharinfo(0)+" subiu de graduação e agora é Jounin em troca de 2000 pontos!",bc_blue|bc_all; close;}
+	
+	case 5:
+		switch(select("- Fuuin no Sho [20.000 Pontos]:- Autorização [3000 Pontos]:- Caixa Item Avançado [200 Pontos]")) {
+			case 1:
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Gostaria de Trocar 20.000 Pontos de Missão por um Fuuin no Sho?";
+				if(select("- Sim:- Não") == 2) { close; }
+				if(@qp >= 20000) {
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Parabéns, você acaba de comprar um Fuuin no Sho";
+					announce ""+strcharinfo(0)+" trocou seus pontos de missão por 1 Fuuin no Sho!",bc_blue|bc_all; 
+					query_sql("UPDATE `char` SET `quest_points` = `quest_points` - 20000 WHERE `char_id` = '"+getcharid(0)+"'");
+					getitem 753,1;
+					close;
+				}
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Você não tem pontos suficientes para comprar esse item";
+				close;
+			case 2:
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Gostaria de Trocar 3000 Pontos de Missão por uma Autorização?";
+				if(select("- Sim:- Não") == 2) { close; }
+				if(@qp >= 3000) {
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Parabéns, você acaba de comprar uma Autorização";
+					query_sql("UPDATE `char` SET `quest_points` = `quest_points` - 3000 WHERE `char_id` = '"+getcharid(0)+"'");
+					getitem 775,1;
+					close;
+				}
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Você não tem pontos suficientes para comprar esse item";
+				close;
+			case 3:
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Gostaria de Trocar 200 Pontos de Missão por uma Caixa de Item Avançado";
+				if(select("- Sim:- Não") == 2) { close; }
+				if(@qp >= 200) {
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Parabéns, você acaba de comprar uma Caixa de Item Avançado";
+					query_sql("UPDATE `char` SET `quest_points` = `quest_points` - 200 WHERE `char_id` = '"+getcharid(0)+"'");
+					getitem 3052,1;
+					close;
+				}
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Você não tem pontos suficientes para comprar esse item";
+				close;
+		}
+	
+	case 6:
+	close;
+	
+	}
+	premiacao:
+		query_sql("UPDATE `char` SET `"+.@ranking$+"` = `"+.@ranking$+"` + 1 WHERE `char_id` = '"+getcharid(0)+"'");
+	
+		if(.@ranking$ == "S")
+			query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 100 WHERE `char_id` = '"+getcharid(0)+"'");
+		else
+		if(.@ranking$ == "A")
+			query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 50 WHERE `char_id` = '"+getcharid(0)+"'");
+		else
+		if(.@ranking$ == "B")
+			query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 40 WHERE `char_id` = '"+getcharid(0)+"'");
+		else
+		if(.@ranking$ == "C")
+			query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 30 WHERE `char_id` = '"+getcharid(0)+"'");
+		else
+		if(.@ranking$ == "D")
+			query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 20 WHERE `char_id` = '"+getcharid(0)+"'");
+		else
+		if(.@ranking$ == "E")
+			query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 10 WHERE `char_id` = '"+getcharid(0)+"'");
+		mes "["+strnpcinfo(3)+"]";
+		mes "Missão Completa";
+		close;
+}
+
+
+akatsuki,154,199,3	script	Akatsuki	1_m_wizard,{
+
+	if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {
+	
+		query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E`, `D_DIA`, `C_DIA`, `B_DIA`, `A_DIA`, `S_DIA` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp, @s, @a, @b, @c, @d, @e, @d_dia, @c_dia, @b_dia, @a_dia, @s_dia);
+		
+		mes "["+strnpcinfo(3)+"]";
+		mes "Olá "+strcharinfo(0);
+		mes "Você possui "+@qp+" pontos de missão acumulados.";
+		mes "Você fez:";
+		mes "[ "+@s+" ] Missões de Ranking S";
+		mes "[ "+@a+" ] Missões de Ranking A";
+		mes "[ "+@b+" ] Missões de Ranking B";
+		mes "[ "+@c+" ] Missões de Ranking C";
+		mes "[ "+@d+" ] Missões de Ranking D";
+		mes "[ "+@e+" ] Missões de Ranking E";
+	
+		switch(select("- Pegar Missão:- Completar Missão:- Desistir da Missão:- Trocar Pontos de Missão:- Cancelar")){
+	
+		case 1:
+		next;	
+		mes "["+strnpcinfo(3)+"]";
+		mes "Escolha o Nivel da sua missão.";
+		switch(select("- Missão Rank D:- Missão Rank C:- Missão Rank B:- Missão Rank A:- Missão Rank S")){
+		
+			case 1:
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			if (BaseLevel >= 200) {
+				for(.@i = 11000; .@i < 11041; .@i++)
+					if(checkquest(.@i) >= 1) {
+						mes "Olá "+strcharinfo(0); 
+						mes "Você já pegou uma Missão"; 
+						close; 
+					}								
+					if(vip_status(1)) { 					
+						if(@d_dia >= 18) {						
+							mes "Você já fez todas as missões Rank D do Dia.";						
+							close;					
+						}				
+					} else { 					
+						if(@d_dia >= 15) {
+							mes "Você já fez todas as missões Rank D do Dia.";
+							close;					
+						}
+					}
+					mes "Lembre-se você so pode fazer 15 Missão Rank D, caso sejá VIP poderá fazer 18 Missão Rank D. Gostaria de Fazer ?";
+					if(select("- Sim:- Não") == 2) { close; }
+						next;
+						set .@missaod, rand(11000,11040);
+						if(getcharid(1)) {
+							mes "["+strnpcinfo(3)+"]";
+							mes "Lembre-se você está em grupo.";						
+							mes "Gostaria mesmo de pegar a missão ?";
+							if(select("- Não:- Sim") == 1) { close; }
+							close2;
+							setquestparty .@missaod;
+						} else {
+							setquest .@missaod;
+							set MissaoDAtivada,1;						
+							query_sql("UPDATE `char` SET `D_Dia` = `D_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+						}
+						next;
+						mes "["+strnpcinfo(3)+"]";
+						mes "Mais informações da missão aperte alt+U";
+						close;
+			}
+			mes "Você precisa ser Nivel 200";
+			close;
+			
+			case 2:
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			if (BaseLevel >= 400 && @d >= 10 ) {
+				for(.@i = 12000; .@i < 12024; .@i++)
+					if(checkquest(.@i) >= 1) { 
+						mes "Olá "+strcharinfo(0); 
+						mes "Você já pegou uma Missão"; 
+						close; 
+					}
+					if(vip_status(1)) { 					
+						if(@c_dia >= 15) {						
+							mes "Você já fez todas as missões Rank C do Dia.";						
+							close;					
+						}				
+					} else { 					
+						if(@c_dia >= 12) {						
+							mes "Você já fez todas as missões Rank C do Dia.";						
+							close;					
+						}				
+					}
+					mes "Lembre-se você so pode fazer 12 Missão Rank C, caso sejá VIP poderá fazer 15 Missão Rank C. Gostaria de Fazer ?";
+					if(select("- Sim:- Não") == 2) { close; }
+						next;
+						set .@missaoc, rand(12000,12021);
+						if(getcharid(1)) {
+							mes "["+strnpcinfo(3)+"]";
+							mes "Lembre-se você está em grupo.";
+							mes "Gostaria mesmo de pegar a missão ?";
+							if(select("- Não:- Sim") == 1) { close; }
+								close2;
+								setquestparty .@missaoc; 
+						} else {
+								setquest .@missaoc;
+								set MissaoCAtivada,1;
+								query_sql("UPDATE `char` SET `C_Dia` = `C_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+						}
+						next;
+						mes "["+strnpcinfo(3)+"]";
+						mes "Mais informações da missão aperte alt+U";
+						close;
+			}
+			mes "Você precisa ser Nivel 400 e efetuar +"+(10-@d)+" Missões Rank D";
+			close;
+			
+			case 3:		
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			if (BaseLevel >= 500 && @c >= 25 ) {
+				for(.@i = 13000; .@i < 13021; .@i++)
+					if(checkquest(.@i) >= 1) {
+						mes "Olá "+strcharinfo(0); 
+						mes "Você já pegou uma Missão"; 
+						close;
+					}
+				if(vip_status(1)) { 				
+					if(@b_dia >= 13) {					
+							mes "Você já fez todas as missões Rank B do Dia.";					
+							close;				
+					}			
+				} else { 				
+					if(@b_dia >= 10) {					
+						mes "Você já fez todas as missões Rank B do Dia.";					
+						close;				
+					}	
+				}			
+					mes "Lembre-se você so pode fazer 10 Missão Rank B, caso sejá VIP poderá fazer 13 Missão Rank B. Gostaria de Fazer ?";
+				if(select("- Sim:- Não") == 2) { close; }
+					next;
+					set .@missaob, rand(13000,13020);
+					if(getcharid(1)) {
+						mes "["+strnpcinfo(3)+"]";
+						mes "Lembre-se você está em grupo.";
+						mes "Gostaria mesmo de pegar a missão ?";
+						if(select("- Não:- Sim") == 1) { close; }
+							close2;
+							setquestparty .@missaob; 
+					} else {
+							setquest .@missaob;
+							set MissaoBAtivada,1;
+							query_sql("UPDATE `char` SET `B_Dia` = `B_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+					}
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Mais informações da missão aperte alt+U";
+					close;
+			}
+			mes "Você precisa ser Nivel 500 e efetuar +"+(25-@c)+" Missões Rank C";
+			close;
+			
+			case 4:
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			if (BaseLevel >= 700 && @b >= 50 ) {
+				for(.@i = 14000; .@i < 14020; .@i++)
+					if(checkquest(.@i) >= 1) {
+						mes "Olá "+strcharinfo(0); 
+						mes "Você já pegou uma Missão"; 
+						close; 
+					}
+				if(vip_status(1)) { 				
+					if(@a_dia >= 10) {					
+						mes "Você já fez todas as missões Rank A do Dia.";					
+						close;				
+					}			
+				} else { 				
+					if(@a_dia >= 7) {					
+						mes "Você já fez todas as missões Rank A do Dia.";					
+						close;				
+					}		
+				}
+				mes "Lembre-se você so pode fazer 7 Missão Rank A, caso sejá VIP poderá fazer 10 Missão Rank A. Gostaria de Fazer ?";
+				if(select("- Sim:- Não") == 2) { close; }
+					next;
+					set .@missaoa, rand(14000,14019);
+					if(getcharid(1)) {
+						mes "["+strnpcinfo(3)+"]";
+						mes "Lembre-se você está em grupo.";						
+						mes "Gostaria mesmo de pegar a missão ?";
+						if(select("- Não:- Sim") == 1) { close; }
+							close2;
+							setquestparty .@missaoa; 
+					} else {
+							setquest .@missaoa;
+							set MissaoAAtivada,1;
+							query_sql("UPDATE `char` SET `A_Dia` = `A_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+					}
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Mais informações da missão aperte alt+U";
+					close;
+			}
+			mes "Você precisa ser Nivel 700 e efetuar +"+(50-@b)+" Missões Rank B";
+			close;
+			
+			case 5:
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			if (BaseLevel >= 999 && @a >= 100 ) {
+				for(.@i = 15000; .@i < 15008; .@i++)
+					if(checkquest(.@i) >= 1) { 
+						mes "Olá "+strcharinfo(0); 
+						mes "Você já pegou uma Missão"; 
+						close; 
+					}
+				if(vip_status(1)) { 				
+					if(@s_dia >= 5) {					
+						mes "Você já fez todas as missões Rank A do Dia.";					
+							close;				
+						}			
+					} else { 				
+					if(@s_dia >= 2) {					
+						mes "Você já fez todas as missões Rank A do Dia.";					
+						close;				
+					}			
+				}			
+				mes "Lembre-se você so pode fazer 2 Missão Rank S, caso sejá VIP poderá fazer 5 Missão Rank S. Gostaria de Fazer ?";
+				if(select("- Sim:- Não") == 2) { close; }
+					next;
+					set .@missaos, rand(15000,15007);
+					if(getcharid(1)) {
+						mes "["+strnpcinfo(3)+"]";
+						mes "Lembre-se você está em grupo.";						
+						mes "Gostaria mesmo de pegar a missão ?";
+						if(select("- Não:- Sim") == 1) { close; }
+							close2;
+							setquestparty .@missaos; 
+					} else {
+							setquest .@missaos;
+							set MissaoSAtivada,1;
+							query_sql("UPDATE `char` SET `S_Dia` = `S_Dia` + 1 WHERE `char_id` = '"+getcharid(0)+"' ");
+					}
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Mais informações da missão aperte alt+U";
+					close;
+			}
+			mes "Você precisa ser Nivel 999 e efetuar +"+(100-@a)+" Missões Rank A";
+			close;
+		}
+		
+		case 2:
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			//												Completar Missão
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			next;
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			// Missão Rank D
+			for(.@i = 11000; .@i < 11016; .@i++)
+				if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao;  }
+			for(.@i = 11028; .@i < 11041; .@i++)
+				if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao;  }
+				
+			// Missão Rank D Itens
+				if(checkquest(11016) == 1 && countitem(521) >= 40){ delitem 521,40; completequest 11016; erasequest 11016; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11017) == 1 && countitem(603) >= 40){ delitem 603,40; completequest 11017; erasequest 11017; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11018) == 1 && countitem(512) >= 40){ delitem 512,40; completequest 11018; erasequest 11018; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11019) == 1 && countitem(530) >= 40){ delitem 530,40; completequest 11019; erasequest 11019; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11020) == 1 && countitem(713) >= 40){ delitem 713,40; completequest 11020; erasequest 11020; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11021) == 1 && countitem(591) >= 40){ delitem 591,40; completequest 11021; erasequest 11021; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11022) == 1 && countitem(609) >= 40){ delitem 609,40; completequest 11022; erasequest 11022; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11023) == 1 && countitem(623) >= 40){ delitem 623,40; completequest 11023; erasequest 11023; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11024) == 1 && countitem(618) >= 40){ delitem 618,40; completequest 11024; erasequest 11024; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11025) == 1 && countitem(662) >= 40){ delitem 662,40; completequest 11025; erasequest 11025; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11026) == 1 && countitem(693) >= 40){ delitem 693,40; completequest 11026; erasequest 11026; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+				if(checkquest(11027) == 1 && countitem(522) >= 40){ delitem 522,40; completequest 11027; erasequest 11027; Zeny = Zeny+50000; set MissaoDAtivada,0;  set .@ranking$,"D"; goto premiacao; }
+	
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			// Missão Rank C
+			for(.@i = 12000; .@i < 12016; .@i++)
+				if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; goto premiacao; }
+			
+			// Missão Rank C Itens
+				if(checkquest(12016) == 1 && countitem(671) >= 60){ delitem 671,60; completequest 12016; erasequest 12016; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; goto premiacao; }
+				if(checkquest(12017) == 1 && countitem(658) >= 60){ delitem 658,60; completequest 12017; erasequest 12017; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; goto premiacao; }
+				if(checkquest(12018) == 1 && countitem(571) >= 60){ delitem 571,60; completequest 12018; erasequest 12018; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; goto premiacao; }
+				if(checkquest(12019) == 1 && countitem(568) >= 60){ delitem 568,60; completequest 12019; erasequest 12019; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; goto premiacao; }
+				if(checkquest(12020) == 1 && countitem(631) >= 60){ delitem 631,60; completequest 12020; erasequest 12020; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; goto premiacao; }
+				if(checkquest(12021) == 1 && countitem(700) >= 60){ delitem 700,60; completequest 12021; erasequest 12021; Zeny = Zeny+150000; MissaoCAtivada = 0; set .@ranking$,"C"; goto premiacao; }
+			
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			// Missão Rank B
+			for(.@i = 13000; .@i < 13016; .@i++)
+				if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; goto premiacao; }
+			
+			// Missão Rank B Itens
+			for(.@i = 13016; .@i < 13021; .@i++)
+				if(checkquest(13016) == 1 && countitem(706) >= 80){ delitem 706,80; completequest 13016; erasequest 13016; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; goto premiacao; }
+				if(checkquest(13017) == 1 && countitem(646) >= 80){ delitem 646,80; completequest 13017; erasequest 13017; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; goto premiacao; }
+				if(checkquest(13018) == 1 && countitem(561) >= 80){ delitem 561,80; completequest 13018; erasequest 13018; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; goto premiacao; }
+				if(checkquest(13019) == 1 && countitem(588) >= 80){ delitem 588,80; completequest 13019; erasequest 13019; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; goto premiacao; }
+				if(checkquest(13020) == 1 && countitem(529) >= 80){ delitem 529,80; completequest 13020; erasequest 13020; Zeny = Zeny+300000; MissaoBAtivada = 0; set .@ranking$,"B"; goto premiacao; }
+				
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			// Missão Rank A
+			for(.@i = 14000; .@i < 14016; .@i++)
+				if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; goto premiacao; }
+			
+			// Missão Rank A
+				if(checkquest(14016) == 1 && countitem(685) >= 100){ delitem 685,100; completequest 14016; erasequest 14016; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; goto premiacao; }
+				if(checkquest(14017) == 1 && countitem(664) >= 100){ delitem 664,100; completequest 14017; erasequest 14017; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; goto premiacao; }
+				if(checkquest(14018) == 1 && countitem(589) >= 100){ delitem 589,100; completequest 14018; erasequest 14018; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; goto premiacao; }
+				if(checkquest(14019) == 1 && countitem(653) >= 100){ delitem 653,100; completequest 14019; erasequest 14019; Zeny = Zeny+500000; MissaoAAtivada = 0; set .@ranking$,"A"; goto premiacao; }
+			
+			//-----------------------------------------------------------------------------------------------------------------------------------------------------
+			// Missão Rank S
+			for(.@i = 15000; .@i < 15008; .@i++)
+				if(checkquest(.@i,HUNTING) == 2) { completequest .@i; erasequest .@i; Zeny = Zeny+1000000; MissaoSAtivada = 0; set .@ranking$,"S"; goto premiacao; }
+		
+			mes "["+strnpcinfo(3)+"]";
+			mes "Você não completou nenhuma missão. Certifique-se quer você tem uma missão ativada";
+			close;
+		
+		case 3:
+			next;
+			mes "["+strnpcinfo(3)+"]";
+			mes "Você tem certeza que quer desistir da missão?";
+			if(select("- Não:- Sim") == 1) { close; }
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Escolha qual Rank você gostaria de remover?";
+				switch(select("- Missão Rank E:- Missão Rank D:- Missão Rank C:- Missão Rank B:- Missão Rank A:- Missão Rank S")){
+	
+					case 1:
+						if(checkquest(10000) == 1 || checkquest(10000) == 2) { erasequest 10000; MissaoEAtivada = 0; }
+						if(checkquest(10001) == 1) { erasequest 10001; MissaoEAtivada = 0; }
+						if(checkquest(10002) == 1) { erasequest 10002; MissaoEAtivada = 0; }
+						if(checkquest(10003) == 1) { erasequest 10003; MissaoEAtivada = 0; }
+						if(checkquest(10004) == 1) { erasequest 10004; MissaoEAtivada = 0; }
+						
+					case 2:
+						// Missão Rank D
+						for(.@i = 11000; .@i < 11041; .@i++)
+							if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoDAtivada = 0; if(@d_dia >= 1) { query_sql("UPDATE `char` SET `D_Dia` = `D_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+					case 3:
+						// Missão Rank C
+						for(.@i = 12000; .@i < 12022; .@i++)
+							if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoCAtivada = 0; if(@c_dia >= 1) { query_sql("UPDATE `char` SET `C_Dia` = `C_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+					case 4:
+						// Missão Rank B
+						for(.@i = 13000; .@i < 13021; .@i++)
+							if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoBAtivada = 0; if(@b_dia >= 1) { query_sql("UPDATE `char` SET `B_Dia` = `B_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+					case 5:
+						// Missão Rank A
+						for(.@i = 14000; .@i < 14020; .@i++)
+							if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoAAtivada = 0; if(@a_dia >= 1) { query_sql("UPDATE `char` SET `A_Dia` = `A_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+					case 6:
+						// Missão Rank S
+						for(.@i = 15000; .@i < 15008; .@i++)
+							if(checkquest(.@i) == 1 || checkquest(.@i) == 2) { erasequest .@i; MissaoSAtivada = 0; if(@s_dia >= 1) { query_sql("UPDATE `char` SET `S_Dia` = `S_Dia` - 1 WHERE `char_id` = '"+getcharid(0)+"' "); } goto missaodeletara; }
+				}
+				next;
+				mes "["+strnpcinfo(3)+"]";
+				mes "Você não tem missão para deletar";
+				close;
+				
+				missaodeletara:
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Missão Deletada";
+					close;
+		case 4:
+			switch(select("- Fuuin no Sho [20.000 Pontos]:- Caixa Item Avançado [200 Pontos]")) {
+				case 1:
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Gostaria de Trocar 20.000 Pontos de Missão por um Fuuin no Sho?";
+					if(select("- Sim:- Não") == 2) { close; }
+					if(@qp >= 20000) {
+						next;
+						mes "["+strnpcinfo(3)+"]";
+						mes "Parabéns, você acaba de comprar um Fuuin no Sho";
+						announce ""+strcharinfo(0)+" trocou seus pontos de missão por 1 Fuuin no Sho!",bc_blue|bc_all;
+						query_sql("UPDATE `char` SET `quest_points` = `quest_points` - 20000 WHERE `char_id` = '"+getcharid(0)+"'");
+						getitem 753,1;
+						close;
+					}
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Você não tem pontos suficientes para comprar esse item";
+					close;
+				case 2:
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Gostaria de Trocar 200 Pontos de Missão por uma Caixa de Item Avançado";
+					if(select("- Sim:- Não") == 2) { close; }
+					if(@qp >= 200) {
+						next;
+						mes "["+strnpcinfo(3)+"]";
+						mes "Parabéns, você acaba de comprar uma Caixa de Item Avançado";
+						query_sql("UPDATE `char` SET `quest_points` = `quest_points` - 200 WHERE `char_id` = '"+getcharid(0)+"'");
+						getitem 3052,1;
+						close;
+					}
+					next;
+					mes "["+strnpcinfo(3)+"]";
+					mes "Você não tem pontos suficientes para comprar esse item";
+					close;
+			}
+		
+		case 5:
+		close;
+		
+		}
+		premiacao:
+			query_sql("UPDATE `char` SET `"+.@ranking$+"` = `"+.@ranking$+"` + 1 WHERE `char_id` = '"+getcharid(0)+"'");
+		
+			if(.@ranking$ == "S")
+				query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 100 WHERE `char_id` = '"+getcharid(0)+"'");
+			else
+			if(.@ranking$ == "A")
+				query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 50 WHERE `char_id` = '"+getcharid(0)+"'");
+			else
+			if(.@ranking$ == "B")
+				query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 40 WHERE `char_id` = '"+getcharid(0)+"'");
+			else
+			if(.@ranking$ == "C")
+				query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 30 WHERE `char_id` = '"+getcharid(0)+"'");
+			else
+			if(.@ranking$ == "D")
+				query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 20 WHERE `char_id` = '"+getcharid(0)+"'");
+			mes "["+strnpcinfo(3)+"]";
+			mes "Missão Completa";
+			close;
+	}
+	mes "["+strnpcinfo(3)+"]";
+	mes "Você não é um membro da Akatsuki";
+	close;
+}
+salakage,31,21,3	duplicate(points)	Hokage	4w_f_kafra2
+salakage2,31,21,3	duplicate(points)	Kazekage	4_m_2ndprin1
+salakage3,31,21,3	duplicate(points)	Mizukage	4_f_babayaga
+salakage4,31,21,3	duplicate(points)	Raikage	870

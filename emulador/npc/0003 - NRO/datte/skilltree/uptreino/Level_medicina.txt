@@ -1,0 +1,191 @@
+in_hunter,99,99,5	script	Treino de Medicina::t_me	857,{
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+OnStart:
+readparam(bVit);
+if(readparam(bVit)<50) {mes "Antes de adicionar pontos nos seus atributos, é preciso estar com todos os atributos no 50"; close;}
+mes "[Treinamento de medicina]";
+mes "Você possui [^0000FF" + AtrPoints4 + "^000000] pontos em medicina";
+next;
+mes "Gostaria de adicionar seus pontos em medicina agora?";
+next;
+menu "Sim, gostaria",-,"Não, deixa pra depois",fecha;
+if(AtrPoints4 < 1) {set AtrPoints4,0;}
+mes "[Treinamento de medicina]";
+mes "Quantos pontos gostaria de adicionar? ["+AtrPoints4+"]";
+next;
+input .@medpoints;
+if(.@medpoints <= AtrPoints4) goto go_tai;
+if(.@medpoints > AtrPoints4) {mes "Você não possui essa quantidade de pontos"; close;}
+mes "^FF0000Digite um numero entre 1 e " + AtrPoints4;
+close;
+
+go_tai:
+set AtrPoints4, AtrPoints4 - .@medpoints;
+atcommand strcharinfo(0)+":@"+.IndexToStat$[@menu] + " " + .@medpoints;
+mes "Os seus pontos foram adicionados";
+close;
+
+fecha:
+close;
+
+OnInit:
+
+//How much exp needed per lvl (make sure each number is bigger than the next)
+setArray .WLvl4[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+
+//How many status points each weapon lvl up
+setArray .Wpoints4[0],
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+
+set .ExpPerKill4, 1;
+set .MaxLvl4, getarraysize(.WLvl4);
+
+setArray .IndexToStat$[1], "vit", "vit", "vit", "vit", "vit", "vit";
+set .statMenu$, "Str:Agi:Vit:Int:Dex:Luk";
+
+set .init, 1;
+end;
+
+OnNPCKillEvent:
+
+if(med_basico != 1) {end;}
+if(treino_med == 0) {end;}
+
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+
+
+if(killedrid == 1618) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1402) {set WeaponExp4, WeaponExp4 + 90;}
+if(killedrid == 1296) {set WeaponExp4, WeaponExp4 + 90;}
+if(killedrid == 1031) {set WeaponExp4, WeaponExp4 + 90;}
+if(killedrid == 1628) {set WeaponExp4, WeaponExp4 + 90;}
+if(killedrid == 1025) {set WeaponExp4, WeaponExp4 + 90;}
+if(killedrid == 1618) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1769) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1589) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1494) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1408) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1018) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1305) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1194) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1009) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1211) {set WeaponExp4, WeaponExp4 + 180;}
+
+
+if(killedrid == 1322) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1027) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1636) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1036) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1106) {set WeaponExp4, WeaponExp4 + 120;}
+if(killedrid == 1121) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1838) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1169) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1114) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1004) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1059) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1294) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1139) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1632) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1262) {set WeaponExp4, WeaponExp4 + 210;}
+
+if(killedrid == 1405) {set WeaponExp4, WeaponExp4 + 150;}
+if(killedrid == 1009) {set WeaponExp4, WeaponExp4 + 150;}
+if(killedrid == 1517) {set WeaponExp4, WeaponExp4 + 150;}
+if(killedrid == 1093) {set WeaponExp4, WeaponExp4 + 150;}
+if(killedrid == 1040) {set WeaponExp4, WeaponExp4 + 150;}
+
+if(killedrid == 1368) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1067) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1318) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1780) {set WeaponExp4, WeaponExp4 + 180;}
+
+if(killedrid == 1831) {set WeaponExp4, WeaponExp4 + 90;}
+if(killedrid == 1315) {set WeaponExp4, WeaponExp4 + 90;}
+if(killedrid == 1634) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1177) {set WeaponExp4, WeaponExp4 + 90;}
+
+if(killedrid == 1266) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1041) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1073) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1118) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1601) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1735) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1736) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1830) {set WeaponExp4, WeaponExp4 + 210;}
+if(killedrid == 1163) {set WeaponExp4, WeaponExp4 + 210;}
+
+if(killedrid == 1635) {set WeaponExp4, WeaponExp4 + 360;}
+if(killedrid == 1032) {set WeaponExp4, WeaponExp4 + 280;}
+if(killedrid == 1418) {set WeaponExp4, WeaponExp4 + 280;}
+if(killedrid == 1089) {set WeaponExp4, WeaponExp4 + 280;}
+if(killedrid == 1381) {set WeaponExp4, WeaponExp4 + 280;}
+
+if(killedrid == 1066) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1499) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1039) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1312) {set WeaponExp4, WeaponExp4 + 1200;}
+
+if(killedrid == 1992) {set WeaponExp4, WeaponExp4 + 480;}
+
+if(killedrid == 1196) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1202) {set WeaponExp4, WeaponExp4 + 180;}
+if(killedrid == 1257) {set WeaponExp4, WeaponExp4 + 180;}
+
+//if(killedrid == 1839) {set WeaponExp4, WeaponExp4 + 80;}
+if(killedrid == 1401) {set WeaponExp4, WeaponExp4 + 360;}
+if(killedrid == 1154) {set WeaponExp4, WeaponExp4 + 360;}
+if(killedrid == 1771) {set WeaponExp4, WeaponExp4 + 360;}
+
+if(killedrid == 1046) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1829) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1492) {set WeaponExp4, WeaponExp4 + 300;}
+
+if(killedrid == 1293) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1321) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1128) {set WeaponExp4, WeaponExp4 + 300;}
+
+if(killedrid == 1159) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1058) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1289) {set WeaponExp4, WeaponExp4 + 300;}
+if(killedrid == 1147) {set WeaponExp4, WeaponExp4 + 300;}
+
+set WeaponExp4, WeaponExp4 + 1;
+if(.WLvl4[WeaponLvl4] <= WeaponExp4 && WeaponLvl4 < .MaxLvl4)
+{
+set AtrPoints4, AtrPoints4 + .Wpoints4[WeaponLvl4];
+set WeaponLvl4, WeaponLvl4 + 1;
+dispbottom "[Level up] Seu nível de medicina agora é level " + WeaponLvl4;
+//dispbottom "[Level up] fale com o Treino de medicina na academia pra receber seus pontos";
+set WeaponExp4,0;
+if(WeaponLvl4 == .MaxLvl4) {
+dispbottom "Seu nível de medicina está no level máximo.";
+}
+dispbottom "Você recebeu [" + .Wpoints4[WeaponLvl4 - 1] + "] pontos em medicina, fale com o treino de medicina.";
+}
+end;
+}
+
+
+
+

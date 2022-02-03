@@ -1,0 +1,871 @@
+nevoa,100,168,3	script	Mestre Uchiha::uch	734,{
+	mes "[Mestre Uchiha]";
+	if(uchiha == 1){goto L_lista;}else{goto L_Wrong;}
+
+	
+	L_lista:
+	mes "Você membro do clã Uchiha";
+	mes "Gostaria de ver as skills de qual graduação?";
+	menu "Genin",geninuchiha,"Chunin",chuninuchiha,"Jounin",jouninuchiha;
+	
+	
+	geninuchiha:
+	if(genin != 1) goto L_NoJutsu;
+	next;
+	mes "[Mestre Uchiha]";
+	mes "Você que é Uchiha Genin, pode aprender os seguintes Jutsus!";
+	menu "Golpe Fulminante nv 10  (Kage Buyou)",skill1uchihag,"Lanças de Fogo  nv 5 (Katon Ryuuka No Jutsu) ",skill2uchihag;
+
+	skill1uchihag:
+	if(Jutsugenin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Genin:Golpe Fulminante nv 10  (Kage Buyou)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "200 Pinças de Escorpião";
+	mes "200 Casco Arco- Íris";
+	mes "20 Língua de Reptil";
+	mes "E terá que derrotar 20 Girinos";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihag1,1;	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7125) < 200) goto L_SemItem;
+	if (countitem(1013) < 200) goto L_SemItem;
+	if (countitem(903) < 20) goto L_SemItem;
+	if(skillg1uchihamobs < 20) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7125,200;
+	delitem 1013,200;
+	delitem 903,20;
+	skill 5,10,0;
+	set Jutsugenin1,0;
+	set Jutsugenin2,1;
+	set skillg1uchihamobs,0;
+	set quest_uchihag1,0;
+	close;
+
+	skill2uchihag:
+	if(Jutsugenin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Genin: Lanças de Fogo  nv 5 (Katon Ryuuka No Jutsu)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "200 Pinças de Escorpião";
+	mes "150 leites";
+	mes "150 Armadura Destruídas";
+	mes "50 Tendões";
+	mes "E terá que derrotar 20 Morcego";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihag2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7125) < 200) goto L_SemItem;
+	if (countitem(519) < 150) goto L_SemItem;
+	if (countitem(7069) < 150) goto L_SemItem;
+	if (countitem(1050) < 50) goto L_SemItem;
+	if(skillg2uchihamobs < 20) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7125,200;
+	delitem 519,150;
+	delitem 7069,150;
+	delitem 1050,50;
+	skill 19,5,0;
+	set Jutsugenin2,0;
+	set Jutsuchunin1,1;
+	set skillg2uchihamobs,0;
+	set quest_uchihag2,0;
+	close;
+	
+	chuninuchiha:
+	if(chunin != 1) goto L_NoJutsu;
+	next;
+	mes "[Mestre uchiha]";
+	mes "Você que é um uchiha chunin, pode aprender os seguintes Jutsus!";
+	menu "Lanças de Fogo nv 10 (Katon Ryuuka No Jutsu)",skill1uchihac,"Pétalas Flamejantes nv 10 (Katon Housenka no Jutsu)",skill2uchihac,"Bolas de Fogo  nv 5(Katon Goukakyuu no Jutsu)",skill3uchihac,"Trovão de Júpiter nv 5 (Chidori) ",skill4uchihac;
+
+	skill1uchihac:
+	if(Jutsuchunin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Lanças de Fogo nv 10 (Katon Ryuuka No Jutsu)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "200 Shuriken Gasto";
+	mes "100 Ovas de Sapo";
+	mes "150 Patas de Besouro";
+	mes "300 Casco Arco –Íris";
+	mes "100 Garras de Rato";
+	mes "20 União da Tribo";
+	mes "E matar 50 Ratasanas";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihac1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7072) < 200) goto L_SemItem;
+	if (countitem(908) < 100) goto L_SemItem;
+	if (countitem(7202) < 150) goto L_SemItem;
+	if (countitem(1013) < 300) goto L_SemItem;
+	if (countitem(7007) < 100) goto L_SemItem;
+	if (countitem(658) < 20) goto L_SemItem;
+	if(skillc1uchihamobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7072,200;
+	delitem 908,100;
+	delitem 7202,150;
+	delitem 1013,300;
+	delitem 7007,100;
+	delitem 658,20;
+	skill 19,10,0;
+	set Jutsuchunin1,0;
+	set Jutsuchunin2,1;
+	set skillc1uchihamobs,0;
+	set quest_uchihac1,0;
+
+	skill2uchihac:
+	if(Jutsuchunin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Pétalas Flamejantes nv 10 (Katon Housenka no Jutsu)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "150 Língua de Reptil";
+	mes "400 Garra de Lobo do Deserto";
+	mes "200 Teia de Aranha";
+	mes "300 Antenas de Inseto";
+	mes "50 Gema Vermelha";
+	mes "50 Galertas";
+	mes "30 Minhoca Boa Pinta";
+	mes "E matar 30 Baratas macho";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihac2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(903) < 150) goto L_SemItem;
+	if (countitem(7030) < 400) goto L_SemItem;
+	if (countitem(1025) < 200) goto L_SemItem;
+	if (countitem(928) < 300) goto L_SemItem;
+	if (countitem(716) < 50) goto L_SemItem;
+	if (countitem(910) < 50) goto L_SemItem;	
+	if (countitem(623) < 30) goto L_SemItem;		
+	if(skillc2uchihamobs < 30) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 903,150;
+	delitem 7030,400;
+	delitem 1025,200;
+	delitem 928,300;
+	delitem 716,50;
+	delitem 910,50;
+	delitem 623,30;
+	skill 534,10	,0;
+	set Jutsuchunin2,0;
+	set Jutsuchunin3,1;
+	set skillc2uchihamobs,0;
+	set quest_uchihac2,0;
+	close;
+
+	skill3uchihac:
+	if(Jutsuchunin3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre Uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Bolas de Fogo  nv 5(Katon Goukakyuu no Jutsu)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre Uchiha^000000]";
+	mes "500 Patas Pegajosas";
+	mes "300 Retrato Velhos";
+	mes "300 Tranças";
+	mes "50 Luvas do Carrasco";
+	mes "50 Vida Verdejantes";
+	mes "150 Avelãs";
+	mes "15 Coração Imortal";
+	mes "E matar 50 Operários";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihac3,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(918) < 500) goto L_SemItem;
+	if (countitem(7014) < 300) goto L_SemItem;
+	if (countitem(901) < 300) goto L_SemItem;
+	if (countitem(7017) < 50) goto L_SemItem;
+	if (countitem(993) < 50) goto L_SemItem;
+	if (countitem(1026) < 150) goto L_SemItem;
+	if (countitem(929) < 15) goto L_SemItem;
+	if(skillc3uchihamobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 918,500;
+	delitem 7014,300;
+	delitem 901,300;
+	delitem 7017,50;
+	delitem 993,50;
+	delitem 1026,150;
+	delitem 929,15;
+	skill 17,5,0;
+	set Jutsuchunin3,0;
+	set Jutsuchunin4,1;
+	set skillc3uchihamobs,0;
+	set quest_uchihac3,0;
+	close;
+	
+	skill4uchihac:
+	if(Jutsuchunin4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Trovão de Júpiter nv 5 (Chidori)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "20 Espetos Quebrados";
+	mes "300 Ossos";
+	mes "300 Escamas Brilhantes";
+	mes "200 galho";
+	mes "150 algemas";
+	mes "300 Sangue de animal";
+	mes "100 raiz marrom";
+	mes "E matar 50 Escaravelhos";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihac4,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7215) < 20) goto L_SemItem;
+	if (countitem(932) < 300) goto L_SemItem;
+	if (countitem(954) < 300) goto L_SemItem;
+	if (countitem(7203) < 200) goto L_SemItem;
+	if (countitem(1098) < 150) goto L_SemItem;
+	if (countitem(702) < 300) goto L_SemItem;
+	if (countitem(7188) < 100) goto L_SemItem;
+	if(skillc4uchihamobs < 50) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7215,20;
+	delitem 932,300;
+	delitem 954,300;
+	delitem 7203,200;
+	delitem 1098,150;
+	delitem 702,300;
+	delitem 7188,100;
+	skill 84,5,0;
+	set Jutsuchunin4,0;
+	set Jutsujounin1,1;
+	set skillc4uchihamobs,0;
+	set quest_uchihac4,0;
+	close;
+
+	jouninuchiha:
+	if(jounin != 1) goto L_NoJutsu;
+	next;
+	mes "[Mestre Uchiha]";
+	mes "Você que é um Uchiha Jounin, pode aprender os seguintes Jutsus!";
+	menu "Bolas de Fogo nv 10",skill1uchihaj,"Dragão Explosivo nv 10 (Katon Gouryuuka)",skill2uchihaj,"Vulcão nv 5",skill3uchihaj,"Golpe Fulminante nv 15",skill4uchihaj,"Pétalas Flamenjantes nv 15",skill5uchihaj,"Descarga Elétrica nv 10 (Chidori Nagashi)",skill6uchihaj;
+
+	skill1uchihaj:
+	if(Jutsujounin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Bolas de Fogo nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "500 Bandagem Estragada";
+	mes "150 pernas de gafanhoto";
+	mes "150 Muco Pegajoso";
+	mes "100 Ametista";
+	mes "200 Casca Quebrada";
+	mes "E matar 30 Gremlins";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihaj1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(930) < 500) goto L_SemItem;
+	if (countitem(940) < 150) goto L_SemItem;
+	if (countitem(938) < 150) goto L_SemItem;
+	if (countitem(719) < 100) goto L_SemItem;
+	if (countitem(7070) < 200) goto L_SemItem;
+	if(skillj1uchihamobs < 30) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 930,500;
+	delitem 940,150;
+	delitem 938,150;
+	delitem 719,100;
+	delitem 7070,200;
+	skill 17,10,0;
+	set Jutsujounin1,0;
+	set Jutsujounin2,1;
+	set skillj1uchihamobs,0;
+	set quest_uchihaj1,0;
+	close;
+
+	skill2uchihaj:
+	if(Jutsujounin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Dragão Explosivo nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "800 Garras de Leopardo";
+	mes "400 Sopa de Tinta de Lula e Ovos de Sapo";
+	mes "300 Lamina Perdida das Trevas";
+	mes "500 Mascara Ninja";
+	mes "400 Mascara do Festival";
+	mes "400 gás tóxico";
+	mes "E matar 40 Gafanhotos";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihaj2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7172) < 800) goto L_SemItem;
+	if (countitem(12056) < 400) goto L_SemItem;
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7157) < 500) goto L_SemItem;
+	if (countitem(7187) < 400) goto L_SemItem;
+	if (countitem(7322) < 400) goto L_SemItem;
+	if(skillj2uchihamobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7172,800;
+	delitem 12056,400;
+	delitem 7023,300;
+	delitem 7157,500;
+	delitem 7187,400;
+	delitem 7322,400;
+	skill 536,10,0;
+	set Jutsujounin2,0;
+	set Jutsujounin3,1;
+	set skillj2uchihamobs,0;
+	set quest_uchihaj2,0;
+	close;
+
+	skill3uchihaj:
+	if(Jutsujounin3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Vulcão nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "400 Esfera das Sombras";
+	mes "50 Cachimbo";
+	mes "300 Pedra do Sabio";
+	mes "500 Cyfar";
+	mes "200 Pedra do Pesadelo";
+	mes "200 Insígnia de Herói";
+	mes "300 rosa eterna";
+	mes "E matar 30 Ninkames";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihaj3,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7524) < 400) goto L_SemItem;
+	if (countitem(2268) < 50) goto L_SemItem;
+	if (countitem(12040) < 300) goto L_SemItem;
+	if (countitem(7053) < 500) goto L_SemItem;
+	if (countitem(7102) < 200) goto L_SemItem;
+	if (countitem(968) < 200) goto L_SemItem;
+	if (countitem(748) < 300) goto L_SemItem;
+	if(skillj3uchihamobs < 30) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7524,400;
+	delitem 2268,50;
+	delitem 12040,300;
+	delitem 7053,500;
+	delitem 7102,200;
+	delitem 968,200;
+	delitem 748,300;
+	skill 285,5,0;
+	set Jutsujounin3,0;
+	set Jutsujounin4,1;
+	set skillj3uchihamobs,0;
+	set quest_uchihaj3,0;
+	close;
+
+
+	skill4uchihaj:
+	if(Jutsujounin4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Golpe Fulminante nv 15";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "400 Relógio de Bolso";
+	mes "400 Bracelete da Obediência";
+	mes "400 Ba Gua";
+	mes "300 Esmeralda";
+	mes "400 Garra de Macaco";
+	mes "500 Cabelos Horrendos";
+	mes "300 lanterna";
+	mes "E matar 40 Doki's";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihaj4,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7513) < 400) goto L_SemItem;
+	if (countitem(639) < 400) goto L_SemItem;
+	if (countitem(7169) < 400) goto L_SemItem;
+	if (countitem(721) < 300) goto L_SemItem;
+	if (countitem(7011) < 400) goto L_SemItem;
+	if (countitem(1048) < 500) goto L_SemItem;
+	if (countitem(7191) < 300) goto L_SemItem;
+	if(skillj4uchihamobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7513,400;
+	delitem 639,400;
+	delitem 7169,400;
+	delitem 721,300;
+	delitem 7011,400;
+	delitem 1048,500;
+	delitem 7191,300;
+	skill 5,15,0;
+	set Jutsujounin4,0;
+	set Jutsujounin5,1;
+	set skillj4uchihamobs,0;
+	set quest_uchihaj4,0;
+	close;
+
+	skill5uchihaj:
+	if(Jutsujounin5 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Pétalas Flamenjantes nv 15";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "300 Colar do Oblívio";
+	mes "500 Fragmento da Desgraça";
+	mes "500 Selo Maldito";
+	mes "30 Plantas da Névoa";
+	mes "30 plantas de Konoha";
+	mes "30 Plantas da Suna";
+	mes "10 Símbolo do Guerreiro";
+	mes "20 Ouros";
+	mes "E matar 40 Camaleons";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihaj5,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(1008) < 300) goto L_SemItem;
+	if (countitem(7437) < 500) goto L_SemItem;
+	if (countitem(7442) < 500) goto L_SemItem;
+	if (countitem(710) < 30) goto L_SemItem;
+	if (countitem(712) < 30) goto L_SemItem;
+	if (countitem(704) < 30) goto L_SemItem;
+	if (countitem(7484) < 10) goto L_SemItem;
+	if (countitem(969) < 20) goto L_SemItem;
+	if(skillj5uchihamobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 1008,300;
+	delitem 7437,500;
+	delitem 7442,500;
+	delitem 710,30;
+	delitem 712,30;
+	delitem 704,30;
+	delitem 7484,10;
+	delitem 969,20;
+	skill 534,15,0;
+	set Jutsujounin5,0;
+	set Jutsujounin6,1;
+	set skillj5uchihamobs,0;
+	set quest_uchihaj5,0;
+	close;
+
+
+	skill6uchihaj:
+	if(Jutsujounin6 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Descarga Elétrica nv 10 (Chidori Nagashi)";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "300 Lamina Perdida das Trevas";
+	mes "300 Fragmento da Desgraça";
+	mes "20 Plantas da Névoa";
+	mes "20 plantas de Konoha";
+	mes "20 Plantas da Suna";
+	mes "15 símbolo de guerreiro";
+	mes "10 Fragmento de Espírito";
+	mes "40 ouro";
+	mes "E matar 40 Jounins";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchihaj6,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7437) < 300) goto L_SemItem;
+	if (countitem(710) < 20) goto L_SemItem;
+	if (countitem(712) < 20) goto L_SemItem;
+	if (countitem(704) < 20) goto L_SemItem;
+	if (countitem(7484) < 15) goto L_SemItem;
+	if (countitem(7306) < 10) goto L_SemItem;
+	if (countitem(969) < 40) goto L_SemItem;
+	if(skillj6uchihamobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7023,300;
+	delitem 7437,300;
+	delitem 710,20;
+	delitem 712,20;
+	delitem 704,20;
+	delitem 7484,15;
+	delitem 7306,10;
+	delitem 969,40;
+	skill 541,10,0;
+	set Jutsujounin6,0;
+	set Jutsujounin7,1;
+	set skillj6uchihamobs,0;
+	set quest_uchihaj6,0;
+	close;
+	
+	skill7uchihaj:
+	if(Jutsujounin6 != 1) goto L_NoJutsu;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Trovão de Júpiter nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AMestre Uchiha^000000]";
+	mes "300 Lamina Perdida das Trevas";
+	mes "300 Fragmento da Desgraça";
+	mes "30 Plantas da Névoa";
+	mes "30 plantas de Konoha";
+	mes "30 Plantas da Suna";
+	mes "15 símbolo de guerreiro";
+	mes "10 Fragmento de Espírito";
+	mes "40 ouro";
+	mes "E matar 40 Jounins";
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_uchiha7,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7437) < 300) goto L_SemItem;
+	if (countitem(710) < 30) goto L_SemItem;
+	if (countitem(712) < 30) goto L_SemItem;
+	if (countitem(704) < 30) goto L_SemItem;
+	if (countitem(7484) < 15) goto L_SemItem;
+	if (countitem(7306) < 10) goto L_SemItem;
+	if (countitem(969) < 40) goto L_SemItem;
+	if(skillj6uchihamobs < 40) goto L_SemItem;
+	next;
+	mes "[^A52A2AMestre uchiha^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7023,300;
+	delitem 7437,300;
+	delitem 710,30;
+	delitem 712,30;
+	delitem 704,30;
+	delitem 7484,15;
+	delitem 7306,10;
+	delitem 969,40;
+	skill 84,10,0;
+	set Jutsujounin6,0;
+	set Jutsujounin7,1;
+	set skillj5uchihamobs,0;
+	set quest_uchihaj5,0;
+	close;
+	
+
+L_SemItem:
+	next;
+	mes "[^FF0000Mestre uchiha^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+		
+L_nogradu:
+	next;
+	mes "Você não é desta graduação.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Mestre uchiha^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_NoJutsu:
+	next;
+	mes "[^FF0000Mestre uchiha^000000]";
+	mes "Você não está preparado para este Jutsu ainda ou ja fez este treinamento!";
+	close;
+
+L_Wrong:
+	mes "[^FF0000Mestre uchiha^000000]";
+	mes "Você não é deste clã";
+	close;
+
+}
+
+-	script	OnNPCKill_uchihag1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihag1 == 1){goto uchiha_g1;} else {end;}
+
+uchiha_g1:
+switch (killedrid) {
+case 1034:
+set skillg1uchihamobs, skillg1uchihamobs + 1;
+dispbottom "Você ja matou "+skillg1uchihamobs+" Girino(s)";
+end;
+
+}
+}
+
+-	script	OnNPCKill_uchihag2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihag2 == 1){goto uchiha_g2;} else {end;}
+
+uchiha_g2:
+switch (killedrid) {
+case 1005:
+set skillg2uchihamobs, skillg2uchihamobs + 1;
+dispbottom "Você ja matou "+skillg2uchihamobs+" Morcego(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihac1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihac1 == 1){goto uchiha_c1;} else {end;}
+
+uchiha_c1:
+switch (killedrid) {
+case 1209:
+set skillc1uchihamobs, skillc1uchihamobs + 1;
+dispbottom "Você ja matou "+skillc1uchihamobs+" Ratasana(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihac2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihac2 == 1){goto uchiha_c2;} else {end;}
+
+uchiha_c2:
+switch (killedrid) {
+case 1053:
+set skillc2uchihamobs, skillc2uchihamobs + 1;
+dispbottom "Você ja matou "+skillc2uchihamobs+" Barata(s) Macho";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihac3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihac3 == 1){goto uchiha_c3;} else {end;}
+
+uchiha_c3:
+switch (killedrid) {
+case 1169:
+set skillc3uchihamobs, skillc3uchihamobs + 1;
+dispbottom "Você ja matou "+skillc3uchihamobs+" Operário(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihac4	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihac4 == 1){goto uchiha_c4;} else {end;}
+
+uchiha_c4:
+switch (killedrid) {
+case 1211:
+set skillc4uchihamobs, skillc4uchihamobs + 1;
+dispbottom "Você ja matou "+skillc4uchihamobs+" Escaravelho(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihaj1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihaj1 == 1){goto uchiha_j1;} else {end;}
+
+uchiha_j1:
+switch (killedrid) {
+case 1632:
+set skillj1uchihamobs, skillj1uchihamobs + 1;
+dispbottom "Você ja matou "+skillj1uchihamobs+" Gremlin(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihaj2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihaj2 == 1){goto uchiha_j2;} else {end;}
+
+uchiha_j2:
+switch (killedrid) {
+case 1058:
+set skillj2uchihamobs, skillj2uchihamobs + 1;
+dispbottom "Você ja matou "+skillj2uchihamobs+" Gafanhoto(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihaj3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihaj3 == 1){goto uchiha_j3;} else {end;}
+
+uchiha_j3:
+switch (killedrid) {
+case 1315:
+set skillj3uchihamobs, skillj3uchihamobs + 1;
+dispbottom "Você ja matou "+skillj3uchihamobs+" Ninkame(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihaj4	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihaj4 == 1){goto uchiha_j4;} else {end;}
+
+uchiha_j4:
+switch (killedrid) {
+case 1177:
+set skillj4uchihamobs, skillj4uchihamobs + 1;
+dispbottom "Você ja matou "+skillj4uchihamobs+" Doki(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihaj5	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihaj5 == 1){goto uchiha_j5;} else {end;}
+
+uchiha_j5:
+switch (killedrid) {
+case 1831:
+set skillj5uchihamobs, skillj5uchihamobs + 1;
+dispbottom "Você ja matou "+skillj5uchihamobs+" Camaleon(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_uchihaj6	-1,{
+
+OnNPCKillEvent:
+
+if(quest_uchihaj6 == 1){goto uchiha_j6;} else {end;}
+
+uchiha_j6:
+switch (killedrid) {
+case 1634:
+set skillj6uchihamobs, skillj6uchihamobs + 1;
+dispbottom "Você ja matou "+skillj6uchihamobs+" Jounin(s)";
+
+end;
+
+
+}
+}
+
+morocc_in,83,99,4	duplicate(uch)	Mestre Uchiha#1	734
+payon_in01,6,45,4	duplicate(uch)	Mestre Uchiha#2	734
+prt_monk,229,249,4	duplicate(uch)	Mestre Uchiha#3	734

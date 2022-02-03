@@ -1,0 +1,111 @@
+-	script	on_PC_UseSkillaban	-1,{
+    end;
+//When a Character uses a skill
+
+//Jubaku
+
+onPcUseSkillEvent:
+
+           if(lskillid == 328) {
+
+
+if (getskilllv(328) == 1) {
+
+if (Jubaku != 1) {end;}
+if (skill328 >= 50) {skill 328,2,0; set skill328,0; dispbottom "[Sys] Level up"; end; }
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 1: "+skill328+" de 50";
+
+end;
+
+}
+
+if (getskilllv(328) == 2) {
+if (Jubaku != 1) {end;}
+if (skill328 >= 100) {skill 328,3,0; set skill328,0; dispbottom "[Sys] Level up"; end;}
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 2: "+skill328+" de 100";
+
+end;
+
+}
+
+if (getskilllv(328) == 3) {
+
+if (Jubaku != 1) {end;}
+if (skill328 >= 150) {skill 328,4,0; set skill328,0; dispbottom "[Sys] Level up"; end;}
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 3: "+skill328+" de 150";
+
+end;
+
+}
+
+if (getskilllv(328) == 4) {
+if (Jubaku != 1) {end;}
+if (skill328 >= 200) {skill 328,5,0; set skill328,0; dispbottom "[Sys] Level up"; end;}
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 4: "+skill328+" de 200";
+
+end;
+
+}
+
+if (getskilllv(328) == 5) {
+if (Jubaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill328 >= 250) {skill 328,6,0; set skill328,0; dispbottom "[Sys] Level up"; end;}
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 5: "+skill328+" de 250";
+
+end;
+
+}
+
+if (getskilllv(328) == 6) {
+if (Jubaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill328 >= 300) {skill 328,7,0; set skill328,0; dispbottom "[Sys] Level up"; end;}
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 6: "+skill328+" de 300";
+
+end;
+
+}
+
+if (getskilllv(328) == 7) {
+if (Jubaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill328 >= 500) {skill 328,8,0; set skill328,0; dispbottom "[Sys] Level up"; end;}
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 7: "+skill328+" de 500";
+
+end;
+
+}
+
+if (getskilllv(328) == 8) {
+if (Jubaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill328 >= 700) {skill 328,9,0; set skill328,0; dispbottom "[Sys] Level up"; end;}
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 8: "+skill328+" de 700";
+
+end;
+
+}
+
+if (getskilllv(328) == 9) {
+if (Jubaku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill328 >= 1000) {skill 328,10,0; set skill328,0; dispbottom "[Sys] Level up"; end;}
+set skill328,skill328 +1;
+dispbottom "[Jutsu level] Jubaku Satsu level 9: "+skill328+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

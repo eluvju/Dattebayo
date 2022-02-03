@@ -1,0 +1,71 @@
+sunagakure,227,128,0	script	treino#14	45,1,1,{
+if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#suna == 1)
+warp "academia", 102,11;
+end;
+}
+
+sunagakure,168,125,4	script	VilaSuna#01	45,1,1,{
+if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#suna == 1)
+warp "bibli_02", 52,37;
+end;
+}
+bibli_02,52,34,0	warp	VilaSuna#02	2,2,sunagakure,168,122
+
+sunagakure,221,260,4	script	VilaSuna#03	45,1,1,{
+if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#suna == 1)
+warp "hospital2", 101,14;
+end;
+}
+hospital2,101,10,0	script	VilaSuna#04	45,1,1,{
+
+	mes "Escolha qual saida deseja.";
+	switch(select("- Porta do Hospital:- Sala do Kage:- Viajante Ninja:- Saida Aleatória")) { 
+		case 1:
+			warp "sunagakure", 222,257; end;
+		case 2:
+			warp "sunagakure", 200,188; end;
+		case 3:
+			warp "sunagakure", 199,71; end;
+		case 4:
+			warp "sunagakure", 0,0; end;
+	}
+}
+
+sunagakure,200,191,4	script	VilaSuna#05	45,1,1,{
+if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#suna == 1)
+warp "salakage2", 31,5;
+end;
+}
+salakage2,31,2,0	warp	VilaSuna#06	2,2,sunagakure,200,188
+
+sunagakure,170,210,4	script	VilaSuna#07	45,1,1,{
+if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#suna == 1)
+warp "biju_pri2", 18,20;
+end;
+}
+biju_pri2,18,15,0	warp	VilaSuna#08	2,2,sunagakure,167,212
+
+sunagakure,300,212,4	script	VilaSuna#09	45,1,1,{
+if (#suna != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#suna == 1)
+warp "ama_in01", 174,123;
+end;
+}moc_fild12,159,380,4	script	Entrada pra Suna	45,2,2,{	if(#suna == 1) { goto entrar; }	if($EEinfo[1] == 1) { end; }	entrar:	warp "sunagakure", 199,65;	if(countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1){announce strcharinfo(0)+" da Akatsuki acaba de invadir Sunagakure.",bc_blue|bc_all; end;}	if(nukenin == 1) {announce strcharinfo(0)+" da Nukenin acaba de Invadir Sunagakure.",bc_blue|bc_all; end;}	if(#konoha == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Konoha acaba de Entrar em Sunagakure.",bc_blue|bc_all; end;}	if(#nevoa == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de Entrar em Sunagakure.",bc_blue|bc_all; end;}	if(#nuvem == 1 ) {announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de Entrar em Sunagakure.",bc_blue|bc_all; end;}	end;}sunagakure,199,61,0	script	suna#1	45,2,2,{	warp "moc_fild12",159,375;	end;}
+ama_in01,174,120,0	warp	VilaSuna#10	2,2,sunagakure,297,212

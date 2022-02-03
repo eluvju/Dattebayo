@@ -1,0 +1,71 @@
+novice,51,50,5	script	Iruka Umino	426,{
+
+
+mes "Olá caro shinobi, como vai? Este é o Naruto Earth RPG, um mundo de ação e aventura onde você poderá trilhar o seu caminho ninja.";
+next;
+mes "Aqui você poderá crescer, alcançar o nível mais alto, adquirir habilidades que moldará o seu estilo ninja, aqui você poderá recriar o seu personagem favorito de Naruto ou criar um de acordo com seu próprio estilo, dominar as artes do ninjutsu, taijutsu, medicina e até mesmo velocidade.";
+next;
+mes "Vamos as explicações";
+next;
+mes "Para aumentar seu nível, é preciso matar mobs localizados nos mapas fora de sua vila, cuidado para não se ir muito longe, pois criaturas incrivelmente fortes vagam as terras distantes...";
+mes "Em seu Alt+A é possível distribuir pontos para aumentar suas habilidades, de acordo com sua build.";
+mes "No Alt+Q poderá checar seus equipamentos e hats, afinal nada melhor que ter estilo não é mesmo?!";
+mes "A sua janela de missões se encontra no Alt+U, onde poderá ver as missões adquiridas com o kage de sua vila.";
+mes "Para chegar seus itens é preciso abrir a sua mochila, que se encontra no atalho Alt+E.";
+mes "Boa sorte shinobi! Treine muito, e se torne o Ninja mais Forte!";
+next;
+mes "Vamos la.";
+warp "aldeg_cas04",132,203;
+set title$, "Rank E";
+close;
+
+}
+
+biblioteca,69,21,5	script	Shizune	434,{
+
+
+
+npctalk "Seja Bem-vindo a Biblioteca";
+close;
+
+}
+
+1@ecl,53,85,5	script	Tsunade	423,{
+
+
+
+npctalk "Seja Bem-vindo a Sala do Hokage";
+close;
+
+}
+
+2@ecl,53,85,5	script	Mei Terumi	970,{
+
+
+
+npctalk "Seja Bem-vindo a Sala da Mizukage";
+close;
+
+}
+
+3@ecl,53,84,5	script	A	870,{
+
+
+
+npctalk "Seja Bem-vindo a Sala do Raikage";
+close;
+
+}
+
+//============== MAP FLAG ===============
+// PvP
+1@ecl	mapflag	pvp	off
+2@ecl	mapflag	pvp	off
+3@ecl	mapflag	pvp	off
+biblioteca	mapflag	pvp	off
+sec_in01	mapflag	pvp	off
+inicio	mapflag	pvp	off
+inicio2	mapflag	pvp	off
+inicio3	mapflag	pvp	off
+payon_in01	mapflag	pvp	off
+job_monk	mapflag	pvp	off

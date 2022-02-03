@@ -1,0 +1,13 @@
+-	script	correcaosuiton4	-1,{
+
+OnPCLoginEvent:
+
+if(PoDiamante == 1) {
+set PoDiamante,0; 
+skill 2447,0,3; 
+set Daibakufu,1; 
+skill 86,1,3; 
+dispbottom "Você habilitou a habilidade Suiton Daibakufu no Jutsu!";
+end;
+	}
+}

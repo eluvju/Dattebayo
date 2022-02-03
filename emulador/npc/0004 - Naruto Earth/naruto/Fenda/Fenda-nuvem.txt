@@ -1,0 +1,29 @@
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+pay_fild09,172,203,4	script	FENDA	723,{
+	next;
+	switch(select("Acesso a dungeon nuvem"))
+	{
+	case 1:
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			close;
+		}
+		if(countitem(7218) >= 1)
+		{
+			delitem 7218,1;
+			warp "beach_dun",268,67;
+			close;
+		}
+		break;
+	case 2:
+		close;
+	}
+	close;
+}

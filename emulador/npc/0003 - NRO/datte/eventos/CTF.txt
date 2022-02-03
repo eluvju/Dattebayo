@@ -1,0 +1,467 @@
+//Author		Goddameit
+//Version		2013/03/14
+//Web		http://bit.ly/Ja4udH
+guild_room,236,283,4	script	CTF-Reward	882,{
+//	getitem 607,1;
+//	warp "prontera",150,180;
+	end;
+}
+kakashi,78,142,4	script	CTF	882,{
+
+	if(!$CTF){
+	mes "O evento está fechado no momento.";
+	close;
+	}
+if(.game == 2){
+	for( set .j, 1; .j<getarraysize(.join_j1); set .j, .j + 1 ){
+		if(.join_j1[.j] == getcharid(3)){
+			mes "Vejo que sua partida está pendente. Vou le encaminhar imediatamente ao evento.";
+			close2;
+			leaveparty;
+		sleep2(1000);
+			enterparty .party1,9;
+			warp "prt_maze02",104,178;
+			end;		
+		}
+		if(.join_j2[.j] == getcharid(3)){
+			mes "Vejo que sua partida está pendente. Vou le encaminhar imediatamente ao evento.";
+			close2;
+			leaveparty;
+			sleep2(1000);
+			enterparty .party2,9;
+			warp "prt_maze02",105,18;
+			end;
+		}
+	}	
+}	
+		if(select("- Iniciar Evento","- Inscrição")==1)
+		{
+			if(.game){
+			mes "Já existe um CTF rodando.";
+			close;
+			end;
+			}
+			if(!$CTF){
+			mes "O evento está fechado no momento.";
+			close;
+			}
+			set .game,1;
+			announce "[CTF] Uma partida foi criada, a inscrição para os jogadores está aberta por dois minutos, corra para participar!",0;
+			set .join, 0;
+			set .ctf_tn1,0;
+			set .ctf_tn2,0;
+			set .ctf_tp1,0;
+			set .ctf_tp2,0;
+			set .game_time,gettimetick(2);
+			set .time, 1;
+			set .pos, 1;
+//			for( set .j, 1; .j<getarraysize(.join_ip$); set .j, .j + 1 )
+//				set .join_j1[.j], 0;
+//			for( set .j, 1; .j<getarraysize(.join_ip$); set .j, .j + 1 )
+//				set .join_j2[.j], 0;
+//			for( set .j, 1; .j<getarraysize(.join_ip$); set .j, .j + 1 )
+//				set .join_ip$[.j], 0;
+//			deletearray .join_j1;
+			deletearray .join_j2;
+			deletearray .join_ip$;
+			Initnpctimer;
+			close;
+		}
+	function	c_flagon	{
+		while(set(.@i,.@i+1)<=6)
+		{
+			if(getd("$@flag"+.@i+"_a")==getarg(0))
+				return .@i;
+		}
+		return 0;
+	}
+	function	bx	{
+		switch(getarg(0))
+		{
+			case 1:	return 90;
+			case 2:	return 97;
+			case 3:	return 104;
+			case 4:	return 91;
+			case 5:	return 98;
+			case 6:	return 105;
+		}
+	}
+	function	by	{
+		switch(getarg(0))
+		{
+			case 1:
+			case 2:
+			case 3:	return 178;
+			case 4:
+			case 5:
+			case 6:	return 18;
+		}
+	}
+	if(!.game)
+	{
+		mes "[CTF]";
+		mes "Não tem uma partida iniciando neste momento.";
+		close;
+	}
+	if(.game==2)
+	{
+		mes "[CTF]";		
+		mes "Uma partida está para iniciar";
+		close;
+	}
+	select("- Registrar");
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar nesse evento é 999"; close;}
+	if(.join > 29) {mes "O evento atingiu sua cota máxima de 30 inscrições."; close;}
+	Query_SQL "SELECT `last_ip` FROM `login` WHERE `account_id`='"+getcharid(3)+"'",.@myip$;
+	if(.join > 0){
+	for( set .j, 1; .j<getarraysize(.join_ip$) && .@myip$ != .join_ip$[.j]; set .j, .j + 1 );
+	if(.j && .j < getarraysize(.join_ip$)) {mes "Já há um registro com este IP."; close;}
+	}
+
+	if(.join > 29){
+	mes "Desculpe. O evento atingiu sua cota máxima de 30 inscrições.";
+	close;
+	}else{
+	mes "Registro concluído";	
+	}
+	set .join_ip$[.join+1], .@myip$;
+	set @ctf_tid,.time==1?1:2;
+	
+	if(@ctf_tid == 1)
+	set .join_j1[.pos],getcharid(3);
+	if(@ctf_tid == 2)
+	set .join_j2[.pos],getcharid(3);
+	
+	if(.time == 1){
+	set .time,2;
+	}else{
+	set .time,1;
+	set .pos, .pos + 1;
+	}
+	
+	set .join,.join+1;
+	set @SPUTIMER,.game_time;
+	set @CTF,0;
+	close;
+
+OnMon1230:
+OnTue1940:
+OnWed1230:
+OnThu1940:
+OnSat2110:
+OnSun1230:
+announce "[CTF] O Capture the flag está aberto, fale com o npc para criar uma partida",0;
+set $CTF,1;	
+end;
+
+OnMon1330:	
+OnTue2040:
+OnWed1330:
+OnThu2040:
+OnSat2210:
+OnSun1330:
+announce "[CTF] O Capture the flag está encerrado, não será possível criar novas partidas",0;
+set $CTF,0;	
+end;
+
+OnTimer900000:
+	set .w,0;
+	for(set .@io,1;.@io<=.pos;set .@io,.@io+1)
+		{
+			if(!.join_j1[.@io]) continue;
+			if(attachrid(.join_j1[.@io]))
+			{
+				leaveparty;
+			}
+		}
+	for(set .@io,1;.@io<=.pos;set .@io,.@io+1)
+		{
+			if(!.join_j2[.@io]) continue;
+			if(attachrid(.join_j2[.@io]))
+			{
+				leaveparty;
+			}
+		}
+	if(.ctf_tp1!=.ctf_tp2)
+	{
+		announce "[CTF] A Equipe "+set(.w,(.ctf_tp1>.ctf_tp2?1:2))+" venceu.",0;
+		for(set .@io,1;.@io<=.pos;set .@io,.@io+1)
+		{
+			if(!.join_j1[.@io]) continue;
+			if(attachrid(.join_j1[.@io]))
+			{
+				leaveparty;
+				getmapxy(@cm$,@cx,@cy,0);
+//				announce ""+@SPUTIMER,0;
+				if(@cm$=="prt_maze02")
+				{
+					deltimer "FlagTimer::OnTimerStart";
+//					callfunc "CTF_LimitSkillWhenCareFlag",0;
+					if(.w==@ctf_tid)
+					{
+						getitem 664, 10;
+						warp "kakashi",86,144;
+						//warp "guild_room",236,283;
+					}else
+						warp "kakashi",86,144;
+				}
+				set .join_j1[.@io],0;
+			}
+		}
+		for(set .@io,1;.@io<=.pos;set .@io,.@io+1)
+		{
+			if(!.join_j2[.@io]) continue;
+			if(attachrid(.join_j2[.@io]))
+			{
+				leaveparty;
+				getmapxy(@cm$,@cx,@cy,0);
+//				announce ""+@SPUTIMER,0;
+				if(@cm$=="prt_maze02")
+				{
+					deltimer "FlagTimer::OnTimerStart";
+//					callfunc "CTF_LimitSkillWhenCareFlag",0;
+					if(.w==@ctf_tid)
+					{
+						getitem 664, 10;
+						warp "kakashi",86,144;
+						//warp "guild_room",236,283;
+					}else
+						warp "kakashi",86,144;
+				}
+				set .join_j2[.@io],0;
+			}
+		}
+		set .join,0;
+	}else{
+	announce "[CTF] Tivemos um empate!",0;
+	}
+	deleteparty(.party1);
+	deleteparty(.party2);
+	mapwarp "prt_maze02","kakashi",86,144;
+	announce "[CTF] Partida encerrada",0;
+	stopnpctimer;
+	stopnpctimer "CTF-Point#1";
+	stopnpctimer "CTF-Point#2";
+	set .ctf_tn1,0;
+	set .ctf_tn2,0;
+	set .ctf_tp1,0;
+	set .ctf_tp2,0;
+	set .join,0;
+	set .game,0;
+	set .game_time,0;
+	set .time, 0;
+	set .pos, 0;
+	for(set .@i,1;.@i<=6;set .@i,.@i+1)
+	{
+		hideoffnpc "Flag#"+.@i;
+		stopnpctimer "Flag#"+.@i;
+		setd "$@flag"+.@i+"_a",0;
+		movenpc "Flag#"+.@i,bx(.@i),by(.@i);
+		getmapxy(getvariableofnpc(.cm$,"Flag#"+.@i),getvariableofnpc(.cx,"Flag#"+.@i),getvariableofnpc(.cy,"Flag#"+.@i),1,"Flag#"+.@i);
+	}
+	sleep(10000);
+	mapwarp "prt_maze02","kakashi",86,144;	
+	end;
+OnTimer120000:
+	set .game,2;
+//	set .pname1$, "CTF1";
+//	set .pname2$, "CTF2";
+	set .party1, 0;
+	set .party2, 0;
+//	Query_SQL "SELECT `party_id` FROM `party` WHERE `name`='"+.pname1$+"'",.party1;
+//	Query_SQL "SELECT `party_id` FROM `party` WHERE `name`='"+.pname2$+"'",.party2;
+	if(.join<6) {announce "[CTF] O CTF foi cancelado por não ter a quantia mínima de jogadores!",0; end;}//add
+	setmapflag "prt_maze02",mf_pvp;
+	announce "[CTF] O CTF teve início!",0;
+	for(set .@io,0;.@io<=.pos;set .@io,.@io+1)
+	{
+		if(attachrid(.join_j1[.@io]))
+		{
+			leaveparty;
+			if (isequipped(2641)) {unequip 4;}
+			if (isequipped(2642)) {unequip 4;}
+			warp "prt_maze02",bx(@ctf_tid*3),by(@ctf_tid*3);
+			sleep2(1000);	
+			if(!.party1){
+			createparty("CTF1");
+			sleep2(1000);		
+			set .party1, getcharid(1);
+			}else{
+			enterparty .party1,9;
+			}
+		}
+		if(attachrid(.join_j2[.@io]))
+		{
+			leaveparty;
+			if (isequipped(2641)) {unequip 4;}
+			if (isequipped(2642)) {unequip 4;}
+			warp "prt_maze02",bx(@ctf_tid*3),by(@ctf_tid*3);
+			sleep2(1000);
+			if(!.party2){	
+			createparty("CTF2");
+			sleep2(1000);		
+			set .party2, getcharid(1);			
+			}else{
+			enterparty .party2,9;			
+			}
+		}
+	}
+	initnpctimer "CTF-Point#1";
+	initnpctimer "CTF-Point#2";
+	end;
+OnPCDieEvent:
+	getmapxy(@cm$,@cx,@cy,0);
+	if(@cm$!="prt_maze02"||.game!=2||!@ctf_tid)
+		end;
+	addtimer 5000,"CTF-Point#"+@ctf_tid+"::OnDie";
+OnPCEnd:
+OnPCLogoutEvent:
+	set @ctf_tu,0;
+	set @CTF,0;
+	if(set(.@i,c_flagon(getcharid(0))))
+	{
+		deltimer "FlagTimer::OnTimerStart";
+//		callfunc "CTF_LimitSkillWhenCareFlag",0;
+		getmapxy(.@cm$,.@cx,.@cy,0);
+		hideoffnpc "Flag#"+.@i;
+		stopnpctimer "Flag#"+.@i;
+		setd "$@flag"+.@i+"_a",0;
+		movenpc "Flag#"+.@i,.@cx,.@cy;
+		if(@ctf_xt&&@ctf_tid)
+		{
+			specialeffect2 666;
+			set @ctf_xt,0;
+			mapannounce "prt_maze02","[CTF] Equipe Número "+@ctf_tid+" recebeu 1 ponto",0;
+			setd ".ctf_tp"+@ctf_tid,getd(".ctf_tp"+@ctf_tid)+1;
+			mapannounce "prt_maze02","[Placar] Equipe Número 1: ["+.ctf_tp1+"]  |  Equipe Número 2: ["+.ctf_tp2+"]",0;
+			movenpc "Flag#"+.@i,bx(.@i),by(.@i);
+			getmapxy(getvariableofnpc(.cm$,"Flag#"+.@i),getvariableofnpc(.cx,"Flag#"+.@i),getvariableofnpc(.cy,"Flag#"+.@i),1,"Flag#"+.@i);
+		}
+		end;
+	}
+	set @ctf_xt,0;
+	end;
+}
+prt_maze02,90,178,4	script	Flag#1	722,{
+	if(getvariableofnpc(.game,"CTF")!=2||!@ctf_tid)
+		end;
+	function	bx	{
+		switch(getarg(0))
+		{
+			case 1:	return 90;
+			case 2:	return 97;
+			case 3:	return 104;
+			case 4:	return 91;
+			case 5:	return 98;
+			case 6:	return 105;
+		}
+	}
+	function	by	{
+		switch(getarg(0))
+		{
+			case 1:
+			case 2:
+			case 3:	return 178;
+			case 4:
+			case 5:
+			case 6:	return 18;
+		}
+	}
+	function	flag_tid	{
+		if(getarg(0)<4)
+			return 1;
+		else
+			return 2;
+	}
+	set .k,atoi(strnpcinfo(2));
+	if(@ctf_tid!=flag_tid(.k))
+	{
+		getmapxy(.cm$,.cx,.cy,1);
+		getmapxy(.@cm$,.@cx,.@cy,0);
+		if(pow(.cx-.@cx,2)>9||pow(.cy-.@cy,2)>9)
+		{
+			message strcharinfo(0),"A bandeira está muito longe!";
+			end;
+		}
+		if(@CTF)
+			end;
+		set @CTF,1;
+		setd "$@flag"+.k+"_a",getcharid(0);
+		hideonnpc strnpcinfo(0);
+		//atcommand "@speed 350";
+		mapannounce "prt_maze02","[CTF] O jogador "+strcharinfo(0)+" da equipe "+@ctf_tid+" pegou uma bandeira, detenham-no!",0;
+//		callfunc "CTF_LimitSkillWhenCareFlag",1;
+		addtimer 500,"FlagTimer::OnTimerStart";
+		end;
+	}else{
+		getmapxy(.@cm$,.@cx,.@cy,1);
+		if(.@cx==bx(.k)&&.@cy==by(.k))
+			end;
+//		callfunc "CTF_LimitSkillWhenCareFlag",0;
+		movenpc strnpcinfo(0),bx(.k),by(.k);
+		set @CTF,1;
+		end;
+	}
+}
+-	script	FlagTimer	-,{
+
+OnTimerStart:
+	set @ctf_tu,@ctf_tu+1;
+	set .@tmp,getvariableofnpc(.game_time,"CTF");
+	if(!@SPUTIMER||!.@tmp||.@tmp!=@SPUTIMER)
+		end;
+	if(@ctf_tu>600)
+	{
+//		unitskilluseid getcharid(3),173,1;
+		doevent "CTF::OnPCEnd";
+		end;
+	}
+	specialeffect2 589;
+	addtimer 500,"FlagTimer::OnTimerStart";
+	end;
+}
+
+prt_maze02,97,178,4	duplicate(Flag#1)	Flag#2	722
+prt_maze02,104,178,4	duplicate(Flag#1)	Flag#3	722
+prt_maze02,91,18,4	duplicate(Flag#1)	Flag#4	722
+prt_maze02,98,18,4	duplicate(Flag#1)	Flag#5	722
+prt_maze02,105,18,4	duplicate(Flag#1)	Flag#6	722
+
+prt_maze02,97,182,4	script	CTF-Point#1	111,3,3,{
+	end;
+
+OnDie:
+	warp "prt_maze02",@ctf_tid==1?97:98,@ctf_tid==1?182:15;
+	end;
+OnTouch:
+	if(getvariableofnpc(.game,"CTF")!=2||!@ctf_tid)
+		end;
+	if(@ctf_tid!=atoi(strnpcinfo(2)))
+		end;
+	set @ctf_xt,1;
+	doevent "CTF::OnPCEnd";
+	end;
+
+OnTimer500:
+	specialeffect 225;
+	sleep(500);
+	specialeffect 236;
+	sleep(500);
+	specialeffect 237;
+	sleep(500);
+	specialeffect 238;
+	initnpctimer;
+	end;
+}
+prt_maze02,98,15,4	duplicate(CTF-Point#1)	CTF-Point#2	45,3,3
+prt_maze02	mapflag	nowarpto
+prt_maze02	mapflag	nosave
+prt_maze02	mapflag	nobranch
+prt_maze02	mapflag	nopenalty
+prt_maze02	mapflag	noreturn
+prt_maze02	mapflag	nowarp
+prt_maze02	mapflag	noicewall
+prt_maze02	mapflag	nomemo
+prt_maze02	mapflag	gvg
+prt_maze02	mapflag	pvp_noguild
+prt_maze02	mapflag	ctf

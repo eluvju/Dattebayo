@@ -1,0 +1,269 @@
+-	script	Evento#AM	AkatsukiManager#AM -1,{
+//$AMinfo[1] = aldeias      $AMinfo[2] = Bijuus
+OnClock2000:
+if(gettime(4) == 0){
+set $AMinfo[2], 0;
+set $AMinfo[3], 0;
+}
+end;
+
+OnInit:
+set $nikupass, 123;
+end;
+}
+
+//===== Script: ==============================================
+in_hunter,103,94,4	script	Akatsuki Manager	882,{
+
+if(getgmlevel() < 5) end;
+
+// Nome do npc
+set .npc$,"^800000[Akatsuki Manager]^000000";
+
+mes .npc$;
+for( set .i, 1; .i < 11; set .i, .i + 1 ){
+mes "["+.i+"] "+$AMinfo$[.i+10];
+}
+
+if(select("Adicionar Akatsuki:Remover Akatsuki") == 1){
+next;
+mes .npc$;
+mes "Digíte a senha de segurança:";
+input .@nikupass;
+if($nikupass != .@nikupass) close;
+next;
+mes .npc$;
+mes "Digíte em qual slot deseja adicionar o novo Akatsuki.";
+input .@new;
+
+if(.@new < 1 || .@new > 10) close;
+
+next;
+mes .npc$;
+mes "Digíte o nome do novo Akatsuki.";
+input .@new$;
+mes .npc$;
+mes "Gostaria de substituir o Akatsuki "+$AMinfo$[.@new+10]+" pelo "+.@new$+"?";
+if(select("Sim:Não") == 2) close;
+set $AMinfo$[.@new+10], .@new$;
+
+query_sql "SELECT `char_id` FROM `char` WHERE `name`='"+.@new$+"'", .@newid;
+if(.@newid == 0) close;
+
+set $AMinfo[.@new+10], .@newid;
+next;
+mes .npc$;
+mes "Substituição completa.";
+close;
+end;
+}else{ // remover
+next;
+mes .npc$;
+mes "Digíte o slot do membro que deseja remover:";
+input .@old;
+if(.@old < 1 || .@old > 10) close;
+next;
+mes "Gostaria de remover o Akatsuki "+$AMinfo$[.@old+10]+"?";
+if(select("Sim:Não") == 2) close;
+set $AMinfo[.@old+10], 0;
+set $AMinfo$[.@old+10], 0;
+next;
+mes .npc$;
+mes "Remoção completa.";
+close;
+end;
+}
+end;
+}
+
+
+//===== Script: ==============================================
+akatsuki,158,198,4	script	Premiação Akatsuki	882,{
+
+if(getgmlevel() > 49){
+mes .npc$;
+mes "Gostaria de resetar os pontos de aldeia?";
+if(select("Não:Sim") == 2){
+next;
+mes .npc$;
+mes "Você tem certeza que quer resetar os pontos de aldeia?";
+if(select("Não:Sim") == 2){
+for( set .@rst, 21; .@rst < 31; set .@rst, .@rst + 1 ){
+set $AMinfo[.@rst], 0;
+}
+close;
+}else{
+close;
+}
+}else{
+close;
+}
+}
+
+// Nome do npc
+set .npc$,"^800000[Premiação Akatsuki]^000000";
+setarray .AMprizes[0],749,12937,7023,7611,1008,1014,7442,7169,724,7513,7524,7481,7027;
+setarray .AMchakras[1],19174,19175,19176,19177,19178,19179,19180,19181,19182;
+set .@gdm$, getguildmaster(9); //Akat Master Name
+for( set .@id, 11; .@id < 21; set .@id, .@id + 1 ){
+if($AMinfo[.@id] == getcharid(0)) break;
+}
+
+if(.@id > 20 || countitem(19020) < 1 && countitem(19195) < 1 && countitem(19196) < 1 && countitem(19197) < 1) end;
+mes .npc$;
+mes "Em qual premiação está interessado?";
+mes "Pontos Aldeia: "+$AMinfo[.@id+10];
+mes "Pontos Bijuu Individual: "+$AMinfo[.@id+20];
+mes "Pontos Bijuu Akatsuki: "+$AMinfo[2];
+switch(select("Aldeia:Bijuu:Fuuin Bijuu:Selar Chakra")){
+case 1:
+next;
+mes .npc$;
+mes "Quanto pontos de aldeias gostaria de extrair?";
+input .@ptald;
+if(.@ptald > $AMinfo[.@id+10] || .@ptald == 0){
+mes .npc$;
+mes "Você não possui pontos de Aldeia suficientes.";
+close;
+end;
+}
+set .@erva, 5*.@ptald;
+set .@caixa, 2*.@ptald;
+announce "[Premio Akatsuki]: "+strcharinfo(0)+" recebeu "+.@erva+" Ervas Medicinais, e "+.@caixa+" Caixas Supresa.",0;
+set $AMinfo[.@id+10], $AMinfo[.@id+10] - .@ptald;
+getitem .AMprizes[1], 5*.@ptald;
+getitem .AMprizes[2], 2*.@ptald;
+close;
+end;
+
+case 2:
+next;
+mes .npc$;
+mes "Em qual prêmio estaria interessado?";
+switch(select("Lâmina:Máscara:Colar:Mandíbula:Selo:Bagua:Rubi:Relógio:Esfera:Livro:Chave")){
+case 1:
+set .@prize, 3;
+break;
+case 2:
+set .@prize, 4;
+break;
+case 3:
+set .@prize, 5;
+break;
+case 4:
+set .@prize, 6;
+break;
+case 5:
+set .@prize, 7;
+break;
+case 6:
+set .@prize, 8;
+break;
+case 7:
+set .@prize, 9;
+break;
+case 8:
+set .@prize, 10;
+break;
+case 9:
+set .@prize, 11;
+break;
+case 10:
+set .@prize, 12;
+break;
+case 11:
+set .@prize, 13;
+break;
+}
+next;
+mes .npc$;
+mes "Quanto pontos de bijuu gostaria de extrair?";
+input .@ptbij;
+if(.@ptbij > $AMinfo[.@id+20] || .@ptbij == 0){
+mes .npc$;
+mes "Você não possui pontos de Bijuu suficientes.";
+close;
+end;
+}
+
+announce "[Premio Akatsuki]: "+strcharinfo(0)+" recebeu "+.@ptbij+"x "+getitemname(.AMprizes[.@prize])+".",0;
+set $AMinfo[.@id+20], $AMinfo[.@id+20] - .@ptbij;
+getitem .AMprizes[.@prize], .@ptbij;
+close;
+end;
+
+case 3:
+next;
+if(strcharinfo(0) != .@gdm$) {
+	mes .npc$;
+	mes "Apenas do Líder da Akatsuki pode usar esta opção.";
+	close;
+	end;
+}
+
+if($AMinfo[2] < 3 || $AMinfo[3] > 0) {
+	mes .npc$;
+	mes "A organização deve ter capturado pelo menos 3 Bijuus para retirar o Fuin no Shoo, e pode pegar apenas 1 por semana.";
+	close;
+	end;
+}
+
+announce "[Premio Akatsuki]: "+strcharinfo(0)+" recebeu 1x "+getitemname(.AMprizes[0])+" pela captura tripla de Bijus, da Akatsuki.",0;
+getitem .AMprizes[0], 1;
+set $AMinfo[3], 1;
+close;
+end;
+
+case 4:
+next;
+for( set .@i, 1; .@i < 11; set .@i, .@i + 1 ){
+if(countitem(.AMchakras[.@i]) > 0) break;
+}
+if(.@i > 9) {
+mes .npc$;
+mes "Você não possui nenhum Chakra para selar.";
+close;
+end;
+}
+delitem .AMchakras[.@i], 1;
+set $AMinfo[2], $AMinfo[2] + 1;
+for( set .@i, 31; .@i < 41; set .@i, .@i + 1 ){
+set $AMinfo[.@i], $AMinfo[.@i]+2;
+}
+mes .npc$;
+mes "Chakra selado com sucesso.";
+close;
+end;
+}
+end;
+}
+
+
+
+
+//Add ao script.c para pegar o id de um indivíduo através do seu name. [Brunno Thadeu]
+//BUILDIN_FUNC(getidcharname)
+//{
+//	const char* name = script_getstr(st,2);	
+//	struct map_session_data* dstsd = map_nick2sd(name);
+//	if (!dstsd) {
+//		script_pushint(st,0);
+//		return 0;
+//	}
+//	script_pushint(st,dstsd->status.char_id);
+//	return 0;
+//}
+
+//Aldeia
+//if(getcharid(2) == 9){
+//for( set .id, 21; .id < 31; set .id, .id + 1 ){
+//set $AMinfo[.id], $AMinfo[.id] + 1;
+//}
+//}
+
+//Bijuu
+//if(getcharid(2) == 9){
+//for( set .id, 31; .id < 41; set .id, .id + 1 ){
+//set $AMinfo[.id], $AMinfo[.id] + 2;
+//}
+//}

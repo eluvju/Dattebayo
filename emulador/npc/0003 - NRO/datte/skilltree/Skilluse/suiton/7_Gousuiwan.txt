@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkills07	-1,{
+    end;
+//When a Character uses a skill
+
+//Gousuiwan
+
+onPcUseSkillEvent:
+
+           if(lskillid == 538) {
+
+
+if (getskilllv(538) == 1) {
+
+if (Gousuiwan != 1) {end;}
+if (skill538 >= 50) {skill 538,2,0; set skill538,0; dispbottom "[Sys] Level up"; end; }
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 1: "+skill538+" de 50";
+
+end;
+
+}
+
+if (getskilllv(538) == 2) {
+if (Gousuiwan != 1) {end;}
+if (skill538 >= 100) {skill 538,3,0; set skill538,0; dispbottom "[Sys] Level up"; end;}
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 2: "+skill538+" de 100";
+
+end;
+
+}
+
+if (getskilllv(538) == 3) {
+
+if (nin_intermediario != 1) {end;}
+if (skill538 >= 150) {skill 538,4,0; set skill538,0; dispbottom "[Sys] Level up"; end;}
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 3: "+skill538+" de 150";
+
+end;
+
+}
+
+if (getskilllv(538) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill538 >= 200) {skill 538,5,0; set skill538,0; dispbottom "[Sys] Level up"; end;}
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 4: "+skill538+" de 200";
+
+end;
+
+}
+
+if (getskilllv(538) == 5) {
+if (nin_avan != 1) {end;}
+if (skill538 >= 250) {skill 538,6,0; set skill538,0; dispbottom "[Sys] Level up"; end;}
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 5: "+skill538+" de 250";
+
+end;
+
+}
+
+if (getskilllv(538) == 6) {
+if (nin_avan != 1) {end;}
+if (skill538 >= 300) {skill 538,7,0; set skill538,0; dispbottom "[Sys] Level up"; end;}
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 6: "+skill538+" de 300";
+
+end;
+
+}
+
+if (getskilllv(538) == 7) {
+if (nin_avan != 1) {end;}
+if (skill538 >= 500) {skill 538,8,0; set skill538,0; dispbottom "[Sys] Level up"; end;}
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 7: "+skill538+" de 500";
+
+end;
+
+}
+
+if (getskilllv(538) == 8) {
+if (nin_avan != 1) {end;}
+if (skill538 >= 700) {skill 538,9,0; set skill538,0; dispbottom "[Sys] Level up"; end;}
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 8: "+skill538+" de 700";
+
+end;
+
+}
+
+if (getskilllv(538) == 9) {
+if (nin_avan != 1) {end;}
+if (skill538 >= 1000) {skill 538,10,0; set skill538,0; dispbottom "[Sys] Level up"; end;}
+set skill538,skill538 +1;
+dispbottom "[Jutsu level] Suiton Gousuiwan level 9: "+skill538+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

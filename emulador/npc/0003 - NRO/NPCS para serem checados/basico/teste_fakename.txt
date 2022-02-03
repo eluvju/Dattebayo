@@ -1,0 +1,13 @@
+-	script	testefake	-1,{
+
+OnNPCKillEvent:
+	if(callfunc("Has title",",omg",getcharid(0)) || killedrid!=1031) end; // Check if the player kills a baphomet / already has the title
+	set baphomet_count,baphomet_count+1;
+	//dispbottom "Você já matou "+baphomet_count+"!";
+	if(baphomet_count<1) end;
+	if(!callfunc("Add a player",",omg",strcharinfo(0))) //
+		dispbottom "You achieved : Baphomets suck. You acquired a new title : "+ strcharinfo(0) +", the Baphomet King.";
+	else
+		debugmes "Incorrect title name (, the Baphomet King).";
+
+}

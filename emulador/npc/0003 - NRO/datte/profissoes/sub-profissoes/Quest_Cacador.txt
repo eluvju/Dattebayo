@@ -1,0 +1,69 @@
+konoha3,282,215,5	script	Caçador::pro_hunt	59,{
+
+if (jatemsub == 1) goto L_no;
+if (cacador == 1) goto L_temprofissao;
+if (checkquest(2030) == 1) goto L_go;
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá, você parece bem corajoso e forte também, não gostaria de se tornar um Caçador?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Caçador
+//========================================================================
+
+L_SS:
+next;
+mes "Muito bem, preciso que você faça algumas tarefas para mim e em troca lhe ensinarei tudo que é preciso para ser um caçador.";
+next;
+mes "Aqui está a lista de tarefas:";
+next;
+mes "- Obter 200x Rabo de cobra."; //(Id: 934)
+mes "- Obter 70x Pele de sapo."; //(Id: 7155)
+mes "- Obter 10x Plumas de Ave."; //(id: 916)
+mes "- Obter 1x Pedra filosofal."; //(Id: 12040)
+mes "- Matar 100x Nidachou"; //(Id: 1036)
+setquest 2030;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2030,hunting) != 2) {mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(934) < 200) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7155) < 70) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(916) < 10) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(12040) < 1) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Hmm, parece que você está determinado a se tornar um caçador mesmo! Ótimo, aqui está uma Faca de Caça pra você começar a extrair a pele de alguns animais.";
+next;
+mes "Parabéns, agora você é um Caçador!";
+completequest 2030;
+delitem 934,200;
+delitem 7155,70;
+delitem 916,10;
+delitem 12040,1;
+getitem 13021,1;
+getitem 2285,1;
+set cacador,1;
+set jatemsub,1;
+announce "[Profissão] "+strcharinfo(0)+" completou a quest de Caçador",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Olá! O que quer por aqui?";
+menu "Nada",L_no,"Quero receber outra faca de caça",faca;
+
+faca:
+if (countitem(13021) >= 1) {mes "Você não precisa de outra faca"; close;}
+mes "Aqui está";
+getitem 13021,1;
+close;
+
+}
+
+sunagakure,300,248,5	duplicate(pro_hunt)	Caçador#1	59,{
+kiri,285,372,5	duplicate(pro_hunt)	Caçador#2	59,{
+nuvem,71,245,5	duplicate(pro_hunt)	Caçador#3	59,{

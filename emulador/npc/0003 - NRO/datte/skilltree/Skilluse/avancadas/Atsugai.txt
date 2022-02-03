@@ -1,0 +1,77 @@
+-	script	Usef_atsugai	-1,{
+    end;
+//When a Character uses a skill
+
+//f_atsugai
+
+onPcUseSkillEvent:
+
+           if(lskillid == 400) {
+
+
+if (getskilllv(400) == 1) {
+
+if (f_atsugai != 1) {end;}
+if (skill400 >= 50) {skill 400,2,0; set skill400,0; dispbottom "[Sys] Level up"; end; }
+set skill400,skill400 +1;
+dispbottom "[Jutsu level] Fuuton Atsugai level 1: "+skill400+" de 50";
+
+end;
+
+}
+
+if (getskilllv(400) == 2) {
+if (f_atsugai != 1) {end;}
+if (skill400 >= 100) {skill 400,3,0; set skill400,0; dispbottom "[Sys] Level up"; end;}
+set skill400,skill400 +1;
+dispbottom "[Jutsu level] Fuuton Atsugai level 2: "+skill400+" de 100";
+
+end;
+
+}
+
+if (getskilllv(400) == 3) {
+
+if (f_atsugai != 1) {end;}
+if (skill400 >= 150) {skill 400,4,0; set skill400,0; dispbottom "[Sys] Level up"; end;}
+set skill400,skill400 +1;
+dispbottom "[Jutsu level] Fuuton Atsugai level 3: "+skill400+" de 150";
+
+end;
+
+}
+
+if (getskilllv(400) == 4) {
+if (f_atsugai != 1) {end;}
+if (skill400 >= 200) {skill 400,5,0; set skill400,0; dispbottom "[Sys] Level up"; end;}
+set skill400,skill400 +1;
+dispbottom "[Jutsu level] Fuuton Atsugai level 4: "+skill400+" de 200";
+
+end;
+
+}
+
+if (getskilllv(400) == 5) {
+if (f_atsugai != 1) {end;}
+if (skill400 >= 250) {skill 400,6,0; set skill400,0; dispbottom "[Sys] Level up"; end;}
+set skill400,skill400 +1;
+dispbottom "[Jutsu level] Fuuton Atsugai level 5: "+skill400+" de 250";
+
+end;
+
+}
+
+if (getskilllv(400) == 6) {
+if (f_atsugai != 1) {end;}
+if (skill400 >= 300) {skill 400,7,0; set skill400,0; dispbottom "[Sys] Level up"; end;}
+set skill400,skill400 +1;
+dispbottom "[Jutsu level] Fuuton Atsugai level 6: "+skill400+" de 300";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

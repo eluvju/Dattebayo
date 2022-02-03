@@ -1,0 +1,106 @@
+-	script	fufuken	-1,{
+    end;
+//When a Character uses a skill
+
+//fufuken
+
+onPcUseSkillEvent:
+
+           if(lskillid == 673) {
+
+
+if (getskilllv(673) == 1) {
+
+if (fufuken != 1) {end;}
+if (skill673 >= 100) {skill 673,2,0; set skill673,0; dispbottom "[Sys] Level up"; end; }
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 1: "+skill673+" de 100";
+
+end;
+
+}
+
+if (getskilllv(673) == 2) {
+if (fufuken != 1) {end;}
+if (skill673 >= 250) {skill 673,3,0; set skill673,0; dispbottom "[Sys] Level up"; end;}
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 2: "+skill673+" de 250";
+
+end;
+
+}
+
+if (getskilllv(673) == 3) {
+
+if (fufuken != 1) {end;}
+if (skill673 >= 500) {skill 673,4,0; set skill673,0; dispbottom "[Sys] Level up"; end;}
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 3: "+skill673+" de 500";
+
+end;
+
+}
+
+if (getskilllv(673) == 4) {
+if (fufuken != 1) {end;}
+if (skill673 >= 1000) {skill 673,5,0; set skill673,0; dispbottom "[Sys] Level up"; end;}
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 4: "+skill673+" de 1000";
+
+end;
+
+}
+
+if (getskilllv(673) == 5) {
+if (fufuken != 1) {end;}
+if (skill673 >= 2000) {skill 673,6,0; set skill673,0; dispbottom "[Sys] Level up"; end;}
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 5: "+skill673+" de 2000";
+
+end;
+
+}
+
+if (getskilllv(673) == 6) {
+if (fufuken != 1) {end;}
+if (skill673 >= 3000) {skill 673,7,0; set skill673,0; dispbottom "[Sys] Level up"; end;}
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 6: "+skill673+" de 3000";
+
+end;
+
+}
+
+if (getskilllv(673) == 7) {
+if (fufuken != 1) {end;}
+if (skill673 >= 4000) {skill 673,8,0; set skill673,0; dispbottom "[Sys] Level up"; end;}
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 7: "+skill673+" de 4000";
+
+end;
+
+}
+
+if (getskilllv(673) == 8) {
+if (fufuken != 1) {end;}
+if (skill673 >= 5000) {skill 673,9,0; set skill673,0; dispbottom "[Sys] Level up"; end;}
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 8: "+skill673+" de 5000";
+
+end;
+
+}
+
+if (getskilllv(673) == 9) {
+if (fufuken != 1) {end;}
+if (skill673 >= 6000) {skill 673,10,0; set skill673,0; dispbottom "[Sys] Level up"; end;}
+set skill673,skill673 +1;
+dispbottom "[Jutsu level] Roga FuFu Ken level 9: "+skill673+" de 6000";
+
+end;
+
+}
+
+                end;
+            }    
+}

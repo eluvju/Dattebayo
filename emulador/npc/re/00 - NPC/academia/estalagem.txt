@@ -1,0 +1,160 @@
+///////////////////////////////////////////////////////////////////
+//===== Cronus Script ===========================================//
+//= 							 	=//
+//= Estalagem							=//
+//= 								=//
+//===== Por: ====================================================//
+//=								=//
+//=       KIRA THE CAT
+//=								=//
+//===== Changelog: ========================== Versão Atual ======//
+// Criado em 28/02/2021 
+// Alteração Dia 22/06/2021
+// 		Alterada estrutura do NPC para compor o novo modelo de Kafra Pass
+// 		Alterado o modelo de estrutura do NPC para uma forma mais organizada
+//		Criado Interações Especiais Para VIP's
+//      Finalizado 23/06/2021 - 16:31
+//===== Descrição: ==============================================//
+// == NPC de estalagem com save point interativo com Passe
+// == E Sistema VIP e Para novos Players.
+//=============================================================
+// Estalagem Academia
+//=============================================================
+lou_in02,59,182,4	script	Ayumi::estalagemacademia	861,{
+//=============================================================
+
+	set .@t, 3;	// Delay Seconds.
+	
+	.@passecomercio = 1084;
+	.@costEstalagem = 15000;
+	.@npc$ = "                          ^cfa417[ "+strnpcinfo(1)+" ]^000000";
+	.@zeny$ = "Com o ^800080"+getitemname(.@passecomercio)+"^000000 você pode utilizar o serviço sem pagar^808080(O item é consumido)^000000 e ^FF0000VIP não paga!^000000";
+
+//=============================================================
+
+	if (isbegin_quest(1001) != 2) { goto novato;} // Quest " Complete a Academia "
+	else {goto veterano;}
+
+//=============================================================
+
+	veterano:
+	mes .@npc$;
+	mes "Bem vindo a Estalagem da Ayumi, que por acaso sou eu!";
+	mes " ";
+	mes "Nossos servicos custam: ^FF0000" + .@costEstalagem + "z^000000 e";	
+	mes "aceitamos seu ^800080"+getitemname(.@passecomercio)+"^000000 Aqui como pagamento.";
+	next;
+	mes .@npc$;
+	mes "Vejo que esta cansado gostaria de utilizar nossos serviços?";
+	mes " ";
+	mes "Aqui ^FF0000VIP não precisa paga!^000000 *-*";
+	switch(select("Sim, por favor:Não quero")) {
+
+	case 1:
+	if (getgmlevel() >= 5) {goto vip;}
+	if (countitem(.@passecomercio) >= 1) { goto passe; }
+	if (0 >= (.@costEstalagem - Zeny)) { goto rica; }
+	if (0 < (.@costEstalagem - Zeny)) { goto pobre; }
+	else { 	mes .@npc$;
+			mes " ";
+			mes "Um erro inesperado ocorreu!";
+			close;}
+
+// ############################################
+// Passe							
+	passe:
+	next;
+	mes .@npc$;
+	mes "Vejo que voce possui o ^800080"+getitemname(.@passecomercio)+"^000000.";
+	mes " ";
+	mes "Você pode utilizar o serviço sem pagar^808080(O item será consumido)^000000...";
+	switch(select("^800080Usar o Passe^000000:^FF0000Quero pagar^000000:Nao, Esquece"))  {
+	
+		case 1:
+		next;
+		delitem .@passecomercio,1;				
+		mes .@npc$;
+		mes "Espere alguns segundos enquanto eu realizo seu Cadastro...";
+		while ( .@t ) {
+					mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+					sleep2 1000 ;
+					set .@t, .@t - 1;
+					}
+		atcommand "@effect 7 "+@player$;
+		savepoint "lou_in02",75,190;
+		dispbottom "[Servidor] Dattebayo: Seu ponto de retorno foi salvo "+ strcharinfo ( 0 ) +".";
+		dispbottom "[Servidor] Dattebayo: Item ^800080"+getitemname(.@passecomercio)+"^000000 foi Removido!";
+		close;
+		
+		case 2:
+		if (0 >= (.@costEstalagem - Zeny)) { goto rica; }
+		if (0 < (.@costEstalagem - Zeny)) { goto pobre; }
+		else { 	mes .@npc$;
+				mes " ";
+				mes "Um erro inesperado ocorreu!";
+				close;}
+				
+		case 3:
+		close;
+		
+}
+// ############################################
+// Zeny
+
+		pobre:
+		next;
+		mes .@npc$;
+		mes "Voce nao possui zeny suficiente para este servico";
+		mes " ";
+		mes "Torne-se ^FF0000VIP^000000 agora mesmo e utilize nossos servicos de graça!";
+		close;
+	
+		rica:
+		next;
+		set Zeny,Zeny - .@costEstalagem;
+		mes .@npc$;
+		mes "Espere alguns segundos enquanto eu realizo seu Cadastro...";
+		while ( .@t ) {
+			mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+					}
+		atcommand "@effect 7 "+@player$;
+		savepoint "lou_in02",75,190;
+		dispbottom "[Servidor] Dattebayo: Seu ponto de retorno foi salvo "+ strcharinfo ( 0 ) +".";
+		dispbottom "[Servidor] Dattebayo: -^FF0000" + .@costEstalagem + "z^000000";
+		close;	
+
+									
+// ############################################
+// VIP
+									
+				vip:							
+				if (getgmlevel() >= 5) { 	atcommand "@effect 7 "+@player$;
+											savepoint "lou_in02",75,190;
+											sleep2 750;
+											npctalk ""+strnpcinfo(1)+": Seu ponto de retorno foi salvo "+ strcharinfo ( 0 ) +".", "", bc_self;
+											close;	}
+
+// ############################################
+// Introdução Arco 1
+
+	novato:
+	callfunc("introducao_4"),"                          ^cfa417[ "+strnpcinfo(1)+" ]^000000";
+	end;
+	
+// ############################################
+// Fechar Dialogo
+	
+	case 2:
+	close;
+	
+end;
+}
+}
+
+//===== NPC: ====================================================//
+
+prontera,155,159,4	duplicate(estalagemacademia)	Estalagem#a	861
+
+//==============================================================//

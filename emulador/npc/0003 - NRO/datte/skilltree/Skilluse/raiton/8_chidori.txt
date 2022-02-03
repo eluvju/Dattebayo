@@ -1,0 +1,68 @@
+-	script	on_PC_UseSkill008	-1,{
+    end;
+//When a Character uses a skill
+
+//R_chidori
+
+onPcUseSkillEvent:
+
+           if(lskillid == 84) {
+
+
+if (getskilllv(84) == 1) {
+
+if (R_chidori != 1) {end;}
+if (nin_avan != 1) {end;}
+if (skill84 >= 100) {skill 84,2,0; set skill84,0; dispbottom "[Sys] Level up"; end; }
+set skill84,skill84 +1;
+dispbottom "[Jutsu level] Chidori level 1: "+skill84+" de 100";
+
+end;
+
+}
+
+if (getskilllv(84) == 2) {
+if (R_chidori != 1) {end;}
+if (nin_avan != 1) {end;}
+if (skill84 >= 250) {skill 84,3,0; set skill84,0; dispbottom "[Sys] Level up"; end;}
+set skill84,skill84 +1;
+dispbottom "[Jutsu level] Chidori level 2: "+skill84+" de 250";
+
+end;
+
+}
+
+if (getskilllv(84) == 3) {
+
+if (nin_avan != 1) {end;}
+if (skill84 >= 500) {skill 84,4,0; set skill84,0; dispbottom "[Sys] Level up"; end;}
+set skill84,skill84 +1;
+dispbottom "[Jutsu level] Chidori level 3: "+skill84+" de 500";
+
+end;
+
+}
+
+if (getskilllv(84) == 4) {
+if (nin_avan != 1) {end;}
+if (skill84 >= 1500) {skill 84,5,0; set skill84,0; dispbottom "[Sys] Level up"; end;}
+set skill84,skill84 +1;
+dispbottom "[Jutsu level] Chidori level 4: "+skill84+" de 1500";
+
+end;
+
+}
+
+if (getskilllv(84) == 5) {
+if (nin_avan != 1) {end;}
+if (skill84 >= 3000) {skill 84,6,0; set skill84,0; dispbottom "[Sys] Level up"; end;}
+set skill84,skill84 +1;
+dispbottom "[Jutsu level] Chidori level 5: "+skill84+" de 3000";
+
+end;
+
+}
+
+                end;
+            }    
+}

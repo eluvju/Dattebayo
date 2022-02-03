@@ -1,0 +1,48 @@
+sec_in01,161,164,5	script	Akimichi	749,{
+	if(akimichi == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Chouji Akimichi^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou o Chouji Akimichi , você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Chouji Akimichi^000000]";
+	mes "O clã Akimichi (Akimichi Ichizoku) é um dos quatro clãs nobres de Konohagakure.[1] As técnicas assinaturas do clã giram entorno da manipulação de sua reserva de gordura corporal através do uso da Liberação de Yang";
+	next;
+	mes "[^00FF40Chouji Akimichi^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",akimichi2,"- Não",nao;
+	close;
+
+	
+	
+	akimichi2:
+
+next;
+
+	mes "[^00FF40Chouji Akimichi^000000]";
+
+mes " Akimichi pode ser usado em combinação com ninjutsu, fluxo de Chakra e até mesmo Taijutsu para obter técnicas mais devastadoras.  ";
+
+next;
+
+set pegoukg,1;
+
+set akimichi,1;
+
+	mes "[^00FF40Chouji Akimichi^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

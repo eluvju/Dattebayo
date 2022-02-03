@@ -1,0 +1,267 @@
+ama_fild01,0,0,0,0	monster	Gama-kichi		1402,25,0,0,0
+ama_fild01,0,0,0,0	monster	Gama-Bunta		1089,100,0,0,0
+
+ama_fild01	mapflag	nosave	SavePoint
+ama_fild01	mapflag	nomemo
+payon_in03	mapflag	nosave	SavePoint
+payon_in03	mapflag	nomemo
+
+ama_fild01,173,332,0	warp	dimensao_sapo#1	2,2,payon_in03,99,152
+payon_in03,99,148,0	warp	dimensao_sapo#2	2,2,ama_fild01,173,327
+
+payon_in03,99,190,2	script	Mestre Sapo	1089,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@quest3kuchy1 = 50200;
+	.@quest3kuchy2 = 50201;
+
+	if(checkquest(.@quest3kuchy2) >= 1) {
+		if(checkquest(.@quest3kuchy2,HUNTING) == 2) {
+			if(countitem(736) >= 40 && countitem(755) >= 40 && countitem(756) >= 40 && countitem(753) >= 1) {
+				if(Zeny >= 100000000){
+					mes .@npc$;
+					mes "Parabéns você completou seu treinamento.";
+					mes "Agora você já pode invocar sua kuchiyose.";
+					delitem 736,40;
+					delitem 755,40;
+					delitem 756,40;
+					delitem 753,1;
+					set Zeny, Zeny - 100000000;
+					skill 2500,3,3;
+					delitem 754,1;
+					completequest .@quest3kuchy2; 
+					erasequest .@quest3kuchy2;
+					close;
+				}
+				mes .@npc$;
+				mes "Você nao tem zeny suficiente.";
+				close;
+			}
+			mes .@npc$;
+			mes "Você nao tem todos os itens ainda";
+			close;
+		}
+		mes .@npc$;
+		mes "Você nao completou seu treinamento ainda";
+		close;
+	}
+
+	if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Vejo que você já aprendeu bem a dominar a invocação da minha espécie.";
+		next;
+		mes .@npc$;
+		mes "Mas um contrato comigo não vai ser tão simples assim.";
+		next;
+		mes .@npc$;
+		mes "Gostaria de tentar?";
+		if(select("- Sim:- Não") == 2) { next; mes .@npc$; mes "HAHAHA!! Como esperando de alguém tão fraco."; close; }
+			next;
+			mes .@npc$;
+			mes "Eu só aceito como meu subalterno aqueles que me provam dignos como um ninja, somente aqueles que lutam por um nobre objetivo e que possuem um grande chakra podem me invocar.";
+			next;
+			mes .@npc$;
+			mes "Para eu te aceitar como meu discípulo me traga os seguintes itens:";
+			mes "40x Pergaminho em Branco";
+			mes "40x Pergaminho em Branco Lendário";
+			mes "40x Segredo Shinobi";
+			mes "1x Fuuin no Sho";
+			mes "100.000.000 Zeny";
+			mes "Matar 100 Gama-Bunta";
+			completequest .@quest3kuchy1; 
+			erasequest .@quest3kuchy1;
+			setquest .@quest3kuchy2;
+			close;
+
+	}
+	mes .@npc$;
+	mes "Estou ocupado no momento volte mais tarde";
+	close;
+}
+
+
+
+um_fild03,330,349,0	script	Dimensão Paralela#1	58,{
+	if(countitem(754) >= 1) {
+		mes "Vejo que você possui um pergaminho reverso. Lembre-se o seu pergaminho será consumido ao entrar no dimensão paralelo.";
+		if(select("- Sim:- Não") == 2) close;
+		close2;
+		delitem 754,1;
+		warp "ama_fild01",77,29;
+	}
+	mes "Você não está autorizado a ir para outra dimensão";
+	close;
+}
+
+treinamento,65,69,5	script	Jiraya	69,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	.@questkuchy1 = 50000;
+	.@questkuchy2 = 50001;
+	.@quest2kuchy1 = 50100;
+	.@quest3kuchy1 = 50200;
+
+	if(getskilllv(2500) == 3 ) {
+		mes .@npc$;
+		mes "Você ja está no nivel máximo.";
+		close;
+	}
+
+		if(kuchiyose == 1 || kuchiyose3 == 1 || kuchiyose4 == 1 || kuchiyose5 == 1) { 
+		mes .@npc$; 
+		mes "Você já tem um contrato"; 
+		close; 
+		}
+
+
+	if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Você precisa ir ao mundo paralelo conversar com o Mestre Sapo";
+		close;
+	}
+
+	if(getskilllv(2500) == 2 ) {
+		if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+			mes .@npc$;
+			mes "Vejo que você já possui um contrato, você gostaria de se tornar um Mestre?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Para se tornar um mestre kuchiyose você precisa ir até o mundo paralelo dos sapos e falar com o Mestre Sapo.";
+				next;
+				mes .@npc$;
+				mes "Para entrar nesse mundo você vai precisar de um Pergaminho Reverso e ir até o local que conecta esse mundo com o outro.";
+				next;
+				mes .@npc$;
+				mes "Já vou logo avisando que não será nada facil controlar totalmente sua invocação.";
+				next;
+				mes .@npc$;
+				mes "Então vamos continuar com o treinamento.";
+				setquest .@quest3kuchy1;
+				close;
+		}
+		mes .@npc$;
+		mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";
+		close;
+	}
+	
+	
+	//----------------------------------------------------------------------------------------------------
+
+	if(checkquest(.@quest2kuchy1) == 1) {
+		if(countitem(736) >= 20 && countitem(755) >= 20 && countitem(756) >= 20) {
+			if(checkquest(.@quest2kuchy1,HUNTING) == 2) {
+				if(Zeny >= 30000000){
+					mes .@npc$;
+					mes "Parabéns você completou seu treinamento.";
+					mes "Agora você já pode invocar sua kuchiyose.";
+					delitem 736,20;
+					delitem 755,20;
+					delitem 756,20;
+					set Zeny, Zeny - 30000000;
+					skill 2500,2,3;
+					completequest .@quest2kuchy1; 
+					erasequest .@quest2kuchy1;
+					close;
+				}
+				mes .@npc$;
+				mes "Você não tem zeny suficiente.";
+				close;
+			}
+			mes .@npc$;
+			mes "Você não completou seu treinamento ainda.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não completou seu treinamento ainda.";
+		close;
+	}
+	
+	if(getskilllv(2500) == 1) {
+		if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+			mes .@npc$;
+			mes "Vejo que você já possui um contrato, você gostaria de evolui-lo?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Então vamos continuar com o treinamento.";
+				next;
+				mes "Traga-me:";
+				mes "20x Pergaminho em Branco";
+				mes "20x Pergaminho Branco Lendário";
+				mes "20x Segredo Shinobi";
+				mes "30,000,000 Zeny";
+				mes "Mate 100 Sapos";
+				setquest .@quest2kuchy1;
+				close;
+		}
+		mes .@npc$;
+		mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";
+		close;
+	}
+
+	//----------------------------------------------------------------------------------------------------
+	
+	if(checkquest(.@questkuchy2) == 1) {
+		if(checkquest(.@questkuchy2,HUNTING) == 2) {
+			mes .@npc$;
+			mes "Parabéns você derrotou todos os monstros!";
+			mes "Vou verificar se você tem os outros items...";
+			if(countitem(736) < 10 || Zeny < 5000000) { close; }
+			set Zeny,Zeny - 5000000;
+			delitem 736,10;
+			skill 2500,1,3;
+			completequest .@questkuchy2; 
+			erasequest .@questkuchy2;
+			close;
+		}
+		mes .@npc$;
+		mes "Você não completou seu treinamento ainda.";
+		close;
+	}
+
+	if(Class > 5) {
+		if(livrosapo >= 1) {
+			mes .@npc$;
+			mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+			mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com os Sapos.";
+			next;
+			mes .@npc$;
+			mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+			mes "Gostaria de treinar o Kuchiyose: Sapo?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Não vai ser nada facil, será um treinamento arduo.";
+				next;
+				mes .@npc$;
+				mes "Vou precisar que você me traga:";
+				mes "10x Pergaminho em Branco.";
+				mes "5.000.000 zenys.";
+				mes "E mate 100x Sapos.";
+				next;
+				mes .@npc$;
+				mes "Boa sorte!";
+				setquest .@questkuchy2;
+				set kuchiyose2,1;
+				close;
+		}
+		mes .@npc$;
+		mes "Antes de falar comigo leia na biblioteca mais a respeito das invocações.";
+		close;
+	}
+	mes .@npc$;
+	mes "Você precisa ser Chunin ou superior para aprender Kuchiyose.";
+	close;
+}
+
+bibli_01,33,88,0	script	Livro Sobre Sapos::livrosapo	58,{
+
+	mes "Livro Sobre Sapos";
+	mes "Os sapos são excelentes para dano ninjutsu, especializados no estilo suiton, possuem grande mobilidade, seu maior usuário no mundo ninja é Jyraia Sensei.";
+	set livrosapo,1;
+	close;
+}
+
+bibli_02,33,88,3	duplicate(livrosapo)	Livro Sobre Sapos#2	58
+bibli_03,33,88,3	duplicate(livrosapo)	Livro Sobre Sapos#3	58
+bibli_04,33,88,3	duplicate(livrosapo)	Livro Sobre Sapos#4	58

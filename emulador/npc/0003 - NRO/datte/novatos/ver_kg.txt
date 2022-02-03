@@ -1,0 +1,18 @@
+kakashi,98,134,5	script	Verificar KG	869,{
+query_sql "SELECT (`received`) FROM `verkg` WHERE `char_id` = "+getcharid(0), @recebeu;
+if (@recebeu == 1) goto restante;
+query_sql("INSERT INTO `verkg` (`char_id`,`received`) VALUES ('"+getcharid(0)+"','1')");
+	if(kgmobs1 > 0) {set @showkg, 50 - kgmobs1;}
+	if(kgmobs2 > 0) {set @showkg, 16429 - kgmobs2;}
+	if(kgmobs3 > 0) {set @showkg, 44429 - kgmobs3;}
+        mes  "Lhe falta aproximadamente "+@showkg+" monstros para upar sua Kekkei Genkai";
+	close;
+
+restante:
+mes "Você já verificou uma vez a quantidade de mortes na contagem de sua kekkei genkai, verifique novamente amanhã, ou adquira um vip e veja quantas vezes quiser no @kg";
+close;
+
+OnHour00:
+query_sql("TRUNCATE TABLE `verkg`");	// Reseta a tabela
+end;
+}

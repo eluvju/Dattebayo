@@ -1,0 +1,17 @@
+xmas,143,173,5	script	Idosa da Névoa	103,{
+	mes "[Idosa]";
+	mes "Oi, meu filho...";
+	mes "Está perdido por ai né, então deixe-me contar histórias de nossa vila para você.";
+	mes "A muito tempo atrás nossa vila se envolveu em vários conflitos internos.";
+	mes "principalmente por ter receio daqueles que possuiam a linhagem sanguinea avançada.";
+	mes "Olhando pra você parece que você não sabe o que é linhagem avançada";
+	mes "então explicarei a você meu jovem, a linhagem sanguine avançada, são habilidades especiais que diferenciam determinados clãs de outros.";
+	mes "são habilidades que muitos daquele clã possue.";
+	mes "Por exemplo o extinto clã Kaguya, eles possuiam a manipulação dos osso do corpo.";
+	mes "era uma coisa impressionante, mas infelizmente o ultimo sobrevivente do clã,se aliou a uma pessoa perversa.";
+	mes "Voltando a história da Névoa, a muito tempo havia muito medo com esss clãs e por isso quem possuia tal poder.";
+	mes "Era visto como ameaça ou como arma, muitos morreram quando pequenos por serem vistos como ameaça.";
+	mes "Mas outros se tornaram armas poderosas e até se voltaram contra a própria vila em busca de deter o controle da Névoa.";
+	mes "E hoje nossa vila está estabilizada e próspera, com uma nova geração chegando, um futuro para nossa vila eu vejo, por isso garoto, seja o nosso futuro.";
+close;
+}

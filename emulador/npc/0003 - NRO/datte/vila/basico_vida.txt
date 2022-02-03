@@ -1,0 +1,70 @@
+prontera,154,150,3	script	Descansar::bed	741,{
+	
+	mes "Olá, Cansado da sua jornada?";
+	mes "Aqui você pode abaixar a kunai e descansar sem medo";
+	Mes "Você deseja dormir?";
+	If(Select("Sim:Não")==2)Close;
+	Close2;
+	Message StrCharInfo(0), "Espere até ficar totalmente recuperado.";
+	PCBlockMove getcharid(3), 1;
+	For (Set .@i, (100 - sono)/10 + (sono%10 > 0); sono < 100; Set .@i, .@i + 1)
+	{
+		Sleep2 1000;
+		Set sono, sono + 10;
+		Message StrCharInfo(0), .@i+"...";
+	}
+	If (sono > 100)
+	{
+		Set sono, 100;
+	}
+	Message StrCharInfo(0), "Pronto.";
+	PCBlockMove getcharid(3), 0;
+	End;
+
+}
+
+prontera,152,150,3	script	Restaurante::rest	741,{
+
+	SetArray .@nomes$[1], "Ramen simples", "Ramen com molho de soja", "Ramen com porco", "Ramen completo";
+	SetArray .@porcentagens[1], 10, 30, 50, 100;
+	SetArray .@precos[1], 10, 30, 50, 100;
+
+	Select(.@nomes$[1]+"["+.@porcentagens[1]+"] -> "+.@precos[1]+"z",
+				.@nomes$[2]+"["+.@porcentagens[2]+"] -> "+.@precos[2]+"z",
+				.@nomes$[3]+"["+.@porcentagens[3]+"] -> "+.@precos[3]+"z",
+				.@nomes$[4]+"["+.@porcentagens[4]+"] -> "+.@precos[4]+"z"
+	);
+	If (fome > 100)
+	{
+		Mes "Você já está completo de fome.";
+		Close;
+	}
+	If (Zeny < .@precos[@menu])
+	{
+		Mes "Você precisa de mais "+(.@precos[@menu]-Zeny)+"z para poder comprar o "+.@nome$[@menu];
+		Close;
+	}
+
+	Set Zeny, Zeny - .@precos[@menu];
+	Mes "Recuperado "+.@porcentagens[@menu]+" de fome.";
+	Set fome, fome + .@porcentagens[@menu];
+	If (fome  > 100)
+	{
+		Set fome, 100;
+	}
+	Close;
+
+}
+
+-	script	FOME_SONO_DICREASE	-1,{
+	
+OnSPDicrease:
+	percentheal 0,-2; // This will heal 100% SP
+	AddTimer 1000, "FOME_SONO_DICREASE::OnSPDicrease";
+	End;
+
+OnHPDicrease:
+	percentheal 0,-2; // This will heal 100% SP
+	AddTimer 1000, "FOME_SONO_DICREASE::OnHPDicrease";
+	End;
+}

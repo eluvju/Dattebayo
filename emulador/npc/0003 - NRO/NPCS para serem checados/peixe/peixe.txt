@@ -1,0 +1,39 @@
+prontera.gat,150,150,0	script	Peixes	723,{
+
+if (countitem(909) < 1) goto L_FaltaItem;
+
+L_continua:
+set @chance, rand(1,100);
+set @acerto,20;
+set @erro,80;
+if(@chance <= @acerto) goto L_TeveSorte;
+if(@chance <= @erro) goto L_Erro;
+close;
+
+L_FaltaItem:
+mes "[^AA7146 Peixes ^000000]";
+mes "Você precisa de isca!";
+close;
+
+L_Erro:
+delitem 909, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você errou!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "O peixe fugiu!";
+close;
+
+L_TeveSorte:
+delitem 909, 1;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu pegar o peixe!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Puxe a linha!";
+next;
+mes "[^AA7146 Peixes ^000000]";
+mes "Você conseguiu!";
+getitem 579,1;
+close;
+}

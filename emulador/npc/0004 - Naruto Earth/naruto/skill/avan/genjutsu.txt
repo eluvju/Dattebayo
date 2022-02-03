@@ -1,0 +1,168 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+mjolnir_05,184,246,4	script	Genjutsu Avançado	831,{
+if(checkquest(30049) == 1) goto skillgen1;
+if(checkquest(30050) == 1) goto skillgen2;
+if(checkquest(30051) == 1) goto skillgen3;
+if(checkquest(30052) == 1) goto skillgen4;
+if(treino_gen_avan != 1) { mes "[Genjutsu Avançado]"; mes "Você precisa estudar Genjutsu avançado antes de aprender as skills"; close;}
+if(gen_skill_avan >= 2) { mes "[Genjutsu Avançado]"; mes "Você já aprendeu duas skill de Genjutsu avançado, esse é o limite"; close; }
+	mes "[Genjutsu Avançado]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Genjutsu avançado. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Genjutsu Avançado]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Genjutsu Avançado]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Genjutsu Avançado]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A080DISTORÇÃO ARCANA^000000:^8A0808PINTAR ARMADILHA^000000:^8A0808ATORDOAMENTO TITANICO^000000:^8A0808INTIMIDAR^000000:^8A0808ANenhum^000000"))
+	{
+	case 1:
+		if (g1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Genjutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Genjutsu Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillgen1:
+		setquest 30049;
+		if(checkquest(30049,hunting) == 2 && countitem(32146) >= 1)
+		{
+			completequest 30049;
+			erasequest 30049;
+			delitem 32146,1;
+			set gen_skill_avan,gen_skill_avan +1;
+			skill 2209,1,3;
+			set g1,1;
+			mes "[Genjutsu Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (g2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Genjutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Genjutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Genjutsu Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillgen2:
+		setquest 30050;
+		if(checkquest(30050,hunting) == 2 && countitem(32146) >= 1)
+		{
+			completequest 30050;
+			erasequest 30050;
+			delitem 32146,1;
+			set gen_skill_avan,gen_skill_avan +1;
+			skill 2299,2,3;
+			set g2,1;
+			mes "[Genjutsu Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (g3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Genjutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Genjutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Genjutsu Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillgen3:
+		setquest 30051;
+		if(checkquest(30051,hunting) == 2 && countitem(32146) >= 1)
+		{
+			completequest 30051;
+			erasequest 30051;
+			delitem 32146,1;
+			set gen_skill_avan,gen_skill_avan +1;
+			set g3,1;
+			skill 110,5,3;
+			mes "[Genjutsu Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if (g4 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "NOME DA SKILL";
+		next;
+		mes "[Genjutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Genjutsu Avançado]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Genjutsu Avançado]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillgen4:
+		setquest 30052;
+		if(checkquest(30052,hunting) == 2 && countitem(32146) >= 1)
+		{
+			completequest 30052;
+			erasequest 30052;
+			delitem 32146,1;
+			set g4,1;
+			skill 5045,1,3;
+			set gen_skill_avan,gen_skill_avan +1;
+			mes "[Genjutsu Avançado]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 7:
+		mes "[Genjutsu Avançado]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Genjutsu Avançado]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando pergaminho de genjutsu avançado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

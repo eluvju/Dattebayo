@@ -1,0 +1,106 @@
+-	script	Account Locker	-1,{
+OnAtcommandLock:
+switch ( select ( "Minha Conta", "Eu esqueci minha senha","Mudar minha senha","Mudar código de recuperação" ) ) {
+case 4:	callfunc ("AccountCode", #ACNTCODERECOV$, "^ff0000Recuperação^000000","  ", "Digite a antiga", 1); break;
+case 3:	callfunc ("AccountCode", #ACNTCODE$,"^ff0000Proteção^000000", " " , "Digite a antiga", 1); break;	
+case 2:	callfunc ("VerifyAccount", #ACNTCODERECOV$, 1);	break;
+case 1:	if ( getstrlen( #ACNTCODE$ ) > 6 && getstrlen( #ACNTCODERECOV$ ) > 6 ) {
+			mes "[^0000ff"+ strnpcinfo(1)+" ^000000]"; mes "Por razões de segurança";
+			mes " ";
+			mes "Por favor digite sua ^ff0000Senha de proteção de conta^000000:";
+			callfunc ("VerifyAccount", #ACNTCODE$, 0);
+		}
+OnAtcommandMenu:
+		mes "[^0000ff"+ strnpcinfo(1)+" ^000000]"; mes " "; mes "Proteção de conta: "; mes #LOCKED == 1?"-^0000ff Ativado^000000":"-^ff0000 Desativado^000000";
+		if ( getstrlen( #ACNTCODE$ ) < 6 ) {
+			mes " "; mes "^ff0000Erro^000000: Você ainda não ativou sua senha de ^ff0000Proteção^000000.";
+				if ( select ( "Ativar senha de proteção de conta","Agora não" ) == 2 ) close;
+					next; callfunc ("AccountCode",#ACNTCODE$,"^ff0000Proteção^000000"," ", "Setup",0);
+		}
+		if ( getstrlen( #ACNTCODERECOV$ ) < 6 ) {
+			mes " "; mes "^ff0000Error^000000: Você ainda não definiu sua frase de ^0000ffRecuperação^000000.";
+				if ( select ( "Definir frase de recuperação","Agora não" ) == 2 ) close;
+					next; callfunc ("AccountCode",#ACNTCODERECOV$,"^ff0000Recovery^000000","^ff0000Importante^000000:Isso será usado para ^0000ffRecuperar^000000 sua senha.", "Setup",0);
+		}
+		switch ( select ( #LOCKED == 1?"":"^0000ffAtivar^000000 proteção de conta", #LOCKED != 1?"":"^ff0000Desativar^000000 proteção de conta" )) {
+			case 1: 
+					setcharprotection 1; set #LOCKED, 1;
+					query_sql ( "UPDATE `char` SET `karma` = '1' WHERE `account_id`="+getcharid(3) ); // because karma has never been used as far as i know.
+					mes " "; mes "Processando.. "; next; message strcharinfo(0),"Sua conta está agora protegida."; goto OnAtcommandMenu;
+			case 2: callfunc ("VerifyAccount",#ACNTCODE$,0);
+					setcharprotection 0; set #LOCKED, 0;
+					query_sql ( "UPDATE `char` SET `karma` = '0' WHERE `account_id`="+getcharid(3) );
+					mes "Processando.. "; next; message strcharinfo(0),"Sua conta está agora desprotegida."; goto OnAtcommandMenu;
+		}
+}
+
+OnPcLoginEvent:
+
+//if( getcharid(3) >= 2078037) {end;}
+//if (correctionlock == 1) {end;}
+if ( getstrlen( #ACNTCODE$ ) < 6 ) {end;}
+if (correctionlock != 1) && ( getcharid(3) < 2078037) { 
+set #ACNTCODE$,0;
+set #LOCKED, 0;
+set #ACNTCODERECOV$,0;
+set correctionlock,1;
+mes "Sua senha de segurança foi resetada devido a uma atualização, por favor defina-a novamente";
+close;
+}
+	if( #LOCKED == 1 ) {
+		mes "Essa conta está protegida pelo @lock, para remover a proteção digite @lock e digite a senha de segurança";
+		setcharprotection 1;
+//		query_sql ( "UPDATE `char` SET `karma` = '1' WHERE `account_id`="+getcharid(3) );
+		close;
+	}
+		message strcharinfo(0),"Essa conta não está protegida pelo @lock.";
+		end;
+		
+}
+
+
+
+
+function	script	AccountCode	{
+	mes "[^0000ff"+ strnpcinfo(1)+" ^000000]"; 
+	mes getarg(3)+" senha de "+ getarg(1) +""; 
+	mes ""; 
+	mes getarg(2);
+	input .@input$;
+	if ( getarg(4) == 1 ) {
+		if ( getarg(0) != .@input$ ) { 	mes " "; mes "^ff0000Erro^000000: Senha incorreta!"; close; } next;
+		mes "[^0000ff"+ strnpcinfo(1)+" ^000000]"; mes "Digite a nova senha de "+ getarg(1) +"";
+		input .@input1$;
+		if ( .@input1$ == .@input$ ) { mes " "; mes "^ff0000Erro^000000: Você não pode usar a antiga senha de "+ getarg(1) + ""; close; }
+		if ( ( getstrlen(.@input1$) < 6 ) ) { mes " "; mes "^ff0000Error^000000: Senha precisa ter pelo menos 6 caracteres."; close; }
+	}
+	if ( ( getstrlen(.@input$) < 6 ) ) { mes " "; mes"^ff0000Error^000000: Senha precisa ter pelo menos 6 caracteres."; close; }
+		if ( getarg (4) == 1 ) {
+			next; mes "[^0000ff"+ strnpcinfo(1)+" ^000000]"; mes "Sua nova senha de "+ getarg(1) + " de conta é: "; mes " "; mes  "- ^ff0000"+ .@input1$ +"^000000"; next; set getarg(0), .@input1$; close;
+		}
+		next; mes "[^0000ff"+ strnpcinfo(1)+" ^000000]"; mes "Sua nova senha de "+ getarg(1) + " de conta é: "; mes " "; mes "^ff0000"+ .@input$ +"^000000"; next; set getarg(0), .@input$; close;
+}
+
+function	script	VerifyAccount	{
+	input .@input$;
+	if ( getarg(0) != .@input$ ) { 	mes " "; mes "^ff0000Erro^000000: Frase de recuperação incorreta!"; 	close; 	} 
+	if ( getarg(0) == .@input$ ) 
+	if ( getarg(1) == 1 ) { mes "[^0000ff"+ strnpcinfo(1)+" ^000000]"; mes " "; mes "Sua senha é: ^ff0000" + #ACNTCODE$ + "^000000"; close; } next; return;
+}
+
+function	script	DisableRefine	{
+	if( #LOCKED == 1 ) {
+		message strcharinfo(0),"Essa conta está protegida pelo @lock.";
+		end;
+	}
+	return;
+}
+
+-	script	Account Locker2	-1,{
+
+OnPcLogoutEvent:
+if ( getstrlen( #ACNTCODE$ ) < 6 ) {end;}
+setcharprotection 1; set #LOCKED, 1;
+query_sql ( "UPDATE `char` SET `karma` = '0' WHERE `account_id`="+getcharid(3) ); // because karma has never been used as far as i know.
+
+}

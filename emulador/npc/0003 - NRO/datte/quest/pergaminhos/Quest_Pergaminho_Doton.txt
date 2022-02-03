@@ -1,0 +1,61 @@
+konoha,64,276,5	script	Edward::perg_quatro	831,{
+
+if (checkquest(2075) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Oi viajante, meu nome é Poppo, sou um vendedor de pergaminhos raros";
+next;
+mes "O Pergaminho Doton Básico é um pergaminho raro que aumenta o dano dos Jutsus de propriedade Doton";
+mes "Gostaria de ter esse pergaminho?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Pergaminho Doton Básico
+//========================================================================
+
+L_SS:
+next;
+mes "Para obter este pergaminho,você precisa :";
+mes "- Obter 40x Pena Macia.";
+mes "- Obter 30x Tanga de Tigre.";
+mes "- Obter 80x Garra de Ave.";
+mes "- Matar 50 Usagiburaun";
+setquest 2075;
+set quest_perg_quatro,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(perg_mobs_quatro < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7063) < 40) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7267) < 30) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(917) < 80) {mes "Você ainda não completou sua missão"; close;}
+mes "Me trouxe o que havia pedido, tome seu pergaminho!";
+completequest 2075;
+erasequest 2075;
+delitem 7063,40;
+delitem 7267,30;
+delitem 917,80;
+set quest_perg_quatro,0;
+set perg_mobs_quatro,0;
+getitem 2115,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	perg#4	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1322 && quest_perg_quatro == 1) {set perg_mobs_quatro,perg_mobs_quatro +1; announce "[Quest de equipamento] Você já derrotou "+perg_mobs_quatro+" / 50 Usagiburaun",bc_blue|bc_self; end;}
+
+}
+
+
+areia,272,252,5	duplicate(perg_quatro)	Edward#1	831
+kiri,190,371,5	duplicate(perg_quatro)	Edward#2	831
+nuvem,89,280,5	duplicate(perg_quatro)	Edward#3	831

@@ -1,0 +1,536 @@
+-	script	Evento#AR	AprendizRush#AR	-1,{
+OnInit:
+// Nome do mapa
+set $ARmap$,"turbo_n_1"; //turbo_n_1
+// Nome do mapa inicial
+set $ARmap2$,"job_sage"; //turbo_n_1
+//disablenpc "Chegada#AR";
+end;
+
+OnClock1000:
+OnClock1500:
+OnClock2000:
+callsub OnNewAR;
+end;
+
+OnNewAR:
+Announce "[Aprendiz Rush]: A corrida de aprendizes está aberta e iniciará em 5 minutos. O Npc se encontra na sala inicial ao criar um novo personagem.",0;
+set $ARstatus, 1;
+set $ARpos, 0;
+setcell $ARmap$,60,366,62,366,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,60,364,62,364,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,60,365,60,365,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,62,365,62,365,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+stopnpctimer;
+setnpctimer 0;
+initnpctimer;
+mapwarp $ARmap$,$ARmap2$,120,104;
+killmonster $ARmap$,strnpcinfo(0)+"::OnARMobKill";
+end;
+
+//OnTimer60000:
+OnTimer10000:
+Announce "[Aprendiz Rush]: A corrida de aprendizes está aberta e iniciará em 4 minutos. O Npc se encontra na sala inicial ao criar um novo personagem.",0;
+end;
+
+//OnTimer120000:
+OnTimer20000:
+Announce "[Aprendiz Rush]: A corrida de aprendizes está aberta e iniciará em 3 minutos. O Npc se encontra na sala inicial ao criar um novo personagem.",0;
+end;
+
+//OnTimer180000:
+OnTimer30000:
+Announce "[Aprendiz Rush]: A corrida de aprendizes está aberta e iniciará em 2 minutos. O Npc se encontra na sala inicial ao criar um novo personagem.",0;
+end;
+
+//OnTimer240000:
+OnTimer40000:
+Announce "[Aprendiz Rush]: A corrida de aprendizes está aberta e iniciará em 1 minutos. O Npc se encontra na sala inicial ao criar um novo personagem.",0;
+end;
+
+//OnTimer300000:
+OnTimer50000:
+Announce "[Aprendiz Rush]: Tempo esgotado. A corrida iniciará em breve.",0;
+set $ARstatus, 2;
+end;
+
+//OnTimer310000:
+OnTimer60000:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: Bem vindos ao Aprendiz Rush. Em 10 segundos a contagem iniciará. Os primeiros colocados a chegarem no fim do trajeto, vencerão.",1;
+end;
+
+//OnTimer320000:
+OnTimer70000:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: 5.",1;
+end;
+
+//OnTimer321000:
+OnTimer71000:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: 4.",1;
+end;
+
+//OnTimer322000:
+OnTimer72000:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: 3.",1;
+end;
+
+//OnTimer323000:
+OnTimer73000:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: 2.",1;
+end;
+
+//OnTimer324000:
+OnTimer74000:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: 1.",1;
+end;
+
+//OnTimer325000:
+OnTimer75000:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: Go!",1;
+monster $ARmap$,287,269,"[AR]Chunin",1636,2,strnpcinfo(0)+"::OnARMobKill";
+monster $ARmap$,302,280,"[AR]Chunin",1636,2,strnpcinfo(0)+"::OnARMobKill";
+monster $ARmap$,354,284,"[AR]Chunin",1636,2,strnpcinfo(0)+"::OnARMobKill";
+monster $ARmap$,370,268,"[AR]Chunin",1636,2,strnpcinfo(0)+"::OnARMobKill";
+monster $ARmap$,0,0,"[AR]Kyodaija",1025,40,strnpcinfo(0)+"::OnARMobKill";
+monster $ARmap$,0,0,"[AR]Pakkun",1296,40,strnpcinfo(0)+"::OnARMobKill";
+monster $ARmap$,0,0,"[AR]Manmosuka",1040,50,strnpcinfo(0)+"::OnARMobKill";
+monster $ARmap$,0,0,"[AR]Escavador",1121,60,strnpcinfo(0)+"::OnARMobKill";	
+monster $ARmap$,329,274,"[AR]Hachibi",1738,3,strnpcinfo(0)+"::OnARMobKill";
+monster $ARmap$,36,240,"[AR]Sanbi",1986,3,strnpcinfo(0)+"::OnARMobKill";
+setcell $ARmap$,60,366,62,366,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,60,364,62,364,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,60,365,60,365,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,62,365,62,365,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+enablenpc "Chegada#AR";
+end;
+
+OnTimer1800000:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: Tempo esgotado!",1;
+disablenpc "Chegada#AR";
+stopnpctimer;
+setnpctimer 0;
+set $ARstatus, 0;
+end;
+
+OnPCLoadMapEvent:
+if(countitem(2628) > 0 && strcharinfo(3) != $ARmap$)
+delitem 2628, countitem(2628);
+end;
+
+OnPCLogoutEvent:
+if(countitem(2628) > 0)
+delitem 2628, countitem(2628);
+end;
+
+OnPCDieEvent:
+if(strcharinfo(3) == $ARmap$ && $ARstatus == 0){
+delitem 2628, countitem(2628);
+warp $ARmap2$,120,104;
+end;
+}
+if(strcharinfo(3) == $ARmap$ && $ARstatus == 2){
+dispbottom "Você voltará ao evento em 10 segundos.";
+sleep2(10000);
+atcommand "@alive";
+end;
+}
+if(strcharinfo(3) == $ARmap$ && $ARstatus == 1){
+warp $ARmap$,61,365;
+atcommand "@heal";
+end;
+}
+end;
+}
+
+turbo_n_1,383,169,4	script	Chegada#AR	857,{
+
+set .pbid, 664;
+
+if(getgmlevel() >= 5){
+mes "Gostaria de Cancelar o evento?";
+switch(select("Não:Sim")){
+case 1:
+break;
+
+case 2:
+MapAnnounce $ARmap$,"[Aprendiz Rush]: Evento cancelado por "+strcharinfo(0)+". Desculpe o encômodo, logo será normalizado.",1;
+disablenpc "Chegada#AR";
+set $ARstatus, 0;
+atcommand "@doommap";
+stopnpctimer "Evento#AR";
+close;
+end;
+}
+}
+
+if($ARstatus == 0){
+atcommand "@doommap";
+warp $ARmap2$,120,104;
+end;
+}
+
+if($ARpos == 0){
+set $ARpos, $ARpos + 1;
+MapAnnounce $ARmap$,"[Aprendiz Rush]: O aprendiz "+strcharinfo(0)+" chegou ao final do percusso em primeiro lugar!",1;
+getitem .pbid, 2;
+warp $ARmap2$,120,104;
+end;
+}
+if($ARpos == 1){
+set $ARpos, $ARpos + 1;
+MapAnnounce $ARmap$,"[Aprendiz Rush]: O aprendiz "+strcharinfo(0)+" chegou ao final do percusso em segundo lugar!",1;
+getitem .pbid, 2;
+warp $ARmap2$,120,104;
+end;
+}
+if($ARpos == 2){
+set $ARpos, $ARpos + 1;
+MapAnnounce $ARmap$,"[Aprendiz Rush]: O aprendiz "+strcharinfo(0)+" chegou ao final do percusso em terceiro lugar!",1;
+getitem .pbid, 1;
+warp $ARmap2$,120,104;
+end;
+}
+if($ARpos == 3){
+set $ARpos, $ARpos + 1;
+MapAnnounce $ARmap$,"[Aprendiz Rush]: O aprendiz "+strcharinfo(0)+" chegou ao final do percusso em quarto lugar!",1;
+getitem .pbid, 1;
+warp $ARmap2$,120,104;
+end;
+}
+if($ARpos == 4){
+set $ARpos, $ARpos + 1;
+MapAnnounce $ARmap$,"[Aprendiz Rush]: O aprendiz "+strcharinfo(0)+" chegou ao final do percusso em quinto lugar!",1;
+set $ARstatus, 0;
+getitem .pbid, 1;
+atcommand "@doommap";
+warp $ARmap2$,120,104;
+disablenpc "Chegada#AR";
+end;
+}
+
+// Nome do npc
+set .npc$,"^800000[Chegada]^000000";
+
+mes .npc$;
+mes "Tente da próxima vez.";
+close;
+end;
+}
+
+
+
+job_sage,120,104,4	script	Aprendiz Rush	933,{
+
+// Nome do npc
+set .npc$,"^800000[Aprendiz Rush]^000000";
+if(getgmlevel() < 50){
+mes .npc$;
+mes "Bem vindo, em que posso ajuda-lo?";
+switch(select("Entrar no evento:Informações:Storage")){
+case 1:
+next;
+if($ARstatus == 0){
+mes .npc$;
+mes "Desculpe, o evento está fechado.";
+close;
+end;
+}
+mes .npc$;
+mes "Entendido, Boa sorte!";
+close2;
+if(countitem(2628) < 1){ 
+getitem 2628, 1;
+dispbottom "Você recebeu um acessório para o Evento. Equipe-o e faça bom proveito.";
+}else{
+delitem 2628, countitem(2628) - 1;
+}
+warp $ARmap$,61,365;
+end;
+
+case 2:
+mes .npc$;
+mes "O evento Aprendiz Rush é uma corrida onde apenas aprendizes podem participar.";
+next;
+mes .npc$;
+mes "Os participantes deverão atravessar um labirinto cheio de aterrorizantes montros, e chegar no final em menos de 30 minutos.";
+next;
+mes .npc$;
+mes "Os primeiros colocados ganharão recompensas.";
+next;
+mes .npc$;
+mes "O Aprendiz Rush abre nos seguintes Horários:";
+mes "Manhã: 10h";
+mes "Tarde: 16h";
+mes "Noite: 21h";
+close;
+end;
+
+case 3:
+close2;
+openstorage;
+end;
+}
+}
+if(getgmlevel() >= 50){
+mes .npc$;
+mes "Bem vindo, em que posso ajuda-lo?";
+switch(select("Entrar no evento:Informações:Storage:Abrir Evento:Cancelar Evento")){
+case 1:
+next;
+mes .npc$;
+mes "Entendido!";
+close2;
+if(countitem(2628) < 1){ 
+getitem 2628, 1;
+dispbottom "Você recebeu um acessório para o Evento. Equipe-o e faça bom proveito.";
+}else{
+delitem 2628, countitem(2628) - 1;
+}
+warp $ARmap$,61,365;
+end;
+
+case 2:
+mes .npc$;
+mes "O evento Aprendiz Rush é uma corrida onde apenas aprendizes podem participar.";
+next;
+mes .npc$;
+mes "Os participantes deverão atravessar um labirinto cheio de aterrorizantes montros, e chegar no final em menos de 30 minutos.";
+next;
+mes .npc$;
+mes "Os primeiros colocados ganharão recompensas.";
+next;
+mes .npc$;
+mes "O Aprendiz Rush abre nos seguintes Horários:";
+mes "Manhã: 10h";
+mes "Tarde: 16h";
+mes "Noite: 21h";
+close;
+end;
+
+case 3:
+close2;
+openstorage;
+end;
+
+case 4:
+if($ARstatus){
+mes .npc$;
+mes "Já existe um evento ativo.";
+close;
+}
+Announce "[Aprendiz Rush]: A corrida de aprendizes está aberta e iniciará em 5 minutos. O Npc se encontra na sala inicial ao criar um novo personagem.",0;
+set $ARstatus, 1;
+set $ARpos, 0;
+setcell $ARmap$,60,366,62,366,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,60,364,62,364,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,60,365,60,365,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell $ARmap$,62,365,62,365,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+mapwarp "turbo_n_1","job_sage",120,104;
+killmonster $ARmap$,strnpcinfo(0)+"::OnARMobKill";
+initnpctimer "Evento#AR";
+close;
+end;
+
+case 5:
+close2;
+warp $ARmap$,383,169;
+end;
+}
+}
+end;
+}
+
+turbo_n_1,169,365,0	warp	AprendizRush13	1,1,turbo_n_1,210,368
+turbo_n_1,258,364,0	warp	AprendizRush23	1,1,turbo_n_1,316,366
+turbo_n_1,385,369,0	warp	AprendizRush34	1,1,turbo_n_1,10,267
+turbo_n_1,109,269,0	warp	AprendizRush45	1,1,turbo_n_1,217,213
+turbo_n_1,184,224,0	warp	AprendizRush56	1,1,turbo_n_1,268,275
+turbo_n_1,389,275,0	warp	AprendizRush67	1,1,turbo_n_1,4,91
+turbo_n_1,96,19,0	warp	AprendizRush78	1,1,turbo_n_1,166,55
+turbo_n_1,232,15,0	warp	AprendizRush89	1,1,turbo_n_1,306,47
+turbo_n_1,370,46,0	warp	AprendizRush99	1,1,turbo_n_1,383,153
+
+turbo_n_1	mapflag	nowarp
+turbo_n_1	mapflag	noteleport
+turbo_n_1	mapflag	nowarpto
+turbo_n_1	mapflag	nobranch
+turbo_n_1	mapflag	nosave	SavePoint
+turbo_n_1	mapflag	nomemo
+turbo_n_1	mapflag	nopenalty
+turbo_n_1	mapflag	pvp
+turbo_n_1	mapflag	noexp
+
+// Armadilhas
+//einbech,157,184,4 script Buraco#3 111,1,1,{ //trap_a#n_1-1::TurboLogRace
+turbo_n_1,118,377,0	script	trap_a#n_1-1::TurboLogRace	-1,44,1,{
+OnTouch:
+warp "turbo_n_1",61,365;
+end;
+}
+turbo_n_1,77,375,0	duplicate(TurboLogRace)	trap_a#n_1-14	-1,3,1
+turbo_n_1,82,375,0	duplicate(TurboLogRace)	trap_a#n_1-15	-1,1,1
+turbo_n_1,82,372,0	duplicate(TurboLogRace)	trap_a#n_1-16	-1,0,2
+turbo_n_1,83,372,0	duplicate(TurboLogRace)	trap_a#n_1-17	-1,0,2
+turbo_n_1,97,374,0	duplicate(TurboLogRace)	trap_a#n_1-18	-1,1,2
+turbo_n_1,98,374,0	duplicate(TurboLogRace)	trap_a#n_1-19	-1,1,2
+turbo_n_1,122,372,0	duplicate(TurboLogRace)	trap_a#n_1-20	-1,2,4
+turbo_n_1,125,374,0	duplicate(TurboLogRace)	trap_a#n_1-21	-1,0,4
+turbo_n_1,132,374,0	duplicate(TurboLogRace)	trap_a#n_1-22	-1,7,2
+turbo_n_1,156,374,0	duplicate(TurboLogRace)	trap_a#n_1-23	-1,6,2
+turbo_n_1,163,375,0	duplicate(TurboLogRace)	trap_a#n_1-24	-1,0,3
+turbo_n_1,164,377,0	duplicate(TurboLogRace)	trap_a#n_1-25	-1,1,1
+// second line
+turbo_n_1,76,369,0	duplicate(TurboLogRace)	trap_b#n_1-23	-1,2,2
+turbo_n_1,79,369,0	duplicate(TurboLogRace)	trap_b#n_1-24	-1,0,2
+turbo_n_1,77,366,0	duplicate(TurboLogRace)	trap_b#n_1-25	-1,3,0
+turbo_n_1,85,366,0	duplicate(TurboLogRace)	trap_b#n_1-26	-1,5,1
+turbo_n_1,87,363,0	duplicate(TurboLogRace)	trap_b#n_1-27	-1,2,1
+turbo_n_1,88,368,0	duplicate(TurboLogRace)	trap_b#n_1-28	-1,2,5
+turbo_n_1,92,370,0	duplicate(TurboLogRace)	trap_b#n_1-29	-1,1,3
+turbo_n_1,98,368,0	duplicate(TurboLogRace)	trap_b#n_1-30	-1,4,1
+turbo_n_1,109,371,0	duplicate(TurboLogRace)	trap_b#n_1-31	-1,7,2
+turbo_n_1,110,368,0	duplicate(TurboLogRace)	trap_b#n_1-32	-1,7,0
+turbo_n_1,113,366,0	duplicate(TurboLogRace)	trap_b#n_1-33	-1,3,2
+turbo_n_1,117,368,0	duplicate(TurboLogRace)	trap_b#n_1-34	-1,0,5
+turbo_n_1,123,364,0	duplicate(TurboLogRace)	trap_b#n_1-35	-1,6,1
+turbo_n_1,136,368,0	duplicate(TurboLogRace)	trap_b#n_1-36	-1,8,1
+turbo_n_1,136,366,0	duplicate(TurboLogRace)	trap_b#n_1-37	-1,8,0
+turbo_n_1,144,370,0	duplicate(TurboLogRace)	trap_b#n_1-38	-1,2,3
+turbo_n_1,147,370,0	duplicate(TurboLogRace)	trap_b#n_1-39	-1,0,3
+turbo_n_1,155,369,0	duplicate(TurboLogRace)	trap_b#n_1-40	-1,7,0
+turbo_n_1,155,368,0	duplicate(TurboLogRace)	trap_b#n_1-41	-1,7,0
+turbo_n_1,151,367,0	duplicate(TurboLogRace)	trap_b#n_1-42	-1,3,0
+turbo_n_1,153,366,0	duplicate(TurboLogRace)	trap_b#n_1-43	-1,1,0
+turbo_n_1,155,367,0	duplicate(TurboLogRace)	trap_b#n_1-44	-1,0,1
+//third line
+turbo_n_1,78,362,0	duplicate(TurboLogRace)	trap_c#n_1-29	-1,4,1
+turbo_n_1,78,359,0	duplicate(TurboLogRace)	trap_c#n_1-30	-1,4,1
+turbo_n_1,83,362,0	duplicate(TurboLogRace)	trap_c#n_1-31	-1,0,1
+turbo_n_1,88,359,0	duplicate(TurboLogRace)	trap_c#n_1-32	-1,5,1
+turbo_n_1,89,357,0	duplicate(TurboLogRace)	trap_c#n_1-33	-1,1,1
+turbo_n_1,92,390,0	duplicate(TurboLogRace)	trap_c#n_1-34	-1,1,1
+turbo_n_1,92,357,0	duplicate(TurboLogRace)	trap_c#n_1-35	-1,1,1
+turbo_n_1,98,364,0	duplicate(TurboLogRace)	trap_c#n_1-36	-1,6,1
+turbo_n_1,98,362,0	duplicate(TurboLogRace)	trap_c#n_1-37	-1,6,0
+turbo_n_1,106,364,0	duplicate(TurboLogRace)	trap_c#n_1-38	-1,2,2
+turbo_n_1,107,360,0	duplicate(TurboLogRace)	trap_c#n_1-39	-1,1,2
+turbo_n_1,109,360,0	duplicate(TurboLogRace)	trap_c#n_1-40	-1,0,2
+turbo_n_1,112,361,0	duplicate(TurboLogRace)	trap_c#n_1-41	-1,3,1
+turbo_n_1,116,359,0	duplicate(TurboLogRace)	trap_c#n_1-42	-1,0,2
+turbo_n_1,117,359,0	duplicate(TurboLogRace)	trap_c#n_1-43	-1,0,2
+turbo_n_1,116,356,0	duplicate(TurboLogRace)	trap_c#n_1-44	-1,0,2
+turbo_n_1,117,356,0	duplicate(TurboLogRace)	trap_c#n_1-45	-1,0,2
+turbo_n_1,129,360,0	duplicate(TurboLogRace)	trap_c#n_1-46	-1,12,1
+turbo_n_1,129,358,0	duplicate(TurboLogRace)	trap_c#n_1-47	-1,12,0
+turbo_n_1,132,357,0	duplicate(TurboLogRace)	trap_c#n_1-48	-1,2,1
+turbo_n_1,137,357,0	duplicate(TurboLogRace)	trap_c#n_1-49	-1,2,1
+turbo_n_1,147,363,0	duplicate(TurboLogRace)	trap_c#n_1-50	-1,16,1
+turbo_n_1,149,365,0	duplicate(TurboLogRace)	trap_c#n_1-51	-1,1,0
+turbo_n_1,158,362,0	duplicate(TurboLogRace)	trap_c#n_1-52	-1,1,4
+turbo_n_1,154,360,0	duplicate(TurboLogRace)	trap_c#n_1-53	-1,2,2
+turbo_n_1,161,360,0	duplicate(TurboLogRace)	trap_c#n_1-54	-1,1,2
+turbo_n_1,161,365,0	duplicate(TurboLogRace)	trap_c#n_1-55	-1,1,0
+turbo_n_1,160,366,0	duplicate(TurboLogRace)	trap_c#n_1-56	-1
+//fourth line
+turbo_n_1,79,353,0	duplicate(TurboLogRace)	trap_d#n_1-16	-1,5,2
+turbo_n_1,85,354,0	duplicate(TurboLogRace)	trap_d#n_1-17	-1,0,1
+turbo_n_1,99,353,0	duplicate(TurboLogRace)	trap_d#n_1-18	-1,14,0
+turbo_n_1,99,352,0	duplicate(TurboLogRace)	trap_d#n_1-19	-1,14,0
+turbo_n_1,99,356,0	duplicate(TurboLogRace)	trap_d#n_1-20	-1,3,3
+turbo_n_1,103,356,0	duplicate(TurboLogRace)	trap_d#n_1-21	-1,0,3
+turbo_n_1,108,354,0	duplicate(TurboLogRace)	trap_d#n_1-22	-1,5,1
+turbo_n_1,112,356,0	duplicate(TurboLogRace)	trap_d#n_1-23	-1,0,1
+turbo_n_1,113,356,0	duplicate(TurboLogRace)	trap_d#n_1-24	-1,0,1
+turbo_n_1,123,353,0	duplicate(TurboLogRace)	trap_d#n_1-25	-1,3,2
+turbo_n_1,127,353,0	duplicate(TurboLogRace)	trap_d#n_1-26	-1,0,2
+turbo_n_1,145,352,0	duplicate(TurboLogRace)	trap_d#n_1-27	-1,17,1
+turbo_n_1,152,354,0	duplicate(TurboLogRace)	trap_d#n_1-28	-1,10,1
+turbo_n_1,145,357,0	duplicate(TurboLogRace)	trap_d#n_1-29	-1,1,2
+turbo_n_1,148,357,0	duplicate(TurboLogRace)	trap_d#n_1-30	-1,1,2
+/*
+
+BUILDIN_FUNC(storageadditem)
+{
+	int nameid,amount;
+	TBL_PC *sd;
+	sd=script_rid2sd(st); // Attached player
+
+	if( sd == NULL ) // no target
+		return 0;
+
+	storage_additem(sd, data=script_getdata(st,2), data=script_getdata(st,3));
+	return 0;
+
+}
+
+
+#include "storage.h"
+
+static int compare_item(struct item *a, struct item *b)
+{
+	if( a->nameid == b->nameid &&
+		a->identify == b->identify &&
+		a->refine == b->refine &&
+		a->attribute == b->attribute &&
+		a->expire_time == b->expire_time )
+	{
+		int i;
+		for (i = 0; i < MAX_SLOTS && (a->card[i] == b->card[i]); i++);
+		return (i == MAX_SLOTS);
+	}
+	return 0;
+}
+
+
+//==========================================
+// Internal add-item function.
+//------------------------------------------
+static int storage_additem(struct map_session_data* sd, struct item* item_data, int amount)
+{
+	struct storage_data* stor = &sd->status.storage;
+	struct item_data *data;
+	int i;
+
+	if( item_data->nameid <= 0 || amount <= 0 )
+		return 1;
+	
+	data = itemdb_search(item_data->nameid);
+
+	if( !itemdb_canstore(item_data, pc_isGM(sd)) )
+	{	//Check if item is storable. [Skotlex]
+		clif_displaymessage (sd->fd, msg_txt(264));
+		return 1;
+	}
+	
+	if( itemdb_isstackable2(data) )
+	{//Stackable
+		for( i = 0; i < MAX_STORAGE; i++ )
+		{
+			if( compare_item(&stor->items[i], item_data) )
+			{// existing items found, stack them
+				if( amount > MAX_AMOUNT - stor->items[i].amount )
+					return 1;
+				stor->items[i].amount += amount;
+				clif_storageitemadded(sd,&stor->items[i],i,amount);
+				log_pick_pc(sd, LOG_TYPE_STORAGE, item_data->nameid, -amount, item_data);
+				return 0;
+			}
+		}
+	}
+
+	// find free slot
+	ARR_FIND( 0, MAX_STORAGE, i, stor->items[i].nameid == 0 );
+	if( i >= MAX_STORAGE )
+		return 1;
+
+	// add item to slot
+	memcpy(&stor->items[i],item_data,sizeof(stor->items[0]));
+	stor->storage_amount++;
+	stor->items[i].amount = amount;
+	clif_storageitemadded(sd,&stor->items[i],i,amount);
+	clif_updatestorageamount(sd, stor->storage_amount, MAX_STORAGE);
+	log_pick_pc(sd, LOG_TYPE_STORAGE, item_data->nameid, -amount, item_data);
+	storage_storageclose(sd);
+
+	return 0;
+}

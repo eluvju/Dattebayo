@@ -1,0 +1,2175 @@
+-	script	correcaosave11	-1,{
+OnPCLoginEvent:
+if (reset_gen2 == 1) {end;}
+if (getskilllv(177) > 0) {skill 177,1,0;}
+if (getskilllv(182) > 0) {skill 182,1,0;}
+if (getskilllv(30) > 0) {skill 30,1,0;}
+if (getskilllv(181) > 0) {skill 181,1,0;}
+if (getskilllv(179) > 0) {skill 179,1,0;}
+if (getskilllv(6) > 0) {skill 6,1,0;}
+set reset_gen2,1;
+end;
+
+}
+
+-	script	correcaobug1	-1,{
+
+if (getskilllv(383) > 0) && (velo_intermediario != 1) {skill 383,0,0; set Vel_Caminho,0; if(accept_velo_int > 0) {set accept_velo_int,accept_velo_int -1;} if(velo_skill_int > 0) {set velo_skill_int,velo_skill_int -1;}}
+if (getskilllv(411) > 0) && (velo_intermediario != 1) {skill 411,0,0; set Vel_corrida,0; if(accept_velo_int > 0) {set accept_velo_int,accept_velo_int -1;} if(velo_skill_int > 0) {set velo_skill_int,velo_skill_int -1;}}
+if (getskilllv(350) > 0) && (velo_intermediario != 1) {skill 350,0,0; set fuga,0; if(accept_velo_int > 0) {set accept_velo_int,accept_velo_int -1;} if(velo_skill_int > 0) {set velo_skill_int,velo_skill_int -1;}}
+if (getskilllv(27) > 0) && (velo_intermediario != 1) {skill 27,0,0; set oboro,0; if(accept_velo_int > 0) {set accept_velo_int,accept_velo_int -1;} if(velo_skill_int > 0) {set velo_skill_int,velo_skill_int -1;}}
+if (getskilllv(26) > 0) && (velo_intermediario != 1) {skill 26,0,0; set shushin,0; if(accept_velo_int > 0) {set accept_velo_int,accept_velo_int -1;} if(velo_skill_int > 0) {set velo_skill_int,velo_skill_int -1;}}
+
+if (getskilllv(111) > 0) && (velo_basico != 1) {skill 111,0,0; set Adrenalina_P,0; if(accept_velo > 0) {set accept_velo,accept_velo -1;} if(velo_skill_bas > 0) {set velo_skill_bas,velo_skill_bas -1;}}
+if (getskilllv(49) > 0) && (velo_basico != 1) {skill 49,0,0; set V_Pericia,0; if(accept_velo > 0) {set accept_velo,accept_velo -1;} if(velo_skill_bas > 0) {set velo_skill_bas,velo_skill_bas -1;}}
+if (getskilllv(495) > 0) && (velo_basico != 1) {skill 495,0,0; set Rapidez_mao,0; if(accept_velo > 0) {set accept_velo,accept_velo -1;} if(velo_skill_bas > 0) {set velo_skill_bas,velo_skill_bas -1;}}
+if (getskilllv(150) > 0) && (velo_basico != 1) {skill 150,0,0; set recuar,0; if(accept_velo > 0) {set accept_velo,accept_velo -1;} if(velo_skill_bas > 0) {set velo_skill_bas,velo_skill_bas -1;}}
+if (getskilllv(996) > 0) && (velo_basico != 1) {skill 996,0,0; set Troca_posicao,0; if(accept_velo > 0) {set accept_velo,accept_velo -1;} if(velo_skill_bas > 0) {set velo_skill_bas,velo_skill_bas -1;}}
+
+if (getskilllv(48) > 0) && (tai_basico != 1) {skill 48,0,0; set Jyuuken,0; if(accept_tai > 0) {set accept_tai,accept_tai -1;} if(tai_skill_bas > 0) {set tai_skill_bas,tai_skill_bas -1;}}
+if (getskilllv(399) > 0) && (tai_basico != 1) {skill 399,0,0; set Shikomishindan,0; if(accept_tai > 0) {set accept_tai,accept_tai -1;} if(tai_skill_bas > 0) {set tai_skill_bas,tai_skill_bas -1;}}
+if (getskilllv(5) > 0) && (tai_basico != 1) {skill 5,0,0; set Buyou,0; if(accept_tai > 0) {set accept_tai,accept_tai -1;} if(tai_skill_bas > 0) {set tai_skill_bas,tai_skill_bas -1;}}
+if (getskilllv(263) > 0) && (tai_basico != 1) {skill 263,0,0; set Shippo,0; if(accept_tai > 0) {set accept_tai,accept_tai -1;} if(tai_skill_bas > 0) {set tai_skill_bas,tai_skill_bas -1;}}
+if (getskilllv(58) > 0) && (tai_basico != 1) {skill 58,0,0; set Tokken,0; if(accept_tai > 0) {set accept_tai,accept_tai -1;} if(tai_skill_bas > 0) {set tai_skill_bas,tai_skill_bas -1;}}
+
+if (getskilllv(266) > 0) && (tai_intermediario != 1) {skill 266,0,0; set ChakraM,0; if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;} if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}}
+if (getskilllv(673) > 0) && (tai_intermediario != 1) {skill 673,0,0; set fufuken,0; if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;} if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}}
+if (getskilllv(136) > 0) && (tai_intermediario != 1) {skill 136,0,0; set Gutten,0; if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;} if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}}
+if (getskilllv(370) > 0) && (tai_intermediario != 1) {skill 370,0,0; set Rasengan,0; if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;} if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}}
+if (getskilllv(357) > 0) && (tai_intermediario != 1) {skill 357,0,0; set DSenkou,0; if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;} if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}}
+if (getskilllv(171) > 0) && (tai_intermediario != 1) {skill 171,0,0; set ShoufuuR,0; if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;} if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}}
+if (getskilllv(62) > 0) && (tai_intermediario != 1) {skill 62,0,0; set TsuutenKyaku,0; if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;} if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}}
+
+if (getskilllv(279) > 0) && (fuuin_intermediario != 1) {skill 279,0,0; set auto_spell,0; if(fuu_skill_int > 0) {set fuu_skill_int,fuu_skill_int -1;} if(accept_fuu_int > 0) {set accept_fuu_int,accept_fuu_int -1;}}
+if (getskilllv(34) > 0) && (fuuin_intermediario != 1) {skill 34,0,0; set bencao,0; if(fuu_skill_int > 0) {set fuu_skill_int,fuu_skill_int -1;} if(accept_fuu_int > 0) {set accept_fuu_int,accept_fuu_int -1;}}
+if (getskilllv(322) > 0) && (fuuin_intermediario != 1) {skill 322,0,0; set Idou,0; if(fuu_skill_int > 0) {set fuu_skill_int,fuu_skill_int -1;} if(accept_fuu_int > 0) {set accept_fuu_int,accept_fuu_int -1;}}
+if (seloskill321 >= 0) && (fuuin_intermediario != 1) {set seloskill321,0; skill 304,0,0; set Nehan,0; if(fuu_skill_int > 0) {set fuu_skill_int,fuu_skill_int -1;} if(accept_fuu_int > 0) {set accept_fuu_int,accept_fuu_int -1;}}
+if (getskilllv(24) > 0) && (fuuin_intermediario != 1) {skill 24,0,0; set Revelacao,0; if(fuu_skill_int > 0) {set fuu_skill_int,fuu_skill_int -1;} if(accept_fuu_int > 0) {set accept_fuu_int,accept_fuu_int -1;}}
+
+if (seloskill543 >= 0) && (fuu_basico != 1) {set seloskill543,0; set Aura,0; if(fuu_skill_bas > 0) {set fuu_skill_bas,fuu_skill_bas -1;} if(accept_fuu > 0) {set accept_fuu,accept_fuu -1;}}
+if (seloskill320 >= 0) && (fuu_basico != 1) {set seloskill320,0; set Chuusuusei,0; skill 315,0,0; skill 304,0,0; if(fuu_skill_bas > 0) {set fuu_skill_bas,fuu_skill_bas -1;} if(accept_fuu > 0) {set accept_fuu,accept_fuu -1;}}
+if (seloskill45 >= 0) && (fuu_basico != 1) {set seloskill45,0; set concentracao,0; if(fuu_skill_bas > 0) {set fuu_skill_bas,fuu_skill_bas -1;} if(accept_fuu > 0) {set accept_fuu,accept_fuu -1;}}
+if (getskilllv(75) >= 0) && (fuu_basico != 1) {skill 75,0,0; set gloria,0; if(fuu_skill_bas > 0) {set fuu_skill_bas,fuu_skill_bas -1;} if(accept_fuu > 0) {set accept_fuu,accept_fuu -1;}}
+if (getskilllv(43) >= 0) && (fuu_basico != 1) {skill 43,0,0; set precisao,0; if(fuu_skill_bas > 0) {set fuu_skill_bas,fuu_skill_bas -1;} if(accept_fuu > 0) {set accept_fuu,accept_fuu -1;}}
+
+if (getskilllv(182) >= 0) && (gen_basico != 1) {skill 182,0,0; set Fukai,0; if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;} if(accept_gen > 0) {set accept_gen,accept_gen -1;}}
+if (seloskill677 >= 0) && (gen_basico != 1) {set seloskill677,0; set Jigoku,0; if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;} if(accept_gen > 0) {set accept_gen,accept_gen -1;}}
+if (seloskill678 >= 0) && (gen_basico != 1) {set seloskill678,0; set Kanashibari,0; if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;} if(accept_gen > 0) {set accept_gen,accept_gen -1;}}
+if (getskilllv(181) >= 0) && (gen_basico != 1) {skill 181,0,0; set kokubanjou,0; if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;} if(accept_gen > 0) {set accept_gen,accept_gen -1;}}
+if (getskilllv(30) >= 0) && (gen_basico != 1) {skill 30,0,0; set Mahi,0; if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;} if(accept_gen > 0) {set accept_gen,accept_gen -1;}}
+if (getskilllv(6) >= 0) && (gen_basico != 1) {skill 6,0,0; set provocar,0; if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;} if(accept_gen > 0) {set accept_gen,accept_gen -1;}}
+if (getskilllv(177) >= 0) && (gen_basico != 1) {skill 177,0,0; set raigen,0; if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;} if(accept_gen > 0) {set accept_gen,accept_gen -1;}}
+if (getskilllv(179) >= 0) && (gen_basico != 1) {skill 179,0,0; set shikumi,0; if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;} if(accept_gen > 0) {set accept_gen,accept_gen -1;}}
+
+if (getskilllv(110) >= 0) && (gen_intermediario != 1) {skill 110,0,0; set Genzouga,0; if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;} if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}}
+if (getskilllv(402) >= 0) && (gen_intermediario != 1) {skill 402,0,0; set Goukan,0; if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;} if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}}
+if (getskilllv(76) >= 0) && (gen_intermediario != 1) {skill 76,0,0; set Jigyaku,0; if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;} if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}}
+if (seloskill668 >= 0) && (gen_intermediario != 1) {set seloskill668,0; set Kemuri,0; if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;} if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}}
+if (getskilllv(308) >= 0) && (gen_intermediario != 1) {skill 308,0,0; set Ryou,0; if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;} if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}}
+if (getskilllv(369) >= 0) && (gen_intermediario != 1) {skill 369,0,0; set Sakki,0; if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;} if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}}
+if (getskilllv(269) >= 0) && (gen_intermediario != 1) {skill 269,0,0; set Shibari,0; if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;} if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}}
+
+if (getskilllv(28) >= 0) && (med_basico != 1) {skill 28,0,0; set Chiyute,0; if(med_skill_bas > 0) {set med_skill_bas,med_skill_bas -1;} if(accept_med > 0) {set accept_med,accept_med -1;}}
+if (getskilllv(66) >= 0) && (med_basico != 1) {skill 66,0,0; set Nikudan,0; if(med_skill_bas > 0) {set med_skill_bas,med_skill_bas -1;} if(accept_med > 0) {set accept_med,accept_med -1;}}
+if (getskilllv(358) >= 0) && (med_basico != 1) {skill 358,0,0; set relax,0; if(med_skill_bas > 0) {set med_skill_bas,med_skill_bas -1;} if(accept_med > 0) {set accept_med,accept_med -1;}}
+if (getskilllv(124) >= 0) && (med_basico != 1) {skill 124,0,0; set Remover,0; if(med_skill_bas > 0) {set med_skill_bas,med_skill_bas -1;} if(accept_med > 0) {set accept_med,accept_med -1;}}
+if (getskilllv(35) >= 0) && (med_basico != 1) {skill 35,0,0; set Shometsu,0; if(med_skill_bas > 0) {set med_skill_bas,med_skill_bas -1;} if(accept_med > 0) {set accept_med,accept_med -1;}}
+if (getskilllv(72) >= 0) && (med_basico != 1) {skill 72,0,0; set Souzou,0; if(med_skill_bas > 0) {set med_skill_bas,med_skill_bas -1;} if(accept_med > 0) {set accept_med,accept_med -1;}}
+
+if (getskilllv(277) >= 0) && (med_intermediario != 1) {skill 277,0,0; set Kaisher,0; if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;} if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}}
+if (getskilllv(255) >= 0) && (med_intermediario != 1) {skill 255,0,0; set f_protecao,0; if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;} if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}}
+if (getskilllv(176) >= 0) && (med_intermediario != 1) {skill 176,0,0; set Seijutsu,0; if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;} if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}}
+if (getskilllv(54) >= 0) && (med_intermediario != 1) {skill 54,0,0; set Shikon,0; if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;} if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}}
+if (getskilllv(307) >= 0) && (med_intermediario != 1) {skill 307,0,0; set Byakugo,0; if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;} if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}}
+if (getskilllv(33) >= 0) && (med_intermediario != 1) {skill 33,0,0; set Tsubaki,0; if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;} if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}}
+
+if (getskilllv(92) >= 0) && (nin_intermediario != 1) {skill 92,0,0; set D_Jigoku,0;}
+if (getskilllv(16) >= 0) && (nin_intermediario != 1) {skill 16,0,0; set kyuu,0;}
+if (getskilllv(542) >= 0) && (nin_intermediario != 1) {skill 542,0,0; set Renkuudan,0;}
+if (getskilllv(400) >= 0) && (nin_intermediario != 1) {skill 400,0,0; set atsugai,0;}
+if (getskilllv(186) >= 0) && (nin_intermediario != 1) {skill 186,0,0; set Haisekishou,0;}
+if (getskilllv(80) >= 0) && (nin_intermediario != 1) {skill 80,0,0; set Gouryuuka,0;}
+if (getskilllv(187) >= 0) && (nin_intermediario != 1) {skill 80,0,0; set Jibashiri,0;}
+if (getskilllv(85) >= 0) && (nin_intermediario != 1) {skill 85,0,0; set shibarai,0;}
+if (getskilllv(184) >= 0) && (nin_intermediario != 1) {skill 184,0,0; set Mizurappa,0;}
+if (getskilllv(87) >= 0) && (nin_intermediario != 1) {skill 87,0,0; set Suijinheki,0;}
+if (getskilllv(148) >= 0) && (nin_intermediario != 1) && (elementofuuton != 1) {skill 148,0,0; set atsugai,0; if (checkquest(1015) > 0) {erasequest 1015;}}
+
+if (getskilllv(185) >= 0) && (nin_basico != 1) {skill 185,0,0; set Doryuuheki,0;}
+if (getskilllv(91) >= 0) && (nin_basico != 1) {skill 91,0,0; set Sousou,0;}
+if (getskilllv(191) >= 0) && (nin_basico != 1) {skill 191,0,0; set kamaitachi,0;}
+if (getskilllv(11) >= 0) && (nin_basico != 1) {skill 11,0,0; set daitoppa,0;}
+if (getskilllv(534) >= 0) && (nin_basico != 1) {skill 534,0,0; set hanashuriken,0;}
+if (getskilllv(17) >= 0) && (nin_basico != 1) {skill 17,0,0; set housenka,0;}
+if (getskilllv(21) >= 0) && (nin_basico != 1) {skill 21,0,0; set Oroshi,0;}
+if (getskilllv(192) >= 0) && (nin_basico != 1) {skill 192,0,0; set maisou,0;}
+if (getskilllv(88) >= 0) && (nin_basico != 1) {skill 88,0,0; set Banshou,0;}
+if (getskilllv(15) >= 0) && (nin_basico != 1) {skill 15,0,0; set hanhonryuu,0;}
+if (getskilllv(116) >= 0) && (nin_basico != 1) {skill 116,0,0; set armadilha_doton,0;}
+if (getskilllv(90) >= 0) && (nin_basico != 1) {skill 90,0,0; set Raishin,0;}
+if (getskilllv(540) >= 0) && (nin_basico != 1) {skill 540,0,0; set nindou,0;}
+if (getskilllv(115) >= 0) && (nin_basico != 1) {skill 115,0,0; set repulsor,0;}
+if (getskilllv(19) >= 0) && (nin_basico != 1) {skill 19,0,0; set gougakyuu,0;}
+if (getskilllv(123) >= 0) && (nin_basico != 1) {skill 123,0,0; set P_Explosivo,0;}
+if (getskilllv(20) >= 0) && (nin_basico != 1) {skill 20,0,0; set Gian,0;}
+if (getskilllv(119) >= 0) && (nin_basico != 1) {skill 119,0,0; set paralisador,0;}
+if (getskilllv(14) >= 0) && (nin_basico != 1) {skill 14,0,0; set suiryuudan,0;}
+if (getskilllv(121) >= 0) && (nin_basico != 1) {skill 121,0,0; set P_Congelante,0;}
+
+if (getskilllv(214) == 0) && (fufuken == 1) {skill 214,1,0;}
+if (getskilllv(214) > 0) && (fufuken == 0) {skill 214,0,0;}
+
+
+
+
+}
+
+-	script	correcaokaton	-1,{
+
+
+OnPCLoginEvent:
+
+if (getskilllv(509) > 0) && (atk_concentrado == 1){skill 509,0,0; set atk_concentrado,0; skill 150,1,0; set recuar,1;}
+
+if (getskilllv(53) > 0) && (Saikan == 1){skill 53,0,0; set Saikan,0; skill 358,1,0; set relax,1;}
+
+//if (getskilllv(480) > 0) && (Kuushou == 1){skill 480,0,0; set Kuushou,0; skill 673,1,0; set fufuken,1;}
+
+if (getskilllv(387) > 0) && (V_impulso == 1){skill 387,0,0; set V_impulso,0; skill 111,1,0; set Adrenalina_P,1;}
+
+if (getskilllv(509) > 0) && (Dekopin == 1){skill 509,0,0; set Dekopin,0; set accept_tai,accept_tai -1; set tai_skill_bas,tai_skill_bas -1;}
+
+if (checkquest(2131) == 1) {erasequest 2131; set accept_tai,accept_tai -1; set tai_skill_bas,tai_skill_bas -1; } 
+
+if (getskilllv(8) > 0) && (vigor == 1){skill 8,0,0; set vigor,0; skill 43,1,0; set precisao,1;}
+
+if (getskilllv(124) > 0) && (med_basico != 1){skill 124,0,0; set Remover,0;}
+
+if (countitem(1009) >= 1) && (nin_basico != 1) {delitem 1009,1;}
+
+if (countitem(1021) >= 1) && (tai_basico != 1) {delitem 1021,1;}
+
+if (countitem(1023) >= 1) && (gen_basico != 1) {delitem 1023,1;}
+
+if (countitem(1024) >= 1) && (fuu_basico != 1) {delitem 1024,1;}
+
+if (countitem(1027) >= 1) && (med_basico != 1) {delitem 1027,1;}
+
+if (countitem(1051) >= 1) && (velo_basico != 1) {delitem 1051,1;}
+
+//if (getskilllv(400) > 0) && (atsugai == 1){skill 400,0,0; skill 148,1,0;}
+
+if (getskilllv(148) > 3) && (atsugai == 1){skill 148,3,0;}
+
+//if (getskilllv(673) >= 1) {skill 214,1,0; skill 673,0,0;}
+
+if (getskilllv(84) > 8) {skill 84,8,0;}
+
+if (getskilllv(357) > 5) {skill 357,5,0;}
+if (getskilllv(357) > 3) && (tai_avan != 1) {skill 357,3,0;}
+
+if (getskilllv(399) > 3) && (tai_intermediario != 1) {skill 399,3,0;}
+if (getskilllv(399) > 5) && (tai_avan != 1) {skill 399,5,0;}
+
+if (getskilllv(34) > 3) && (fuuin_intermediario != 1) {skill 34,3,0;}
+if (getskilllv(34) > 6) && (fuuin_avan != 1) {skill 34,6,0;}
+
+if (getskilllv(148) >= 0) && (nin_intermediario != 1) && (elementofuuton != 1) {skill 148,0,0; set atsugai,0; if (checkquest(1015) > 0) {erasequest 1015;}}
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) || (nukenin == 1) {
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+}
+
+if (countitem(19020) == 0) && (Class != 0) {
+if (nukenin == 1) {end;}
+
+if(countitem(19001) >= 1) {end;}
+if(countitem(19006) >= 1) {end;}
+if(countitem(19008) >= 1) {end;}
+if(countitem(19040) >= 1) {end;}
+
+if(countitem(19073) >= 1) {end;}
+if(countitem(19074) >= 1) {end;}
+if(countitem(19076) >= 1) {end;}
+if(countitem(19004) >= 1) {end;}
+
+if(countitem(19034) >= 1) {end;}
+if(countitem(19018) >= 1) {end;}
+if(countitem(19019) >= 1) {end;}
+if(countitem(19165) >= 1) {end;}
+
+if(countitem(19025) >= 1) {end;}
+if(countitem(19096) >= 1) {end;}
+if(countitem(19097) >= 1) {end;}
+if(countitem(19098) >= 1) {end;}
+
+if(countitem(19168) >= 1) {end;}
+if(countitem(19169) >= 1) {end;}
+if(countitem(19170) >= 1) {end;}
+if(countitem(19095) >= 1) {end;}
+
+if(countitem(19030) >= 1) {end;}
+if(countitem(19156) >= 1) {end;}
+if(countitem(19016) >= 1) {end;}
+if(countitem(19127) >= 1) {end;}
+
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+normal:
+if(#konoha == 1) {getitem 19008,1;}
+if(#nuvem == 1) {getitem 19040,1;}
+if(#suna == 1) {getitem 19006,1;}
+if(#nevoa == 1) {getitem 19001,1;}
+close;
+
+kakashi:
+if(#konoha == 1) {getitem 19004,1;}
+if(#nuvem == 1) {getitem 19074,1;}
+if(#suna == 1) {getitem 19076,1;}
+if(#nevoa == 1) {getitem 19073,1;}
+close;
+
+lado:
+if(#konoha == 1) {getitem 19034,1;}
+if(#nuvem == 1) {getitem 19165,1;}
+if(#suna == 1) {getitem 19018,1;}
+if(#nevoa == 1) {getitem 19019,1;}
+close;
+
+pescoco:
+if(#konoha == 1) {getitem 19025,1;}
+if(#nuvem == 1) {getitem 19098,1;}
+if(#suna == 1) {getitem 19096,1;}
+if(#nevoa == 1) {getitem 19097,1;}
+close;
+
+yamato:
+if(#konoha == 1) {getitem 19170,1;}
+if(#nuvem == 1) {getitem 19095,1;}
+if(#suna == 1) {getitem 19168,1;}
+if(#nevoa == 1) {getitem 19169,1;}
+close;
+
+kisame:
+if(#konoha == 1) {getitem 19030,1;}
+if(#nuvem == 1) {getitem 19127,1;}
+if(#suna == 1) {getitem 19156,1;}
+if(#nevoa == 1) {getitem 19016,1;}
+close;
+
+}
+
+
+
+//if (fuuin_intermediario == 1) && (fuuin_avan != 1) && (countitem(741) < 1) {getitem 741,1;}
+//if (gen_intermediario == 1) && (gen_avan != 1) && (countitem(738) < 1) {getitem 738,1;}
+//if (nin_intermediario == 1) && (nin_avan != 1) && (countitem(739) < 1) {getitem 739,1;}
+//if (tai_intermediario == 1) && (tai_avan != 1) && (countitem(740) < 1) {getitem 740,1;}
+//if (med_intermediario == 1) && (med_avan != 1) && (countitem(742) < 1) {getitem 742,1;}
+//if (velo_intermediario == 1) && (vel_avan != 1) && (countitem(1099) < 1) {getitem 1099,1;}
+
+
+
+if (correcaostats == 1) {end;}
+
+ResetStatus;
+set correcaostats,1;
+mes "Atenção: Seus atributos foram resetados devido a uma correção de um bug antigo, esse reset não ocorrerá novamente neste personagem, agradeçemos a compreensão";
+close;
+
+
+
+}
+
+-	script	correcaogenlevel	-1,{
+
+
+OnPCLoginEvent:
+if (getskilllv(179) > 3) && (gen_intermediario != 1) {skill 179,3,0;}
+if (getskilllv(182) > 2) && (gen_intermediario != 1) {skill 182,2,0;}
+if (getskilllv(177) > 3) && (gen_intermediario != 1) {skill 177,3,0;}
+if (getskilllv(672) > 2) && (gen_intermediario != 1) {skill 672,2,0;}
+if (getskilllv(181) > 2) && (gen_intermediario != 1) {skill 181,2,0;}
+
+//velocidade
+if (getskilllv(996) > 3) && (vel_avan != 1) {skill 996,3,0;}
+if (getskilllv(996) > 1) && (velo_intermediario != 1) {skill 996,1,0;}
+
+
+}
+
+-	script	correcaosave10	-1,{
+
+OnPCLoginEvent:
+
+if(countitem(19001) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19006) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19008) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19040) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19073) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19074) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19076) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19004) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19034) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19018) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19019) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19165) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19025) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19096) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19097) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19098) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19168) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19169) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19170) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19095) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19030) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19156) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19016) >= 1) {set @bandanas, @bandanas +1;} 
+if(countitem(19127) >= 1) {set @bandanas, @bandanas +1;} 
+
+if (@bandanas == 1) {
+if(countitem(19001) > 1) {delitem 19001, countitem(19001); getitem 19001,1;} 
+if(countitem(19006) > 1) {delitem 19006, countitem(19006); getitem 19001,1;} 
+if(countitem(19008) > 1) {delitem 19008, countitem(19008); getitem 19001,1;} 
+if(countitem(19040) > 1) {delitem 19040, countitem(19040); getitem 19001,1;} 
+if(countitem(19073) > 1) {delitem 19073, countitem(19073); getitem 19001,1;} 
+if(countitem(19074) > 1) {delitem 19074, countitem(19074); getitem 19001,1;} 
+if(countitem(19076) > 1) {delitem 19076, countitem(19076); getitem 19001,1;} 
+if(countitem(19004) > 1) {delitem 19004, countitem(19004); getitem 19001,1;} 
+if(countitem(19034) > 1) {delitem 19034, countitem(19034); getitem 19001,1;} 
+if(countitem(19018) > 1) {delitem 19018, countitem(19018); getitem 19001,1;} 
+if(countitem(19019) > 1) {delitem 19019, countitem(19019); getitem 19001,1;} 
+if(countitem(19165) > 1) {delitem 19165, countitem(19165); getitem 19001,1;} 
+if(countitem(19025) > 1) {delitem 19025, countitem(19025); getitem 19001,1;} 
+if(countitem(19096) > 1) {delitem 19025, countitem(19096); getitem 19001,1;} 
+if(countitem(19097) > 1) {delitem 19025, countitem(19097); getitem 19001,1;} 
+if(countitem(19098) > 1) {delitem 19025, countitem(19098); getitem 19001,1;} 
+if(countitem(19168) > 1) {delitem 19168, countitem(19168); getitem 19001,1;} 
+if(countitem(19169) > 1) {delitem 19169, countitem(19169); getitem 19001,1;} 
+if(countitem(19170) > 1) {delitem 19170, countitem(19170); getitem 19001,1;} 
+if(countitem(19095) > 1) {delitem 19095, countitem(19095); getitem 19001,1;} 
+if(countitem(19030) > 1) {delitem 19030, countitem(19030); getitem 19001,1;} 
+if(countitem(19156) > 1) {delitem 19156, countitem(19156); getitem 19001,1;} 
+if(countitem(19016) > 1) {delitem 19016, countitem(19016); getitem 19001,1;} 
+if(countitem(19127) > 1) {delitem 19127, countitem(19127); getitem 19001,1;} 
+}
+
+if (@bandanas > 1) {
+if(countitem(19001) >= 1) {delitem 19001, countitem(19001);} 
+if(countitem(19006) >= 1) {delitem 19006, countitem(19006);} 
+if(countitem(19008) >= 1) {delitem 19008, countitem(19008);} 
+if(countitem(19040) >= 1) {delitem 19040, countitem(19040);} 
+if(countitem(19073) >= 1) {delitem 19073, countitem(19073);} 
+if(countitem(19074) >= 1) {delitem 19074, countitem(19074);} 
+if(countitem(19076) >= 1) {delitem 19076, countitem(19076);} 
+if(countitem(19004) >= 1) {delitem 19004, countitem(19004);} 
+if(countitem(19034) >= 1) {delitem 19034, countitem(19034);} 
+if(countitem(19018) >= 1) {delitem 19018, countitem(19018);} 
+if(countitem(19019) >= 1) {delitem 19019, countitem(19019);} 
+if(countitem(19165) >= 1) {delitem 19165, countitem(19165);} 
+if(countitem(19025) >= 1) {delitem 19025, countitem(19025);} 
+if(countitem(19096) >= 1) {delitem 19025, countitem(19096);} 
+if(countitem(19097) >= 1) {delitem 19025, countitem(19097);} 
+if(countitem(19098) >= 1) {delitem 19025, countitem(19098);} 
+if(countitem(19168) >= 1) {delitem 19168, countitem(19168);} 
+if(countitem(19169) >= 1) {delitem 19169, countitem(19169);} 
+if(countitem(19170) >= 1) {delitem 19170, countitem(19170);} 
+if(countitem(19095) >= 1) {delitem 19095, countitem(19095);} 
+if(countitem(19030) >= 1) {delitem 19030, countitem(19030);} 
+if(countitem(19156) >= 1) {delitem 19156, countitem(19156);} 
+if(countitem(19016) >= 1) {delitem 19016, countitem(19016);} 
+if(countitem(19127) >= 1) {delitem 19127, countitem(19127);} 
+mes "Atenção: Houve uma correção nas bandanas em seu personagem, você será levado para a tela de login agora, basta entrar novamente em sua conta para normalizar sua situação. Obrigado.";
+next;
+atcommand "@kick "+strcharinfo(0)+"";
+
+}
+
+
+}
+
+-	script	correcaosave1	-1,{
+
+OnPCLoginEvent:
+
+//if (fuuin_intermediario != 1) && (fuu_basico == 1) && (countitem(1024) == 0) {getitem 1024,1;}
+//if (gen_intermediario != 1) && (gen_basico == 1) && (countitem(1023) == 0) {getitem 1023,1;}
+//if (nin_intermediario != 1) && (nin_basico == 1) && (countitem(1009) == 0) {getitem 1009,1;}
+//if (tai_intermediario != 1) && (tai_basico == 1) && (countitem(1021) == 0) {getitem 1021,1;}
+//if (med_intermediario != 1) && (med_basico == 1) && (countitem(1027) == 0) {getitem 1027,1;}
+//if (velo_intermediario != 1) && (velo_basico == 1) && (countitem(1051) == 0) {getitem 1051,1;}
+
+//if (fuuin_avan != 1) && (fuuin_intermediario == 1) && (countitem(741) == 0) {getitem 741,1;}
+//if (gen_avan != 1) && (gen_intermediario == 1) && (countitem(738) == 0) {getitem 738,1;}
+//if (nin_avan != 1) && (nin_intermediario == 1) && (countitem(739) == 0) {getitem 739,1;}
+//if (tai_avan != 1) && (tai_intermediario == 1) && (countitem(740) == 0) {getitem 740,1;}
+//if (med_avan != 1) && (med_intermediario == 1) && (countitem(742) == 0) {getitem 742,1;}
+//if (vel_avan != 1) && (velo_intermediario == 1) && (countitem(1099) == 0) {getitem 1099,1;}
+
+if (fuuin_intermediario == 1) && (fuu_basico == 1) && (countitem(1024) > 0) {delitem 1024,1;}
+if (gen_intermediario == 1) && (gen_basico == 1) && (countitem(1023) > 0) {delitem 1023,1;}
+if (nin_intermediario == 1) && (nin_basico == 1) && (countitem(1009) > 0) {delitem 1009,1;}
+if (tai_intermediario == 1) && (tai_basico == 1) && (countitem(1021) > 0) {delitem 1021,1;}
+if (med_intermediario == 1) && (med_basico == 1) && (countitem(1027) > 0) {delitem 1027,1;}
+if (velo_intermediario == 1) && (velo_basico == 1) && (countitem(1051) > 0) {delitem 1051,1;}
+
+if (kgmobs1 > 0) && (kgmobs2 > 0) {mes "Atenção: Seu personagem está com um pequeno erro relacionado a Kekkei genkai, por gentileza entrar em contato com o Darkis pelo skype: mpjaps, para que o erro possa ser corrigido, obrigado, Erro código 1.2"; close;}
+if (kgmobs1 > 0) && (kgmobs3 > 0) {mes "Atenção: Seu personagem está com um pequeno erro relacionado a Kekkei genkai, por gentileza entrar em contato com o Darkis pelo skype: mpjaps, para que o erro possa ser corrigido, obrigado, Erro código 1.3"; close;}
+if (kgmobs2 > 0) && (kgmobs3 > 0) {mes "Atenção: Seu personagem está com um pequeno erro relacionado a Kekkei genkai, por gentileza entrar em contato com o Darkis pelo skype: mpjaps, para que o erro possa ser corrigido, obrigado, Erro código 2.3"; close;}
+
+//if (countitem(19068) == 0) && (kg_sharingan == 2) { if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1;}
+//if (countitem(19069) == 0) && (kg_sharingan == 3) {if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1;}
+//if (countitem(19070) == 0) && (kg_sharingan == 4) {if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+
+//if (countitem(19002) == 0) && (byakugan > 0) { if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1;}
+//if (countitem(19152) == 0) && (GELO > 0) { if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1;}
+//if (countitem(19155) == 0) && (LEE2 > 0) { if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1;}
+if (countitem(19154) == 0) && (MARIONETE > 0) { if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1;}
+if (countitem(19153) == 0) && (AKIMICHI > 0) { if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1;}
+if (countitem(19151) == 0) && (NARA2 > 0) { if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1;}
+if (countitem(19149) == 0) && (SELO1 > 0) { if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1;}
+if (countitem(19150) == 0) && (SELO2 > 0) { if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1;}
+
+if (countitem(19212) == 0) && (kibaku > 0) { if (checkweight(19212,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19212,1;}
+if (countitem(19210) == 0) && (Jashin > 0) { if (checkweight(19210,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19210,1;}
+if (countitem(19218) == 0) && (Ibuse > 0) { if (checkweight(19218,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19218,1;}
+if (countitem(19207) == 0) && (Mitsashi > 0) { if (checkweight(19207,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19207,1;}
+if (countitem(19211) == 0) && (Tayuya > 0) { if (checkweight(19211,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19211,1;}
+if (countitem(19216) == 0) && (Aburame > 0) { if (checkweight(19216,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19216,1;}
+
+if (countitem(19068) >= 1) && (kg_sharingan == 0) {delitem 19068,1;}
+if (countitem(19069) >= 1) && (kg_sharingan == 0) {delitem 19069,1;}
+if (countitem(19070) >= 1) && (kg_sharingan == 0) {delitem 19070,1;}
+
+if (countitem(19002) >= 1) && (kg_byakugan == 0) {delitem 19002,1;}
+if (countitem(19152) >= 1) && (kg_hyouton == 0) {delitem 19152,1;}
+if (countitem(19155) >= 1) && (kg_lee == 0) {delitem 19155,1;}
+if (countitem(19154) >= 1) && (kg_kugutsu == 0) {delitem 19154,1;}
+if (countitem(19153) >= 1) && (kg_baika == 0) {delitem 19153,1;}
+if (countitem(19151) >= 1) && (kg_nara == 0) {delitem 19151,1;}
+if (countitem(19149) >= 1) && (kg_seloceu == 0) {delitem 19149,1;}
+if (countitem(19150) >= 1) && (kg_seloterra == 0) {delitem 19150,1;}
+
+if (countitem(19212) >= 1) && (kibaku == 0) { delitem 19212,1;}
+if (countitem(19210) >= 1) && (Jashin == 0) { delitem 19210,1;}
+if (countitem(19218) >= 1) && (Ibuse == 0) { delitem 19218,1;}
+if (countitem(19207) >= 1) && (Mitsashi == 0) { delitem 19207,1;}
+if (countitem(19211) >= 1) && (Tayuya == 0) { delitem 19211,1;}
+if (countitem(19216) >= 1) && (Aburame == 0) { delitem 19216,1;}
+
+
+if (accept_med > 3) {set accept_med,3;}
+if (accept_tai > 3) {set accept_tai,3;}
+
+if(tai_skill_int > 3) {
+
+skill 266,0,0;
+set ChakraM,0;
+erasequest 2028;
+
+skill 214,0,0;
+set fufuken,0;
+erasequest 2038;
+
+skill 136,0,0;
+set Gutten,0;
+erasequest 2036;
+
+skill 370,0,0;
+set Rasengan,0;
+erasequest 2126;
+
+skill 357,0,0;
+set DSenkou,0;
+erasequest 2039;
+
+skill 171,0,0;
+set ShoufuuR,0;
+erasequest 2128;
+
+skill 62,0,0;
+set TsuutenKyaku,0;
+erasequest 2129;
+
+set accept_tai_int,0;
+set tai_skill_int, 0;
+
+mes "Este personagem estava com um excesso de Jutsus aprendidos para o treinamento: Taijutsu intermediário, todos os jutsus deste treinamento foram removidos para corrigir-lo, caso tenha dúvidas do porque desta atitude, visite o fórum";
+close;
+
+}
+
+///////////
+
+
+if(velo_skill_bas > 3) {
+
+skill 111,0,0;
+set Adrenalina_P,0;
+erasequest 8018;
+
+skill 49,0,0;
+set V_Pericia,0;
+erasequest 2153;
+
+skill 495,0,0;
+set Rapidez_mao,0;
+erasequest 2154;
+
+skill 150,0,0;
+set recuar,0;
+erasequest 2151;
+
+skill 996,0,0;
+set Troca_posicao,0;
+erasequest 2155;
+
+set accept_velo,0;
+set velo_skill_bas,0;
+
+mes "Este personagem estava com um excesso de Jutsus aprendidos para o treinamento: Velovidade básica, todos os jutsus deste treinamento foram removidos para corrigir-lo, caso tenha dúvidas do porque desta atitude, visite o fórum";
+close;
+
+
+}
+
+///////////
+
+
+if(velo_skill_int > 3) {
+
+skill 383,0,0;
+set Vel_Caminho,0;
+erasequest 2147;
+
+skill 411,0,0;
+set Vel_corrida,0;
+erasequest 2148;
+
+skill 350,0,0;
+set fuga,0;
+erasequest 2149;
+
+skill 674,0,0;
+set Hiraishingiri,0;
+erasequest 2015;
+
+skill 27,0,0;
+set oboro,0;
+erasequest 2148;
+
+skill 219,0,0;
+set Rapto,0;
+erasequest 2016;
+
+skill 26,0,0;
+set shushin,0;
+erasequest 2150;
+
+set accept_velo_int,0;
+set velo_skill_int,0;
+
+mes "Este personagem estava com um excesso de Jutsus aprendidos para o treinamento: Velovidade intermediária, todos os jutsus deste treinamento foram removidos para corrigir-lo, caso tenha dúvidas do porque desta atitude, visite o fórum";
+close;
+
+}
+
+///////////
+
+if(med_skill_bas > 3) {
+
+skill 28,0,0;
+set Chiyute,0;
+erasequest 2079;
+
+skill 66,0,0;
+set Nikudan,0;
+erasequest 2071;
+
+skill 358,0,0;
+set relax,0;
+erasequest 2080;
+
+skill 124,0,0;
+set Remover,0;
+erasequest 2060;
+
+skill 35,0,0;
+set Shometsu,0;
+erasequest 2081;
+
+skill 72,0,0;
+set Souzou,0;
+erasequest 2083;
+
+set accept_med,0;
+set med_skill_bas,0;
+
+mes "Este personagem estava com um excesso de Jutsus aprendidos para o treinamento: Medicina Básica, todos os jutsus deste treinamento foram removidos para corrigir-lo, caso tenha dúvidas do porque desta atitude, visite o fórum";
+close;
+
+}
+
+///////////
+
+
+if(med_skill_int > 3) {
+
+skill 277,0,0;
+set Kaisher,0;
+erasequest 2112;
+
+skill 363,0,0;
+set Meditacao,0;
+erasequest 2014;
+
+skill 255,0,0;
+set f_protecao,0;
+erasequest 2109;
+
+skill 176,0,0;
+set Seijutsu,0;
+erasequest 2072;
+
+skill 54,0,0;
+set Shikon,0;
+erasequest 2113;
+
+skill 307,0,0;
+set Byakugo,0;
+erasequest 2090;
+
+skill 33,0,0;
+set Tsubaki,0;
+erasequest 2074;
+
+set accept_med_int,0;
+set med_skill_int,0;
+
+mes "Este personagem estava com um excesso de Jutsus aprendidos para o treinamento: Medicina Intermediária, todos os jutsus deste treinamento foram removidos para corrigir-lo, caso tenha dúvidas do porque desta atitude, visite o fórum";
+close;
+
+}
+
+///////////
+
+if(fuu_skill_bas > 3) {
+
+set Aura,0;
+set seloskill543,0;
+erasequest 2095;
+
+set seloskill320,0;
+skill 304,0,0;
+skill 315,0,0;
+set Chuusuusei,0;
+erasequest 2082;
+
+set seloskill45,0;
+set concentracao,0;
+erasequest 2095;
+
+skill 75,0,0;
+set gloria,0;
+erasequest 2130;
+
+skill 43,0,0;
+set precisao,0;
+erasequest 2156;
+
+set accept_fuu,0;
+set fuu_skill_bas,0;
+
+mes "Este personagem estava com um excesso de Jutsus aprendidos para o treinamento: Fuuinjutsu básico, todos os jutsus deste treinamento foram removidos para corrigir-lo, caso tenha dúvidas do porque desta atitude, visite o fórum";
+close;
+
+}
+
+///////////
+
+if(fuu_skill_int > 3) {
+
+skill 279,0,0;
+set auto_spell,0;
+erasequest 2111;
+
+skill 34,0,0;
+set bencao,0;
+erasequest 2068;
+
+skill 481,0,0;
+set espiritoninja,0;
+erasequest 2008;
+
+skill 322,0,0;
+set Idou,0;
+erasequest 2052;
+
+skill 304,0,0;
+set Nehan,0;
+erasequest 2045;
+
+skill 24,0,0;
+set Revelacao,0;
+erasequest 2159;
+
+set accept_fuu_int, 0;
+set fuu_skill_int, 0;
+
+mes "Este personagem estava com um excesso de Jutsus aprendidos para o treinamento: Fuuinjutsu Intermediário, todos os jutsus deste treinamento foram removidos para corrigir-lo, caso tenha dúvidas do porque desta atitude, visite o fórum";
+close;
+
+}
+
+
+
+}
+
+-	script	correcaosharingan	-1,{
+
+
+OnPCLoginEvent:
+
+if (correcaosharingan == 1) {end;}
+if (kg_sharingan == 5) {set sharingan_3,1; set correcaosharingan,1; end;}
+
+}
+
+
+-	script	correcaosave	-1,{
+
+
+OnPCLoginEvent:
+
+//if (Class == 1) && (#konoha != 1) {set #konoha,1; set #nevoa,0; set #suna,0; set #nuvem,0;}
+//if (Class == 7) && (#konoha != 1) {set #konoha,1; set #nevoa,0; set #suna,0; set #nuvem,0;}
+//if (Class == 4008) && (#konoha != 1) {set #konoha,1; set #nevoa,0; set #suna,0; set #nuvem,0;}
+
+//if (Class == 2) && (#suna != 1) {set #konoha,0; set #nevoa,0; set #suna,1; set #nuvem,0;}
+//if (Class == 9) && (#suna != 1) {set #konoha,0; set #nevoa,0; set #suna,1; set #nuvem,0;}
+//if (Class == 4010) && (#suna != 1) {set #konoha,0; set #nevoa,0; set #suna,1; set #nuvem,0;}
+
+//if (Class == 3) && (#nevoa != 1) {set #konoha,0; set #nevoa,1; set #suna,0; set #nuvem,0;}
+//if (Class == 11) && (#nevoa != 1) {set #konoha,0; set #nevoa,1; set #suna,0; set #nuvem,0;}
+//if (Class == 4012) && (#nevoa != 1) {set #konoha,0; set #nevoa,1; set #suna,0; set #nuvem,0;}
+
+//if (Class == 4) && (#nuvem != 1) {set #konoha,0; set #nevoa,0; set #suna,0; set #nuvem,1;}
+//if (Class == 15) && (#nuvem != 1) {set #konoha,0; set #nevoa,0; set #suna,0; set #nuvem,1;}
+//if (Class == 4016) && (#nuvem != 1) {dispbottom "debug"; set #konoha,0; set #nevoa,0; set #suna,0; set #nuvem,1;}
+
+if (elemento != 1) {end;}
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {end;}
+if (nukenin == 1) {savepoint "lou_in02",237,167;}
+if (#konoha == 1) {if (nukenin == 1) {end;} if (academia_done == 0) && (before_academia == 0) {end;} if (Class == 0) {end;} savepoint "hospital",25,92;}
+if (#suna == 1) {if (nukenin == 1) {end;} if (academia_done == 0) && (before_academia == 0) {end;} if (Class == 0) {end;} savepoint "hospital2",25,92;}
+if (#nevoa == 1) {if (nukenin == 1) {end;} if (academia_done == 0) && (before_academia == 0) {end;} if (Class == 0) {end;} savepoint "hospital3",25,92;}
+if (#nuvem == 1) {if (nukenin == 1) {end;} if (academia_done == 0) && (before_academia == 0) {end;} if (Class == 0) {end;} savepoint "hospital4",25,92;}
+if (fuuin_avan ==1) && (fuuin_avan_new != 1) {set fuuin_avan,0; set limite_avan, limite_avan -1; delitem 753,1; dispbottom "Seu treino avançado foi removido por causa de novas atualizações, será necessário realizar uma pequena quest apartir de agora, mais informações no fórum";}
+//if (gen_avan ==1) && (gen_avan_new != 1) {set gen_avan,0; set limite_avan, limite_avan -1; delitem 750,1; dispbottom "Seu treino avançado foi removido por causa de novas atualizações, será necessário realizar uma pequena quest apartir de agora, mais informações no fórum";}
+//if (med_avan ==1) && (med_avan_new != 1) {set med_avan,0; set limite_avan, limite_avan -1; delitem 754,1; dispbottom "Seu treino avançado foi removido por causa de novas atualizações, será necessário realizar uma pequena quest apartir de agora, mais informações no fórum"; }
+//if (nin_avan ==1) && (nin_avan_new != 1) {set nin_avan,0; set limite_avan, limite_avan -1; delitem 751,1; dispbottom "Seu treino avançado foi removido por causa de novas atualizações, será necessário realizar uma pequena quest apartir de agora, mais informações no fórum";}
+//if (tai_avan ==1) && (tai_avan_new != 1) {set tai_avan,0; set limite_avan, limite_avan -1; delitem 752,1; dispbottom "Seu treino avançado foi removido por causa de novas atualizações, será necessário realizar uma pequena quest apartir de agora, mais informações no fórum";}
+//if (vel_avan ==1) && (vel_avan_new != 1) {set vel_avan,0; set limite_avan, limite_avan -1; delitem 7021,1; dispbottom "Seu treino avançado foi removido por causa de novas atualizações, será necessário realizar uma pequena quest apartir de agora, mais informações no fórum";}
+
+
+end;
+
+}
+
+//-	script	correcaosuna	-1,{
+//OnPCLoginEvent:
+//getmapxy(.@map$,.@mapx,.@mapy,0);
+//if (.@map$ == "areia") {atcommand "@die";}
+//
+//}
+
+
+
+-	script	correcaofuuin	-1,{
+
+
+OnPCLoginEvent:
+
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {close;}
+if (nukenin == 1) {end;}
+if (#nuvem == 1) {if (Class == 0) {end;} if (Class == 1) {atcommand "@job 4"; set @bandana,1;} if (Class == 7) {atcommand "@job 15"; set @bandana,1;} if (Class == 4008) {atcommand "@job 4016"; set @bandana,1;} if (Class == 3) {atcommand "@job 4"; set @bandana,1;} if (Class == 11) {atcommand "@job 15"; set @bandana,1;} if (Class == 4012) {atcommand "@job 4016"; set @bandana,1;} if (Class == 2) {atcommand "@job 4"; set @bandana,1;} if (Class == 9) {atcommand "@job 15"; set @bandana,1;} if (Class == 4010) {atcommand "@job 4016"; set @bandana,1;}  savepoint "hospital4",25,92;}
+if (#konoha == 1) {if (Class == 0) {end;} if (Class == 2) {atcommand "@job 1"; set @bandana,1;} if (Class == 9) {atcommand "@job 7"; set @bandana,1;} if (Class == 4010) {atcommand "@job 4008"; set @bandana,1;} if (Class == 4) {atcommand "@job 1"; set @bandana,1;} if (Class == 15) {atcommand "@job 7"; set @bandana,1;} if (Class == 4016) {atcommand "@job 4008"; set @bandana,1;} if (Class == 3) {atcommand "@job 1"; set @bandana,1;} if (Class == 11) {atcommand "@job 7"; set @bandana,1;} if (Class == 4012) {atcommand "@job 4008"; set @bandana,1;} savepoint "hospital",25,92;}
+if (#nevoa == 1) {if (Class == 0) {end;}if (Class == 1) {atcommand "@job 3"; set @bandana,1;} if (Class == 7) {atcommand "@job 11"; set @bandana,1;} if (Class == 4008) {atcommand "@job 4012"; set @bandana,1;} if (Class == 4) {atcommand "@job 3"; set @bandana,1;} if (Class == 15) {atcommand "@job 11"; set @bandana,1;} if (Class == 4016) {atcommand "@job 4012"; set @bandana,1;} if (Class == 2) {atcommand "@job 3"; set @bandana,1;} if (Class == 9) {atcommand "@job 11"; set @bandana,1;} if (Class == 4010) {atcommand "@job 4012"; set @bandana,1;} savepoint "hospital3",25,92;}
+if (#suna == 1) {if (Class == 0) {end;} if (Class == 1) {atcommand "@job 2"; set @bandana,1;} if (Class == 7) {atcommand "@job 9"; set @bandana,1;} if (Class == 4008) {atcommand "@job 4010"; set @bandana,1;} if (Class == 4) {atcommand "@job 2"; set @bandana,1;} if (Class == 15) {atcommand "@job 9"; set @bandana,1;} if (Class == 4016) {atcommand "@job 4010"; set @bandana,1;} if (Class == 3) {atcommand "@job 2"; set @bandana,1;} if (Class == 11) {atcommand "@job 9"; set @bandana,1;} if (Class == 4012) {atcommand "@job 4010"; set @bandana,1;} savepoint "hospital2",25,92;}
+
+if (#nuvem == 1) {if (Class == 4049) && (nukenin != 1) {if (chunin == 0) && (jounin == 0) {atcommand "@job 4"; set @bandana,1;} if (chunin == 1) {atcommand "@job 15"; set @bandana,1;} if (jounin == 1) {atcommand "@job 4016"; set @bandana,1;}} savepoint "hospital4",25,92;}
+if (#suna == 1) {if (Class == 4049) && (nukenin != 1) {if (chunin == 0) && (jounin == 0) {atcommand "@job 2"; set @bandana,1;} if (chunin == 1) {atcommand "@job 9"; set @bandana,1;} if (jounin == 1) {atcommand "@job 4010"; set @bandana,1;}} savepoint "hospital2",25,92;}
+if (#konoha == 1) {if (Class == 4049) && (nukenin != 1) {if (chunin == 0) && (jounin == 0) {atcommand "@job 1"; set @bandana,1;} if (chunin == 1) {atcommand "@job 7"; set @bandana,1;} if (jounin == 1) {atcommand "@job 4008"; set @bandana,1;}} savepoint "hospital",25,92;}
+if (#nevoa == 1) {if (Class == 4049) && (nukenin != 1) {if (chunin == 0) && (jounin == 0) {atcommand "@job 3"; set @bandana,1;} if (chunin == 1) {atcommand "@job 11"; set @bandana,1;} if (jounin == 1) {atcommand "@job 4012"; set @bandana,1;}} savepoint "hospital3",25,92;}
+
+if (@bandana == 1) {
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+normal:
+if(#konoha == 1) {getitem 19008,1;}
+if(#nuvem == 1) {getitem 19040,1;}
+if(#suna == 1) {getitem 19006,1;}
+if(#nevoa == 1) {getitem 19001,1;}
+set @bandana,0;
+close;
+
+kakashi:
+if(#konoha == 1) {getitem 19004,1;}
+if(#nuvem == 1) {getitem 19074,1;}
+if(#suna == 1) {getitem 19076,1;}
+if(#nevoa == 1) {getitem 19073,1;}
+set @bandana,0;
+close;
+
+lado:
+if(#konoha == 1) {getitem 19034,1;}
+if(#nuvem == 1) {getitem 19165,1;}
+if(#suna == 1) {getitem 19018,1;}
+if(#nevoa == 1) {getitem 19019,1;}
+set @bandana,0;
+close;
+
+pescoco:
+if(#konoha == 1) {getitem 19025,1;}
+if(#nuvem == 1) {getitem 19098,1;}
+if(#suna == 1) {getitem 19096,1;}
+if(#nevoa == 1) {getitem 19097,1;}
+set @bandana,0;
+close;
+
+yamato:
+if(#konoha == 1) {getitem 19170,1;}
+if(#nuvem == 1) {getitem 19095,1;}
+if(#suna == 1) {getitem 19168,1;}
+if(#nevoa == 1) {getitem 19169,1;}
+set @bandana,0;
+close;
+
+kisame:
+if(#konoha == 1) {getitem 19030,1;}
+if(#nuvem == 1) {getitem 19127,1;}
+if(#suna == 1) {getitem 19156,1;}
+if(#nevoa == 1) {getitem 19016,1;}
+set @bandana,0;
+close;
+}
+
+}
+
+-	script	correcaogen	-1,{
+
+
+OnPCLoginEvent:
+
+if (Fukai == 1) {set @gencorrecao, @gencorrecao +1;}
+if (Jigoku == 1) {set @gencorrecao, @gencorrecao +1;}
+if (Kanashibari == 1) {set @gencorrecao, @gencorrecao +1;}
+if (raigen == 1) {set @gencorrecao, @gencorrecao +1;}
+if (Mahi == 1) {set @gencorrecao, @gencorrecao +1;}
+if (kokubanjou == 1) {set @gencorrecao, @gencorrecao +1;}
+if (shikumi == 1) {set @gencorrecao, @gencorrecao +1;}
+if (provocar == 1) {set @gencorrecao, @gencorrecao +1;}
+
+if (checkquest(2041) >= 0) && (@gencorrecao == 2) {end;}
+if (checkquest(2042) >= 0) && (@gencorrecao == 2) {end;}
+if (checkquest(2043) >= 0) && (@gencorrecao == 2) {end;}
+if (checkquest(2044) >= 0) && (@gencorrecao == 2) {end;}
+if (checkquest(2094) >= 0) && (@gencorrecao == 2) {end;}
+
+
+
+if (@gencorrecao == 2) {set accept_gen, 2; set gen_skill_bas, 2; end;}
+if (@gencorrecao == 1) {set accept_gen, 1; set gen_skill_bas, 1; end;}
+
+
+}
+
+-	script	correcaomed	-1,{
+
+
+OnPCLoginEvent:
+
+if (Chiyute == 1) {set @medcorrecao, @medcorrecao +1;}
+if (Nikudan == 1) {set @medcorrecao, @medcorrecao +1;}
+if (Remover == 1) {set @medcorrecao, @medcorrecao +1;}
+if (relax == 1) {set @medcorrecao, @medcorrecao +1;}
+if (Shometsu == 1) {set @medcorrecao, @medcorrecao +1;}
+if (Souzou == 1) {set @medcorrecao, @medcorrecao +1;}
+
+if (checkquest(2079) >= 0) && (@medcorrecao == 2) {end;}
+if (checkquest(2071) >= 0) && (@medcorrecao == 2) {end;}
+if (checkquest(2060) >= 0) && (@medcorrecao == 2) {end;}
+if (checkquest(2080) >= 0) && (@medcorrecao == 2) {end;}
+if (checkquest(2081) >= 0) && (@medcorrecao == 2) {end;}
+if (checkquest(2083) >= 0) && (@medcorrecao == 2) {end;}
+if (checkquest(2080) >= 0) && (@medcorrecao == 2) {end;}
+
+if (@medcorrecao == 2) {set accept_med, 2; set med_skill_bas, 2; end;}
+if (@medcorrecao == 1) {set accept_med, 1; set med_skill_bas, 1; end;}
+
+
+}
+
+-	script	correcaotai	-1,{
+
+
+OnPCLoginEvent:
+
+if (Jyuuken == 1) {set @taicorrecao, @taicorrecao +1;}
+if (Buyou == 1) {set @taicorrecao, @taicorrecao +1;}
+if (Shikomishindan == 1) {set @taicorrecao, @taicorrecao +1;}
+if (Shippo == 1) {set @taicorrecao, @taicorrecao +1;}
+if (Tokken == 1) {set @taicorrecao, @taicorrecao +1;}
+
+if (checkquest(2131) >= 0) && (@taicorrecao == 2) {end;}
+if (checkquest(2059) >= 0) && (@taicorrecao == 2) {end;}
+if (checkquest(2057) >= 0) && (@taicorrecao == 2) {end;}
+if (checkquest(2061) >= 0) && (@taicorrecao == 2) {end;}
+if (checkquest(2058) >= 0) && (@taicorrecao == 2) {end;}
+if (checkquest(2062) >= 0) && (@taicorrecao == 2) {end;}
+
+if (@taicorrecao == 2) {set accept_tai, 2; set tai_skill_bas, 2; end;}
+if (@taicorrecao == 1) {set accept_tai, 1; set tai_skill_bas, 1; end;}
+
+
+}
+
+-	script	correcaovelo	-1,{
+
+
+OnPCLoginEvent:
+
+if (V_Pericia == 1) {set @velocorrecao, @velocorrecao +1;}
+if (Rapidez_mao == 1) {set @velocorrecao, @velocorrecao +1;}
+if (Troca_posicao == 1) {set @velocorrecao, @velocorrecao +1;}
+if (recuar == 1) {set @velocorrecao, @velocorrecao +1;}
+if (Adrenalina_P == 1) {set @velocorrecao, @velocorrecao +1;}
+
+if (checkquest(8017) >= 0) && (@velocorrecao == 2) {end;}
+if (checkquest(8018) >= 0) && (@velocorrecao == 2) {end;}
+if (checkquest(8019) >= 0) && (@velocorrecao == 2) {end;}
+if (checkquest(8020) >= 0) && (@velocorrecao == 2) {end;}
+if (checkquest(8021) >= 0) && (@velocorrecao == 2) {end;}
+
+if (@velocorrecao == 2) {set accept_velo, 2; set velo_skill_bas, 2; end;}
+if (@velocorrecao == 1) {set accept_velo, 1; set velo_skill_bas, 1; end;}
+
+
+}
+
+-	script	correcaofuuin2	-1,{
+
+
+OnPCLoginEvent:
+
+if (auto_spell == 1) {set @fuuincorrecao2, @fuuincorrecao2 +1;}
+if (bencao == 1) {set @fuuincorrecao2, @fuuincorrecao2 +1;}
+if (Idou == 1) {set @fuuincorrecao2, @fuuincorrecao2 +1;}
+if (Nehan == 1) {set @fuuincorrecao2, @fuuincorrecao2 +1;}
+
+if (checkquest(2111) >= 0) && (@fuuincorrecao2 == 2) {end;}
+if (checkquest(2068) >= 0) && (@fuuincorrecao2 == 2) {end;}
+if (checkquest(2052) >= 0) && (@fuuincorrecao2 == 2) {end;}
+if (checkquest(2045) >= 0) && (@fuuincorrecao2 == 2) {end;}
+
+if (@fuuincorrecao2 == 2) {set accept_fuu_int, 2; set fuu_skill_int, 2; end;}
+if (@fuuincorrecao2 == 1) {set accept_fuu_int, 1; set fuu_skill_int, 1; end;}
+if (@fuuincorrecao2 == 0) {set accept_fuu_int, 0; set fuu_skill_int, 0; end;}
+
+
+}
+
+-	script	correcaovelo2	-1,{
+
+
+OnPCLoginEvent:
+
+if (Vel_Caminho == 1) {set @velocorrecao2, @velocorrecao2 +1;}
+if (Vel_corrida == 1) {set @velocorrecao2, @velocorrecao2 +1;}
+if (fuga == 1) {set @velocorrecao2, @velocorrecao2 +1;}
+if (oboro == 1) {set @velocorrecao2, @velocorrecao2 +1;}
+if (shushin == 1) {set @velocorrecao2, @velocorrecao2 +1;}
+
+if (checkquest(2147) >= 0) && (@velocorrecao2 == 2) {end;}
+if (checkquest(2148) >= 0) && (@velocorrecao2 == 2) {end;}
+if (checkquest(2149) >= 0) && (@velocorrecao2 == 2) {end;}
+if (checkquest(2148) >= 0) && (@velocorrecao2 == 2) {end;}
+if (checkquest(2150) >= 0) && (@velocorrecao2 == 2) {end;}
+
+if (@velocorrecao2 == 2) {set accept_velo_int, 2; set velo_skill_int, 2; end;}
+if (@velocorrecao2 == 1) {set accept_velo_int, 1; set velo_skill_int, 1; end;}
+if (@velocorrecao2 == 0) {set accept_velo_int, 0; set velo_skill_int, 0; end;}
+
+
+}
+
+-	script	correcaotai2	-1,{
+
+
+OnPCLoginEvent:
+
+if (ChakraM == 1) {set @taicorrecao2, @taicorrecao2 +1;}
+if (fufuken == 1) {set @taicorrecao2, @taicorrecao2 +1;}
+if (Gutten == 1) {set @taicorrecao2, @taicorrecao2 +1;}
+if (Rasengan == 1) {set @taicorrecao2, @taicorrecao2 +1;}
+if (DSenkou == 1) {set @taicorrecao2, @taicorrecao2 +1;}
+if (ShoufuuR == 1) {set @taicorrecao2, @taicorrecao2 +1;}
+if (TsuutenKyaku == 1) {set @taicorrecao2, @taicorrecao2 +1;}
+
+if (checkquest(2028) >= 0) && (@taicorrecao2 == 2) {end;}
+if (checkquest(2038) >= 0) && (@taicorrecao2 == 2) {end;}
+if (checkquest(2036) >= 0) && (@taicorrecao2 == 2) {end;}
+if (checkquest(2126) >= 0) && (@taicorrecao2 == 2) {end;}
+if (checkquest(2039) >= 0) && (@taicorrecao2 == 2) {end;}
+if (checkquest(2128) >= 0) && (@taicorrecao2 == 2) {end;}
+if (checkquest(2129) >= 0) && (@taicorrecao2 == 2) {end;}
+
+if (@taicorrecao2 == 2) {set accept_tai_int, 2; set tai_skill_int, 2; end;}
+if (@taicorrecao2 == 1) {set accept_tai_int, 1; set tai_skill_int, 1; end;}
+if (@taicorrecao2 == 0) {set accept_tai_int, 0; set tai_skill_int, 0; end;}
+
+
+}
+
+-	script	correcaomed2	-1,{
+
+
+OnPCLoginEvent:
+
+if (Kaisher == 1) {set @medcorrecao2, @medcorrecao2 +1;}
+if (f_protecao == 1) {set @medcorrecao2, @medcorrecao2 +1;}
+if (Seijutsu == 1) {set @medcorrecao2, @medcorrecao2 +1;}
+if (Shikon == 1) {set @medcorrecao2, @medcorrecao2 +1;}
+if (Byakugo == 1) {set @medcorrecao2, @medcorrecao2 +1;}
+if (Tsubaki == 1) {set @medcorrecao2, @medcorrecao2 +1;}
+
+if (checkquest(2112) >= 0) && (@medcorrecao2 == 2) {end;}
+if (checkquest(2109) >= 0) && (@medcorrecao2 == 2) {end;}
+if (checkquest(2072) >= 0) && (@medcorrecao2 == 2) {end;}
+if (checkquest(2113) >= 0) && (@medcorrecao2 == 2) {end;}
+if (checkquest(2090) >= 0) && (@medcorrecao2 == 2) {end;}
+if (checkquest(2074) >= 0) && (@medcorrecao2 == 2) {end;}
+
+if (@medcorrecao2 == 2) {set accept_med_int, 2; set med_skill_int, 2; end;}
+if (@medcorrecao2 == 1) {set accept_med_int, 1; set med_skill_int, 1; end;}
+if (@medcorrecao2 == 0) {set accept_med_int, 0; set med_skill_int, 0; end;}
+
+
+}
+
+-	script	correcaogen2	-1,{
+
+
+OnPCLoginEvent:
+
+if (Genzouga == 1) {set @gencorrecao2, @gencorrecao2 +1;}
+if (Goukan == 1) {set @gencorrecao2, @gencorrecao2 +1;}
+if (Jigyaku == 1) {set @gencorrecao2, @gencorrecao2 +1;}
+if (Kemuri == 1) {set @gencorrecao2, @gencorrecao2 +1;}
+if (Ryou == 1) {set @gencorrecao2, @gencorrecao2 +1;}
+if (Sakki == 1) {set @gencorrecao2, @gencorrecao2 +1;}
+if (Shibari == 1) {set @gencorrecao2, @gencorrecao2 +1;}
+
+if (checkquest(2035) >= 0) && (@gencorrecao2 == 2) {end;}
+if (checkquest(2050) >= 0) && (@gencorrecao2 == 2) {end;}
+if (checkquest(2048) >= 0) && (@gencorrecao2 == 2) {end;}
+if (checkquest(2046) >= 0) && (@gencorrecao2 == 2) {end;}
+if (checkquest(2051) >= 0) && (@gencorrecao2 == 2) {end;}
+if (checkquest(2049) >= 0) && (@gencorrecao2 == 2) {end;}
+if (checkquest(2073) >= 0) && (@gencorrecao2 == 2) {end;}
+
+
+
+if (@gencorrecao2 == 2) {set accept_gen_int, 2; set gen_skill_int, 2; end;}
+if (@gencorrecao2 == 1) {set accept_gen_int, 1; set gen_skill_int, 1; end;}
+if (@gencorrecao2 == 0) {set accept_gen_int, 0; set gen_skill_int, 0; end;}
+
+
+}
+
+-	script	correcaoquests	-1,{
+
+
+OnPCLoginEvent:
+
+if (checkquest(8017) == 1) {erasequest 8017; setquest 2151; }
+if (checkquest(8018) == 1) {erasequest 8018; setquest 2152; }
+if (checkquest(8019) == 1) {erasequest 8019; setquest 2153; }
+if (checkquest(8020) == 1) {erasequest 8020; setquest 2154; }
+if (checkquest(8021) == 1) {erasequest 8021; setquest 2155; }
+if (checkquest(8022) == 1) {erasequest 8022; setquest 2156; }
+
+if (checkquest(2043) == 1) && (quest_gen_oito == 1) && (quest_gen_tres != 1) {erasequest 2043; setquest 2158; }
+if (checkquest(2041) == 1) && (quest_gen_sete == 1) && (quest_gen_um != 1) {erasequest 2041; setquest 2157; }
+
+end;
+
+
+}
+
+-	script	correcaocargos	-1,{
+
+
+OnPCLoginEvent:
+
+if ($hokage$ == strcharinfo(0)) && (countitem(19009) == 0) {getitem 19009,1;}
+if ($mizukage$ == strcharinfo(0)) && (countitem(19012) == 0) {getitem 19012,1;}
+if ($kazekage$ == strcharinfo(0)) && (countitem(19148) == 0) {getitem 19148,1;}
+if ($raikage$ == strcharinfo(0)) && (countitem(19036) == 0) {getitem 19036,1;}
+
+if ($hokage$ != strcharinfo(0)) && (countitem(19009) >= 1) {delitem 19009,1;}
+if ($mizukage$ != strcharinfo(0)) && (countitem(19012) >= 1) {delitem 19012,1;}
+if ($kazekage$ != strcharinfo(0)) && (countitem(19148) >= 1) {delitem 19148,1;}
+if ($raikage$ != strcharinfo(0)) && (countitem(19036) >= 1) {delitem 19036,1;}
+
+if ($jinkonoha$ == strcharinfo(0)) && (countitem(19094) == 0) {getitem 19094,1;}
+if ($jinnevoa$ == strcharinfo(0)) && (countitem(19094) == 0) {getitem 19094,1;}
+if ($jinsuna$ == strcharinfo(0)) && (countitem(19094) == 0) {getitem 19094,1;}
+if ($jinnuvem$ == strcharinfo(0)) && (countitem(19094) == 0) {getitem 19094,1;}
+
+//espadas - receber
+if ($Winner_Ladder1$ == strcharinfo(0)) && (countitem(1166) == 0) {getitem 1166,1;} //samehada
+if ($Winner_Ladder2$ == strcharinfo(0)) && (countitem(1168) == 0) {getitem 1168,1;} //Kubikiri
+if ($Winner_Ladder3$ == strcharinfo(0)) && (countitem(1170) == 0) {getitem 1170,1;} //Nuibari
+if ($Winner_Ladder4$ == strcharinfo(0)) && (countitem(1173) == 0) {getitem 1173,1;} //Kabutowari
+if ($Winner_Ladder5$ == strcharinfo(0)) && (countitem(1169) == 0) {getitem 1169,1;} //Shibuki
+if ($Winner_Ladder6$ == strcharinfo(0)) && (countitem(1153) == 0) {getitem 1153,1;} //Kiba
+if ($Winner_Ladder7$ == strcharinfo(0)) && (countitem(1171) == 0) {getitem 1171,1;} //Hiramekarei
+
+//espadas - deletar
+if ($Winner_Ladder1$ != strcharinfo(0)) && (countitem(1166) > 0) {delitem 1166,1;} //samehada
+if ($Winner_Ladder2$ != strcharinfo(0)) && (countitem(1168) > 0) {delitem 1168,1;} //Kubikiri
+if ($Winner_Ladder3$ != strcharinfo(0)) && (countitem(1170) > 0) {delitem 1170,1;} //Nuibari
+if ($Winner_Ladder4$ != strcharinfo(0)) && (countitem(1173) > 0) {delitem 1173,1;} //Kabutowari
+if ($Winner_Ladder5$ != strcharinfo(0)) && (countitem(1169) > 0) {delitem 1169,1;} //Shibuki
+if ($Winner_Ladder6$ != strcharinfo(0)) && (countitem(1153) > 0) {delitem 1153,1;} //Kiba
+if ($Winner_Ladder7$ != strcharinfo(0)) && (countitem(1171) > 0) {delitem 1171,1;} //Hiramekarei
+
+if ($jinkonoha$ == strcharinfo(0)) || ($jinnevoa$ == strcharinfo(0)) || ($jinsuna$ == strcharinfo(0)) || ($jinnuvem$ == strcharinfo(0)) {set @mantemaura,1;}
+
+if ($jinkonoha$ != strcharinfo(0)) && (countitem(19094) >= 1) {if (@mantemaura == 1) {end;} delitem 19094,1;}
+if ($jinnevoa$ != strcharinfo(0)) && (countitem(19094) >= 1) {if (@mantemaura == 1) {end;} delitem 19094,1;}
+if ($jinsuna$ != strcharinfo(0)) && (countitem(19094) >= 1) {if (@mantemaura == 1) {end;} delitem 19094,1;}
+if ($jinnuvem$ != strcharinfo(0)) && (countitem(19094) >= 1) {if (@mantemaura == 1) {end;} delitem 19094,1;}
+
+//ANBU
+
+if ($anbuko1$ == strcharinfo(0)) || ($anbuko2$ == strcharinfo(0)) || ($anbuko3$ == strcharinfo(0)) || ($anbuko4$ == strcharinfo(0)) || ($anbunevoa1$ == strcharinfo(0)) || ($anbunevoa2$ == strcharinfo(0)) || ($anbunevoa3$ == strcharinfo(0)) || ($anbunevoa4$ == strcharinfo(0)) || ($anbusu1$ == strcharinfo(0)) || ($anbusu2$ == strcharinfo(0)) || ($anbusu3$ == strcharinfo(0)) || ($anbusu4$ == strcharinfo(0)) || ($anbunu1$ == strcharinfo(0)) || ($anbunu2$ == strcharinfo(0)) || ($anbunu3$ == strcharinfo(0)) || ($anbunu4$ == strcharinfo(0)) {
+if (countitem(19130) == 0) && (countitem(19131) == 0) && (countitem(19132) == 0) && (countitem(19133) == 0) && (countitem(19134) == 0) && (countitem(19135) == 0) && (countitem(19136) == 0) && (countitem(19137) == 0) && (countitem(19138) == 0) && (countitem(19139) == 0) && (countitem(19140) == 0) && (countitem(19141) == 0) && (countitem(19142) == 0) && (countitem(19143) == 0) && (countitem(19144) == 0) && (countitem(19145) == 0) {
+
+mes "Eu sou o entregador de Máscaras ANBU";
+next;
+mes "Qual Máscara você gostaria de ter?";
+menu "Máscara 1",normal,"Máscara 2",kakashi,"Máscara 3",lado,"Máscara 4",pescoco,"Máscara 5",yamato,"Máscara 6",kisame,"Máscara 7",mask7,"Máscara 8",mask8,"Máscara 9",mask9,"Máscara 10",mask10,"Mais opções",mais;
+
+mais:
+next;
+menu "Máscara 11",mask11,"Máscara 12",mask12,"Máscara 13",mask13,"Máscara 14",mask14,"Máscara 15",mask15,"Máscara 16",mask16;
+
+normal:
+getitem 19130,1;
+close;
+
+kakashi:
+getitem 19131,1;
+close;
+
+lado:
+getitem 19132,1;
+close;
+
+pescoco:
+getitem 19133,1;
+close;
+
+yamato:
+getitem 19134,1;
+close;
+
+kisame:
+getitem 19135,1;
+close;
+
+mask7:
+getitem 19136,1;
+close;
+
+mask8:
+getitem 19137,1;
+close;
+
+mask9:
+getitem 19138,1;
+close;
+
+mask10:
+getitem 19139,1;
+close;
+
+mask11:
+getitem 19140,1;
+close;
+
+mask12:
+getitem 19141,1;
+close;
+
+mask13:
+getitem 19142,1;
+close;
+
+mask14:
+getitem 19143,1;
+close;
+
+mask15:
+getitem 19144,1;
+close;
+
+mask16:
+getitem 19145,1;
+close;
+
+}
+
+}
+
+if ($anbuko1$ == strcharinfo(0)) || ($anbuko2$ == strcharinfo(0)) || ($anbuko3$ == strcharinfo(0)) || ($anbuko4$ == strcharinfo(0)) || ($anbunevoa1$ == strcharinfo(0)) || ($anbunevoa2$ == strcharinfo(0)) || ($anbunevoa3$ == strcharinfo(0)) || ($anbunevoa4$ == strcharinfo(0)) || ($anbusu1$ == strcharinfo(0)) || ($anbusu2$ == strcharinfo(0)) || ($anbusu3$ == strcharinfo(0)) || ($anbusu4$ == strcharinfo(0)) || ($anbunu1$ == strcharinfo(0)) || ($anbunu2$ == strcharinfo(0)) || ($anbunu3$ == strcharinfo(0)) || ($anbunu4$ == strcharinfo(0)) {set @mantemmask,1;}
+
+if ($anbuko1$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbuko2$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbuko3$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbuko4$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbunevoa1$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbunevoa2$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbunevoa3$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbunevoa4$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbunu1$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbunu2$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbunu3$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbunu4$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbusu1$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbusu2$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbusu3$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+
+if ($anbusu4$ != strcharinfo(0)) && (countitem(19130) >= 1) || (countitem(19131) >= 1) || (countitem(19132) >= 1) || (countitem(19133) >= 1) || (countitem(19134) >= 1) || (countitem(19135) >= 1) || (countitem(19136) >= 1) || (countitem(19137) >= 1) || (countitem(19138) >= 1) || (countitem(19139) >= 1) || (countitem(19140) >= 1) || (countitem(19141) >= 1) || (countitem(19142) >= 1) || (countitem(19143) >= 1) || (countitem(19144) >= 1) || (countitem(19145) >= 1) {
+
+if (@mantemmask == 1) {end;}
+if (countitem(19130) >= 1) {delitem 19130,1;}
+if (countitem(19131) >= 1) {delitem 19131,1;}
+if (countitem(19132) >= 1) {delitem 19132,1;}
+if (countitem(19133) >= 1) {delitem 19133,1;}
+if (countitem(19134) >= 1) {delitem 19134,1;}
+if (countitem(19135) >= 1) {delitem 19135,1;}
+if (countitem(19136) >= 1) {delitem 19136,1;}
+if (countitem(19137) >= 1) {delitem 19137,1;}
+if (countitem(19138) >= 1) {delitem 19138,1;}
+if (countitem(19139) >= 1) {delitem 19139,1;}
+if (countitem(19140) >= 1) {delitem 19140,1;}
+if (countitem(19141) >= 1) {delitem 19141,1;}
+if (countitem(19142) >= 1) {delitem 19142,1;}
+if (countitem(19143) >= 1) {delitem 19143,1;}
+if (countitem(19144) >= 1) {delitem 19144,1;}
+if (countitem(19145) >= 1) {delitem 19145,1;}
+
+}
+
+if ($anbusu5$ != strcharinfo(0)) && (countitem(19017) >= 1) {
+
+if ($anbusu5$ == strcharinfo(0)) {end;}
+if (countitem(19017) >= 1) {delitem 19017,1;}
+
+}
+
+if ($anbunu5$ != strcharinfo(0)) && (countitem(19017) >= 1) {
+
+if ($anbunu5$ == strcharinfo(0)) {end;}
+if (countitem(19017) >= 1) {delitem 19017,1;}
+
+}
+
+if ($anbuko5$ != strcharinfo(0)) && (countitem(19017) >= 1) {
+
+if ($anbuko5$ == strcharinfo(0)) {end;}
+if (countitem(19017) >= 1) {delitem 19017,1;}
+
+}
+
+if ($anbunevoa5$ != strcharinfo(0)) && (countitem(19017) >= 1) {
+
+if ($anbunevoa5$ == strcharinfo(0)) {end;}
+if (countitem(19017) >= 1) {delitem 19017,1;}
+
+}
+
+if ($anbusu5$ == strcharinfo(0)) && (countitem(19017) == 0) {
+getitem 19017,1;
+
+}
+
+if ($anbuko5$ == strcharinfo(0)) && (countitem(19017) == 0) {
+getitem 19017,1;
+
+}
+
+if ($anbunevoa5$ == strcharinfo(0)) && (countitem(19017) == 0) {
+getitem 19017,1;
+
+}
+
+if ($anbunu5$ == strcharinfo(0)) && (countitem(19017) == 0) {
+getitem 19017,1;
+
+}
+
+// AKA
+
+if ($aka1$ == strcharinfo(0)) || ($aka2$ == strcharinfo(0)) || ($aka3$ == strcharinfo(0)) || ($aka4$ == strcharinfo(0)) || ($aka5$ == strcharinfo(0)) || ($aka6$ == strcharinfo(0)) || ($aka7$ == strcharinfo(0)) || ($aka8$ == strcharinfo(0)) || ($aka9$ == strcharinfo(0)) || ($aka10$ == strcharinfo(0)) { if (countitem(19020) == 0) && (countitem(19195) == 0) && (countitem(19196) == 0) && (countitem(19197) == 0) {getitem 19020,1;} set @mantemhat,1;}
+if ($aka11$ == strcharinfo(0)) && (countitem(19023) == 0) {getitem 19023,1;  set @mantemhat2,1;}
+
+if ($aka11$ != strcharinfo(0)) && (countitem(19023) >= 1) {if (@mantemhat2 == 1) {end;} delitem 19023,1;}
+if ($aka1$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka2$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka3$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka4$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka5$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka6$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka7$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka8$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka9$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+if ($aka10$ != strcharinfo(0)) && (countitem(19020) >= 1) {if (@mantemhat == 1) {end;} delitem 19020,1;}
+
+if ($aka1$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka2$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka3$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka4$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka5$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka6$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka7$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka8$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka9$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+if ($aka10$ != strcharinfo(0)) && (countitem(19195) >= 1) {if (@mantemhat == 1) {end;} delitem 19195,1;}
+
+if ($aka1$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka2$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka3$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka4$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka5$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka6$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka7$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka8$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka9$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+if ($aka10$ != strcharinfo(0)) && (countitem(19196) >= 1) {if (@mantemhat == 1) {end;} delitem 19196,1;}
+
+if ($aka1$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka2$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka3$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka4$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka5$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka6$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka7$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka8$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka9$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+if ($aka10$ != strcharinfo(0)) && (countitem(19197) >= 1) {if (@mantemhat == 1) {end;} delitem 19197,1;}
+end;
+
+}
+
+-	script	correcaocargos2	-1,{
+OnClock0000:
+if(gettime(4) != 1) end;
+setarray $JinChakra[1],0,0,0,0;
+end; 
+
+OnPCLoginEvent:
+if(strcharinfo(0) != $jinkonoha$) delitem 616,countitem(616);
+if(strcharinfo(0) != $jinnevoa$) delitem 4409,countitem(4409);
+if(strcharinfo(0) != $jinnuvem$) delitem 4253,countitem(4253);
+if(strcharinfo(0) != $jinsuna$) delitem 4254,countitem(4254);
+if(gettime(4) != 1) end; //1 = segunda
+if(strcharinfo(0) != $jinkonoha$ && strcharinfo(0) != $jinnevoa$ && strcharinfo(0) != $jinnuvem$ && strcharinfo(0) != $jinsuna$) end;
+if(strcharinfo(o) == $jinkonoha$ && $JinChakra[1] == 1 || strcharinfo(0) == $jinnevoa$ && $JinChakra[2] == 1 || strcharinfo(0) == $jinnuvem$ && $JinChakra[3] == 1 || strcharinfo(0) == $jinsuna$ && $JinChakra[4] == 1) end;
+if(strcharinfo(0) == $jinkonoha$) getitem 616, 5 - countitem(616);
+if(strcharinfo(0) == $jinnevoa$) getitem 4409, 5 - countitem(4409);
+if(strcharinfo(0) == $jinnuvem$) getitem 4253, 5 - countitem(4253);
+if(strcharinfo(0) == $jinsuna$) getitem 4254, 5 - countitem(4254);
+if(strcharinfo(0) == $jinkonoha$) set $JinChakra[1], 1;
+if(strcharinfo(0) == $jinnevoa$) set $JinChakra[2], 1;
+if(strcharinfo(0) == $jinnuvem$) set $JinChakra[3], 1;
+if(strcharinfo(0) == $jinsuna$) set $JinChakra[4], 1;
+end;
+}
+
+-	script	correcaoinvo	-1,{
+
+OnPCLoginEvent:
+if (Baru1 == 1) {set @invocacoes, @invocacoes +1;}
+if (Enma == 1) {set @invocacoes, @invocacoes +1;}
+if (Gama == 1) {set @invocacoes, @invocacoes +1;}
+if (Katsu == 1) {set @invocacoes, @invocacoes +1;}
+if (Manda == 1) {set @invocacoes, @invocacoes +1;}
+
+if (@invocacoes > 1) && (avisodado == 0) {set avisodado, 1; mes "Foi detectado duas invocações neste personagem e dá próxima vez que logar se ainda for detectado, ambas as invocações serão removidas, remova uma agora para não correr risco de perder as duas"; close;}
+if (@invocacoes > 1) && (avisodado == 1)
+
+{
+set Kuch,0;
+set accept_kuc,0;
+set Baru1,0;
+set Baru2,0;
+set Baru3,0;
+set Enma1,0;
+set Enma2,0;
+set Enma3,0;
+set Gama1,0;
+set Gama2,0;
+set Gama3,0;
+set Katsu1,0;
+set Katsu2,0;
+set Katsu3,0;
+set Manda1,0;
+set Manda2,0;
+set Manda3,0;
+set quest_baru1_um,0;
+set quest_baru2_um,0;
+set quest_baru3_um,0;
+set quest_enma1_um,0;
+set quest_enma2_um,0;
+set quest_enma3_um,0;
+set quest_gama1_um,0;
+set quest_gama2_um,0;
+set quest_gama3_um,0;
+set quest_katsu1_um,0;
+set quest_katsu2_um,0;
+set quest_katsu3_um,0;
+set quest_manda1_um,0;
+set quest_manda2_um,0;
+set quest_manda3_um,0;
+set quest_cobra_3,0;
+set quest_sapo_3,0;
+set quest_cachorro_3,0;
+set quest_macaco_3,0;
+set quest_lesma_3,0;
+if (getskilllv(721) > 0) {skill 721,0,0;}
+if (getskilllv(722) > 0) {skill 722,0,0;}
+if (getskilllv(723) > 0) {skill 723,0,0;}
+if (getskilllv(724) > 0) {skill 724,0,0;}
+if (getskilllv(725) > 0) {skill 725,0,0;}
+if (getskilllv(726) > 0) {skill 726,0,0;}
+if (getskilllv(727) > 0) {skill 727,0,0;}
+if (getskilllv(728) > 0) {skill 728,0,0;}
+if (getskilllv(729) > 0) {skill 729,0,0;}
+if (getskilllv(730) > 0) {skill 730,0,0;}
+if (getskilllv(731) > 0) {skill 731,0,0;}
+if (getskilllv(732) > 0) {skill 732,0,0;}
+if (getskilllv(733) > 0) {skill 733,0,0;}
+if (getskilllv(734) > 0) {skill 734,0,0;}
+if (getskilllv(735) > 0) {skill 735,0,0;}
+if (getskilllv(736) > 0) {skill 736,0,0;}
+if (getskilllv(737) > 0) {skill 737,0,0;}
+if (getskilllv(738) > 0) {skill 738,0,0;}
+if (getskilllv(739) > 0) {skill 739,0,0;}
+if (getskilllv(739) > 0) {skill 739,0,0;}
+if (getskilllv(740) > 0) {skill 740,0,0;}
+if (getskilllv(741) > 0) {skill 741,0,0;}
+if (getskilllv(742) > 0) {skill 742,0,0;}
+if (getskilllv(743) > 0) {skill 743,0,0;}
+if (getskilllv(744) > 0) {skill 744,0,0;}
+if (getskilllv(745) > 0) {skill 745,0,0;}
+if (getskilllv(746) > 0) {skill 746,0,0;}
+if (getskilllv(747) > 0) {skill 747,0,0;}
+if (getskilllv(748) > 0) {skill 748,0,0;}
+set avisodado,0;
+dispbottom "Invocação removida automaticamente devido a este personagem ter duas invocações";
+end;
+}
+end;
+}
+-	script	equilibrio1	-1,{
+
+
+OnPCLoginEvent:
+
+
+if (getskilllv(29) >= 0) && (Agi_Corrigida != 1) {skill 29,0,0;}
+if (getskilllv(16) > 5) {skill 16,5,0;}
+if (getskilllv(328) == 0) && (Jubaku == 1) {skill 328,1,0;}
+if (getskilllv(677) > 0) && (Gen_inter_correcao1 == 0) {skill 677,0,0; set accept_gen_int,accept_gen_int -1; set gen_skill_int,gen_skill_int -1;}
+if (getskilllv(677) > 0) && (Gen_inter_correcao2 == 1) {skill 677,0,0; set seloskill677,1; set Jigoku,1; set JigokuKouga,0;}
+if (seloskill677 == 0) && (getskilllv(677) == 0) {set Jigoku,0; set JigokuKouga,0;}
+if (getskilllv(678) > 0) && (Gen_inter_correcao2 == 0) {skill 678,0,0; set accept_gen_int,accept_gen_int -1; set gen_skill_int,gen_skill_int -1;}
+if (getskilllv(678) > 0) && (Gen_inter_correcao2 == 1) {skill 678,0,0; set seloskill678,1;}
+if (seloskill678 == 0) && (getskilllv(678) == 0) {set Kanashibari,0;}
+
+//if (getskilllv(532) > 0) && (Gen_avan_correcao1 == 0) {skill 532,0,0; set accept_gen_ava,accept_gen_ava -1; set gen_skill_ava,gen_skill_ava -1;}
+//if (getskilllv(532) == 0) && (Gen_avan_correcao1 == 1) && (Shinkirou == 1) {skill 532,1;}
+if (getskilllv(532) == 0) && (Shinkirou == 1) {skill 532,1;}
+if (seloskill320 >= 1) {set seloskill320,0; skill 304,0,0; skill 315,0,0; set Chuusuusei,0; set accept_fuu,accept_fuu -1; set fuu_skill_bas,fuu_skill_bas -1; if (checkquest(2082) > 0) {erasequest 2082;}}
+if (getskilllv(269) >= 1) {skill 269,0,0; set Shibari,0;  set accept_gen_int,accept_gen_int -1; set gen_skill_int,gen_skill_int -1; if (checkquest(2073) > 0) {erasequest 2073;}}
+
+if(fuu_basico == 1) && (fuuin_intermediario == 1) && (countitem(1024) >= 1) {delitem 1024,1;}
+if(gen_basico == 1) && (gen_intermediario == 1) && (countitem(1023) >= 1) {delitem 1023,1;}
+//if(med_basico == 1) && (med_intermediario == 1) && (countitem(742) >= 1) {delitem 742,1;}
+if(nin_basico == 1) && (nin_intermediario == 1) && (countitem(1009) >= 1) {delitem 1009,1;}
+if(tai_basico == 1) && (tai_intermediario == 1) && (countitem(1021) >= 1) {delitem 1021,1;}
+if(velo_basico == 1) && (velo_intermediario == 1) && (countitem(1051) >= 1) {delitem 1051,1;}
+
+if(fuuin_avan == 1) && (fuuin_intermediario == 1) && (countitem(741) >= 1) {delitem 741,1;}
+if(gen_avan == 1) && (gen_intermediario == 1) && (countitem(738) >= 1) {delitem 738,1;}
+if(med_avan == 1) && (med_intermediario == 1) && (countitem(1027) >= 1) {delitem 1027,1;}
+if(nin_avan == 1) && (nin_intermediario == 1) && (countitem(739) >= 1) {delitem 739,1;}
+if(tai_avan == 1) && (tai_intermediario == 1) && (countitem(740) >= 1) {delitem 740,1;}
+if(vel_avan == 1) && (velo_intermediario == 1) && (countitem(1099) >= 1) {delitem 1099,1;}
+
+if(fuu_basico != 1) && (countitem(1024) >= 1) {delitem 1024,1;}
+if(gen_basico != 1) && (countitem(1023) >= 1) {delitem 1023,1;}
+if(med_basico != 1) && (countitem(1027) >= 1) {delitem 1027,1;}
+if(nin_basico != 1) && (countitem(1009) >= 1) {delitem 1009,1;}
+if(tai_basico != 1) && (countitem(1021) >= 1) {delitem 1021,1;}
+if(velo_basico != 1) && (countitem(1051) >= 1) {delitem 1051,1;}
+
+if(fuuin_intermediario != 1) && (countitem(741) >= 1) {delitem 741,1;}
+if(gen_intermediario != 1) && (countitem(738) >= 1) {delitem 738,1;}
+if(med_intermediario != 1) && (countitem(742) >= 1) {delitem 742,1;}
+if(nin_intermediario != 1) && (countitem(739) >= 1) {delitem 739,1;}
+if(tai_intermediario != 1) && (countitem(740) >= 1) {delitem 740,1;}
+if(velo_intermediario != 1) && (countitem(1099) >= 1) {delitem 1099,1;}
+
+if(fuuin_avan != 1) && (countitem(753) >= 1) {delitem 753,1;}
+if(gen_avan != 1) && (countitem(750) >= 1) {delitem 750,1;}
+if(med_avan != 1) && (countitem(754) >= 1) {delitem 754,1;}
+if(nin_avan != 1) && (countitem(751) >= 1) {delitem 751,1;}
+if(tai_avan != 1) && (countitem(752) >= 1) {delitem 752,1;}
+if(vel_avan != 1) && (countitem(7021) >= 1) {delitem 7021,1;}
+
+
+
+
+
+if(quest_tai_seis == 1) && (checkquest(2185) == 1) {set quest_tai_dezesseis,1; if (checkquest(2062) == 0) {set quest_tai_seis,0; set tai_mobs_seis,0; } }
+
+//Fuuin:
+//1024
+//741
+//753
+//
+//Gen:
+//1023
+//738
+//750
+//
+//med:
+//742
+//1027
+//754
+//
+//nin:
+//1009
+//739
+//751
+//
+//Tai
+//1021
+//740
+//752
+//
+//velo:
+//1051
+//1099
+//7021
+
+}
+
+
+-	script	reset08102014	-1,{
+
+OnPCLoginEvent:
+
+if (treinos_basicos >= 3) && (academia_done != 1) && (academia_treinos != 1) && (before_academia != 1) {set before_academia,1;}
+if (getskilllv(75) > 3) && (fuuin_intermediario != 1) {skill 75,3,0;}
+if (getskilllv(75) > 7) && (fuuin_intermediario == 1) && (fuuin_avan != 1) {skill 75,7,0;}
+if (seloskill543 > 5) && (fuuin_intermediario != 1) {set seloskill543,5;}
+if (seloskill543 > 7) && (fuuin_intermediario == 1) && (fuuin_avan != 1) {set seloskill543,7;}
+if (getskilllv(43) > 5) && (fuuin_intermediario != 1) {skill 43,5,0;}
+if (getskilllv(43) > 7) && (fuuin_intermediario == 1) && (fuuin_avan != 1) {skill 43,7,0;}
+if (seloskill45 > 2) && (fuuin_intermediario != 1) {set seloskill45,2;}
+if (seloskill45 > 4) && (fuuin_intermediario == 1) && (fuuin_avan != 1) {set seloskill45,4;}
+if (getskilllv(49) > 4) && (velo_intermediario != 1) {skill 49,4,0;}
+if (getskilllv(383) > 5) && (vel_avan != 1) {skill 383,5,0;}
+
+/////////////
+
+if (getskilllv(34) > 7) && (fuuin_avan != 1) {skill 34,7,0;}
+if (getskilllv(270) > 3) && (fuuin_avan != 1) {skill 270,3,0;}
+if (getskilllv(481) > 3) && (fuuin_avan != 1) {skill 481,3,0;}
+
+/////////////
+
+if (getskilllv(66) > 3) && (med_intermediario != 1) {skill 66,3,0;}
+if (getskilllv(66) > 7) && (med_intermediario == 1) && (med_avan != 1) {skill 66,7,0;}
+
+/////////////
+
+//if (getskilllv(357) > 3) && (tai_avan != 1) {skill 357,3,0;}
+
+/////////////
+
+if (getskilllv(254) > 0) {skill 253,getskilllv(254),0; skill 254,0,0; }
+if (getskilllv(397) > 0) {skill 267,getskilllv(397),0; skill 397,0,0; }
+
+///////////kaupe
+if (getskilllv(464) > 4) {skill 464,4,0;}
+
+
+}
+
+
+-	script	doublexp	-1,{
+
+OnPCLoginEvent:
+if (strcharinfo(3) == "lou_in01") || (strcharinfo(3) == "ama_in02") || (strcharinfo(3) == "ve_in") || (strcharinfo(3) == "izlude_in") || (strcharinfo(3) == "nuvem") {warp "SavePoint",0,0;}
+if (gettime(4)!=0) || (gettime(4)!=6) {end;}
+sc_start SC_EXPBOOST,3600000,100;
+dispbottom "[Evento de final de semana] Experiência em dobro ativado.";
+end;
+}
+
+//-	script	anunciareventos	-1,{
+//
+//OnPCLoginEvent:
+//if ($evento_hat == 1) {cutin "cutin_kakashi2",3;}
+//end;
+//}
+
+-	script	corrigeelemento	-1,{
+
+OnPCLoginEvent:
+if (elementodoton == 1) {set @contagemelemento, @contagemelemento +1;}
+if (elementokaton == 1) {set @contagemelemento, @contagemelemento +1;}
+if (elementoraiton == 1) {set @contagemelemento, @contagemelemento +1;}
+if (elementofuuton == 1) {set @contagemelemento, @contagemelemento +1;}
+if (elementosuiton == 1) {set @contagemelemento, @contagemelemento +1;}
+if (@contagemelemento > 1) {atcommand "@kick "+strcharinfo(0)+"";}
+if (countitem(19068) == 0) && (kg_sharingan == 2) { if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1;}
+if (countitem(19069) == 0) && (kg_sharingan == 3) {if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1;}
+if (countitem(19070) == 0) && (kg_sharingan == 4) {if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+if (countitem(19003) == 0) && (sharingan_1 == 1) || (sharingan_2 == 1) || (sharingan_3 == 1) || (sharingan_4 == 1) {if (checkweight(19003,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19003,1;}
+if (countitem(19003) > 1) {delitem 19003,1;}
+
+if (countitem(19002) == 0) && (byakugan > 0) { if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1;}
+if (countitem(19152) == 0) && (GELO > 0) { if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1;}
+if (countitem(19155) == 0) && (LEE2 > 0) { if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1;}
+if (countitem(19154) == 0) && (MARIONETE > 0) { if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1;}
+if (countitem(19153) == 0) && (AKIMICHI > 0) { if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1;}
+if (countitem(19151) == 0) && (NARA2 > 0) { if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1;}
+if (countitem(19149) == 0) && (SELO1 > 0) { if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1;}
+if (countitem(19150) == 0) && (SELO2 > 0) { if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1;}
+
+if (countitem(19212) == 0) && (kibaku > 0) { if (checkweight(19212,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19212,1;}
+if (countitem(19210) == 0) && (Jashin > 0) { if (checkweight(19210,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19210,1;}
+if (countitem(19218) == 0) && (Ibuse > 0) { if (checkweight(19218,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19218,1;}
+if (countitem(19207) == 0) && (Mitsashi > 0) { if (checkweight(19207,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19207,1;}
+if (countitem(19211) == 0) && (Tayuya > 0) { if (checkweight(19211,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19211,1;}
+if (countitem(19216) == 0) && (Aburame > 0) { if (checkweight(19216,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19216,1;}
+
+//BASICO - DEL
+if(fuu_basico == 1) && (fuuin_avan != 1) && (fuuin_intermediario != 1) && (countitem(1024) == 0) {getitem 1024,1;}
+if(gen_basico == 1) && (gen_avan != 1) && (gen_intermediario != 1) && (countitem(1023) == 0) {getitem 1023,1;}
+if(med_basico == 1) && (med_avan != 1) && (med_intermediario != 1) && (countitem(1027) == 0) {getitem 1027,1;}
+if(nin_basico == 1) && (nin_avan != 1) && (nin_intermediario != 1) && (countitem(1009) == 0) {getitem 1009,1;}
+if(tai_basico == 1) && (tai_avan != 1) && (tai_intermediario != 1) && (countitem(1021) == 0) {getitem 1021,1;}
+if(velo_basico == 1) && (vel_avan != 1) && (velo_intermediario != 1) && (countitem(1051) == 0) {getitem 1051,1;}
+
+//INTER - GET
+if(fuu_basico == 1) && (fuuin_avan != 1) && (fuuin_intermediario == 1) && (countitem(741) == 0) {getitem 741,1;}
+if(gen_basico == 1) && (gen_avan != 1) && (gen_intermediario == 1) && (countitem(738) == 0) {getitem 738,1;}
+if(med_basico == 1) && (med_avan != 1) && (med_intermediario == 1) && (countitem(742) == 0) {getitem 742,1;}
+if(nin_basico == 1) && (nin_avan != 1) && (nin_intermediario == 1) && (countitem(739) == 0) {getitem 739,1;}
+if(tai_basico == 1) && (tai_avan != 1) && (tai_intermediario == 1) && (countitem(740) == 0) {getitem 740,1;}
+if(velo_basico == 1) && (vel_avan != 1) && (velo_intermediario == 1) && (countitem(1099) == 0) {getitem 1099,1;}
+
+
+//AVAN - GET
+if(fuuin_avan == 1) && (countitem(753) == 0) {getitem 753,1;}
+if(gen_avan == 1) && (countitem(750) == 0) {getitem 750,1;}
+if(med_avan == 1) && (countitem(754) == 0) {getitem 754,1;}
+if(nin_avan == 1) && (countitem(751) == 0) {getitem 751,1;}
+if(tai_avan == 1) && (countitem(752) == 0) {getitem 752,1;}
+if(vel_avan == 1) && (countitem(7021) == 0) {getitem 7021,1;}
+
+
+//BASICO - DEL
+if(fuu_basico == 1) && (fuuin_avan != 1) && (fuuin_intermediario != 1) && (countitem(1024) > 1) {delitem 1024,1;}
+if(gen_basico == 1) && (gen_avan != 1) && (gen_intermediario != 1) && (countitem(1023) > 1) {delitem 1023,1;}
+if(med_basico == 1) && (med_avan != 1) && (med_intermediario != 1) && (countitem(1027) > 1) {delitem 1027,1;}
+if(nin_basico == 1) && (nin_avan != 1) && (nin_intermediario != 1) && (countitem(1009) > 1) {delitem 1009,1;}
+if(tai_basico == 1) && (tai_avan != 1) && (tai_intermediario != 1) && (countitem(1021) > 1) {delitem 1021,1;}
+if(velo_basico == 1) && (vel_avan != 1) && (velo_intermediario != 1) && (countitem(1051) > 1) {delitem 1051,1;}
+
+//INTER - DEL
+if(fuu_basico == 1) && (fuuin_avan != 1) && (fuuin_intermediario == 1) && (countitem(741) > 1) {delitem 741,1;}
+if(gen_basico == 1) && (gen_avan != 1) && (gen_intermediario == 1) && (countitem(738) > 1) {delitem 738,1;}
+if(med_basico == 1) && (med_avan != 1) && (med_intermediario == 1) && (countitem(742) > 1) {delitem 742,1;}
+if(nin_basico == 1) && (nin_avan != 1) && (nin_intermediario == 1) && (countitem(739) > 1) {delitem 739,1;}
+if(tai_basico == 1) && (tai_avan != 1) && (tai_intermediario == 1) && (countitem(740) > 1) {delitem 740,1;}
+if(velo_basico == 1) && (vel_avan != 1) && (velo_intermediario == 1) && (countitem(1099) > 1) {delitem 1099,1;}
+
+//INTER - DEL2
+if(fuu_basico == 1) && (fuuin_avan == 1) && (fuuin_intermediario == 1) && (countitem(741) > 0) {delitem 741,1;}
+if(gen_basico == 1) && (gen_avan == 1) && (gen_intermediario == 1) && (countitem(738) > 0) {delitem 738,1;}
+if(med_basico == 1) && (med_avan == 1) && (med_intermediario == 1) && (countitem(742) > 0) {delitem 742,1;}
+if(nin_basico == 1) && (nin_avan == 1) && (nin_intermediario == 1) && (countitem(739) > 0) {delitem 739,1;}
+if(tai_basico == 1) && (tai_avan == 1) && (tai_intermediario == 1) && (countitem(740) > 0) {delitem 740,1;}
+if(velo_basico == 1) && (vel_avan == 1) && (velo_intermediario == 1) && (countitem(1099) > 0) {delitem 1099,1;}
+
+//AVAN - DEL
+if(fuuin_avan == 1) && (countitem(753) > 1) {delitem 753,1;}
+if(gen_avan == 1) && (countitem(750) > 1) {delitem 750,1;}
+if(med_avan == 1) && (countitem(754) > 1) {delitem 754,1;}
+if(nin_avan == 1) && (countitem(751) > 1) {delitem 751,1;}
+if(tai_avan == 1) && (countitem(752) > 1) {delitem 752,1;}
+if(vel_avan == 1) && (countitem(7021) > 1) {delitem 7021,1;}
+
+
+//Correção geral basico
+if (velo_skill_bas > 0) || (accept_velo > 0) && (velo_basico == 0) {set velo_basico,1;}
+if (tai_skill_bas > 0) || (accept_tai > 0) && (tai_basico == 0) {set tai_basico,1;}
+//if (velo_skill_bas > 0) || (accept_nin > 0) && (nin_basico == 0) {set nin_basico,1;}
+if (med_skill_bas > 0) || (accept_med > 0) && (med_basico == 0) {set med_basico,1;}
+if (gen_skill_bas > 0) || (accept_gen > 0) && (gen_basico == 0) {set gen_basico,1;}
+if (fuu_skill_bas > 0) || (accept_fuu > 0) && (fuu_basico == 0) {set fuu_basico,1;}
+
+//Correção geral inter
+if (velo_skill_int > 0) || (accept_velo_int > 0) && (velo_intermediario == 0) {set velo_intermediario,1;}
+if (tai_skill_int > 0) || (accept_tai_int > 0) && (tai_intermediario == 0) {set tai_intermediario,1;}
+//if (nin_skill_int > 0) || (accept_nin_int > 0) && (nin_basico == 0) {set nin_basico,1;}
+if (med_skill_int > 0) || (accept_med_int > 0) && (med_intermediario == 0) {set med_intermediario,1;}
+if (gen_skill_int > 0) || (accept_gen_int > 0) && (gen_intermediario == 0) {set gen_intermediario,1;}
+if (fuu_skill_int > 0) || (accept_fuu_int > 0) && (fuuin_intermediario == 0) {set fuuin_intermediario,1;}
+
+//Correção geral avançado
+if (velo_skill_ava > 0) || (accept_vel_ava > 0) && (vel_avan == 0) {set vel_avan,1;}
+if (tai_skill_ava > 0) || (accept_tai_ava > 0) && (tai_avan == 0) {set tai_avan,1;}
+//if (velo_skill_ava > 0) || (accept_nin_ava > 0) && (nin_basico == 0) {set nin_basico,1;}
+if (med_skill_ava > 0) || (accept_med_ava > 0) && (med_avan == 0) {set med_avan,1;}
+if (gen_skill_ava > 0) || (accept_gen_ava > 0) && (gen_avan == 0) {set gen_avan,1;}
+if (fuu_skill_ava > 0) || (accept_fuu_ava > 0) && (fuuin_avan == 0) {set fuuin_avan,1;}
+
+//BASICO - Por treino
+if(fuu_basico == 0) && (fuuin_intermediario == 1) || (fuuin_avan == 1) {set fuu_basico,1;}
+if(gen_basico == 0) && (gen_intermediario == 1) || (gen_avan == 1) {set gen_basico,1;}
+if(med_basico == 0) && (med_intermediario == 1) || (med_avan == 1) {set med_basico,1;}
+if(nin_basico == 0) && (nin_intermediario == 1) || (nin_avan == 1) {set nin_basico,1;}
+if(tai_basico == 0) && (tai_intermediario == 1) || (tai_avan == 1) {set tai_basico,1;}
+if(velo_basico == 0) && (velo_intermediario == 1) || (vel_avan == 1) {set velo_basico,1;}
+
+//Inter - Por treino
+if (fuuin_intermediario == 0) && (fuuin_avan == 1) {set fuuin_intermediario,1;}
+if (gen_intermediario == 0) && (gen_avan == 1) {set gen_intermediario,1;}
+if (med_intermediario == 0) && (med_avan == 1) {set med_intermediario,1;}
+if (nin_intermediario == 0) && (nin_avan == 1) {set nin_intermediario,1;}
+if (tai_intermediario == 0) && (tai_avan == 1) {set tai_intermediario,1;}
+if (velo_intermediario == 0) && (vel_avan == 1) {set velo_intermediario,1;}
+
+//Avan - Por treino
+//if (fuuin_avan == 0) && (fuuin_intermediario == 1) || (fuu_basico == 1) {set fuuin_avan,1;}
+//if (gen_avan == 0) && (gen_intermediario == 1) || (gen_basico == 1) {set gen_avan,1;}
+//if (med_avan == 0) && (med_intermediario == 1) || (med_basico == 1) {set med_avan,1;}
+//if (nin_avan == 0) && (nin_intermediario == 1) || (nin_basico == 1) {set nin_avan,1;}
+//if (tai_avan == 0) && (tai_intermediario == 1) || (tai_basico == 1) {set tai_avan,1;}
+//if (vel_avan == 0) && (velo_intermediario == 1) || (velo_basico == 1) {set vel_avan,1;}
+
+
+//Ninjutsu por skill
+if (nin_basico == 0) && (Doryuuheki == 1) || (Sousou == 1) || (kamaitachi == 1) || (daitoppa == 1) || (hanashuriken == 1) || (housenka == 1) || (Oroshi == 1) || (maisou == 1) || (Banshou == 1) || (hanhonryuu == 1) {set nin_basico, 1;}
+if (nin_basico == 0) && (armadilha_doton == 1) || (Raishin == 1) || (nindou == 1) || (repulsor == 1) || (gougakyuu == 1) || (P_Explosivo == 1) || (Gian == 1) || (paralisador == 1) || (suiryuudan == 1) || (P_Congelante == 1) {set nin_basico, 1;}
+if (nin_intermediario == 0) && (D_Jigoku == 1) || (kyuu == 1) || (Renkuudan == 1) || (atsugai == 1) || (Haisekishou == 1) || (Gouryuuka == 1) || (Jibashiri == 1) || (shibarai == 1) || (Mizurappa == 1) || (Suijinheki ==1) {set nin_intermediario,1;}
+
+//Avançadas por skill
+if (fuuin_avan == 0) && (ProtegerT == 1) || (Enfraquecer == 1) || (Kaupe == 1) || (Gaia == 1) || (Gogyou == 1) || (Shiki == 1) || (Shugo == 1) {set fuuin_avan,1;}
+if (gen_avan == 0) && (Jubaku == 1) || (Bakuhatsu == 1) || (FuriaD == 1) || (Kokohi == 1) || (Miro == 1) || (Noroi == 1) || (RemoverArmadura == 1) {set gen_avan,1;}
+if (med_avan == 0) && (Bruma == 1) || (Chikatsu == 1) || (Muralha == 1) || (Shouen == 1) || (Toxica == 1) {set med_avan,1;}
+if (tai_avan == 0) && (Cambalhota == 1) || (tai_chute == 1) || (Dinamyc == 1) || (tai_Fe == 1) || (Perfurar == 1) || (Sawarabi == 1) || (tai_voadora == 1) {set tai_avan,1;}
+if (vel_avan == 0) && (CorteN == 1) || (CSombra == 1) || (espreitar == 1) || (Passo == 1) || (SSombras == 1) {set vel_avan,1;}
+if (nin_avan == 0) && (Gandan == 1) || (f_mugen == 1) || (Zokokku == 1) || (R_chidori == 1) || (Goshokuzame == 1) || (Doryuusou == 1) || (f_atsugai == 1) || (Endan == 1) || (R_chidoriN == 1) || (Suishouha == 1) {set nin_avan,1;}
+
+//Avançadas por quest
+if (tai_avan == 0) && (tai_intermediario == 1) && (tai_basico == 1) && (quest_tai_ava_um == 1) || (quest_tai_ava_dois == 1) || (quest_tai_ava_tres == 1) || (quest_tai_ava_quatro == 1) || (quest_tai_ava_cinco == 1) || (quest_tai_ava_seis == 1) || (quest_tai_ava_sete == 1) {set tai_avan,1;}
+
+
+end;
+}

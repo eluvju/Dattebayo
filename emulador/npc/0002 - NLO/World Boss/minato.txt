@@ -1,0 +1,29 @@
+//////// World Boss - Nazuki Naruto Legends Online 2019 ////////
+//////// Invocação do Monstro Minato - Evento WB    ////////
+
+-	script	WorldBossTeste4	-1,{
+
+OnThu2100:
+set $worldboss,1;
+gvgon "guild_vs2";
+pvpon "guild_vs2";
+announce "[World Boss]: O evento está aberto, acesso pelo Centro de Treinamento!",0;
+sleep 40000;
+announce "[Minato]: O que é isso? Meu corpo foi ressuscitado pelo Edo Tensei!?",0;
+sleep 4000;
+announce "[Minato]: Não consigo me controlar!",0;
+sleep 4000;
+announce "[Minato]: Por favor me neutralizem, shinobis!",0;
+
+monster "guild_vs2",50,50,"World Boss Minato",3583,1,"WorldBossTeste4::OnMobMinato";
+end;
+
+	OnMobMinato:
+			announce "[World Boss]: "+strcharinfo(0)+" derrotou Minato! Recompensa: 1 Fuuin no Sho!",0;
+			getitem 753,1;
+			set $worldboss,0;
+			gvgoff "guild_vs2";
+			pvpoff "guild_vs2";
+			end;
+
+		}

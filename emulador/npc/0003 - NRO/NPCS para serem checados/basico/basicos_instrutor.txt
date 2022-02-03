@@ -1,0 +1,60 @@
+//=====A GuniX Npc Creator Script========================================
+//===== Nome: =========================================================== 
+//= Asuma
+//===== Por: ============================================================ 
+//= darkis
+//===== Descrição: ====================================================== 
+//= darkis
+//===== Emulador: =======================================================
+//= Cronus
+//===== Versão Atual: ===================================================
+//= 0,1 
+//===== Comentários: ====================================================
+//= darkis
+
+
+
+prt_maze02.gat,101,180,5	script	Asuma	819,{
+
+//cutin "asuma",2;
+mes "^008000[Asuma]^000000";
+mes "Veja, se não é o "+strcharinfo(0)+"!!";
+next;
+mes "^008000[Asuma]^000000";
+mes "Acha que ja ta pronto para virar um genin e encarar os perigos do mundo shinobi?";
+menu "Claro que sim!",lsim,"Ainda não...",lnao;
+
+lsim:
+next;
+mes "^008000[Asuma]^000000";
+mes "Gostei da confiança, vamos ver se você é digno de se tornar genin então.";
+if (basico_done != 1) goto  l_no;
+mes "Humm....";
+next;
+mes "^008000[Asuma]^000000";
+mes "Você parece forte o bastante, vou te levar para a proxima sala.";
+next;
+warp "gon_test",49,11;
+close;
+
+lnao:
+next;
+cutin "",255;
+mes "^008000[Asuma]^000000";
+mes "Tudo bem, treina mais e volte quando se sentir mais confiante.";
+close;
+
+l_no:
+cutin "",255;
+next;
+mes "^008000[Asuma]^000000";
+mes "Você não parece ter terminado seu treinamento básico, converse com o npc do lado.";
+close;
+
+}
+
+nevoa	mapflag	noteleport
+konoha	mapflag	noteleport
+areia	mapflag	noteleport
+akatsuki	mapflag	noteleport
+kh_vila	mapflag	noteleport

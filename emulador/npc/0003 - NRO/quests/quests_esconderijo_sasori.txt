@@ -1,0 +1,41 @@
+moc_fild13,31,47,5	script	Entrada Para Caverna#sa	713,{
+
+mes "[Esconderijo]";
+mes "Hum... você me achou!";
+mes "Eu fui a primeira pessoa a achar esse esconderijo mas não tenho coragem de entrar!";
+next;
+mes "[Esconderijo]";
+mes "Você parece forte, vou deixar voce entrar daí você me fala como é la dentro";
+mes "Só tem um porém, tem um selo na entrada que não deixa ninguem entrar";
+mes "Parece que precisa de um pergaminho para liberar o selo, ta em código mas vou traduzir pra você.";
+mes "Neste esconderijo só entra quem possui o ^FF0000Pergaminho da suna^000000 e quiser enfrentar o terrível Sasori!";
+next;
+mes "[Esconderijo]";
+mes "Parece que vai precisar desse pergaminho se quiser entrar, você tem ele?";
+menu "Quero entrar",sim,"Ainda não",nao;
+
+sim:
+next;
+mes "[Esconderijo]";
+mes "Vou lhe ajudar a entrar então quando eu abrir o pergaminho voce corre pra dentro!";
+mes "Me passe o pergaminho!";
+next;
+if (countitem(687) < 1) goto SemItem;
+delitem 687,1;
+next;
+mes "[Esconderijo]";
+mes "Boa sorte la dentro!";
+announce "O Shinobi " + strcharinfo(0) + " acaba de entrar em um esconderijo! ",0;
+warp "pay_dun03.gat", 155,	161;	end;
+
+SemItem:
+next;
+mes "[Esconderijo]";
+mes "Você disse que tinha o pergaminho ¬¬";
+close;
+
+nao:
+mes "[Esconderijo]";
+mes "Volte quando tiver o pergaminho então!";
+close;
+}

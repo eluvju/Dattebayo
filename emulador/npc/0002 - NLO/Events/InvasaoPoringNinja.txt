@@ -1,0 +1,47 @@
+treinamento,102,163,5	script	Poring Ninja#2	1_m_orient01,{
+
+    set @npcname$,"[^ff0000Poring Ninja^000000]";
+
+    mes @npcname$;
+	mes "Troque aqui seus Segredos Shinobis por Premiações.";
+    if (select("Trocar meus Segredos!","Cancela") == 2) 
+        close;
+
+    next;
+    mes @npcname$;
+    mes "Boas Compras.";
+    close2;
+    callshop "ItensPoringNinja",1;
+    npcshopattach "ItensPoringNinja";
+    end;
+
+OnBuyItem:
+
+    for(set .@i,0; .@i<getarraysize(.poringninja_item); set .@i,.@i+1) {
+        for(set .@d,0; .@d<getarraysize(@bought_nameid); set .@d,.@d+1) {
+            if(@bought_nameid[.@d]==.poringninja_item[.@i]) {
+                if(checkweight(@bought_nameid[.@d],@bought_quantity[.@d])) {
+                    if(countitem(756) >= .poringninja_cost[.@i]*@bought_quantity[.@d]) {
+						delitem 756,.poringninja_cost[.@i]*@bought_quantity[.@d];
+                        getitem @bought_nameid[.@d],@bought_quantity[.@d]; end;
+                    } else dispbottom "Você não tem Segredo Shinobi suficientes para comprar esse item.";
+                } else dispbottom "Desculpe mais você está muito pesado para comprar esse item.";
+            }
+        }
+    }
+OnInit:
+    setarray .poringninja_item[0],            3052, 7002, 7015, 900, 3051, 5105, 5106, 755, 753; // ID dos Itens
+    setarray .poringninja_cost[0],            20,   50,   20,   50,  30,   150,  150,  100, 300; // preço dos itens(unidade).
+	
+	
+	npcshopdelitem "ItensPoringNinja",510;
+	if(getarraysize(.poringninja_item) >= 1) {
+		npcshopitem "ItensPoringNinja",.poringninja_item[.i],.poringninja_cost[.i];
+		for( set .i,0; .poringninja_item[.i]; set .i,.i+1 ) {
+			npcshopadditem "ItensPoringNinja",.poringninja_item[.i],.poringninja_cost[.i];
+		}
+	}
+    end;
+}
+
+-	shop	ItensPoringNinja	-1,501:-1

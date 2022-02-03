@@ -1,0 +1,177 @@
+in_hunter,91,98,3	script	Eremita#recu	734,{
+	if(contrato_lesma == 1) goto L_wrongcontract;
+	if(contrato_cobra == 1) goto L_wrongcontract;
+	if(invoca_done == 1) goto L_alreadyhave;
+	if(contrato_sapo == 1) goto claro;
+	if(jounin != 1) goto L_graduacao;
+	
+	mes "[Eremita]";
+	mes "Olá shinobi, Eu tive uma visão de sua chegada...";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Na minha visão você me procurou para saber como aprender o Kuchiyose no jutsu";
+	mes "Já vou adiantar que essa é uma habilidade que poucos tem...";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Antes de mais nada, é preciso fazer um contrato de sangue";
+	mes "E após feito o contrato, terá que aperfeiçoar a técnica";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Devo avisar que o contrato é eterno, e que não poderá ter dois contratos";
+	mes "com dois tipos de animais, então antes de confirmar pense bem...";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Além de mim existem mais duas pessoas com quem você pode conversar";
+	mes "a respeito de contratos de sangue, eu sou o eremita do sapo";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Através de mim você pode aprender o jutsu que invoca o rei dos sapos Gama-Bunta!";
+	mes "Gama-Bunta é o rei dos sapos e é bastante forte no ataque, é muito destrutivo";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Enfim, chega de conversa, quer fazer um contrato de sangue com os sapos?";
+	menu "Sim, Estou preparado",contrato,"Não, ainda não estou pronto",aindan;
+
+	contrato:
+	mes "Seu contrato foi assinado!";
+	set invoca_sapo1,1;
+	set contrato_sapo,1;
+	close;
+
+
+	claro:
+	mes "[^A52A2AEremita^000000]";
+	mes "Ótimo, vou lhe ensinar o jutsu por etapas";
+	mes "Será preciso aprender um estágio de cada vez";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Qual sapo gostaria de dominar?";
+	menu "Girino",girino,"Gama-Kishi",gamakishi,"Gama-Bunta",gamabunta;
+
+	girino:
+	if(contrato_sapo != 1) goto L_wrongcontract;
+	if(invoca_sapo1 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Vamos começar então, iremos começar pelo Girino, o mais fraco dos sapos";
+	mes "O treinamento todo será difícil, mas aguente firme que vai aprender";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Neste treinamento você terá que coletar o seguinte:";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "1 vale Kuchiyose no jutsu level 1";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Vá! e faça seu treinamento!";		
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7622) < 1) goto L_SemItem;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7622,1;
+	skill 721,4,0;
+	set invoca_sapo1,0;
+	set invoca_sapo2,1;
+	close;
+
+	gamakishi:
+	if(invoca_sapo2 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Muito bem, já está na segunda etapa, vai ficar cada vez mais difícil";
+	mes "Não desista ainda, se supere!";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Agora vamos tentar dominar a invocação do Gama-Kishi";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "1 vale Kuchiyose no jutsu level 2";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Vá! e faça seu treinamento!";
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7037) < 1) goto L_SemItem;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7037,1;
+	skill 722,4,0;
+	set invoca_sapo2,0;
+	set invoca_sapo3,1;
+	close;
+
+	gamabunta:
+	if(invoca_sapo3 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Chegou a hora, A última etapa do treinamento...";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Chegou a hora de tentar invoca o rei do sapos Gama-Bunta";
+	mes "Após isso terá sobre seu controle um poderoso animal, vamos lá!";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "1 vale Kuchiyose no jutsu level 3";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7199) < 1) goto L_SemItem;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7199,1;
+	skill 723,4,0;
+	set invoca_sapo3,0;
+	set invoca_done,1;
+	close;
+
+L_SemItem:
+	next;
+	mes "[^FF0000Eremita^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+
+aindan:
+	next;
+	mes "[^FF0000Eremita^000000]";
+	mes "Volte quando estiver pronto!";
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Eremita^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_Wrong:
+	mes "[^FF0000Eremita^000000]";
+	mes "Você não é deste clã";
+	close;
+
+L_graduacao:
+	mes "[^FF0000Eremita^000000]";
+	mes "Desculpe mas apenas jounins podem realizar esse treinamento.";
+	close;
+
+L_wrongcontract:
+	mes "[^FF0000Eremita^000000]";
+	mes "Desculpe mas seu contrato de sangue não é desse animal.";
+	close;
+
+L_wronglevel:
+	mes "[^FF0000Eremita^000000]";
+	mes "Desculpe mas você não pode pular etapas!";
+	close;
+
+}

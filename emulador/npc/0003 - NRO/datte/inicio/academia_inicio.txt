@@ -1,0 +1,1719 @@
+////////////////////////////////////Instrutor///////////////////////////////////////////////////
+
+payon_in03,22,69,4	script	Instrutor Inicial	882,{
+
+mes "[^DC143CHirai^000000]";
+mes "Olá jovem estudante! Bem vindo ao NRO!";
+next;
+mes "[^DC143CHirai^000000]";
+mes "Eu me chamo Hirai, serei seu instrutor na academia e ensinarei um pouco sobre como se tornar um shinobi";
+next;
+mes "[^DC143CHirai^000000]";
+mes "Tente prestar bastante atenção, pois é aqui que você vai aprender como se dar bem em seu início no mundo shinobi e é aqui também que vai moldar o seu personagem!";
+next;
+mes "[^DC143CHirai^000000]";
+mes "Um personagem em nosso servidor é composto por 5 caracteristicas que são elas:";
+mes "- Três Treinamentos";
+mes "- Seus Jutsus";
+mes "- Uma Kekkei Genkai";
+mes "- Uma invocação";
+mes "- Atributos";
+next;
+mes "[^DC143CHirai^000000]";
+mes "Isto é o básico para seu personagem e será a base do seu personagem, iremos nos aprofundar em cada um destes itens e aqui mesmo na academia você vai poder os definir";
+next;
+mes "[^DC143CHirai^000000]";
+mes "Aqui na academia tem uma sala para cada um das caracteristicas listadas anteriormente, além de uma sala de tutoriais gerais, caso queira consultar!";
+next;
+mes "[^DC143CHirai^000000]";
+mes "Para iniciar a construção de seu personagem é só se dirigir para as salas, há placas na porta de cada sala indicando qual é a sala, há também uma área de combate no fundo da sala de jutsus, que se encontra dentro da sala de treinamentos";
+next;
+mes "[^DC143CHirai^000000]";
+mes "Após ir em todas as salas, terá um exame para ser feito na sala de treinamentos, só após completar o exame que poderá ir para sua vila";
+next;
+mes "[^DC143CHirai^000000]";
+mes "Bem-vindo ao Naruto RPG Online e esperamos que você se diverta!";
+close;
+
+
+OnInit:
+	waitingroom "[Instrutor]",0;
+
+}
+
+////////////////////////////////////TREINAMENTOS///////////////////////////////////////////////////
+
+
+yuno_in03,62,179,4	script	Instrutor de Treinamento	882,{
+if (treinos_escolha < 3) && (academia_treinos != 1) {
+set treinofuuin,0;
+set treinonin,0;
+set treinotai,0;
+set treinogen,0;
+set treinomed,0;
+set treinovelo,0;
+set treinos_escolha,0;
+}
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Saudações novato, você está na sala de treinamentos do NRO, aqui é uma sala muito importante pois aqui você irá definir os três treinamentos que seu shinobi irá possuir e com esses três treinamentos poderá determinar quais jutsus irá ter!";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "O que são treinamentos você pergunta?";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Treinamentos são os estilos de luta que você irá possuir, você pode ter três treinamentos de uma lista de seis";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Os detalhes dos treinamentos disponíveis e seus detalhes você pode conferir abaixo, caso já queira escolher poderá ir na última opção:";
+menu "- Ninjutsu",ninjutsu,"- Taijutsu",taijutsu,"- Genjutsu",genjutsu,"- Fuuinjutsu",fuuinjutsu,"- Medicina",medicina,"- Velocidade",velocidade,"- Ok, já entendi!",entendi;
+
+ninjutsu:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal são ataques mágicos e o atributo inteligência (int), possui habilidades focadas em ataques de médio e longo alcance.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seus ataques são de acordo com o elemento que pertence a você (para saber mais sobre elemento, vá para a sala de elementos), e é um treino totalmente ofensivo.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores que gostam de jogar mais recuados, e que gostem de causar danos massivos";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Não é aconselhado que este treinamento seja escolhido juntamente de Taijutsu";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+taijutsu:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal são ataque físicos e o atributo força (str), possui habilidades focadas em ataques de curto e médio alcance";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Alguns deles também ignoram esquivas, é um treino totalmente ofensivo";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores mais agressivos e que seja aliado a um personagem que aguente segurar muito dano, pois sempre estará a frente nas batalhas.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Não é aconselhado que este treinamento seja escolhido juntamente de Ninjutsu";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+genjutsu:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal é debuffs e o atributo Sorte (luk), possui habilidades que causam anormalidades nos inimigos como: cegueira, slow (lerdeza),atordoamento, sangramento, silêncio, maldição, sono, etc...";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Serve tanto para suporte como para jogadores mais ofensivos e é uma ótima maneira para impedir que seus inimigos possam se mover ou atacar";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado tanto para jogadores que gostam de dar suporte aos aliados, pois podem impedir os inimigos de atacarem e de se moverem, quanto para jogadores mais ofensivos, pois um genjutsu bem aplicado pode ser o diferencial na luta contra um inimigo poderoso";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+fuuinjutsu:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal é suporte, aplicando buffs em seus aliados, e o atributo Destreza (dex)";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Possui habilidades utilizadas com selos de mão que buffam seus aliados ou a si mesmo com: aumento de atributos (str,int,dex,agi,etc), diminuição de cast(conjuração), diminuição de custo de SP (mana/chakra), melhoria na precisão, etc.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores que gostam de dar suporte para os seus aliados, assim como serve para melhorar o poder seu personagem";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Este treinamento funciona muito bem com ninjutsu, devido a redução de cast (conjuração) dos jutsus";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+medicina:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal é suporte e o atributo vitalidade (vit)";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Auxilia você e seus aliados utilizando curas, remoções de armadilhas e habilidades que removem anormalidades como: congelamento, petrificação, atordoamento, sono,etc... Possui algumas habilidades ofensivas como ataques com veneno e buffs que dão aumento de ataque.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores de suporte, pois podem manter os aliados vivos e livres de anormalidades";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+velocidade:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Seu foco principal é a agilidade (agi)";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Aumenta sua velocidade de movimento, velocidade de ataque, e diminui o delay (tempo de espera entre habilidades), possui habilidades que aumentam a esquiva, teleportes e possui poucas habilidades ofensivas.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É aconselhado para jogadores que queiram se mover rapidamente enquanto possam dar suporte ou distribuir dano sem sofrer muito dano";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar a explicação ou para começar a definir seus treinamentos, é só falar comigo novamente!";
+close;
+
+entendi:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Antes de definir os seus três treinamentos, vou dar mais algumas explicações gerais sobre treinamentos, leia com cuidado pois são importantes!";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Qual informação sobre treinamentos você gostaria de saber?";
+menu "- Como melhorar meu treinamento",melhorar_t,"- Como mudar de treinamento",mudar_t,"- Pedras de treinamentos",pedras_t,"- Ok, já entendi tudo",entendi2;
+
+melhorar_t:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Os treinamentos são todos divididos por nível de aprendizado, Ao escolher seus treinamentos eles virão no estágio mais baixo, conhecido como básico";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "É possivel dominar os treinamentos elevando o estágio dele para treinamento intermediário ou avançado, o que fará que liberem novos jutsus para você aprender, mais poderosos que os do estágio anterior";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Porém não é possivel dominar todos os seus três treinamentos, você poderá elevar apenas um treinamento para o estágio mais alto, o avançado. Poderá também evoluir outro treinamento até o intermediário e último ficará como básico mesmo";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Sendo assim, É possível ter um treinamento no estágio avançado, um no estágio intermediário e um no estágio básico";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para elevar o estágio de seus treinamentos, é preciso antes aumentar o nível base de seus treinamentos, cada treinamento poderá aumentar o nível do 1 ao 100.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Este nível é usado como requisito para elevar o estágio do seu treinamento, o nível necessário para aumentar o estágio do básico para intermediário é 40, e o nível necessário para do intermediário para avançado é 75";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para aumentar o nível dos treinamentos é preciso matar monstros, cada monstro dá uma quantia diferente de experiência de treinamento e pode ser encontrado no nosso fórum";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "E para escolher qual treinamento deseja aumentar o nível, é só falar com a Kurenai na entrada dessa academia!";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Caso queira ver os niveis de seus treinamentos, é só digitar @treinos";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Caso não entendeu algo é só procurar o npc de treinamentos na biblioteca de tutoriais! Ou se preferir, pode nos procurar no skype ou suporte dentro do jogo";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar aprendendo sobre os treinamentos ou para já ir escolher seus treinamentos, é só falar comigo denovo e ir na última opção";
+close;
+
+mudar_t:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Caso você não gostou ou simplesmente queira mudar de treinamento é preciso antes possuir alguns itens especiais";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "caso você escolheu errado ou mudou de ideia e seu personagem está apenas no início é aconselhado criar um novo personagem pois é mais fácil que conseguir os itens de remoção";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "O nome dos itens de remoção são removedor de treino básico, intermediário e avançado, cada um serve pra remover um estágio do treinamento e o modo de os obter são por troca com outros jogadores ou com doações para o servidor";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Para continuar aprendendo sobre os treinamentos ou para já ir escolher seus treinamentos, é só falar comigo denovo e ir na última opção";
+close;
+
+pedras_t:
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "As pedras de treinamentos são itens que são recebidos ao escolher ou melhorar o seu treinamento, eles possuem poderes que aumentam a força de seu personagem, uma pedra avançada por exemplo possui muito mais força que uma básica";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Essas pedras são ligadas aos seus treinamentos e só possui uma pedra avançada de fuuinjutsu por exemplo quem possuir o treinamento fuuinjutsu avançado.";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Elas não precisam de nenhum comando do usuário para ter efeito, o efeito é automático";
+mes "Para continuar aprendendo sobre os treinamentos ou para já ir escolher seus treinamentos, é só falar comigo denovo e ir na última opção";
+close;
+
+entendi2:
+next;
+if (treinos_bilbioteca == 1) {mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Vejo que você começou a escolher seus treinamentos na biblioteca de sua vila, não tem porque falar comigo então, volte lá e complete seus estudos"; close;}
+if (treinos_basicos > 0) {mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Vejo que você começou a escolher seus treinamentos na biblioteca de sua vila, não tem porque falar comigo então, volte lá e complete seus estudos"; close;}
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Ótimo, agora você possui todas as informações necessárias para escolher seus três treinamentos, agora eu irei perguntar os três treinamentos que deseja escolher, caso queira pensar mais, clique em (Quero pensar mais)";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Muito bem, qual o primeiro treinamento que gostaria de ter?";
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Fuuinjutsu",escolher_fuu,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_nin:
+if (treinonin == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinonin,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Ninjutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Ninjutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Fuuinjutsu",escolher_fuu,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_tai:
+if (treinotai == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinotai,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Taijutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Taijutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Genjutsu",escolher_gen,"- Fuuinjutsu",escolher_fuu,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_gen:
+if (treinogen == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinogen,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Genjutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Genjutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Fuuinjutsu",escolher_fuu,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_fuu:
+if (treinofuuin == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinofuuin,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha >= 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Fuuinjutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Fuuinjutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_med:
+if (treinomed == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinomed,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha >= 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Medicina né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Medicina né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Fuuinjutsu",escolher_fuu,"- Velocidade",escolher_velo;
+
+escolher_velo:
+if (treinovelo == 1) {next; mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus treinamentos"; close;}
+set treinovelo,1;
+set treinos_escolha, treinos_escolha +1;
+if (treinos_escolha >= 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+if (treinos_escolha == 1) {mes "Velocidade né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treinos_escolha == 2) {mes "Velocidade né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Fuuinjutsu",escolher_fuu,"- Medicina",escolher_med;
+
+finalizado:
+next;
+if (treinos_escolha != 3) {end;}
+if (treinos_basicos == 3) {mes "[^DC143CInstrutor de Treinamentos^000000]"; mes "Você já escolheu seus três treinamentos"; close;}
+if (treinofuuin == 1) {getitem 1024,1; set fuu_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinonin == 1) {getitem 1009,1; set nin_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinotai == 1) {getitem 1021,1; set tai_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinogen == 1) {getitem 1023,1; set gen_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinomed == 1) {getitem 1027,1; set med_basico,1; set treinos_basicos, treinos_basicos +1;}
+if (treinovelo == 1) {getitem 1051,1; set velo_basico,1; set treinos_basicos, treinos_basicos +1;}
+set academia_treinos,1;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "Muito bem, agora você tem seus três treinamentos escolhidos e entregues, você poderá agora escolher seus jutsus baseado nos treinamentos";
+next;
+mes "[^DC143CInstrutor de Treinamentos^000000]";
+mes "E lembre-se, se precisar de informações pode consultar a sala aqui na academia chamada de biblioteca, é lá que se encontram nossos tutoriais!";
+set academia_treinos,1;
+close;
+
+OnInit:
+	waitingroom "[Instrutor]",0;
+
+}
+
+////////////////////////////////////Kekkei Genkai///////////////////////////////////////////////////
+
+payon_in03,63,124,2	script	Instrutor Kekkei Genkai	882,{
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Yo, como vai? Bem-vindo a sala de Kekkei Genkai, aqui nós informamos os shinobis jovens sobre as Kekkei Genkais";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Kekkei Genkai são linhagens Sanguínea especiais, quem as possui são realmente shinobis poderosos, e nós aqui da academia ajudamos os shinobis a descobrirem e despertarem suas Kekkei genkais ";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Atualmente temos conhecimento de 15 diferentes tipos de Kekkei genkai, divididos em dois grupos, o primeiro grupo conhecido como primeira geração, foram as primeiras Kekkei Genkai que estudamos e entendemos, já as da segunda geração ainda é algo novo para nós e não sabemos muito a respeito";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Na primeira geração há 9 Kekkei Genkai, sendo elas: Sharingan, Byakugan, Selo amaldiçoado do céu, Selo amaldiçoado da terra, Hyouton, Controle das sombras, Akimichi, Kugutsu, Portões de Chakra, daqui a pouco eu  explico o que cada uma faz.";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Já na segunda geração, temos conhecimento de Kibaku Nendo, Jashin, Mestre Ibuse, Bukijutsu (Mitsashi), Flauta demoníaca, e Kikaichu, infelizmente com a gente não é possível despertar as Kekkei Genkai de segunda geração, há boatos que apenas em um laboratório secreto é possivel fazer isso...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Toda Kekkei Genkai após despertada e equipada, fornece o jogador com poderes passivos e ativos, que vão melhorando e liberando novos poderes cada vez que são aprimoradas";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Mas enfim, vamos falar mais sobre as Kekkei Genkai, abaixo tem uma lista de informações sobre elas, leia com cuidado pois é importante, caso queira ler denovo é só falar comigo";
+menu "- Detalhes das Kekkei Genkai",info,"- Como conseguir",conseguir,"- Como despertar",despertar,"- Como melhorar",melhorar,"- Como trocar",trocar,"- Ok, entendi",entendi;
+
+conseguir:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Nós aqui da academia vamos analisar o seu DNA para descobrir sua Kekkei genkai e então lhe diremos como despertar, porém as Kekkei Genkai de segunda geração, por não serem naturais podem apenas serem implementadas em um shinobi, nós aqui não fazemos isso e há boatos que isso pode ser feito em um laboratório...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+despertar:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para despertar sua Kekkei Genkai será preciso fazer um grande esforço físico para forçar seu corpo a reagir, pelos nossos estudos podemos dizer que é preciso matar cerca de 50 monstros para despertar, após despertado, um equipamente será adicionado ao seu inventário";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+melhorar:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "O processo de melhorar é o mesmo de despertar, o que aumenta é a quantia de monstros a serem mortos";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Toda Kekkei Genkai pode ir para o nível 4, que é máximo, neste último nível é preciso fazer alguns experimentos que nós não temos muito conhecimento a respeito...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Há itens que ajudam nesse processo de despertar e melhorar que podem ser obtidos em eventos";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+trocar:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Caso não esteja satisfeito com sua Kekkei Genkai há uma maneira de remover as células do seu corpo e ficar livre para implementar novas células, é com um item chamado de Removedor de Kekkei Genkai, e é bastante raro";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+info:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Sobre qual Kekkei Genkai gostaria de saber?";
+menu "- Sharingan",sharingan,"- Byakugan",byakugan,"- Selo do Céu",ceu,"- Selo da Terra",terra,"- Hyouton",hyouton,"- Controle das Sombras",nara,"- Baika",akimichi,"- Kugutsu",kugutsu,"- Portões de Chakra",lee;
+
+sharingan:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Doujutsu conhecido por ser usado pelo lendário Uchiha Sasuke, Madara, Itachi entre outros";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Técnica ocular que permite copiar os jutsus dos inimigos, mergulhá-los em genjutsus, atacá-los com técnicas próprias do doujutsu. Sharingan no seu nível mais alto, possui variações,";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Essa Kekkei Genkai é aconselhado para usuários com o treinamento Ninjutsu, porém em suas variações do nível é possivel fazer diferentes combinações";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+byakugan:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Doujutsu conhecido por ser usado pelo lendário Hyuuga Neji";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Permite ver inimigos invisíveis e possui vários tipos de formas de atacar por combos como: 8 Hits,16 Hits,32 Hits e 64 Hits.";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É aconselhado para usuários com o treinamento Taijutsu e Velocidade";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+ceu:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Selo Amaldiçoado do Céu conhecido por ser distribuído pelo Orochimaru para seus subordinados";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Aumenta o dano mágico, e dá técnicas de esquiva e trocar chakra.";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É aconselhado para usuários com o treinamento Ninjutsu e Fuuinjutsu";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+terra:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Selo Amaldiçoado da Terra conhecido por ser distribuído pelo Orochimaru para seus subordinados";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Aumenta o dano físico, e possui técnicas de aproximação rápida.";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É aconselhado para usuários com o treinamento Taijutsu e Fuuinjutsu";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+hyouton:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Linhagem sanguínea conhecida por ser usada por Haku, onde ele capaz de misturar água com vento, fazendo assim o Gelo";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Possui melhoria na velocidade de movimento, pode-se ficar invisivel e melhora a conjuração (cast) de técnicas.";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É aconselhado para usuários com os treinamentos Ninjutsu e Fuuinjutsu";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+nara:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Possui o poder de controlar as sombras, conhecido por ser usado pelo clã Nara, e feito famoso pelo Shikamaru";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Utiliza-se técnicas com sombras, serve para suporte e ataque, travando ou atacando oponentes.";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É aconselhado para usuários com o treinamento Ninjutsu mas pode ser usado também com usuários Taijutsu";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+akimichi:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Poder utilizado pelo clã Akimichi que aliado as pílulas de chakra é possível se obter grande poder assim como o do Chouji";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Utiliza-se pílulas que aumentam as capacidades do corpo como: velocidade, poder de ataque e Hp.";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É aconselhado para usuários com o treinamento Taijutsu e de Medicina";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+kugutsu:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Controle de marionetes atráves de linhas de chakra, os usuários mais famosos são o Kankurou e o Sasori";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Usada para atacar usando Marionetes como auxilio. A quantia e força das marionetes varia entre os níveis";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É aconselhado para usuários com treinanto tanto de Taijutsu como de Ninjutsu";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+lee:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "8 portões de chakra que levam o usuário ao extremo em busca de poder e velocidade, conhecido por ser usado por Rock Lee e Maito Gai";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Possui ativações que melhoram o desempenho do corpo, aumentando velocidade de movimento, ataque e esquiva.";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É aconselhado para usuários com o treinamento Taijutsu e de Medicina";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Para continuar a explicação é só falar comigo, ou caso já queira fazer a analise, só ir na última opção!";
+close;
+
+
+entendi:
+next;
+if (academia_kg == 1) || (pegoukg == 1) {mes "[^DC143CInstrutor Kekkei Genkai^000000]"; mes "Você só pode escolher sua primeira Kekkei Genkai comigo, caso tenha removido sua anterior basta escolher a nova na biblioteca de sua vila!"; close;}
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Muito bem, agora que entendeu tudo sobre as Kekkei Genkai, nós podemos fazer a analise de seu corpo e ver sua Kekkei Genkai, mas me diga, está torcendo pra sair qual? (Isso irá definir sua Kekkei Genkai)";
+menu "- Sharingan",sharingan2,"- Byakugan",byakugan2,"- Selo do Céu",ceu2,"- Selo da Terra",terra2,"- Hyouton",hyouton2,"- Controle das Sombras",nara2,"- Baika",akimichi2,"- Kugutsu",kugutsu2,"- Portões de Chakra",lee2,"- Decidi que quero nenhuma",L_nope,"- Preciso pensar mais",depois;
+
+L_nope:
+set academia_kg,1;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Entendi, mas isso não quer dizer que você ainda não pode ter uma, quem sabe a sua não seja uma das Kekkei Genkai secreta do laboratório...";
+close;
+
+sharingan2:
+set kg_sharingan,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Sharingan é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+byakugan2:
+set kg_byakugan,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Byakugan é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+ceu2:
+set kg_seloceu,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Selo Céu é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+terra2:
+set kg_seloterra,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Selo Terra é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+hyouton2:
+set kg_hyouton,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Hyouton é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+nara2:
+set kg_nara,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Controle das Sombras é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+akimichi2:
+set kg_baika,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Baika é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+kugutsu2:
+set kg_kugutsu,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Kugutsu é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+lee2:
+set kg_lee,1;
+set pegoukg,1;
+set academia_kg,1;
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "É mesmo? Portões de Chakra é muito bom. Hmm, ja chegaram os resultados, deixa-me ver...";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "E não é que saiu justamente o que você queria?";
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Agora que você sabe qual Kekkei Genkai você possui, basta forçar seu corpo a despertar, boa sorte e precisando da gente só nos procurar aqui na academia!";
+close;
+
+depois:
+next;
+mes "[^DC143CInstrutor Kekkei Genkai^000000]";
+mes "Volte quando estiver pronto para a analise";
+close;
+
+OnInit:
+	waitingroom "[Instrutor]",0;
+
+}
+
+payon_in03,121,123,5	script	Invocações	882,{
+
+mes "[^DC143CInstrutor de Invocações^000000]";
+mes "Invocações, também conhecidas como Kuchiyose no Jutsu são técnicas onde o usuário poderá invocar um animal, do qual possui contrato assinado, para o campo de batalha.";
+next;
+mes "[^DC143CInstrutor de Invocações^000000]";
+mes "Para aprender uma téncnica de invocação é preciso assinar um contrato, para isso precisa conversar com o dono do contrato, que podem ser encontrados aqui nesta sala";
+next;
+mes "[^DC143CInstrutor de Invocações^000000]";
+mes "Existem cinco tipos de animais diferentes para você escolher, e o contrato pode ser assinado com apenas um destes animais, após assinar o contrato a habilidade de invocar seu animal estará em sua janela de habilidades";
+next;
+mes "[^DC143CInstrutor de Invocações^000000]";
+mes "Os tipos de animais são: Cobra, Sapo, Lesma, Macaco e Cachorro, cada um possui uma caracteristica diferente, as caracteristicas você poderá consultar nos NPC's das invocações";
+next;
+mes "[^DC143CInstrutor de Invocações^000000]";
+mes "Cada invocação pode ser evoluído para até o nível 3, e em cada nível o animal invocado muda e possuirá novas habilidades para auxiliar o seu dono, apenas uma invocação por usuário pode estar no campo de batalha por vez";
+next;
+mes "[^DC143CInstrutor de Invocações^000000]";
+mes "Isso é tudo que precisa saber sobre invocações por agora, vá em frente e escolha qual invocação você quer aqui nesta sala, em seguida será dado uma missão para você finalizar e enfim obter sua invocação, boa sorte!";
+close;
+
+OnInit:
+	waitingroom "[Instrutor]",0;
+}
+
+payon_in03,139,126,5	script	Kakashi#kuch1	843,{
+
+if (quest_baru1_um == 1) goto L_go;
+if(Baru1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CKakashi^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose, eu posso lhe ajudar a fazer contrato com os Cachorros";
+next;
+mes "[^DC143CKakashi^000000]";
+mes "Os cães ninja são ótimos rastreadores e tem a capacidade de encontrar inimigos escondidos devido o seu faro. Além de ter uma ótima capacidade de imobilizar seus alvos.";
+next;
+mes "[^DC143CKakashi^000000]";
+mes "Os cães ninja são extremamente leais aos seus donos e tem a capacidade de utilizar certos jutsus de doton, são indicados para usuários de taijutsu e genjutsu.";
+next;
+mes "[^DC143CKakashi^000000]";
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Akino?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Akino
+//========================================================================
+
+L_SS:
+set quest_baru1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+next;
+mes "[^DC143CKakashi^000000]";
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "[^DC143CKakashi^000000]";
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "[^DC143CKakashi^000000]";
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "[^DC143CKakashi^000000]";
+mes "Vá derrotar girinos, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido esses sapos malditos, aqui na academia tem uma área de combate, lá poderá encontrar-los";
+setquest 12099;
+next;
+mes "[^DC143CKakashi^000000]";
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7705) < 1) goto No_Item;
+mes "[^DC143CKakashi^000000]";
+mes "Você completou seu treinamento, parabéns, sua invocação agora se encontra na sua janela de habilidades.";
+skill 738,4,0;
+delitem 7705,1;
+set Baru1,1;
+set quest_baru1_um,0;
+completequest 12099;
+erasequest 12099;
+close;
+
+L_no:
+close;
+
+No_Item:
+mes "[^DC143CKakashi^000000]";
+mes "Você não pegou o pergaminho ainda, recupere lá na área de combate e volte assim que recuperar!";
+close;
+
+}
+
+payon_in03,130,131,5	script	Sarutobi#kuch1	445,{
+
+if (quest_enma1_um == 1) goto L_go;
+if(Enma1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CSarutobi^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com os Macacos";
+next;
+mes "[^DC143CSarutobi^000000]";
+mes "Saru pode ser a invocação que pode chegar mais perto das características de um shinobi, podem realizar qualquer tipo de jutsu com extrema maestria e são versáteis na hora da batalha.";
+next;
+mes "[^DC143CSarutobi^000000]";
+mes "Os sarus são indicados para aquele que prefere utilizar habilidades de taijutsu o que torna a batalha muito mais simples com os seus poderosos jutsus de katon e habilidades de taijutsu.";
+next;
+mes "[^DC143CSarutobi^000000]";
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Onbba?";
+menu "- Sim, vamos começar",L_SS,"- Agora não",L_no;
+//========================================================================
+//	Onbba
+//========================================================================
+
+L_SS:
+set quest_enma1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+next;
+mes "[^DC143CSarutobi^000000]";
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "[^DC143CSarutobi^000000]";
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "[^DC143CSarutobi^000000]";
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "[^DC143CSarutobi^000000]";
+mes "Vá derrotar girinos, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido esses sapos malditos, aqui na academia tem uma área de combate, lá poderá encontrar-los";
+setquest 12102;
+next;
+mes "[^DC143CSarutobi^000000]";
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7838) < 1) goto No_Item;
+mes "[^DC143CSarutobi^000000]";
+mes "Você completou seu treinamento, parabéns, sua invocação agora se encontra na sua janela de habilidades.";
+skill 741,4,0;
+delitem 7838,1;
+set Enma1,1;
+set quest_enma1_um,0;
+completequest 12102;
+erasequest 12102;
+close;
+
+L_no:
+close;
+
+No_Item:
+mes "[^DC143CSarutobi^000000]";
+mes "Você não pegou o pergaminho ainda, recupere lá na área de combate e volte assim que recuperar!";
+close;
+}
+
+payon_in03,123,131,5	script	Jiraya#kuch1	69,{
+
+if (quest_gama1_um == 1) goto L_go;
+if(Gama1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CJiraya^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com os Sapos";
+next;
+mes "[^DC143CJiraya^000000]";
+mes "As gamas são excelentes guerreiros que auxiliam seus donos durante a batalha, são hábeis em jutsus de katon e suiton e conseguem realizar perfeitamente jutsus de suporte para o usuário.";
+next;
+mes "[^DC143CJiraya^000000]";
+mes "As gamas além de excelentes guerreiros prezam acima de tudo a família, são indicadas para usuários de ninjutsu e fuuinjutsu e não pensam duas vezes para proteger aqueles que lhe são importantes.";
+next;
+mes "[^DC143CJiraya^000000]";
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Girino?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Girino
+//========================================================================
+
+L_SS:
+set quest_gama1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+next;
+mes "[^DC143CJiraya^000000]";
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "[^DC143CJiraya^000000]";
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "[^DC143CJiraya^000000]";
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "[^DC143CJiraya^000000]";
+mes "Vá derrotar Akinos, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido esses cachorros malditos, aqui na academia tem uma área de combate, lá poderá encontrar-los!";
+setquest 12090;
+next;
+mes "[^DC143CJiraya^000000]";
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7835) < 1) goto No_Item;
+mes "[^DC143CJiraya^000000]";
+mes "Você completou seu treinamento, parabéns, sua invocação agora se encontra na sua janela de habilidades.";
+skill 721,4,0;
+delitem 7835,1;
+set Gama1,1;
+set quest_gama1_um,0;
+completequest 12090;
+erasequest 12090;
+close;
+
+L_no:
+close;
+
+No_Item:
+mes "[^DC143CJiraya^000000]";
+mes "Você não pegou o pergaminho ainda, recupere lá na área de combate e volte assim que recuperar!";
+close;
+}
+
+payon_in03,123,116,2	script	Tsunade#kuch1	423,{
+
+if (quest_katsu1_um == 1) goto L_go;
+if(Katsu1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143CTsunade^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com as Lesmas";
+next;
+mes "[^DC143CTsunade^000000]";
+mes "As Lesmas são invocações dóceis e passivas, odeiam atacar e somente causam o mau para proteger seu dono.";
+next;
+mes "[^DC143CTsunade^000000]";
+mes "As lesmas tem grande potência com jutsus de cura e jutsus de suporte e jamais abandonam seu parceiro em batalha, são indicados para usuários de medicina.";
+next;
+mes "[^DC143CTsunade^000000]";
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Filhote de Katsuyu?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Filhote de Katsuyu
+//========================================================================
+
+L_SS:
+set quest_katsu1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+next;
+mes "[^DC143CTsunade^000000]";
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "[^DC143CTsunade^000000]";
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "[^DC143CTsunade^000000]";
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "[^DC143CTsunade^000000]";
+mes "Vá derrotar filhotes de cobra, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido essas cobras malditas, aqui na academia tem uma área de combate, lá poderá encontrar-los!";
+setquest 12096;
+next;
+mes "[^DC143CTsunade^000000]";
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7837) < 1) goto No_Item;
+mes "[^DC143CTsunade^000000]";
+mes "Você completou seu treinamento, parabéns, sua invocação agora se encontra na sua janela de habilidades.";
+skill 728,4,0;
+delitem 7837,1;
+set Katsu1,1;
+set quest_katsu1_um,0;
+completequest 12096;
+erasequest 12096;
+close;
+
+No_Item:
+mes "Você não pegou o pergaminho ainda, recupere lá na área de combate e volte assim que recuperar!";
+close;
+
+L_no:
+close;
+}
+
+payon_in03,130,116,2	script	Orochimaru#kuch1	70,{
+
+if(quest_manda1_um == 1) goto L_FUNFA;
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+if(Manda1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "[^DC143COrochimaru^000000]";
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com as Cobras";
+next;
+mes "[^DC143COrochimaru^000000]";
+mes "As jyas são invocações extremamente ofensivas e estão sempre sedentas por batalhas, podem causar danos severos em seus inimigos e proteger seus aliados.";
+next;
+mes "[^DC143COrochimaru^000000]";
+mes "As jyas irão servir apenas ao mestre mais forte e estão sempre sedentas por poder, são indicadas para usuários de ninjutsu e genjutsu, são extremamente habilidosas com jutsus que causam status negativos nos inimigos.";
+next;
+mes "[^DC143COrochimaru^000000]";
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Jya?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Filhote de Cobra
+//========================================================================
+
+L_SS:
+set quest_manda1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+next;
+mes "[^DC143COrochimaru^000000]";
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "[^DC143COrochimaru^000000]";
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "[^DC143COrochimaru^000000]";
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "[^DC143COrochimaru^000000]";
+mes "Vá derrotar filhotes de katsuyu, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido essas lesmas malditas, aqui na academia tem uma área de combate, lá poderá encontrar-los!!";
+setquest 12093;
+next;
+mes "[^DC143COrochimaru^000000]";
+mes "Vá e faça seu treinamento.";
+close;
+
+L_no:
+close;
+
+L_FUNFA:
+if (countitem(7836) < 1) goto No_Item;
+mes "[^DC143COrochimaru^000000]";
+mes "Você completou seu treinamento, parabéns, sua invocação agora se encontra na sua janela de habilidades.";
+skill 725,4,0;
+delitem 7836,1;
+set Manda1,1;
+set quest_manda1_um,0;
+completequest 12093;
+erasequest 12093;
+close;
+
+No_Item:
+mes "Você não pegou o pergaminho ainda, recupere lá na área de combate e volte assim que recuperar!";
+close;
+
+}
+
+//npcs randoms
+
+
+//treinos
+yuno_in03,52,181,7	script	Estudante#1	96,{
+
+mes "Eu vou aprender tudo sobre treinamentos e ser o melhor shinobi do mundo!";
+close;
+
+}
+
+yuno_in03,52,176,7	script	Estudante#2	99,{
+
+mes "Estou pensando em escolher velocidade como um dos meus três treinamentos, quero ser o mais veloz!";
+close;
+
+}
+
+yuno_in03,48,179,7	script	Estudante#3	99,{
+
+mes "Eu aprendi que não é recomendado escolher Taijutsu e Ninjutsu como dois dos meus treinamentos, acho que vou precisar escolher um ou outro...";
+close;
+
+}
+
+yuno_in03,48,175,7	script	Estudante#4	96,{
+
+mes "Agora que escolhi meus treinamentos, vou poder escolher meus jutsus!";
+close;
+
+}
+
+yuno_in03,44,176,7	script	Estudante#5	99,{
+
+mes "Sou muito estudioso, agora que tenho meus três treinamentos, vou estudar qual deles vou deixar avançado, afinal, só pode ter um...";
+close;
+
+}
+
+
+//KG
+payon_in03,68,131,2	script	Estudante#6	99,{
+
+mes "Acabei de escolher minha Kekkei Genkai, agora só preciso despertar, hmm... matar 50 monstros vai ser fácil!";
+close;
+
+}
+
+payon_in03,77,129,2	script	Estudante#7	96,{
+
+mes "A Instrutora me ensinou tudo o que eu preciso, agora que sei qual é minha Kekkei Genkai poderei me tornar mais forte";
+close;
+
+}
+
+payon_in03,71,119,2	script	Estudante#8	96,{
+
+mes "Kekkei Genkais são realmente incriveis, e de pensar que ainda existem outras pelo mundo...";
+close;
+
+}
+
+//Sala de entrada
+
+payon_in03,104,129,2	script	Estudante#9	96,{
+
+mes "Haha, eu já estudei em todas essas salas e estou pronto pra ajudar minha vila como um Genin, só me falta a coragem";
+close;
+
+}
+
+payon_in03,103,118,2	script	Estudante#10	102,{
+
+mes "Ei você, jovem, aqui na academia você será avaliado em todas essas salas, e só poderá de fato virar um Genin certificado caso passe nos exames, estude bastante e mostre seu jeito ninja!";
+close;
+
+}
+
+//Invocações
+
+payon_in03,117,129,2	script	Estudante#11	106,{
+
+mes "São tantos ninjas poderosos aqui nessa sala que fico até com medo... e olha só o tamanho dessas invocações nível 3... ainda bem que estão aqui apenas para ensinar sobre as invocações e não para lutar";
+close;
+
+}
+
+payon_in03,139,119,2	script	Estudante#12	102,{
+
+mes "Estou pensando em assinar um contrato com o mestre Orochimaru... porém estou com medo de chegar perto dele";
+close;
+
+}
+
+//pre sala
+
+payon_in03,23,99,2	script	Estudante#13	102,{
+
+mes "Eu vim da Terra do Som, Ninjas do mundo inteiro passam por essa academia e eu não serei diferente!";
+close;
+
+}
+
+payon_in03,14,99,2	script	Estudante#14	96,{
+
+mes "Estou me preparando para começar os exames nas salas, preciso provar que consigo ser um shinobi para minha família e pra isso preciso passar no exame final na sala de treinamentos";
+close;
+
+}
+
+payon_in03,27,101,2	script	Estudante#15	106,{
+
+mes "Ninjas lendários passaram por aqui, e aqui estou, com medo de entrar na ^DC143CÁrea de Combate^000000...";
+next;
+mes "Se você quiser ir pra lá, entre na ^DC143CSala de Treinamentos^000000, e entre no portal que tem la dentro, você sairá na ^DC143CSala de Jutsus^000000, lá dentro tem a entrada pra ^DC143CÁrea de Combate^000000";
+close;
+
+}
+
+payon_in03,12,70,2	script	Estudante#16	703,{
+
+mes "Eu acabei de chegar, essa academia é bem rígida e só deixa você sair após passar por todos os exames ali na porta, mas eu vou conseguir!";
+close;
+
+}
+
+payon_in03,33,66,2	script	Estudante#17	778,{
+
+mes "Tem muita informação aqui nessa academia, eu volto aqui sempre para estudar algo caso eu esqueça!";
+close;
+
+}
+
+payon_in03,139,123,2	script	Baru#1	1032,{
+
+npctalk "Yo";
+end;
+
+}
+
+payon_in03,125,131,2	script	Gama-Bunta#1	1788,{
+
+npctalk "Yo";
+end;
+
+}
+
+payon_in03,133,131,2	script	Enma#1	1329,{
+
+npctalk "Yo";
+end;
+
+}
+
+payon_in03,132,116,2	script	Manda#1	1784,{
+
+npctalk "Yo";
+end;
+
+}
+
+payon_in03,120,116,2	script	Katsuyo#1	1787,{
+
+npctalk "Yo";
+end;
+
+}
+
+//Area de combate
+pvp_n_1-1,95,179,2	script	Instrutor de Combate	882,{
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Olá, afim de aprender sobre combates né?";
+next;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Aprender a lutar é a principal obrigação de um bom Shinobi, ele precisa saber como se defender para conseguir defender seus companheiros e sua vila";
+next;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Tem dois tipos de combate, combate contra monstros, e combate contra outros jogadores, é preciso saber enfrentar diferentes tipos de inimigos pois todos são diferentes";
+next;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Eu aqui vou te ensinar o básico sobre como atacar, daí você poderá treinar contra os monstros fracos aqui da área de combate, certo?";
+next;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Ok, vamos lá, a primeira coisa que precisa saber, é como atacar fisicamente, isso quer dizer bater em seu inimigo com sua arma ou punhos";
+next;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Veja esta imagem, ela explica muito bem como atacar um monstro, além de conter dicas como atalhos para facilitar seus ataques";
+cutin "atacar",3;
+next;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Essa próxima ensina como atacar usando jutsus, que se encontram em sua janela de habilidades, com o atalho alt s";
+cutin "",255;
+cutin "atacarjutsu",3;
+next;
+cutin "",255;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Não se esqueça de sempre procurar equipamentos melhores e distribuir seus pontos de atributos, ah sim, e para lutar contra outros jogadores, apenas no nível 999";
+next;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Agora que sabe como atacar, pratique aqui na área de combate!";
+next;
+mes "[^DC143CInstrutor de Combate^000000]";
+mes "Caso queira rever meu tutorial é só falar comigo, boa sorte na sua jornada!";
+if (academia_combate !=1) {set academia_combate,1;}
+close;
+
+OnInit:
+	waitingroom "[Instrutor]",0;
+}
+
+pvp_n_1-1,89,168,5	script	Estudante#18	703,{
+
+mes "Essa pra mim é a melhor parte da academia!";
+close;
+
+}
+
+pvp_n_1-1,107,175,5	script	Estudante#19	106,{
+
+mes "Não se esqueça de pegar os itens no chão que os monstros deixam cair quando morrem, se quiser pegá-los automaticamente basta digitar o comando @autoloot no chat do jogo!";
+close;
+
+}
+
+pvp_n_1-1,107,175,5	script	Estudante#20	703,{
+
+mes "Aperte /nc para não precisar segurar o clique em cima do monstro, com esse comando basta clicar uma vez pra atacar fisicamente até o inimigo morrer!";
+close;
+
+}
+
+pvp_n_1-1,99,155,5	script	Estudante#21	106,{
+
+mes "Eu vou ser um usuário de ninjutsu! Mas preciso organizar meus atalhos no F12 para facilitar minha vida...";
+close;
+
+}
+
+payon_in03,106,156,5	script	Estudante#22	106,{
+
+mes "Estou pensando em quais jutsus devo escolher... eu sei que só posso escolher jutsus de treinamentos que possuo...";
+close;
+
+}
+
+payon_in03,96,163,5	script	Estudante#23	703,{
+
+mes "Estes jutsus são bons, mesmo sendo os mais básicos... mas eu imagino o poder dos jutsus avançados! Mas preciso estudar e treinar muito pra aprender eles...";
+close;
+
+}
+
+pvp_n_1-1,85,71,2	script	Estudante#24	778,{
+
+mes "Fiquei sabendo que tem instrutores no esgoto que ensina um terceiro Ninjutsu básico... porque será que estão lá?";
+close;
+
+}
+
+konoha3,243,244,2	script	Genin#25::geninh	778,{
+
+mes "[^DC143CGenin^000000]";
+mes "Eu acabei de sair da academia e falei com esses dois Jounins ali, eles me ajudaram bastante a conhecer a vila!";
+close;
+
+}
+
+sunagakure,230,271,2	script	Genin#29::geninh2	703,{
+mes "[^DC143CGenin^000000]";
+mes "Finalmente estou na vila! Agora preciso treinar nos campos fora da vila.... ainda bem que se eu me perder tenho a ajuda dos comandos @mapa e @voltar";
+close;
+
+}
+
+sunagakure,220,250,2	script	Genin#33::geninh3	106,{
+mes "[^DC143CGenin^000000]";
+mes "Eu sempre uso os comandos @mapa e @voltar, eles me ajudam a me localizar dentro da vila e província e a voltar pra vila caso eu me perca";
+close;
+
+}
+
+//fora da academia
+hospital,22,92,5	script	Enfermeira#1::enfer1	91,{
+
+mes "Que bom que está bem, este é o hospital da vila, para sair basta seguir para a direita e em seguida descer para o ponto vermelho no mini-mapa!";
+close;
+
+}
+
+hospital,35,76,5	script	Enfermeira#2::enfer2	91,{
+
+mes "Muitos shinobis passam por aqui para se curar, a médica ali possui grandes jutsus de cura, um dia quero ser tão poderosa como ela...";
+close;
+
+}
+
+hospital,59,73,5	script	Enfermeira#3::enfer3	91,{
+
+mes "Oi, está se recuperando bem? caso se sinta bem o bastante, tem duas saídas ali no ponto vermelho no mini-mapa, uma para a província, e uma para a vila!";
+close;
+
+}
+
+hospital,102,73,5	script	Enfermeira#4::enfer4	91,{
+
+mes "Como vai? A recepção e saída é logo abaixo!";
+close;
+
+}
+
+hospital,72,22,5	script	Enfermeira#5::enfer5	91,{
+
+mes "Bem-vindo ao hospital, se precisar se recuperar de suas feridas poderá ir para nossa ala de atendimento médico, é só subir e pegar a primeira a esquerda!";
+close;
+
+}
+
+hospital,110,26,5	script	Enfermeira#6::enfer6	91,{
+
+mes "Psiu, tem uma entrada secreta ali na direita que leva para a vila, a saída abaixo leva para a província";
+close;
+
+}
+
+hospital2,22,92, 5	duplicate(enfer1)	Enfermeira#7	91
+hospital2,35,76, 5	duplicate(enfer2)	Enfermeira#8	91
+hospital2,59,73, 5	duplicate(enfer3)	Enfermeira#9	91
+hospital2,102,73, 5	duplicate(enfer4)	Enfermeira#10	91
+hospital2,72,22, 5	duplicate(enfer5)	Enfermeira#11	91
+hospital2,110,26, 5	duplicate(enfer6)	Enfermeira#12	91
+
+hospital3,22,92, 5	duplicate(enfer1)	Enfermeira#13	91
+hospital3,35,76, 5	duplicate(enfer2)	Enfermeira#14	91
+hospital3,59,73, 5	duplicate(enfer3)	Enfermeira#15	91
+hospital3,102,73, 5	duplicate(enfer4)	Enfermeira#16	91
+hospital3,72,22, 5	duplicate(enfer5)	Enfermeira#17	91
+hospital3,110,26, 5	duplicate(enfer6)	Enfermeira#18	91
+
+hospital4,22,92, 5	duplicate(enfer1)	Enfermeira#19	91
+hospital4,35,76, 5	duplicate(enfer2)	Enfermeira#20	91
+hospital4,59,73, 5	duplicate(enfer3)	Enfermeira#21	91
+hospital4,102,73, 5	duplicate(enfer4)	Enfermeira#22	91
+hospital4,72,22, 5	duplicate(enfer5)	Enfermeira#23	91
+hospital4,110,26, 5	duplicate(enfer6)	Enfermeira#24	91
+
+kiragakure,154,190, 5	duplicate(geninh)	Genin#26	778
+kumogakure,137,107, 5	duplicate(geninh)	Genin#27	778
+sunagakure,225,257, 5	duplicate(geninh)	Genin#28	778
+
+kiragakure,149,178, 5	duplicate(geninh2)	Genin#30	703
+kumogakure,151,111, 5	duplicate(geninh2)	Genin#31	703
+konoha3,231,231, 5	duplicate(geninh2)	Genin#32	703
+
+kiragakure,145,194, 5	duplicate(geninh3)	Genin#34	106
+kumogakure,146,116, 5	duplicate(geninh3)	Genin#35	106
+konoha3,241,236, 5	duplicate(geninh3)	Genin#36	106
+
+yuno_in03,62,176,5	script	Exame Final	402,{
+
+if (academia_combate !=1) {mes "[^DC143CExame Final^000000]"; mes "Você ainda precisa falar com o Instrutor de Combate para aprender sobre combates, volte na área de combate e fale com ele!"; close;}
+if (Manda1 != 1) && (Katsu1 != 1) && (Gama1 != 1) && (Enma1 != 1) && (Baru1 != 1) {mes "[^DC143CExame Final^000000]"; mes "Você ainda precisa de sua invocação, volte lá na sala de invocações para ver como conseguir!"; close;}
+if (academia_kg != 1) {mes "[^DC143CExame Final^000000]"; mes "Oh não, você não pode sair para o mundo sem saber qual é sua Kekkei Genkai, volte para a Sala de Kekkei Genkai e veja como descobrir"; close;}
+if (academia_treinos != 1) {mes "[^DC143CExame Final^000000]"; mes "Você precisa escolher seus três treinamentos shinobi! Aqui mesmo na sala de treinamentos você pode escolher, fale com o instrutor do meu lado"; close;}
+if (academia_jutsus !=1) {mes "[^DC143CExame Final^000000]"; mes "Você ainda precisa aprender sobre jutsus, fale com o instrutor na sala de jutsus"; close;}
+if (academia_geografia !=1) {mes "[^DC143CExame Final^000000]"; mes "Você ainda precisa aprender sobre o mundo shinobi, fale com o instrutor de geografia na sala de treinamentos"; close;}
+if (academia_done == 1) {mes "[^DC143CExame Final^000000]"; mes "Yo, como está sua jornada pelo mundo Shinobi? Lembre-se, Nunca desista!"; close;}
+mes "[^DC143CExame Final^000000]";
+mes "Olá jovem shinobi, vejo que você completou os treinamentos básicos e está pronto para meu exame final, não vamos perder tempo então, creio que já estudou tudo que precisa, vamos a primeira pergunta!";
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Pergunta: Quantos treinamentos um personagem pode ter?";
+menu "4",L_errado,"5",L_errado,"3",L_certo,"2",L_errado;
+
+L_certo:
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Muito bem! vamos a segunda pergunta:";
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Pergunta: Quantos treinamentos avançados um personagem pode ter?";
+menu "1",L_certo1,"2",L_errado,"3",L_errado,"4",L_errado;
+
+L_certo1:
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Correto, terceira pergunta:";
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Pergunta: Quantos níveis uma Kekkei Genkai pode possuir?";
+menu "1",L_errado,"2",L_errado,"3",L_errado,"4",L_certo2;
+
+L_certo2:
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Isso mesmo, quarta pergunta:";
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Pergunta: Quantos monstros precisam ser mortos pra despertar uma Kekkei Genkai?";
+menu "10",L_errado,"20",L_errado,"35",L_errado,"50",L_certo3;
+
+L_certo3:
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Boa garoto, continuando, quinta pergunta:";
+next;
+mes "Pergunta: Qual nível é necessário para poder ser atacado e atacar outros jogadores?";
+menu "200",L_errado,"999",L_certo4,"600",L_errado,"499",L_errado;
+
+L_certo4:
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Estudou bastante mesmo hein? estamos quase no final, se concentra agora!";
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Pergunta: Quantos jutsus básicos um ninja pode aprender de cada treinamento?";
+menu "4",L_errado,"3",L_certo5,"2",L_errado,"1",L_errado;
+
+L_certo5:
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Última pergunta agora, vamos lá!";
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Pergunta: Quantas grandes vilas existem no Naruto RPG Online?";
+menu "4",L_certo6,"3",L_errado,"2",L_errado,"1",L_errado;
+
+L_certo6:
+next;
+set academia_done,1;
+mes "[^DC143CExame Final^000000]";
+mes "Parabéns jovem prodígio, você realmente me impressionou e está apto agora a se juntar a esse mundo caótico dos shinobis, tome cuidado, treine forte";
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Busque mais poder, Se torne um Chunin, Jounin e busque seus objetivos, não importa quais sejam, não desista!";
+next;
+mes "[^DC143CExame Final^000000]";
+mes "E lembre-se, caso precise de refrescar seus conhecimentos, a academia é aberta a todos os shinobis do mundo, vá agora, e mostre seu jeito ninja!";
+close;
+
+L_errado:
+next;
+mes "[^DC143CExame Final^000000]";
+mes "Que pena... você errou, caso queira refazer o exame, é só falar comigo novamente, melhor sorte na próxima vez!";
+close;
+
+OnInit:
+	waitingroom "[Exame Final]",0;
+
+}
+
+//sala de jutsus
+payon_in03,101,159,2	script	Instrutor de Jutsus	882,{
+
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Bem-vindo a sala de Jutsus";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Vou te ensinar um pouco sobre os jutsus, os jutsus são o que nos fazem especiais, é a fonte de nosso poder, então preste atenção!";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Conforme você aprendeu na sala de treinamentos, há seis treinamentos no mundo shinobi, dessas um shinobi pode dominar três, até aí você já sabe...";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Agora há também diversos jutsus que um shinobi pode aprender, e quais ele pode aprender depende de quais treinamentos ele domina, por exemplo, se eu não domino Ninjutsu, eu não posso aprender um Ninjutsu, ficou claro?";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Continuando então, aqui nesta sala tem todos os jutsus básicos de todos os seis treinamentos, fique a vontade para ler a descrição de cada um antes de escolher os seus";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Apenas fique atento que só poderá escolher três entre os jutsus disponíveis aqui por treino, ou seja, se seus treinamentos são Taijutsu, Genjutsu e Fuuinjutsu, poderá escolher três jutsus de cada um desses treinamentos";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Há apenas uma exceção que é no caso de Ninjutsu, um usuário de Ninjutsu poderá aprender todos os Ninjutsus de seu elemento, o elemento é aquele que escolheu antes de vir pra academia";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Ok então, três treinamentos e três jutsus básicos de cada treinamento que possui é o que um shinobi pode ter, entendido né?";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Beleza então, estamos quase terminando, é possível trocar de jutsu caso você não esteja satisfeito com o que você possui ou apenas quer trocar, porém para fazer isso é preciso ter completado a quest, se tiver completado aí poderá voltar no npc onde pegou o jutsu, e pedir pra remover, liberando assim para pegar outro em seu lugar";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "E por fim, vou explicar como aumentar a força de seus jutsus, para fazer isso basta usar seus jutsus o máximo que der, quanto mais você usar mais domínio terá sobre ele e mais ele ficará forte";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Este é o fim de nossa aula, claro que isso é apenas o básico sobre os jutsus, há muito mais o que aprender e caso queira se aprofundar poderá ir na biblioteca da academia e falar com meus colegas lá";
+next;
+mes "[^DC143CInstrutor de Jutsus^000000]";
+mes "Se quiser uma repitação da aula basta falar comigo novamente, até mais!";
+if (academia_jutsus !=1) {set academia_jutsus,1;}
+close;
+
+OnInit:
+	waitingroom "[Instrutor]",0;
+
+}
+
+//Geografia
+
+yuno_in03,62,173,2	script	Instrutor de Geografia	882,{
+
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Saber sobre o mundo shinobi é importante, comigo você vai aprender um pouco sobre ele";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "O mundo shinobi no Naruto RPG Online é composto por 4 grandes vilas, contendo vilas neutras também espalhadas pelo mundo, estas neutras não são habitadas por jogadores";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "As 4 vilas estão em constante guerra, além de ainda ter que lidar com a Akatsuki e os Nukenins";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Este é o mundo perigoso do qual você vai entrar, e é por isso que precisa do treinamento desta academia!";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Continuando, vou explicar como funciona a geografia das vilas...";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Anexadas as vilas, tem as províncias, que são uma espécie de bairro, porém não são a vila em si, a vila é onde ficam os principais pontos como sala do kage por exemplo";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Para se localizar e saber se está na província ou vila é só olhar para a mensagem que aparece toda vez que muda de mapa, se mesmo assim estiver perido, temos um mapa disponível que mostra como chegar na vila e como chegar nos campos fora da vila, para consultar basta digitar @mapa";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Os campos (Também conhecidos como arredores) são mapas que podem ser acessados pela província e neles ficam diversas coisas, como monstros, entradas para outros mapas, npcs escondidos de jutsus e outras quests...";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "É por estes campos que você poderá explorar o mundo e chegar nas outras vilas para lutar ou apenas para conhecer, porém tome cuidado que conforme vai avançado pelos campos os monstros vão se tornando mais poderosos";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Ficou claro sobre os campos? Ótimo... vamos finalizar a aula agora";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Para finalizar a aula eu gostaria de ensinar sobre o mini-mapa, o mini mapa é este pequeno mapa na parte superior a direita de sua tela, se clicar no traço, ele irá expandir e mostrar o mini-mapa por inteiro, nestes mini-mapas tem pontos vermelhos, que são as entradas e saídas do mapa, caso esteja perdido, use eles como referência";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Se mesmo assim não conseguir voltar para vila existe um comando para jogadores novatos (jogadores com níveis menores de 999) chamado @voltar, ele retorna o novato para a vila";
+next;
+mes "[^DC143CInstrutor de Geografia^000000]";
+mes "Este é o final de nossa aula, caso queira reptir a aula é só falar comigo novamente, boa sorte e tome cuidado neste mundo perigoso";
+if (academia_geografia !=1) {set academia_geografia,1;}
+close;
+
+OnInit:
+	waitingroom "[Instrutor]",0;
+
+}
+
+-	script	acaditem	-1,{
+
+  OnNPCKillEvent:
+
+//cachorros
+if(killedrid == 1034) {
+if (quest_baru1_um != 1) {end;}
+if (countitem(7705) < 1) {getitem 7705,1;}
+announce "[Invocação] Você encontrou o pergaminho dos Cachorros",bc_blue|bc_self;
+end;
+}
+
+//macacos
+if(killedrid == 1034) {
+if (quest_enma1_um != 1) {end;}
+if (countitem(7838) < 1) {getitem 7838,1;}
+announce "[Invocação] Você encontrou o pergaminho dos Macacos",bc_blue|bc_self;
+end;
+}
+
+//sapos
+if(killedrid == 1212) {
+if (quest_gama1_um != 1) {end;}
+if (countitem(7835) < 1) {getitem 7835,1;}
+announce "[Invocação] Você encontrou o pergaminho dos Sapos",bc_blue|bc_self;
+end;
+}
+
+//lesmas
+if(killedrid == 1037) {
+if (quest_katsu1_um != 1) {end;}
+if (countitem(7837) < 1) {getitem 7837,1;}
+announce "[Invocação] Você encontrou o pergaminho das Lesmas",bc_blue|bc_self;
+end;
+}
+
+//cobras
+if(killedrid == 1783) {
+if (quest_manda1_um != 1) {end;}
+if (countitem(7836) < 1) {getitem 7836,1;}
+announce "[Invocação] Você encontrou o pergaminho das Cobras",bc_blue|bc_self;
+end;
+}
+}
+
+payon_in03,20,60,4	script	Saída#15	45,1,1,{
+if (before_academia == 1) {goto warpar;}
+
+if (academia_done != 1) && (before_academia != 1) {
+mes "Calma lá jovem shinobi, você antes de saír para a vila precisa completar o exame final que se encontra na sala de treinamentos, estude bem e faça o exame!"; close;
+} else {
+goto warpar;
+}
+
+warpar:
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) {warp "SavePoint", 0,0;  end;}
+if (nukenin == 1) {warp "SavePoint", 0,0; end;}
+if (#konoha == 1) {warp "konoha3", 240,247;  end;}
+if (#suna == 1) {warp "sunagakure", 221,256;  end;}
+if (#nevoa == 1) {warp "kiragakure", 160,197;  end;}
+if (#nuvem == 1) {warp "kumogakure", 144,98;  end;}
+end;
+
+}
+
+konoha3,240,250,0	warp	acadentry1	1,1,payon_in03,20,63
+sunagakure,219,259,0	warp	acadentry2	1,1,payon_in03,20,63
+kumogakure,141,98,0	warp	acadentry3	1,1,payon_in03,20,63
+kiragakure,165,196,0	warp	acadentry4	1,1,payon_in03,20,63
+
+//payon_in03,20,60,0	warp	acadentry5	1,1,konoha3,240,247
+//payon_in03,20,60,0	warp	acadentry6	1,1,sunagakure,221,256
+//payon_in03,20,60,0	warp	acadentry7	1,1,nuvem,241,235
+//payon_in03,20,60,0	warp	acadentry8	1,1,kiragakure,160,197
+
+//treinamentos
+//kg
+//invocação
+//equipamentos
+
+pvp_n_1-1,85,160,0,0	monster	Girino			1034,20,60000,60000
+pvp_n_1-1,111,135,0,0	monster	Filhote de cobra	1037,20,60000,60000
+pvp_n_1-1,106,68,0,0	monster	Bikouchuu		1051,20,60000,60000
+pvp_n_1-1,116,41,0,0	monster	Filhote de Katsuyu	1783,20,60000,60000,0
+pvp_n_1-1,84,27,0,0	monster	Akino	1212,20,60000,60000,0
+pvp_n_1-1,69,58,0,0	monster	Onbba	1214,20,60000,60000,0
+
+

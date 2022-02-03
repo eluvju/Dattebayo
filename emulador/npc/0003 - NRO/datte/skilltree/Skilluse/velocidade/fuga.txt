@@ -1,0 +1,61 @@
+-	script	fuga	-1,{
+    end;
+//When a Character uses a skill
+
+//fuga
+
+onPcUseSkillEvent:
+
+           if(lskillid == 350) {
+
+
+if (getskilllv(350) == 1) {
+
+if (fuga != 1) {end;}
+if (velo_intermediario != 1) {end;}
+if (skill350 >= 50) {skill 350,2,0; set skill350,0; dispbottom "[Sys] Level up"; end; }
+set skill350,skill350 +1;
+dispbottom "[Jutsu level] Tática de Fuga level 1: "+skill350+" de 50";
+
+end;
+
+}
+
+if (getskilllv(350) == 2) {
+if (fuga != 1) {end;}
+if (velo_intermediario != 1) {end;}
+if (skill350 >= 100) {skill 350,3,0; set skill350,0; dispbottom "[Sys] Level up"; end;}
+set skill350,skill350 +1;
+dispbottom "[Jutsu level] Tática de Fuga level 2: "+skill350+" de 100";
+
+end;
+
+}
+
+if (getskilllv(350) == 3) {
+
+if (fuga != 1) {end;}
+if (vel_avan != 1) {end;}
+if (skill350 >= 150) {skill 350,4,0; set skill350,0; dispbottom "[Sys] Level up"; end;}
+set skill350,skill350 +1;
+dispbottom "[Jutsu level] Tática de Fuga level 3: "+skill350+" de 150";
+
+end;
+
+}
+
+if (getskilllv(350) == 4) {
+if (fuga != 1) {end;}
+if (vel_avan != 1) {end;}
+if (skill350 >= 200) {skill 350,5,0; set skill350,0; dispbottom "[Sys] Level up"; end;}
+set skill350,skill350 +1;
+dispbottom "[Jutsu level] Tática de Fuga level 4: "+skill350+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

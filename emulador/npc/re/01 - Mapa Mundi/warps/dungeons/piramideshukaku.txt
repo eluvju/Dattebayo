@@ -1,0 +1,52 @@
+//Permissão Rank C Suna
+//Permissão Rank B Konoha
+
+moc_fild19,98,99,0	script	 #enterpiramide01	10237,4,4,{
+	
+	OnTouch:
+	callfunc("warps"),	// Função
+	"moc_pryd01",			// Mapa
+	189,				// Coordenada X
+	10,				// Coordenada Y
+	0,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	2;					// Item Quantidade
+}
+
+// Primeiro Andar
+moc_pryd01,194,10,0	warp	enterpiramide01-1	2,2,moc_fild19,108,100
+
+moc_pryd01,10,195,0	warp	mocp01	5,2,moc_pryd02,10,192
+moc_pryd02,10,195,0	warp	mocp01-1	5,2,moc_pryd01,10,192
+
+// Camâra Secreta
+moc_pryd01,90,109,0	warp	mocp02	1,2,moc_prydb1,100,185
+moc_prydb1,100,191,0	warp	moco02-1	2,2,moc_pryd01,90,105
+
+// Basement Primeiro Andar
+//moc_prydb1,100,55,0	warp	mocp09-1	2,1,moc_pryd05,94,96
+
+moc_prydb1,100,104,0	warp	mocp10	5,2,moc_prydb1,100,74
+moc_prydb1,100,77,0	warp	mocp10-1	5,2,moc_prydb1,100,107
+moc_prydb1,111,115,0	warp	mocp11	2,6,moc_prydb1,145,115
+moc_prydb1,142,115,0	warp	mocp11-1	2,6,moc_prydb1,108,115
+moc_prydb1,59,115,0	warp	mocp12	2,6,moc_prydb1,90,115
+moc_prydb1,87,115,0	warp	mocp12-1	2,6,moc_prydb1,56,115
+
+// Segundo Andar
+moc_pryd02,99,100,0	warp	mocp03	3,2,moc_pryd05,94,96
+moc_pryd05,94,99,0	warp	mocp03-1	3,2,moc_pryd02,99,93
+
+// Terceiro Andar
+moc_pryd05,223,9,0	warp	mocp04	2,2,moc_pryd06,192,10
+moc_pryd06,197,10,0	warp	mocp04-1	2,3,moc_pryd05,220,9
+
+// Quarto Andar
+
+moc_pryd06,101,183,0	warp	mocp05	2,3,moc_fild16,205,291
+moc_fild16,205,296,0	warp	mocp05-1	1,1,moc_pryd06,101,177
+
+
+
+
+

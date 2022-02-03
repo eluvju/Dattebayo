@@ -1,0 +1,61 @@
+konoha,60,276,5	script	Jintan::perg_um	831,{
+
+if (checkquest(2077) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Oi viajante, meu nome é Jintan, sou um vendedor de pergaminhos raros";
+next;
+mes "O Pergaminho Katon Básico é um pergaminho raro que aumenta o dano dos Jutsus de propriedade Katon";
+mes "Gostaria de ter esse pergaminho?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Pergaminho Katon Básico
+//========================================================================
+
+L_SS:
+next;
+mes "Para obter este pergaminho,você precisa :";
+mes "- Obter 40x Pena Macia.";
+mes "- Obter 30x Tanga de Tigre.";
+mes "- Obter 80x Garra de Ave.";
+mes "- Matar 50 Chunin";
+setquest 2077;
+set quest_perg_um,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(perg_mobs_um < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7063) < 40) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7267) < 30) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(917) < 80) {mes "Você ainda não completou sua missão"; close;}
+mes "Me trouxe o que havia pedido, tome seu pergaminho!";
+completequest 2077;
+erasequest 2077;
+delitem 7063,40;
+delitem 7267,30;
+delitem 917,80;
+set quest_perg_um,0;
+set perg_mobs_um,0;
+getitem 2109,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	perg#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1636 && quest_perg_um == 1) {set perg_mobs_um,perg_mobs_um +1; announce "[Quest de equipamento] Você já derrotou "+perg_mobs_um+" / 50 Chunin",bc_blue|bc_self; end;}
+
+}
+
+
+areia,272,248,5	duplicate(perg_um)	Jintan#1	831
+kiri,182,371,5	duplicate(perg_um)	Jintan#2	831
+nuvem,95,280,5	duplicate(perg_um)	Jintan#3	831

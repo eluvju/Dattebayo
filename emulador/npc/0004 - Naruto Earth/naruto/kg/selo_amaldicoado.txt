@@ -1,0 +1,54 @@
+sec_in01,161,172,5	script	Selo Amaldiçoado	803,{
+	if(selo == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Orochimaru^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou um dos Sannin Lendários de Konohagakure, você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Orochimaru^000000]";
+	mes "Os usarios do selo Amaldiçoado são ninjas que sao compatíveis com Jugo, permitindo-lhe transplantar a sua própria carne e chakra em seus corpos.";
+	next;
+	mes "[^00FF40Orochimaru^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",SeloAmaldicoado2,"- Não",nao;
+	close;
+
+	
+	
+	SeloAmaldicoado2:
+
+next;
+
+	mes "[^00FF40Orochimaru^000000]";
+
+mes "Além de suas várias cobaias, Orochimaru deu selos amaldiçoados para alguns de seus seguidores mais poderosos e únicos, tanto para melhorar suas habilidades como para prepará-los para se tornar corpos hospedeiros de potencial.  ";
+
+next;
+
+	mes "[^00FF40Orochimaru^000000]";
+
+mes "pode ser usado em combinação com ninjutsu, fluxo de Chakra e até mesmo Taijutsu para obter técnicas mais devastadoras";
+
+next;
+
+set pegoukg,1;
+
+set selo,1;
+
+	mes "[^00FF40Orochimaru^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

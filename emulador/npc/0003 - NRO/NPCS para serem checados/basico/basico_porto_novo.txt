@@ -1,0 +1,73 @@
+gef_fild07.gat,276,336,5	script	Porto Shinobi#1	706,{
+mes "[Porto Shinobi]";
+mes "Bem vindo(a) ao porto shinobi!";
+next;
+mes "[Porto Shinobi]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[Porto Shinobi]";
+mes "Eu posso te levar!";
+next;
+mes "[Porto Shinobi]";
+mes "Eu cobro 200 ryous cada viagem, afinal também preciso de uns trocados";
+next;
+mes "[Porto Shinobi]";
+mes "Por favor, escolha seu destino!";
+menu "2ª Divisória de mapas",WARPAR,"Deixa pra la",FICAR;
+
+WARPAR:
+if(Zeny < 200) goto semdinheiro;
+set Zeny,Zeny-200;
+mes "[Porto Shinobi]";
+mes "Yosh, vamos viajar então, se segura porque a viagem é rapida!";
+next;
+warp "gef_fild10.gat",300,249;
+close;
+
+FICAR:
+mes "[Porto Shinobi]";
+mes "Tudo bem, estarei aqui se precisar!";
+close;
+
+semdinheiro:
+mes "[Porto Shinobi]";
+mes "Se você nao tem dinheiro não poderei te ajudar";
+close;
+}
+
+gef_fild10.gat,306,248,5	script	Porto Shinobi#2	706,{
+mes "[Porto Shinobi]";
+mes "Bem vindo(a) ao porto shinobi!";
+next;
+mes "[Porto Shinobi]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[Porto Shinobi]";
+mes "Eu posso te levar!";
+next;
+mes "[Porto Shinobi]";
+mes "Eu cobro 200 ryous cada viagem, afinal também preciso de uns trocados";
+next;
+mes "[Porto Shinobi]";
+mes "Por favor, escolha seu destino!";
+menu "1ª Divisória de mapas",WARPAR,"Deixa pra la",FICAR;
+
+WARPAR:
+if(Zeny < 200) goto semdinheiro;
+set Zeny,Zeny-200;
+mes "[Porto Shinobi]";
+mes "Yosh, vamos viajar então, se segura porque a viagem é rapida!";
+next;
+warp "gef_fild07.gat",277,332;
+close;
+
+FICAR:
+mes "[Porto Shinobi]";
+mes "Tudo bem, estarei aqui se precisar!";
+close;
+
+semdinheiro:
+mes "[Porto Shinobi]";
+mes "Se você nao tem dinheiro não poderei te ajudar";
+close;
+}

@@ -1,0 +1,101 @@
+job_monk,255,116,4	script	Aluguel de Montaria	85,{
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Olá meu jovem, gostaria de alugar uma montaria?";
+	menu "- Sim",L_sim,"- Não",L_no;
+
+L_sim:
+	next;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Que beleza! Aqui estão as montarias disponíveis";
+	menu "- Montaria de Argila",sapo,"- Montaria Raposa",cachorro,"- Deixa pra outra hora",L_no;
+
+sapo:
+	set @escolha, 1;
+	next;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Boa escolha, aqui estão os preços para essa montaria";
+	menu "- 1 dia (500k)",um,"- 7 dias (3kk)",sete,"- 1 dia (6 fidelidade)",um_fidelidade,"- 7 dias (30 fidelidade)",sete_fidelidade,"- Deixa pra outra hora",L_no;
+
+cachorro:
+	set @escolha, 2;
+	next;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Boa escolha, aqui estão os preços para essa montaria";
+	menu "- 1 dia (500k)",um,"- 7 dias (3kk)",sete,"- 1 dia (6 fidelidade)",um_fidelidade,"- 7 dias (30 fidelidade)",sete_fidelidade,"- Deixa pra outra hora",L_no;
+
+um:
+	next;
+	if (zeny < 500000) {
+		mes "[^DC143CAluguel de Montaria^000000]";
+		mes "Você não possui o iene necessário";
+		close;
+	}
+	set zeny, zeny - 500000;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Muito bem, aqui está sua montaria";
+	if (@escolha == 1) {
+		rentitem 32159,86400;
+	}
+	if (@escolha == 2) {
+		rentitem 32160,86400;
+	}
+	close;
+
+um_fidelidade:
+	next;
+	if (#RAGNARUPOINTS < 6) {
+		mes "[^DC143CAluguel de Montaria^000000]";
+		mes "Você não possui a fidelidade necessária";
+		close;
+	}
+	set #RAGNARUPOINTS, #RAGNARUPOINTS - 6;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Muito bem, aqui está sua montaria";
+	if (@escolha == 1) {
+		rentitem 32159,86400;
+	}
+	if (@escolha == 2) {
+		rentitem 32160,86400;
+	}
+	close;
+
+sete_fidelidade:
+	next;
+	if (#RAGNARUPOINTS < 30) {
+		mes "[^DC143CAluguel de Montaria^000000]";
+		mes "Você não possui a fidelidade necessária";
+		close;
+	}
+	set #RAGNARUPOINTS, #RAGNARUPOINTS - 30;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Muito bem, aqui está sua montaria";
+	if (@escolha == 1) {
+		rentitem 32159,604800;
+	}
+	if (@escolha == 2) {
+		rentitem 32160,604800;
+	}
+	close;
+
+sete:
+	next;
+	if (zeny < 3000000) {
+		mes "[^DC143CAluguel de Montaria^000000]";
+		mes "Você não possui o iene necessário";
+		close;
+	}
+	set zeny, zeny - 3000000;
+	mes "[^DC143CAluguel de Montaria^000000]";
+	mes "Muito bem, aqui está sua montaria";
+	if (@escolha == 1) {
+		rentitem 32159,604800;
+	}
+	if (@escolha == 2) {
+		rentitem 32160,604800;
+	}
+	close;
+
+L_no:
+	close;
+
+}

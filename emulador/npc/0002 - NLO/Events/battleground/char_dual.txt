@@ -1,0 +1,28 @@
+-	script	CheckDual	-1,{
+
+OnPCLoadMapEvent:
+
+set(.maps$,"bat_room");
+set(@map$,strcharinfo(3));
+
+if((compare(","+.maps$+"," , ","+@map$+",")) && (query_sql("SELECT login.account_id FROM login LEFT JOIN `char` ON login.account_id=`char`.account_id WHERE login.last_ip=(SELECT last_ip FROM login WHERE account_id="+getcharid(3)+") AND `char`.online=1",@account_id) > 1))
+{
+	for(set(@j,0); @j < getarraysize(@account_id); set(@j,@j+1))
+	{
+		getmapxy(@tmpMap$,@x,@y,0,rid2name(@account_id[@j]));
+		if(@map$ == @tmpMap$)
+			set(.@pl_sd,.@pl_sd+1);
+		if(.@pl_sd == getarraysize(@account_id))
+		{
+			sleep2(100);
+			dispbottom "Você está sendo kickado.";
+			atcommand("@kick "+strcharinfo(0)+"");
+			warp "SavePoint",0,0;
+		}
+	}
+}
+
+end();
+}
+
+bat_room	mapflag	loadevent

@@ -1,0 +1,29 @@
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+cmd_fild02,358,278,4	script	FENDA	723,{
+	next;
+	switch(select("Acesso a dungeon nevoa"))
+	{
+	case 1:
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			close;
+		}
+		if(countitem(7218) >= 1)
+		{
+			delitem 7218,1;
+			warp "pay_dun00",152,173;
+			close;
+		}
+		break;
+	case 2:
+		close;
+	}
+	close;
+}

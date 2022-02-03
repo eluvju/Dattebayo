@@ -1,0 +1,42 @@
+force_1-1,111,100,0	script	Livro do Naruto Uzumaki	58,{
+
+	if(quest_basic_inicio == 1) {
+		mes "Leia para aprender mais sobre o nosso jogo!";
+		next;
+		readbook 11010,1;
+		set quest_basic_inicio,2;
+		close;
+	} else { mes "Apenas um livro perdido..."; }
+}
+
+force_1-1,100,100,5	script	Uzumaki Naruto	62,{
+
+	if(quest_basic_inicio == 1) {
+		mes "[Uzumaki Naruto]: "+ strcharinfo(0) +" você ainda não encontrou o livro perdido... encontre-o, leia-o e volte aqui para falar comigo";
+		close;
+	}
+
+	if(quest_basic_inicio == 2) {
+		mes "[Uzumaki Naruto]: Voce sera um ninja incrivel, DATTEBAYO!";
+		next;
+		mes "[Uzumaki Naruto]: Vamos para a proxima fase do tutorial!";
+		set quest_basic_inicio,0;
+		close2;
+		warp "prontera",150,190;
+		end;
+	}
+
+	if(quest_basic_inicio < 1) {
+		mes "[Uzumaki Naruto]: Oi "+ strcharinfo(0) +", seja bem vindo ao DATTEBAYO ONLINE!";
+		next;
+		mes "[Uzumaki Naruto]: antes de entrar em nosso mundo ninja, preciso que voce aprenda um pouco sobre nossa plataforma de RAGNAROK ONLINE";
+		next;
+		mes "[Uzumaki Naruto]: para saber mais sobre nossa plataforma, ache o livro que eu deixei aqui ao lado e veja um pouco mais!";
+		next;
+		mes "[Uzumaki Naruto]: Voce tambem pode encontrar outros tutoriais em nosso FORUM, FACEBOOK, SITE ou DISCORD!";
+		next;
+		mes "[Uzumaki Naruto]: Depois que voce encontrar o livro, volta aqui e fala comigo";
+		set quest_basic_inicio,1;
+		close;
+	}
+}

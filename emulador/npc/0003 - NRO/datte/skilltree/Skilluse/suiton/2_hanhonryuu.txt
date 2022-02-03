@@ -1,0 +1,107 @@
+-	script	on_PC_UseSkills02	-1,{
+    end;
+//When a Character uses a skill
+
+//Hahonryuu no Jutsu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 15) {
+
+
+if (getskilllv(15) == 1) {
+
+if (hanhonryuu != 1) {end;}
+if (skill15 >= 50) {skill 15,2,0; set skill15,0; dispbottom "[Sys] Level up"; end; }
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 1: "+skill15+" de 50";
+
+end;
+
+}
+
+if (getskilllv(15) == 2) {
+if (hanhonryuu != 1) {end;}
+if (skill15 >= 100) {skill 15,3,0; set skill15,0; dispbottom "[Sys] Level up"; end;}
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 2: "+skill15+" de 100";
+
+end;
+
+}
+
+if (getskilllv(15) == 3) {
+
+if (hanhonryuu != 1) {end;}
+if (skill15 >= 150) {skill 15,4,0; set skill15,0; dispbottom "[Sys] Level up"; end;}
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 3: "+skill15+" de 150";
+
+end;
+
+}
+
+if (getskilllv(15) == 4) {
+
+if (hanhonryuu != 1) {end;}
+if (skill15 >= 200) {skill 15,5,0; set skill15,0; dispbottom "[Sys] Level up"; end;}
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 4: "+skill15+" de 200";
+
+end;
+
+}
+
+if (getskilllv(15) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill15 >= 250) {skill 15,6,0; set skill15,0; dispbottom "[Sys] Level up"; end;}
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 5: "+skill15+" de 250";
+
+end;
+
+}
+
+if (getskilllv(15) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill15 >= 300) {skill 15,7,0; set skill15,0; dispbottom "[Sys] Level up"; end;}
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 6: "+skill15+" de 300";
+
+end;
+
+}
+
+if (getskilllv(15) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill15 >= 500) {skill 15,8,0; set skill15,0; dispbottom "[Sys] Level up"; end;}
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 7: "+skill15+" de 500";
+
+end;
+
+}
+
+if (getskilllv(15) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill15 >= 700) {skill 15,9,0; set skill15,0; dispbottom "[Sys] Level up"; end;}
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 8: "+skill15+" de 700";
+
+end;
+
+}
+
+if (getskilllv(15) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill15 >= 1000) {skill 15,10,0; set skill15,0; dispbottom "[Sys] Level up"; end;}
+set skill15,skill15 +1;
+dispbottom "[Jutsu level] Hahonryuu no Jutsu level 9: "+skill15+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

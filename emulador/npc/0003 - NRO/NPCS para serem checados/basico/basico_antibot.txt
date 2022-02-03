@@ -1,0 +1,111 @@
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+////////////////////////////BOT POLICE 1.0////////////////////////////
+/////////////////////////////By: Lucas M./////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+// Edit names and location as needed.
+
+prontera,155,150,4	script	Policia NRPG	884,{
+	if (getgmlevel() >= 60) goto L_AdminPolice;
+	mes "[Policia NRPG]";
+	mes "Bom dia.";
+	close;
+
+L_AdminPolice:
+	mes "[Policia NRPG]";
+	mes "Please input the name of a";
+	mes "player you would like to";
+	mes "superimpose a check on.";
+	next;
+	input @NAME$;
+	if(isloggedin(getcharid(3,@NAME$))==0) goto L_Notlogged;
+	mes "[Policia NRPG]";
+	mes "The player is online. An";
+	mes "interrogation is underway.";
+	close2;
+	attachrid(getcharid(3,@NAME$));
+	mes "[Policia NRPG]";
+	mes "Se prepare para um teste obrigatório de verificação de bot";
+	mes "Fale com o npc dentro da jail para concluir o teste";
+	sleep2 2000;
+	mes "...3";
+	sleep2 1000;
+	mes "...2";
+	sleep2 1000;
+	mes "...1";
+	sleep2 1000;
+	atcommand "@jail "+strcharinfo(0)+"";
+
+L_Notlogged:
+	mes "[Policia NRPG]";
+	mes "Esta pessoa não está online";
+	close;
+}
+
+
+// Jail Cell 1.
+
+sec_pri,57,83,4	script	Bot Check	738,{
+	if(vday == 8) goto L_NotJail1;
+	if(vday == 9) goto L_NotJail1;
+	mes "[Ellie Staff]";
+	mes "Verificação obrigatória de bot em progresso.";
+	set @botcode,rand (1111,9999);
+	mes "Por favor digite o código "+@botcode+" para sair.";
+	input @exitnum;
+	if (@exitnum == @botcode) goto L_Correct1;
+	mes "Está incorreto. Por favor tente denovo.";
+	close;
+
+L_NotJail1:
+	mes "...";
+	close;
+
+L_Correct1:
+	next;
+	percentheal 100,100;
+	sc_start SC_BLESSING,300000,10;
+	sc_start SC_INCREASEAGI,300000,10;
+	specialeffect2 EF_BLESSING;
+	specialeffect2 EF_INCAGILITY;
+	mes "[Verificador de bot]";
+	mes "Você passou. Obrigado por seu tempo.";
+	sleep2 2000;
+	atcommand "@unjail "+strcharinfo(0)+"";
+	end;
+}
+
+
+// Jail Cell 2.
+
+sec_pri,32,83,4	script	Verificador de bot#2	738,{
+	if(vday == 8) goto L_NotJail2;
+	if(vday == 9) goto L_NotJail2;
+	mes "[Ellie Staff]";
+	mes "Verificação obrigatória de bot em progresso.";
+	set @botcode,rand (1111,9999);
+	mes "Por favor digite o código "+@botcode+" para sair.";
+	input @exitnum;
+	if (@exitnum == @botcode) goto L_Correct2;
+	mes "Está incorreto. Por favor tente denovo.";
+	close;
+
+L_NotJail2:
+	mes "...";
+	close;
+
+L_Correct2:
+	next;
+	percentheal 100,100;
+	sc_start SC_BLESSING,300000,10;
+	sc_start SC_INCREASEAGI,300000,10;
+	specialeffect2 EF_BLESSING;
+	specialeffect2 EF_INCAGILITY;
+	mes "[Bot Checker]";
+	mes "Você passou. Obrigado por seu tempo.";
+	sleep2 2000;
+	atcommand "@unjail "+strcharinfo(0)+"";
+	end;
+}

@@ -1,0 +1,6 @@
+payon,171,144,5	script	Ninja de Konoha	107,{
+	mes "[Ninja]";
+	mes "AHHHHHHHHHHHHHHHHHHHH!!!";
+	mes "Sennen Goroshi !! (Mil Anos de Dor).";
+close;
+}

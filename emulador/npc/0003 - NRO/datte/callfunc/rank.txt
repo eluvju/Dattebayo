@@ -1,0 +1,22 @@
+kakashi,77,152,4	script	Ranking de Mestres	73,{
+	query_sql "SELECT `name`,`value` FROM `land_rank` ORDER BY `value` DESC LIMIT 10",.@name$,.@var;
+	for(set .@i,0; .@var[.@i]; set .@i,.@i+1)
+		mes "[Número."+(.@i+1)+"] "+.@name$[.@i]+" "+.@var[.@i]+"p";
+	close;
+}
+
+-	script	OnPCLvUp_li	-1,{
+OnPCBaseLvUpEvent:
+	if( BaseLevel < 999 )
+		end;
+	query_sql "SELECT `jounin_cid` FROM `land_rank` WHERE `jounin_cid` = "+li_value+"", .@cid;
+	if( !.@cid )
+	{
+		query_sql "SELECT `name` FROM `char` WHERE `char_id` = "+li_value+"",.@name$;
+		query_sql "INSERT `land_rank` VALUES('"+callfunc("get_bi_value",3,callfunc("get_land_value"))+"','"+.@name$+"',"+li_value+",1)";
+	}else
+	{
+		query_sql "UPDATE `land_rank` SET `value` = `value`+1 WHERE `jounin_cid` = "+li_value+"";
+	}
+	end;
+}

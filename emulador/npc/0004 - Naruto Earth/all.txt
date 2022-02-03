@@ -1,0 +1,6 @@
+﻿biblioteca,42,66,4	script	Tobi	402,{
+
+mes "[Minato]";
+mes "Parabéns!";
+close;
+}

@@ -1,0 +1,161 @@
+salakagen.gat, 19, 20, 3	script	Pontos de missão::points	843,{
+
+	query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp, @s, @a, @b, @c, @d, @e);
+
+	mes "Olá "+strcharinfo(0);
+	if(@qp == 0)
+	{
+		mes "Você não possui pontos de missão, tente efetuar algumas missões e ganhará alguns pontos...";
+		close;
+	}
+	mes "Você possui "+@qp+" pontos de missão acumulados.";
+	mes "Você fez:";
+	mes "[ "+@s+" ] Missões de Ranking S";
+	mes "[ "+@a+" ] Missões de Ranking A";
+	mes "[ "+@b+" ] Missões de Ranking B";
+	mes "[ "+@c+" ] Missões de Ranking C";
+	mes "[ "+@d+" ] Missões de Ranking D";
+	mes "[ "+@e+" ] Missões de Ranking E";
+	next;
+	mes "["+strnpcinfo(3)+"]";
+	mes "Escolha o tipo de \"prêmio\" que desejas";
+	if(select("Ryous:Equipamentos:Level(Desativado!):Subir de Graduação:Cancelar")==5)
+		close;
+	next;
+	mes "["+strnpcinfo(3)+"]";
+	if(@menu < 4)
+	{
+		set @menu$, ((@menu == 1) ? "ZENY" : ((@menu == 2) ? "ITEM" : "LEVEL"));
+		setarray @_price[1], getd("$"+@menu$+"_price[1]"), getd("$"+@menu$+"_price[2]"), getd("$"+@menu$+"_price[3]"), getd("$"+@menu$+"_price[4]"), getd("$"+@menu$+"_price[5]"), getd("$"+@menu$+"_price[6]");
+		setarray @_receive[1],  getd("$"+@menu$+"_receive[1]"), getd("$"+@menu$+"_receive[2]"), getd("$"+@menu$+"_receive[3]"), getd("$"+@menu$+"_receive[4]"), getd("$"+@menu$+"_receive[5]"), getd("$"+@menu$+"_receive[6]");
+	}
+	if(@menu%2)
+	{
+		set @menu$, ((@menu == 1) ? "Ryous" : "leveis");
+		select(@_receive[1], @_receive[2], @_receive[3], @_receive[4], @_receive[5], @_receive[6]);
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if(@qp < @_price[@menu])
+		{
+			mes "Você não possui pontos suficientes, tente efetuar mais algumas missões...";
+			close;
+		}
+		mes "Tem certeza que deseja trocar "+@_price[@menu]+" pontos por "+@_receive[@menu]+" "+@menu$+"?";
+		set @choose, @menu;
+		if(select("Sim:Não")==2)close;
+		if(@menu$ == "Ryous")
+			set Zeny , Zeny + @_receive[@choose];
+		else
+			set BaseLevel , BaseLevel + @_receive[@choose];
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` - '"+@_price[@choose]+"' WHERE `char_id` = '"+getcharid(0)+"'");
+		close;
+	} else if(@menu == 2)
+	{
+		mes "Escolha o equipamento desejado:";
+		select("^nItemID^"+@_receive[1], "^nItemID^"+@_receive[2], "^nItemID^"+@_receive[3], "^nItemID^"+@_receive[4], "^nItemID^"+@_receive[5], "^nItemID^"+@_receive[6]);
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if(@qp < @_price[@menu])
+		{
+			mes "Você não possui pontos suficientes, tente efetuar mais algumas missões...";
+			close;
+		}
+		mes "Tem certeza que deseja trocar "+@_price[@menu]+" pontos por ^nItemID^"+@_receive[@menu]+" ?";
+		set @choose, @menu;
+		if(select("Sim:Não")==2)close;
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` - '"+@_price[@choose]+"' WHERE `char_id` = '"+getcharid(0)+"'");
+		getitem @_receive[@choose], 1;
+		close;
+	} else
+	{
+		switch(Class)
+		{
+			case 1:	set @next_job, 7;	break;
+			case 2:	set @next_job, 9;	break;
+			case 3:	set @next_job, 11;	break;
+			case 4:	set @next_job, 15;	break;
+			case 5:	set @next_job, 10;	break;
+			case 6:	set @next_job, 12;	break;
+			case 4007:	set @next_job, 17;	break;
+			case 23:	set @next_job, 4046;	break;
+			case 4006:	set @next_job, 18;	break;
+			case 4053:	set @next_job, 4056;	break;
+			case 4055:	set @next_job, 4058;	break;
+			case 4054:	set @next_job, 4057;	break;
+			case 7:	case 9:	case 15:	case 10:	case 11: case 12:	case 17:	case 18:	set @next_job, Class + 4001;	break;
+			case 4046:	set @next_job, 4047;	break;
+			case 4056:	set @next_job, 4059;	break;
+			case 4058:	set @next_job, 4061;	break;
+			case 4057:	set @next_job, 4060;	break;
+			case 4049: set @next_job, 4049; break;
+			default:
+				mes "Você não pode subir de graduação.";
+				close;
+		}
+		if(Class <= 6 || 	Class == 4007 || Class == 23 || Class == 4006 || Class == 4053 || Class == 4055 || Class == 4054 || (Class == 4049 && genin == 1))
+			set @price, 800;
+		else
+			set @price, 3000;
+		if(ronaldo ==1)
+		{
+			mes "Você não está pronto ainda!";
+			close;
+		}
+		if(@qp < @price)
+		{
+			mes "Você não possui pontos suficientes, ainda faltam "+(@price-@qp)+"pontos, tente efetuar mais algumas missões...";
+			close;
+		}
+		if(@price == 800)
+		{
+			if (class == 4049)
+			{
+				set Rank_A, 1;
+				set Rank_B, 0;
+			}
+			set chunin, 1;
+			set genin, 0;
+		}
+		else
+		{
+			if (class == 4049)
+			{
+				set Rank_S, 1;
+				set Rank_A, 0;
+			}
+			set chunin, 0;
+			set jounin, 1;
+		}
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` - '"+@price+"' WHERE `char_id` = '"+getcharid(0)+"'");
+		jobchange @next_job;
+		
+	if(chunin==1)	{announce "[Pontos de missão] "+strcharinfo(0)+" subiu de graduação e agora é Chunin em troca de 800 pontos",bc_blue|bc_all; close;}
+	if(jounin==1)	{announce "[Pontos de missão] "+strcharinfo(0)+" subiu de graduação e agora é Jounin em troca de 3000 pontos",bc_blue|bc_all; close;}
+		
+
+	}
+	
+OnInit:
+	callfunc("read_configs_07");
+	end;
+}
+
+function	script	read_configs_07	{
+
+setarray $ZENY_price[1], 50, 100, 250, 400, 700;
+setarray $ZENY_receive[1], 0, 0, 0, 0, 0;
+
+setarray $ITEM_price[1], 0, 0, 0, 0, 0, 0;
+setarray $ITEM_receive[1], 0, 0, 0, 0, 0, 0;
+
+setarray $LEVEL_price[1], 0, 0, 0, 0, 0;
+setarray $LEVEL_receive[1], 0, 0, 0, 0, 0;
+
+end;
+}
+
+salakagea.gat,19,20,7	duplicate(points)	Pontos de Missão#b	843
+salakage.gat,19,20,7	duplicate(points)	Pontos de Missão#c	843
+salakagex.gat,19,20,7	duplicate(points)	Pontos de Missão#d	843
+akatsuki,206,142,7	duplicate(points)	Pontos de Missão#e	843
+lou_in02.gat,251,160,7	duplicate(points)	Pontos de Missão#f	843

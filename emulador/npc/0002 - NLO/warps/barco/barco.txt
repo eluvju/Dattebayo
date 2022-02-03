@@ -1,0 +1,94 @@
+alb2trea,47,58,3	script	Capitão	4_F_01,{
+	OnTouch:
+	set .@npc$, strnpcinfo(2);
+	
+	if($@airplanelocation == 3 && $@portos == 1) {
+	mes "[Equipe do Aeroporto]";
+	mes "Estamos aguardando o Barco chegar soube que ele estava nos Arredores da Nuvem";
+	close;
+	}
+	
+	if($@airplanelocation == 2 && $@portos == 1) {
+	mes "[Equipe do Aeroporto]";
+	mes "Estamos aguardando o Barco chegar soube que ele estava nos Arredores de Konoha";
+	close;
+	}
+	
+	if($@airplanelocation == 1 && $@portos == 1) {
+		mes "[Equipe do Aeroporto]";
+		mes "Bem-vindo ao Barco.";
+		mes "Gostaria de embarcar ?";
+		next;
+		mes "[Equipe do Aeroporto]";
+		mes "Para navegar, você precisa pagar uma taxa de 1,200 Zenys.";
+		mes "Você deseja usar o serviço?";
+		next;
+		if (select("Sim:Não") == 2) close;
+		if (Zeny < 1200) {
+			mes "[Equipe do Aeroporto]";
+			mes "Me desculpe, mas você não possui a quantia necessária de Zenys para embarcar.";
+			mes "Lembre-se, a taxa de embarque é de 1,200 Zenys.";
+			close;
+		}
+		if (Zeny >= 1200) {
+			set Zeny, Zeny - 1200;
+			warp "airplane",245,60;
+			end;
+		}
+	}
+	mes "[Equipe do Aeroporto]";
+	mes "Olá estamos esperando o barco chegar";
+	close;
+}
+
+airplane,243,73,0	script	#BarcoPortal-1	WARPNPC,1,1,{
+	end;
+
+OnInit:
+OnHide:
+	specialeffect EF_BASH;
+	disablenpc strnpcinfo(0);
+	end;
+
+OnUnhide:
+	enablenpc strnpcinfo(0);
+	specialeffect EF_SUMMONSLAVE;
+	end;
+
+OnTouch:
+	switch ($@airplanelocation) {
+	case 0: warp "alb2trea",54,63; end;
+	case 1: warp "gon_fild01",92,278; end;
+	case 2: warp "yuno_fild11",302,75; end;
+	}
+}
+
+airplane,243,29,0	duplicate(#BarcoPortal-1)	#BarcoPortal-2	WARPNPC,1,1
+
+
+airplane,1,1,0	script	Barco_Domestico	-1,{
+
+	OnInit:
+	freeloop(1);
+	setarray $@airplanecitys$, "Arredores da Névoa","0xff8200","Arredores de Konoha","0x00ff00","Arredores da Nuvem","0x70dbdb";
+	while(1) {
+		if ($@airplanelocation >= 3) set $@airplanelocation, 0;
+		mapannounce "airplane","O Dirigível está decolando agora. Seu próximo destino é "+$@airplanecitys$[$@airplanelocation*2]+".",bc_map,$@airplanecitys$[$@airplanelocation*2+1];
+		sleep(20000);
+		mapannounce "airplane","Nós estamos partindo para "+$@airplanecitys$[$@airplanelocation*2]+".",bc_map,$@airplanecitys$[$@airplanelocation*2+1];
+		sleep(30000);
+		mapannounce "airplane","Em breve chegaremos a "+$@airplanecitys$[$@airplanelocation*2]+".",bc_map,$@airplanecitys$[$@airplanelocation*2+1];
+		sleep(10000);
+		donpcevent "#BarcoPortal-1::OnUnhide";
+		donpcevent "#BarcoPortal-2::OnUnhide";
+		set $@portos,1;
+		mapannounce "airplane","Bem-vindo a "+$@airplanecitys$[$@airplanelocation*2]+". Tenha uma boa viagem.",bc_map,$@airplanecitys$[$@airplanelocation*2+1];
+		sleep(10000);
+		mapannounce "airplane","Atualmente nós estamos em "+$@airplanecitys$[$@airplanelocation*2]+". O Dirigível irá decolar em instantes.",bc_map,$@airplanecitys$[$@airplanelocation*2+1];
+		sleep(10000);
+		donpcevent "#BarcoPortal-1::OnHide";
+		donpcevent "#BarcoPortal-2::OnHide";
+		set $@portos,0;
+		set $@airplanelocation, $@airplanelocation+1;
+	}
+}

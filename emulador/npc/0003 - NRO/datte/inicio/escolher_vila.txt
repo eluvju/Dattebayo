@@ -1,0 +1,640 @@
+//=====================================
+//NPC PARA ESCOLHER A VILA
+//=====================================
+
+job_wiz,50,166,5	script	Kurenai	831,{
+
+set correcaostats,1;
+if(#konoha == 1) goto ja_e_de_konoha;
+if(#suna == 1) goto ja_e_da_suna;
+if(#nevoa == 1) goto ja_e_da_nevoa;
+if(#nuvem == 1) goto ja_e_da_nuvem;
+
+mes "^008000[Kurenai]^000000";
+
+mes "Seja bem-vindo ao Naruto RPG Online!";
+next;
+mes "^008000[Kurenai]^000000";
+mes "Eu sou a instrutora de vilas do servidor, aqui você irá escolher a vila aonde você vai jogar.";
+next;
+mes "^008000[Kurenai]^000000";
+mes "Eu estou recrutando jogadores para 4 vilas, são elas:";
+menu "Suna",suna,
+     "Konoha",konoha,
+     "Névoa",nevoa,
+     "Nuvem",nuvem;
+
+
+suna:
+     next;
+mes "^008000[Kurenai]^000000";
+     mes "Muito bem, eu vou levar você até o recrutador desta vila.";
+     next;
+set correcaofeita5,1;
+     warp "job_wiz",46,98;
+     close;
+
+konoha:
+     next;
+mes "^008000[Kurenai]^000000";
+//	mes "Infelizmente, Konoha se encontra cheia nesse momento, escolha outra vila (A vila que escolhe em nada interfere jutsus, kekkei genkais ou qualquer outro benefício)";
+//	close;
+     mes "Muito bem, eu vou levar você até o recrutador desta vila.";
+     next;
+set correcaofeita5,1;
+     warp "job_wiz",116,96;
+     close;
+
+nevoa:
+     next;
+mes "^008000[Kurenai]^000000";
+     mes "Muito bem, eu vou levar você até o recrutador desta vila.";
+     next;
+set correcaofeita5,1;
+     warp "job_wiz",113,175;
+     close;
+
+nuvem:
+     next;
+mes "^008000[Kurenai]^000000";
+     mes "Muito bem, eu vou levar você até o recrutador desta vila.";
+     next;
+set correcaofeita5,1;
+     warp "job_knt",142,61;
+     close;
+
+ja_e_de_konoha:
+//	Achieve( 3);
+set correcaofeita5,1;
+mes "^008000[Kurenai]^000000";
+     mes "Olá! Eu vejo que sua conta já pertence à vila de Konoha!";
+     next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normalk,"Bandana de lado",ladok,"Bandana no pescoço",pescocok,"Bandana yamato",yamatok,"Bandana Kisame",kisamek,"Bandana Kakashi",kakashik;
+
+normalk:
+     next;
+	getitem 19008,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+ladok:
+     next;
+	getitem 19034,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+pescocok:
+     next;
+	getitem 19025,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+yamatok:
+     next;
+	getitem 19170,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+kisamek:
+     next;
+	getitem 19030,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+	close;
+
+kakashik:
+     next;
+	getitem 19004,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+	close;
+
+ja_e_da_suna:
+set correcaofeita5,1;
+//	Achieve( 3);
+mes "^008000[Kurenai]^000000";
+     mes "Olá! Eu vejo que sua conta já pertence à vila da Suna!";
+     next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normals,"Bandana de lado",lados,"Bandana no pescoço",pescocos,"Bandana yamato",yamatos,"Bandana Kisame",kisames,"Bandana Kakashi",kakashis;
+	
+normals:
+     next;
+	getitem 19006,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+lados:
+     next;
+	getitem 19018,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+pescocos:
+     next;
+	getitem 19096,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+yamatos:
+     next;
+	getitem 19168,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+kisames:
+     next;
+	getitem 19156,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     close;
+
+kakashis:
+     next;
+	getitem 19076,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+	close;
+
+ja_e_da_nevoa:
+set correcaofeita5,1;
+//	Achieve( 3);
+mes "^008000[Kurenai]^000000";
+     mes "Olá! Eu vejo que sua conta já pertence à vila da Névoa!";
+     next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normalne,"Bandana de lado",ladone,"Bandana no pescoço",pescocone,"Bandana yamato",yamatone,"Bandana Kisame",kisamene,"Bandana Kakashi",kakashine;
+
+normalne:
+     next;
+	getitem 19001,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+ladone:
+     next;
+	getitem 19019,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+pescocone:
+     next;
+	getitem 19097,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+yamatone:
+     next;
+	getitem 19169,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+kisamene:
+     next;
+	getitem 19016,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+kakashine:
+     next;
+	getitem 19073,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+	close;
+
+
+ja_e_da_nuvem:
+set correcaofeita5,1;
+//	Achieve( 3);
+mes "^008000[Kurenai]^000000";
+     mes "Olá! Eu vejo que sua conta já pertence à vila da Nuvem!";
+     next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normalnu,"Bandana de lado",ladonu,"Bandana no pescoço",pescoconu,"Bandana yamato",yamatonu,"Bandana Kisame",kisamenu,"Bandana Kakashi",kakashinu;
+
+normalnu:
+     next;
+	getitem 19040,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+ladonu:
+     next;
+	getitem 19165,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+pescoconu:
+     next;
+	getitem 19098,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+yamatonu:
+     next;
+	getitem 19095,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+kisamenu:
+     next;
+	getitem 19127,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     close;
+
+kakashinu:
+     next;
+	getitem 19074,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+	close;
+}
+
+
+//=====================================
+// NPC DE KONOHA
+//=====================================
+
+job_wiz,116,99,5	script	Jounin de Konoha	806,{
+
+     mes "Olá! Eu sou o Recrutador da Vila Oculta de Konoha.";
+     next;
+     mes "A Vila de Konoha é situada em meio a floresta, e temos fortes ninjas junto a ela.";
+     next;
+     mes "Lá você aprenderá a usar Ninjutsus e Taijutsus eficientes para sua vida shinobi.";
+     next;
+     mes "Temos um campo de treinamento aonde os mais experientes lhe passarão tudo o que sabem.";
+     next;
+     mes "Em que eu posso lhe ajudar jovem Ninja?";
+     menu "Entrar na Vila",entrar,"Nada",nao;
+
+//==========================================
+//==========================================
+
+entrar:
+next;
+     mes "Você aceita vir jogar em Konoha conosco? Alertando que a vila que você escolher aqui vale para TODA A CONTA."; 
+     menu "Sim",sim,
+          "Não",nao;
+
+sim:
+     next;
+//	Achieve( 3);	
+     mes "Então seja bem-vindo à nossa Vila e bom jogo!";
+	next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normal,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana yamato",yamato,"Bandana Kisame",kisame,"Bandana Kakashi",kakashi;
+
+
+normal:
+     next;
+	getitem 19008,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     set #konoha,1;
+     close;
+
+lado:
+     next;
+	getitem 19034,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     set #konoha,1;
+     close;
+
+pescoco:
+     next;
+	getitem 19025,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     set #konoha,1;
+     close;
+
+yamato:
+     next;
+	getitem 19170,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     set #konoha,1;
+     close;
+
+kisame:
+     next;
+	getitem 19030,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     set #konoha,1;
+     close;
+
+kakashi:
+     next;
+	getitem 19004,1;
+     warp "job_sage",49,165;
+          savepoint "job_sage",49,165;
+     set #konoha,1;
+     close;
+
+
+nao:
+    next;
+    mes "Certo, então vou mandar você devolta à Acessora de Vilas.";
+    next;
+    warp "job_wiz",50,164;
+   
+}
+
+
+//=====================================
+// NPC DA SUNA
+//=====================================
+
+job_wiz,45,105,5	script	Jounin da Suna	411,{
+
+     mes "Olá! Eu sou o Recrutador da Vila Oculta da Areia.";
+     next;
+     mes "A Vila da Areia é situada em meio ao Deserto, e temos fortes ninjas junto a ela.";
+     next;
+     mes "Lá você aprenderá a usar Ninjutsus e Taijutsus eficientes para sua vida shinobi.";
+     next;
+     mes "Temos um campo de treinamento aonde os mais experientes lhe passarão tudo o que sabem.";
+     next;
+     mes "Em que eu posso lhe ajudar jovem Ninja?";
+     menu "Entrar na Vila",entrar,
+          "Nada",nao;
+
+//==========================================
+//==========================================
+
+entrar:
+     mes "Você aceita vir jogar na Suna conosco? Alertando que a vila que você escolher aqui vale para TODA A CONTA."; 
+     menu "Sim",-,
+          "Não",nao;
+
+sim:
+//	Achieve( 3);
+     next;
+     mes "Então seja bem-vindo à nossa Vila e bom jogo!";
+	next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normal,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana yamato",yamato,"Bandana Kisame",kisame,"Bandana Kakashi",kakashi;
+
+
+normal:
+     next;
+	getitem 19006,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #suna,1;
+     close;
+
+lado:
+     next;
+	getitem 19018,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #suna,1;
+     close;
+
+pescoco:
+     next;
+	getitem 19096,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #suna,1;
+     close;
+
+yamato:
+     next;
+	getitem 19168,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #suna,1;
+     close;
+
+kisame:
+     next;
+	getitem 19156,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #suna,1;
+     close;
+
+kakashi:
+     next;
+	getitem 19076,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #suna,1;
+     close;
+
+nao:
+    next;
+    mes "Certo, então vou mandar você devolta à Acessora de Vilas.";
+    next;
+    warp "job_wiz",50,164;
+}
+
+
+
+
+
+
+
+//=====================================
+// NPC DA NÉVOA
+//=====================================
+
+job_wiz,113,177,5	script	Jounin da Névoa 	112,{
+
+     mes "Olá! Eu sou o Recrutador da Vila Oculta da Névoa.";
+     next;
+     mes "A Vila da Névoa é situada em uma caverna subterrânea, e temos fortes ninjas junto a ela.";
+     next;
+     mes "Lá você aprenderá a usar Ninjutsus e Taijutsus eficientes para sua vida shinobi.";
+     next;
+     mes "Temos um campo de treinamento aonde os mais experientes lhe passarão tudo o que sabem.";
+     next;
+     mes "Em que eu posso lhe ajudar jovem Ninja?";
+     menu "Entrar na Vila",entrar,
+          "Nada",nao;
+
+//==========================================
+//==========================================
+
+entrar:
+     mes "Você aceita vir jogar na Névoa conosco? Alertando que a vila que você escolher aqui vale para TODA A CONTA."; 
+     menu "Sim",-,
+          "Não",nao;
+
+sim:
+//	Achieve( 3);
+     next;
+     mes "Então seja bem-vindo à nossa Vila e bom jogo!";
+	next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normal,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana yamato",yamato,"Bandana Kisame",kisame,"Bandana Kakashi",kakashi;
+
+
+normal:
+     next;
+	getitem 19001,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nevoa,1;
+     close;
+
+lado:
+     next;
+	getitem 19019,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nevoa,1;
+     close;
+
+pescoco:
+     next;
+	getitem 19097,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nevoa,1;
+     close;
+
+yamato:
+     next;
+	getitem 19169,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nevoa,1;
+     close;
+
+kisame:
+     next;
+	getitem 19016,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nevoa,1;
+     close;
+
+kakashi:
+     next;
+	getitem 19073,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nevoa,1;
+     close;
+
+nao:
+    next;
+    mes "Certo, então vou mandar você devolta à Acessora de Vilas.";
+    next;
+    warp "job_wiz",50,164;
+}
+
+//=====================================
+// NPC DA Nuvem
+//=====================================
+
+job_knt,142,65,5	script	Jounin da Nuvem 	112,{
+
+     mes "Olá! Eu sou o Recrutador da Vila Oculta da Nuvem.";
+     next;
+     mes "A Vila da Nuvem é situada nos altos de uma montanha, e temos fortes ninjas junto a ela.";
+     next;
+     mes "Lá você aprenderá a usar Ninjutsus e Taijutsus eficientes para sua vida shinobi.";
+     next;
+     mes "Temos um campo de treinamento aonde os mais experientes lhe passarão tudo o que sabem.";
+     next;
+     mes "Em que eu posso lhe ajudar jovem Ninja?";
+     menu "Entrar na Vila",entrar,
+          "Nada",nao;
+
+//==========================================
+//==========================================
+
+entrar:
+     mes "Você aceita vir jogar na Nuvem conosco? Alertando que a vila que você escolher aqui vale para TODA A CONTA."; 
+     menu "Sim",-,
+          "Não",nao;
+
+sim:
+//	Achieve( 3);
+     next;
+     mes "Então seja bem-vindo à nossa Vila e bom jogo!";
+	next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normal,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana yamato",yamato,"Bandana Kisame",kisame,"Bandana Kakashi",kakashi;
+
+
+normal:
+     next;
+	getitem 19040,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nuvem,1;
+     close;
+
+lado:
+     next;
+	getitem 19165,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nuvem,1;
+     close;
+
+pescoco:
+     next;
+	getitem 19098,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nuvem,1;
+     close;
+
+yamato:
+     next;
+	getitem 19095,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nuvem,1;
+     close;
+
+kisame:
+     next;
+	getitem 19127,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nuvem,1;
+     close;
+
+kakashi:
+     next;
+	getitem 19074,1;
+     warp "job_sage",49,165;
+     savepoint "job_sage",49,165;
+     set #nuvem,1;
+     close;
+
+nao:
+    next;
+    mes "Certo, então vou mandar você devolta à Acessora de Vilas.";
+    next;
+    warp "job_wiz",50,164;
+}

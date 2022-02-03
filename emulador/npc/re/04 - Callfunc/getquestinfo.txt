@@ -1,0 +1,16 @@
+//= ====================================================================== //
+//=   arg(0): Quest ID
+//= ====================================================================== //
+
+function	script	getquestinfo	{
+
+// Episodio 1
+
+setarray .@QuestID[0],1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010;
+setarray .@Desc1$[0],"Torne-se um Genin","Esta Atrasado Denovo!","Complete a Academia","Campo de Treinamento","O Ferreiro da Academia","Biblioteca da Academia","A Sala STAFF", "Guia da Academia","Quest Secundárias","Escolha sua Vila";
+for(set .@i,0; .@i < getarraysize(.@QuestID); set .@i, .@i + 1)
+
+	if (getarg(0) == .@QuestID[.@i])
+	mes  "- ^0000FF "+.@Desc1$[.@i]+" ^000000";
+	return;
+}

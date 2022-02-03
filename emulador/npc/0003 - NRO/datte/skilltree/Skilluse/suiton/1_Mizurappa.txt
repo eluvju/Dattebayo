@@ -1,0 +1,108 @@
+-	script	on_PC_UseSkills01	-1,{
+    end;
+//When a Character uses a skill
+
+//mizurappa
+
+onPcUseSkillEvent:
+
+           if(lskillid == 184) {
+
+
+if (getskilllv(184) == 1) {
+
+if (mizurappa != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 50) {skill 184,2,0; set skill184,0; dispbottom "[Sys] Level up"; end; }
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 1: "+skill184+" de 50";
+
+end;
+
+}
+
+if (getskilllv(184) == 2) {
+if (mizurappa != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 100) {skill 184,3,0; set skill184,0; dispbottom "[Sys] Level up"; end;}
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 2: "+skill184+" de 100";
+
+end;
+
+}
+
+if (getskilllv(184) == 3) {
+
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 150) {skill 184,4,0; set skill184,0; dispbottom "[Sys] Level up"; end;}
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 3: "+skill184+" de 150";
+
+end;
+
+}
+
+if (getskilllv(184) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 200) {skill 184,5,0; set skill184,0; dispbottom "[Sys] Level up"; end;}
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 4: "+skill184+" de 200";
+
+end;
+
+}
+
+if (getskilllv(184) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 250) {skill 184,6,0; set skill184,0; dispbottom "[Sys] Level up"; end;}
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 5: "+skill184+" de 250";
+
+end;
+
+}
+
+if (getskilllv(184) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 300) {skill 184,7,0; set skill184,0; dispbottom "[Sys] Level up"; end;}
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 6: "+skill184+" de 300";
+
+end;
+
+}
+
+if (getskilllv(184) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 500) {skill 184,8,0; set skill184,0; dispbottom "[Sys] Level up"; end;}
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 7: "+skill184+" de 500";
+
+end;
+
+}
+
+if (getskilllv(184) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 700) {skill 184,9,0; set skill184,0; dispbottom "[Sys] Level up"; end;}
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 8: "+skill184+" de 700";
+
+end;
+
+}
+
+if (getskilllv(184) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill184 >= 1000) {skill 184,10,0; set skill184,0; dispbottom "[Sys] Level up"; end;}
+set skill184,skill184 +1;
+dispbottom "[Jutsu level] Suiton Mizurappa level 9: "+skill184+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

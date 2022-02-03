@@ -1,0 +1,102 @@
+hu_fild07,312,357,5	script	Proteção Ninja::medint8	831,{
+
+if (getskilllv(255) >= 1) goto L_delete;
+if(med_intermediario != 1) {mes "Você precisa estudar medicina intermediária antes de aprender essa técnica de medicina"; close;}
+if (checkquest(2109) == 1) goto L_go;
+if(med_skill_int >= 3) {mes "Você já aprendeu três técnicas de medicinas intermediárias, esse é o limite"; close;}
+if(accept_med_int == 3) {mes "Você já aceitou três treinamentos pra realizar de medicina"; close;}
+if(f_protecao == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if (WeaponLvl4 < 40) {mes "Seu nível de Medicina está baixo demais, é preciso ter nível 40 ou mais pra aprender esse Medicina"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de medicina espalhado pelo mundo, eu posso lhe ensinar um técnica de medicina básica";
+next;
+mes "A técnica de medicina que eu ensino é o: Proteção Ninja";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Proteção Ninja
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(255) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(255) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 255,0,0;
+set f_protecao,0;
+erasequest 2109;
+if(accept_med_int > 0) {set accept_med_int,accept_med_int -1;}
+if(med_skill_int > 0) {set med_skill_int,med_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_med_int_oito,1;
+set accept_med_int,accept_med_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter medicina intermediário level 40";
+mes "- Derrotar 30 Pakkun.";
+mes "- Obter 100 Concha";
+mes "- Obter 20 Scell";
+mes "- Obter 2 Casca Rija";
+setquest 2109;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(med_skill_int >= 3) {mes "Você já aprendeu três taijutsus intermediario, esse é o limite"; close;}
+if(med_int_mobs_oito < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(961) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(911) < 20) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(943) < 2) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento, parabéns.";
+delitem 961,100;
+delitem 911,20;
+delitem 943,2;
+skill 255,1,0;
+set f_protecao,1;
+set quest_med_int_oito,0;
+set med_int_mobs_oito, 0;
+completequest 2109;
+erasequest 2109;
+set med_skill_int,med_skill_int +1;
+announce "[Medicina Quest] "+strcharinfo(0)+" completou a quest do Medicina Proteção Ninja",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Medicina Intermediária]",0;
+}
+
+-	script	medinter#8	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1296 && quest_med_int_oito == 1) {set med_int_mobs_oito,med_int_mobs_oito +1; announce "[Medicina Quest] Você já derrotou "+med_int_mobs_oito+" / 30 Pakkun",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_07,151,262,5	duplicate(medint8)	Proteção Ninja#41	51,{
+mjolnir_02,197,132,5	duplicate(medint8)	Proteção Ninja#42	51,{
+moc_fild08,285,182,5	duplicate(medint8)	Proteção Ninja#43	51,{

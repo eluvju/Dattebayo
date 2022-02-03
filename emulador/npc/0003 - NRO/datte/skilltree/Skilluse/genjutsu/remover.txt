@@ -1,0 +1,57 @@
+-	script	useRemoverArmadura	-1,{
+    end;
+//When a Character uses a skill
+
+//RemoverArmadura
+
+onPcUseSkillEvent:
+
+           if(lskillid == 217) {
+
+
+if (getskilllv(217) == 1) {
+
+if (RemoverArmadura != 1) {end;}
+if (skill217 >= 50) {skill 217,2,0; set skill217,0; dispbottom "[Sys] Level up"; end; }
+set skill217,skill217 +1;
+dispbottom "[Jutsu level] Remover Armadura level 1: "+skill217+" de 50";
+
+end;
+
+}
+
+if (getskilllv(217) == 2) {
+if (RemoverArmadura != 1) {end;}
+if (skill217 >= 100) {skill 217,3,0; set skill217,0; dispbottom "[Sys] Level up"; end;}
+set skill217,skill217 +1;
+dispbottom "[Jutsu level] Remover Armadura level 2: "+skill217+" de 100";
+
+end;
+
+}
+
+if (getskilllv(217) == 3) {
+
+if (RemoverArmadura != 1) {end;}
+if (skill217 >= 150) {skill 217,4,0; set skill217,0; dispbottom "[Sys] Level up"; end;}
+set skill217,skill217 +1;
+dispbottom "[Jutsu level] Remover Armadura level 3: "+skill217+" de 150";
+
+end;
+
+}
+
+if (getskilllv(217) == 4) {
+if (RemoverArmadura != 1) {end;}
+if (skill217 >= 200) {skill 217,5,0; set skill217,0; dispbottom "[Sys] Level up"; end;}
+set skill217,skill217 +1;
+dispbottom "[Jutsu level] Remover Armadura level 4: "+skill217+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

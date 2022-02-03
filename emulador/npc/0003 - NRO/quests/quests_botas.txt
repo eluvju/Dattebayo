@@ -1,0 +1,152 @@
+nevoa.gat,122,242,5	script	Calçados Ninja Lendários::botas		59,{
+mes "[Calçados Lendários]";
+mes "Olá "+strcharinfo(0)+"! eu tenho alguns dos items mais raros do mundo.";
+mes "São equipamentos usados pelos ninjas mais poderosos no mundo, e que são muito cobiçados";
+mes "Eu sempre sonhei em ser um ninja e proteger minha vila, mas sou muito fraco e por isso virei colecionador";
+mes "Mas ja cansei dessa vida tambem e acho que vou me casar e formar uma familia";
+mes "Então vou lhe dar uma força, se você me trouxer uns suprimentos que preciso eu lhe dou um deles!.";
+menu "Botas Lee (lvl 130)",lee,"Sandálias Jiraya (lvl 135)",jiraya,"Botas Yondaime (lvl 110)",yondaime;
+
+lee:
+if(Baselevel < 130) goto NAO;
+next;
+mes "[Calçados Lendários]";
+mes "Botas parecidas com a do Yondaime, porém menos veloz, mas ainda assim deixa ninjas comendo poeira.";
+next;
+mes "Fornece ao usuário +25 de velocidade de movimento, +10% de velocidade de ataque e +5 em agilidade.";
+next;
+mes "[Calçados Lendários]";
+mes "Me mostre sua força! Sua missão é buscar os seguintes items";
+mes "^FF0000100^000000  Sopa de Tinta de Lula e Ovos de Sapo";
+mes "^FF000025^000000  Coração Imortal";
+mes "^FF00003^000000  Plantas de Suna";
+mes "^FF00003^000000  Plantas da Névoa";
+mes "^FF00003^000000  Plantas de Konoha";
+next;
+mes "[Calçados Lendários]";
+mes "Terminou a Missão?";
+next;
+menu "Sim",-,"Nao",NAO;
+mes "[Calçados Lendários]";
+mes "hum... deixe me ver....";
+next;
+if (countitem(12056) < 100) goto SemItem;
+if (countitem(929) < 25) goto SemItem;
+if (countitem(704) < 3) goto SemItem;
+if (countitem(710) < 3) goto SemItem;
+if (countitem(712) < 3) goto SemItem;
+mes "[Calçados Lendários]";
+mes "Você tem todos os itens necessários! Aqui está a sua recompensa!";
+next;
+delitem 12056,100;
+delitem 929,25;
+delitem 704,3;
+delitem 710,3;
+delitem 712,3;
+getitem 19065,1;
+announce "O Shinobi " + strcharinfo(0) + " terminou a missão das Botas Lee",0;
+mes "[Calçados Lendários]";
+mes "Parabens Garoto!!";
+close;
+
+
+jiraya:
+if(Baselevel < 135) goto NAO;
+next;
+mes "[Calçados Lendários]";
+mes "Sándalia Tradicional entre os ninjas, porém esta é do grande Jiraya, Sannin de Konoha.";
+next;
+mes "Fornece ao usuário +20% de HP,  +15 de defesa e +5 de força.";
+next;
+mes "[Calçados Lendários]";
+mes "^FF0000200^000000 Mandíbula Horrenda";
+mes "^FF0000200^000000 Luva do Carrasco";
+mes "^FF00001^000000 Planta da Névoa";
+mes "^FF00001^000000  Planta de Suna";
+mes "^FF00001^000000  Planta de Konoha";
+next;
+mes "[Calçados Lendários]";
+mes "Terminou?";
+next;
+mes "[Calçados Lendários]";
+mes "Deixe me ver.";
+next;
+if (countitem(958) < 200) goto SemItem;
+if (countitem(7017) < 200) goto SemItem;
+if (countitem(710) < 1) goto SemItem;
+if (countitem(704) < 1) goto SemItem;
+if (countitem(712) < 1) goto SemItem;
+mes "[Calçados Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 958,200;
+delitem 7017,200;
+delitem 710,1;
+delitem 704,1;
+delitem 712,1;
+getitem 2413,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão das Sandálias Jiraya! ",0;
+mes "[Calçados Lendários]";
+mes "Volte Sempre!!";
+close;
+
+yondaime:
+if(Baselevel < 110) goto NAO;
+next;
+mes "[Calçados Lendários]";
+mes "Botas que dão grande velocidade de movimento, foram utilizadas por um Hokage de Konoha, que era denominado de Relâmpago Dourado de Konoha.";
+next;
+mes "Fornece a habilidade teleporte level 1, +30% de velocidade de movimento, +25% de velocidade de ataque e +15 de agilidade.";
+next;
+mes "[Calçados Lendários]";
+mes "^FF000025^000000 Selo Maldito";
+mes "^FF000025^000000 Lâmina Perdida nas Trevas";
+mes "^FF00001500^000000 Pele de Anolian";
+mes "^FF000030^000000 Minhoca Boa-Pinta";
+mes "^FF0000800^000000 Bandagem Estragada";
+next;
+mes "[Calçados Lendários]";
+mes "Terminou? Foi facil ne";
+mes "Deixe ver se você terminou mesmo!";
+next;
+if (countitem(7442) < 25) goto SemItem;
+if (countitem(7023) < 25) goto SemItem;
+if (countitem(7003) < 1500) goto SemItem;
+if (countitem(623) < 30) goto SemItem;
+if (countitem(930) < 800) goto SemItem;
+mes "[Calçados Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 7442,25;
+delitem 7023,25;
+delitem 7003,1500;
+delitem 623,30;
+delitem 930,800;
+getitem 2410,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão das Botas Yondaime! ",0;
+mes "[Calçados Lendários]";
+mes "Volte Sempre!!";
+close;
+
+
+SemItem:
+next;
+mes "[Calçados Lendários]";
+mes "Desculpe, mas você ainda não completou a sua missão!";
+close;
+
+NAO:
+next;
+mes "Você não tem o level necessário para essa missão ou não tem todos os items requeridos";
+close;
+
+
+}
+
+//============== MAP FLAG ===============
+in_hunter	mapflag	nowarp
+in_hunter	mapflag	nowarpto	
+
+konoha.gat,169,216,5	duplicate(botas)	Calçados Ninjas#x	59
+areia.gat,164,235,5	duplicate(botas)	Calçados Ninjas#m	59
+prt_monk.gat,227,164,5	duplicate(botas)	Calçados Ninjas#z	59

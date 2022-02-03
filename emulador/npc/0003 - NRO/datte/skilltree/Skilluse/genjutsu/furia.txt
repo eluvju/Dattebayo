@@ -1,0 +1,77 @@
+-	script	on_PC_UseSkillfFuriaD	-1,{
+    end;
+//When a Character uses a skill
+
+//FuriaD
+
+onPcUseSkillEvent:
+
+           if(lskillid == 659) {
+
+
+if (getskilllv(659) == 1) {
+
+if (FuriaD != 1) {end;}
+if (skill659 >= 50) {skill 659,2,0; set skill659,0; dispbottom "[Sys] Level up"; end; }
+set skill659,skill659 +1;
+dispbottom "[Jutsu level] Furia do dragão level 1: "+skill659+" de 50";
+
+end;
+
+}
+
+if (getskilllv(659) == 2) {
+if (FuriaD != 1) {end;}
+if (skill659 >= 100) {skill 659,3,0; set skill659,0; dispbottom "[Sys] Level up"; end;}
+set skill659,skill659 +1;
+dispbottom "[Jutsu level] Furia do dragão level 2: "+skill659+" de 100";
+
+end;
+
+}
+
+if (getskilllv(659) == 3) {
+
+if (FuriaD != 1) {end;}
+if (skill659 >= 150) {skill 659,4,0; set skill659,0; dispbottom "[Sys] Level up"; end;}
+set skill659,skill659 +1;
+dispbottom "[Jutsu level] Furia do dragão level 3: "+skill659+" de 150";
+
+end;
+
+}
+
+if (getskilllv(659) == 4) {
+if (FuriaD != 1) {end;}
+if (skill659 >= 200) {skill 659,5,0; set skill659,0; dispbottom "[Sys] Level up"; end;}
+set skill659,skill659 +1;
+dispbottom "[Jutsu level] Furia do dragão level 4: "+skill659+" de 200";
+
+end;
+
+}
+
+if (getskilllv(659) == 5) {
+if (FuriaD != 1) {end;}
+if (skill659 >= 250) {skill 659,6,0; set skill659,0; dispbottom "[Sys] Level up"; end;}
+set skill659,skill659 +1;
+dispbottom "[Jutsu level] Furia do dragão level 5: "+skill659+" de 250";
+
+end;
+
+}
+
+if (getskilllv(659) == 6) {
+if (FuriaD != 1) {end;}
+if (skill659 >= 300) {skill 659,7,0; set skill659,0; dispbottom "[Sys] Level up"; end;}
+set skill659,skill659 +1;
+dispbottom "[Jutsu level] Furia do dragão level 6: "+skill659+" de 300";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

@@ -1,0 +1,60 @@
+sec_in01,176,164,5	script	5 Elementos	4_m_fairykid4,{
+	if(5elementos == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Hiruzen^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou o Hiruzen Sarutobi , você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Hiruzen^000000]";
+	mes "Transformação da natureza dos cinco elementos (Godai Seishitsu Henka) é uma forma avançada de controle do chakra. Isso implica na moldagem e definição de seu chakra em um tipo de inato de natureza de chakra, alterando suas propriedades e características.";
+	mes "As cinco naturezas básicas de chackra são:";
+	next; 
+	mes "Fogo (Hi) cuja natureza cria ninjutsus de liberação de fogo (katon) que é forte contra Vento, mas fraco contra Água.";
+	next;
+	mes "Vento  (Kaze), cuja natureza cria ninjutsu de Liberação de Vento (Futon), que é forte contra Raiton, mas fraco contra Fogo.";
+	next;
+	mes "Trovão (Kaminari), cuja natureza cria ninjutsu de Liberação de Relâmpago (Raiton), que é forte contra Terra, mas fraco contra Vento.";
+	next;
+	mes "Terra (Tsuchi), cuja natureza cria ninjutsu de Liberação de Terra (Doton), que é forte contra Água, mas fraco contra Trovão.";
+	next;
+	mes "Água (Mizu), cuja natureza cria ninjutsu de Liberação de Água (Suiton), que é forte contra Fogo, mas fraco contra Terra.";
+
+	next;
+	mes "[^00FF40Hiruzen^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",elementos2,"- Não",nao;
+	close;
+
+	
+	
+	elementos2:
+
+next;
+
+	mes "[^00FF40Hiruzen^000000]";
+
+mes " As cinco naturezas básicas estão todas conectadas em um círculo, onde cada uma é mais fraca que uma ou mais forte que outra  ";
+
+next;
+
+set pegoukg,1;
+
+set 5elementos,1;
+
+	mes "[^00FF40Hiruzen^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

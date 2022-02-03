@@ -1,0 +1,96 @@
+payon_in03,78,170,5	script	Magen: Kasegui::gen20	831,{
+
+if (getskilllv(672) >= 1) goto L_delete;
+if(gen_basico != 1) {mes "Você precisa estudar genjutsu básico antes de aprender um genjutsu"; close;}
+if (checkquest(2188) == 1) goto L_go;
+if(gen_skill_bas >= 3) {mes "Você já aprendeu três genjutsus básicos, esse é o limite"; close;}
+if(accept_gen == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if(Kasegui == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de genjutsu espalhado pelo mundo, eu posso lhe ensinar um genjutsu básico";
+next;
+mes "O genjutsu que eu ensino é o: Magen: Kasegui no Jutsu";
+next;
+mes "Descrição: Uma habilidade em área que deixa a conjuração de jutsus dos inimigos mais lenta";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Magen: Kasegui no Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(672) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(672) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 672,0,0;
+set Kasegui,0;
+erasequest 2188;
+if(accept_gen > 0) {set accept_gen,accept_gen -1;}
+if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_vinte,1;
+set accept_gen,accept_gen +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 35 Namekuji";
+setquest 2188;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_bas >= 3) {mes "Você já aprendeu três genjutsus básicos, esse é o limite"; close;}
+if(gen_mobs_vinte < 35) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 672,1,0;
+set Kasegui,1;
+set quest_gen_vinte,0;
+set gen_mobs_vinte, 0;
+completequest 2188;
+erasequest 2188;
+set gen_skill_bas,gen_skill_bas +1;
+announce "[Genjutsu Quest] "+strcharinfo(0)+" completou a quest do genjutsu Magen: Kasegui no Jutsu",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Básico]",0;
+}
+
+
+-	script	genbas#20	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1031 && quest_gen_vinte == 1) {set gen_mobs_vinte,gen_mobs_vinte +1; announce "[Genjutsu Quest] Você já derrotou "+gen_mobs_vinte+" / 35 Namekujis",bc_blue|bc_self; end;}
+
+}
+
+//ve_in,75,227,5	duplicate(gen20)	Magen: Kasegui#41	51,{
+//payon_in03,78,170,5	duplicate(gen20)	Magen: Kasegui#42	51,{
+//lou_in01,86,164,5	duplicate(gen20)	Magen: Kasegui#43	51,{
+//izlude_in,63,129,5	duplicate(gen20)	Magen: Kasegui#44	51,{

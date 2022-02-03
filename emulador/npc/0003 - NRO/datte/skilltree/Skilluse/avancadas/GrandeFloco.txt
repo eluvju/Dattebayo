@@ -1,0 +1,77 @@
+-	script	UseGoshokuzame	-1,{
+    end;
+//When a Character uses a skill
+
+//Goshokuzame
+
+onPcUseSkillEvent:
+
+           if(lskillid == 539) {
+
+
+if (getskilllv(539) == 1) {
+
+if (Goshokuzame != 1) {end;}
+if (skill539 >= 50) {skill 539,2,0; set skill539,0; dispbottom "[Sys] Level up"; end; }
+set skill539,skill539 +1;
+dispbottom "[Jutsu level] Goshokuzame level 1: "+skill539+" de 50";
+
+end;
+
+}
+
+if (getskilllv(539) == 2) {
+if (Goshokuzame != 1) {end;}
+if (skill539 >= 100) {skill 539,3,0; set skill539,0; dispbottom "[Sys] Level up"; end;}
+set skill539,skill539 +1;
+dispbottom "[Jutsu level] Goshokuzame level 2: "+skill539+" de 100";
+
+end;
+
+}
+
+if (getskilllv(539) == 3) {
+
+if (Goshokuzame != 1) {end;}
+if (skill539 >= 150) {skill 539,4,0; set skill539,0; dispbottom "[Sys] Level up"; end;}
+set skill539,skill539 +1;
+dispbottom "[Jutsu level] Goshokuzame level 3: "+skill539+" de 150";
+
+end;
+
+}
+
+if (getskilllv(539) == 4) {
+if (Goshokuzame != 1) {end;}
+if (skill539 >= 200) {skill 539,5,0; set skill539,0; dispbottom "[Sys] Level up"; end;}
+set skill539,skill539 +1;
+dispbottom "[Jutsu level] Goshokuzame level 4: "+skill539+" de 200";
+
+end;
+
+}
+
+if (getskilllv(539) == 5) {
+if (Goshokuzame != 1) {end;}
+if (skill539 >= 250) {skill 539,6,0; set skill539,0; dispbottom "[Sys] Level up"; end;}
+set skill539,skill539 +1;
+dispbottom "[Jutsu level] Goshokuzame level 5: "+skill539+" de 250";
+
+end;
+
+}
+
+if (getskilllv(539) == 6) {
+if (Goshokuzame != 1) {end;}
+if (skill539 >= 300) {skill 539,7,0; set skill539,0; dispbottom "[Sys] Level up"; end;}
+set skill539,skill539 +1;
+dispbottom "[Jutsu level] Goshokuzame level 6: "+skill539+" de 300";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

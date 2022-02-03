@@ -1,0 +1,102 @@
+-	script	tai_voadora	-1,{
+    end;
+//When a Character uses a skill
+
+//tai_voadora
+
+OnNPCKillEvent:
+
+if (getskilllv(415) == 1) {
+
+if (tai_voadora != 1) {end;}
+if (skill415 >= 50) {skill 415,2,0; set skill415,0; dispbottom "[Sys] Level up"; end; }
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 1: "+skill415+" de 50";
+
+end;
+
+}
+
+if (getskilllv(415) == 2) {
+if (tai_voadora != 1) {end;}
+if (skill415 >= 100) {skill 415,3,0; set skill415,0; dispbottom "[Sys] Level up"; end;}
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 2: "+skill415+" de 100";
+
+end;
+
+}
+
+if (getskilllv(415) == 3) {
+
+if (tai_voadora != 1) {end;}
+if (skill415 >= 150) {skill 415,4,0; set skill415,0; dispbottom "[Sys] Level up"; end;}
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 3: "+skill415+" de 150";
+
+end;
+
+}
+
+if (getskilllv(415) == 4) {
+if (tai_voadora != 1) {end;}
+if (skill415 >= 200) {skill 415,5,0; set skill415,0; dispbottom "[Sys] Level up"; end;}
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 4: "+skill415+" de 200";
+
+end;
+
+}
+
+if (getskilllv(415) == 5) {
+if (tai_voadora != 1) {end;}
+if (skill415 >= 250) {skill 415,6,0; set skill415,0; dispbottom "[Sys] Level up"; end;}
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 5: "+skill415+" de 250";
+
+end;
+
+}
+
+if (getskilllv(415) == 6) {
+if (tai_voadora != 1) {end;}
+if (skill415 >= 300) {skill 415,7,0; set skill415,0; dispbottom "[Sys] Level up"; end;}
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 6: "+skill415+" de 300";
+
+end;
+
+}
+
+if (getskilllv(415) == 7) {
+if (tai_voadora != 1) {end;}
+if (skill415 >= 500) {skill 415,8,0; set skill415,0; dispbottom "[Sys] Level up"; end;}
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 7: "+skill415+" de 500";
+
+end;
+
+}
+
+if (getskilllv(415) == 8) {
+if (tai_voadora != 1) {end;}
+if (skill415 >= 700) {skill 415,9,0; set skill415,0; dispbottom "[Sys] Level up"; end;}
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 8: "+skill415+" de 700";
+
+end;
+
+}
+
+if (getskilllv(415) == 9) {
+if (tai_voadora != 1) {end;}
+if (skill415 >= 1000) {skill 415,10,0; set skill415,0; dispbottom "[Sys] Level up"; end;}
+set skill415,skill415 +1;
+dispbottom "[Jutsu level] Voadora level 9: "+skill415+" de 1000";
+
+end;
+
+}
+
+                end;
+            }

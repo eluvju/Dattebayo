@@ -1,0 +1,8 @@
+-	script	Testes_KG2	-1,{
+
+OnPCUseSkillEvent:
+	if(lskillid == 949) {
+		sc_start SC_ATKPOTION,30000,10000;	
+		end;
+	}
+}

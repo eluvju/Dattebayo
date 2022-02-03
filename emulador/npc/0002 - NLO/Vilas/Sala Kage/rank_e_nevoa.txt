@@ -1,0 +1,529 @@
+
+kirigakure,0,0,0,0	monster	Erva Daninha	1080,40,360000,180000,1
+
+
+salakage3,37,2,5	script	Lata de Lixo#1kiri	845,{
+if(checkquest(10001)==1 && l1!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l1,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,196,162,5	script	Lata de Lixo#2kiri	845,{
+if(checkquest(10001)==1 && l2!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l2,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,159,232,5	script	Lata de Lixo#3kiri	845,{
+if(checkquest(10001)==1 && l3!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l3,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,167,161,5	script	Lata de Lixo#4kiri	845,{
+if(checkquest(10001)==1 && l4!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l4,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,240,140,5	script	Lata de Lixo#5kiri	845,{
+if(checkquest(10001)==1 && l5!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l5,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,145,270,5	script	Lata de Lixo#6kiri	845,{
+if(checkquest(10001)==1 && l6!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l6,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,284,244,5	script	Lata de Lixo#7kiri	845,{
+if(checkquest(10001)==1 && l7!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l7,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,233,276,5	script	Lata de Lixo#8kiri	845,{
+if(checkquest(10001)==1 && l8!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l8,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,186,221,5	script	Lata de Lixo#9kiri	845,{
+if(checkquest(10001) ==1 && l9!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l9,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,129,210,5	script	Lata de Lixo#10kiri	845,{
+if(checkquest(10001) ==1 && l10!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l10,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,276,131,5	script	Lata de Lixo#11kiri	845,{
+if(checkquest(10001) ==1 && l11!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l11,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,251,68,5	script	Lata de Lixo#12kiri	845,{
+if(checkquest(10001) ==1 && l12!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l12,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,187,99,5	script	Lata de Lixo#13kiri	845,{
+if(checkquest(10001) ==1 && l13!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l13,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,146,147,5	script	Lata de Lixo#14kiri	845,{
+if(checkquest(10001) ==1 && l14!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l14,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+kirigakure,124,152,5	script	Lata de Lixo#15kiri	845,{
+if(checkquest(10001) ==1 && l15!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l15,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------
+
+kirigakure,273,257,5	script	Ovelha#kiri1	890,{
+
+if(tosa1 == 0 && checkquest(10003) ==1) {
+	set tosa1,tosa1 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+//------------------------------------------------------
+
+kirigakure,183,128,5	script	Ovelha#kiri2	890,{
+
+if(tosa2 == 0 && checkquest(10003) ==1) {
+	set tosa2,tosa2 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+//------------------------------------------------------
+
+kirigakure,232,149,5	script	Ovelha#kiri3	890,{
+
+if(tosa3 == 0 && checkquest(10003) ==1) {
+	set tosa3,tosa3 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+//------------------------------------------------------
+
+kirigakure,241,98,5	script	Ovelha#kiri4	890,{
+
+if(tosa4 == 0 && checkquest(10003) ==1) {
+	set tosa4,tosa4 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+//------------------------------------------------------
+
+kirigakure,186,179,5	script	Ovelha#kiri5	890,{
+
+if(tosa5 == 0 && checkquest(10003) ==1) {
+	set tosa5,tosa5 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+kirigakure,226,220,5	script	Ovelha#kiri6	890,{
+
+if(tosa6 == 0 && checkquest(10003) ==1) {
+	set tosa6,tosa6 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+kirigakure,278,203,5	script	Ovelha#kiri7	890,{
+
+if(tosa7 == 0 && checkquest(10003) ==1) {
+	set tosa7,tosa7 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+kirigakure,162,211,5	script	Ovelha#kiri8	890,{
+
+if(tosa8 == 0 && checkquest(10003) ==1) {
+	set tosa8,tosa8 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+kirigakure,285,163,5	script	Ovelha#kiri9	890,{
+
+if(tosa9 == 0 && checkquest(10003) ==1) {
+	set tosa9,tosa9 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+kirigakure,125,144,5	script	Ovelha#kiri10	890,{
+
+if(tosa10 == 0 && checkquest(10003) ==1) {
+	set tosa10,tosa10 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Alimento Boi
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+kirigakure,279,109,5	script	Monte de Palha#kiri1	430,{
+
+if(checkquest(10004) !=1) { end; }
+if(checkquest(10004) == 1 && f1 < 5 && countitem(719) < 1) {
+	mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+	set f1,f1 +1;
+	getitem 719,1;
+	close;
+}
+end;
+
+}
+
+kirigakure,281,113,5	script	Monte de Palha#kiri2	430,{
+
+if(checkquest(10004) !=1) { end; }
+if(checkquest(10004) == 1 && f1 < 5 && countitem(719) < 1) {
+	mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+	set f1,f1 +1;
+	getitem 719,1;
+	close;
+}
+end;
+
+}
+
+kirigakure,281,105,5	script	Monte de Palha#kiri3	430,{
+
+if(checkquest(10004) !=1) { end; }
+if(checkquest(10004) == 1 && f1 < 5 && countitem(719) < 1) {
+	mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+	set f1,f1 +1;
+	getitem 719,1;
+	close;
+}
+end;
+
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Bois
+//------------------------------------------------------
+
+kirigakure,152,109,5	script	Boi#kiri1	889,{
+
+if(alb1 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb1,alb1 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+//------------------------------------------------------
+
+kirigakure,150,110,5	script	Boi#kiri2	889,{
+
+if(alb2 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb2,alb2 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+//------------------------------------------------------
+
+kirigakure,148,111,5	script	Boi#kiri3	889,{
+
+if(alb3 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb3,alb3 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+//------------------------------------------------------
+
+kirigakure,149,113,5	script	Boi#kiri4	889,{
+
+if(alb4 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb4,alb4 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+//------------------------------------------------------
+
+kirigakure,150,115,5	script	Boi#kiri5	889,{
+
+if(alb5 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb5,alb5 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+
+kirigakure,151,112,5	script	Fazendeiro#kiri	85,{
+
+if(alb >= 5) { mes "Obrigado por ajudar a alimentar meus gados, missão completa"; close; }
+mes "Sol Forte, Cheiro de Boi.. Isto é ser um Fazendeiro !";
+next;
+mes "Minha mulher as vezes Reclama, mas é o nosso meio de Sustento xP";
+close;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+//==========================
+// Gato Tora
+//==========================
+kirigakure,194,39,5	script	Tora#1kiri	876,{
+
+	if (checkquest(10002) == 1) {
+		mes "Miau!";
+		next;
+		mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+		set achougatotora,1;
+		close;
+	}
+	npctalk "Miau!";
+	end;
+}
+
+kirigakure,168,175,5	script	Tora#2kiri	876,{
+
+	if (checkquest(10002) == 1) {
+		mes "Miau!";
+		next;
+		mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+		set achougatotora,1;
+		close;
+	}
+	npctalk "Miau!";
+	end;
+}
+
+kirigakure,118,212,5	script	Tora#3kiri	876,{
+
+	if (checkquest(10002) == 1) {
+		mes "Miau!";
+		next;
+		mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+		set achougatotora,1;
+		close;
+	}
+	npctalk "Miau!";
+	end;
+}
+
+kirigakure,285,205,5	script	Tora#4kiri	876,{
+
+	if (checkquest(10002) == 1) {
+		mes "Miau!";
+		next;
+		mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+		set achougatotora,1;
+		close;
+	}
+	npctalk "Miau!";
+	end;
+}
+
+//==========================
+// Timer
+//==========================
+
+-	script	ToraTimerkiri	-1,{
+
+
+OnTimer60000:
+enablenpc "Tora#1kiri";
+disablenpc "Tora#2kiri";
+disablenpc "Tora#3kiri";
+disablenpc "Tora#4kiri";
+end;
+
+OnTimer120000:
+disablenpc "Tora#1kiri";
+enablenpc "Tora#2kiri";
+disablenpc "Tora#3kiri";
+disablenpc "Tora#4kiri";
+end;
+
+OnTimer180000:
+disablenpc "Tora#1kiri";
+disablenpc "Tora#2kiri";
+enablenpc "Tora#3kiri";
+disablenpc "Tora#4kiri";
+end;
+
+OnTimer240000:
+disablenpc "Tora#1kiri";
+disablenpc "Tora#2kiri";
+disablenpc "Tora#3kiri";
+enablenpc "Tora#4kiri";
+stopnpctimer;
+initnpctimer;
+end;
+
+OnInit:
+disablenpc "Tora#1kiri";
+disablenpc "Tora#2kiri";
+disablenpc "Tora#3kiri";
+disablenpc "Tora#4kiri";
+initnpctimer;
+end;
+
+}

@@ -1,0 +1,102 @@
+-	script	on_PC_UseSkilltai13	-1,{
+    end;
+//When a Character uses a skill
+
+//Dekopin
+
+OnNPCKillEvent:
+
+if (getskilllv(509) == 1) {
+
+if (Dekopin != 1) {end;}
+if (skill509 >= 50) {skill 509,2,0; set skill509,0; dispbottom "[Sys] Level up"; end; }
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 1: "+skill509+" de 50";
+
+end;
+
+}
+
+if (getskilllv(509) == 2) {
+if (Dekopin != 1) {end;}
+if (skill509 >= 100) {skill 509,3,0; set skill509,0; dispbottom "[Sys] Level up"; end;}
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 2: "+skill509+" de 100";
+
+end;
+
+}
+
+if (getskilllv(509) == 3) {
+
+if (Dekopin != 1) {end;}
+if (skill509 >= 150) {skill 509,4,0; set skill509,0; dispbottom "[Sys] Level up"; end;}
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 3: "+skill509+" de 150";
+
+end;
+
+}
+
+if (getskilllv(509) == 4) {
+if (Dekopin != 1) {end;}
+if (skill509 >= 200) {skill 509,5,0; set skill509,0; dispbottom "[Sys] Level up"; end;}
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 4: "+skill509+" de 200";
+
+end;
+
+}
+
+if (getskilllv(509) == 5) {
+if (Dekopin != 1) {end;}
+if (skill509 >= 5000) {skill 509,6,0; set skill509,0; dispbottom "[Sys] Level up"; end;}
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 5: "+skill509+" de 5000";
+
+end;
+
+}
+
+if (getskilllv(509) == 6) {
+if (Dekopin != 1) {end;}
+if (skill509 >= 7000) {skill 509,7,0; set skill509,0; dispbottom "[Sys] Level up"; end;}
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 6: "+skill509+" de 7000";
+
+end;
+
+}
+
+if (getskilllv(509) == 7) {
+if (Dekopin != 1) {end;}
+if (skill509 >= 12000) {skill 509,8,0; set skill509,0; dispbottom "[Sys] Level up"; end;}
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 7: "+skill509+" de 12000";
+
+end;
+
+}
+
+if (getskilllv(509) == 8) {
+if (Dekopin != 1) {end;}
+if (skill509 >= 15000) {skill 509,9,0; set skill509,0; dispbottom "[Sys] Level up"; end;}
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 8: "+skill509+" de 15000";
+
+end;
+
+}
+
+if (getskilllv(509) == 9) {
+if (Dekopin != 1) {end;}
+if (skill509 >= 20000) {skill 509,10,0; set skill509,0; dispbottom "[Sys] Level up"; end;}
+set skill509,skill509 +1;
+dispbottom "[Jutsu level] Dekopin level 9: "+skill509+" de 20000";
+
+end;
+
+}
+
+                end;
+            }

@@ -1,0 +1,447 @@
+-	script	update_nnfro_rpg2	-1,{
+
+OnHour20: // SET THE 30 TO THE MINUTE YOU WANT THE EVENT TO START EACH HOUR.
+announce "[Guerra entre Vilas] : A guerra está agora encerrada!",0;
+set $guerra_entre_vilas,0;
+
+OnHour15: // SET THE 30 TO THE MINUTE YOU WANT THE EVENT TO START EACH HOUR.
+
+	announce "[Guerra entre Vilas] : A guerra terá início agora!",0;
+	sleep2 10000;
+	announce "[Guerra entre Vilas] : Todas as vilas se preparem, a entrada para a guerra será aberta em breve",0;
+	sleep2 10000;
+	announce "[Guerra entre Vilas] : Defende sua base e destrua a do inimigo!",0;
+	sleep2 10000;
+	announce "[Guerra entre Vilas] : Entrada está aberta",0;
+
+	set $guerra_entre_vilas,1;
+	set $vilas_destruidas,0;
+
+	set $konoha_guerra,0;
+	set $nuvem_guerra,0;
+	set $nevoa_guerra,0;
+	set $suna_guerra,0;
+
+	set $torres_konoha, 0;
+	set $torres_nuvem, 0;
+	set $torres_suna, 0;
+	set $torres_nevoa, 0;
+
+	set $torre_konoha1, 0;
+	set $torre_konoha2, 0;
+	set $torre_konoha3, 0;
+	set $torre_konoha4, 0;
+	set $torre_konoha5, 0;
+	set $torre_konoha6, 0;
+	set $torre_konoha7, 0;
+	set $torre_konoha8, 0;
+
+	set $torre_nevoa1, 0;
+	set $torre_nevoa2, 0;
+	set $torre_nevoa3, 0;
+	set $torre_nevoa4, 0;
+	set $torre_nevoa5, 0;
+	set $torre_nevoa6, 0;
+	set $torre_nevoa7, 0;
+	set $torre_nevoa8, 0;
+
+	set $torre_nuvem1, 0;
+	set $torre_nuvem2, 0;
+	set $torre_nuvem3, 0;
+	set $torre_nuvem4, 0;
+	set $torre_nuvem5, 0;
+	set $torre_nuvem6, 0;
+	set $torre_nuvem7, 0;
+	set $torre_nuvem8, 0;
+
+	set $torre_suna1, 0;
+	set $torre_suna2, 0;
+	set $torre_suna3, 0;
+	set $torre_suna4, 0;
+	set $torre_suna5, 0;
+	set $torre_suna6, 0;
+	set $torre_suna7, 0;
+	set $torre_suna8, 0;
+	end;
+
+
+checar_vencedor:
+if($konoha_guerra == 0) {announce "[Guerra entre Vilas] A Vila Oculta de Konoha é a grande vencedora da guerra entre vilas, parabéns.",bc_blue|bc_all; set $guerra_entre_vilas,0;  end;}
+if($nuvem_guerra == 0) {announce "[Guerra entre Vilas] A Vila Oculta da Nuvem é a grande vencedora da guerra entre vilas, parabéns.",bc_blue|bc_all;  set $guerra_entre_vilas,0; end;}
+if($nevoa_guerra == 0) {announce "[Guerra entre Vilas] A Vila Oculta da Névoa é a grande vencedora da guerra entre vilas, parabéns.",bc_blue|bc_all;  set $guerra_entre_vilas,0; end;}
+if($suna_guerra == 0) {announce "[Guerra entre Vilas] A Vila Oculta da Areia é a grande vencedora da guerra entre vilas, parabéns.",bc_blue|bc_all;  set $guerra_entre_vilas,0; end;}
+end;
+
+
+OnMapKonoha:
+if($guerra_entre_vilas == 0) {end;}
+if(#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal de Konoha, Porém ele mesmo é de Konoha, Que vergonha, Edifício restaurado",bc_blue|bc_all; monster "arena_woe",47,68,"Base de Konoha",1694,1,"update_nnfro_rpg2::OnMapKonoha"; end;}
+if($torres_konoha != 8) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal de Konoha, Porém as torres não estavam quebradas, Que vergonha, Edifício restaurado",bc_blue|bc_all; monster "arena_woe",47,68,"Base de Konoha",1694,1,"update_nnfro_rpg2::OnMapKonoha"; end;}
+announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal de Konoha, com isso Konoha está eliminada da guerra!",bc_blue|bc_all;
+warpguild "konoha",249,215,7;
+set $konoha_guerra,1;
+set $vilas_destruidas, $vilas_destruidas + 1;
+if($vilas_destruidas == 3) goto checar_vencedor;
+end;
+
+OnMapNuvem:
+if($guerra_entre_vilas == 0) {end;}
+if(#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, Edifício restaurado",bc_blue|bc_all; monster "arena_woe",40,248,"Base da Nuvem",1694,1,"update_nnfro_rpg2::OnMapNuvem"; end;}
+if($torres_nuvem != 8) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Nuvem, Porém as torres não estavam quebradas, Que vergonha, Edifício restaurado",bc_blue|bc_all; monster "arena_woe",40,248,"Base da Nuvem",1694,1,"update_nnfro_rpg2::OnMapNuvem"; end;}
+announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Nuvem, com isso a Nuvem está eliminada da guerra!",bc_blue|bc_all;
+warpguild "nuvem",145,41,2;
+set $nuvem_guerra,1;
+set $vilas_destruidas, $vilas_destruidas + 1;
+end;
+
+OnMapNevoa:
+if($guerra_entre_vilas == 0) {end;}
+if(#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Névoa, Porém ele mesmo é da Névoa, Que vergonha, Edifício restaurado",bc_blue|bc_all; monster "arena_woe",229,68,"Base da Névoa",1694,1,"update_nnfro_rpg2::OnMapNevoa"; end;}
+if($torres_nevoa != 8) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Névoa, Porém as torres não estavam quebradas, Que vergonha, Edifício restaurado",bc_blue|bc_all; monster "arena_woe",229,68,"Base da Névoa",1694,1,"update_nnfro_rpg2::OnMapNevoa"; end;}
+announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Névoa, com isso a Névoa está eliminada da guerra!",bc_blue|bc_all;
+warpguild "kiri",49,308,4;
+set $nevoa_guerra,1;
+set $vilas_destruidas, $vilas_destruidas + 1;
+end;
+
+OnMapSuna:
+if($guerra_entre_vilas == 0) {end;}
+if(#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Suna, Porém ele mesmo é da Suna, Que vergonha, Edifício restaurado",bc_blue|bc_all; monster "arena_woe",229,252,"Base da Suna",1694,1,"update_nnfro_rpg2::OnMapSuna"; end;}
+if($torres_suna != 8) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Suna, Porém as torres não estavam quebradas, Que vergonha, Edifício restaurado",bc_blue|bc_all; monster "arena_woe",229,252,"Base da Suna",1694,1,"update_nnfro_rpg2::OnMapSuna"; end;}
+announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou o edifício principal da Suna, com isso a Suna está eliminada da guerra!",bc_blue|bc_all;
+warpguild "areia",119,102,3;
+set $suna_guerra,1;
+set $vilas_destruidas, $vilas_destruidas + 1;
+end;
+
+//Torres
+OnMapTorrek1:
+if (#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém ele mesmo é de konoha, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",133,71,"Torre de Konoha 1",1697,1,"update_nnfro_rpg2::OnMapTorrek1"; end;}
+set $torres_konoha, $torres_konoha +1;
+set $torre_konoha1, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 1 de Konoha caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrek2:
+if (#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém ele mesmo é de konoha, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",47,141,"Torre de Konoha 2",1697,1,"update_nnfro_rpg2::OnMapTorrek2"; end;}
+if ($torre_konoha1 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",47,141,"Torre de Konoha 2",1697,1,"update_nnfro_rpg2::OnMapTorrek2"; end;}
+set $torres_konoha, $torres_konoha +1;
+set $torre_konoha2, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 2 de Konoha caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrek3:
+if (#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém ele mesmo é de konoha, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",47,122,"Torre de Konoha 3",1697,1,"update_nnfro_rpg2::OnMapTorrek3"; end;}
+if ($torre_konoha1 != 1 || $torre_konoha2 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",47,122,"Torre de Konoha 3",1697,1,"update_nnfro_rpg2::OnMapTorrek3"; end;}
+set $torres_konoha, $torres_konoha +1;
+set $torre_konoha3, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 3 de Konoha caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrek4:
+if (#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém ele mesmo é de konoha, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",118,71,"Torre de Konoha 4",1697,1,"update_nnfro_rpg2::OnMapTorrek4"; end;}
+if ($torre_konoha1 != 1 || $torre_konoha2 != 1 || $torre_konoha3 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",118,71,"Torre de Konoha 4",1697,1,"update_nnfro_rpg2::OnMapTorrek4"; end;}
+set $torres_konoha, $torres_konoha +1;
+set $torre_konoha4, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 4 de Konoha caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrek5:
+if (#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém ele mesmo é de konoha, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",106,114,"Torre de Konoha 5",1697,1,"update_nnfro_rpg2::OnMapTorrek5"; end;}
+if ($torre_konoha1 != 1 || $torre_konoha2 != 1 || $torre_konoha3 != 1 || $torre_konoha4 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",106,114,"Torre de Konoha 5",1697,1,"update_nnfro_rpg2::OnMapTorrek5"; end;}
+set $torres_konoha, $torres_konoha +1;
+set $torre_konoha5, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 5 de Konoha caiu!",bc_blue|bc_all;
+end;
+
+
+OnMapTorrek6:
+if (#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém ele mesmo é de konoha, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",84,71,"Torre de Konoha 6",1697,1,"update_nnfro_rpg2::OnMapTorrek6"; end;}
+if ($torre_konoha1 != 1 || $torre_konoha2 != 1 || $torre_konoha3 != 1 || $torre_konoha4 != 1 || $torre_konoha5 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",84,71,"Torre de Konoha 6",1697,1,"update_nnfro_rpg2::OnMapTorrek6"; end;}
+set $torres_konoha, $torres_konoha +1;
+set $torre_konoha6, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 6 de Konoha caiu!",bc_blue|bc_all;
+end;
+
+
+OnMapTorrek7:
+if (#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém ele mesmo é de konoha, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",81,90,"Torre de Konoha 7",1697,1,"update_nnfro_rpg2::OnMapTorrek7"; end;}
+if ($torre_konoha1 != 1 || $torre_konoha2 != 1 || $torre_konoha3 != 1 || $torre_konoha4 != 1 || $torre_konoha5 != 1 || $torre_konoha6 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",81,90,"Torre de Konoha 7",1697,1,"update_nnfro_rpg2::OnMapTorrek7"; end;}
+set $torres_konoha, $torres_konoha +1;
+set $torre_konoha7, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 7 de Konoha caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrek8:
+if (#konoha == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém ele mesmo é de konoha, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",47,102,"Torre de Konoha 8",1697,1,"update_nnfro_rpg2::OnMapTorrek8"; end;}
+if ($torre_konoha1 != 1 || $torre_konoha2 != 1 || $torre_konoha3 != 1 || $torre_konoha4 != 1 || $torre_konoha5 != 1 || $torre_konoha6 != 1 || $torre_konoha7 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre de konoha, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",47,102,"Torre de Konoha 8",1697,1,"update_nnfro_rpg2::OnMapTorrek8"; end;}
+set $torres_konoha, $torres_konoha +1;
+set $torre_konoha8, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 8 de Konoha caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrenu1:
+if (#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",54,203,"Torre da Nuvem 1",1697,1,"update_nnfro_rpg2::OnMapTorrenu1"; end;}
+set $torres_nuvem, $torres_nuvem +1;
+set $torre_nuvem1, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 1 da Nuvem caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrenu2:
+if (#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",54,176,"Torre da Nuvem 2",1697,1,"update_nnfro_rpg2::OnMapTorrenu2"; end;}
+if ($torre_nuvem1 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",54,176,"Torre da Nuvem 2",1697,1,"update_nnfro_rpg2::OnMapTorrenu2"; end;}
+set $torres_nuvem, $torres_nuvem +1;
+set $torre_nuvem2, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 2 da Nuvem caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrenu3:
+if (#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",137,253,"Torre da Nuvem 3",1697,1,"update_nnfro_rpg2::OnMapTorrenu3"; end;}
+if ($torre_nuvem1 != 1 || $torre_nuvem2 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",137,253,"Torre da Nuvem 3",1697,1,"update_nnfro_rpg2::OnMapTorrenu3"; end;}
+set $torres_nuvem, $torres_nuvem +1;
+set $torre_nuvem3, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 3 da Nuvem caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrenu4:
+if (#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",123,253,"Torre da Nuvem 4",1697,1,"update_nnfro_rpg2::OnMapTorrenu4"; end;}
+if ($torre_nuvem1 != 1 || $torre_nuvem2 != 1 || $torre_nuvem3 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",123,253,"Torre da Nuvem 4",1697,1,"update_nnfro_rpg2::OnMapTorrenu4"; end;}
+set $torres_nuvem, $torres_nuvem +1;
+set $torre_nuvem4, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 4 da Nuvem caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrenu5:
+if (#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",106,114,"Torre da Nuvem 5",1697,1,"update_nnfro_rpg2::OnMapTorrenu5"; end;}
+if ($torre_nuvem1 != 1 || $torre_nuvem2 != 1 || $torre_nuvem3 != 1 || $torre_nuvem4 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",106,114,"Torre da Nuvem 5",1697,1,"update_nnfro_rpg2::OnMapTorrenu5"; end;}
+set $torres_nuvem, $torres_nuvem +1;
+set $torre_nuvem5, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 5 da Nuvem caiu!",bc_blue|bc_all;
+end;
+
+
+OnMapTorrenu6:
+if (#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",83,248,"Torre da Nuvem 6",1697,1,"update_nnfro_rpg2::OnMapTorrenu6"; end;}
+if ($torre_nuvem1 != 1 || $torre_nuvem2 != 1 || $torre_nuvem3 != 1 || $torre_nuvem4 != 1 || $torre_nuvem5 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",83,248,"Torre da Nuvem 6",1697,1,"update_nnfro_rpg2::OnMapTorrenu6"; end;}
+set $torres_nuvem, $torres_nuvem +1;
+set $torre_nuvem6, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 6 da Nuvem caiu!",bc_blue|bc_all;
+end;
+
+
+OnMapTorrenu7:
+if (#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",83,228,"Torre da Nuvem 7",1697,1,"update_nnfro_rpg2::OnMapTorrenu7"; end;}
+if ($torre_nuvem1 != 1 || $torre_nuvem2 != 1 || $torre_nuvem3 != 1 || $torre_nuvem4 != 1 || $torre_nuvem5 != 1 || $torre_nuvem6 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",83,228,"Torre da Nuvem 7",1697,1,"update_nnfro_rpg2::OnMapTorrenu7"; end;}
+set $torres_nuvem, $torres_nuvem +1;
+set $torre_nuvem7, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 7 da Nuvem caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrenu8:
+if (#nuvem == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém ele mesmo é da Nuvem, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",48,227,"Torre da Nuvem 8",1697,1,"update_nnfro_rpg2::OnMapTorrenu8"; end;}
+if ($torre_nuvem1 != 1 || $torre_nuvem2 != 1 || $torre_nuvem3 != 1 || $torre_nuvem4 != 1 || $torre_nuvem5 != 1 || $torre_nuvem6 != 1 || $torre_nuvem7 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Nuvem, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",48,227,"Torre da Nuvem 8",1697,1,"update_nnfro_rpg2::OnMapTorrenu8"; end;}
+set $torres_nuvem, $torres_nuvem +1;
+set $torre_nuvem8, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 8 da Nuvem caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorresu1:
+if (#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém ele mesmo é da suna, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",217,182,"Torre da suna 1",1697,1,"update_nnfro_rpg2::OnMapTorresu1"; end;}
+set $torres_suna, $torres_suna +1;
+set $torre_suna1, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 1 da suna caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorresu2:
+if (#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém ele mesmo é da suna, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",216,202,"Torre da suna 2",1697,1,"update_nnfro_rpg2::OnMapTorresu2"; end;}
+if ($torre_suna1 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",216,202,"Torre da suna 2",1697,1,"update_nnfro_rpg2::OnMapTorresu2"; end;}
+set $torres_suna, $torres_suna +1;
+set $torre_suna2, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 2 da suna caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorresu3:
+if (#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém ele mesmo é da suna, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",47,122,"Torre da suna 3",1697,1,"update_nnfro_rpg2::OnMapTorresu3"; end;}
+if ($torre_suna1 != 1 || $torre_suna2 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",47,122,"Torre da suna 3",1697,1,"update_nnfro_rpg2::OnMapTorresu3"; end;}
+set $torres_suna, $torres_suna +1;
+set $torre_suna3, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 3 da suna caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorresu4:
+if (#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém ele mesmo é da suna, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",118,71,"Torre da suna 4",1697,1,"update_nnfro_rpg2::OnMapTorresu4"; end;}
+if ($torre_suna1 != 1 || $torre_suna2 != 1 || $torre_suna3 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",118,71,"Torre da suna 4",1697,1,"update_nnfro_rpg2::OnMapTorresu4"; end;}
+set $torres_suna, $torres_suna +1;
+set $torre_suna4, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 4 da suna caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorresu5:
+if (#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém ele mesmo é da suna, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",170,199,"Torre da suna 5",1697,1,"update_nnfro_rpg2::OnMapTorresu5"; end;}
+if ($torre_suna1 != 1 || $torre_suna2 != 1 || $torre_suna3 != 1 || $torre_suna4 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",170,199,"Torre da suna 5",1697,1,"update_nnfro_rpg2::OnMapTorresu5"; end;}
+set $torres_suna, $torres_suna +1;
+set $torre_suna5, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 5 da suna caiu!",bc_blue|bc_all;
+end;
+
+
+OnMapTorresu6:
+if (#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém ele mesmo é da suna, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",186,248,"Torre da suna 6",1697,1,"update_nnfro_rpg2::OnMapTorresu6"; end;}
+if ($torre_suna1 != 1 || $torre_suna2 != 1 || $torre_suna3 != 1 || $torre_suna4 != 1 || $torre_suna5 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",186,248,"Torre da suna 6",1697,1,"update_nnfro_rpg2::OnMapTorresu6"; end;}
+set $torres_suna, $torres_suna +1;
+set $torre_suna6, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 6 da suna caiu!",bc_blue|bc_all;
+end;
+
+
+OnMapTorresu7:
+if (#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém ele mesmo é da suna, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",192,232,"Torre da suna 7",1697,1,"update_nnfro_rpg2::OnMapTorresu7"; end;}
+if ($torre_suna1 != 1 || $torre_suna2 != 1 || $torre_suna3 != 1 || $torre_suna4 != 1 || $torre_suna5 != 1 || $torre_suna6 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",192,232,"Torre da suna 7",1697,1,"update_nnfro_rpg2::OnMapTorresu7"; end;}
+set $torres_suna, $torres_suna +1;
+set $torre_suna7, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 7 da suna caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorresu8:
+if (#suna == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém ele mesmo é da suna, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",224,226,"Torre da suna 8",1697,1,"update_nnfro_rpg2::OnMapTorresu8"; end;}
+if ($torre_suna1 != 1 || $torre_suna2 != 1 || $torre_suna3 != 1 || $torre_suna4 != 1 || $torre_suna5 != 1 || $torre_suna6 != 1 || $torre_suna7 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da suna, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",224,226,"Torre da suna 8",1697,1,"update_nnfro_rpg2::OnMapTorresu8"; end;}
+set $torres_suna, $torres_suna +1;
+set $torre_suna8, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 8 da suna caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrene1:
+if (#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém ele mesmo é da Névoa, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",216,112,"Torre da Névoa",1697,1,"update_nnfro_rpg2::OnMapTorrene1"; end;}
+set $torres_nevoa, $torres_nevoa +1;
+set $torre_nevoa1, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 1 da Névoa caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrene2:
+if (#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém ele mesmo é da Névoa, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",155,115,"Torre da Névoa 2",1697,1,"update_nnfro_rpg2::OnMapTorrene2"; end;}
+if ($torre_nevoa1 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",155,115,"Torre da Névoa 2",1697,1,"update_nnfro_rpg2::OnMapTorrene2"; end;}
+set $torres_nevoa, $torres_nevoa +1;
+set $torre_nevoa2, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 2 da Névoa caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrene3:
+if (#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém ele mesmo é da Névoa, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",146,253,"Torre da Névoa 3",1697,1,"update_nnfro_rpg2::OnMapTorrene3"; end;}
+if ($torre_nevoa1 != 1 || $torre_nevoa2 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",146,253,"Torre da Névoa 3",1697,1,"update_nnfro_rpg2::OnMapTorrene3"; end;}
+set $torres_nevoa, $torres_nevoa +1;
+set $torre_nevoa3, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 3 da Névoa caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrene4:
+if (#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém ele mesmo é da Névoa, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",159,253,"Torre da Névoa 4",1697,1,"update_nnfro_rpg2::OnMapTorrene4"; end;}
+if ($torre_nevoa1 != 1 || $torre_nevoa2 != 1 || $torre_nevoa3 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",159,253,"Torre da Névoa 4",1697,1,"update_nnfro_rpg2::OnMapTorrene4"; end;}
+set $torres_nevoa, $torres_nevoa +1;
+set $torre_nevoa4, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 4 da Névoa caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrene5:
+if (#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém ele mesmo é da Névoa, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",218,133,"Torre da Névoa 5",1697,1,"update_nnfro_rpg2::OnMapTorrene5"; end;}
+if ($torre_nevoa1 != 1 || $torre_nevoa2 != 1 || $torre_nevoa3 != 1 || $torre_nevoa4 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",218,133,"Torre da Névoa 5",1697,1,"update_nnfro_rpg2::OnMapTorrene5"; end;}
+set $torres_nevoa, $torres_nevoa +1;
+set $torre_nevoa5, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 5 da Névoa caiu!",bc_blue|bc_all;
+end;
+
+
+OnMapTorrene6:
+if (#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém ele mesmo é da Névoa, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",224,89,"Torre da Névoa 6",1697,1,"update_nnfro_rpg2::OnMapTorrene6"; end;}
+if ($torre_nevoa1 != 1 || $torre_nevoa2 != 1 || $torre_nevoa3 != 1 || $torre_nevoa4 != 1 || $torre_nevoa5 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",224,89,"Torre da Névoa 6",1697,1,"update_nnfro_rpg2::OnMapTorrene6"; end;}
+set $torres_nevoa, $torres_nevoa +1;
+set $torre_nevoa6, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 6 da Névoa caiu!",bc_blue|bc_all;
+end;
+
+
+OnMapTorrene7:
+if (#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém ele mesmo é da Névoa, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",191,87,"Torre da Névoa 7",1697,1,"update_nnfro_rpg2::OnMapTorrene7"; end;}
+if ($torre_nevoa1 != 1 || $torre_nevoa2 != 1 || $torre_nevoa3 != 1 || $torre_nevoa4 != 1 || $torre_nevoa5 != 1 || $torre_nevoa6 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",191,87,"Torre da Névoa 7",1697,1,"update_nnfro_rpg2::OnMapTorrene7"; end;}
+set $torres_nevoa, $torres_nevoa +1;
+set $torre_nevoa7, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 7 da Névoa caiu!",bc_blue|bc_all;
+end;
+
+OnMapTorrene8:
+if (#nevoa == 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém ele mesmo é da Névoa, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",189,71,"Torre da Névoa 8",1697,1,"update_nnfro_rpg2::OnMapTorrene8"; end;}
+if ($torre_nevoa1 != 1 || $torre_nevoa2 != 1 || $torre_nevoa3 != 1 || $torre_nevoa4 != 1 || $torre_nevoa5 != 1 || $torre_nevoa6 != 1 || $torre_nevoa7 != 1) {announce "[Guerra entre Vilas] "+strcharinfo(0)+" quebrou a torre da Névoa, Porém não quebrou as torres anteriores, Que vergonha, torre restaurada",bc_blue|bc_all; monster "arena_woe",189,71,"Torre da Névoa 8",1697,1,"update_nnfro_rpg2::OnMapTorrene8"; end;}
+set $torres_nevoa, $torres_nevoa +1;
+set $torre_nevoa8, 1;
+announce "[Guerra entre Vilas] Relatório: Torre número 8 da Névoa caiu!",bc_blue|bc_all;
+end;
+
+}
+
+arena_woe,47,68,0,0	monster	Base de Konoha	1694,1,1,10800000,"update_nnfro_rpg2::OnMapKonoha"
+
+arena_woe,40,248,0,0	monster	Base da Nuvem	1694,1,1,10800000,"update_nnfro_rpg2::OnMapNuvem"
+
+arena_woe,229,68,0,0	monster	Base da Névoa	1694,1,1,10800000,"update_nnfro_rpg2::OnMapNevoa"
+
+arena_woe,229,252,0,0	monster	Base da Suna	1694,1,1,10800000,"update_nnfro_rpg2::OnMapSuna"
+
+//Torres
+arena_woe,133,71,0,0	monster	Torre de Konoha 1	1693,1,1,10800000,"update_nnfro_rpg2::OnMapTorrek1"
+arena_woe,47,141,0,0	monster	Torre de Konoha 2	1693,1,1,10800000,"update_nnfro_rpg2::OnMapTorrek2"
+arena_woe,47,122,0,0	monster	Torre de Konoha 3	1693,1,1,10800000,"update_nnfro_rpg2::OnMapTorrek3"
+arena_woe,118,71,0,0	monster	Torre de Konoha 4	1693,1,1,10800000,"update_nnfro_rpg2::OnMapTorrek4"
+arena_woe,106,114,0,0	monster	Torre de Konoha 5	1693,1,1,10800000,"update_nnfro_rpg2::OnMapTorrek5"
+arena_woe,84,71,0,0	monster	Torre de Konoha 6	1693,1,1,10800000,"update_nnfro_rpg2::OnMapTorrek6"
+arena_woe,81,90,0,0	monster	Torre de Konoha 7	1693,1,1,10800000,"update_nnfro_rpg2::OnMapTorrek7"
+arena_woe,47,102,0,0	monster	Torre de Konoha 8	1693,1,1,10800000,"update_nnfro_rpg2::OnMapTorrek8"
+
+arena_woe,54,203,0,0	monster	Torre da Nuvem 1	1697,1,1,10800000,"update_nnfro_rpg2::OnMapTorrenu1"
+arena_woe,54,176,0,0	monster	Torre da Nuvem 2	1697,1,1,10800000,"update_nnfro_rpg2::OnMapTorrenu2"
+arena_woe,137,253,0,0	monster	Torre da Nuvem 3	1697,1,1,10800000,"update_nnfro_rpg2::OnMapTorrenu3"
+arena_woe,123,253,0,0	monster	Torre da Nuvem 4	1697,1,1,10800000,"update_nnfro_rpg2::OnMapTorrenu4"
+arena_woe,112,207,0,0	monster	Torre da Nuvem 5	1697,1,1,10800000,"update_nnfro_rpg2::OnMapTorrenu5"
+arena_woe,83,248,0,0	monster	Torre da Nuvem 6	1697,1,1,10800000,"update_nnfro_rpg2::OnMapTorrenu6"
+arena_woe,83,228,0,0	monster	Torre da Nuvem 7	1697,1,1,10800000,"update_nnfro_rpg2::OnMapTorrenu7"
+arena_woe,48,227,0,0	monster	Torre da Nuvem 8	1697,1,1,10800000,"update_nnfro_rpg2::OnMapTorrenu8"
+
+arena_woe,216,112,0,0	monster	Torre de Névoa 1	1696,1,1,10800000,"update_nnfro_rpg2::OnMapTorrene1"
+arena_woe,155,115,0,0	monster	Torre de Névoa 2	1696,1,1,10800000,"update_nnfro_rpg2::OnMapTorrene2"
+arena_woe,156,71,0,0	monster	Torre de Névoa 3	1696,1,1,10800000,"update_nnfro_rpg2::OnMapTorrene3"
+arena_woe,147,71,0,0	monster	Torre de Névoa 4	1696,1,1,10800000,"update_nnfro_rpg2::OnMapTorrene4"
+arena_woe,218,133,0,0	monster	Torre de Névoa 5	1696,1,1,10800000,"update_nnfro_rpg2::OnMapTorrene5"
+arena_woe,224,89,0,0	monster	Torre de Névoa 6	1696,1,1,10800000,"update_nnfro_rpg2::OnMapTorrene6"
+arena_woe,191,87,0,0	monster	Torre de Névoa 7	1696,1,1,10800000,"update_nnfro_rpg2::OnMapTorrene7"
+arena_woe,189,71,0,0	monster	Torre de Névoa 8	1696,1,1,10800000,"update_nnfro_rpg2::OnMapTorrene8"
+
+arena_woe,217,182,0,0	monster	Torre da Suna 1	1695,1,1,10800000,"update_nnfro_rpg2::OnMapTorresu1"
+arena_woe,216,202,0,0	monster	Torre da Suna 2	1695,1,1,10800000,"update_nnfro_rpg2::OnMapTorresu2"
+arena_woe,146,253,0,0	monster	Torre da Suna 3	1695,1,1,10800000,"update_nnfro_rpg2::OnMapTorresu3"
+arena_woe,159,253,0,0	monster	Torre da Suna 4	1695,1,1,10800000,"update_nnfro_rpg2::OnMapTorresu4"
+arena_woe,170,199,0,0	monster	Torre da Suna 5	1695,1,1,10800000,"update_nnfro_rpg2::OnMapTorresu5"
+arena_woe,186,248,0,0	monster	Torre da Suna 6	1695,1,1,10800000,"update_nnfro_rpg2::OnMapTorresu6"
+arena_woe,192,232,0,0	monster	Torre da Suna 7	1695,1,1,10800000,"update_nnfro_rpg2::OnMapTorresu7"
+arena_woe,224,226,0,0	monster	Torre da Suna 8	1695,1,1,10800000,"update_nnfro_rpg2::OnMapTorresu8"
+
+kiri,209,130,4	script	Guerra entre vilas::GEV	65,{
+
+if($guerra_entre_vilas == 0) {mes "No momento não está tendo uma guerra entre vilas, volte as 18:00"; close;}
+mes "Está acontecendo uma grande guerra entre as vilas, vá e proteja sua vila!";
+next;
+mes "Gostaria de entrar na guerra entre vilas?";
+menu "Sim, estou pronto pra defender minha vila",SIM,"Não, ainda não estou pronto",NAO;
+
+SIM:
+	percentheal 100, 100 ;
+	if (#konoha == 1) {warp "arena_woe",59,63; close;}
+	if (#suna == 1) {warp "arena_woe",235,243; close;}
+	if (#nevoa == 1) {warp "arena_woe",216,66; close;}
+	if (#nuvem == 1) {warp "arena_woe",55,251; close;}
+
+NAO:
+close;
+
+}
+
+konoha,133,161, 4	duplicate(GEV)	Guerra entre vilas#1	65
+areia,125,123, 4	duplicate(GEV)	Guerra entre vilas#2	65
+nuvem, 135, 148, 4	duplicate(GEV)	Guerra entre vilas#3	65

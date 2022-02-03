@@ -1,0 +1,39 @@
+// ===== Cronus Script =======================================
+// == Deus-Sol ues (NPC Script)
+// ===== Categoria: ===========================================
+// == Custom
+// ===== Idioma: ==============================================
+// == Português (Brasil)
+// ===== Por: =================================================
+// == Cadinhu (V. 1.0)
+// ===== Versão Atual: ========================================
+// == 1.0 (05/10/2007)
+// ===== Compactível Com: =====================================
+// == Cronus
+// ===== Descrição Parcial: ===================================
+// == Quest da Coroa do Deus-Sol
+// ===== Comentários adicionais: ==============================
+// == 1.0 - NPC Criado ........................ [by Cadinhu]
+// ============================================================
+// == Agradecimentos: =]
+// ============================================================
+
+konoha3,123,263,5	script	Armazém Shinobi::kafra	828,{
+
+mes "[^008000Armazém Shinobi^000000]";
+mes "Gostaria de utilizar o armazém shinobi?";
+menu "Não,não gostaria !",nem,"Claro, porque não?",sim;
+
+sim:
+openstorage;
+close;	
+
+nem:
+close;
+
+}
+
+sunagakure,222,155,5	duplicate(kafra)	Armazém#a	828
+kirigakure,219,184,5	duplicate(kafra)	Armazém#b	828
+kumogakure,102,129,5	duplicate(kafra)	Armazém#c	828
+akatsuki,193,209,5	duplicate(kafra)	Armazém#d	828

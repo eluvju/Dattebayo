@@ -1,0 +1,57 @@
+-	script	on_PC_UseSkillf19	-1,{
+    end;
+//When a Character uses a skill
+
+//Shometsu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 35) {
+
+
+if (getskilllv(35) == 1) {
+
+if (Shometsu != 1) {end;}
+if (skill35 >= 50) {skill 35,2,0; set skill35,0; dispbottom "[Sys] Level up"; end; }
+set skill35,skill35 +1;
+dispbottom "[Jutsu level] Inyu Shometsu level 1: "+skill35+" de 50";
+
+end;
+
+}
+
+if (getskilllv(35) == 2) {
+if (Shometsu != 1) {end;}
+if (skill35 >= 100) {skill 35,3,0; set skill35,0; dispbottom "[Sys] Level up"; end;}
+set skill35,skill35 +1;
+dispbottom "[Jutsu level] Inyu Shometsu level 2: "+skill35+" de 100";
+
+end;
+
+}
+
+if (getskilllv(35) == 3) {
+
+if (Shometsu != 1) {end;}
+if (skill35 >= 150) {skill 35,4,0; set skill35,0; dispbottom "[Sys] Level up"; end;}
+set skill35,skill35 +1;
+dispbottom "[Jutsu level] Inyu Shometsu level 3: "+skill35+" de 150";
+
+end;
+
+}
+
+if (getskilllv(35) == 4) {
+if (Shometsu != 1) {end;}
+if (skill35 >= 200) {skill 35,5,0; set skill35,0; dispbottom "[Sys] Level up"; end;}
+set skill35,skill35 +1;
+dispbottom "[Jutsu level] Inyu Shometsu level 4: "+skill35+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

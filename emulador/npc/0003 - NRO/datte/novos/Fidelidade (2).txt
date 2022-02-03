@@ -1,0 +1,80 @@
+//===== Hourly Points Script =========================================
+//===== By: ==========================================================
+//= GorthexTiger modified by Nibi
+//===== Current Version: =============================================
+//= 1.0
+//===== Compatible With: =============================================
+//= Any eAthena Version
+//===== Description: =================================================
+//= Get Points every successful hours of gameplay, you cannot get
+//= the points even if you miss a second or a minute. A player will
+//= get a very big bonus if they played 12 hours consecutively
+//= or without logging out of the game. If the player is vending
+//= the script will then stop.
+//===== Additional Comments: =========================================
+//= You can modify the script to your liking.
+//= The default points is Kafrapoints change it anyway if you like.
+//= 1.1 = Check Chatting too
+//= 1.2 = 5 Minute Idle Check & @at/@autotrade check.
+//= 1.3 = Corrected the current balance line on 12 Hours Consecutive
+//====================================================================
+
+-	script	hourlypoints	-1,{
+
+//--Start of the Script
+OnPCLoginEvent:
+if (Class == 0) {dispbottom "A contagem de pontos de fidelidade não tem efeito em jogadores que ainda não são genins, assim que virar genin, relogue para iniciar a contagem."; end;}
+attachnpctimer ""+strcharinfo(0)+"";
+initnpctimer;
+end;
+	
+OnTimer30000:
+//Check if Vending (normal or @at)
+if(checkvending() >= 1 || checkchatting() == 1) {
+	dispbottom "A contagem de pontos de fidelidade foi interrompido porque está com chat ou venda aperta. Relogue para reiniciar contagem.";
+	stopnpctimer;
+	end;
+}
+//Check if Idle
+getmapxy( .@map$, .@x, .@y, 0 );
+if(@map$ == .@map$ && @x == .@x && @y == .@y) {
+	set @afk, @afk + 1;
+}
+//If move timer resets
+else {
+	set @afk, 0;
+}
+	set @map$, .@map$; set @x, .@x; set @y, .@y;
+//Idle Check for 5 Minutes
+if(@afk == 5) {
+	dispbottom "A contagem de pontos de fidelidade foi interrompido porque ficou ausente por mais de 5 minutos. Relogue para reiniciar contagem.";
+	stopnpctimer;
+	end;
+}
+end;
+
+OnTimer60000:
+set @minute, @minute + 1;
+//Check for 1 Minute
+if(@minute == 60){
+	set @minute,0;
+	set .@point_amt, 1; //Points to get every hour (default: 10)
+	set #NRPGPOINTS, #NRPGPOINTS + .@point_amt;
+	dispbottom "Você recebeu "+.@point_amt+" ponto(s) de fidelidade por ficar online por 1 hora, junte para trocar por prêmios!";
+	dispbottom "Saldo de pontos = "+#NRPGPOINTS+" Pontos de fidelidade";
+	set @consecutive_hour, @consecutive_hour + 1;
+	}
+//Check for 12 hours consecutive
+	if(@consecutive_hour == 12) {
+	set @consecutive_hour,0;
+	set .@cpoint_amt, 10; //Points to get for 12 Consecutive hours (default: 50)
+	set #NRPGPOINTS, #NRPGPOINTS + .@cpoint_amt;
+	dispbottom "Você recebeu "+.@cpoint_amt+" pontos de fidelidade por jogar 12 horas consecutivas, junte para trocar por prêmios!";
+	dispbottom "Saldo de pontos = "+#NRPGPOINTS+" pontos de fidelidade";
+	}
+stopnpctimer;
+initnpctimer;
+end;
+
+}
+//--End of the Script

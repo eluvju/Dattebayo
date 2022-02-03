@@ -1,0 +1,167 @@
+//===== eAthena Script ======================================= 
+//= Stylist Script
+//===== By: ================================================== 
+//= eAthena Dev team
+//= Revised by Nekosume [pyRO v3.0] 
+//===== Current Version: ===================================== 
+//= 4.2
+//===== Compatible With: ===================================== 
+//= Any eAthena Version 
+//===== Description: ========================================= 
+//= Revised dye NPC
+//===== Additional Comments: =================================
+//= v4.2 - Renamed to avoid conflict [Paradox924X]
+//= v4.1 - New hairstyles added [Mass Zero]
+//= v4.0 - Refined and Combined [Darkchild]
+//= v3.0 - Added the 'Browse' options
+//= v2.5 - Added more hair colors
+//= v2.0 - Changed palette and hair style select
+//= v1.5 - Revised script / different dialog
+//= v1.0 - Split into two NPCs
+//============================================================ 
+
+
+//Stylist------------------------------------------------------------------------------------------------------------
+ra_in01,215,91,1	script	Estilista Vip	819,{
+	mes "[^FF8000Estilista^000000]";
+	mes "Eu sou o estilista, UI!";
+	mes "Eu posso mudar o seu cabelo!";
+	mes "Gostaria de mudar o que? UI!";
+	next;
+	menu "Cabelo",Lstyle,"Cor do cabelo",Lcolor,"Nada",LCancel;
+
+	Lstyle:
+		mes "[^FF8000Estilista^000000]";
+		mes "Você gostaria de olhar os cabelos, ou gostaria de escolher direto?";
+		next;
+		menu "Olhar",Lbrowsesty,"Eu sei o que quero",Lwantsty;
+
+	Lwantsty:
+		mes "[^FF8000Estilista^000000]";
+		mes "Ótimo! Agora escolhe o cabelo!";
+ 		next;
+		mes "[^FF8000Estilista^000000]";
+		mes "Escolhe um número de cabelo entre ^0000FF0 e 37^000000.";
+		mes "O número 0, É a cor padrão de seu cabelo";
+ 		next;
+		input @sty;
+		if (@sty>36) close;
+		if (@sty<0) close;
+		setlook 1,@sty;
+		set meucabelo,getlook(1);
+		next;
+		mes "[^FF8000Estilista^000000]";
+		mes "Está bem, ou gostaria de outro estilo?";
+		next;
+		menu "Este está bem",-,"Estilo diferente, por favor",Lwantsty;
+		next;
+		mes "[^FF8000Estilista^000000]";
+		mes "Tá ótimo ein!  volte sempre, okay?";
+		close;
+
+	Lbrowsesty:
+		set @look, -1;
+		mes "[^FF8000Stylist^000000]";
+		mes "Okay, here we go~!  Just stop me when you see something you like, okay?";
+		next;
+
+	Lbrowserep:
+		set @look,@look+1;
+		setlook 1,@look;
+		mes "Este é o número^FF9009 "+@look+" ^000000!"; 
+		if(@look == 36) menu "Volte para o começo",Lbrowsesty,"Eu gosto desse",Lstop;
+		if(@look != 36)	menu "Continua",Lbrowserep,"Eu goste desse",Lstop;
+		
+	Lcolor:
+		mes "[^FF8000Estilista^000000]";
+		mes "Do you want to browse through the choices, or do you know what you want?";
+		next;
+		menu "Browse",Lbrowsecolor,"I know what I want",Lwantcolor;
+
+	Lwantcolor:
+		mes "[^FF8000Estilista^000000]";
+		mes "Escolha uma cor e vamos começar.";
+		next;
+		mes "[^FF8000Estilista^000000]";
+		mes "Escolha uma cor de cabelo ^0000FFentre 0 e 20^000000.";
+		mes "O número 0 é o padrão.";
+ 		next;
+		input @color;
+		if (@color>99) close;
+		if (@color<0) close;
+		setlook 6,@color;
+		next;
+		mes "[^FF8000Estilista^000000]";
+		mes "Está bom, ou gostaria de outra cor?";
+		next;
+		menu "Está bom",-,"Outra cor, por favor",Lwantcolor;
+		next;
+		mes "[^FF8000Estilista^000000]";
+		mes "Você está ótimo(a)!  Volte sempre, okay?";
+		close;
+
+	Lbrowsecolor:
+		set @look, -1;
+		mes "[^FF8000Estilista^000000]";
+		mes "Okay, Vamos lá!  Apenas me diga quando achar algo que goste ta bom?";
+		next;
+
+	Lbrowsecolorrep:
+		set @look,@look+1;
+		setlook 6,@look;
+		mes "Este é a cor ^FF9009 "+@look+" ^000000!"; 
+		if(@look == 99) menu "Volte para o inicio",Lbrowsecolor,"Eu gostei desse",Lstop;
+		if(@look != 99)	menu "Continue",Lbrowsecolorrep,"Eu gostei desse",Lstop;
+
+		Lstop:
+			mes "[^FF8000Estilista^000000]";
+			mes "Você ta ótimo!  Amay! ^_^";
+			close;
+
+	LCancel:
+		mes "[^FF8000Estilista^000000]";
+		mes "Volte sempre.";
+		close;
+
+	Lcloth:
+		mes "[^FF8000Stylist^000000]";
+		mes "Do you want to browse through the choices, or do you know what you want?";
+		next;
+		menu "Browse",Lbrowsecloth,"I know what I want",Lwantcloth;
+
+	Lwantcloth:
+		mes "[^FF8000Stylist^000000]";
+		mes "Great!  Now just pick a pallete and I'll get started!";
+ 		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Please pick a style number ^0000FFbetween 0 and 77^000000.";
+		mes "Number 0, by the way, is the default style for your character.";
+ 		next;
+		input @pal;
+		if (@pal>77) close;
+		if (@pal<0) close;
+		setlook 7,@pal;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "Is this good, or do you want a different pallet";
+		next;
+		menu "This is good",-,"Different pallet, please",Lwantcloth;
+		next;
+		mes "[^FF8000Stylist^000000]";
+		mes "You look great~!  Come back again, okay?";
+		close;
+
+	Lbrowsecloth:
+		set @look, -1;
+		mes "[^FF8000Stylist^000000]";
+		mes "Okay, here we go~!  Just stop me when you see something you like, okay?";
+		next;
+
+	Lbrowseclothrep:
+		set @look,@look+1;
+		setlook 7,@look;
+		mes "This is Pallete Number^FF9009 "+@look+" ^000000!"; 
+		if(@look == 77) menu "Back To The Begin",Lbrowsecloth,"I like this one",Lstop;
+		if(@look != 77)	menu "Keep going",Lbrowseclothrep,"I like this one",Lstop;
+}
+

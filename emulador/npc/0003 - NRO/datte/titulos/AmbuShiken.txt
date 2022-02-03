@@ -1,0 +1,898 @@
+-	script	Evento#AS	AnbuShiken -1,{
+OnPCLoadMapEvent:
+if(strcharinfo(3) == "pvp_n_5-5" || strcharinfo(3) == "pvp_n_6-5" || strcharinfo(3) == "pvp_n_7-5" || strcharinfo(3) == "pvp_n_8-5") end;
+if(AShide == 1){
+atcommand "@hide";
+set AShide, 0;
+}
+end;
+
+OnPCLogoutEvent:
+set AShide, 0;
+end;
+
+OnPCDieEvent:
+if(strcharinfo(3) != "pvp_n_5-5" && strcharinfo(3) != "pvp_n_6-5" && strcharinfo(3) != "pvp_n_7-5" && strcharinfo(3) != "pvp_n_8-5") end;
+sleep2(5000);
+atcommand "@alive";
+end;
+}
+
+//===== Script Konoha: ==============================================
+pvp_n_5-5.gat,80,119,4	script	Anbu Shiken#1Konoha	882,{
+
+if(getguildmaster(88) != strcharinfo(0) && getgmlevel() < 5) end;
+
+// Nome do npc
+set .npc$,"^800000[Anbu Shiken]^000000";
+
+pvpoff "pvp_n_5-5";
+
+mes .npc$;
+mes "Olá Kage. Em que posso ajuda-lo?";
+switch(select("Contagem:Ativar Suporte:Desativar Suporte:Trazer Player:Retirar Player:Adicionar Candidato:Remover Candidato:Resetar Candidatos:Hide:Ativar Barreiras:Desativar Barreiras:Recall Party:Matar Candidato")){
+case 1:
+close2;
+warp "pvp_n_5-5",100,100;
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: Preparem-se, o duelo iniciará em 10 segundos.",0;
+sleep2(5000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 5.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 4.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 3.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 2.",0;
+atcommand "@skilloff";
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 1.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: Lutem!",0;
+atcommand "@skillon";
+pvpon "pvp_n_5-5";
+close;
+end;
+
+case 2:
+enablenpc "Suporte AS#Konoha";
+close;
+end;
+
+case 3:
+disablenpc "Suporte AS#Konoha";
+close;
+end;
+
+case 4:
+next;   //
+mes .npc$;
+mes "Digíte o número do novo desafiante à Arena:";
+for( set .@i, 1; .@i < getarraysize($AScharid1)+1; set .@i, .@i + 1 )
+mes "["+$AScharname1$[.@i]+"] - ["+.@i+"]";
+input .@newp;
+if(.@newp < 1 || .@newp > getarraysize($AScharid1)) close;
+if(select("Esquerda:Direita") == 1){
+set .@x,93;
+set .@y,100;
+}else{
+set .@x,106;
+set .@y,100;
+}
+warpchar strcharinfo(3),.@x,.@y,$AScharid1[.@newp];
+close;
+end;
+
+case 6:
+next;
+
+mes .npc$;
+mes "Desabilitado temporariamente. Os candidatos devem se cadastrar na área de espera.";
+close;
+end;
+
+mes .npc$;
+mes "Digíte o nome do novo candidato à Shiken:";
+input .@newc$;
+set .@newc, getidcharname(.@newc$);
+if(.@newc == 0){
+mes .npc$;
+mes "Não pude encontrar um jogador com este nome.";
+close;
+end;
+}
+if(getcharid(2,.@newc$) != getcharid(2)){
+mes .npc$;
+mes "O jogador precisa estar na sua guild.";
+close;
+end;
+}
+for( set .@i, 1; .@i < 100 && $AScharid1[.@i] != 0; set .@i, .@i + 1 );
+if(.@i > 98) close;
+set $AScharid1[.@i], .@newc;
+set $AScharname1$[.@i], .@newc$;
+next;
+mes .npc$;
+mes "Adicionado com sucesso..";
+warpchar "pvp_n_5-5",64,100,.@newc;
+close;
+end;
+
+case 7:
+next;
+mes .npc$;
+mes "Digíte o número do candidato a ser removido da Shiken:";
+for( set .@i, 1; .@i < getarraysize($AScharid1)+1; set .@i, .@i + 1 )
+mes "["+$AScharname1$[.@i]+"] - ["+.@i+"]";
+input .@oldc;
+if(.@oldc < 1 || .@oldc > getarraysize($AScharid1)) close;
+warpchar "kakashi",0,0,$AScharid1[.@oldc];
+set $AScharid1[.@oldc], 0;
+set $AScharname1$[.@oldc], 0;
+close;
+end;
+
+case 8:
+for( set .@i, 1; .@i < getarraysize($AScharid1)+1; set .@i, .@i + 1 ){
+set $AScharid1, 0;
+set $AScharname1$, 0;
+}
+close;
+end;
+
+case 9:
+for( set .@i, 1; .@i < 100 && $AScharid1[.@i] != getcharid(0); set .@i, .@i + 1 );
+if(.@i < 100) close;
+if(AShide == 0){
+atcommand "@hide";
+set AShide, 1;
+}else{
+atcommand "@hide";
+set AShide, 0;
+}
+close;
+end;
+
+case 10:
+setcell "pvp_n_5-5",76,101,76,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_5-5",123,101,123,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_5-5",98,122,101,122,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_5-5",101,76,98,76,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+close;
+end;
+
+case 11:
+setcell "pvp_n_5-5",76,101,76,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_5-5",123,101,123,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_5-5",98,122,101,122,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_5-5",101,76,98,76,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+close;
+end;
+
+case 12:
+warpparty "pvp_n_5-5",64,100,getcharid(1);
+warpchar strcharinfo(3),80,119,getcharid(0);
+end;
+
+case 13:
+next;
+mes .npc$;
+mes "Digíte o número do candidato a ser morto:";
+for( set .@i, 1; .@i < getarraysize($AScharid1)+1; set .@i, .@i + 1 )
+mes "["+$AScharname1$[.@i]+"] - ["+.@i+"]";
+input .@kill;
+if(.@kill < 1 || .@kill > getarraysize($AScharid1)) close;
+atcommand "@kill "+$AScharname1$[.@kill];
+close;
+end;
+}
+end;
+}
+
+hospital.gat,40,85,4	script	Anbu Shiken#0Konoha	882,{
+if(getguildmaster(getcharid(2)) != strcharinfo(0) || getcharid(2) != 88) end;
+warp "pvp_n_5-5",80,119;
+end;
+}
+
+pvp_n_5-5.gat,99,107,4	script	Suporte AS#Konoha	882,{
+atcommand "@repairall";
+percentheal(100,100);
+end;
+}
+
+pvp_n_5-5	mapflag	nowarp
+pvp_n_5-5	mapflag	noteleport
+pvp_n_5-5	mapflag	nowarpto
+pvp_n_5-5	mapflag	nobranch
+pvp_n_5-5	mapflag	nosave	SavePoint
+pvp_n_5-5	mapflag	nomemo
+pvp_n_5-5	mapflag	nopenalty
+pvp_n_5-5	mapflag	pvp
+pvp_n_5-5	mapflag	noexp
+
+
+
+
+
+
+
+//===== Script Nevoa: ==============================================
+pvp_n_6-5.gat,80,119,4	script	Anbu Shiken#1Nevoa	882,{
+
+if(getguildmaster(4) != strcharinfo(0) && getgmlevel() < 5) end;
+
+// Nome do npc
+set .npc$,"^800000[Anbu Shiken]^000000";
+
+pvpoff "pvp_n_6-5";
+
+mes .npc$;
+mes "Olá Kage. Em que posso ajuda-lo?";
+switch(select("Contagem:Ativar Suporte:Desativar Suporte:Trazer Player:Retirar Player:Adicionar Candidato:Remover Candidato:Resetar Candidatos:Hide:Ativar Barreiras:Desativar Barreiras:Recall Party:Matar Candidato")){
+case 1:
+close2;
+warp "pvp_n_6-5",100,100;
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: Preparem-se, o duelo iniciará em 10 segundos.",0;
+sleep2(5000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 5.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 4.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 3.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 2.",0;
+atcommand "@skilloff";
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 1.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: Lutem!",0;
+atcommand "@skillon";
+pvpon "pvp_n_6-5";
+close;
+end;
+
+case 2:
+enablenpc "Suporte AS#Nevoa";
+close;
+end;
+
+case 3:
+disablenpc "Suporte AS#Nevoa";
+close;
+end;
+
+case 4:
+next;   //
+mes .npc$;
+mes "Digíte o número do novo desafiante à Arena:";
+for( set .@i, 1; .@i < getarraysize($AScharid2)+1; set .@i, .@i + 1 )
+mes "["+$AScharname2$[.@i]+"] - ["+.@i+"]";
+input .@newp;
+if(.@newp < 1 || .@newp > getarraysize($AScharid2)) close;
+if(select("Esquerda:Direita") == 1){
+set .@x,93;
+set .@y,100;
+}else{
+set .@x,106;
+set .@y,100;
+}
+warpchar strcharinfo(3),.@x,.@y,$AScharid2[.@newp];
+close;
+end;
+
+case 5:
+next;
+mes .npc$;
+mes "Digíte o número do desafiante a ser retirado da Arena:";
+for( set .@i, 1; .@i < getarraysize($AScharid2)+1; set .@i, .@i + 1 )
+mes "["+$AScharname2$[.@i]+"] - ["+.@i+"]";
+input .@oldp;
+if(.@oldp < 1 || .@oldp > getarraysize($AScharid2)) close;
+warpchar strcharinfo(3),64,100,$AScharid2[.@oldp];
+close;
+end;
+
+case 6:
+next;
+
+mes .npc$;
+mes "Desabilitado temporariamente. Os candidatos devem se cadastrar na área de espera.";
+close;
+end;
+
+
+mes .npc$;
+mes "Digíte o nome do novo candidato à Shiken:";
+input .@newc$;
+set .@newc, getidcharname(.@newc$);
+if(.@newc == 0){
+mes .npc$;
+mes "Não pude encontrar um jogador com este nome.";
+close;
+end;
+}
+if(getcharid(2,.@newc$) != getcharid(2)){
+mes .npc$;
+mes "O jogador precisa estar na sua guild.";
+close;
+end;
+}
+for( set .@i, 1; .@i < 100 && $AScharid2[.@i] != 0; set .@i, .@i + 1 );
+if(.@i > 98) close;
+set $AScharid2[.@i], .@newc;
+set $AScharname2$[.@i], .@newc$;
+next;
+mes .npc$;
+mes "Adicionado com sucesso..";
+warpchar "pvp_n_6-5",64,100,.@newc;
+close;
+end;
+
+case 7:
+next;
+mes .npc$;
+mes "Digíte o número do candidato a ser removido da Shiken:";
+for( set .@i, 1; .@i < getarraysize($AScharid2)+1; set .@i, .@i + 1 )
+mes "["+$AScharname2$[.@i]+"] - ["+.@i+"]";
+input .@oldc;
+if(.@oldc < 1 || .@oldc > getarraysize($AScharid2)) close;
+warpchar "kakashi",0,0,$AScharid2[.@oldc];
+set $AScharid2[.@oldc], 0;
+set $AScharname2$[.@oldc], 0;
+close;
+end;
+
+case 8:
+for( set .@i, 1; .@i < getarraysize($AScharid2)+1; set .@i, .@i + 1 ){
+set $AScharid2, 0;
+set $AScharname2$, 0;
+}
+close;
+//warpchar strcharinfo(3),64,100,getcharid(0);
+//sleep2(1000);
+//warpparty "Leader",64,100,getcharid(1);
+//sleep2(1000);
+//warpchar strcharinfo(3),80,119,getcharid(0);
+end;
+
+case 9:
+for( set .@i, 1; .@i < 100 && $AScharid2[.@i] != getcharid(0); set .@i, .@i + 1 );
+if(.@i < 100) close;
+if(AShide == 0){
+atcommand "@hide";
+set AShide, 1;
+}else{
+atcommand "@hide";
+set AShide, 0;
+}
+close;
+end;
+
+case 10:
+setcell "pvp_n_6-5",76,101,76,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_6-5",123,101,123,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_6-5",98,122,101,122,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_6-5",101,76,98,76,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+close;
+end;
+
+case 11:
+setcell "pvp_n_6-5",76,101,76,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_6-5",123,101,123,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_6-5",98,122,101,122,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_6-5",101,76,98,76,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+close;
+end;
+
+case 12:
+warpparty "pvp_n_6-5",64,100,getcharid(1);
+warpchar strcharinfo(3),80,119,getcharid(0);
+end;
+
+case 13:
+next;
+mes .npc$;
+mes "Digíte o número do candidato a ser morto:";
+for( set .@i, 1; .@i < getarraysize($AScharid2)+1; set .@i, .@i + 1 )
+mes "["+$AScharname2$[.@i]+"] - ["+.@i+"]";
+input .@kill;
+if(.@kill < 1 || .@kill > getarraysize($AScharid2)) close;
+atcommand "@kill "+$AScharname2$[.@kill];
+close;
+end;
+}
+end;
+}
+
+hospital3.gat,40,85,4	script	Anbu Shiken#0Nevoa	882,{
+if(getguildmaster(getcharid(2)) != strcharinfo(0) || getcharid(2) != 4) end;
+warp "pvp_n_6-5",80,119;
+end;
+}
+
+pvp_n_6-5.gat,99,107,4	script	Suporte AS#Nevoa	882,{
+atcommand "@repairall";
+percentheal(100,100);
+end;
+}
+
+pvp_n_6-5	mapflag	nowarp
+pvp_n_6-5	mapflag	noteleport
+pvp_n_6-5	mapflag	nowarpto
+pvp_n_6-5	mapflag	nobranch
+pvp_n_6-5	mapflag	nosave	SavePoint
+pvp_n_6-5	mapflag	nomemo
+pvp_n_6-5	mapflag	nopenalty
+pvp_n_6-5	mapflag	pvp
+pvp_n_6-5	mapflag	noexp
+
+
+
+
+
+//===== Script Nuvem: ==============================================
+pvp_n_7-5.gat,80,119,4	script	Anbu Shiken#1Nuvem	882,{
+
+if(getguildmaster(29) != strcharinfo(0) && getgmlevel() < 5) end;
+
+// Nome do npc
+set .npc$,"^800000[Anbu Shiken]^000000";
+
+pvpoff "pvp_n_7-5";
+
+mes .npc$;
+mes "Olá Kage. Em que posso ajuda-lo?";
+switch(select("Contagem:Ativar Suporte:Desativar Suporte:Trazer Player:Retirar Player:Adicionar Candidato:Remover Candidato:Resetar Candidatos:Hide:Ativar Barreiras:Desativar Barreiras:Recall Party:Matar Candidato")){
+case 1:
+close2;
+warp "pvp_n_7-5",100,100;
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: Preparem-se, o duelo iniciará em 10 segundos.",0;
+sleep2(5000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 5.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 4.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 3.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 2.",0;
+atcommand "@skilloff";
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 1.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: Lutem!",0;
+atcommand "@skillon";
+pvpon "pvp_n_7-5";
+close;
+end;
+
+case 2:
+enablenpc "Suporte AS#Nuvem";
+close;
+end;
+
+case 3:
+disablenpc "Suporte AS#Nuvem";
+close;
+end;
+
+case 4:
+next;   //
+mes .npc$;
+mes "Digíte o número do novo desafiante à Arena:";
+for( set .@i, 1; .@i < getarraysize($AScharid3)+1; set .@i, .@i + 1 )
+mes "["+$AScharname3$[.@i]+"] - ["+.@i+"]";
+input .@newp;
+if(.@newp < 1 || .@newp > getarraysize($AScharid3)) close;
+if(select("Esquerda:Direita") == 1){
+set .@x,93;
+set .@y,100;
+}else{
+set .@x,106;
+set .@y,100;
+}
+warpchar strcharinfo(3),.@x,.@y,$AScharid3[.@newp];
+close;
+end;
+
+case 5:
+next;
+mes .npc$;
+mes "Digíte o número do desafiante a ser retirado da Arena:";
+for( set .@i, 1; .@i < getarraysize($AScharid3)+1; set .@i, .@i + 1 )
+mes "["+$AScharname3$[.@i]+"] - ["+.@i+"]";
+input .@oldp;
+if(.@oldp < 1 || .@oldp > getarraysize($AScharid3)) close;
+warpchar strcharinfo(3),64,100,$AScharid3[.@oldp];
+close;
+end;
+
+case 6:
+next;
+
+mes .npc$;
+mes "Desabilitado temporariamente. Os candidatos devem se cadastrar na área de espera.";
+close;
+end;
+
+
+mes .npc$;
+mes "Digíte o nome do novo candidato à Shiken:";
+input .@newc$;
+set .@newc, getidcharname(.@newc$);
+if(.@newc == 0){
+mes .npc$;
+mes "Não pude encontrar um jogador com este nome.";
+close;
+end;
+}
+if(getcharid(2,.@newc$) != getcharid(2)){
+mes .npc$;
+mes "O jogador precisa estar na sua guild.";
+close;
+end;
+}
+for( set .@i, 1; .@i < 100 && $AScharid3[.@i] != 0; set .@i, .@i + 1 );
+if(.@i > 98) close;
+set $AScharid3[.@i], .@newc;
+set $AScharname3$[.@i], .@newc$;
+next;
+mes .npc$;
+mes "Adicionado com sucesso..";
+warpchar "pvp_n_7-5",64,100,.@newc;
+close;
+end;
+
+case 7:
+next;
+mes .npc$;
+mes "Digíte o número do candidato a ser removido da Shiken:";
+for( set .@i, 1; .@i < getarraysize($AScharid3)+1; set .@i, .@i + 1 )
+mes "["+$AScharname3$[.@i]+"] - ["+.@i+"]";
+input .@oldc;
+if(.@oldc < 1 || .@oldc > getarraysize($AScharid3)) close;
+warpchar "kakashi",0,0,$AScharid3[.@oldc];
+set $AScharid3[.@oldc], 0;
+set $AScharname3$[.@oldc], 0;
+close;
+end;
+
+case 8:
+for( set .@i, 1; .@i < getarraysize($AScharid3)+1; set .@i, .@i + 1 ){
+set $AScharid3, 0;
+set $AScharname3$, 0;
+}
+close;
+//warpchar strcharinfo(3),64,100,getcharid(0);
+//sleep2(1000);
+//warpparty "Leader",64,100,getcharid(1);
+//sleep2(1000);
+//warpchar strcharinfo(3),80,119,getcharid(0);
+end;
+
+case 9:
+for( set .@i, 1; .@i < 100 && $AScharid3[.@i] != getcharid(0); set .@i, .@i + 1 );
+if(.@i < 100) close;
+if(AShide == 0){
+atcommand "@hide";
+set AShide, 1;
+}else{
+atcommand "@hide";
+set AShide, 0;
+}
+close;
+end;
+
+case 10:
+setcell "pvp_n_7-5",76,101,76,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_7-5",123,101,123,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_7-5",98,122,101,122,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_7-5",101,76,98,76,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+close;
+end;
+
+case 11:
+setcell "pvp_n_7-5",76,101,76,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_7-5",123,101,123,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_7-5",98,122,101,122,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_7-5",101,76,98,76,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+close;
+end;
+
+case 12:
+warpparty "pvp_n_7-5",64,100,getcharid(1);
+warpchar strcharinfo(3),80,119,getcharid(0);
+end;
+
+case 13:
+next;
+mes .npc$;
+mes "Digíte o número do candidato a ser morto:";
+for( set .@i, 1; .@i < getarraysize($AScharid3)+1; set .@i, .@i + 1 )
+mes "["+$AScharname3$[.@i]+"] - ["+.@i+"]";
+input .@kill;
+if(.@kill < 1 || .@kill > getarraysize($AScharid3)) close;
+atcommand "@kill "+$AScharname3$[.@kill];
+close;
+end;
+}
+end;
+}
+
+hospital4.gat,40,85,4	script	Anbu Shiken#0Nuvem	882,{
+if(getguildmaster(getcharid(2)) != strcharinfo(0) || getcharid(2) != 29) end;
+warp "pvp_n_7-5",80,119;
+end;
+}
+
+pvp_n_7-5.gat,99,107,4	script	Suporte AS#Nuvem	882,{
+atcommand "@repairall";
+percentheal(100,100);
+end;
+}
+
+pvp_n_7-5	mapflag	nowarp
+pvp_n_7-5	mapflag	noteleport
+pvp_n_7-5	mapflag	nowarpto
+pvp_n_7-5	mapflag	nobranch
+pvp_n_7-5	mapflag	nosave	SavePoint
+pvp_n_7-5	mapflag	nomemo
+pvp_n_7-5	mapflag	nopenalty
+pvp_n_7-5	mapflag	pvp
+pvp_n_7-5	mapflag	noexp
+
+
+
+
+
+
+
+//===== Script Suna: ==============================================
+pvp_n_8-5.gat,80,119,4	script	Anbu Shiken#1Suna	882,{
+
+if(getguildmaster(41) != strcharinfo(0) && getgmlevel() < 5) end;
+
+// Nome do npc
+set .npc$,"^800000[Anbu Shiken]^000000";
+
+pvpoff "pvp_n_8-5";
+
+mes .npc$;
+mes "Olá Kage. Em que posso ajuda-lo?";
+switch(select("Contagem:Ativar Suporte:Desativar Suporte:Trazer Player:Retirar Player:Adicionar Candidato:Remover Candidato:Resetar Candidatos:Hide:Ativar Barreiras:Desativar Barreiras:Recall Party:Matar Candidato")){
+case 1:
+close2;
+warp "pvp_n_8-5",100,100;
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: Preparem-se, o duelo iniciará em 10 segundos.",0;
+sleep2(5000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 5.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 4.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 3.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 2.",0;
+atcommand "@skilloff";
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: 1.",0;
+sleep2(1000);
+MapAnnounce strcharinfo(3),"[Anbu Shiken]: Lutem!",0;
+atcommand "@skillon";
+pvpon "pvp_n_8-5";
+close;
+end;
+
+case 2:
+enablenpc "Suporte AS#Suna";
+close;
+end;
+
+case 3:
+disablenpc "Suporte AS#Suna";
+close;
+end;
+
+case 4:
+next;   //
+mes .npc$;
+mes "Digíte o número do novo desafiante à Arena:";
+for( set .@i, 1; .@i < getarraysize($AScharid4)+1; set .@i, .@i + 1 )
+mes "["+$AScharname4$[.@i]+"] - ["+.@i+"]";
+input .@newp;
+if(.@newp < 1 || .@newp > getarraysize($AScharid4)) close;
+if(select("Esquerda:Direita") == 1){
+set .@x,93;
+set .@y,100;
+}else{
+set .@x,106;
+set .@y,100;
+}
+warpchar strcharinfo(3),.@x,.@y,$AScharid4[.@newp];
+close;
+end;
+
+case 5:
+next;
+mes .npc$;
+mes "Digíte o número do desafiante a ser retirado da Arena:";
+for( set .@i, 1; .@i < getarraysize($AScharid4)+1; set .@i, .@i + 1 )
+mes "["+$AScharname4$[.@i]+"] - ["+.@i+"]";
+input .@oldp;
+if(.@oldp < 1 || .@oldp > getarraysize($AScharid4)) close;
+warpchar strcharinfo(3),64,100,$AScharid4[.@oldp];
+close;
+end;
+
+case 6:
+next;
+
+mes .npc$;
+mes "Desabilitado temporariamente. Os candidatos devem se cadastrar na área de espera.";
+close;
+end;
+
+
+mes .npc$;
+mes "Digíte o nome do novo candidato à Shiken:";
+input .@newc$;
+set .@newc, getidcharname(.@newc$);
+if(.@newc == 0){
+mes .npc$;
+mes "Não pude encontrar um jogador com este nome.";
+close;
+end;
+}
+if(getcharid(2,.@newc$) != getcharid(2)){
+mes .npc$;
+mes "O jogador precisa estar na sua guild.";
+close;
+end;
+}
+for( set .@i, 1; .@i < 100 && $AScharid4[.@i] != 0; set .@i, .@i + 1 );
+if(.@i > 98) close;
+set $AScharid4[.@i], .@newc;
+set $AScharname4$[.@i], .@newc$;
+next;
+mes .npc$;
+mes "Adicionado com sucesso..";
+warpchar "pvp_n_8-5",64,100,.@newc;
+close;
+end;
+
+case 7:
+next;
+mes .npc$;
+mes "Digíte o número do candidato a ser removido da Shiken:";
+for( set .@i, 1; .@i < getarraysize($AScharid4)+1; set .@i, .@i + 1 )
+mes "["+$AScharname4$[.@i]+"] - ["+.@i+"]";
+input .@oldc;
+if(.@oldc < 1 || .@oldc > getarraysize($AScharid4)) close;
+warpchar "kakashi",0,0,$AScharid4[.@oldc];
+set $AScharid4[.@oldc], 0;
+set $AScharname4$[.@oldc], 0;
+close;
+end;
+
+case 8:
+for( set .@i, 1; .@i < getarraysize($AScharid4)+1; set .@i, .@i + 1 ){
+set $AScharid4, 0;
+set $AScharname4$, 0;
+}
+close;
+//warpchar strcharinfo(3),64,100,getcharid(0);
+//sleep2(1000);
+//warpparty "Leader",64,100,getcharid(1);
+//sleep2(1000);
+//warpchar strcharinfo(3),80,119,getcharid(0);
+end;
+
+case 9:
+for( set .@i, 1; .@i < 100 && $AScharid4[.@i] != getcharid(0); set .@i, .@i + 1 );
+if(.@i < 100) close;
+if(AShide == 0){
+atcommand "@hide";
+set AShide, 1;
+}else{
+atcommand "@hide";
+set AShide, 0;
+}
+close;
+end;
+
+case 10:
+setcell "pvp_n_8-5",76,101,76,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_8-5",123,101,123,98,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_8-5",98,122,101,122,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_8-5",101,76,98,76,cell_walkable,0; //Cells da Blok Wall(x1,y1,x2,y2)
+close;
+end;
+
+case 11:
+setcell "pvp_n_8-5",76,101,76,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_8-5",123,101,123,98,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_8-5",98,122,101,122,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+setcell "pvp_n_8-5",101,76,98,76,cell_walkable,1; //Cells da Blok Wall(x1,y1,x2,y2)
+close;
+end;
+
+case 12:
+warpparty "pvp_n_8-5",64,100,getcharid(1);
+warpchar strcharinfo(3),80,119,getcharid(0);
+end;
+
+case 13:
+next;
+mes .npc$;
+mes "Digíte o número do candidato a ser morto:";
+for( set .@i, 1; .@i < getarraysize($AScharid4)+1; set .@i, .@i + 1 )
+mes "["+$AScharname4$[.@i]+"] - ["+.@i+"]";
+input .@kill;
+if(.@kill < 1 || .@kill > getarraysize($AScharid4)) close;
+atcommand "@kill "+$AScharname4$[.@kill];
+close;
+end;
+}
+end;
+}
+
+hospital2.gat,40,85,4	script	Anbu Shiken#0Suna	882,{
+if(getguildmaster(getcharid(2)) != strcharinfo(0) || getcharid(2) != 41) end;
+warp "pvp_n_8-5",80,119;
+end;
+}
+
+pvp_n_8-5.gat,99,107,4	script	Suporte AS#Suna	882,{
+atcommand "@repairall";
+percentheal(100,100);
+end;
+}
+
+pvp_n_8-5	mapflag	nowarp
+pvp_n_8-5	mapflag	noteleport
+pvp_n_8-5	mapflag	nowarpto
+pvp_n_8-5	mapflag	nobranch
+pvp_n_8-5	mapflag	nosave	SavePoint
+pvp_n_8-5	mapflag	nomemo
+pvp_n_8-5	mapflag	nopenalty
+pvp_n_8-5	mapflag	pvp
+pvp_n_8-5	mapflag	noexp
+
+
+pvp_n_5-5.gat,64,102,4	script	Inscrição AS#Konoha	882,{
+if(getguildmaster(88) == strcharinfo(0)) end;
+for( set .@i, 1; .@i < 100 && $AScharid1[.@i] != 0 && $AScharid1[.@i] != getcharid(0); set .@i, .@i + 1 );
+set $AScharid1[.@i], getcharid(0);
+set $AScharname1$[.@i], strcharinfo(0);
+mes "Cadastro realizado.";
+close;
+end;
+}
+
+pvp_n_6-5.gat,64,102,4	script	Inscrição AS#Nevoa	882,{
+if(getguildmaster(4) == strcharinfo(0)) end;
+for( set .@i, 1; .@i < 100 && $AScharid2[.@i] != 0 && $AScharid2[.@i] != getcharid(0); set .@i, .@i + 1 );
+set $AScharid2[.@i], getcharid(0);
+set $AScharname2$[.@i], strcharinfo(0);
+mes "Cadastro realizado.";
+close;
+end;
+}
+
+pvp_n_7-5.gat,64,102,4	script	Inscrição AS#Nuvem	882,{
+if(getguildmaster(29) == strcharinfo(0)) end;
+for( set .@i, 1; .@i < 100 && $AScharid3[.@i] != 0 && $AScharid3[.@i] != getcharid(0); set .@i, .@i + 1 );
+set $AScharid3[.@i], getcharid(0);
+set $AScharname3$[.@i], strcharinfo(0);
+mes "Cadastro realizado.";
+close;
+end;
+}
+
+pvp_n_8-5.gat,64,102,4	script	Inscrição AS#Suna	882,{
+if(getguildmaster(41) == strcharinfo(0)) end;
+for( set .@i, 1; .@i < 100 && $AScharid4[.@i] != 0 && $AScharid4[.@i] != getcharid(0); set .@i, .@i + 1 );
+set $AScharid4[.@i], getcharid(0);
+set $AScharname4$[.@i], strcharinfo(0);
+mes "Cadastro realizado.";
+close;
+end;
+}

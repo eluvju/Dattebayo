@@ -1,0 +1,35 @@
+ein_fild01,196,347,4	script	Comerciante#4	932,{
+
+if(countitem (638) < 30 && missaomedalhoes == 1){
+     mes "[Comerciante]";
+    mes "Vejo que você não pegou os 30 Medalhões de Carne ainda.";
+    close;
+    }
+
+	mes "[Comerciante]";
+	mes "Você quer ganhar uma caixa com algumas Pílulas de Chakra? Posso lhe oferecer em troca de um favor.";
+	if(select("Claro!:Não, obrigado.")==2)close;
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, preciso que você junte 30 Medalhões de Carne.";
+	mes "Você pode conseguir eles de Minotauro, neste mapa.";
+	set missaomedalhoes,1;
+
+	if(countitem (638) < 30){
+	next;
+	mes "Vejo que você não juntou tudo ainda.";
+	mes "Junte os restantes. Ainda faltam Medalhões de Carne!";
+	close;
+	}
+
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, você completou a missão!";
+	mes "Aqui estão suas Pílulas de Chakra!";
+	set missaomedalhoes,0;
+	delitem 638,30;
+	getitem 1311,1;
+	query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 10 WHERE `char_id` = '"+getcharid(0)+"'");
+	dispbottom "10 Pontos de Missão adquiridos.";
+	close;
+	}

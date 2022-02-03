@@ -1,0 +1,53 @@
+//////// World Boss - Nazuki Naruto Legends Online 2019 ////////
+//////// Invocação do Monstro Orochimaru - Evento WB    ////////
+
+-	script	WorldBossTeste3	-1,{
+
+OnTue2100:
+set $worldboss,1;
+gvgon "guild_vs2";
+pvpon "guild_vs2";
+announce "[World Boss]: O evento está aberto, acesso pelo Centro de Treinamento!",0;
+sleep 40000;
+announce "[Orochimaru]: Veja, quantos jovens talentos temos aqui!",0;
+sleep 4000;
+announce "[Orochimaru]: Seu corpo será MEU! MWAHAHAHA!",0;
+sleep 4000;
+announce "[Orochimaru]: Sinta o poder!",0;
+
+monster "guild_vs2",50,50,"World Boss Orochimaru",1002,1,"WorldBossTeste3::OnMobOro";
+end;
+
+	OnMobOro:
+			announce "[World Boss]: "+strcharinfo(0)+" derrotou Orochimaru! Recompensa: 1 Fuuin no Sho!",0;
+			getitem 753,1;
+			set $worldboss,0;
+			gvgoff "guild_vs2";
+			pvpoff "guild_vs2";
+			end;
+		}
+
+treinamento,73,157,5	script	World Boss	49,{
+
+mes "^ff0000[World Boss]^000000";
+mes "Olá "+ strcharinfo(0) +", pronto para enfrentar o World Boss da semana?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+if ($worldboss == 0) { 
+mes "A entrada está bloqueada, voltaremos semana que vem!";
+close;
+}
+
+mes "^ff0000[World Boss]^000000";
+mes "Boa sorte, "+ strcharinfo(0) +"!";
+next;
+warp "guild_vs2", 50,50;
+close2;
+
+r2:
+next;
+mes "^ff0000[World Boss]^000000";
+mes "Ficaremos abertos por pouco tempo, corra!";
+close;	
+}	

@@ -1,0 +1,61 @@
+reuniao,50,33,5	script	Monitor	4_BOARD3,{
+	function fun_GMTitle;
+	function func_GMState;
+	
+	.@size = query_sql("SELECT `char`.`account_id`,`char`.`char_id`,`char`.`name`,`login`.`lastlogin`,TIMEDIFF(NOW(),`login`.`lastlogin`),`login`.`group_id` FROM `char` INNER JOIN `login` ON `char`.`account_id` = `login`.`account_id` WHERE `group_id` > "+.min_group_id+" ORDER BY `char`.`online` DESC, `login`.`group_id` DESC, `char`.`name` DESC LIMIT "+.max_limit,.@aid,.@cid,.@name$,.@lastlogin$,.@lastlogin_duration$,.@group_id);
+
+	mes "                     ^FF6961[ STAFF Board ]^000000";
+	mes "Existem ^FF0000"+.@size+"^000000 STAFF(s) no Servidor:";
+	mes " ";
+	while (.@i < .@size) {
+		mes fun_GMTitle(.@name$[.@i],.@group_id[.@i])+" - "+func_GMState(.@aid[.@i],.@cid[.@i],.@name$[.@i])+"^000000";
+		.@i++;
+	}
+	close2;
+	cutin "",255;
+	end;
+	
+	OnInit:
+		.max_limit = 10;
+		.min_group_id = 1;
+		.afk_second = 300;
+		end;
+
+	function	fun_GMTitle	{
+		switch (getarg(1,0)) {
+			default: .@title$ = ""; break;
+			case 1: .@title$ = "(Super Player)"; break;
+			case 2: .@title$ = "(Support)"; break;
+			case 3: .@title$ = "(Script Manager)"; break;
+			case 4: .@title$ = "(Event Manager)"; break;
+			case 10: .@title$ = "(Law Enforcement)"; break;
+			case 99: .@title$ = "^800080(Kira)^000000 - "; break;
+		}
+		
+		return .@title$ + " " +  getarg(0,"NULL");
+	}
+	
+	function	func_GMState	{
+		.@aid = getarg(0,0);
+		.@cid = getarg(1,0);
+		.@name$ = getarg(2,"NULL");
+		
+		if (isloggedin(.@aid,.@cid)) {
+		
+			.@idle = checkidle(.@name$);
+			
+			if (.@idle >= .afk_second && .afk_second) {
+				.@state$ = "^DAA520AFK/Away^000000";
+			}
+			else {
+				.@state$ = "^21a60fOnline^000000";
+			}
+		}
+		else {
+			.@state$ = "^FF0000Offline^000000";
+		}
+		
+		return .@state$;
+	}
+
+}

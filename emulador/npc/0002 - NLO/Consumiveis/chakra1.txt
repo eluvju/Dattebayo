@@ -1,0 +1,43 @@
+-	script	Killermitaodanuvem	-1,{
+
+OnNPCKillEvent:
+if(killedrid == 1412 && missaoermitaodanuvem == 1) set killermitaodanuvem,killermitaodanuvem + 1;
+if(killedrid == 1412 && missaoermitaodanuvem == 1) dispbottom "Você já matou "+killermitaodanuvem+" Ermitão(s) da Nuvem!.";
+end;
+
+}
+
+ein_fild01,198,338,2	script	Comerciante#3	852,{
+if(killermitaodanuvem < 60 && missaoermitaodanuvem == 1){
+    mes "[Comerciante]";
+    mes "Vejo que você não matou ainda.";
+    mes "Mate as restantes. Ainda faltam "+(60 - killermitaodanuvem)+" Ermitão(s) da Nuvem!";
+    close;
+    }
+	mes "[Comerciante]";
+	mes "Você quer ganhar uma caixa com algumas Pílulas de Chakra? Posso lhe oferecer em troca de um favor. ";
+	if(select("Claro!:Não, obrigado.")==2)close;
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, preciso que você mate 60 Ermitão(s) da Nuvem!.";
+	mes "Eles atrapalham meu negócio, estão espalhados pelo mapa.";
+	set missaoermitaodanuvem,1;
+
+	if(killermitaodanuvem < 60){
+	next;
+	mes "Vejo que você não matou ainda.";
+	mes "Mate os restantes. Ainda faltam "+(60 - killermitaodanuvem)+" Ermitão(s) da Nuvem!!";
+	close;
+	}
+
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, você matou as 60 Ermitão(s) da Nuvem!!";
+	mes "Aqui estão suas pílulas!";
+	set killermitaodanuvem, 0;
+	set missaoermitaodanuvem,0;
+	getitem 1311,1;
+	query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 10 WHERE `char_id` = '"+getcharid(0)+"'");
+	dispbottom "10 Pontos de Missão adquiridos.";
+	close;
+	}

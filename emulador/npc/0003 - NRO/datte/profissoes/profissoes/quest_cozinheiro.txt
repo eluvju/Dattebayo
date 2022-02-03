@@ -1,0 +1,68 @@
+konoha3,148,253,5	script	cozinheiro::pro_cozinheiro	59,{
+if (jatemmain == 1) goto L_no;
+if(cozinheiro == 1) goto L_temprofissao;
+if (checkquest(2012) == 1) goto L_go;
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá. Você parece interessado nas minhas comidas, por acaso você não gostaria de aprender como faze-las? Posso lhe ensinar a ser um Cozinheiro, quer aprender?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	cozinheiro
+//========================================================================
+
+L_SS:
+next;
+mes "Ok shinobi, quero que você colete alguns itens para mostrar que é apto para isto!";
+next;
+mes "Aqui está a lista de itens:";
+next;
+mes "- Obter 150x Cauda de yoyo."; //(Id: 942)
+mes "- Obter 30x Biscoitos."; //(Id: 713)
+mes "- Obter 30x Bananas."; //(id: 513)
+mes "- Obter 1x Molho Doce."; //(Id: 7453)
+mes "- Matar 100x Condor"; // 1009
+setquest 2012;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2012,hunting) != 2) {mes "Você ainda não completou suas Tarefas."; close;}
+if (countitem(942) < 150) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(713) < 30) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(513) < 30) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(7453) < 1) {mes "Você ainda não completou suas tarefas"; close;}
+mes "Com essa velocidade, logo logo você será um grande cozinheiro!!";
+next;
+mes "Agora você é um Cozinheiro!";
+completequest 2012;
+delitem 942,150;
+delitem 713,30;
+delitem 513,30;
+delitem 7453,1;
+getitem 7031,1;
+getitem 5026,1;
+set cozinheiro,1;
+set jatemmain,1;
+announce "[Profissão] "+strcharinfo(0)+" acaba de virar Cozinheiro!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Olá denovo! Precisa de algo?";
+menu "Não",L_no,"Quero receber outro Frigideira.",luva;
+
+luva:
+if (countitem(7031) >= 1) {mes "Você não precisa de outra Frigideira."; close;}
+mes "Aqui está";
+getitem 7031,1;
+close;
+
+}
+
+sunagakure,135,287,5	duplicate(pro_cozinheiro)	cozinheiro#1	59,{
+kiri,371,198,5	duplicate(pro_cozinheiro)	cozinheiro#2	59,{
+nuvem,99,135,5	duplicate(pro_cozinheiro)	cozinheiro#3	59,{

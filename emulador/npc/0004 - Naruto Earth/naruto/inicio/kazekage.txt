@@ -1,0 +1,10 @@
+//=====================================
+// NPC DA Nuvem
+//=====================================
+
+aldeg_cas04,133,215,4	script	Kazekage	4_m_casman1,{
+
+npctalk "Olá "+strcharinfo(0)+" como você está?";
+mes "Eu sou o Kazekage! Infelizmente, nossa vila está passando por algumas reformas internas e conflitos políticos e não estamos prontos para te receber. Por favor, escolha alguma outra vila.";
+    close;
+}

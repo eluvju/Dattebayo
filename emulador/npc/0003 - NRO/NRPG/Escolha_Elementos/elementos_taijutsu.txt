@@ -1,0 +1,38 @@
+ama_in01,96,26,3	script	Taijutsu	734,{
+	show "[Taijutsu]";
+	if(getskilllv(535)) goto L_alreadyhave;
+	if(elemento >= 2){goto L_elementos;}
+	if(elementotaijutsu == 1){goto L_alreadyhave;}	
+	if(elemento == 0){goto aprendertaijutsu;}
+	if(elemento == 1){goto aprendertaijutsu;}
+
+
+	aprendertaijutsu:
+	show "Olá caro shinobi, voce gostaria de aprender o Taijutsu (Corpo a corpo) ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	next;
+	show "[Taijutsu]";
+	show "Muito bem, muito sábia essa escolha!";
+	set elementotaijutsu,elementotaijutsu + 1;
+	set elemento,elemento + 1;
+	set genin,1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	close;
+
+L_alreadyhave:
+	next;
+	show "[Taijutsu]";
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

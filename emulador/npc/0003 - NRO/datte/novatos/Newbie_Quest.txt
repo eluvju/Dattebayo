@@ -1,0 +1,162 @@
+kiragakure,152,202,5	script	Guia NRO::newbie	112,{
+
+if(newbiestart == 1) {mes "Você ainda tem uma quest em andamento, complete e volte a falar comigo"; close;}
+if(newbie == 1) goto newbie1;
+if(newbie == 2) goto newbie2;
+if(newbie == 3) goto newbie3;
+if(newbie == 4) goto newbie4;
+if(newbie == 5) goto newbie5;
+if(newbie == 6) goto newbie6;
+if(newbie == 7) goto newbie7;
+if(newbie == 8) goto newbie8;
+if(newbie == 9) goto newbie9;
+if(newbie == 10) goto newbie10;
+if(newbie == 11) {mes "Você já finalizou o newbie quest"; close;}
+if(newbie != 0) {mes "Você ainda tem uma quest em andamento, complete e volte a falar comigo"; close;}
+if (BaseLevel > 150) {mes "Essa quest é apenas pra quem é menor que nível 150"; close;}
+
+mes "Olá novato, bem-vindo ao nosso servidor";
+next;
+mes "Aqui você pode fazer a newbie quest, que é uma sequência de quests para ajudar os novatos";
+next;
+mes "Você irá conhecer os npcs, sistemas, e no final da quest irá receber uma bela recompensa";
+next;
+mes "Gostaria de começar a quest de novatos do NRO?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+mes "Ótimo, vamos começar sua jornada no NRO";
+mes "Nessa primeira quest vamos conhecer o hospital de sua vila";
+next;
+mes "Entre no hospital e se cure, é bom lembrar que suas quests podem todas ser encontradas no atalho ALT U";
+next;
+mes "Quando finalizar volte a falar comigo";
+set newbiestart,1;
+setquest 2017;
+close;
+
+L_nao:
+close;
+
+newbie1:
+if(checkquest(2018) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Agora que já conhece o hospital, vamos em frente";
+next;
+mes "Próxima missão é utilizar o armazém, basta falar com ele, feito isso volte a falar comigo";
+setquest 2018;
+close;
+
+newbie2:
+if(checkquest(2019) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Fácil usar o armazém não é?";
+next;
+mes "Vá e fale com o npc Sato nos arredores de sua vila e volte a falar comigo";
+erasequest 2018;
+setquest 2019;
+close;
+
+newbie3:
+if(checkquest(2020,hunting) == 2) {set newbie,4; goto newbie4;}
+if(checkquest(2020) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Sato é bastante dedicado não acha?";
+//if (BaseLevel < 200) {AtCommand "@lvup 5";}
+next;
+mes "Agora vamos sair um pouco da vila, encontre a saída da vila e derrote 10 girinos no primeiro campo, feito isso volte a falar comigo";
+erasequest 2019;
+setquest 2020;
+close;
+
+newbie4:
+if(checkquest(2021) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Sentiu o calor da batalha?";
+//if (BaseLevel < 200) {AtCommand "@lvup 5";}
+next;
+mes "É só o começo, vamos pra próxima, encontre o npc Guarda Ando no primeiro campo de sua vila";
+mes "feito isso volte a falar comigo";
+erasequest 2020;
+setquest 2021;
+if(checkquest(2020,hunting) == 2) {completequest 2020; close;}
+close;
+
+newbie5:
+if(checkquest(2022,hunting) == 2) {set newbie,6; goto newbie6;}
+if(checkquest(2022) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "O que o guarda disse é verdade, é preciso ter muito cuidado";
+next;
+mes "Seguindo em frente, hora de voltar a explorar a vila, encontre o esgoto e mate 20 morcegos";
+mes "feito isso volte a falar comigo";
+erasequest 2021;
+setquest 2022;
+close;
+
+newbie6:
+if(checkquest(2023) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Aquele esgoto é enorme, com muitos insetos e seres desconhecidos";
+next;
+mes "Vamos pra próxima, encontre o escritório do kage, e fale com o npc Missão Rank D";
+mes "feito isso volte a falar comigo";
+erasequest 2022;
+setquest 2023;
+if(checkquest(2022,hunting) == 2) {completequest 2022; close;}
+close;
+
+newbie7:
+if(checkquest(2024) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Missões são a melhor maneira de receber dinheiro";
+next;
+mes "Mais uma, encontre o guarda Ito no segundo campo de sua vila";
+mes "feito isso volte a falar comigo";
+erasequest 2023;
+setquest 2024;
+close;
+
+newbie8:
+if(checkquest(2025,hunting) == 2) {set newbie,9; goto newbie9;}
+if(checkquest(2025) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Muitas vezes outros shinobis irão te atacar, evite andar sozinho!";
+next;
+mes "Hora de explorar mais, derrote 20 Bikouchuus nos campos da vila";
+mes "feito isso volte a falar comigo";
+erasequest 2024;
+setquest 2025;
+close;
+
+newbie9:
+if(checkquest(2026) == 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Muito bem, Vermes são fortes!";
+next;
+mes "Agora vamos voltar pra vila, visite a loja de equipamentos e fale com o Ferreiro viajante";
+mes "feito isso volte a falar comigo";
+erasequest 2025;
+setquest 2026;
+if(checkquest(2025,hunting) == 2) {completequest 2025; close;}
+close;
+
+newbie10:
+mes "Parabéns, esse é o fim do newbie quest";
+mes "Apartir de agora você vai seguir com suas próprias pernas, muito lhe aguarda no NRO, aproveite tudo ao máximo";
+next;
+mes "Aqui está sua recompensa, faça bom proveito";
+mes "Parabéns!";
+set newbie,11;
+next;
+mes "Sua recompensa é ganhar 70 níveis e um pacote de equipamentos!";
+if (BaseLevel < 200) {AtCommand "@lvup 70";}
+getitem 26200,1;
+getitem 16733,1;
+getitem 20342,1;
+getitem 14000,1;
+getitem 20092,1;
+getitem 15026,1;
+close;
+
+OnInit:
+waitingroom "[Guia NRO]",0;
+
+}
+
+//if (checkquest(1016) == 1) goto L_go;
+
+kumogakure,149,101,2	duplicate(newbie)	Guia NRO#2	842
+konoha3,232,243,5	duplicate(newbie)	Guia NRO#3	884
+sunagakure,211,257,5	duplicate(newbie)	Guia NRO#4	989

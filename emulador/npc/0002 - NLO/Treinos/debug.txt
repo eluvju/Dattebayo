@@ -1,0 +1,11 @@
+sec_in02,183,185,5	script	Debug#55	99,{
+		mes "[Taijutsu Básico]";
+		mes "Removendo o jutsu Kurosatto...";
+		next;
+		mes "[Taijutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 253,0,3;
+		set Kurosukatto,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+}

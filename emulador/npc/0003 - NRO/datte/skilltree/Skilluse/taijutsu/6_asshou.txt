@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkilltai10	-1,{
+    end;
+//When a Character uses a skill
+
+//Asshou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 379) {
+
+
+if (getskilllv(379) == 1) {
+
+if (Asshou != 1) {end;}
+if (skill379 >= 50) {skill 379,2,0; set skill379,0; dispbottom "[Sys] Level up"; end; }
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 1: "+skill379+" de 50";
+
+end;
+
+}
+
+if (getskilllv(379) == 2) {
+if (Asshou != 1) {end;}
+if (skill379 >= 100) {skill 379,3,0; set skill379,0; dispbottom "[Sys] Level up"; end;}
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 2: "+skill379+" de 100";
+
+end;
+
+}
+
+if (getskilllv(379) == 3) {
+
+if (Asshou != 1) {end;}
+if (skill379 >= 150) {skill 379,4,0; set skill379,0; dispbottom "[Sys] Level up"; end;}
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 3: "+skill379+" de 150";
+
+end;
+
+}
+
+if (getskilllv(379) == 4) {
+if (Asshou != 1) {end;}
+if (skill379 >= 200) {skill 379,5,0; set skill379,0; dispbottom "[Sys] Level up"; end;}
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 4: "+skill379+" de 200";
+
+end;
+
+}
+
+if (getskilllv(379) == 5) {
+if (Asshou != 1) {end;}
+if (skill379 >= 250) {skill 379,6,0; set skill379,0; dispbottom "[Sys] Level up"; end;}
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 5: "+skill379+" de 250";
+
+end;
+
+}
+
+if (getskilllv(379) == 6) {
+if (Asshou != 1) {end;}
+if (skill379 >= 300) {skill 379,7,0; set skill379,0; dispbottom "[Sys] Level up"; end;}
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 6: "+skill379+" de 300";
+
+end;
+
+}
+
+if (getskilllv(379) == 7) {
+if (Asshou != 1) {end;}
+if (skill379 >= 500) {skill 379,8,0; set skill379,0; dispbottom "[Sys] Level up"; end;}
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 7: "+skill379+" de 500";
+
+end;
+
+}
+
+if (getskilllv(379) == 8) {
+if (Asshou != 1) {end;}
+if (skill379 >= 700) {skill 379,9,0; set skill379,0; dispbottom "[Sys] Level up"; end;}
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 8: "+skill379+" de 700";
+
+end;
+
+}
+
+if (getskilllv(379) == 9) {
+if (Asshou != 1) {end;}
+if (skill379 >= 1000) {skill 379,10,0; set skill379,0; dispbottom "[Sys] Level up"; end;}
+set skill379,skill379 +1;
+dispbottom "[Jutsu level] Asshou level 9: "+skill379+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

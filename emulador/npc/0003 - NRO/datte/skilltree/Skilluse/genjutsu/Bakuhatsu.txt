@@ -1,0 +1,107 @@
+-	script	on_PC_UseSkillfBakuhatsu	-1,{
+    end;
+//When a Character uses a skill
+
+//Bakuhatsu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 667) {
+
+
+if (getskilllv(667) == 1) {
+
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 50) {skill 667,2,0; set skill667,0; dispbottom "[Sys] Level up"; end; }
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 1: "+skill667+" de 50";
+
+end;
+
+}
+
+if (getskilllv(667) == 2) {
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 100) {skill 667,3,0; set skill667,0; dispbottom "[Sys] Level up"; end;}
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 2: "+skill667+" de 100";
+
+end;
+
+}
+
+if (getskilllv(667) == 3) {
+
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 150) {skill 667,4,0; set skill667,0; dispbottom "[Sys] Level up"; end;}
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 3: "+skill667+" de 150";
+
+end;
+
+}
+
+if (getskilllv(667) == 4) {
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 200) {skill 667,5,0; set skill667,0; dispbottom "[Sys] Level up"; end;}
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 4: "+skill667+" de 200";
+
+end;
+
+}
+
+if (getskilllv(667) == 5) {
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 250) {skill 667,6,0; set skill667,0; dispbottom "[Sys] Level up"; end;}
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 5: "+skill667+" de 250";
+
+end;
+
+}
+
+if (getskilllv(667) == 6) {
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 300) {skill 667,7,0; set skill667,0; dispbottom "[Sys] Level up"; end;}
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 6: "+skill667+" de 300";
+
+end;
+
+}
+
+if (getskilllv(667) == 7) {
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 500) {skill 667,8,0; set skill667,0; dispbottom "[Sys] Level up"; end;}
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 7: "+skill667+" de 500";
+
+end;
+
+}
+
+if (getskilllv(667) == 8) {
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 700) {skill 667,9,0; set skill667,0; dispbottom "[Sys] Level up"; end;}
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 8: "+skill667+" de 700";
+
+end;
+
+}
+
+if (getskilllv(667) == 9) {
+if (Bakuhatsu != 1) {end;}
+if (skill667 >= 1000) {skill 667,10,0; set skill667,0; dispbottom "[Sys] Level up"; end;}
+set skill667,skill667 +1;
+dispbottom "[Jutsu level] Bakuhatsu Kemuri level 9: "+skill667+" de 1000";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

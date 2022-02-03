@@ -1,0 +1,35 @@
+-	script	on_PC_UseSkillk05	-1,{
+    end;
+//When a Character uses a skill
+
+//explosivo
+
+onPcUseSkillEvent:
+
+           if(lskillid == 123) {
+
+
+if (getskilllv(123) == 1) {
+
+if (P_Explosivo != 1) {end;}
+if (skill123 >= 50) {skill 123,2,0; set skill123,0; dispbottom "[Sys] Level up"; end; }
+set skill123,skill123 +1;
+dispbottom "[Jutsu level] Pergaminho Explosivo level 1: "+skill123+" de 50";
+
+end;
+
+}
+
+if (getskilllv(123) == 2) {
+if (P_Explosivo != 1) {end;}
+if (skill123 >= 100) {skill 123,3,0; set skill123,0; dispbottom "[Sys] Level up"; end;}
+set skill123,skill123 +1;
+dispbottom "[Jutsu level] Pergaminho Explosivo level 2: "+skill123+" de 100";
+
+end;
+
+}
+
+                end;
+            }    
+}

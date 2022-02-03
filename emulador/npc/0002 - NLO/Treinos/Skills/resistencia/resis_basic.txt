@@ -1,0 +1,414 @@
+academia,45,174,5	script	Resistência Básico	4_m_chnsoldier,{
+
+	mes "[Resistência Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de resistência escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Kami no hogo:- Hogo Suru:- Burokkingu:- Pneuma" ) ){
+
+	case 1:
+		next;
+		if(checkquest(1100) == 1) goto 1_go;
+		if(checkquest(2100) == 1) goto 1_go;
+		if(checkquest(3100) == 1) goto 1_go;
+		if(checkquest(4100) == 1) goto 1_go;
+		if(Kaminohogo == 1) goto 1_delete;
+		if(skill_basica >= 9) { mes "[Resistência Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(resis_basico != 1) {  mes .@npc$; mes "Você precisa estudar Resistência Básica antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Resistência Básico]";
+		mes "Kami no hogo?";
+		next;
+		mes "[Resistência Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Resistência Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Kami no hogo
+		//========================================================================
+		
+		1_delete:
+		mes "[Resistência Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Resistência Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Resistência Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Resistência Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Resistência Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 22,0,3;
+		set Kaminohogo,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Resistência Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1){ setquest 1100; }
+		if(#suna == 1)  { setquest 2100; }
+		if(#nevoa == 1) { setquest 3100; }
+		if(#nuvem == 1) { setquest 4100; }
+		next;
+		mes "[Resistência Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1100,hunting) == 1 || 
+			checkquest(2100,hunting) == 1 || 
+			checkquest(3100,hunting) == 1 || 
+			checkquest(4100,hunting) == 1	) { 
+				mes "[Resistência Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1100) >= 1) { completequest 1100; erasequest 1100; }
+						if(checkquest(2100) >= 1) { completequest 2100; erasequest 2100; }
+						if(checkquest(3100) >= 1) { completequest 3100; erasequest 3100; }
+						if(checkquest(4100) >= 1) { completequest 4100; erasequest 4100; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Resistência Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					}
+				mes "[Resistência Básico]"; 
+				mes "Você ainda não completou seu treinamento."; 
+				close; 
+			}
+		mes "[Resistência Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 22,1,3;
+		set Kaminohogo,1;
+		if(checkquest(1100) >= 1) { completequest 1100; erasequest 1100; }
+		if(checkquest(2100) >= 1) { completequest 2100; erasequest 2100; }
+		if(checkquest(3100) >= 1) { completequest 3100; erasequest 3100; }
+		if(checkquest(4100) >= 1) { completequest 4100; erasequest 4100; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(checkquest(1101) == 1) goto 2_go;
+		if(checkquest(2101) == 1) goto 2_go;
+		if(checkquest(3101) == 1) goto 2_go;
+		if(checkquest(4101) == 1) goto 2_go;
+		if(HogoSuru == 1) goto 2_delete;
+		if(skill_basica >= 9) { mes "[Resistência Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(resis_basico != 1) {  mes .@npc$; mes "Você precisa estudar Resistência Básica antes de aprender essa habilidade."; close;}
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Resistência Básico]";
+		mes "Hogo Suru?";
+		next;
+		mes "[Resistência Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Resistência Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Hogo Suru
+		//========================================================================
+		
+		2_delete:
+		mes "[Resistência Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Resistência Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Resistência Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Resistência Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Resistência Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 33,0,0;
+		set HogoSuru,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Resistência Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1){ setquest 1101; }
+		if(#suna == 1)  { setquest 2101; }
+		if(#nevoa == 1) { setquest 3101; }
+		if(#nuvem == 1) { setquest 4101; }
+		next;
+		mes "[Resistência Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1101,hunting) == 1 || 
+			checkquest(2101,hunting) == 1 || 
+			checkquest(3101,hunting) == 1 || 
+			checkquest(4101,hunting) == 1	) {
+				mes "[Resistência Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1101) >= 1) { completequest 1101; erasequest 1101; }
+						if(checkquest(2101) >= 1) { completequest 2101; erasequest 2101; }
+						if(checkquest(3101) >= 1) { completequest 3101; erasequest 3101; }
+						if(checkquest(4101) >= 1) { completequest 4101; erasequest 4101; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Resistência Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					}
+				mes "[Resistência Básico]"; 
+				mes "Você ainda não completou seu treinamento."; 
+				close; 
+			}
+		mes "[Resistência Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 33,1,3;
+		set HogoSuru,1;
+		if(checkquest(1101) >= 1) { completequest 1101; erasequest 1101; }
+		if(checkquest(2101) >= 1) { completequest 2101; erasequest 2101; }
+		if(checkquest(3101) >= 1) { completequest 3101; erasequest 3101; }
+		if(checkquest(4101) >= 1) { completequest 4101; erasequest 4101; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(checkquest(1102) == 1) goto 3_go;
+		if(checkquest(2102) == 1) goto 3_go;
+		if(checkquest(3102) == 1) goto 3_go;
+		if(checkquest(4102) == 1) goto 3_go;
+		if(Burokkingu == 1) goto 3_delete;
+		if(skill_basica >= 9) { mes "[Resistência Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(resis_basico != 1) {  mes .@npc$; mes "Você precisa estudar Resistência Básica antes de aprender essa habilidade."; close;}
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Resistência Básico]";
+		mes "Burokkingu?";
+		next;
+		mes "[Resistência Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Resistência Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Burokkingu
+		//========================================================================
+		
+		3_delete:
+		mes "[Resistência Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Resistência Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Resistência Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Resistência Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Resistência Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 249,0,0;
+		set Burokkingu,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Resistência Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1){ setquest 1102; }
+		if(#suna == 1)  { setquest 2102; }
+		if(#nevoa == 1) { setquest 3102; }
+		if(#nuvem == 1) { setquest 4102; }
+		next;
+		mes "[Resistência Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		3_go:
+		if(	checkquest(1102,hunting) == 1 || 
+			checkquest(2102,hunting) == 1 || 
+			checkquest(3102,hunting) == 1 || 
+			checkquest(4102,hunting) == 1	) { 
+				mes "[Resistência Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1102) >= 1) { completequest 1102; erasequest 1102; }
+						if(checkquest(2102) >= 1) { completequest 2102; erasequest 2102; }
+						if(checkquest(3102) >= 1) { completequest 3102; erasequest 3102; }
+						if(checkquest(4102) >= 1) { completequest 4102; erasequest 4102; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Resistência Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					}
+				mes "[Resistência Básico]"; 
+				mes "Você ainda não completou seu treinamento."; 
+				close; 
+			}
+		mes "[Resistência Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 249,1,3;
+		set Burokkingu,1;
+		if(checkquest(1102) >= 1) { completequest 1102; erasequest 1102; }
+		if(checkquest(2102) >= 1) { completequest 2102; erasequest 2102; }
+		if(checkquest(3102) >= 1) { completequest 3102; erasequest 3102; }
+		if(checkquest(4102) >= 1) { completequest 4102; erasequest 4102; }
+		close;
+		
+		3_no:
+		close;
+		
+	case 4:
+		next;
+		if(checkquest(1103) == 1) goto 4_go;
+		if(checkquest(2103) == 1) goto 4_go;
+		if(checkquest(3103) == 1) goto 4_go;
+		if(checkquest(4103) == 1) goto 4_go;
+		if(Pneuma == 1) goto 4_delete;
+		if(skill_basica >= 9) { mes "[Resistência Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(resis_basico != 1) {  mes .@npc$; mes "Você precisa estudar Resistência Básica antes de aprender essa habilidade."; close;}
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Resistência Básico]";
+		mes "Pneuma?";
+		next;
+		mes "[Resistência Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Resistência Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+		//========================================================================
+		//	Pneuma
+		//========================================================================
+		
+		4_delete:
+		mes "[Resistência Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Resistência Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+		
+		delete_4:
+		mes "[Resistência Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Resistência Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+		
+		quero_4:
+		mes "[Resistência Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 25,0,3;
+		set Pneuma,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_4:
+		close;
+		
+		4_SS:
+		mes "[Resistência Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1){ setquest 1103; }
+		if(#suna == 1)  { setquest 2103; }
+		if(#nevoa == 1) { setquest 3103; }
+		if(#nuvem == 1) { setquest 4103; }
+		next;
+		mes "[Resistência Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		4_go:
+		if(	checkquest(1103,hunting) == 1 || 
+			checkquest(2103,hunting) == 1 || 
+			checkquest(3103,hunting) == 1 || 
+			checkquest(4103,hunting) == 1	) { 
+				mes "[Resistência Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1103) >= 1) { completequest 1103; erasequest 1103; }
+						if(checkquest(2103) >= 1) { completequest 2103; erasequest 2103; }
+						if(checkquest(3103) >= 1) { completequest 3103; erasequest 3103; }
+						if(checkquest(4103) >= 1) { completequest 4103; erasequest 4103; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Resistência Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					}
+				mes "[Resistência Básico]"; 
+				mes "Você ainda não completou seu treinamento."; 
+				close; 
+			}
+		mes "[Resistência Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 25,1,3;
+		set Pneuma,1;
+		if(checkquest(1103) >= 1) { completequest 1103; erasequest 1103; }
+		if(checkquest(2103) >= 1) { completequest 2103; erasequest 2103; }
+		if(checkquest(3103) >= 1) { completequest 3103; erasequest 3103; }
+		if(checkquest(4103) >= 1) { completequest 4103; erasequest 4103; }
+		close;
+		
+		4_no:
+		close;
+	}
+OnInit:
+	waitingroom "[Resistência Básico]",0;
+}

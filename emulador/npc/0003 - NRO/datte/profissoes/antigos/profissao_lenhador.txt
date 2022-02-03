@@ -1,0 +1,88 @@
+konoha,63,183,5	script	Lenhador Chefe::pro_len	59,{
+
+if(lenhador == 1) goto L_temprofissao;
+if (checkquest(2030) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá, estamos precisando de ajudantes para construir novas casas na vila. Você gostaria de colaborar fazendo algumas coisas para mim ?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Lenhador
+//========================================================================
+
+L_SS:
+next;
+mes "Muito bem, preciso que você faça algumas tarefas pra mim, e em troca eu lhe ensinarei como ser um lenhador";
+next;
+mes "Aqui está a lista de tarefas:";
+next;
+mes "- Obter 130x Raiz Marrom.";
+mes "- Obter 100x Biscoito.";
+mes "- Obter 30x Casca.";
+mes "- Obter 1x Asa de Mosca.";
+mes "- Matar 100x Akamaru";
+setquest 2030;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2030,hunting) != 2) {mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(7188) < 130) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(713) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(935) < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(601) < 1) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Ah, você já retornou, rs! Ótimo, aqui estão alguns itens pra você começar a cortar umas árvores.";
+next;
+mes "Você agora é um lenhador";
+completequest 2030;
+delitem 7188,130;
+delitem 713,100;
+delitem 935,30;
+delitem 601,1;
+getitem 1301,1;
+getitem 2604,1;
+set lenhador,1;
+announce "[Profissão] "+strcharinfo(0)+" completou a quest de lenhador",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Bem-vindo de volta, está interessado em melhorar seus conhecimentos sobre os ensinamentos de lenhadores?";
+menu "Sim",upar,"Não",L_no,"Quero receber outro machado",luva;
+
+luva:
+if (countitem(1301) >= 1) {mes "Você não precisa de outro machado"; close;}
+mes "Aqui está";
+getitem 1301,1;
+close;
+
+
+upar:
+next;
+mes "Upar seu conhecimento de lenhadores signfica que terá um conhecimento melhor sobre cada local de corte de árvores, e poderá receber os mais raros troncos do mundo, o que é essencial pra forjar novos equipamentos";
+next;
+mes "Seu nível de lenhador está "+level_lenhador+", para subir de nível são necessários 3 milhões de zeny, e 1 Diário De Um Lenhador";
+mes "Gostaria de aumentar de nível?";
+menu "Sim",upar1,"Não",L_no;
+
+upar1:
+next;
+if (level_lenhador >=50) {mes "Seu nível de lenhador está no máximo"; close;}
+if (countitem(1551) < 1) {mes "Você não possui o Diário De Um Lenhador"; close;}
+if (Zeny < 3000000) {mes "Você não possui os 3 milhões de zeny necessários"; close;}
+set Zeny, Zeny-3000000;
+delitem 1551,1;
+set level_lenhador,level_lenhador +1;
+if (level_lenhador ==50) {Achieve( 23); end;}
+mes "Nível de lenhador aumentado com sucesso, nível está agora "+level_lenhador+"";
+close;
+}
+
+areia,274,54,5	duplicate(pro_len)	Lenhador Chefe#1	59,{
+kiri,285,372,5	duplicate(pro_len)	Lenhador Chefe#2	59,{
+nuvem,71,245,5	duplicate(pro_len)	Lenhador Chefe#3	59,{

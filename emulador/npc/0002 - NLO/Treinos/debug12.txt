@@ -1,0 +1,7 @@
+sec_in02,145,176,5	script	DebugPontos#71	99,{
+if(debugnazuki == 1 ) { close;}
+mes "Debug.";
+query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 2000 WHERE `char_id` = '"+getcharid(0)+"'");
+set debugnazuki,1;
+close;
+}

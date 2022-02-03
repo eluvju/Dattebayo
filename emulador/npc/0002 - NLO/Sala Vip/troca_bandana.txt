@@ -1,0 +1,237 @@
+ra_in01,212,94,5	script	Troca de Bandana	99,{
+
+	if(vip_status(1)) {
+		mes "Eu sou o trocador de bandanas, se está cansado de sua atual bandana você pode trocar por outra comigo, é importante que você deixe desequipado sua bandana pra essa troca ser feita, vamos lá!";
+		next;
+		mes "Qual bandana você gostaria de ter?";
+		menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+		
+		normal:
+		if(countitem(30030) == 1) {delitem 30030,1;}
+		if(countitem(30020) == 1) {delitem 30020,1;}
+		if(countitem(30000) == 1) {delitem 30000,1;}
+		if(countitem(30010) == 1) {delitem 30010,1;}
+		
+		if(countitem(30035) == 1) {delitem 30035,1;}
+		if(countitem(30015) == 1) {delitem 30015,1;}
+		if(countitem(30025) == 1) {delitem 30025,1;}
+		if(countitem(30005) == 1) {delitem 30005,1;}
+		
+		if(countitem(30001) == 1) {delitem 30001,1;}
+		if(countitem(30021) == 1) {delitem 30021,1;}
+		if(countitem(30031) == 1) {delitem 30031,1;}
+		if(countitem(30011) == 1) {delitem 30011,1;}
+		
+		if(countitem(30002) == 1) {delitem 30002,1;}
+		if(countitem(30022) == 1) {delitem 30022,1;}
+		if(countitem(30032) == 1) {delitem 30032,1;}
+		if(countitem(30012) == 1) {delitem 30012,1;}
+		
+		if(countitem(30023) == 1) {delitem 30023,1;}
+		if(countitem(30033) == 1) {delitem 30033,1;}
+		if(countitem(30003) == 1) {delitem 30003,1;}
+		if(countitem(30013) == 1) {delitem 30013,1;}
+		
+		if(countitem(30004) == 1) {delitem 30004,1;}
+		if(countitem(30024) == 1) {delitem 30024,1;}
+		if(countitem(30034) == 1) {delitem 30034,1;}
+		if(countitem(30014) == 1) {delitem 30014,1;}
+		
+		
+		if(#konoha == 1) {getitem 30000,1;}
+		if(#nuvem == 1) {getitem 30030,1;}
+		if(#suna == 1) {getitem 30010,1;}
+		if(#nevoa == 1) {getitem 30020,1;}
+		close;
+		
+		kakashi:
+		if(countitem(30030) == 1) {delitem 30030,1;}
+		if(countitem(30020) == 1) {delitem 30020,1;}
+		if(countitem(30000) == 1) {delitem 30000,1;}
+		if(countitem(30010) == 1) {delitem 30010,1;}
+		
+		if(countitem(30035) == 1) {delitem 30035,1;}
+		if(countitem(30015) == 1) {delitem 30015,1;}
+		if(countitem(30025) == 1) {delitem 30025,1;}
+		if(countitem(30005) == 1) {delitem 30005,1;}
+		
+		if(countitem(30001) == 1) {delitem 30001,1;}
+		if(countitem(30021) == 1) {delitem 30021,1;}
+		if(countitem(30031) == 1) {delitem 30031,1;}
+		if(countitem(30011) == 1) {delitem 30011,1;}
+		
+		if(countitem(30002) == 1) {delitem 30002,1;}
+		if(countitem(30022) == 1) {delitem 30022,1;}
+		if(countitem(30032) == 1) {delitem 30032,1;}
+		if(countitem(30012) == 1) {delitem 30012,1;}
+		
+		if(countitem(30023) == 1) {delitem 30023,1;}
+		if(countitem(30033) == 1) {delitem 30033,1;}
+		if(countitem(30003) == 1) {delitem 30003,1;}
+		if(countitem(30013) == 1) {delitem 30013,1;}
+		
+		if(countitem(30004) == 1) {delitem 30004,1;}
+		if(countitem(30024) == 1) {delitem 30024,1;}
+		if(countitem(30034) == 1) {delitem 30034,1;}
+		if(countitem(30014) == 1) {delitem 30014,1;}
+		
+		
+		if(#konoha == 1) {getitem 30005,1;}
+		if(#nuvem == 1) {getitem 30035,1;}
+		if(#suna == 1) {getitem 30015,1;}
+		if(#nevoa == 1) {getitem 30025,1;}
+		close;
+		
+		lado:
+		if(countitem(30030) == 1) {delitem 30030,1;}
+		if(countitem(30020) == 1) {delitem 30020,1;}
+		if(countitem(30000) == 1) {delitem 30000,1;}
+		if(countitem(30010) == 1) {delitem 30010,1;}
+		
+		if(countitem(30035) == 1) {delitem 30035,1;}
+		if(countitem(30015) == 1) {delitem 30015,1;}
+		if(countitem(30025) == 1) {delitem 30025,1;}
+		if(countitem(30005) == 1) {delitem 30005,1;}
+		
+		if(countitem(30001) == 1) {delitem 30001,1;}
+		if(countitem(30021) == 1) {delitem 30021,1;}
+		if(countitem(30031) == 1) {delitem 30031,1;}
+		if(countitem(30011) == 1) {delitem 30011,1;}
+		
+		if(countitem(30002) == 1) {delitem 30002,1;}
+		if(countitem(30022) == 1) {delitem 30022,1;}
+		if(countitem(30032) == 1) {delitem 30032,1;}
+		if(countitem(30012) == 1) {delitem 30012,1;}
+		
+		if(countitem(30023) == 1) {delitem 30023,1;}
+		if(countitem(30033) == 1) {delitem 30033,1;}
+		if(countitem(30003) == 1) {delitem 30003,1;}
+		if(countitem(30013) == 1) {delitem 30013,1;}
+		
+		if(countitem(30004) == 1) {delitem 30004,1;}
+		if(countitem(30024) == 1) {delitem 30024,1;}
+		if(countitem(30034) == 1) {delitem 30034,1;}
+		if(countitem(30014) == 1) {delitem 30014,1;}
+		
+		
+		if(#konoha == 1) {getitem 30001,1;}
+		if(#nuvem == 1) {getitem 30031,1;}
+		if(#suna == 1) {getitem 30011,1;}
+		if(#nevoa == 1) {getitem 30021,1;}
+		close;
+		
+		pescoco:
+		if(countitem(30030) == 1) {delitem 30030,1;}
+		if(countitem(30020) == 1) {delitem 30020,1;}
+		if(countitem(30000) == 1) {delitem 30000,1;}
+		if(countitem(30010) == 1) {delitem 30010,1;}
+		
+		if(countitem(30035) == 1) {delitem 30035,1;}
+		if(countitem(30015) == 1) {delitem 30015,1;}
+		if(countitem(30025) == 1) {delitem 30025,1;}
+		if(countitem(30005) == 1) {delitem 30005,1;}
+		
+		if(countitem(30001) == 1) {delitem 30001,1;}
+		if(countitem(30021) == 1) {delitem 30021,1;}
+		if(countitem(30031) == 1) {delitem 30031,1;}
+		if(countitem(30011) == 1) {delitem 30011,1;}
+		
+		if(countitem(30002) == 1) {delitem 30002,1;}
+		if(countitem(30022) == 1) {delitem 30022,1;}
+		if(countitem(30032) == 1) {delitem 30032,1;}
+		if(countitem(30012) == 1) {delitem 30012,1;}
+		
+		if(countitem(30023) == 1) {delitem 30023,1;}
+		if(countitem(30033) == 1) {delitem 30033,1;}
+		if(countitem(30003) == 1) {delitem 30003,1;}
+		if(countitem(30013) == 1) {delitem 30013,1;}
+		
+		if(countitem(30004) == 1) {delitem 30004,1;}
+		if(countitem(30024) == 1) {delitem 30024,1;}
+		if(countitem(30034) == 1) {delitem 30034,1;}
+		if(countitem(30014) == 1) {delitem 30014,1;}
+		
+		
+		if(#konoha == 1) {getitem 30002,1;}
+		if(#nuvem == 1) {getitem 30032,1;}
+		if(#suna == 1) {getitem 30012,1;}
+		if(#nevoa == 1) {getitem 30022,1;}
+		close;
+		
+		yamato:
+		if(countitem(30030) == 1) {delitem 30030,1;}
+		if(countitem(30020) == 1) {delitem 30020,1;}
+		if(countitem(30000) == 1) {delitem 30000,1;}
+		if(countitem(30010) == 1) {delitem 30010,1;}
+		
+		if(countitem(30035) == 1) {delitem 30035,1;}
+		if(countitem(30015) == 1) {delitem 30015,1;}
+		if(countitem(30025) == 1) {delitem 30025,1;}
+		if(countitem(30005) == 1) {delitem 30005,1;}
+		
+		if(countitem(30001) == 1) {delitem 30001,1;}
+		if(countitem(30021) == 1) {delitem 30021,1;}
+		if(countitem(30031) == 1) {delitem 30031,1;}
+		if(countitem(30011) == 1) {delitem 30011,1;}
+		
+		if(countitem(30002) == 1) {delitem 30002,1;}
+		if(countitem(30022) == 1) {delitem 30022,1;}
+		if(countitem(30032) == 1) {delitem 30032,1;}
+		if(countitem(30012) == 1) {delitem 30012,1;}
+		
+		if(countitem(30023) == 1) {delitem 30023,1;}
+		if(countitem(30033) == 1) {delitem 30033,1;}
+		if(countitem(30003) == 1) {delitem 30003,1;}
+		if(countitem(30013) == 1) {delitem 30013,1;}
+		
+		if(countitem(30004) == 1) {delitem 30004,1;}
+		if(countitem(30024) == 1) {delitem 30024,1;}
+		if(countitem(30034) == 1) {delitem 30034,1;}
+		if(countitem(30014) == 1) {delitem 30014,1;}
+		
+		
+		if(#konoha == 1) {getitem 30003,1;}
+		if(#nuvem == 1) {getitem 30033,1;}
+		if(#suna == 1) {getitem 30013,1;}
+		if(#nevoa == 1) {getitem 30023,1;}
+		close;
+		
+		kisame:
+		if(countitem(30030) == 1) {delitem 30030,1;}
+		if(countitem(30020) == 1) {delitem 30020,1;}
+		if(countitem(30000) == 1) {delitem 30000,1;}
+		if(countitem(30010) == 1) {delitem 30010,1;}
+		
+		if(countitem(30035) == 1) {delitem 30035,1;}
+		if(countitem(30015) == 1) {delitem 30015,1;}
+		if(countitem(30025) == 1) {delitem 30025,1;}
+		if(countitem(30005) == 1) {delitem 30005,1;}
+		
+		if(countitem(30001) == 1) {delitem 30001,1;}
+		if(countitem(30021) == 1) {delitem 30021,1;}
+		if(countitem(30031) == 1) {delitem 30031,1;}
+		if(countitem(30011) == 1) {delitem 30011,1;}
+		
+		if(countitem(30002) == 1) {delitem 30002,1;}
+		if(countitem(30022) == 1) {delitem 30022,1;}
+		if(countitem(30032) == 1) {delitem 30032,1;}
+		if(countitem(30012) == 1) {delitem 30012,1;}
+		
+		if(countitem(30023) == 1) {delitem 30023,1;}
+		if(countitem(30033) == 1) {delitem 30033,1;}
+		if(countitem(30003) == 1) {delitem 30003,1;}
+		if(countitem(30013) == 1) {delitem 30013,1;}
+		
+		if(countitem(30004) == 1) {delitem 30004,1;}
+		if(countitem(30024) == 1) {delitem 30024,1;}
+		if(countitem(30034) == 1) {delitem 30034,1;}
+		if(countitem(30014) == 1) {delitem 30014,1;}
+		
+		
+		if(#konoha == 1) {getitem 30004,1;}
+		if(#nuvem == 1) {getitem 30034,1;}
+		if(#suna == 1) {getitem 30014,1;}
+		if(#nevoa == 1) {getitem 30024,1;}
+		close;
+	}
+}

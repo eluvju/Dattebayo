@@ -1,0 +1,229 @@
+areia,92,235,3	script	Oficina#1	819,{
+
+if($sunadest != 1) goto L_arrumada;
+if(getequipid(EQI_HEAD_MID)==19148) {goto cont;} else {goto kage;}
+
+cont:
+mes "Olá Kage, Sua vila foi atacada e seu edifício principal foi destruído";
+next;
+mes "Se não reparar sua vila para de funcionar, o hospital não funciona entre outras coisas";
+next;
+mes "Para consertar o edifício é preciso 10 Madeiras e 10 ferros que serão retirados dos recursos de sua vila";
+next;
+mes "Gostaria de consertar o edifício principal?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+mes "Certo, vou verificar se há recursos suficientes e se tiver vou começar o reparo!";
+if ($ferrossun < 10) goto L_recursos;
+if ($troncossun < 10) goto L_recursos;
+next;
+mes "Ótimo, lá vamos nós...";
+set $ferrossun, $ferrossun-10;
+set $troncossun, $troncossun -10;
+set $sunadest,0;
+next;
+mes "Prontinho, seu edifício principal está novamente de pé.";
+close;
+
+L_nao:
+close;
+
+kage:
+mes "Você não é o kage desta vila";
+close;
+
+L_arrumada:
+mes "O edifício não está destruído";
+close;
+
+L_recursos:
+next;
+mes "A sua vila não tem os recursos para efetuar esse reparo";
+close;
+
+}
+
+konoha,51,185,3	script	Oficina#2	819,{
+
+if($konohadest != 1) goto L_arrumada;
+if(getequipid(EQI_HEAD_MID)==19009) {goto cont;} else {goto kage;}
+
+cont:
+mes "Olá Kage, Sua vila foi atacada e seu edifício principal foi destruído";
+next;
+mes "Se não reparar sua vila para de funcionar, o hospital não funciona entre outras coisas";
+next;
+mes "Para consertar o edifício é preciso 10 Madeiras e 10 ferros que serão retirados dos recursos de sua vila";
+next;
+mes "Gostaria de consertar o edifício principal?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+mes "Certo, vou verificar se há recursos suficientes e se tiver vou começar o reparo!";
+if ($ferroskon < 10) goto L_recursos;
+if ($troncoskon < 10) goto L_recursos;
+next;
+mes "Ótimo, lá vamos nós...";
+set $ferroskon, $ferroskon-10;
+set $troncoskon, $troncoskon -10;
+set $konohadest,0;
+next;
+mes "Prontinho, seu edifício principal está novamente de pé.";
+close;
+
+L_nao:
+close;
+
+kage:
+mes "Você não é o kage desta vila";
+close;
+
+L_arrumada:
+mes "O edifício não está destruído";
+close;
+
+L_recursos:
+next;
+mes "A sua vila não tem os recursos para efetuar esse reparo";
+close;
+
+}
+
+nevoa,242,266,3	script	Oficina#3	819,{
+
+if($nevoadest != 1) goto L_arrumada;
+if(getequipid(EQI_HEAD_MID)==19012) {goto cont;} else {goto kage;}
+
+cont:
+mes "Olá Kage, Sua vila foi atacada e seu edifício principal foi destruído";
+next;
+mes "Se não reparar sua vila para de funcionar, o hospital não funciona entre outras coisas";
+next;
+mes "Para consertar o edifício é preciso 10 Madeiras e 10 ferros que serão retirados dos recursos de sua vila";
+next;
+mes "Gostaria de consertar o edifício principal?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+mes "Certo, vou verificar se há recursos suficientes e se tiver vou começar o reparo!";
+if ($ferrosnev < 10) goto L_recursos;
+if ($troncosnev < 10) goto L_recursos;
+next;
+mes "Ótimo, lá vamos nós...";
+set $ferrosnev, $ferrosnev-10;
+set $troncosnev, $troncosnev -10;
+set $nevoadest,0;
+next;
+mes "Prontinho, seu edifício principal está novamente de pé.";
+close;
+
+L_nao:
+close;
+
+kage:
+mes "Você não é o kage desta vila";
+close;
+
+L_arrumada:
+mes "O edifício não está destruído";
+close;
+
+L_recursos:
+next;
+mes "A sua vila não tem os recursos para efetuar esse reparo";
+close;
+
+}
+
+prt_monk,250,256,3	script	Oficina#4	819,{
+
+if($nukenindest != 1) goto L_arrumada;
+if(getequipid(EQI_HEAD_TOP)==19023) {goto cont;} else {goto kage;}
+
+cont:
+mes "Olá Kage, Sua vila foi atacada e seu edifício principal foi destruído";
+next;
+mes "Se não reparar sua vila para de funcionar, o hospital não funciona entre outras coisas";
+next;
+mes "Para consertar o edifício é preciso 10 Madeiras e 10 ferros que serão retirados dos recursos de sua vila";
+next;
+mes "Gostaria de consertar o edifício principal?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+mes "Certo, vou verificar se há recursos suficientes e se tiver vou começar o reparo!";
+if ($ferrosnuk < 10) goto L_recursos;
+if ($troncosnuk < 10) goto L_recursos;
+next;
+mes "Ótimo, lá vamos nós...";
+set $ferrosnuk, $ferrosnuk-10;
+set $troncosnuk, $troncosnuk -10;
+set $nukenindest,0;
+next;
+mes "Prontinho, seu edifício principal está novamente de pé.";
+close;
+
+L_nao:
+close;
+
+kage:
+mes "Você não é o kage desta vila";
+close;
+
+L_arrumada:
+mes "O edifício não está destruído";
+close;
+
+L_recursos:
+next;
+mes "A sua vila não tem os recursos para efetuar esse reparo";
+close;
+
+}
+
+6@tower,180,101,3	script	Oficina#5	819,{
+
+if($akatdest != 1) goto L_arrumada;
+if(getequipid(EQI_HEAD_TOP)==19023) {goto cont;} else {goto kage;}
+
+cont:
+mes "Olá Pein, Seu esconderijo foi atacada e seu edifício principal foi destruído";
+next;
+mes "Se não reparar seu esconderijo para de funcionar, o hospital não funciona entre outras coisas";
+next;
+mes "Para consertar o edifício é preciso 10 Madeiras e 10 ferros que serão retirados dos recursos de sua vila";
+next;
+mes "Gostaria de consertar o edifício principal?";
+menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+mes "Certo, vou verificar se há recursos suficientes e se tiver vou começar o reparo!";
+if ($ferrosaka < 10) goto L_recursos;
+if ($troncosaka < 10) goto L_recursos;
+next;
+mes "Ótimo, lá vamos nós...";
+set $ferrosaka, $ferrosaka-10;
+set $troncosaka, $troncosaka -10;
+set $akatdest,0;
+next;
+mes "Prontinho, seu edifício principal está novamente de pé.";
+close;
+
+L_nao:
+close;
+
+kage:
+mes "Você não é o Pein";
+close;
+
+L_arrumada:
+mes "O edifício não está destruído";
+close;
+
+L_recursos:
+next;
+mes "A sua vila não tem os recursos para efetuar esse reparo";
+close;
+
+}

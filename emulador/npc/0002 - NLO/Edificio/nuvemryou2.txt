@@ -1,0 +1,5 @@
+prontera,156,133,5	script	NuvemRyou	980,{
+mes "Nuvem Ryou";
+set $nuvem_ryous, $nuvem_ryous +10000;
+close;
+}

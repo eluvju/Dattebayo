@@ -1,0 +1,67 @@
+-	script	Urfzada	-1,{
+
+OnTue2100:
+gvgon "2@cata";
+pvpon "2@cata";
+announce "[URF]: CHEGOU A HORA! Quem será o shinobi mais rápido?",0;
+sleep 2000;
+announce "[URF]: O seu desafio não podia ser maior, sua missão:",0;
+sleep 2000;
+announce "[URF]: DERROTE A DEZ-CAUDAS, JUUBI!",0;
+sleep 2000;
+announce "[URF]: O teleportadores estão no HOSPITAL!",0;
+
+monster "2@cata",79,65,"Juubi",1087,1,"Urfzada::OnMobJuubi";
+end;
+
+	OnMobJuubi:
+			announce "[URF]: "+strcharinfo(0)+" é o REI DO URF! Receba sua recompensa!",0;
+			getitem 753,1;
+			query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 2000 WHERE `char_id` = '"+getcharid(0)+"'");
+			dispbottom "Você ganhou 2000 pontos de missão.";
+			gvgoff "2@cata";
+			pvpoff "2@cata";
+			end;
+
+		}
+
+hospital,69,53,3	script	Ultra Rápido e Furioso::urfxd	569,{
+
+mes "^ff0000[Ultra Rápido e Furioso]^000000";
+mes "Eae "+ strcharinfo(0) +", partiu URFZADA?";
+menu "Bora!",r1,"Nem.",r2;
+		
+r1:
+mes "^ff0000[Ultra Rápido e Furioso]^000000";
+mes "Escolha uma entrada, "+ strcharinfo(0) +"!";
+menu "Entrada 1.",-,"Entrada 2.",e2,"Entrada 3.",e3,"Entrada 4.",e4,"Centro.",centro;
+next;
+warp "2@cata", 36,109;
+close2;
+
+e2:
+warp "2@cata", 123,109;
+close2;
+
+e3:
+warp "2@cata", 36,24;
+close2;
+
+e4:
+warp "2@cata", 123,24;
+close2;
+
+centro:
+warp "2@cata", 79,55;
+close2;
+	
+r2:
+next;
+mes "^ff0000[Ultra Rápido e Furioso]^000000";
+mes "Ta trollando...";
+close;	
+}
+
+hospital2,69,53,3	duplicate(urfxd)	Ultra Rápido e Furioso#2	569
+hospital3,69,53,3	duplicate(urfxd)	Ultra Rápido e Furioso#3	569
+hospital4,69,53,3	duplicate(urfxd)	Ultra Rápido e Furioso#4	569

@@ -1,0 +1,50 @@
+ama_in01,92,26,3	script	Elemento Doton	734,{
+	show "[Elemento Doton]";
+	if(elemento >= 2){goto L_elementos;}
+	if(elementodoton == 1){goto L_alreadyhave;}
+	if(elemento == 0){goto aprenderdoton;}
+	if(elemento == 1){goto aprenderdoton2;}
+
+
+	aprenderdoton:
+	show "Olá caro shinobi, voce gostaria de aprender o Elemento Doton (Terra) ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Elemento Doton]";
+	show "Muito bem, muito sábia essa escolha!";
+	set elementodoton,elementodoton + 1;
+	set elemento,elemento + 1;
+	set genin,1;
+	set Jutsugenin1,1;
+	close;
+
+	aprenderdoton2:
+	show "Olá caro shinobi, voce gostaria de aprender o Elemento Doton (Terra) ?";
+	menu "Sim, Eu quero",sim2, "Não",nao;
+
+	sim2:
+	show "[Elemento Doton]";
+	show "Muito bem, muito sábia essa escolha!";
+	set elementodoton,elementodoton + 1;
+	set elemento,elemento + 1;
+	set genin,0;
+	set chunin,1;
+	set Jutsu2chunin1,1;
+	close;
+
+	
+	nao:
+	show "[Elemento Doton]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

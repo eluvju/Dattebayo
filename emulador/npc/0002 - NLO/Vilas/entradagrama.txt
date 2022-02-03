@@ -1,0 +1,14 @@
+treinamento,85,175,5	script	Viajante#97	946,{
+mes "[Viajante]";
+mes "Yo, shinobi! Sou um viajante da Vila Oculta da Grama, um país pacífico aonde você pode encontrar mestres em todas as áreas de jutsus e habilidades escondidas!";
+next;
+mes "[Viajante]";
+mes "Deseja viajar para o meu país?";
+if(select("- Sim:- Não") == 2) close;
+next;
+mes "Quando precisar retornar a sua vila, utilize o comando @voltar !";
+next;
+close2;
+warp "payon",156,241; 
+end;
+}

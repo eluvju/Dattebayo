@@ -1,0 +1,112 @@
+-	script	on_PC_UseSkilltai01	-1,{
+    end;
+//When a Character uses a skill
+
+//Buyou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 5) {
+
+
+if (getskilllv(5) == 1) {
+
+if (Buyou != 1) {end;}
+if (skill5 >= 50) {skill 5,2,0; set skill5,0; dispbottom "[Sys] Level up"; end; }
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 1: "+skill5+" de 50";
+
+end;
+
+}
+
+if (getskilllv(5) == 2) {
+if (Buyou != 1) {end;}
+if (skill5 >= 100) {skill 5,3,0; set skill5,0; dispbottom "[Sys] Level up"; end;}
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 2: "+skill5+" de 100";
+
+end;
+
+}
+
+if (getskilllv(5) == 3) {
+
+if (Buyou != 1) {end;}
+if (skill5 >= 150) {skill 5,4,0; set skill5,0; dispbottom "[Sys] Level up"; end;}
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 3: "+skill5+" de 150";
+
+end;
+
+}
+
+if (getskilllv(5) == 4) {
+if (Buyou != 1) {end;}
+if (tai_intermediario != 1) {end;}
+if (skill5 >= 200) {skill 5,5,0; set skill5,0; dispbottom "[Sys] Level up"; end;}
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 4: "+skill5+" de 200";
+
+end;
+
+}
+
+if (getskilllv(5) == 5) {
+if (Buyou != 1) {end;}
+if (tai_intermediario != 1) {end;}
+if (skill5 >= 250) {skill 5,6,0; set skill5,0; dispbottom "[Sys] Level up"; end;}
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 5: "+skill5+" de 250";
+
+end;
+
+}
+
+if (getskilllv(5) == 6) {
+if (Buyou != 1) {end;}
+if (tai_intermediario != 1) {end;}
+if (skill5 >= 300) {skill 5,7,0; set skill5,0; dispbottom "[Sys] Level up"; end;}
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 6: "+skill5+" de 300";
+
+end;
+
+}
+
+if (getskilllv(5) == 7) {
+if (Buyou != 1) {end;}
+if (tai_avan != 1) {end;}
+if (skill5 >= 500) {skill 5,8,0; set skill5,0; dispbottom "[Sys] Level up"; end;}
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 7: "+skill5+" de 500";
+
+end;
+
+}
+
+if (getskilllv(5) == 8) {
+if (Buyou != 1) {end;}
+if (tai_avan != 1) {end;}
+if (skill5 >= 700) {skill 5,9,0; set skill5,0; dispbottom "[Sys] Level up"; end;}
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 8: "+skill5+" de 700";
+
+end;
+
+}
+
+if (getskilllv(5) == 9) {
+if (Buyou != 1) {end;}
+if (tai_avan != 1) {end;}
+if (skill5 >= 1000) {skill 5,10,0; set skill5,0; dispbottom "[Sys] Level up"; end;}
+set skill5,skill5 +1;
+dispbottom "[Jutsu level] Kage Buyou level 9: "+skill5+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

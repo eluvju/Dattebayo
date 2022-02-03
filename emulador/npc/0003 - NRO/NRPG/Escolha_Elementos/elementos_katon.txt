@@ -1,0 +1,37 @@
+ama_in01,99,18,3	script	Elemento Katon	734,{
+	show "[Elemento Katon]";
+	if(getskilllv(535)) goto L_alreadyhave;
+	if(elemento >= 2){goto L_elementos;}
+	if(elementokaton == 1){goto L_alreadyhave;}
+	if(elemento == 0){goto aprenderfogo;}
+	if(elemento == 1){goto aprenderfogo;}
+
+
+	aprenderfogo:
+	show "Olá caro shinobi, voce gostaria de aprender o elemento Katon (Fogo) ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	next;
+	show "[Elemento Katon]";
+	show "Muito bem, muito sábia essa escolha!";
+	set elementofogo,elementofogo + 1;
+	set elemento,elemento + 1;
+	set genin,1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	close;
+
+L_alreadyhave:
+	show "[Elemento Katon]";
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

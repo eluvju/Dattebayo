@@ -1,0 +1,17 @@
+force_1-1,25,26,5	script	Nara Shikamaru	65,{
+mes "[Nara Shikamaru]: Agora que voce aprendeu sobre o Ragnarok Online, vou lhe falar mais sobre o Dattebayo Online";
+next;
+mes "[Nara Shikamaru]: Como voce pode conferir em nossas midias digitais, o DATTEBAYO ONLINE e um MMORPG de Naruto";
+next;
+mes "[Nara Shikamaru]: Nele, voce pode jogar como e com quem voce quiser.";
+next;
+mes "[Nara Shikamaru]: Descubra seu jeito ninja e venha jogar conosco! Voce tera acesso a todos treinos ninjas e pode se especializar como quiser";
+next;
+mes "[Nara Shikamaru]: Além disso, você podera subir de nível, virar um jounin, se aliar a um cla e ter sua propria hiden ou kekkei genkai";
+next;
+mes "[Nara Shikamaru]: Agora que voce ja falou comigo, vamos para a proxima etapa do tutorial!";
+set quest8_1, 1;
+close2;
+warp "force_1-1",26,99;
+end;
+}

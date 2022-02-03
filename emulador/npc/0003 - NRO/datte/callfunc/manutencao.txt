@@ -1,0 +1,69 @@
+//===== Cronus Script ==========================================|
+//= Sistema de Manutenção					|
+//===== Autor: =================================================|
+//= Hurican Dooders						|
+//===== Versão Atual: ==========================================|
+//= 1.2								|
+//===== Compatibilidade: =======================================|
+//= Cronus (todos)						|
+//===== Descrição: =============================================|
+//= Ativa manutenção no servidor, apenas GM's podem logar após	|
+//= manutenção ligada.						|
+//= Mensagem pessoal para npc:main para ativar.			|
+//= Agora com anúncios. Versão 1.2				|
+//= Versão nova com opção de Setar um Nível de GM para logar	|
+//= mesmo com manutenção ativada. Versão 1.2b			|
+//==============================================================|
+-	script	main	-1,{
+OnWhisperGlobal:
+if(getgmlevel() != 99) end;
+mes "[Manutenção]";
+mes "Quer deixar o servidor em manutenção?";
+switch(select("- Ligar Manutenção:- Liberar Servidor:- Nada")){
+case 1:
+next;
+mes "[Manutenção]";
+mes "Digite o nível(de GM) mínimo que poderá logar mesmo com a Manutenção ativada:";
+input $level;
+next;
+mes "[Manutenção]";
+mes "Está correto?";
+mes "Nível mínimo: ^0000EE"+$level+"^000000";
+if(select("- Sim:- Não") == 2) close;
+next;
+mes "[Manutenção]";
+mes "Manutenção: ^0000EEAtivado!^000000";
+close2;
+initnpctimer;
+announce "[Manutenção]: O servidor entrará em Manutenção em 5 minutos.",bc_blue; end;
+OnTimer240000:
+announce "[Manutenção]: A Manutenção será ativada em 1 minuto.",bc_blue; end;
+OnTimer300000:
+announce "[Manutenção]: Manutenção ativada, retornaremos em breve!",bc_blue;
+sleep2 5000;
+atcommand "@kickall";
+set $main,1;
+case 2:
+next;
+mes "[Manutenção]";
+mes "Manutenção: ^0000CCDesativado!^000000";
+announce "[Manutenção]: Manutenção desativada, bom jogo a todos!",bc_blue;
+set $main,0;
+stopnpctimer;
+close;
+case 3:
+close;
+}
+
+OnPcLoginEvent:
+if(getgmlevel() >= $level) end;
+if(getgmlevel() <= 2){
+if($main == 0) end;
+mes "[Manutenção]";
+mes "Servidor em manutenção!";
+mes "Volte mais tarde.";
+sleep2 4000;
+atcommand "@kick "+strcharinfo(0)+"";
+end;
+}
+}

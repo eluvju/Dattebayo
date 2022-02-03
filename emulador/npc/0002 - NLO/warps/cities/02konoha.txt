@@ -1,0 +1,83 @@
+konoha3,240,251,0	script	treino#13	45,1,1,{
+if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar na biblioteca"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#konoha == 1)
+warp "academia", 102,11;
+end;
+}
+
+konoha3,280,164,4	script	VilaKonoha#01	45,1,1,{
+if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar na biblioteca"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#konoha == 1)
+warp "bibli_01", 53,38;
+end;
+}
+
+bibli_01,53,35,0	warp	VilaKonoha#02	2,2,konoha3,280,161
+
+konoha3,88,233,4	script	VilaKonoha#03	45,1,1,{
+if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#konoha == 1)
+warp "hospital", 101,14;
+end;
+}
+
+hospital,101,10,0	script	VilaKonoha#04	45,1,1,{
+
+	mes "Escolha qual saida deseja.";
+	switch(select("- Porta do Hospital:- Sala do Kage:- Viajante Ninja:- Saida Aleatória")) { 
+		case 1:
+			warp "konoha3", 88,230; end;
+		case 2:
+			warp "konoha3", 194,232; end;
+		case 3:
+			warp "konoha3", 210,78; end;
+		case 4:
+			warp "konoha3", 0,0; end;
+	}
+}
+
+konoha3,117,172,0	warp	VilaKonoha#05	2,2,konoha3,109,179
+konoha3,112,176,0	warp	VilaKonoha#06	2,2,konoha3,120,169
+
+
+konoha3,194,235,4	script	VilaKonoha#07	45,1,1,{
+if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#konoha == 1) 
+warp "salakage", 31,5;
+end;
+
+}
+
+salakage,31,2,0	warp	VilaKonoha#08	2,2,konoha3,194,232
+
+
+konoha3,302,225,4	script	VilaKonoha#09	45,1,1,{
+if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#konoha == 1) 
+warp "biju_pri1", 18,20;
+end;
+}
+
+konoha3,302,225,0	warp	VilaKonoha#10	2,2,biju_pri1,18,20
+biju_pri1,18,15,0	warp	VilaKonoha#11	2,2,konoha3,302,222
+
+
+konoha3,188,92,4	script	VilaKonoha#12	45,1,1,{
+if (#konoha != 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {mes "Você não é dessa vila e foi bloqueado de entrar no hospital"; close;}
+if (nukenin == 1) {mes "Você não é dessa vila e foi bloqueado de entrar"; close;}
+if (#konoha == 1) 
+warp "ama_in01", 23,19;
+end;
+}
+ama_in01,23,16,0	warp	VilaKonoha#13	2,2,konoha3,188,89

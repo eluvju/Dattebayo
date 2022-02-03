@@ -1,0 +1,92 @@
+kiri,272,315,5	script	Jigoku Kouka no Jutsu::gen2	831,{
+
+if (seloskill677 >= 1) goto L_delete;
+if(gen_basico != 1) {mes "Você precisa estudar genjutsu básico antes de aprender um genjutsu"; close;}
+if (checkquest(2042) == 1) goto L_go;
+if(gen_skill_bas >= 3) {mes "Você já aprendeu três genjutsus básicos, esse é o limite"; close;}
+if(accept_gen == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if(Jigoku == 1) {mes "Você já aprendeu esse jutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de genjutsu espalhado pelo mundo, eu posso lhe ensinar um genjutsu básico";
+next;
+mes "O genjutsu que eu ensino é o: Jigoku Kouka no Jutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Jigoku Kouka no Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (seloskill677 == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (seloskill677 >= 1) {
+mes "Jutsu removido com sucesso";
+set seloskill677,0;
+set Jigoku,0;
+erasequest 2042;
+if(accept_gen > 0) {set accept_gen,accept_gen -1;}
+if(gen_skill_bas > 0) {set gen_skill_bas,gen_skill_bas -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_dois,1;
+set accept_gen,accept_gen +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 20 Akamarus.";
+setquest 2042;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_bas >= 3) {mes "Você já aprendeu três genjutsus básicos, esse é o limite"; close;}
+if(gen_mobs_dois < 10) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+set seloskill677,1;
+set Jigoku,1;
+set quest_gen_dois,0;
+set gen_mobs_dois, 0;
+completequest 2042;
+erasequest 2042;
+set gen_skill_bas,gen_skill_bas +1;
+announce "[Genjutsu Quest] "+strcharinfo(0)+" completou a quest do genjutsu Jigoku Kouka no Jutsu",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Básico]",0;
+}
+
+-	script	genbas#2	-1,{
+
+  OnNPCKillEvent:
+
+//if (quest_tai_dois == 1&& quest_gen_dois == 1) {mes "Antes de continuar esse treinamento, termina o outro com o mesmo monstro a ser morto"; close;}
+if(killedrid == 1106 && quest_gen_dois == 1) {set gen_mobs_dois,gen_mobs_dois +1; announce "[Genjutsu Quest] Você já derrotou "+gen_mobs_dois+" / 20 Akamarus",bc_blue|bc_self; end;}
+
+}
+
+areia,68,138,5	duplicate(gen2)	Jigoku Kouka no Jutsu#21	51,{
+konoha,49,84,5	duplicate(gen2)	Jigoku Kouka no Jutsu#22	51,{
+nuvem,51,231,5	duplicate(gen2)	Jigoku Kouka no Jutsu#23	51,{

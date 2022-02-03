@@ -1,0 +1,8 @@
+xmas,144,44,5	script	Comerciante da Névoa	82,{
+	mes "[Comerciante]";
+	mes "Você procura por comida, armas, aqui na vila a uma variedade de coisas que você pode comprar";
+	mes "ou conseguir fazendo as missões e ganhando seu dinheiro para comprar.";
+	mes "Eu posso fazer um preço especial para você, mas deve ir a loja de armas de meu filho.";
+	mes "procure pelo quadro de avisos e saberá aonde fica a Loja de armas, até mais garoto, foi bom conversar com você.";
+close;
+}

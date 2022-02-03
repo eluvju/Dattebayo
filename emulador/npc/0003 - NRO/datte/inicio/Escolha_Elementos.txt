@@ -1,0 +1,280 @@
+job_sage,54,162,3	script	Mestre de Doton#1	51,{
+if(countitem(19001) == 1) {equip 19001;}
+if(countitem(19006) == 1) {equip 19006;}
+if(countitem(19008) == 1) {equip 19008;}
+if(countitem(19040) == 1) {equip 19040;}
+
+if(countitem(19073) == 1) {equip 19073;}
+if(countitem(19074) == 1) {equip 19074;}
+if(countitem(19076) == 1) {equip 19076;}
+if(countitem(19004) == 1) {equip 19004;}
+
+if(countitem(19034) == 1) {equip 19034;}
+if(countitem(19018) == 1) {equip 19018;}
+if(countitem(19019) == 1) {equip 19019;}
+if(countitem(19165) == 1) {equip 19165;}
+
+if(countitem(19025) == 1) {equip 19025;}
+if(countitem(19096) == 1) {equip 19096;}
+if(countitem(19097) == 1) {equip 19097;}
+if(countitem(19098) == 1) {equip 19098;}
+
+if(countitem(19168) == 1) {equip 19168;}
+if(countitem(19169) == 1) {equip 19169;}
+if(countitem(19170) == 1) {equip 19170;}
+if(countitem(19095) == 1) {equip 19095;}
+
+if(countitem(19030) == 1) {equip 19030;}
+if(countitem(19156) == 1) {equip 19156;}
+if(countitem(19016) == 1) {equip 19016;}
+if(countitem(19127) == 1) {equip 19127;}
+	if (chunin == 1) || (jounin == 1) {mes "Inválido"; close;}
+	mes "[Mestre de Terra]";
+
+	mes "Olá aprendiz, Vejo que está interessado no elemento (Doton) terra";
+	mes "É um ótimo elemento com ótimos Jutsus.";
+	next;
+	mes "Você deseja fixar esse elemento como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Terra]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementodoton,1;
+	set elemento,1;
+//	Achieve( 10);
+	if (#konoha == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 1";}
+	if (#suna == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 2";}
+	if (#nevoa == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 3";}
+	if (#nuvem == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 4";}
+	close;
+
+	L_Nao:
+	close;
+
+}
+
+job_sage,44,170,6	script	Mestre de Katon#1	54,{
+if(countitem(19001) == 1) {equip 19001;}
+if(countitem(19006) == 1) {equip 19006;}
+if(countitem(19008) == 1) {equip 19008;}
+if(countitem(19040) == 1) {equip 19040;}
+
+if(countitem(19073) == 1) {equip 19073;}
+if(countitem(19074) == 1) {equip 19074;}
+if(countitem(19076) == 1) {equip 19076;}
+if(countitem(19004) == 1) {equip 19004;}
+
+if(countitem(19034) == 1) {equip 19034;}
+if(countitem(19018) == 1) {equip 19018;}
+if(countitem(19019) == 1) {equip 19019;}
+if(countitem(19165) == 1) {equip 19165;}
+
+if(countitem(19025) == 1) {equip 19025;}
+if(countitem(19096) == 1) {equip 19096;}
+if(countitem(19097) == 1) {equip 19097;}
+if(countitem(19098) == 1) {equip 19098;}
+
+if(countitem(19168) == 1) {equip 19168;}
+if(countitem(19169) == 1) {equip 19169;}
+if(countitem(19170) == 1) {equip 19170;}
+if(countitem(19095) == 1) {equip 19095;}
+
+if(countitem(19030) == 1) {equip 19030;}
+if(countitem(19156) == 1) {equip 19156;}
+if(countitem(19016) == 1) {equip 19016;}
+if(countitem(19127) == 1) {equip 19127;}
+	if (chunin == 1) || (jounin == 1) {mes "Inválido"; close;}
+	mes "[Mestre de Katon]";
+	mes "Olá aprendiz, Vejo que está interessado no elemento (Katon) Fogo";
+	mes "É um ótimo elemento com ótimos Jutsus.";
+	next;
+	mes "Você deseja fixar esse elemento como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Katon]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementokaton,1;
+	set elemento,1;
+//	Achieve( 11);
+	if (#konoha == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 1";}
+	if (#suna == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 2";}
+	if (#nevoa == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 3";}
+	if (#nuvem == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 4";}
+//	close;
+
+	L_Nao:
+	close;
+
+}
+
+job_sage,44,162,6	script	Mestre de Raiton#1	53,{
+if(countitem(19001) == 1) {equip 19001;}
+if(countitem(19006) == 1) {equip 19006;}
+if(countitem(19008) == 1) {equip 19008;}
+if(countitem(19040) == 1) {equip 19040;}
+
+if(countitem(19073) == 1) {equip 19073;}
+if(countitem(19074) == 1) {equip 19074;}
+if(countitem(19076) == 1) {equip 19076;}
+if(countitem(19004) == 1) {equip 19004;}
+
+if(countitem(19034) == 1) {equip 19034;}
+if(countitem(19018) == 1) {equip 19018;}
+if(countitem(19019) == 1) {equip 19019;}
+if(countitem(19165) == 1) {equip 19165;}
+
+if(countitem(19025) == 1) {equip 19025;}
+if(countitem(19096) == 1) {equip 19096;}
+if(countitem(19097) == 1) {equip 19097;}
+if(countitem(19098) == 1) {equip 19098;}
+
+if(countitem(19168) == 1) {equip 19168;}
+if(countitem(19169) == 1) {equip 19169;}
+if(countitem(19170) == 1) {equip 19170;}
+if(countitem(19095) == 1) {equip 19095;}
+
+if(countitem(19030) == 1) {equip 19030;}
+if(countitem(19156) == 1) {equip 19156;}
+if(countitem(19016) == 1) {equip 19016;}
+if(countitem(19127) == 1) {equip 19127;}
+	if (chunin == 1) || (jounin == 1) {mes "Inválido"; close;}
+	mes "[Mestre de Raiton]";
+	mes "Olá aprendiz, Vejo que está interessado no elemento (Raiton) Trovão";
+	mes "É um ótimo elemento com ótimos Jutsus.";
+	next;
+	mes "Você deseja fixar esse elemento como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Raiton]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementoraiton,1;
+	set elemento,1;
+//	Achieve( 12);
+	if (#konoha == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 1";}
+	if (#suna == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 2";}
+	if (#nevoa == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 3";}
+	if (#nuvem == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 4";}
+	close;
+
+	L_Nao:
+	close;
+
+}
+
+job_sage,54,170,3	script	Mestre de Fuuton#1	50,{
+if(countitem(19001) == 1) {equip 19001;}
+if(countitem(19006) == 1) {equip 19006;}
+if(countitem(19008) == 1) {equip 19008;}
+if(countitem(19040) == 1) {equip 19040;}
+
+if(countitem(19073) == 1) {equip 19073;}
+if(countitem(19074) == 1) {equip 19074;}
+if(countitem(19076) == 1) {equip 19076;}
+if(countitem(19004) == 1) {equip 19004;}
+
+if(countitem(19034) == 1) {equip 19034;}
+if(countitem(19018) == 1) {equip 19018;}
+if(countitem(19019) == 1) {equip 19019;}
+if(countitem(19165) == 1) {equip 19165;}
+
+if(countitem(19025) == 1) {equip 19025;}
+if(countitem(19096) == 1) {equip 19096;}
+if(countitem(19097) == 1) {equip 19097;}
+if(countitem(19098) == 1) {equip 19098;}
+
+if(countitem(19168) == 1) {equip 19168;}
+if(countitem(19169) == 1) {equip 19169;}
+if(countitem(19170) == 1) {equip 19170;}
+if(countitem(19095) == 1) {equip 19095;}
+
+if(countitem(19030) == 1) {equip 19030;}
+if(countitem(19156) == 1) {equip 19156;}
+if(countitem(19016) == 1) {equip 19016;}
+if(countitem(19127) == 1) {equip 19127;}
+	if (chunin == 1) || (jounin == 1) {mes "Inválido"; close;}
+	mes "[Mestre de Fuuton]";
+	mes "Olá aprendiz, Vejo que está interessado no elemento (Fuuton) Vento";
+	mes "É um ótimo elemento com ótimos Jutsus.";
+	next;
+	mes "Você deseja fixar esse elemento como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Fuuton]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementofuuton,1;
+	set elemento,1;
+//	Achieve( 13);
+	if (#konoha == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 1";}
+	if (#suna == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 2";}
+	if (#nevoa == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 3";}
+	if (#nuvem == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 4";}
+	close;
+
+	L_Nao:
+	close;
+
+}
+
+job_sage,49,170,3	script	Mestre de Suiton#1	52,{
+if(countitem(19001) == 1) {equip 19001;}
+if(countitem(19006) == 1) {equip 19006;}
+if(countitem(19008) == 1) {equip 19008;}
+if(countitem(19040) == 1) {equip 19040;}
+
+if(countitem(19073) == 1) {equip 19073;}
+if(countitem(19074) == 1) {equip 19074;}
+if(countitem(19076) == 1) {equip 19076;}
+if(countitem(19004) == 1) {equip 19004;}
+
+if(countitem(19034) == 1) {equip 19034;}
+if(countitem(19018) == 1) {equip 19018;}
+if(countitem(19019) == 1) {equip 19019;}
+if(countitem(19165) == 1) {equip 19165;}
+
+if(countitem(19025) == 1) {equip 19025;}
+if(countitem(19096) == 1) {equip 19096;}
+if(countitem(19097) == 1) {equip 19097;}
+if(countitem(19098) == 1) {equip 19098;}
+
+if(countitem(19168) == 1) {equip 19168;}
+if(countitem(19169) == 1) {equip 19169;}
+if(countitem(19170) == 1) {equip 19170;}
+if(countitem(19095) == 1) {equip 19095;}
+
+if(countitem(19030) == 1) {equip 19030;}
+if(countitem(19156) == 1) {equip 19156;}
+if(countitem(19016) == 1) {equip 19016;}
+if(countitem(19127) == 1) {equip 19127;}
+	if (chunin == 1) || (jounin == 1) {mes "Inválido"; close;}
+	mes "[Mestre de Suiton";
+	mes "Olá aprendiz, Vejo que está interessado no elemento (Suiton) Água";
+	mes "É um ótimo elemento com ótimos Jutsus.";
+	next;
+	mes "Você deseja fixar esse elemento como o seu elemento principal?";
+	menu "- Sim, eu quero",L_Sim,"- Não, preciso pensar mais",L_Nao;
+
+	L_Sim:
+	next;
+	mes "[Mestre de Suiton]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementosuiton,1;
+	set elemento,1;
+//	Achieve( 14);
+	if (#konoha == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 1";}
+	if (#suna == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 2";}
+	if (#nevoa == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 3";}
+	if (#nuvem == 1) {set title$, "RankE"; announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; warp "payon_in03",20,65; savepoint "payon_in03",20,65; atcommand "@job 4";}
+	close;
+
+	L_Nao:
+	close;
+
+}

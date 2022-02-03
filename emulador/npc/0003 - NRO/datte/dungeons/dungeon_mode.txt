@@ -1,0 +1,372 @@
+moc_fild03,44,33,4	script	Informante da Névoa	412,{
+
+if(progresso_story2==1) goto story1;
+if(progresso_story2==2) goto story2;
+if(progresso_story2==3) {mes "Já descobriu algo?"; close;}
+if(progresso_story2==4) goto story2_1;
+if(progresso_story2==5) goto story3;
+if(progresso_story2==6) {mes "Por favor, se apresse"; close;}
+if(progresso_story2==7) goto story3_1;
+if(progresso_story2==8) goto story4;
+if(progresso_story2==9) {mes "Rápido, mate Genzou"; close;}
+if(progresso_story2==10) goto story4_1;
+if(progresso_story2==11) {mes "Vá e mate o Haku e Zabuza"; close;}
+if(progresso_story2==12) {mes "Você matou Haku, bom trabalho, mas ainda falta o Zabuza"; close;}
+if(progresso_story2==13) goto story5;
+if(progresso_story2==14) {mes "Obrigado novamente, procure o informante da Suna agora"; close;}
+
+////////////////////////////////////////////////////////////////////////PARTE1//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "Antigamente, a vila Oculta da Névoa, era conhecida como Vila Ocultada Névoa Sangrenta";
+next;
+mes "[Informante da Névoa]";
+mes "Pois a violência era extrema, a diplomacia e as regras eram rígidas e cruéis";
+next;
+mes "[Informante da Névoa]";
+mes "Porém, com uma revolta dos shinobis da névoa, aconteceu uma guerra";
+next;
+mes "[Informante da Névoa]";
+mes "Onde os shinobis que apoiavam a névoa sangrenta, foram exterminados.";
+next;
+mes "[Informante da Névoa]";
+mes "Mas, dizem as lendas, que um assassino cruel, muito poderoso, conseguiu sobreviver e pretende dominar a vila da névoa";
+next;
+mes "[Informante da Névoa]";
+mes "Seu nome é Momochi Zabuza. Preciso que descubra se isso é verdade...";
+next;
+mes "[Informante da Névoa]";
+mes "Preciso de alguém para ir até o esgoto da névoa, e procurar informaçoes sobre Momochi Zabuza";
+next;
+mes "[Informante da Névoa]";
+mes "Boatos que ele foi visto trocando informações por la com algum traidor da vila";
+next;
+mes "[Informante da Névoa]";
+mes "Me perdoe... eu não queria falar tanto, você não faz parte dessa guerra";
+next;
+mes "Como deseja responder?";
+menu "- Deixe-me fazer parte dessa luta",L_GO,"- Você está certo, não faço.",L_NAO;
+
+L_GO:
+next;
+mes "[Informante da Névoa]";
+mes "Vo...Você tem certeza? Você parece tão jovem, eu não gostaria de colocar uma vida tão preciosa em tanto perigo...";
+next;
+next;
+mes "[Informante da Névoa]";
+mes "Mas... tem algo em você que me faz acreditar que você é forte...";
+next;
+mes "[Informante da Névoa]";
+mes "Vou confiar em você, conto com sua ajuda! Assim que conseguir mais informações sobre o paradeiro de Zabuza, por favor, me fale!";
+set storymode2,1;
+//Achieve( 19);
+cutin "",255;
+close;
+
+L_NAO:
+next;
+mes "[Informante da Névoa]";
+mes "De fato, você estaria correndo muito perigo, não posso mais ver ninguém sendo sacrificado nessa guerra sem fim!";
+cutin "",255;
+close;
+
+
+story1:
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "Hm, Interessante... Muito útil... ótimo trabalho!";
+next;
+mes "[Informante da Névoa]";
+mes "Eu vou investigar isso melhor, assim que tiver mais informações eu te falo...";
+next;
+mes "[Informante da Névoa]";
+mes "Novamente, bom trabalho, a justiça divina está próxima, em breve esse assassino terá o fim que merece, HAHAHAHA";
+set progresso_story2,2;
+set storymode2,2;
+cutin "",255;
+close;
+
+////////////////////////////////////////////////////////////////////////PARTE2//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+story2:
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "É, realmente o traidor está passando informações para esse assassino";
+next;
+mes "[Informante da Névoa]";
+mes "Eu vou investigar isso melhor, assim que tiver mais informações eu te falo...";
+next;
+mes "[Informante da Névoa]";
+mes "Novamente, preciso da sua ajuda pra descobrir mais sobre o Zabuza, O traidor deve ter mais informações";
+next;
+mes "[Informante da Névoa]";
+mes "A casa dele provavelmente deve ficar escondida na vila da Névoa";
+next;
+mes "[Informante da Névoa]";
+mes "Quando o encontrar, faça ele confessar e dar mais informaçoes sobre Zabuza";
+set progresso_story2,3;
+cutin "",255;
+close;
+
+story2_1:
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "Genzou é? Já ouvi falar dele";
+next;
+mes "[Informante da Névoa]";
+mes "Tenho poucas informações dele, vou enviar alguns shinobis até a Névoa para obter mais informações sobre esse Genzou, quem sabe não descobrimos seu paradeiro";
+next;
+mes "[Informante da Névoa]";
+mes "No mais, muito bom trabalho, você tem sido de grande ajuda";
+set progresso_story2,5;
+set storymode2,3;
+cutin "",255;
+close;
+
+////////////////////////////////////////////////////////////////////////PARTE3//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+story3:
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "Argh... Estou ferido... Eu e outros shinobis estavamos a caminho da Névoa, e fomos atacados por adeptos da antiga Névoa sangrenta, a única coisa que pode nos salvar é uma planta rara, Suas raízes contem um forte medicamento";
+next;
+mes "[Informante da Névoa]";
+mes "Por favor, nos salve!";
+next;
+mes "[Informante da Névoa]";
+mes "Argh... A planta costuma ficar perto de rios e lágoas, vá, rápido!";
+set progresso_story2,6;
+cutin "",255;
+close;
+
+story3_1:
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "Graças a Deus, você a encontrou!";
+next;
+mes "[Informante da Névoa]";
+mes "Vou entregar para nossos medinins, se tudo der certo, estaremos de pé novamente, muito obrigado";
+set progresso_story2,8;
+set storymode2,4;
+delitem 7119,1;
+cutin "",255;
+close;
+
+////////////////////////////////////////////////////////////////////////PARTE4//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+story4:
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "Ainda estou me curando dos meus ferimentos, mas estou fora de perigo, creio eu, que estamos chegando perto de encontrar Momochi Zabuza";
+next;
+mes "[Informante da Névoa]";
+mes "Durante o ataque que sofri, ouvi eles dizendo que o chefe deles, se chamava Genzou";
+next;
+mes "[Informante da Névoa]";
+mes "Antes de desmaiar, eu consegui implantar um rastreador nele, se tudo correr como esperado, isso deverá nos levar ao esconderijo do Genzou";
+next;
+mes "[Informante da Névoa]";
+mes "Deixe me ver a atual localização do rastreador... O que?";
+next;
+mes "[Informante da Névoa]";
+mes "Como ele poderia ficar nesse local?";
+next;
+mes "[Informante da Névoa]";
+mes "Procure por Genzou onde vive os monstros lendários que podem ser invocados por shinobis, um shinobi inteligente como ele, se esconderia lá. Derrote ele e descubra o que puder";
+set progresso_story2,9;
+cutin "",255;
+close;
+
+story4_1:
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "Você o matou! Realmente sua força me surpreende cada vez mais";
+next;
+mes "[Informante da Névoa]";
+mes "O que? Ele está nas minas shinobi? É hora de dar um fim nisso então";
+next;
+mes "[Informante da Névoa]";
+mes "O plano é o seguinte, nós vamos segurar os seus aliados do lado de fora das minas, enquanto você entra no esconderijo e derrote o Haku e Zabuza, receio que minha força não o ajudará em nada contra eles, boa sorte";
+delitem 7148,1;
+set progresso_story2,11;
+set storymode2,5;
+cutin "",255;
+close;
+
+////////////////////////////////////////////////////////////////////////PARTE5//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+story5:
+cutin "ins_cata_pri_n",2;
+mes "[Informante da Névoa]";
+mes "Você conseguiu? Isso! Conseguimos salvar a Névoa desse monstro";
+next;
+mes "[Informante da Névoa]";
+mes "Tivemos algumas baixas, porém conseguimos evitar um mal muito maior, graças a você, sua reputação no mundo está crescendo rapidamente";
+next;
+mes "[Informante da Névoa]";
+mes "Ainda que tenhamos salvo a Névoa dessa ameaça, existem muitas outras ameaças acontecendo, o mundo está em constante guerra";
+next;
+mes "[Informante da Névoa]";
+mes "Se você puder, por favor procure o informante da Suna, ele também está em apuros, e mais uma vez, obrigado.";
+next;
+mes "[Informante da Névoa]";
+mes "Aqui está uma pequena amostra de minha graditão, 50 missões contadas";
+set missaocount, missaocount + 50;
+//getitem 7243,1;
+set progresso_story2,14;
+set storymode2,6;
+cutin "",255;
+close;
+
+}
+
+
+////////////////////////////////////////////////////////////////////////Npc's PARTE1//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+gl_dun01,37,86,4	script	Traidor da Névoa	99,{
+
+if (storynpc1 == 1) {mes "Ele está paralizado de medo, ele não vai dizer mais nada."; close;}
+if(storymode2 != 1) {mes "Hm? Tenho nada pra falar com você."; close;}
+mes "[Traidor da Névoa]";
+mes "Hm, o que quer? Por favor, Não sei de nada, estou apenas passeando aqui...";
+next;
+menu "Interrogar sobre Zabuza",go,"Saír",no;
+
+go:
+mes "[Traidor da Névoa]";
+mes "Não por favor! Não me mate, eu digo tudo que eu sei...";
+next;
+mes "[Traidor da Névoa]";
+mes "Eu sou um Informante da Névoa do Zabuza, eu repasso informações da Névoa para ele, ele planeja se vingar e matar todos da Névoa";
+next;
+mes "[Traidor da Névoa]";
+mes "Ele e seu cumplice, Haku, estão escondidos em algum lugar seguro, mas eu juro, ele não me disse onde";
+next;
+mes "[Traidor da Névoa]";
+mes "É tudo que eu sei, eu juro, agora me deixe ir, preciso fugir para o mais longe possível, ou serei morto por Zabuza...";
+set progresso_story2,1;
+set storynpc1,1;
+close;
+
+no:
+close;
+
+}
+
+////////////////////////////////////////////////////////////////////////Npc's PARTE2//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+payon_in01,98,72,4	script	Traidor da Névoa#1	99,{
+
+if (storynpc2 == 1) {mes "Ele está paralizado de medo, ele não vai dizer mais nada."; close;}
+if(progresso_story2 != 3) {mes "Hm? Tenho nada pra falar com você."; close;}
+mes "[Traidor da Névoa]";
+mes "Ah não, você denovo não...";
+next;
+menu "Interrogar sobre Zabuza",go,"Saír",no;
+
+go:
+mes "[Traidor da Névoa]";
+mes "Não por favor! Eu já te falei tudo que eu sei...";
+next;
+mes "[Traidor da Névoa]";
+mes "O que é isso em sua mão? Uma kunai?!";
+next;
+mes "[Traidor da Névoa]";
+mes "Calma! Eu acho que estou lembrando de mais algo...";
+next;
+mes "[Traidor da Névoa]";
+mes "Ah sim, ele tem mais um cúmplice, seu nome é Genzou, se quiser mais informações vá atrás dele, agora me deixe em paz!";
+set progresso_story2,4;
+set storynpc2,1;
+close;
+
+no:
+close;
+
+}
+
+////////////////////////////////////////////////////////////////////////Npc's PARTE3//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+gef_fild09,316,154,4	script	Planta Medicional#1	1083,{
+
+if (storynpc3 == 1) {mes "Você já colheu a planta."; close;}
+if(progresso_story2 != 6) {mes "Nada pra fazer aqui"; close;}
+mes "Essa deve ser a planta que o Informante da Névoa e seus shinobis precisa, melhor colher";
+getitem 7119,1;
+set progresso_story2,7;
+set storynpc3,1;
+close;
+
+}
+
+////////////////////////////////////////////////////////////////////////Npc's PARTE4//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-	script	story_genzou	1083,{
+
+OnMapConquisted200:
+if(progresso_story2 != 9) {end;}
+
+getitem 7148,1;
+set progresso_story2,10;
+end;
+
+}
+
+mjolnir_10,0,0,0,0	monster	Genzou	1263,1,1,3600000,"story_genzou::OnMapConquisted200"
+////////////////////////////////////////////////////////////////////////Npc's PARTE5//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-	script	story_haku	1083,{
+
+OnMapConquisted201:
+if(progresso_story2 != 11) {end;}
+
+dispbottom "Haku: Eu só queria lhe proteger... Zabuza-San, obrigado...";
+set progresso_story2,12;
+end;
+
+}
+
+-	script	story_zabuza	1083,{
+
+OnMapConquisted202:
+if(progresso_story2 != 12) {end;}
+
+dispbottom "Zabuza: Haku...";
+set progresso_story2,13;
+end;
+
+}
+
+ice_dun03,150,161,0,0	monster	Haku	1048,1,1,3600000,"story_haku::OnMapConquisted201"
+ice_dun04,34,159,0,0	monster	Zabuza	1047,1,1,3600000,"story_zabuza::OnMapConquisted202"
+
+
+
+
+
+////////////////////////////////////////////////////////portais/////////////////////////////////////////////////
+
+nevoa,228,140,4	script	Entrada	45,1,1,{
+if($EEinfo[1] == 1) && (#nevoa != 1) {mes "Você foi impedido de saír da vila"; close;}
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) && ($EEinfo[1] == 1) {mes "Você foi impedido de saír da vila"; close;}
+if (progresso_story2 == 3) goto entra;
+if(progresso_story2 != 3) {mes "A porta está trancada."; close;}
+
+entra:
+warp "payon_in01", 104,72;
+end;
+
+}
+
+mjo_dun01,86,235,4	script	Entrada#raid1	45,1,1,{
+if(progresso_story2 >= 11) goto entra;
+
+mes "Você ainda não pode entrar nessa caverna";
+close;
+
+entra:
+warp "ice_dun01", 158,14;
+close;
+
+}

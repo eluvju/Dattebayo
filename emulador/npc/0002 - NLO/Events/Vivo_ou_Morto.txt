@@ -1,0 +1,136 @@
+// ============================================================================================ \\
+// |------------------------------------------------------------------------------------------| \\
+// |------/\------------/\-------------/\--------------------------/\--------------/\---------| \\
+// |-----/--\----------/--\-----------/--\------------------------/--\------------/--\--------| \\
+// |----/---/\--------/----\---------/----\----------------------/----\----------/---/\-------| \\
+// |---/---/./-------/------\-------/-/\---\-----/\-------------/------\--------/---/./-------| \\
+// |--/---/./-------/---/\---\-----/--\.\--/----/--\-----------/---/\---\------/---/./-/\-----| \\
+// |--\---\/--------\---\.\---\----\---\/--\----\---\----------\---\.\---\-----\---\/-/--\----| \\
+// |--/\---\----/\--/\---\/----\---/\-------\---/\---\----/\---/\---\.\---\----/\---\/----\---| \\
+// |--\.\---\--/--\-\.\----/\---\--\.\----/\-\--\.\---\--/--\--\.\---\.\---\---\.\----/\---\--| \\
+// |---\.\---\/---/\-\.\---\.\--/\--\.\---\.\/\--\.\---\/---/\--\.\---\/---/\---\.\--/./---/\-| \\
+// |----\.\------/./--\.\---\.\/./---\.\---\../---\.\------/./---\.\------/./----\.\/./---/./-| \\
+// |-----\.\----/./----\.\---\../-----\.\---\/-----\.\----/./-----\.\----/./------\../---/./--| \\
+// |------\.\--/./------\.\--/\/-------\.\--/\------\.\--/./-------\.\--/./--------\/\--/./---| \\
+// |-------\.\/./--------\.\/./---------\.\/./-------\.\/./---------\.\/./-----------/\/./----| \\
+// |--------\../----------\../-----------\../---------\../-----------\../------------\../-----| \\
+// |---------\/------------\/-------------\/-----------\/-------------\/--------------\/------| \\
+// |------------------------------------------------------------------------------------------| \\
+// ============================================================================================ \\
+// | * Favor não Remover os créditos.                                                         | \\
+// | Feito por CarlosHenrq (brAthena/eAthena/Cronus).                                         | \\
+// | Bugs Reportar: http://trac2.xp-dev.com/CHATrack/report                                   | \\
+// ============================================================================================ \\
+// | * Compatibilidade de emulador: Cronus e eAthena.                                         | \\
+// | Versão do Emulador: TXT e SQL                                                            | \\
+// | Versão do Script: 1.2                                                                    | \\
+// ============================================================================================ \\
+// | * ChangeLog:                                                                             | \\
+// | v1.0 - Criada.                                                                           | \\
+// | v1.1 - Atualizado as falas e corrigido os probleminhas. [Danz]                           | \\
+// | v1.2 - Corrigido o Timer, estava em 5 segundos, alterado para 2 minutos. [YeahZin]       | \\
+// ============================================================================================ \\
+// | * Descrição:                                                                             | \\
+// | - Pequeno jogo: Vivo ou Morto. Em pé = Vivo, Sentado = Morto.                            | \\
+// | - Importante: Usar com o patch: [brA] is_sit.patch aplicado ao emulador se não, não irá  | \\
+// |               funcionar o evento.                                                        | \\
+// ============================================================================================ \\
+treinamento,80,129,5	script	Vivo ou Morto	882,{
+	mes set(.nome$,"[ ^0000ff"+strnpcinfo(0)+"^000000 ]");
+	if($@init){
+		mes "O evento já começou! Peço que aguarde!";
+		close;
+	}
+	mes "Olá ^ff0000"+strcharinfo(0)+"^000000, gostaria de participar do vivo ou morto?";
+	next;
+	mes .nome$;
+	if(callfunc("IS_Registrado"))
+		mes "Você já está registrado no evento! Por favor, aguarde para todos podemos realizar o jogo.";
+	else if(select("Sim:Não")) == 1 {
+		set $@reg$[$@reg],strcharinfo(0);
+		mes "Nós temos: ^ff0000"+set($@reg,$@reg+1)+"^000000 jogadores registrados!";
+		next;
+		if($@reg >= .event_min && !$@alert){
+			InitNPCTimer;
+			announce "["+strnpcinfo(0)+"]: Já temos "+$@reg+" jogadores registrados! Iremos começar em 2 minutos.",bc_all;
+			set $@alert,1;
+		}
+		mes .nome$;
+	}
+	mes "Tenha um bom dia.";
+	close;
+	OnTimer120000:
+		set $@init,1;
+		set $@t,0;
+		announce "["+strnpcinfo(0)+"]: O evento começa em 10 segundos. Fiquem todos de pé.",bc_all;
+		sleep 5000;
+		while(set($@t,$@t+1) < 10){
+			npctalk (10-$@t);
+			sleep 1000;
+		}
+		npctalk "Preparar!!!!!!!!";
+		sleep 1000;
+		while(1){
+			if(rand(1,100) <= .event_eng){
+				emotion 18;
+				npctalk "OLÉ !!!!!!!!!!";
+				sleep 700;
+				continue;
+			}
+			sleep 1000;
+			npctalk (set($@state,rand(0,1)) == 1) ? "Morto":"Vivo";
+			sleep 700;
+			set $@count,0;
+			for(set .@i,0; .@i < getarraysize($@reg$); set .@i,.@i+1){
+				if(is_sit($@reg$[.@i]) != $@state){
+					attachrid getcharid(3,$@reg$[.@i]);
+					emotion 16,1;
+					atcommand "@option 1";
+					npctalk "O Jogador "+$@reg$[.@i]+" foi desclassificado.";
+					set $@reg$[.@i],"null";
+					detachrid;
+				}
+				if($@reg$[.@i] == "null")
+					if( set($@count,$@count+1) >= getarraysize($@reg$) ){
+						set $@winner,-1;
+						break;
+					}
+				if($@count == (getarraysize($@reg$)-1)){
+					set $@winner,1;
+					break;
+				}
+			}
+			if($@winner)
+				break;
+		}
+		if($@winner <= 0)
+			announce "["+strnpcinfo(0)+"]: Ninguém ganhou! Mais sorte na próxima vez!",bc_all;
+		else{
+			for(set .@i,0; .@i < getarraysize($@reg$); set .@i,.@i+1)
+				if($@reg$[.@i] != "null"){
+					emotion 43;
+					announce "["+strnpcinfo(0)+"]: O grande campeão é: ["+$@reg$[.@i]+"]",bc_all;
+					break;
+				}
+			getitem .item_id,.item_am,getcharid(3,$@reg$[.@i]);
+		}
+		set $@init,0;
+		set $@alert,0;
+		set $@reg,0;
+		set $@winner,0;
+		deletearray $@reg$;
+		end;
+	OnInit:
+		// Configurações
+		set .item_id, 730;		// ID do item que o campeão será premiado.
+		set .item_am,  1;		// Quantidade do item que o char irá receber.
+		set .event_min, 2;		// Número minimo de pessoas no evento.
+		set .event_eng,10;		// Chance do npc mudar a fala do vivo ou morto.
+		end;
+}
+function	script	IS_Registrado	{
+	for(set .@i,0; .@i < getarraysize($@reg$); set .@i,.@i+1)
+		if(strcharinfo(0) == $@reg$[.@i])
+			return 1;
+	return 0;
+}

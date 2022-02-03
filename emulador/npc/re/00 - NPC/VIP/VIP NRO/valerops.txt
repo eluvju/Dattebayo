@@ -1,0 +1,28 @@
+kakashi,78,108,4	script	Vale Rops	882,{
+
+mes "Olá bravo guerreiro, eu sou o vendedor de vale rops!";
+next;
+mes "Aqui você poderá trocar seus rops da loja, por vale rops na quantia que quiser e apenas com uma operação! Prático né?";
+next;
+mes "Me diga então, gostaria de comprar vale rops?";
+menu "- Sim",L_sim,"- Não, Obrigado",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+next;
+Query_SQL "SELECT `lojaRS_cash` FROM `login` WHERE `account_id` = '"+getcharid(3)+"'", @quantiatualrops;
+mes "Beleza, quantos vale rops gostaria de comprar? Lembrando que cada vale rop custa 1 ROP!";
+mes "============";
+mes "^DC143CSeu saldo atual: "+@quantiatualrops+"^000000";
+input @quantiarops;
+if (@quantiarops == 0) {close;}
+if (checkweight(634,@quantiarops) == 0) {next; mes "Você está com sobrepeso e não poderá receber os vale rops enquanto não liberar espaço no inventário"; close;}
+if (@quantiarops > @quantiatualrops){next; mes "Oh não, você não possui rops o suficiente para realizar essa compra"; close;}
+Query_SQL "UPDATE `login` SET `lojaRS_cash` = `lojaRS_cash` - '"+@quantiarops+"' WHERE `account_id`='"+getcharid(3)+"'";
+next;
+getitem 634,@quantiarops;
+mes "Compra concluída com sucesso";
+close;
+}

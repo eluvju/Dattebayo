@@ -1,0 +1,574 @@
+-	script	questpegarkg	-1,{
+
+OnNPCKillEvent:
+
+	if(expkg <= 5000000) {
+		if(pegoukg == 3) {
+				set @expmob,0;
+				if( (gettime(4) == 1 ) || (gettime(4) == 2 ) || (gettime(4) == 3 ) || (gettime(4) == 4 ) || (gettime(4) == 5 ) || (gettime(4) == 6 ) || (gettime(4) == 0 ) ){ dispbottom "Bônus de Double EXP KG ativo."; set @expmob, strmobinfo(3,killedrid)*2; set expkg,expkg + @expmob;}
+				else{
+				set expkg,expkg+strmobinfo(3,killedrid);
+				}
+				if(@expmob > 1){ if (showkg == 1){ dispbottom "EXP Adiquirido a Kekkei Genkai: "+@expmob+"";}}
+				else {
+				if (showkg == 1){ dispbottom "EXP Adiquirido a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";}
+				}
+				if (showkg == 1){ dispbottom "EXP Kekkei Genkai ["+expkg+"/5000000]";}
+				end;
+		}
+	}
+	
+	if(pegoukg == 2) {
+			set @expmob,0;
+			if( (gettime(4) == 1 ) || (gettime(4) == 2 ) || (gettime(4) == 3 ) || (gettime(4) == 4 ) || (gettime(4) == 5 ) || (gettime(4) == 6 ) || (gettime(4) == 0 ) ){ dispbottom "Bônus de Double EXP KG ativo."; set @expmob, strmobinfo(3,killedrid)*2; set expkg,expkg + @expmob;}
+			else{
+			set expkg,expkg+strmobinfo(3,killedrid);
+			}
+			if(@expmob > 1){ if (showkg == 1){dispbottom "EXP Adiquirido a Kekkei Genkai: "+@expmob+"";}}
+			else {
+			if (showkg == 1){ dispbottom "EXP Adiquirido a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";}
+			}
+			if (showkg == 1){ dispbottom "EXP Kekkei Genkai ["+expkg+"/1500000]";}
+			end;
+	}
+
+	if(pegoukg == 1) {
+		set @expmob,0;
+		if( (gettime(4) == 1 ) || (gettime(4) == 2 ) || (gettime(4) == 3 ) || (gettime(4) == 4 ) || (gettime(4) == 5 ) || (gettime(4) == 6 ) || (gettime(4) == 0 ) ){ dispbottom "Bônus de Double EXP KG ativo."; set @expmob, strmobinfo(3,killedrid)*2; set expkg,expkg + @expmob;}
+		else{
+		set expkg,expkg+strmobinfo(3,killedrid);
+		}
+		if(@expmob > 1){ if (showkg == 1){ dispbottom "EXP Adiquirido a Kekkei Genkai: "+@expmob+"";}}
+		else {
+		if (showkg == 1){ dispbottom "EXP Adiquirido a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";}
+		}
+		if (showkg == 1){ dispbottom "EXP Kekkei Genkai ["+expkg+"/300000]";}
+		end;
+	}
+	
+	if(despertarkg == 1) {
+		set @expmob,0;
+		if( (gettime(4) == 1 ) || (gettime(4) == 2 ) || (gettime(4) == 3 ) || (gettime(4) == 4 ) || (gettime(4) == 5 ) || (gettime(4) == 6 ) || (gettime(4) == 0 ) ){ dispbottom "Bônus de Double EXP KG ativo."; set @expmob, strmobinfo(3,killedrid)*2; set expkg,expkg + @expmob;}
+		else{
+		set expkg,expkg+strmobinfo(3,killedrid);
+		}
+		if(@expmob > 1){ if (showkg == 1){ dispbottom "EXP Adiquirido a Kekkei Genkai: "+@expmob+"";}}
+		else {
+		if (showkg == 1){ dispbottom "EXP Adiquirido a Kekkei Genkai: "+strmobinfo(3,killedrid)+"";}
+		}
+		if (showkg == 1){ dispbottom "EXP Kekkei Genkai ["+expkg+"/100]";}
+		end;
+	}
+	end;
+}
+
+-	script	questpegarkg2	-1,{
+
+OnNPCKillEvent:
+
+if(sharingan == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set sharingan,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all; getitem 30024,1; equip 30024; end; } end; }
+if(sharingan == 2) { if(expkg >= 300000) {  set pegoukg,1; set sharingan,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; delitem 30024,1; getitem 30025,1; equip 30025; end; } end; }
+if(sharingan == 3) { if(expkg >= 1500000) { set pegoukg,1; set sharingan,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; delitem 30025,1; getitem 30026,1; equip 30026; end; } end; }
+if(sharingan == 4) { if(expkg >= 5000000) { getitem 7337,1; end; } end; }
+
+if(byakugan == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set byakugan,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu byakugan!",bc_blue|bc_all; getitem 30023,1; equip 30023; end;} end;}
+if(byakugan == 2) { if(expkg >= 300000) {  set pegoukg,2; set byakugan,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu byakugan para o nível 2!",bc_blue|bc_all; delitem 30023,1; getitem 30047,1; equip 30047; end; } end; }
+if(byakugan == 3) { if(expkg >= 1500000)  { set pegoukg,3; set byakugan,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu byakugan para o nível 3!",bc_blue|bc_all; delitem 30047,1; getitem 30048,1; equip 30048; end; } end; }
+if(byakugan == 4) { if(expkg >= 5000000) { announce " "+strcharinfo(0)+" Acaba de melhorar seu byakugan para o nível 4!",bc_blue|bc_all; delitem 30048,1; getitem 6924,1; end; } end; }
+
+if(hyouton == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set hyouton,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades com hyouton!",bc_blue|bc_all; getitem 30032,1; equip 30032; end;} end;}
+if(hyouton == 2) { if(expkg >= 300000) {  set pegoukg,1; set hyouton,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com hyouton para o nível 2",bc_blue|bc_all; delitem 30032,1; getitem 30059,1; equip 300597; end; } end; }
+if(hyouton == 3) { if(expkg >= 1500000)  { set pegoukg,1; set hyouton,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com hyouton para o nível 3!",bc_blue|bc_all; delitem 30059,1; getitem 30060,1; equip 30060; end; } end; }
+if(hyouton == 4) { if(expkg >= 5000000) { getitem 995,1; end; } end; }
+
+if(portoes == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set portoes,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all; getitem 30031,1; equip 30031; end;} end;}
+if(portoes == 2) { if(expkg >= 300000) {  set pegoukg,2; set portoes,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all; delitem 30031,1; getitem 30056,1; equip 30056; end; } end; }
+if(portoes == 3) { if(expkg >= 1500000)  { set pegoukg,3; set portoes,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all; delitem 30056,1; getitem 30057,1; equip 30057; end; } end; }
+if(portoes == 4) { if(expkg >= 5000000) { getitem 4970,1; end; } end; }
+
+if(kugutsu == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set kugutsu,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu kugutsu!",bc_blue|bc_all; getitem 30034,1; equip 30034; end;} end;}
+if(kugutsu == 2) { if(expkg >= 300000) {  set pegoukg,2; set kugutsu,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu kugutsu para o nível 2!",bc_blue|bc_all; delitem 30034,1; getitem 30065,1; equip 30065; end; } end; }
+if(kugutsu == 3) { if(expkg >= 1500000)  { set pegoukg,3; set kugutsu,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu kugutsu para o nível 3!",bc_blue|bc_all; delitem 30065,1; getitem 30066,1; equip 30066; end; } end; }
+if(kugutsu == 4) { if(expkg >= 5000000) { getitem 950,1; end; } end; }
+
+if(akimichi == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set akimichi,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all; getitem 30033,1; equip 30033; end;} end;}
+if(akimichi == 2) { if(expkg >= 300000) {  set pegoukg,2; set akimichi,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all; delitem 30033,1; getitem 30062,1; equip 30062; end; } end; }
+if(akimichi == 3) { if(expkg >= 1500000)  { set pegoukg,3; set akimichi,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; delitem 30062,1; getitem 30063,1; equip 30064; end; } end; }
+if(akimichi == 4) { if(expkg >= 5000000) { set expkg,0; set pegoukg,4; set akimichi,0; announce " "+strcharinfo(0)+" Acaba de alcançar a possibilidade de evoluir  seu Baika para o nível 4!",bc_blue|bc_all; delitem 30063,1; getitem 7226,1; end; } end; }
+
+if(nara == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set nara,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all; getitem 30030,1; equip 30030; end;} end;}
+if(nara == 2) { if(expkg >= 300000) {  set pegoukg,2; set nara,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all; delitem 30030,1; getitem 30053,1; equip 30053; end; } end; }
+if(nara == 3) { if(expkg >= 1500000)  { set pegoukg,3; set nara,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; delitem 30053,1; getitem 30054,1; equip 30054; end; } end; }
+if(nara == 4) { if(expkg >= 5000000) { getitem 641,1; end; } end; }
+
+if(selo == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set selo,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu selo amaldiçoado!",bc_blue|bc_all; getitem 30028,1; equip 30028; end;} end;}
+if(selo == 2) { if(expkg >= 300000) {  set pegoukg,2; set selo,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu selo amaldiçoado para o nível 2!",bc_blue|bc_all; delitem 30028,1; getitem 30029,1; equip 30029; end; } end; }
+if(selo == 3) { if(expkg >= 1500000)  { set pegoukg,3; set selo,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu selo amaldiçoado para o nível 3!",bc_blue|bc_all; delitem 30029,1; getitem 30051,1; equip 30051; end; } end; }
+if(selo == 4) { if(expkg >= 5000000) { getitem 7442,1; end; } end; }
+
+if(iryonin == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set iryonin,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu selo byakugou!",bc_blue|bc_all; getitem 30072,1; equip 30072; end;} end;}
+if(iryonin == 2) { if(expkg >= 200000) {  set pegoukg,2; set iryonin,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu selo byakugou para o nível 2!",bc_blue|bc_all; delitem 30072,1; getitem 30073,1; equip 30073; end; } end; }
+if(iryonin == 3) { if(expkg >= 600000)  { set pegoukg,3; set iryonin,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu selo byakugou para o nível 3!",bc_blue|bc_all; delitem 30073,1; getitem 30074,1; equip 30074; end; } end; }
+if(iryonin == 4) { if(expkg >= 1300000) { getitem 4803,1; end; } end; }
+
+if(5elementos == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set 5elementos,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades com os 5 elementos!",bc_blue|bc_all; getitem 30076,1; equip 30076; end;} end;}
+if(5elementos == 2) { if(expkg >= 300000) {  set pegoukg,2; set 5elementos,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com os 5 elementos para o nível 2!",bc_blue|bc_all; delitem 30076,1; getitem 30077,1; equip 30077; end; } end; }
+if(5elementos == 3) { if(expkg >= 1500000)  { set pegoukg,3; set 5elementos,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com os 5 elementos para o nível 3!",bc_blue|bc_all; delitem 30077,1; getitem 30078,1; equip 30078; end; } end; }
+if(5elementos == 4) { if(expkg >= 5000000) { getitem 953,1; end; } end; }
+
+if(aburame == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set aburame,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle de Insetos!",bc_blue|bc_all; getitem 32136,1; equip 32136; end;} end;}
+if(aburame == 2) { if(expkg >= 300000) {  set pegoukg,2; set aburame,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle de Insetos para o nível 2!",bc_blue|bc_all; delitem 32136,1; getitem 32137,1; equip 32137; end; } end; }
+if(aburame == 3) { if(expkg >= 1500000)  { set pegoukg,3; set aburame,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle de Insetos para o nível 3!",bc_blue|bc_all; delitem 32137,1; getitem 32138,1; equip 32138; end; } end; }
+if(aburame == 4) { if(expkg >= 5000000) { getitem 7316,1; end; } end; }
+
+if(yamanaka == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set yamanaka,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades com clã yamanaka!",bc_blue|bc_all; getitem 30088,1; equip 30088; end;} end;}
+if(yamanaka == 2) { if(expkg >= 300000) {  set pegoukg,2; set yamanaka,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com clã yamanaka para o nível 2!",bc_blue|bc_all; delitem 30088,1; getitem 30089,1; equip 30089; end; } end; }
+if(yamanaka == 3) { if(expkg >= 1500000)  { set pegoukg,3; set yamanaka,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com clã yamanaka para o nível 3!",bc_blue|bc_all; delitem 30089,1; getitem 30090,1; equip 30090; end; } end; }
+if(yamanaka == 4) { if(expkg >= 5000000) { getitem 7190,1; end; } end; }
+
+if(ibuse == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set ibuse,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de ibuse!",bc_blue|bc_all; getitem 30080,1; equip 30118; end;} end;}
+if(ibuse == 2) { if(expkg >= 300000) {  set pegoukg,2; set ibuse,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades de ibuse para o nível 2!",bc_blue|bc_all; delitem 30080,1; getitem 30081,1; equip 30081; end; } end; }
+if(ibuse == 3) { if(expkg >= 1500000)  { set pegoukg,3; set ibuse,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades de ibuse para o nível 3!",bc_blue|bc_all; delitem 30081,1; getitem 30082,1; equip 30082; end; } end; }
+if(ibuse == 4) { if(expkg >= 5000000) { getitem 7565,1; end; } end; }
+
+if(kenjutsu == 1) { if(expkg >= 100) {  set pegoukg,1; set despertarkg,0; set kenjutsu,2; set expkg,0; announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades com kenjutsu!",bc_blue|bc_all; getitem 30084,1; equip 30084; end;} end;}
+if(kenjutsu == 2) { if(expkg >= 300000) {  set pegoukg,2; set kenjutsu,3; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com kenjutsu para o nível 2!",bc_blue|bc_all; delitem 30084,1; getitem 30085,1; equip 30085; end; } end; }
+if(kenjutsu == 3) { if(expkg >= 1500000)  { set pegoukg,3; set kenjutsu,4; set expkg,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades com kenjutsu para o nível 3!",bc_blue|bc_all; delitem 30085,1; getitem 30086,1; equip 30086; end; } end; }
+if(kenjutsu == 4) { if(expkg >= 5000000) { getitem 7154,1; end; } end; }
+
+
+
+
+}
+
+
+//=============================================
+job_monk,240,116,4	script	Kekei Genkai Avançada	62,{
+	mes "[Kekei Genkai Avancada]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu sou o mestre ninja das responsavel pelas Kekei Genkais em nivel 4, deseja saber mais sobre as referidas Kekei Genkais?";
+	next;
+	if( select("Claro!:Melhor nao...") == 2 )
+	{
+		mes "[Kekei Genkai Avancada]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Kekei Genkai Avancada]";
+	mes "Bem, estas sãos as Kekei Genkais existentes...";
+	mes "Lembrando que voce nao podera trocar a Kekei Genkai então nem tente...";
+	mes "Qual é sua Kekei Genakai?";
+	next;
+	switch(select("Byakugan Avancado:Mangekyou Sharingan:Selo Amaldiçoado Nv.4:Jutsu das Sombras Nv. 4:Portoes de Chakra Nv.4:Hyouton Nv. 4:Baika Nv. 4:Kungutsu Nv. 4:Iryonin Nv. 4:Ibuse Nv. 4:Kenjutsu Nv. 4:Yamanaka Nv. 4:Aburame Nv. 4:Nenhum"))
+	{
+	case 1:
+		mes "[Byakugan Avancado]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30049);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(902);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(902) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 902,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30049,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Byakugan Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Mangekyou Sharingan]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30027);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(901);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(901) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 901,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30027,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Sharingan Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 3:
+		mes "[Selo Amaldiçoado Nv.4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30052);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(907);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(907) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 907,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30052,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Selo Amaldiçoado Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Jutsu das Sombras Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30055);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(906);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(906) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 906,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30055,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Jutsu das Sombras Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 5:
+		mes "[Portoes de Chakra Nv.4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30058);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(904);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(904) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 904,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30058,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Portoes de Chakra Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 6:
+		mes "[Hyouton Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30061);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(909);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(909) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 909,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30061,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Hyouton Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 7:
+		mes "[Baika Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30064);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(910);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(910) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 910,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30064,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Baika Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 8:
+		mes "[Kungutsu Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30067);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(903);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(903) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 903,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30067,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Kungutsu Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 9:
+		mes "[Iryonin Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30075);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(916);
+		mes "1x "+getitemname(12108);
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(916) >= 1 && countitem(12108) >= 1)
+		{
+			delitem 916,1;
+			delitem 12108,1;
+			getitem 30075,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Iryonin Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 10:
+		mes "[Ibuse Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30083);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(914);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(914) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 914,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30083,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Ibuse Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 11:
+		mes "[Kenjutsu Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30087);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(926);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(926) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 926,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30087,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Kenjutsu Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 12:
+		mes "[Yamanaka Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(30091);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(923);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(923) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 923,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 30091,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Yamanaka Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 13:
+		mes "[Aburame Nv. 4]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(32139);
+		mes " ";
+		mes "Requerimento:";
+		mes "1x "+getitemname(911);
+		mes "1x "+getitemname(12108);
+		mes "5000000 Zenys";
+		next;
+		mes "[Kekei Genkai Avancada]";
+		mes "Deseja fazer esta quest?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Kekei Genkai Avancada]";
+			mes "Tudo bem... Ate mais!";
+			close;
+		}
+		if(countitem(911) >= 1 && countitem(12108) >= 1 && Zeny >= 5000000)
+		{
+			delitem 911,1;
+			delitem 12108,1;
+			set Zeny,Zeny-5000000;
+			getitem 32139,1;
+			announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades de Aburame Nv.4!",bc_blue|bc_all;
+			mes "[Kekei Genkai Avancada]";
+			mes "Parabens! Aqui esta!";
+			close;
+		}
+		break;
+	case 14:
+		mes "[Kekei Genkai Avancada]";
+		mes "Tudo bem, estarei aqui se você mudar de ideia.";
+		close;
+	}
+	mes "[Kekei Genkai Avancada]";
+	mes "Me desculpe, mas voce nao tem todos os itens necessarios para esta Evoluir.";
+	mes "Volte quando voce tiver todos os itens!";
+	close;
+}

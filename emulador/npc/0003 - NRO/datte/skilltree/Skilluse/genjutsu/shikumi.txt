@@ -1,0 +1,71 @@
+-	script	shikumi	-1,{
+    end;
+//When a Character uses a skill
+
+//shikumi
+
+onPcUseSkillEvent:
+
+           if(lskillid == 179) {
+
+
+if (getskilllv(179) == 1) {
+
+if (shikumi != 1) {end;}
+if (skill179 >= 50) {skill 179,2,0; set skill179,0; dispbottom "[Sys] Level up"; end; }
+set skill179,skill179 +1;
+dispbottom "[Jutsu level] Shikumi no Jutsu level 1: "+skill179+" de 50";
+
+end;
+
+}
+
+if (getskilllv(179) == 2) {
+if (shikumi != 1) {end;}
+if (skill179 >= 100) {skill 179,3,0; set skill179,0; dispbottom "[Sys] Level up"; end;}
+set skill179,skill179 +1;
+dispbottom "[Jutsu level] Shikumi no Jutsu level 2: "+skill179+" de 100";
+
+end;
+
+}
+
+if (getskilllv(179) == 3) {
+
+if (shikumi != 1) {end;}
+if (gen_intermediario != 1) {end;}
+if (skill179 >= 150) {skill 179,4,0; set skill179,0; dispbottom "[Sys] Level up"; end;}
+set skill179,skill179 +1;
+dispbottom "[Jutsu level] Shikumi no Jutsu level 3: "+skill179+" de 150";
+
+end;
+
+}
+
+if (getskilllv(179) == 4) {
+if (shikumi != 1) {end;}
+if (gen_intermediario != 1) {end;}
+if (skill179 >= 200) {skill 179,5,0; set skill179,0; dispbottom "[Sys] Level up"; end;}
+set skill179,skill179 +1;
+dispbottom "[Jutsu level] Shikumi no Jutsu level 4: "+skill179+" de 200";
+
+end;
+
+}
+
+if (getskilllv(179) == 5) {
+if (shikumi != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill179 >= 250) {skill 179,6,0; set skill179,0; dispbottom "[Sys] Level up"; end;}
+set skill179,skill179 +1;
+dispbottom "[Jutsu level] Shikumi no Jutsu level 5: "+skill179+" de 250";
+
+end;
+
+}
+
+
+
+                end;
+            }    
+}

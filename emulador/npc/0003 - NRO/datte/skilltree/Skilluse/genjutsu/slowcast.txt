@@ -1,0 +1,81 @@
+-	script	on_PC_UseSkillcast	-1,{
+    end;
+//When a Character uses a skill
+
+//Kasegui
+
+onPcUseSkillEvent:
+
+           if(lskillid == 672) {
+
+
+if (getskilllv(672) == 1) {
+
+if (Kasegui != 1) {end;}
+if (skill672 >= 50) {skill 672,2,0; set skill672,0; dispbottom "[Sys] Level up"; end; }
+set skill672,skill672 +1;
+dispbottom "[Jutsu level] Magen: Kasegui no Jutsu level 1: "+skill672+" de 50";
+
+end;
+
+}
+
+if (getskilllv(672) == 2) {
+if (Kasegui != 1) {end;}
+if(gen_intermediario != 1) {end;}
+if (skill672 >= 100) {skill 672,3,0; set skill672,0; dispbottom "[Sys] Level up"; end;}
+set skill672,skill672 +1;
+dispbottom "[Jutsu level] Magen: Kasegui no Jutsu level 2: "+skill672+" de 100";
+
+end;
+
+}
+
+if (getskilllv(672) == 3) {
+
+if (Kasegui != 1) {end;}
+if(gen_intermediario != 1) {end;}
+if (skill672 >= 150) {skill 672,4,0; set skill672,0; dispbottom "[Sys] Level up"; end;}
+set skill672,skill672 +1;
+dispbottom "[Jutsu level] Magen: Kasegui no Jutsu level 3: "+skill672+" de 150";
+
+end;
+
+}
+
+if (getskilllv(672) == 4) {
+if (Kasegui != 1) {end;}
+if(gen_intermediario != 1) {end;}
+if (skill672 >= 200) {skill 672,5,0; set skill672,0; dispbottom "[Sys] Level up"; end;}
+set skill672,skill672 +1;
+dispbottom "[Jutsu level] Magen: Kasegui no Jutsu level 4: "+skill672+" de 200";
+
+end;
+
+}
+
+if (getskilllv(672) == 5) {
+if (Kasegui != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill672 >= 250) {skill 672,6,0; set skill672,0; dispbottom "[Sys] Level up"; end;}
+set skill672,skill672 +1;
+dispbottom "[Jutsu level] Magen: Kasegui no Jutsu level 5: "+skill672+" de 250";
+
+end;
+
+}
+
+if (getskilllv(672) == 6) {
+if (Kasegui != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill672 >= 300) {skill 672,7,0; set skill672,0; dispbottom "[Sys] Level up"; end;}
+set skill672,skill672 +1;
+dispbottom "[Jutsu level] Magen: Kasegui no Jutsu level 6: "+skill672+" de 300";
+
+end;
+
+}
+
+                end;
+            }    
+}

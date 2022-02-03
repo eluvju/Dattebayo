@@ -1,0 +1,362 @@
+konoha,201,138,3	script	Eremita::sapo	734,{
+	if(contrato_lesma == 1) goto L_wrongcontract;
+	if(contrato_cobra == 1) goto L_wrongcontract;
+	if(invoca_done == 1) goto L_alreadyhave;
+	if(contrato_sapo == 1) goto claro;
+	if(jounin != 1) goto L_graduacao;
+	
+	mes "[Eremita]";
+	mes "Olá shinobi, Eu tive uma visão de sua chegada...";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Na minha visão você me procurou para saber como aprender o Kuchiyose no jutsu";
+	mes "Já vou adiantar que essa é uma habilidade que poucos tem...";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Antes de mais nada, é preciso fazer um contrato de sangue";
+	mes "E após feito o contrato, terá que aperfeiçoar a técnica";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Devo avisar que o contrato é eterno, e que não poderá ter dois contratos";
+	mes "com dois tipos de animais, então antes de confirmar pense bem...";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Além de mim existem mais duas pessoas com quem você pode conversar";
+	mes "a respeito de contratos de sangue, eu sou o eremita do sapo";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Através de mim você pode aprender o jutsu que invoca o rei dos sapos Gama-Bunta!";
+	mes "Gama-Bunta é o rei dos sapos e é bastante forte no ataque, é muito destrutivo";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Enfim, chega de conversa, quer fazer um contrato de sangue com os sapos?";
+	menu "Sim, Estou preparado",contrato,"Não, ainda não estou pronto",aindan;
+
+	contrato:
+	mes "Seu contrato foi assinado!";
+	set invoca_sapo1,1;
+	set contrato_sapo,1;
+	close;
+
+
+	claro:
+	mes "[^A52A2AEremita^000000]";
+	mes "Ótimo, vou lhe ensinar o jutsu por etapas";
+	mes "Será preciso aprender um estágio de cada vez";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Qual sapo gostaria de dominar?";
+	menu "Girino",girino,"Gama-Kishi",gamakishi,"Gama-Bunta",gamabunta;
+
+	girino:
+	if(contrato_sapo != 1) goto L_wrongcontract;
+	if(invoca_sapo1 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Vamos começar então, iremos começar pelo Girino, o mais fraco dos sapos";
+	mes "O treinamento todo será difícil, mas aguente firme que vai aprender";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Neste treinamento você terá que coletar o seguinte:";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "1500x Garras de rato";
+	mes "1000x Casco Arco-Íris";
+	mes "1000x Patas Pegajosas";
+	mes "150x Lingua";
+	mes "100x Luva de carrasco";
+	mes "55x Trevos";
+	mes "3x tendoes";
+	mes "3x Plantas de konoha";
+	mes "3x Plantas de Suna";
+	mes "3x Plantas de Kiri";
+	mes "1x Relogio de bolso";
+	mes "1x Lâmina perdida nas trevas";
+	mes "1x Simbolo dos Nove Reinos";
+	mes "Matar 1000 Girinos";
+	mes "e 500k de ryous";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_sapo1,1;		
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <500000) goto L_SemItem;
+	if (countitem(7007) < 1500) goto L_SemItem;
+	if (countitem(1013) < 1000) goto L_SemItem;
+	if (countitem(918) < 1000) goto L_SemItem;
+	if (countitem(1015) < 150) goto L_SemItem;
+	if (countitem(7017) < 100) goto L_SemItem;
+	if (countitem(705) < 55) goto L_SemItem;
+	if (countitem(1050) < 3) goto L_SemItem;
+	if (countitem(704) < 3) goto L_SemItem;
+	if (countitem(710) < 3) goto L_SemItem;
+	if (countitem(712) < 3) goto L_SemItem;
+	if (countitem(7513) < 1) goto L_SemItem;
+	if (countitem(7023) < 1) goto L_SemItem;
+	if (countitem(7305) < 1) goto L_SemItem;
+	if(invocasapomobs1 < 1000) goto L_SemItem;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-500000;
+	delitem 7007,1500;
+	delitem 1013,1000;
+	delitem 918,1000;
+	delitem 1015,150;
+	delitem 7017,100;
+	delitem 705,55;
+	delitem 1050,3;
+	delitem 704,3;
+	delitem 710,3;
+	delitem 712,3;
+	delitem 7513,1;
+	delitem 7023,1;
+	delitem 7305,1;
+	skill 721,4,0;
+	set invoca_sapo1,0;
+	set invoca_sapo2,1;
+	set invocasapomobs1,0;
+	set quest_sapo1,0;
+	close;
+
+	gamakishi:
+	if(invoca_sapo2 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Muito bem, já está na segunda etapa, vai ficar cada vez mais difícil";
+	mes "Não desista ainda, se supere!";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Agora vamos tentar dominar a invocação do Gama-Kishi";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "1500x Gema vermelha";
+	mes "1000x Runa Sangrenta";
+	mes "1000x Auto retrato";
+	mes "500x Parafuso Enferujado";
+	mes "100x Pele de Sapo";
+	mes "35x Mugo pegajoso";
+	mes "6x Plantas de konoha";
+	mes "6x Plantas de Suna";
+	mes "6x Plantas de Kiri";
+	mes "1x Fragmento de Espirito";
+	mes "1x Pedra do sabio";
+	mes "1x ba gua";
+	mes "Matar 1000 Gama-Kishi";
+	mes "e 1kk de ryous";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_sapo2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <1000000) goto L_SemItem;
+	if (countitem(7563) < 1000) goto L_SemItem;
+	if (countitem(7223) < 1000) goto L_SemItem;
+	if (countitem(7317) < 500) goto L_SemItem;
+	if (countitem(7155) < 100) goto L_SemItem;
+	if (countitem(938) < 35) goto L_SemItem;
+	if (countitem(7306) < 1) goto L_SemItem;
+	if (countitem(704) < 6) goto L_SemItem;
+	if (countitem(710) < 6) goto L_SemItem;
+	if (countitem(712) < 6) goto L_SemItem;
+	if (countitem(12040) < 1) goto L_SemItem;
+	if (countitem(7169) < 1) goto L_SemItem;
+	if (countitem(716) < 1500) goto L_SemItem;
+	if(invocasapomobs2 < 1000) goto L_SemItem;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-1000000;
+	delitem 7563,1000;
+	delitem 7223,1000;
+	delitem 7317,500;
+	delitem 7155,100;
+	delitem 938,35;
+	delitem 7306,1;
+	delitem 704,6;
+	delitem 710,6;
+	delitem 712,6;
+	delitem 12040,1;
+	delitem 7169,1;
+	delitem 716,1500;
+	skill 722,4,0;
+	set invoca_sapo2,0;
+	set invoca_sapo3,1;
+	set invocasapomobs2,0;
+	set quest_sapo2,0;
+	close;
+
+	gamabunta:
+	if(invoca_sapo3 != 1) goto L_wronglevel;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Chegou a hora, A última etapa do treinamento...";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Chegou a hora de tentar invoca o rei do sapos Gama-Bunta";
+	mes "Após isso terá sobre seu controle um poderoso animal, vamos lá!";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "1500x Sopa de Tinta de Lula e Ovos de Sapo";
+	mes "800x Insignia de Heroi";
+	mes "500x Nadadeiras";
+	mes "350x Algemas";
+	mes "100x Patas de gafonhoto";
+	mes "50x Cachimbo";
+	mes "15x Plantas de konoha";
+	mes "15x Plantas de Suna";
+	mes "15x Plantas de Kiri";
+	mes "15x Lâmina perdida nas trevas";
+	mes "15x Relogio de bolso";
+	mes "5x Planta da Melodia";
+	mes "1x Pedra do sabio";
+	mes "Matar 1000 Gama-Bunta";
+	mes "e 5kk de ryous";
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_sapo3,1;	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <5000000) goto L_SemItem;
+	if (countitem(12056) < 1500) goto L_SemItem;
+	if (countitem(968) < 800) goto L_SemItem;
+	if (countitem(951) < 500) goto L_SemItem;
+	if (countitem(1098) < 350) goto L_SemItem;
+	if (countitem(940) < 100) goto L_SemItem;
+	if (countitem(2268) < 50) goto L_SemItem;
+	if (countitem(704) < 15) goto L_SemItem;
+	if (countitem(710) < 15) goto L_SemItem;
+	if (countitem(712) < 15) goto L_SemItem;
+	if (countitem(7023) < 15) goto L_SemItem;
+	if (countitem(7513) < 15) goto L_SemItem;
+	if (countitem(707) < 5) goto L_SemItem;
+	if (countitem(12040) < 1) goto L_SemItem;
+	if(invocasapomobs3 < 1000) goto L_SemItem;
+	next;
+	mes "[^A52A2AEremita^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-5000000;
+	delitem 12056,1500;
+	delitem 968,800;
+	delitem 951,500;
+	delitem 1098,350;
+	delitem 940,100;
+	delitem 2268,50;
+	delitem 704,15;
+	delitem 710,15;
+	delitem 712,15;
+	delitem 7023,15;
+	delitem 7513,15;
+	delitem 707,5;
+	delitem 12040,1;
+	skill 723,4,0;
+	set invoca_sapo3,0;
+	set invoca_done,1;
+	set invocasapomobs3,0;
+	set quest_sapo3,0;
+	close;
+
+L_SemItem:
+	next;
+	mes "[^FF0000Eremita^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+
+aindan:
+	next;
+	mes "[^FF0000Eremita^000000]";
+	mes "Volte quando estiver pronto!";
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Eremita^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_Wrong:
+	mes "[^FF0000Eremita^000000]";
+	mes "Você não é deste clã";
+	close;
+
+L_graduacao:
+	mes "[^FF0000Eremita^000000]";
+	mes "Desculpe mas apenas jounins podem realizar esse treinamento.";
+	close;
+
+L_wrongcontract:
+	mes "[^FF0000Eremita^000000]";
+	mes "Desculpe mas seu contrato de sangue não é desse animal.";
+	close;
+
+L_wronglevel:
+	mes "[^FF0000Eremita^000000]";
+	mes "Desculpe mas você não pode pular etapas!";
+	close;
+
+}
+
+areia,252,135,4	duplicate(sapo)	Eremita#1	734
+nevoa,269,175,4	duplicate(sapo)	Eremita#2	734
+prt_monk,90,214,4	duplicate(sapo)	Eremita#3	734
+
+-	script	OnNPCKill_sapo1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_sapo1 == 1){goto sapo_inv1;} else {end;}
+
+sapo_inv1:
+switch (killedrid) {
+case 1034:
+set invocasapomobs1, invocasapomobs1 + 1;
+dispbottom "Você ja matou "+invocasapomobs1+" Girino(s)";
+end;
+
+}
+}
+
+-	script	OnNPCKill_sapo2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_sapo2 == 1){goto sapo_inv2;} else {end;}
+
+sapo_inv2:
+switch (killedrid) {
+case 1402:
+set invocasapomobs2, invocasapomobs2 + 1;
+dispbottom "Você ja matou "+invocasapomobs2+" Gama-Kishi(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_sapo3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_sapo3 == 1){goto sapo_inv3;} else {end;}
+
+sapo_inv3:
+switch (killedrid) {
+case 1089:
+set invocasapomobs3, invocasapomobs3 + 1;
+dispbottom "Você ja matou "+invocasapomobs3+" Gama-Bunta(s)";
+
+end;
+
+
+}
+}

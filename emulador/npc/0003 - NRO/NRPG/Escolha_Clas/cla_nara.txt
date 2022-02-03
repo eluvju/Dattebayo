@@ -1,0 +1,39 @@
+que_ng,31,70,3	script	Clã Nara	734,{
+	show "[Clã Nara]";
+	if(elemento == 0){goto aprendernara;}
+	if(cla == 1){goto L_alreadyhavecla;}	
+
+
+	aprendernara:
+	show "Olá caro shinobi, voce gostaria de fazer parte do Clã Nara ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Clã Nara]";
+	show "Muito bem, muito sábia essa escolha!";
+	setjob "4018";
+	set nara,nara + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Clã Nara]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	show "Você já possui um clã";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

@@ -1,0 +1,86 @@
+-	script	Test_Kill_S	-1,{
+onPcUseSkillEvent:
+	if(lskillid == 2267) {
+	atcommand "@die";
+	dispbottom "Você foi morto pela sua arte... Katsu!";
+	end;
+	}
+
+}
+
+-	script	Skills_KG	-1,{
+
+onPcUseSkillEvent:
+// ====================== Susanoo ======================
+
+	if(lskillid == 157) {
+		if(MANGEKYO == 1) { setlook LOOK_HEAD_MID,2600; }
+		if(MANGEKYO == 2) { setlook LOOK_HEAD_MID,2601; }
+		if(MANGEKYO == 3) { setlook LOOK_HEAD_MID,2602; }
+		AddTimer 30000, "FOME_SHARSKILL2::OnHPSHARSKILL22";
+		end;
+	}
+
+// ========================= Asas Akimichi =========================
+	if(lskillid == 755) {
+		AddTimer 30000, "REMOVERGORDOKG::OnHPGORDOREMOVE";
+		setlook LOOK_HEAD_MID,2605;
+		end;
+	}
+	
+// ========================= Selos Amaldiçoado =========================
+	if(lskillid == 749) {
+		AddTimer 30000, "FOME_SELOSKILL::OnHPSELOSKILL12";
+		setlook LOOK_HEAD_MID,2610;
+		end;
+	}
+	
+	if(lskillid == 750) {
+		AddTimer 30000, "FOME_SELOSKILL2::OnHPSELOSKILL22";
+		setlook LOOK_HEAD_MID,2611;
+		end;
+	}
+}
+
+
+// ========================= Remover Susanoo =========================
+
+
+-	script	FOME_SHARSKILL2	-1,{
+	
+OnHPSHARSKILL22:	
+	setlook LOOK_HEAD_MID,1600;
+	DelTimer "FOME_SHARSKILL2::OnHPSHARSKILL22";
+	end;
+
+}
+
+
+// ========================= Remover Selos Amaldiçoado =========================
+
+-	script	FOME_SELOSKILL	-1,{
+
+OnHPSELOSKILL12:
+	setlook LOOK_HEAD_MID,1611;
+	DelTimer "FOME_SELOSKILL::OnHPSELOSKILL12";
+	end;
+
+}
+
+-	script	FOME_SELOSKILL2	-1,{
+
+OnHPSELOSKILL22:
+	setlook LOOK_HEAD_MID,1611;
+	DelTimer "FOME_SELOSKILL2::OnHPSELOSKILL22";
+	end;
+
+}
+
+// ========================= Remover Asas Akimichi =========================
+
+-	script	REMOVERGORDOKG	-1,{
+	
+	OnHPGORDOREMOVE:
+		setlook LOOK_HEAD_MID,0;
+		end;
+}

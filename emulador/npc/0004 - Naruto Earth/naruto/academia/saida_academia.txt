@@ -1,0 +1,23 @@
+//sec_in01,85,15,0	script	Portal::Warp001	45,1,1,{
+
+OnInit:
+  .warp$[Job_swordman] = "konoha3,302,227";
+  .warp$[Job_knight] = "konoha3,302,227";
+  .warp$[Job_lord_knight] = "konoha3,302,227";
+  .warp$[Job_acolyte] = "kumogakure,15,94";
+  .warp$[Job_monk] = "kumogakure,15,94";
+  .warp$[Job_champion] = "kumogakure,15,94";
+  .warp$[Job_archer] = "kiragakure,185,177";
+  .warp$[Job_hunter] = "kiragakure,185,177";
+  .warp$[Job_sniper] = "kiragakure,185,177";
+  .warp$[Job_alchemist] = "akatsuki,110,178";
+  .warp$[Job_high_priest] = "prontera,120,150";
+  end;
+
+OnTouch:
+	if(final != 1) {npctalk "Termine seus estudos, "+strcharinfo(0)+"-san!"; end;}
+	explode( .@warp$, .warp$[Class], "," );
+  warp( .@warp$[0], atoi( .@warp$[1] ), atoi( .@warp$[2] ) );
+  end;
+	
+	}

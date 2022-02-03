@@ -1,0 +1,58 @@
+-	script	on_PC_UseSkillfuriaf	-1,{
+    end;
+//When a Character uses a skill
+
+//FuriaInterior
+
+onPcUseSkillEvent:
+
+           if(lskillid == 270) {
+
+
+if (getskilllv(270) == 1) {
+
+if (FuriaInterior != 1) {end;}
+if (skill270 >= 50) {skill 270,2,0; set skill270,0; dispbottom "[Sys] Level up"; end; }
+set skill270,skill270 +1;
+dispbottom "[Jutsu level] Fúria Interior level 1: "+skill270+" de 50";
+
+end;
+
+}
+
+if (getskilllv(270) == 2) {
+if (FuriaInterior != 1) {end;}
+if (skill270 >= 100) {skill 270,3,0; set skill270,0; dispbottom "[Sys] Level up"; end;}
+set skill270,skill270 +1;
+dispbottom "[Jutsu level] Fúria Interior level 2: "+skill270+" de 100";
+
+end;
+
+}
+
+if (getskilllv(270) == 3) {
+if (fuuin_avan != 1) {end;}
+if (FuriaInterior != 1) {end;}
+if (skill270 >= 150) {skill 270,4,0; set skill270,0; dispbottom "[Sys] Level up"; end;}
+set skill270,skill270 +1;
+dispbottom "[Jutsu level] Fúria Interior level 3: "+skill270+" de 150";
+
+end;
+
+}
+
+if (getskilllv(270) == 4) {
+if (fuuin_avan != 1) {end;}
+if (FuriaInterior != 1) {end;}
+if (skill270 >= 200) {skill 270,5,0; set skill270,0; dispbottom "[Sys] Level up"; end;}
+set skill270,skill270 +1;
+dispbottom "[Jutsu level] Fúria Interior level 4: "+skill270+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

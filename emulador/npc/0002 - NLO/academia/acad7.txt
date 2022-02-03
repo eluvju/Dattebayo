@@ -1,0 +1,16 @@
+prontera,157,191,5	script	Academia#6	65,{
+
+if(quest8_5 == 0){
+mes "Você deve falar com o Mestre Ninjutsu e escolher seu elemento antes falar comigo.";
+close;
+}
+
+mes "Olá, eu sou e vou lhe ensinar sobre um ninja resistente";
+mes "E um treino aconselhado para jogadores que gostam de ser a linha de frente durante as batalhas";
+mes "Para isso, voce deve ter bastante vitalidade (VIT) para durar nas batalhas!";
+next;
+mes "Parabens! Voce ja pode se tornar um ninja especializado em resistencia!";
+getitem 6018, 1;
+set quest8_6, 1;
+close;
+}

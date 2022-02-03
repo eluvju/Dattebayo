@@ -1,0 +1,166 @@
+floresta,188,348,5	script	Médico andarilho	83,{
+
+//========================================================================
+//	MENU
+//========================================================================
+
+mes "Posso ajudar? Bom... na verdade, você pode me ajudar?";
+next;
+mes "Eu sou... digo, era, um grande médico na vila da folha...";
+next;
+mes "Mas minha ambição médica me destruiu, eu queria fazer cirugias jamais vistas, eu queria mudar o mundo shinobi ... eu fazia cirugias ilegais em shinobis de outras vilas...";
+next;
+mes "Eu reunia corpos de shinobis da folha mortos, e implantava seus kekkei genkais em nossos inimigos, claro... por um bom preço";
+next;
+mes "Mas eu fui pego... e me tomaram tudo, ainda fui expulso da vila, seria ótimo se você conseguisse meu kit cirugico, pena que ele foi roubado por meu assistente, ele também fugiu da vila";
+next;
+mes "Você precisa recuperar-lo pra mim, apenas com ele posso fazer minhas cirugias... se você conseguir, posso fazer uma em você... o que acha?";
+menu "Hm... isso me deixaria mais forte ainda, eu aceito!",sim,"Sim, e já tenho os itens",sim2,"Não, é muito arriscado",nao;
+
+nao:
+close;
+
+No_Item:
+mes "Está faltando algum item, volte quando tiver feito tudo";
+close;
+
+sim:
+mes "Ótimo, muito bem rapaz, não irá se arrepender";
+next;
+mes "VocÊ vai precisar de:";
+mes "- 1 kit cirugico";
+mes "- 1 parte do corpo de um antigo dono da kekkei genkai que deseja";
+mes "- 5 NRO Points";
+mes "- Completar a torre sangrenta, na última dificuldade";
+next;
+mes "Quando tiver tudo, volte que eu farei a cirugia em você!";
+close;
+
+sim2:
+next;
+if(kg_byakugan == 4) {
+if (countitem(529) < 1) goto No_Item;
+if (countitem(659) < 1) goto No_Item;
+if (countitem(7116) < 5) goto No_Item;
+if (torrefeita != 1) goto No_Item;
+delitem 529,1;
+delitem 659,1;
+delitem 7116,5;
+set byakugan,4;
+set kg_byakugan,5;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Byakugan!",bc_blue|bc_all;
+close;
+
+}
+
+if(kg_hyouton == 4) {
+if (countitem(529) < 1) goto No_Item;
+if (countitem(745) < 1) goto No_Item;
+if (countitem(7116) < 5) goto No_Item;
+if (torrefeita != 1) goto No_Item;
+delitem 529,1;
+delitem 745,1;
+delitem 7116,5;
+set GELO,4;
+set kg_hyouton,5;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Hyouton!",bc_blue|bc_all;
+close;
+
+}
+
+if(kg_lee == 4) {
+if (countitem(529) < 1) goto No_Item;
+if (countitem(735) < 1) goto No_Item;
+if (countitem(7116) < 5) goto No_Item;
+if (torrefeita != 1) goto No_Item;
+delitem 529,1;
+delitem 735,1;
+delitem 7116,5;
+set LEE2,4;
+set kg_lee,5;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seus Portões de chakra!",bc_blue|bc_all;
+close;
+
+}
+
+//if(kg_kugutsu == 4) {
+//if (countitem(529) < 1) goto No_Item;
+//if (countitem(744) < 1) goto No_Item;
+//if (countitem(7116) < 5) goto No_Item;
+//if (torrefeita != 1) goto No_Item;
+//delitem 529,1;
+//delitem 744,1;
+//delitem 7116,5;
+//set MARIONETE,4;
+//set kg_kugutsu,5;
+//announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Kugutsu!",bc_blue|bc_all;
+//close;
+//
+//}
+
+if(kg_baika == 4) {
+if (countitem(529) < 1) goto No_Item;
+if (countitem(685) < 1) goto No_Item;
+if (countitem(7116) < 5) goto No_Item;
+if (torrefeita != 1) goto No_Item;
+delitem 529,1;
+delitem 685,1;
+delitem 7116,5;
+set AKIMICHI,4;
+set kg_baika,5;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Baika!",bc_blue|bc_all;
+close;
+
+}
+
+if(kg_nara == 4) {
+if (countitem(529) < 1) goto No_Item;
+if (countitem(7328) < 1) goto No_Item;
+if (countitem(7116) < 5) goto No_Item;
+if (torrefeita != 1) goto No_Item;
+delitem 529,1;
+delitem 7328,1;
+delitem 7116,5;
+set NARA2,4;
+set kg_nara,5;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Controle sobre as sombras!",bc_blue|bc_all;
+close;
+
+}
+
+if(kg_seloceu == 4) {
+if (countitem(529) < 1) goto No_Item;
+if (countitem(669) < 1) goto No_Item;
+if (countitem(7116) < 5) goto No_Item;
+if (torrefeita != 1) goto No_Item;
+delitem 529,1;
+delitem 669,1;
+delitem 7116,5;
+set SELO1,4;
+set kg_seloceu,5;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Selo amaldiçoado do céu!",bc_blue|bc_all;
+close;
+
+}
+
+if(kg_seloterra == 4) {
+if (countitem(529) < 1) goto No_Item;
+if (countitem(681) < 1) goto No_Item;
+if (countitem(7116) < 5) goto No_Item;
+if (torrefeita != 1) goto No_Item;
+delitem 529,1;
+delitem 681,1;
+delitem 7116,5;
+set SELO2,4;
+set kg_seloterra,5;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Selo amaldiçoado do céu!",bc_blue|bc_all;
+close;
+
+}
+
+mes "Não adianta me trazer o itens, sem ter uma kekkei genkai nível 3, volte quando tiver!";
+close;
+
+
+
+}

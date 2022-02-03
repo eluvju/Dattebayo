@@ -1,0 +1,14 @@
+prontera,155,180,4	script	Clone	436,{
+mes "hello";
+close;
+
+OnPCLoadMapEvent:
+if( strcharinfo(3) == "areia" ){
+announce strcharinfo(0)+" da Vila Oculta da Nevoa acaba de invadir a Suna.",bc_map,0xFF0000;
+}
+end;
+
+}
+        
+        //------Enable map OnPCLoadMapEvent-------------------
+areia	mapflag	loadevent

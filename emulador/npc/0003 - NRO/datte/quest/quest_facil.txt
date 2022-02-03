@@ -1,0 +1,52 @@
+kakashi,64,67,1	script	Homem Velho	903,{
+if (checkquest(1000) == 1) goto L_go;
+if (pegueiemblema == 1) {mes "Você já pegou um emblema, não seja ganancioso"; close;}
+
+mes "[Homem Velho]";
+mes "Ei você... eu ouvi falar que tem uma legião de ferreiros que chegaram na vila oculta da chuva";
+next;
+mes "[Homem Velho]";
+mes "Eles produzem todo tipo de equipamento, seria interessante investigar pra ver se isso é verdade.";
+next;
+mes "[Homem Velho]";
+mes "Ouvi também dizer que eles possuem um esconderijo e que apenas pessoas dignas e honradas podem entrar, e para provar sua dignidade teria que provar";
+next;
+mes "[Homem Velho]";
+mes "Eu conheço um pessoal da vila da chuva que diz ter entrado nesse local secreto, dizem que precisa de um emblema da bravura para entrar, posso conseguir um pra você, mas não será barato";
+next;
+mes "[Homem Velho]";
+mes "Gostaria de conseguir um emblema da bravura?";
+menu "Sim",L_sim,"Agora não",L_nao;
+
+L_sim:
+next;
+mes "[Homem Velho]";
+mes "Uma escolha sábia, eu tenho um informante na chuva que diz que consegue um emblema em troca de alguns itens, são eles:";
+next;
+mes "[Homem Velho]";
+mes "1x NRO Point";
+mes "1x Fuuin no sho";
+mes "e completar a torre sangrenta na maior dificuldade";
+next;
+mes "[Homem Velho]";
+mes "Quando conseguir estes itens volte até mim que vou providenciar seu emblema!";
+setquest 1000;
+close;
+
+L_nao:
+close;
+
+L_go:
+if(countitem(7116) < 1) { mes "Você não tem o NRO point necessário"; close;}
+if(countitem(749) < 1) {mes "Você não tem o fuuin no sho necessário"; close;}
+if (torrefeita != 1) {mes "Você ainda não completou a torre na última dificuldade"; close;}
+mes "Muito bem honrado shinobi, aqui está seu emblema";
+getitem 662,1;
+delitem 7116,1;
+delitem 749,1;
+completequest 1000;
+erasequest 1000;
+set pegueiemblema,1;
+close;
+
+}

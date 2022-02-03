@@ -1,0 +1,17 @@
+-	script	xxx	-1,{
+OnPCLoginEvent:
+
+if (BaseLevel < 999) {
+announce "Bem-Vindo ao NRO Novato - [ "+strcharinfo(0)+" ], caso precise tirar suas duvidas e aprender mais sobre o jogo, vá até nossa academia, e caso esteja perdido, use o @voltar para retornar para sua vila!",bc_blue|bc_self;
+}else{
+announce "Bem-Vindo ao NRO Veterano - [ "+strcharinfo(0)+" ], Proteja sua conta, ative o @lock antes de sair e não repasse sua senha para outros!",bc_blue|bc_self;
+end;
+close2;
+}
+}
+
+prt_monk	mapflag	noteleport
+morocc_in	mapflag	noteleport
+payon_in01	mapflag	noteleport
+payon_in02	mapflag	noteleport
+payon_in03	mapflag	noteleport

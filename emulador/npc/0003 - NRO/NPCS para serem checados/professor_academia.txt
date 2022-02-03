@@ -1,0 +1,518 @@
+acad_01.gat,8,59,5	script	Tsunade	423,{
+
+if(quiz3==1 && quiz2==1 && quiz1==1 && Jutsu_Academia >=5) {goto completo;} else {goto aula;}
+
+completo:
+mes "Olá Jovem Ninja.";
+next;
+mes "Noto que respondeu todas questões corretas e completou todos os seus treinamentos, agora você tem sabedoria suficiente para continuar na sua jornada!";
+next;
+mes "Você será agora graduado a Genin e levado pra sua vila, parabéns.";
+next;
+mes "[Conselheiro]";
+mes "Só um momento, esse shinobi está despertando seu chakra, ele precisa ser levado pro circulo elemental agora mesmo!";
+next;
+mes "^008000[Tsunade]^000000";
+mes "Mas tão cedo?! Poderia ele ser um prodígio?";
+next;
+mes "[Conselheiro]";
+mes "Ele já está quase despertando seu chakra elemental, alguém me ajude a levá-lo agora!";
+next;
+set quiz3,0;
+set quiz2,0;
+set quiz1,0;
+set Jutsu_Academia,0;
+set title$, "RankE";
+announce strcharinfo(0)+" é o mais novo Genin, parabéns.",bc_blue|bc_all;
+//	Achieve( 9);
+set genin,1;
+set skillgenin1,1;
+skill 1,9,0;
+warp "job_sage",49,165;
+savepoint "job_sage",49,165;
+dispbottom "Seu chakra despertou, você precisa fixar um elemento nele agora mesmo!";
+close;
+
+aula:
+//cutin "Tsunade",3;
+mes "^008000[Tsunade]^000000";
+savepoint "acad_01",99,23;
+mes "Muito bom dia meus alunos, iremos hoje começar a nossa primeira aula Ninja.";
+mes "Se você ja viu essa aula e gostaria de ir diretamente para o treinamento prático, diga sim.";
+menu "Sim",lsim,"Não",-;
+mes "Eu não forço as pessoas a verem minhas aulas, se quiser ir sem saber é por sua conta o risco, quer ir sem ouvir meus conselhos?";
+next;
+mes "^008000[Tsunade]^000000";
+mes "Ser um ninja não e apenas ser forte, lutar.";
+next;
+mes "^008000[Tsunade]^000000";
+mes "Voces entrarão aqui com um propósito, todos devem ter um sonho";
+mes "e eu ensinarei o básico para voces.";
+mes "Vamos começar pelo objetivo Ninja.";
+next;
+mes "1 - [Objetivo de um Ninja]";
+mes "2 - [Ranks Shinobi]";
+mes "3 - [Missões Shinobi]";
+mes "4 - [Geografia Shinobi]";
+mes "5 - [Aula Pratica]";
+next;
+mes "[Objetivo de um Ninja]";
+mes "Um ninja deve ter sempre como objetivo principal proteger a sua vila de origem";
+mes "independentemente de qualquer coisa deve sempre oferecer segurança a vila";
+mes "e é pra isso que voces estão sendo treinados.";
+next;
+mes "[Objetivo de um Ninja]";
+mes "Desejar mal a sua vila, e sinal de traição";
+mes "nesse caso o ninja é expulso da vila e e passado a ser um Nukenin, um Ninja renegado.";
+mes "Por isso lembrem-se crianças.";
+next;
+mes "[Objetivo de um Ninja]";
+mes "nunca mesmo traia a sua vila de Origem, isso pode ser muito perigoso.";
+mes "E agora, vamos aprender os Ranks que voces podem alcançar.";
+next;
+mes "[Ranks Shinobi]";
+mes "hmmm, Os ranks shinobis determinam o grau de força de cada Shinobi.";
+mes "e quais as missões ele pode fazer.";
+next;
+mes "[Ranks Shinobi]";
+mes "Os Ranks são dividos em 5.";
+mes "O primeiro e o Rank Genin, que quando voces sairem daqui, vocês escolheram sua vila e";
+mes "receberam a bandana dela e serão rankeados";
+mes "como genins.";
+next;
+mes "[Ranks Shinobi]";
+mes "O segundo é o Chunin, esse é um dos Ranks intermediarios";
+mes "para se tornar um Chunin, você";
+mes "deverá passar no Chunin Shiken que e uma bateria enorme de testes, dos mais variados.";
+next;
+mes "[Ranks Shinobi]";
+mes "E o Kage de sua vila que escolhe se você ira passar ou não. Quando virar Chunnin, voce";
+mes "podera fazer";
+mes "Missões mais dificeis.";
+next;
+mes "[Ranks Shinobi]";
+mes "O terceiro Rank, é dado a aqueles Ninjas que tem mais força em uma vila";
+mes "esse rank é dado somente para os Chunins mais fortes.";
+next;
+mes "você será chamado de Jounnin. Podendo fazer todo o tipo de missão.";
+next;
+mes "[Ranks Shinobi]";
+mes "O quarto Rank, é um rank a parte, é o ANBU";
+mes "ANBU é um rank onde somente os Jounins de Elite podem entrar, são a elite de uma vila.";
+next;
+mes "[Ranks Shinobi]";
+mes "são ninjas que caçam os Ninjas renegados, fazem missões de assasinato";
+mes "missões de reconhecimento de território inimigo.";
+mes "Por isso que devem ter ultrapassado o Rank de Jounin.";
+next;
+mes "[Ranks Shinobi]";
+mes "E enfim, os Kages. Esse é o mais alto nivel que um Ninja pode chegar.";
+mes "os Kages são considerados os ninjas mais fortes, mais sábios de uma vila.";
+mes "O kage tem uma responsabilidade enorme, de cuidar de sua vila como se fosse seu filho,";
+mes "dando a sua vida por ela.";
+next;
+mes "[Ranks Shinobi]";
+mes "Terminamos nossa aula aqui, e agora vamos para as Missões...";
+next;
+mes "[Missões Shinobi]";
+mes "As missões são indicadas por ranks também, vamos ver nesse quadro os Ranks e quem pode";
+mes "realiza-los.";
+next;
+mes "[Missões Shinobi]";
+mes "Nivel D: São realizadas apenas por Genins que acabaram de se formar na academia.";
+mes "normalmente são para capturar animais, recolher o lixo, limpar canteiros e etc.";
+mes "Lembrando que nunca haverá combate nesse tipo de missão.";
+mes "Recompensa: 5.000 a 50.000 ryou.";
+next;
+mes "[Missões Shinobi]";
+mes "Nivel C: Missões atribuidas a genins ou chunins, a maioria das Missões são";
+mes "realizadas neste nivel.";
+mes "Dificuldade media. Geralmente Missões em que se acompanham  pessoas importantes para";
+mes "o destino delas.";
+mes "estas Missões ajudam muito no desenvolvimento e percepçao dos ninjas.";
+mes "Recompensa: 30.000 a 100.000 ryou.";
+next;
+mes "[Missões Shinobi]";
+mes "Nivel B: Missões atribuidas a chunins ou jounin.";
+mes "O nivel de dificuldade destas Missões e alto";
+mes "e sempre envolvem combate com outros ninjas de niveis medio/baixo.";
+mes "Missões de espionagem e assassinato de ninjas.";
+mes "Recompensa: 80.000 a 200.000 ryou";
+next;
+mes "[Missões Shinobi]";
+mes "Nivel A: Missões atribuidas a jounins ou ate mesmo ao kage da vila.";
+mes "Todas as Missões de Nivel A apresentam dificuldades muito altas.";
+mes "na qual geralmente envolvem captura de ninjas foragidos, escolta de pessoas muito";
+mes "importantes e a eliminação de ninjas de alto nivel.";
+mes "Recompensa: 150.000 a 1.000.000 ryou.";
+next;
+mes "[Missões Shinobi]";
+mes "Nivel S: Missões que envolvem varios Paises.";
+mes "Geralmente as Missões de Nivel S";
+mes "estao relacionadas com as guerras que ocorrem";
+mes "tendo de ir para outros paises ajudar nas lutas.";
+mes "Outras Missões que podem ser classificadas como nivel S";
+mes "é o transporte de documentos e artefatos de importancia imensuráveis.";
+mes "quando alguem de muita importancia é assassinado"; 
+mes "ou quando alguma pessoa de gigantesca";
+mes "importancia necessita de escolta.";
+mes "Recompensa: Acima de 1.000.000 ryou.";
+next;
+mes "[Missões Shinobi]";
+mes "Essas são as Missões";
+mes "agora vamos passar para a geografia do nosso mundo";
+mes "vamos aprender como ele e constituido.";
+next;
+mes "[Geografia Shinobi]";
+mes "Nosso mundo Shinobi, é constituido por tres vilas dominantes.";
+mes "elas são Konoha, Suna e Nevoa, Quando voces sairem da academia";
+mes "voces escolheram uma delas para se tornar Ninja das mesmas.";
+mes "as tres são vilas inimigas, e vivem em constantes batalhas";
+mes "por isso voce deve se dedicar muito a aquela que você escolher.";
+next;
+mes "[Geografia Shinobi]";
+mes "Konoha, situa-se no pais do fogo, uma vila que tem como marco principal a sua";
+mes "arborização, e rodeada por florestas e em boa parte do ano, só faz sol na vila.";
+next;
+mes "[Geografia Shinobi]";
+mes "Suna, situa-se no pais do vento";
+mes "uma vila que foi construida no deserto, é muito dificil";
+mes "chegar a essa vila sem a ajuda de um Jounin ou um ninja da vila.";
+mes "pois suas tempestades de areia dificultam muito a localização.";
+next;
+mes "[Geografia Shinobi]";
+mes "Névoa, situa-se no pais da agua";
+mes "uma vila conhecida por ser sanguinária";
+mes "situada em um local gelado, onde faz frio o ano todo.";
+mes "seus ninjas tem como principal caracteristica a utilização de jutsus de agua";
+mes "salvo excecoes.";
+next;
+mes "^008000[Tsunade]^000000";
+mes "Agora que terminamos nossas aulas teoricas";
+mes "vamos para a pratica, vamos aprender a lutar";
+next;
+mes "^008000[Tsunade]^000000";
+mes "Voce aprendeu tudo?";
+menu "Sim",lsim,"não",lnao;
+
+lsim:
+next;
+mes "Já que voce está bem no teórico, vamos para o prático e começar os exames...";
+next;
+mes "Faça os treinamentos e converse e responda as perguntas dos instrutores nas outras salas, e volte a falar comigo.";
+close;
+
+lnao:
+next;
+mes "^008000[Tsunade]^000000";
+mes "Pelo jeito vamos ter que conversar novamente.";
+close;
+
+
+}
+
+//=====================================
+//NPC QUIZ DAS BATALHAS
+//=====================================
+
+acad_01,182,81,5	script	Instrutor de Batalhas 	884,{
+if(quiz1==1) goto jafez;
+
+mes "Olá jovem Shinobi!";
+mes "Eu sou o Instrutor Shinobi que vai lhe ensinar sobre as batalhas ninja.";
+next;
+mes "Preste bem atenção na matéria para o questionário final!";
+next;
+mes " As batalhas Ninjas são compostas por vários estilos de Luta.";
+mes " Existem o Ninjutsu, que é a arte de usar o Chackra para manipular";
+mes " os Elementos, são os que ficam atrás no campo de batalha.";
+next;
+mes " Existe o Taijutsu, que é a técnica de usar golpes corpo-a-corpo para lutar.";
+mes " Normalmente estes tomam a frente na Batalha.";
+next;
+mes " Existem os Ninjas Médicos, Cozinheiros, que fazem parte da equipe de apoio dos grupos.";
+mes " afinal, uma boa refeição e cuidados médicos são essenciais para uma jornada!";
+next;
+mes " Você batalhará contra as 2 vilas opostas e também organizações auto-sustentáveis..";
+mes " Então meu jovem, treine duro dia-a-dia para ser o melhor!";
+next;
+mes " Agora vamos para um pequeno questionário para ver se você entendeu.";
+next;
+mes " 1° Pergunta - Qual tipo de Ninja Utiliza Chackra para Manipular elementos?";
+menu "Taijutsu",tai,"Médicos",med,"Ninjutsu",nin;
+
+tai:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+med:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+nin:
+next;
+mes "Muito Bem meu Jovem! Vamos para a próxima pergunta.";
+next;
+goto segunda;
+
+
+//----------------------
+
+segunda:
+mes " 2° Pergunta - Qual tipo de Ninja Fica na Frente da Batalha?";
+menu "Taijutsu",tai2,"Médicos",med2,"Ninjutsu",nin2;
+
+tai2:
+next;
+mes "Muito Bem meu Jovem! Vamos para a próxima pergunta.";
+next;
+goto terceira;
+
+med2:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+nin2:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+//----------------------
+
+terceira:
+mes " 3° Pergunta - Qual tipo de Ninja Serve de Apoio nas Batalhas?";
+menu "Taijutsu",tai3,"Médicos",med3,"Ninjutsu",nin3;
+
+tai3:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+med3:
+next;
+mes "Muito Bem meu Jovem! Você completou o questionário de batalhas!";
+mes "Dirija-se ao próximo Ancião para completar os 3 questionários, se este foi seu último, vai falar com a Tsunade!";
+set quiz1,1;
+close;
+
+nin3:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+//===========
+jafez:
+mes "Você já completou o questionário das Batalhas!";
+close;
+}
+
+
+
+
+
+//=====================================
+//NPC QUIZ HIERARQUIA
+//=====================================
+
+acad_01,19,177,5	script	Instrutor de Cargos 	884,{
+if(quiz2==1) goto jafez;
+
+mes "Olá jovem Shinobi!";
+mes "Eu sou o Instrutor Shinobi que vai lhe ensinar sobre os Cargos do Servidor.";
+next;
+mes "Preste bem atenção na matéria para o questionário final!";
+next;
+mes " Os Cargos mais influentes são os Seguintes:";
+mes " Kage, Anbu, Akatsuki, Nukenin e Jounin.";
+mes " Cada um tem uma responsabilidade muito grande dentro da sua vila/organização.";
+next;
+mes " KAGE:";
+mes " São os Líderes das Vilas, são muito fortes e têm a responsabilidade de ajudar novatos,necessitados e liderar as Batalhas e Guerras";
+next;
+mes " ANBU:";
+mes " A ANBU é uma organização Interna da Vila, são membros muito fortes e usam máscaras para manter o seu disfarce.";
+next;
+mes " AKATSUKI:";
+mes " A Akatsuki é uma Organização Criminosa que tem a missão de Capturar todas Jinchuurikis para um plano maléfico.";
+mes " São extremamente fortes e selecionados a dedo, cada um com habilidades únicas.";
+next;
+mes " NUKENIN:";
+mes "São Ninjas que fugiram/foram expulsos da sua Vila, são caçados extremamente pela ANBU.";
+next;
+mes "JOUNIN:";
+mes "Os Jounins são o nível máximo dos Shinobis chegarem,são a elite mais forte da vila e representantes na falta do Kage.";
+mes "Os jounins recebem o próximo passo ao ingressar na ANBU ou se tornando Kage.";
+next;
+mes " Agora vamos para um pequeno questionário para ver se você entendeu.";
+next;
+mes " 1° Pergunta - Qual os Ninjas que utilizam máscara para disfarce?";
+menu "Kage",kag,"Anbu",anb,"Akatsuki",aka;
+
+kag:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+anb:
+next;
+mes "Muito Bem meu Jovem! Vamos para a próxima pergunta.";
+next;
+goto segunda;
+
+aka:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+
+//----------------------
+
+segunda:
+mes " 2° Pergunta - Qual é a organização Criminosa que procura total poder no mundo Ninja?";
+menu "Kage",kag2,"Anbu",anb2,"Akatsuki",aka2;
+
+kag2:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+anb2:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+aka2:
+next;
+mes "Muito Bem meu Jovem! Vamos para a próxima pergunta.";
+next;
+goto terceira;
+
+//----------------------
+
+terceira:
+mes " 3° Pergunta - Qual classe está a frente das Vilas seja nas batalhas ou na diplomacia?";
+menu "Kage",kag3,"Anbu",anb3,"Akatsuki",aka3;
+
+kag3:
+next;
+mes "Muito Bem meu Jovem! Você completou o questionário de cargos!";
+mes "Dirija-se ao próximo Ancião para completar os 3 questionários, se este foi seu último, vai falar com a Tsunade!";
+set quiz2,1;
+close;
+
+anb3:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+aka3:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+//===========
+jafez:
+mes "Você já completou o questionário dos Cargos!";
+close;
+}
+
+
+
+//=====================================
+//NPC QUIZ ORIENTADOR
+//=====================================
+
+acad_01,171,189,5	script	Orientador 	884,{
+if(quiz3==1) goto jafez;
+
+mes "Olá jovem Shinobi!";
+mes "Eu sou o Instrutor Shinobi que vai lhe ensinar sobre o básico do servidor";
+next;
+mes "Preste bem atenção na matéria para o questionário final!";
+next;
+mes " O Servidor conta com 3 Vilas Ninja:";
+mes " Konoha, Suna e Névoa. Em cada vila você vai poder escolher um elemento, e defender sua vila..";
+next;
+mes " O Servidor tem as Rates 10x, e Level máximo 999:";
+next;
+mes " Todos os jutsus são conquistadas por treinamentos e missões.";
+mes " O Servidor fica Online 24horas 7dias por Semana, com host dedicado.";
+next;
+mes " As guerras acontecem nas quartas e Sábados, as 20h e com término as 21:00h";
+mes " afinal, uma boa guerra traz um grande divertimento para todos!";
+next;
+mes " Agora vamos para um pequeno questionário para ver se você entendeu.";
+next;
+mes " 1° Pergunta - Qual vila citada não está presente no servidor?";
+menu "Névoa",nev,"Konoha",kon,"Som",som;
+
+nev:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+kon:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+som:
+next;
+mes "Muito Bem meu Jovem! Vamos para a próxima pergunta.";
+next;
+goto segunda;
+
+
+//----------------------
+
+segunda:
+mes " 2° Pergunta - Qual o level máximo do servidor?";
+menu "999",tai2,"700",med2,"99",nin2;
+
+tai2:
+next;
+mes "Muito Bem meu Jovem! Vamos para a próxima pergunta.";
+next;
+goto terceira;
+
+med2:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+nin2:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+//----------------------
+
+terceira:
+mes " 3° Pergunta - Qual dia citado abaixo não é dia de Guerra Shinobi?";
+menu "Quarta",tai3,"Quinta",med3,"Sábado",nin3;
+
+tai3:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+med3:
+next;
+mes "Muito Bem meu Jovem! Você completou o questionário de batalhas!";
+mes "Dirija-se ao próximo Ancião para completar os 3 questionários, se este foi seu último, vai falar com a Tsunade!";
+set quiz3,1;
+close;
+
+nin3:
+next;
+mes "Resposta errada, leia denovo e refaça o questionário.";
+close;
+
+//===========
+jafez:
+mes "Você já completou o questionário das Batalhas!";
+close;
+}

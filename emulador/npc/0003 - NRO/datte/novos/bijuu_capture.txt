@@ -1,0 +1,594 @@
+-	script	bijuu_init	-1,{
+
+OnInit:
+if ($Ichibi_konoha == 0) {disablenpc "Ichibi#1";}
+if ($Nibi_konoha == 0) {disablenpc "Nibi#1";}
+if ($sanbi_konoha == 0) {disablenpc "Sanbi#1";}
+if ($yonbi_konoha == 0) {disablenpc "Yonbi#1";}
+if ($Gobi_konoha == 0) {disablenpc "Gobi#1";}
+if ($Rokubi_konoha == 0) {disablenpc "Rokubi#1";}
+if ($Shichibi_konoha == 0) {disablenpc "Shichibi#1";}
+if ($Hachibi_konoha == 0) {disablenpc "Hachibi#1";}
+if ($Kyuubi_konoha == 0) {disablenpc "Kyuubi#1";}
+
+if ($Ichibi_areia == 0) {disablenpc "Ichibi#2";}
+if ($Nibi_areia == 0) {disablenpc "Nibi#2";}
+if ($sanbi_areia == 0) {disablenpc "Sanbi#2";}
+if ($yonbi_areia == 0) {disablenpc "Yonbi#2";}
+if ($Gobi_areia == 0) {disablenpc "Gobi#2";}
+if ($Rokubi_areia == 0) {disablenpc "Rokubi#2";}
+if ($Shichibi_areia == 0) {disablenpc "Shichibi#2";}
+if ($Hachibi_areia == 0) {disablenpc "Hachibi#2";}
+if ($Kyuubi_areia == 0) {disablenpc "Kyuubi#2";}
+
+if ($Ichibi_kiri == 0) {disablenpc "Ichibi#3";}
+if ($Nibi_kiri == 0) {disablenpc "Nibi#3";}
+if ($sanbi_kiri == 0) {disablenpc "Sanbi#3";}
+if ($yonbi_kiri == 0) {disablenpc "Yonbi#3";}
+if ($Gobi_kiri == 0) {disablenpc "Gobi#3";}
+if ($Rokubi_kiri == 0) {disablenpc "Rokubi#3";}
+if ($Shichibi_kiri == 0) {disablenpc "Shichibi#3";}
+if ($Hachibi_kiri == 0) {disablenpc "Hachibi#3";}
+if ($Kyuubi_kiri == 0) {disablenpc "Kyuubi#3";}
+
+if ($Ichibi_nuvem == 0) {disablenpc "Ichibi#4";}
+if ($Nibi_nuvem == 0) {disablenpc "Nibi#4";}
+if ($sanbi_nuvem == 0) {disablenpc "Sanbi#4";}
+if ($yonbi_nuvem == 0) {disablenpc "Yonbi#4";}
+if ($Gobi_nuvem == 0) {disablenpc "Gobi#4";}
+if ($Rokubi_nuvem == 0) {disablenpc "Rokubi#4";}
+if ($Shichibi_nuvem == 0) {disablenpc "Shichibi#4";}
+if ($Hachibi_nuvem == 0) {disablenpc "Hachibi#4";}
+if ($Kyuubi_nuvem == 0) {disablenpc "Kyuubi#4";}
+
+if ($Ichibi_aka == 0) {disablenpc "Ichibi#5";}
+if ($Nibi_aka == 0) {disablenpc "Nibi#5";}
+if ($sanbi_aka == 0) {disablenpc "Sanbi#5";}
+if ($yonbi_aka == 0) {disablenpc "Yonbi#5";}
+if ($Gobi_aka == 0) {disablenpc "Gobi#5";}
+if ($Rokubi_aka == 0) {disablenpc "Rokubi#5";}
+if ($Shichibi_aka == 0) {disablenpc "Shichibi#5";}
+if ($Hachibi_aka == 0) {disablenpc "Hachibi#5";}
+if ($Kyuubi_aka == 0) {disablenpc "Kyuubi#5";}
+
+
+}
+
+in_hunter,99,99,4	script	Ichibi::npcichibi	1737,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,43,44,7	duplicate(npcichibi)	Ichibi#1	1737
+biju_pri2,43,44,7	duplicate(npcichibi)	Ichibi#2	1737
+biju_pri3,43,44,7	duplicate(npcichibi)	Ichibi#3	1737
+biju_pri4,43,44,7	duplicate(npcichibi)	Ichibi#4	1737
+biju_pri5,43,44,7	duplicate(npcichibi)	Ichibi#5	1737
+
+in_hunter,99,99,4	script	Nibi::npcnibi	1984,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,55,44,7	duplicate(npcnibi)	Nibi#1	1984
+biju_pri2,55,44,7	duplicate(npcnibi)	Nibi#2	1984
+biju_pri3,55,44,7	duplicate(npcnibi)	Nibi#3	1984
+biju_pri4,55,44,7	duplicate(npcnibi)	Nibi#4	1984
+biju_pri5,55,44,7	duplicate(npcnibi)	Nibi#5	1984
+
+in_hunter,99,99,4	script	Sanbi::npcsanbi	1986,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,67,44,7	duplicate(npcsanbi)	Sanbi#1	1986
+biju_pri2,67,44,7	duplicate(npcsanbi)	Sanbi#2	1986
+biju_pri3,67,44,7	duplicate(npcsanbi)	Sanbi#3	1986
+biju_pri4,67,44,7	duplicate(npcsanbi)	Sanbi#4	1986
+biju_pri5,67,44,7	duplicate(npcsanbi)	Sanbi#5	1986
+
+in_hunter,99,99,4	script	Yonbi::npcyonbi	1981,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,79,43,7	duplicate(npcyonbi)	Yonbi#1	1981
+biju_pri2,79,43,7	duplicate(npcyonbi)	Yonbi#2	1981
+biju_pri3,79,43,7	duplicate(npcyonbi)	Yonbi#3	1981
+biju_pri4,79,43,7	duplicate(npcyonbi)	Yonbi#4	1981
+biju_pri5,79,43,7	duplicate(npcyonbi)	Yonbi#5	1981
+
+in_hunter,99,99,4	script	gobi::npcgobi	1982,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,79,17,7	duplicate(npcgobi)	Gobi#1	1982
+biju_pri2,79,17,7	duplicate(npcgobi)	Gobi#2	1982
+biju_pri3,79,17,7	duplicate(npcgobi)	Gobi#3	1982
+biju_pri4,79,17,7	duplicate(npcgobi)	Gobi#4	1982
+biju_pri5,79,17,7	duplicate(npcgobi)	Gobi#5	1982
+
+in_hunter,99,99,4	script	Rokubi::npcrokubi	1985,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,68,18,7	duplicate(npcrokubi)	Rokubi#1	1985
+biju_pri2,68,18,7	duplicate(npcrokubi)	Rokubi#2	1985
+biju_pri3,68,18,7	duplicate(npcrokubi)	Rokubi#3	1985
+biju_pri4,68,18,7	duplicate(npcrokubi)	Rokubi#4	1985
+biju_pri5,68,18,7	duplicate(npcrokubi)	Rokubi#5	1985
+
+in_hunter,99,99,4	script	shichibi::npcshichibi	1985,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,55,18,7	duplicate(npcshichibi)	Shichibi#1	1983
+biju_pri2,55,18,7	duplicate(npcshichibi)	Shichibi#2	1983
+biju_pri3,55,18,7	duplicate(npcshichibi)	Shichibi#3	1983
+biju_pri4,55,18,7	duplicate(npcshichibi)	Shichibi#4	1983
+biju_pri5,55,18,7	duplicate(npcshichibi)	Shichibi#5	1983
+
+in_hunter,99,99,4	script	Hachibi::npchachibi	1985,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,43,18,7	duplicate(npchachibi)	Hachibi#1	1738
+biju_pri2,43,18,7	duplicate(npchachibi)	Hachibi#2	1738
+biju_pri3,43,18,7	duplicate(npchachibi)	Hachibi#3	1738
+biju_pri4,43,18,7	duplicate(npchachibi)	Hachibi#4	1738
+biju_pri5,43,18,7	duplicate(npchachibi)	Hachibi#5	1738
+
+in_hunter,99,99,4	script	Kyuubi::npckyuubi	1985,{
+
+mes "GRRRRRRRRRR";
+close;
+
+}
+
+biju_pri1,31,18,7	duplicate(npckyuubi)	Kyuubi#1	1086
+biju_pri2,31,18,7	duplicate(npckyuubi)	Kyuubi#2	1086
+biju_pri3,31,18,7	duplicate(npckyuubi)	Kyuubi#3	1086
+biju_pri4,31,18,7	duplicate(npckyuubi)	Kyuubi#4	1086
+biju_pri5,31,18,7	duplicate(npckyuubi)	Kyuubi#5	1086
+
+
+
+
+
+-	script	edi_15	1083,{
+
+OnMapConquisted15:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "moc_fild22") {end;}
+announce "O Ichibi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "moc_fild22","edi_15::OnMapConquisted15";
+
+monster "moc_fild22",0,0,"Ichibi",1737,1,"edi_15::OnMapConquisted15";
+
+end;
+
+}
+
+-	script	edi_16	1083,{
+
+OnMapConquisted16:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "gef_dun00") {end;}
+announce "O Nibi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "gef_dun00","edi_16::OnMapConquisted16";
+
+monster "gef_dun00",0,0,"Nibi",1984,1,"edi_16::OnMapConquisted16";
+end;
+
+}
+
+-	script	edi_17	1083,{
+
+OnMapConquisted17:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "iz_dun04") {end;}
+announce "O Sanbi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "iz_dun04","edi_17::OnMapConquisted17";
+monster "iz_dun04",0,0,"Sanbi",1986,1,"edi_17::OnMapConquisted17";
+end;
+
+}
+
+-	script	edi_18	1083,{
+
+OnMapConquisted18:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "gld_dun01") {end;}
+announce "O Yonbi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "gld_dun01","edi_18::OnMapConquisted18";
+monster "gld_dun01",0,0,"Yonbi",1981,1,"edi_18::OnMapConquisted18";
+end;
+
+}
+
+-	script	edi_19	1083,{
+
+OnMapConquisted19:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "ayo_fild01") {end;}
+announce "O Gobi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "ayo_fild01","edi_19::OnMapConquisted19";
+monster "ayo_fild01",0,0,"Gobi",1982,1,"edi_19::OnMapConquisted19";
+end;
+
+}
+
+-	script	edi_20	1083,{
+
+OnMapConquisted20:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "mosk_dun03") {end;}
+announce "O Rokubi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "mosk_dun03","edi_20::OnMapConquisted20";
+
+monster "mosk_dun03",0,0,"Rokubi",1985,1,"edi_20::OnMapConquisted20";
+end;
+
+}
+
+-	script	edi_21	1083,{
+
+OnMapConquisted21:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "mosk_dun02") {end;}
+announce "O Shichibi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "mosk_dun02","edi_21::OnMapConquisted21";
+monster "mosk_dun02",0,0,"Shichibi",1983,1,"edi_21::OnMapConquisted21";
+end;
+
+}
+
+-	script	edi_22	1083,{
+
+OnMapConquisted22:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "ama_dun02") {end;}
+announce "O Hachibi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "ama_dun02","edi_22::OnMapConquisted22";
+monster "ama_dun02",0,0,"Hachibi",1738,1,"edi_22::OnMapConquisted22";
+
+end;
+
+}
+
+-	script	edi_23	1083,{
+
+OnMapConquisted23:
+if (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") && (strcharinfo(3) != "nuvem") {end;}
+if (strcharinfo(3) == "thor_v02") {end;}
+announce "A Kyuubi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "thor_v02","edi_23::OnMapConquisted23";
+monster "thor_v02",0,0,"Kyuubi",1086,1,"edi_23::OnMapConquisted23";
+end;
+
+}
+
+-	script	kami_kill	-1,{
+
+OnMapConquisted100:
+end;
+
+}
+
+-	script	bijuu_reset1	-1,{
+
+OnMapConquisted90:
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "konoha",193,128,"Edifício de Prisão Bijuu",1330,1,"bijuu_reset1::OnMapConquisted90"; end;}
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o selo da prisão bijuu de Konoha!",bc_blue|bc_all;
+	sleep 4000;
+	announce "Com isso um dos bijuus presos foi liberado e se encontra na província da vila!",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Konoha] Peça o Kage para consertar o edifício o mais rápido possível para capturar novamente bijuus",bc_blue|bc_all;
+	set $kon1dest,1;
+	if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;}
+if ($Ichibi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if ($Nibi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if ($sanbi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if ($Yonbi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if ($Gobi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if ($Rokubi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if ($Shichibi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if ($Hachibi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if ($Kyuubi_konoha == 1) {set .@bijuu,.@bijuu +1;}
+if (.@bijuu >= 1) {goto sorteio;}
+if (.@bijuu == 0) {announce "Mas parece que não há Bijuus na prisão...",bc_blue|bc_all; end;}
+
+sorteio:
+	set .@soltar,rand(1,9);
+if (.@soltar == 1) {if ($Ichibi_konoha != 1) {goto sorteio;} if ($Ichibi_konoha == 1) {killmonster "moc_fild22","edi_15::OnMapConquisted15"; set $Ichibi_konoha,0; monster "konoha",148,45,"Ichibi",1737,1,"edi_15::OnMapConquisted15"; disablenpc "Ichibi#1"; disablenpc "Ichibi#2"; disablenpc "Ichibi#3"; disablenpc "Ichibi#4"; disablenpc "Ichibi#5"; end;}}
+if (.@soltar == 2) {if ($Nibi_konoha != 1) {goto sorteio;} if ($Nibi_konoha == 1) {killmonster "gef_dun00","edi_16::OnMapConquisted16"; set $Nibi_konoha,0; monster "konoha",148,45,"Nibi",1984,1,"edi_16::OnMapConquisted16"; disablenpc "Nibi#1"; disablenpc "Nibi#2"; disablenpc "Nibi#3"; disablenpc "Nibi#4"; disablenpc "Nibi#5"; end;}}
+if (.@soltar == 3) {if ($sanbi_konoha != 1) {goto sorteio;} if ($sanbi_konoha == 1) {killmonster "iz_dun04","edi_17::OnMapConquisted17"; set $sanbi_konoha,0; monster "konoha",148,45,"Sanbi",1986,1,"edi_17::OnMapConquisted17"; disablenpc "Sanbi#1"; disablenpc "Sanbi#2"; disablenpc "Sanbi#3"; disablenpc "Sanbi#4"; disablenpc "Sanbi#5"; end;}}
+if (.@soltar == 4) {if ($Yonbi_konoha != 1) {goto sorteio;} if ($Yonbi_konoha == 1) {killmonster "gld_dun01","edi_18::OnMapConquisted18"; set $Yonbi_konoha,0; monster "konoha",148,45,"Yonbi",1981,1,"edi_18::OnMapConquisted18"; disablenpc "Yonbi#1"; disablenpc "Yonbi#2"; disablenpc "Yonbi#3"; disablenpc "Yonbi#4"; disablenpc "Yonbi#5"; end;}}
+if (.@soltar == 5) {if ($Gobi_konoha != 1) {goto sorteio;} if ($Gobi_konoha == 1) {killmonster "ayo_fild01","edi_19::OnMapConquisted19"; set $Gobi_konoha,0; monster "konoha",148,45,"Gobi",1982,1,"edi_19::OnMapConquisted19"; disablenpc "Gobi#1"; disablenpc "Gobi#2"; disablenpc "Gobi#3"; disablenpc "Gobi#4"; disablenpc "Gobi#5"; end;}}
+if (.@soltar == 6) {if ($Rokubi_konoha != 1) {goto sorteio;} if ($Rokubi_konoha == 1) {killmonster "mosk_dun03","edi_20::OnMapConquisted20"; set $Rokubi_konoha,0; monster "konoha",148,45,"Rokubi",1985,1,"edi_20::OnMapConquisted20"; disablenpc "Rokubi#1"; disablenpc "Rokubi#2"; disablenpc "Rokubi#3"; disablenpc "Rokubi#4"; disablenpc "Rokubi#5"; end;}}
+if (.@soltar == 7) {if ($Shichibi_konoha != 1) {goto sorteio;} if ($Shichibi_konoha == 1) {killmonster "mosk_dun02","edi_21::OnMapConquisted21"; set $Shichibi_konoha,0; monster "konoha",148,45,"Shichibi",1983,1,"edi_21::OnMapConquisted21"; disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5"; end;}}
+if (.@soltar == 8) {if ($Hachibi_konoha != 1) {goto sorteio;} if ($Hachibi_konoha == 1) {killmonster "ama_dun02","edi_22::OnMapConquisted22"; set $Hachibi_konoha,0; monster "konoha",148,45,"Hachibi",1738,1,"edi_22::OnMapConquisted22"; disablenpc "Hachibi#1"; disablenpc "Hachibi#2"; disablenpc "Hachibi#3"; disablenpc "Hachibi#4"; disablenpc "Hachibi#5"; end;}}
+if (.@soltar == 9) {if ($Kyuubi_konoha != 1) {goto sorteio;} if ($Kyuubi_konoha == 1) {killmonster "thor_v02","edi_23::OnMapConquisted23"; set $Kyuubi_konoha,0; monster "konoha",148,45,"Kyuubi",1086,1,"edi_23::OnMapConquisted23"; disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2"; disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4"; disablenpc "Kyuubi#5"; end;}}
+	end;
+
+
+}
+
+-	script	bijuu_reset2	1083,{
+
+OnMapConquisted99:
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "nuvem",41,226,"Edifício de Prisão Bijuu",1339,1,"bijuu_reset2::OnMapConquisted99"; end;}
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o selo da prisão bijuu da Nuvem!",bc_blue|bc_all;
+	sleep 4000;
+	announce "Com isso um dos bijuus presos foi liberado e se encontra na província da vila!",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Nuvem] Peça o Kage para consertar o edifício o mais rápido possível para capturar novamente bijuus",bc_blue|bc_all;
+	set $nuv1dest,1;
+	if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;}
+if ($Ichibi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if ($Nibi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if ($sanbi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if ($Yonbi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if ($Gobi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if ($Rokubi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if ($Shichibi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if ($Hachibi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if ($Kyuubi_nuvem == 1) {set .@bijuu,.@bijuu +1;}
+if (.@bijuu >= 1) {goto sorteio;}
+if (.@bijuu == 0) {announce "Mas parece que não há Bijuus na prisão...",bc_blue|bc_all; end;}
+
+sorteio:
+	set .@soltar,rand(1,9);
+
+if (.@soltar == 1) {if ($Ichibi_nuvem != 1) {goto sorteio;} if ($Ichibi_nuvem == 1) { killmonster "moc_fild22","edi_15::OnMapConquisted15"; set $Ichibi_nuvem,0; monster "nuvem",156,26,"Ichibi",1737,1,"edi_15::OnMapConquisted15"; disablenpc "Ichibi#1"; disablenpc "Ichibi#2"; disablenpc "Ichibi#3"; disablenpc "Ichibi#4"; disablenpc "Ichibi#5";}}
+if (.@soltar == 2) {if ($Nibi_nuvem != 1) {goto sorteio;} if ($Nibi_nuvem == 1) {killmonster "gef_dun00","edi_16::OnMapConquisted16"; set $Nibi_nuvem,0; monster "nuvem",156,26,"Nibi",1984,1,"edi_16::OnMapConquisted16"; disablenpc "Nibi#1"; disablenpc "Nibi#2"; disablenpc "Nibi#3"; disablenpc "Nibi#4"; disablenpc "Nibi#5"; end;}}
+if (.@soltar == 3) {if ($sanbi_nuvem != 1) {goto sorteio;} if ($sanbi_nuvem == 1) {killmonster "iz_dun04","edi_17::OnMapConquisted17"; set $sanbi_nuvem,0; monster "nuvem",156,26,"Sanbi",1986,1,"edi_17::OnMapConquisted17"; disablenpc "Sanbi#1"; disablenpc "Sanbi#2"; disablenpc "Sanbi#3"; disablenpc "Sanbi#4"; disablenpc "Sanbi#5"; end;}}
+if (.@soltar == 4) {if ($Yonbi_nuvem != 1) {goto sorteio;} if ($Yonbi_nuvem == 1) {killmonster "gld_dun01","edi_18::OnMapConquisted18"; set $Yonbi_nuvem,0; monster "nuvem",156,26,"Yonbi",1981,1,"edi_18::OnMapConquisted18"; disablenpc "Yonbi#1"; disablenpc "Yonbi#2"; disablenpc "Yonbi#3"; disablenpc "Yonbi#4"; disablenpc "Yonbi#5"; end;}}
+if (.@soltar == 5) {if ($Gobi_nuvem != 1) {goto sorteio;} if ($Gobi_nuvem == 1) {killmonster "ayo_fild01","edi_19::OnMapConquisted19"; set $Gobi_nuvem,0; monster "nuvem",156,26,"Gobi",1982,1,"edi_19::OnMapConquisted19"; disablenpc "Gobi#1"; disablenpc "Gobi#2"; disablenpc "Gobi#3"; disablenpc "Gobi#4"; disablenpc "Gobi#5"; end;}}
+if (.@soltar == 6) {if ($Rokubi_nuvem != 1) {goto sorteio;} if ($Rokubi_nuvem == 1) {killmonster "mosk_dun03","edi_20::OnMapConquisted20"; set $Rokubi_nuvem,0; monster "nuvem",156,26,"Rokubi",1985,1,"edi_20::OnMapConquisted20"; disablenpc "Rokubi#1"; disablenpc "Rokubi#2"; disablenpc "Rokubi#3"; disablenpc "Rokubi#4"; disablenpc "Rokubi#5"; end;}}
+if (.@soltar == 7) {if ($Shichibi_nuvem != 1) {goto sorteio;} if ($Shichibi_nuvem == 1) {killmonster "mosk_dun02","edi_21::OnMapConquisted21"; set $Shichibi_nuvem,0; monster "nuvem",156,26,"Shichibi",1983,1,"edi_21::OnMapConquisted21"; disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5"; end;}}
+if (.@soltar == 8) {if ($Hachibi_nuvem != 1) {goto sorteio;} if ($Hachibi_nuvem == 1) {killmonster "ama_dun02","edi_22::OnMapConquisted22"; set $Hachibi_nuvem,0; monster "nuvem",156,26,"Hachibi",1738,1,"edi_22::OnMapConquisted22"; disablenpc "Hachibi#1"; disablenpc "Hachibi#2"; disablenpc "Hachibi#3"; disablenpc "Hachibi#4"; disablenpc "Hachibi#5"; end;}}
+if (.@soltar == 9) {if ($Kyuubi_nuvem != 1) {goto sorteio;} if ($Kyuubi_nuvem == 1) {killmonster "thor_v02","edi_23::OnMapConquisted23"; set $Kyuubi_nuvem,0; monster "nuvem",156,26,"Kyuubi",1086,1,"edi_23::OnMapConquisted23"; disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2"; disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4"; disablenpc "Kyuubi#5"; end;}}
+
+
+	end;
+
+
+}
+
+-	script	bijuu_reset3	1083,{
+
+OnMapConquisted96:
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "kiri",277,39,"Edifício de Prisão Bijuu",1336,1,"bijuu_reset3::OnMapConquisted96"; end;}
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o selo da prisão bijuu da Névoa!",bc_blue|bc_all;
+	sleep 4000;
+	announce "Com isso um dos bijuus presos foi liberado e se encontra na província da vila!",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Névoa] Peça o Kage para consertar o edifício o mais rápido possível para capturar novamente bijuus",bc_blue|bc_all;
+	set $nev1dest,1;
+	if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;}
+if ($Ichibi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if ($Nibi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if ($sanbi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if ($Yonbi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if ($Gobi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if ($Rokubi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if ($Shichibi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if ($Hachibi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if ($Kyuubi_kiri == 1) {set .@bijuu,.@bijuu +1;}
+if (.@bijuu >= 1) {goto sorteio;}
+if (.@bijuu == 0) {announce "Mas parece que não há Bijuus na prisão...",bc_blue|bc_all; end;}
+
+sorteio:
+	set .@soltar,rand(1,9);
+
+if (.@soltar == 1) {if ($Ichibi_kiri != 1) {goto sorteio;} if ($Ichibi_kiri == 1) {killmonster "moc_fild22","edi_15::OnMapConquisted15"; set $Ichibi_kiri,0; monster "nevoa",148,99,"Ichibi",1737,1,"edi_15::OnMapConquisted15"; disablenpc "Ichibi#1"; disablenpc "Ichibi#2"; disablenpc "Ichibi#3"; disablenpc "Ichibi#4"; disablenpc "Ichibi#5"; end;}}
+if (.@soltar == 2) {if ($Nibi_kiri != 1) {goto sorteio;} if ($Nibi_kiri == 1) {killmonster "gef_dun00","edi_16::OnMapConquisted16"; set $Nibi_kiri,0; monster "nevoa",148,99,"Nibi",1984,1,"edi_16::OnMapConquisted16"; disablenpc "Nibi#1"; disablenpc "Nibi#2"; disablenpc "Nibi#3"; disablenpc "Nibi#4"; disablenpc "Nibi#5"; end;}}
+if (.@soltar == 3) {if ($sanbi_kiri != 1) {goto sorteio;} if ($sanbi_kiri == 1) {killmonster "iz_dun04","edi_17::OnMapConquisted17"; set $sanbi_kiri,0; monster "nevoa",148,99,"Sanbi",1986,1,"edi_17::OnMapConquisted17"; disablenpc "Sanbi#1"; disablenpc "Sanbi#2"; disablenpc "Sanbi#3"; disablenpc "Sanbi#4"; disablenpc "Sanbi#5"; end;}}
+if (.@soltar == 4) {if ($Yonbi_kiri != 1) {goto sorteio;} if ($Yonbi_kiri == 1) {killmonster "gld_dun01","edi_18::OnMapConquisted18"; set $Yonbi_kiri,0; monster "nevoa",148,99,"Yonbi",1981,1,"edi_18::OnMapConquisted18"; disablenpc "Yonbi#1"; disablenpc "Yonbi#2"; disablenpc "Yonbi#3"; disablenpc "Yonbi#4"; disablenpc "Yonbi#5"; end;}}
+if (.@soltar == 5) {if ($Gobi_kiri != 1) {goto sorteio;} if ($Gobi_kiri == 1) {killmonster "ayo_fild01","edi_19::OnMapConquisted19"; set $Gobi_kiri,0; monster "nevoa",148,99,"Gobi",1982,1,"edi_19::OnMapConquisted19"; disablenpc "Gobi#1"; disablenpc "Gobi#2"; disablenpc "Gobi#3"; disablenpc "Gobi#4"; disablenpc "Gobi#5"; end;}}
+if (.@soltar == 6) {if ($Rokubi_kiri != 1) {goto sorteio;} if ($Rokubi_kiri == 1) {killmonster "mosk_dun03","edi_20::OnMapConquisted20"; set $Rokubi_kiri,0; monster "nevoa",148,99,"Rokubi",1985,1,"edi_20::OnMapConquisted20"; disablenpc "Rokubi#1"; disablenpc "Rokubi#2"; disablenpc "Rokubi#3"; disablenpc "Rokubi#4"; disablenpc "Rokubi#5"; end;}}
+if (.@soltar == 7) {if ($Shichibi_kiri != 1) {goto sorteio;} if ($Shichibi_kiri == 1) {killmonster "mosk_dun02","edi_21::OnMapConquisted21"; set $Shichibi_kiri,0; monster "nevoa",148,99,"Shichibi",1983,1,"edi_21::OnMapConquisted21"; disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5"; end;}}
+if (.@soltar == 8) {if ($Hachibi_kiri != 1) {goto sorteio;} if ($Hachibi_kiri == 1) {killmonster "ama_dun02","edi_22::OnMapConquisted22"; set $Hachibi_kiri,0; monster "nevoa",148,99,"Hachibi",1738,1,"edi_22::OnMapConquisted22"; disablenpc "Hachibi#1"; disablenpc "Hachibi#2"; disablenpc "Hachibi#3"; disablenpc "Hachibi#4"; disablenpc "Hachibi#5"; end;}}
+if (.@soltar == 9) {if ($Kyuubi_kiri != 1) {goto sorteio;} if ($Kyuubi_kiri == 1) {killmonster "thor_v02","edi_23::OnMapConquisted23"; set $Kyuubi_kiri,0; monster "nevoa",148,99,"Kyuubi",1086,1,"edi_23::OnMapConquisted23"; disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2"; disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4"; disablenpc "Kyuubi#5"; end;}}
+	end;
+
+
+}
+
+-	script	bijuu_reset4	1083,{
+
+OnMapConquisted93:
+//if ($edificios_block == 1) {announce "Um edifício foi quebrado fora do horário permitido, prédio recuperado",bc_blue|bc_all; monster "areia",78,191,"Edifício de Prisão Bijuu",1333,1,"bijuu_reset4::OnMapConquisted93"; end;}
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o selo da prisão bijuu da Suna!",bc_blue|bc_all;
+	sleep 4000;
+	announce "Com isso um dos bijuus presos foi liberado e se encontra na província da vila!",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Suna] Peça o Kage para consertar o edifício o mais rápido possível para capturar novamente bijuus",bc_blue|bc_all;
+	set $sun1dest,1;
+	if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1;}
+if ($Ichibi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if ($Nibi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if ($sanbi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if ($Yonbi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if ($Gobi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if ($Rokubi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if ($Shichibi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if ($Hachibi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if ($Kyuubi_areia == 1) {set .@bijuu,.@bijuu +1;}
+if (.@bijuu >= 1) {goto sorteio;}
+if (.@bijuu == 0) {announce "Mas parece que não há Bijuus na prisão...",bc_blue|bc_all; end;}
+
+sorteio:
+	set .@soltar,rand(1,9);
+
+if (.@soltar == 1) {if ($Ichibi_areia != 1) {goto sorteio;} if ($Ichibi_areia == 1) {killmonster "moc_fild22","edi_15::OnMapConquisted15"; set $Ichibi_areia,0; monster "areia",153,27,"Ichibi",1737,1,"edi_15::OnMapConquisted15"; disablenpc "Ichibi#1"; disablenpc "Ichibi#2"; disablenpc "Ichibi#3"; disablenpc "Ichibi#4"; disablenpc "Ichibi#5"; end;}}
+if (.@soltar == 2) {if ($Nibi_areia != 1) {goto sorteio;} if ($Nibi_areia == 1) {killmonster "gef_dun00","edi_16::OnMapConquisted16"; set $Nibi_areia,0; monster "areia",153,27,"Nibi",1984,1,"edi_16::OnMapConquisted16"; disablenpc "Nibi#1"; disablenpc "Nibi#2"; disablenpc "Nibi#3"; disablenpc "Nibi#4"; disablenpc "Nibi#5"; end;}}
+if (.@soltar == 3) {if ($sanbi_areia != 1) {goto sorteio;} if ($sanbi_areia == 1) {killmonster "iz_dun04","edi_17::OnMapConquisted17"; set $sanbi_areia,0; monster "areia",153,27,"Sanbi",1986,1,"edi_17::OnMapConquisted17"; disablenpc "Sanbi#1"; disablenpc "Sanbi#2"; disablenpc "Sanbi#3"; disablenpc "Sanbi#4"; disablenpc "Sanbi#5"; end;}}
+if (.@soltar == 4) {if ($Yonbi_areia != 1) {goto sorteio;} if ($Yonbi_areia == 1) {killmonster "gld_dun01","edi_18::OnMapConquisted18"; set $Yonbi_areia,0; monster "areia",153,27,"Yonbi",1981,1,"edi_18::OnMapConquisted18"; disablenpc "Yonbi#1"; disablenpc "Yonbi#2"; disablenpc "Yonbi#3"; disablenpc "Yonbi#4"; disablenpc "Yonbi#5"; end;}}
+if (.@soltar == 5) {if ($Gobi_areia != 1) {goto sorteio;} if ($Gobi_areia == 1) {killmonster "ayo_fild01","edi_19::OnMapConquisted19"; set $Gobi_areia,0; monster "areia",153,27,"Gobi",1982,1,"edi_19::OnMapConquisted19"; disablenpc "Gobi#1"; disablenpc "Gobi#2"; disablenpc "Gobi#3"; disablenpc "Gobi#4"; disablenpc "Gobi#5"; end;}}
+if (.@soltar == 6) {if ($Rokubi_areia != 1) {goto sorteio;} if ($Rokubi_areia == 1) {killmonster "mosk_dun03","edi_20::OnMapConquisted20"; set $Rokubi_areia,0; monster "areia",153,27,"Rokubi",1985,1,"edi_20::OnMapConquisted20"; disablenpc "Rokubi#1"; disablenpc "Rokubi#2"; disablenpc "Rokubi#3"; disablenpc "Rokubi#4"; disablenpc "Rokubi#5"; end;}}
+if (.@soltar == 7) {if ($Shichibi_areia != 1) {goto sorteio;} if ($Shichibi_areia == 1) {killmonster "mosk_dun02","edi_21::OnMapConquisted21"; set $Shichibi_areia,0; monster "areia",153,27,"Shichibi",1983,1,"edi_21::OnMapConquisted21"; disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5"; end;}}
+if (.@soltar == 8) {if ($Hachibi_areia != 1) {goto sorteio;} if ($Hachibi_areia == 1) {killmonster "ama_dun02","edi_22::OnMapConquisted22"; set $Hachibi_areia,0; monster "areia",153,27,"Hachibi",1738,1,"edi_22::OnMapConquisted22"; disablenpc "Hachibi#1"; disablenpc "Hachibi#2"; disablenpc "Hachibi#3"; disablenpc "Hachibi#4"; disablenpc "Hachibi#5"; end;}}
+if (.@soltar == 9) {if ($Kyuubi_areia != 1) {goto sorteio;} if ($Kyuubi_areia == 1) {killmonster "thor_v02","edi_23::OnMapConquisted23"; set $Kyuubi_areia,0; monster "areia",153,27,"Kyuubi",1086,1,"edi_23::OnMapConquisted23"; disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2"; disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4"; disablenpc "Kyuubi#5"; end;}}
+	end;
+
+
+}
+
+-	script	bijuu_reset5	-1,{
+
+OnSun2000:
+//OnMon2000:
+
+set $bijuu_nuvem,0;
+set $bijuu_nevoa,0;
+set $bijuu_areia,0;
+set $bijuu_konoha,0;
+
+set $Ichibi_konoha,0;
+set $Ichibi_areia,0;
+set $Ichibi_kiri,0;
+set $Ichibi_nuvem,0;
+
+set $Nibi_nuvem,0;
+set $Nibi_kiri,0;
+set $Nibi_areia,0;
+set $Nibi_konoha,0;
+
+set $sanbi_nuvem,0;
+set $sanbi_kiri,0;
+set $sanbi_areia,0;
+set $sanbi_konoha,0;
+
+set $Yonbi_nuvem,0;
+set $Yonbi_kiri,0;
+set $Yonbi_areia,0;
+set $Yonbi_konoha,0;
+
+set $Gobi_nuvem,0;
+set $Gobi_areia,0;
+set $Gobi_kiri,0;
+set $Gobi_konoha,0;
+
+set $Rokubi_nuvem,0;
+set $Rokubi_areia,0;
+set $Rokubi_kiri,0;
+set $Rokubi_konoha,0;
+
+set $Shichibi_nuvem,0;
+set $Shichibi_areia,0;
+set $Shichibi_kiri,0;
+set $Shichibi_konoha,0;
+
+set $Hachibi_nuvem,0;
+set $Hachibi_areia,0;
+set $Hachibi_kiri,0;
+set $Hachibi_konoha,0;
+
+set $Kyuubi_nuvem,0;
+set $Kyuubi_areia,0;
+set $Kyuubi_kiri,0;
+set $Kyuubi_konoha,0;
+
+announce "[Bijuu] Os Bijuus foram soltos das jaulas, eles retornaram para suas cavernas",bc_blue|bc_all;
+
+setarray .Bmap$[1],"gl_church","gef_fild07","um_dun02","moc_pryd05","bossnia_01","ein_dun01","prt_fild11","moc_fild15","bra_fild01","glast_01","mjolnir_03","mjolnir_06","pay_fild01","hu_fild05";
+
+for( set .j, 1; .j<getarraysize(.Bmap$); set .j, .j + 1 ){
+killmonster .Bmap$[.j],"edi_15::OnMapConquisted15";
+killmonster .Bmap$[.j],"edi_16::OnMapConquisted16";
+killmonster .Bmap$[.j],"edi_17::OnMapConquisted17";
+killmonster .Bmap$[.j],"edi_18::OnMapConquisted18";
+killmonster .Bmap$[.j],"edi_19::OnMapConquisted19";
+killmonster .Bmap$[.j],"edi_20::OnMapConquisted20";
+killmonster .Bmap$[.j],"edi_21::OnMapConquisted21";
+killmonster .Bmap$[.j],"edi_22::OnMapConquisted22";
+killmonster .Bmap$[.j],"edi_23::OnMapConquisted23";
+}
+
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Ichibi",1737,1,"edi_15::OnMapConquisted15";
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Nibi",1984,1,"edi_16::OnMapConquisted16";
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Sanbi",1986,1,"edi_17::OnMapConquisted17";
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Yonbi",1981,1,"edi_18::OnMapConquisted18";
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Gobi",1982,1,"edi_19::OnMapConquisted19";
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Rokubi",1985,1,"edi_20::OnMapConquisted20";
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Shichibi",1983,1,"edi_21::OnMapConquisted21";
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Hachibi",1738,1,"edi_22::OnMapConquisted22";
+monster .Bmap$[rand(1,getarraysize(.Bmap$)-1)],0,0,"Kyuubi",1086,1,"edi_23::OnMapConquisted23";
+
+
+disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2"; disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4"; disablenpc "Kyuubi#5";
+disablenpc "Hachibi#1"; disablenpc "Hachibi#2"; disablenpc "Hachibi#3"; disablenpc "Hachibi#4"; disablenpc "Hachibi#5";
+disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5";
+disablenpc "Rokubi#1"; disablenpc "Rokubi#2"; disablenpc "Rokubi#3"; disablenpc "Rokubi#4"; disablenpc "Rokubi#5";
+disablenpc "Gobi#1"; disablenpc "Gobi#2"; disablenpc "Gobi#3"; disablenpc "Gobi#4"; disablenpc "Gobi#5";
+disablenpc "Yonbi#1"; disablenpc "Yonbi#2"; disablenpc "Yonbi#3"; disablenpc "Yonbi#4"; disablenpc "Yonbi#5";
+disablenpc "Sanbi#1"; disablenpc "Sanbi#2"; disablenpc "Sanbi#3"; disablenpc "Sanbi#4"; disablenpc "Sanbi#5";
+disablenpc "Nibi#1"; disablenpc "Nibi#2"; disablenpc "Nibi#3"; disablenpc "Nibi#4"; disablenpc "Nibi#5";
+disablenpc "Ichibi#1"; disablenpc "Ichibi#2"; disablenpc "Ichibi#3"; disablenpc "Ichibi#4"; disablenpc "Ichibi#5";
+end;
+
+}
+
+-	script	bijuu_reset6	-1,{
+
+OnMon1930:
+OnTue1930:
+OnWed1930:
+OnThu1930:
+OnFri1930:
+OnSat1930:
+//OnSun1930:
+killmonster "areia","bijuu_reset4::OnMapConquisted93";
+killmonster "konoha","bijuu_reset1::OnMapConquisted90";
+killmonster "nevoa","bijuu_reset3::OnMapConquisted96";
+killmonster "nuvem","bijuu_reset2::OnMapConquisted99";
+end;
+
+OnMon1800:
+OnTue1800:
+OnWed1800:
+OnThu1800:
+OnFri1800:
+OnSat1800:
+//OnSun1800:
+killmonster "areia","bijuu_reset4::OnMapConquisted93";
+killmonster "konoha","bijuu_reset1::OnMapConquisted90";
+killmonster "nevoa","bijuu_reset3::OnMapConquisted96";
+killmonster "nuvem","bijuu_reset2::OnMapConquisted99";
+monster "nuvem",41,226,"Edifício de Prisão Bijuu",1339,1,"bijuu_reset2::OnMapConquisted99";
+monster "nevoa",218,176,"Edifício de Prisão Bijuu",1336,1,"bijuu_reset3::OnMapConquisted96";
+monster "areia",78,191,"Edifício de Prisão Bijuu",1333,1,"bijuu_reset4::OnMapConquisted93";
+monster "konoha",193,128,"Edifício de Prisão Bijuu",1330,1,"bijuu_reset1::OnMapConquisted90";
+end;
+
+}
+
+//biju_pri2,62,32,7	duplicate(selar)	Selar Bijuu#2	101
+//biju_pri3,62,32,7	duplicate(selar)	Selar Bijuu#3	101
+//biju_pri4,62,32,7	duplicate(selar)	Selar Bijuu#4	101
+//konoha,193,128,0,0	monster	Edifício de Prisão Bijuu	1330,1,1,36000000,"bijuu_reset1::OnMapConquisted90"
+//areia,78,191,0,0	monster	Edifício de Prisão Bijuu	1333,1,1,36000000,"bijuu_reset4::OnMapConquisted93"
+//kiri,277,39,0,0	monster	Edifício de Prisão Bijuu	1336,1,1,36000000,"bijuu_reset3::OnMapConquisted96"
+//nuvem,196,238,0,0	monster	Edifício de Prisão Bijuu	1339,1,1,36000000,"bijuu_reset2::OnMapConquisted99"

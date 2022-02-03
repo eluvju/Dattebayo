@@ -1,0 +1,462 @@
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//				Investir na Saude(Bijuu)								
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function	script	bijuukonoha	{
+
+if (#konoha != 1) {end;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) { end; }
+
+if ($kon1dest == 0) {
+
+	if($Ichibi_konoha)   { set @receberhp1,500000; set @recebersp1,4000; set @receberall1,5; }
+	if($Nibi_konoha)     { set @receberhp2,500000; set @recebersp2,4000; set @receberall2,5; }
+	if($sanbi_konoha)    { set @receberhp3,500000; set @recebersp3,4000; set @receberall3,5; }
+	if($Yonbi_konoha)    { set @receberhp4,500000; set @recebersp4,4000; set @receberall4,5; }
+	if($Gobi_konoha)     { set @receberhp5,500000; set @recebersp5,4000; set @receberall5,5; }
+	if($Rokubi_konoha)   { set @receberhp6,500000; set @recebersp6,4000; set @receberall6,5; }
+	if($Shichibi_konoha) { set @receberhp7,500000; set @recebersp7,4000; set @receberall7,5; }
+	if($Hachibi_konoha)  { set @receberhp8,500000; set @recebersp8,4000; set @receberall8,5; }
+	if($Kyuubi_konoha)   { set @receberhp9,500000; set @recebersp9,4000; set @receberall9,5; }
+
+	if ($konoha_hp == 1) {set @receberhpsaude, 100000;}
+	if ($konoha_hp == 2) {set @receberhpsaude, 200000;}
+	if ($konoha_hp == 3) {set @receberhpsaude, 300000;}
+	if ($konoha_hp == 4) {set @receberhpsaude, 400000;}
+	if ($konoha_hp == 5) {set @receberhpsaude, 500000;}
+	
+	if ($konoha_SP == 1) {set @receberspsaude,1;}
+	if ($konoha_SP == 2) {set @receberspsaude,2;}
+	if ($konoha_SP == 3) {set @receberspsaude,3;}
+	if ($konoha_SP == 4) {set @receberspsaude,4;}
+	if ($konoha_SP == 5) {set @receberspsaude,5;}
+	
+}
+
+//----------------------------------
+//			Bijuu
+//----------------------------------
+// Bonus 1
+
+// 1
+bonus bMaxHP, @receberhp1;
+bonus bMaxSP, @recebersp1;
+bonus bAllstats, @receberall1;
+
+// 2
+bonus bMaxHP, @receberhp2;
+bonus bMaxSP, @recebersp2;
+bonus bAllstats, @receberall2;
+
+// 3
+bonus bMaxHP, @receberhp3;
+bonus bMaxSP, @recebersp3;
+bonus bAllstats, @receberall3;
+
+// 4
+bonus bMaxHP, @receberhp4;
+bonus bMaxSP, @recebersp4;
+bonus bAllstats, @receberall4;
+
+// 5
+bonus bMaxHP, @receberhp5;
+bonus bMaxSP, @recebersp5;
+bonus bAllstats, @receberall5;
+
+// 6
+bonus bMaxHP, @receberhp6;
+bonus bMaxSP, @recebersp6;
+bonus bAllstats, @receberall6;
+
+// 7
+bonus bMaxHP, @receberhp7;
+bonus bMaxSP, @recebersp7;
+bonus bAllstats, @receberall7;
+
+// 8
+bonus bMaxHP, @receberhp8;
+bonus bMaxSP, @recebersp8;
+bonus bAllstats, @receberall8;
+
+// 9
+bonus bMaxHP, @receberhp9;
+bonus bMaxSP, @recebersp9;
+bonus bAllstats, @receberall9;
+
+//--------------------------------------------------------------
+
+
+//----------------------------------
+//			Saude
+//----------------------------------
+// Bonus 2
+
+bonus bMaxHP, @receberhpsaude;
+bonus bMaxSP, @receberspsaude;
+
+}
+
+
+//-------------------------------------------------------------------------------------
+
+function	script	bijuuareia	{
+
+
+if (#suna != 1) {end;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) { end; }
+
+if ($sun1dest == 0) {
+
+	if($Ichibi_areia)   { set @receberhp1,500000; set @recebersp1,4000; set @receberall1,5; }
+	if($Nibi_areia)     { set @receberhp2,500000; set @recebersp2,4000; set @receberall2,5; }
+	if($sanbi_areia)    { set @receberhp3,500000; set @recebersp3,4000; set @receberall3,5; }
+	if($Yonbi_areia)    { set @receberhp4,500000; set @recebersp4,4000; set @receberall4,5; }
+	if($Gobi_areia)     { set @receberhp5,500000; set @recebersp5,4000; set @receberall5,5; }
+	if($Rokubi_areia)   { set @receberhp6,500000; set @recebersp6,4000; set @receberall6,5; }
+	if($Shichibi_areia) { set @receberhp7,500000; set @recebersp7,4000; set @receberall7,5; }
+	if($Hachibi_areia)  { set @receberhp8,500000; set @recebersp8,4000; set @receberall8,5; }
+	if($Kyuubi_areia)   { set @receberhp9,500000; set @recebersp9,4000; set @receberall9,5; }
+
+	if ($areia_hp == 1) {set @receberhpsaude,100000;}
+	if ($areia_hp == 2) {set @receberhpsaude,200000;}
+	if ($areia_hp == 3) {set @receberhpsaude,300000;}
+	if ($areia_hp == 4) {set @receberhpsaude,400000;}
+	if ($areia_hp == 5) {set @receberhpsaude,500000;}
+	
+	if ($areia_SP == 1) {set @receberspsaude,1;}
+	if ($areia_SP == 2) {set @receberspsaude,2;}
+	if ($areia_SP == 3) {set @receberspsaude,3;}
+	if ($areia_SP == 4) {set @receberspsaude,4;}
+	if ($areia_SP == 5) {set @receberspsaude,5;}
+
+}
+
+
+//----------------------------------
+//			Bijuu
+//----------------------------------
+// Bonus 1
+
+// 1
+bonus bMaxHP, @receberhp1;
+bonus bMaxSP, @recebersp1;
+bonus bAllstats, @receberall1;
+
+// 2
+bonus bMaxHP, @receberhp2;
+bonus bMaxSP, @recebersp2;
+bonus bAllstats, @receberall2;
+
+// 3
+bonus bMaxHP, @receberhp3;
+bonus bMaxSP, @recebersp3;
+bonus bAllstats, @receberall3;
+
+// 4
+bonus bMaxHP, @receberhp4;
+bonus bMaxSP, @recebersp4;
+bonus bAllstats, @receberall4;
+
+// 5
+bonus bMaxHP, @receberhp5;
+bonus bMaxSP, @recebersp5;
+bonus bAllstats, @receberall5;
+
+// 6
+bonus bMaxHP, @receberhp6;
+bonus bMaxSP, @recebersp6;
+bonus bAllstats, @receberall6;
+
+// 7
+bonus bMaxHP, @receberhp7;
+bonus bMaxSP, @recebersp7;
+bonus bAllstats, @receberall7;
+
+// 8
+bonus bMaxHP, @receberhp8;
+bonus bMaxSP, @recebersp8;
+bonus bAllstats, @receberall8;
+
+// 9
+bonus bMaxHP, @receberhp9;
+bonus bMaxSP, @recebersp9;
+bonus bAllstats, @receberall9;
+
+//----------------------------------
+//			Saude
+//----------------------------------
+// Bonus 2
+
+bonus bMaxHP, @receberhpsaude;
+bonus bMaxSP, @receberspsaude;
+
+}
+
+//-------------------------------------------------------------------------------------
+
+
+
+function	script	bijuunevoa	{
+
+
+
+if (#nevoa != 1) {end;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) { end; }
+
+
+if ($nev1dest == 0) {
+
+	if($Ichibi_kiri)   { set @receberhp1,500000; set @recebersp1,4000; set @receberall1,5; }
+	if($Nibi_kiri)     { set @receberhp2,500000; set @recebersp2,4000; set @receberall2,5; }
+	if($sanbi_kiri)    { set @receberhp3,500000; set @recebersp3,4000; set @receberall3,5; }
+	if($Yonbi_kiri)    { set @receberhp4,500000; set @recebersp4,4000; set @receberall4,5; }
+	if($Gobi_kiri)     { set @receberhp5,500000; set @recebersp5,4000; set @receberall5,5; }
+	if($Rokubi_kiri)   { set @receberhp6,500000; set @recebersp6,4000; set @receberall6,5; }
+	if($Shichibi_kiri) { set @receberhp7,500000; set @recebersp7,4000; set @receberall7,5; }
+	if($Hachibi_kiri)  { set @receberhp8,500000; set @recebersp8,4000; set @receberall8,5; }
+	if($Kyuubi_kiri)   { set @receberhp9,500000; set @recebersp9,4000; set @receberall9,5; }
+
+	if ($nevoa_hp == 1) {set @receberhpsaude,100000;}
+	if ($nevoa_hp == 2) {set @receberhpsaude,200000;}
+	if ($nevoa_hp == 3) {set @receberhpsaude,300000;}
+	if ($nevoa_hp == 4) {set @receberhpsaude,400000;}
+	if ($nevoa_hp == 5) {set @receberhpsaude,500000;}
+	
+	if ($nevoa_SP == 1) {set @receberspsaude,1;}
+	if ($nevoa_SP == 2) {set @receberspsaude,2;}
+	if ($nevoa_SP == 3) {set @receberspsaude,3;}
+	if ($nevoa_SP == 4) {set @receberspsaude,4;}
+	if ($nevoa_SP == 5) {set @receberspsaude,5;}
+
+}
+
+
+
+//----------------------------------
+//			Bijuu
+//----------------------------------
+// Bonus 1
+
+// 1
+bonus bMaxHP, @receberhp1;
+bonus bMaxSP, @recebersp1;
+bonus bAllstats, @receberall1;
+
+// 2
+bonus bMaxHP, @receberhp2;
+bonus bMaxSP, @recebersp2;
+bonus bAllstats, @receberall2;
+
+// 3
+bonus bMaxHP, @receberhp3;
+bonus bMaxSP, @recebersp3;
+bonus bAllstats, @receberall3;
+
+// 4
+bonus bMaxHP, @receberhp4;
+bonus bMaxSP, @recebersp4;
+bonus bAllstats, @receberall4;
+
+
+// 5
+bonus bMaxHP, @receberhp5;
+bonus bMaxSP, @recebersp5;
+bonus bAllstats, @receberall5;
+
+// 6
+bonus bMaxHP, @receberhp6;
+bonus bMaxSP, @recebersp6;
+bonus bAllstats, @receberall6;
+
+// 7
+bonus bMaxHP, @receberhp7;
+bonus bMaxSP, @recebersp7;
+bonus bAllstats, @receberall7;
+
+// 8
+bonus bMaxHP, @receberhp8;
+bonus bMaxSP, @recebersp8;
+bonus bAllstats, @receberall8;
+
+// 9
+bonus bMaxHP, @receberhp9;
+bonus bMaxSP, @recebersp9;
+bonus bAllstats, @receberall9;
+
+//----------------------------------
+//			Saude
+//----------------------------------
+// Bonus 2
+
+bonus bMaxHP, @receberhpsaude;
+bonus bMaxSP, @receberspsaude;
+
+}
+
+
+//-------------------------------------------------------------------------------------
+
+
+
+function	script	bijuunuvem	{
+
+if (#nuvem != 1) {end;}
+if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) { end; }
+
+if ($nuv1dest == 0) {
+
+	if($Ichibi_nuvem)   { set @receberhp1,500000; set @recebersp1,4000; set @receberall1,5; }
+	if($Nibi_nuvem)     { set @receberhp2,500000; set @recebersp2,4000; set @receberall2,5; }
+	if($sanbi_nuvem)    { set @receberhp3,500000; set @recebersp3,4000; set @receberall3,5; }
+	if($Yonbi_nuvem)    { set @receberhp4,500000; set @recebersp4,4000; set @receberall4,5; }
+	if($Gobi_nuvem)     { set @receberhp5,500000; set @recebersp5,4000; set @receberall5,5; }
+	if($Rokubi_nuvem)   { set @receberhp6,500000; set @recebersp6,4000; set @receberall6,5; }
+	if($Shichibi_nuvem) { set @receberhp7,500000; set @recebersp7,4000; set @receberall7,5; }
+	if($Hachibi_nuvem)  { set @receberhp8,500000; set @recebersp8,4000; set @receberall8,5; }
+	if($Kyuubi_nuvem)   { set @receberhp9,500000; set @recebersp9,4000; set @receberall9,5; }
+
+	if ($nuvem_hp == 1) { set @receberhpsaude,100000; }
+	if ($nuvem_hp == 2) { set @receberhpsaude,200000; }
+	if ($nuvem_hp == 3) { set @receberhpsaude,300000; }
+	if ($nuvem_hp == 4) { set @receberhpsaude,400000; }
+	if ($nuvem_hp == 5) { set @receberhpsaude,500000; }
+	
+	if ($nuvem_SP == 1) { set @receberspsaude,1; }
+	if ($nuvem_SP == 2) { set @receberspsaude,2; }
+	if ($nuvem_SP == 3) { set @receberspsaude,3; }
+	if ($nuvem_SP == 4) { set @receberspsaude,4; }
+	if ($nuvem_SP == 5) { set @receberspsaude,5; }
+
+}
+
+
+
+//----------------------------------
+//			Bijuu
+//----------------------------------
+// Bonus 1
+
+// 1
+bonus bMaxHP, @receberhp1;
+bonus bMaxSP, @recebersp1;
+bonus bAllstats, @receberall1;
+
+// 2
+bonus bMaxHP, @receberhp2;
+bonus bMaxSP, @recebersp2;
+bonus bAllstats, @receberall2;
+
+// 3
+bonus bMaxHP, @receberhp3;
+bonus bMaxSP, @recebersp3;
+bonus bAllstats, @receberall3;
+
+// 4
+bonus bMaxHP, @receberhp4;
+bonus bMaxSP, @recebersp4;
+bonus bAllstats, @receberall4;
+
+// 5
+bonus bMaxHP, @receberhp5;
+bonus bMaxSP, @recebersp5;
+bonus bAllstats, @receberall5;
+
+// 6
+bonus bMaxHP, @receberhp6;
+bonus bMaxSP, @recebersp6;
+bonus bAllstats, @receberall6;
+
+// 7
+bonus bMaxHP, @receberhp7;
+bonus bMaxSP, @recebersp7;
+bonus bAllstats, @receberall7;
+
+// 8
+bonus bMaxHP, @receberhp8;
+bonus bMaxSP, @recebersp8;
+bonus bAllstats, @receberall8;
+
+// 9
+bonus bMaxHP, @receberhp9;
+bonus bMaxSP, @recebersp9;
+bonus bAllstats, @receberall19;
+
+//----------------------------------
+//			Saude
+//----------------------------------
+// Bonus 2
+
+bonus bMaxHP, @receberhpsaude;
+bonus bMaxSP, @receberspsaude;
+
+}
+
+//-------------------------------------------------------------------------------------
+function	script	bijuuakatsuki	{
+
+	if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {
+	
+		if($Ichibi_akatsuki)   { set @receberhp1,500000; set @recebersp1,4000; set @receberall1,5; }
+		if($Nibi_akatsuki)     { set @receberhp2,500000; set @recebersp2,4000; set @receberall2,5; }
+		if($sanbi_akatsuki)    { set @receberhp3,500000; set @recebersp3,4000; set @receberall3,5; }
+		if($Yonbi_akatsuki)    { set @receberhp4,500000; set @recebersp4,4000; set @receberall4,5; }
+		if($Gobi_akatsuki)     { set @receberhp5,500000; set @recebersp5,4000; set @receberall5,5; }
+		if($Rokubi_akatsuki)   { set @receberhp6,500000; set @recebersp6,4000; set @receberall6,5; }
+		if($Shichibi_akatsuki) { set @receberhp7,500000; set @recebersp7,4000; set @receberall7,5; }
+		if($Hachibi_akatsuki)  { set @receberhp8,500000; set @recebersp8,4000; set @receberall8,5; }
+		if($Kyuubi_akatsuki)   { set @receberhp9,500000; set @recebersp9,4000; set @receberall9,5; }
+	
+	}
+
+//----------------------------------
+//			Bijuu
+//----------------------------------
+// Bonus 1
+
+// 1
+bonus bMaxHP, @receberhp1;
+bonus bMaxSP, @recebersp1;
+bonus bAllstats, @receberall1;
+
+// 2
+bonus bMaxHP, @receberhp2;
+bonus bMaxSP, @recebersp2;
+bonus bAllstats, @receberall2;
+
+// 3
+bonus bMaxHP, @receberhp3;
+bonus bMaxSP, @recebersp3;
+bonus bAllstats, @receberall3;
+
+// 4
+bonus bMaxHP, @receberhp4;
+bonus bMaxSP, @recebersp4;
+bonus bAllstats, @receberall4;
+
+// 5
+bonus bMaxHP, @receberhp5;
+bonus bMaxSP, @recebersp5;
+bonus bAllstats, @receberall5;
+
+// 6
+bonus bMaxHP, @receberhp6;
+bonus bMaxSP, @recebersp6;
+bonus bAllstats, @receberall6;
+
+// 7
+bonus bMaxHP, @receberhp7;
+bonus bMaxSP, @recebersp7;
+bonus bAllstats, @receberall7;
+
+// 8
+bonus bMaxHP, @receberhp8;
+bonus bMaxSP, @recebersp8;
+bonus bAllstats, @receberall8;
+
+// 9
+bonus bMaxHP, @receberhp9;
+bonus bMaxSP, @recebersp9;
+bonus bAllstats, @receberall9;
+
+}
+

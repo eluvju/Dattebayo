@@ -1,0 +1,6 @@
+sec_in02,180,184,5	script	Debug#69	99,{
+mes "Debug.";
+completequest 40006;
+erasequest 40006;
+close;
+}

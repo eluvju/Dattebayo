@@ -1,0 +1,106 @@
+-	script	auto_spell	-1,{
+    end;
+//When a Character uses a skill
+
+//auto_spell
+
+onPcUseSkillEvent:
+
+           if(lskillid == 279) {
+
+
+if (getskilllv(279) == 1) {
+
+if (auto_spell != 1) {end;}
+if (skill279 >= 50) {skill 279,2,0; set skill279,0; dispbottom "[Sys] Level up"; end; }
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 1: "+skill279+" de 50";
+
+end;
+
+}
+
+if (getskilllv(279) == 2) {
+if (auto_spell != 1) {end;}
+if (skill279 >= 100) {skill 279,3,0; set skill279,0; dispbottom "[Sys] Level up"; end;}
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 2: "+skill279+" de 100";
+
+end;
+
+}
+
+if (getskilllv(279) == 3) {
+
+if (auto_spell != 1) {end;}
+if (skill279 >= 150) {skill 279,4,0; set skill279,0; dispbottom "[Sys] Level up"; end;}
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 3: "+skill279+" de 150";
+
+end;
+
+}
+
+if (getskilllv(279) == 4) {
+if (auto_spell != 1) {end;}
+if (skill279 >= 200) {skill 279,5,0; set skill279,0; dispbottom "[Sys] Level up"; end;}
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 4: "+skill279+" de 200";
+
+end;
+
+}
+
+if (getskilllv(279) == 5) {
+if (auto_spell != 1) {end;}
+if (skill279 >= 250) {skill 279,6,0; set skill279,0; dispbottom "[Sys] Level up"; end;}
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 5: "+skill279+" de 250";
+
+end;
+
+}
+
+if (getskilllv(279) == 6) {
+if (auto_spell != 1) {end;}
+if (skill279 >= 300) {skill 279,7,0; set skill279,0; dispbottom "[Sys] Level up"; end;}
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 6: "+skill279+" de 300";
+
+end;
+
+}
+
+if (getskilllv(279) == 7) {
+if (auto_spell != 1) {end;}
+if (skill279 >= 500) {skill 279,8,0; set skill279,0; dispbottom "[Sys] Level up"; end;}
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 7: "+skill279+" de 500";
+
+end;
+
+}
+
+if (getskilllv(279) == 8) {
+if (auto_spell != 1) {end;}
+if (skill279 >= 700) {skill 279,9,0; set skill279,0; dispbottom "[Sys] Level up"; end;}
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 8: "+skill279+" de 700";
+
+end;
+
+}
+
+if (getskilllv(279) == 9) {
+if (auto_spell != 1) {end;}
+if (skill279 >= 1000) {skill 279,10,0; set skill279,0; dispbottom "[Sys] Level up"; end;}
+set skill279,skill279 +1;
+dispbottom "[Jutsu level] Auto Spell level 9: "+skill279+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

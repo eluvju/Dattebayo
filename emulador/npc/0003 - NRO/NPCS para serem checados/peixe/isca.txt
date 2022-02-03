@@ -1,0 +1,29 @@
+prontera.gat,152,150,3	script	Vendedor de iscas	85,{
+	mes "[Vendedor de iscas]";
+	mes "Iscas para pescaria";	
+	mes "E custará apenas ^0000FF20 Zenys^000000";
+	next;
+	if(select("Eu Gostaria!:Cancelar") == 1){
+		mes "[Vendedor de iscas]";
+		mes "Nós estamos com poucas iscas, vendemos no maximo 100 em cada compra";
+		next;
+		input .@input;
+		mes "[Vendedor de iscas]";
+		if(.@input < 1)
+			mes "A transação foi cancelada.";
+		else if(.@input > 100)
+			mes "Desculpe, mas você só pode comprar 100 de cada vez.";
+		else if(Zeny < .@input*20)
+			mes "Desculpe, mas você precisa de mais dinheiro.";
+		else {
+			set Zeny,Zeny-20*.@input;
+			getitem 909,.@input;
+			mes "Aqui está!";
+		}
+		close;
+	}
+	mes "[Vendedor de iscas]";
+	mes "Você tem certeza que não quer comprar isca?";
+	mes "Hoje está otimo para pescar";
+	close;
+}

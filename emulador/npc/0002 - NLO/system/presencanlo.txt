@@ -1,0 +1,94 @@
+salakage,11,15,5	script	Pontos de Fidelidade::fidel	793,{
+
+    set @npcname$,"[^ff0000Fidelidade^000000]";
+
+    mes @npcname$;
+    mes "Você tem ^ff0000"+#RAGNARUPOINTS+"^000000 pontos de fidelidade!";
+    if (select("Trocar meus pontos!","Sair.") == 2) 
+        close;
+
+
+    next;
+    mes @npcname$;
+    mes "Boas compras!";
+    close2;
+    callshop "ItensPresenca",1;
+    npcshopattach "ItensPresenca";
+    end;
+
+OnBuyItem:
+
+    for(set .@i,0; .@i<getarraysize(.presenca_item); set .@i,.@i+1) {
+        for(set .@d,0; .@d<getarraysize(@bought_nameid); set .@d,.@d+1) {
+            if(@bought_nameid[.@d]==.presenca_item[.@i]) {
+                if(checkweight(@bought_nameid[.@d],@bought_quantity[.@d])) {
+                    if(#RAGNARUPOINTS >= .presenca_cost[.@i]*@bought_quantity[.@d]) {
+						set #RAGNARUPOINTS,#RAGNARUPOINTS - .presenca_cost[.@i]*@bought_quantity[.@d];
+                        getitem @bought_nameid[.@d],@bought_quantity[.@d]; end;
+                    } else dispbottom "Você não tem pontos suficientes para comprar esse item.";
+                } else dispbottom "Desculpe, você está muito pesado para comprar esse item.";
+            }
+        }
+    }
+OnInit:
+    setarray .presenca_item[0],            3053, 3054, 782, 5232, 5208, 5231, 5242, 781; // ID dos Itens
+    setarray .presenca_cost[0],            2,   2,   35,  100,  100, 100, 100, 350; // preço dos itens(unidade) em pontos de fidelidade.
+	
+	
+	npcshopdelitem "ItensPresenca",501;
+	if(getarraysize(.presenca_item) >= 1) {
+		for( set .i,0; .presenca_item[.i]; set .i,.i+1 ) {
+			npcshopadditem "ItensPresenca",.presenca_item[.i],.presenca_cost[.i];
+		}
+	}
+    end;
+}
+
+-	shop	ItensPresenca	-1,501:-1
+
+-	script	hourlypoints	-1,{
+
+//--Start of the Script
+OnPCLoginEvent:
+	if (Class < 5) {dispbottom "Olá shinobi! Ao se graduar para Chunin, você terá acesso ao sistema de fidelidade!"; end;}
+	attachnpctimer ""+strcharinfo(0)+"";
+	initnpctimer;
+	end;
+	
+OnTimer30000:
+	//Check if Vending (normal or @at)
+	if(checkvending() >= 1 || checkchatting() == 1) {
+		dispbottom "A contagem de pontos de fidelidade foi interrompida porque está com chat ou venda aperta. Relogue para reiniciar contagem.";
+		stopnpctimer;
+		end;
+	}
+
+OnTimer60000:
+	set @minute, @minute + 1;
+	//Check for 1 Minute
+	if(@minute == 120){
+		set @minute,0;
+		set .@point_amt, 1; //Points to get every hour (default: 10)
+		set #RAGNARUPOINTS, #RAGNARUPOINTS + .@point_amt;
+		dispbottom "Você recebeu "+.@point_amt+" ponto(s) de fidelidade por ficar online por 1 hora, junte para trocar por prêmios!";
+		dispbottom "Saldo: "+#RAGNARUPOINTS+" ponto(s) de fidelidade.";
+		set @consecutive_hour, @consecutive_hour + 1;
+		}
+	//bonus 3 horas
+		if(@consecutive_hour == 3) {
+		set @consecutive_hour,0;
+		set .@cpoint_amt, 5;
+		set #RAGNARUPOINTS, #RAGNARUPOINTS + .@cpoint_amt;
+		dispbottom "Você recebeu "+.@cpoint_amt+" pontos de fidelidade por jogar 3 horas consecutivas, junte para trocar por prêmios!";
+		dispbottom "Saldo: "+#RAGNARUPOINTS+" ponto(s) de fidelidade.";
+		}
+	stopnpctimer;
+	initnpctimer;
+	end;
+
+}
+//--End of the Script
+
+salakage2,11,15,5	duplicate(fidel)	Pontos de Fidelidade#2	793
+salakage3,11,15,5	duplicate(fidel)	Pontos de Fidelidade#3	793
+salakage4,11,15,5	duplicate(fidel)	Pontos de Fidelidade#4	793

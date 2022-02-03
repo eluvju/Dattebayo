@@ -1,0 +1,129 @@
+nuvem,91,219,4	script	Evolução de pergaminhos::EVOperga	990,{
+
+mes "Olá, aqui você pode evoluir seus pergaminhos pra obter um poder maior";
+mes "Cada pergaminho possui 3 níveis, para obter o primeiro nível, é preciso fazer a quest do pergaminho básico";
+next;
+mes "Está interessado em ter a minha ajuda?";
+menu "Sim, estou interessado",L_slot,"Não",L_nao;
+
+L_slot:
+next;
+mes "Ótimo, é sempre bom ter equipamentos cada vez melhores";
+next;
+mes "Lembre-se que precisa estar com o item equipado";
+mes "o level máximo de todos os equipamentos é 99";
+next;
+mes "Escolha qual seu tipo de pergaminho";
+menu "Básico",L_kunai,"Intermediário",L_lamina,"Deixa pra lá",L_nao;
+
+
+L_kunai:
+next;
+mes "Certo, e qual é o seu elemento?";
+menu "Katon",L_katonB,"Suiton",L_suitonB,"Fuuton",L_fuutonB,"Doton",L_dotonB,"Raiton",L_raitonB;
+
+L_katonB:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho básico no nível 20, ele será evoluida para um pergaminho intermediário";
+next;
+mes "Nesta evolução você receberá todos os seus tikets de volta";
+next;
+if(getequipid(EQI_HAND_L)==2109 && getequiprefinerycnt(EQI_HAND_L) >= 20) {getitem 2110,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L); failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_suitonB:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho básico no nível 20, ele será evoluida para um pergaminho intermediário";
+next;
+mes "Nesta evolução você receberá todos os seus tikets de volta";
+next;
+if(getequipid(EQI_HAND_L)==2106 && getequiprefinerycnt(EQI_HAND_L) >= 20) {getitem 2107,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L); failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_fuutonB:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho básico no nível 20, ele será evoluida para um pergaminho intermediário";
+next;
+mes "Nesta evolução você receberá todos os seus tikets de volta";
+next;
+if(getequipid(EQI_HAND_L)==2112 && getequiprefinerycnt(EQI_HAND_L) >= 20) {getitem 2113,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L); failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_dotonB:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho básico no nível 20, ele será evoluida para um pergaminho intermediário";
+next;
+mes "Nesta evolução você receberá todos os seus tikets de volta";
+next;
+if(getequipid(EQI_HAND_L)==2115 && getequiprefinerycnt(EQI_HAND_L) >= 20) {getitem 2116,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L); failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_raitonB:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho básico no nível 20, ele será evoluida para um pergaminho intermediário";
+next;
+mes "Nesta evolução você receberá todos os seus tikets de volta";
+next;
+if(getequipid(EQI_HAND_L)==2118 && getequiprefinerycnt(EQI_HAND_L) >= 20) {getitem 2119,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L); failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+
+L_lamina:
+next;
+mes "Certo, e qual é o seu elemento?";
+menu "Katon",L_katonI,"Suiton",L_suitonI,"Fuuton",L_fuutonI,"Doton",L_dotonI,"Raiton",L_raitonI;
+
+L_katonI:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho intermediário no nível 50, ele será evoluida para um pergaminho Avançado";
+next;
+mes "Nesta evolução você acabará perdendo 15 tickets";
+next;
+if(getequipid(EQI_HAND_L)==2110 && getequiprefinerycnt(EQI_HAND_L) >= 50) {getitem 2111,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L)-15; failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_suitonI:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho intermediário no nível 50, ele será evoluida para um pergaminho Avançado";
+next;
+mes "Nesta evolução você acabará perdendo 15 tickets";
+next;
+if(getequipid(EQI_HAND_L)==2107 && getequiprefinerycnt(EQI_HAND_L) >= 50) {getitem 2108,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L)-15; failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_fuutonI:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho intermediário no nível 50, ele será evoluida para um pergaminho Avançado";
+next;
+mes "Nesta evolução você acabará perdendo 15 tickets";
+next;
+if(getequipid(EQI_HAND_L)==2113 && getequiprefinerycnt(EQI_HAND_L) >= 50) {getitem 2114,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L)-15; failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_dotonI:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho intermediário no nível 50, ele será evoluida para um pergaminho Avançado";
+next;
+mes "Nesta evolução você acabará perdendo 15 tickets";
+next;
+if(getequipid(EQI_HAND_L)==2116 && getequiprefinerycnt(EQI_HAND_L) >= 50) {getitem 2117,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L)-15; failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_raitonI:
+next;
+mes "Para evoluir esse pergaminho é preciso ter um Pergaminho intermediário no nível 50, ele será evoluida para um pergaminho Avançado";
+next;
+mes "Nesta evolução você acabará perdendo 15 tickets";
+next;
+if(getequipid(EQI_HAND_L)==2119 && getequiprefinerycnt(EQI_HAND_L) >= 50) {getitem 2120,1; getitem 7622,getequiprefinerycnt(EQI_HAND_L)-15; failedrefitem 3; announce "[Evolução de Pergaminhos] "+strcharinfo(0)+" acaba de evoluir seu Pergaminho, seu poder está ainda maior!",bc_blue|bc_all;} else {mes "Você não está com o pergaminho necessário equipada pra evoluir"; close;}
+close;
+
+L_nao:
+close;
+
+}
+
+ama_in01,98,28,4	duplicate(EVOperga)	Evolução de pergainhos#1	990,{
+ama_in01,17,20,4	duplicate(EVOperga)	Evolução de pergainhos#2	990,{
+kiri,338,368,4	duplicate(EVOperga)	Evolução de pergainhos#3	990,{
+6@tower,127,65,4	duplicate(EVOperga)	Evolução de pergainhos#4	990,{

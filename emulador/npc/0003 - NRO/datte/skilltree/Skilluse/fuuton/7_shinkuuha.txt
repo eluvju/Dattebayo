@@ -1,0 +1,105 @@
+-	script	on_PC_UseSkillfu07	-1,{
+    end;
+//When a Character uses a skill
+
+//Shinkuuha no Jutsu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 13) {
+
+
+if (getskilllv(13) == 1) {
+if (shinkuuha != 1) {end;}
+if (skill13 >= 50) {skill 13,2,0; set skill13,0; dispbottom "[Sys] Level up"; end; }
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 1: "+skill13+" de 50";
+
+end;
+
+}
+
+if (getskilllv(13) == 2) {
+if (shinkuuha != 1) {end;}
+if (skill13 >= 150) {skill 13,3,0; set skill13,0; dispbottom "[Sys] Level up"; end; }
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 2: "+skill13+" de 100";
+
+end;
+
+}
+
+if (getskilllv(13) == 3) {
+if (nin_intermediario != 1) {end;}
+if (skill13 >= 150) {skill 13,4,0; set skill13,0; dispbottom "[Sys] Level up"; end;}
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 3: "+skill13+" de 150";
+
+end;
+
+}
+
+if (getskilllv(13) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill13 >= 200) {skill 13,5,0; set skill13,0; dispbottom "[Sys] Level up"; end;}
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 4: "+skill13+" de 200";
+
+end;
+
+}
+
+if (getskilllv(13) == 5) {
+if (nin_avan != 1) {end;}
+if (skill13 >= 250) {skill 13,6,0; set skill13,0; dispbottom "[Sys] Level up"; end;}
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 5: "+skill13+" de 250";
+
+end;
+
+}
+
+if (getskilllv(13) == 6) {
+if (nin_avan != 1) {end;}
+if (skill13 >= 300) {skill 13,7,0; set skill13,0; dispbottom "[Sys] Level up"; end;}
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 6: "+skill13+" de 300";
+
+end;
+
+}
+
+if (getskilllv(13) == 7) {
+if (nin_avan != 1) {end;}
+if (skill13 >= 500) {skill 13,8,0; set skill13,0; dispbottom "[Sys] Level up"; end;}
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 7: "+skill13+" de 500";
+
+end;
+
+}
+
+if (getskilllv(13) == 8) {
+if (nin_avan != 1) {end;}
+if (skill13 >= 700) {skill 13,9,0; set skill13,0; dispbottom "[Sys] Level up"; end;}
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 8: "+skill13+" de 700";
+
+end;
+
+}
+
+if (getskilllv(13) == 9) {
+if (nin_avan != 1) {end;}
+if (skill13 >= 1000) {skill 13,10,0; set skill13,0; dispbottom "[Sys] Level up"; end;}
+set skill13,skill13 +1;
+dispbottom "[Jutsu level] Shinkuuha no Jutsu level 9: "+skill13+" de 1000";
+
+end;
+
+}
+
+}
+
+                end;
+            }    

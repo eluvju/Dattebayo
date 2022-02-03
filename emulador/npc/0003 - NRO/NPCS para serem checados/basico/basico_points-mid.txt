@@ -1,0 +1,91 @@
+nevoa.gat, 258, 303, 3	script	Pontos de missão::points	843,{
+
+	query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp, @s, @a, @b, @c, @d, @e);
+
+	mes "Olá "+strcharinfo(0);
+	if(@qp == 0)
+	{
+		mes "Você não possui pontos de missão, tente efetuar algumas missões e ganhará alguns pontos...";
+		close;
+	}
+	mes "Você possui "+@qp+" pontos de missão acumulados.";
+	mes "Você fez:";
+	mes "[ "+@s+" ] Missões de Ranking S";
+	mes "[ "+@a+" ] Missões de Ranking A";
+	mes "[ "+@b+" ] Missões de Ranking B";
+	mes "[ "+@c+" ] Missões de Ranking C";
+	mes "[ "+@d+" ] Missões de Ranking D";
+	mes "[ "+@e+" ] Missões de Ranking E";
+	next;
+	mes "["+strnpcinfo(3)+"]";
+	mes "Escolha o tipo de \"prêmio\" que desejas";
+	if(select("Ryous:Equipamentos:Level:Cancelar")==4)
+		close;
+	next;
+	mes "["+strnpcinfo(3)+"]";
+	if(@menu < 4)
+	{
+		set @menu$, ((@menu == 1) ? "ZENY" : ((@menu == 2) ? "ITEM" : "LEVEL"));
+		setarray @_price[1], getd("$"+@menu$+"_price[1]"), getd("$"+@menu$+"_price[2]"), getd("$"+@menu$+"_price[3]"), getd("$"+@menu$+"_price[4]"), getd("$"+@menu$+"_price[5]");
+		setarray @_receive[1],  getd("$"+@menu$+"_receive[1]"), getd("$"+@menu$+"_receive[2]"), getd("$"+@menu$+"_receive[3]"), getd("$"+@menu$+"_receive[4]"), getd("$"+@menu$+"_receive[5]");
+	}
+	if(@menu%2)
+	{
+		set @menu$, ((@menu == 1) ? "Ryous" : "leveis");
+		select(@_receive[1], @_receive[2], @_receive[3], @_receive[4], @_receive[5]);
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if(@qp < @_price[@menu])
+		{
+			mes "Você não possui pontos suficientes, tente efetuar mais algumas missões...";
+			close;
+		}
+		mes "Tem certeza que deseja trocar "+@_price[@menu]+" pontos por "+@_receive[@menu]+" "+@menu$+"?";
+		set @choose, @menu;
+		if(select("Sim:Não")==2)close;
+		if(@menu$ == "Ryous")
+			set Zeny , Zeny + @_receive[@choose];
+		else
+			set BaseLevel , BaseLevel + @_receive[@choose];
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` - '"+@_price[@choose]+"' WHERE `char_id` = '"+getcharid(0)+"'");
+		close;
+	} else if(@menu == 2)
+	{
+		mes "Escolha o equipamento desejado:";
+		select("^nItemID^"+@_receive[0], "^nItemID^"+@_receive[1], "^nItemID^"+@_receive[2], "^nItemID^"+@_receive[3]);
+		next;
+		mes "["+strnpcinfo(3)+"]";
+		if(@qp < @_price[@menu])
+		{
+			mes "Você não possui pontos suficientes, tente efetuar mais algumas missões...";
+			close;
+		}
+		mes "Tem certeza que deseja trocar "+@_price[@menu]+" pontos por ^nItemID^"+@_receive[@menu]+" ?";
+		set @choose, @menu;
+		if(select("Sim:Não")==2)close;
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` - '"+@_price[@choose]+"' WHERE `char_id` = '"+getcharid(0)+"'");
+		getitem @_receive[@menu], 1;
+		close;
+	}
+	
+OnInit:
+	callfunc("read_configs_07");
+	end;
+}
+
+function	script	read_configs_07	{
+
+setarray $ZENY_price[1], 50, 100, 250, 400, 700;
+setarray $ZENY_receive[1], 300000, 500000, 700000, 1000000, 1500000;
+
+setarray $ITEM_price[1], 1, 1, 1, 1, 1;
+setarray $ITEM_receive[1], 19088, 19088, 19088, 19088, 19088;
+
+setarray $LEVEL_price[1], 80, 130, 250, 400, 700;
+setarray $LEVEL_receive[1], 1, 3, 5, 7, 10;
+
+end;
+}
+
+konoha.gat,270,283,7	duplicate(points)	Pontos de Missão#b	843
+areia.gat,329,238,7	duplicate(points)	Pontos de Missão#c	843

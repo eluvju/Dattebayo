@@ -1,0 +1,106 @@
+spl_in01,182,218,3	script	Caça-níquel::niquel	563,{
+	callfunc "function-ckj";
+	end;
+OnInit:
+	setarray $@SPgr,782,1;
+	setarray $@Swnm,753,900,782,3054,3053,3052,31120,31075,31009,781,0,0,0,0,0,0,0,0,0,0;
+	setarray $@Swnn,1,1,10,3,3,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0;
+	setarray $@SRT,70,80,90,100,100,100,100,100,100,100,0,0,0,0,0,0,0,0,0,0;
+	setarray $@Slg$,"-A","-B","-C","-D","-E","-F","-G","-H","-I","-J","-K","-L","-M","-N","-O","-P","-Q","-R","-S","-T";
+	end;
+}
+function	script	function-ckj	{
+	function ckz {
+		for(;.@i<getarraysize($@SRT);set .@i,.@i+1){
+			set .@sum,.@sum + $@SRT[.@i];
+		}
+		set .@rnd,rand(1,.@sum);
+		for(;.@rnd>0;set .@l,.@l+1) set .@rnd,.@rnd-$@SRT[.@l];
+		return $@Slg$[.@l-1];
+	}
+	function ss {
+		for(set .@i,getarg(0);.@i>0;set .@i,.@i-1)set .@h$,.@h$+getarg(1);
+		return .@h$;
+	}
+	function	semes	{
+		function RandColor {
+			function Zui {
+				for(set .@i,getarg(0);.@i;set .@i,.@i-1)set .@h$,.@h$+getarg(1);
+				return .@h$;
+			}
+			function itoax {
+				if(!getarg(0))return "";
+				setarray .@fgd$[10],"A","B","C","D","E";
+				return itoax(getarg(0)/16)+(set(.@ty,getarg(0)%16)<10?.@ty:(.@fgd$[.@ty]==""?"F":.@fgd$[.@ty]));
+			}
+			return Zui(2-getstrlen(itoax(set(.@R,rand(getarg(0,0)%256,getarg(1,255)%256)))),"0")+itoax(.@R)+Zui(2-getstrlen(itoax(set(.@G,rand(getarg(2,0)%256,getarg(3,255)%256)))),"0")+itoax(.@G)+Zui(2-getstrlen(itoax(set(.@B,rand(getarg(4,0)%256,getarg(5,255)%256)))),"0")+itoax(.@B);
+		}
+		set .@p$,"^" +RandColor();
+		set .@p2$,.@p$+ "========================";
+		set .@p3$,(@pc3?"^FF0000":"^FFFFFF");
+		set .@p5$,.@p$ +"==^000000";
+		mes .@p2$;
+		mes .@p5$+"____________________" +.@p$+"==";
+		mes .@p5$+"|(   v    v    v  )|" +.@p$+"==";
+		mes .@p5$+"|> ^66CCFF" + @game_1$ + "^000000 | ^66CCFF" + @game_2$ + "^000000 | ^66CCFF" + @game_3$ + "^000000   <|" +.@p$+"==";
+		mes .@p5$+"|(   ^    ^    ^  )|" +.@p$+"==";
+		mes .@p5$+"____________________" +.@p$+"==";
+		mes .@p2$;
+	}
+	mes "A máquina pede 1 Ficha de Cassino para iniciar!";
+	mes "Consulte todas premiações no Fórum do NLO!";
+	next;
+	switch(select("^0000FFJogar","^00FF00Sair")){
+		case 1:
+			goto game;
+		case 2:
+			close;
+		}
+		
+	game:
+		next;
+		if(countitem($@SPgr[0])<$@SPgr[1]){ dispbottom "Você não tem fichas de cassino!"; close; }
+		delitem $@SPgr[0],$@SPgr[1];
+		set @game_1$,"  ";
+		set @game_2$,"  ";
+		set @game_3$,"  ";
+		set @pc3,0;
+		set .@h$,"";
+		set .@sum,0;
+		semes();
+		next;
+		select("[Rodar]");
+		set .@qc,0;
+		while(.@qc<3){
+			set .@qc,.@qc+1;
+			setd "@game_"+.@qc+"$",ckz();
+			if(.@qc>1&&getd("@game_"+.@qc+"$")!=getd("@game_"+(.@qc-1)+"$")){setd "@game_"+.@qc+"$",ckz();}
+			semes();
+			next;
+		}
+		set .@p3,0;
+		if(@game_1$==@game_2$&&@game_1$==@game_3$){set @pc3,1;}
+		semes();
+		if(@pc3){
+			for(set .@i,0;.@i<getarraysize($@Swnm);set .@i,.@i+1){
+				if(@game_1$==$@Slg$[.@i]&&$@Swnm[.@i]){
+					getitem $@Swnm[.@i],$@Swnn[.@i];
+					announce "JACKPOT! O jogador "+strcharinfo(0)+" foi premiado no Cassino NLO!",bc_blue|bc_all;
+				}
+			}
+		}
+		if(select("Jogar novamente.","Sair.")==1) goto game;
+		close;
+}
+
+spl_in01,182,213,3	duplicate(niquel)	Caça-níquel#2	563
+spl_in01,182,210,3	duplicate(niquel)	Caça-níquel#3	563
+spl_in01,182,205,3	duplicate(niquel)	Caça-níquel#4	563
+spl_in01,182,202,3	duplicate(niquel)	Caça-níquel#5	563
+spl_in01,182,197,3	duplicate(niquel)	Caça-níquel#6	563
+spl_in01,162,218,3	duplicate(niquel)	Caça-níquel#7	563
+spl_in01,162,213,3	duplicate(niquel)	Caça-níquel#8	563
+spl_in01,162,210,3	duplicate(niquel)	Caça-níquel#9	563
+spl_in01,162,205,3	duplicate(niquel)	Caça-níquel#10	563
+spl_in01,162,202,3	duplicate(niquel)	Caça-níquel#11	563
+spl_in01,162,197,3	duplicate(niquel)	Caça-níquel#12	563

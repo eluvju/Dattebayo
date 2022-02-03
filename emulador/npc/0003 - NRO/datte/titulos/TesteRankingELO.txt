@@ -1,0 +1,392 @@
+//-	script	Sample	-1,{
+//OnPCDieEvent:
+//set .@playerid, getcharid( 3,rid2name(killerrid) );
+//if( !isloggedin(.@playerid) )end;
+//if( J_Shuriken ){
+//	set Point,Point+1;
+//	dispbottom "Gained 1 Points because you have a variable named [variable]";
+//	}else{
+//	dispbottom "You didnt have the Variable.";
+//	}
+//
+//}
+
+-	script	Example	-1,{
+
+//if (agitcheck() == 1) {end;}
+OnPCKillEvent:
+
+    AttachRID(killerrid);
+
+		if( title$ == "RankE") {goto ranke;}else
+		if( title$ == "RankD") {goto rankd;}else
+		if( title$ == "RankC") {goto rankc;}else
+		if( title$ == "RankB") {goto rankb;}else
+		if( title$ == "RankA") {goto ranka;}else
+		if( title$ == "RankS") {goto ranks;}
+
+
+			ranke:
+			DetachRID;
+			AttachRID(killedrid);
+
+			if (title$ == "RankS"){Set reputacao, reputacao - 120; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 6 ;}else
+			if (title$ == "RankA"){Set reputacao, reputacao - 100; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 5 ;}else
+			if (title$ == "RankB"){Set reputacao, reputacao - 85; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 4 ;}else
+            if (title$ == "RankC"){Set reputacao, reputacao - 55; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 3 ;}else
+			if (title$ == "RankD"){Set reputacao, reputacao - 30; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 2 ;}else
+			if (title$ == "RankE"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 1 ;}
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			DetachRID;
+			AttachRID(killerrid);
+
+			if (aux==6 /*RankS*/){Set reputacao, reputacao + 100; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==5 /*RankA*/){Set reputacao, reputacao + 85; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==4 /*RankB*/){Set reputacao, reputacao + 70; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+            if (aux==3 /*RankC*/){Set reputacao, reputacao + 55; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==2 /*RankD*/){Set reputacao, reputacao + 40; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==1 /*RankE*/){Set reputacao, reputacao + 25; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			rankd:
+
+			DetachRID;
+			AttachRID(killedrid);
+
+			if (title$ == "RankS"){Set reputacao, reputacao - 100; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 6 ; }else
+			if (title$ == "RankA"){Set reputacao, reputacao - 85; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 5 ; }else
+			if (title$ == "RankB"){Set reputacao, reputacao - 55; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 4 ; }else
+            if (title$ == "RankC"){Set reputacao, reputacao - 30; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 3 ; }else
+			if (title$ == "RankD"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 2 ; }else
+			if (title$ == "RankE"){Set reputacao, reputacao - 10; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 1 ; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			DetachRID;
+			AttachRID(killerrid);
+
+			if (aux==6 /*RankS*/){Set reputacao, reputacao + 85; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==5 /*RankA*/){Set reputacao, reputacao + 70; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==4 /*RankB*/){Set reputacao, reputacao + 55; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+            if (aux==3 /*RankC*/){Set reputacao, reputacao + 40; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==2 /*RankD*/){Set reputacao, reputacao + 25; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==1 /*RankE*/){Set reputacao, reputacao + 15; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			rankc:
+
+			DetachRID;
+			AttachRID(killedrid);
+
+			if (title$ == "RankS"){Set reputacao, reputacao - 85; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 6 ; }else
+			if (title$ == "RankA"){Set reputacao, reputacao - 55; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 5 ; }else
+			if (title$ == "RankB"){Set reputacao, reputacao - 30; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 4 ; }else
+            if (title$ == "RankC"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 3 ; }else
+			if (title$ == "RankD"){Set reputacao, reputacao - 10; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 2 ; }else
+			if (title$ == "RankE"){Set reputacao, reputacao - 5; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 1 ; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			DetachRID;
+			AttachRID(killerrid);
+			if (aux==6 /*RankS*/){Set reputacao, reputacao + 70; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==5 /*RankA*/){Set reputacao, reputacao + 55; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==4 /*RankB*/){Set reputacao, reputacao + 40; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+            if (aux==3 /*RankC*/){Set reputacao, reputacao + 25; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==2 /*RankD*/){Set reputacao, reputacao + 15; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==1 /*RankE*/){Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			rankb:
+
+			DetachRID;
+			AttachRID(killedrid);
+
+			if (title$ == "RankS"){Set reputacao, reputacao - 60; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 6 ; }else
+			if (title$ == "RankA"){Set reputacao, reputacao - 35; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 5 ; }else
+			if (title$ == "RankB"){Set reputacao, reputacao - 20; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 4 ; }else
+            if (title$ == "RankC"){Set reputacao, reputacao - 10; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 3 ; }else
+			if (title$ == "RankD"){Set reputacao, reputacao - 5; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 2 ; }else
+			if (title$ == "RankE"){Set reputacao, reputacao - 2; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 1 ; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			DetachRID;
+			AttachRID(killerrid);
+
+			if (aux==6 /*RankS*/){Set reputacao, reputacao + 55; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==5 /*RankA*/){Set reputacao, reputacao + 40; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==4 /*RankB*/){Set reputacao, reputacao + 25; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+            if (aux==3 /*RankC*/){Set reputacao, reputacao + 15; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==2 /*RankD*/){Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==1 /*RankE*/){Set reputacao, reputacao + 2; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			ranka:
+
+			DetachRID;
+			AttachRID(killedrid);
+
+			if (title$ == "RankS"){Set reputacao, reputacao - 40; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 6 ; }else
+			if (title$ == "RankA"){Set reputacao, reputacao - 25; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 5 ; }else
+			if (title$ == "RankB"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 4 ; }else
+            if (title$ == "RankC"){Set reputacao, reputacao - 5; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 3 ; }else
+			if (title$ == "RankD"){Set reputacao, reputacao - 2; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 2 ; }else
+			if (title$ == "RankE"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 1 ; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			DetachRID;
+			AttachRID(killerrid);
+			if (aux==6 /*RankS*/){Set reputacao, reputacao + 40; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==5 /*RankA*/){Set reputacao, reputacao + 25; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==4 /*RankB*/){Set reputacao, reputacao + 15; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+            if (aux==3 /*RankC*/){Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==2 /*RankD*/){Set reputacao, reputacao + 2; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==1 /*RankE*/){Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			ranks:
+
+			DetachRID;
+			AttachRID(killedrid);
+
+			if (title$ == "RankS"){Set reputacao, reputacao - 25; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 6 ; }else
+			if (title$ == "RankA"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 5 ; }else
+			if (title$ == "RankB"){Set reputacao, reputacao - 5; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 4 ; }else
+            if (title$ == "RankC"){Set reputacao, reputacao - 2; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 3 ; }else
+			if (title$ == "RankD"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 2 ; }else
+			if (title$ == "RankE"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; set aux, 1 ; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+
+			DetachRID;
+			AttachRID(killerrid);
+
+			if (aux==6 /*RankS*/){Set reputacao, reputacao + 25; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==5 /*RankA*/){Set reputacao, reputacao + 15; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==4 /*RankB*/){Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+            if (aux==3 /*RankC*/){Set reputacao, reputacao + 2; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==2 /*RankD*/){Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }else
+			if (aux==1 /*RankE*/){Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu para: "+reputacao+" pontos"; }
+
+                if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}else
+                if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}else
+                if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}else
+                if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}else
+                if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}else
+                if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}else
+                if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+}
+/*-	script	Sample	-1,{
+OnPCDieEvent:
+
+    if(AttachRID(killerrid))
+	{// killed person attached
+		if( title$ == "RankE") {goto ranke;}
+		if( title$ == "RankD") {goto rankd;}
+		if( title$ == "RankC") {goto rankc;}
+		if( title$ == "RankB") {goto rankb;}
+		if( title$ == "RankA") {goto ranka;}
+		if( title$ == "RankS") {goto ranks;}
+
+
+			ranke:
+			if(AttachRID(killedrid))
+			if (title$ == "RankS"){Set reputacao, reputacao - 120; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankA"){Set reputacao, reputacao - 100; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankB"){Set reputacao, reputacao - 85; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+            if (title$ == "RankC"){Set reputacao, reputacao - 55; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankD"){Set reputacao, reputacao - 30; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankE"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+    }
+			{// killer reattached
+
+			rankd:
+			if(AttachRID(killedrid))
+            if (title$ == "RankS"){Set reputacao, reputacao - 100; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankA"){Set reputacao, reputacao - 85; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankB"){Set reputacao, reputacao - 55; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+            if (title$ == "RankC"){Set reputacao, reputacao - 30; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankD"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankE"){Set reputacao, reputacao - 10; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+            }
+			{// killer reattached
+
+
+			rankc:
+			if(AttachRID(killedrid))
+            if (title$ == "RankS"){Set reputacao, reputacao - 85; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankA"){Set reputacao, reputacao - 55; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankB"){Set reputacao, reputacao - 30; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+            if (title$ == "RankC"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankD"){Set reputacao, reputacao - 10; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankE"){Set reputacao, reputacao - 5; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			}
+			{// killer reattached
+
+			rankb:
+			if(AttachRID(killedrid))
+            if (title$ == "RankS"){Set reputacao, reputacao - 60; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankA"){Set reputacao, reputacao - 35; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankB"){Set reputacao, reputacao - 20; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+            if (title$ == "RankC"){Set reputacao, reputacao - 10; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankD"){Set reputacao, reputacao - 5; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankE"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			}
+			{// killer reattached
+
+
+			ranka:
+			if(AttachRID(killedrid))
+            if (title$ == "RankS"){Set reputacao, reputacao - 40; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankA"){Set reputacao, reputacao - 25; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankB"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+            if (title$ == "RankC"){Set reputacao, reputacao - 5; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankD"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankE"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			}
+			{// killer reattached
+
+			ranks:
+			if(AttachRID(killedrid))
+            if (title$ == "RankS"){Set reputacao, reputacao - 25; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankA"){Set reputacao, reputacao - 15; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankB"){Set reputacao, reputacao - 5; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+            if (title$ == "RankC"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankD"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			if (title$ == "RankE"){Set reputacao, reputacao - 1; dispbottom "Sua reputação desceu para: "+reputacao+" pontos"; goto testerank;}
+			}
+}*/
+
+/*void testerank()
+{
+if (reputacao < 0) {set reputacao,0; dispbottom "Você não tem reputação";DetachRID;}
+if (reputacao < 250) {set title$, "RankE"; dispbottom "Você está no Rank E";DetachRID;}
+if (reputacao >= 250)&&(reputacao < 500) {set title$, "RankD"; dispbottom "Você está no Rank D";DetachRID;}
+if (reputacao >= 500)&&(reputacao < 800) {set title$, "RankC"; dispbottom "Você está no Rank C";DetachRID;}
+if (reputacao >= 800)&&(reputacao < 1200) {set title$, "RankB"; dispbottom "Você está no Rank B";DetachRID;}
+if (reputacao >= 1200)&&(reputacao < 1800) {set title$, "RankA"; dispbottom "Você está no Rank A";DetachRID;}
+if (reputacao > 1800) {set title$, "RankS"; dispbottom "Você está no Rank S";DetachRID;}
+}
+
+
+
+
+/*kakashi,85,175,5,	script	Subir de Rank Shinobi::GradRank	899,{
+
+mes "Yo, Você já sabe o que são os rankings shinobi?";
+next;
+mes "Os rankings são formas de classificar os shinobis pelo mundo, aqui no NRO quanto maior seu ranking, mais benefícios você tem";
+next;
+mes "Pra subir de ranking, é preciso ter os pre-requisitos e vir falar comigo, você pode conferir os requisitos no fórum";
+next;
+mes "Vamos ao que interessa, acha que está pronto pra subir de ranking?";
+menu "Sim, estou pronto",L_sim,"Ainda não",L_nao,"Requisitos",requi;
+
+L_sim:
+next;
+mes "Primeiro vamos ver... você é ranking: "+title$+"";
+next;
+mes "Sendo assim vamos ver se você tem os pre-requisitos pra subir de ranking";
+	if (title$ == "RankA") {if (reputacao >= 5000) && (missaocount >= 750) {set title$, "RankS"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank S"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+	if (title$ == "RankB") {if (reputacao >= 3000) && (missaocount >= 500) {set title$, "RankA"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank A"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+	if (title$ == "RankC") {if (reputacao >= 1000) && (missaocount >= 300) {set title$, "RankB"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank B"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+	if (title$ == "RankD") {if (reputacao >= 500) && (missaocount >= 150) {set title$, "RankC"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank C"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+	if (title$ == "RankE") {if (reputacao >= 200) && (missaocount >= 50) {set title$, "RankD"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank D"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+
+next;
+mes "É uma pena, você ainda não está pronto";
+close;
+
+requi:
+next;
+mes "Os requisitos pra subir de ranking são os seguintes:";
+next;
+mes "Do Rank E para Rank D: 200 de reputação e 50 missões feitas";
+next;
+mes "Do Rank D para Rank C: 500 de reputação e 150 missões feitas";
+next;
+mes "Do Rank C para Rank B: 1000 de reputação e 300 missões feitas";
+next;
+mes "Do Rank B para Rank A: 3000 de reputação e 500 missões feitas";
+next;
+mes "Do Rank A para Rank S: 5000 de reputação e 750 missões feitas";
+close;
+
+L_nao:
+close;
+}

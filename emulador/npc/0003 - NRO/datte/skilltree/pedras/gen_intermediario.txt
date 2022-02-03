@@ -1,0 +1,25 @@
+moc_fild13,70,236,5	script	Genjutsu Intermediário::intergen	831,{
+
+if (limite_inter == 2) {mes "Você já chegou a dois treinamentos intermediários, esse é o limite"; close;}
+if (gen_intermediario == 1) {mes "Já não há mais nada que posso lhe ensinar"; close;}
+if (WeaponLvl3 < 40) {mes "Você não está pronto pra aprender Genjutsu intermediário, é preciso nível 40 de Genjutsu"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+mes "Hmm vejo que você é diferente de outros que vi por aqui, a força de um chunin é considerável, acho que você está pronto pra ir ao próximo nível de Genjutsu";
+next;
+mes "Vá em frente, e busque mais poder, seje o melhor shinobi que já existiu, pois agora você é diferenciado, agora você é um shinobi com Genjutsu intermediário!";
+set gen_intermediario,1;
+if(countitem(1023) > 0) {delitem 1023,1;}
+getitem 738,1;
+set limite_inter, limite_inter +1;
+set reset_gen2,1;
+announce "[...] Um poder é sentido de longe, alguém com chakra considerável, alguém assim só pode ter Genjutsu intermediário!",bc_blue|bc_all;
+close;
+
+}
+
+moc_fild03,105,213,5	duplicate(intergen)	Genjutsu Intermediário#1	831,{
+yuno_fild05,121,232,5	duplicate(intergen)	Genjutsu Intermediário#2	831,{
+gef_fild05,197,251,5	duplicate(intergen)	Genjutsu Intermediário#3	831,{

@@ -1,0 +1,42 @@
+nevoa,95,175,3	script	Treinamento Hyuuga::T_Hyuuga	734,{
+
+if(hyuuga != 1) goto L_class;
+if(treino_hyuuga == 1) goto treino_feito;
+
+mes "[Treinamento Hyuuga]";
+mes "Ohayo Hyuuga!";
+next;
+mes "[Treinamento Hyuuga]";
+mes "Ué... você não é o Hyuuga!";
+next;
+mes "[Treinamento Hyuuga]";
+mes "O que? Quer treinar comigo? *-*";
+menu "Quero",-,"Não",nao;
+mes "Beleza! vamos lá! *sinal de positivo*";
+next;
+mes "[Treinamento Hyuuga]";
+mes "Ahh dei um jeito nas minhas costas... pega estes pergaminhos e estuda que você aprende!";
+next;
+mes "*Estudando*";
+mes "Yosh! Já aprendi as habilidades Hyuuga!";
+skill 401,1,0;
+skill 270,5,0;
+set treino_hyuuga,1;
+close;
+
+treino_feito:
+mes "Você já fez este treinamento!";
+close;
+
+nao:
+close;
+
+L_class:
+mes "Você não é um Hyuuga!";
+close;
+
+}
+
+morocc_in,70,98,4	duplicate(T_Hyuuga)	Treinamento Hyuuga#1	734
+payon_in01,5,55,4	duplicate(T_Hyuuga)	Treinamento Hyuuga#2	734
+prt_monk,231,257,4	duplicate(T_Hyuuga)	Treinamento Hyuuga#3	734

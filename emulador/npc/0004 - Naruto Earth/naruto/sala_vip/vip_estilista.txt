@@ -1,0 +1,26 @@
+konoha3,176,122,5	script	Estilista::cabelos	122,{
+	mes "[^FF8000Estilista^000000]";
+	mes "Olá meu jovem Shinobi";
+	mes "Eu sou o estilista dessa vila.";
+	next;
+	mes "Eu posso mudar o seu cabelo!";
+	next;
+	mes "Escolhe um número de cabelo entre ^0000FF0 e 99^000000.";
+	switch(select("Ok.", "Não precisa.") == 1) {
+	cutin "hairstyle_"+Sex, 3;
+		input .@style, 0, .max_hairstyle[Sex];
+		setlook LOOK_HAIR, .@style;
+	}
+	close2;
+	cutin "", 255;
+	end;
+	
+	OnInit:
+		setbattleflag("min_hair_style", 0);
+		setbattleflag("max_hair_style", 99);
+		setarray .max_hairstyle, 99, 94;
+		end;
+}
+
+kumogakure,95,103,5	duplicate(cabelos)	Estilista#1	122,{
+kiragakure,201,201,5	duplicate(cabelos)	Estilista#2	122,{

@@ -1,0 +1,110 @@
+-	script	on_PC_UseSkillf04	-1,{
+    end;
+//When a Character uses a skill
+
+//Renkuudan
+
+onPcUseSkillEvent:
+
+           if(lskillid == 542) {
+
+
+if (getskilllv(542) == 1) {
+
+if (Renkuudan != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 50) {skill 542,2,0; set skill542,0; dispbottom "[Sys] Level up"; end; }
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 1: "+skill542+" de 50";
+
+end;
+
+}
+
+if (getskilllv(542) == 2) {
+if (Renkuudan != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 100) {skill 542,3,0; set skill542,0; dispbottom "[Sys] Level up"; end;}
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 2: "+skill542+" de 100";
+
+end;
+
+}
+
+if (getskilllv(542) == 3) {
+
+if (Renkuudan != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 150) {skill 542,4,0; set skill542,0; dispbottom "[Sys] Level up"; end;}
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 3: "+skill542+" de 150";
+
+end;
+
+}
+
+if (getskilllv(542) == 4) {
+if (Renkuudan != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 200) {skill 542,5,0; set skill542,0; dispbottom "[Sys] Level up"; end;}
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 4: "+skill542+" de 200";
+
+end;
+
+}
+
+if (getskilllv(542) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 250) {skill 542,6,0; set skill542,0; dispbottom "[Sys] Level up"; end;}
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 5: "+skill542+" de 250";
+
+end;
+
+}
+
+if (getskilllv(542) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 300) {skill 542,7,0; set skill542,0; dispbottom "[Sys] Level up"; end;}
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 6: "+skill542+" de 300";
+
+end;
+
+}
+
+if (getskilllv(542) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 500) {skill 542,8,0; set skill542,0; dispbottom "[Sys] Level up"; end;}
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 7: "+skill542+" de 500";
+
+end;
+
+}
+
+if (getskilllv(542) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 700) {skill 542,9,0; set skill542,0; dispbottom "[Sys] Level up"; end;}
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 8: "+skill542+" de 700";
+
+end;
+
+}
+
+if (getskilllv(542) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill542 >= 1000) {skill 542,10,0; set skill542,0; dispbottom "[Sys] Level up"; end;}
+set skill542,skill542 +1;
+dispbottom "[Jutsu level] Fuuton Renkuudan level 9: "+skill542+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

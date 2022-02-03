@@ -1,0 +1,54 @@
+sec_in01,176,176,5	script	Hyouton	118,{
+	if(hyouton == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Haku^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou uma Manipuladora de Gelo, você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Haku^000000]";
+	mes " É a kekkei genkai de natureza avançada do clã Yuki, e permite que os usuários combinem o chakra à base de vento e água para criar e manipular gelo, formando-os em várias estruturas. ";
+	next;
+	mes "[^00FF40Haku^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",Hyouton2,"- Não",nao;
+	close;
+
+	
+	
+	Hyouton2:
+
+next;
+
+	mes "[^00FF40Haku^000000]";
+
+mes "Quando o usuário libera o seu chakra, as proximidades circundantes se tornam frias o suficiente para provocar a queda de neve. ";
+
+next;
+
+	mes "[^00FF40Haku^000000]";
+
+mes "Seus poderes são perfeitos para pessoas que utilizam ^FF8C00Ninjutsu^000000 e ^006400Medicina^000000";
+
+next;
+
+set pegoukg,1;
+
+set hyouton,1;
+
+	mes "[^00FF40Haku^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

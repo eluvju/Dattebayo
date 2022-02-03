@@ -1,0 +1,227 @@
+-	script	Evento#KD	KageDugeon#KD -1,{
+
+OnInit:
+//Mapas das Vilas
+set $KDmap$,"orcsdun01";
+setarray $KDinfo[1],0,0,0; //Sendo Utilizado , Guild Utilizando, Mobs Restantes, Konoha Fez, Nevoa Fez, Nuvem Fez, Suna fez
+end;
+
+OnClock0000:
+if(gettime(4) == 0){
+set $KDinfo[4], 0;
+set $KDinfo[5], 0;
+set $KDinfo[6], 0;
+set $KDinfo[7], 0;
+}
+end;
+
+OnPCLoadMapEvent:
+if(getcharid(0) == $KDinfo[8]) set $KDinfo[8], 0;
+if(getcharid(0) == $KDinfo[9]) set $KDinfo[9], 0;
+if(getcharid(0) == $KDinfo[10]) set $KDinfo[10], 0;
+end;
+
+OnPCLogoutEvent:
+if(getcharid(0) == $KDinfo[8]) set $KDinfo[8], 0;
+if(getcharid(0) == $KDinfo[9]) set $KDinfo[9], 0;
+if(getcharid(0) == $KDinfo[10]) set $KDinfo[10], 0;
+end;
+
+OnPCDieEvent:
+if(getcharid(0) == $KDinfo[8]) set $KDinfo[8], 0;
+if(getcharid(0) == $KDinfo[9]) set $KDinfo[9], 0;
+if(getcharid(0) == $KDinfo[10]) set $KDinfo[10], 0;
+end;
+
+OnTimer3600000:
+//OnTimer600000:
+announce "[Kage Dungeon]: O Kage da "+getguildname($KDinfo[2])+" não conseguiu completar a dungeon semanal a tempo.",0;
+set $KDinfo[1], 0;
+set $KDinfo[2], 0;
+warpchar "kakashi",0,0,$KDinfo[8];
+warpchar "kakashi",0,0,$KDinfo[9];
+warpchar "kakashi",0,0,$KDinfo[10];
+setarray $KDinfo[8],0,0,0;
+killmonster $KDmap$,strnpcinfo(0)+"::OnKageDgKill";
+killmonster $KDmap$,strnpcinfo(0)+"::OnKageDgB1Kill";
+killmonster $KDmap$,strnpcinfo(0)+"::OnKageDgB2Kill";
+killmonster $KDmap$,strnpcinfo(0)+"::OnKageDgB3Kill";
+end;
+
+OnTimer1000:
+set $KDinfo[3], 50;
+monster $KDmap$,0,0,"Dungeon Monster",1372,$KDinfo[3],strnpcinfo(0)+"::OnKageDgKill";
+end;
+
+OnKageDgKill:
+set $KDinfo[3], $KDinfo[3] - 1;
+if($KDinfo[3] > 0) end;
+mapannounce $KDmap$,"[Kage Dungeon]: Um chakra sinistro foi despertado. Boa sorte desbravadores!",1;
+monster $KDmap$,0,0,"Dungeon Boss",1103,1,strnpcinfo(0)+"::OnKageDgB1Kill";
+end;
+
+OnKageDgB1Kill:
+getmapxy(.@mapname$,.@mapx,.@mapy,0);
+mapannounce $KDmap$,"[Kage Dungeon]: Vestígios de chakra do monstro se espalham pelo ar, a procura de algum hospedeiro...",1;
+specialeffect2 21;
+sleep2(500);
+specialeffect2 21;
+sleep2(500);
+specialeffect2 21;
+sleep2(500);
+specialeffect2 21;
+sleep2(500);
+monster $KDmap$,.@mapx,.@mapy,"Dungeon Boss",1104,1,strnpcinfo(0)+"::OnKageDgB2Kill";
+end;
+
+OnKageDgB2Kill:
+getmapxy(.@mapname$,.@mapx,.@mapy,0);
+mapannounce $KDmap$,"[Kage Dungeon]: Vestígios de chakra do monstro se espalham pelo ar, a procura de algum hospedeiro...",1;
+specialeffect2 21;
+sleep2(500);
+specialeffect2 21;
+sleep2(500);
+specialeffect2 21;
+sleep2(500);
+specialeffect2 21;
+sleep2(500);
+monster $KDmap$,.@mapx,.@mapy,"Dungeon Boss",1105,1,strnpcinfo(0)+"::OnKageDgB3Kill";
+end;
+
+OnKageDgB3Kill:
+mapannounce $KDmap$,"[Kage Dungeon]: O monstro chegou em seu limite. A dungeon foi completa com sucesso.",1;
+sleep2(2000);
+announce "[Kage Dungeon]: O Kage da "+getguildname($KDinfo[2])+" acaba de completar a dungeon semanal.",0;
+if($KDinfo[2] == 88) {set $konoha_ryous, $konoha_ryous + 150; set $kage_konoha_points, $kage_konoha_points + 10;}
+if($KDinfo[2] == 4) {set $nevoa_ryous, $nevoa_ryous + 150; set $kage_nevoa_points, $kage_nevoa_points + 10;}
+if($KDinfo[2] == 29) {set $nuvem_ryous, $nuvem_ryous + 150; set $kage_nuvem_points, $kage_nuvem_points + 10;}
+if($KDinfo[2] == 41) {set $areia_ryous, $areia_ryous + 150; set $kage_suna_points, $kage_suna_points + 10;}
+stopnpctimer;
+setnpctimer 0;
+warpchar "kakashi",0,0,$KDinfo[8];
+warpchar "kakashi",0,0,$KDinfo[9];
+warpchar "kakashi",0,0,$KDinfo[10];
+sleep2(2000);
+setarray $KDinfo[8],0,0,0;
+killmonster $KDmap$,strnpcinfo(0)+"::OnKageDgKill";
+killmonster $KDmap$,strnpcinfo(0)+"::OnKageDgB1Kill";
+killmonster $KDmap$,strnpcinfo(0)+"::OnKageDgB2Kill";
+killmonster $KDmap$,strnpcinfo(0)+"::OnKageDgB3Kill";
+set $KDinfo[1], 0;
+set $KDinfo[2], 0;
+end;
+}
+
+kakashi.gat,83,120,4	script	Kage Dungeon	46,{
+
+// Nome do npc
+set .npc$,"^800000[Kage Dungeon]^000000";
+
+mes .npc$;
+mes "Ola em que posso servi-lo?";
+
+if(select("Entrar na Dungeon:Gerar Dungeon") == 1){
+	set .@anbu, 0;
+	for( set .@i, 19130; .@i<19145; set .@i, .@i + 1 ){
+		if(countitem(.@i) > 0) set .@anbu, 1;
+	}
+if(.@anbu == 0 && countitem(19009) == 0 && countitem(19148) == 0 && countitem(19012) == 0 && countitem(19036) == 0){
+mes .npc$;
+mes "Apenas Kages e Anbus podem utilizar esta Dungeon.";
+close;
+end;
+}
+next;
+if($KDinfo[1] == 0){
+mes .npc$;
+mes "Desculpe, nao ha nenhuma Dungeon ativa.";
+close;
+end;
+}
+if(getmapusers($KDmap$) > 2){
+mes .npc$;
+mes "A dungeon esta em sua lotaçao maxima.";
+close;
+end;
+}
+if(getcharid(2) != $KDinfo[2]){
+mes .npc$;
+mes "Desculpe, outro Kage esta utilizando a Dungeon neste momento.";
+close;
+end;
+}
+close2;
+
+for( set .@a, 8; .@a<11 && $KDinfo[.@a] == 0; set .@a, .@a + 1 );
+set $KDinfo[.@a], getcharid(0);
+warp "orcsdun01",0,0;
+end;
+}else{
+next;
+
+if(getgmlevel() >= 98){
+mes "Gostaria de resetar a Dungeon?";
+if(select("Nao:Sim") == 2){
+set $KDinfo[1], 0;
+set $KDinfo[2], 0;
+set $KDinfo[3], 0;
+set $KDinfo[4], 0;
+set $KDinfo[5], 0;
+set $KDinfo[6], 0;
+set $KDinfo[7], 0;
+}
+}
+
+if(countitem(19009) == 0 && countitem(19148) == 0 && countitem(19012) == 0 && countitem(19036) == 0) close;
+if($KDinfo[1] == 1){
+mes .npc$;
+mes "Desculpe, ja existe uma Dungeon ativa.";
+close;
+end;
+}
+
+if(countitem(19009) > 0 && $KDinfo[4] > 0 || countitem(19012) > 0 && $KDinfo[5] > 0 || countitem(19036) > 0 && $KDinfo[6] > 0 || countitem(19148) > 0 && $KDinfo[7] > 0){
+mes .npc$;
+mes "Desculpe, voce ja fez o dungeon desta semana.";
+close;
+end;
+}
+
+if(countitem(19009) > 0 && getcharid(2) != 88 || countitem(19012) > 0 && getcharid(2) != 4 || countitem(19036) > 0 && getcharid(2) != 29 || countitem(19148) > 0 && getcharid(2) != 41){
+mes .npc$;
+mes "Voce deve estar na sua respectiva guild para abrir uma nova dungeon.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Voce so pode gerar uma dungeon por semana. Deseja continuar?";
+if(select("Sim:Nao") == 2) close;
+
+if(getcharid(2) == 0) close;
+
+set $KDinfo[1], 1;
+set $KDinfo[2], getcharid(2);
+
+if(getcharid(2) == 88) set $KDinfo[4], 1;
+if(getcharid(2) == 4) set $KDinfo[5], 1;
+if(getcharid(2) == 29) set $KDinfo[6], 1;
+if(getcharid(2) == 41) set $KDinfo[7], 1;
+
+next;
+mes .npc$;
+mes "Dungeon aberta com sucesso. Voce tem o limite de 1 hora para finaliza-la.";
+initnpctimer "Evento#KD";
+close;
+end;
+}
+end;
+}
+orcsdun01	mapflag	nowarp
+orcsdun01	mapflag	noteleport
+orcsdun01	mapflag	nowarpto
+orcsdun01	mapflag	nobranch
+orcsdun01	mapflag	nosave	SavePoint
+orcsdun01	mapflag	nomemo
+orcsdun01	mapflag	nopenalty
+orcsdun01	mapflag	noexp

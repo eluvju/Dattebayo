@@ -1,0 +1,430 @@
+//===== rAthena Script =======================================
+//= Arco 1 - Academia Shinobi
+//===== By: ==================================================
+//= Kira the Cat
+//===== Description: =========================================
+//= NPC Iruka 
+//= 
+//===== Comentarios do Editor: =================================
+//=
+//= 1.0 Iniciado em 20/07/2021 as 07:30
+//
+//===================================//	
+academia,60,36,5	script	Professor Rock	10057,{
+//===== Estrutura do Script: ========//
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+
+//===== Variaveis: ========//
+
+if(academia_arco_1 == 2) {	mes .@npc$;
+							mes "Agora você deve ir até a ^FF0000Sala 2^000000.";
+							close;}	
+
+if (@desafios >= 3) { 	mes .@npc$;
+						mes "Você completou todos os desafios parabens...";
+						mes " ";
+						mes "Agora você deve ir até a ^FF0000Sala 2^000000.";
+						close2;
+						set academia_arco_1, 2;
+						sleep2 1000;
+						mapannounce strnpcinfo(4), "[ "+strnpcinfo(1)+" ] Dirija-se Até a Sala 2", bc_self,0xFF6961;
+						end;}
+
+if(academia_arco_1_sala1_inato == 1) { goto prova_inato;}
+
+if(academia_arco_1_sala1_atributos == 2) { goto prova_atributos; }
+	
+if(academia_arco_1_sala1_interface == 1) { goto prova_interface; }
+
+							
+if(academia_arco_1_sala1 == 1) { mes .@npc$;
+								 mes "Não tenho o dia todo, vai logo terminar sua avaliação.";
+								 mes " ";
+								 mes "Você ja fez ^FF0000"+@desafios+"^000000 Desafio(s) de ^FF00003^000000"; 
+								 end; }	
+//=======================//	
+// Introdução
+//=
+
+	
+	mes .@npc$;
+	mes "Veja só, aqui esta o senhor...";
+	mes " ";
+	mes "Prezado, aqui vamos avaliar seus conhecimentos...";
+	next;
+	mes .@npc$;
+	mes "Os temas abordados serão:";
+	mes " ";
+	mes "- Interface";
+	mes "- Atributos";
+	mes "- Classe";
+	sc_start SC_INCREASEAGI,480000,1;
+	next;
+	mes .@npc$;
+	mes "Sua avaliação começa agora, ^0000FFInteraja com a Sala^000000 para completar os desafios!";
+	close2;
+	cutin "",255;
+	set @desafios, 0;
+	set academia_arco_1_sala1, 1;
+	end;
+	
+//=======================//	
+// Prova Interface
+//=
+
+	prova_interface:
+	.@choice = rand(1,5);
+	if ( .@choice == 1 ){ set .@prova$, "Barra de Skill";}
+	if ( .@choice == 2 ){ set .@prova$, "Informações do Personagem";}
+	if ( .@choice == 3 ){ set .@prova$, "Chat";}
+	if ( .@choice == 4 ){ set .@prova$, "Barra de Status";}
+	if ( .@choice == 5 ){ set .@prova$, "Loja Dattebayo";}
+	mes .@npc$;
+	mes "Vamos ver se você aprendeu...";
+	next;
+	mes .@npc$;
+	mes "Segundo o Professor Stone...";
+	mes " ";
+	mes "A ^0000FF"+.@prova$+"^000000 representa qual numero?";
+	input .@input;
+	if (.@input != .@choice) { 	next;
+								mes .@npc$;
+								mes "Você ^FF0000Errou^000000.";
+								mes " ";
+								mes "Va estudar e tente novamente!";
+								close;
+								}
+	next;
+	set @desafios, @desafios +1;
+	set academia_arco_1_sala1_interface, 2;
+	mes .@npc$;
+	mes "Parabens...";
+	mes " ";
+	mes "Você ja completou:";
+	mes "^FF0000"+@desafios+"^000000 Desafio(s) de ^FF00003^000000"; 
+	end;
+
+//=======================//
+// Prova Atributos
+//=
+
+	prova_atributos:
+	set @desafios, @desafios +1;
+	set academia_arco_1_sala1_atributos, 3;
+	mes .@npc$;
+	mes "Ok ok Sabichão...";
+	mes "Parece que você esta indo melhor do que eu esperava.";
+	next;
+	mes .@npc$;
+	mes "Você ja completou ^FF0000"+@desafios+"^000000 Desafio(s) de ^FF00003^000000";
+	end;
+	
+//=======================//
+// Prova Inato
+//=
+
+	prova_inato:
+	set @desafios, @desafios +1;
+	set academia_arco_1_sala1_inato, 2;
+	mes .@npc$;
+	mes "Você ja completou ^FF0000"+@desafios+"^000000 Desafio(s) de ^FF00003^000000";
+	end;
+}
+//
+//
+//	
+// ====================================================
+academia,51,38,5	script	Professor Stone	10056,{
+//===== Estrutura do Script: ========//
+
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	set .@t, 2;	// Delay Seconds.
+	
+//===== Variaveis: ========//		
+
+	if(academia_arco_1_sala1 == 0) {	mes .@npc$;
+										mes "Fale com o Professor Rock...";
+										close;
+										}
+	if(academia_arco_1_sala1_interface == 2) { 	mes .@npc$;
+												mes "Parabens, você Passou!";
+												close;
+												}
+	
+//===================================//
+// Introdução - Interface
+//=	
+
+	mes .@npc$;
+	mes "Olá sou o instrutor de ^0000FFInterface^000000, ";
+	mes " ";
+	mes "Vou tentar explicar um pouco então fique atento...";
+	next;
+	cutin "interface",4;
+	mes .@npc$;
+	mes "Aqui podemos ver numeros de ^0000FF1 a 5^000000,";
+	mes "eles representam:";
+	mes " ";
+	mes "- ^0000FF1^000000: Barra de Jutsus";
+	mes "- ^0000FF2^000000: Informações do Personagem";
+	mes "- ^0000FF3^000000: Chat";
+	mes "- ^0000FF4^000000: Barra de Status";
+	mes "- ^0000FF5^000000: Loja Dattebayo";
+	while ( .@t ) {	sleep2 1000 ;
+					set .@t, .@t - 1;
+					}
+	next;
+	menu1:
+	cutin "",255;
+	mes .@npc$;
+	mes "Sobre o que você quer aprender?";
+	switch (select("- ^0000FFEntendi^000000","- Barra de Jutsus", "- Informações do Personagem","- Coluna de Status")) {
+	
+		case 1:
+		goto fim;
+		
+		case 2:
+		next;
+		cutin "barradejutsus",0;
+		mes .@npc$;
+		mes "A Barra de Jutsus esta diretamente ligada a sua Arvore de Habilidade.";
+		mes " ";
+		mes "Existem 3 Locais Importantes para lembrar...";
+		next;
+		mes .@npc$;
+		mes "Em ^FF0000Vermelho^000000, podemos ver seus jutsus,passivos e/ou ativos";
+		mes " ";
+		mes "Mover seu mouse até eles mostra a descrição do que seu jutsu faz.";
+		next;
+		mes .@npc$;
+		mes "Em ^0000FFAzul^000000, podemos ver a divisa da sua Arvore de habilidades.";
+		mes " ";
+		mes "Na Aba ^FF0000Shinobi^000000 estão suas ^FF0000Habilidades Inatas^000000. São aquelas que nascem e evoluem com você.";
+		mes " ";
+		mes "Ja na Segunda aba estão seus jutsus em geral.";
+		next;
+		mes .@npc$;
+		mes "Em ^008000Verde^000000, podemos ver seus pontos de ^FF0000Habilidades Inatas^000000.";
+		mes " ";
+		mes "Você pode usar eles para melhorar alguma Habilidade";
+		next;
+		goto menu1;
+		
+		case 3:
+		next;
+		cutin "informacoes",0;
+		mes .@npc$;
+		mes "As informações do personagem são autoexplicativas porém é bom ficar atento...";
+		mes " ";
+		mes "Sinalizei os 3 para analisar.";
+		next;
+		mes .@npc$;
+		mes "Em ^FF0000Vermelho^000000, estão seus Atributos.";
+		mes " ";
+		mes "Eles são aumentados por ^008000pontos de status^000000 e Equipamentos";
+		next;
+		mes .@npc$;
+		mes "Em ^0000FFAzul^000000, estão seus bonus.";
+		mes " ";
+		mes "Nele você pode analisar como esta a situação do seu personagem.";
+		next;
+		mes .@npc$;
+		mes "Em ^008000Verde^000000, estão seus pontos de status e seu nivel.";
+		mes " ";
+		mes "A cada level evoluido você ganha uma quantidade de pontos para aumentar seus atributos.";
+		next;
+		goto menu1;
+		
+		case 4:
+		next;
+		mes .@npc$;
+		mes "A ^800080Coluna de Status^000000, é simples basta passar seu mouse acima.";
+		mes " ";
+		mes "Ele descreve qual Bonus e o tempo restante.";
+		next;
+		goto menu1;
+		
+		}
+
+	fim:
+	next;
+	mes .@npc$;
+	mes "Agora que expliquei tudo sobre a ^0000FFInterface^000000.";
+	mes " ";
+	mes "Fale com ^FF0000Professor Rock^000000 agora.";
+	close2;
+	set academia_arco_1_sala1_interface, 1;
+	cutin "",255;
+	end;
+	
+}
+
+//
+//
+//
+// ==================================================== //
+academia,50,36,5	script	!	10250,{
+//===== Estrutura do Script: ========//
+
+	.@npc$ = "                              ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	set .@t, 3,5;	// Delay Seconds.
+//===== Variaveis: ========//	
+
+if(academia_arco_1_sala1 == 0) {mes .@npc$;
+								mes "Fale com o Professor Rock...";
+								close;}
+								
+if(academia_arco_1_sala1_atributos == 3) { 	mes .@npc$;
+											mes "Parabens, você Passou!";
+											close;}
+											
+if(academia_arco_1_sala1_atributos == 2) { 	mes .@npc$;
+											mes "Fale com o ^0000FFProfessor Rock^000000 Agora...";
+											close;}
+if(academia_arco_1_sala1_atributos == 1) {goto buildar;}
+
+//===================================//
+// Introdução
+//=
+
+	mes .@npc$;
+	mes "Nossa como você é fraco... sério... patético... ";
+	mes " ";
+	mes "Sou só um cara em uma caixa e já sei disso... sinceramente.";
+	next;
+	mes .@npc$;
+	mes "Primeiramente vou ^FF0000Resetar seus Atributos^000000, por que não quero perder mais tempo com você";
+	next;
+	mes .@npc$;
+	mes "Espere alguns segundos:";
+	while ( .@t ) {
+		mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+		sleep2 1000 ;
+		set .@t, .@t - 1;
+					}
+	resetatributos1:
+	close2;
+	atcommand "@effect 55 "+@player$;
+	ResetStatus;
+	dispbottom "[Servidor] Dattebayo: Seus Atributos foram resetados.";
+	set academia_arco_1_sala1_atributos, 1;
+	end;
+
+//===================================//
+//
+// segunda Interação (Ensinando a Buildar)	
+
+	buildar:
+	mes .@npc$;
+	mes "Pronto acho que agora posso moldar você...";
+	mes " ";
+	mes "Deixa eu pensar aqui... Ok vamos fazer juntos!";
+	next;
+	mes .@npc$;
+	mes "Abra seu ^FF0000ALT + A^000000, que é seu painel de atributos.";
+	mes " ";
+	mes "Relaxa, vou dar um tempo pra você... vamos com calma.";
+	while (1) {	sleep2 1000 ; break;}
+	next;
+	.@stats = rand(1,20);
+	.@rand = rand(1,6);
+	if ( .@rand == 1 ){ set .@desc$, "STR";} if ( .@rand == 1 ) { set .@desc2, bStr;}
+	if ( .@rand == 2 ){ set .@desc$, "AGI";} if ( .@rand == 2 ) { set .@desc2, bAgi;}
+	if ( .@rand == 3 ){ set .@desc$, "VIT";} if ( .@rand == 3 ) { set .@desc2, bVit;}
+	if ( .@rand == 4 ){ set .@desc$, "INT";} if ( .@rand == 4 ) { set .@desc2, bInt;}
+	if ( .@rand == 5 ){ set .@desc$, "DEX";} if ( .@rand == 5 ) { set .@desc2, bDex;}
+	if ( .@rand == 6 ){ set .@desc$, "LUK";} if ( .@rand == 6 ) { set .@desc2, bLuk;}
+	mes .@npc$;
+	mes "Agora vamos deixar ^0000FF"+.@desc$+"^000000 exatamente com ^FF0000"+.@stats+"^000000 pontos.";
+	mes " ";
+	while (1) {	sleep2 1500 ; break;}
+	mes "Pronto? conseguiu já?";
+	menu "- Resetar Atributos",resetatributos1,"- ^000080Pronto!^000000",-;
+	if (readparam(.@desc2) == .@stats) {	next; 
+											mes .@npc$;
+											mes "Veja só, parece que você não é um completo inutil.";
+											mes " ";
+											mes "Sempre que você aumentar seu nivel você pode ganhar pontos para adicionar.";
+											next;
+											mes .@npc$;
+											mes "E para saber o que cada atributo melhora, mova seu mouse sobre ele.";
+											mes " ";
+											mes "Fale com ^0000FFProfessor Rock^000000 Agora!";
+											close2;
+											atcommand "@effect 55 "+@player$;
+											ResetStatus;
+											dispbottom "[Servidor] Dattebayo: Seus Atributos foram resetados.";
+											set academia_arco_1_sala1_atributos, 2;
+											end;}
+	next;
+	mes .@npc$;
+    mes "Tente novamente, e dessa vez faça certo";	
+	end;
+}	
+
+// ====================================================	
+academia,59,53,5	script	 #Instrutor_sala_1	4_f_kafra1,{
+//===== Estrutura do Script: ========//
+
+	.@npc$ = "                           ^FF6961[ Misuki ]^000000";
+	set .@t, 2;	// Delay Seconds.
+	
+//===== Variaveis: ========//		
+
+if(academia_arco_1_sala1 == 0) {	mes .@npc$;
+									mes "Fale com o Professor Rock...";
+									close;}
+									
+if(academia_arco_1_sala1_inato == 2) { 	mes .@npc$;
+										mes "Parabens, você Passou!";
+										close;}
+											
+if(academia_arco_1_sala1_inato == 1) {	npctalk "Mizuki: Fale com o Professor Rock","",bc_self;
+										end;}
+										
+//===================================//	
+//
+// Introdução
+
+	mes .@npc$;
+	mes "Longo caminho até aqui não é?";
+	mes " ";
+	mes "Infelizmente pra você, ainda não é nada.";
+	next;
+	mes .@npc$;
+	mes "Vou tentar explicar pra você um pouco sobre ^FF0000Habilidades Inatas^000000.";
+	mes " ";
+	mes "Elas são algo que cresce com você, evolui junto com você de maneira unica!";
+	next;
+	mes .@npc$;
+	mes "Diferente do seu level, pontos de ^FF0000Habilidades Inatas^000000 não são recebidos ao matar monstros.";
+	mes " ";
+	mes "Você recebe ao completar missões, conquistar cidades ou atingir objetivos!";
+	while (1) {	sleep2 2500 ; break;}
+	switch (select("- Como evolui a ^FF0000Habilidades Inatas^000000?")){
+	
+	case 1:
+	set academia_arco_1_sala1_inato, 1;
+	next;
+	mes .@npc$;
+	mes "Vou tentar demonstrar da melhor forma possivel.";
+	cutin "inata2", 0;
+	while (1) {	sleep2 2000 ; break;}
+	cutin "inata3", 0;
+	while (1) {	sleep2 2000 ; break;}
+	cutin "inata4", 0;
+	mes " ";
+	mes "É assim que você evolui uma ^FF0000Habilidades Inatas^000000, bem fácil...";
+	
+		close2;
+		cutin "",255;
+		npctalk "Mizuki: Vamos aprender na prática!","",bc_self;
+		while (1) {	sleep2 1500 ; break;}
+		jobLevel = jobLevel + 1;
+		npctalk "Mizuki: Adicione o ponto em qualquer Habilidade Inata!","",bc_self;
+		while (1) {	sleep2 5000 ; break;}
+		npctalk "Mizuki: Fale com o Professor Rock Agora","",bc_self;
+		end;
+	}
+}		

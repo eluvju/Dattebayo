@@ -1,0 +1,201 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+biblioteca,119,14,5	script	Medicina Intermediario	1_m_smith,{
+if(checkquest(30088) == 1) goto skillmedi1;
+if(checkquest(30089) == 1) goto skillmedi2;
+if(checkquest(30090) == 1) goto skillmedi3;
+if(checkquest(30091) == 1) goto skillmedi4;
+if(checkquest(30092) == 1) goto skillmedi5;
+if(treino_med_inter != 1) { mes "[Medicina Intermediario]"; mes "Você precisa estudar Medicina Intermediario antes de aprender as skills"; close;}
+if(medi_skill_inter >= 3) { mes "[Medicina Intermediario]"; mes "Você já aprendeu três skill de Medicina Intermediario, esse é o limite"; close; }
+	mes "[Medicina Intermediario]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Medicina Intermediario. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Medicina Intermediario]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Medicina Intermediario]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Medicina Intermediario]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A080Lauda Agnus^000000:^8A0808Lauda Ramus^000000:^8A0808Shikon no Jutsu^000000:^8A0808Impositio Manus^000000:^8A0808Benção^000000:^8A0808ANenhum^000000"))
+	{
+	case 1:
+		if (me1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Lauda Agnus";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmedi1:
+		setquest 30088;
+		if(checkquest(30088,hunting) == 2)
+		{
+			completequest 30088;
+			erasequest 30088;
+			delitem 32157,1;
+			set medi_skill_inter,medi_skill_inter +1;
+			skill 2047,4,3;
+			set me1,1;
+			mes "[Medicina Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (me2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Lauda Ramus";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmedi2:
+		setquest 30089;
+		if(checkquest(30089,hunting) == 2 && countitem(32157) >= 1)
+		{
+			completequest 30089;
+			erasequest 30089;
+			delitem 32157,1;
+			set medi_skill_inter,medi_skill_inter +1;
+			skill 2048,4,3;
+			set me2,1;
+			mes "[Medicina Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (me3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Shikon no Jutsu";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmedi3:
+		setquest 30090;
+		if(checkquest(30090,hunting) == 2 && countitem(32157) >= 1)
+		{
+			completequest 30090;
+			erasequest 30090;
+			delitem 32157,1;
+			set medi_skill_inter,medi_skill_inter +1;
+			set me3,1;
+			skill 54,2,3;
+			mes "[Medicina Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if (me4 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Impositio Manus";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmedi4:
+		setquest 30091;
+		if(checkquest(30091,hunting) == 2 && countitem(32157) >= 1)
+		{
+			completequest 30091;
+			erasequest 30091;
+			delitem 32157,1;
+			set me4,1;
+			skill 66,10,3;
+			set medi_skill_inter,medi_skill_inter +1;
+			mes "[Medicina Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+		case 5:
+		if (me5 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Benção";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Medicina Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Medicina Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillmedi5:
+		setquest 30092;
+		if(checkquest(30092,hunting) == 2 && countitem(32157) >= 1)
+		{
+			completequest 30092;
+			erasequest 30092;
+			delitem 32157,1;
+			set me5,1;
+			skill 34,10,3;
+			set medi_skill_inter,medi_skill_inter +1;
+			mes "[Medicina Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 6:
+		mes "[Medicina Intermediario]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Medicina Intermediario]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando pergaminho de medicina Intermediario.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

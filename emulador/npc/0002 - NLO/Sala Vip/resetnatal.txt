@@ -1,0 +1,22 @@
+ra_in01,255,89,5	script	Reset Natal	815,{
+
+if(#questmade101 == GetTime(8)) {
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid de Natal. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7016,1;
+set #questmade101, GetTime(8);
+close;
+	
+r2:
+next;
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}

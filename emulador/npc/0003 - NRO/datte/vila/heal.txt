@@ -1,0 +1,238 @@
+hospital,25,70,5	script	Médica#h1-1	739,{
+
+if (checkquest(2017) == 1) goto L_go;
+if(getequipid(EQI_HEAD_MID)==19079) goto vila;
+if(getequipid(EQI_HEAD_MID)==19078) goto vila;
+if(getequipid(EQI_HEAD_MID)==19081) goto vila;
+
+if (Class == 4009) goto vila;
+if(#konoha != 1) goto vila;
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+L_go:
+mes "Olá, vejo que você está fazendo a newbie quest, aqui no hospital você pode se curar sempre que precisar";
+next;
+mes "Estamos aberto 24 horas para servir a nossa vila, volte quando precisar.";
+completequest 2017;
+set newbie,1;
+set newbiestart,0;
+close;
+
+}
+
+
+
+hospital2,25,70,3	script	Médica#h1-2	739,{
+
+if (checkquest(2017) == 1) goto L_go;
+if (Class == 4049) goto vila;
+if (Class == 4009) goto vila;
+if(#suna != 1) goto vila;
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+L_go:
+mes "Olá, vejo que você está fazendo a newbie quest, aqui no hospital você pode se curar sempre que precisar";
+next;
+mes "Estamos aberto 24 horas para servir a nossa vila, volte quando precisar.";
+completequest 2017;
+set newbie,1;
+set newbiestart,0;
+close;
+
+}
+
+hospital3,25,70,3	script	Médica#h1-3	739,{
+
+if (checkquest(2017) == 1) goto L_go;
+if (Class == 4049) goto vila;
+if (Class == 4009) goto vila;
+if(#nevoa != 1) goto vila;
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+L_go:
+mes "Olá, vejo que você está fazendo a newbie quest, aqui no hospital você pode se curar sempre que precisar";
+next;
+mes "Estamos aberto 24 horas para servir a nossa vila, volte quando precisar.";
+completequest 2017;
+set newbie,1;
+set newbiestart,0;
+close;
+
+}
+
+hospital4,25,70,3	script	Médica#h1-31	739,{
+
+if (checkquest(2017) == 1) goto L_go;
+if (Class == 4049) goto vila;
+if (Class == 4009) goto vila;
+if(#nuvem != 1) goto vila;
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+L_go:
+mes "Olá, vejo que você está fazendo a newbie quest, aqui no hospital você pode se curar sempre que precisar";
+next;
+mes "Estamos aberto 24 horas para servir a nossa vila, volte quando precisar.";
+completequest 2017;
+set newbiestart,0;
+set newbie,1;
+close;
+
+}
+
+akatsuki,148,174,5	script	Médico Nukenin#aka	742,{
+
+if(getequipid(EQI_HEAD_MID)!=19020) &&(getequipid(EQI_HEAD_MID)!=19195) &&(getequipid(EQI_HEAD_MID)!=19196) &&(getequipid(EQI_HEAD_MID)!=19197) goto vila;
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+}
+
+lou_in02,243,174,5	script	Médico Nukenin#nuk	742,{
+
+//if(getequipid(EQI_HEAD_MID)!=19020) goto vila;
+
+	set .@t, 1;	// Delay Seconds.
+	setarray .@buffs1[0], 0;	// SC_ID buffs.
+	setarray .@buffs2[0], 0;	// Duration (ms).
+	setarray .@buffs3[0], 0;	// Level.
+	if ( ! @h ) {
+		set @h, 1;
+		set .@hp, MaxHP - HP;
+		while ( .@t ) {
+			dispbottom "Espere mais "+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+			sleep2 1000 ;
+			set .@t, .@t - 1;
+		}
+		skilleffect 28, .@hp ;
+		percentheal 100, 100 ;
+		for ( set .@a, 0; .@a < getarraysize ( .@buffs ) ; set .@a, .@a + 1 )
+			sc_start .@buffs1[.@a], .@buffs2[.@a], .@buffs3[.@a];
+		npctalk "Você está agora curado, "+ strcharinfo ( 0 ) +".";
+		set @h, 0;
+	}
+	end ;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+}

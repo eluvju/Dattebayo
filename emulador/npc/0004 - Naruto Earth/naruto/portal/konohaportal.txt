@@ -1,0 +1,47 @@
+konoha3,189,59,0	warp	saida	1,1,pay_fild06,308,371
+
+pay_fild06,29,288,0	warp	saida	1,1,prt_fild03,22,251	
+prt_fild03,16,251,0	warp	entrada	1,1,pay_fild06,35,290
+
+prt_fild03,372,255,0	warp	saida	1,1,pay_fild03,22,110
+pay_fild03,15,110,0	warp	entrada	1,1,prt_fild03,363,254
+
+pay_fild03,313,16,0	warp	saida	1,1,moc_fild03,70,335
+moc_fild03,70,341,0	warp	saida	1,1,pay_fild03,313,19
+
+xmas_fild01,86,48,0	warp	saida	1,1,moc_fild03,23,38
+moc_fild03,17,38,0	warp	saida	1,1,xmas_fild01,86,53
+
+1@ecl,54,60,0	warp	saida	1,1,konoha3,190,234
+konoha3,189,238,0	warp	entrada	1,1,1@ecl,53,65
+
+
+konoha3,269,166,0	warp	entrada	1,1,payon_in01,12,135
+
+//konoha3,306,226,0	warp	entrada	1,1,sec_in01,85,19
+
+tur_dun01,154,242,0	warp	entrada	1,1,tur_dun02,147,261
+tur_dun02,147,266,0	warp	saida	1,1,tur_dun01,154,237
+
+tur_dun02,167,18,0	warp	entrada	1,1,tur_dun03,40,207
+tur_dun03,41,211,0	warp	saida	1,1,tur_dun02,167,21
+
+tur_dun03,218,70,0	warp	entrada	1,1,tur_dun05,12,46
+tur_dun05,8,46,0	warp	saida	1,1,tur_dun03,217,73
+
+konoha3,267,250,0	warp	entrada	1,1,biblioteca,69,14
+
+xmas_fild01,57,183,0	warp	saida	1,1,mjolnir_05,219,379
+
+mjolnir_05,219,383,0	warp	saida	1,1,xmas_fild01,61,184
+
+mjolnir_05,16,171,0	warp	saida	1,1,prt_fild09,18,124
+
+prt_fild09,14,124,0	warp	saida	1,1,mjolnir_05,18,171
+
+prt_fild09,245,16,0	warp	saida	1,1,gef_fild05,64,18
+
+gef_fild05,64,15,0	warp	saida	1,1,prt_fild09,245,19
+
+cave,142,82,0	warp	saida	1,1,biblioteca,69,15
+cave,70,69,0	warp	saida	1,1,payon_in01,12,135

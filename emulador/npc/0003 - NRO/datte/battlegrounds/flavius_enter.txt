@@ -1,0 +1,327 @@
+//===== rAthena Script ======================================= 
+// BattleGround System - Flavius Entrance NPCs
+//===== By: ================================================== 
+//= L0ne_W0lf
+//===== Current Version: ===================================== 
+//= 1.0
+//===== Compatible With: ===================================== 
+//= rAthena 1.0
+//===== Description: ========================================= 
+//= [AEGIS Conversion]
+//= Flavius Battleground Entrance NPCs
+//===== Additional Comments: ================================= 
+//= 1.0 First Version.
+//============================================================
+
+// Flavius Officer - Guillaume
+//============================================================
+bat_room,133,178,5	script	Shin'nyu - Time A#01a	418,{
+	mes "[Shin'nyu - Equipe A]";
+	mes "Vamos mostrar nossa força, gostaria de se juntar a equipe A?";
+	next;
+	switch(select("Quero me juntar a equipe A:Não obrigado")) {
+	case 1:
+		if ((Class == job_Novice) || (BaseClass == Job_Supernovice)) {
+			mes "[Shin'nyu - Equipe A]";
+			mes "I'm very pleased that you want to join us and fight the Croix Army, but I'm sorry: I can't send a rookie like you to die on the cruel battlefield.";
+		}
+		else {
+			if (BaseLevel < 50) {
+				mes "[Shin'nyu - Equipe A]";
+				mes "Você é muito fraco pra ir pra guerra.";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[Shin'nyu - Equipe A]";
+					mes "Vejo que acaba de voltar da batalha campal";
+					mes "Ainda é muito cedo pra você voltar, descanse um pouco...";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b02");
+					if (.@mapcount2 > 0) {
+						mes "[Shin'nyu - Equipe A]";
+						mes "Nesse momento já tem alguns guerreiros participando da batalha, espere um pouco até eles voltarem";
+						mes "Aconselho ir se preparando para a batalha";
+					}
+					else {
+						if ($@FlaviusBG2 > 0) {
+							mes "[Shin'nyu - Equipe A]";
+							mes "Já tem uma equipe aguardando para ir para a batalha campal, espere um pouco até eles finalizarem sua luta";
+						mes "Aconselho ir se preparando para a batalha";
+						}
+						else {
+							mes "[Shin'nyu - Equipe A]";
+							mes "Você parece que está pronto para a batalha";
+							mes "Vá e mostre sua força";
+							close2;
+							warp "bat_room",57,94;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[Shin'nyu - Equipe A]";
+		mes "Hoje seremos vitoriosos!";
+		break;
+	}
+	close;
+}
+
+bat_room,133,121,1	script	Shin'nyu - Time B#01b	414,{
+	mes "[Shin'nyu - Equipe B]";
+	mes "Vamos mostrar nossa força, gostaria de se juntar a equipe B?";
+	next;
+	switch(select("Quero me juntar a equipe B:Não obrigado")) {
+	case 1:
+		if ((Class == job_Novice) || (BaseClass == Job_Supernovice)) {
+			mes "[Shin'nyu - Equipe B]";
+			mes "I'm very pleased that you want to join us and fight the Guillaume Army, but I'm sorry: I can't send a rookie like you to die on the cruel battlefield.";
+		}
+		else {
+			if (BaseLevel < 50) {
+				mes "[Shin'nyu - Equipe A]";
+				mes "Você é muito fraco pra ir pra guerra.";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[Shin'nyu - Equipe B]";
+					mes "Vejo que acaba de voltar da batalha campal";
+					mes "Ainda é muito cedo pra você voltar, descanse um pouco...";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b02");
+					if (.@mapcount2 > 0) {
+						mes "[Shin'nyu - Equipe B]";
+						mes "Nesse momento já tem alguns guerreiros participando da batalha, espere um pouco até eles voltarem";
+						mes "Aconselho ir se preparando para a batalha";
+					}
+					else {
+						if ($@FlaviusBG1 > 0) {
+							mes "[Shin'nyu - Equipe B]";
+							mes "Já tem uma equipe aguardando para ir para a batalha campal, espere um pouco até eles finalizarem sua luta";
+						mes "Aconselho ir se preparando para a batalha";
+						}
+						else {
+							mes "[Shin'nyu - Equipe B]";
+							mes "Você parece que está pronto para a batalha";
+							mes "Vá e mostre sua força";
+							close2;
+							warp "bat_room",57,77;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[Shin'nyu - Equipe B]";
+		mes "Hoje seremos vitoriosos!";
+		break;
+	}
+	close;
+}
+
+bat_room,124,178,5	script	Shin'nyu[2] - Time A#02a	418,{
+	mes "[Shin'nyu - Equipe A]";
+	mes "Vamos mostrar nossa força, gostaria de se juntar a equipe A?";
+	next;
+	switch(select("Quero me juntar a equipe A:Não obrigado")) {
+	case 1:
+		if ((Class == job_Novice) || (BaseClass == Job_Supernovice)) {
+			mes "[Shin'nyu - Equipe A]";
+			mes "I'm very pleased that you want to join us and fight the Croix Army, but I'm sorry: I can't send a rookie like you to die on the cruel battlefield.";
+		}
+		else {
+			if (BaseLevel < 50) {
+				mes "[Shin'nyu - Equipe A]";
+				mes "Você é muito fraco pra ir pra guerra.";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[Shin'nyu - Equipe A]";
+					mes "Vejo que acaba de voltar da batalha campal";
+					mes "Ainda é muito cedo pra você voltar, descanse um pouco...";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b01");
+					if (.@mapcount2 > 0) {
+						mes "[Shin'nyu - Equipe A]";
+						mes "Nesse momento já tem alguns guerreiros participando da batalha, espere um pouco até eles voltarem";
+						mes "Aconselho ir se preparando para a batalha";
+					}
+					else {
+						if ($@FlaviusBG2 > 0) {
+							mes "[Shin'nyu - Equipe A]";
+							mes "Já tem uma equipe aguardando para ir para a batalha campal, espere um pouco até eles finalizarem sua luta";
+						mes "Aconselho ir se preparando para a batalha";
+						}
+						else {
+							mes "[Shin'nyu - Equipe A]";
+							mes "Você parece que está pronto para a batalha";
+							mes "Vá e mostre sua força";
+							close2;
+							warp "bat_room",253,94;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[Shin'nyu - Equipe A]";
+		mes "Hoje seremos vitoriosos!";
+		break;
+	}
+	close;
+}
+
+bat_room,127,121,1	script	Shin'nyu[2] - Time B#02b	414,{
+	mes "[Shin'nyu - Equipe B]";
+	mes "Vamos mostrar nossa força, gostaria de se juntar a equipe B?";
+	next;
+	switch(select("Quero me juntar a equipe B:Não obrigado")) {
+	case 1:
+		if ((Class == job_Novice) || (BaseClass == Job_Supernovice)) {
+			mes "[Shin'nyu - Equipe B]";
+			mes "I'm very pleased that you want to join us and fight the Guillaume Army, but I'm sorry: I can't send a rookie like you to die on the cruel battlefield.";
+		}
+		else {
+			if (BaseLevel < 50) {
+				mes "[Shin'nyu - Equipe A]";
+				mes "Você é muito fraco pra ir pra guerra.";
+			}
+			else {
+				set .@chk_urtime,checkquest(2070,PLAYTIME);
+				if ((.@chk_urtime == 0)|| (.@chk_urtime == 1)) {
+					mes "[Shin'nyu - Equipe B]";
+					mes "Vejo que acaba de voltar da batalha campal";
+					mes "Ainda é muito cedo pra você voltar, descanse um pouco...";
+				}
+				else {
+					if (.@chk_urtime == 2)
+						erasequest 2070;
+					set .@mapcount2,getmapusers("bat_b01");
+					if (.@mapcount2 > 0) {
+						mes "[Shin'nyu - Equipe B]";
+						mes "Nesse momento já tem alguns guerreiros participando da batalha, espere um pouco até eles voltarem";
+						mes "Aconselho ir se preparando para a batalha";
+					}
+					else {
+						if ($@FlaviusBG1 > 0) {
+							mes "[Shin'nyu - Equipe B]";
+							mes "Já tem uma equipe aguardando para ir para a batalha campal, espere um pouco até eles finalizarem sua luta";
+						mes "Aconselho ir se preparando para a batalha";
+						}
+						else {
+							mes "[Shin'nyu - Equipe B]";
+							mes "Você parece que está pronto para a batalha";
+							mes "Vá e mostre sua força";
+							close2;
+							warp "bat_room",253,77;
+							end;
+						}
+					}
+				}
+			}
+		}
+		break;
+	case 2:
+		mes "[Shin'nyu - Equipe B]";
+		mes "Hoje seremos vitoriosos!";
+		break;
+	}
+	close;
+}
+
+
+bat_room,135,178,5	script	Instrutor#2	417,{
+	mes "[Instrutor]";
+	mes "O objetivo da batalha Shin'nyu é destruir o cristal de chakra da equipe inimiga.";
+	next;
+	mes "[Instrutor]";
+	mes "Ambos os cristais são protegidos por dois guardiões, é preciso derrotar os guardiões para o cristal ficar vulnerável";
+	next;
+	mes "[Instrutor]";
+	mes "Os cristais são imunes a qualquer tipo de jutsu. Dano físico é a única saída para destruí-los";
+	next;
+	mes "[Instrutor]";
+	mes "A primeira equipe a pontuar duas vezes vence e receberá 20 pontos de batalha cada, enquanto o outro time receberá 2";
+	next;
+	mes "[Instrutor]";
+	mes "Está pronto para a batalha? Então junte se a um time, é só clicar no npc aqui do meu lado!";
+	close;
+}
+
+
+bat_room,135,121,1	script	Instrutor#3	413,{
+	mes "[Instrutor]";
+	mes "O objetivo da batalha Shin'nyu é destruir o cristal de chakra da equipe inimiga.";
+	next;
+	mes "[Instrutor]";
+	mes "Ambos os cristais são protegidos por dois guardiões, é preciso derrotar os guardiões para o cristal ficar vulnerável";
+	next;
+	mes "[Instrutor]";
+	mes "Os cristais são imunes a qualquer tipo de jutsu. Dano físico é a única saída para destruí-los";
+	next;
+	mes "[Instrutor]";
+	mes "A primeira equipe a pontuar duas vezes vence e receberá 20 pontos de batalha cada, enquanto o outro time receberá 2";
+	next;
+	mes "[Instrutor]";
+	mes "Está pronto para a batalha? Então junte se a um time, é só clicar no npc aqui do meu lado!";
+	close;
+}
+
+bat_room,125,121,1	script	Instrutor#4	413,{
+	mes "[Instrutor]";
+	mes "O objetivo da batalha Shin'nyu é destruir o cristal de chakra da equipe inimiga.";
+	next;
+	mes "[Instrutor]";
+	mes "Ambos os cristais são protegidos por dois guardiões, é preciso derrotar os guardiões para o cristal ficar vulnerável";
+	next;
+	mes "[Instrutor]";
+	mes "Os cristais são imunes a qualquer tipo de jutsu. Dano físico é a única saída para destruí-los";
+	next;
+	mes "[Instrutor]";
+	mes "A primeira equipe a pontuar duas vezes vence e receberá 20 pontos de batalha cada, enquanto o outro time receberá 2";
+	next;
+	mes "[Instrutor]";
+	mes "Está pronto para a batalha? Então junte se a um time, é só clicar no npc aqui do meu lado!";
+	close;
+}
+
+bat_room,127,178,5	script	Instrutor#5	417,{
+	mes "[Instrutor]";
+	mes "O objetivo da batalha Shin'nyu é destruir o cristal de chakra da equipe inimiga.";
+	next;
+	mes "[Instrutor]";
+	mes "Ambos os cristais são protegidos por dois guardiões, é preciso derrotar os guardiões para o cristal ficar vulnerável";
+	next;
+	mes "[Instrutor]";
+	mes "Os cristais são imunes a qualquer tipo de jutsu. Dano físico é a única saída para destruí-los";
+	next;
+	mes "[Instrutor]";
+	mes "A primeira equipe a pontuar duas vezes vence e receberá 20 pontos de batalha cada, enquanto o outro time receberá 2";
+	next;
+	mes "[Instrutor]";
+	mes "Está pronto para a batalha? Então junte se a um time, é só clicar no npc aqui do meu lado!";
+	close;
+}
+
+bat_room,57,80,0	warp	bgwarp#1	1,1,bat_room,153,150
+bat_room,57,90,0	warp	bgwarp#2	1,1,bat_room,153,150
+bat_room,254,80,0	warp	bgwarp#3	1,1,bat_room,153,150
+bat_room,254,90,0	warp	bgwarp#4	1,1,bat_room,153,150

@@ -1,0 +1,40 @@
+//= ====================================================================== //
+//=   arg(0): cidade
+//=   arg(1): Permissão
+//=   arg(2): Used to determine if the info menu is shown in F_KafInfo.
+//=   arg(3): Cost to use Storage
+//=   arg(4): Cost to Rent a Pushcart
+//= ====================================================================== //
+
+function	script	warps	{
+
+
+	.@cidade$ = getarg(0);
+	.@x = getarg(1);
+	.@y = getarg(2);
+	.@quest = getarg(3);
+	.@item = getarg(4);
+	.@quantidade = getarg(5);
+	
+// === ## === ## === ## ===
+
+
+
+if (isbegin_quest(.@quest) != 2 && .@quest >= 1000 ) 
+										{ 	mes "Você ^FF0000Não^000000 completou a quest:";
+											mes " ";
+											callfunc("getquestinfo"),.@quest;
+											mes " ";
+											mes "Finalize a quest para ^FF0000Liberar^000000 o portal!";
+											end;	}
+										
+if (.@item != 0) { if (countitem(.@item) < .@quantidade) {	mes "Você ^FF0000Não^000000 Tem permissão para passar!";
+															mes " ";
+															mes "É necessario o item ^800080"+getitemname(.@item)+"^000000 no Inventário.";
+															end; }}
+										
+// === ## === ## === ## ===
+// Apenas Teleporta
+// === ## === ## === ## ===
+warp ""+.@cidade$+"", .@x, .@y;
+}

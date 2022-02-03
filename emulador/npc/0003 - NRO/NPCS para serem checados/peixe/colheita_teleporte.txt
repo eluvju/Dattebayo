@@ -1,0 +1,55 @@
+prontera.gat,160,150,3	script	Garota Konoha	817,{
+mes "[Cultivo]";
+mes "Gostaria de entrar no campo?";
+menu "Entrar",-,"Não, obrigado",Cancel1;
+warp "job_wiz",117,98;
+end;
+
+Cancel1:
+mes "[Cultivo]";
+mes "Até logo";
+close;
+end;
+}
+
+prontera.gat,158,150,3	script	Garota Névoa	816,{
+mes "[Cultivo]";
+mes "Gostaria de entrar no campo?";
+menu "Entrar",-,"Não, obrigado",Cancel2;
+warp "job_wiz",115,170;
+end;
+
+Cancel2:
+mes "[Cultivo]";
+mes "Até logo";
+close;
+end;
+}
+
+prontera.gat,162,150,3	script	Garota Suna	815,{
+mes "[Cultivo]";
+mes "Gostaria de entrar no campo?";
+menu "Entrar",-,"Não, obrigado",Cancel3;
+warp "job_wiz",46,99;
+end;
+
+Cancel3:
+mes "[Cultivo]";
+mes "Até logo";
+close;
+end;
+}
+
+prontera.gat,161,148,3	script	Garota Nukenin	818,{
+mes "[Cultivo]";
+mes "Gostaria de entrar no campo?";
+menu "Entrar",-,"Não, obrigado",Cancel4;
+warp "job_wiz",49,166;
+end;
+
+Cancel4:
+mes "[Cultivo]";
+mes "Até logo";
+close;
+end;
+}

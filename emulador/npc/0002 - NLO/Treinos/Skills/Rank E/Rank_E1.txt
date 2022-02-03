@@ -1,0 +1,41 @@
+kakashi,86,93,5	script	Shinobi Misterioso#1	831,{
+
+if (checkquest(3053) == 1) goto L_go;
+if (getskilllv(117)) {mes "Você já sabe esse jutsu"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+mes "Ei.. você!";
+mes "Aposto que você não sabe esse jutsu que eu sei, haha sou melhor que você, eu sei o instalar armadilha e você não!";
+next;
+mes "Mas como eu sou educado, eu vou lhe ensinar, porque um dia eu quero ser o kage da minha vila";
+next;
+mes "Gostaria de aprender?";
+menu "Sim, eu quero",L_GI,"Agora não",L_no;
+
+//========================================================================
+//	Gian
+//========================================================================
+
+L_GI:
+mes "Pra realizar esse treinamento você precisa fazer o seguinte:";
+mes "Pegar 50 Pata de Inseto";
+setquest 3053;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(1042) < 50) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 1042,50;
+skill 117,5,0;
+completequest 3053;
+erasequest 3053;
+announce "[Jutsu Rank E] "+strcharinfo(0)+" completou a quest do instalar armadilha",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+}

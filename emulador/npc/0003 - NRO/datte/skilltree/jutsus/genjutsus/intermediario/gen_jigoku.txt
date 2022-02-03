@@ -1,0 +1,101 @@
+moc_fild03,113,259,5	script	Jigoku Kouga no Jutsu::genint24	831,{
+
+if (seloskill677 >= 1) goto L_delete;
+if(gen_intermediario != 1) {mes "Você precisa estudar genjutsu intermediário antes de aprender esse genjutsu"; close;}
+if (checkquest(3000) == 1) goto L_go;
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsus intermediários, esse é o limite"; close;}
+if(Jigoku == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(accept_gen_int == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if (WeaponLvl3 < 40) {mes "Seu nível de genjutsu está baixo demais, é preciso ter nível 40 pra aprender esse genjutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de genjutsu espalhados pelo mundo, eu posso lhe ensinar um genjutsu intermediário";
+next;
+mes "O genjutsu que eu ensino é o: Jigoku Kouga no Jutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Jigoku Kouga no Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (seloskill677 == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (seloskill677 >= 1) {
+mes "Jutsu removido com sucesso";
+set seloskill677,0;
+set Jigoku,0;
+erasequest 3000;
+if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}
+if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_int_vintequatro,1;
+set accept_gen_int,accept_gen_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter genjutsu intermedário level 40";
+mes "- Derrotar 35 Borboletas Sanguinárias.";
+mes "- Obter 15 Celulas Únicas";
+mes "- Obter 100 Pó de Borboleta";
+setquest 3000;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsu intermediario, esse é o limite"; close;}
+if(gen_int_mobs_vintequatro < 35) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1052) <15) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(924) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 1052,15;
+delitem 924,100;
+set seloskill677,1;
+set Jigoku,0;
+set Gen_inter_correcao1,1;
+set quest_gen_int_vintequatro,0;
+set gen_int_mobs_vintequatro, 0;
+completequest 3000;
+erasequest 3000;
+set gen_skill_int,gen_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Intermedíario]",0;
+}
+
+-	script	genint#24	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1408 && quest_gen_int_vintequatro == 1)
+{set gen_int_mobs_vintequatro,gen_int_mobs_vintequatro +1;
+announce "[Genjutsu Quest] Você já derrotou "+gen_int_mobs_vintequatro+" / 35 Borboletas Sanguinárias",bc_blue|bc_self; end;}
+
+}
+
+yuno_fild05,39,107,5	duplicate(genint24)	Jigoku Kouga no Jutsu#41	831,{
+moc_fild13,32,304,5	duplicate(genint24)	Jigoku Kouga no Jutsu#42	831,{
+gef_fild05,148,112,5	duplicate(genint24)	Jigoku Kouga no Jutsu#43	831,{

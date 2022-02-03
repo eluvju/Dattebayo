@@ -1,0 +1,103 @@
+// == Release 0.1 - Norm Hmuryj(Melbou)
+
+treinamento,80,132,4	script	Desafio Bushin	720,{
+	mes "^ff0000[Desafio Bushin]^000000";
+	mes "Yo, shinobi! Posso levar você e seu grupo para um desafio contra 2 de seus próprios clones!";
+	next;
+	mes "^ff0000[Desafio Bushin]^000000";
+	mes "Se você completar o desafio, vou te premiar com 20 pontos de missão e 1 Ticket de Evento! Você pode jogar a cada 5 minutos!";
+	next;
+	mes "^ff0000[Desafio Bushin]^000000";
+	mes "Aviso: é necessário que os jogadores do grupo sejam no mínimo level 500!";
+	next;
+	mes "^ff0000[Desafio Bushin]^000000";
+	mes "E então, vamos pro duelo?";
+	if ( select( "Vamos lá!:Não." ) == 2 ) close;
+	if ( !getcharid(1) ) {
+		next;
+		mes "^ff0000[Desafio Bushin]^000000";
+		mes "Você precisa entrar em um grupo para jogar!";
+		close;
+	}
+	if ( getmapusers("guild_vs3") > 0 ) {
+		next;
+		mes "^ff0000[Desafio Bushin]^000000";
+		mes "Temos jogadores dentro do desafio, aguarde!";
+		close;
+	}
+
+	if(!instance_check_party(getcharid(1),1,500,999)) {
+			next;
+			mes "^ff0000[Desafio Bushin]^000000";
+			mes "Todos os membros do grupo devem ser no mínimo nível 500!";
+			close;
+		}
+
+    	if(#Bushin_CD > gettimetick(2)) {
+	next;
+	mes "^ff0000[Desafio Bushin]^000000";
+    	mes "Você pode jogar de 5 em 5 minutos!";
+    	close;
+    	}
+
+	warpparty "guild_vs3",0,0,getcharid(1);
+	doevent "PartyClone::OnEvent";
+}
+
+guild_vs3,0,0,0	script	PartyClone	-1,{
+OnEvent:
+	killmonsterall .map$;
+	announce "[Desafio Bushin] Um grupo vai começar o duelo em 15 segundos!",1;
+	set .partyid, getcharid(1);
+	sleep 10000;
+	mapannounce .map$,"5",0;
+	sleep 1000;
+	mapannounce .map$,"4",0;
+	sleep 1000;
+	mapannounce .map$,"3",0;
+	sleep 1000;
+	mapannounce .map$,"2",0;
+	sleep 1000;
+	mapannounce .map$,"1",0;
+	sleep 1000;
+	getpartymember .partyid,1;
+	getpartymember .partyid,2;
+	set .@partycount, $@partymembercount;
+	copyarray .@partyaid, $@partymemberaid, .@partycount;
+	copyarray .@partycid, $@partymembercid, .@partycount;
+	if ( !.@partycount ) end;
+	for ( set .@i,0; .@i < .@partycount; set .@i, .@i +1 ) {
+		if ( !isloggedin(.@partyaid[.@i]) ) continue;
+		attachrid .@partyaid[.@i];
+		clone .map$,0,0,"PartyClone::OnThisDie",.@partycid[.@i];
+		clone .map$,0,0,"PartyClone::OnThisDie",.@partycid[.@i];
+		set .count, .count +2;
+	}
+	mapannounce .map$,"Nós temos "+ .count +" bushin(s)",0;
+	end;
+OnThisDie:
+	mapannounce .map$, "Um bushin foi derrotado!",1;
+	if ( getcharid(1) != .partyid )
+		mapannounce .map$, "Era o Bushin de "+ strcharinfo(0) +"!",1;
+	set .count, .count -1;
+	if ( .count > 0 ) end;
+	announce "O grupo ["+ getpartyname(.partyid) +"] derrotou todos os Bushins da Arena!",0;
+	getpartymember .partyid,1;
+	set .@partycount, $@partymembercount;
+	copyarray .@partyaid, $@partymemberaid, .@partycount;
+	for ( set .@i,0; .@i < .@partycount; set .@i, .@i +1 ) {
+		if ( !isloggedin(.@partyaid[.@i]) ) continue;
+		attachrid .@partyaid[.@i];
+		getmapxy .@map$, .@x, .@y, 0;
+		if ( .@map$ != "guild_vs3" && .@map$ != "guild_vs3.gat" ) continue; // make sure the player in that map
+		if ( hp == 1 ) continue; // make sure is alive to receive items
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 20 WHERE `char_id` = '"+getcharid(0)+"'");
+		getitem 730,1;
+		set #Bushin_CD,gettimetick(2) + 300;
+	}
+	sleep 3000;
+	warpparty "treinamento",84,114,.partyid;
+	end;
+OnInit:
+	getmapxy .map$, .@x, .@y, 1;
+}

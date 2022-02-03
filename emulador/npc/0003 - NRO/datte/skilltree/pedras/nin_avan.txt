@@ -1,0 +1,22 @@
+gl_prison,10,82,5	script	Ninjutsu Avançado	831,{
+if (limite_avan == 1) {mes "Você já chegou a um treinamento avançado, esse é o limite"; close;}
+if (nin_avan == 1) {mes "Já não há mais nada que posso lhe ensinar"; close;}
+if (jounin != 1) {mes "Apenas Jounins podem falar comigo"; close;}
+if (WeaponLvl2 < 75) {mes "Você não está pronto pra aprender Ninjutsu Avançado, é preciso nível 75 de Ninjutsu"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+if (mestreni_dead != 1) {mes "Você está quase pronto para se tornar um usuário avançado, é preciso antes derrotar o mestre ninjutsu"; close;}
+mes "!!, a sua força é enorme, seu chakra é um dos maiores que ja vi!, você é mais do que digno de aprender Ninjutsu Avançado";
+next;
+mes "Vá em frente, e busque mais poder, seje o melhor shinobi que já existiu, pois agora você é diferenciado, agora você é um shinobi com Ninjutsu Avançado!";
+set nin_avan,1;
+getitem 751,1;
+if (countitem(739) >= 1) {delitem 739,1;}
+set nin_avan_new,1;
+set limite_avan, limite_avan +1;
+announce "[...] Um chakra enorme é sentido em todo o mundo, alguém assim só pode ter Ninjutsu Avançado!",bc_blue|bc_all;
+close;
+
+}

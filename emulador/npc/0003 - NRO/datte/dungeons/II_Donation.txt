@@ -1,0 +1,39 @@
+kakashi,75,172,4	script	Mestre de Dungeons	745,{
+	function	___CheckPlayerLimit	;
+	mes "Olá, eu posso resetar seu limite diário de uma dungeon";
+	next;
+	mes "Única coisa que peço é um Resetador de Dungeon";
+	set .@LV,select("Denso Nevoeiro (Normal)","Denso Nevoeiro (Difícil)","O Dêmonio da Névoa (Fácil)","Mestre das Marionetes")-1;
+	if( !___CheckPlayerLimit(.@LV,getcharid(3)) )
+	{
+		next;
+		mes "Você ainda não atingiu o limite diário pra esta dungeon";
+		close;
+	}
+	if( countitem(637) )
+	{
+		next;
+		delitem 637,1;
+		mes "Limite diário resetado, tenha um bom dia";
+//		query_sql "UPDATE `ii_limit` set `num` = `num`-3 WHERE `account_id` = "+getcharid(3)+" AND `lv` = "+.@LV;
+		query_sql "UPDATE `ii_limit` set `num` = 0 WHERE `account_id` = "+getcharid(3)+" AND `lv` = "+.@LV;
+		close;
+	}else
+	{
+		next;
+		mes "Desculpe, você não tem um resetador de dungeon no seu inventário";
+		close;
+	}
+	function	___CheckPlayerLimit	{
+		query_sql "SELECT `num`,`account_id` FROM `ii_limit` WHERE `lv` = "+getarg(0,0)+" AND `account_id` = "+getarg(1,0)+" LIMIT 1",.@num,.@A;
+		if( .@num == 0 && .@A == 0 )	
+			query_sql "INSERT `ii_limit` VALUES("+getarg(1,0)+","+getarg(0,0)+",0)";
+		if( .@num >= getvariableofnpc(.map_limit[getarg(0,0)],"II_SET") )
+			return 1;
+		else
+			return 0;
+	}
+OnClock1600:
+	query_sql "TRUNCATE TABLE  `ii_limit`";
+	end;
+}

@@ -1,0 +1,6 @@
+// Internal default is limited to 128 lines.  If you need more, you will need to modify the MOTD_LINE_SIZE definition in pc.cpp
+
+Bem Vindo ao mundo de Dattebayo, Fique atento as mensagens do servidor!
+
+Esta com algum problema? Utilize o Comando /h
+ 

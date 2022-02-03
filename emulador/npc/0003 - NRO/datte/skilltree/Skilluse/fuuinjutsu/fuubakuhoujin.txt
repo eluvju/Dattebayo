@@ -1,0 +1,57 @@
+-	script	fuubakuhoujin	-1,{
+    end;
+//When a Character uses a skill
+
+//fuubakuhoujin
+
+onPcUseSkillEvent:
+
+           if(lskillid == 317) {
+
+
+if (getskilllv(317) == 1) {
+
+if (FuubakuHoujin != 1) {end;}
+if (skill317 >= 50) {skill 317,2,0; set skill317,0; dispbottom "[Sys] Level up"; end; }
+set skill317,skill317 +1;
+dispbottom "[Jutsu level] Fuubaku Houjin level 1: "+skill317+" de 50";
+
+end;
+
+}
+
+if (getskilllv(317) == 2) {
+if (FuubakuHoujin != 1) {end;}
+if (skill317 >= 100) {skill 317,3,0; set skill317,0; dispbottom "[Sys] Level up"; end;}
+set skill317,skill317 +1;
+dispbottom "[Jutsu level] Fuubaku Houjin level 2: "+skill317+" de 100";
+
+end;
+
+}
+
+if (getskilllv(317) == 3) {
+
+if (FuubakuHoujin != 1) {end;}
+if (skill317 >= 150) {skill 317,4,0; set skill317,0; dispbottom "[Sys] Level up"; end;}
+set skill317,skill317 +1;
+dispbottom "[Jutsu level] Fuubaku Houjin level 3: "+skill317+" de 150";
+
+end;
+
+}
+
+if (getskilllv(317) == 4) {
+if (FuubakuHoujin != 1) {end;}
+if (skill317 >= 200) {skill 317,5,0; set skill317,0; dispbottom "[Sys] Level up"; end;}
+set skill317,skill317 +1;
+dispbottom "[Jutsu level] Fuubaku Houjin level 4: "+skill317+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

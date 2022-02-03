@@ -1,0 +1,77 @@
+//=====================================
+// NPC DA Nuvem
+//=====================================
+aldeg_cas04,127,215,4	script	Hokage	718,{
+
+	 .@GuildId = 11;
+
+    npctalk "Olá "+strcharinfo(0)+" como você está?";
+	mes "Eu sou a Hokage. A Vila Oculta da Folha é uma aldeia de um dos cinco grandes países shinobi, localizada no País do Fogo. A aldeia reside no fundo de uma floresta na base de uma montanha conhecida como Monumento Hokage, em que podemos encontrar rostos gravados de todos aqueles que ocuparam a residência do Hokage. O Fundador da vila foi Hashirama Senju, meu avô, e o Co-fundador foi Madara Uchiha.";
+	next;
+	query_sql "SELECT `max_member` FROM `guild` WHERE `guild_id`=" + .@GuildId + "", .@GuildCapacity;
+    getguildmember .@GuildId;
+	mes "Ao entrar em Konoha, peço seu comprometimento para desenvolvermos juntos e sermos a vila mais forte! Não vou tolerar traições!.";
+	 if($@guildmembercount == .@GuildCapacity) {
+	 	mes "Infelizmente já temos muitos ninjas poderosos aqui na vila e não estou recrutando novos ninjas por enquanto.";
+	 	close;
+	 }
+	mes "Você tem certeza que quer se juntar à Konoha?";
+     menu "Sim",sim,
+          "Não",nao;
+sim:
+    next;
+    mes "Então seja bem-vindo à nossa Vila e bom jogo! ^FF0000Atualmente temos " + $@guildmembercount + " ninjas aqui, sendo que a vila suporta até " + .@GuildCapacity + "^000000";
+	next;
+	mes "Antes de ir para a academia, escolha uma bandana pra você usar, essa bandana é permanente e não pode ser desfeita";
+	menu "Bandana normal",normal,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Kakashi",kakashi;
+
+
+normal:
+     next;
+	 mes "Agora irei levar você pra academia.";
+	 next;
+	 mes "......";
+	getitem 30000,1;
+	set konoha,1;
+	jobchange 1; 
+     warp "sec_in01",79,32;
+     savepoint "sec_in01",79,32;
+     guildjoin .@GuildId, getcharid(0);
+     close;
+
+lado:
+     next;
+	getitem 30010,1;
+	set konoha,1;
+	jobchange 1; 
+     warp "sec_in01",79,32;
+     savepoint "sec_in01",79,32;
+     guildjoin .@GuildId, getcharid(0);
+     close;
+
+pescoco:
+     next;
+	getitem 30014,1;
+	set konoha,1;
+	jobchange 1; 
+     warp "sec_in01",79,32;
+     savepoint "sec_in01",79,32;
+     guildjoin .@GuildId, getcharid(0);
+     close;
+
+kakashi:
+     next;
+	getitem 30009,1;
+	set konoha,1;
+	jobchange 1; 
+     warp "sec_in01",79,32;
+     savepoint "sec_in01",79,32;
+     guildjoin .@GuildId, getcharid(0);
+     close;
+
+nao:
+    next;
+    mes "Certo, volte aqui quando você tiver interessado.";
+    next;
+    close;
+}

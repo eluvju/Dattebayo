@@ -1,0 +1,38 @@
+//Permissão Rank C se for suna e Konoha	
+
+pay_fild03,393,63,0	script	 #enteristo	45	,2,2,{
+
+	.@npc$ = "^F0DC82[ Pais de Isto ]^000000";
+
+	if (enteristo == 1) goto entrar2;
+	if (countitem(662) >= 1) goto entrar;
+	else mes .@npc$;
+	mes " ";
+	mes "A Fronteira esta temporariamente ^FF6961BLOQUEADA^000000. Volte mais tarde";
+	close;
+
+
+	entrar:
+	set enteristo,1;
+	mes .@npc$;
+	mes " ";
+	mes "Ola senhor ^e600d6"+strcharinfo(0)+"^000000, Seu dinheiro e muito bem vindo aqui. ";
+	menu "Quero Entrar",entrar2,"Meu Dinheiro?",saida;
+
+	
+	entrar2:
+	warp "alberta",18,235;
+	end;
+	
+	saida:
+	next;
+	mes .@npc$;
+	mes " ";
+	mes "Volte apenas quando tiver o bolso cheio e a barriga vazia.";
+	close;
+
+	end;
+
+}
+
+alberta,14,235,0	warp	fild_isto#01	2,2,pay_fild03,389,66

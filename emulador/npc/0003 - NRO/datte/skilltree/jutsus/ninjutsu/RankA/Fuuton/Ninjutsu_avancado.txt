@@ -1,0 +1,12 @@
+izlude,128,106,5	script	Fuuton Avançado#d	831,{
+
+if(elementofuuton != 1) {mes "Esse elemento não é de sua natureza"; close;}	
+	if(checkquest(2003,hunting) == 2) {mes "Você é digno de aprender a tecnica..."; set ninjutsuavancado,1; close;}
+	if(checkquest(2003) != 1) {mes "Não posso te ajudar em nada..."; close;}
+	if(ninjutsuavancado == 1) {mes "Não posso te ajudar em nada..."; close;}
+	mes "[ Mestre Fuuton]";
+	mes "Explicação sobre o elemento Fuuton e a técnica...";
+	mes "Para aprender tal tecnica,você precisa provar ser digno,e derrotar um mestre em Fuuton...";
+	setquest 2003;
+	close;
+}

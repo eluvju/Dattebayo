@@ -1,0 +1,15 @@
+treinamento,90,141,4	script	Comerciantes#51	861,{
+OnInit:
+waitingroom "Comércios",0;
+
+mes "Shinobi, deseja viajar para a área de comércios?";
+menu "Sim.",-,"Agora não.",nop;
+next;
+warp "louyang", 217,40;
+close2;
+
+nop:
+close;
+}
+
+louyang	mapflag	autotrade

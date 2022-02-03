@@ -1,0 +1,263 @@
+academia,55,174,5	script	Suiton Básico	1_m_hof,{
+
+if(elementosuiton != 1) { mes "[Suiton Básico]"; mes "Esse elemento não é de sua natureza"; close;}
+
+	mes "[Suiton Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Suiton escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Suiton Hanhonryuu:- Campo Aquático:- Suiton Sensatsu Suishou" ) ){
+
+	case 1:
+		next;
+		if(checkquest(1061) == 1) goto 1_go;
+		if(checkquest(2061) == 1) goto 1_go;
+		if(checkquest(3061) == 1) goto 1_go;
+		if(checkquest(4061) == 1) goto 1_go;
+		if(Hanhonryuu == 1) goto 1_delete;
+		if(skill_basica >= 9) { mes "[Suiton Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Suiton Básico]";
+		mes "Hanhonryuu no Jutsu?";
+		next;
+		mes "[Suiton Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Suiton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Hanhonryuu no Jutsu
+		//========================================================================
+		
+		1_delete:
+		mes "[Suiton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Suiton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Suiton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Suiton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Suiton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 15,0,3;
+		set Hanhonryuu,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Suiton Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1061; }
+		if(#suna == 1) {  setquest 2061; }
+		if(#nevoa == 1) { setquest 3061; }
+		if(#nuvem == 1) { setquest 4061; }
+		next;
+		mes "[Suiton Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1061,hunting) == 1 || 
+			checkquest(2061,hunting) == 1 || 
+			checkquest(3061,hunting) == 1 || 
+			checkquest(4061,hunting) == 1	) {				mes "[Suiton Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1061) >= 1) { completequest 1061; erasequest 1061; }						if(checkquest(2061) >= 1) { completequest 2061; erasequest 2061; }						if(checkquest(3061) >= 1) { completequest 3061; erasequest 3061; }						if(checkquest(4061) >= 1) { completequest 4061; erasequest 4061; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Suiton Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Suiton Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Suiton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 15,1,3;
+		set Hanhonryuu,1;
+		if(checkquest(1061) >= 1) { completequest 1061; erasequest 1061; }
+		if(checkquest(2061) >= 1) { completequest 2061; erasequest 2061; }
+		if(checkquest(3061) >= 1) { completequest 3061; erasequest 3061; }
+		if(checkquest(4061) >= 1) { completequest 4061; erasequest 4061; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(checkquest(1062) == 1) goto 2_go;
+		if(checkquest(2062) == 1) goto 2_go;
+		if(checkquest(3062) == 1) goto 2_go;
+		if(checkquest(4062) == 1) goto 2_go;
+		if(Aquatico == 1) goto 2_delete;
+		if(skill_basica >= 9) { mes "[Suiton Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Suiton Básico]";
+		mes "Campo Aquático?";
+		next;
+		mes "[Suiton Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Suiton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Campo Aquático
+		//========================================================================
+		
+		2_delete:
+		mes "[Suiton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Suiton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Suiton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Suiton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Suiton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 286,0,3;
+		set Aquatico,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Suiton Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1062; }
+		if(#suna == 1) {  setquest 2062; }
+		if(#nevoa == 1) { setquest 3062; }
+		if(#nuvem == 1) { setquest 4062; }
+		next;
+		mes "[Suiton Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1062,hunting) == 1 || 
+			checkquest(2062,hunting) == 1 || 
+			checkquest(3062,hunting) == 1 || 
+			checkquest(4062,hunting) == 1	) { 				mes "[Suiton Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1062) >= 1) { completequest 1062; erasequest 1062; }						if(checkquest(2062) >= 1) { completequest 2062; erasequest 2062; }						if(checkquest(3062) >= 1) { completequest 3062; erasequest 3062; }						if(checkquest(4062) >= 1) { completequest 4062; erasequest 4062; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Suiton Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Suiton Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Suiton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 286,1,3;
+		set Aquatico,1;
+		if(checkquest(1062) >= 1) { completequest 1062; erasequest 1062; }
+		if(checkquest(2062) >= 1) { completequest 2062; erasequest 2062; }
+		if(checkquest(3062) >= 1) { completequest 3062; erasequest 3062; }
+		if(checkquest(4062) >= 1) { completequest 4062; erasequest 4062; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(checkquest(1063) == 1) goto 3_go;
+		if(checkquest(2063) == 1) goto 3_go;
+		if(checkquest(3063) == 1) goto 3_go;
+		if(checkquest(4063) == 1) goto 3_go;
+		if(SensatsuSuishou == 1) goto 3_delete;
+		if(skill_basica >= 9) { mes "[Suiton Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Suiton Básico]";
+		mes "Sensatsu Suishou?";
+		next;
+		mes "[Suiton Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Suiton Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Sensatsu Suishou
+		//========================================================================
+		
+		3_delete:
+		mes "[Suiton Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Suiton Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Suiton Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Suiton Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Suiton Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 537,0,3;
+		set SensatsuSuishou,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Suiton Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1063; }
+		if(#suna == 1) {  setquest 2063; }
+		if(#nevoa == 1) { setquest 3063; }
+		if(#nuvem == 1) { setquest 4063; }
+		next;
+		mes "[Suiton Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		3_go:
+		if( checkquest(1063,hunting) == 1 || 
+            checkquest(2063,hunting) == 1 || 
+		    checkquest(3063,hunting) == 1 || 
+		    checkquest(4063,hunting) == 1	) { 				mes "[Suiton Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1063) >= 1) { completequest 1063; erasequest 1063; }						if(checkquest(2063) >= 1) { completequest 2063; erasequest 2063; }						if(checkquest(3063) >= 1) { completequest 3063; erasequest 3063; }						if(checkquest(4063) >= 1) { completequest 4063; erasequest 4063; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Suiton Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}				mes "[Suiton Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Suiton Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 537,1,3;
+		set SensatsuSuishou,1;
+		if(checkquest(1063) >= 1) { completequest 1063; erasequest 1063; }
+		if(checkquest(2063) >= 1) { completequest 2063; erasequest 2063; }
+		if(checkquest(3063) >= 1) { completequest 3063; erasequest 3063; }
+		if(checkquest(4063) >= 1) { completequest 4063; erasequest 4063; }
+		close;	
+	
+		3_no:
+		close;
+	}
+OnInit:
+	waitingroom "[Suiton Básico]",0;
+}

@@ -1,0 +1,39 @@
+que_ng,21,70,3	script	Clã Haruno	734,{
+	show "[Clã Haruno]";
+	if(elemento == 0){goto aprenderharuno;}
+	if(cla == 1){goto L_alreadyhavecla;}	
+
+
+	aprenderharuno:
+	show "Olá caro shinobi, voce gostaria de fazer parte do Clã Haruno ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Clã Haruno]";
+	show "Muito bem, muito sábia essa escolha!";
+	setjob "4016";
+	set haruno,haruno + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Clã Haruno]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	show "Você já possui um clã";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

@@ -1,0 +1,287 @@
+salakage,31,24,0	script	Livro de Registro#1	58,{
+
+if(getgmlevel() >= 10){
+mes "[Lista dos Kages]";
+mes "Shodaime: "+$ShodaimeKonoha$+" ";
+mes "Nidaime: "+$NidaimeKonoha$+" ";
+mes "Sandaime: "+$SandaimeKonoha$+" ";
+mes "Yondaime: "+$YondaimeKonoha$+" ";
+mes "Godaime: "+$GodaimeKonoha$+" ";
+mes "Rokudaime: "+$RokudaimeKonoha$+" ";
+mes "Nanadaime: "+$NanadaimeKonoha$+" ";
+mes "Hachidaime: "+$HachidaimeKonoha$+" ";
+mes "Kyudaime: "+$KyudaimeKonoha$+" ";
+mes "Judaime: "+$JudaimeKonoha$+" ";
+switch(select("- Shodaime:- Nidaime:- Sandaime:- Yondaime:- Godaime:- Rokudaime:- Nanadaime:- Hachidaime:- Kyudaime:- Judaime")) {
+	case 1:
+		input @ShodaimeKonoha$;
+		set $ShodaimeKonoha$, @ShodaimeKonoha$;
+		close;
+	case 2:
+		input @NidaimeKonoha$;
+		set $NidaimeKonoha$, @NidaimeKonoha$;
+		close;
+	case 3:
+		input @SandaimeKonoha$;
+		set $SandaimeKonoha$, @SandaimeKonoha$;
+		close;
+	case 4:
+		input @YondaimeKonoha$;
+		set $YondaimeKonoha$, @YondaimeKonoha$;
+		close;
+	case 5:
+		input @GodaimeKonoha$;
+		set $GodaimeKonoha$, @GodaimeKonoha$;
+		close;
+	case 6:
+		input @RokudaimeKonoha$;
+		set $RokudaimeKonoha$, @RokudaimeKonoha$;
+		close;
+	case 7:
+		input @NanadaimeKonoha$;
+		set $NanadaimeKonoha$, @NanadaimeKonoha$;
+		close;
+	case 8:
+		input @HachidaimeKonoha$;
+		set $HachidaimeKonoha$, @HachidaimeKonoha$;
+		close;
+	case 9:
+		input @KyudaimeKonoha$;
+		set $KyudaimeKonoha$, @KyudaimeKonoha$;
+		close;
+	case 10:
+		input @JudaimeKonoha$;
+		set $JudaimeKonoha$, @JudaimeKonoha$;
+		close;
+	}
+}
+mes "[Lista dos Kages]";
+mes "Shodaime: "+$ShodaimeKonoha$+" ";
+mes "Nidaime "+$NidaimeKonoha$+" ";
+mes "Sandaime "+$SandaimeKonoha$+" ";
+mes "Yondaime "+$YondaimeKonoha$+" ";
+mes "Godaime "+$GodaimeKonoha$+" ";
+mes "Rokudaime "+$RokudaimeKonoha$+" ";
+mes "Nanadaime "+$NanadaimeKonoha$+" ";
+mes "Hachidaime "+$HachidaimeKonoha$+" ";
+mes "Kyudaime "+$KyudaimeKonoha$+" ";
+mes "Judaime "+$JudaimeKonoha$+" ";
+close;
+
+}
+
+salakage2,31,24,0	script	Livro de Registro#2	58,{
+
+if(getgmlevel() >= 10){
+mes "[Lista dos Kages]";
+mes "Shodaime: "+$ShodaimeSuna$+" ";
+mes "Nidaime: "+$NidaimeSuna$+" ";
+mes "Sandaime: "+$SandaimeSuna$+" ";
+mes "Yondaime: "+$YondaimeSuna$+" ";
+mes "Godaime: "+$GodaimeSuna$+" ";
+mes "Rokudaime: "+$RokudaimeSuna$+" ";
+mes "Nanadaime: "+$NanadaimeSuna$+" ";
+mes "Hachidaime: "+$HachidaimeSuna$+" ";
+mes "Kyudaime: "+$KyudaimeSuna$+" ";
+mes "Judaime: "+$JudaimeSuna$+" ";
+switch(select("- Shodaime:- Nidaime:- Sandaime:- Yondaime:- Godaime:- Rokudaime:- Nanadaime:- Hachidaime:- Kyudaime:- Judaime")) {
+	case 1:
+		input @ShodaimeSuna$;
+		set $ShodaimeSuna$, @ShodaimeSuna$;
+		close;
+	case 2:
+		input @NidaimeSuna$;
+		set $NidaimeSuna$, @NidaimeSuna$;
+		close;
+	case 3:
+		input @SandaimeSuna$;
+		set $SandaimeSuna$, @SandaimeSuna$;
+		close;
+	case 4:
+		input @YondaimeSuna$;
+		set $YondaimeSuna$, @YondaimeSuna$;
+		close;
+	case 5:
+		input @GodaimeSuna$;
+		set $GodaimeSuna$, @GodaimeSuna$;
+		close;
+	case 6:
+		input @RokudaimeSuna$;
+		set $RokudaimeSuna$, @RokudaimeSuna$;
+		close;
+	case 7:
+		input @NanadaimeSuna$;
+		set $NanadaimeSuna$, @NanadaimeSuna$;
+		close;
+	case 8:
+		input @HachidaimeSuna$;
+		set $HachidaimeSuna$, @HachidaimeSuna$;
+		close;
+	case 9:
+		input @KyudaimeSuna$;
+		set $KyudaimeSuna$, @KyudaimeSuna$;
+		close;
+	case 10:
+		input @JudaimeSuna$;
+		set $JudaimeSuna$, @JudaimeSuna$;
+		close;
+	}
+}
+mes "[Lista dos Kages]";
+mes "Shodaime: "+$ShodaimeSuna$+" ";
+mes "Nidaime: "+$NidaimeSuna$+" ";
+mes "Sandaime: "+$SandaimeSuna$+" ";
+mes "Yondaime: "+$YondaimeSuna$+" ";
+mes "Godaime: "+$GodaimeSuna$+" ";
+mes "Rokudaime: "+$RokudaimeSuna$+" ";
+mes "Nanadaime: "+$NanadaimeSuna$+" ";
+mes "Hachidaime: "+$HachidaimeSuna$+" ";
+mes "Kyudaime: "+$KyudaimeSuna$+" ";
+mes "Judaime: "+$JudaimeSuna$+" ";
+close;
+
+}
+
+salakage3,31,24,0	script	Livro de Registro#3	58,{
+
+if(getgmlevel() >= 10){
+mes "[Lista dos Kages]";
+mes "Shodaime: "+$ShodaimeNevoa$+" ";
+mes "Nidaime: "+$NidaimeNevoa$+" ";
+mes "Sandaime: "+$SandaimeNevoa$+" ";
+mes "Yondaime: "+$YondaimeNevoa$+" ";
+mes "Godaime: "+$GodaimeNevoa$+" ";
+mes "Rokudaime: "+$RokudaimeNevoa$+" ";
+mes "Nanadaime: "+$NanadaimeNevoa$+" ";
+mes "Hachidaime: "+$HachidaimeNevoa$+" ";
+mes "Kyudaime: "+$KyudaimeNevoa$+" ";
+mes "Judaime: "+$JudaimeNevoa$+" ";
+switch(select("- Shodaime:- Nidaime:- Sandaime:- Yondaime:- Godaime:- Rokudaime:- Nanadaime:- Hachidaime:- Kyudaime:- Judaime")) {
+	case 1:
+		input @ShodaimeNevoa$;
+		set $ShodaimeNevoa$, @ShodaimeNevoa$;
+		close;
+	case 2:
+		input @NidaimeNevoa$;
+		set $NidaimeNevoa$, @NidaimeNevoa$;
+		close;
+	case 3:
+		input @SandaimeNevoa$;
+		set $SandaimeNevoa$, @SandaimeNevoa$;
+		close;
+	case 4:
+		input @YondaimeNevoa$;
+		set $YondaimeNevoa$, @YondaimeNevoa$;
+		close;
+	case 5:
+		input @GodaimeNevoa$;
+		set $GodaimeNevoa$, @GodaimeNevoa$;
+		close;
+	case 6:
+		input @RokudaimeNevoa$;
+		set $RokudaimeNevoa$, @RokudaimeNevoa$;
+		close;
+	case 7:
+		input @NanadaimeNevoa$;
+		set $NanadaimeNevoa$, @NanadaimeNevoa$;
+		close;
+	case 8:
+		input @HachidaimeNevoa$;
+		set $HachidaimeNevoa$, @HachidaimeNevoa$;
+		close;
+	case 9:
+		input @KyudaimeNevoa$;
+		set $KyudaimeNevoa$, @KyudaimeNevoa$;
+		close;
+	case 10:
+		input @JudaimeNevoa$;
+		set $JudaimeNevoa$, @JudaimeNevoa$;
+		close;
+	}
+}
+mes "[Lista dos Kages]";
+mes "Shodaime: "+$ShodaimeNevoa$+" ";
+mes "Nidaime: "+$NidaimeNevoa$+" ";
+mes "Sandaime: "+$SandaimeNevoa$+" ";
+mes "Yondaime: "+$YondaimeNevoa$+" ";
+mes "Godaime: "+$GodaimeNevoa$+" ";
+mes "Rokudaime: "+$RokudaimeNevoa$+" ";
+mes "Nanadaime: "+$NanadaimeNevoa$+" ";
+mes "Hachidaime: "+$HachidaimeNevoa$+" ";
+mes "Kyudaime: "+$KyudaimeNevoa$+" ";
+mes "Judaime: "+$JudaimeNevoa$+" ";
+close;
+
+}
+
+salakage4,31,24,0	script	Livro de Registro#4	58,{
+
+if(getgmlevel() >= 10){
+mes "[Lista dos Kages]";
+mes "Shodaime: "+$ShodaimeNuvem$+" ";
+mes "Nidaime: "+$NidaimeNuvem$+" ";
+mes "Sandaime: "+$SandaimeNuvem$+" ";
+mes "Yondaime: "+$YondaimeNuvem$+" ";
+mes "Godaime: "+$GodaimeNuvem$+" ";
+mes "Rokudaime: "+$RokudaimeNuvem$+" ";
+mes "Nanadaime: "+$NanadaimeNuvem$+" ";
+mes "Hachidaime: "+$HachidaimeNuvem$+" ";
+mes "Kyudaime: "+$KyudaimeNuvem$+" ";
+mes "Judaime: "+$JudaimeNuvem$+" ";
+switch(select("- Shodaime:- Nidaime:- Sandaime:- Yondaime:- Godaime:- Rokudaime:- Nanadaime:- Hachidaime:- Kyudaime:- Judaime")) {
+	case 1:
+		input @ShodaimeNuvem$;
+		set $ShodaimeNuvem$, @ShodaimeNuvem$;
+		close;
+	case 2:
+		input @NidaimeNuvem$;
+		set $NidaimeNuvem$, @NidaimeNuvem$;
+		close;
+	case 3:
+		input @SandaimeNuvem$;
+		set $SandaimeNuvem$, @SandaimeNuvem$;
+		close;
+	case 4:
+		input @YondaimeNuvem$;
+		set $YondaimeNuvem$, @YondaimeNuvem$;
+		close;
+	case 5:
+		input @GodaimeNuvem$;
+		set $GodaimeNuvem$, @GodaimeNuvem$;
+		close;
+	case 6:
+		input @RokudaimeNuvem$;
+		set $RokudaimeNuvem$, @RokudaimeNuvem$;
+		close;
+	case 7:
+		input @NanadaimeNuvem$;
+		set $NanadaimeNuvem$, @NanadaimeNuvem$;
+		close;
+	case 8:
+		input @HachidaimeNuvem$;
+		set $HachidaimeNuvem$, @HachidaimeNuvem$;
+		close;
+	case 9:
+		input @KyudaimeNuvem$;
+		set $KyudaimeNuvem$, @KyudaimeNuvem$;
+		close;
+	case 10:
+		input @JudaimeNuvem$;
+		set $JudaimeNuvem$, @JudaimeNuvem$;
+		close;
+	}
+}
+mes "[Lista dos Kages]";
+mes "Shodaime: "+$ShodaimeNuvem$+" ";
+mes "Nidaime: "+$NidaimeNuvem$+" ";
+mes "Sandaime: "+$SandaimeNuvem$+" ";
+mes "Yondaime: "+$YondaimeNuvem$+" ";
+mes "Godaime: "+$GodaimeNuvem$+" ";
+mes "Rokudaime: "+$RokudaimeNuvem$+" ";
+mes "Nanadaime: "+$NanadaimeNuvem$+" ";
+mes "Hachidaime: "+$HachidaimeNuvem$+" ";
+mes "Kyudaime: "+$KyudaimeNuvem$+" ";
+mes "Judaime: "+$JudaimeNuvem$+" ";
+close;
+
+}

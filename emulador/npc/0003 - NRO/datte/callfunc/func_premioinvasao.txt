@@ -1,0 +1,683 @@
+function	script	premiomenor	{
+
+mes "Parabéns por receber um ticket de premiação menor, por favor escolha um treinamento pra receber exp. como recompensa";
+menu "Taijutsu",tai,"Ninjutsu",nin,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Medicina",medi,"Velocidade",velo,"Desejo decidir depois",depois;
+
+tai:
+mes "Ok, vamos lá, você receberá agora 2.500 exp em taijutsu.";
+set WeaponExp, WeaponExp + 10000;
+close;
+
+nin:
+mes "Ok, vamos lá, você receberá agora 2.500 exp em ninjutsu.";
+set WeaponExp2, WeaponExp2 + 10000;
+close;
+
+gen:
+mes "Ok, vamos lá, você receberá agora 2.500 exp em genjutsu.";
+set WeaponExp3, WeaponExp3 + 10000;
+close;
+
+fuuin:
+mes "Ok, vamos lá, você receberá agora 2.500 exp em fuuinjutsu.";
+set WeaponExp5, WeaponExp5 + 10000;
+close;
+
+medi:
+mes "Ok, vamos lá, você receberá agora 2.500 exp em medicina.";
+set WeaponExp4, WeaponExp4 + 10000;
+close;
+
+velo:
+mes "Ok, vamos lá, você receberá agora 2.500 exp em velocidade.";
+set WeaponExp6, WeaponExp6 + 10000;
+close;
+
+depois:
+getitem 7205,1;
+close;
+
+}
+
+function	script	premiomaior	{
+
+mes "Parabéns por receber um ticket de premiação maior, por favor escolha um treinamento pra receber exp. como recompensa";
+menu "Taijutsu",tai,"Ninjutsu",nin,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Medicina",medi,"Velocidade",velo,"Desejo decidir depois",depois;
+
+tai:
+mes "Ok, vamos lá, você receberá agora 6000 exp em taijutsu.";
+set WeaponExp, WeaponExp + 24000;
+close;
+
+nin:
+mes "Ok, vamos lá, você receberá agora 6000 exp em ninjutsu.";
+set WeaponExp2, WeaponExp2 + 24000;
+close;
+
+gen:
+mes "Ok, vamos lá, você receberá agora 6000 exp em genjutsu.";
+set WeaponExp3, WeaponExp3 + 24000;
+close;
+
+fuuin:
+mes "Ok, vamos lá, você receberá agora 6000 exp em fuuinjutsu.";
+set WeaponExp5, WeaponExp5 + 24000;
+close;
+
+medi:
+mes "Ok, vamos lá, você receberá agora 6000 exp em medicina.";
+set WeaponExp4, WeaponExp4 + 24000;
+close;
+
+velo:
+mes "Ok, vamos lá, você receberá agora 6000 exp em velocidade.";
+set WeaponExp6, WeaponExp6 + 24000;
+close;
+
+depois:
+getitem 7206,1;
+close;
+
+}
+
+function	script	premiokg1	{
+
+if (kg_sharingan == 1) || (kg_byakugan == 1) || (kg_hyouton == 1) || (kg_lee == 1) || (kg_kugutsu == 1) || (kg_baika == 1) || (kg_nara == 1) || (kg_seloceu == 1) || (kg_seloterra == 1) {set @kg_nivel, 1;} 
+if (kg_sharingan == 2) || (kg_byakugan == 2) || (kg_hyouton == 2) || (kg_lee == 2) || (kg_kugutsu == 2) || (kg_baika == 2) || (kg_nara == 2) || (kg_seloceu == 2) || (kg_seloterra == 2) {set @kg_nivel, 2;} 
+if (kg_sharingan == 3) || (kg_byakugan == 3) || (kg_hyouton == 3) || (kg_lee == 3) || (kg_kugutsu == 3) || (kg_baika == 3) || (kg_nara == 3) || (kg_seloceu == 3) || (kg_seloterra == 3) {set @kg_nivel, 3;} 
+
+//Se KG estiver nivel 0
+if (kgmobs1 >= 0) && (@kg_nivel == 1)  {
+set @kgmobs1_total, kgmobs1 + 500;
+//dispbottom "debug: "+@kgmobs1_total+" mobs";
+if (@kgmobs1_total >= 50) {
+if (@kgmobs1_total > 50) {set @kgmobs1_resto, @kgmobs1_total - 50;}
+if(kg_sharingan == 1) {set kg_sharingan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all;  if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1; }
+if(kg_byakugan == 1) {set byakugan,1; set kg_byakugan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1; }
+if(kg_hyouton == 1) {set GELO,1; set kg_hyouton,2; set kgmobs1,0;  set kgmobs2,1;announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades como membro do Clã Koori!",bc_blue|bc_all; if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1; }
+if(kg_lee == 1) {set LEE2,1; set kg_lee,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all;  if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1; }
+if(kg_kugutsu == 1) {set MARIONETE,1; set kg_kugutsu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Kugutsu!",bc_blue|bc_all;  if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1; }
+if(kg_baika == 1) {set AKIMICHI,1; set kg_baika,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all;  if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1; }
+if(kg_nara == 1) {set NARA2,1; set kg_nara,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all;  if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1; }
+if(kg_seloceu == 1) {set SELO1,1; set kg_seloceu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado do céu!",bc_blue|bc_all;  if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1; }
+if(kg_seloterra == 1) {set SELO2,1; set kg_seloterra,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado da terra!",bc_blue|bc_all;  if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1; }
+set kgmobs2, kgmobs2 + @kgmobs1_resto;
+//dispbottom "debug: "+kgmobs2+" mobs agora no nivel 1 indo para o 2";
+set @kgmobs1_resto,0;
+set @kgmobs1_total,0;
+end;
+}
+set kgmobs1,kgmobs1 +500;
+dispbottom "500 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 1
+if (kgmobs2 >= 0) && (@kg_nivel == 2)  {
+set @kgmobs2_total, kgmobs2 + 500;
+//dispbottom "debug: "+@kgmobs2_total+" mobs";
+if (@kgmobs2_total >= 16429) {
+if (@kgmobs2_total > 16429) {set @kgmobs2_resto, @kgmobs2_total - 16429;}
+if(kg_sharingan == 2) {delitem 19068,1; set kg_sharingan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1; }
+if(kg_byakugan == 2) {set byakugan,2; set kg_byakugan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 2!",bc_blue|bc_all;}
+if(kg_hyouton == 2) {set GELO,2; set kg_hyouton,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 2",bc_blue|bc_all;}
+if(kg_lee == 2) {set LEE2,2; set kg_lee,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all;}
+if(kg_kugutsu == 2) {set MARIONETE,2; set kg_kugutsu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_baika == 2) {set AKIMICHI,2; set kg_baika,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_nara == 2) {set NARA2,2; set kg_nara,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all;}
+if(kg_seloceu == 2) {set SELO1,2; set kg_seloceu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 2!",bc_blue|bc_all;}
+if(kg_seloterra == 2) {set SELO2,2; set kg_seloterra,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 2!",bc_blue|bc_all;}
+set kgmobs3, kgmobs3 + @kgmobs2_resto;
+//dispbottom "debug: "+kgmobs3+" mobs agora no nivel 2 indo para o 3";
+set @kgmobs2_resto,0;
+set @kgmobs2_total,0;
+end;
+}
+set kgmobs2,kgmobs2 +500;
+dispbottom "500 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 2
+if (kgmobs3 >= 0) && (@kg_nivel == 3)  {
+set @kgmobs3_total, kgmobs3 + 500;
+//dispbottom "debug: "+@kgmobs3_total+" mobs";
+if (@kgmobs3_total >= 44429) {
+if (@kgmobs3_total > 44429) {set @kgmobs3_resto, @kgmobs3_total - 44429;}
+if(kg_sharingan == 3) {delitem 19069,1; set kg_sharingan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+if(kg_byakugan == 3) {set byakugan,3; set kg_byakugan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 3!",bc_blue|bc_all;}
+if(kg_hyouton == 3) {set GELO,3; set kg_hyouton,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 3!",bc_blue|bc_all;}
+if(kg_lee == 3) {set LEE2,3; set kg_lee,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all;}
+if(kg_kugutsu == 3) {set MARIONETE,3; set kg_kugutsu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_baika == 3) {set AKIMICHI,3; set kg_baika,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_nara == 3) {set NARA2,3; set kg_nara,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; }
+if(kg_seloceu == 3) {set SELO1,3; set kg_seloceu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 3!",bc_blue|bc_all; }
+if(kg_seloterra == 3) {set SELO2,3; set kg_seloterra,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 3!",bc_blue|bc_all; }
+set @kgmobs3_total,0;
+end;
+}
+set kgmobs3,kgmobs3 +500;
+dispbottom "500 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+}
+
+}
+
+function	script	premiokg2	{
+
+if (kg_sharingan == 1) || (kg_byakugan == 1) || (kg_hyouton == 1) || (kg_lee == 1) || (kg_kugutsu == 1) || (kg_baika == 1) || (kg_nara == 1) || (kg_seloceu == 1) || (kg_seloterra == 1) {set @kg_nivel, 1;} 
+if (kg_sharingan == 2) || (kg_byakugan == 2) || (kg_hyouton == 2) || (kg_lee == 2) || (kg_kugutsu == 2) || (kg_baika == 2) || (kg_nara == 2) || (kg_seloceu == 2) || (kg_seloterra == 2) {set @kg_nivel, 2;} 
+if (kg_sharingan == 3) || (kg_byakugan == 3) || (kg_hyouton == 3) || (kg_lee == 3) || (kg_kugutsu == 3) || (kg_baika == 3) || (kg_nara == 3) || (kg_seloceu == 3) || (kg_seloterra == 3) {set @kg_nivel, 3;} 
+
+//Se KG estiver nivel 0
+if (kgmobs1 >= 0) && (@kg_nivel == 1)  {
+set @kgmobs1_total, kgmobs1 + 700;
+//dispbottom "debug: "+@kgmobs1_total+" mobs";
+if (@kgmobs1_total >= 50) {
+if (@kgmobs1_total > 50) {set @kgmobs1_resto, @kgmobs1_total - 50;}
+if(kg_sharingan == 1) {set kg_sharingan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all;  if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1; }
+if(kg_byakugan == 1) {set byakugan,1; set kg_byakugan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1; }
+if(kg_hyouton == 1) {set GELO,1; set kg_hyouton,2; set kgmobs1,0;  set kgmobs2,1;announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades como membro do Clã Koori!",bc_blue|bc_all; if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1; }
+if(kg_lee == 1) {set LEE2,1; set kg_lee,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all;  if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1; }
+if(kg_kugutsu == 1) {set MARIONETE,1; set kg_kugutsu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Kugutsu!",bc_blue|bc_all;  if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1; }
+if(kg_baika == 1) {set AKIMICHI,1; set kg_baika,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all;  if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1; }
+if(kg_nara == 1) {set NARA2,1; set kg_nara,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all;  if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1; }
+if(kg_seloceu == 1) {set SELO1,1; set kg_seloceu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado do céu!",bc_blue|bc_all;  if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1; }
+if(kg_seloterra == 1) {set SELO2,1; set kg_seloterra,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado da terra!",bc_blue|bc_all;  if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1; }
+set kgmobs2, kgmobs2 + @kgmobs1_resto;
+//dispbottom "debug: "+kgmobs2+" mobs agora no nivel 1 indo para o 2";
+set @kgmobs1_resto,0;
+set @kgmobs1_total,0;
+end;
+}
+set kgmobs1,kgmobs1 +700;
+dispbottom "700 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 1
+if (kgmobs2 >= 0) && (@kg_nivel == 2)  {
+set @kgmobs2_total, kgmobs2 + 700;
+//dispbottom "debug: "+@kgmobs2_total+" mobs";
+if (@kgmobs2_total >= 16429) {
+if (@kgmobs2_total > 16429) {set @kgmobs2_resto, @kgmobs2_total - 16429;}
+if(kg_sharingan == 2) {delitem 19068,1; set kg_sharingan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1; }
+if(kg_byakugan == 2) {set byakugan,2; set kg_byakugan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 2!",bc_blue|bc_all;}
+if(kg_hyouton == 2) {set GELO,2; set kg_hyouton,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 2",bc_blue|bc_all;}
+if(kg_lee == 2) {set LEE2,2; set kg_lee,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all;}
+if(kg_kugutsu == 2) {set MARIONETE,2; set kg_kugutsu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_baika == 2) {set AKIMICHI,2; set kg_baika,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_nara == 2) {set NARA2,2; set kg_nara,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all;}
+if(kg_seloceu == 2) {set SELO1,2; set kg_seloceu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 2!",bc_blue|bc_all;}
+if(kg_seloterra == 2) {set SELO2,2; set kg_seloterra,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 2!",bc_blue|bc_all;}
+set kgmobs3, kgmobs3 + @kgmobs2_resto;
+//dispbottom "debug: "+kgmobs3+" mobs agora no nivel 2 indo para o 3";
+set @kgmobs2_resto,0;
+set @kgmobs2_total,0;
+end;
+}
+set kgmobs2,kgmobs2 +700;
+dispbottom "700 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 2
+if (kgmobs3 >= 0) && (@kg_nivel == 3)  {
+set @kgmobs3_total, kgmobs3 + 700;
+//dispbottom "debug: "+@kgmobs3_total+" mobs";
+if (@kgmobs3_total >= 44429) {
+if (@kgmobs3_total > 44429) {set @kgmobs3_resto, @kgmobs3_total - 44429;}
+if(kg_sharingan == 3) {delitem 19069,1; set kg_sharingan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+if(kg_byakugan == 3) {set byakugan,3; set kg_byakugan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 3!",bc_blue|bc_all;}
+if(kg_hyouton == 3) {set GELO,3; set kg_hyouton,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 3!",bc_blue|bc_all;}
+if(kg_lee == 3) {set LEE2,3; set kg_lee,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all;}
+if(kg_kugutsu == 3) {set MARIONETE,3; set kg_kugutsu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_baika == 3) {set AKIMICHI,3; set kg_baika,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_nara == 3) {set NARA2,3; set kg_nara,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; }
+if(kg_seloceu == 3) {set SELO1,3; set kg_seloceu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 3!",bc_blue|bc_all; }
+if(kg_seloterra == 3) {set SELO2,3; set kg_seloterra,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 3!",bc_blue|bc_all; }
+set @kgmobs3_total,0;
+end;
+}
+set kgmobs3,kgmobs3 +700;
+dispbottom "700 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+}
+
+}
+
+function	script	premiokg3	{
+
+if (kg_sharingan == 1) || (kg_byakugan == 1) || (kg_hyouton == 1) || (kg_lee == 1) || (kg_kugutsu == 1) || (kg_baika == 1) || (kg_nara == 1) || (kg_seloceu == 1) || (kg_seloterra == 1) {set @kg_nivel, 1;} 
+if (kg_sharingan == 2) || (kg_byakugan == 2) || (kg_hyouton == 2) || (kg_lee == 2) || (kg_kugutsu == 2) || (kg_baika == 2) || (kg_nara == 2) || (kg_seloceu == 2) || (kg_seloterra == 2) {set @kg_nivel, 2;} 
+if (kg_sharingan == 3) || (kg_byakugan == 3) || (kg_hyouton == 3) || (kg_lee == 3) || (kg_kugutsu == 3) || (kg_baika == 3) || (kg_nara == 3) || (kg_seloceu == 3) || (kg_seloterra == 3) {set @kg_nivel, 3;} 
+
+//Se KG estiver nivel 0
+if (kgmobs1 >= 0) && (@kg_nivel == 1)  {
+set @kgmobs1_total, kgmobs1 + 1000;
+//dispbottom "debug: "+@kgmobs1_total+" mobs";
+if (@kgmobs1_total >= 50) {
+if (@kgmobs1_total > 50) {set @kgmobs1_resto, @kgmobs1_total - 50;}
+if(kg_sharingan == 1) {set kg_sharingan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all;  if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1; }
+if(kg_byakugan == 1) {set byakugan,1; set kg_byakugan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1; }
+if(kg_hyouton == 1) {set GELO,1; set kg_hyouton,2; set kgmobs1,0;  set kgmobs2,1;announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades como membro do Clã Koori!",bc_blue|bc_all; if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1; }
+if(kg_lee == 1) {set LEE2,1; set kg_lee,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all;  if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1; }
+if(kg_kugutsu == 1) {set MARIONETE,1; set kg_kugutsu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Kugutsu!",bc_blue|bc_all;  if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1; }
+if(kg_baika == 1) {set AKIMICHI,1; set kg_baika,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all;  if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1; }
+if(kg_nara == 1) {set NARA2,1; set kg_nara,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all;  if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1; }
+if(kg_seloceu == 1) {set SELO1,1; set kg_seloceu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado do céu!",bc_blue|bc_all;  if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1; }
+if(kg_seloterra == 1) {set SELO2,1; set kg_seloterra,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado da terra!",bc_blue|bc_all;  if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1; }
+set kgmobs2, kgmobs2 + @kgmobs1_resto;
+//dispbottom "debug: "+kgmobs2+" mobs agora no nivel 1 indo para o 2";
+set @kgmobs1_resto,0;
+set @kgmobs1_total,0;
+end;
+}
+set kgmobs1,kgmobs1 +1000;
+dispbottom "1000 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 1
+if (kgmobs2 >= 0) && (@kg_nivel == 2)  {
+set @kgmobs2_total, kgmobs2 + 1000;
+//dispbottom "debug: "+@kgmobs2_total+" mobs";
+if (@kgmobs2_total >= 16429) {
+if (@kgmobs2_total > 16429) {set @kgmobs2_resto, @kgmobs2_total - 16429;}
+if(kg_sharingan == 2) {delitem 19068,1; set kg_sharingan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1; }
+if(kg_byakugan == 2) {set byakugan,2; set kg_byakugan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 2!",bc_blue|bc_all;}
+if(kg_hyouton == 2) {set GELO,2; set kg_hyouton,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 2",bc_blue|bc_all;}
+if(kg_lee == 2) {set LEE2,2; set kg_lee,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all;}
+if(kg_kugutsu == 2) {set MARIONETE,2; set kg_kugutsu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_baika == 2) {set AKIMICHI,2; set kg_baika,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_nara == 2) {set NARA2,2; set kg_nara,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all;}
+if(kg_seloceu == 2) {set SELO1,2; set kg_seloceu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 2!",bc_blue|bc_all;}
+if(kg_seloterra == 2) {set SELO2,2; set kg_seloterra,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 2!",bc_blue|bc_all;}
+set kgmobs3, kgmobs3 + @kgmobs2_resto;
+//dispbottom "debug: "+kgmobs3+" mobs agora no nivel 2 indo para o 3";
+set @kgmobs2_resto,0;
+set @kgmobs2_total,0;
+end;
+}
+set kgmobs2,kgmobs2 +1000;
+dispbottom "1000 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 2
+if (kgmobs3 >= 0) && (@kg_nivel == 3)  {
+set @kgmobs3_total, kgmobs3 + 1000;
+//dispbottom "debug: "+@kgmobs3_total+" mobs";
+if (@kgmobs3_total >= 44429) {
+if (@kgmobs3_total > 44429) {set @kgmobs3_resto, @kgmobs3_total - 44429;}
+if(kg_sharingan == 3) {delitem 19069,1; set kg_sharingan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+if(kg_byakugan == 3) {set byakugan,3; set kg_byakugan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 3!",bc_blue|bc_all;}
+if(kg_hyouton == 3) {set GELO,3; set kg_hyouton,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 3!",bc_blue|bc_all;}
+if(kg_lee == 3) {set LEE2,3; set kg_lee,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all;}
+if(kg_kugutsu == 3) {set MARIONETE,3; set kg_kugutsu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_baika == 3) {set AKIMICHI,3; set kg_baika,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_nara == 3) {set NARA2,3; set kg_nara,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; }
+if(kg_seloceu == 3) {set SELO1,3; set kg_seloceu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 3!",bc_blue|bc_all; }
+if(kg_seloterra == 3) {set SELO2,3; set kg_seloterra,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 3!",bc_blue|bc_all; }
+set @kgmobs3_total,0;
+end;
+}
+set kgmobs3,kgmobs3 +1000;
+dispbottom "1000 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+}
+
+}
+
+function	script	premiokg4	{
+
+if (kg_sharingan == 1) || (kg_byakugan == 1) || (kg_hyouton == 1) || (kg_lee == 1) || (kg_kugutsu == 1) || (kg_baika == 1) || (kg_nara == 1) || (kg_seloceu == 1) || (kg_seloterra == 1) {set @kg_nivel, 1;} 
+if (kg_sharingan == 2) || (kg_byakugan == 2) || (kg_hyouton == 2) || (kg_lee == 2) || (kg_kugutsu == 2) || (kg_baika == 2) || (kg_nara == 2) || (kg_seloceu == 2) || (kg_seloterra == 2) {set @kg_nivel, 2;} 
+if (kg_sharingan == 3) || (kg_byakugan == 3) || (kg_hyouton == 3) || (kg_lee == 3) || (kg_kugutsu == 3) || (kg_baika == 3) || (kg_nara == 3) || (kg_seloceu == 3) || (kg_seloterra == 3) {set @kg_nivel, 3;} 
+
+//Se KG estiver nivel 0
+if (kgmobs1 >= 0) && (@kg_nivel == 1)  {
+set @kgmobs1_total, kgmobs1 + 1200;
+//dispbottom "debug: "+@kgmobs1_total+" mobs";
+if (@kgmobs1_total >= 50) {
+if (@kgmobs1_total > 50) {set @kgmobs1_resto, @kgmobs1_total - 50;}
+if(kg_sharingan == 1) {set kg_sharingan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all;  if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1; }
+if(kg_byakugan == 1) {set byakugan,1; set kg_byakugan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1; }
+if(kg_hyouton == 1) {set GELO,1; set kg_hyouton,2; set kgmobs1,0;  set kgmobs2,1;announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades como membro do Clã Koori!",bc_blue|bc_all; if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1; }
+if(kg_lee == 1) {set LEE2,1; set kg_lee,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all;  if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1; }
+if(kg_kugutsu == 1) {set MARIONETE,1; set kg_kugutsu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Kugutsu!",bc_blue|bc_all;  if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1; }
+if(kg_baika == 1) {set AKIMICHI,1; set kg_baika,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all;  if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1; }
+if(kg_nara == 1) {set NARA2,1; set kg_nara,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all;  if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1; }
+if(kg_seloceu == 1) {set SELO1,1; set kg_seloceu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado do céu!",bc_blue|bc_all;  if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1; }
+if(kg_seloterra == 1) {set SELO2,1; set kg_seloterra,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado da terra!",bc_blue|bc_all;  if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1; }
+set kgmobs2, kgmobs2 + @kgmobs1_resto;
+//dispbottom "debug: "+kgmobs2+" mobs agora no nivel 1 indo para o 2";
+set @kgmobs1_resto,0;
+set @kgmobs1_total,0;
+end;
+}
+set kgmobs1,kgmobs1 +1200;
+dispbottom "1200 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 1
+if (kgmobs2 >= 0) && (@kg_nivel == 2)  {
+set @kgmobs2_total, kgmobs2 + 1200;
+//dispbottom "debug: "+@kgmobs2_total+" mobs";
+if (@kgmobs2_total >= 16429) {
+if (@kgmobs2_total > 16429) {set @kgmobs2_resto, @kgmobs2_total - 16429;}
+if(kg_sharingan == 2) {delitem 19068,1; set kg_sharingan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1; }
+if(kg_byakugan == 2) {set byakugan,2; set kg_byakugan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 2!",bc_blue|bc_all;}
+if(kg_hyouton == 2) {set GELO,2; set kg_hyouton,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 2",bc_blue|bc_all;}
+if(kg_lee == 2) {set LEE2,2; set kg_lee,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all;}
+if(kg_kugutsu == 2) {set MARIONETE,2; set kg_kugutsu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_baika == 2) {set AKIMICHI,2; set kg_baika,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_nara == 2) {set NARA2,2; set kg_nara,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all;}
+if(kg_seloceu == 2) {set SELO1,2; set kg_seloceu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 2!",bc_blue|bc_all;}
+if(kg_seloterra == 2) {set SELO2,2; set kg_seloterra,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 2!",bc_blue|bc_all;}
+set kgmobs3, kgmobs3 + @kgmobs2_resto;
+//dispbottom "debug: "+kgmobs3+" mobs agora no nivel 2 indo para o 3";
+set @kgmobs2_resto,0;
+set @kgmobs2_total,0;
+end;
+}
+set kgmobs2,kgmobs2 +1200;
+dispbottom "1200 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 2
+if (kgmobs3 >= 0) && (@kg_nivel == 3)  {
+set @kgmobs3_total, kgmobs3 + 1200;
+//dispbottom "debug: "+@kgmobs3_total+" mobs";
+if (@kgmobs3_total >= 44429) {
+if (@kgmobs3_total > 44429) {set @kgmobs3_resto, @kgmobs3_total - 44429;}
+if(kg_sharingan == 3) {delitem 19069,1; set kg_sharingan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+if(kg_byakugan == 3) {set byakugan,3; set kg_byakugan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 3!",bc_blue|bc_all;}
+if(kg_hyouton == 3) {set GELO,3; set kg_hyouton,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 3!",bc_blue|bc_all;}
+if(kg_lee == 3) {set LEE2,3; set kg_lee,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all;}
+if(kg_kugutsu == 3) {set MARIONETE,3; set kg_kugutsu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_baika == 3) {set AKIMICHI,3; set kg_baika,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_nara == 3) {set NARA2,3; set kg_nara,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; }
+if(kg_seloceu == 3) {set SELO1,3; set kg_seloceu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 3!",bc_blue|bc_all; }
+if(kg_seloterra == 3) {set SELO2,3; set kg_seloterra,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 3!",bc_blue|bc_all; }
+set @kgmobs3_total,0;
+end;
+}
+set kgmobs3,kgmobs3 +1200;
+dispbottom "1200 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+}
+
+}
+
+function	script	premiokg5	{
+
+if (kg_sharingan == 1) || (kg_byakugan == 1) || (kg_hyouton == 1) || (kg_lee == 1) || (kg_kugutsu == 1) || (kg_baika == 1) || (kg_nara == 1) || (kg_seloceu == 1) || (kg_seloterra == 1) {set @kg_nivel, 1;} 
+if (kg_sharingan == 2) || (kg_byakugan == 2) || (kg_hyouton == 2) || (kg_lee == 2) || (kg_kugutsu == 2) || (kg_baika == 2) || (kg_nara == 2) || (kg_seloceu == 2) || (kg_seloterra == 2) {set @kg_nivel, 2;} 
+if (kg_sharingan == 3) || (kg_byakugan == 3) || (kg_hyouton == 3) || (kg_lee == 3) || (kg_kugutsu == 3) || (kg_baika == 3) || (kg_nara == 3) || (kg_seloceu == 3) || (kg_seloterra == 3) {set @kg_nivel, 3;} 
+
+//Se KG estiver nivel 0
+if (kgmobs1 >= 0) && (@kg_nivel == 1)  {
+set @kgmobs1_total, kgmobs1 + 1500;
+//dispbottom "debug: "+@kgmobs1_total+" mobs";
+if (@kgmobs1_total >= 50) {
+if (@kgmobs1_total > 50) {set @kgmobs1_resto, @kgmobs1_total - 50;}
+if(kg_sharingan == 1) {set kg_sharingan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all;  if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1; }
+if(kg_byakugan == 1) {set byakugan,1; set kg_byakugan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1; }
+if(kg_hyouton == 1) {set GELO,1; set kg_hyouton,2; set kgmobs1,0;  set kgmobs2,1;announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades como membro do Clã Koori!",bc_blue|bc_all; if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1; }
+if(kg_lee == 1) {set LEE2,1; set kg_lee,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all;  if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1; }
+if(kg_kugutsu == 1) {set MARIONETE,1; set kg_kugutsu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Kugutsu!",bc_blue|bc_all;  if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1; }
+if(kg_baika == 1) {set AKIMICHI,1; set kg_baika,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all;  if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1; }
+if(kg_nara == 1) {set NARA2,1; set kg_nara,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all;  if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1; }
+if(kg_seloceu == 1) {set SELO1,1; set kg_seloceu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado do céu!",bc_blue|bc_all;  if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1; }
+if(kg_seloterra == 1) {set SELO2,1; set kg_seloterra,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado da terra!",bc_blue|bc_all;  if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1; }
+set kgmobs2, kgmobs2 + @kgmobs1_resto;
+//dispbottom "debug: "+kgmobs2+" mobs agora no nivel 1 indo para o 2";
+set @kgmobs1_resto,0;
+set @kgmobs1_total,0;
+end;
+}
+set kgmobs1,kgmobs1 +1500;
+dispbottom "1500 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 1
+if (kgmobs2 >= 0) && (@kg_nivel == 2)  {
+set @kgmobs2_total, kgmobs2 + 1500;
+//dispbottom "debug: "+@kgmobs2_total+" mobs";
+if (@kgmobs2_total >= 16429) {
+if (@kgmobs2_total > 16429) {set @kgmobs2_resto, @kgmobs2_total - 16429; }
+if(kg_sharingan == 2) {delitem 19068,1; set kg_sharingan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1; }
+if(kg_byakugan == 2) {set byakugan,2; set kg_byakugan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 2!",bc_blue|bc_all;}
+if(kg_hyouton == 2) {set GELO,2; set kg_hyouton,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 2",bc_blue|bc_all;}
+if(kg_lee == 2) {set LEE2,2; set kg_lee,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all;}
+if(kg_kugutsu == 2) {set MARIONETE,2; set kg_kugutsu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_baika == 2) {set AKIMICHI,2; set kg_baika,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_nara == 2) {set NARA2,2; set kg_nara,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all;}
+if(kg_seloceu == 2) {set SELO1,2; set kg_seloceu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 2!",bc_blue|bc_all;}
+if(kg_seloterra == 2) {set SELO2,2; set kg_seloterra,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 2!",bc_blue|bc_all;}
+set kgmobs3, kgmobs3 + @kgmobs2_resto;
+//dispbottom "debug: "+kgmobs3+" mobs agora no nivel 2 indo para o 3";
+set @kgmobs2_resto,0;
+set @kgmobs2_total,0;
+end;
+}
+set kgmobs2,kgmobs2 +1500;
+dispbottom "1500 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 2
+if (kgmobs3 >= 0) && (@kg_nivel == 3)  {
+set @kgmobs3_total, kgmobs3 + 1500;
+//dispbottom "debug: "+@kgmobs3_total+" mobs";
+if (@kgmobs3_total >= 44429) {
+if (@kgmobs3_total > 44429) {set @kgmobs3_resto, @kgmobs3_total - 44429;}
+if(kg_sharingan == 3) {delitem 19069,1; set kg_sharingan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+if(kg_byakugan == 3) {set byakugan,3; set kg_byakugan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 3!",bc_blue|bc_all;}
+if(kg_hyouton == 3) {set GELO,3; set kg_hyouton,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 3!",bc_blue|bc_all;}
+if(kg_lee == 3) {set LEE2,3; set kg_lee,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all;}
+if(kg_kugutsu == 3) {set MARIONETE,3; set kg_kugutsu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_baika == 3) {set AKIMICHI,3; set kg_baika,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_nara == 3) {set NARA2,3; set kg_nara,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; }
+if(kg_seloceu == 3) {set SELO1,3; set kg_seloceu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 3!",bc_blue|bc_all; }
+if(kg_seloterra == 3) {set SELO2,3; set kg_seloterra,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 3!",bc_blue|bc_all; }
+set @kgmobs3_total,0;
+end;
+}
+set kgmobs3,kgmobs3 +1500;
+dispbottom "1500 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+}
+
+}
+
+function	script	premiokg6	{
+
+if (kg_sharingan == 1) || (kg_byakugan == 1) || (kg_hyouton == 1) || (kg_lee == 1) || (kg_kugutsu == 1) || (kg_baika == 1) || (kg_nara == 1) || (kg_seloceu == 1) || (kg_seloterra == 1) {set @kg_nivel, 1;} 
+if (kg_sharingan == 2) || (kg_byakugan == 2) || (kg_hyouton == 2) || (kg_lee == 2) || (kg_kugutsu == 2) || (kg_baika == 2) || (kg_nara == 2) || (kg_seloceu == 2) || (kg_seloterra == 2) {set @kg_nivel, 2;} 
+if (kg_sharingan == 3) || (kg_byakugan == 3) || (kg_hyouton == 3) || (kg_lee == 3) || (kg_kugutsu == 3) || (kg_baika == 3) || (kg_nara == 3) || (kg_seloceu == 3) || (kg_seloterra == 3) {set @kg_nivel, 3;} 
+
+//Se KG estiver nivel 0
+if (kgmobs1 >= 0) && (@kg_nivel == 1)  {
+set @kgmobs1_total, kgmobs1 + 1800;
+//dispbottom "debug: "+@kgmobs1_total+" mobs";
+if (@kgmobs1_total >= 50) {
+if (@kgmobs1_total > 50) {set @kgmobs1_resto, @kgmobs1_total - 50; }
+if(kg_sharingan == 1) {set kg_sharingan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all;  if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1; }
+if(kg_byakugan == 1) {set byakugan,1; set kg_byakugan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1; }
+if(kg_hyouton == 1) {set GELO,1; set kg_hyouton,2; set kgmobs1,0;  set kgmobs2,1;announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades como membro do Clã Koori!",bc_blue|bc_all; if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1; }
+if(kg_lee == 1) {set LEE2,1; set kg_lee,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all;  if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1; }
+if(kg_kugutsu == 1) {set MARIONETE,1; set kg_kugutsu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Kugutsu!",bc_blue|bc_all;  if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1; }
+if(kg_baika == 1) {set AKIMICHI,1; set kg_baika,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all;  if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1; }
+if(kg_nara == 1) {set NARA2,1; set kg_nara,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all;  if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1; }
+if(kg_seloceu == 1) {set SELO1,1; set kg_seloceu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado do céu!",bc_blue|bc_all;  if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1; }
+if(kg_seloterra == 1) {set SELO2,1; set kg_seloterra,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado da terra!",bc_blue|bc_all;  if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1; }
+set kgmobs2, kgmobs2 + @kgmobs1_resto;
+//dispbottom "debug: "+kgmobs2+" mobs agora no nivel 1 indo para o 2";
+set @kgmobs1_resto,0;
+set @kgmobs1_total,0;
+end;
+}
+set kgmobs1,kgmobs1 +1800;
+dispbottom "1800 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 1
+if (kgmobs2 >= 0) && (@kg_nivel == 2)  {
+set @kgmobs2_total, kgmobs2 + 1800;
+//dispbottom "debug: "+@kgmobs2_total+" mobs";
+if (@kgmobs2_total >= 16429) {
+if (@kgmobs2_total > 16429) {set @kgmobs2_resto, @kgmobs2_total - 16429; }
+if(kg_sharingan == 2) {delitem 19068,1; set kg_sharingan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1; }
+if(kg_byakugan == 2) {set byakugan,2; set kg_byakugan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 2!",bc_blue|bc_all;}
+if(kg_hyouton == 2) {set GELO,2; set kg_hyouton,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 2",bc_blue|bc_all;}
+if(kg_lee == 2) {set LEE2,2; set kg_lee,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all;}
+if(kg_kugutsu == 2) {set MARIONETE,2; set kg_kugutsu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_baika == 2) {set AKIMICHI,2; set kg_baika,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_nara == 2) {set NARA2,2; set kg_nara,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all;}
+if(kg_seloceu == 2) {set SELO1,2; set kg_seloceu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 2!",bc_blue|bc_all;}
+if(kg_seloterra == 2) {set SELO2,2; set kg_seloterra,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 2!",bc_blue|bc_all;}
+set kgmobs3, kgmobs3 + @kgmobs2_resto;
+//dispbottom "debug: "+kgmobs3+" mobs agora no nivel 2 indo para o 3";
+set @kgmobs2_resto,0;
+set @kgmobs2_total,0;
+end;
+}
+set kgmobs2,kgmobs2 +1800;
+dispbottom "1800 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 2
+if (kgmobs3 >= 0) && (@kg_nivel == 3)  {
+set @kgmobs3_total, kgmobs3 + 1800;
+//dispbottom "debug: "+@kgmobs3_total+" mobs";
+if (@kgmobs3_total >= 44429) {
+if (@kgmobs3_total > 44429) {set @kgmobs3_resto, @kgmobs3_total - 44429;}
+if(kg_sharingan == 3) {delitem 19069,1; set kg_sharingan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+if(kg_byakugan == 3) {set byakugan,3; set kg_byakugan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 3!",bc_blue|bc_all;}
+if(kg_hyouton == 3) {set GELO,3; set kg_hyouton,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 3!",bc_blue|bc_all;}
+if(kg_lee == 3) {set LEE2,3; set kg_lee,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all;}
+if(kg_kugutsu == 3) {set MARIONETE,3; set kg_kugutsu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_baika == 3) {set AKIMICHI,3; set kg_baika,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_nara == 3) {set NARA2,3; set kg_nara,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; }
+if(kg_seloceu == 3) {set SELO1,3; set kg_seloceu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 3!",bc_blue|bc_all; }
+if(kg_seloterra == 3) {set SELO2,3; set kg_seloterra,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 3!",bc_blue|bc_all; }
+set @kgmobs3_total,0;
+end;
+}
+set kgmobs3,kgmobs3 +1800;
+dispbottom "1800 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+}
+
+}
+
+function	script	premiokg7	{
+
+if (kg_sharingan == 1) || (kg_byakugan == 1) || (kg_hyouton == 1) || (kg_lee == 1) || (kg_kugutsu == 1) || (kg_baika == 1) || (kg_nara == 1) || (kg_seloceu == 1) || (kg_seloterra == 1) {set @kg_nivel, 1;} 
+if (kg_sharingan == 2) || (kg_byakugan == 2) || (kg_hyouton == 2) || (kg_lee == 2) || (kg_kugutsu == 2) || (kg_baika == 2) || (kg_nara == 2) || (kg_seloceu == 2) || (kg_seloterra == 2) {set @kg_nivel, 2;} 
+if (kg_sharingan == 3) || (kg_byakugan == 3) || (kg_hyouton == 3) || (kg_lee == 3) || (kg_kugutsu == 3) || (kg_baika == 3) || (kg_nara == 3) || (kg_seloceu == 3) || (kg_seloterra == 3) {set @kg_nivel, 3;} 
+
+//Se KG estiver nivel 0
+if (kgmobs1 >= 0) && (@kg_nivel == 1)  {
+set @kgmobs1_total, kgmobs1 + 2000;
+//dispbottom "debug: "+@kgmobs1_total+" mobs";
+if (@kgmobs1_total >= 50) {
+if (@kgmobs1_total > 50) {set @kgmobs1_resto, @kgmobs1_total - 50; }
+if(kg_sharingan == 1) {set kg_sharingan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Sharingan!",bc_blue|bc_all;  if (checkweight(19068,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19068,1; }
+if(kg_byakugan == 1) {set byakugan,1; set kg_byakugan,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Byakugan!",bc_blue|bc_all; if (checkweight(19002,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19002,1; }
+if(kg_hyouton == 1) {set GELO,1; set kg_hyouton,2; set kgmobs1,0;  set kgmobs2,1;announce " "+strcharinfo(0)+" Acaba de despertar suas habilidades como membro do Clã Koori!",bc_blue|bc_all; if (checkweight(19152,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19152,1; }
+if(kg_lee == 1) {set LEE2,1; set kg_lee,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seus portões de chakra!",bc_blue|bc_all;  if (checkweight(19155,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19155,1; }
+if(kg_kugutsu == 1) {set MARIONETE,1; set kg_kugutsu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Kugutsu!",bc_blue|bc_all;  if (checkweight(19154,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19154,1; }
+if(kg_baika == 1) {set AKIMICHI,1; set kg_baika,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Baika no jutsu!",bc_blue|bc_all;  if (checkweight(19153,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19153,1; }
+if(kg_nara == 1) {set NARA2,1; set kg_nara,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Controle sobre as sombras!",bc_blue|bc_all;  if (checkweight(19151,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19151,1; }
+if(kg_seloceu == 1) {set SELO1,1; set kg_seloceu,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado do céu!",bc_blue|bc_all;  if (checkweight(19149,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19149,1; }
+if(kg_seloterra == 1) {set SELO2,1; set kg_seloterra,2; set kgmobs1,0; set kgmobs2,1; announce " "+strcharinfo(0)+" Acaba de despertar seu Selo amaldiçoado da terra!",bc_blue|bc_all;  if (checkweight(19150,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19150,1; }
+set kgmobs2, kgmobs2 + @kgmobs1_resto;
+//dispbottom "debug: "+kgmobs2+" mobs agora no nivel 1 indo para o 2";
+set @kgmobs1_resto,0;
+set @kgmobs1_total,0;
+end;
+}
+set kgmobs1,kgmobs1 +2000;
+dispbottom "2000 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 1
+if (kgmobs2 >= 0) && (@kg_nivel == 2)  {
+set @kgmobs2_total, kgmobs2 + 2000;
+//dispbottom "debug: "+@kgmobs2_total+" mobs";
+if (@kgmobs2_total >= 16429) {
+if (@kgmobs2_total > 16429) {set @kgmobs2_resto, @kgmobs2_total - 16429; }
+if(kg_sharingan == 2) {delitem 19068,1; set kg_sharingan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 2!",bc_blue|bc_all; if (checkweight(19069,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19069,1; }
+if(kg_byakugan == 2) {set byakugan,2; set kg_byakugan,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 2!",bc_blue|bc_all;}
+if(kg_hyouton == 2) {set GELO,2; set kg_hyouton,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 2",bc_blue|bc_all;}
+if(kg_lee == 2) {set LEE2,2; set kg_lee,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 2!",bc_blue|bc_all;}
+if(kg_kugutsu == 2) {set MARIONETE,2; set kg_kugutsu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_baika == 2) {set AKIMICHI,2; set kg_baika,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 2!",bc_blue|bc_all;}
+if(kg_nara == 2) {set NARA2,2; set kg_nara,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 2!",bc_blue|bc_all;}
+if(kg_seloceu == 2) {set SELO1,2; set kg_seloceu,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 2!",bc_blue|bc_all;}
+if(kg_seloterra == 2) {set SELO2,2; set kg_seloterra,3; set kgmobs2,0; set kgmobs3,1; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 2!",bc_blue|bc_all;}
+set kgmobs3, kgmobs3 + @kgmobs2_resto;
+//dispbottom "debug: "+kgmobs3+" mobs agora no nivel 2 indo para o 3";
+set @kgmobs2_resto,0;
+set @kgmobs2_total,0;
+end;
+}
+set kgmobs2,kgmobs2 +2000;
+dispbottom "2000 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+} 
+
+//Se KG estiver nivel 2
+if (kgmobs3 >= 0) && (@kg_nivel == 3)  {
+set @kgmobs3_total, kgmobs3 + 2000;
+//dispbottom "debug: "+@kgmobs3_total+" mobs";
+if (@kgmobs3_total >= 44429) {
+if (@kgmobs3_total > 44429) {set @kgmobs3_resto, @kgmobs3_total - 44429;}
+if(kg_sharingan == 3) {delitem 19069,1; set kg_sharingan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Sharingan para o nível 3!",bc_blue|bc_all; if (checkweight(19070,1) == 0) {mes "Você está apto a receber o item de sua Kekkei Genkai, porém está com sobrepeso no personagem, Por favor, venda ou guarda alguns itens e em seguida reloga."; close;} getitem 19070,1;}
+if(kg_byakugan == 3) {set byakugan,3; set kg_byakugan,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Byakugan para o nível 3!",bc_blue|bc_all;}
+if(kg_hyouton == 3) {set GELO,3; set kg_hyouton,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar suas habilidades como membro do Clã Koori para o nível 3!",bc_blue|bc_all;}
+if(kg_lee == 3) {set LEE2,3; set kg_lee,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seus portões de chakra para o nível 3!",bc_blue|bc_all;}
+if(kg_kugutsu == 3) {set MARIONETE,3; set kg_kugutsu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Kugutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_baika == 3) {set AKIMICHI,3; set kg_baika,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Baika no jutsu para o nível 3!",bc_blue|bc_all; }
+if(kg_nara == 3) {set NARA2,3; set kg_nara,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Controle sobre as sombras para o nível 3!",bc_blue|bc_all; }
+if(kg_seloceu == 3) {set SELO1,3; set kg_seloceu,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado do céu para o nível 3!",bc_blue|bc_all; }
+if(kg_seloterra == 3) {set SELO2,3; set kg_seloterra,4; set kgmobs3,0; announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 3!",bc_blue|bc_all; }
+set @kgmobs3_total,0;
+end;
+}
+set kgmobs3,kgmobs3 +2000;
+dispbottom "2000 pontos adicionados para a contagem de Kekkei Genkai de monstros mortos";
+end;
+
+}
+
+}

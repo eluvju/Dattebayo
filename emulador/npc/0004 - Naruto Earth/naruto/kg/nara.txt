@@ -1,0 +1,48 @@
+sec_in01,173,183,5	script	Nara	1_m_youngknight,{
+	if(nara == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Shikamaru Nara^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou o Shikamaru Nara , você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Shikamaru Nara^000000]";
+	mes "O Clã Nara (Nara Ichizoku) ou Casa dos Nara (Narake) é um clã conhecido por sua manipulação de sombras e, por cuidar de veados que, pastam em uma grande área da floresta do clã.";
+	next;
+	mes "[^00FF40Shikamaru Nara^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",nara2,"- Não",nao;
+	close;
+
+	
+	
+	nara2:
+
+next;
+
+	mes "[^00FF40Shikamaru Nara^000000]";
+
+mes " Nara pode ser usado em combinação com ninjutsu, fluxo de Chakra e até mesmo Taijutsu para obter técnicas mais devastadoras.  ";
+
+next;
+
+set pegoukg,1;
+
+set nara,1;
+
+	mes "[^00FF40Shikamaru Nara^000000]";
+
+mes "Muito Bem.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

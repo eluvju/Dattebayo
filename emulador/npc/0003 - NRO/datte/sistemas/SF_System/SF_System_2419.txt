@@ -1,0 +1,127 @@
+function	script	SF_System_2419	{
+
+//		bonus bAgi,getarg(2);
+//		bonus bDex,getarg(3);
+//		bonus bLuk,getarg(4);
+//		bonus bVit,getarg(5);
+//		bonus bSpeedAddRate,getarg(6);
+//		bonus bAvoidTrap,getarg(7);
+
+	if(getarg(1)==1)
+	{
+		bonus bDex,getarg(3);
+		dispbottom "[Bonus] : Destreza: "+getarg(3)+" ";
+	}else if(getarg(1)==2)
+	{
+		bonus bVit,getarg(5);
+		dispbottom "[Bonus] : Vitalidade: "+getarg(5)+" ";
+	}else if(getarg(1)==3)
+	{
+		bonus bLuk,getarg(4);
+		dispbottom "[Bonus] : Sorte: "+getarg(4)+"";
+	}else if(getarg(1)==4)
+	{
+		bonus bAgi,getarg(2);
+		dispbottom "[Bonus] : Agilidade: "+getarg(2)+"";
+	}else if(getarg(1)==5)
+	{
+		bonus bSpeedAddRate,getarg(6);
+		dispbottom "[Bonus] : Velocidade de movimento: "+getarg(6)+"%";
+	}else if(getarg(1)==6)
+	{
+		bonus bSpeedAddRate,getarg(6);
+		bonus bDex,getarg(3);
+		dispbottom "[Bonus] : Velocidade de movimento: "+getarg(6)+"%";
+		dispbottom "[Bonus] : Destreza: "+getarg(3)+" ";		
+	}else if(getarg(1)==7)
+	{
+		bonus bSpeedAddRate,getarg(6);
+		bonus bVit,getarg(5);
+		dispbottom "[Bonus] : Velocidade de movimento: "+getarg(6)+"%";
+		dispbottom "[Bonus] : Vitalidade: "+getarg(5)+" ";
+	}else if(getarg(1)==8)
+	{
+		bonus bSpeedAddRate,getarg(6);
+		bonus bLuk,getarg(4);
+		dispbottom "[Bonus] : Velocidade de movimento: "+getarg(6)+"%";
+		dispbottom "[Bonus] : Sorte: "+getarg(4)+"";
+	}else if(getarg(1)==9)
+	{
+		bonus bSpeedAddRate,getarg(6);
+		bonus bAgi,getarg(2);
+		dispbottom "[Bonus] : Velocidade de movimento: "+getarg(6)+"%";
+		dispbottom "[Bonus] : Agilidade: "+getarg(2)+"";
+	}else if(getarg(1)==10)
+	{
+		bonus bDex,getarg(3);
+		bonus bVit,getarg(5);
+		dispbottom "[Bonus] : Destreza: "+getarg(3)+" ";
+		dispbottom "[Bonus] : Vitalidade: "+getarg(5)+" ";
+	}else if(getarg(1)==11)
+	{
+		bonus bDex,getarg(3);
+		bonus bLuk,getarg(4);
+		dispbottom "[Bonus] : Destreza: "+getarg(3)+" ";
+		dispbottom "[Bonus] : Sorte: "+getarg(4)+"";
+	}else if(getarg(1)==12)
+	{
+		bonus bDex,getarg(3);
+		bonus bAgi,getarg(2);
+		dispbottom "[Bonus] : Destreza: "+getarg(3)+" ";
+		dispbottom "[Bonus] : Agilidade: "+getarg(2)+"";
+	}else if(getarg(1)==13)
+	{
+		bonus bVit,getarg(5);
+		bonus bLuk,getarg(4);
+		dispbottom "[Bonus] : Vitalidade: "+getarg(5)+" ";
+		dispbottom "[Bonus] : Sorte: "+getarg(4)+"";
+	}else if(getarg(1)==14)
+	{
+		bonus bVit,getarg(5);
+		bonus bAgi,getarg(2);
+		dispbottom "[Bonus] : Vitalidade: "+getarg(5)+" ";
+		dispbottom "[Bonus] : Agilidade: "+getarg(2)+"";
+	}else if(getarg(1)==15)
+	{
+		bonus bLuk,getarg(4);
+		bonus bAgi,getarg(2);
+		dispbottom "[Bonus] : Sorte: "+getarg(4)+"";
+		dispbottom "[Bonus] : Agilidade: "+getarg(2)+"";
+	}else if(getarg(1)==16)
+	{
+		bonus bAvoidTrap,getarg(7);
+		bonus bDex,getarg(3);
+		dispbottom "[Bonus] : Chance de evitar armadilhas: "+getarg(7)+"%";
+		dispbottom "[Bonus] : Destreza: "+getarg(3)+" ";
+	}else if(getarg(1)==17)
+	{
+		bonus bAvoidTrap,getarg(7);
+		bonus bVit,getarg(5);
+		dispbottom "[Bonus] : Chance de evitar armadilhas: "+getarg(7)+"%";
+		dispbottom "[Bonus] : Vitalidade: "+getarg(5)+" ";
+	}else if(getarg(1)==18)
+	{
+		bonus bAvoidTrap,getarg(7);
+		bonus bLuk,getarg(4);
+		dispbottom "[Bonus] : Chance de evitar armadilhas: "+getarg(7)+"%";
+		dispbottom "[Bonus] : Sorte: "+getarg(4)+"";
+	}else if(getarg(1)==19)
+	{
+		bonus bAvoidTrap,getarg(7);
+		bonus bAgi,getarg(2);
+		dispbottom "[Bonus] : Chance de evitar armadilhas: "+getarg(7)+"%";
+		dispbottom "[Bonus] : Agilidade: "+getarg(2)+"";
+	}else if(getarg(1)==20)
+	{
+		bonus bAvoidTrap,getarg(7);
+		bonus bSpeedAddRate,getarg(6);
+		dispbottom "[Bonus] : Chance de evitar armadilhas: "+getarg(7)+"%";
+		dispbottom "[Bonus] : Velocidade de movimento: "+getarg(6)+"%";
+
+	}else
+	dispbottom "Que azar, veio uma arma sem nada...";
+	return;
+}
+
+//getarg(1) = é quantos vão sair de bonus
+// mob.c = var[0] = valor do bonus getarg(2), etc.

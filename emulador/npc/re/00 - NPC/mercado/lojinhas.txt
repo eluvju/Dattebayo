@@ -1,0 +1,66 @@
+//=======================================================
+// Lojas Ativadas
+//=======================================================
+//
+// Academia Shinobi
+//=================
+// FERREIRO
+//=================
+// -1 = Valor que está na DB
+//
+// Vendedor de Kunai e Shuriken Basica
+lou_in02,105,174,4	shop	Ferramentas Ninjas#1	88,13295:-1,13255:-1
+
+// Utilidades
+lou_in02,118,177,4	shop	Suplementos#base	85,611:-1,1065:-1
+
+
+//=========================================================
+//
+// MODELOS --
+//
+//=========================================================
+//				 Vendedor Arma Ninja Usavel
+// Rank B
+prontera,145,173,4	shop	Ferramentas Ninjas#base	83,13295:10,13250:50,13251:150,13255:150,13256:150,13257:150,13258:150,13259:150
+// Rank S
+prontera,144,171,4	shop	Utensilios Ninjas#base	83,13252:250,13253:300,13254:500,6493:250,13294:500
+// Rank S
+prontera,143,169,4	shop	Amuletos Ninjas#base	83,6512:-1,6513:-1,6514:-1,6515:-1
+
+//
+//=================================
+// 				Usaveis
+// Basico
+prontera,147,171,6	shop	Utilidades#base	536,611:-1,1065:-1,713:-1
+
+// PVE
+prontera,146,169,6	shop	Bob, O Cacador#base	536,645:-1,656:-1,601:-1,602:-1
+
+// Skills Rank C
+prontera,148,174,6	shop	Pergaminhos Ninpou#base	536,686:-1,688:-1,690:-1,690:-1
+//
+//=================================
+// 				Comidas
+prontera,150,174,6	shop	K. o Fruteiro#base	535,512:-1,513:-1,514:-1,516:-1,535:-1
+
+prontera,149,171,0	shop	Acogueiro#base	54,517:-1
+
+prontera,148,169,7	shop	Leiteiro#base	90,519:-1
+
+prontera,147,167,7	shop	Peixeiro#base	90,579:-1
+louyang,259,127,4	duplicate(Peixeiro#base)	Peixeiro#base_1	90
+
+//
+//=================================
+// Cozinheiro
+prontera,153,174,3	shop	Mestre dos Temperos#base	755,6261:-1,6262:-1,6297:-112849:-1,581:-1,7482:-1,580:-1;577:-1,7457:-1;7454:-17455:-1,7453:-1,7456:-1,7452:-1,579:-1
+prontera,152,172,1	shop	Livros de Culinaria#base	700,7472:-1,7473:-1,7474:-1,7475:-1,7476:-1
+prontera,151,170,5	shop	Utensilios de Cozinha#base	86,12849:-1,12125:-1,12126:-1,12127:-1,6248:-1,6250:-1,6251:-1,6255:-1
+//prontera,150,168,4	shop	Kit Culinario#base		700,12125:20,12126:40,12127:60,12128:80,12129:100
+//
+//=================================
+//
+// PET - Invocações
+prontera,156,174,4	shop	Domador de Invocacoes#base	125,537:-1,643:-1,10013:-1,10014:-1,554:-1,6114:-1,6113:-1,6110:-1,6115:-1,6100:-1,6098:-1,6112:-1,6104:-1,6108:-1,6111:-1,6095:-1,6099:-1,6096:-1,6097:-1,6094:-1
+

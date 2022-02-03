@@ -1,0 +1,201 @@
+//Author-Script		Goddameit	My forum : http://bit.ly/MDuQ9F	
+//Author-Map		TrojanWorm
+//Version		2012-10-31
+
+//Don't re-release in anywhere and anyway
+
+//////////////////////////////////////////////////////////////////////////
+
+endless_war	mapflag	battleground	2
+endless_war,218,86,0	script	#BattleGroundwarpA2	100,{
+	end;
+OnInit:
+	waitingroom "Join Team A(Click)",2,"#BattleGroundwarpA2::OnJoin",1;
+	end;
+OnJoin:
+	if(!$@bg_id_a)
+		set $@bg_id_a,waitingroom2bg("endless_war",205,85,"","");
+	else
+		waitingroom2bg_single($@bg_id_a,"endless_war",205,85,"#BattleGroundwarpA2");
+	warpwaitingpc "endless_war",205,85;
+	end;
+}
+endless_war,40,86,0	script	#BattleGroundwarpB2	100,{
+	end;
+OnInit:
+	waitingroom "Join Team B(Click)",2,"#BattleGroundwarpB2::OnJoin",1;
+	end;
+OnJoin:
+	if(!$@bg_id_b)
+		set $@bg_id_b,waitingroom2bg("endless_war",53,85,"","");
+	else
+	waitingroom2bg_single($@bg_id_b,"endless_war",53,85,"#BattleGroundwarpB2");
+	warpwaitingpc "endless_war",53,85;
+	end;
+}
+endless_war,165,86,0	script	#BattleGroundwarpA1	45,2,2,{
+	warp "endless_war",161,86;
+	end;
+}
+endless_war,90,86,0	script	#BattleGroundwarpB1	45,2,2,{
+	warp "endless_war",94,86;
+	end;
+}
+prontera,150,176,4	script	Battle Ground	100,{
+	if(.status==2)
+	{
+		mes "Game is running.";
+		close;
+	}
+	if(.status==1)
+	{
+		
+		if(.playernm>=128)
+		{
+			mes "Sorry, full";
+			close;
+		}
+		select("Join");
+		if(!.playerid[1])
+		{
+			callsub OnEndd;
+			initnpctimer;
+		}
+		set .playernm,.playernm+1;
+		set .playerid[.playernm],getcharid(0);
+		mes "Complete";
+		close;
+	}
+	end;
+OnClock0100:
+OnClock0302:
+OnClock0500:
+OnClock0700:
+OnClock0900:
+OnClock1100:
+OnClock1300:
+OnClock1500:
+OnClock1700:
+OnClock1900:
+OnClock2100:
+OnClock2300:
+	callsub OnActive;
+	end;
+OnActive:
+	callsub OnEndd;
+	set .status,1;
+	Announce "[Battle Ground]:Someone active the game! Go to prontera,150,180 and join us!",0;
+	end;
+OnTimer60000:
+	if(.playernm<1)
+	{
+		Announce "[Battle Ground]:Sorry, player amount isn't enough",0;
+		callsub OnEndd;
+		end;
+	}
+	Announce "[Battle Ground]:Event is ready!",0;
+	for(set .@i,1;.@i<=.playernm;set .@i,.@i+1)
+	{
+		if(.@i%2==0)
+			warpchar "endless_war",218,86,.playerid[.@i];
+		else
+			warpchar "endless_war",40,86,.playerid[.@i];
+	}
+	callsub OnEnab2;
+	end;
+OnTimer90000:
+	set .status,2;
+	Announce "[Battle Ground]:Go!",0;
+	bg_monster $@bg_id_a,"endless_war",128,120,"A",1907,"Battle Ground::OnAdestory";
+	bg_monster $@bg_id_b,"endless_war",127,46,"B",1907,"Battle Ground::OnBdestory";
+	callsub OnEnab1;
+	end;
+OnTimer190000:
+	if(.point[1]>.point[2])
+	{
+		Announce "[Battle Ground]:Team A Win!",0;
+	}else if(.point[2]>.point[1])
+	{
+		Announce "[Battle Ground]:Team B Win!",0;
+	}else
+	{
+		Announce "[Battle Ground]:Draw!",0;
+	}
+	sleep2 3000;
+	callsub OnEndd;	
+	end;
+OnBdestory:
+	set .point[1],.point[1]+5;
+	set .point[2],.point[2]-3;
+	bg_updatescore "endless_war",.point[1],.point[2];
+	detachrid;
+	sleep2 10000;
+	bg_monster $@bg_id_b,"endless_war",127,46,"B",1907,"Battle Ground::OnBdestory";
+	end;
+OnAdestory:
+	set .point[2],.point[2]+5;
+	set .point[1],.point[1]-3;
+	bg_updatescore "endless_war",.point[1],.point[2];
+	detachrid;
+	sleep2 10000;
+	bg_monster $@bg_id_a,"endless_war",128,120,"A",1907,"Battle Ground::OnAdestory";
+	end;
+OnEndd:
+	set .status,0;
+	bg_destroy $@bg_id_a;
+	bg_destroy $@bg_id_b;
+	set $@bg_id_a,0;
+	set $@bg_id_b,0;
+	setarray .point[1],0,0;
+	killmonsterall "endless_war";
+	bg_updatescore "endless_war",.point[1],.point[2];
+	deletearray .playerid[0],128;
+	mapwarp "endless_war","prontera",150,180;
+	callsub OnDisa;
+	return;
+OnEnab1:
+	enablenpc "#BattleGroundwarpA1";
+	enablenpc "#BattleGroundwarpB1";
+	return;
+OnEnab2:
+	enablenpc "#BattleGroundwarpA2";
+	enablenpc "#BattleGroundwarpB2";
+	return;
+OnDisa:
+	disablenpc "#BattleGroundwarpA1";
+	disablenpc "#BattleGroundwarpB1";
+	disablenpc "#BattleGroundwarpA2";
+	disablenpc "#BattleGroundwarpB2";
+	return;
+OnInit:
+	sleep2 10000;
+	setwall "endless_war",218,87,1,1,0,"BattleGroundwarpA21";
+	setwall "endless_war",219,87,1,1,0,"BattleGroundwarpA22";
+	setwall "endless_war",219,86,1,1,0,"BattleGroundwarpA23";
+	setwall "endless_war",219,85,1,1,0,"BattleGroundwarpA24";
+	setwall "endless_war",218,85,1,1,0,"BattleGroundwarpA25";
+	setwall "endless_war",217,85,1,1,0,"BattleGroundwarpA26";
+	setwall "endless_war",217,86,1,1,0,"BattleGroundwarpA27";
+	setwall "endless_war",217,87,1,1,0,"BattleGroundwarpA28";
+	setwall "endless_war",40,87,1,1,0,"BattleGroundwarpB21";
+	setwall "endless_war",41,87,1,1,0,"BattleGroundwarpB22";
+	setwall "endless_war",41,86,1,1,0,"BattleGroundwarpB23";
+	setwall "endless_war",41,85,1,1,0,"BattleGroundwarpB24";
+	setwall "endless_war",40,85,1,1,0,"BattleGroundwarpB25";
+	setwall "endless_war",39,85,1,1,0,"BattleGroundwarpB26";
+	setwall "endless_war",39,86,1,1,0,"BattleGroundwarpB27";
+	setwall "endless_war",39,87,1,1,0,"BattleGroundwarpB28";
+	callsub OnEndd;
+	end;
+OnPCKillEvent:
+	if(strcharinfo(3)=="endless_war" && $@bg_id_a && $@bg_id_b)
+	{
+		if(getcharid(4) == $@bg_id_a)
+		{
+			set .point[1],.point[1]+1;
+		}else
+			set .point[2],.point[2]+1;
+		bg_updatescore "endless_war",.point[1],.point[2];
+	}
+	end;
+}

@@ -1,0 +1,47 @@
+//==================================================================================================================================================================
+// Entrada Battleground
+//==================================================================================================================================================================
+
+treinamento,78,144,4	script	Batalhas Campais	882,{
+
+.@npc$ = "[" + strnpcinfo(1) + "]";
+
+if(BaseLevel < 999) { 
+	mes .@npc$;
+	mes "O nível mínimo necessário para entrar nesse evento é 999"; 
+	close;
+}
+
+if(Class == 1 || Class == 2 || Class == 3 || Class == 4 || Class == 7 || Class == 8 || Class == 9 || Class == 10) {
+	mes .@npc$; 
+	mes "Você precisa ser Jounin para entrar."; 
+	close;
+}
+
+mes .@npc$;
+mes "Bem-vindo as batalhas campais, aqui dois grupos disputam as batalhas pra receberem pontos de batalha (PB), este podem ser trocados por grandes recompensas";
+next;
+mes "Gostaria de entrar na sala de batalhas campais?";
+menu "- Sim",L_sim,"- Não",L_nao;
+
+L_nao:
+	close;
+
+L_sim:
+	next;
+	mes .@npc$;
+	mes "Boa sorte!";
+	close2;
+	warp "bat_room",154,150;
+	end;
+}
+
+bat_room,160,150,5	script	Retorno#2	99,{
+
+	mes "[Retorno]";
+	mes "Gostaria de retornar para o Campo de Treinamento ?";
+	if(select("- Sim:- Não") == 2) { close; }
+	
+	warp "treinamento",86,130;
+
+}

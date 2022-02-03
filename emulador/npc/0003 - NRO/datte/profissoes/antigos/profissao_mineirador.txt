@@ -1,0 +1,88 @@
+konoha,57,183,5	script	Minerador Chefe::pro_min	59,{
+
+if(mineirador == 1) goto L_temprofissao;
+if (checkquest(2032) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Hey, você que é o ninja que veio trabalhar conosco?";
+menu "É... tá, sou eu",L_SS,"Não...",L_no;
+//========================================================================
+//	Lenhador
+//========================================================================
+
+L_SS:
+next;
+mes "Ah muito obrigado por vir, agora preciso que você colete alguns itens e faça umas outras coisas para que eu possa fazer as armas que o vendedor de armas me pediu";
+next;
+mes "Aqui está a lista de tarefas:";
+next;
+mes "- Obter 60x Shuriken Despedaçado.";
+mes "- Obter 120x Dente Fossilizado.";
+mes "- Obter 60x Shuriken Gasto.";
+mes "- Obter 1x Pele de Verme.";
+mes "- Matar 100x Genin";
+setquest 2032;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2032,hunting) != 2) {mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(7156) < 60) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1053) < 120) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7072) < 60) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(955) < 1) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Ah, você já retornou, rs! Ótimo, aqui estão alguns itens pra você começar a vida de mineiração.";
+next;
+mes "Você agora é um minerador";
+completequest 2032;
+delitem 7156,60;
+delitem 1053,120;
+delitem 7072,60;
+delitem 955,1;
+getitem 1452,1;
+getitem 5031,1;
+set mineirador,1;
+announce "[Profissão] "+strcharinfo(0)+" completou a quest de minerador",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Bem-vindo de volta, está interessado em melhorar seus conhecimentos sobre mineração?";
+menu "Sim",upar,"Não",L_no,"Quero receber outra picareta",luva;
+
+luva:
+if (countitem(1452) >= 1) {mes "Você não precisa de outra picareta"; close;}
+mes "Aqui está";
+getitem 1452,1;
+close;
+
+upar:
+next;
+mes "Upar sua mineração signfica que terá um conhecimento melhor sobre cada local de mineração, e poderá minerar os mais raros recursos do mundo, o que é essencial pra forjar novos equipamentos";
+next;
+mes "Seu nível de mineração está "+level_minerador+", para subir de nível são necessários 3 milhões de zeny, e 1 Livro antigo de mineração";
+mes "Gostaria de aumentar de nível?";
+menu "Sim",upar1,"Não",L_no;
+
+upar1:
+next;
+if (level_minerador >=100) {mes "Seu nível de mineração está no máximo"; close;}
+if (countitem(1550) < 1) {mes "Você não possui o livro antigo de mineração"; close;}
+if (Zeny < 3000000) {mes "Você não possui os 3 milhões de zeny necessários"; close;}
+set Zeny, Zeny-3000000;
+delitem 1550,1;
+set level_minerador,level_minerador +1;
+if (level_minerador ==100) {Achieve( 20); end;}
+mes "Nível de mineração aumentado com sucesso, nível está agora "+level_minerador+"";
+close;
+}
+
+
+areia,274,57,5	duplicate(pro_min)	Minerador Chefe#1	59,{
+kiri,281,372,5	duplicate(pro_min)	Minerador Chefe#2	59,{
+nuvem,61,245,5	duplicate(pro_min)	Minerador Chefe#3	59,{

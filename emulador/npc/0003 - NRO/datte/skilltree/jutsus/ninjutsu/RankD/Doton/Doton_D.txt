@@ -1,0 +1,104 @@
+gld_dun04,105,39,5	script	Armadilha Atordoante::doton3	831,{
+if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 3) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (WeaponLvl2 < 20) {mes "Você precisa de ninjutsu level 20 pra aprender esse jutsu"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de doton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Armadilha Atordoante";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_ST,"Agora não",L_no;
+
+//========================================================================
+//	Armadilha Atordoante
+//========================================================================
+
+L_ST:
+if (armadilha_doton == 1) {next; mes "Você já aprendeu esse jutsu"; close;}
+if (checkquest(1012) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Rabo de cobra";
+mes "- Derrotar 10x Girino";
+setquest 1012;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1012,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+if (countitem(934) < 200) {next; mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 934,200;
+skill 116,1,0;
+set armadilha_doton,1;
+set skillgenin1,4;
+completequest 1012;
+erasequest 1012;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Doton]",0;
+}
+//=========================================================================
+//	Suna Raishin
+//=========================================================================
+prt_sewb3,96,59,5	script	Suna Raishin::doton4	831,{
+if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 4) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+if (WeaponLvl2 < 20) {mes "Você precisa de ninjutsu level 20 pra aprender esse jutsu"; close;}
+
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de doton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Suna Raishin";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SB,"Agora não",L_no;
+
+L_SB:
+if (Raishin == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+if (checkquest(1013) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 200x Pele de sapo";
+mes "- Derrotar 10x Filhote de cobra";
+mes "- Estudar ninjutsu básico.";
+setquest 1013;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1013,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+if (countitem(7155) < 200) {next; mes "Você não completou seu treinamento."; close;}
+if (nin_basico != 1) {next; mes "Você não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7155,200;
+skill 90,1,0;
+set Raishin,1;
+completequest 1013;
+erasequest 1013;
+set skillgenin1,5;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Doton]",0;
+}
+
+gl_sew02,19,122,5	duplicate(doton3)	Armadilha Atordoante#d7	831
+prt_sewb4,101,104,5	duplicate(doton4)	Suna Raishin#d8	831
+
+gl_sew04,93,154,5	duplicate(doton3)	Armadilha Atordoante#d9	831
+gl_sew03,159,157,5	duplicate(doton4)	Suna Raishin#d10	831
+
+beach_dun3,194,206,5	duplicate(doton3)	Armadilha Atordoante#d11	831
+alde_dun04,236,49,5	duplicate(doton4)	Suna Raishin#d12	831

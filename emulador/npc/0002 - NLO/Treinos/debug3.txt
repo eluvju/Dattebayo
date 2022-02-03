@@ -1,0 +1,15 @@
+sec_in02,180,184,5	script	Debug#56	99,{
+if(checkquest(1001,hunting) == 1 || checkquest(2001,hunting) == 1 || checkquest(3001,hunting) == 1 || checkquest(4001,hunting) == 1) { 
+			mes "[Taijutsu Básico]";
+			mes "Vejo que você está fazendo está skill.";
+			mes "Gostaria de desistir dela ?";
+			if(select("- Não:- Sim") == 2) {
+			if(checkquest(1001) >= 1) { completequest 1001; erasequest 1001; }
+			if(checkquest(2001) >= 1) { completequest 2001; erasequest 2001; }
+			if(checkquest(3001) >= 1) { completequest 3001; erasequest 3001; }
+			if(checkquest(4001) >= 1) { completequest 4001; erasequest 4001; }
+			if(skill_basica > 0) { set skill_basica,skill_basica -1; }	
+			mes "[Taijutsu Básico]";
+			mes "Missão Cancelada com Sucesso"; 
+			close;
+			}	

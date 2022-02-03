@@ -1,0 +1,339 @@
+-	script	Evento#LV	LostVillage#LV -1,{
+
+OnInit:
+set $LVinfo[1], 0;
+end;
+
+OnClock1430:
+OnClock2200:
+Announce "[Lost Village]: A entrada para o Lost Village está aberta e fechará em 30 minutos.",0;
+set $LVinfo[1], 1;
+monster "gonryun",0,0,"Village Guardian",1131,1,strnpcinfo(0)+"::OnLVGuardianKill";
+end;
+
+OnClock1630:
+OnClock0000:
+if($LVinfo[1] == 0) end;
+Announce "[Lost Village]: Evento finalizado. Não obtivemos nenhum vencedor",0;
+set $LVinfo[1], 0;
+monster "gonryun",0,0,"Village Guardian",1131,1,strnpcinfo(0)+"::OnLVGuardianKill";
+end;
+
+OnLVGuardianKill:
+MapAnnounce "gonryun","[Lost Village]: "+strcharinfo(0)+" matou o guardião. Um premio de 10 moedas foi le dado.",0;
+getitem 674, 10;
+end;
+
+OnClock1500:
+OnClock2230:
+MapAnnounce "gonryun","[Lost Village]: Um baú cheio de tesouros apareceu no mapa.",0;
+monster "gonryun",0,0,"Baú do Tesouro",1361,1,strnpcinfo(0)+"::OnBauKilled";
+sleep(2000);
+Announce "[Lost Village]: A entrada para o Lost Village fechou-se.",0;
+set $LVinfo[1],2;
+end;
+
+OnClock1433:
+OnClock1436:
+OnClock1439:
+OnClock1442:
+OnClock1445:
+OnClock1448:
+OnClock1451:
+OnClock1454:
+OnClock1457:
+OnClock2203:
+OnClock2206:
+OnClock2209:
+OnClock2212:
+OnClock2215:
+OnClock2218:
+OnClock2221:
+OnClock2224:
+OnClock2227:
+MapAnnounce "gonryun","[Lost Village]: Um baú cheio de tesouros apareceu no mapa.",0;
+monster "gonryun",0,0,"Baú do Tesouro",1362,1,strnpcinfo(0)+"::OnBauKilled";
+end;
+
+OnBauKilled:
+setarray .LVbau[1],749,1079,7116,516,552,554,581,594,612,7206;
+setarray .LVbaup[1],1,1,6,40,30,20,20,18,10,42; //188
+set .@prize, rand(1,200);
+set .@resto, 0;
+for( set .@i, 1; .@i < getarraysize(.LVbau); set .@i, .@i + 1 ){
+if(.@prize <= .LVbaup[.@i]+.@resto) break;
+set .@resto, .@resto + .LVbaup[.@i];
+}
+if(.@prize > 188){
+MapAnnounce "gonryun","[Lost Village]: O ninja "+strcharinfo(0)+" abriu um baú, porém ele estava vazio.",0;
+end;
+}
+MapAnnounce "gonryun","[Lost Village]: O ninja "+strcharinfo(0)+" abriu um baú e recebeu "+getitemname(.LVbau[.@i])+".",0;
+getitem .LVbau[.@i], 1;
+end;
+
+OnPCKillEvent:
+if($LVinfo[1] != 0 && strcharinfo(3) == "gonryun"){
+set BKpts, BKpts+1;
+dispbottom "Pontos: "+BKpts;
+sleep2(2000);
+if($LVinfo[1] == 2 && strcharinfo(3) == "gonryun" && getmapusers("gonryun") == 1){
+getitem 674, 10;
+Announce "[Lost Village]: O ninja "+strcharinfo(0)+" é o vencedor do Lost Village.",0;
+killmonster "gonryun",strnpcinfo(0)+"::OnLVGuardianKill",1;
+set $LVinfo[1], 0;
+}
+}
+end;
+
+OnPCDieEvent:
+if($LVinfo[1] != 0 && strcharinfo(3) == "gonryun"){
+if($LVinfo[1] == 2 && strcharinfo(3) == "gonryun"){
+if(getmapusers("gonryun") == 5) getitem 674, 2;
+if(getmapusers("gonryun") == 4) getitem 674, 3;
+if(getmapusers("gonryun") == 3) getitem 674, 4;
+if(getmapusers("gonryun") == 2) getitem 674, 5;
+}
+warp "kakashi",0,0;
+MapAnnounce "gonryun","[Lost Village]: O ninja "+strcharinfo(0)+" foi assasinado, sobrando "+getmapusers("gonryun")+" no evento.",0;
+}
+end;
+}
+
+gonryun.gat,158,122,4	script	Lost Village#In	46,{
+if(getmapusers ("gonryun") == 1 && $LVinfo[1] == 2){
+getitem 674, 10;
+Announce "[Lost Village]: O ninja "+strcharinfo(0)+" é o vencedor do Lost Village.",0;
+set $LVinfo[1], 0;
+killmonster "gonryun",strnpcinfo(0)+"::OnLVGuardianKill",1;
+}
+end;
+}
+
+kakashi,78,139,3	script	Lost Village#Out	48,{
+
+// Nome do npc
+set .npc$,"^800000[Lost Village]^000000";
+
+//if(getgmlevel() > 5 && $LVinfo[1] == 0){
+//mes "Gostaria de abrir o evento?";
+//if(select("Não:Sim") == 1) close;
+//Announce "[Lost Village]: Evento iniciado pelo Staffer "+strcharinfo(0)+"! Boa sorte a todos.",0;
+//set $LVinfo[1], 1;
+//close2;
+//partyleave;
+//warp "gonryun",0,0;
+//end;
+//}
+
+//if(getgmlevel() > 5 && $LVinfo[1] == 1){
+//mes "Gostaria de fechar o evento?";
+//if(select("Não:Sim") == 1) close;
+//Announce "[Lost Village]: Evento finalizado pelo Staffer "+strcharinfo(0)+".",0;
+//set $LVinfo[1],0;
+//close;
+//end;
+//}
+
+
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+switch(select("Entrar["+getmapusers ("gonryun")+"]:Usar Pontos:Usar Coins:Trocar Coins")){
+case 1:
+if($LVinfo[1] != 1){
+mes .npc$;
+mes "O evento está fechado no momento.";
+close;
+end;
+}
+if(BaseLevel < 999){
+mes .npc$;
+mes "Você precisa ser level 999 para participar.";
+close;
+end;
+}
+close2;
+partyleave;
+warp "gonryun",0,0;
+end;
+
+case 2:
+next;
+mes .npc$;
+mes "Você possui: "+BKpts+" pontos.";
+//mes "Premiações desabilitadas temporariamente.";
+//close;
+//end;
+mes "Oque gostaria de adiquirir?";
+setarray $LVinfo[2],12210,7205,7206,516,552,554,581,594,612,627,7023,7611,1008,1014,7442,7169,724,7513,7524,7481,7027;
+setarray $LVinfo2[1],3,5,10,20,30;
+setarray .@LVreward$[1],"Perg. Furtividade","Manual Básico","Manual Avançado","Kill KG","Item Avançado";
+switch(select("Perg. Furtividade[3]:Manual Básico[3]:Manual Avançado[5]:KillKG[15]:Item Avancado[25]")){
+case 1:
+set .@prize, 2;
+set .@pts, 1;
+break;
+case 2:
+set .@prize, 3;
+set .@pts, 2;
+break;
+case 3:
+set .@prize, 4;
+set .@pts, 3;
+break;
+case 4:
+set .@prize, rand(5,11);
+set .@pts, 4;
+break;
+case 5:
+set .@prize, rand(12,22);
+set .@pts, 5;
+break;
+}
+next;
+mes .npc$;
+mes "Gostaria de adiquirir um "+.@LVreward$[.@pts]+" por "+$LVinfo2[.@pts]+" pontos?";
+if(select("Não:Sim") == 1) close;
+if($LVinfo2[.@pts]> BKpts){
+next;
+mes .npc$;
+mes "Você não possui pontos suficientes.";
+close;
+end;
+}
+getitem $LVinfo[.@prize], 1;
+set BKpts, BKpts - $LVinfo2[.@pts];
+close;
+end;
+
+case 3:
+next;
+mes .npc$;
+mes "Você possui: "+countitem(674)+" coins.";
+mes "Premiações desabilitadas temporariamente.";
+close;
+end;
+mes "Oque gostaria de adiquirir?";
+setarray $LVinfo3[4],12210,7205,7206,516,552,554,581,594,612,627,7023,7611,1008,1014,7442,7169,724,7513,7524,7481,7027,3,3,5,5,7,10,12,15,18,20,20,20,20,20,20,20,20,20,20,30;
+switch(select("Perg. Furtividade[3]:Manual Básico[3]:Manual Avançado[5]:KillKG1[5]:KillKG2[7]:KillKG3[10]:KillKG4[12]:KillKG5[15]:KillKG6[18]:KillKG7[20]Lâmina[20]:Máscara[20]:Colar[20]:Mandíbula[20]:Selo[20]:Bagua[20]:Rubi[20]:Relógio[20]:Esfera[20]:Livro[20]:Chave[30]")){
+case 1:
+set .@prize, 2;
+break;
+case 2:
+set .@prize, 3;
+break;
+case 3:
+set .@prize, 4;
+break;
+case 4:
+set .@prize, 5;
+break;
+case 5:
+set .@prize, 6;
+break;
+case 6:
+set .@prize, 7;
+break;
+case 7:
+set .@prize, 8;
+break;
+case 8:
+set .@prize, 9;
+break;
+case 9:
+set .@prize, 10;
+break;
+case 10:
+set .@prize, 11;
+break;
+case 11:
+set .@prize, 12;
+break;
+case 12:
+set .@prize, 13;
+break;
+case 13:
+set .@prize, 14;
+break;
+case 14:
+set .@prize, 15;
+break;
+case 15:
+set .@prize, 16;
+break;
+case 16:
+set .@prize, 17;
+break;
+case 17:
+set .@prize, 18;
+break;
+case 18:
+set .@prize, 19;
+break;
+case 19:
+set .@prize, 20;
+break;
+case 20:
+set .@prize, 21;
+break;
+case 21:
+set .@prize, 22;
+break;
+}
+next;
+mes .npc$;
+mes "Gostaria de adiquirir um "+getitemname($LVinfo3[.@prize])+" por "+$LVinfo3[.@prize+21]+" pontos?";
+if(select("Não:Sim") == 1) close;
+if($LVinfo3[.@prize+21] > BKpts){
+next;
+mes .npc$;
+mes "Você não possui pontos suficientes.";
+close;
+end;
+}
+getitem $LVinfo3[.@prize], 1;
+set BKpts, BKpts - $LVinfo3[.@prize+21];
+close;
+end;
+
+case 4:
+mes "Trocas desabilitadas temporariamente.";
+close;
+end;
+
+mes .npc$;
+mes "Eu pago 20 Pontos em cada Coin, quantos Coins gostaria de trocar?";
+input .@coin;
+next;
+set .@coin2, .@coin*20;
+mes .npc$;
+mes "Deseja trocar "+.@coin+" Coins em "+.@coin2+" Pontos?";
+if(select("Sim:Não") == 2) close;
+if(.@coin < 1 || .@coin > countitem(674)){
+next;
+mes .npc$;
+mes "Quantidade inválida.";
+close;
+end;
+}
+delitem 674, .@coin;
+set BKpts, BKpts + .@coin2;
+close;
+end;
+}
+end;
+}
+
+gonryun	mapflag	nowarp
+gonryun	mapflag	noteleport
+gonryun	mapflag	nowarpto
+gonryun	mapflag	nobranch
+gonryun	mapflag	nosave	SavePoint
+gonryun	mapflag	nomemo
+gonryun	mapflag	nopenalty
+gonryun	mapflag	noexp
+gonryun	mapflag	pvp
+gonryun	mapflag	pvp_noguild
+gonryun	mapflag	pvp_noparty
+gonryun	mapflag	noparty

@@ -1,0 +1,17 @@
+biblioteca,73,19,4	script	Shuriken	120,{
+	mes "[Shuriken]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Aqui você pode adquirir 2 skill";
+	mes "Throw Shuriken";
+	mes "Throw Kunai";
+	next;
+			skill 523,10,3;
+			skill 524,10,3;
+			mes "[Shuriken]";
+			mes "Parabéns!";
+			close;
+OnInit:
+	waitingroom "[Shuriken]",0;
+}
+
+}

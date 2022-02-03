@@ -1,0 +1,61 @@
+konoha,62,276,5	script	Poppo::perg_tres	831,{
+
+if (checkquest(2076) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Oi viajante, meu nome é Poppo, sou um vendedor de pergaminhos raros";
+next;
+mes "O Pergaminho Fuuton Básico é um pergaminho raro que aumenta o dano dos Jutsus de propriedade Fuuton";
+mes "Gostaria de ter esse pergaminho?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Pergaminho Fuuton Básico
+//========================================================================
+
+L_SS:
+next;
+mes "Para obter este pergaminho,você precisa :";
+mes "- Obter 40x Pena Macia.";
+mes "- Obter 30x Tanga de Tigre.";
+mes "- Obter 80x Garra de Ave.";
+mes "- Matar 50 Akamaru";
+setquest 2076;
+set quest_perg_tres,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(perg_mobs_tres < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7063) < 40) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7267) < 30) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(917) < 80) {mes "Você ainda não completou sua missão"; close;}
+mes "Me trouxe o que havia pedido, tome seu pergaminho!";
+completequest 2076;
+erasequest 2076;
+delitem 7063,40;
+delitem 7267,30;
+delitem 917,80;
+set quest_perg_tres,0;
+set perg_mobs_tres,0;
+getitem 2112,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	perg#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1106 && quest_perg_tres == 1) {set perg_mobs_tres,perg_mobs_tres +1; announce "[Quest de equipamento] Você já derrotou "+perg_mobs_tres+" / 50 Akamaru",bc_blue|bc_self; end;}
+
+}
+
+
+areia,272,250,5	duplicate(perg_tres)	Poppo#1	831
+kiri,186,371,5	duplicate(perg_tres)	Poppo#2	831
+nuvem,92,280,5	duplicate(perg_tres)	Poppo#3	831

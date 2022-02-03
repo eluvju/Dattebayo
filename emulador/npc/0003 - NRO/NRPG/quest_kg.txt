@@ -1,0 +1,182 @@
+gef_fild10,103,223,4	script	Kekkei Genkai	990,{
+
+if (byakugan > 0) {mes "Você já possui um Kekkei Genkai"; close;}
+if (SELO1 > 0) {mes "Você já possui um Kekkei Genkai"; close;}
+if (SELO2 > 0) {mes "Você já possui um Kekkei Genkai"; close;}
+if (GELO > 0) {mes "Você já possui um Kekkei Genkai"; close;}
+if (NARA2 > 0) {mes "Você já possui um Kekkei Genkai"; close;}
+if (AKIMICHI > 0) {mes "Você já possui um Kekkei Genkai"; close;}
+if (LEE2 > 0) {mes "Você já possui um Kekkei Genkai"; close;}
+if (MARIONETE > 0) {mes "Você já possui um Kekkei Genkai"; close;}
+if (countitem(19068) == 1) {mes "Você já possui um Kekkei Genkai"; close;}
+if (countitem(19069) == 1) {mes "Você já possui um Kekkei Genkai"; close;}
+if (countitem(19070) == 1) {mes "Você já possui um Kekkei Genkai"; close;}
+if (countitem(19003) == 1) {mes "Você já possui um Kekkei Genkai"; close;}
+
+mes "Olá, aqui você descobrir sua Kekkei Genkai para obter um poder maior";
+next;
+mes "Cada Kekkei Genkai possui 4 níveis, para obter o primeiro nível, é preciso fazer a quest que consiste em conseguir 1 sangue preservado";
+next;
+mes "Está interessado em ter a minha ajuda?";
+menu "Sim, estou interessado",L_slot,"Não",L_nao;
+
+L_slot:
+next;
+mes "Ótimo, é sempre bom ter mais força";
+next;
+mes "Qual Kekkei Genkai você deseja obter??";
+menu "Byakugan",L_kunai,"Selo Amaldiçoado do Céu",L_lamina,"Selo Amaldiçoado da Terra",terra,"Hyouton",Hyouton,"Usuário das Sombras",nara,"Baika",baika,"Portões de chakra",lee,"Kugutsu",kugu,"Sharingan",shar;
+
+L_nao:
+close;
+
+L_kunai:
+
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Byakugan como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",sbya,"Não",L_close;
+
+sbya:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19002,1;
+set byakugan,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+
+L_lamina:
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Selo Amaldiçoado do Céu como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",sselo,"Não",L_close;
+
+sselo:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19149,1;
+set SELO1,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+terra:
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Selo Amaldiçoado da Terra como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",sselo2,"Não",L_close;
+
+sselo2:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19150,1;
+set SELO2,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+Hyouton:
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Hyouton como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",sgelo2,"Não",L_close;
+
+sgelo2:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19152,1;
+set GELO,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+
+nara:
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Usuário das sombras como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",snara2,"Não",L_close;
+
+snara2:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19151,1;
+set NARA2,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+baika:
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Baika como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",sgordo2,"Não",L_close;
+
+sgordo2:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19153,1;
+set AKIMICHI,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+lee:
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Portões de Chakra como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",slee2,"Não",L_close;
+
+slee2:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19155,1;
+set LEE2,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+kugu:
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Kugutsu como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",skugu2,"Não",L_close;
+
+skugu2:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19154,1;
+set MARIONETE,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+shar:
+mes "Ótima escolha";
+next;
+mes "Tem certeza que quer Sharingan como sua Kekkei Genkai? É preciso 1 sangue preservado para aprender, só pode ter 1 kekkei genkai por personagem, escolha bem!";
+menu "Sim",sshar2,"Não",L_close;
+
+sshar2:
+next;
+if (countitem(923) < 1) {next; mes "Você ainda não tem o Sangue preservado que precisa pra descobrir sua kekkei genkai"; close;}
+delitem 923,1;
+getitem 19068,1;
+announce "[Descoberta de KG] "+strcharinfo(0)+" Acaba de descobrir sua Kekkei Genkai",bc_blue|bc_all;
+mes "Kekkei Genkai descoberta com sucesso";
+close;
+
+L_close:
+close;
+
+}

@@ -1,0 +1,21 @@
+prontera,147,171,5	script	MvP Rank	75,{
+	query_sql( "DELETE FROM `mvp_ranking` WHERE `name` NOT IN ( SELECT `name` FROM `char` )" );
+	set .@size, query_sql( "select name, points from mvp_ranking where points > 0 order by points desc limit "+ .top, .@name$, .@points );
+	mes "[^FF0000MvP ^0000FFRank ^996600Top ^FF0000" + .top +"^000000]";
+	for (set .@c, 0; .@c < .@size; set .@c, .@c + 1)
+		mes "Top ^FF0000" +(.@c + 1) +"^000000 ^0000FF" + .@name$[.@c] +"^000000 with ^FF0000" + .@points[.@c] +"^000000 MvP killed.";
+	close;
+
+OnInit: // Script Configuration
+	set .a, 0; // Broadcast who killed the MvP and wich MvP and wick Map [0 Off - 1 On]
+	set .top, 10; // Max. Top Rank (Hihgly recommended between 5~10, more maybe bug the server (limited variables)
+	waitingroom "MvP Rank",0;
+	end;
+
+OnNPCKillEvent: // Script execution
+	if ( getmonsterinfo( killedrid,MOB_MODE ) & 0x0020  == 0 ) end;// not an mvp
+	if (.a) // If announce On
+		announce "O Jogador [" +strcharinfo(0) +"] acabou de matar [" +getmonsterinfo(killedrid,0) +"] em [" +strcharinfo(3) +"]",bc_blue|bc_all;
+	query_sql "insert into `mvp_ranking` value ( "+ getcharid(0) +", '"+ escape_sql( strcharinfo(0) ) +"', 1 ) on duplicate key update `points` = `points` + 1";
+	end;
+}

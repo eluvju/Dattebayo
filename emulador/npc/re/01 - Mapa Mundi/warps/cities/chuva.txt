@@ -1,0 +1,37 @@
+//Permissão Rank A Konoha e Suna
+
+moc_fild02,350,339,0	script	 #enterchuva0	45,2,2,{
+	
+	OnTouch:
+	callfunc("warps"),	// Função
+	"ein_fild09",			// Mapa
+	296,				// Coordenada X
+	63,				// Coordenada Y
+	0,				// Quest (default +1000_
+	502,					// Item (Default 0)
+	1;					// Item Quantidade
+}
+ein_fild09,295,44,0	warp	enterchuva0-1	2,2,moc_fild02,350,333
+
+// Estalagem
+ein_in01,264,105,0	warp	barseiscaminhos0	1,1,ein_fild09,183,61
+ein_fild09,183,57,0	warp	barseiscaminhos0-1	1,1,ein_in01,268,105
+
+ein_in01,289,89,0	script	 #barseiscaminhos1	45	,1,1,{
+
+	.@npc$ = "^7B68EE[ Bar dos Seis Caminhos ]^000000";
+
+	if (nukenin == 1) goto entrar;
+	else mes .@npc$;
+	mes " ";
+	mes "Esta area e apenas para ^FF0000Nukenins^000000!.";
+	mes " ";
+	mes "Caia fora enquanto sua vida ainda e sua.";
+	close;
+
+	entrar:
+	warp "ein_in01",198,223;
+	end;
+} 
+
+ein_in01,194,223,0	warp	barseiscaminhos1-1	1,1,ein_in01,285,89

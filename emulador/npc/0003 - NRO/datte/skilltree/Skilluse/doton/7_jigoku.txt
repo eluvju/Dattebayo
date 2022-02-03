@@ -1,0 +1,49 @@
+-	script	on_PC_UseSkilld07	-1,{
+    end;
+//When a Character uses a skill
+
+//jigoku
+
+onPcUseSkillEvent:
+
+           if(lskillid == 92) {
+
+
+if (getskilllv(92) == 1) {
+
+if (D_Jigoku != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill92 >= 50) {skill 92,2,0; set skill92,0; dispbottom "[Sys] Level up"; end; }
+set skill92,skill92 +1;
+dispbottom "[Jutsu level] Doton Jigoku level 1: "+skill92+" de 50";
+
+end;
+
+}
+
+if (getskilllv(92) == 2) {
+if (D_Jigoku != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill92 >= 100) {skill 92,3,0; set skill92,0; dispbottom "[Sys] Level up"; end;}
+set skill92,skill92 +1;
+dispbottom "[Jutsu level] Doton Jigoku level 2: "+skill92+" de 100";
+
+end;
+
+}
+
+if (getskilllv(92) == 3) {
+
+if (D_Jigoku != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill92 >= 150) {skill 92,4,0; set skill92,0; dispbottom "[Sys] Level up"; end;}
+set skill92,skill92 +1;
+dispbottom "[Jutsu level] Doton Jigoku level 3: "+skill92+" de 150";
+
+end;
+
+}
+
+                end;
+            }    
+}

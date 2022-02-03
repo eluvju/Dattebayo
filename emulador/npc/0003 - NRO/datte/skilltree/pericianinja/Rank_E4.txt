@@ -1,0 +1,41 @@
+kakashi,78,89,5	script	Shinobi Misterioso#4	831,{
+
+if (checkquest(3056) == 1) goto L_go;
+if (getskilllv(29)) {mes "Você já sabe esse jutsu"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+mes "Ei.. você!";
+mes "Aposto que você não sabe esse jutsu que eu sei, haha sou melhor que você, eu sei o Concentrar chakra nos pés e você não!";
+next;
+mes "Mas como eu sou educado, eu vou lhe ensinar, porque um dia eu quero ser o kage da minha vila";
+next;
+mes "Gostaria de aprender?";
+menu "Sim, eu quero",L_GI,"Agora não",L_no;
+
+//========================================================================
+//	Gian
+//========================================================================
+
+L_GI:
+mes "Pra realizar esse treinamento você precisa fazer o seguinte:";
+mes "Pegar 40 Garras de Rato";
+setquest 3056;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7007) < 40) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7007,40;
+skill 29,10,0;
+completequest 3056;
+erasequest 3056;
+announce "[Jutsu Rank E] "+strcharinfo(0)+" completou a quest do Concentrar chakra nos pés",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+}

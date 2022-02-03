@@ -1,0 +1,1168 @@
+//===== eAthena Script =======================================
+//= Ninja Skill Tree 
+//===== By: ==================================================
+//= Kichi
+//===== Current Version: =====================================
+//= Version 1.0 Initialitation of NPC
+//= 1.1 Add unlearn skill and delete item
+//===== Description: ========================================= 
+//= Skill Tree of ninja, base concept on Elder Scroll Skyrim.
+//============================================================
+
+
+
+yuno_in02,105,164,5	script	Densetsu	51,{
+L_MainTree:
+set @contagem,0;
+	mes "Este é o sistema Densetsu, uma série de habilidades passivas que podem ser liberadas com um item chamado ^B22222Chakra Lendário.^000000";
+	next;
+	mes "Você poderá escolher passivas de qualquer treinamento, porém só é possível abrir uma cada vez, por exemplo para pegar a segunda passiva, só escolhendo a primeira antes. O máximo de passivas em um personagem é 40. Para maiores informações, consulte o site.";
+	next;
+	mes "Agora que sabe sobre o sistema, Qual árvore principal gostaria de ver?";
+	for (set .@i,1;.@i<=getarraysize(.maintree$)-1;set .@i,.@i+1){
+		set .@menumain$, .@menumain$ + .maintree$[.@i]+":";
+	}
+	set .@pilih, select(.@menumain$);
+	
+	switch(.@pilih){
+		case 1:
+			callsub SkillDesc,.@pilih;
+			for (set .@j,1;.@j<=getarraysize(.subtree1$)-1;set .@j,.@j+1){
+				setarray .@playersubtree[.@j],getd("sub"+.@pilih+.@j);
+				set .@menusub$, .@menusub$ +((getd("sub"+.@pilih+.@j))?"^006400":"^ff0000")+getd(".subtree"+.@pilih+"$["+.@j+"]")+"^000000"+":";
+			}
+		break;
+		case 2:
+			callsub SkillDesc,.@pilih;
+			for (set .@j,1;.@j<=getarraysize(.subtree2$)-1;set .@j,.@j+1){
+				setarray .@playersubtree[.@j],getd("sub"+.@pilih+.@j);
+				set .@menusub$, .@menusub$ +((getd("sub"+.@pilih+.@j))?"^006400":"^ff0000")+getd(".subtree"+.@pilih+"$["+.@j+"]")+"^000000"+":";
+				}
+		break;
+		case 3:
+			callsub SkillDesc,.@pilih;
+			for (set .@j,1;.@j<=getarraysize(.subtree3$)-1;set .@j,.@j+1){
+				setarray .@playersubtree[.@j],getd("sub"+.@pilih+.@j);
+				set .@menusub$, .@menusub$ +((getd("sub"+.@pilih+.@j))?"^006400":"^ff0000")+getd(".subtree"+.@pilih+"$["+.@j+"]")+"^000000"+":";
+				}
+		break;
+		case 4:
+			callsub SkillDesc,.@pilih;
+			for (set .@j,1;.@j<=getarraysize(.subtree4$)-1;set .@j,.@j+1){
+				setarray .@playersubtree[.@j],getd("sub"+.@pilih+.@j);
+				set .@menusub$, .@menusub$ +((getd("sub"+.@pilih+.@j))?"^006400":"^ff0000")+getd(".subtree"+.@pilih+"$["+.@j+"]")+"^000000"+":";
+				}
+		break;
+		case 5:
+			callsub SkillDesc,.@pilih;
+			for (set .@j,1;.@j<=getarraysize(.subtree5$)-1;set .@j,.@j+1){
+				setarray .@playersubtree[.@j],getd("sub"+.@pilih+.@j);
+				set .@menusub$, .@menusub$ +((getd("sub"+.@pilih+.@j))?"^006400":"^ff0000")+getd(".subtree"+.@pilih+"$["+.@j+"]")+"^000000"+":";
+				}
+		break;
+		case 6:
+			callsub SkillDesc,.@pilih;
+			for (set .@j,1;.@j<=getarraysize(.subtree6$)-1;set .@j,.@j+1){
+				setarray .@playersubtree[.@j],getd("sub"+.@pilih+.@j);
+				set .@menusub$, .@menusub$ +((getd("sub"+.@pilih+.@j))?"^006400":"^ff0000")+getd(".subtree"+.@pilih+"$["+.@j+"]")+"^000000"+":";
+				}
+		break;
+	
+	
+	}
+	set .@pilihsub, select(.@menusub$);
+	switch(.@pilih){
+		case 1:
+			callsub L_MainTree1,.@pilih,.@pilihsub;
+		break;
+		case 2:
+			callsub L_MainTree2,.@pilih,.@pilihsub;
+		break;
+		case 3:
+			callsub L_MainTree3,.@pilih,.@pilihsub;
+		break;
+		case 4:
+			callsub L_MainTree4,.@pilih,.@pilihsub;
+		break;
+		case 5:
+			callsub L_MainTree5,.@pilih,.@pilihsub;
+		break;
+		case 6:
+			callsub L_MainTree6,.@pilih,.@pilihsub;
+		break;
+	
+	
+	}
+	if (countitem(.ItemReq)>=.ItemAmount && !(getd("sub"+.@pilih+.@pilihsub))){
+//taijutsu
+set @max20033,countitem(20033);
+if (countitem(20033) >= 1) {set @contagem,@contagem + @max20033;}
+
+set @max20034,countitem(20034);
+if (countitem(20034) >= 1) {set @contagem,@contagem + @max20034;}
+
+set @max20035,countitem(20035);
+if (countitem(20035) >= 1) {set @contagem,@contagem + @max20035;}
+
+set @max20036,countitem(20036);
+if (countitem(20036) >= 1) {set @contagem,@contagem + @max20036;}
+
+set @max20037,countitem(20037);
+if (countitem(20037) >= 1) {set @contagem,@contagem + @max20037;}
+
+set @max20038,countitem(20038);
+if (countitem(20038) >= 1) {set @contagem,@contagem + @max20038;}
+
+set @max20039,countitem(20039);
+if (countitem(20039) >= 1) {set @contagem,@contagem + @max20039;}
+
+set @max20040,countitem(20040);
+if (countitem(20040) >= 1) {set @contagem,@contagem + @max20040;}
+
+set @max20041,countitem(20041);
+if (countitem(20041) >= 1) {set @contagem,@contagem + @max20041;}
+
+set @max20042,countitem(20042);
+if (countitem(20042) >= 1) {set @contagem,@contagem + @max20042;}
+
+set @max20043,countitem(20043);
+if (countitem(20043) >= 1) {set @contagem,@contagem + @max20043;}
+
+set @max20044,countitem(20044);
+if (countitem(20044) >= 1) {set @contagem,@contagem + @max20044;}
+
+set @max20045,countitem(20045);
+if (countitem(20045) >= 1) {set @contagem,@contagem + @max20045;}
+
+set @max20046,countitem(20046);
+if (countitem(20046) >= 1) {set @contagem,@contagem + @max20046;}
+
+set @max20047,countitem(20047);
+if (countitem(20047) >= 1) {set @contagem,@contagem + @max20047;}
+
+set @2max20047,countitem(20047);
+if (countitem(20047) >= 1) {set @contagem2,@contagem2 + @2max20047;}
+
+//velocidade
+set @max20003,countitem(20003);
+if (countitem(20003) >= 1) {set @contagem,@contagem + @max20003;}
+
+set @max20004,countitem(20004);
+if (countitem(20004) >= 1) {set @contagem,@contagem + @max20004;}
+
+set @max20005,countitem(20005);
+if (countitem(20005) >= 1) {set @contagem,@contagem + @max20005;}
+
+set @max20006,countitem(20006);
+if (countitem(20006) >= 1) {set @contagem,@contagem + @max20006;}
+
+set @max20007,countitem(20007);
+if (countitem(20007) >= 1) {set @contagem,@contagem + @max20007;}
+
+set @max20008,countitem(20008);
+if (countitem(20008) >= 1) {set @contagem,@contagem + @max20008;}
+
+set @max20009,countitem(20009);
+if (countitem(20009) >= 1) {set @contagem,@contagem + @max20009;}
+
+set @max20010,countitem(20010);
+if (countitem(20010) >= 1) {set @contagem,@contagem + @max20010;}
+
+set @max20011,countitem(20011);
+if (countitem(20011) >= 1) {set @contagem,@contagem + @max20011;}
+
+set @max20012,countitem(20012);
+if (countitem(20012) >= 1) {set @contagem,@contagem + @max20012;}
+
+set @max20013,countitem(20013);
+if (countitem(20013) >= 1) {set @contagem,@contagem + @max20013;}
+
+set @max20014,countitem(20014);
+if (countitem(20014) >= 1) {set @contagem,@contagem + @max20014;}
+
+set @max20015,countitem(20015);
+if (countitem(20015) >= 1) {set @contagem,@contagem + @max20015;}
+
+set @max20016,countitem(20016);
+if (countitem(20016) >= 1) {set @contagem,@contagem + @max20016;}
+
+set @max20017,countitem(20017);
+if (countitem(20017) >= 1) {set @contagem,@contagem + @max20017;}
+
+set @2max20017,countitem(20017);
+if (countitem(20017) >= 1) {set @contagem2,@contagem2 + @2max20017;}
+
+//genjutsu
+set @max20018,countitem(20018);
+if (countitem(20018) >= 1) {set @contagem,@contagem + @max20018;}
+
+set @max20019,countitem(20019);
+if (countitem(20019) >= 1) {set @contagem,@contagem + @max20019;}
+
+set @max20020,countitem(20020);
+if (countitem(20020) >= 1) {set @contagem,@contagem + @max20020;}
+
+set @max20021,countitem(20021);
+if (countitem(20021) >= 1) {set @contagem,@contagem + @max20021;}
+
+
+set @max20022,countitem(20022);
+if (countitem(20022) >= 1) {set @contagem,@contagem + @max20022;}
+
+
+set @max20023,countitem(20023);
+if (countitem(20023) >= 1) {set @contagem,@contagem + @max20023;}
+
+
+set @max20024,countitem(20024);
+if (countitem(20024) >= 1) {set @contagem,@contagem + @max20024;}
+
+
+set @max20025,countitem(20025);
+if (countitem(20025) >= 1) {set @contagem,@contagem + @max20025;}
+
+
+set @max20026,countitem(20026);
+if (countitem(20026) >= 1) {set @contagem,@contagem + @max20026;}
+
+
+set @max20027,countitem(20027);
+if (countitem(20027) >= 1) {set @contagem,@contagem + @max20027;}
+
+
+set @max20028,countitem(20028);
+if (countitem(20028) >= 1) {set @contagem,@contagem + @max20028;}
+
+
+set @max20029,countitem(20029);
+if (countitem(20029) >= 1) {set @contagem,@contagem + @max20029;}
+
+
+set @max20030,countitem(20030);
+if (countitem(20030) >= 1) {set @contagem,@contagem + @max20030;}
+
+set @max20031,countitem(20031);
+if (countitem(20031) >= 1) {set @contagem,@contagem + @max20031;}
+
+set @max20032,countitem(20032);
+if (countitem(20032) >= 1) {set @contagem,@contagem + @max20032;}
+
+set @2max20032,countitem(20032);
+if (countitem(20032) >= 1) {set @contagem2,@contagem2 + @2max20032;}
+
+//ninjutsu
+set @max20048,countitem(20048);
+if (countitem(20048) >= 1) {set @contagem,@contagem + @max20048;}
+
+set @max20049,countitem(20049);
+if (countitem(20049) >= 1) {set @contagem,@contagem + @max20049;}
+
+set @max20050,countitem(20050);
+if (countitem(20050) >= 1) {set @contagem,@contagem + @max20050;}
+
+set @max20051,countitem(20051);
+if (countitem(20051) >= 1) {set @contagem,@contagem + @max20051;}
+
+set @max20052,countitem(20052);
+if (countitem(20052) >= 1) {set @contagem,@contagem + @max20052;}
+
+set @max20053,countitem(20053);
+if (countitem(20053) >= 1) {set @contagem,@contagem + @max20053;}
+
+set @max20054,countitem(20054);
+if (countitem(20054) >= 1) {set @contagem,@contagem + @max20054;}
+
+set @max20055,countitem(20055);
+if (countitem(20055) >= 1) {set @contagem,@contagem + @max20055;}
+
+set @max20056,countitem(20056);
+if (countitem(20056) >= 1) {set @contagem,@contagem + @max20056;}
+
+set @max20057,countitem(20057);
+if (countitem(20057) >= 1) {set @contagem,@contagem + @max20057;}
+
+set @max20058,countitem(20058);
+if (countitem(20058) >= 1) {set @contagem,@contagem + @max20058;}
+
+set @max20059,countitem(20059);
+if (countitem(20059) >= 1) {set @contagem,@contagem + @max20059;}
+
+set @max20060,countitem(20060);
+if (countitem(20060) >= 1) {set @contagem,@contagem + @max20060;}
+
+set @max20061,countitem(20061);
+if (countitem(20061) >= 1) {set @contagem,@contagem + @max20061;}
+
+set @max20062,countitem(20062);
+if (countitem(20062) >= 1) {set @contagem,@contagem + @max20062;}
+
+set @2max20062,countitem(20062);
+if (countitem(20062) >= 1) {set @contagem2,@contagem2 + @2max20062;}
+
+//fuuinjutsu
+set @max20063,countitem(20063);
+if (countitem(20063) >= 1) {set @contagem,@contagem + @max20063;}
+
+set @max20064,countitem(20064);
+if (countitem(20064) >= 1) {set @contagem,@contagem + @max20064;}
+
+set @max20065,countitem(20065);
+if (countitem(20065) >= 1) {set @contagem,@contagem + @max20065;}
+
+set @max20066,countitem(20066);
+if (countitem(20066) >= 1) {set @contagem,@contagem + @max20066;}
+
+set @max20067,countitem(20067);
+if (countitem(20067) >= 1) {set @contagem,@contagem + @max20067;}
+
+set @max20068,countitem(20068);
+if (countitem(20068) >= 1) {set @contagem,@contagem + @max20068;}
+
+set @max20069,countitem(20069);
+if (countitem(20069) >= 1) {set @contagem,@contagem + @max20069;}
+
+set @max20070,countitem(20070);
+if (countitem(20070) >= 1) {set @contagem,@contagem + @max20070;}
+
+set @max20071,countitem(20071);
+if (countitem(20071) >= 1) {set @contagem,@contagem + @max20071;}
+
+set @max20072,countitem(20072);
+if (countitem(20072) >= 1) {set @contagem,@contagem + @max20072;}
+
+set @max20073,countitem(20073);
+if (countitem(20073) >= 1) {set @contagem,@contagem + @max20073;}
+
+set @max20074,countitem(20074);
+if (countitem(20074) >= 1) {set @contagem,@contagem + @max20074;}
+
+set @max20075,countitem(20075);
+if (countitem(20075) >= 1) {set @contagem,@contagem + @max20075;}
+
+set @max20076,countitem(20076);
+if (countitem(20076) >= 1) {set @contagem,@contagem + @max20076;}
+
+set @max20077,countitem(20077);
+if (countitem(20077) >= 1) {set @contagem,@contagem + @max20077;}
+
+//medicina
+set @max20078,countitem(20078);
+if (countitem(20078) >= 1) {set @contagem,@contagem + @max20078;}
+
+set @max20079,countitem(20079);
+if (countitem(20079) >= 1) {set @contagem,@contagem + @max20079;}
+
+set @max20080,countitem(20080);
+if (countitem(20080) >= 1) {set @contagem,@contagem + @max20080;}
+
+set @max20081,countitem(20081);
+if (countitem(20081) >= 1) {set @contagem,@contagem + @max20081;}
+
+set @max20082,countitem(20082);
+if (countitem(20082) >= 1) {set @contagem,@contagem + @max20082;}
+
+set @max20083,countitem(20083);
+if (countitem(20083) >= 1) {set @contagem,@contagem + @max20083;}
+
+set @max20084,countitem(20084);
+if (countitem(20084) >= 1) {set @contagem,@contagem + @max20084;}
+
+set @max20085,countitem(20085);
+if (countitem(20085) >= 1) {set @contagem,@contagem + @max20085;}
+
+set @max20086,countitem(20086);
+if (countitem(20086) >= 1) {set @contagem,@contagem + @max20086;}
+
+set @max20087,countitem(20087);
+if (countitem(20087) >= 1) {set @contagem,@contagem + @max20087;}
+
+set @max20088,countitem(20088);
+if (countitem(20088) >= 1) {set @contagem,@contagem + @max20088;}
+
+set @max20089,countitem(20089);
+if (countitem(20089) >= 1) {set @contagem,@contagem + @max20089;}
+
+set @max20090,countitem(20090);
+if (countitem(20090) >= 1) {set @contagem,@contagem + @max20090;}
+
+set @max20091,countitem(20091);
+if (countitem(20091) >= 1) {set @contagem,@contagem + @max20091;}
+
+set @max561,countitem(561);
+if (countitem(561) >= 1) {set @contagem,@contagem + @max561;}
+
+set @2max561,countitem(561);
+if (countitem(561) >= 1) {set @contagem2,@contagem2 + @2max561;}
+
+if (@contagem >= 40) {mes "Este Personagem está com o máximo de Densetsu "+@contagem+""; set @contagem,0; close;}
+		next;
+		mes "Tem certeza que gostaria de obter esta passiva Densetsu? Irá consumir um Chakra Lendário.";
+		switch (select("- Não","- Sim")){
+			case 1:
+			close;
+			case 2:
+			
+				if (.@pilihsub > 1 && !(getd("sub"+.@pilih+(.@pilihsub -1)))){
+					next;
+					mes "Para obter esta passiva Densetsu é preciso liberar a passiva anterior de "+.maintree$[.@pilih];
+					close;
+				}
+				if(getd(".subtree"+.@pilih+"["+.@pilihsub+"]")<=0){
+					next;
+					mes "^ff0000Erro : 1^000000.";
+					mes "Entre em contato com um GM e informe o número do erro.";
+					close;
+				}
+
+				delitem .ItemReq,.ItemAmount;
+				setd ("sub"+.@pilih+.@pilihsub),1;
+				switch (.@pilih){
+					case 1:
+						getitem .subtree1[.@pilihsub],1;
+					break;
+					case 2:
+						getitem .subtree2[.@pilihsub],1;
+					break;
+					case 3:
+						getitem .subtree3[.@pilihsub],1;
+					break;
+					case 4:
+						getitem .subtree4[.@pilihsub],1;
+					break;
+					case 5:
+						getitem .subtree5[.@pilihsub],1;
+					break;
+					case 6:
+						getitem .subtree6[.@pilihsub],1;
+					break;
+				
+				
+				}
+				next;
+				mes "^006400Parabéns, você obteve com sucesso esta passiva Densetsu. ^000000";
+				set @contagem,0;
+			close;
+		}
+	}
+	else if(getd("sub"+.@pilih+.@pilihsub)){ 
+		mes "^006400Você possui esta passiva Densetsu^000000";
+		mes "------";
+		mes "Gostaria de remover-la? Requer uma ^B22222Pedra do esquecimento.^000000";
+		switch(select("- Não","- Sim")){
+			case 1:
+			close;
+			break;
+			case 2:
+			if (countitem(.ItemReqDel)<.ItemAmount){
+				mes "Você precisa de "+.ItemAmountDel +" " +getitemname(.ItemReqDel) +" para remover esta passiva Densetsu.";
+				close;
+			}
+			set .@pilihsub2,.@pilihsub+1;
+			if(getd("sub"+.@pilih+.@pilihsub2)){
+				mes "Você precisa remover a passiva Densetsu anterior para remover esta.";
+				close;
+			}
+			if(getd(".subtree"+.@pilih+"["+.@pilihsub+"]")<=0){
+				next;
+				mes "^ff0000Error : 1^000000.";
+					mes "Entre em contato com um GM e informe o número do erro.";
+					close;
+			}
+			if(countitem(getd(".subtree"+.@pilih+"["+.@pilihsub+"]"))){
+			switch (.@pilih){
+					case 1:
+						delitem .subtree1[.@pilihsub],1;
+					break;
+					case 2:
+						delitem .subtree2[.@pilihsub],1;
+					break;
+					case 3:
+						delitem .subtree3[.@pilihsub],1;
+					break;
+					case 4:
+						delitem .subtree4[.@pilihsub],1;
+					break;
+					case 5:
+						delitem .subtree5[.@pilihsub],1;
+					break;
+					case 6:
+						delitem .subtree6[.@pilihsub],1;
+					break;
+				
+				
+				}
+			setd ("sub"+.@pilih+.@pilihsub),0;
+			delitem .ItemReqDel,.ItemAmountDel;
+			}else{
+			next;
+			mes "Error 2: Entre em contato com um GM com o número do erro.";
+			close;
+			}
+			next;
+			mes "^ff0000Você removeu com sucesso esta passiva Densetsu. ^000000";
+			close;
+		}
+	}
+	else next; mes "Você precisa de "+.ItemAmount +" " +getitemname(.ItemReq) +" para aprender esta passiva Densetsu.";
+	
+	close;
+end;
+
+SkillDesc:
+	next;
+	// Main Tree
+	switch (getarg(0)){ 
+		case 1:
+			mes "Taijutsu - Poderosas passivas para quem gosta de combate corpo a corpo";
+			next;
+		break;
+		case 2:
+			mes "Velocidade - Se sua estratégia é ser mais rápido que seu oponente, estas passivas são para você";
+			next;
+		break;
+		case 3:
+			mes "Genjutsu - Passivas relacionadas a debuffs e ilusões";
+			next;
+		break;
+		case 4:
+			mes "Ninjutsu - Potencializa seu Ninjutsu com estas passivas poderosas";
+			next;
+		break;
+		case 5:
+			mes "Fuuinjutsu - Incapacitar o inimigo, e melhorar sua precisão são o que fazem Fuuinjutsu grandioso.";
+			next;
+		break;
+		case 6:
+			mes "Medicina - Fique mais resistente e útil para sua Vila com um só treino!";
+			next;
+		break;
+	}
+return;		
+
+L_MainTree1:
+	next;
+	//mes .maintree$[getarg(0)];
+	switch (getarg(1)){ 
+		case 1:
+			mes "[Chikara #1]";
+			mes "~ Fornece 150 de ataque ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 2:
+			mes "[Zettai kyodo #1]";
+			mes "~ Fornece 6 de Força ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 3:
+			mes "[Himitsu no pawa #1]";
+			mes "~ Fornece 3% de dano crítico ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 4:
+			mes "[Zo no chikara #1]";
+			mes "~ Fornece 2% de dano em inimigos médios ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 5:
+			mes "[Pawashuru #1]";
+			mes "~ Fornece 1% de chance de absorver 30% do dano causado em HP a cada golpe ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 6:
+			mes "[Kami no chikara #1]";
+			mes "~ Fornece 1% de dano em Boss ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 7:
+			mes "[Chikara #2]";
+			mes "~ Fornece 150 de ataque ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 8:
+			mes "[Zettai kyodo #2]";
+			mes "~ Fornece 6 de Força ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 9:
+			mes "[Zo no chikara #2]";
+			mes "~ Fornece 3% de dano em inimigos médios ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 10:
+			mes "[Chikara #3]";
+			mes "~ Fornece 200 de ataque ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 11:
+			mes "[Himitsu no pawa #2]";
+			mes "~ Fornece 7% de dano crítico ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 12:
+			mes "[Zettai kyodo #3]";
+			mes "~ Fornece 8 de Força ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 13:
+			mes "[Pawashuru #2]";
+			mes "~ Fornece 4% de chance de absorver 30% do dano causado em HP a cada golpe ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 14:
+			mes "[Kami no chikara #2]";
+			mes "~ Fornece 4% de dano em Boss ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 15:
+			mes "[Shiko - Kusari Fuubou]";
+			mes "~ Fornece a habilidade revistir arma e 4% de ataque ~ ";
+			mes "------";
+			mes "";
+		break;	
+	}		
+return;		
+
+L_MainTree2:
+	//mes .maintree$[getarg(0)];
+	switch (getarg(1)){ 
+		case 1:
+			mes "[Ajairu #1]";
+			mes "~ Fornece 3 de agilidade ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 2:
+			mes "[Rikai shi nikui #1]";
+			mes "~ Fornece 20 de esquiva ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 3:
+			mes "[Hayai #1]";
+			mes "~ Fornece 10% de velocidade de ataque ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 4:
+			mes "[Ido #1]";
+			mes "~ Fornece 1% de velocidade de movimento ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 5:
+			mes "[Raitoningurifurekkusu #1]";
+			mes "~ Fornece -1% de delay ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 6:
+			mes "[Supurinta #1]";
+			mes "~ Fornece 2% de esquivar de armadilha ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 7:
+			mes "[Jinsoku #1]";
+			mes "~ Fornece 1% de chance de esquivar de um ataque crítico ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 8:
+			mes "[Ajairu #2]";
+			mes "~ Fornece 7 de agilidade ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 9:
+			mes "[Rikai shi nikui #2]";
+			mes "~ Fornece 30 de esquiva ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 10:
+			mes "[Ido #2]";
+			mes "~ Fornece 2% de velocidade de movimento ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 11:
+			mes "[Raitoningurifurekkusu #2]";
+			mes "~ Fornece -2% de delay ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 12:
+			mes "[Supurinta #2]";
+			mes "~ Fornece 3% de esquivar de armadilha ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 13:
+			mes "[Ido #3]";
+			mes "~ Fornece 3% de velocidade de movimento ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 14:
+			mes "[Jinsoku #2]";
+			mes "~ Fornece 4% de chance de esquivar de um ataque crítico ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 15:
+			mes "[Shiko - Shunshin]";
+			mes "~ Fornece a habilidade Vôo frenético e 4% de velocidade de movimento ~ ";
+			mes "------";
+			mes "";
+		break;	
+	}		
+return;			
+
+L_MainTree3:
+	//mes .maintree$[getarg(0)];
+	switch (getarg(1)){ 
+		case 1:
+			mes "[Rakki #1]";
+			mes "~ Fornece 2 de Sorte ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 2:
+			mes "[Hihanteki #1]";
+			mes "~ Fornece 4 de crítico ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 3:
+			mes "[Tassei fukanona #1]";
+			mes "~ Fornece 2 de esquiva perfeita ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 4:
+			mes "[Kaku no #1]";
+			mes "~ Fornece 1% de resistência a status negativos ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 5:
+			mes "[Sairensa #1]";
+			mes "~ Fornece 2% a mais de dano em usuários afetados com silêncio ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 6:
+			mes "[Kizetsu sa seru #1]";
+			mes "~ Fornece 2% a mais de dano em usuários afetados com atordamento ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 7:
+			mes "[Rakki #2]";
+			mes "~ Fornece 3 de Sorte ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 8:
+			mes "[Muyubyo-sha #1]";
+			mes "~ Fornece 1% de chance de afetar inimigos com sono a cada golpe físico ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 9:
+			mes "[Rakki #3]";
+			mes "~ Fornece 5 de Sorte ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 10:
+			mes "[Tassei fukanona #2]";
+			mes "~ Fornece 5 de esquiva perfeita ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 11:
+			mes "[Hihanteki #2]";
+			mes "~ Fornece 6 de crítico ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 12:
+			mes "[Sairensa #2]";
+			mes "~ Fornece 3% a mais de dano em usuários afetados com silêncio ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 13:
+			mes "[Kizetsu sa seru #2]";
+			mes "~ Fornece 3% a mais de dano em usuários afetados com atordamento ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 14:
+			mes "[Kaku no #2]";
+			mes "~ Fornece 3% de resistência a status negativos ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 15:
+			mes "[Shiko - Jubaku satsu]";
+			mes "~ Fornece a habilidade Kai e 20 de crítico ~ ";
+			mes "------";
+			mes "";
+		break;	
+	}		
+return;	
+
+L_MainTree4:
+	//mes .maintree$[getarg(0)];
+	switch (getarg(1)){ 
+		case 1:
+			mes "[Majutsu #1]";
+			mes "~ Fornece regeneração de 150 SP por segundo ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 2:
+			mes "[Uizado #1]";
+			mes "~ Fornece 5 de inteligência ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 3:
+			mes "[Renkinjutsu #1]";
+			mes "~ Fornece 2% de ataque mágico ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 4:
+			mes "[Majishan #1]";
+			mes "~ Fornece 2% de dano com todos os elementos ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 5:
+			mes "[Uizado #2]";
+			mes "~ Fornece 5 de inteligência ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 6:
+			mes "[Dotai #1]";
+			mes "~ Fornece 2% de defesa a todos os elementos ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 7:
+			mes "[Renkinjutsu #2]";
+			mes "~ Fornece 2% de ataque mágico ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 8:
+			mes "[Majutsu #2]";
+			mes "~ Fornece regeneração de 150 SP por segundo ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 9:
+			mes "[Uizado #3]";
+			mes "~ Fornece 5 de inteligência ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 10:
+			mes "[Shinpi #1]";
+			mes "~ Fornece -2% de consumo de SP ao usar habilidades ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 11:
+			mes "[Majishan #2]";
+			mes "~ Fornece 2% de dano com todos os elementos ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 12:
+			mes "[Shiko no majutsu #1]";
+			mes "~ Fornece 1500 de SP ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 13:
+			mes "[Renkinjutsu #3]";
+			mes "~ Fornece 2% de ataque mágico ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 14:
+			mes "[Sosara Saikosai #1]";
+			mes "~ Fornece 1% de SP máximo ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 15:
+			mes "[Shiko - Fudo ken]";
+			mes "~ Fornece a habilidade dreno de alma e 4% de ataque mágico ~ ";
+			mes "------";
+			mes "";
+		break;	
+	}		
+return;	
+
+L_MainTree5:
+	//mes .maintree$[getarg(0)];
+	switch (getarg(1)){ 
+		case 1:
+			mes "[Kiyo-sa #1]";
+			mes "~ Fornece 3 de destreza ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 2:
+			mes "[Seikakuna #1]";
+			mes "~ Fornece 20 de precisão ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 3:
+			mes "[Chakura no setto #1]";
+			mes "~ Fornece 1% de chance de absorver 15% do dano causado em SP a cada golpe ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 4:
+			mes "[Ko kangaekata #1]";
+			mes "~ Fornece 250 de SP máximo ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 5:
+			mes "[Chishi seido #1]";
+			mes "~ Fornece 1% de precisão ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 6:
+			mes "[Surudoi chisei #1]";
+			mes "~ Fornece -1% de cast ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 7:
+			mes "[Chakura no setto #2]";
+			mes "~ Fornece 2% de chance de absorver 15% do dano causado em SP a cada golpe ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 8:
+			mes "[Ko kangaekata #2]";
+			mes "~ Fornece 250 de SP máximo ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 9:
+			mes "[Seikakuna #2]";
+			mes "~ Fornece 30 de precisão ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 10:
+			mes "[Chishi seido #2]";
+			mes "~ Fornece 1% de precisão ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 11:
+			mes "[Surudoi chisei #2]";
+			mes "~ Fornece -1% de cast ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 12:
+			mes "[Chakura no setto #3]";
+			mes "~ Fornece 3% de chance de absorver 15% do dano causado em SP a cada golpe ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 13:
+			mes "[Ko kangaekata #3]";
+			mes "~ Fornece 250 de SP máximo ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 14:
+			mes "[Surudoi chisei #3]";
+			mes "~ Fornece -3% de cast ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 15:
+			mes "[Shiko - Fuuja Houin]";
+			mes "~ Fornece a habilidade Kaahi e 4% de precisão ~ ";
+			mes "------";
+			mes "";
+		break;	
+	}		
+return;	
+
+L_MainTree6:
+	//mes .maintree$[getarg(0)];
+	switch (getarg(1)){ 
+		case 1:
+			mes "[Chiryo-shi #1]";
+			mes "~ Aumenta em 3% o poder de seu Chiyute no Jutsu ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 2:
+			mes "[Masutahira #1]";
+			mes "~ Aumenta em 2% o poder de seu Shouen no Jutsu ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 3:
+			mes "[Yogo-sha #1]";
+			mes "~ Fornece 6 de defesa ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 4:
+			mes "[Eiyu #1]";
+			mes "~ Fornece 1% de HP máximo ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 5:
+			mes "[Yogo-sha #2]";
+			mes "~ Fornece 6 de defesa ~ ";
+			mes "------";
+			mes "";
+		break;	
+		case 6:	
+			mes "[Yubi-kotsu #1]";
+			mes "~ Fornece 1 de defesa mágica ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 7:	
+			mes "[Chiryo-shi #2]";
+			mes "~ Aumenta em 3% o poder de seu Chiyute no Jutsu ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 8:	
+			mes "[Fusho shita #1]";
+			mes "~ Fornece regeneração de 1000 HP por segundo ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 9:	
+			mes "[Yubi-kotsu #2]";
+			mes "~ Fornece 1 de defesa mágica ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 10:	
+			mes "[Yogo-sha #3]";
+			mes "~ Fornece 8 de defesa ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 11:	
+			mes "[Fusho shita #2]";
+			mes "~ Fornece regeneração de 1500 HP por segundo ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 12:	
+			mes "[Masutahira #2]";
+			mes "~ Aumenta em 3% o poder de seu Shouen no Jutsu ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 13:	
+			mes "[Chiryo-shi #3]";
+			mes "~ Aumenta em 4% o poder de seu Chiyute no Jutsu ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 14:	
+			mes "[Yubi-kotsu #3]";
+			mes "~ Fornece 3 de defesa mágica ~ ";
+			mes "------";
+			mes "";
+		break;
+		case 15:	
+			mes "[Shiko - Ranshinshou]";
+			mes "~ Fornece a habilidade Recuperar HP em movimento e 4% de HP ~ ";
+			mes "------";
+			mes "";
+		break;
+	}		
+return;	
+		
+end;
+OnPCLoginEvent:
+	for(set .@i,1;.@i<=6;set .@i,.@i+1){
+		for(set .@j,1;.@j<=15;set .@j,.@j+1){
+			if (getd(".subtree"+.@i+"["+.@j+"]")){
+			if(countitem(getd(".subtree"+.@i+"["+.@j+"]"))){
+				if(!getd ("sub"+.@i+.@j)){
+					debugmes "Character "+strcharinfo(0)+" char id:"+getcharid(0)+" has the item bonus but doesn't have the variable.";
+					delitem getd(".subtree"+.@i+"["+.@j+"]"),1;
+				}
+			}
+			}
+		}
+	}
+end;	
+OnInit:
+	set .ItemReq,1079;		//Item Requirement for increase skill.
+	set .ItemAmount,1;		//Amount of item for requirement.
+	set .ItemReqDel,1080;		//Item Requirement for unlearn skill.
+	set .ItemAmountDel,1;		//Amount of item for requirement.
+	
+	// Main Skill Tree
+	setarray .maintree$,"null","- Taijutsu","- Velocidade","- Genjutsu","- Ninjutsu","- Fuuinjutsu","- Medicina";
+	
+	// Sub Tree of Taijutsu
+	setarray .subtree1$,"null","- Chikara #1","- Zettai kyodo #1","- Himitsu no pawa #1","- Zo no chikara #1","- Pawashuru #1","- Kami no chikara #1","- Chikara #2","- Zettai kyodo #2","- Zo no chikara #2","- Chikara #3","- Himitsu no pawa #2","- Zettai kyodo #3","- Pawashuru #2","- Kami no chikara #2","- Shiko - Kusari Fuubou";
+	setarray .subtree1,0,20033,20034,20035,20036,20037,20038,20039,20040,20041,20042,20043,20044,20045,20046,20047;
+	
+	//Sub Tree of Taijutsu
+	setarray .subtree2$,"null","- Ajairu #1","- Rikai shi nikui #1","- Hayai #1","- Ido #1","- Raitoningurifurekkusu #1","- Supurinta #1","- Jinsoku #1","- Ajairu #2","- Rikai shi nikui #2","- Ido #2","- Raitoningurifurekkusu #2","- Supurinta #2","- Ido #3","- Jinsoku #2","- Shiko - Shunshin";
+	setarray .subtree2,0,20003,20004,20005,20006,20007,20008,20009,20010,20011,20012,20013,20014,20015,20016,20017;
+	
+	setarray .subtree3$,"null","- Rakki #1","- Hihanteki #1","- Tassei fukanona #1","- Kaku no #1","- Sairensa #1","- Kizetsu sa seru #1","- Rakki #2","- Muyubyo-sha #1","- Rakki #3","- Tassei fukanona #2","- Hihanteki #2","- Sairensa #2","- Kizetsu sa seru #2","- Kaku no #2","- Shiko - Jubaku satsu";
+	setarray .subtree3,0,20018,20019,20020,20021,20022,20023,20024,20025,20026,20027,20028,20029,20030,20031,20032;
+	
+	setarray .subtree4$,"null","- Majutsu #1","- Uizado #1","- Renkinjutsu #1","- Majishan #1","- Uizado #2","- Dotai #1","- Renkinjutsu #2","- Majutsu #2","- Uizado #3","- Shinpi #1","- Majishan #2","- Shiko no majutsu #1","- Renkinjutsu #3","- Sosara Saikosai #1","- Shiko - Fudo ken";
+	setarray .subtree4,0,20048,20049,20050,20051,20052,20053,20054,20055,20056,20057,20058,20059,20060,20061,20062;
+	
+	setarray .subtree5$,"null","- Kiyo-sa #1","- Seikakuna #1","- Chakura no setto #1","- Ko kangaekata #1","- Chishi seido #1","- Surudoi chisei #1","- Chakura no setto #2","- Ko kangaekata #2","- Seikakuna #2","- Chishi seido #2","- Surudoi chisei #2","- Chakura no setto #3","- Ko kangaekata #3","- Surudoi chisei #3","- Shiko - Fuuja Houin";
+	setarray .subtree5,0,20063,20064,20065,20066,20067,20068,20069,20070,20071,20072,20073,20074,20075,20076,20077;
+	
+	setarray .subtree6$,"null","- Chiryo-shi #1","- Masutahira #1","- Yogo-sha #1","- Eiyu #1","- Yogo-sha #2","- Yubi-kotsu #1","- Chiryo-shi #2","- Fusho shita #1","- Yubi-kotsu #2","- Yogo-sha #3","- Fusho shita #2","- Masutahira #2","- Chiryo-shi #3","- Yubi-kotsu #3","- Shiko - Ranshinshou";
+	setarray .subtree6,0,20078,20079,20080,20081,20082,20083,20084,20085,20086,20087,20088,20089,20090,20091,561;
+	
+	
+}
+
+//Error
+// 1: mean Item required for subtree array is 0 
+// 2: WHen remove skill, the player don't have the item for passive skill.

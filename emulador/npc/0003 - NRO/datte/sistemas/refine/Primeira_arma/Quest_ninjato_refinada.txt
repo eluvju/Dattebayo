@@ -1,0 +1,75 @@
+konoha,26,267,5	script	Yoshihiro::equipe_cinco	831,{
+
+if (checkquest(2013) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Oi, sou Yoshihiro,conheço um método de você ter uma arma melhor.";
+next;
+mes "Ninja-to Refinada, uma arma ninja que também tem inumeras finalidades. Com sua lamina refinada, se torna muito mais fatal do que de costume.";
+next;
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Ninja-to Refinada
+//========================================================================
+
+L_SS:
+next;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Minhoca Boa Pinta.";
+mes "- Obter 25x Pele de Sapo.";
+mes "- Obter 50x Garleta.";
+mes "- Matar 50 Filhotes de Cobra";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2013;
+set quest_equipe_cinco,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(equipe_mobs_cinco < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(623) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7155) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(910) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Ai está você, como prometido, sua nova arma.";
+completequest 2013;
+erasequest 2013;
+set galinha1,0;
+set galinha2,0;
+set galinha3,0;
+set vaca1,0;
+set vaca2,0;
+set vaca3,0;
+set galinhafeed,0;
+set vacafeed,0;
+set quest_equipe_cinco,0;
+set equipe_mobs_cinco,0;
+delitem 623,25;
+delitem 7155,25;
+delitem 910,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1261,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	equipe#5	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1037 && quest_equipe_cinco == 1) {set equipe_mobs_cinco,equipe_mobs_cinco +1; announce "[Quest de equipamento] Você já derrotou "+equipe_mobs_cinco+" / 50 Filhotes de Cobra",bc_blue|bc_self; end;}
+
+}
+
+areia,30,235,5	duplicate(equipe_cinco)	Yoshihiro#1	831
+kiri,315,38,5	duplicate(equipe_cinco)	Yoshihiro#2	831
+nuvem,62,275,5	duplicate(equipe_cinco)	Yoshihiro#3	831

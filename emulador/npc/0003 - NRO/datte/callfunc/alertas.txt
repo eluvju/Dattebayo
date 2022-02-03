@@ -1,0 +1,321 @@
+//===================== Tabelas SQL ==========================
+
+//ALTER TABLE `login` ADD `alertas` SMALLINT NOT NULL DEFAULT 0;
+//ALTER TABLE `login` ADD `ban` SMALLINT NOT NULL DEFAULT 0;
+
+//Para adicionar uma tabela basta copiar uma das linhas aqui de cima, sem as // e colar na janelinha sql do seu banco de dados.
+
+//===== Cronus Script ========================================
+//= Sistema de alerta e banimento
+//===== Por: =================================================
+//= Ansen
+//===== Descrição: ===========================================
+//= Sistema de alerta, onde o GM altera o nível do alerta no npc, quando o alerta chegar ao máximo, que é configrado pelo gm, o usuário é banido.
+//= É possível diminuir o nível de alerta de alguém.
+//= É possível desbanir alguém.
+//============================================================
+//==== Versão ================================================
+//== 1.0 =====================================================
+//= Script iniciado.
+//== 1.1======================================================
+//= Adicionado aviso de alertas ao logar.
+//= Adicionado ban2, com ele o usuário será banido permanentemente, apenas no banco de dados poderá desbani-lo.
+//= Adicionada opção para diminuir 1 ponto do alerta do personagem a cada semana, você pod escolher ativar ou não essa opção.
+//= Mesmo com essa opção ativada, o ban2 continuará.
+//============================================================
+
+prontera,150,150,5	script	Alertas	864,{
+
+//================================ Configurações ===================================================================================|
+//									       |						    |
+//-----------------------------------------------------------------------------|----------------------------------------------------|
+//									       |						    |
+set .@n$,"[ ^191970"+strnpcinfo(1)+"^000000 ]";				//     |Nome do npc					    |
+//									       |						    |
+//-----------------------------------------------------------------------------|----------------------------------------------------|
+//									       |						    |
+set $@qntalerta,10;							//     |Quantidade de alertas para o player ser banido	    |
+//									       |						    |
+//-----------------------------------------------------------------------------|----------------------------------------------------|
+//									       |						    |
+set .@gmlvl,99;								//     |Level de GM para poder alertar alguém		    |
+//									       |  						    |
+//-----------------------------------------------------------------------------|----------------------------------------------------|
+//									       |Deseja que no primeiro dia da semana o npc retire um|
+set $@dimalert,0;							//     |ponto de alerta do usuário, e quando seu nível	    |
+//									       |chegar a 0 ele seja desbanido? 1 Para sim.2 para não|
+//									       |Mesmo com essa opção ativada o ban2  continuará. |
+//=============================Fim das configurações================================================================================|
+
+	if(getgmlevel() < .@gmlvl)
+		{
+			mes .@n$;
+			mes "Você não está autorizado a usar esse npc.";
+			close;
+		}
+mes .@n$;
+mes "Olá, o que deseja?";
+next;
+switch(select("Aumentar nível de alerta:Diminuir nível de alerta:Banir conta:Desbanir conta:Banir conta permanentemente:Nada")){
+
+case 1:
+	mes .@n$;
+	mes "inpute o nome exato do personagem.";
+	next;
+	input .@name$;
+		query_sql "SELECT `account_id` FROM `char` WHERE `name`='"+.@name$+"'",.@acc;
+			if(.@acc == 0)
+			{
+				mes .@n$;
+				mes "Esse char não existe.";
+				close;
+			}
+	query_sql "SELECT `alertas` FROM `login` WHERE `account_id` = '"+.@acc+"'", .@bponto;
+	mes .@n$;
+	mes "O personagem possui [^ff0000"+.@bponto+"^000000I^00ff00"+$@qntalerta+"^000000] pontos de alerta.";
+	next;
+	mes .@n$;
+	mes "Quantos pontos deseja aumentar no alerta do usuário?";
+	next;
+	input .@aponto;
+		if(.@aponto == $@qntalerta) || (.@aponto+.@bponto >= $@qntalerta)
+		{
+			mes .@n$;
+			mes "A quantidade de alerta escolhido resultará no banimento da conta do personagem, deseja continuar?";
+			next;
+			if(select("Sim","Não") == 2 ) close;
+				query_sql "UPDATE `login` SET `alertas`=`alertas`+"+.@aponto+" WHERE `account_id`='"+.@acc+"'";
+				query_sql "UPDATE `login` SET `ban`='1' WHERE `account_id`='"+.@acc+"'";
+				announce "O jogador "+.@name$+" acaba de ser banido!",bc_all|0xFF0000;
+					if(isloggedin(.@acc))
+					{
+						atcommand "@kick "+.@name$;
+						mes .@n$;
+						mes "O personagem estava online e foi banido.";
+						close;
+					}
+			mes .@n$;
+			mes "A conta foi banida.";
+			close;
+		}
+	query_sql "UPDATE `login` SET `alertas`=`alertas`+"+.@aponto+" WHERE `account_id`='"+.@acc+"'";
+	query_sql "SELECT `alertas` FROM `login` WHERE `account_id` = '"+.@acc+"'", .@bponto;
+	mes .@n$;
+	mes "Nível de alerta alterado, agora o personagem possui [^ff0000"+.@bponto+"^000000I^00ff00"+$@qntalerta+"^000000] pontos de alerta.";
+	close;
+
+case 2:
+	mes .@n$;
+	mes "inpute o nome exato do personagem.";
+	next;
+	input .@name$;
+	query_sql "SELECT `account_id` FROM `char` WHERE `name`='"+.@name$+"'",.@acc;
+		if(.@acc == 0)
+			{
+				mes .@n$;
+				mes "Esse char não existe.";
+				close;
+			}
+				query_sql "SELECT `alertas` FROM `login` WHERE `account_id` = '"+.@acc+"'", .@bponto;
+			mes .@n$;
+			mes "O personagem possui [^ff0000"+.@bponto+"^000000I^00ff00"+$@qntalerta+"^000000] pontos de alerta.";
+			next;
+			mes .@n$;
+			mes "Quantos pontos deseja retirar do alerta dele?";
+			next;
+			input .@aponto;
+				query_sql "UPDATE `login` SET `alertas`=`alertas`-"+.@aponto+" WHERE `account_id`='"+.@acc+"'";
+				query_sql "SELECT `alertas` FROM `login` WHERE `account_id` = '"+.@acc+"'", .@bponto;
+			mes .@n$;
+			mes "Nível de alerta alterado, agora o personagem possui [^ff0000"+.@bponto+"^000000I^00ff00"+$@qntalerta+"^000000] pontos de alerta.";
+		close;
+
+case 3:
+	mes .@n$;
+	mes "Deseja selecionar o usuário pelo nome de algum char ou pelo login de sua acc?";
+	next;
+	if(select("Char","Login") == 2)
+	{
+		mes .@n$;
+		mes "inpute exatamente o login do usuário.";
+		next;
+		input .@login$;
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+.@login$+"'",.@acc;
+		if(.@acc == 0)
+			{
+				mes .@n$;
+				mes "Esse login não existe.";
+				close;
+			}
+				query_sql "SELECT `name` FROM `char` WHERE `account_id`='"+.@login$+"'", .@charname$;
+				query_sql "UPDATE `login` SET `ban`='1' WHERE `account_id`='"+.@acc+"'";
+				announce "O jogador "+.@name$+" acaba de ser banido!",bc_all|0xFF0000;
+			mes .@n$;
+			mes "Pronto, a conta foi banida.";
+			close;
+	}
+	mes .@n$;
+	mes "inpute exatamente o nome do char do usuário.";
+	next;
+	input .@charname$;
+	query_sql "SELECT `account_id` FROM `char` WHERE `name`='"+.@charname$+"'",.@acc;
+		if(.@acc == 0)
+			{
+				mes .@n$;
+				mes "Esse char não existe.";
+				close;
+			}
+		query_sql "UPDATE `login` SET `ban`='1' WHERE `account_id`='"+.@acc+"'";
+		announce "O jogador "+.@charname$+" acaba de ser banido!",bc_all|0xFF0000;
+		mes .@n$;
+		atcommand "@kick "+.@charname$;
+		mes "Pronto, a conta foi banida.";
+		close;
+case 4:
+	mes .@n$;
+	mes "Deseja selecionar o usuário pelo nome de algum char ou pelo login de sua acc?";
+	next;
+	if(select("Char","Login") == 2)
+	{
+		mes .@n$;
+		mes "inpute exatamente o login do usuário.";
+		next;
+		input .@login$;
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+.@login$+"'",.@acc;
+		if(.@acc == 0)
+			{
+				mes .@n$;
+				mes "Esse login não existe.";
+				close;
+			}
+				query_sql "SELECT `name` FROM `char` WHERE `account_id`='"+.@login$+"'", .@charname$;
+				query_sql "UPDATE `login` SET `ban`='0' WHERE `account_id`='"+.@acc+"'";
+				announce "O jogador "+.@name$+" acaba de ser desbanido!",bc_all|0xFF0000;
+			mes .@n$;
+			mes "Pronto, a conta foi desbanida.";
+			close;
+	}
+	mes .@n$;
+	mes "inpute exatamente o nome do char do usuário.";
+	next;
+	input .@charname$;
+	query_sql "SELECT `account_id` FROM `char` WHERE `name`='"+.@charname$+"'",.@acc;
+		if(.@acc == 0)
+			{
+				mes .@n$;
+				mes "Esse char não existe.";
+				close;
+			}
+		query_sql "UPDATE `login` SET `ban`='0' WHERE `account_id`='"+.@acc+"'";
+		announce "O jogador "+.@name$+" acaba de ser desbanido!",bc_all|0xFF0000;
+		mes .@n$;
+		mes "Pronto, a conta foi desbanida.";
+		next;
+		mes .@n$;
+		mes "Deseja diminuir o nível de alerta do usuário? Ou prefere deixar como está para que no próximo alerta ele seja banido novamente?";
+		next;
+			if(select("Diminuir nível de alerta","Não alterar nível de alerta") == 2) close;
+			query_sql "SELECT `alertas` FROM `login` WHERE `account_id` = '"+.@acc+"'", .@bponto;
+			mes .@n$;
+			mes "O personagem possui [^ff0000"+.@bponto+"^000000I^00ff00"+$@qntalerta+"^000000] pontos de alerta.";
+			next;
+			mes .@n$;
+			mes "Quantos pontos deseja retirar do alerta dele?";
+			next;
+			input .@aponto;
+				query_sql "UPDATE `login` SET `alertas`=`alertas`-"+.@aponto+" WHERE `account_id`='"+.@acc+"'";
+				query_sql "SELECT `alertas` FROM `login` WHERE `account_id` = '"+.@acc+"'", .@bponto;
+				mes .@n$;
+				mes "Nível de alerta alterado, agora o personagem possui ^ff0000"+.@bponto+"^000000I^00ff00"+$@qntalerta+"^000000 pontos de alerta.";
+				close;
+
+case 5:
+	mes .@n$;
+	mes "Deseja selecionar o usuário pelo nome de algum char ou pelo login de sua acc?";
+	next;
+	if(select("Char","Login") == 2)
+	{
+		mes .@n$;
+		mes "inpute exatamente o login do usuário.";
+		next;
+		input .@login$;
+		query_sql "SELECT `account_id` FROM `login` WHERE `userid`='"+.@login$+"'",.@acc;
+		if(.@acc == 0)
+			{
+				mes .@n$;
+				mes "Esse login não existe.";
+				close;
+			}
+				query_sql "SELECT `name` FROM `char` WHERE `account_id`='"+.@login$+"'", .@charname$;
+				query_sql "UPDATE `login` SET `ban`='2' WHERE `account_id`='"+.@acc+"'";
+				announce "O jogador "+.@name$+" acaba de ser banido permanentemente!",bc_all|0xFF0000;
+			mes .@n$;
+			mes "Pronto, a conta foi banida permanentemente.";
+			close;
+	}
+	mes .@n$;
+	mes "inpute exatamente o nome do char do usuário.";
+	next;
+	input .@charname$;
+	query_sql "SELECT `account_id` FROM `char` WHERE `name`='"+.@charname$+"'",.@acc;
+		if(.@acc == 0)
+			{
+				mes .@n$;
+				mes "Esse char não existe.";
+				close;
+			}
+		query_sql "UPDATE `login` SET `ban`='2' WHERE `account_id`='"+.@acc+"'";
+		announce "O jogador "+.@name$+" acaba de ser banido permanentemente!",bc_all|0xFF0000;
+		mes .@n$;
+		mes "Pronto, a conta foi banida permanentemente.";
+		close;
+case 6:
+
+	mes .@n$;
+	mes "Até mais.";
+	close;
+}
+}
+
+//====================== Checar nível de alerta ======================//
+
+prontera,151,151,5	script	Checar Alerta	405,{
+
+query_sql "SELECT `alertas` FROM `login` WHERE `account_id` = '"+getcharid(3)+"'", .@bponto;
+mes "[ ^191970Checar Alerta^000000 ]";
+mes "Você possui [^ff0000"+.@bponto+"^000000I^00ff00"+$@qntalerta+"^000000] pontos de alerta.";
+mes "Quando seu nível de alerta chegar ao máximo você será banido.";
+close;
+}
+
+//=========================== Fim ==========================//
+
+
+//=============== Atenção, não altere nada neste npc ! ===============//
+
+-	script	checarban	-1,{
+
+OnPCLoginEvent:
+	query_sql "SELECT `ban`,`alertas` FROM `login` WHERE `account_id`='"+getcharid(3)+"'", .@ban,.@alerts;
+		if(.@ban >= 1)atcommand "@kick "+strcharinfo(0); else
+		dispbottom "Você possui ["+.@alerts+"I"+qntalerta+"] pontos de alerta.";
+	end;
+}
+
+//=========================== Fim ===========================//
+
+//===================== Diminuidor de alertas ======================//
+
+-	script	diminuiralerta	-1,{
+
+OnSun0000:
+	if($@dimalert == 0) end; else
+	query_sql "UPDATE `login` SET `alertas`=`alertas`-1 WHERE `ban`='1'";
+	end;
+
+OnSun0001:
+	if($@dimalert == 0) end; else
+	query_sql "UPDATE `login` SET `ban`='0' WHERE `alertas`<='0' AND `ban`='1'";
+	end;
+}
+//=========================== Fim ===========================//

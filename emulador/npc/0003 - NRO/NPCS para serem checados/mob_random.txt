@@ -1,0 +1,26 @@
+-	script	Monster	-1,{
+OnSpawn:
+if($@dailytimer < gettimetick(2)) {
+switch( rand(5) ) {
+	case 0:	set $@MobSpawn$,"prontera";	break
+	case 1:	set $@MobSpawn$,"prontera";	break;
+	case 2:	set $@MobSpawn$,"prontera";	break;
+	case 3:	set $@MobSpawn$,"prontera";	break;
+	case 4:	set $@MobSpawn$,"prontera";	break;
+	}
+monster $@MobSpawn$,0,0,"Timed Spawn",1002,1,"Monster::OnDead";
+announce "A special monster has been summoned at "+$@MobSpawn$+" .",bc_all;
+}
+end;
+
+OnDead:
+set @Delay,rand(3600,54000);
+set $@dailytimer,gettimetick(2) + @Delay;
+initnpctimer;
+end;
+
+OnTimer1000:
+if ( $@dailytimer > 0 ) end;
+stopnpctimer;
+goto OnSpawn;
+}

@@ -1,0 +1,33 @@
+gef_fild07.gat,41,204,5	script	Entrada Secreta	111,{
+
+if(quest_chavesecreta == 1) goto C;
+
+mes "Você vê uma fechadura";
+if(countitem(7027) < 1) goto L_SemItem;
+next;
+mes "Você tem uma chave secreta!";
+mes "Gostaria de usar?";
+menu "Sim, porque não?",A,"Agora não",B;
+
+A:
+next;
+mes "Você enfia a chave e abre a passagem secreta";
+mes "A chave se desintregrou!!";
+next;
+delitem 7027,1;
+warp "abyss_02",120,265;
+announce "O Shinobi " + strcharinfo(0) + " teve acesso a entrada secreta, aproveite!.",0;
+close;
+
+B:
+close;
+
+C:
+close;
+
+L_SemItem:
+next;
+mes "Você precisa da chave secreta para acessar essa caverna";
+close;
+
+}

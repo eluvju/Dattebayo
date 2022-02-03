@@ -1,0 +1,191 @@
+nevoa.gat,116,242,5	script	Equipamentos Lendários::especiais	59,{
+mes "[Equipamentos Ninjas Lendários]";
+mes "Olá "+strcharinfo(0)+"! eu tenho alguns dos items mais raros do mundo.";
+mes "São equipamentos usados pelos ninjas mais poderosos no mundo, e que são muito cobiçados";
+mes "Eu sempre sonhei em ser um ninja e proteger minha vila, mas sou muito fraco e por isso virei colecionador";
+mes "Mas ja cansei dessa vida tambem e acho que vou me casar e formar uma familia";
+mes "Então vou lhe dar uma força, se você me trouxer uns suprimentos que preciso eu lhe dou um deles!.";
+menu "Asa Chouji (lvl 180)",chouji,"Asa Sasuke (lvl 180)",sasuke,"Dowry (lvl 110)",dowry,"Colar Shinobi (lvl 50)",colar;
+
+chouji:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Então quer se tornar mais forte, fazendo a quest dessa asa tenho certeza que irá se tornar muito mais forte do que está agora. Ela é normalmente do Clã Chouji, eles conseguem esse poder, após comer as pilulas Akimichi.";
+next;
+mes "Quem usar essa poderosa asa recebe +10% de ataque, +10% de resistencia contra humanoide, +10% de HP máximo, +10% de esquiva";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Me mostre sua força! Sua missão é buscar os seguintes items";
+mes "^FF000010^000000  União da Tribo";
+mes "^FF0000800^000000  Ova de Sapo";
+mes "^FF0000200^000000  Armadura Destruída";
+mes "^FF0000600^000000  Trança";
+mes "^FF00001^000000  Colar do Oblívio";
+mes "^FF00001^000000  Ouro";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou a Missão?";
+next;
+menu "Sim",-,"Nao",NAO;
+mes "[Equipamentos Ninjas Lendários]";
+mes "hum... deixe me ver....";
+next;
+if (countitem(658) < 10) goto SemItem;
+if (countitem(908) < 800) goto SemItem;
+if (countitem(7069) < 200) goto SemItem;
+if (countitem(901) < 600) goto SemItem;
+if (countitem(1008) < 1) goto SemItem;
+if (countitem(969) < 1) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está a sua recompensa!";
+next;
+delitem 658,10;
+delitem 908,800;
+delitem 7069,200;
+delitem 901,600;
+delitem 1008,1;
+delitem 969,1;
+getitem 19024,1;
+announce "O Shinobi " + strcharinfo(0) + " terminou a missão das Asas Chouji",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Parabens Garoto!!";
+close;
+
+
+sasuke:
+if(Baselevel < 180) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Uma asa estranha, que lhe transformará em um ser estranho porém, lhe dará muito poder. Ela aparece quando se utiliza o Selo nivel 2.";
+next;
+mes "Quem usar essa asa recebe +10% de ataque mágico, +10% de resistencia contra humanoide, +10% de Chakra máximo, e +10% de esquiva.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000700^000000 Pinças de Escorpião";
+mes "^FF000055^000000 Espada Chanfrada";
+mes "^FF000025^000000 Shuriken Despedaçado";
+mes "^FF0000800^000000  Casco Arco-Íris";
+mes "^FF000010^000000  Pele de Sapo";
+mes "^FF00001^000000  Ouro";
+mes "^FF00001^000000  Símbolo dos Nove Reinos";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Deixe me ver.";
+next;
+if (countitem(7125) < 700) goto SemItem;
+if (countitem(7110) < 55) goto SemItem;
+if (countitem(7156) < 25) goto SemItem;
+if (countitem(1013) < 800) goto SemItem;
+if (countitem(7155) < 10) goto SemItem;
+if (countitem(969) < 1) goto SemItem;
+if (countitem(7305) < 1) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 7125,700;
+delitem 7110,55;
+delitem 7156,25;
+delitem 1013,800;
+delitem 7155,10;
+delitem 969,1;
+delitem 7305,1;
+getitem 19083,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão das Asas Sasuke! ",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+dowry:
+if(Baselevel < 110) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Chapéu tradicional japonês, muito utilizado para se proteger so sol nas missões ninjas e no cotidiano também.";
+next;
+mes "fornece +25 de Agilidade e +5 de força";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000300^000000 Pinças de Escorpião";
+mes "^FF0000150^000000 Scell";
+mes "^FF0000200^000000 Pata de Inseto";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou? Foi facil ne";
+mes "Deixe ver se você terminou mesmo!";
+next;
+if (countitem(7125) < 300) goto SemItem;
+if (countitem(911) < 150) goto SemItem;
+if (countitem(1042) < 200) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 7125,300;
+delitem 911,150;
+delitem 1042,200;
+getitem 19037,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Dowry! ",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+colar:
+if(Baselevel < 50) goto NAO;
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Esse colar dizem que é amaldiçoado, todos que o usem morrem, quem sabe você quebre essa maldição";
+next;
+mes "Fornece +3 de destreza, +5 de agilidade, +2 de inteligência e +4 de força.";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "^FF0000100^000000 Scell";
+mes "^FF0000100^000000 Pata Pegajosa";
+mes "^FF0000100^000000 Antenas de Inseto";
+mes "^FF000020^000000 Teia de Aranha";
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(911) < 100) goto SemItem;
+if (countitem(918) < 100) goto SemItem;
+if (countitem(928) < 100) goto SemItem;
+if (countitem(1025) < 20) goto SemItem;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 911,100;
+delitem 918,100;
+delitem 928,100;
+delitem 1025,20;
+getitem 2618,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a missão do Colar Shinobi!",0;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Volte Sempre!!";
+close;
+
+
+SemItem:
+next;
+mes "[Equipamentos Ninjas Lendários]";
+mes "Desculpe, mas você ainda não completou a sua missão!";
+close;
+
+NAO:
+next;
+mes "Você não tem o level necessário para essa missão ou não tem todos os items requeridos";
+close;
+
+
+}
+
+//============== MAP FLAG ===============
+in_hunter	mapflag	nowarp
+in_hunter	mapflag	nowarpto	
+
+areia.gat,168,235,5	duplicate(especiais)	Equipamentos Lendários#m	59
+konoha.gat,163,216,5	duplicate(especiais)	Equipamentos Lendários#x	59
+prt_monk.gat,227,168,5	duplicate(especiais)	Equipamentos Lendários#z	59

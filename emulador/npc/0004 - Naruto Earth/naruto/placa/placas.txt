@@ -1,0 +1,143 @@
+beach_dun,264,65,4	script	FIELD01	835,{
+
+mes "Field01";
+
+close;
+
+}
+
+beach_dun,78,34,4	script	FIELD02	836,{
+
+mes "Teleporte para o mapa 02 da dungeon";
+
+close;
+
+}
+
+beach_dun2,150,33,4	script	FIELD02	835,{
+
+mes "Field02";
+
+close;
+
+}
+
+beach_dun2,252,236,4	script	FIELD03	836,{
+
+mes "Teleporte para o mapa 03 da dungeon";
+
+close;
+
+}
+
+beach_dun3,280,61,4	script	FIELD03	835,{
+
+mes "Field03";
+
+close;
+
+}
+
+beach_dun3,40,247,4	script	SALA MVP	837,{
+
+mes "Teleporte para o mapa da sala mvp";
+
+close;
+
+}
+
+tur_dun01,152,38,4	script	FIEL01	835,{
+
+mes "Field01";
+
+close;
+
+}
+
+tur_dun01,148,227,4	script	FIELD02	836,{
+
+mes "Teleporte para o mapa 02 da dungeon";
+
+close;
+
+}
+
+tur_dun02,141,258,4	script	FIELD02	835,{
+
+mes "field02";
+
+close;
+
+}
+
+tur_dun02,166,29,4	script	FIELD03	836,{
+
+mes "teleporte para o mapa da 03 da dungeon";
+
+close;
+
+}
+
+tur_dun03,36,203,4	script	FIELD03	835,{
+
+mes "field03";
+
+close;
+
+}
+
+tur_dun03,221,80,4	script	SALA MVP	837,{
+
+mes "Teleporte para o mapa da sala mvp";
+
+close;
+
+}
+
+pay_dun00,148,165,4	script	FIELD 01	835,{
+
+mes "FIELD 01";
+
+close;
+
+}
+
+pay_dun00,166,46,4	script	FIELD 02	836,{
+
+mes "teleporte para o mapa 02 da dungeon";
+
+close;
+
+}
+
+pay_dun03,151,146,4	script	FIELD 02	835,{
+
+mes "field 03";
+
+close;
+
+}
+
+pay_dun03,109,82,4	script	FIELD 03	836,{
+
+mes "teleporte para o mapa 03 da dungeon";
+
+close;
+
+}
+
+pay_dun04,195,208,4	script	FIELD 04	835,{
+
+mes "FIELD 04";
+
+close;
+
+}
+
+pay_dun04,113,96,4	script	SALA MVP	837,{
+
+mes "Teleporte para o mapa da sala mvp";
+
+close;
+
+}

@@ -1,0 +1,307 @@
+payon.gat,108,325,4	script	Evento WOE	434,{
+
+if($EWinfo[2] > 0 && getcharid(2) == $EWinfo[2] && getguildmaster(getcharid(2)) == strcharinfo(0)){ //Prêmios Brokes
+getitem 1000, 1;
+set $EWinfo[2], 0;
+announce "[Evento WOE - Brokes]: O Kage [" + strcharinfo(0) + "] recebeu [x] "+getitemname(x)+", [x] "+getitemname(x)+", [x] "+getitemname(x)+" e [x] "+getitemname(x)+".",bc_all|bc_woe;
+}
+if($EWinfo[3] > 0 && getcharid(2) == $EWinfo[3] && getguildmaster(getcharid(2)) == strcharinfo(0)){ //Prêmios Tempo
+getitem 1001, 1;
+set $EWinfo[3], 0;
+announce "[Evento WOE - Tempo]: O Kage [" + strcharinfo(0) + "] recebeu [x] "+getitemname(x)+", [x] "+getitemname(x)+", [x] "+getitemname(x)+" e [x] "+getitemname(x)+".",bc_all|bc_woe;
+}
+
+if($EWinfo[1] == 0) end;
+
+//cadastro Guilds - Criar um npc para esse cadastro
+for( set .@i, 1; $EWgdid[.@i] > 0 && .@i < 100 && getcharid(2) != $EWgdid[.@i]; set .@i, .@i + 1 );
+set $EWgdid[.@i], getcharid(2);
+if(getcharid(2) == 0){
+mes "Você precisa de uma Guild para participar deste evento.";
+close;
+end;
+}
+
+warp "prtg_cas01",103,33;
+
+}
+
+
+
+
+//if($EWinfo[1] == 1){
+//
+//if(.EWempate == 1){
+//	for( set .w, 1; .w<getarraysize(.EWbrokes2)+1; set .w, .w + 1 ){
+//		if(.EWbrokes2[.w] == getcharid(2)) set .EWbkwin, getcharid(2);
+//	}
+//	
+//	
+//	announce "[Evento WOE]: O Evento WOE chegou ao fim. As pontuações serão contabilizadas.",8;
+//	stopnpctimer;
+//	setnpctimer 0;
+//	set $EWinfo[1], 0;
+//	AgitEnd;
+//	
+//	set .EWtime, 0;
+//	set .EWpos, 0;
+//	
+//	for( set .j, 1; .j<6; set .j, .j + 1 ){
+//	for( set .i, 1; .i<getarraysize($EWgdid)+1; set .i, .i + 1 ){
+//	if($EWgdtime[.i] > .EWtime){
+//	set .EWpos, .i;
+//	set .EWtime, $EWgdtime;
+//	}
+//	}
+//	set .EWpos2[.j], .EWpos;
+//	set .EWtime2[.j], .EWtime;
+//	set $EWgdtime[.EWpos], 0;
+//	set .EWtime, 0;
+//	set .EWpos, 0;
+//	}
+//	
+//	setarray .EWprename$[1], "Vila de", "Vila de", "Vila de", "Vila de", "Vila de", "Vila de";
+//	
+//	for( set .j, 1; .j<6; set .j, .j + 1 ){
+//	if($EWgdid[.EWpos2[.j]] != 1 && $EWgdid[.EWpos2[.j]] != 4 && $EWgdid[.EWpos2[.j]] != 29 && $EWgdid[.EWpos2[.j]] != 41)
+//	set .EWprename$[.j], "Organização";
+//	}
+//
+//	
+//	for( set .w, 1; .w<getarraysize($EWgdid)+1; set .w, .w + 1 ){
+//	if($EWgdid[.w] == .EWbkwin){
+//	set .EWbrokes, $EWbrokes[w];
+//	set .EWposbk, .w;	
+//	}
+//	}
+//	
+//	if($EWgdid[.EWposbk] != 1 && $EWgdid[.EWposbk] != 4 && $EWgdid[.EWposbk] != 29 && $EWgdid[.EWposbk] != 41)
+//	set .EWprename$[6], "Organização";
+//	
+//	sleep(10000);
+//	announce "[Evento WOE]: Com "+.EWbrokes+" Brokes, a campeã no requisito Quebras de Emperium, é a "+.EWprename$[6]+" "+getguildname($EWgdid[.EWposbk])+".",8;
+//	set $EWinfo[2], $EWgdid[.EWposbk];
+//	sleep(5000);	
+//	
+//	announce "[Evento WOE]: Contabilizando os tempos para o requisito Tempo de Posse....",8;	
+//	sleep(10000);
+//	announce "[Evento WOE]: Em quinto lugar, com "+.EWtime[5]+" segundos, temos a "+.EWprename$[5]+" "+getguildname($EWgdid[.EWpos2[5]])+".",8;
+//	sleep(5000);
+//	announce "[Evento WOE]: Em quarto lugar, com "+.EWtime[4]+" segundos, temos a "+.EWprename$[4]+" "+getguildname($EWgdid[.EWpos2[4]])+".",8;
+//	sleep(5000);
+//	announce "[Evento WOE]: Em terceiro lugar, com "+.EWtime[3]+" segundos, temos a "+.EWprename$[3]+" "+getguildname($EWgdid[.EWpos2[3]])+".",8;
+//	sleep(5000);
+//	announce "[Evento WOE]: E finalmente, em primeiro lugar por "+.EWtime[1]+" contra "+.EWtime[2]+" segundos, a campeã é......",8;
+//	sleep(5000);	
+//	announce "[Evento WOE]: A "+.EWprename$[1]+" "+getguildname($EWgdid[.EWpos2[1]])+"!!!",8;
+//	set $EWinfo[3], $EWgdid[.EWpos2[1]];
+//		
+//	for( set .i, 1; .i<getarraysize($EWgdid)+1; set .i, .i + 1 ){
+//	set $EWgdtime[.i], 0;
+//	set $EWbrokes[.i], 0;
+//	end;
+//	}
+//
+//}
+//
+////Contabilidade de Brokes na Emp
+//for( set .@i, 1; .@i<getarraysize($EWgdid)+1; set .@i, .@i + 1 )
+//if(getcharid(2) == $EMgdid[.@i]) set $EWbrokes[.@i], $EWbrokes[.@i]+1;
+//}
+
+
+
+
+
+
+-	script	Evento#EW	EventoWOE#EW -1,{
+
+OnInit:
+	set $EWinfo[1], 0;
+	set $EWinfo[2], 0; //ID brokes
+	set $EWinfo[3], 0; //ID time
+end;
+
+OnTimer1000:
+while($EWinfo[1] == 1 && .EWempate == 0){
+sleep(1000);
+stopnpctimer;
+setnpctimer 0;
+set .gdid, getcastledata("prtg_cas01",1);
+for( set .i, 1; .i<getarraysize($EWgdid)+1; set .i, .i + 1 )
+if(.gdid == $EWgdid[.i]) set $EWgdtime[.i], $EWgdtime[.i]+1;
+}
+end;
+
+
+
+OnTimer600000:
+	announce "[Evento WOE]: O Evento WOE chegou ao fim. Não tivemos nenhum vencedor no requisíto Quebras de Emperium.",8;
+	set .EWempate, 0;
+	set .EWnempate, 0;
+	set .EWbrokes2, 0;
+	set $EWinfo[2], 0; //ID brokes
+	stopnpctimer;
+	setnpctimer 0;
+	
+	set $EWinfo[1], 0;
+	AgitEnd;
+	
+	set .EWtime, 0;
+	set .EWpos, 0;
+	
+	for( set .j, 1; .j<6; set .j, .j + 1 ){
+	for( set .i, 1; .i<getarraysize($EWgdid)+1; set .i, .i + 1 ){
+	if($EWgdtime[.i] > .EWtime){
+	set .EWpos, .i;
+	set .EWtime, $EWgdtime;
+	}
+	}
+	set .EWpos2[.j], .EWpos;
+	set .EWtime2[.j], .EWtime;
+	set $EWgdtime[.EWpos], 0;
+	set .EWtime, 0;
+	set .EWpos, 0;
+	}
+	
+	setarray .EWprename$[1], "Vila de", "Vila de", "Vila de", "Vila de", "Vila de", "Vila de";	
+	for( set .j, 1; .j<6; set .j, .j + 1 ){
+	if($EWgdid[.EWpos2[.j]] != 1 && $EWgdid[.EWpos2[.j]] != 4 && $EWgdid[.EWpos2[.j]] != 29 && $EWgdid[.EWpos2[.j]] != 41)
+	set .EWprename$[.j], "Organização";
+	}
+
+	announce "[Evento WOE]: Contabilizando os tempos para o requisito Tempo de Posse....",8;	
+	sleep(10000);
+	announce "[Evento WOE]: Em quinto lugar, com "+.EWtime[5]+" segundos, temos a "+.EWprename$[5]+" "+getguildname($EWgdid[.EWpos2[5]])+".",8;
+	sleep(5000);
+	announce "[Evento WOE]: Em quarto lugar, com "+.EWtime[4]+" segundos, temos a "+.EWprename$[4]+" "+getguildname($EWgdid[.EWpos2[4]])+".",8;
+	sleep(5000);
+	announce "[Evento WOE]: Em terceiro lugar, com "+.EWtime[3]+" segundos, temos a "+.EWprename$[3]+" "+getguildname($EWgdid[.EWpos2[3]])+".",8;
+	sleep(5000);
+	announce "[Evento WOE]: E finalmente, em primeiro lugar por "+.EWtime[1]+" contra "+.EWtime[2]+" segundos, a campeã é......",8;
+	sleep(5000);	
+	announce "[Evento WOE]: A "+.EWprename$[1]+" "+getguildname($EWgdid[.EWpos2[1]])+"!!!",8;
+	set $EWinfo[3], $EWgdid[.EWpos2[1]];
+		
+	for( set .i, 1; .i<getarraysize($EWgdid)+1; set .i, .i + 1 ){
+	set $EWgdtime[.i], 0;
+	set $EWbrokes[.i], 0;
+	}
+end;
+
+
+
+//Scripts solto para a contabilidade
+OnClock1850:
+if(gettime(4) == 2){
+	announce "[Evento WOE]: O Evento WOE iniciou. Boa Sorte a todos!",8;
+	set $EWinfo[1], 1;
+	set $EWinfo[2], 0; //ID brokes
+	set $EWinfo[3], 0; //ID time
+	//AgitStart;
+	initnpctimer "Evento#EW";
+}
+end;
+
+OnClock1859:
+if(gettime(4) == 2){
+
+	set .EWbrokes, 0;
+	set .EWposbk, 0;
+	
+	for( set .w, 1; .w<getarraysize($EWgdid)+1; set .w, .w + 1 ){
+	if($EWbrokes[.w] > .EWbrokes){
+	set .EWbrokes, $EWbrokes[w];
+	set .EWposbk, .w;	
+	}
+	}
+
+	set .EWnempate, 0;
+	
+	for( set .w, 1; .w<getarraysize($EWgdid)+1; set .w, .w + 1 ){
+	if($EWbrokes[.w] == .EWbrokes){
+	set .EWbrokes2[getarraysize(.EWbrokes2)+1], $EWgdid[.w];
+	set .EWnempate, .EWnempate + 1;
+	}
+	}
+
+	if(.EWnempate > 0){
+	set .EWempate, 1;
+	initnpctimer;
+	setnpctimer 2000;
+	announce "[Evento WOE]: Empate detectado. Modo [Morte Súbita] ligado! O requisito Tempo de Conquista está desabilitado.",8;	
+	sleep(1000);
+	announce "[Evento WOE]: A primeira Guild entre as empatadas a fazer um ponto nos próximos 10 minutos vencerá!",8;	
+	sleep(1000);
+	announce "[Evento WOE]: Caso nenhuma faça o morte súbito, não haverá vencedor.",8;	
+	end;	
+	}
+	
+	announce "[Evento WOE]: O Evento WOE chegou ao fim. As pontuações serão contabilizadas.",8;
+	stopnpctimer;
+	setnpctimer 0;
+	set $EWinfo[1], 0;
+	AgitEnd;
+	
+	set .EWtime, 0;
+	set .EWpos, 0;
+	
+	for( set .j, 1; .j<6; set .j, .j + 1 ){
+	for( set .i, 1; .i<getarraysize($EWgdid)+1; set .i, .i + 1 ){
+	if($EWgdtime[.i] > .EWtime){
+	set .EWpos, .i;
+	set .EWtime, $EWgdtime;
+	}
+	}
+	set .EWpos2[.j], .EWpos;
+	set .EWtime2[.j], .EWtime;
+	set $EWgdtime[.EWpos], 0;
+	set .EWtime, 0;
+	set .EWpos, 0;
+	}
+	
+	setarray .EWprename$[1], "Vila de", "Vila de", "Vila de", "Vila de", "Vila de", "Vila de";
+	
+	for( set .j, 1; .j<6; set .j, .j + 1 ){
+	if($EWgdid[.EWpos2[.j]] != 1 && $EWgdid[.EWpos2[.j]] != 4 && $EWgdid[.EWpos2[.j]] != 29 && $EWgdid[.EWpos2[.j]] != 41)
+	set .EWprename$[.j], "Organização";
+	}
+
+	set .EWbrokes, 0;
+	set .EWposbk, 0;
+	
+	for( set .w, 1; .w<getarraysize($EWgdid)+1; set .w, .w + 1 ){
+	if($EWbrokes[.w] > .EWbrokes){
+	set .EWbrokes, $EWbrokes[w];
+	set .EWposbk, .w;	
+	}
+	}
+	
+	if($EWgdid[.EWposbk] != 1 && $EWgdid[.EWposbk] != 4 && $EWgdid[.EWposbk] != 29 && $EWgdid[.EWposbk] != 41)
+	set .EWprename$[6], "Organização";
+	
+	sleep(10000);
+	announce "[Evento WOE]: Com "+.EWbrokes+" Brokes, a campeã no requisito Quebras de Emperium, é a "+.EWprename$[6]+" "+getguildname($EWgdid[.EWposbk])+".",8;
+	set $EWinfo[2], $EWgdid[.EWposbk];
+	sleep(5000);	
+	
+	announce "[Evento WOE]: Contabilizando os tempos para o requisito Tempo de Posse....",8;	
+	sleep(10000);
+	announce "[Evento WOE]: Em quinto lugar, com "+.EWtime[5]+" segundos, temos a "+.EWprename$[5]+" "+getguildname($EWgdid[.EWpos2[5]])+".",8;
+	sleep(5000);
+	announce "[Evento WOE]: Em quarto lugar, com "+.EWtime[4]+" segundos, temos a "+.EWprename$[4]+" "+getguildname($EWgdid[.EWpos2[4]])+".",8;
+	sleep(5000);
+	announce "[Evento WOE]: Em terceiro lugar, com "+.EWtime[3]+" segundos, temos a "+.EWprename$[3]+" "+getguildname($EWgdid[.EWpos2[3]])+".",8;
+	sleep(5000);
+	announce "[Evento WOE]: E finalmente, em primeiro lugar por "+.EWtime[1]+" contra "+.EWtime[2]+" segundos, a campeã é......",8;
+	sleep(5000);	
+	announce "[Evento WOE]: A "+.EWprename$[1]+" "+getguildname($EWgdid[.EWpos2[1]])+"!!!",8;
+	set $EWinfo[3], $EWgdid[.EWpos2[1]];
+		
+	for( set .i, 1; .i<getarraysize($EWgdid)+1; set .i, .i + 1 ){
+	set $EWgdtime[.i], 0;
+	set $EWbrokes[.i], 0;
+	}
+}
+end;
+}

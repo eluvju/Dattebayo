@@ -1,0 +1,12 @@
+izlude,132,107,5	script	Raiton Avançado#d	831,{
+
+if(elementoraiton != 1) {mes "Esse elemento não é de sua natureza"; close;}	
+	if(checkquest(2005,hunting) == 2) {mes "Você é digno de aprender a tecnica..."; set ninjutsuavancado,1; close;}
+	if(checkquest(2005) != 1) {mes "Não posso te ajudar em nada..."; close;}
+	if(ninjutsuavancado == 1) {mes "Não posso te ajudar em nada..."; close;}
+	mes "[ Mestre Raiton]";
+	mes "Explicação sobre o elemento raiton e a técnica...";
+	mes "Para aprender tal tecnica,você precisa provar ser digno,e derrotar um mestre em raiton...";
+	setquest 2005;
+	close;
+}

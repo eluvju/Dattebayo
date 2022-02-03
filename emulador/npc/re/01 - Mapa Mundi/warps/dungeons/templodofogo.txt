@@ -1,0 +1,42 @@
+// RANK A
+
+ama_fild01,173,332,0	script	 #entertemplo	10237,2,2,{
+	
+	OnTouch:
+	callfunc("warps"),	// Função
+	"ama_dun01",			// Mapa
+	228,				// Coordenada X
+	12,				// Coordenada Y
+	1001,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+}
+
+//Permissão Rank C Ambos
+
+ama_fild01,330,141,0	script	 #entertemplo1	10237,2,2,{
+	
+	OnTouch:
+	callfunc("warps"),	// Função
+	"ama_in01",			// Mapa
+	88,				// Coordenada X
+	98,				// Coordenada Y
+	1001,				// Quest (default +1000_
+	0,					// Item (Default 0)
+	0;					// Item Quantidade
+}
+
+// Area VIP - Ferreiro ama_in01,166,74
+// ama_in01,162,29
+ama_in01,88,94,0	warp	eama_dun0-0	2,2,ama_fild01,330,137
+
+ama_in01,161,35,0	warp	eama_dun0-1	1,1,ama_in01,121,95
+ama_in01,121,90,0	warp	eama_dun0-2	1,1,ama_in01,162,29
+
+ama_dun01,228,6,0	warp	eama_dun0-3	1,1,ama_fild01,173,326
+ama_dun01,235,144,0	warp	ama_dun1-1	1,1,ama_dun02,33,40
+ama_dun02,30,40,0	warp	ama_dun1-2	1,1,ama_dun01,232,144
+ama_dun02,196,123,0	warp	ama_dun2-1	1,1,ama_dun03,120,12
+ama_dun03,120,9,0	warp	ama_dun2-2	1,1,ama_dun02,196,120
+
+

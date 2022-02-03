@@ -1,0 +1,26 @@
+-	script	useshushin	-1,{
+    end;
+//When a Character uses a skill
+
+//shushin
+
+onPcUseSkillEvent:
+
+           if(lskillid == 26) {
+
+
+if (getskilllv(26) == 1) {
+if (vel_avan != 1) {end;}
+if (shushin != 1) {end;}
+if (skill26 >= 150) {skill 26,2,0; set skill26,0; dispbottom "[Sys] Level up"; end; }
+set skill26,skill26 +1;
+dispbottom "[Jutsu level] Shushin no Jutsu level 1: "+skill26+" de 150";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

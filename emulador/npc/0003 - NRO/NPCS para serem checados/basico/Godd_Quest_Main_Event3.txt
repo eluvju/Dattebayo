@@ -1,0 +1,295 @@
+//Author	:	Goddameit
+//Version	:	2013/04/08
+//Web___	:	http://bit.ly/MDuQ9F
+/*
+CREATE TABLE IF NOT EXISTS  `quests_table` (
+ `char_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT  '0',
+ `account_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT  '0',
+ `quest_type` INT( 1 ) UNSIGNED NOT NULL DEFAULT  '0',
+ `quest_bool` INT( 1 ) UNSIGNED NOT NULL DEFAULT  '0',
+ `quest_var1` INT( 5 ) UNSIGNED NOT NULL DEFAULT  '0',
+ `quest_var2` INT( 5 ) UNSIGNED NOT NULL DEFAULT  '0'
+) ENGINE = MYISAM ;
+*/
+salakagen,31,22,4	script	Central de Missões::kage2	100,{
+	function	func_setvar	;
+	function	func_rankro	{
+		setarray .@title$[1],"S","A","B","C","D","E";
+		if( title$ == "RankS" )
+			return .@title$[1];
+		if( title$ == "RankA" )
+			return .@title$[2];
+		if( title$ == "RankB" )
+			return .@title$[3];
+		if( title$ == "RankC" )
+			return .@title$[4];
+		if( title$ == "RankD" )
+			return .@title$[5];
+		if( title$ == "RankE" )
+			return .@title$[6];
+		return "";
+	}
+	mes "Gostaria de verificar a situação de sua missões?";
+	if( select("- Completar minha missão","- Quero ver minhas missões ativas","- Não") == 3 )
+		close;
+	if( @menu == 2 )
+	{
+		query_sql "SELECT `quest_type`,`quest_bool`,`quest_var1`,`quest_var2` FROM `quests_table` WHERE `char_id` = "+getcharid(0)+"",@quest_type,@quest_bool,@quest_var1,@quest_var2;
+		set @num,getarraysize(@quest_type);
+		for(set @i,0;@i<@num;set @i,@i+1)
+		{
+			if( @i % 10 == 0 )
+				next;
+			mes "["+( @quest_bool[@i] <= 0 ? "^008B00Completada^000000" : "^0000FFAtiva^000000" )+"]"+( @quest_type[@i] == 1 ? "Coletar" : "Matar" )+" "+@quest_var2[@i]+" "+( @quest_type[@i] == 1 ? getitemname(@quest_var1[@i]) : strmobinfo(1,@quest_var1[@i]) );
+			mes "---------------------------------";
+		}
+		close;
+	}
+	deletearray @quest_var1[0],128;
+	deletearray @quest_var2[0],128;
+	query_sql "SELECT `quest_var1`,`quest_var2` FROM `quests_table` WHERE `quest_type` = 1 AND `quest_bool` = 1 AND `char_id` = "+getcharid(0)+"",@quest_var1,@quest_var2;
+	set @num,getarraysize(@quest_var1);
+	for(set @i,0;@i<@num;set @i,@i+1)
+	{
+		if( countitem(@quest_var1[@i]) >= @quest_var2[@i] )
+		{
+			delitem @quest_var1[@i],@quest_var2[@i];
+			callsub OnReward,1;
+			query_sql "UPDATE `quests_table` SET `quest_bool` = 0 WHERE `quest_type` = 1 AND `quest_bool` = 1 AND `char_id` = "+getcharid(0)+" AND `quest_var1` = "+@quest_var1[@i]+" AND `quest_var2` = "+@quest_var2[@i]+" LIMIT 1 ";
+			set .@title$,func_rankro(title$);
+			query_sql "UPDATE `char` SET `"+.@title$+"` = `"+.@title$+"`+1 WHERE `char_id` = "+getcharid(0);
+		}
+	}
+	close;
+	function	func_setvar	{
+		if( getarg(0,"") == "" || getarg(1,0) < 1 || getarg(1,0) > 2 )
+			return "'0','0'";
+		else
+		{
+			set .@num,0;
+			deletearray .@var1[0],128;
+			deletearray .@var2[0],128;
+			if( getarg(0) == "RankS" )
+			{
+				if( getarg(1) == 1 )
+				{
+					//Item id
+					setarray .@var1[0],7157,7022,7329,7437;
+					setarray .@var2[0],15,5,15,15;
+				}else
+				{
+					//Mob id
+					setarray .@var1[0],7157,7022,7329,7437;
+					setarray .@var2[0],10,3,25,15;
+				}
+			}
+			if( getarg(0) == "RankA" )
+			{
+				if( getarg(1) == 1 )
+				{
+					setarray .@var1[0],969,7020,7305,1011;
+					setarray .@var2[0],20,20,10,4;
+				}else
+				{
+					setarray .@var1[0],1289,1321,1492,1147;
+					setarray .@var2[0],50,50,50,50;
+				}
+			}
+			if( getarg(0) == "RankB" )
+			{
+				if( getarg(1) == 1 )
+				{
+					setarray .@var1[0],7018,719,7296,7168,7512;
+					setarray .@var2[0],3,3,3,3,3;
+				}else
+				{
+					setarray .@var1[0],1018,1305,1059,1262;
+					setarray .@var2[0],50,50,50,50;
+				}
+			}
+			if( getarg(0) == "RankC" )
+			{
+				if( getarg(1) == 1 )
+				{
+					setarray .@var1[0],7211,7524,713,938,7208;
+					setarray .@var2[0],10,3,10,10,3;
+				}else
+				{
+					setarray .@var1[0],1636,1106,1618,1296,1025;
+					setarray .@var2[0],30,30,50,50,60;
+				}
+			}
+			if( getarg(0) == "RankD" )
+			{
+				if( getarg(1) == 1 )
+				{
+					setarray .@var1[0],7072,1016,1007,526,1052;
+					setarray .@var2[0],25,2,2,10,2;
+				}else
+				{
+					setarray .@var1[0],1656,1304,1303,1209,1201;
+					setarray .@var2[0],50,50,30,30,50;
+				}
+			}
+			if( getarg(0) == "RankE" )
+			{
+				if( getarg(1) == 1 )
+				{
+					setarray .@var1[0],954,520,955,601,7006;
+					setarray .@var2[0],10,10,1,1,1;
+				}else
+				{
+					setarray .@var1[0],1034,1051,1070,1042,1212;
+					setarray .@var2[0],70,50,50,50,75;
+				}
+			}
+			set .@num,getarraysize(.@var1);
+			if( .@num == 0 )
+				return "'0','0'";
+			else
+			{
+				set .@num,rand(.@num);
+				if( .@var1[.@num] <= 0 || .@var2[.@num] <= 0 )
+					return "'0','0'";
+				else{
+					Announce "[Nova Missão] "+( getarg(1) == 1 ? "Coletar" : "Matar" )+" "+.@var2[.@num]+" "+( getarg(1) == 1 ? getitemname(.@var1[.@num]) : strmobinfo(1,.@var1[.@num]) ),bc_self;
+					return "'"+.@var1[.@num]+"','"+.@var2[.@num]+"'";
+				}
+			}
+		}
+	}
+OnNPCKillEvent:
+	set .@WHERE$,"`quest_type` = 2 AND `quest_bool` = 1 AND `char_id` = "+getcharid(0)+" AND `quest_var1` = "+killedrid+"";
+	query_sql "UPDATE `quests_table` SET `quest_var2` = `quest_var2` -1 WHERE "+.@WHERE$+" AND `quest_var2` > 0 LIMIT 1";
+	query_sql "SELECT `quest_bool` FROM `quests_table` WHERE "+.@WHERE$+" AND `quest_var2` <= 0",.@num;
+	set .@num,getarraysize(.@num);
+	if( .@num > 0 )
+	{
+		callsub OnReward,.@num;
+		query_sql "UPDATE `quests_table` SET `quest_bool` = 0 WHERE "+.@WHERE$+" AND `quest_var2` <= 0";
+		set .@title$,func_rankro(title$);
+		query_sql "UPDATE `char` SET `"+.@title$+"` = `"+.@title$+"`+1 WHERE `char_id` = "+getcharid(0);
+	}
+	end;
+OnReward:
+	set .@num,getarg(0,0);
+	for(set .@i,0;.@i<.@num;set .@i,.@i+1)
+	{
+		if( title$ == "RankS" )
+		{
+			setarray .@item_id[0],607;
+			setarray .@item_num[0],1;
+			set .@id,rand(getarraysize(.@item_id));
+			getexp 100,100;
+			set Zeny,Zeny+3000000;
+			getitem .@item_id[.@id],.@item_num[.@id];
+			set .@point,50;
+			dispbottom "Missão completada com sucesso, bom trabalho, como recompensa receberá: exp, zeny, pontos de missão, e um item aleatório";
+		}
+		if( title$ == "RankA" )
+		{
+			setarray .@item_id[0],607;
+			setarray .@item_num[0],1;
+			set .@id,rand(getarraysize(.@item_id));
+			getexp 100,100;
+			set Zeny,Zeny+2000000;
+			getitem .@item_id[.@id],.@item_num[.@id];
+			set .@point,35;
+			dispbottom "Missão completada com sucesso, bom trabalho, como recompensa receberá: exp, zeny, pontos de missão, e um item aleatório";
+		}
+		if( title$ == "RankB" )
+		{
+			setarray .@item_id[0],607;
+			setarray .@item_num[0],1;
+			set .@id,rand(getarraysize(.@item_id));
+			getexp 100,100;
+			set Zeny,Zeny+1000000;
+			getitem .@item_id[.@id],.@item_num[.@id];
+			set .@point,25;
+			dispbottom "Missão completada com sucesso, bom trabalho, como recompensa receberá: exp, zeny, pontos de missão, e um item aleatório";
+		}
+		if( title$ == "RankC" )
+		{
+			setarray .@item_id[0],607;
+			setarray .@item_num[0],1;
+			set .@id,rand(getarraysize(.@item_id));
+			getexp 100,100;
+			set Zeny,Zeny+600000;
+			getitem .@item_id[.@id],.@item_num[.@id];
+			set .@point,15;
+			dispbottom "Missão completada com sucesso, bom trabalho, como recompensa receberá: exp, zeny, pontos de missão, e um item aleatório";
+		}
+		if( title$ == "RankD" )
+		{
+			setarray .@item_id[0],607;
+			setarray .@item_num[0],1;
+			set .@id,rand(getarraysize(.@item_id));
+			getexp 100,100;
+			set Zeny,Zeny+300000;
+			getitem .@item_id[.@id],.@item_num[.@id];
+			set .@point,10;
+			dispbottom "Missão completada com sucesso, bom trabalho, como recompensa receberá: exp, zeny, pontos de missão, e um item aleatório";
+		}
+		if( title$ == "RankE" )
+		{
+			setarray .@item_id[0],607;
+			setarray .@item_num[0],1;
+			set .@id,rand(getarraysize(.@item_id));
+			getexp 100,100;
+			set Zeny,Zeny+100000;
+			getitem .@item_id[.@id],.@item_num[.@id];
+			set .@point,5;
+			dispbottom "Missão completada com sucesso, bom trabalho, como recompensa receberá: exp, zeny, pontos de missão, e um item aleatório";
+		}
+		query_sql "UPDATE `char` SET `quest_points` = `quest_points`+"+.@point+" WHERE `char_id` = "+getcharid(0);
+	}	
+	return;
+OnEventRun:
+	if( getarg(0,0) )
+	{
+		query_sql "TRUNCATE TABLE  `quests_table`";
+	}
+	for(set .@i,0;;set .@i,.@i+1)
+	{
+		set .@num,0;
+		deletearray .@char_id[0],128;
+		deletearray .@account_id[0],128;
+		query_sql "SELECT `char_id`,`account_id` FROM `char` WHERE `online` = 1 LIMIT "+(.@i*128)+",128;",.@char_id,.@account_id;
+		set .@num,getarraysize(.@char_id);
+		for(set .@j,0;.@j<.@num;set .@j,.@j+1)
+		{
+			if( isloggedin(.@account_id[.@j],.@char_id[.@j]) )
+			{
+				if( attachrid(.@account_id[.@j]) )
+				{
+					if( title$ == "" )
+						continue;
+					set .@type,rand(1,2);
+					query_sql "INSERT INTO `quests_table` VALUES('"+.@char_id[.@j]+"','"+.@account_id[.@j]+"','"+.@type+"','1',"+func_setvar(title$,.@type)+")";
+					detachrid;
+				}else
+					continue;
+			}
+		}
+		if( .@num < 128 )
+			break;
+	}
+	return;
+OnClock0000:
+	callsub OnEventRun,1;
+	end;
+OnClock0100:	OnClock0200:	OnClock0300:	OnClock0400:
+OnClock0500:	OnClock0600:	OnClock0700:	OnClock0800:	OnClock0900:
+OnClock0022:	OnClock0023:	OnClock0024:	OnClock0025:	OnClock0026:
+OnClock0027:	OnClock0028:	OnClock0029:	OnClock0030:	OnClock0031:
+OnClock0032:	OnClock0033:	OnClock0034:	OnClock0035:
+	callsub OnEventRun;
+	end;
+}
+
+//gef_fild07, 34, 64, 4	duplicate(mission_npc)	Shinobi Desaparecido	746
+salakage, 31, 22, 4	duplicate(kage2)	Central de Missoes#1	746
+salakagea, 31, 22, 4	duplicate(kage2)	Central de Missoes#2	718
+salakagex, 31, 22, 4	duplicate(kage2)	Central de Missoes#4	870
+prt_monk, 255, 212, 4	duplicate(kage2)	Central de Missoes#3	82
+6@tower, 154, 148, 4	duplicate(kage2)	Central de Missoes#5	82

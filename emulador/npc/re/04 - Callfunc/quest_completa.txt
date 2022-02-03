@@ -1,0 +1,9 @@
+function	script	quest_completa	{
+
+close2;
+cutin "quest_icon_completa",1;
+sleep2 2500;
+cutin "",255;
+return;
+
+}

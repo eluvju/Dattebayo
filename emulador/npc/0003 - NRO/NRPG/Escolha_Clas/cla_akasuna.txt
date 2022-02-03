@@ -1,0 +1,39 @@
+que_ng,19,70,3	script	Clã Akasuna	734,{
+	show "[Clã Akasuna]";
+	if(elemento == 0){goto aprenderakasuna;}
+	if(cla == 1){goto L_alreadyhavecla;}	
+
+
+	aprenderakasuna:
+	show "Olá caro shinobi, voce gostaria de fazer parte do Clã Akasuna ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Clã Akasuna]";
+	show "Muito bem, muito sábia essa escolha!";
+	setjob "4006";
+	set akasuna,akasuna + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Clã Akasuna]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	show "Você já possui um clã";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

@@ -1,0 +1,57 @@
+-	script	provocar	-1,{
+    end;
+//When a Character uses a skill
+
+//provocar
+
+onPcUseSkillEvent:
+
+           if(lskillid == 6) {
+
+
+if (getskilllv(6) == 1) {
+
+if (provocar != 1) {end;}
+if (skill6 >= 50) {skill 6,2,0; set skill6,0; dispbottom "[Sys] Level up"; end; }
+set skill6,skill6 +1;
+dispbottom "[Jutsu level] Provocar level 1: "+skill6+" de 50";
+
+end;
+
+}
+
+if (getskilllv(6) == 2) {
+if (provocar != 1) {end;}
+if (skill6 >= 100) {skill 6,3,0; set skill6,0; dispbottom "[Sys] Level up"; end;}
+set skill6,skill6 +1;
+dispbottom "[Jutsu level] Provocar level 2: "+skill6+" de 100";
+
+end;
+
+}
+
+if (getskilllv(6) == 3) {
+
+if (provocar != 1) {end;}
+if (skill6 >= 150) {skill 6,4,0; set skill6,0; dispbottom "[Sys] Level up"; end;}
+set skill6,skill6 +1;
+dispbottom "[Jutsu level] Provocar level 3: "+skill6+" de 150";
+
+end;
+
+}
+
+if (getskilllv(6) == 4) {
+if (provocar != 1) {end;}
+if (skill6 >= 200) {skill 6,5,0; set skill6,0; dispbottom "[Sys] Level up"; end;}
+set skill6,skill6 +1;
+dispbottom "[Jutsu level] Provocar level 4: "+skill6+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

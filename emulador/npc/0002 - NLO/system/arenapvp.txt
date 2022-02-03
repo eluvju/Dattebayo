@@ -1,0 +1,80 @@
+hospital,111,33,5	script	Arena PvP::arenapvp	4_m_across,{
+
+
+
+mes "[^FF0000Arena PvP^000000]";
+mes "Olá "+strcharinfo(0)+".";
+mes "Gostaria de entrar na arena de guerra?";
+
+	switch(select("- Arena PvP["+getmapusers("guild_vs5")+"]:- Sair")) {
+
+	
+
+	case 1:
+
+		if(BaseLevel == 999 ) {
+
+			close2;
+
+			announce "O shinobi "+strcharinfo(0)+" acaba de entrar na Arena PvP.",0;
+
+			percentheal 100,100;
+
+			warp "guild_vs5",0,0; 
+
+			end;
+
+		}
+
+		next;
+
+		mes "[^FF0000Arena PvP^000000]";
+
+		mes "Você precisa ser nivel 999.";
+
+		close;
+
+		
+
+	case 2:
+
+		close;
+
+		
+
+	}
+
+		
+
+	OnInit:
+
+	waitingroom "Arena PvP",0;
+
+}
+
+hospital2,111,33,5	duplicate(arenapvp)	Arena PvP#2	4_m_across
+hospital3,111,33,5	duplicate(arenapvp)	Arena PvP#3	4_m_across
+hospital4,111,33,5	duplicate(arenapvp)	Arena PvP#4	4_m_across
+
+
+//============== MAP FLAG ===============
+
+// PvP
+
+guild_vs5	mapflag	nosave
+
+guild_vs5	mapflag	nowarpto
+
+guild_vs5	mapflag	nowarp
+
+guild_vs5	mapflag	nomemo
+
+guild_vs5	mapflag	pvp
+
+guild_vs5	mapflag	nopenalty
+
+guild_vs5	mapflag	nobranch
+
+guild_vs5	mapflag	noloot
+
+guild_vs5	mapflag	noexp

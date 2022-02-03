@@ -1,0 +1,37 @@
+kiragakure,168,123,0	warp	saida	1,1,odin_tem01,380,334
+
+odin_tem01,89,146,0	warp	saida	1,1,odin_tem02,24,180
+odin_tem02,20,180,0	warp	entrada	1,1,odin_tem01,92,146
+
+odin_tem02,258,374,0	warp	saida	1,1,odin_tem03,247,38
+odin_tem03,247,33,0	warp	entrada	1,1,odin_tem02,260,371
+
+odin_tem03,122,48,0	warp	saida	1,1,cmd_fild05,348,369
+cmd_fild05,350,373,0	warp	entrada	1,1,odin_tem03,121,52
+
+cmd_fild05,149,18,0	warp	saida	1,1,cmd_fild02,222,372
+cmd_fild02,222,376,0	warp	saida	1,1,cmd_fild05,147,23
+
+//kiragakure,181,176,0	warp	entrada	1,1,sec_in01,85,19
+
+pay_dun00,182,33,0	warp	saida	1,1,pay_dun03,155,153
+pay_dun03,155,161,0	warp	entrada	1,1,pay_dun00,178,33
+
+pay_dun03,128,62,0	warp	saida	1,1,pay_dun04,199,203
+pay_dun04,202,206,0	warp	entrada	1,1,pay_dun03,123,62
+
+pay_dun04,120,116,0	warp	saida	1,1,tur_dun06,17,77
+tur_dun06,13,79,0	warp	entrada	1,1,pay_dun04,120,112
+
+kiragakure,202,224,0	warp	entrada	1,1,2@ecl,53,64
+2@ecl,53,60,0	warp	saida	1,1,kiragakure,202,220
+
+kiragakure,152,226,0	warp	entrada	1,1,biblioteca,69,15
+
+
+kiragakure,269,261,0	warp	entrada	1,1,payon_in01,12,135
+
+
+cmd_fild02,382,271,0	warp	saida	1,1,gef_fild05,360,312
+
+gef_fild05,364,312,0	warp	saida	1,1,cmd_fild02,378,267

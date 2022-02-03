@@ -1,0 +1,193 @@
+in_hunter,99,99,5	script	Treino de Genjutsu::t_ge	857,{
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+OnStart:
+readparam(bLuk);
+if(readparam(bLuk)<50) {mes "Antes de adicionar pontos nos seus atributos, é preciso estar com todos os atributos no 50"; close;}
+mes "[Treinamento de Genjutsu]";
+mes "Você possui [^0000FF" + AtrPoints3 + "^000000] pontos em Genjutsu";
+next;
+mes "Gostaria de adicionar seus pontos em Genjutsu agora?";
+next;
+menu "Sim, gostaria",-,"Não, deixa pra depois",fecha;
+if(AtrPoints3 < 1) {set AtrPoints3,0;}
+mes "[Treinamento de Genjutsu]";
+mes "Quantos pontos gostaria de adicionar? ["+AtrPoints3+"]";
+next;
+input .@genpoints;
+if(.@genpoints <= AtrPoints3) goto go_tai;
+if(.@genpoints > AtrPoints3) {mes "Você não possui essa quantidade de pontos"; close;}
+mes "^FF0000Digite um numero entre 1 e " + AtrPoints3;
+close;
+
+go_tai:
+set AtrPoints3, AtrPoints3 - .@genpoints;
+atcommand strcharinfo(0)+":@"+.IndexToStat$[@menu] + " " + .@genpoints;
+mes "Os seus pontos foram adicionados";
+close;
+
+fecha:
+close;
+
+OnInit:
+
+//How much exp needed per lvl (make sure each number is bigger than the next)
+setArray .WLvl3[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+
+//How many status points each weapon lvl up
+setArray .Wpoints3[0],
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+
+set .ExpPerKill3, 1;
+set .MaxLvl3, getarraysize(.WLvl3);
+
+setArray .IndexToStat$[1], "luk", "luk", "luk", "luk", "luk", "luk";
+set .statMenu$, "Str:Agi:Vit:Int:Dex:Luk";
+
+set .init, 1;
+end;
+
+OnNPCKillEvent:
+
+if(gen_basico != 1) {end;}
+if(treino_gen == 0) {end;}
+
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+
+
+if(killedrid == 1618) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1402) {set WeaponExp3, WeaponExp3 + 90;}
+if(killedrid == 1296) {set WeaponExp3, WeaponExp3 + 90;}
+if(killedrid == 1031) {set WeaponExp3, WeaponExp3 + 90;}
+if(killedrid == 1628) {set WeaponExp3, WeaponExp3 + 90;}
+if(killedrid == 1025) {set WeaponExp3, WeaponExp3 + 90;}
+if(killedrid == 1618) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1769) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1589) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1494) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1408) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1018) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1305) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1194) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1009) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1211) {set WeaponExp3, WeaponExp3 + 180;}
+
+
+if(killedrid == 1322) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1027) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1636) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1036) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1106) {set WeaponExp3, WeaponExp3 + 120;}
+if(killedrid == 1121) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1838) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1169) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1114) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1004) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1059) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1294) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1139) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1632) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1262) {set WeaponExp3, WeaponExp3 + 210;}
+
+if(killedrid == 1405) {set WeaponExp3, WeaponExp3 + 150;}
+if(killedrid == 1009) {set WeaponExp3, WeaponExp3 + 150;}
+if(killedrid == 1517) {set WeaponExp3, WeaponExp3 + 150;}
+if(killedrid == 1093) {set WeaponExp3, WeaponExp3 + 150;}
+if(killedrid == 1040) {set WeaponExp3, WeaponExp3 + 150;}
+
+if(killedrid == 1368) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1067) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1318) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1780) {set WeaponExp3, WeaponExp3 + 180;}
+
+if(killedrid == 1831) {set WeaponExp3, WeaponExp3 + 90;}
+if(killedrid == 1315) {set WeaponExp3, WeaponExp3 + 90;}
+if(killedrid == 1634) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1177) {set WeaponExp3, WeaponExp3 + 90;}
+
+if(killedrid == 1266) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1041) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1073) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1118) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1601) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1735) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1736) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1830) {set WeaponExp3, WeaponExp3 + 210;}
+if(killedrid == 1163) {set WeaponExp3, WeaponExp3 + 210;}
+
+if(killedrid == 1635) {set WeaponExp3, WeaponExp3 + 360;}
+if(killedrid == 1032) {set WeaponExp3, WeaponExp3 + 280;}
+if(killedrid == 1418) {set WeaponExp3, WeaponExp3 + 280;}
+if(killedrid == 1089) {set WeaponExp3, WeaponExp3 + 280;}
+if(killedrid == 1381) {set WeaponExp3, WeaponExp3 + 280;}
+
+if(killedrid == 1066) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1499) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1039) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1312) {set WeaponExp3, WeaponExp3 + 1200;}
+
+if(killedrid == 1992) {set WeaponExp3, WeaponExp3 + 480;}
+
+if(killedrid == 1196) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1202) {set WeaponExp3, WeaponExp3 + 180;}
+if(killedrid == 1257) {set WeaponExp3, WeaponExp3 + 180;}
+
+//if(killedrid == 1839) {set WeaponExp3, WeaponExp3 + 80;}
+if(killedrid == 1401) {set WeaponExp3, WeaponExp3 + 360;}
+if(killedrid == 1154) {set WeaponExp3, WeaponExp3 + 360;}
+if(killedrid == 1771) {set WeaponExp3, WeaponExp3 + 360;}
+
+if(killedrid == 1046) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1829) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1492) {set WeaponExp3, WeaponExp3 + 300;}
+
+if(killedrid == 1293) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1321) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1128) {set WeaponExp3, WeaponExp3 + 300;}
+
+if(killedrid == 1159) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1058) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1289) {set WeaponExp3, WeaponExp3 + 300;}
+if(killedrid == 1147) {set WeaponExp3, WeaponExp3 + 300;}
+
+set WeaponExp3, WeaponExp3 + 1;
+if( .WLvl3[WeaponLvl3] <= WeaponExp3&& WeaponLvl3 < .MaxLvl3)
+{
+set AtrPoints3, AtrPoints3 + .Wpoints3[WeaponLvl3];
+set WeaponLvl3, WeaponLvl3 + 1;
+dispbottom "[Level up] Seu Genjutsu agora é level " + WeaponLvl3;
+//dispbottom "[Level up] fale com o Treino de genjutsu na academia pra receber seus pontos";
+set WeaponExp3,0;
+if(WeaponLvl3 == .MaxLvl3) {
+dispbottom "Seu Genjutsu está no level máximo.";
+}
+dispbottom "Você recebeu [" + .Wpoints3[WeaponLvl3 - 1] + "] pontos em Genjutsu, fale com o Treino de genjutsu.";
+}
+end;
+}
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+//===== eAthena Script ========================================
+//= Introdutor
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= Introdutor ao Primeiro Episódio.
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+kakashi,180,76,5	script	Kazumi	405,{
+//==========Variavéis=========================================
+set @npc$,"[^000080Kazumi^000000]";
+//============================================================
+if (KAGEOK == 1) goto B;
+if(EPI >= 1) goto DONE;
+mes @npc$;
+mes "Olá,tenho informações essenciais para à sua próxima missão porém antes preciso que confirma seu nome";
+input @nome$;
+if(@nome$ != strcharinfo(0)) goto ERROR;
+next;
+mes @npc$;
+mes "Caro, ^BEBEBE"+strcharinfo(0)+"^000000 você deverá escoltar Tazuna até o país das Ondas";
+next;
+mes @npc$;
+mes "A missão é de um rank baixo porém,não sabemos,de quem teremos que proteje-lo por isso tenha cautela.";
+mes "Aceita essa missão?";
+menu "-^0000FFAceito^000000",A,"-^FF0000Quem Sabe Outra Hora^000000",N;
+
+A:
+Next;
+mes @npc$;
+mes "Eu lhe passei somente as informações básicas o Informante irá lhe explicar melhor";
+mes "Acho que vi ele jogando em algum lugar por aí...";
+if (KAGEOK == 1) goto B;
+set KAGEOK,1;
+next;
+mes @npc$;
+mes "Corra! Vá até o Informante e Boa Sorte com sua missão,"+strcharinfo(0)+".";
+Close;
+
+B:
+next;
+mes @npc$;
+mes ""+strcharinfo(0)+" você já falou comigo o Informante lhe espera!";
+mes "Acho que vi ele jogando em algum lugar por aí...";
+close;
+
+N:
+next;
+mes @npc$;
+mes "Ok,Volte quando se achar apto à fazer a missão";
+Close;
+
+ERROR:
+next;
+mes @npc$;
+mes "Você não está em condições de fazer essa Missão. Você errou seu próprio nome";
+Close;
+
+DONE:
+mes "^BEBEBE"+strcharinfo(0)+"^000000, não tenho mais nada a falar com você!";
+close;
+
+}

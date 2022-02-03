@@ -1,0 +1,133 @@
+prontera,150,179,5	script	Calendário	751,{
+
+set .n$,"[^FF0000"+strnpcinfo(0)+"^000000]";
+setarray .@months$[1],"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro";
+setarray .@days_of_weeks$[0],"D","S","T","Q","Q","S","S";
+setarray .@days_mounths[1],31,28,31,30,31,30,31,31,30,31,30,31;
+
+
+set .@year,gettime(7);
+if(!(.@year%4))
+	setarray .@days_mounths[2],29;
+if(getgmlevel() >= 98) {
+	mes .n$;
+	mes "Olá, ^0000FF"+strcharinfo(0)+"^000000 o que deseja fazer?";
+	if(select("- Adicionar Evento","- Remover Evento","- Sair") == 3) close;
+	next;
+	if (@menu == 1) {
+		mes .n$;
+		mes "Digite o dia:";
+		input .@day_event;
+		if (gettime(5) > .@day_event) {
+			next;
+			mes .n$;
+			mes "Dia ultrapassado!";
+			close;
+		}
+		if (.@day_event > .@days_mounths[gettime(6)]) {
+			next;
+			mes .n$;
+			mes "Dia inválido para este mês!";
+			close;
+		}
+		set $reg_e,$reg_e+1;
+		setd "$events$"+"["+$reg_e+"]",.@day_event;
+		next;
+		mes .n$;
+		mes "Agora por favor digita informações sobre o Evento!";
+		input .@text_e$;
+		set $reg_e,$reg_e+1;
+		setd "$events$"+"["+$reg_e+"]",.@text_e$;
+		set $event_calendario,1;
+		set $marquee,$marquee+1;
+		next;
+		mes .n$;
+		mes "Evento adicionado!";
+		announce "Um novo evento foi adicionado, por favor verifiquem o NPC: "+strnpcinfo(0)+"!",bc_all;
+		close;
+	}
+	if (@menu == 2) {
+		mes .n$;
+		mes "Deseja deletar todos os eventos?";
+		next;
+		if(select("- Sim:- Não") == 2) close;
+		next;
+		set $reg_e,0;
+		for (set .@i,1;.@i <= 128;set .@i,.@i+1)
+			setd "$events$"+"["+.@i+"]",0;
+		set $event_calendario,0;
+		set $marquee,0;
+		//query_sql "DELETE FROM `mapreg` WHERE `varname` LIKE '%$reg_e%'";
+		//query_sql "DELETE FROM `mapreg` WHERE `varname` LIKE '%$marquee%'";
+		//query_sql "DELETE FROM `mapreg` WHERE `varname` LIKE '%$events$%'";
+		//query_sql "DELETE FROM `mapreg` WHERE `varname` LIKE '%$event_calendario%'";
+		mes .n$;
+		mes "Eventos deletados com sucesso!";
+		close;
+	}
+}
+
+mes .n$;
+mes "Olá, ^0000FF"+strcharinfo(0)+"^000000 o que deseja fazer?";
+if(select($event_calendario == 1 ? "- Visualizar as informações dos eventos" : "","- Ver o calendário de eventos","- Sair") == 3) close;
+next;
+if (@menu == 1) {
+	mes .n$;
+	mes "Há ^0000FF"+$marquee+"^000000 eventos marcados para este mês!";
+	mes "Deseja ver as informações de alguns deles?";
+	if(select("- Sim:- Não") == 2) close;
+	next;
+	for (set .@i,1;.@i <= $reg_e;set .@i,.@i+2)
+		set .@menu$,.@menu$+"- Sobre o dia, "+getd("$events$"+"["+.@i+"]")+":";
+	if(select(.@menu$));
+	mes .n$;
+	mes getd("$events$"+"["+(@menu*2)+"]+");
+	close;
+}
+
+if (@menu == 2) {
+	mes .n$;
+	for (set .@i,0;.@i < 7;set .@i,.@i+1)
+		if(gettime(4) == .@i)
+			set .@days$,.@days$+"^FF0000"+.@days_of_weeks$[.@i]+"^000000  ";
+		else
+			set .@days$,.@days$+.@days_of_weeks$[.@i]+"   ";
+	mes "[^0000FF"+.@months$[gettime(6)]+"^000000]";
+	mes .@days$;
+	for (set .@i,1;.@i <= .@days_mounths[gettime(6)];set .@i,.@i+1)
+		if (gettime(5) == .@i)
+			setd ".@days_t_"+.@i+"$",getd(".@days_t_"+.@i+"$")+"^FF0000"+.@i+"^000000 ";
+		else if (.@i <= 7)
+			setd ".@days_t_"+.@i+"$",getd(".@days_t"+.@i+"$")+.@i+"   ";
+		else
+			setd ".@days_t_"+.@i+"$",getd(".@days_t"+.@i+"$")+.@i+" ";
+	if ($event_calendario) {
+		for (set .@i,1;.@i <= $reg_e;set .@i,.@i+2)
+			setd ".@days_t_"+getd("$events$"+"["+.@i+"]")+"$",getd(".@days_t"+getd("$events$"+"["+.@i+"]")+"$")+"^0000FF"+getd("$events$"+"["+.@i+"]")+"^000000 ";
+	}
+	for (set .@j,1;.@j <= .@days_mounths[gettime(6)];set .@j,.@j+1) {
+		if (.@j <= 7)
+			set .@reg$,.@reg$+getd(".@days_t_"+.@j+"$");
+		if (.@j >= 8 && .@j <= 14)
+			set .@reg2$,.@reg2$+getd(".@days_t_"+.@j+"$");
+		if (.@j >= 15 && .@j <= 21)
+			set .@reg3$,.@reg3$+getd(".@days_t_"+.@j+"$");
+		if (.@j >= 22 && .@j <= 28)
+			set .@reg4$,.@reg4$+getd(".@days_t_"+.@j+"$");
+		if (.@j >= 29)
+			set .@reg5$,.@reg5$+getd(".@days_t_"+.@j+"$");
+	}
+}
+mes .@reg$;
+mes .@reg2$;
+mes .@reg3$;
+mes .@reg4$;
+mes .@reg5$;
+close;
+
+OnPCLoginEvent:
+if ($marquee)
+	set marquee_t,$marquee;
+end;
+
+}

@@ -1,0 +1,35 @@
+-	script	on_PC_UseSkilld05	-1,{
+    end;
+//When a Character uses a skill
+
+//armadilha_doton
+
+onPcUseSkillEvent:
+
+           if(lskillid == 116) {
+
+
+if (getskilllv(116) == 1) {
+
+if (armadilha_doton != 1) {end;}
+if (skill116 >= 50) {skill 116,2,0; set skill116,0; dispbottom "[Sys] Level up"; end; }
+set skill116,skill116 +1;
+dispbottom "[Jutsu level] Pergaminho armadilha_doton level 1: "+skill116+" de 50";
+
+end;
+
+}
+
+if (getskilllv(116) == 2) {
+if (armadilha_doton != 1) {end;}
+if (skill116 >= 100) {skill 116,3,0; set skill116,0; dispbottom "[Sys] Level up"; end;}
+set skill116,skill116 +1;
+dispbottom "[Jutsu level] Pergaminho armadilha_doton level 2: "+skill116+" de 100";
+
+end;
+
+}
+
+                end;
+            }    
+}

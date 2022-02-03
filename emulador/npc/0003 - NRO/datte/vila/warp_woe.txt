@@ -1,0 +1,127 @@
+//kiri,141,93,4	script	Teleportador WoE::woe	114,{
+//	if(agitcheck()!=1) {mes "Não está tendo guerra nesse momento"; close;}
+//	mes "[Teleportador para a guerra]";
+//	mes "Olá Guerreiro";
+//	next;
+//	mes "[Teleportador para a guerra]";
+//	mes "Gostaria de entrar na Teleportador para a guerra do NRO?";
+//	next;
+//	menu "Sim",r1,"Não",r2;
+////	
+//	r1:
+//	mes "[Teleportador para a guerra]";
+//	mes "OK "+ strcharinfo(0) +"!";
+////			percentheal 100, 100 ;
+//	if (#konoha == 1) {warp "prtg_cas01",101,34; close;}
+//	if (#suna == 1) {warp "prtg_cas01",101,34; close;}
+//	if (#nevoa == 1) {warp "prtg_cas01",101,34; close;}
+//	if (#nuvem == 1) {warp "prtg_cas01",101,34; close;}
+//	close;
+//
+//	r2:
+//	mes "[Teleportador para a guerra]";
+//	mes "Ok..";
+//	close;
+//
+//
+//}
+//
+//
+//konoha,132,188, 4	duplicate(woe)	Teleportador WoE#1	830
+//areia,111,108, 4	duplicate(woe)	Teleportador WoE#2	830
+//nuvem, 149, 213, 4	duplicate(woe)	Teleportador WoE#3	830
+//6@tower.gat,149,145,5	duplicate(woe)	Teleportador WoE#4	830
+
+
+prtg_cas05,92,67,4	script	Voltar::back	830,{
+	mes "[Retorno]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Retorno]";
+	mes "Quer retornar para sua vila?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Retorno]";
+	mes "OK "+ strcharinfo(0) +"!";
+	warp "SavePoint", 0, 0;
+	close;
+
+	r2:
+	mes "[Retorno]";
+	mes "Ok..";
+	close;
+
+
+}
+
+
+nrpg_sell.gat,50,9,5	duplicate(back)	Retorno#a	706
+jawaii_in.gat,31,98,5	duplicate(back)	Retorno#b	706
+payon_in03.gat,20,190,5	duplicate(back)	Retorno#c	706
+ra_in01.gat,213,80,5	duplicate(back)	Retorno#D	706
+abyss_02.gat,94,114,5	duplicate(back)	Retorno#e	706
+kakashi.gat,85,148,5	duplicate(back)	Retorno#f	706
+06guild_02.gat,91,49,5	duplicate(back)	Retorno#g	706
+prt_maze03,175,90,5	duplicate(back)	Retorno#h	706
+beach_dun,35,105,5	duplicate(back)	Retorno#i	706
+ayo_fild01,32,238,5	duplicate(back)	Retorno#j	706
+poring_w01,100,114,5	duplicate(back)	Retorno#k	706
+job_hunte,90,90,5	duplicate(back)	Retorno#l	706
+//chunin,13,45,5	duplicate(back)	Retorno#m	706
+arena_woe,246,166,5	duplicate(back)	Retorno#n	706
+orochi,63,126,5	duplicate(back)	Retorno#o	706
+Orochimaru,68,106,5	duplicate(back)	Retorno#p	706
+prtg_cas01.gat,90,48,5	duplicate(back)	Retorno#q	706
+floresta.gat,199,331,5	duplicate(back)	Retorno#r	706
+lhz_dun02,151,22,5	duplicate(back)	Retorno#s	706
+yuno_in03,29,10,5	duplicate(back)	Retorno#t	706
+bat_room,150,147,5	duplicate(back)	Retorno#u	706
+ve_fild01,166,217,5	duplicate(back)	Retorno#v	706
+
+6@tower,151,66,4	script	Voltar#aka	830,{
+	mes "[Retorno]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Retorno]";
+	mes "Quer retornar para o mapa anterior?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Retorno]";
+	mes "OK "+ strcharinfo(0) +"!";
+	warp "akatsuki", 107,48;
+	close;
+
+	r2:
+	mes "[Retorno]";
+	mes "Ok..";
+	close;
+
+
+}
+
+yuno_in02,93,210,4	script	Voltar::backe	830,{
+	mes "[Retorno]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Retorno]";
+	mes "Quer retornar?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Retorno]";
+	mes "OK "+ strcharinfo(0) +"!";
+	warp "einbech", 130,262;
+	close;
+
+	r2:
+	mes "[Retorno]";
+	mes "Ok..";
+	close;
+
+
+}

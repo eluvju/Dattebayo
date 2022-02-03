@@ -1,0 +1,35 @@
+-	script	Suffragium	-1,{
+    end;
+//When a Character uses a skill
+
+//Suffragium
+
+onPcUseSkillEvent:
+
+           if(lskillid == 67) {
+
+
+if (getskilllv(67) == 1) {
+
+if (Suffragium != 1) {end;}
+if (skill67 >= 700) {skill 67,2,0; set skill67,0; dispbottom "[Sys] Level up"; end; }
+set skill67,skill67 +1;
+dispbottom "[Jutsu level] Suffragium level 1: "+skill67+" de 700";
+
+end;
+
+}
+
+if (getskilllv(67) == 2) {
+if (Suffragium != 1) {end;}
+if (skill67 >= 1000) {skill 67,3,0; set skill67,0; dispbottom "[Sys] Level up"; end;}
+set skill67,skill67 +1;
+dispbottom "[Jutsu level] Suffragium level 2: "+skill67+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

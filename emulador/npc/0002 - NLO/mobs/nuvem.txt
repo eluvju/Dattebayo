@@ -1,0 +1,94 @@
+// Filds Nuvem
+
+//----nuvem - fild 1 - ein_fild02 - todos passivos
+ein_fild02,0,0,0,0	monster	Planta de Núvem	1081,1,600000,600000,0
+ein_fild02,0,0,0,0	monster	Porcellio		1619,100,0,0,0
+ein_fild02,0,0,0,0	monster	Porco Espinho		1103,100,0,0,0
+ein_fild02,0,0,0,0	monster	Topeira		1145,100,0,0,0
+ein_fild02,0,0,0,0	monster	Besouro-Chifre		1128,100,0,0,0
+
+//----fild2 - yuno_fild02 - todos passivos exceto mini boss
+yuno_fild02,0,0,0,0	monster	Mi gao		1516,100,0,0,0
+yuno_fild02,0,0,0,0	monster	Mineral		1614,100,0,0,0
+yuno_fild02,0,0,0,0	monster	Bode		1372,100,0,0,0
+//Mini-Boss
+yuno_fild02,0,0,0,0	boss_monster	Cobalto		1976,1,1800000,0,0
+
+//----fild3 - yuno_fild03
+yuno_fild03,0,0,0,0	monster	Ermitão		1413,100,0,0,0
+yuno_fild03,0,0,0,0	monster	Lagarto Negro		1308,100,0,0,0
+yuno_fild03,0,0,0,0	monster	Furão		1015,100,0,0,0
+yuno_fild03,0,0,0,0	monster	Genin		1656,100,0,0,0
+
+//----fild4 - yuno_fild05
+yuno_fild05,0,0,0,0	monster	Aku no Te		1507,100,0,0,0
+yuno_fild05,0,0,0,0	monster	Espírito da Nuvem		1151,100,0,0,0
+yuno_fild05,0,0,0,0	monster	Nuvem Tóxica		1620,100,0,0,0
+yuno_fild05,0,0,0,0	monster	Gárgula		1253,100,0,0,0
+//Mini-Boss
+yuno_fild05,0,0,0,0	boss_monster	Ungoliant		1618,1,1800000,0,0
+
+//----fild5 - yuno_fild08 - todos agressivos
+yuno_fild08,0,0,0,0	monster	Sapo Venenoso		1016,100,0,0,0
+yuno_fild08,0,0,0,0	monster	Nuvem Venenosa		1621,100,0,0,0
+yuno_fild08,0,0,0,0	monster	Obisidiana		1615,100,0,0,0
+yuno_fild08,0,0,0,0	monster	Espírito do Vento		1263,100,0,0,0
+yuno_fild08,0,0,0,0	monster	Chunin		1636,100,0,0,0
+
+//----fild6 - ein_fild01 - todos agressivos
+ein_fild01,0,0,0,0	monster	Golem Rochoso		1278,100,0,0,0
+ein_fild01,0,0,0,0	monster	Minotauro		1149,100,0,0,0
+ein_fild01,0,0,0,0	monster	Ermitão da Nuvem		1412,100,0,0,0
+//Boss
+ein_fild01,0,0,0,0	boss_monster	Líder Minotauro		1310,1,3600000,0,0
+
+//----fild7 - yuno_fild11 - todos agressivos
+yuno_fild11,0,0,0,0	monster	Monstro de Terra		1386,100,0,0,0
+yuno_fild11,0,0,0,0	monster	Praga Negra		1199,100,0,0,0
+yuno_fild11,0,0,0,0	monster	Libélula		1091,100,0,0,0
+yuno_fild11,0,0,0,0	monster	Dragão da Montanha		1718,100,0,0,0
+//Boss
+yuno_fild11,0,0,0,0	boss_monster	Mamute		1990,1,3600000,0,0
+
+//----Ilha Tartaruga - todos agressivos em all filds
+
+//----fild 1 - tur_dun01
+tur_dun01,0,0,0,0	monster	Ki Kame		1314,100,0,0,0
+tur_dun01,0,0,0,0	monster	Iwa Kame		1316,100,0,0,0
+
+//----fild2 - tur_dun02
+tur_dun02,0,0,0,0	monster	Ki Kame		1314,100,0,0,0
+tur_dun02,0,0,0,0	monster	Iwa Kame		1316,100,0,0,0
+tur_dun02,0,0,0,0	monster	Koori Kame		1319,75,0,0,0
+
+
+//----fild3 - tur_dun03
+tur_dun03,0,0,0,0	monster	Ki Kame		1314,40,0,0,0
+tur_dun03,0,0,0,0	monster	Iwa Kame		1316,40,0,0,0
+tur_dun03,0,0,0,0	monster	Koori Kame		1319,40,0,0,0
+tur_dun03,0,0,0,0	monster	Hi Kame		1318,40,0,0,0
+
+
+//----fild4 - tur_dun04
+tur_dun04,0,0,0,0	monster	Ki Kame		1314,30,0,0,0
+tur_dun04,0,0,0,0	monster	Iwa Kame		1316,30,0,0,0
+tur_dun04,0,0,0,0	monster	Koori Kame		1319,30,0,0,0
+tur_dun04,0,0,0,0	monster	Hi Kame		1318,30,0,0,0
+tur_dun04,0,0,0,0	monster	Shinobi Kame		1315,30,0,0,0
+
+//---------------------- pais da neve -------------------------------
+
+//----fild1 - yuno_fild09
+yuno_fild09,0,0,0,0	monster	Nephentes		1988,75,0,0,0
+yuno_fild09,0,0,0,0	monster	Leão da Montanha		1989,75,0,0,0
+yuno_fild09,0,0,0,0	monster	Filhote de Yeti		1776,75,0,0,0
+yuno_fild09,0,0,0,0	monster	Filhote de Lobo Glacial		1515,75,0,0,0
+// Boss
+yuno_fild09,0,0,0,0	boss_monster	Boitata	2068,1,3600000,0,0
+
+//----fild2 - dic_fild01 - todos agressivos
+dic_fild01,0,0,0,0	monster	Golem de Gelo		1777,75,0,0,0
+dic_fild01,0,0,0,0	monster	Yeti		1775,75,0,0,0
+dic_fild01,0,0,0,0	monster	Aranha Glacial		2092,75,0,0,0
+//Boss
+dic_fild01,0,0,0,0	boss_monster	Lobo Glacial		1252,1,3600000,0,0

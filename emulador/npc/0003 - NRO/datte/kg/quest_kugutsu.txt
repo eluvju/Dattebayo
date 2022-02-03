@@ -1,0 +1,756 @@
+moc_fild17,113,147,5	script	Mestre das Marionetes	434,{
+
+//Validação básica
+if (MARIONETE == 0) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Não tenho nada pra falar com você"; close;}
+
+//Quest ativa
+if (quest_karasu_A == 1) && (marionete_nivel_1 == 0) {goto karasuA_check;}
+if (quest_karasu_B == 1) && (marionete_nivel_1 == 0) {goto karasuB_check;}
+if (quest_karasu_C == 1) && (marionete_nivel_1 == 0) {goto karasuC_check;}
+
+if (quest_kuroari_A == 1) && (marionete_nivel_2 == 0) {goto kuroariA_check;}
+if (quest_kuroari_B == 1) && (marionete_nivel_2 == 0) {goto kuroariB_check;}
+if (quest_kuroari_C == 1) && (marionete_nivel_2 == 0) {goto kuroariC_check;}
+
+if (quest_sanshoouo_A == 1) && (marionete_nivel_3 == 0) {goto sanshoouoA_check;}
+if (quest_sanshoouo_B == 1) && (marionete_nivel_3 == 0) {goto sanshoouoB_check;}
+if (quest_sanshoouo_C == 1) && (marionete_nivel_3 == 0) {goto sanshoouoC_check;}
+
+//Menus
+if (MARIONETE == 1) || (MARIONETE == 2) || (MARIONETE == 3) || (MARIONETE == 4) {
+
+if (marionete_nivel_1 == 0) {goto menu1;}
+if (marionete_nivel_2 == 0) {goto menu2;}
+if (marionete_nivel_3 == 0) {goto menu3;}
+
+
+}
+
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Não tenho nada pra falar com você";
+close;
+
+
+menu1:
+if (marionete_nivel_1 > 0) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Você já possui a primeira marionete, evolua sua Kekkei Genkai para construir a segunda marionete!"; close;}
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, agora que você conhece os básicos sobre controle de marionetes poderá construir sua primeira marionete";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Escolha abaixo para verificar os materiais necessários e iniciar o processo de construção de uma das três marionetes";
+menu "- Karasu A",karasuA,"- Karasu B",karasuB,"- Karasu C",karasuC,"- Sair",L_close;
+
+///////// Karasu A //////////
+
+karasuA:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira de Carvalho Negro";
+mes "- 20x Linhas de Chakras";
+mes "- 80x Venenos Pegajosos";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua primeira marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",karasuA_go,"- Não, preciso pensar mais",L_close;
+
+karasuA_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira de Carvalho Negro";
+mes "- 20x Linhas de Chakras";
+mes "- 80x Venenos Pegajosos";
+set quest_karasu_A,1;
+close;
+
+karasuA_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2480) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras de Carvalho Negro "; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakras "; close;}
+if(countitem(7565) < 80) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Venenos Pegajosos "; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, quando estiver pronto para iniciar a construção de sua segunda marionete fale comigo!";
+delitem 2480,30;
+delitem 2481,20;
+delitem 7565,80;
+set marionete_nivel_1, 747;
+set quest_karasu_A,0;
+close;
+
+///////// Karasu B //////////
+
+karasuB:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira de Carvalho Negro";
+mes "- 20x Linhas de Chakras";
+mes "- 80x Venenos Pegajosos";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua primeira marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",karasuB_go,"- Não, preciso pensar mais",L_close;
+
+karasuB_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira de Carvalho Negro";
+mes "- 20x Linhas de Chakras";
+mes "- 80x Venenos Pegajosos";
+set quest_karasu_B,1;
+close;
+
+karasuB_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2480) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras de Carvalho Negro "; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakras "; close;}
+if(countitem(7565) < 80) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Venenos Pegajosos "; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, quando estiver pronto para iniciar a construção de sua segunda marionete fale comigo!";
+delitem 2480,30;
+delitem 2481,20;
+delitem 7565,80;
+set marionete_nivel_1, 748;
+set quest_karasu_B,0;
+close;
+
+///////// Karasu C //////////
+
+karasuC:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira de Carvalho Negro";
+mes "- 20x Linhas de Chakras";
+mes "- 80x Venenos Pegajosos";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua primeira marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",karasuC_go,"- Não, preciso pensar mais",L_close;
+
+karasuC_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira de Carvalho Negro";
+mes "- 20x Linhas de Chakras";
+mes "- 80x Venenos Pegajosos";
+set quest_karasu_C,1;
+close;
+
+karasuC_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2480) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras de Carvalho Negro "; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakras "; close;}
+if(countitem(7565) < 80) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Venenos Pegajosos "; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, quando estiver pronto para iniciar a construção de sua segunda marionete fale comigo!";
+delitem 2480,30;
+delitem 2481,20;
+delitem 7565,80;
+set marionete_nivel_1, 970;
+set quest_karasu_C,0;
+close;
+
+//MENU 2
+
+menu2:
+if (MARIONETE < 2) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Antes de escolher sua próxima marionete você precisa aumentar seu nível Kugutsu!"; close;}
+if (marionete_nivel_1 == 0) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Antes de construir sua segunda marionete você precisa construir a primeira!"; close;}
+if (marionete_nivel_2 > 0) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Você já possui a segunda marionete, evolua sua Kekkei Genkai para construir a terceira marionete!"; close;}
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, você agora está mais poderoso, vamos construir sua segunda marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Escolha abaixo para verificar os materiais necessários e iniciar o processo de construção de uma das três marionetes";
+menu "- Kuroari A",kuroariA,"- Kuroari B",kuroariB,"- Kuroari C",kuroariC,"- Sair",L_close;
+
+///////// kuroari A //////////
+
+kuroariA:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira Envelhecida";
+mes "- 20x Linhas de Chakras";
+mes "- 70x Gás Tóxico";
+mes "- 50x Venenos Pegajosos";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua segunda marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",kuroariA_go,"- Não, preciso pensar mais",L_close;
+
+kuroariA_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira Envelhecida";
+mes "- 20x Linhas de Chakras";
+mes "- 70x Gás Tóxico";
+mes "- 50x Venenos Pegajosos";
+set quest_kuroari_A,1;
+close;
+
+kuroariA_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2482) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras Envelhecidas"; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakras"; close;}
+if(countitem(7322) < 70) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Gás Tóxico"; close;}
+if(countitem(7565) < 50) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Venenos Pegajosos "; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, quando estiver pronto para iniciar a construção de sua terceira marionete fale comigo!";
+delitem 2482,30;
+delitem 2481,20;
+delitem 7322,70;
+delitem 7565,50;
+set marionete_nivel_2, 971;
+set quest_kuroari_A,0;
+close;
+
+///////// kuroari B //////////
+
+kuroariB:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira Envelhecida";
+mes "- 20x Linhas de Chakras";
+mes "- 70x Gás Tóxico";
+mes "- 50x Venenos Pegajosos";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua segunda marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",kuroariB_go,"- Não, preciso pensar mais",L_close;
+
+kuroariB_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira Envelhecida";
+mes "- 20x Linhas de Chakras";
+mes "- 70x Gás Tóxico";
+mes "- 50x Venenos Pegajosos";
+set quest_kuroari_B,1;
+close;
+
+kuroariB_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2482) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras Envelhecidas"; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakras"; close;}
+if(countitem(7322) < 70) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Gás Tóxico"; close;}
+if(countitem(7565) < 50) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Venenos Pegajosos "; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, quando estiver pronto para iniciar a construção de sua terceira marionete fale comigo!";
+delitem 2482,30;
+delitem 2481,20;
+delitem 7322,70;
+delitem 7565,50;
+set marionete_nivel_2, 972;
+set quest_kuroari_B,0;
+close;
+
+///////// kuroari C //////////
+
+kuroariC:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira Envelhecida";
+mes "- 20x Linhas de Chakras";
+mes "- 70x Gás Tóxico";
+mes "- 50x Venenos Pegajosos";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua segunda marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",kuroariC_go,"- Não, preciso pensar mais",L_close;
+
+kuroariC_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira Envelhecida";
+mes "- 20x Linhas de Chakras";
+mes "- 70x Gás Tóxico";
+mes "- 50x Venenos Pegajosos";
+set quest_kuroari_C,1;
+close;
+
+kuroariC_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2482) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras Envelhecidas"; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakras"; close;}
+if(countitem(7322) < 70) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Gás Tóxico"; close;}
+if(countitem(7565) < 50) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Venenos Pegajosos "; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, quando estiver pronto para iniciar a construção de sua terceira marionete fale comigo!";
+delitem 2482,30;
+delitem 2481,20;
+delitem 7322,70;
+delitem 7565,50;
+set marionete_nivel_2, 973;
+set quest_kuroari_C,0;
+close;
+
+//MENU 3
+
+menu3:
+if (MARIONETE < 3) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Antes de escolher sua próxima marionete você precisa aumentar seu nível Kugutsu!"; close;}
+if (marionete_nivel_1 == 0) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Antes de construir sua terceira marionete você precisa construir a primeira!"; close;}
+if (marionete_nivel_2 == 0) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Antes de construir sua terceira marionete você precisa construir a segunda!"; close;}
+if (marionete_nivel_3 > 0) {mes "[^DC143CMestre das Marionetes^000000]"; mes "Você já possui a terceira marionete, agora poderá buscar a força máxima de Kugutsu e aperfeiçoar suas técnicas"; close;}
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Quem diria, tão forte em tão pouco tempo, vamos construir sua terceira marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Escolha abaixo para verificar os materiais necessários e iniciar o processo de construção de uma das três marionetes";
+menu "- Sanshoouo A",sanshoouoA,"- Sanshoouo B",sanshoouoB,"- Sanshoouo C",sanshoouoC,"- Sair",L_close;
+
+///////// sanshoouo A //////////
+
+sanshoouoA:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira Refinada";
+mes "- 20x Linhas de Chakras";
+mes "- 10x Toxinas de Marionete";
+mes "- 150x Gás Tóxico";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua terceira marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",sanshoouoA_go,"- Não, preciso pensar mais",L_close;
+
+sanshoouoA_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira Refinada";
+mes "- 20x Linhas de Chakras";
+mes "- 10x Toxinas de Marionete";
+mes "- 150x Gás Tóxico";
+set quest_sanshoouo_A,1;
+close;
+
+sanshoouoA_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2483) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras Refinadas"; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakra"; close;}
+if(countitem(2484) < 10) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Toxinas de Marionete"; close;}
+if(countitem(7322) < 150) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Gás Tóxico"; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, agora vá agora em busca do poder máximo";
+delitem 2483,30;
+delitem 2481,20;
+delitem 2484,10;
+delitem 7322,150;
+set marionete_nivel_3, 974;
+set quest_sanshoouo_A,0;
+close;
+
+///////// sanshoouo B //////////
+
+sanshoouoB:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira Refinada";
+mes "- 20x Linhas de Chakras";
+mes "- 10x Toxinas de Marionete";
+mes "- 150x Gás Tóxico";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua terceira marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",sanshoouoB_go,"- Não, preciso pensar mais",L_close;
+
+sanshoouoB_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira Refinada";
+mes "- 20x Linhas de Chakras";
+mes "- 10x Toxinas de Marionete";
+mes "- 150x Gás Tóxico";
+set quest_sanshoouo_B,1;
+close;
+
+sanshoouoB_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2483) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras Refinadas"; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakra"; close;}
+if(countitem(2484) < 10) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Toxinas de Marionete"; close;}
+if(countitem(7322) < 150) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Gás Tóxico"; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, agora vá agora em busca do poder máximo";
+delitem 2483,30;
+delitem 2481,20;
+delitem 2484,10;
+delitem 7322,150;
+set marionete_nivel_3, 975;
+set quest_sanshoouo_B,0;
+close;
+
+///////// sanshoouo C //////////
+
+sanshoouoC:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Essa marionete tem como característica ser , e é mais adequeado para quem procura ";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Os materiais necessários para a sua construção são:";
+mes "- 30x Madeira Refinada";
+mes "- 20x Linhas de Chakras";
+mes "- 10x Toxinas de Marionete";
+mes "- 150x Gás Tóxico";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Gostaria de escolher essa marionete como sua terceira marionete? Essa escolha não pode ser revertida!";
+menu "- Sim, eu quero",sanshoouoC_go,"- Não, preciso pensar mais",L_close;
+
+sanshoouoC_go:
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, assim que você possuir os materiais abaixo é só me procurar novamente que eu irei construir sua marionete";
+mes "- 30x Madeira Refinada";
+mes "- 20x Linhas de Chakras";
+mes "- 10x Toxinas de Marionete";
+mes "- 150x Gás Tóxico";
+set quest_sanshoouo_C,1;
+close;
+
+sanshoouoC_check:
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, vamos ver se você conseguiu todos os materiais";
+if(countitem(2483) < 30) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Madeiras Refinadas"; close;}
+if(countitem(2481) < 20) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Linhas de Chakra"; close;}
+if(countitem(2484) < 10) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos as Toxinas de Marionete"; close;}
+if(countitem(7322) < 150) {next; mes "[^DC143CMestre das Marionetes^000000]"; mes "Ah, você não conseguiu pegar todos os Gás Tóxico"; close;}
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Muito bem, irei construir agora mesmo sua marionete!";
+next;
+mes "[^DC143CMestre das Marionetes^000000]";
+mes "Aqui está, agora vá agora em busca do poder máximo";
+delitem 2483,30;
+delitem 2481,20;
+delitem 2484,10;
+delitem 7322,150;
+set marionete_nivel_3, 976;
+set quest_sanshoouo_C,0;
+close;
+
+L_close:
+close;
+
+}
+
+floresta,36,321,5	script	Mestre Kugutsu	434,{
+
+if (MARIONETE == 4) && (MARIONETE_4_1 == 0) && (MARIONETE_4_2 == 0) && (MARIONETE_4_3 == 0) {goto L_escolher_linha;}
+if (MARIONETE != 3) {mes "[^DC143CMestre Kugutsu^000000]"; mes "Não tenho nada pra falar contigo"; close;}
+if (MARIONETE_4_1 > 0) || (MARIONETE_4_2 > 0) || (MARIONETE_4_3 > 0) {mes "[^DC143CMestre Kugutsu^000000]"; mes "Você já possui uma especialização em uma linha de chakra"; close;}
+if (MARIONETE == 3) && (quest_kugutsu_quatro == 2) {goto L_escolher_linha;}
+if (MARIONETE == 3) && (quest_kugutsu_quatro == 1) {goto L_check;}
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Veja só, um poderoso usuário de marionetes, não há muitos nesse mundo, é uma arte realmente rara...";
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Eu fui um dos primeiros mestres nessa parte e posso lhe ensinar como aperfeiçoar seus poderes, mas claro que vou pedir algo em troca...";
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Existem três tipos de linhas na forma perfeita de Kugutsu, das quais poderá escolher uma, são elas as linhas vermelhas, roxas e brancas, se quiser saber mais sobre cada uma basta perguntar, caso queira já saber o que precisará fazer para seguir em frente me avise também";
+menu "- Quero saber mais sobre as linhas",L_info,"- Quero iniciar meu treinamento",L_go,"- Preciso pensar mais",L_close;
+
+L_close:
+close;
+
+L_info:
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Muito bem, sobre qual linha gostaria de se informar?";
+menu "- Vermelha",L_vermelha,"- Roxa",L_roxa,"- Branca",L_branca,"- Nenhuma no momento",L_close;
+
+L_vermelha:
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "A linha vermelha permite que o usuário possa se fundir com sua marionete, recebendo uma ativação dentre duas possíveis, uma ofensiva e uma defensiva e em troca perdendo o poder de invocar suas três marionetes antigas, além disso o usuário recebe +30 de luk e +20% de dano em alvos envenenados";
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Caso tenha interesse em aprender essa linha, é só escolher ela no término de seu treinamento, para iniciar o treinamento basta falar comigo novamente";
+close;
+
+L_roxa:
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "A linha roxa permite que o usuário aperfeiçoe uma de suas três marionetes, atingindo o poder máximo dela, além disso possui os poderes de: +30% de dano em alvos envenenados, +30 de luk, -5% em resistência, -10% de HP";
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Caso tenha interesse em aprender essa linha, é só escolher ela no término de seu treinamento, para iniciar o treinamento basta falar comigo novamente";
+close;
+
+L_branca:
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "A linha branca permite que o usuário possa usar suas linhas em seus aliados, em forma de buffs recebendo diversas habilidades para auxiliar seu grupo e sua vila, além disso recebe os poderes de -%5 no tempo de conjuração, +30 de luk, +20 de vit e +5% em resistência";
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Caso tenha interesse em aprender essa linha, é só escolher ela no término de seu treinamento, para iniciar o treinamento basta falar comigo novamente";
+close;
+
+L_go:
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Muito bem, vamos iniciar então o treinamento";
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Para completar o treinamento vai ser preciso trazer os seguintes itens";
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "- 1x Coração de Sasori";
+mes "- 5x NRO Points";
+mes "- 1x linha vermelha";
+mes "- 1x linha roxa";
+mes "- 1x linha branca";
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Vá e complete seu treinamento";
+set quest_kugutsu_quatro,1;
+close;
+
+L_check:
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Vamos ver...";
+if(countitem(744) < 1) {next; mes "[^DC143CMestre Kugutsu^000000]"; mes "Ah, você não conseguiu pegar o coração de Sasori"; close;}
+if(countitem(7116) < 5) {next; mes "[^DC143CMestre Kugutsu^000000]"; mes "Ah, você não conseguiu pegar os NRO Points"; close;}
+if(countitem(2485) < 1) {next; mes "[^DC143CMestre Kugutsu^000000]"; mes "Ah, você não conseguiu pegar a Linha Roxa"; close;}
+if(countitem(2486) < 1) {next; mes "[^DC143CMestre Kugutsu^000000]"; mes "Ah, você não conseguiu pegar a Linha Vermelha"; close;}
+if(countitem(2487) < 1) {next; mes "[^DC143CMestre Kugutsu^000000]"; mes "Ah, você não conseguiu pegar a Linha Branca"; close;}
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Impressionante!";
+delitem 744,1;
+delitem 7116,5;
+delitem 2485,1;
+delitem 2486,1;
+delitem 2487,1;
+set quest_kugutsu_quatro,2;
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Agora é preciso escolher qual linha você irá utilizar, eu vou lhe dar mais um tempo para pensar, quando estiver pronto é só falar comigo novamente";
+close;
+
+L_escolher_linha:
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Muito bem, já sabe qual linha gostaria de escolher? Caso queira saber mais sobre as linhas basta perguntar";
+menu "- Vermelha",L_vermelha_go,"- Roxa",L_roxa_go,"- Branca",L_branca_go,"- Quero saber mais sobre as linhas",L_info,"- Preciso pensar mais",L_close;
+
+L_roxa_go:
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Linha roxa, boa escolha, agora honre os Kugutsus pelo mundo agora com seu novo poder, você é realmente incrível!";
+set MARIONETE,4;
+set quest_kugutsu_quatro,0;
+set MARIONETE_4_1,1;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Kugutsu!",bc_blue|bc_all;
+close;
+
+L_vermelha_go:
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Linha vermelha, boa escolha, agora honre os Kugutsus pelo mundo agora com seu novo poder, você é realmente incrível!";
+set MARIONETE,4;
+set quest_kugutsu_quatro,0;
+set MARIONETE_4_2,1;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Kugutsu!",bc_blue|bc_all;
+close;
+
+L_branca_go:
+next;
+mes "[^DC143CMestre Kugutsu^000000]";
+mes "Linha branca, boa escolha, agora honre os Kugutsus pelo mundo agora com seu novo poder, você é realmente incrível!";
+set MARIONETE,4;
+set quest_kugutsu_quatro,0;
+set MARIONETE_4_3,1;
+announce "Meu Deus! "+strcharinfo(0)+" Acaba de aperfeiçoar seu Kugutsu!",bc_blue|bc_all;
+close;
+
+}
+
+floresta,43,263,5	script	Yoko	434,{
+
+if (MARIONETE_4_2 != 1) {mes "[^DC143CYoko^000000]"; mes "Hm? Não tenho nada pra falar contigo"; close;}
+if (linha_vermelha > 0) {mes "[^DC143CYoko^000000]"; mes "Está aproveitando bem sua transformação?"; close;}
+mes "[^DC143CYoko^000000]";
+mes "Veja só, um Kugutsu com especialização em linhas vermelhas assim como eu, sabia que eu posso te ajudar a libertar sua transformação?";
+next;
+mes "[^DC143CYoko^000000]";
+mes "São duas transformações disponíveis, basta me informar qual das duas você deseja";
+next;
+mes "[^DC143CYoko^000000]";
+mes "E então, qual você quer libertar? Lembrando que após escolhida não poderá trocar!";
+menu "- Ativação Ofensiva",ativacao1,"- Ativação Defensiva",ativacao2,"- Preciso pensar mais",L_close;
+
+L_close:
+close;
+
+ativacao1:
+next;
+mes "[^DC143CYoko^000000]";
+mes "Muito bem, faça bom proveito!";
+set linha_vermelha,1;
+close;
+
+ativacao2:
+next;
+mes "[^DC143CYoko^000000]";
+mes "Muito bem, faça bom proveito!";
+set linha_vermelha,2;
+close;
+
+}
+
+floresta,62,120,5	script	Yoshito	434,{
+
+if (MARIONETE_4_3 != 1) {mes "[^DC143CYoshito^000000]"; mes "Hm? Não tenho nada pra falar contigo"; close;}
+if (linha_branca > 0) {mes "[^DC143CYoshito^000000]"; mes "Está aproveitando bem sua habilidade?"; close;}
+mes "[^DC143CYoshito^000000]";
+mes "Veja só, um Kugutsu com especialização em linhas brancas assim como eu, sabia que eu posso te ajudar a escolher sua habilidade oculta?";
+next;
+mes "[^DC143CYoshito^000000]";
+mes "São três habilidades disponíveis, basta me informar qual das três você deseja";
+next;
+mes "[^DC143CYoshito^000000]";
+mes "E então, qual você quer libertar? Lembrando que após escolhida não poderá trocar!";
+menu "- Sibilo",skill1,"- Rufar os Tambores",skill2,"- Anel de Nibelungos",skill3,"- Preciso pensar mais",L_close;
+
+L_close:
+close;
+
+skill1:
+next;
+mes "[^DC143CYoshito^000000]";
+mes "Muito bem, faça bom proveito!";
+set linha_branca,1;
+close;
+
+skill2:
+next;
+mes "[^DC143CYoshito^000000]";
+mes "Muito bem, faça bom proveito!";
+set linha_branca,2;
+close;
+
+skill3:
+next;
+mes "[^DC143CYoshito^000000]";
+mes "Muito bem, faça bom proveito!";
+set linha_branca,3;
+close;
+
+}
+
+floresta,190,107,5	script	Rika	434,{
+
+if (MARIONETE_4_1 != 1) {mes "[^DC143CRika^000000]"; mes "Hm? Não tenho nada pra falar contigo"; close;}
+if (marionete_roxa > 0) {mes "[^DC143CRika^000000]"; mes "Está aproveitando bem sua marionete?"; close;}
+mes "[^DC143CRika^000000]";
+mes "Veja só, um Kugutsu com especialização em linhas roxas assim como eu, sabia que eu posso te ajudar a escolher sua marionete oculta?";
+next;
+mes "[^DC143CRika^000000]";
+mes "São três marionete disponíveis, basta me informar qual das três você deseja";
+next;
+mes "[^DC143CRika^000000]";
+mes "E então, qual você quer libertar? Lembrando que após escolhida não poderá trocar!";
+menu "- Karasu Especial",skill1,"- Kuroari Especial",skill2,"- Sanshoou Especial",skill3,"- Preciso pensar mais",L_close;
+
+L_close:
+close;
+
+skill1:
+next;
+mes "[^DC143CRika^000000]";
+mes "Muito bem, faça bom proveito!";
+set marionete_roxa,977;
+close;
+
+skill2:
+next;
+mes "[^DC143CRika^000000]";
+mes "Muito bem, faça bom proveito!";
+set marionete_roxa,978;
+close;
+
+skill3:
+next;
+mes "[^DC143CRika^000000]";
+mes "Muito bem, faça bom proveito!";
+set marionete_roxa,979;
+close;
+
+}

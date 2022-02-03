@@ -1,0 +1,192 @@
+///Konoha
+pay_fild06,0,0,0,0	monster	Porco [Rank E]	1002,10,0,0,0
+pay_fild06,0,0,0,0	monster	Tarin [Rank E]	1235,50,0,0,0
+pay_fild06,0,0,0,0	monster	Elder Pedron [Rank E]	1033,50,0,0,0
+pay_fild06,0,0,0,0	monster	Lobo [Rank E]	3739,50,0,0,0
+pay_fild06,0,0,0,0	monster	Sapo de Roda [Rank E]	1012,30,0,0,0
+
+prt_fild03,0,0,0,0	monster	Boa [Rank D]	1025,50,0,0,0
+prt_fild03,0,0,0,0	monster	Corvo Negro [Rank D]	1037,50,0,0,0
+prt_fild03,0,0,0,0	monster	Guerreiro de Chakra [Rank D]	1379,50,0,0,0
+prt_fild03,0,0,0,0	monster	Echio [Rank D]	1770,50,0,0,0
+
+pay_fild03,0,0,0,0	monster	Bandido [Rank C]	1098,30,0,0,0
+pay_fild03,0,0,0,0	monster	Cachorro [Rank C]	1032,30,0,0,0
+pay_fild03,0,0,0,0	monster	Mumia [Rank C]	1837,20,0,0,0
+pay_fild03,0,0,0,0	monster	Caveira [Rank C]	1657,20,0,0,0
+pay_fild03,0,0,0,0	monster	Genin da Suna [Rank C]	1010,30,0,0,0
+pay_fild03,0,0,0,0	monster	Genin de Konoha [Rank C]	1109,30,0,0,0
+
+moc_fild03,0,0,0,0	monster	Sapo de Thara [Rank B]	1034,30,0,0,0
+moc_fild03,0,0,0,0	monster	Cassiopeia [Rank B]	1831,30,0,0,0
+moc_fild03,0,0,0,0	monster	Espadachim [Rank B]	1829,30,0,0,0
+moc_fild03,0,0,0,0	monster	Arqueiro [Rank B]	1830,30,0,0,0
+moc_fild03,0,0,0,0	monster	Chunin de Konoha [Rank B]	1049,30,0,0,0
+moc_fild03,0,0,0,0	monster	Chunin da suna [Rank B]	1062,30,0,0,0
+moc_fild03,0,0,0,0	monster	Basilisk [Rank B]	3504,10,0,0,0
+
+xmas_fild01,0,0,0,0	monster	Jounin [Rank A]	1634,20,0,0,0
+xmas_fild01,0,0,0,0	monster	Bandido [Rank A]	1372,20,0,0,0
+xmas_fild01,0,0,0,0	monster	Chunnin [Rank A]	1636,20,0,0,0
+xmas_fild01,0,0,0,0	monster	Shinobi [Rank A]	1656,20,0,0,0
+xmas_fild01,0,0,0,0	monster	Ninja [Rank A]	1201,20,0,0,0
+xmas_fild01,0,0,0,0	monster	Injusticado [Rank A]	1257,20,0,0,0
+
+sec_in01,81,162,0,0	monster	Lobo	1013,5,0,0,0
+sec_in01,131,185,0,0	monster	Lobo	1013,10,0,0,0
+sec_in01,104,162,0,0	monster	Lobo	1013,5,0,0,0
+sec_in01,85,190,0,0	monster	Lobo	1013,5,0,0,0
+sec_in01,75,180,0,0	monster	Pinto	1050,15,0,0,0
+sec_in01,34,190,0,0	monster	Pinto	1050,10,0,0,0
+
+//Névoa
+odin_tem01,0,0,0,0	monster	Porco [Rank E]	1002,20,0,0,0
+odin_tem01,0,0,0,0	monster	Tarin [Rank E]	1235,50,0,0,0
+odin_tem01,0,0,0,0	monster	Elder Pedron [Rank E]	1033,50,0,0,0
+odin_tem01,0,0,0,0	monster	Lobo [Rank E]	3739,50,0,0,0
+odin_tem01,0,0,0,0	monster	Sapo de Roda [Rank E]	1012,30,0,0,0
+
+odin_tem02,0,0,0,0	monster	Boa [Rank D]	1025,40,0,0,0
+odin_tem02,0,0,0,0	monster	Corvo Negro [Rank D]	1037,40,0,0,0
+odin_tem02,0,0,0,0	monster	Guerreiro de Chakra [Rank D]	1379,40,0,0,0
+odin_tem02,0,0,0,0	monster	Echio [Rank D]	1770,40,0,0,0
+
+odin_tem03,0,0,0,0	monster	Bandido [Rank C]	1098,35,0,0,0
+odin_tem03,0,0,0,0	monster	Cachorro [Rank C]	1032,35,0,0,0
+odin_tem03,0,0,0,0	monster	Mumia [Rank C]	1837,30,0,0,0
+odin_tem03,0,0,0,0	monster	Caveira [Rank C]	1657,30,0,0,0
+odin_tem03,0,0,0,0	monster	Genin da Suna [Rank C]	1010,30,0,0,0
+odin_tem03,0,0,0,0	monster	Genin de Konoha [Rank C]	1109,30,0,0,0
+
+cmd_fild05,0,0,0,0	monster	Sapo de Thara [Rank B]	1034,40,0,0,0
+cmd_fild05,0,0,0,0	monster	Cassiopeia [Rank B]	1831,40,0,0,0
+cmd_fild05,0,0,0,0	monster	Espadachim [Rank B]	1829,40,0,0,0
+cmd_fild05,0,0,0,0	monster	Arqueiro [Rank B]	1830,40,0,0,0
+cmd_fild05,0,0,0,0	monster	Chunin de konoha [Rank B]	1049,20,0,0,0
+cmd_fild05,0,0,0,0	monster	Chunin da Suna [Rank B]	1062,20,0,0,0
+cmd_fild05,0,0,0,0	monster	Basilisk [Rank B]	3504,10,0,0,0
+
+cmd_fild02,0,0,0,0	monster	Jounin [Rank A]	1634,25,0,0,0
+cmd_fild02,0,0,0,0	monster	Bandido [Rank A]	1372,35,0,0,0
+cmd_fild02,0,0,0,0	monster	Chunnin [Rank A]	1636,35,0,0,0
+cmd_fild02,0,0,0,0	monster	Shinobi [Rank A]	1656,35,0,0,0
+cmd_fild02,0,0,0,0	monster	injusticado [Rank A]	1257,35,0,0,0
+cmd_fild02,0,0,0,0	monster	Ninja [Rank A]	1201,35,0,0,0
+
+//Nuvem
+man_fild03,0,0,0,0	monster	Porco [Rank E]	1002,20,0,0,0
+man_fild03,0,0,0,0	monster	Tarin [Rank E]	1235,50,0,0,0
+man_fild03,0,0,0,0	monster	Elder Pedron [Rank E]	1033,50,0,0,0
+man_fild03,0,0,0,0	monster	Lobo [Rank E]	3739,50,0,0,0
+man_fild03,0,0,0,0	monster	Sapo de Roda [Rank E]	1012,30,0,0,0
+
+ve_fild07,0,0,0,0	monster	Boa [Rank D]	1025,40,0,0,0
+ve_fild07,0,0,0,0	monster	Corvo Negro [Rank D]	1037,40,0,0,0
+ve_fild07,0,0,0,0	monster	Guerreiro de Chakra [Rank D]	1379,40,0,0,0
+ve_fild07,0,0,0,0	monster	Echio [Rank D]	1770,40,0,0,0
+
+ve_fild04,0,0,0,0	monster	Bandido [Rank C]	1098,30,0,0,0
+ve_fild04,0,0,0,0	monster	Cachorro [Rank C]	1032,35,0,0,0
+ve_fild04,0,0,0,0	monster	Mumia [Rank C]	1837,25,0,0,0
+ve_fild04,0,0,0,0	monster	Caveira [Rank C]	1657,25,0,0,0
+ve_fild04,0,0,0,0	monster	Genin da Suna [Rank C]	1010,20,0,0,0
+ve_fild04,0,0,0,0	monster	Genin de Konoha [Rank C]	1109,20,0,0,0
+
+ein_fild01,0,0,0,0	monster	Sapo de Thara [Rank B]	1034,40,0,0,0
+ein_fild01,0,0,0,0	monster	Cassiopeia [Rank B]	1831,40,0,0,0
+ein_fild01,0,0,0,0	monster	Espadachim [Rank B]	1829,40,0,0,0
+ein_fild01,0,0,0,0	monster	Arqueiro [Rank B]	1830,40,0,0,0
+ein_fild01,0,0,0,0	monster	Chunin de Konoha [Rank B]	1049,20,0,0,0
+ein_fild01,0,0,0,0	monster	Chunin da Suna [Rank B]	1062,20,0,0,0
+ein_fild01,0,0,0,0	monster	Basilisk [Rank B]	3504,10,0,0,0
+
+pay_fild09,0,0,0,0	monster	Jounin [Rank A]	1634,10,0,0,0
+pay_fild09,0,0,0,0	monster	Bandido [Rank A]	1372,20,0,0,0
+pay_fild09,0,0,0,0	monster	Chunnin [Rank A]	1636,15,0,0,0
+pay_fild09,0,0,0,0	monster	Shinobi [Rank A]	1656,20,0,0,0
+pay_fild09,0,0,0,0	monster	Injusticado [Rank A]	1257,20,0,0,0
+pay_fild09,0,0,0,0	monster	Ninja [Rank A]	1201,20,0,0,0
+
+//FILDS KONOHA
+tur_dun01,0,0,0,0	monster	Katsuyu [Rank E]	1004,30,0,0,0
+tur_dun01,0,0,0,0	monster	Akamaru [Rank E]	1106,30,0,0,0
+tur_dun01,0,0,0,0	monster	Argos [ Rank E ]	1100,30,0,0,0
+
+tur_dun02,0,0,0,0	monster	Aranha [ Rank B ]	3741,30,0,0,0
+tur_dun02,0,0,0,0	monster	Basilisk [ Rank B ]	3504,30,0,0,0
+tur_dun02,0,0,0,0	monster	Combat [ Rank B ]	3503,30,0,0,0
+
+
+tur_dun03,0,0,0,0	monster	Hunter [ Rank A ]	3454,30,0,0,0
+tur_dun03,0,0,0,0	monster	Amdarais [ Rank A ]	3449,30,0,0,0
+tur_dun03,0,0,0,0	monster	Sys [ Rank A ]	3253,30,0,0,0
+
+tur_dun05	monster	Orochimaru [ Rank SS ]	1398,1,0,0,0
+
+//FILDS NUVEM
+beach_dun,0,0,0,0	monster	Katsuyu [Rank E]	1004,50,0,0,0
+beach_dun,0,0,0,0	monster	Akamaru [Rank E]	1106,30,0,0,0
+beach_dun,0,0,0,0	monster	Argos [ Rank E ]	1100,30,0,0,0
+
+beach_dun2,0,0,0,0	monster	Aranha [ Rank B ]	3741,50,0,0,0
+beach_dun2,0,0,0,0	monster	Basilisk [ Rank B ]	3504,50,0,0,0
+beach_dun2,0,0,0,0	monster	Combat [ Rank B ]	3503,50,0,0,0
+
+beach_dun3,0,0,0,0	monster	Hunter [ Rank A ]	3454,50,0,0,0
+beach_dun3,0,0,0,0	monster	Amdarais [ Rank A ]	3449,50,0,0,0
+beach_dun3,0,0,0,0	monster	Sys [ Rank A ]	3253,50,0,0,0
+
+tur_dun05,0,0,0,0	monster	Orochimaru [ Rank SS ]	1398,1,0,0,0
+
+//FILDS NEVOA
+pay_dun00,0,0,0,0	monster	Katsuyu [Rank E]	1004,30,0,0,0
+pay_dun00,0,0,0,0	monster	Akamaru [Rank E]	1106,30,0,0,0
+pay_dun00,0,0,0,0	monster	Argos [ Rank E ]	1100,30,0,0,0
+
+pay_dun03,0,0,0,0	monster	Aranha [ Rank B ]	3741,30,0,0,0
+pay_dun03,0,0,0,0	monster	Basilisk [ Rank B ]	3504,30,0,0,0
+pay_dun03,0,0,0,0	monster	Combat [ Rank B ]	3503,30,0,0,0
+
+pay_dun04,0,0,0,0	monster	Hunter [ Rank A ]	3454,30,0,0,0
+pay_dun04,0,0,0,0	monster	Amdarais [ Rank A ]	3449,30,0,0,0
+pay_dun04,0,0,0,0	monster	Sys [ Rank A ]	3253,30,0,0,0
+
+tur_dun06,0,0,0,0	monster	Orochimaru [ Rank SS ]	1398,1,0,0,0
+
+// mapas rank S das vilas
+//konoha
+mjolnir_05,0,0,0,0	monster	Katsuyo [ Rank S ]	1029,25,0,0,0
+mjolnir_05,0,0,0,0	monster	Enma [ Rank S ]	1057,30,0,0,0
+mjolnir_05,0,0,0,0	monster	Shinobi [ Rank S ]	2031,25,0,0,0
+mjolnir_05,0,0,0,0	monster	General Tartaruga [ Rank S ]	1312,25,0,0,0
+mjolnir_05,0,0,0,0	monster	Manda [ Rank S ]	1418,25,0,0,0
+mjolnir_05,0,0,0,0	monster	Gamabunta [ Rank S ]	1089,25,0,0,0
+mjolnir_05,0,0,0,0	monster	Akatsuki [ Rank S ]	1088,25,0,0,0
+mjolnir_05,0,0,0,0	monster	Salamandra [ Rank S ]	1020,25,0,0,0
+mjolnir_05,0,0,0,0	monster	Aranha de gelo [ Rank S ]	1250,25,0,0,0
+
+//nuvem
+prt_fild09,0,0,0,0	monster	Katsuyo [ Rank S ]	1029,25,0,0,0
+prt_fild09,0,0,0,0	monster	Enma [ Rank S ]	1057,25,0,0,0
+prt_fild09,0,0,0,0	monster	Shinobi [ Rank S ]	2031,30,0,0,0
+prt_fild09,0,0,0,0	monster	General Tartaruga [ Rank S ]	1312,25,0,0,0
+prt_fild09,0,0,0,0	monster	Manda [ Rank S ]	1418,25,0,0,0
+prt_fild09,0,0,0,0	monster	Gamabunta [ Rank S ]	1089,25,0,0,0
+prt_fild09,0,0,0,0	monster	Akatsuki [ Rank S ]	1088,25,0,0,0
+prt_fild09,0,0,0,0	monster	Salamandra [ Rank S ]	1020,25,0,0,0
+prt_fild09,0,0,0,0	monster	Aranha de gelo [ Rank S ]	1250,25,0,0,0
+
+//nevoa
+gef_fild05,0,0,0,0	monster	Katsuyo [ Rank S ]	1029,25,0,0,0
+gef_fild05,0,0,0,0	monster	Enma [ Rank S ]	1057,25,0,0,0
+gef_fild05,0,0,0,0	monster	Shinobi [ Rank S ]	2031,30,0,0,0
+gef_fild05,0,0,0,0	monster	General Tartaruga [ Rank S ]	1312,25,0,0,0
+gef_fild05,0,0,0,0	monster	Manda [ Rank S ]	1418,25,0,0,0
+gef_fild05,0,0,0,0	monster	Gamabunta [ Rank S ]	1089,25,0,0,0
+gef_fild05,0,0,0,0	monster	Akatsuki [ Rank S ]	1088,25,0,0,0
+gef_fild05,0,0,0,0	monster	Salamandra [ Rank S ]	1020,25,0,0,0
+gef_fild05,0,0,0,0	monster	Aranha de gelo [ Rank S ]	1250,25,0,0,0
+
+
+//============== MAP FLAG ===============
+// PvP

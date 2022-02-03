@@ -1,0 +1,562 @@
+//$EEinfo[1] -> Evento Ligado/Desligado
+//$EEinfo[2] -> Vila do Evento (konoha,Névoa,Núvem,suna)
+//$EEinfo[3] -> Uso do Clear Map (1 = usado, 0 = não usado)
+//$EEinfo[4] -> Edificios Restantes
+//$EEinfo[11~16] -> Players Inside
+//$EEinfo[17~22] -> Coldown Entrada
+
+konoha,149,239,4	script	Auxiliar::auxilia	434,{
+
+// Nome do npc
+set .npc$,"^800000[Auxiliar]^000000";
+
+if($EEinfo[2] == 1 && getcharid(2) != 88 || $EEinfo[2] == 2 && getcharid(2) != 37 || $EEinfo[2] == 3 && getcharid(2) != 29 || $EEinfo[2] == 4 && getcharid(2) != 41){
+mes .npc$;
+mes "Sirvo apenas ao meu Kage.";
+close;
+end;
+}
+
+if(getguildmaster(getcharid(2)) != strcharinfo(0)){
+mes .npc$;
+mes "Sirvo apenas ao meu Kage.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Olá senhor Kage, em que posso ajudar?";
+mes "Registro de entradas:";
+mes "Konoha: ["+$EEinfo[11]+"]";
+mes "Névoa: ["+$EEinfo[12]+"]";
+mes "Núvem: ["+$EEinfo[13]+"]";
+mes "Suna: ["+$EEinfo[14]+"]";
+mes "Akatsuki: ["+$EEinfo[15]+"]";
+mes "Nukenin: ["+$EEinfo[16]+"]";
+next;
+if(select("Nada não:Clear Map") == 1) close;
+mes .npc$;
+mes "Você só poderá usar este recurso 1x, continuar?";
+if(select("Sim:Não") == 2) close;
+next;
+if($EEinfo[3] == 1){
+mes .npc$;
+mes "Você já utilizou este recurso";
+close;
+end;
+}
+maprespawnguildid strcharinfo(3),getcharid(2),2;
+set $EEinfo[3],1;
+set $EEinfo[5],1;
+initnpctimer "Evento#EEb";
+close;
+end;
+}
+
+-	script	Evento#EEb	EventoEdificios#EEb -1,{
+OnTimer60000:
+set $EEinfo[5],0;
+stopnpctimer;
+setnpctimer 0;
+end;
+}
+
+
+kiri,205,155,4	duplicate(auxilia)	Auxiliar Nevoa	434
+veins,205,155,4	duplicate(auxilia)	Auxiliar Nuvem	434
+areia,153,240,4	duplicate(auxilia)	Auxiliar Suna	434
+
+hospital.gat,108,82,4	script	Edifícios#konoha 	434,{
+if($EEinfo[1] == 1 && $EEinfo[2] == 1) warp "konoha",149,236;
+end;
+}
+hospital3.gat,108,82,4	script	Edifícios#nevoa 	434,{
+if($EEinfo[1] == 1 && $EEinfo[2] == 2) warp "kiri",196,257;
+end;
+}
+hospital4.gat,108,82,4	script	Edifícios#nuvem 	434,{
+if($EEinfo[1] == 1 && $EEinfo[2] == 3) warp "veins",156,207;
+end;
+}
+hospital2.gat,108,82,4	script	Edifícios#suna 	434,{
+if($EEinfo[1] == 1 && $EEinfo[2] == 4) warp "areia",196,175;
+end;
+}
+
+
+
+-	script	Evento#EE	EventoEdificios#EE -1,{
+
+OnPCDieEvent:
+if(strcharinfo(3) != .EEmap$[$EEinfo[2]]) end; 
+if(getcharid(2) == 88){ //konoha
+set .@i, 1;
+}else if(getcharid(2) == 4){ //Névoa
+set .@i, 2;
+}else if(getcharid(2) == 29){ //Núvem
+set .@i, 3;
+}else if(getcharid(2) == 41){ //suna
+set .@i, 4;
+}else if(getcharid(2) == 9){ //akat
+set .@i, 5;
+}else{ //nukes
+set .@i, 6;
+}
+set $EEinfo[10+.@i], $EEinfo[10+.@i]-1;
+warp "kakashi",0,0;
+end;
+
+OnPCLogoutEvent:
+if(strcharinfo(3) != .EEmap$[$EEinfo[2]]) end; 
+if(getcharid(2) == 88){ //konoha
+set .@i, 1;
+}else if(getcharid(2) == 4){ //Névoa
+set .@i, 2;
+}else if(getcharid(2) == 29){ //Núvem
+set .@i, 3;
+}else if(getcharid(2) == 41){ //suna
+set .@i, 4;
+}else if(getcharid(2) == 9){ //akat
+set .@i, 5;
+}else{ //nukes
+set .@i, 6;
+}
+set $EEinfo[10+.@i], $EEinfo[10+.@i]-1;
+end;
+
+OnInit:
+//Mapas das Vilas
+setarray .EEgdid[1],1,4,29,41;
+setarray .EEmap$[1],"konoha","kiri","veins","areia";
+setarray .EEedid[1],1331,1332,1333,1334,1576,1069,1001,1045;
+setarray .EEedx[1],58,239,239,58,148,168,236,360,359,31,181,101,260,287,194,75,245,79,244,194;
+setarray .EEedy[1],80,80,175,175,203,112,52,86,357,334,84,149,139,203,228,69,69,208,213,120;
+end;
+
+OnClock1800:
+if(gettime(4) == 1){ //0 = domingo, 6 = sabado
+	announce "[Guerra dos Edifícios]: A Guerra dos Edifícios está aberta. A Vila defensora é a Vila de Konoha. Boa Sorte a todos!",8;
+	set $EEinfo[1], 1;
+	set $EEinfo[2], 1;
+	set $EEinfo[3], 0;
+	set $EEinfo[4], 5;
+	set $EEinfo[11], 0;
+	set $EEinfo[12], 0;
+	set $EEinfo[13], 0;
+	set $EEinfo[14], 0;
+	set $EEinfo[15], 0;
+	set $EEinfo[16], 0;
+	disablenpc "Entrada pra Konoha";
+	disablenpc "Entrada pra Konoha#1";
+	initnpctimer;
+	callsub OnNewEvent;
+	end;
+}
+if(gettime(4) == 2){ //0 = domingo, 6 = sabado
+	announce "[Guerra dos Edifícios]: A Guerra dos Edifícios está aberta. A Vila defensora é a Vila da Névoa. Boa Sorte a todos!",8;
+	set $EEinfo[1], 1;
+	set $EEinfo[2], 2;
+	set $EEinfo[3], 0;
+	set $EEinfo[4], 5;
+	set $EEinfo[11], 0;
+	set $EEinfo[12], 0;
+	set $EEinfo[13], 0;
+	set $EEinfo[14], 0;
+	set $EEinfo[15], 0;
+	set $EEinfo[16], 0;
+	disablenpc "Entrada pra Nevoa";
+	disablenpc "Entrada pra Névoa#1";
+	initnpctimer;
+	callsub OnNewEvent;
+	end;
+}
+if(gettime(4) == 5){ //0 = domingo, 6 = sabado
+	announce "[Guerra dos Edifícios]: A Guerra dos Edifícios está aberta. A Vila defensora é a Vila da Núvem. Boa Sorte a todos!",8;
+	set $EEinfo[1], 1;
+	set $EEinfo[2], 3;
+	set $EEinfo[3], 0;
+	set $EEinfo[4], 5;
+	set $EEinfo[11], 0;
+	set $EEinfo[12], 0;
+	set $EEinfo[13], 0;
+	set $EEinfo[14], 0;
+	set $EEinfo[15], 0;
+	set $EEinfo[16], 0;
+	disablenpc "Entrada pra Nuvem";
+	disablenpc "Entrada pra Nuvem#1";
+	initnpctimer;
+	callsub OnNewEvent;
+	end;
+}
+if(gettime(4) == 4 ){ //0 = domingo, 6 = sabado
+	announce "[Guerra dos Edifícios]: A Guerra dos Edifícios está aberta. A Vila defensora é a Vila da Suna. Boa Sorte a todos!",8;
+	set $EEinfo[1], 1;
+	set $EEinfo[2], 4;
+	set $EEinfo[3], 0;
+	set $EEinfo[4], 5;
+	set $EEinfo[11], 0;
+	set $EEinfo[12], 0;
+	set $EEinfo[13], 0;
+	set $EEinfo[14], 0;
+	set $EEinfo[15], 0;
+	set $EEinfo[16], 0;
+	disablenpc "Entrada pra Suna";
+	disablenpc "Entrada pra Suna#1";
+	initnpctimer;
+	callsub OnNewEvent;
+	end;
+}
+end;
+
+OnClock1900:
+if($EEinfo[1] == 1){
+stopnpctimer;
+setnpctimer 0;
+callsub OnEndEvent;
+}
+end;
+
+OnNewEvent:
+maprespawnguildid .EEmap$[$EEinfo[2]],.EEgdid[$EEinfo[2]],2;
+set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);
+monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício E",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak1";
+killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+callsub OnGuardiaoRespawn;	
+end;
+OnEdBreak1:
+	if(getcharid(2) == 0 && nukenin != 1){
+	announce "[Guerra dos Edifícios]: O ninja "+strcharinfo(0)+" não possui Guild, nem é um Nukenin, o edifício foi restruturado.",8;	
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício E",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak1";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+	end;
+	}
+	announce "[Guerra dos Edifícios]: O primeiro edifício foi destruido pelo ninja "+strcharinfo(0)+" da "+strcharinfo(2)+".",8;
+	set $EEinfo[4], 4;	
+	if(getcharid(2) == 88){ //konoha
+		set $konoha_ryous, $konoha_ryous + 20;
+	}else if(getcharid(2) == 4){ //Névoa
+		set $nevoa_ryous, $nevoa_ryous + 20;
+	}else if(getcharid(2) == 29){ //Núvem
+		set $nuvem_ryous, $nuvem_ryous + 20;
+	}else if(getcharid(2) == 41){ //suna
+		set $areia_ryous, $areia_ryous + 20;
+	}else if(getcharid(2) == 9){ //akat
+		set $akatsuki_ryous, $akatsuki_ryous + 20;
+	}else{ //nukes
+		set nukenin_ryous, nukenin_ryous + 20;
+	}
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício D",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak2";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+end;
+OnEdBreak2:
+	if(getcharid(2) == 0 && nukenin != 1){
+	announce "[Guerra dos Edifícios]: O ninja "+strcharinfo(0)+" não possui Guild, nem é um Nukenin, o edifício foi restruturado.",8;	
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício D",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak2";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+	end;
+	}
+	announce "[Guerra dos Edifícios]: O segundo edifício foi destruido pelo ninja "+strcharinfo(0)+" da "+strcharinfo(2)+".",8;
+	set $EEinfo[4], 3;
+	if(getcharid(2) == 88){ //konoha
+		set $konoha_ryous, $konoha_ryous + 20;
+	}else if(getcharid(2) == 4){ //Névoa
+		set $nevoa_ryous, $nevoa_ryous + 20;
+	}else if(getcharid(2) == 29){ //Núvem
+		set $nuvem_ryous, $nuvem_ryous + 20;
+	}else if(getcharid(2) == 41){ //suna
+		set $areia_ryous, $areia_ryous + 20;
+	}else if(getcharid(2) == 9){ //akat
+		set $akatsuki_ryous, $akatsuki_ryous + 20;
+	}else{ //nukes
+		set nukenin_ryous, nukenin_ryous + 20;
+	}
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);	
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício C",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak3";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+end;
+OnEdBreak3:
+	if(getcharid(2) == 0 && nukenin != 1){
+	announce "[Guerra dos Edifícios]: O ninja "+strcharinfo(0)+" não possui Guild, nem é um Nukenin, o edifício foi restruturado.",8;	
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício C",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak3";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+	end;
+	}
+	announce "[Guerra dos Edifícios]: O terceiro edifício foi destruido pelo ninja "+strcharinfo(0)+" da "+strcharinfo(2)+".",8;
+	set $EEinfo[4], 2;
+	if(getcharid(2) == 88){ //konoha
+		set $konoha_ryous, $konoha_ryous + 20;
+	}else if(getcharid(2) == 4){ //Névoa
+		set $nevoa_ryous, $nevoa_ryous + 20;
+	}else if(getcharid(2) == 29){ //Núvem
+		set $nuvem_ryous, $nuvem_ryous + 20;
+	}else if(getcharid(2) == 41){ //suna
+		set $areia_ryous, $areia_ryous + 20;
+	}else if(getcharid(2) == 9){ //akat
+		set $akatsuki_ryous, $akatsuki_ryous + 20;
+	}else{ //nukes
+		set nukenin_ryous, nukenin_ryous + 20;
+	}
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício B",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak4";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+end;
+OnEdBreak4:
+	if(getcharid(2) == 0 && nukenin != 1){
+	announce "[Guerra dos Edifícios]: O ninja "+strcharinfo(0)+" não possui Guild, nem é um Nukenin, o edifício foi restruturado.",8;
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício B",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak4";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+	end;
+	}
+	announce "[Guerra dos Edifícios]: O quarto edifício foi destruido pelo ninja "+strcharinfo(0)+" da "+strcharinfo(2)+".",8;
+	set $EEinfo[4], 1;
+	if(getcharid(2) == 88){ //konoha
+		set $konoha_ryous, $konoha_ryous + 20;
+	}else if(getcharid(2) == 4){ //Névoa
+		set $nevoa_ryous, $nevoa_ryous + 20;
+	}else if(getcharid(2) == 29){ //Núvem
+		set $nuvem_ryous, $nuvem_ryous + 20;
+	}else if(getcharid(2) == 41){ //suna
+		set $areia_ryous, $areia_ryous + 20;
+	}else if(getcharid(2) == 9){ //akat
+		set $akatsuki_ryous, $akatsuki_ryous + 20;
+	}else{ //nukes
+		set nukenin_ryous, nukenin_ryous + 20;
+	}
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício A",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak5";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+end;
+OnEdBreak5:
+	if(getcharid(2) == 0 && nukenin != 1){
+	announce "[Guerra dos Edifícios]: O ninja "+strcharinfo(0)+" não possui Guild, nem é um Nukenin, o edifício foi restruturado.",8;
+	set .d, (($EEinfo[2]-1)*5)+(6-$EEinfo[4]);	
+	monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d],"Edifício A",.EEedid[$EEinfo[2]],1,strnpcinfo(0)+"::OnEdBreak5";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	callsub OnGuardiaoRespawn;	
+	end;
+	}
+	announce "[Guerra dos Edifícios]: O quinto edifício foi destruido pelo ninja "+strcharinfo(0)+" da "+strcharinfo(2)+".",8;
+	set $EEinfo[4], 0;
+	if(getcharid(2) == 88){ //konoha
+		set $konoha_ryous, $konoha_ryous + 20;
+	}else if(getcharid(2) == 4){ //Névoa
+		set $nevoa_ryous, $nevoa_ryous + 20;
+	}else if(getcharid(2) == 29){ //Núvem
+		set $nuvem_ryous, $nuvem_ryous + 20;
+	}else if(getcharid(2) == 41){ //suna
+		set $areia_ryous, $areia_ryous + 20;
+	}else if(getcharid(2) == 9){ //akat
+		set $akatsuki_ryous, $akatsuki_ryous + 20;
+	}else{ //nukes
+		set nukenin_ryous, nukenin_ryous + 20;
+	}
+	callsub OnEndEvent;
+end;
+
+OnGuardiaoRespawn:
+monster .EEmap$[$EEinfo[2]],.EEedx[.d],.EEedy[.d]+4,"Guardião",.EEedid[$EEinfo[2]+4],1,strnpcinfo(0)+"::OnGuardiaoBreak";
+monster .EEmap$[$EEinfo[2]],.EEedx[.d]+3,.EEedy[.d]+2,"Guardião",.EEedid[$EEinfo[2]+4],1,strnpcinfo(0)+"::OnGuardiaoBreak";
+monster .EEmap$[$EEinfo[2]],.EEedx[.d]-3,.EEedy[.d]+2,"Guardião",.EEedid[$EEinfo[2]+4],1,strnpcinfo(0)+"::OnGuardiaoBreak";
+monster .EEmap$[$EEinfo[2]],.EEedx[.d]+2,.EEedy[.d]-3,"Guardião",.EEedid[$EEinfo[2]+4],1,strnpcinfo(0)+"::OnGuardiaoBreak";
+monster .EEmap$[$EEinfo[2]],.EEedx[.d]-2,.EEedy[.d]-3,"Guardião",.EEedid[$EEinfo[2]+4],1,strnpcinfo(0)+"::OnGuardiaoBreak";
+continue;
+end;
+
+OnEndEvent:
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnGuardiaoBreak",1;
+	announce "[Guerra dos Edifícios]: A Guerra dos Edifícios chegou ao fim.",8;
+	sleep(5000);
+if(gettime(4) == 5 && $EEinfo[2] == 1){
+	announce "[Guerra dos Edifícios]: A Vila de Konoha conseguiu defender "+$EEinfo[4]+" dos seus Edifícios.",8;
+	set $konoha_ryous, $konoha_ryous + (40 * $EEinfo[4]);
+}
+if(gettime(4) == 1 && $EEinfo[2] == 2){
+	announce "[Guerra dos Edifícios]: A Vila de Névoa conseguiu defender "+$EEinfo[4]+" dos seus Edifícios.",8;
+	set $nevoa_ryous, $nevoa_ryous + (40 * $EEinfo[4]);
+}
+if(gettime(4) == 4 && $EEinfo[2] == 3){
+	announce "[Guerra dos Edifícios]: A Vila de Núvem conseguiu defender "+$EEinfo[4]+" dos seus Edifícios.",8;
+	set $nuvem_ryous, $nuvem_ryous + (40 * $EEinfo[4]);
+}
+if(gettime(4) == 2 && $EEinfo[2] == 4){
+	announce "[Guerra dos Edifícios]: A Vila de Suna conseguiu defender "+$EEinfo[4]+" dos seus Edifícios.",8;
+	set $areia_ryous, $areia_ryous + (40 * $EEinfo[4]);
+}
+	set $EEinfo[1], 0;
+	set $EEinfo[2], 0;
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnEdBreak1";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnEdBreak2";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnEdBreak3";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnEdBreak4";
+	killmonster .EEmap$[$EEinfo[2]],strnpcinfo(0)+"::OnEdBreak5";
+	enablenpc "Entrada pra Konoha";
+	enablenpc "Entrada pra Névoa";
+	enablenpc "Entrada pra Nuvem";
+	enablenpc "Entrada pra Suna";
+	enablenpc "Entrada pra Konoha#1";
+	enablenpc "Entrada pra Névoa#1";
+	enablenpc "Entrada pra Nuvem#1";
+	enablenpc "Entrada pra Suna#1";
+end;
+
+OnTimer1000:
+while($EEinfo[1] == 1){
+sleep(1000);
+for( set .j, 1; .j<7; set .j, .j + 1 ){
+if($EEinfo[16+.j] > 0) set $EEinfo[16+.j], $EEinfo[16+.j]-1;
+}
+}
+stopnpctimer;
+setnpctimer 0;
+end;
+
+}
+
+
+
+
+
+payon.gat,106,325,4	script	Entrada Edificios 	434,{
+
+// Nome do npc
+set .npc$,"^800000[Entrada Edificios]^000000";
+// Limíte de Entradas
+set .EEmaxp, 10;
+// Coldown entre entradas (segundos)
+set .EEcdentry, 10; 
+//Mapas das Vilas
+setarray .EEmap$[1],"konoha","kiri","veins","areia";
+
+mes .npc$;
+mes "Registro de entradas:";
+mes "Konoha: ["+$EEinfo[11]+"]";
+mes "Névoa: ["+$EEinfo[12]+"]";
+mes "Núvem: ["+$EEinfo[13]+"]";
+mes "Suna: ["+$EEinfo[14]+"]";
+mes "Akatsuki: ["+$EEinfo[15]+"]";
+mes "Nukenin: ["+$EEinfo[16]+"]";
+
+if(select("Entrar:Sair") == 2) close;
+
+if($EEinfo[1] == 0){
+next;
+mes .npc$;
+mes "O evento está fechado.";
+close;
+end;
+}
+
+if(getcharid(2) == 0 && nukenin != 1){
+next;
+mes .npc$;
+mes "Você precisa de uma Guild para entrar aqui.";
+close;
+end;
+}
+
+if(getcharid(2) != 9 && countitem(19020) == 1 || getcharid(2) != 9 && countitem(19195) == 1 || getcharid(2) != 9 && countitem(19196) == 1 || getcharid(2) != 9 && countitem(19197) == 1){
+next;
+mes .npc$;
+mes "Você precisa estar na guild da Akatsuki.";
+close;
+end;
+}
+
+if($EEinfo[5] == 1){
+next;
+mes .npc$;
+mes "A entrada está bloqueada, e será liberada em breve.";
+close;
+end;
+}
+
+if(getcharid(2) == 88){ //konoha
+set .@i, 1;
+}else if(getcharid(2) == 4){ //Névoa
+set .@i, 2;
+}else if(getcharid(2) == 29){ //Núvem
+set .@i, 3;
+}else if(getcharid(2) == 41){ //suna
+set .@i, 4;
+}else if(getcharid(2) == 9){ //akat
+set .@i, 5;
+}else if(getcharid(2) == 0){ //evitar bugs = nuke sem guild
+set .@i, 6;
+}else{ //nukes
+set .@i, 6;
+}
+//close2;
+if($EEinfo[10+.@i] >= .EEmaxp){
+next;
+mes .npc$;
+mes "Sua guild já atingiu o número máximo de integrantes dentro do evento.";
+close;
+end;
+}
+
+if($EEinfo[16+.@i] > 0){
+next;
+mes .npc$;
+mes "Sua guild deve esperar "+$EEinfo[16+.@i]+" segundos para enviar um novo integrante.";
+close;
+end;
+}
+
+warp .EEmap$[$EEinfo[2]],0,0;
+set $EEinfo[10+.@i], $EEinfo[10+.@i]+1;
+set $EEinfo[16+.@i], .EEcdentry;
+end;
+}
+
+konoha	mapflag	nowarp
+konoha	mapflag	noteleport
+konoha	mapflag	nowarpto
+konoha	mapflag	nobranch
+konoha	mapflag	nosave	SavePoint
+konoha	mapflag	nomemo
+konoha	mapflag	nopenalty
+konoha	mapflag	pvp
+konoha	mapflag	noexp
+
+veins	mapflag	nowarp
+veins	mapflag	noteleport
+veins	mapflag	nowarpto
+veins	mapflag	nobranch
+veins	mapflag	nosave	SavePoint
+veins	mapflag	nomemo
+veins	mapflag	nopenalty
+veins	mapflag	pvp
+veins	mapflag	noexp
+
+kiri	mapflag	nowarp
+kiri	mapflag	noteleport
+kiri	mapflag	nowarpto
+kiri	mapflag	nobranch
+kiri	mapflag	nosave	SavePoint
+kiri	mapflag	nomemo
+kiri	mapflag	nopenalty
+kiri	mapflag	pvp
+kiri	mapflag	noexp
+
+areia	mapflag	nowarp
+areia	mapflag	noteleport
+areia	mapflag	nowarpto
+areia	mapflag	nobranch
+areia	mapflag	nosave	SavePoint
+areia	mapflag	nomemo
+areia	mapflag	nopenalty
+areia	mapflag	pvp
+areia	mapflag	noexp

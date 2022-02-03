@@ -1,0 +1,23 @@
+mjolnir_08,119,254,4	script	ia_planta		-1,5,5,{
+
+if(quest_rose != 1) end;
+
+OnTouch:
+
+    // Define Item IDs:
+    setarray .@item[0],515,515,515,515,515;
+
+    getmapxy .@map$, .@x, .@y, 0;
+    set .@rand, rand(getarraysize(.@item));
+    makeitem .@item[.@rand], 1, .@map$, .@x, .@y;
+    mes GetItemName(.@item[.@rand])+" é encontrado no chão!";
+    close2;
+    detachrid;
+    do {
+        set .@x,rand(0,300);
+        set .@y,rand(0,300);
+        sleep 1;
+        } while( !checkcell( .@map$, .@x, .@y, cell_chkpass) );
+    movenpc strnpcinfo(0), .@x, .@y;
+    end;
+}

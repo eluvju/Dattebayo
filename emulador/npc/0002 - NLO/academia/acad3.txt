@@ -1,0 +1,33 @@
+force_1-1,26,103,5	script	Jiraya	69,{
+
+	if(quest8_1 == 0){
+	mes "Voce deve completar o primeiro teste antes de falar comigo.";
+	close;
+	}
+
+	if(nin_basico == 1){
+	mes "Voce ja falou comigo! Boa sorte nos outros treinamentos";
+	close;
+	}
+
+	mes "[Jiraya] Yo! Voce quer saber mais sobre ninjutsu?";
+	next;
+	mes "[Jiraya] Ninjutsu tem foco principal em ataques magicos e no atributo inteligencia (INT)";
+	next;
+	mes "[Jiraya] Voce possuira habilidades focadas em ataques de medio e longo alcance, dependendo do seu elemento";
+	next;
+	mes "[Jiraya] Agora que voce sabe mais, ja esta apto a se tornar um mestre ninjutsu!";
+	next;
+	mes "[Jiraya] Pegue esse papel especial e infunda seu chakra para descobrir qual sera seu elemento.";
+	set quest8_1,0;
+	set quest8_2,1;
+	getitem 6000,1;
+	getitem 718,1;
+	set nin_basico,1;
+	set elemento,0;
+	close;
+	}
+
+force_1-1,25,74,5	script	Hatake Kakashi	843,{
+
+}

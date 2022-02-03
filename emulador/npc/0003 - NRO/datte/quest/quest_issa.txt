@@ -1,0 +1,182 @@
+///Missão Rank C
+///
+///-Primeiro passo : Encontre, e fale com o Npc Fumihiki (Npc que fica andando na vila com sprinte de jounin)
+///-Segundo passo : Ele vai pedir invadir 1 das 3 Nações inimigas, e roubar 3 moedas de ouro que vão estar com os jounins (Romi, Tomoko ou Tatsuya), para trocar por uma planta(Megusuriso) muito importante para o esquadrão médico da sua vila .
+///-Terceiro passo : A pessoa volta para vila de origem e entrega as moedas para o Fumihiki, que dará a planta (Megusuriso)
+//-Quarto passo : Entregará para o npc na sala do kage .
+
+
+//21796
+//11010
+//15683
+//14623
+//27514
+//20222
+
+umbala,107,118,1	script	Issa	106,{
+if (BaseLevel < 999) {mes "Hm, você me parece muito fraco pra me ajudar..."; close;}
+if (countitem(12081) >= 1) && (countitem(12097) >= 1) && (countitem(12122) >= 1) && (countitem(626) >= 1) {goto finish_issa;}
+if (quest_issa == 1) {mes "[^DC143CIssa^000000]"; mes "Olá ^3366FF"+strcharinfo(0)+" - Sama^000000, por favor, pegue os materiais pra mim!"; close;}
+if (quest_issa_done == 1) {mes "[^DC143CIssa^000000]"; mes "Você deveria ter visto nossa festa, foi ótima!"; close;}
+
+mes "[^DC143CIssa^000000]";
+mes "Yooo, como vai ^3366FF"+strcharinfo(0)+" - Sama^000000? Poderia me dar uma força?";
+next;
+mes "[^DC143CIssa^000000]";
+mes "Tenho alguns amigos nas outras vilas e nós estamos organizando uma reunião, e preciso pegar alguns materiais com eles...";
+next;
+mes "[^DC143CIssa^000000]";
+mes "Porém estou de guarda aqui na vila hoje e não posso sair agora, você poderia me fazer um favor e pegar o material com eles?";
+next;
+mes "[^DC143CIssa^000000]";
+mes "Se pegar pra mim te dou um equipamento bem bacana que consegui ontem... é um ^3366FFEquipamento nível 7^000000, que tal?";
+menu "Ok, vou pegar pra você",L_sim,"Não, no momento não posso",L_nao;
+
+L_sim:
+next;
+mes "[^DC143CIssa^000000]";
+mes "Yataaaaaaaaa";
+next;
+mes "[^DC143CIssa^000000]";
+mes "Obrigado ^3366FF"+strcharinfo(0)+" - Sama^000000, lá na vila da Suna, você terá que achar o Takeo, ele ficou de dar as bebidas pra nossa festa";
+next;
+mes "[^DC143CIssa^000000]";
+mes "O Ken, na Névoa, ficou de dar a carne. O Osamu da Folha, prometeu levar alguns doces.";
+next;
+mes "[^DC143CIssa^000000]";
+mes "E o Chun da Nuvem dará alguns fogos de artifício pra animar!";
+next;
+mes "[^DC143CIssa^000000]";
+mes "Assim que pegar tudo com eles, é só voltar aqui e me entregar, obrigado novamente ^3366FF"+strcharinfo(0)+" - Sama^000000!!";
+set quest_issa,1;
+close;
+
+L_nao:
+close;
+
+finish_issa:
+mes "[^DC143CIssa^000000]";
+mes "Muito obrigado ^3366FF"+strcharinfo(0)+" - Sama^000000, agora poderei me reunir com meus amigos de infância, como prometido, aqui está sua recompensa!";
+set quest_issa_done,1;
+set quest_issa,0;
+set takeo_issa,0;
+set ken_issa,0;
+set osamu_issa,0;
+set chun_issa,0;
+delitem 12081,1;
+delitem 12097,1;
+delitem 12122,1;
+delitem 626,1;
+set @i,rand(1,6);
+if (@i == 1) {getitem 21796,1; announce ""+strcharinfo(0)+" finalizou a quest do Issa, e recebeu um amuleto nível 7!",bc_blue|bc_all; close;}
+if (@i == 2) {getitem 11010,1; announce ""+strcharinfo(0)+" finalizou a quest do Issa, e recebeu um pergaminho nível 7!",bc_blue|bc_all; close;}
+if (@i == 3) {getitem 15683,1; announce ""+strcharinfo(0)+" finalizou a quest do Issa, e recebeu uma armadura nível 7!",bc_blue|bc_all; close;}
+if (@i == 4) {getitem 14623,1; announce ""+strcharinfo(0)+" finalizou a quest do Issa, e recebeu uma capa nível 7!",bc_blue|bc_all; close;}
+if (@i == 5) {getitem 27514,1; announce ""+strcharinfo(0)+" finalizou a quest do Issa, e recebeu uma arma nível 7!",bc_blue|bc_all; close;}
+if (@i == 6) {getitem 20222,1; announce ""+strcharinfo(0)+" finalizou a quest do Issa, e recebeu uma bota nível 7!",bc_blue|bc_all; close;}
+close;
+
+}
+
+areia,149,95,1	script	Takeo	991,{
+
+if (quest_issa_done == 1) {mes "[^DC143CTakeo^000000]"; mes "Que preguiça..."; close;}
+if (takeo_issa == 1) {mes "[^DC143CTakeo^000000]"; mes "Adoro essa vila, não vá fazer nada de errado com ela ein... não quero ter que te matar."; close;}
+if (quest_issa < 1) {mes "[^DC143CTakeo^000000]"; mes "Adoro essa vila, não vá fazer nada de errado com ela ein... não quero ter que te matar."; close;}
+
+mes "[^DC143CTakeo^000000]";
+mes "Hm? O que quer? Não vê que estou vigiando a Vila?";
+menu "Issa me mandou",L_sim,"Nada não...",L_nao;
+
+L_sim:
+next;
+mes "[^DC143CTakeo^000000]";
+mes "Aaaah sim, Issa te mandou né?";
+next;
+mes "[^DC143CTakeo^000000]";
+mes "Deve ser sobre nossa festa de mais tarde, deixa eu ver aqui onde deixei... Aqui estão! Essas bebidas são ótimas, mande um abraço pro Issa por mim!";
+getitem 12081,1;
+set takeo_issa,1;
+close;
+
+L_nao:
+close;
+
+}
+
+nevoa,221,55,1	script	Ken	117,{
+
+if (quest_issa_done == 1) {mes "[^DC143CKen^000000]"; mes "Que preguiça..."; close;}
+if (ken_issa == 1) {mes "[^DC143CKen^000000]"; mes "Que preguiça..."; close;}
+if (quest_issa < 1) {mes "[^DC143CKen^000000]"; mes "Que preguiça..."; close;}
+
+mes "[^DC143CKen^000000]";
+mes "Olá, nunca te vi por aqui antes, tá perdido?";
+menu "Issa me mandou",L_sim,"Nada não...",L_nao;
+
+L_sim:
+next;
+mes "[^DC143CKen^000000]";
+mes "Issa-san? Aquele tem mais preguiça do que eu! Haha";
+next;
+mes "[^DC143CKen^000000]";
+mes "Aqui estão as carnes pra festa, obrigado!";
+getitem 12097,1;
+set ken_issa,1;
+close;
+
+L_nao:
+close;
+
+}
+
+konoha,228,90,1	script	Osamu	806,{
+
+if (quest_issa_done == 1) {mes "[^DC143COsamu^000000]"; mes "ZzzZZz"; close;}
+if (osamu_issa == 1) {mes "[^DC143COsamu^000000]"; mes "ZzzZZz"; close;}
+if (quest_issa < 1) {mes "[^DC143COsamu^000000]"; mes "ZzzZZz"; close;}
+
+mes "[^DC143COsamu^000000]";
+mes "Posso ajudar?";
+menu "Issa me mandou",L_sim,"Nada não...",L_nao;
+
+L_sim:
+next;
+mes "[^DC143COsamu^000000]";
+mes "Claro! Já tinha me esquecido da nossa reunião...";
+next;
+mes "[^DC143COsamu^000000]";
+mes "Separei uns doces deliciosos pra festa, aqui estão!";
+getitem 12122,1;
+set osamu_issa,1;
+close;
+
+L_nao:
+close;
+
+}
+
+nuvem,192,30,1	script	Chun	846,{
+
+if (quest_issa_done == 1) {mes "[^DC143CChun^000000]"; mes "Dia bonito não?"; close;}
+if (chun_issa == 1) {mes "[^DC143CChun^000000]"; mes "Dia bonito não?"; close;}
+if (quest_issa < 1) {mes "[^DC143CChun^000000]"; mes "Dia bonito não?"; close;}
+
+mes "[^DC143CChun^000000]";
+mes "Precisa de algo?";
+menu "Issa me mandou",L_sim,"Nada não...",L_nao;
+
+L_sim:
+next;
+mes "[^DC143CChun^000000]";
+mes "Ah sim, tome aqui os fogos";
+next;
+mes "Cuidado com eles!";
+getitem 626,1;
+set chun_issa,1;
+close;
+
+L_nao:
+close;
+
+}

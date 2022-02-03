@@ -1,0 +1,629 @@
+//CREATE TABLE IF NOT EXISTS `nuke_spots` (
+//  `spot_id` int(11) unsigned NOT NULL,
+//  `guild_id` int(11) unsigned NOT NULL,
+//  `owner_id` int(11) unsigned NOT NULL,
+//  `guild_name` varchar(24) NOT NULL,
+//  `owner_name` varchar(24) NOT NULL,
+//  `daysleft` int(3) unsigned NOT NULL,
+//  `selo1` int(2) unsigned NOT NULL,
+//  `selo2` int(2) unsigned NOT NULL,
+//  `selo3` int(2) unsigned NOT NULL,
+//  `banco` int(11) unsigned NOT NULL,
+//  PRIMARY KEY (`spot_id`)
+//) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+//ALTER TABLE char ADD nuke_jail smallint(4) NOT NULL;
+
+-	script	Evento#NE	NukeninEsconderijo#NE -1,{
+OnInit:
+setarray $NEmap$[1], "yuno_in04","ayo_in01","prt_in";
+
+setcell $NEmap$[1],42,109,42,106,cell_walkable,0; //yuno_in04
+//setcell $NEmap$[2],142,162,142,164,cell_walkable,0; //ayo_in01
+//setcell $NEmap$[3],133,31,133,32,cell_walkable,0; //prt_in
+
+query_sql "SELECT `guild_id` FROM `nuke_spots` WHERE `spot_id`=1", .guildid;
+if(.guildid == 0){
+disablenpc "Selo Primario#Spot1";
+disablenpc "Selo Secundario#Spot1";
+disablenpc "Selo Terciario#Spot1";
+}else{
+enablenpc "Selo Primario#Spot1";
+enablenpc "Selo Secundario#Spot1";
+enablenpc "Selo Terciario#Spot1";
+}
+end;
+
+OnMinute00:
+query_sql "UPDATE `char` SET `nuke_jail` = `nuke_jail` - 1 WHERE `nuke_jail` > 0";
+end;
+
+OnClock0000:
+query_sql "UPDATE `nuke_spots` SET `daysleft` = `daysleft`-1 WHERE `spot_id`=1";
+query_sql "SELECT `daysleft` FROM `nuke_spots` WHERE `spot_id`=1", .daysleft;
+if(.daysleft == 0){
+query_sql "UPDATE `nuke_spots` SET `guild_id` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_id` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `guild_name` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_name` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo1` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo2` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo3` = 0 WHERE `spot_id`=1";
+announce "[Nukenin Spot] O Spot 1 acaba de ser abandonado.",bc_blue|bc_all;
+disablenpc "Selo Primario#Spot1";
+disablenpc "Selo Secundario#Spot1";
+disablenpc "Selo Terciario#Spot1";
+}
+end;
+
+OnEmpBreak:
+if(getcharid(2) == 0){
+sleep2(2000);
+monster $NEmap$[1],14,122,"Armazém",1288,1,"Evento#NE::OnEmpBreak";
+end;
+}
+MapRespawnGuildID strnpcinfo(2),getcharid(2),2;
+announce "[Nukenin Spot] "+strcharinfo(0)+" do grupo "+strcharinfo(2)+" acaba de ocupar um esconderijo vazio.",bc_blue|bc_all;
+query_sql "UPDATE `nuke_spots` SET `guild_id` = '"+getcharid(2)+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_id` = '"+getcharid(0)+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `guild_name` = '"+strcharinfo(2)+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_name` = '"+strcharinfo(0)+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `daysleft` = 7 WHERE `spot_id`=1";
+sleep2(2000);
+monster $NEmap$[1],14,122,"Armazém",1288,1,"Evento#NE"+"::OnEmpBreak";
+
+mes "Selo 1 (Número 1 ~ 9)";
+input .@s1;
+if(.@s1 < 1 || .@s1 > 9){
+mes "Você deve colocar um número entre 1 e 9. Para tentar novamente, procure os Npcs de Selo.";
+close;
+end;
+}
+
+mes "Selo 2 (Número 1 ~ 9)";
+input .@s2;
+if(.@s2 < 1 || .@s2 > 9){
+mes "Você deve colocar um número entre 1 e 9. Para tentar novamente, procure os Npcs de Selo.";
+close;
+end;
+}
+
+mes "Selo 3 (Número 1 ~ 9)";
+input .@s3;
+if(.@s3 < 1 || .@s3 > 9){
+mes "Você deve colocar um número entre 1 e 9. Para tentar novamente, procure os Npcs de Selo.";
+close;
+end;
+}
+query_sql "UPDATE `nuke_spots` SET `selo1` = '"+.@s1+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo2` = '"+.@s2+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo3` = '"+.@s3+"' WHERE `spot_id`=1";
+end;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+hospital.gat,25,80,4	script	Buraco Misterioso	857,{
+
+query_sql "SELECT `guild_id` FROM `nuke_spots` WHERE `spot_id`=1", .@guildid;
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+query_sql "SELECT `guild_name` FROM `nuke_spots` WHERE `spot_id`=1", .@guildname$;
+
+
+if(getgmlevel() > 5){
+mes "Deseja resetar esse Esconderijo?";
+next;
+if(select("Não:Sim") == 2){
+query_sql "UPDATE `nuke_spots` SET `guild_id` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_id` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `guild_name` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_name` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `daysleft` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo1` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo2` = 0 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo3` = 0 WHERE `spot_id`=1";
+disablenpc "Selo Primario#Spot1";
+disablenpc "Selo Secundario#Spot1";
+disablenpc "Selo Terciario#Spot1";
+close;
+end;
+}
+}
+
+if(nukenin != 1){
+mes "Parece um lugar escuro e aterrorizante. Apenas um Nukenin moraria aqui.";
+close;
+end;
+} 
+
+if(.@guildid != getcharid(2) && .@s1 == 0 && .@guildid != 0 || .@guildid != getcharid(2) && .@s2 == 0 && .@guildid != 0  || .@guildid != getcharid(2) && .@s3 == 0 && .@guildid != 0 ){
+mes "A entrada está selada com um selo de três símbolos.";
+close;
+end;
+}
+
+if(.@guildid == 0){
+mes "Hmm, um buraco misterioso... Seria um bom lugar para se esconder.";
+next;
+mes "Analisar o buraco?";
+if(select("Sim:Não") == 2) close;
+
+mes "Parece que não há ninguem neste local.";
+next;
+mes "Deseja se apossar deste esconderijo?";
+if(select("Sim:Não") == 2) close;
+
+if(getcharid(2) == 0){
+mes "Este lugar é grande demais para um Nukenins Solitário. Volte quando tiver feito companheiros.";
+close;
+end;
+}
+
+mes "Selo 1 (Número 1 ~ 9)";
+input .@s1;
+if(.@s1 < 1 || .@s1 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+
+mes "Selo 2 (Número 1 ~ 9)";
+input .@s2;
+if(.@s2 < 1 || .@s2 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+
+mes "Selo 3 (Número 1 ~ 9)";
+input .@s3;
+if(.@s3 < 1 || .@s3 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+
+mes "Esconderijo adquirido com sucesso!";
+query_sql "UPDATE `nuke_spots` SET `guild_id` = '"+getcharid(2)+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_id` = '"+getcharid(0)+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `guild_name` = '"+strcharinfo(2)+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_name` = '"+strcharinfo(0)+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `daysleft` = 7 WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo1` = '"+.@s1+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo2` = '"+.@s2+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo3` = '"+.@s3+"' WHERE `spot_id`=1";
+enablenpc "Selo Primario#Spot1";
+enablenpc "Selo Secundario#Spot1";
+enablenpc "Selo Terciario#Spot1";
+announce "[Nukenin Spot] "+strcharinfo(0)+" do grupo "+strcharinfo(2)+" acaba de ocupar um esconderijo vazio.",bc_blue|bc_all;
+monster $NEmap$[1],14,122,"Armazém",1288,1,"Evento#NE::OnEmpBreak";
+close;
+end;
+}
+
+mes "Gostaria de entrar no esconderijo?";
+if(select("Sim:Não") == 2) close;
+close2;
+if(.@guildid != getcharid(2) && .@guildid > 0){
+announce "[Nukenin Spot] "+strcharinfo(0)+" do grupo "+strcharinfo(2)+" acaba de invadir o esconderijo do grupo "+.@guildname$+".",bc_blue|bc_all;
+}
+warp $NEmap$[1],32,128;
+close;
+end;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+hospital.gat,27,80,4	script	Selo Primario#Spot1	857,{
+
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `guild_id` FROM `nuke_spots` WHERE `spot_id`=1", .@guildid;
+query_sql "SELECT `owner_id` FROM `nuke_spots` WHERE `spot_id`=1", .@ownerid;
+
+if(.@ownerid == getcharid(0)){
+if(select("Reforçar Selo:Trocar Selo") == 2){
+mes "Selo 1 (Número 1 ~ 9)";
+input .@ns1;
+if(.@ns1 < 1 || .@ns1 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+query_sql "UPDATE `nuke_spots` SET `selo1` = '"+.@ns1+"' WHERE `spot_id`=1";
+close;
+end;
+}
+mes "O selo foi reforçado.";
+query_sql "UPDATE `nuke_spots` SET `selo1` = 0 WHERE `spot_id`=1";
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+if(.@s2 == 0 && .@s3 == 0){
+setcell $NEmap$[1],42,109,42,106,cell_walkable,0; //yuno_in04
+}
+close;
+end;
+}
+
+if(.@guildid == getcharid(2)){
+mes "Gostaria de reforçar o selo?";
+if(select("Sim:Não") == 2) close;
+mes "O selo foi reforçado.";
+query_sql "UPDATE `nuke_spots` SET `selo1` = 0 WHERE `spot_id`=1";
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+if(.@s2 == 0 && .@s3 == 0){
+setcell $NEmap$[1],42,109,42,106,cell_walkable,0; //yuno_in04
+}
+close;
+end;
+}
+
+mes "Pode-se sentir restrígios de chakra. Deve se tratar de um Selo!";
+next;
+
+if(nukenin != 1){
+close2;
+warp $NEmap$[1],50,107;
+sleep2(1000);
+mes "Báááá! Você foi capturado! Pelo visto há alguma armadilha contra shinobis de vilas.";
+query_sql "UPDATE `char` SET `nuke_jail` = 20 WHERE `char_id` = '"+getcharid(0)+"'";
+close;
+end;
+}
+
+input .@test;
+if(.@test != .@s1){
+close2;
+warp $NEmap$[1],50,107;
+sleep2(1000);
+mes "Báááá! Você errou o selo e acabou sendo capturado!";
+query_sql "UPDATE `char` SET `nuke_jail` = 10 WHERE `char_id` = '"+getcharid(0)+"'";
+close;
+end;
+}
+close2;
+mes "O selo parece ter enfraquecido.";
+query_sql "UPDATE `nuke_spots` SET `selo1` = 1 WHERE `spot_id`=1";
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+if(.@s2 == 1 && .@s3 == 1){
+announce "[Nukenin Spot] "+strcharinfo(0)+" do grupo "+strcharinfo(2)+" acaba de liberar os selos do esconderijo do grupo "+.@guildname$+", liberando a entrada e o cativeiro.",bc_blue|bc_all;
+setcell $NEmap$[1],42,109,42,106,cell_walkable,1; //yuno_in04
+}
+close;
+end;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+hospital.gat,30,80,4	script	Selo Secundario#Spot1	857,{
+
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+query_sql "SELECT `guild_id` FROM `nuke_spots` WHERE `spot_id`=1", .@guildid;
+query_sql "SELECT `owner_id` FROM `nuke_spots` WHERE `spot_id`=1", .@ownerid;
+
+if(.@ownerid == getcharid(0)){
+if(select("Reforçar Selo:Trocar Selo") == 2){
+mes "Selo 2 (Número 1 ~ 9)";
+input .@ns2;
+if(.@ns2 < 1 || .@ns2 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+query_sql "UPDATE `nuke_spots` SET `selo2` = '"+.@ns2+"' WHERE `spot_id`=1";
+close;
+end;
+}
+mes "O selo foi reforçado.";
+query_sql "UPDATE `nuke_spots` SET `selo2` = 0 WHERE `spot_id`=1";
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+if(.@s1 == 0 && .@s3 == 0){
+setcell $NEmap$[1],42,109,42,106,cell_walkable,0; //yuno_in04
+}
+close;
+end;
+}
+
+if(.@guildid == getcharid(2)){
+mes "Gostaria de reforçar o selo?";
+if(select("Sim:Não") == 2) close;
+mes "O selo foi reforçado.";
+query_sql "UPDATE `nuke_spots` SET `selo2` = 0 WHERE `spot_id`=1";
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+if(.@s1 == 0 && .@s3 == 0){
+setcell $NEmap$[1],42,109,42,106,cell_walkable,0; //yuno_in04
+}
+close;
+end;
+}
+
+mes "Pode-se sentir restrígios de chakra. Deve se tratar de um Selo!";
+next;
+
+if(nukenin != 1){
+close2;
+warp $NEmap$[1],50,107;
+sleep2(1000);
+mes "Báááá! Você foi capturado! Pelo visto há alguma armadilha contra shinobis de vilas.";
+query_sql "UPDATE `char` SET `nuke_jail` = 20 WHERE `char_id` = '"+getcharid(0)+"'";
+close;
+end;
+}
+
+input .@test;
+if(.@test != .@s2){
+close2;
+warp $NEmap$[1],50,107;
+sleep2(1000);
+mes "Báááá! Você errou o selo e acabou sendo capturado!";
+query_sql "UPDATE `char` SET `nuke_jail` = 10 WHERE `char_id` = '"+getcharid(0)+"'";
+close;
+end;
+}
+close2;
+mes "O selo parece ter enfraquecido.";
+query_sql "UPDATE `nuke_spots` SET `selo2` = 1 WHERE `spot_id`=1";
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+if(.@s1 == 1 && .@s3 == 1){
+announce "[Nukenin Spot] "+strcharinfo(0)+" do grupo "+strcharinfo(2)+" acaba de liberar os selos do esconderijo do grupo "+.@guildname$+", liberando a entrada e o cativeiro.",bc_blue|bc_all;
+setcell $NEmap$[1],42,109,42,106,cell_walkable,1; //yuno_in04
+}
+close;
+end;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+hospital.gat,33,80,4	script	Selo Terciario#Spot1	857,{
+
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+query_sql "SELECT `guild_id` FROM `nuke_spots` WHERE `spot_id`=1", .@guildid;
+query_sql "SELECT `owner_id` FROM `nuke_spots` WHERE `spot_id`=1", .@ownerid;
+
+if(.@ownerid == getcharid(0)){
+if(select("Reforçar Selo:Trocar Selo") == 2){
+mes "Selo 3 (Número 1 ~ 9)";
+input .@ns3;
+if(.@ns3 < 1 || .@ns3 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+query_sql "UPDATE `nuke_spots` SET `selo3` = '"+.@ns3+"' WHERE `spot_id`=1";
+close;
+end;
+}
+mes "O selo foi reforçado.";
+query_sql "UPDATE `nuke_spots` SET `selo3` = 0 WHERE `spot_id`=1";
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+if(.@s1 == 0 && .@s2 == 0){
+setcell $NEmap$[1],42,109,42,106,cell_walkable,0; //yuno_in04
+}
+close;
+end;
+}
+
+if(.@guildid == getcharid(2)){
+mes "Gostaria de reforçar o selo?";
+if(select("Sim:Não") == 2) close;
+mes "O selo foi reforçado.";
+query_sql "UPDATE `nuke_spots` SET `selo3` = 0 WHERE `spot_id`=1";
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+if(.@s1 == 0 && .@s2 == 0){
+setcell $NEmap$[1],42,109,42,106,cell_walkable,0; //yuno_in04
+}
+close;
+end;
+}
+
+mes "Pode-se sentir restrígios de chakra. Deve se tratar de um Selo!";
+next;
+
+if(nukenin != 1){
+close2;
+warp $NEmap$[1],50,107;
+sleep2(1000);
+mes "Báááá! Você foi capturado! Pelo visto há alguma armadilha contra shinobis de vilas.";
+query_sql "UPDATE `char` SET `nuke_jail` = 20 WHERE `char_id` = '"+getcharid(0)+"'";
+close;
+end;
+}
+
+input .@test;
+if(.@test != .@s3){
+close2;
+warp $NEmap$[1],50,107;
+sleep2(1000);
+mes "Báááá! Você errou o selo e acabou sendo capturado!";
+query_sql "UPDATE `char` SET `nuke_jail` = 10 WHERE `char_id` = '"+getcharid(0)+"'";
+close;
+end;
+}
+close2;
+mes "O selo parece ter enfraquecido.";
+query_sql "UPDATE `nuke_spots` SET `selo3` = 1 WHERE `spot_id`=1";
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+if(.@s1 == 1 && .@s2 == 1){
+announce "[Nukenin Spot] "+strcharinfo(0)+" do grupo "+strcharinfo(2)+" acaba de liberar os selos do esconderijo do grupo "+.@guildname$+", liberando a entrada e o cativeiro.",bc_blue|bc_all;
+setcell $NEmap$[1],42,109,42,106,cell_walkable,1; //yuno_in04
+}
+close;
+end;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+yuno_in04,32,130,0	warp	ExitSpot1	1,1,hospital,25,80
+//ayo_in01,137,194,0	warp	ExitSpot2	1,1,cpmarkin1,115,48
+//prt_in,127,44,0	warp	ExitSpot3	1,1,cpmarkin1,115,48
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+yuno_in04.gat,40,108,4	script	Vigia#Spot1	857,{
+
+query_sql "SELECT `guild_id` FROM `nuke_spots` WHERE `spot_id`=1", .@guildid;
+query_sql "SELECT `nuke_jail` FROM `char` WHERE `char_id`='"+getcharid(0)+"'", .@jail;
+
+// Nome do npc
+set .npc$,"^800000[Vigia]^000000";
+
+if(getcharid(2) == .@guildid){
+warp $NEmap$[1],41,107;
+end;
+}
+
+if(.@jail < 1){
+mes .npc$;
+mes "Acho que você já sofreu o suficiente, espero que tenha aprendido a lição.";
+close2;
+warp "kakashi",0,0;
+end;
+}
+
+mes .npc$;
+mes "Hahahah vejo que meus patrões capturaram mais um shinobi!";
+next;
+mes .npc$;
+mes "Caso não saiba, você está no cativeiro de um esconderijo Nukenin.";
+next;
+mes .npc$;
+mes "Eu sou o responsável por vigia-los. Porém, posso le liberar se você me der alguns Zenys.";
+next;
+mes .npc$;
+mes "Caso contrário, só liberare você daqui a 10 minutos.";
+next;
+mes .npc$;
+mes "Gostaria pagar 2kk para sair?";
+if(select("Sim:Não") == 2) close;
+next;
+if(Zeny < 2000000){
+mes .npc$;
+mes "Hahaha vejo que você não tem Zenys, então vai apodrecer ai!";
+close;
+end;
+}
+set Zeny, Zeny - 2000000;
+query_sql "SELECT `banco` FROM `nuke_spots` WHERE `spot_id`=1", .@banco;
+set .@banco, .@banco + 2000000;
+query_sql "UPDATE `nuke_spots` SET `banco` = '"+.@banco+"' WHERE `spot_id`=1";
+mes .npc$;
+mes "Vá embora e não me apareça mais por aqui!";
+close2;
+warp "kakashi",0,0;
+end;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+yuno_in04.gat,35,107,4	script	Severino#Spot1	857,{
+
+// Nome do npc
+set .npc$,"^800000[Severino]^000000";
+
+query_sql "SELECT `owner_id` FROM `nuke_spots` WHERE `spot_id`=1", .@ownerid;
+query_sql "SELECT `selo1` FROM `nuke_spots` WHERE `spot_id`=1", .@s1;
+query_sql "SELECT `selo2` FROM `nuke_spots` WHERE `spot_id`=1", .@s2;
+query_sql "SELECT `selo3` FROM `nuke_spots` WHERE `spot_id`=1", .@s3;
+
+if(getcharid(0) != .@ownerid){
+mes .npc$;
+mes "Somente atendo ao chefe da organização.";
+close;
+end;
+}
+query_sql "SELECT `banco` FROM `nuke_spots` WHERE `spot_id`=1", .@banco;
+mes .npc$;
+mes "Olá chefe, em que posso ajuda-lo?";
+mes "^800000[Saldo: "+.@banco+"]^000000";
+mes "^800000[Selo1: "+.@s1+"]^000000";
+mes "^800000[Selo2: "+.@s2+"]^000000";
+mes "^800000[Selo3: "+.@s3+"]^000000";
+switch(select("Fazer um saque:Trocar Selos:Trocar Dono")){
+case 1:
+mes .npc$;
+mes "Quanto deseja retirar?";
+input .@saque;
+if(.@saque < 1 || .@saque > .@banco){
+mes .npc$;
+mes "Quantidade indisponível";
+close;
+end;
+}
+next;
+set .@banco, .@banco - .@saque;
+query_sql "UPDATE `nuke_spots` SET `banco` = '"+.@banco+"' WHERE `spot_id`=1";
+set Zeny, Zeny + .@saque;
+mes "Saque realizado com sucesso!";
+close;
+end;
+
+case 2:
+mes "Selo 1 (Número 1 ~ 9)";
+input .@s1;
+if(.@s1 < 1 || .@s1 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+
+mes "Selo 2 (Número 1 ~ 9)";
+input .@s2;
+if(.@s2 < 1 || .@s2 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+
+mes "Selo 3 (Número 1 ~ 9)";
+input .@s3;
+if(.@s3 < 1 || .@s3 > 9){
+mes "Você deve colocar um número entre 1 e 9.";
+close;
+end;
+}
+query_sql "UPDATE `nuke_spots` SET `selo1` = '"+.@s1+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo2` = '"+.@s2+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `selo3` = '"+.@s3+"' WHERE `spot_id`=1";
+close;
+end;
+
+case 3:
+mes "Escreva o nome do novo dono do Esconderijo.";
+input .@newowner$;
+
+query_sql "SELECT `char_id` FROM `char` WHERE `name`='"+.@newowner$+"'", .@newowner;
+query_sql "SELECT `guild_id` FROM `char` WHERE `name`='"+.@newowner$+"'", .@newownergd;
+query_sql "SELECT `nukenin` FROM `global_reg_value` WHERE `char_id`='"+.@newowner+"'", .@newownernuke;
+
+if(.@newowner$ == 0 || .@newownergd != getcharid(2) || .@newownernuke == 0){
+mes "Não é possível fazer esta transferencia.";
+close;
+end;
+}
+
+query_sql "UPDATE `nuke_spots` SET `owner_id` = '"+.@newowner+"' WHERE `spot_id`=1";
+query_sql "UPDATE `nuke_spots` SET `owner_name` = '"+.@newowner$+"' WHERE `spot_id`=1";
+close;
+end;
+
+}
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+yuno_in04	mapflag	nowarp
+yuno_in04	mapflag	noteleport
+yuno_in04	mapflag	nobranch
+yuno_in04	mapflag	nomemo
+yuno_in04	mapflag	nopenalty
+yuno_in04	mapflag	gvg
+yuno_in04	mapflag	noexp

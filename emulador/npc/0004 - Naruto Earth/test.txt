@@ -1,0 +1,179 @@
+-	script	Good_Evil_System	-1,{
+
+
+
+OnPCKillEvent:
+
+	if( getcharid(3) == killedrid) end;
+
+	callfunc "spidfy_Kill_system",getcharid(3),killedrid;
+
+	if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) {end;}
+
+}
+
+
+
+function	script	spidfy_Kill_system	{
+
+	function	set_title_level	;
+
+	set .@Wsks, callfunc("title_get_value");
+
+	if(attachrid(getarg(1,0)))
+
+	{
+
+		set .@Lsks, callfunc("title_get_value");
+
+		set .@L, callfunc("title_get_point",1,.@Lsks,.@Wsks);
+
+		set reputation3, reputation3-.@L;
+
+		if( reputation3 < 0 )
+
+			set reputation3,0;
+
+		message strcharinfo(0)," Você perdeu "+.@L+" pontos de reputação";
+
+		set_title_level;
+
+		detachrid;
+
+		attachrid getarg(0,0);
+
+		set .@W, callfunc("title_get_point",0,.@Wsks,.@Lsks);
+
+		set reputation3, reputation3+.@W;
+
+		message strcharinfo(0)," Você ganhou "+.@W+" pontos de reputação";
+
+		set_title_level;
+
+		return;
+
+	}else
+
+	{
+
+		return;
+
+	}
+
+	function	set_title_level	{
+
+		setarray .@lv[0],500,1000,2000,3500,6000;
+
+		set .@title$,title$;
+
+		set title$,callfunc("title_base_date",6);
+
+		for(set .@i,0; .@i<5; set .@i,.@i+1)
+
+			if( reputation3 >= .@lv[.@i] )
+
+			{
+
+				set title$,callfunc("title_base_date",5-.@i);
+
+			}else
+
+				break;
+
+		if( title$ != .@title$ )
+
+		{
+
+			message strcharinfo(0),"Seu rank mudou, você agora é "+title$+"";
+
+			//New Level
+
+		}
+
+		return;
+
+	}
+
+}
+
+function	script	title_base_date	{
+
+	setarray .@da$[1],"Rank S","Rank A","Rank B","Rank C","Rank D","Rank E";
+
+	set .@t, getarg(0,0);
+
+	set .@n, getarraysize(.@da$);
+
+	if( .@t == 0 || .@t > .@n )
+
+		return "";
+
+	return .@da$[.@t];
+
+}
+
+function	script	title_get_value	{
+
+	set .@v,0;
+
+	for( set .@i,0; ; set .@i,.@i+1 )
+
+	{
+
+		set .@g$,callfunc("title_base_date",.@i+1);
+
+		if( title$ == .@g$ )
+
+		{
+
+			set .@v, .@i+1;
+
+			break;
+
+		}
+
+		if( .@g$ == "" || title$ == "" )
+
+			break;
+
+	}
+
+	return .@v;
+
+}
+
+function	script	title_get_point	{
+
+
+
+	setarray .@Wlv6[1],100,85,70,55,40,25;
+
+	setarray .@Wlv5[1],85,70,55,40,25,15;
+
+	setarray .@Wlv4[1],80,65,40,25,15,5;
+
+	setarray .@Wlv3[1],75,55,45,35,25,15;
+
+	setarray .@Wlv2[1],70,50,40,30,20,10;
+
+	setarray .@Wlv1[1],50,40,30,20,10,5;
+
+	
+
+	setarray .@Llv6[1],1,1,1,5,10,20;
+
+	setarray .@Llv5[1],1,1,5,10,20,30;
+
+	setarray .@Llv4[1],1,3,5,15,30,35;
+
+	setarray .@Llv3[1],3,7,10,15,25,30;
+
+	setarray .@Llv2[1],7,10,15,20,30,40;
+
+	setarray .@Llv1[1],10,15,20,25,35,45;
+
+	
+
+	return getd(".@"+(getarg(0)==1?"L":"W")+"lv"+getarg(1)+"["+getarg(2)+"]");
+
+}

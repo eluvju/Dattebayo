@@ -1,0 +1,44 @@
+bat_room,163,144,4	script	Battle Recompensa	4_m_across,{
+
+    set @npcname$,"[^0000ffEventos Recompensa^000000]";
+
+	mes "[ ^0000ffBattle Recompensa^000000 ]";
+	mes "Olá, gostaria de trocar pontos de batalha por qual desses itens ?";
+    if (select("Trocar os Battle Point!","Cancela") == 2) 
+        close;
+    next;
+    mes @npcname$;
+    mes "Boas Compras.";
+    close2;
+    callshop "battle_shops",1;
+    npcshopattach "battle_shops";
+    end;
+
+OnBuyItem:
+
+    for(set .@i,0; .@i<getarraysize(.Battle_Itens); set .@i,.@i+1) {
+        for(set .@d,0; .@d<getarraysize(@bought_nameid); set .@d,.@d+1) {
+            if(@bought_nameid[.@d]==.Battle_Itens[.@i]) {
+                if(checkweight(@bought_nameid[.@d],@bought_quantity[.@d])) {
+                    if(countitem(735) >= .Battle_Custo[.@i]*@bought_quantity[.@d]) {
+						delitem 735,.Battle_Custo[.@i]*@bought_quantity[.@d];
+                        getitem @bought_nameid[.@d],@bought_quantity[.@d]; end;
+                    } else dispbottom "Você não tem Battle Point suficientes para comprar esse item.";
+                } else dispbottom "Desculpe mais você está muito pesado para comprar esse item.";
+            }
+        }
+    }
+OnInit:
+	setarray .Battle_Itens[0],753,775,3051,7017,3052,3053,3054;
+	setarray .Battle_Custo[0],12000,2500,700,300,100,50,50;
+	
+	npcshopdelitem "battle_shops",501;
+	if(getarraysize(.Battle_Itens) >= 1) {
+		for( set .i,0; .Battle_Itens[.i]; set .i,.i+1 ) {
+			npcshopadditem "battle_shops",.Battle_Itens[.i],.Battle_Custo[.i];
+		}
+	}
+    end;
+}
+
+-	shop	battle_shops	-1,501:-1

@@ -1,0 +1,54 @@
+sec_in01,176,172,5	script	Byakugan	491,{
+	if(byakugan == 1) {mes "Você ja esta treinando sua kg., "+strcharinfo(0)+"-san!"; end;}
+	if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+	if(pegoukg == 1) {npctalk "Continue dando o melhor de si, "+strcharinfo(0)+"-san!"; end;}
+
+//========================================================================
+//	MENU
+//========================================================================
+
+	mes "[^00FF40Hinata Hyuga^000000]";
+	mes "Ola "+strcharinfo(0)+"-chan!";
+	mes "Sou o mestre do clã Hyuga, você tem vontade de aprender nossas tecnicas? pra isso você tera que se dedicar bastante. irei contar um pouco sobre nossas habilidades.";
+	next;
+	mes "[^00FF40Hinata Hyuga^000000]";
+	mes "Os usuario do Byakugan ( Literalmente significa Olho Branco Significado (Panini) Olho Branco que Tudo Vê é uma dojutsu kekkei genkai do clã Hyuga) ";
+	next;
+	mes "[^00FF40Hinata Hyuga^000000]";
+	mes "Você planeja treinar com a gente?";
+	menu "- Sim",Byakugan2,"- Não",nao;
+	close;
+
+	
+	
+	Byakugan2:
+
+next;
+
+	mes "[^00FF40Hinata Hyuga^000000]";
+
+mes "Seu poder a princípio surgiu como uma Kekkei Mora junto com o Rinne Sharingan na ancestral mais antiga conhecida dos clãs Hyuga e Otsutsuki ";
+
+next;
+
+	mes "[^00FF40Hinata Hyuga^000000]";
+
+mes "Seus poderes são perfeitos para pessoas que utilizam ^FF8C00Taijutsu^000000 e ^006400Medicina^000000";
+
+next;
+
+set pegoukg,1;
+
+set byakugan,1;
+
+	mes "[^00FF40Hinata Hyuga^000000]";
+
+mes "Muito Bem, para ativar seu gene é necessario, que você mate 50 monstros.";
+
+	close;
+	
+	nao:
+	close;
+
+
+}

@@ -1,0 +1,7 @@
+-	script	castelo	-1,{
+
+OnInit:
+setcastledata "prt_fild04",0,1;
+end;
+
+}

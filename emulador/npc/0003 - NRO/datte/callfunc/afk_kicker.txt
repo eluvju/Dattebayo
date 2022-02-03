@@ -1,0 +1,67 @@
+//===== eAthena Script ============================================
+//= AFK script
+//===== By: =======================================================
+//= ~AnnieRuru~
+//===== Current Version: ==========================================
+//= 1.2b
+//===== Compatible With: ==========================================
+//= eAthena 14828 Trunk TXT/SQL
+//===== Description: ==============================================
+//= warp AFK players in BG maps to SavePoint, leave current team
+//===== Topic =====================================================
+//= http://www.eathena.ws/board/index.php?showtopic=272411
+//===== Additional Comments: ======================================
+//= why a simple script like this update so many times in 1 day ? LOL
+//=================================================================
+
+-	script	afk_script	-1,{
+//	Config
+OnInit:
+	set .sleeploop, 1000; // every 1 second
+	set .afk, 300; // loop 180 times of 1 second = 3 minutes to execute
+	setarray .@map$,
+		"gef_fild01","cmd_fild06","gef_fild12","moc_fild07","pay_fild09","yuno_in01"; // battlegrounds
+	
+	set .@size, getarraysize(.@map$);
+	set .map$, ":";
+	for ( set .@i, 0; .@i < .@size; set .@i, .@i +1 ) {
+		setmapflag .@map$[.@i], mf_loadevent;
+		set .map$, .map$ + .@map$[.@i] + ":";
+	}
+	end;
+
+//	what to do when triggered
+L_trigger:
+//	dispbottom "Você está ausente por "+ .@afk * .sleeploop / 1000 +" segundos";
+	if ( getcharid(4) )
+		bg_leave;
+	warp "SavePoint", 0,0;
+	dispbottom "Você esteve ausente por 5 minutos e foi teleportado de volta pro seu ponto salvo";
+	end;
+
+//	function
+OnPCLoadMapEvent:
+	if ( @afk_startcount ) end;
+	set @afk_startcount, 1;
+	while(1) {
+		getmapxy .@map$, .@x, .@y, 0;
+		if ( compare( .map$, ":"+ .@map$ +":" ) ) {
+			if ( .@map$ == .@afkmap$ && .@x == .@afkx && .@y == .@afky ) {
+				set .@afk, .@afk +1 ;
+				//dispbottom "[Debug] afk for "+ .@afk * .sleeploop / 1000 +" second(s)";
+				if ( .@afk == .afk ) {
+					set @afk_startcount, 0;
+					goto L_trigger;
+				}
+			}
+			else 
+				set .@afk, 0;
+			set .@afkmap$, .@map$; set .@afkx, .@x; set .@afky, .@y;
+			sleep2 .sleeploop;
+		}
+		else
+			break;
+	}
+	set @afk_startcount, 0;
+	end;
+}

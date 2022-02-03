@@ -1,0 +1,34 @@
+moc_fild19,98,100,0	script	Entrada Piramide Shukaku	111	,2,2,{
+
+	if(baselevel >= 125) { goto entrar; }
+	
+	if(baselevel <= 125) { goto saida; }
+
+	if($EEinfo[1] == 1) { end; }
+
+	
+
+	entrar:
+	
+	mes: "^FF0000PERIGO!!!^";
+	mes: "Essa é uma Zona ^008000Rank A^, Tem certeza que quer entrar?";
+	menu: "Quero Entrar",entrar2,"Não Estou preparado",saida2;
+	
+	entrar2:
+	
+	mes: "Eu deveria ter pego uma Tocha"
+	next;
+	warp "moc_pryd01",193,10;
+	
+	close;
+	
+	saida:
+	mes: "^FF0000PERIGO!!!^";
+	mes: "Você não esta preparado para isso.";
+	next;
+	mes: "Volte quando não for mais um ^FF0000frangote^.";
+	close;
+
+	end;
+
+}

@@ -1,0 +1,538 @@
+dali02,63,129,0	script	Torre Bijuu	406,{
+
+	set .@party_id,getcharid(1);
+	set .@md_name$,"Torre Bijuu";
+
+	set .@etower_timer,checkquest(60200,PLAYTIME); // 1 week
+	set .@etower_timer2,checkquest(60201,PLAYTIME); // 4 hours
+
+	if (!instance_check_party(.@party_id,2)) {
+		mes "Crie ou participe de um grupo com mais de 1 membro e tente novamente.";
+		close;
+	}
+	switch(.@etower_timer) {
+	case -1:
+		if (getcharid(0) == getpartyleader(.@party_id,2)) {
+			mes "Confirmado, o grupo foi feito. Você gostaria de reservar a entrada para a Torre Bijuu?";
+			next;
+			switch(select("Gerar Calabouço da "+.@md_name$+":Entrar no Calabouço:Cancelar")) {
+			case 1:
+				if (instance_create(.@md_name$) < 0) {
+					mes "Nome do grupo: "+ getpartyname(.@party_id);
+					mes "Líder do grupo: "+strcharinfo(0);
+					mes "^0000ff"+.@md_name$+" ^000000- A reserva falhou!";
+					close;
+				}
+				mes "^0000ff"+.@md_name$+"^000000 - Tentar reservar";
+				mes "Depois de fazer uma reserva, você tem que falar com o NPC logo atrás e selecionar o menu 'Entrar no Calabouço' para entrar no calabouço.";
+				close;
+			case 2:
+				callsub L_Enter,0,1;
+			case 3:
+				close;
+			}
+		}
+		switch(select("Entrar na "+.@md_name$+":Cancelar")) {
+		case 1:
+			callsub L_Enter,1,1;
+		case 2:
+			end;
+		}
+	case 0:
+	case 1:
+		if (.@etower_timer2 < 2 && getcharid(1) == etower_partyid) {
+			mes "Se você já tiver gerado o calabouço, você pode entrar. ";
+			next;
+			switch(select("Entrar na "+.@md_name$+":Cancelar")) {
+			case 1:
+				callsub L_Enter,0,0;
+			case 2:
+				close;
+			}
+		} else {
+			set .@dun_lim_time,etower_timer+604800; // 1 week
+			// set .@dun_lim_time2,etower_timer+14400; // 4 hours
+			set .@dun_cur_time,gettimetick(2);
+			set .@dun_ent_t,(.@dun_lim_time - .@dun_cur_time);
+			set .@dun_h,(.@dun_ent_t / 3600);
+			set .@dun_m,(.@dun_ent_t - (.@dun_h * 3600)) / 60;
+			set .@dun_s,.@dun_ent_t - ((.@dun_h * 3600) + (.@dun_m * 60));
+
+			mes "Devido os efeitos na torre, você não pode entrar no calabouço agora, " + .@dun_h + "horas " + .@dun_m + "minutos " + .@dun_s + "segundos restantes para entrar no próximo calabouço.";
+			next;
+			mes "É perigoso aqui.";
+			close;
+		}
+	case 2:
+		set etower_timer,0;
+		erasequest 60200;
+		erasequest 60201;
+		mes "^0000ffOs registros e efeitos relacionados com a Torre Bijuu foram removidos. Você pode gerar e entrar no calabouço da Torre Bijuu novamente.^000000";
+		close;
+	}
+
+L_Enter:
+	if(Zeny >= 5000000) {
+		switch(instance_enter("Torre Bijuu")) {
+			case IE_OTHER:
+				mes "Ocorreu um erro.";
+				close;
+			case IE_NOINSTANCE:
+				mes "A masmorra memorial Bijuu não existe.";
+				mes "O líder do grupo não gerou o calabouço ainda.";
+				close;
+			case IE_NOMEMBER:
+				mes "Você pode entrar na masmorra depois de fazer o grupo.";
+				close;
+			case IE_OK:
+				mapannounce "e_tower", strcharinfo(0)+" do grupo " +getarg(3)+", está entrando no calabouço da Torre Bijuu.",bc_map,"0x00ff99",FW_NORMAL,12;
+				if (getarg(1)) {
+					set etower_timer,gettimetick(2);
+					set etower_partyid, getcharid(1);
+					setquest 60200;
+					setquest 60201;
+					set Zeny,Zeny-5000000;
+				}
+				//warp "1@tower",52,354;
+				if (getarg(0) == 0) close;
+				else end;
+		}
+	}
+	mes "Você precisa de 5.000.000 para entrar.";
+	close;
+}
+
+// Original name: "#102Administrator Mode104"
+e_tower,1,1,2	script	#102Administrator Mode	844,{
+	callfunc "F_GM_NPC";
+	mes "Please enter the password";
+	set .@i, callfunc("F_GM_NPC","dmc2008",1);
+	next;
+	if (.@i == 1) {
+		switch(select("Generate Purification Stone:Remove Purification Stone:Cancel")) {
+		case 1:
+			mes "Create the Purification Stone that stays for 30 minutes.";
+			donpcevent "Purification Stone#et1::OnEnable";
+			break;
+		case 2:
+			mes "Destroy the Purification Stone immediately";
+			donpcevent "Purification Stone#et1::OnDisable";
+			break;
+		case 3:
+			mes "You have canceled it.";
+			break;
+		}
+		close;
+	} else {
+		mes "Enter the password exactly.";
+		close;
+	}
+}
+
+e_tower,69,117,4	script	Purification Stone#et1	406,{
+	set etower_timer,0;
+	mes "^0000ffThe records and aftereffects related to the Torre Bijuu have been removed. You can generate and enter the Torre Bijuu again.^000000";
+	close;
+
+OnInit:
+	disablenpc "Purification Stone#et1";
+	end;
+
+OnEnable:
+	initnpctimer;
+	end;
+
+OnDisable:
+	stopnpctimer;
+	disablenpc "Purification Stone#et1";
+	end;
+
+OnTimer1000:
+	enablenpc "Purification Stone#et1";
+	end;
+
+OnTimer1740000:
+	mapannounce "e_tower", "The Purification Stone will be destroyed in one minute.",bc_map,"0x00ff99";
+	end;
+
+OnTimer1800000:
+	disablenpc "Purification Stone#et1";
+	end;
+}
+
+e_tower,151,185,4	script	Purification Stone#et2	844,{
+	callfunc "F_GM_NPC";
+	set etower_timer,0;
+	mes "^0000ffThe records and aftereffects related to the Torre Bijuu have been removed. You can generate and enter the Torre Bijuu again.^000000";
+	close2;
+	warp "e_tower",75,108;
+	end;
+}
+
+// Core Functions
+//============================================================
+function	script	F_Tower_Monster	{
+
+	set .@level, getarg(0);
+	set .@map$, getarg(1);
+	set .@label$, getarg(2);
+
+	switch(.@level) {
+	case 1:
+		areamonster .@map$,7,351,17,387,"Ichibi",3014,1,.@label$;
+		areamonster .@map$,7,351,17,387,"Ninja Rank B",3001,5,.@label$;
+		break;
+	case 2:
+		areamonster .@map$,93,351,103,387,"Nibi",3015,1,.@label$;
+		areamonster .@map$,93,351,103,387,"Ninja Rank B",3001,10,.@label$;
+		break;
+	case 3:
+		areamonster .@map$,181,351,191,387,"Sanbi",3016,1,.@label$;
+		areamonster .@map$,181,351,191,387,"Ninja Rank S",3003,5,.@label$;
+		break;
+	case 4:
+		areamonster .@map$,267,351,277,387,"Yonbi",3017,1,.@label$;
+		areamonster .@map$,267,351,277,387,"Ninja Rank A",3003,10,.@label$;
+		break;
+	case 5:
+		areamonster .@map$,352,351,362,387,"Gobi",3018,1,.@label$;
+		areamonster .@map$,352,351,362,387,"MVP A",3002,1,.@label$;
+		areamonster .@map$,352,351,362,387,"Ninja Rank A",3003,5,.@label$;
+		break;
+	case 6:
+		areamonster .@map$,9,267,19,303,"Rokubi",3019,1,.@label$;
+		areamonster .@map$,9,267,19,303,"Ninja Rank A",3004,15,.@label$;
+		break;
+	case 7:
+		areamonster .@map$,93,267,103,303,"Shichibi",3020,1,.@label$;
+		areamonster .@map$,93,267,103,303,"MVP S",3006,1,.@label$;
+		areamonster .@map$,93,267,103,303,"Ninja Rank S",3007,5,.@label$;
+		break;
+	case 8:
+		areamonster .@map$,181,267,191,303,"Hachibi",3021,1,.@label$;
+		areamonster .@map$,181,267,191,303,"Ninja Rank S",3007,15,.@label$;
+		break;
+	case 9:
+		areamonster .@map$,267,267,277,303,"Kyuubi",3022,1,.@label$;
+		areamonster .@map$,267,267,277,303,"MVP  SS",3009,1,.@label$;
+		areamonster .@map$,267,267,277,303,"Ninja Rank S",3007,15,.@label$;
+		break;
+	case 10:
+		areamonster .@map$,352,9,362,45,"Juubi",3023,1,.@label$;
+		areamonster .@map$,352,9,362,45,"Ninja Rank SS",3013,15,.@label$;
+		areamonster .@map$,352,9,362,45,"Ninja de Elite",3013,5,.@label$;
+		break;
+	}
+	return;
+}
+
+function	script	F_Tower_Warp	{
+
+	set .@level, getarg(0);
+	set .@map$, getarg(1);
+
+	switch(.@level) {
+		case 2: warp .@map$,136,354; break;
+		case 3: warp .@map$,224,354; break;
+		case 4: warp .@map$,310,354; break;
+		case 5: warp .@map$,395,354; break;
+		case 6: warp .@map$,52,270; break;
+		case 7: warp .@map$,136,270; break;
+		case 8: warp .@map$,224,270; break;
+		case 9: warp .@map$,310,270; break;
+		case 10: warp .@map$,395,12; break;
+	}
+	return;
+}
+
+1@tower,29,365,1	script	#1F Controller	844,{
+	end;
+
+OnInstanceInit:
+	callfunc "F_Tower_Monster",
+		1,
+		instance_mapname("1@tower"),
+		instance_npcname("#1F Controller")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("1@tower");
+	set .@mob_dead_num,mobcount(.@map$,instance_npcname("#1F Controller")+"::OnMyMobDead");
+	if (.@mob_dead_num < 1) {
+		initnpctimer;
+		//SetItemPartyInMap in_102floor 1
+	} else
+		mapannounce .@map$, "Monstros vivos no 1° andar: - "+.@mob_dead_num,bc_map,"0x00ff99";
+	end;
+
+OnTimer5000:
+	mapannounce instance_mapname("1@tower"), "Todos os monstros no 1° andar foram derrotados.",bc_map,"0xffff00";
+	donpcevent instance_npcname("1FGate102tower")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+1@tower,12,393,0	script	1FGate102tower	45,2,2,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname(strnpcinfo(0));
+	end;
+
+OnEnable:
+	enablenpc instance_npcname(strnpcinfo(0));
+	callfunc "F_Tower_Monster",
+		atoi(replacestr(strnpcinfo(0),"FGate102tower","")) + 1,
+		strnpcinfo(4),
+		instance_npcname(strnpcinfo(0))+"::OnMyMobDead";
+	end;
+
+OnTouch_:
+	callfunc "F_Tower_Warp",
+		atoi(replacestr(strnpcinfo(0),"FGate102tower","")) + 1,
+		strnpcinfo(4);
+	end;
+
+OnMyMobDead:
+	set .@map$, strnpcinfo(4);
+	set .@level, atoi(replacestr(strnpcinfo(0),"FGate102tower","")) + 1;
+	set .@mob_dead_num,mobcount(.@map$,instance_npcname(strnpcinfo(0))+"::OnMyMobDead");
+	if (.@mob_dead_num < 1) {
+		initnpctimer;
+		//SetItemPartyInMap in_102floor .@level
+	} else
+		mapannounce .@map$, "Monstros vivos no "+callfunc("F_GetNumSuffix",.@level)+" andar - "+.@mob_dead_num,bc_map,"0x00ff99";
+	end;
+
+OnTimer5000:
+	set .@level, atoi(replacestr(strnpcinfo(0),"FGate102tower","")) + 1;
+	mapannounce strnpcinfo(4), "Todos os Monstros no "+callfunc("F_GetNumSuffix",.@level)+" andar foram derrotados.",bc_map,"0xffff00";
+	donpcevent instance_npcname(.@level+"FGate102tower")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+1@tower,96,393,0	duplicate(1FGate102tower)	2FGate102tower	45,2,2
+1@tower,184,393,0	duplicate(1FGate102tower)	3FGate102tower	45,2,2
+1@tower,270,393,0	duplicate(1FGate102tower)	4FGate102tower	45,2,2
+1@tower,355,393,0	duplicate(1FGate102tower)	5FGate102tower	45,2,2
+1@tower,12,309,0	duplicate(1FGate102tower)	6FGate102tower	45,2,2
+1@tower,96,309,0	duplicate(1FGate102tower)	7FGate102tower	45,2,2
+1@tower,184,309,0	duplicate(1FGate102tower)	8FGate102tower	45,2,2
+1@tower,270,309,0	duplicate(1FGate102tower)	9FGate102tower	45,2,2
+1@tower,355,309,0	duplicate(1FGate102tower)	10FGate102tower	45,2,2
+1@tower,12,222,0	duplicate(1FGate102tower)	11FGate102tower	45,2,2
+1@tower,96,222,0	duplicate(1FGate102tower)	12FGate102tower	45,2,2
+1@tower,184,222,0	duplicate(1FGate102tower)	13FGate102tower	45,2,2
+1@tower,270,222,0	duplicate(1FGate102tower)	14FGate102tower	45,2,2
+1@tower,355,222,0	duplicate(1FGate102tower)	15FGate102tower	45,2,2
+1@tower,12,138,0	duplicate(1FGate102tower)	16FGate102tower	45,2,2
+1@tower,96,138,0	duplicate(1FGate102tower)	17FGate102tower	45,2,2
+1@tower,184,138,0	duplicate(1FGate102tower)	18FGate102tower	45,2,2
+1@tower,270,138,0	duplicate(1FGate102tower)	19FGate102tower	45,2,2
+1@tower,355,138,0	duplicate(1FGate102tower)	20FGate102tower	45,2,2
+1@tower,12,51,0	duplicate(1FGate102tower)	21FGate102tower	45,2,2
+1@tower,96,51,0	duplicate(1FGate102tower)	22FGate102tower	45,2,2
+1@tower,184,51,0	duplicate(1FGate102tower)	23FGate102tower	45,2,2
+1@tower,270,51,0	duplicate(1FGate102tower)	24FGate102tower	45,2,2
+
+1@tower,355,51,0	script	25FGate102tower	45,2,2,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("25FGate102tower");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("25FGate102tower");
+	initnpctimer;
+	end;
+
+OnTouch_:
+	getitem 778,30;
+	warp instance_mapname("2@tower"),52,354;
+	end;
+
+OnTimer120000:
+	disablenpc instance_npcname("25FGate102tower");
+	donpcevent instance_npcname("25FGate102tower-2")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+1@tower,355,51,0	script	25FGate102tower-2	45,2,2,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("25FGate102tower-2");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("25FGate102tower-2");
+	end;
+
+OnTouch_:
+	warp instance_mapname("2@tower"),52,354;
+	end;
+}
+
+1@tower,71,4,0	script	#Broadcast Mode1	844,{
+	end;
+
+OnInstanceInit:
+	initnpctimer;
+	end;
+
+OnTimer15000:
+OnTimer60000:
+	mapannounce instance_mapname("1@tower"), "Aviso: Em situações anormais quando você derrota um monstro, você não pode avançar para o próximo nível!",bc_map,"0xff0000";
+	end;
+OnTimer120000:
+	mapannounce instance_mapname("1@tower"), "Aviso: Em situações anormais quando você derrota um monstro, você não pode avançar para o próximo nível!",bc_map,"0xff0000";
+	stopnpctimer;
+	end;
+}
+
+1@tower,71,1,0	script	#Manager Mode1	844,{
+	callfunc "F_GM_NPC";
+	mes "Please enter the password.";
+	set .@i, callfunc("F_GM_NPC","dmc2008",1);
+	next;
+	if (.@i == 1) {
+		mes "This NPC manages the tower from the 1st to the 25th Level.";
+		mes "Please enter the Level number to open.";
+		mes "(i.g.: 1F->1, 25F->25)";
+		input .@input,1,25;
+		next;
+		if (.@input < 1 || .@input > 25)
+			mes "You can only enter a number from 1 to 25.";
+		else {
+			donpcevent instance_npcname(.@input+"FGate102tower")+"::OnEnable";
+			mes "*** Level "+ .@input + " is now being opened. ***";
+		}
+	}
+	close;
+}
+
+// Levels 26-50
+//============================================================
+2@tower,29,365,2	script	Immortal Furnace#1	844,{
+	end;
+
+OnInstanceInit:
+	callfunc "F_Tower_Monster",
+		26,
+		instance_mapname("2@tower"),
+		instance_npcname("Immortal Furnace#1")+"::OnMyMobDead";
+	end;
+
+OnMyMobDead:
+	set .@map$, instance_mapname("2@tower");
+	set .@mob_dead_num,mobcount(.@map$,instance_npcname("Immortal Furnace#1")+"::OnMyMobDead");
+	if (.@mob_dead_num < 1) {
+		initnpctimer;
+		//SetItemPartyInMap in_102floor 26
+	}
+	else
+		mapannounce .@map$, "Monstros vivos no 26° andar: " + .@mob_dead_num,bc_map,"0x00ff99";
+	end;
+
+OnTimer5000:
+	mapannounce instance_mapname("2@tower"), "Todos os monstros no 26° andar foram derrotados.",bc_map,"0xffff00";
+	donpcevent instance_npcname("26FGate102tower")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+2@tower,12,393,0	duplicate(1FGate102tower)	26FGate102tower	45,2,2
+2@tower,96,393,0	duplicate(1FGate102tower)	27FGate102tower	45,2,2
+2@tower,184,393,0	duplicate(1FGate102tower)	28FGate102tower	45,2,2
+2@tower,270,393,0	duplicate(1FGate102tower)	29FGate102tower	45,2,2
+2@tower,355,393,0	duplicate(1FGate102tower)	30FGate102tower	45,2,2
+2@tower,12,309,0	duplicate(1FGate102tower)	31FGate102tower	45,2,2
+2@tower,96,309,0	duplicate(1FGate102tower)	32FGate102tower	45,2,2
+2@tower,184,309,0	duplicate(1FGate102tower)	33FGate102tower	45,2,2
+2@tower,270,309,0	duplicate(1FGate102tower)	34FGate102tower	45,2,2
+2@tower,355,309,0	duplicate(1FGate102tower)	35FGate102tower	45,2,2
+2@tower,12,222,0	duplicate(1FGate102tower)	36FGate102tower	45,2,2
+2@tower,96,222,0	duplicate(1FGate102tower)	37FGate102tower	45,2,2
+2@tower,184,222,0	duplicate(1FGate102tower)	38FGate102tower	45,2,2
+2@tower,270,222,0	duplicate(1FGate102tower)	39FGate102tower	45,2,2
+2@tower,355,222,0	duplicate(1FGate102tower)	40FGate102tower	45,2,2
+2@tower,12,138,0	duplicate(1FGate102tower)	41FGate102tower	45,2,2
+2@tower,96,138,0	duplicate(1FGate102tower)	42FGate102tower	45,2,2
+2@tower,184,138,0	duplicate(1FGate102tower)	43FGate102tower	45,2,2
+2@tower,270,138,0	duplicate(1FGate102tower)	44FGate102tower	45,2,2
+2@tower,355,138,0	duplicate(1FGate102tower)	45FGate102tower	45,2,2
+2@tower,12,51,0	duplicate(1FGate102tower)	46FGate102tower	45,2,2
+2@tower,96,51,0	duplicate(1FGate102tower)	47FGate102tower	45,2,2
+2@tower,184,51,0	duplicate(1FGate102tower)	48FGate102tower	45,2,2
+2@tower,270,51,0	duplicate(1FGate102tower)	49FGate102tower	45,2,2
+
+2@tower,355,51,0	script	50FGate102tower	45,2,2,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("50FGate102tower");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("50FGate102tower");
+	initnpctimer;
+	end;
+
+OnTouch_:
+	getitem 778,30;
+	warp instance_mapname("6@tower"),32,12;
+	end;
+
+OnTimer120000:
+	disablenpc instance_npcname("50FGate102tower");
+	donpcevent instance_npcname("50FGate102tower-2")+"::OnEnable";
+	stopnpctimer;
+	end;
+}
+
+2@tower,355,51,0	script	50FGate102tower-2	45,2,2,{
+	end;
+
+OnInstanceInit:
+	disablenpc instance_npcname("50FGate102tower-2");
+	end;
+
+OnEnable:
+	enablenpc instance_npcname("50FGate102tower-2");
+	end;
+
+OnTouch_:
+	warp instance_mapname("6@tower"),32,12;
+	end;
+}
+
+6@tower,32,100,0	warp	102FGate102tower	2,2,6@tower,155,64
+
+2@tower,71,1,0	script	#Manager Mode2	844,{
+	callfunc "F_GM_NPC";
+	mes "Please enter the password.";
+	set .@i, callfunc("F_GM_NPC","dmc2008",1);
+	next;
+	if (.@i == 1) {
+		mes "This NPC manages the tower from the 26st to the 50th Level.";
+		mes "Please enter the Level number to open.";
+		mes "(i.g.: 26F->26, 50F->50)";
+		input .@input,26,50;
+		next;
+		if (.@onput < 26 || .@input > 50)
+			mes "You can only enter a number from 26 to 50.";
+		else {
+			donpcevent instance_npcname(.@input+"FGate102tower")+"::OnEnable";
+			mes "*** Level "+ .@input + " is now being opened. ***";
+		}
+	}
+	close;
+}
+
+6@tower,156,147,4	script	Minato#54	67,{
+mes "[^0000ffNamikaze Minato^000000]";
+mes "Parabéns, seu esquadrão venceu a Torre Bijuu! Digite o comando @voltar para retornar a sua vila!";
+close;
+}

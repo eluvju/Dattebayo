@@ -1,0 +1,22 @@
+ra_in01,213,80,0	script	Portal::Warp001	45,1,1,{
+
+OnInit:
+  .warp$[Job_swordman] = "konoha3,220,127";
+  .warp$[Job_knight] = "konoha3,220,127";
+  .warp$[Job_lord_knight] = "konoha3,220,127";
+  .warp$[Job_acolyte] = "kumogakure,51,109";
+  .warp$[Job_monk] = "kumogakure,51,109";
+  .warp$[Job_champion] = "kumogakure,51,109";
+  .warp$[Job_archer] = "geffen,150,150";
+  .warp$[Job_hunter] = "kiragakure,217,210";
+  .warp$[Job_sniper] = "kiragakure,217,210";
+  .warp$[Job_alchemist] = "akatsuki,110,178";
+  .warp$[Job_high_priest] = "cave,101,73";
+  end;
+
+OnTouch:
+  explode( .@warp$, .warp$[Class], "," );
+  warp( .@warp$[0], atoi( .@warp$[1] ), atoi( .@warp$[2] ) );
+  end;
+	
+	}

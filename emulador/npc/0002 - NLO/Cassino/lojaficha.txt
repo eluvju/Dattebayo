@@ -1,0 +1,1 @@
+spl_in01,172,225,4	shop	Cassino Shop	762,782:3000000

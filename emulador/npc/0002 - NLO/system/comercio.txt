@@ -1,0 +1,43 @@
+treinamento,78,148,4	script	Licenças para Comercio	757,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	if(!countitem(1000)) {
+		mes .@npc$;
+		mes "Olá sou o supervisor de vendas e vejo que você ainda não possui uma licença gostaria de obter uma licença?";
+		if(select("- Sim:- Não") == 2) close;
+	
+		next;
+		mes .@npc$;
+		mes "Para obter uma licença de venda você precisa pagar 500,000 Zeny.";
+		mes "Gostaria de comprar uma licença ?";
+		if(select("- Sim:- Não") == 2) close;
+		if(Zeny >= 500000) {
+			next;
+			mes .@npc$;
+			mes "Boas vendas";
+			set Zeny, Zeny - 500000;
+			getitem 1000,1;
+			close;
+		}
+		next;
+		mes .@npc$;
+		mes "Você não tem zeny suficiente para comprar uma licença";
+		close;
+	}
+	
+	mes .@npc$;
+	mes "Olá vejo que você possui uma licença de vendas.";
+	mes "Estou aqui para ajudar escolha uma das opções.";
+	switch(select("- Pegar Carrinho:- Remover Carrinho")) {
+		case 1:
+			close2;
+			atcommand "@cart 1";
+			end;
+			
+		case 2:
+			close2;
+			atcommand "@cart 0";
+			end;
+	}
+}

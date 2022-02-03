@@ -1,0 +1,105 @@
+-	script	on_PC_UseSkilld01	-1,{
+    end;
+//When a Character uses a skill
+
+//Doryuuheki
+
+onPcUseSkillEvent:
+
+           if(lskillid == 185) {
+
+
+if (getskilllv(185) == 1) {
+
+if (Doryuuheki != 1) {end;}
+if (skill185 >= 50) {skill 185,2,0; set skill185,0; dispbottom "[Sys] Level up"; end; }
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 1: "+skill185+" de 50";
+
+end;
+
+}
+
+if (getskilllv(185) == 2) {
+if (Doryuuheki != 1) {end;}
+if (skill185 >= 100) {skill 185,3,0; set skill185,0; dispbottom "[Sys] Level up"; end;}
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 2: "+skill185+" de 100";
+
+end;
+
+}
+
+if (getskilllv(185) == 3) {
+if (Doryuuheki != 1) {end;}
+if (skill185 >= 150) {skill 185,4,0; set skill185,0; dispbottom "[Sys] Level up"; end;}
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 3: "+skill185+" de 150";
+
+end;
+
+}
+
+if (getskilllv(185) == 4) {
+if (Doryuuheki != 1) {end;}
+if (skill185 >= 200) {skill 185,5,0; set skill185,0; dispbottom "[Sys] Level up"; end;}
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 4: "+skill185+" de 200";
+
+end;
+
+}
+
+if (getskilllv(185) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill185 >= 250) {skill 185,6,0; set skill185,0; dispbottom "[Sys] Level up"; end;}
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 5: "+skill185+" de 250";
+
+end;
+
+}
+
+if (getskilllv(185) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill185 >= 300) {skill 185,7,0; set skill185,0; dispbottom "[Sys] Level up"; end;}
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 6: "+skill185+" de 300";
+
+end;
+
+}
+
+if (getskilllv(185) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill185 >= 500) {skill 185,8,0; set skill185,0; dispbottom "[Sys] Level up"; end;}
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 7: "+skill185+" de 500";
+
+end;
+
+}
+
+if (getskilllv(185) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill185 >= 700) {skill 185,9,0; set skill185,0; dispbottom "[Sys] Level up"; end;}
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 8: "+skill185+" de 700";
+
+end;
+
+}
+
+if (getskilllv(185) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill185 >= 1000) {skill 185,10,0; set skill185,0; dispbottom "[Sys] Level up"; end;}
+set skill185,skill185 +1;
+dispbottom "[Jutsu level] Doryuuheki level 9: "+skill185+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

@@ -1,0 +1,102 @@
+-	script	tai_chute	-1,{
+    end;
+//When a Character uses a skill
+
+//tai_chute
+
+OnNPCKillEvent:
+
+if (getskilllv(419) == 1) {
+
+if (tai_chute != 1) {end;}
+if (skill419 >= 50) {skill 419,2,0; set skill419,0; dispbottom "[Sys] Level up"; end; }
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 1: "+skill419+" de 50";
+
+end;
+
+}
+
+if (getskilllv(419) == 2) {
+if (tai_chute != 1) {end;}
+if (skill419 >= 100) {skill 419,3,0; set skill419,0; dispbottom "[Sys] Level up"; end;}
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 2: "+skill419+" de 100";
+
+end;
+
+}
+
+if (getskilllv(419) == 3) {
+
+if (tai_chute != 1) {end;}
+if (skill419 >= 150) {skill 419,4,0; set skill419,0; dispbottom "[Sys] Level up"; end;}
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 3: "+skill419+" de 150";
+
+end;
+
+}
+
+if (getskilllv(419) == 4) {
+if (tai_chute != 1) {end;}
+if (skill419 >= 200) {skill 419,5,0; set skill419,0; dispbottom "[Sys] Level up"; end;}
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 4: "+skill419+" de 200";
+
+end;
+
+}
+
+if (getskilllv(419) == 5) {
+if (tai_chute != 1) {end;}
+if (skill419 >= 250) {skill 419,6,0; set skill419,0; dispbottom "[Sys] Level up"; end;}
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 5: "+skill419+" de 250";
+
+end;
+
+}
+
+if (getskilllv(419) == 6) {
+if (tai_chute != 1) {end;}
+if (skill419 >= 300) {skill 419,7,0; set skill419,0; dispbottom "[Sys] Level up"; end;}
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 6: "+skill419+" de 300";
+
+end;
+
+}
+
+if (getskilllv(419) == 7) {
+if (tai_chute != 1) {end;}
+if (skill419 >= 500) {skill 419,8,0; set skill419,0; dispbottom "[Sys] Level up"; end;}
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 7: "+skill419+" de 500";
+
+end;
+
+}
+
+if (getskilllv(419) == 8) {
+if (tai_chute != 1) {end;}
+if (skill419 >= 700) {skill 419,9,0; set skill419,0; dispbottom "[Sys] Level up"; end;}
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 8: "+skill419+" de 700";
+
+end;
+
+}
+
+if (getskilllv(419) == 9) {
+if (tai_chute != 1) {end;}
+if (skill419 >= 1000) {skill 419,10,0; set skill419,0; dispbottom "[Sys] Level up"; end;}
+set skill419,skill419 +1;
+dispbottom "[Jutsu level] Contra-Chute level 9: "+skill419+" de 1000";
+
+end;
+
+}
+
+                end;
+            }

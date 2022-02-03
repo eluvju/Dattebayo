@@ -1,0 +1,40 @@
+treinamento,115,139,5	script	Arena de Guerra	4_m_across,{
+
+mes "[^FF0000Arena de Guerra^000000]";
+mes "Olá "+strcharinfo(0)+".";
+mes "Gostaria de entrar na arena de guerra?";
+	switch(select("- Arena Chunin["+getmapusers("exame")+"]:- Sair")) {
+	
+	case 1:
+		if(BaseLevel == 999 ) {
+			close2;
+			announce "O player "+strcharinfo(0)+", acaba de entrar na Arena Chunin.",0;
+			percentheal 100,100;
+			warp "exame",0,0; 
+			end;
+		}
+		next;
+		mes "[^FF0000Arena de Guerra^000000]";
+		mes "Você precisa ser nivel 999";
+		close;
+		
+	case 2:
+		close;
+		
+	}
+		
+	OnInit:
+	waitingroom "Arena Chunin",0;
+}
+
+//============== MAP FLAG ===============
+// PvP
+exame	mapflag	nosave
+exame	mapflag	nowarpto
+exame	mapflag	nowarp
+exame	mapflag	nomemo
+exame	mapflag	pvp
+exame	mapflag	nopenalty
+exame	mapflag	nobranch
+exame	mapflag	noloot
+exame	mapflag	noexp

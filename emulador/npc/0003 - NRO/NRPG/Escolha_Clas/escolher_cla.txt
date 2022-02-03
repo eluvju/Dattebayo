@@ -1,0 +1,206 @@
+que_ng,25,71,3	script	Kurenai#2	831,{
+cutin "kurenai",2;
+	mes "[Kurenai]";
+	if(cla == 0){goto L_lista;} else {goto L_alreadyhave;}
+
+
+	L_lista:
+	mes "Olá caro shinobi, eu te ensinarei como fazer parte de um clã";
+	mes "Estes são os clãs que você pode seguir:";
+	menu "- Akasuna",akasuna1,"- Haruno",haruno1,"- Hyuuga",hyuuga1,"- Lee",lee1,"- Momochi",momochi1,"- Nara",nara1,"- Sabaku",sabaku1,"- Uchiha",uchiha1,"- Uzumaki",uzumaki1;
+
+	akasuna1:
+	if(elemento == 0){goto aprenderakasuna;}
+
+	aprenderakasuna:
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Akasuna ?";
+	menu "Sim, Eu quero",simaka, "Não",nao;
+
+	simaka:
+	cutin "",255;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "4006";
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	set cla,cla +1;
+	set akasuna,1;
+	close;
+
+	haruno1:
+	if(elemento == 0){goto aprenderharuno;}
+
+
+	aprenderharuno:
+	cutin "",255;
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Haruno ?";
+	menu "Sim, Eu quero",simhar, "Não",nao;
+
+	simhar:
+	cutin "",255;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "4";
+	set haruno,haruno + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	hyuuga1:
+	if(elemento == 0){goto aprenderhyuuga;}
+	
+	aprenderhyuuga:
+	cutin "",255;
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Hyuuga ?";
+	menu "Sim, Eu quero",simhyu, "Não",nao;
+
+	simhyu:
+	cutin "",255;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "3";
+	set hyuuga,hyuuga + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+
+	lee1:
+	if(elemento == 0){goto aprenderlee;}
+
+	aprenderlee:
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Lee ?";
+	menu "Sim, Eu quero",simlee, "Não",nao;
+
+	simlee:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "23";
+	set lee,lee + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	momochi1:
+	if(elemento == 0){goto aprendermomochi;}	
+
+
+	aprendermomochi:
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Momochi ?";
+	menu "Sim, Eu quero",simmom, "Não",nao;
+
+	simmom:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "2";
+	set momochi,momochi + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	nara1:
+	if(elemento == 0){goto aprendernara;}
+
+	aprendernara:
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Nara ?";
+	menu "Sim, Eu quero",simnar, "Não",nao;
+
+	simnar:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "4007";
+	set nara,nara + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	sabaku1:
+	if(elemento == 0){goto aprendersabaku;}
+
+	aprendersabaku:
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Sabaku ?";
+	menu "Sim, Eu quero",simsab, "Não",nao;
+
+	simsab:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "5";
+	set sabaku,sabaku + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	uchiha1:
+	if(elemento == 0){goto aprenderuchiha;}
+
+
+	aprenderuchiha:
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Uchiha ?";
+	menu "Sim, Eu quero",simuchi,"Não",nao;
+
+	simuchi:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "1";
+	set uchiha,1;	
+	set cla,1;
+	set genin,1;
+	set Jutsugenin1,1;
+	close;
+	
+	uzumaki1:
+	if(elemento == 0){goto aprenderuzumaki;}
+
+	aprenderuzumaki:
+	next;
+	mes "Olá caro shinobi, voce gostaria de fazer parte do Clã Uzumaki ?";
+	menu "Sim, Eu quero",simuzu,"Não",nao;
+
+	simuzu:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	jobchange "6";
+	set uzumaki,uzumaki + 1;
+	set cla,cla +1;
+	set missao_g1,1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	cutin "",255;
+	mes "[Kurenai]";
+	mes "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	cutin "",255;
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	cutin "",255;
+	mes "Você já possui um clã";
+	close;
+
+L_elementos:
+	cutin "",255;
+	mes "Você ja aprendeu dois elementos!";
+	close;
+}

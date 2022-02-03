@@ -1,0 +1,103 @@
+payon_in03,98,180,5	script	Haran Banshou::suiton1	831,{
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if (Banshou == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(elementosuiton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Suiton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Haran Banshou";
+next;
+mes "Descrição: Habilidade que faz o ninja explodir cristais de gelo a sua volta, atigindo todos o inimigos a sua volta.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_MZ,"Agora não",L_no;
+
+//========================================================================
+//	Haran Banshou
+//========================================================================
+
+L_MZ:
+set skillprotect,1;
+if (checkquest(1010) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 100x Girino";
+setquest 1010;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1010,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 88,1,0;
+set Banshou,1;
+completequest 1010;
+erasequest 1010;
+set skillgenin1,2;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Suiton]",0;
+}
+//=========================================================================
+//	Hahonryuu no Jutsu
+//=========================================================================
+payon_in03,101,179,5	script	Hahonryuu no Jutsu::suiton2	831,{
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if(elementosuiton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 2) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elementais de Suiton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Hanhonryuu no Jutsu";
+next;
+mes "Descrição: Está habilidade faz pequenas rajadas de gelo atingirem o alvo varias vezes.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_HN,"Agora não",L_no;
+
+L_HN:
+if (hanhonryuu == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+set skillprotect,1;
+if (checkquest(1011) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 150x Filhote de cobra";
+setquest 1011;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1011,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 15,1,0;
+set hanhonryuu,1;
+completequest 1011;
+erasequest 1011;
+set skillgenin1,3;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Suiton]",0;
+}
+
+//ama_in02,55,38,5	duplicate(suiton1)	Haran Banshou#e1	831
+//ama_in02,60,38,5	duplicate(suiton2)	Hahonryuu no Jutsu#e2	831
+//
+//payon_in03,102,174,5	duplicate(suiton1)	Haran Banshou#e3	831
+//payon_in03,102,171,5	duplicate(suiton2)	Hahonryuu no Jutsu#e4	831
+//
+//ve_in,97,214,5	duplicate(suiton1)	Haran Banshou#e5	831
+//ve_in,97,217,5	duplicate(suiton2)	Hahonryuu no Jutsu#e6	831
+//
+//izlude_in,60,96,5	duplicate(suiton1)	Haran Banshou#e7	831
+//izlude_in,69,96,5	duplicate(suiton2)	Hahonryuu no Jutsu#e8	831

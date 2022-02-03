@@ -1,0 +1,71 @@
+-	script	OnKillMob_li	-1,{
+OnNPCKillEvent:
+	if( !getcharid(1) || !genin || jounin )
+		end;
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	set .@cid, getcharid(0);
+	if(isloggedin($@partymemberaid[0],$@partymembercid[0]))
+	{
+		set .@bexp,getmonsterinfo(killedrid,3);
+		set .@jexp,getmonsterinfo(killedrid,4);
+		if(attachrid($@partymemberaid[0]))
+		{
+			if( callfunc("check_li_team",.@cid) == 1 )
+			{
+				getpartymember getcharid(1),1;
+				getpartymember getcharid(1),2;
+				for(set .@i,0; .@i<$@partymembercount; set .@i,.@i+1)
+				{
+					if( .@cid == $@partymembercid[.@i] )
+					{
+						if(attachrid($@partymemberaid[.@i]))
+						{
+							dispbottom "[Bônus Exp. de Pupilo]: BaseExp:"+.@bexp+" JobExp:"+.@jexp;
+							getexp .@bexp,.@jexp;
+						}
+					}
+				}
+			}
+		}
+	}
+	set $@partymembercount,0;
+	deletearray $@partymemberaid[0],128;
+	deletearray $@partymembercid[0],128;
+	end;
+}
+function	script	check_li_team	{
+	callfunc "get_genin_date";
+	if( getarraysize(@genin_cid) <= 0 )
+		return 0;
+	set .@tid,0;
+	for(set .@i,0; @genin_cid[.@i];set .@i,.@i+1)
+	{
+		if( @genin_cid[.@i] == getarg(0) )
+		{
+			set .@tid,.@i+1;
+		}
+	}
+	if(!.@tid)
+		return 0;
+	set .@tid,.@tid-1;
+	set .@pid, getcharid(1);
+	set .@aid, getcharid(3);
+	set .@cid, getcharid(0);
+	set .@li, callfunc("get_land_value");
+	getmapxy(.@map$, .@x, .@y, 0);
+	if(attachrid(@genin_aid[.@tid]))
+	{		
+		getmapxy(.@map2$, .@x, .@y, 0);
+		if( .@pid != getcharid(1) || li_value != .@cid || .@li != callfunc("get_land_value") || .@map2$ != .@map$ )
+		{
+			detachrid;
+			attachrid .@aid;
+			return 0;
+		}
+	}else
+			return 0;
+	detachrid;
+	attachrid .@aid;
+	return 1;
+}

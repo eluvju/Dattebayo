@@ -1,0 +1,109 @@
+bibli_01,61,35,5	script	Treinamentos shinobi::menu_trein	831,{
+
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá, aqui você pode definir qual dos estilos shinobi você quer treinar";
+next;
+mes "Só pode treinar um estilo por vez e se não tiver aprendido o estilo o treinamento não irá funcionar, se quiser trocar, volte a falar comigo";
+next;
+mes "Qual estilo de luta gostaria de treinar agora?";
+menu "Ninjutsu",L_nin,"Taijutsu",L_tai,"Genjutsu",L_gen,"Fuuinjutsu",L_fuuin,"Velocidade",L_velo,"Medicina",L_med,"Depois eu decido",L_no;
+//========================================================================
+//	Katana Fina
+//========================================================================
+
+L_nin:
+next;
+if(treinos_basicos < 3) {mes "Antes de ativar um treinamento, vá para a biblioteca de sua vila e aprenda os seus três treinamentos"; close;}
+if(nin_basico != 1) {mes "Você precisa do treino básico"; close;}
+if(treino_nin == 1) {mes "Você já está treinando ninjutsu"; close;}
+mes "Certo, tenha um bom treino de ninjutsu";
+set treino_fuu,0;
+set treino_nin,1;
+set treino_tai,0;
+set treino_gen,0;
+set treino_velo,0;
+set treino_med,0;
+close;
+
+L_tai:
+next;
+if(treinos_basicos < 3) {mes "Antes de ativar um treinamento, vá para a biblioteca de sua vila e aprenda os seus três treinamentos"; close;}
+if(tai_basico != 1) {mes "Você precisa do treino básico"; close;}
+if(treino_tai == 1) {mes "Você já está treinando taijutsu"; close;}
+mes "Certo, tenha um bom treino de taijutsu";
+set treino_fuu,0;
+set treino_nin,0;
+set treino_tai,1;
+set treino_gen,0;
+set treino_velo,0;
+set treino_med,0;
+close;
+
+L_gen:
+next;
+if(treinos_basicos < 3) {mes "Antes de ativar um treinamento, vá para a biblioteca de sua vila e aprenda os seus três treinamentos"; close;}
+if(treino_gen == 1) {mes "Você já está treinando genjutsu"; close;}
+if(gen_basico != 1) {mes "Você precisa do treino básico"; close;}
+mes "Certo, tenha um bom treino de genjutsu";
+set treino_fuu,0;
+set treino_nin,0;
+set treino_tai,0;
+set treino_gen,1;
+set treino_velo,0;
+set treino_med,0;
+close;
+
+L_fuuin:
+next;
+if(treinos_basicos < 3) {mes "Antes de ativar um treinamento, vá para a biblioteca de sua vila e aprenda os seus três treinamentos"; close;}
+if(fuu_basico != 1) {mes "Você precisa do treino básico"; close;}
+if(treino_fuu == 1) {mes "Você já está treinando fuuinjutsu"; close;}
+mes "Certo, tenha um bom treino de fuuinjutsu";
+set treino_fuu,1;
+set treino_nin,0;
+set treino_tai,0;
+set treino_gen,0;
+set treino_velo,0;
+set treino_med,0;
+close;
+
+L_velo:
+next;
+if(treinos_basicos < 3) {mes "Antes de ativar um treinamento, vá para a biblioteca de sua vila e aprenda os seus três treinamentos"; close;}
+if(velo_basico != 1) {mes "Você precisa do treino básico"; close;}
+if(treino_velo == 1) {mes "Você já está treinando velocidade"; close;}
+mes "Certo, tenha um bom treino de velocidade";
+set treino_fuu,0;
+set treino_nin,0;
+set treino_tai,0;
+set treino_gen,0;
+set treino_velo,1;
+set treino_med,0;
+close;
+
+L_med:
+next;
+if(treinos_basicos < 3) {mes "Antes de ativar um treinamento, vá para a biblioteca de sua vila e aprenda os seus três treinamentos"; close;}
+if(med_basico != 1) {mes "Você precisa do treino básico"; close;}
+if(treino_med == 1) {mes "Você já está treinando medicina"; close;}
+mes "Certo, tenha um bom treino de medicina";
+set treino_fuu,0;
+set treino_nin,0;
+set treino_tai,0;
+set treino_gen,0;
+set treino_velo,0;
+set treino_med,1;
+close;
+
+L_no:
+close;
+}
+
+bibli_02,61,35,5	duplicate(menu_trein)	Treinamentos shinobi#1	831,{
+bibli_03,61,35,5	duplicate(menu_trein)	Treinamentos shinobi#2	831,{
+bibli_04,61,35,5	duplicate(menu_trein)	Treinamentos shinobi#3	831,{
+lou_in02,203,86,5	duplicate(menu_trein)	Treinamentos shinobi#4	831,{
+izlude_in,175,124,5	duplicate(menu_trein)	Treinamentos shinobi#5	831,{

@@ -1,0 +1,49 @@
+kiragakure,217,213,4	script	Sala Vip::vip	922,{
+	if (countitem(634) >= 1) && (getgmlevel() < 1) {mes "Vejo que você não é vip, mas possui um vale rop no inventário, gostaria de gastar ele para entrar uma vez na sala vip?";
+menu "Sim, eu gostaria de entrar",claro,"Não, obrigado",r2;
+
+}
+	if (getgmlevel() < 1) goto B;
+
+	mes "[Teleportador para sala vip]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Teleportador para sala vip]";
+	mes "Gostaria de entrar na Teleportador para a guerra do NRO?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Teleportador para sala vip]";
+	mes "OK "+ strcharinfo(0) +"!";
+	warp "ra_in01", 209,90;
+	close;
+
+	r2:
+	mes "[Teleportador para sala vip]";
+	mes "Ok..";
+	close;
+
+	B:
+	mes "Você não é vip, para se tornar vip acesse o fórum e se informe.";
+	close;
+
+	claro:
+	next;
+	delitem 634,1;
+	mes "Ok, seja bem vindo a sala vip, lembrando que você terá acesso apenas esta vez, caso queira entrar denovo terá que usar outro vale rop, ou ser vip!";
+	next;
+	mes "Até mais!";
+	next;
+	warp "ra_in01", 209,90;
+	
+
+
+}
+
+konoha3,215,135, 4	duplicate(vip)	Sala Vip#1	922
+sunagakure,274,239, 4	duplicate(vip)	Sala Vip#2	922
+prt_monk, 233, 195, 4	duplicate(vip)	Sala Vip#3	922
+akatsuki,98,205,4	duplicate(vip)	Sala Vip#4	922
+kumogakure,53,109, 4	duplicate(vip)	Sala Vip#5	922
+lou_in02,242,162, 4	duplicate(vip)	Sala Vip#6	922

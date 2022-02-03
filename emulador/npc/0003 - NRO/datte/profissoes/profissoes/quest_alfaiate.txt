@@ -1,0 +1,69 @@
+konoha3,148,255,5	script	Alfaiate::pro_alfa	59,{
+
+if (jatemmain == 1) goto L_no;
+if(alfaiate == 1) goto L_temprofissao;
+if (checkquest(2009) == 1) goto L_go;
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá, Você parece ter talento para criar! O que é essencial para um Alfaiate, gostaria de aprender como ser um?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	alfaiate
+//========================================================================
+
+L_SS:
+next;
+mes "Ok jovem, mas antes preciso que você faça umas tarefas, após isso irei lhe ensianr como se tornar um Alfaiate.";
+next;
+mes "Aqui está a lista de tarefas:";
+next;
+mes "- Obter 150x Poeira Venenosa."; //(Id: 7154)
+mes "- Obter 25x Dente de Morcego."; //(Id: 913)
+mes "- Obter 1x Gibão ou Colete Nível 1."; //(id: 2303)
+mes "- Obter 1x Pedra Filosofal."; //(Id: 12040)
+mes "- Matar 100x Chamu"; //(1405)
+setquest 2009;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2009,hunting) != 2) {mes "Você ainda não completou suas Tarefas."; close;}
+if (countitem(7154) < 150) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(913) < 25) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(2303) < 1) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(12040) < 1) {mes "Você ainda não completou suas tarefas"; close;}
+mes "Nossa, que rápido. Parabéns mesmo, você tem talento para isso.";
+next;
+mes "Agora você é um Alfaiate!";
+completequest 2009;
+delitem 7154,150;
+delitem 913,25;
+delitem 2303,1;
+delitem 12040,1;
+getitem 7038,1;
+getitem 5047,1;
+set alfaiate,1;
+set jatemmain,1;
+announce "[Profissão] "+strcharinfo(0)+" acaba de virar Alfaiate!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Olá jovem aprendiz! O que faz por aqui?";
+menu "Nada, só passei pra dar um Oi.",L_no,"Quero receber outro Novelo.",luva;
+
+luva:
+if (countitem(7038) >= 1) {mes "Você não precisa de outro Novelo."; close;}
+mes "Aqui está";
+getitem 7038,1;
+close;
+
+}
+
+sunagakure,133,287,5	duplicate(pro_alfa)	Alfaiate#1	59,{
+kiri,371,198,5	duplicate(pro_alfa)	Alfaiate#2	59,{
+nuvem,99,135,5	duplicate(pro_alfa)	Alfaiate#3	59,{

@@ -1,0 +1,71 @@
+function	script	jigoku	{
+//When a Character uses a skill
+
+//Jigoku
+
+if (seloskill677 == 1) {
+
+if (Jigoku != 1) {end;}
+if (skill677 >= 50) {set seloskill677,2; set skill677,0; dispbottom "[Sys] Level up"; end; }
+set skill677,skill677 +1;
+dispbottom "[Jutsu level] Jigoku Kouga no Jutsu level 1: "+skill677+" de 50";
+
+end;
+
+}
+
+if (seloskill677 == 2) {
+if (Jigoku != 1) {end;}
+if (skill677 >= 150) {set seloskill677,3; set skill677,0; dispbottom "[Sys] Level up"; end;}
+set skill677,skill677 +1;
+dispbottom "[Jutsu level] Jigoku Kouga no Jutsu level 2: "+skill677+" de 150";
+
+end;
+
+}
+
+if (seloskill677 == 3) {
+
+if (Jigoku != 1) {end;}
+if (skill677 >= 200) {set seloskill677,4; set skill677,0; dispbottom "[Sys] Level up"; end;}
+set skill677,skill677 +1;
+dispbottom "[Jutsu level] Jigoku Kouga no Jutsu level 3: "+skill677+" de 200";
+
+end;
+
+}
+
+if (seloskill677 == 4) {
+if (Jigoku != 1) {end;}
+if (skill677 >= 250) {set seloskill677,5; set skill677,0; dispbottom "[Sys] Level up"; end;}
+set skill677,skill677 +1;
+dispbottom "[Jutsu level] Jigoku Kouga no Jutsu level 4: "+skill677+" de 250";
+
+end;
+
+}
+
+if (seloskill677 == 5) {
+if (Jigoku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill677 >= 300) {set seloskill677,6; set skill677,0; dispbottom "[Sys] Level up"; end;}
+set skill677,skill677 +1;
+dispbottom "[Jutsu level] Jigoku Kouga no Jutsu level 5: "+skill677+" de 300";
+
+end;
+
+}
+
+if (seloskill677 == 6) {
+if (Jigoku != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill677 >= 500) {set seloskill677,7; set skill677,0; dispbottom "[Sys] Level up"; end;}
+set skill677,skill677 +1;
+dispbottom "[Jutsu level] Jigoku Kouga no Jutsu level 6: "+skill677+" de 500";
+
+end;
+
+}
+
+                end;
+            }

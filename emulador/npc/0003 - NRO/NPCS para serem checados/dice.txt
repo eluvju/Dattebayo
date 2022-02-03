@@ -1,0 +1,238 @@
+//##########################################################################
+//By: ____                    _      __        __           ____    _____  #
+//   |    \   ___ __    __ _ | |     \ \      / /_  _   _  / ___\  / ____| #
+//   | ||  | / _ \\ \  / /| || |      \ \    / /| || \ | || | ___ | (___   #
+//   | ||  ||  __/ \ \/ / | || |__     \ \/\/ / | ||  \| || |___|\ \___ \  #
+// __|____/__\___|__\__/__|_||____|_____\_/\_/__|_||_|\__|_\_____/_____) | #
+//|_____________________________________________________________________/  #
+//                                                                         #
+//##########################################################################
+//                                                                         #
+//== Dice Event                                                            #
+//                                                                         #
+//##########################################################################
+//                                                                         #
+//== Automatically starts a dice event every 30 minutes of every hour      #
+//                                                                         #
+//== Prize- Change 13723 to any item ID you want the winner to recieved    #
+//                                                                         #                                         // Code Modify by : WordsUp
+// Credit still for mAisakaTaiga                                
+//##########################################################################
+
+-	script	Dice#announcer	-1,{
+
+OnInit:
+	disablenpc "prtevent";
+	disablenpc "prtevent2";
+	disablenpc "prtevent3";
+	disablenpc "prtevent4";
+	hideonnpc "Dice#evnt1";
+	end;
+
+OnClock0926:
+OnClock1552:
+OnClock2346:
+	announce "Evento de Sorte: Vai começar o evento de sorte.",0;
+	sleep2 10000;
+	announce "Evento de Sorte: Aqueles que querem participar devem ir ao lado do npc armazém, terá um portal para os participantes.",0;
+	sleep2 10000;
+	announce "Evento de Sorte: Depois de 1 minuto o portal irá se fechar.",0;
+	sleep2 10000;
+	announce "Evento de Sorte: Então vão agora, ou ficarão de fora!.",0;
+	enablenpc "prtevent";
+	enablenpc "prtevent2";
+	enablenpc "prtevent3";
+	enablenpc "prtevent4";
+	initnpctimer;
+	end;
+
+OnTimer30000:
+	announce "Evento de Sorte: Últimos 30 segundos.",0;
+	sleep2 5000;
+	announce "Evento de Sorte: Se quiser participar entre no portal ao lado do npc armazém.",0;
+	end;
+	
+OnTimer50000:
+	announce "Evento de Sorte: Últimos 5 segundos.",0;
+	end;
+	
+OnTimer55000:
+	announce "Evento de Sorte: 5.",0;
+	end;
+	
+OnTimer56000:
+	announce "Evento de Sorte: 4.",0;
+	end;
+	
+OnTimer57000:
+	announce "Evento de Sorte: 3.",0;
+	end;
+	
+OnTimer58000:
+	announce "Evento de Sorte: 2.",0;
+	end;
+	
+OnTimer59000:
+	announce "Evento de Sorte: 1.",0;
+	end;
+	
+OnTimer60000:
+	announce "Evento de Sorte: Acabou o tempo.",0;
+	end;
+	
+OnTimer61000:
+	disablenpc "prtevent";
+	disablenpc "prtevent2";
+	disablenpc "prtevent3";
+	disablenpc "prtevent4";
+	donpcevent "Dice#evnt1::OnEnable";
+	stopnpctimer;
+	end;
+	
+OnTimer62000:
+	announce "Evento de Sorte: O próximo evento será às .",0;
+	end;
+	}
+	
+//--------------------------------------------------
+	
+in_hunter,150,150,0	warp	prtevent	2,2,quiz_01,204,90	
+in_hunter,150,150,0	warp	prtevent2	2,2,quiz_01,204,90
+in_hunter,150,150,7,0	warp	prtevent3	2,2,quiz_01,204,90
+in_hunter,150,150,0	warp	prtevent4	2,2,quiz_01,204,90
+	
+//--------------------------------------------------
+
+quiz_01,204,93,6	script	Dice#evnt1	715,{
+
+//--------------------------------------------------
+
+	mes "[Evento de Sorte]";
+	mes "Por favor digite seu nome (do personagem)";
+	next;
+	input .@name$;
+	if(.@name$ != strcharinfo(0)) {
+		mes "[Evento de Sorte]";
+		mes "Tem certeza que esse é o nome de seu personagem?";
+		close;
+	}
+	mes "[Evento de Sorte]";
+	mes "Parabéns. Você venceu.";
+	close2;
+	announce "Evento de Sorte: Temos um vencedor, "+.@name$+".",0;
+	getitem 7622,3;
+	warp "SavePoint", 0, 0;
+	hideonnpc "Dice#evnt1";
+	end;
+	
+OnEnable:
+	mapannounce "quiz_01","Evento de Sorte: Vai começar o evento.",0;
+	sleep2 10000;
+	mapannounce "quiz_01","Evento de Sorte: Mas antes uma breve explicação. . .",0;
+	sleep2 10000;
+	mapannounce "quiz_01","Evento de Sorte: Só vou dizer uma vez, preste atenção!.",0;
+	sleep2 10000;
+	mapannounce "quiz_01","Evento de Sorte: Eu vou sortear um número, de 1 a 4. E então farei uma contagem de 5 a 0.",0;
+	sleep2 10000;
+	mapannounce "quiz_01","Evento de Sorte: A única coisa que voce precisa fazer é escolher um número, e ir até o quadrado correspondente no mapa.",0;
+	sleep2 10000;
+	mapannounce "quiz_01","Evento de Sorte: Exemplo, se eu sortear o número 4, Todos os jogadores nos números de 1 a 3, serão teleportados pras suas vilas e estarão fora do evento.",0;
+	sleep2 10000;
+	mapannounce "quiz_01","Evento de Sorte: Faremos isso até sobrar apenas um jogador.",0;
+	sleep2 10000;
+	mapannounce "quiz_01","Evento de Sorte: Ah sim! Antes que eu esqueça, é obrigatório escolher um número, aqueles que não estiverem em cima de um número no final da contagem serão desclassificados.",0;
+	sleep2 10000;
+	mapannounce "quiz_01","Evento de Sorte: É isso.. Vamos jogar...",0;
+	sleep2 10000;
+	goto L_Start;
+	end;
+	
+L_Start:
+	if(getmapusers("quiz_01") == 1) goto L_Champ;
+	if(getmapusers("quiz_01") == 0) goto L_None;
+	if(getmapusers("quiz_01") > 1) {
+	announce "Evento de Sorte: . . . . .",0;
+	set $@number, rand(1,4);
+	sleep2 10000;
+	announce "Evento de Sorte: Já tenho o número. Vá agora pro número que deseja.... GO!",0;
+	sleep2 10000;
+	announce "Evento de Sorte: 5",0;
+	sleep2 5000;
+	announce "Evento de Sorte: 4",0;
+	sleep2 4000;
+	announce "Evento de Sorte: 3",0;
+	sleep2 3000;
+	announce "Evento de Sorte: 2",0;
+	sleep2 2000;
+	announce "Evento de Sorte: 1",0;
+	sleep2 1000;
+	announce "Evento de Sorte: Acabou o tempo.",0;
+	donpcevent "evnt#1::OnEnable";
+	announce "Evento de Sorte: Número sorteado: "+$@number+".",0;
+	if(($@number != 1) && ($@number != 2) && ($@number != 3)) goto L_Lose1;
+	if(($@number != 1) && ($@number != 2) && ($@number != 4)) goto L_Lose2;
+	if(($@number != 1) && ($@number != 3) && ($@number != 4)) goto L_Lose3;
+	if(($@number != 2) && ($@number != 3) && ($@number != 4)) goto L_Lose4;
+	end;
+	}
+	
+L_Lose1:
+	areawarp "quiz_01",183,81,191,60,"SavePoint", 0, 0;
+	areawarp "quiz_01",195,81,203,60,"SavePoint", 0, 0;
+	areawarp "quiz_01",207,81,215,60,"SavePoint", 0, 0;
+	goto L_Start;
+	end;
+
+L_Lose2:
+	areawarp "quiz_01",183,81,191,60,"SavePoint", 0, 0;
+	areawarp "quiz_01",195,81,203,60,"SavePoint", 0, 0;
+	areawarp "quiz_01",219,81,227,60,"SavePoint", 0, 0;;
+	goto L_Start;
+	end;
+	
+L_Lose3:
+	areawarp "quiz_01",183,81,191,60,"SavePoint", 0, 0;
+	areawarp "quiz_01",207,81,215,60,"SavePoint", 0, 0;
+	areawarp "quiz_01",219,81,227,60,"SavePoint", 0, 0;
+	goto L_Start;
+	end;
+	
+L_Lose4:
+	areawarp "quiz_01",195,81,203,60,"SavePoint", 0, 0;
+	areawarp "quiz_01",207,81,215,60,"SavePoint", 0, 0;
+	areawarp "quiz_01",219,81,227,60,"SavePoint", 0, 0;
+	goto L_Start;
+	end;
+	
+L_Champ:
+	mapannounce "quiz_01","Evento de Sorte: Vem até mim e diga seu nome.",0;
+	hideoffnpc "Dice#evnt1";
+	end;
+	
+L_None:
+	announce "Evento está fechado",0;
+	hideonnpc "Dice#evnt1";
+	end;
+}
+	
+-	script	evnt#1	-1,{
+
+OnEnable:
+	areawarp "quiz_01",182,94,228,88,"SavePoint", 0, 0;
+	areawarp "quiz_01",185,87,188,82,"SavePoint", 0, 0;
+	areawarp "quiz_01",197,87,200,82,"SavePoint", 0, 0;
+	areawarp "quiz_01",209,87,212,82,"SavePoint", 0, 0;
+	areawarp "quiz_01",221,87,224,82,"SavePoint", 0, 0;
+	end;
+	}
+
+// -- Mapflags
+quiz_01	mapflag	nowarp
+quiz_01	mapflag	nowarpto
+quiz_01	mapflag	noteleport
+quiz_01	mapflag	nosave
+quiz_01	mapflag	nomemo
+quiz_01	mapflag	nobranch
+quiz_01	mapflag	noloot
+quiz_01	mapflag	noskill
+quiz_01	mapflag	nopenalty

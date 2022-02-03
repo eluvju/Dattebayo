@@ -1,0 +1,168 @@
+gef_fild07,276,337,5	script	Porto Shinobi::portos	706,{
+
+
+set @price,200;
+
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Bem vindo(a) ao porto shinobi";
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Eu posso te levar!";
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Eu cobro 200 ryous cada viagem, afinal, também preciso de uns trocados.";
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Por favor escolha o seu destino!";
+menu "Segunda Divisória",segunda,"Esconderijo do Clã Kamizuru",kami,"Esconderijo do Clã Kamizuru Nível 2",kami2,"Minas Shinobi",minas,"Treinamento Kakashi",kakashi,"Cidade de vendas",venda,"Cassino",cass,"Academia",Aca;
+
+segunda:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "gef_fild10",300,249;
+close;
+
+cass:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "jawaii_in",28,99;
+close;
+
+Sem_Zeny:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Você não tem ryous suficientes";
+close;
+
+kami:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "um_dun01",149,198;
+close;
+
+minas:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "mjo_dun01",52,14;
+close;
+
+kami2:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "anthell01",35,267;
+close;
+
+kakashi:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "kakashi",96,133;
+close;
+
+venda:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "rachel",130,112;
+close;
+
+Aca:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "payon_in03",20,188;
+close;
+}
+
+nevoa.gat,243,260,5	duplicate(portos)	Porto Shinobi#h2-2	59
+areia.gat,340,130,5	duplicate(portos)	Porto Shinobi#h2-3	59
+konoha.gat,332,183,5	duplicate(portos)	Porto Shinobi#h2-4	59
+prt_monk.gat,158,182,5	duplicate(portos)	Porto Shinobi#h2-5	59
+
+
+
+gef_fild10,306,248,5	script	Retorno Porto Shinobi#1::porto	706,{
+
+
+set @price,100;
+
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Bem vindo(a) ao porto shinobi";
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Eu posso te levar!";
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Eu cobro 200 ryous cada viagem, afinal, também preciso de uns trocados.";
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Por favor escolha o seu destino!";
+menu "Primeira Divisória",volta,"Deixa pra lá",nao1;
+
+volta:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "gef_fild07",277,332;
+close;
+
+nao1:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Tudo bem, quando precisar você volta!";
+close;
+
+Sem_Zeny1:
+next;
+mes "[^0000FFPorto Shinobi^000000]";
+mes "Você não tem ryous suficientes";
+close;
+
+}
+
+anthell01.gat,30,262,5	duplicate(porto)	Retorno Porto Shinobi#a	706
+mjo_dun01.gat,54,20,5	duplicate(porto)	Retorno Porto Shinobi#m	706
+um_dun01.gat,154,203,5	duplicate(porto)	Retorno Porto Shinobi#u	706
+kakashi.gat,85,148,5	duplicate(porto)	Retorno Porto Shinobi#h	706
+
+
+//Mapflags
+rachel	mapflag	pvp	off

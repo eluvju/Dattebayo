@@ -1,0 +1,238 @@
+ra_in01,212,94,5	script	Troca de Bandana	99,{
+
+if (nukenin == 1) {mes "Nukenins não podem trocar de vila"; close;}
+mes "Eu sou o trocador de bandanas, se está cansado de sua atual bandana você pode trocar por outra comigo, é importante que você deixe desequipado sua bandana pra essa troca ser feita, vamos lá!";
+next;
+mes "Qual bandana você gostaria de ter?";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+normal:
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+
+
+if(#konoha == 1) {getitem 19008,1;}
+if(#nuvem == 1) {getitem 19040,1;}
+if(#suna == 1) {getitem 19006,1;}
+if(#nevoa == 1) {getitem 19001,1;}
+close;
+
+kakashi:
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+
+
+if(#konoha == 1) {getitem 19004,1;}
+if(#nuvem == 1) {getitem 19074,1;}
+if(#suna == 1) {getitem 19076,1;}
+if(#nevoa == 1) {getitem 19073,1;}
+close;
+
+lado:
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+
+
+if(#konoha == 1) {getitem 19034,1;}
+if(#nuvem == 1) {getitem 19165,1;}
+if(#suna == 1) {getitem 19018,1;}
+if(#nevoa == 1) {getitem 19019,1;}
+close;
+
+pescoco:
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+
+
+if(#konoha == 1) {getitem 19025,1;}
+if(#nuvem == 1) {getitem 19098,1;}
+if(#suna == 1) {getitem 19096,1;}
+if(#nevoa == 1) {getitem 19097,1;}
+close;
+
+yamato:
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+
+
+if(#konoha == 1) {getitem 19170,1;}
+if(#nuvem == 1) {getitem 19095,1;}
+if(#suna == 1) {getitem 19168,1;}
+if(#nevoa == 1) {getitem 19169,1;}
+close;
+
+kisame:
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+
+
+if(#konoha == 1) {getitem 19030,1;}
+if(#nuvem == 1) {getitem 19127,1;}
+if(#suna == 1) {getitem 19156,1;}
+if(#nevoa == 1) {getitem 19016,1;}
+close;
+
+
+}

@@ -1,0 +1,76 @@
+-	script	on_PC_UseSkilltai14	-1,{
+    end;
+//When a Character uses a skill
+
+//Dinamyc Entry
+
+onPcUseSkillEvent:
+
+           if(lskillid == 421) {
+
+
+if (getskilllv(421) == 1) {
+
+if (Dinamyc != 1) {end;}
+if (skill421 >= 50) {skill 421,2,0; set skill421,0; dispbottom "[Sys] Level up"; end; }
+set skill421,skill421 +1;
+dispbottom "[Jutsu level] Dinamyc Entry level 1: "+skill421+" de 50";
+
+end;
+
+}
+
+if (getskilllv(421) == 2) {
+if (Dinamyc != 1) {end;}
+if (skill421 >= 100) {skill 421,3,0; set skill421,0; dispbottom "[Sys] Level up"; end;}
+set skill421,skill421 +1;
+dispbottom "[Jutsu level] Dinamyc Entry level 2: "+skill421+" de 100";
+
+end;
+
+}
+
+if (getskilllv(421) == 3) {
+
+if (Dinamyc != 1) {end;}
+if (skill421 >= 150) {skill 421,4,0; set skill421,0; dispbottom "[Sys] Level up"; end;}
+set skill421,skill421 +1;
+dispbottom "[Jutsu level] Dinamyc Entry level 3: "+skill421+" de 150";
+
+end;
+
+}
+
+if (getskilllv(421) == 4) {
+if (Dinamyc != 1) {end;}
+if (skill421 >= 200) {skill 421,5,0; set skill421,0; dispbottom "[Sys] Level up"; end;}
+set skill421,skill421 +1;
+dispbottom "[Jutsu level] Dinamyc Entry level 4: "+skill421+" de 200";
+
+end;
+
+}
+
+if (getskilllv(421) == 5) {
+if (Dinamyc != 1) {end;}
+if (skill421 >= 250) {skill 421,6,0; set skill421,0; dispbottom "[Sys] Level up"; end;}
+set skill421,skill421 +1;
+dispbottom "[Jutsu level] Dinamyc Entry level 5: "+skill421+" de 250";
+
+end;
+
+}
+
+if (getskilllv(421) == 6) {
+if (Dinamyc != 1) {end;}
+if (skill421 >= 300) {skill 421,7,0; set skill421,0; dispbottom "[Sys] Level up"; end;}
+set skill421,skill421 +1;
+dispbottom "[Jutsu level] Dinamyc Entry level 6: "+skill421+" de 300";
+
+end;
+
+}
+
+                end;
+            }    
+}

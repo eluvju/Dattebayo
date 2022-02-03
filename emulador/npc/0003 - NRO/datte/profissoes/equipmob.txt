@@ -1,0 +1,66 @@
+payon_in03,124,7,5	script	Zenny	-1,{
+
+  OnNPCKillEvent:
+
+//Anular
+
+if(killedrid == 1269) {
+if (lenhador != 1) {dispbottom "Somente lenhadores podem obter recursos de árvores"; end;}
+if(getequipid(EQI_HAND_R)!=1301) {dispbottom "Você não está usando um machado de lenhador"; end;}
+if(getequipid(EQI_ACC_R)!=2604) {dispbottom "Você não está usando uma luva de lenhador"; end;}
+if (rand(1,100) == 10) {getitem 7222,1; end; } else {end;}
+end;
+}
+
+//if(killedrid == 1270) {
+//if (mineirador != 1) {dispbottom "Somente mineiradores podem obter recursos de pedras"; end;}
+//if(getequipid(EQI_HAND_R)!=1452) {dispbottom "Você não está usando uma picareta de mineirador"; end;}
+//if(getequipid(EQI_HEAD_TOP)!=5031) {dispbottom "Você não está usando um capacete de mineirador"; end;}
+//if (rand(1,100) == 10) {getitem 7231,1; end; } else {end;}
+//end;
+//}
+
+if(killedrid == 1700) {
+if (agricultor != 1) {dispbottom "Somente agricultores podem obter recursos de árvores frutíferas"; end;}
+if(getequipid(EQI_HAND_R)!=1803) {dispbottom "Você não está usando uma luva de agricultor"; end;}
+if (rand(1,100) == 10) {getitem 970,1; end; } else {end;}
+end;
+}
+
+if(killedrid == 1701) {
+if (agricultor != 1) {dispbottom "Somente agricultores podem obter recursos de árvores frutíferas"; end;}
+if(getequipid(EQI_HAND_R)!=1803) {dispbottom "Você não está usando uma luva de agricultor"; end;}
+if (rand(1,100) == 10) {getitem 971,1; end; } else {end;}
+end;
+}
+
+if(killedrid == 1702) {
+if (agricultor != 1) {dispbottom "Somente agricultores podem obter recursos de árvores frutíferas"; end;}
+if(getequipid(EQI_HAND_R)!=1803) {dispbottom "Você não está usando uma luva de agricultor"; end;}
+if (rand(1,100) == 10) {getitem 972,1; end; } else {end;}
+end;
+}
+
+if(killedrid == 1703) {
+if (agricultor != 1) {dispbottom "Somente agricultores podem obter recursos de árvores frutíferas"; end;}
+if(getequipid(EQI_HAND_R)!=1803) {dispbottom "Você não está usando uma luva de agricultor"; end;}
+if (rand(1,100) == 10) {getitem 973,1; end; } else {end;}
+end;
+}
+
+if(killedrid == 1704) {
+if (agricultor != 1) {dispbottom "Somente agricultores podem obter recursos de árvores frutíferas"; end;}
+if(getequipid(EQI_HAND_R)!=1803) {dispbottom "Você não está usando uma luva de agricultor"; end;}
+if (rand(1,100) == 10) {getitem 975,1; end; } else {end;}
+end;
+}
+
+
+//valendo
+
+//if (equipmob >= 1000) {getitem 7622,1; set equipmob, 0; end;}
+//set equipmob,equipmob +1;
+//dispbottom "[Equip level] Matou "+equipmob+" de 1000 animais";
+//end;
+
+}

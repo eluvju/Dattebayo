@@ -1,0 +1,35 @@
+yuno_fild09,228,128,6	script	Comerciante#12	932,{
+
+if(countitem (583) < 30 && missaocristalazul == 1){
+     mes "[Comerciante]";
+    mes "Vejo que você não pegou os 30 Critais Azuis ainda.";
+    close;
+    }
+
+	mes "[Comerciante]";
+	mes "Você quer ganhar uma caixa com algumas Pílulas da Regeneração? Posso lhe oferecer em troca de um favor.";
+	if(select("Claro!:Não, obrigado.")==2)close;
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, preciso que você junte 30 Cristais Azul.";
+	mes "Você pode conseguir eles de Filhote de Yeti, neste mapa.";
+	set missaocristalazul,1;
+
+	if(countitem (583) < 30){
+	next;
+	mes "Vejo que você não juntou tudo ainda.";
+	mes "Junte os restantes. Ainda faltam Cristais Azul!";
+	close;
+	}
+
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, você completou a missão!";
+	mes "Aqui estão suas Pílulas da Regeneração!";
+	set missaocristalazul,0;
+	delitem 583,30;
+	getitem 1317,1;
+	query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 10 WHERE `char_id` = '"+getcharid(0)+"'");
+	dispbottom "10 Pontos de Missão adquiridos.";
+	close;
+	}

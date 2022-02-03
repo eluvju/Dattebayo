@@ -1,0 +1,160 @@
+//////// QUESTS
+
+xmas,141,136,4	script	Gorro de Natal	861,{
+
+mes "Olá jovem shinobi, para realizar o Gorro de Natal vou precisar de:";
+next;
+mes "- 40 Bengalas Doces";
+mes "- 40 Balas de Natal";
+mes "- 1 Sacola Natalina";
+mes "- 500.000 zenys";
+next;
+mes "Deseja realizar a quest?";
+menu "Não.",-,"Sim.",sim1;
+next;
+mes "Boas festas!";
+close;
+
+sim1:
+next;
+mes "Vou verificar se você juntou tudo, shonen!";
+if(countitem(1066) >= 40 && countitem(1068) >= 40 && countitem(1067) >= 1 && Zeny >= 500000) goto completa1;
+mes "Ainda faltam alguns itens :c";
+close;
+
+completa1:
+next;
+mes "Muito bem! Vou te entregar o Gorro de Natal, parabéns!";
+delitem 1066,40;
+delitem 1068,40;
+delitem 1067,1;
+set Zeny,Zeny -500000;
+getitem 31184,1;
+announce "Mamãe Noel: Parabéns para o shinobi "+strcharinfo(0)+" por ter finalizado a quest Gorro de Natal!",bc_blue|bc_all;
+close;
+}
+
+xmas,145,136,4	script	Arco de Natal	861,{
+
+mes "Olá jovem shinobi, para realizar o Arco de Natal vou precisar de:";
+next;
+mes "- 60 Bengalas Doces";
+mes "- 60 Balas de Natal";
+mes "- 2 Sacola Natalina";
+mes "- 1.000.000 zenys";
+next;
+mes "Deseja realizar a quest?";
+menu "Não.",-,"Sim.",sim2;
+next;
+mes "Boas festas!";
+close;
+
+sim2:
+next;
+mes "Vou verificar se você juntou tudo, shonen!";
+if(countitem(1066) >= 60 && countitem(1068) >= 60 && countitem(1067) >= 2 && Zeny >= 1000000) goto completa2;
+mes "Ainda faltam alguns itens :c";
+close;
+
+completa2:
+next;
+mes "Muito bem! Vou te entregar o Arco de Natal, parabéns!";
+delitem 1066,60;
+delitem 1068,60;
+delitem 1067,2;
+set Zeny,Zeny -1000000;
+getitem 31149,1;
+announce "Mamãe Noel: Parabéns para o shinobi "+strcharinfo(0)+" por ter finalizado a quest Arco de Natal!",bc_blue|bc_all;
+close;
+}
+
+xmas,149,136,4	script	Poring Noel	861,{
+
+mes "Olá jovem shinobi, para realizar o Poring Noel vou precisar de:";
+next;
+mes "- 60 Bengalas Doces";
+mes "- 60 Balas de Natal";
+mes "- 2 Sacola Natalina";
+mes "- 1.000.000 zenys";
+next;
+mes "Deseja realizar a quest?";
+menu "Não.",-,"Sim.",sim3;
+next;
+mes "Boas festas!";
+close;
+
+sim3:
+next;
+mes "Vou verificar se você juntou tudo, shonen!";
+if(countitem(1066) >= 60 && countitem(1068) >= 60 && countitem(1067) >= 2 && Zeny >= 1000000) goto completa3;
+mes "Ainda faltam alguns itens :c";
+close;
+
+completa3:
+next;
+mes "Muito bem! Vou te entregar o Poring Noel, parabéns!";
+delitem 1066,60;
+delitem 1068,60;
+delitem 1067,2;
+set Zeny,Zeny -1000000;
+getitem 31153,1;
+announce "Mamãe Noel: Parabéns para o shinobi "+strcharinfo(0)+" por ter finalizado a quest Poring Noel!",bc_blue|bc_all;
+close;
+}
+
+xmas,153,136,4	script	Capa Vermelha de Gatinho	861,{
+
+mes "Olá jovem shinobi, para realizar o Capa Vermelha de Gatinho vou precisar de:";
+next;
+mes "- 100 Bengalas Doces";
+mes "- 100 Balas de Natal";
+mes "- 5 Sacola Natalina";
+mes "- 5.000.000 zenys";
+next;
+mes "Deseja realizar a quest?";
+menu "Não.",-,"Sim.",sim2;
+next;
+mes "Boas festas!";
+close;
+
+sim2:
+next;
+mes "Vou verificar se você juntou tudo, shonen!";
+if(countitem(1066) >= 100 && countitem(1068) >= 100 && countitem(1067) >= 5 && Zeny >= 5000000) goto completa2;
+mes "Ainda faltam alguns itens :c";
+close;
+
+completa2:
+next;
+mes "Muito bem! Vou te entregar o Capa Vermelha de Gatinho, parabéns!";
+delitem 1066,100;
+delitem 1068,100;
+delitem 1067,5;
+set Zeny,Zeny -5000000;
+getitem 31172,1;
+announce "Mamãe Noel: Parabéns para o shinobi "+strcharinfo(0)+" por ter finalizado a quest Capa Vermelha de Gatinho!",bc_blue|bc_all;
+close;
+}
+
+treinamento,91,175,5	script	Rei da Neve	946,{
+mes "[Rei da Neve]";
+mes "Eii, shinobi! Sou um Rei de um vilarejo do país da Neve! Minha vila está em festa nesse fim de ano, venha comemorar conosco!";
+next;
+mes "[Rei da Neve]";
+mes "Coloquei várias ajudantes para te presentear! Só tome cuidado com a Mamãe Noel, as vezes ela não está de bom humor...";
+next;
+mes "[Rei da Neve]";
+mes "Deseja viajar para o meu país?";
+if(select("- Sim:- Não") == 2) close;
+next;
+mes "Quando precisar retornar a sua vila, utilize o comando @voltar !";
+next;
+close2;
+warp "xmas",147,132; 
+end;
+}
+
+
+
+
+

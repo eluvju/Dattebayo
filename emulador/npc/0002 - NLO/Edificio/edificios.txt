@@ -1,0 +1,963 @@
+////////////////////////////////////////////////KONOHA//////////////////////////////////////////
+
+konoha3,177,176,5	script	Reparar Edifício#31	100,{
+
+if (#konoha != 1) {mes "Você não é desta vila"; close;}
+if (countitem(30060) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($kon1dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000Edifício Principal^000000 rapidamente, o custo será de 300 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($konoha_ryous < 300) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $konoha_ryous, $konoha_ryous -300;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $kon1dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício principal de konoha, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+////////////////////////////////////////////////SUNA//////////////////////////////////////////
+
+sunagakure,265,184,5	script	Reparar Edifício#32	100,{
+
+if (#suna != 1) {mes "Você não é desta vila"; close;}
+if (countitem(30061) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($sun1dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000Edifício Principal^000000 rapidamente, o custo será de 300 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($areia_ryous < 300) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $areia_ryous, $areia_ryous -300;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $sun1dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício principal da Suna, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+/////////////////////////////////////////////////////NEVOA///////////////////////////////////////////////
+
+
+kirigakure,222,172,5	script	Reparar Edifício#33	100,{
+
+if (#nevoa != 1) {mes "Você não é desta vila"; close;}
+if (countitem(30062) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($nev1dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000Edifício Principal^000000 rapidamente, o custo será de 300 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($nevoa_ryous < 300) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $nevoa_ryous, $nevoa_ryous -300;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $nev1dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício principal da Névoa, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+
+
+//////////////////////////////////////////////NUVEM////////////////////////////////////////////////////
+
+kumogakure,130,234,5	script	Reparar Edifício#34	100,{
+if (#nuvem != 1) {mes "Você não é desta vila"; close;}
+if (countitem(30063) < 1) {mes "Hm? Você não é o Kage desta vila, só faço negócios com o Kage..."; close;}
+if ($nuv1dest != 1) {mes "Este edifício está muito bem, não precisa de reparos"; close;}
+mes "Que bagunça hein Senhor... Acho melhor eu consertar esse ^FF0000Edifício Principal^000000 rapidamente, o custo será de 300 ryous, posso consertar?";
+menu "Consertar",L_go,"Deixa pra outra hora",L_no;
+
+L_go:
+next;
+if ($nuvem_ryous < 300) {mes "Oh não senhor... infelizmente você não possui meu pagamento"; close;}
+set $nuvem_ryous, $nuvem_ryous -300;
+mes "Vamos iniciar então, mãos a obra";
+next;
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+mes "...";
+sleep2 1000;
+next;
+mes "Prontinho, consertado!";
+set $nuv1dest,0;
+announce ""+strcharinfo(0)+" Acaba de consertar o edifício principal da Nuvem, bom trabalho!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+}
+////////////////////////////////////FINAL/////////////////////////
+
+-	script	dest_kon3	1083,{
+
+OnMapConquisted92:
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício principal de Konoha!",bc_blue|bc_all;
+	set @konoha_ryou,$konoha_ryous;
+	if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) { sleep2 2000; set $akatsuki_ryous, $akatsuki_ryous + @konoha_ryou / 2; set $konoha_ryous, @konoha_ryou/2; sleep 4000; announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all; sleep 4000; announce "[Konoha] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all; set $kon3dest,1; sleep 4000; }
+	if (#suna == 1) {sleep2 2000; set $areia_ryous, $areia_ryous + @konoha_ryou / 2; set $konoha_ryous, @konoha_ryou/2; 	announce "Após a destruição, a Vila Oculta da Suna saqueou metade dos ryous de Konoha",bc_blue|bc_all;}
+	if (#nuvem == 1) {sleep2 2000; set $nuvem_ryous, $nuvem_ryous + @konoha_ryou / 2; set $konoha_ryous, @konoha_ryou/2; 	announce "Após a destruição, a Vila Oculta da Nuvem saqueou metade dos ryous de Konoha",bc_blue|bc_all;}
+	if (#nevoa == 1) {sleep2 2000; set $nevoa_ryous, $nevoa_ryous + @konoha_ryou / 2; set $konoha_ryous, @konoha_ryou/2; 	announce "Após a destruição, a Vila Oculta da Névoa saqueou metade dos ryous de Konoha",bc_blue|bc_all;}
+	sleep 4000;
+	announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Konoha] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $kon1dest,1;
+	if($bijuu_konoha == 0) { announce "Mas parece que não há Bijuus na prisão...",bc_blue|bc_all; end; }
+	if($Ichibi_konoha == 1)  { if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "moc_fild01","edi_15::OnMapConquisted15";  set $Ichibi_konoha,0;   monster "moc_fild01",0,0,"Ichibi",1737,1,"edi_15::OnMapConquisted15";  disablenpc "Ichibi#1"; disablenpc "Ichibi#2"; disablenpc "Ichibi#3"; disablenpc "Ichibi#4"; disablenpc "Ichibi#5"; }
+	if($Nibi_konoha == 1)    { if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "yuno_fild08","edi_16::OnMapConquisted16"; set $Nibi_konoha,0;     monster "yuno_fild08",0,0,"Nibi",1984,1,"edi_16::OnMapConquisted16";   disablenpc "Nibi#1"; disablenpc "Nibi#2"; disablenpc "Nibi#3"; disablenpc "Nibi#4"; disablenpc "Nibi#5"; }
+	if($sanbi_konoha == 1)   { if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "mjolnir_06","edi_17::OnMapConquisted17";  set $sanbi_konoha,0;    monster "mjolnir_06",0,0,"Sanbi",1986,1,"edi_17::OnMapConquisted17";   disablenpc "Sanbi#1"; disablenpc "Sanbi#2"; disablenpc "Sanbi#3"; disablenpc "Sanbi#4"; disablenpc "Sanbi#5"; }
+	if($Yonbi_konoha == 1)   { if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "cmd_fild01","edi_18::OnMapConquisted18";  set $Yonbi_konoha,0;    monster "cmd_fild01",0,0,"Yonbi",1981,1,"edi_18::OnMapConquisted18";   disablenpc "Yonbi#1"; disablenpc "Yonbi#2"; disablenpc "Yonbi#3"; disablenpc "Yonbi#4"; disablenpc "Yonbi#5"; }
+	if($Gobi_konoha == 1)    { if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "mjolnir_05","edi_19::OnMapConquisted19";  set $Gobi_konoha,0;     monster "mjolnir_05",0,0,"Gobi",1982,1,"edi_19::OnMapConquisted19";    disablenpc "Gobi#1"; disablenpc "Gobi#2"; disablenpc "Gobi#3"; disablenpc "Gobi#4"; disablenpc "Gobi#5"; }
+	if($Rokubi_konoha == 1)  { if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "gon_fild01","edi_20::OnMapConquisted20";  set $Rokubi_konoha,0;   monster "gon_fild01",0,0,"Rokubi",1985,1,"edi_20::OnMapConquisted20";  disablenpc "Rokubi#1"; disablenpc "Rokubi#2"; disablenpc "Rokubi#3"; disablenpc "Rokubi#4"; disablenpc "Rokubi#5"; }
+	if($Shichibi_konoha == 1){ if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "hu_fild03","edi_21::OnMapConquisted21";   set $Shichibi_konoha,0; monster "hu_fild03",0,0,"Shichibi",1983,1,"edi_21::OnMapConquisted21"; disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5"; }
+	if($Hachibi_konoha == 1) { if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "ein_fild01","edi_22::OnMapConquisted22";  set $Hachibi_konoha,0;  monster "ein_fild01",0,0,"Hachibi",1738,1,"edi_22::OnMapConquisted22"; disablenpc "Hachibi#1"; disablenpc "Hachibi#2"; disablenpc "Hachibi#3"; disablenpc "Hachibi#4"; disablenpc "Hachibi#5"; }
+	if($Kyuubi_konoha == 1)  { if ($bijuu_konoha > 0) {set $bijuu_konoha,$bijuu_konoha - 1;} killmonster "moc_fild03","edi_23::OnMapConquisted23";  set $Kyuubi_konoha,0;   monster "moc_fild03",0,0,"Kyuubi",1086,1,"edi_23::OnMapConquisted23";  disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2"; disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4"; disablenpc "Kyuubi#5"; }
+	end;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+// Sunagakure
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+-	script	dest_sun3	1083,{
+
+OnMapConquisted95:
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício principal da Suna!",bc_blue|bc_all;
+	set @areia_ryou,$areia_ryous;
+	if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) { set $akatsuki_ryous, $akatsuki_ryous + @areia_ryou / 2; set $areia_ryous, @areia_ryou/2; sleep 4000; announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all; sleep 4000; announce "[Suna] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all; set $sun3dest,1; sleep 4000; }
+	if (#konoha == 1) {sleep2 2000; set $konoha_ryous, $konoha_ryous + @areia_ryou / 2; set $areia_ryous, @areia_ryou/2; 	announce "Após a destruição, a Vila Oculta de Konoha saqueou metade dos ryous da Suna",bc_blue|bc_all;}
+	if (#nuvem == 1) {sleep2 2000; set $nuvem_ryous, $nuvem_ryous + @areia_ryou / 2; set $areia_ryous, @areia_ryou/2; 	announce "Após a destruição, a Vila Oculta da Nuvem saqueou metade dos ryous da Suna",bc_blue|bc_all;}
+	if (#nevoa == 1) {sleep2 2000; set $nevoa_ryous, $nevoa_ryous + @areia_ryou / 2; set $areia_ryous, @areia_ryou/2; 	announce "Após a destruição, a Vila Oculta da Névoa saqueou metade dos ryous da Suna",bc_blue|bc_all;}
+	sleep 4000;
+	announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Suna] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $sun1dest,1;
+	if($bijuu_areia == 0) {announce "Mas parece que não há Bijuus na prisão...",bc_blue|bc_all; end;}
+	if($Ichibi_areia == 1)  { if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "moc_fild01","edi_15::OnMapConquisted15";  set $Ichibi_areia,0;   monster "moc_fild01",0,0,"Ichibi",1737,1,"edi_15::OnMapConquisted15";  disablenpc "Ichibi#1"; disablenpc "Ichibi#2"; disablenpc "Ichibi#3"; disablenpc "Ichibi#4"; disablenpc "Ichibi#5"; }
+	if($Nibi_areia == 1)    { if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "yuno_fild08","edi_16::OnMapConquisted16"; set $Nibi_areia,0;     monster "yuno_fild08",0,0,"Nibi",1984,1,"edi_16::OnMapConquisted16";   disablenpc "Nibi#1"; disablenpc "Nibi#2"; disablenpc "Nibi#3"; disablenpc "Nibi#4"; disablenpc "Nibi#5"; }
+	if($sanbi_areia == 1)   { if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "mjolnir_06","edi_17::OnMapConquisted17";  set $sanbi_areia,0;    monster "mjolnir_06",0,0,"Sanbi",1986,1,"edi_17::OnMapConquisted17";   disablenpc "Sanbi#1"; disablenpc "Sanbi#2"; disablenpc "Sanbi#3"; disablenpc "Sanbi#4"; disablenpc "Sanbi#5"; }
+	if($Yonbi_areia == 1)   { if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "cmd_fild01","edi_18::OnMapConquisted18";  set $Yonbi_areia,0;    monster "cmd_fild01",0,0,"Yonbi",1981,1,"edi_18::OnMapConquisted18";   disablenpc "Yonbi#1"; disablenpc "Yonbi#2"; disablenpc "Yonbi#3"; disablenpc "Yonbi#4"; disablenpc "Yonbi#5"; }
+	if($Gobi_areia == 1)    { if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "mjolnir_05","edi_19::OnMapConquisted19";  set $Gobi_areia,0;     monster "mjolnir_05",0,0,"Gobi",1982,1,"edi_19::OnMapConquisted19";    disablenpc "Gobi#1"; disablenpc "Gobi#2"; disablenpc "Gobi#3"; disablenpc "Gobi#4"; disablenpc "Gobi#5"; }
+	if($Rokubi_areia == 1)  { if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "gon_fild01","edi_20::OnMapConquisted20";  set $Rokubi_areia,0;   monster "gon_fild01",0,0,"Rokubi",1985,1,"edi_20::OnMapConquisted20";  disablenpc "Rokubi#1"; disablenpc "Rokubi#2"; disablenpc "Rokubi#3"; disablenpc "Rokubi#4"; disablenpc "Rokubi#5"; }
+	if($Shichibi_areia == 1){ if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "hu_fild03","edi_21::OnMapConquisted21";   set $Shichibi_areia,0; monster "hu_fild03",0,0,"Shichibi",1983,1,"edi_21::OnMapConquisted21"; disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5"; }
+	if($Hachibi_areia == 1) { if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "ein_fild01","edi_22::OnMapConquisted22";  set $Hachibi_areia,0;  monster "ein_fild01",0,0,"Hachibi",1738,1,"edi_22::OnMapConquisted22"; disablenpc "Hachibi#1"; disablenpc "Hachibi#2"; disablenpc "Hachibi#3"; disablenpc "Hachibi#4"; disablenpc "Hachibi#5"; }
+	if($Kyuubi_areia == 1)  { if ($bijuu_areia > 0) {set $bijuu_areia,$bijuu_areia - 1; } killmonster "moc_fild03","edi_23::OnMapConquisted23";  set $Kyuubi_areia,0;   monster "moc_fild03",0,0,"Kyuubi",1086,1,"edi_23::OnMapConquisted23";  disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2"; disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4"; disablenpc "Kyuubi#5"; }
+	end;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+// Kirigakure
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+-	script	dest_nev3	1083,{
+
+OnMapConquisted98:
+
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício principal da Névoa!",bc_blue|bc_all;
+	set @nevoa_ryou,$nevoa_ryous;
+	if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) { set $akatsuki_ryous, $akatsuki_ryous + @nevoa_ryou / 2; set $nevoa_ryous, @nevoa_ryou/2; sleep 4000; announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all; sleep 4000; announce "[Névoa] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all; set $nev3dest,1; sleep 4000;}
+	if (#konoha == 1) {sleep2 2000; set $konoha_ryous, $konoha_ryous + @nevoa_ryou / 2; set $nevoa_ryous, @nevoa_ryou/2; 	announce "Após a destruição, a Vila Oculta de Konoha saqueou metade dos ryous da Névoa",bc_blue|bc_all;}
+	if (#nuvem == 1) {sleep2 2000; set $nuvem_ryous, $nuvem_ryous + @nevoa_ryou / 2; set $nevoa_ryous, @nevoa_ryou/2; 	announce "Após a destruição, a Vila Oculta da Nuvem saqueou metade dos ryous da Névoa",bc_blue|bc_all;}
+	if (#suna == 1) {sleep2 2000; set $areia_ryous, $areia_ryous + @nevoa_ryou / 2; set $nevoa_ryous, @nevoa_ryou/2; 	announce "Após a destruição, a Vila Oculta da Suna saqueou metade dos ryous da Névoa",bc_blue|bc_all;}
+	sleep 4000;
+	announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Névoa] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $nev1dest,1;
+	if($bijuu_nevoa == 0) {announce "Mas parece que não há Bijuus na prisão...",bc_blue|bc_all; end;}
+	if($Ichibi_kiri == 1)  { if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "moc_fild01","edi_15::OnMapConquisted15";  set $Ichibi_kiri,0;   monster "moc_fild01",0,0,"Ichibi",1737,1,"edi_15::OnMapConquisted15";  disablenpc "Ichibi#1"; disablenpc "Ichibi#2";     disablenpc "Ichibi#3"; disablenpc "Ichibi#4";     disablenpc "Ichibi#5";   }
+	if($Nibi_kiri == 1)    { if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "yuno_fild08","edi_16::OnMapConquisted16"; set $Nibi_kiri,0;     monster "yuno_fild08",0,0,"Nibi",1984,1,"edi_16::OnMapConquisted16";   disablenpc "Nibi#1"; disablenpc "Nibi#2";         disablenpc "Nibi#3"; disablenpc "Nibi#4";         disablenpc "Nibi#5";     }
+	if($sanbi_kiri == 1)   { if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "mjolnir_06","edi_17::OnMapConquisted17";  set $sanbi_kiri,0;    monster "mjolnir_06",0,0,"Sanbi",1986,1,"edi_17::OnMapConquisted17";   disablenpc "Sanbi#1"; disablenpc "Sanbi#2";       disablenpc "Sanbi#3"; disablenpc "Sanbi#4";       disablenpc "Sanbi#5";    }
+	if($Yonbi_kiri == 1)   { if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "cmd_fild01","edi_18::OnMapConquisted18";  set $Yonbi_kiri,0;    monster "cmd_fild01",0,0,"Yonbi",1981,1,"edi_18::OnMapConquisted18";   disablenpc "Yonbi#1"; disablenpc "Yonbi#2";       disablenpc "Yonbi#3"; disablenpc "Yonbi#4";       disablenpc "Yonbi#5";    }
+	if($Gobi_kiri == 1)    { if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "mjolnir_05","edi_19::OnMapConquisted19";  set $Gobi_kiri,0;     monster "mjolnir_05",0,0,"Gobi",1982,1,"edi_19::OnMapConquisted19";    disablenpc "Gobi#1"; disablenpc "Gobi#2";         disablenpc "Gobi#3"; disablenpc "Gobi#4";         disablenpc "Gobi#5";     }
+	if($Rokubi_kiri == 1)  { if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "gon_fild01","edi_20::OnMapConquisted20";  set $Rokubi_kiri,0;   monster "gon_fild01",0,0,"Rokubi",1985,1,"edi_20::OnMapConquisted20";  disablenpc "Rokubi#1"; disablenpc "Rokubi#2";     disablenpc "Rokubi#3"; disablenpc "Rokubi#4";     disablenpc "Rokubi#5";   }
+	if($Shichibi_kiri == 1){ if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "hu_fild03","edi_21::OnMapConquisted21";   set $Shichibi_kiri,0; monster "hu_fild03",0,0,"Shichibi",1983,1,"edi_21::OnMapConquisted21"; disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5"; }
+	if($Hachibi_kiri == 1) { if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "ein_fild01","edi_22::OnMapConquisted22";  set $Hachibi_kiri,0;  monster "ein_fild01",0,0,"Hachibi",1738,1,"edi_22::OnMapConquisted22"; disablenpc "Hachibi#1"; disablenpc "Hachibi#2";   disablenpc "Hachibi#3"; disablenpc "Hachibi#4";   disablenpc "Hachibi#5";  }
+	if($Kyuubi_kiri == 1)  { if ($bijuu_nevoa > 0) {set $bijuu_nevoa,$bijuu_nevoa - 1;} killmonster "moc_fild03","edi_23::OnMapConquisted23";  set $Kyuubi_kiri,0;   monster "moc_fild03",0,0,"Kyuubi",1086,1,"edi_23::OnMapConquisted23";  disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2";     disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4";     disablenpc "Kyuubi#5";   }
+	end;
+}
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+// Kumogakure
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+
+-	script	dest_nuv3	1083,{
+
+OnMapConquisted101:
+	announce "O shinobi "+strcharinfo(0)+" acaba de destruir o edifício principal da Nuvem!",bc_blue|bc_all;
+	set @nuvem_ryou,$nuvem_ryous;
+	if (countitem(30082) >= 1) || (countitem(30083) >= 1) || (countitem(30084) >= 1) || (countitem(30085) >= 1) { set $akatsuki_ryous, $akatsuki_ryous + @nuvem_ryous / 2; set $nuvem_ryous, @nuvem_ryou/2; sleep 4000; announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all; sleep 4000; announce "[Nuvem] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all; set $nuv3dest,1; sleep 4000;}
+	if (#konoha == 1){sleep2 2000; set $konoha_ryous, $konoha_ryous + @nuvem_ryou / 2; set $nuvem_ryous, @nuvem_ryou/2; announce "Após a destruição, a Vila Oculta de Konoha saqueou metade dos ryous da Nuvem",bc_blue|bc_all;}
+	if (#nevoa == 1) {sleep2 2000; set $nevoa_ryous, $nevoa_ryous + @nuvem_ryou / 2;   set $nuvem_ryous, @nuvem_ryou/2; announce "Após a destruição, a Vila Oculta de Névoa saqueou metade dos ryous da Nuvem",bc_blue|bc_all;}
+	if (#suna == 1)  {sleep2 2000; set $areia_ryous, $areia_ryous + @nuvem_ryou / 2;   set $nuvem_ryous, @nuvem_ryou/2; announce "Após a destruição, a Vila Oculta de Areia saqueou metade dos ryous da Nuvem",bc_blue|bc_all;}
+	sleep 4000;
+	announce "O pessoal encarregado pelo funcionamento econômico da vila estão feridos e indispostos, com isso missões, e investimentos estão desativados",bc_blue|bc_all;
+	sleep 4000;
+	announce "[Nuvem] Peça o kage para consertar o edifício o mais rápido possível para normalizar a situação",bc_blue|bc_all;
+	set $nuv1dest,1;
+	if($bijuu_nuvem == 0) {announce "Mas parece que não há Bijuus na prisão...",bc_blue|bc_all; end;}
+	if($Ichibi_nuvem == 1)  { if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "moc_fild01","edi_15::OnMapConquisted15";  set $Ichibi_nuvem,0;   monster "moc_fild01",0,0,"Ichibi",1737,1,"edi_15::OnMapConquisted15";  disablenpc "Ichibi#1"; disablenpc "Ichibi#2"; disablenpc "Ichibi#3"; disablenpc "Ichibi#4"; disablenpc "Ichibi#5";}
+	if($Nibi_nuvem == 1)    { if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "yuno_fild08","edi_16::OnMapConquisted16"; set $Nibi_nuvem,0;     monster "yuno_fild08",0,0,"Nibi",1984,1,"edi_16::OnMapConquisted16";   disablenpc "Nibi#1"; disablenpc "Nibi#2"; disablenpc "Nibi#3"; disablenpc "Nibi#4"; disablenpc "Nibi#5"; }
+	if($sanbi_nuvem == 1)   { if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "mjolnir_06","edi_17::OnMapConquisted17";  set $sanbi_nuvem,0;    monster "mjolnir_06",0,0,"Sanbi",1986,1,"edi_17::OnMapConquisted17";   disablenpc "Sanbi#1"; disablenpc "Sanbi#2"; disablenpc "Sanbi#3"; disablenpc "Sanbi#4"; disablenpc "Sanbi#5"; }
+	if($Yonbi_nuvem == 1)   { if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "cmd_fild01","edi_18::OnMapConquisted18";  set $Yonbi_nuvem,0;    monster "cmd_fild01",0,0,"Yonbi",1981,1,"edi_18::OnMapConquisted18";   disablenpc "Yonbi#1"; disablenpc "Yonbi#2"; disablenpc "Yonbi#3"; disablenpc "Yonbi#4"; disablenpc "Yonbi#5"; }
+	if($Gobi_nuvem == 1)    { if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "mjolnir_05","edi_19::OnMapConquisted19";  set $Gobi_nuvem,0;     monster "mjolnir_05",0,0,"Gobi",1982,1,"edi_19::OnMapConquisted19";    disablenpc "Gobi#1"; disablenpc "Gobi#2"; disablenpc "Gobi#3"; disablenpc "Gobi#4"; disablenpc "Gobi#5"; }
+	if($Rokubi_nuvem == 1)  { if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "gon_fild01","edi_20::OnMapConquisted20";  set $Rokubi_nuvem,0;   monster "gon_fild01",0,0,"Rokubi",1985,1,"edi_20::OnMapConquisted20";  disablenpc "Rokubi#1"; disablenpc "Rokubi#2"; disablenpc "Rokubi#3"; disablenpc "Rokubi#4"; disablenpc "Rokubi#5"; }
+	if($Shichibi_nuvem == 1){ if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "hu_fild03","edi_21::OnMapConquisted21";   set $Shichibi_nuvem,0; monster "hu_fild03",0,0,"Shichibi",1983,1,"edi_21::OnMapConquisted21"; disablenpc "Shichibi#1"; disablenpc "Shichibi#2"; disablenpc "Shichibi#3"; disablenpc "Shichibi#4"; disablenpc "Shichibi#5"; }
+	if($Hachibi_nuvem == 1) { if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "ein_fild01","edi_22::OnMapConquisted22";  set $Hachibi_nuvem,0;  monster "ein_fild01",0,0,"Hachibi",1738,1,"edi_22::OnMapConquisted22"; disablenpc "Hachibi#1"; disablenpc "Hachibi#2"; disablenpc "Hachibi#3"; disablenpc "Hachibi#4"; disablenpc "Hachibi#5"; }
+	if($Kyuubi_nuvem == 1)  { if ($bijuu_nuvem > 0) {	set $bijuu_nuvem,$bijuu_nuvem - 1;} killmonster "moc_fild03","edi_23::OnMapConquisted23";  set $Kyuubi_nuvem,0;   monster "moc_fild03",0,0,"Kyuubi",1086,1,"edi_23::OnMapConquisted23";  disablenpc "Kyuubi#1"; disablenpc "Kyuubi#2"; disablenpc "Kyuubi#3"; disablenpc "Kyuubi#4"; disablenpc "Kyuubi#5"; }
+	end;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+
+-	script	edi_15	-1,{
+
+OnMapConquisted15:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "moc_fild01") {end;}
+announce "O Ichibi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "moc_fild01","edi_15::OnMapConquisted15";
+
+monster "moc_fild01",0,0,"Ichibi",1737,1,"edi_15::OnMapConquisted15";
+
+end;
+
+}
+
+-	script	edi_16	-1,{
+
+OnMapConquisted16:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "yuno_fild08") {end;}
+announce "O Nibi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "yuno_fild08","edi_16::OnMapConquisted16";
+
+monster "yuno_fild08",0,0,"Nibi",1984,1,"edi_16::OnMapConquisted16";
+end;
+
+}
+
+-	script	edi_17	-1,{
+
+OnMapConquisted17:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "mjolnir_06") {end;}
+announce "O Sanbi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "mjolnir_06","edi_17::OnMapConquisted17";
+monster "mjolnir_06",0,0,"Sanbi",1986,1,"edi_17::OnMapConquisted17";
+end;
+
+}
+
+-	script	edi_18	-1,{
+
+OnMapConquisted18:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "cmd_fild01") {end;}
+announce "O Yonbi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "cmd_fild01","edi_18::OnMapConquisted18";
+monster "cmd_fild01",0,0,"Yonbi",1981,1,"edi_18::OnMapConquisted18";
+end;
+
+}
+
+-	script	edi_19	-1,{
+
+OnMapConquisted19:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "mjolnir_05") {end;}
+announce "O Gobi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "mjolnir_05","edi_19::OnMapConquisted19";
+monster "mjolnir_05",0,0,"Gobi",1982,1,"edi_19::OnMapConquisted19";
+end;
+
+}
+
+-	script	edi_20	-1,{
+
+OnMapConquisted20:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "gon_fild01") {end;}
+announce "O Rokubi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "gon_fild01","edi_20::OnMapConquisted20";
+
+monster "gon_fild01",0,0,"Rokubi",1985,1,"edi_20::OnMapConquisted20";
+end;
+
+}
+
+-	script	edi_21	-1,{
+
+OnMapConquisted21:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "hu_fild03") {end;}
+announce "O Shichibi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "hu_fild03","edi_21::OnMapConquisted21";
+monster "hu_fild03",0,0,"Shichibi",1983,1,"edi_21::OnMapConquisted21";
+end;
+
+}
+
+-	script	edi_22	-1,{
+
+OnMapConquisted22:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "ein_fild01") {end;}
+announce "O Hachibi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "ein_fild01","edi_22::OnMapConquisted22";
+monster "ein_fild01",0,0,"Hachibi",1738,1,"edi_22::OnMapConquisted22";
+
+end;
+
+}
+
+-	script	edi_23	-1,{
+
+OnMapConquisted23:
+if (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kirigakure") && (strcharinfo(3) != "kumogakure") {end;}
+if (strcharinfo(3) == "moc_fild03") {end;}
+announce "A Kyuubi que estava livre dentro de uma vila foi derrotado e fugiu para uma caverna",bc_blue|bc_all;
+killmonster "moc_fild03","edi_23::OnMapConquisted23";
+monster "moc_fild03",0,0,"Kyuubi",1086,1,"edi_23::OnMapConquisted23";
+end;
+
+}
+
+// -----------------------------------------------------------------------------------------------------------------
+// 												Evento Edificio
+// -----------------------------------------------------------------------------------------------------------------
+
+-	script	desbugquebra	1083,{
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//			Iniciando
+OnWed2000:
+	setcastledata "konoha3",1,5;
+	setcastledata "kirigakure",1,4;
+
+	announce "[Edifícios] O horário de guerra entre as vilas está aberto, com isso os edifícios estão desprotegidos até 21:00!",bc_blue|bc_all;
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+//					Edificios
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+
+	killmonster "konoha3","dest_kon3::OnMapConquisted92";
+	
+	killmonster "sunagakure","dest_sun3::OnMapConquisted95";
+	
+	killmonster "kirigakure","dest_nev3::OnMapConquisted98";
+	
+	killmonster "kumogakure","dest_nuv3::OnMapConquisted101";
+	
+	guardian "konoha3",193,168,"Edifício Principal",1332,"dest_kon3::OnMapConquisted92";
+		
+	guardian "kirigakure",168,119,"Edifício Principal",1338,"dest_nev3::OnMapConquisted98";
+	
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+//					Portão
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+	killmonster "pay_fild07","edi_11::OnMapConquisted11";
+	killmonster "moc_fild12","edi_12::OnMapConquisted12";
+	killmonster "prt_fild03","edi_13::OnMapConquisted13";
+	killmonster "ein_fild02","edi_14::OnMapConquisted14";
+	
+	set $konoha_caiu,0;
+	set $areia_caiu,0;
+	set $nevoa_caiu,0;
+	set $nuvem_caiu,0;
+	
+	if ($konoha_portao == 0) {monster "pay_fild07",280,378,"Portão",2001,1,"edi_11::OnMapConquisted11";}
+	if ($konoha_portao == 1) {monster "pay_fild07",280,378,"Portão",2002,1,"edi_11::OnMapConquisted11";}
+	if ($konoha_portao == 2) {monster "pay_fild07",280,378,"Portão",2003,1,"edi_11::OnMapConquisted11";}
+	if ($konoha_portao == 3) {monster "pay_fild07",280,378,"Portão",2004,1,"edi_11::OnMapConquisted11";}
+	if ($konoha_portao == 4) {monster "pay_fild07",280,378,"Portão",2005,1,"edi_11::OnMapConquisted11";}
+	if ($konoha_portao == 5) {monster "pay_fild07",280,378,"Portão",2006,1,"edi_11::OnMapConquisted11";}
+	
+	if ($areia_portao == 0) {monster "moc_fild12",159,376,"Portão",2001,1,"edi_12::OnMapConquisted12";}
+	if ($areia_portao == 1) {monster "moc_fild12",159,376,"Portão",2002,1,"edi_12::OnMapConquisted12";}
+	if ($areia_portao == 2) {monster "moc_fild12",159,376,"Portão",2003,1,"edi_12::OnMapConquisted12";}
+	if ($areia_portao == 3) {monster "moc_fild12",159,376,"Portão",2004,1,"edi_12::OnMapConquisted12";}
+	if ($areia_portao == 4) {monster "moc_fild12",159,376,"Portão",2005,1,"edi_12::OnMapConquisted12";}
+	if ($areia_portao == 5) {monster "moc_fild12",159,376,"Portão",2006,1,"edi_12::OnMapConquisted12";}
+	
+	if ($nevoa_portao == 0) {monster "prt_fild03",196,276,"Portão",2001,1,"edi_13::OnMapConquisted13";}
+	if ($nevoa_portao == 1) {monster "prt_fild03",196,276,"Portão",2002,1,"edi_13::OnMapConquisted13";}
+	if ($nevoa_portao == 2) {monster "prt_fild03",196,276,"Portão",2003,1,"edi_13::OnMapConquisted13";}
+	if ($nevoa_portao == 3) {monster "prt_fild03",196,276,"Portão",2004,1,"edi_13::OnMapConquisted13";}
+	if ($nevoa_portao == 4) {monster "prt_fild03",196,276,"Portão",2005,1,"edi_13::OnMapConquisted13";}
+	if ($nevoa_portao == 5) {monster "prt_fild03",196,276,"Portão",2006,1,"edi_13::OnMapConquisted13";}
+	
+	if ($nuvem_portao == 0) {monster "ein_fild02",257,343,"Portão",2001,1,"edi_14::OnMapConquisted14";}
+	if ($nuvem_portao == 1) {monster "ein_fild02",257,343,"Portão",2002,1,"edi_14::OnMapConquisted14";}
+	if ($nuvem_portao == 2) {monster "ein_fild02",257,343,"Portão",2003,1,"edi_14::OnMapConquisted14";}
+	if ($nuvem_portao == 3) {monster "ein_fild02",257,343,"Portão",2004,1,"edi_14::OnMapConquisted14";}
+	if ($nuvem_portao == 4) {monster "ein_fild02",257,343,"Portão",2005,1,"edi_14::OnMapConquisted14";}
+	if ($nuvem_portao == 5) {monster "ein_fild02",257,343,"Portão",2006,1,"edi_14::OnMapConquisted14";}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+//					Entrada
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	disablenpc "Entrada pra Konoha";
+	disablenpc "Entrada pra Suna";
+	disablenpc "Entrada pra Nuvem";
+	disablenpc "Entrada pra Nevoa";
+	disablenpc "Esgoto Konoha";
+	disablenpc "Esgoto Suna";
+	disablenpc "Esgoto Nuvem";
+	disablenpc "Esgoto Nevoa";
+	//----------------------------
+	enablenpc "Entrada Konoha";
+	enablenpc "Entrada Suna";
+	enablenpc "Entrada Nuvem";
+	enablenpc "Entrada Nevoa";
+	maprespawnguildid .EEmap$[1],.EEgid[5],2;
+	maprespawnguildid .EEmap$[4],.EEgid[4],2;
+	
+	set $EEinfo1[11],0;
+	set $EEinfo1[12],0;
+	set $EEinfo1[13],0;
+	set $EEinfo1[14],0;
+	set $EEinfo1[15],0;
+	set $EEinfo1[16],0;
+	//-----------------------
+	set $EEinfo2[11],0;
+	set $EEinfo2[12],0;
+	set $EEinfo2[13],0;
+	set $EEinfo2[14],0;
+	set $EEinfo2[15],0;
+	set $EEinfo2[16],0;
+	//-----------------------
+	set $EEinfo3[11],0;
+	set $EEinfo3[12],0;
+	set $EEinfo3[13],0;
+	set $EEinfo3[14],0;
+	set $EEinfo3[15],0;
+	set $EEinfo3[16],0;
+	//-----------------------
+	set $EEinfo4[11],0;
+	set $EEinfo4[12],0;
+	set $EEinfo4[13],0;
+	set $EEinfo4[14],0;
+	set $EEinfo4[15],0;
+	set $EEinfo4[16],0;
+	
+	set $EEinfo[1], 1;
+	pvpoff "konoha3";
+	pvpoff "kirigakure";
+	pvpoff "kumogakure";
+	pvpoff "sunagakure";
+	pvpoff "pay_fild07";
+	pvpoff "moc_fild12";
+	pvpoff "prt_fild03";
+	pvpoff "ein_fild02";
+	gvgon "konoha3";
+	gvgon "kirigakure";
+	gvgon "kumogakure";
+	gvgon "sunagakure";
+	gvgon "pay_fild07";
+	gvgon "moc_fild12";
+	gvgon "prt_fild03";
+	gvgon "ein_fild02";
+
+//-----------------------------------------
+
+	OnInit:
+		setarray .EEmap$[1],"konoha3","kirigakure";
+		setarray .EEgid[1],5,4;
+		end;
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//			Finalizando
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+OnWed2100:
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+//					Edificios
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+	announce "[Edifícios] O horário de guerra entre as vilas está finalizado!",bc_blue|bc_all;
+	
+	killmonster "konoha3","dest_kon3::OnMapConquisted92";
+	
+	killmonster "sunagakure","dest_sun3::OnMapConquisted95";
+	
+	killmonster "kirigakure","dest_nev3::OnMapConquisted98";
+	
+	killmonster "kumogakure","dest_nuv3::OnMapConquisted101";
+	
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+//					Portão
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	killmonster "pay_fild07","edi_11::OnMapConquisted11";
+	killmonster "moc_fild12","edi_12::OnMapConquisted12";
+	killmonster "prt_fild03","edi_13::OnMapConquisted13";
+	killmonster "ein_fild02","edi_14::OnMapConquisted14";
+	
+	set $konoha_caiu,0;
+	set $areia_caiu,0;
+	set $nevoa_caiu,0;
+	set $nuvem_caiu,0;
+	
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+//					Entrada
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+	enablenpc "Entrada pra Konoha";
+	enablenpc "Entrada pra Suna";
+	enablenpc "Entrada pra Nuvem";
+	enablenpc "Entrada pra Nevoa";
+	enablenpc "Esgoto Konoha";
+	enablenpc "Esgoto Nevoa";
+	enablenpc "Esgoto Nuvem";
+	enablenpc "Esgoto Suna";
+	//-----------------------------
+	disablenpc "Entrada Konoha";
+	disablenpc "Entrada Suna";
+	disablenpc "Entrada Nuvem";
+	disablenpc "Entrada Nevoa";
+	set $EEinfo[1], 0;
+	gvgoff "konoha3";
+	gvgoff "kirigakure";
+	gvgoff "kumogakure";
+	gvgoff "sunagakure";
+	gvgoff "pay_fild07";
+	gvgoff "moc_fild12";
+	gvgoff "prt_fild03";
+	gvgoff "ein_fild02";
+	pvpon "konoha3";
+	pvpon "kirigakure";
+	pvpon "kumogakure";
+	pvpon "sunagakure";
+	pvpon "pay_fild07";
+	pvpon "moc_fild12";
+	pvpon "prt_fild03";
+	pvpon "ein_fild02";
+	end;
+	
+OnPCDieEvent:
+	if($EEinfo[1] == 0) end;
+	if(strcharinfo(3) != "konoha3" && strcharinfo(3) != "kirigakure" && strcharinfo(3) != "kumogakure" && strcharinfo(3) != "sunagakure") end;
+	warp "SavePoint",0,0;
+}
+
+-	script	Entrada_Edificio	-1,{
+
+OnInit:
+if ($EEinfo[1] == 0) {
+	disablenpc "Entrada Konoha";
+	disablenpc "Entrada Suna";
+	disablenpc "Entrada Nevoa";
+	disablenpc "Entrada Nuvem";
+}
+
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+//																 Entrada
+// ============================================
+// 					Konoha
+// ============================================
+pay_fild07,280,382,4	script	Entrada Konoha	119,{
+
+// Nome do npc
+set .npc$,"^800000[Entrada Konoha]^000000";
+
+	if($konoha_caiu != 1) { end; }
+	mes .npc$;
+	mes "Registro de entradas:";
+	mes "Konoha: ["+getmapguildusers("konoha3",1)+"]";
+	mes "Suna: ["+getmapguildusers("konoha3",2)+"]";
+	mes "Névoa: ["+getmapguildusers("konoha3",3)+"]";
+	mes "Núvem: ["+getmapguildusers("konoha3",4)+"]";
+	if(select("Entrar:Sair") == 2) close;
+		
+		if(#konoha) {
+			warp "konoha3",193,56;
+			end;
+		}
+		getguildmember 1;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#suna && getmapguildusers("konoha3",2) < $@guildmembercount[.@i]) {
+		if(#suna) {
+			warp "konoha3",193,56;
+			announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Konohagakure.",bc_blue|bc_all;
+			end;
+		}
+		getguildmember 1;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#nevoa && getmapguildusers("konoha3",3) < $@guildmembercount[.@i]) {
+		if(#nevoa) {
+			warp "konoha3",193,56;
+			announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Konohagakure.",bc_blue|bc_all;
+			end;
+		}
+		getguildmember 1;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#nuvem && getmapguildusers("konoha3",4) < $@guildmembercount[.@i]) {
+		if(#nuvem) {
+			warp "konoha3",193,56;
+			announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Konohagakure.",bc_blue|bc_all;
+			end;
+		}
+		next;
+		mes .npc$;
+		mes "Limite de Vila.";
+		close;
+}
+
+// ============================================
+// 					Suna
+// ============================================
+
+moc_fild12,159,380,4	script	Entrada Suna	119,{
+
+// Nome do npc
+set .npc$,"^800000[Entrada Suna]^000000";
+
+	if($areia_caiu != 1) { end; }
+	mes .npc$;
+	mes "Registro de entradas:";
+	mes "Konoha: ["+getmapguildusers("sunagakure",1)+"]";
+	mes "Suna: ["+getmapguildusers("sunagakure",2)+"]";
+	mes "Névoa: ["+getmapguildusers("sunagakure",3)+"]";
+	mes "Núvem: ["+getmapguildusers("sunagakure",4)+"]";
+	if(select("Entrar:Sair") == 2) close;
+
+		getguildmember 2;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#konoha && getmapguildusers("sunagakure",1) < $@guildmembercount[.@i]) {
+		if(#konoha) {
+			warp "sunagakure",199,65;
+			announce strcharinfo(0)+" da Vila Oculta da Konoha acaba de invadir Sunagakure.",bc_blue|bc_all;
+			end;
+		}
+		if(#suna) {
+			warp "sunagakure",199,65;
+			end;
+		}
+		getguildmember 2;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#nevoa && getmapguildusers("sunagakure",3) < $@guildmembercount[.@i]) {
+		if(#nevoa) {
+			warp "sunagakure",199,65;
+			announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Sunagakure.",bc_blue|bc_all;
+			end;
+		}
+		getguildmember 2;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#nuvem && getmapguildusers("sunagakure",4) < $@guildmembercount[.@i]) {
+		if(#nuvem) {
+			warp "sunagakure",199,65;
+			announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Sunagakure.",bc_blue|bc_all;
+			end;
+		}
+		next;
+		mes .npc$;
+		mes "Limite de Vila.";
+		close;
+}
+
+// ============================================
+// 					Nevoa
+// ============================================
+
+prt_fild03,196,281,4	script	Entrada Nevoa	119,{
+
+// Nome do npc
+set .npc$,"^800000[Entrada Nevoa]^000000";
+
+	if($nevoa_caiu != 1) { end; }
+	mes .npc$;
+	mes "Registro de entradas:";
+	mes "Konoha: ["+getmapguildusers("kirigakure",1)+"]";
+	mes "Suna: ["+getmapguildusers("kirigakure",2)+"]";
+	mes "Névoa: ["+getmapguildusers("kirigakure",3)+"]";
+	mes "Núvem: ["+getmapguildusers("kirigakure",4)+"]";
+	if(select("Entrar:Sair") == 2) close;
+		
+		getguildmember 3;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#konoha && getmapguildusers("kirigakure",1) < $@guildmembercount[.@i]) {
+		if(#konoha) {
+			warp "kirigakure",205,39;
+			announce strcharinfo(0)+" da Vila Oculta da Konoha acaba de invadir Kirigakure.",bc_blue|bc_all;
+			end;
+		}
+		getguildmember 3;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#suna && getmapguildusers("kirigakure",2) < $@guildmembercount[.@i]) {
+		if(#suna) {
+			warp "kirigakure",205,39;
+			announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Kirigakure.",bc_blue|bc_all;
+			end;
+		}
+		if(#nevoa) {
+			warp "kirigakure",205,39;
+			end;
+		}
+		getguildmember 3;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#nuvem && getmapguildusers("kirigakure",4) < $@guildmembercount[.@i]) {
+		if(#nuvem) {
+			warp "kirigakure",205,39;
+			announce strcharinfo(0)+" da Vila Oculta da Nuvem acaba de invadir Kirigakure.",bc_blue|bc_all;
+			end;
+		}
+		next;
+		mes .npc$;
+		mes "Limite de Vila.";
+		close;
+}
+
+// ============================================
+// 					Nuvem
+// ============================================
+
+ein_fild02,256,347,4	script	Entrada Nuvem	119,{
+
+// Nome do npc
+set .npc$,"^800000[Entrada Nuvem]^000000";
+
+	if($nuvem_caiu != 1) { end; }
+	mes .npc$;
+	mes "Registro de entradas:";
+	mes "Konoha: ["+getmapguildusers("kumogakure",1)+"]";
+	mes "Suna: ["+getmapguildusers("kumogakure",2)+"]";
+	mes "Névoa: ["+getmapguildusers("kumogakure",3)+"]";
+	mes "Núvem: ["+getmapguildusers("kumogakure",4)+"]";
+	if(select("Entrar:Sair") == 2) close;
+
+		getguildmember 4;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#konoha && getmapguildusers("kumogakure",1) < $@guildmembercount[.@i]) {
+		if(#konoha) {
+			warp "kumogakure",135,23;
+			announce strcharinfo(0)+" da Vila Oculta da Konoha acaba de invadir Kumogakure.",bc_blue|bc_all;
+			end;
+		}
+		getguildmember 4;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#suna && getmapguildusers("kumogakure",2) < $@guildmembercount[.@i]) {
+		if(#suna) {
+			warp "kumogakure",135,23;
+			announce strcharinfo(0)+" da Vila Oculta da Suna acaba de invadir Kumogakure.",bc_blue|bc_all;
+			end;
+		}
+		getguildmember 4;
+		//for ( .@i = 0; .@i < $@guildmembercount; .@i++ )
+		//if(#nevoa && getmapguildusers("kumogakure",3) < $@guildmembercount[.@i]) {
+		if(#nevoa) {
+			warp "kumogakure",135,23;
+			announce strcharinfo(0)+" da Vila Oculta da Névoa acaba de invadir Kumogakure.",bc_blue|bc_all;
+			end;
+		}
+		if(#nuvem) {
+			warp "kumogakure",135,23;
+			end;
+		}
+		next;
+		mes .npc$;
+		mes "Limite de Vila.";
+		close;
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+//												Portões
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-	script	edi_11	1083,{
+
+OnMapConquisted11:
+
+if (BaseLevel < 999) {
+
+announce ""+strcharinfo(0)+" destruiu o portão de konoha, mas ele é abaixo de nível 999, o portão foi restaurado.",0;
+
+if ($konoha_portao == 0) {monster "pay_fild07",280,378,"Portão",2001,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 1) {monster "pay_fild07",280,378,"Portão",2002,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 2) {monster "pay_fild07",280,378,"Portão",2003,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 3) {monster "pay_fild07",280,378,"Portão",2004,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 4) {monster "pay_fild07",280,378,"Portão",2005,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 5) {monster "pay_fild07",280,378,"Portão",2006,1,"edi_11::OnMapConquisted11";}
+end;
+}
+set $konoha_caiu,1;
+announce ""+strcharinfo(0)+" destruiu o portão de konoha, a vila está exposta!.",0;
+end;
+
+}
+
+-	script	edi_12	1083,{
+
+OnMapConquisted12:
+
+if (BaseLevel < 999) {
+
+announce ""+strcharinfo(0)+" destruiu o portão da suna, mas ele é abaixo de nível 999, o portão foi restaurado.",0;
+
+if ($areia_portao == 0) {monster "moc_fild12",159,376,"Portão",2001,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 1) {monster "moc_fild12",159,376,"Portão",2002,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 2) {monster "moc_fild12",159,376,"Portão",2003,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 3) {monster "moc_fild12",159,376,"Portão",2004,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 4) {monster "moc_fild12",159,376,"Portão",2005,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 5) {monster "moc_fild12",159,376,"Portão",2006,1,"edi_12::OnMapConquisted12";}
+end;
+}
+
+set $areia_caiu,1;
+announce ""+strcharinfo(0)+" destruiu o portão da areia, a vila está exposta!.",0;
+end;
+
+}
+
+-	script	edi_13	1083,{
+
+OnMapConquisted13:
+
+if (BaseLevel < 999) {
+
+announce ""+strcharinfo(0)+" destruiu o portão da névoa, mas ele é abaixo de nível 999, o portão foi restaurado.",0;
+
+if ($nevoa_portao == 0) {monster "prt_fild03",196,276,"Portão",2001,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 1) {monster "prt_fild03",196,276,"Portão",2002,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 2) {monster "prt_fild03",196,276,"Portão",2003,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 3) {monster "prt_fild03",196,276,"Portão",2004,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 4) {monster "prt_fild03",196,276,"Portão",2005,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 5) {monster "prt_fild03",196,276,"Portão",2006,1,"edi_13::OnMapConquisted13";}
+end;
+}
+
+set $nevoa_caiu,1;
+announce ""+strcharinfo(0)+" destruiu o portão da névoa, a vila está exposta!.",0;
+end;
+
+}
+
+-	script	edi_14	1083,{
+
+OnMapConquisted14:
+
+if (BaseLevel < 999) {
+
+announce ""+strcharinfo(0)+" destruiu o portão da Nuvem, mas ele é abaixo de nível 999, o portão foi restaurado.",0;
+
+if ($nuvem_portao == 0) {monster "ein_fild02",257,343,"Portão",2001,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 1) {monster "ein_fild02",257,343,"Portão",2002,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 2) {monster "ein_fild02",257,343,"Portão",2003,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 3) {monster "ein_fild02",257,343,"Portão",2004,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 4) {monster "ein_fild02",257,343,"Portão",2005,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 5) {monster "ein_fild02",257,343,"Portão",2006,1,"edi_14::OnMapConquisted14";}
+end;
+}
+
+
+set $nuvem_caiu,1;
+announce ""+strcharinfo(0)+" destruiu o portão da nuvem, a vila está exposta!.",0;
+end;
+
+}
+
+konoha3	mapflag	nowarp
+konoha3	mapflag	nowarpto
+konoha3	mapflag	nobranch
+konoha3	mapflag	nosave	SavePoint
+konoha3	mapflag	nomemo
+pay_fild07	mapflag	nomemo
+konoha3	mapflag	nopenalty
+konoha3	mapflag	noexp
+
+sunagakure	mapflag	nowarp
+sunagakure	mapflag	nowarpto
+sunagakure	mapflag	nobranch
+sunagakure	mapflag	nosave	SavePoint
+sunagakure	mapflag	nomemo
+moc_fild12	mapflag	nomemo
+sunagakure	mapflag	nopenalty
+sunagakure	mapflag	noexp
+
+kirigakure	mapflag	nowarp
+kirigakure	mapflag	nowarpto
+kirigakure	mapflag	nobranch
+kirigakure	mapflag	nosave	SavePoint
+kirigakure	mapflag	nomemo
+prt_fild03	mapflag	nomemo
+kirigakure	mapflag	nopenalty
+kirigakure	mapflag	noexp
+
+kumogakure	mapflag	nowarp
+kumogakure	mapflag	nowarpto
+kumogakure	mapflag	nobranch
+kumogakure	mapflag	nosave	SavePoint
+kumogakure	mapflag	nomemo
+ein_fild02	mapflag	nomemo
+kumogakure	mapflag	nopenalty
+kumogakure	mapflag	noexp

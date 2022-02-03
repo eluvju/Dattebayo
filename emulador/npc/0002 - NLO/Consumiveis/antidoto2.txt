@@ -1,0 +1,35 @@
+mjolnir_11,330,56,4	script	Comerciante#2	932,{
+
+if(countitem (712) < 30 && missaoruna == 1){
+     mes "[Comerciante]";
+    mes "Vejo que você não pegou as 30 Runas Sangrentas ainda.";
+    close;
+    }
+
+	mes "[Comerciante]";
+	mes "Você quer ganhar uma caixa com alguns Antídotos? Posso lhe oferecer em troca de um favor.";
+	if(select("Claro!:Não, obrigado.")==2)close;
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, preciso que você junte 30 Runa(s) Sangrenta.";
+	mes "Você pode conseguir elas de Demônio Farejador, neste mapa.";
+	set missaoruna,1;
+
+	if(countitem (712) < 30){
+	next;
+	mes "Vejo que você não juntou tudo ainda.";
+	mes "Junte os restantes. Ainda faltam Runa(s) Sangrenta!";
+	close;
+	}
+
+	next;
+	mes "[Comerciante]";
+	mes "Muito bem, você completou a missão!";
+	mes "Aqui estão seus Antídotos!";
+	set missaoruna,0;
+	delitem 712,30;
+	getitem 1308,1;
+	query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 10 WHERE `char_id` = '"+getcharid(0)+"'");
+	dispbottom "10 Pontos de Missão adquiridos.";
+	close;
+	}

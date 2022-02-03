@@ -1,0 +1,47 @@
+-	script	on_PC_UseSkillf19	-1,{
+    end;
+//When a Character uses a skill
+
+//Shikon
+
+onPcUseSkillEvent:
+
+           if(lskillid == 54) {
+
+
+if (getskilllv(54) == 1) {
+
+if (Shikon != 1) {end;}
+if (skill54 >= 50) {skill 54,2,0; set skill54,0; dispbottom "[Sys] Level up"; end; }
+set skill54,skill54 +1;
+dispbottom "[Jutsu level] Shikon No Jutsu level 1: "+skill54+" de 50";
+
+end;
+
+}
+
+if (getskilllv(54) == 2) {
+if (Shikon != 1) {end;}
+if (skill54 >= 100) {skill 54,3,0; set skill54,0; dispbottom "[Sys] Level up"; end;}
+set skill54,skill54 +1;
+dispbottom "[Jutsu level] Shikon No Jutsu level 2: "+skill54+" de 100";
+
+end;
+
+}
+
+if (getskilllv(54) == 3) {
+
+if (Shikon != 1) {end;}
+if (skill54 >= 150) {skill 54,4,0; set skill54,0; dispbottom "[Sys] Level up"; end;}
+set skill54,skill54 +1;
+dispbottom "[Jutsu level] Shikon No Jutsu level 3: "+skill54+" de 150";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

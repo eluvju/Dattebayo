@@ -1,0 +1,101 @@
+moc_fild13,266,76,5	script	Jigyaku no Chakra::genint3	831,{
+
+if (getskilllv(76) >= 1) goto L_delete;
+if(gen_intermediario != 1) {mes "Você precisa estudar genjutsu intermediário antes de aprender esse genjutsu"; close;}
+if (checkquest(2048) == 1) goto L_go;
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsus intermediários, esse é o limite"; close;}
+if(Jigyaku == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(accept_gen_int == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if (WeaponLvl3 < 40) {mes "Seu nível de genjutsu está baixo demais, é preciso ter nível 40 pra aprender esse genjutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de genjutsu espalhados pelo mundo, eu posso lhe ensinar um genjutsu intermediário";
+next;
+mes "O genjutsu que eu ensino é o: Jigyaku no Chakra";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Jigyaku no Chakra
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(76) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(76) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 76,0,0;
+set Jigyaku,0;
+erasequest 2048;
+if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}
+if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_int_tres,1;
+set accept_gen_int,accept_gen_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter genjutsu intermedário level 40";
+mes "- Derrotar 30 Namekuji.";
+mes "- Obter 30 Zargônio";
+mes "- Obter 15 Brigan"; 
+mes "- Obter 20 Scell"; 
+setquest 2048;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsu intermediario, esse é o limite"; close;}
+if(gen_int_mobs_tres < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(912) <30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7054) < 15) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(911) < 20) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 912,30;
+delitem 7054,15;
+delitem 911,20;
+skill 76,1,0;
+set Jigyaku,1;
+set quest_gen_int_tres,0;
+set gen_int_mobs_tres, 0;
+completequest 2048;
+erasequest 2048;
+set gen_skill_int,gen_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Intermedíario]",0;
+}
+
+-	script	genint#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1031 && quest_gen_int_tres == 1) {set gen_int_mobs_tres,gen_int_mobs_tres +1; announce "[Genjutsu Quest] Você já derrotou "+gen_int_mobs_tres+" / 30 Namekuji",bc_blue|bc_self; end;}
+
+}
+
+gef_fild05,258,265,5	duplicate(genint3)	Jigyaku no Chakra#31	831,{
+moc_fild03,89,116,5	duplicate(genint3)	Jigyaku no Chakra#32	831,{
+yuno_fild05,191,91,5	duplicate(genint3)	Jigyaku no Chakra#33	831,{

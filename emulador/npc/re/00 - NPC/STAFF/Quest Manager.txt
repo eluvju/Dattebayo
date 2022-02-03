@@ -1,0 +1,121 @@
+//=
+//= ---------------------------------------
+//= isbegin_quest(<ID>)
+//=
+//= Return the state of the quest: 
+//=	0  = Quest not started (not in quest log)
+//=	1  = Quest has been given (state is either "inactive" or "active")
+//=	2  = Quest completed
+//=
+//= ---------------------------------------
+//=
+//==============================================================================
+reuniao,55,66,5	script	QuestsCAT::quest_manager	10152,{
+// ============================================================
+
+	.@npc$ = "                      ^008000[ "+strnpcinfo(1)+" ]^000000";
+	
+// ============================================================
+
+	if (getgmlevel() != 99) { goto naoeokira; }
+//	if (isbegin_quest(1) == 0) { goto nao_pegou_quest;}
+//	if (isbegin_quest(1) == 1) { goto quest_em_andamento;}
+//	if (isbegin_quest(1) == 2) { goto quest_completa;}
+	else {goto veterano;}
+
+// ============================================================
+	
+	veterano:
+	next;
+	mes .@npc$;
+	mes "Ola eu sou o gerenciador de quests, Posso lhe Ajudar?";
+	switch(select("^000080Adicionar^000000 Quest:^606060Completar^000000 Quest:^000300Remover^000000 Quest")) {
+	
+	case 1:
+	input .@add_quest;
+	next;
+	if (.@add_quest < 1000) { 	mes .@npc$;
+								mes "Quests Abaixo do ^FF0000ID 1000^000000 Não Existem";
+								close; }
+	if (isbegin_quest(.@add_quest) != 0) { 	mes .@npc$;
+											mes "Você Já Pegou a quest";
+											close;}
+	mes .@npc$;
+	mes "Quest Adicionada";
+	setquest .@add_quest;
+	close;
+
+	case 2:
+	next;
+	mes .@npc$;
+	mes "Ok vamos Completar sua quest ";
+	input .@completar_quest;
+	if ( isbegin_quest( .@completar_quest ) == 0 ){ next;
+													mes .@npc$;
+													mes "Você não pegou a quest";
+													close;}
+	if ( isbegin_quest( .@completar_quest ) == 1 ){	next;
+													mes .@npc$;
+													mes "Você ^FF0000Completou^000000 sua Quest";
+													completequest .@completar_quest;
+													close; }
+	if ( isbegin_quest( .@completar_quest ) == 2 ){ next;
+													mes .@npc$;
+													mes "Você já ^00FF00Completou^000000 sua Quest";
+													close;}
+	
+	case 3:
+	next;
+	mes .@npc$;
+	mes "Ok vamos REMOVER sua quest ";
+	input .@remover_quest;
+	if ( isbegin_quest( .@remover_quest ) == 0 ){ next;
+													mes .@npc$;
+													mes "Você não pegou a quest";
+													close;}
+	if ( isbegin_quest( .@remover_quest ) == 1 ){	next;
+													mes .@npc$;
+													mes "Você esta com a quest em ^FF0000Andamento^000000";
+													menu "Continuar?",-,"Fechar",close1;
+													next;
+													mes .@npc$;
+													mes "Quest Removida";
+													erasequest .@remover_quest;
+													close; }
+	if ( isbegin_quest( .@remover_quest ) == 2 ){ next;
+													mes .@npc$;
+													mes "Você já ^00FF00Completou^000000 sua Quest";
+													menu "Continuar?",-,"Fechar",close1;
+													erasequest .@remover_quest;
+													close; }
+																						
+	close1:
+	close;
+	
+	}
+// ============================================================
+
+	nao_pegou_quest:
+	mes .@npc$;
+	mes " Apenas Testando Quests ^FF0000NÃO PEGOU";
+	menu "Menu",veterano,"Sem chance",-;
+	close;
+
+	quest_em_andamento:
+	mes .@npc$;
+	mes " Apenas Testando Quests ^FF0000EM ANDAMENTO";
+	menu "Menu",veterano,"Sem chance",-;
+	close;
+	
+	quest_completa:
+	mes .@npc$;
+	mes " Apenas Testando Quests ^FF0000COMPLETOU ";
+	menu "Menu",veterano,"Sem chance",-;
+	close;
+	
+	naoeokira:
+	mes .@npc$;
+	mes "Eu só Respondo ao meu Mestre!";
+	close;
+	
+}

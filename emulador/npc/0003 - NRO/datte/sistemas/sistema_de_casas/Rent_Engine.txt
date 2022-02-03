@@ -1,0 +1,739 @@
+//===== eAthena Script ======================================= 
+//= Shared Functions - Housing for Rent
+//===== By: ================================================== 
+//= Zephyrus
+//=====Translation by: =======================================
+//= Preima
+//===== Current Version: ===================================== 
+//= 1.0 10399
+//= 1.1 - Translation Version 2
+//      - Added Summer Clothes (Need updated SVN or edited src)
+//      - Changed some found typos and overlooked spanish
+//= 1.2 - Did few edits with the grammar and got rid of typo in
+//        as corrected by DasStrolch
+//===== Compatible With: ===================================== 
+//= eAthena SVN Stable 
+//===== Description: ========================================= 
+//= Main functions applicable to the owners
+//= This reduces the size of scripts.
+//===== Additional Comments: ================================= 
+//= 1.0 Initial Version
+//============================================================ 
+
+//============================================================ 
+//= Function for the npc, entrance to the Villas
+//= (Number of Villa,Cost of Property,Number of Houses)
+//============================================================ 
+
+function	script	rent_villas	{
+	set @t, getarg(3);
+	mes "^FF0000[Alguém de Casas]^000000";
+	mes "Venha alugar a sua";
+	mes "" + @t + " casas disponíveis.";
+	mes "Custo da mensalidade: ^0000FF" + getarg(1) + " zeny^000000";
+	set @j, 22;
+	for (set @i, 1; @i <= @t; set @i, @i + 1) {
+		if (getd("$house" + getarg(2) + @i + "_rent") == 1) set @j, @j - 1;
+	}
+	if (@j == 0) mes "Não há casas disponíveis.";
+	else mes "Casas Disponíveis: ^0000FF" + @j + "^000000.";
+	close;
+}
+
+//============================================================ 
+//= Functions of the Signboard that shows the owners and GM options
+//= (id of Villa,Amount of Houses)
+//============================================================ 
+
+function	script	rent_letrero	{
+	mes "[Informação]";
+	mes "Atuais Donos:";
+	set @t, getarg(1);
+	for (set @i, 1; @i <= @t; set @i, @i + 1) {
+		if (getd("$house" + getarg(0) + @i + "_rent") == 1) {
+			if (@Color$ == "^0000FF")
+				set @Color$, "^FF0000";
+			else
+				set @Color$, "^0000FF";
+			// Detalle de Casa
+			mes @Color$ + "Casa Nº " + @i + " alugada a " + getd("$house" + getarg(0) + @i + "_user$") + ".";
+			if (getgmlevel())
+				mes "Acessada: " + getd("$house" + getarg(0) + @i + "_accesos") + " vezes";
+			mes "Final do contrato: " + getd("$house" + getarg(0) + @i + "_buy_day") + "-" + getd("$house" + getarg(0) + @i + "_buy_month") + "-" + getd("$house" + getarg(0) + @i + "_buy_year") + ".^000000";
+		}
+	}
+	if (getgmlevel() == 99) goto L_GMmenu;
+	close;
+
+L_GMmenu:
+	next;
+	menu "Liberar a casa",L_Liberar,"Clean Accounts",L_Limpiar,"Cancel",-;
+
+L_Salir:
+	mes "^FF0000[Informação]^000000";
+	mes "Level of administrative access";
+	mes "Goodbye...";
+	close;
+
+L_Limpiar:
+	mes "^FF0000[Informação]^000000";
+	for (set @i, 1; @i <= @t; set @i, @i + 1) {
+		setd "$house" + getarg(0) + @i + "_access", 0;
+	}
+	mes "Logs in accessing the house has been reseted.";
+	close;
+
+L_Liberar:
+	mes "^FF0000[Informação]^000000";
+	mes "You want to release a house?(1 - " + @t + ")";
+	mes "Enter the number of the house you want to release. (0 o mayor que " + @t + " para cancelar).";
+	next;
+	input @house;
+	if (@house < 1) goto L_Salir;
+	if (@house > @t) goto L_Salir;
+
+	if (getd("$house" + getarg(0) + @house + "_rent") == 1) {
+		mes "^FF0000[Information on Rents]^000000";
+		setd "$house" + getarg(0) + @house + "_rent", 0;
+		mes "The house " + @house + " has been released.";
+		killmonsterall "rentin" + getarg(0) + @house + ".gat"; // Kills the small monsters
+	} else {
+		mes "^FF0000[Rental Information]^000000";
+		mes "I'm sorry, but this house doesn't have an owner right now!";
+		mes "Please try again with a different number.";
+	}
+	close;
+}
+
+//============================================================ 
+//= Function for the Kafra (Warps you to the other Villas).
+//============================================================ 
+
+function	script	rent_kafra	{
+	mes "^FF0000[Assistente]^000000";
+	mes "Olá, Bem-vindo(a)!";
+	mes "Eu posso te levar para algum lugar por 2000z.";
+	if (Zeny < 2000) {
+		mes "Oh..Você não tem esse dinheiro. Você precisa me pagar ^FF00002000 zeny^000000 pelo warp.";
+		close;
+	}
+	mes "Onde gostaria de ir?";
+	next;
+	menu "Campo de Treinamento",L_Prontera,"Casas Suna",L_VMorroc,"Casas Konoha",L_VPayon,"Casas Névoa",L_VAlberta,"Casas Nuvem",L_VIzlude,"Lugar nenhum",-;
+	mes "^FF0000[Assistente]^000000";
+	mes "Volte quando precisar de meus serviços.";
+	close;
+
+L_Prontera:   set Zeny, Zeny - 2000; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "kakashi.gat",91,141; end;
+L_VProntera:  set Zeny, Zeny - 2000; mes "^FF0000[Assistente]^000000"; mes "Have nice trip!"; close2; warp "rent_mb.gat",133,113; end;
+L_VGeffen:    set Zeny, Zeny - 2000; mes "^FF0000[Kafra]^000000"; mes "Have nice trip!"; close2; warp "rent_md.gat",49,92; end;
+L_VMorroc:    set Zeny, Zeny - 2000; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "rent_mc.gat",49,92; end;
+L_VPayon:     set Zeny, Zeny - 2000; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "rent_ma.gat",49,92; end;
+L_VAlberta:   set Zeny, Zeny - 2000; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "rent_me.gat",49,92; end;
+L_VIzlude:    set Zeny, Zeny - 2000; mes "^FF0000[Assistente]^000000"; mes "Boa viagem!"; close2; warp "rent_mf.gat",49,92; end;
+L_VAldebaran: set Zeny, Zeny - 2000; mes "^FF0000[Kafra]^000000"; mes "Have nice trip!"; close2; warp "rent_mg.gat",49,92; end;
+
+}
+
+//============================================================ 
+//= Function of Signboards (tells the owners and GM options)
+//= (id of the villa, property costs, amount of houses)
+//============================================================ 
+
+function	script	rent_propietario	{
+	mes "^0000FF[Corretor]^000000";
+	mes "Olá, Bem-vindo a agência de aluguel de casas!";
+	mes "Comigo você pode alugar uma casa!";
+	mes "Está interessado?";
+	next;
+	set @t, getarg(2);
+
+L_next1:
+	menu "Sim, claro!",L_rent,"Informação por favor?",L_Info,"Não, obrigado.",-;
+	mes "^0000FF[Corretor]^000000";
+	mes "Volte quando estiver interessado.";
+	close;
+
+L_Info:
+	mes "^0000FF[Corretor]^000000";
+	mes "Eu tenho" + @t + " Casas e propriedades.";
+	mes "O preço depende no tempo em que quiser a casa.";
+	mes "O custo mensal é de " + getarg(1) + " zeny.";
+	mes "Quando o contrato acabar, você pode aumentar o tempo do contrato ou sair da casa.";
+	next;
+	goto L_next1;
+
+L_rent:
+	mes "^0000FF[Corretor]^000000";
+	mes "Quantos meses gostaria de alugar a casa?";
+	mes "(Máximo de 3 meses)";
+	next;
+
+L_next2:
+	input @mo;
+	if (@mo < 1) goto L_next2;
+	if (@mo > 3) goto L_next2;
+	menu @mo + " está bom",-,"Mudar quantidade de meses",L_next2,"Menu principal",L_next1;
+	set @costo, @mo * getarg(1);
+
+	mes "^0000FF[Corretor]^000000";
+	mes "Pra ter acesso a casa, você precisa de uma senha.";
+	mes "Digite a senha de acesso para você.";
+	next;
+
+L_next3:
+	input @pwg$;
+	if(@pwg$ == "") goto L_next3;
+	menu @pwg$ + " - está certo.",-,"Tentar denovo",L_next3,"Menu principal",L_next1;
+
+	mes "^0000FF[Corretor]^000000";
+	mes "Digite uma senha para convidados.";
+	next;
+
+L_next4:
+	input @pwb$;
+	if(@pwb$ == "") goto L_next4;
+	menu @pwb$ + "- está correto.",-,"Tentar denovo",L_next4,"Menu principal",L_next1;
+
+	mes "^0000FF[Corretor]^000000";
+	mes "Vamos revisar o contrato...";
+	mes "Para alugar uma casa aqui,";
+	mes "Vai custar: " + @costo + " por " + @mo + " mes(es).";
+	mes "Senha: " + @pwg$;
+	mes "Senha para convidades: " + @pwb$;
+	mes "Quer a casa?";
+	next;
+	menu "Sim",-,"Não, mudei de ideia",L_Salir;
+	set @current,0;
+	for (set @current, 1; @current <= @t; set @current, @current + 1) {
+		if (getd("$house" + getarg(0) + @current + "_rent") != 1) goto L_Alquilar;
+	}
+	mes "^0000FF[Corretor]^000000";
+	mes "Me desculpe mas não tenho casas disponíveis.";
+	mes "Volte outra hora";
+	close;
+
+L_Alquilar:
+	if (Zeny < @costo) goto L_NoZeny;
+	set Zeny, Zeny - @costo;
+	setd "$house" + getarg(0) + @current + "_rent", 1;
+	setd "$house" + getarg(0) + @current + "_user$",strcharinfo(0);
+	setd "$house" + getarg(0) + @current + "_passwort$",@pwg$;
+	setd "$house" + getarg(0) + @current + "_userps$",@pwb$;
+	setd "$house" + getarg(0) + @current + "_buy_day",gettime(5);
+	setd "$house" + getarg(0) + @current + "_buy_month",gettime(6) + @mo;
+	setd "$house" + getarg(0) + @current + "_buy_year",gettime(7);
+	setd "$house" + getarg(0) + @current + "_accesos",0;
+
+	if (getd("$house" + getarg(0) + @current + "_buy_month") > 12) {
+		setd "$house" + getarg(0) + @current + "_buy_year", getd("$house" + getarg(0) + @current + "_buy_year") + 1;
+		setd "$house" + getarg(0) + @current + "_buy_month", getd("$house" + getarg(0) + @current + "_buy_month") - 11;
+	}
+	
+	mes "^0000FF[Corretor]^000000";
+	mes "Parabéns " + strcharinfo(0)+"!";
+	mes "Você alugou uma casa com sucesso!";
+	mes "O número de sua casa é " + @current + ".";
+	mes "Aproveite!";
+	close;
+
+L_Salir:
+	mes "^0000FF[Corretor]^000000";
+	mes "Volte quando estiver interessado.";
+	close;
+
+L_NoZeny:
+	mes "^0000FF[Corretor]^000000";
+	mes "Hm? me desculpe mas você não tem dinheiro o bastante.";
+	close;
+}
+
+//============================================================ 
+//= Fuction of the signboard (shows owners and gm options)
+//= (id of the house,cost of property,X,Y)
+//============================================================ 
+
+function	script	rent_entrada	{
+	if (getd("$house" + getarg(0) + "_rent") == 1) 
+		goto L_Inicio;
+
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Esta casa está disponívei para aluguel!";
+	close;
+
+L_Inicio:
+	mes "^0000FF[Propriedade" + getarg(0) + "]^000000";
+	mes "Esta casa está alugada por ^0000FF'" + getd("$house" + getarg(0) + "_user$") + "'.^000000";
+	
+	if (getgmlevel() == 99)
+		mes "Acessado ^0000FF" + getd("$house" + getarg(0) + "_accesos") + "^000000 vezes.";
+		
+	mes "Gostaria de entrar?";
+	next;
+	
+	menu "Sim",L_Accesar,"Manutenção",L_Conf,"Não",-;
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "....";
+	close;
+	
+L_Accesar:
+	if (getgmlevel() == 99)
+		goto L_Acceso; // Access for GMs without the key
+
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Por favor digite a senha do dono ou de convidado.";
+	next;
+	
+	input @pw$;
+	if ((@pw$ != getd("$house" + getarg(0) + "_passwort$")) && (@pw$ != getd("$house" + getarg(0) + "_userps$")))
+		goto L_ErrorClave;
+
+L_Acceso:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Pode entrar...";
+	close2;
+	
+	setd "$house" + getarg(0) + "_access",getd("$house" + getarg(0) + "_accesos") + 1;
+	warp "rent" + getarg(0) + ".gat",getarg(2),getarg(3);
+	end;
+
+L_Conf:
+	if (getgmlevel() == 99) goto
+		L_ConfGM; // Access for GMs without the key
+
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Digite a senha da propriedade.";
+	next;
+	input @pw$;
+	if (@pw$ != getd("$house" + getarg(0) + "_passwort$"))
+		goto L_ErrorClave;
+
+L_ConfGM:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "What do you want to do?";
+	next;
+
+L_MMenu:
+	menu "Change password",L_CambioPW,"Change guest password",L_CambioGPW,"Extend Contract",L_Extender,"Change owner",L_Owner,"Release Property",L_Liberar,"Nothing",-;
+	mes "^0000FF[Property " + getarg(0) + "]^000000";
+	mes "We'll see each other again soon.";
+	close;
+
+L_Extender:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Gostaria de aumentar o tempo em mais um mês? (Costo " + getarg(1) + " zeny)";
+	mes "Está correto?";
+	next;
+	menu "Sim",L_DExtender,"Não",-;
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Ok...";
+	next;
+	goto L_MMenu;
+
+L_DExtender:
+	if (zeny < getarg(1)) 
+		goto L_NoZeny;
+
+	if (gettime(6) < (getd("$house" + getarg(0) + "_buy_month") - 1))
+		goto L_NoExt;
+
+	setd "$house" + getarg(0) + "_buy_month", getd("$house" + getarg(0) + "_buy_month") + 1;
+	if (getd("$house" + getarg(0) + "_buy_month") > 12) {
+		setd "$house" + getarg(0) + "_buy_month", getd("$house" + getarg(0) + "_buy_month") - 12;
+		setd "$house" + getarg(0) + "_buy_year", getd("$house" + getarg(0) + "_buy_year") + 1;
+	}
+	set Zeny, Zeny - getarg(1);
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "O contrato foi aumentado.";
+	close;
+
+L_NoZeny:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Você não tem dinheiro o suficiente!";
+	close;
+
+L_NoExt:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Contrato está no máximo. Aumente quando faltar um mês.";
+	close;
+
+L_CambioPW:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Digite sua nova senha";
+	next;
+	input @pw$;
+	setd "$house" + getarg(0) + "_passwort$", @pw$;
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Sua nova senha é: " + @pw$ + ".";
+	next;
+	goto L_MMenu;
+
+L_CambioGPW:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Digite uma nova senha para convidados.";
+	next;
+	input @pw$;
+	setd "$house" + getarg(0) + "_userps$", @pw$;
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "A nova senha de convidados é: " + @pw$ + ".";
+	next;
+	goto L_MMenu;
+
+L_ErrorClave:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "A senha que digitou está incorreta!";
+	close;
+
+L_Owner:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Dono atual: '" + getd("$house" + getarg(0) + "_user$") + "'";
+	mes "Novo dono: '" + strcharinfo(0) + "'";
+	mes "Está correto?";
+	next;
+	menu "Sim, mude",L_DOwner,"Não...",-;
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Ok...";
+	next;
+	goto L_MMenu;
+	
+L_DOwner:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	setd "$house" + getarg(0) + "_user$",strcharinfo(0);
+	mes "A casa mudou de dono.";
+	mes "Lembre de mudar de senhas.";
+	next;
+	goto L_MMenu;
+
+L_Liberar:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Gostaria de encerrar o contrario dessa casa?";
+	mes "Não haverá devoluções.";
+	next;
+	menu "Sim, tenho certeza",L_DLiberar,"Não...",-;
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "Ok...";
+	next;
+	goto L_MMenu;
+
+L_DLiberar:
+	mes "^0000FF[Propriedade " + getarg(0) + "]^000000";
+	mes "A propriedade está agora livre.";
+	setd "$house" + getarg(0) + "_rent", 0;
+	killmonsterall "rentin" + getarg(0) + ".gat";
+	close;
+}
+
+//============================================================ 
+//= Function to control the Apple Tree
+//= (id of house)
+//============================================================ 
+
+function	script	rent_manzano	{
+	if (getd("$@Manzanas" + getarg(0)) > 0) {
+		setd "$@Manzanas" + getarg(0), getd("$@Manzanas" + getarg(0)) - 1;
+		specialeffect2 363;
+//		getitem 512, 1;
+	}
+	end;
+}
+
+//============================================================ 
+//= Function to control the pvp switch.
+//============================================================ 
+
+function	script	rent_pvp	{
+	if (getmapxy(@mapa$,@mapx,@mapy,0,strcharinfo(0)) != 0) end;
+	mes "[Switch]";
+	mes "O que quer fazer?";
+	next;
+	menu "Ligar PvP",L_PvpOn,"Desligar PvP",L_PvpOff,"Nada",-;
+	mes "[Switch]";
+	mes "Bom dia.";
+	close;
+
+L_PvpOn:
+	mes "[Switch]";
+	mes "PVP está ligado.";
+	pvpon @mapa$;
+	close;
+
+L_PvpOff:
+	mes "[Switch]";
+	mes "PVP está desligado";
+	pvpoff @mapa$;
+	close;
+}
+
+//============================================================ 
+//= BED!!!!
+//= (id of House,X,Y)
+//============================================================ 
+
+function	script	rent_camas	{
+	mes "Quer tirar uma soneca?";
+	menu "Sim",-,"Não",L_No;
+	close2;
+	sc_start SC_BLIND,500000,1;
+	emotion e_yawn,1;
+	sleep2(4000);
+	
+	warp "rentin" + getarg(0) + ".gat",getarg(1),getarg(2);
+	percentheal 100,100;
+	sc_end SC_BLIND;
+	end;
+L_No:
+	close;
+}
+
+//============================================================ 
+//= Function for the piano
+//= (id of House)
+//============================================================ 
+
+function	script	rent_pianoStart	{
+	if (getmapxy(@mapa$,@mapx,@mapy,0,strcharinfo(0)) != 0) end;
+	mes "[Piano]";
+	if (getd("$@Piano" + getarg(0)) > 0) {
+		mes "Espere um pouco até a música acabar.";
+		close;
+	}
+	mes "Escolha uma música.";
+	set @Tema, select ("Song 01","Chaos of Eternity","Song 03","Song 04","Bragis Poem","Song 06","Ring of Nibelungen","Song 08","Song 09","Song 10","Dont Forget Me Not","In To The Abyss","Song 13","Assassin of Sunset","Song 15","Song 16","Song 17","Song 18","Song 19","None");
+	if (@Tema >= 20) close;
+	if (@Tema < 10) set @Tema$, "m0" + @Tema + ".wav";
+	else set @Tema$, "m" + @Tema + ".wav";
+	close2;
+	if (getd("$@Piano" + getarg(0)) <= 0) {
+		// Sonar el Tema Elegido
+		setd "$@Piano" + getarg(0), 1; // Reproduciendo
+		initnpctimer;
+		switch (@Tema) {
+			case 14: soundeffectall "assassin_of_sunset.wav",1,@mapa$,0,0,50,50; break;
+			case 12: soundeffectall "in_to_the_abyss.wav",1,@mapa$,0,0,50,50; break;
+			case 11: soundeffectall "dont_forget_me_not.wav",1,@mapa$,0,0,50,50; break;
+			case 7:  soundeffectall "ring_of_nibelungen.wav",1,@mapa$,0,0,50,50; break;
+			case 5:  soundeffectall "bragis_poem.wav",1,@mapa$,0,0,50,50; break;
+			case 2:  soundeffectall "chaos_of_eternity.wav",1,@mapa$,0,0,50,50; break;
+			default: soundeffectall @Tema$,1,@mapa$,0,0,50,50; break;
+		}
+	}
+	end;
+}
+
+function	script	rent_pianoStop	{
+	emotion e_no1;
+	stopnpctimer;
+	setd "$@Piano" + getarg(0), 0; // Finishes the song
+	end;
+}
+
+//============================================================ 
+//= Storage
+//============================================================ 
+
+function	script	rent_armario	{
+	mes "Usar o armário?";
+	menu "Sim",-,"Não",L_No;
+	callfunc("F_CheckKafCode");
+	close2;
+	openstorage;
+	end;
+L_No:
+	close;
+}
+
+//============================================================ 
+//= Cleaning Services
+//============================================================ 
+
+//============================================================ 
+//= Calculate the following point X and Y
+//= (Present Position XoY)
+//============================================================ 
+
+function	script	rent_aliceXY	{
+	set .@CP, getarg(0); // Present position XoY
+	set .@DST, rand(1,5); // Distance to cross
+	if (rand(2)) // Direccion a tomar (izq der arr abj)
+		set .@CP, .@CP + .@DST;
+	else
+		set .@CP, .@CP - .@DST;
+	if (.@CP < getarg(1))
+		set .@CP, .@CP + .@DST; // If the new point is smaller, thats the minimum
+	if (.@CP > getarg(2))
+		set .@CP, .@CP - .@DST; // If the new point is greater, thats the maximum
+	return .@CP;
+}
+
+//============================================================ 
+//= Hides alice when the server is loaded
+//= (Id of House)
+//============================================================ 
+
+function	script	rent_serviceInit	{
+	disablenpc "AliceR" + getarg(0) + "";
+	end;
+}
+
+//============================================================ 
+//= Fuction for the Service Request NPC
+//= (Id of House)
+//============================================================ 
+
+function	script	rent_serviceCall	{
+	set @alicecost,5000;	// Variable to change service cost [Brainstorm]
+	mes "[Serviço de limpeza]";
+	if (getd("$@house" + getarg(0) + "_alice") == 0) {
+		mes "Quer que a alice limpe sua casa por 8 horas?";
+		mes "Enquanto ela estiver limpando, insetos vão parar de aparecer.";
+		mes "Esse serviço custa 5000z.";
+		mes "Interessado?";
+		next;
+		menu "Sim",-,"Não",L_No;
+		if (Zeny < @alicecost) goto L_NoZeny;
+		if (getd("$@house" + getarg(0) + "_alice") == 1) goto L_Activo;
+		setd "$@house" + getarg(0) + "_alice", 1; // Activo
+		set Zeny, Zeny - @alicecost;
+		// Bug extermination
+		setd "$house" + getarg(0) + "_bugs", 0;
+		killmonsterall "rentin" + getarg(0) + ".gat";
+		mes "[Serviço de limpeza]";
+		mes "Alice virá pra sua casa imediatamente.";
+		enablenpc "AliceR" + getarg(0) + ""; // This shows the npc
+		donpcevent "AliceR" + getarg(0) + "::OnEmpezar"; // Initiates the event
+		initnpctimer;
+	} else {
+		mes "Gostaria de dispensar a Alice agora?";
+		next;
+		menu "Sim",-,"Não",L_No;
+		if (getd("$@house" + getarg(0) + "_alice") == 0) goto L_Activo;
+		setd "$@house" + getarg(0) + "_alice", 0; // Inactive
+		mes "[Serviço de limpeza]";
+		mes "Alice está indo embora, finalizando serviços.";
+		stopnpctimer;
+		donpcevent "AliceR" + getarg(0) + "::OnTerminar";
+		disablenpc "AliceR" + getarg(0) + "";
+	}
+	close;
+
+L_Activo:
+	mes "[Serviço de limpeza]";
+	mes "Já pediu uma alice para limpar, Só pode pedir uma por vez.";
+	close;
+
+L_NoZeny:
+	mes "[Serviço de limpeza]";
+	mes "Está sem dinheiro para pagar a Alice.";
+	close;
+
+L_No:
+	mes "[Serviço de limpeza]";
+	mes "volte sempre.";
+	close;
+}
+
+//============================================================ 
+//= Finish Kafra Service
+//= (Id of House)
+//============================================================ 
+
+function	script	rent_serviceFinish	{
+	stopnpctimer;
+	setd "$@house" + getarg(0) + "_alice", 0; // Inactivo
+	donpcevent "AliceR" + getarg(0) + "::OnTerminar";
+	disablenpc "AliceR" + getarg(0) + "";
+	end;
+}
+
+//============================================================ 
+//= Intiates Alice, walking speed
+//============================================================ 
+
+function	script	rent_aliceInit	{
+	npcspeed 100;
+	end;
+}
+
+//============================================================ 
+//= Start of the Alice function, activates NPC timer and salutation
+//============================================================ 
+
+function	script	rent_aliceStart	{
+	npctalk "Vou deixar essa casa brilhando!";
+	initnpctimer;
+	return 0;
+}
+
+//============================================================ 
+//= Alice's movements
+//============================================================ 
+
+function	script	rent_aliceWalk	{
+	emotion e_ho;
+	getmapxy .@map$,.@x,.@y,1;
+	set .@curX, callfunc("rent_aliceXY",.@x,8,35);
+	set .@curY, callfunc("rent_aliceXY",.@y,5,27);
+	npcwalkto .@curX, .@curY;
+	stopnpctimer;
+	initnpctimer;
+	end;
+}
+
+//============================================================ 
+//= Only happens when you speak to Alice...click!
+//= Add more in if you want to (Preima)
+//============================================================ 
+
+function	script	rent_aliceTalk	{
+	switch (rand(1,5)) {
+		case 1: npctalk "Sim senhor(a), Estou quase terminando."; break;
+		case 2: npctalk "Se quiser comer algo, Vá para a cozinha..."; break;
+		case 3: npctalk "Não sou paga o bastante pra isso!"; emotion e_pif; break;
+		case 4: npctalk "Ufa, sorte minha que só tenho que limpar isso."; emotion e_heh; break;
+		case 5: npctalk "Essa casa está um nojo!"; emotion e_wah; break;
+	}
+	end;
+}
+
+//============================================================ 
+//= Finishing Alice's service (stopping her)
+//============================================================ 
+
+function	script	rent_aliceStop	{
+	npctalk "Terminei, tudo está limpinho!";
+	stopnpctimer;
+	return 0;
+}
+
+//============================================================ 
+//= Function for changing clothes
+//= Summer 
+//============================================================ 
+
+function	script	rent_cambioropa	{
+	mes "Mudar roupa para...";
+	menu "Normal",L_Normal,"Verão",L_summer,"Não mude",-;
+	close;
+
+L_Normal:
+	sc_end SC_Xmas;
+	setoption Option_Wedding,0;
+	sc_end SC_Summer;
+	close;
+
+L_Formal:
+	sc_end SC_Xmas;
+	sc_end SC_Summer;
+	setoption Option_Wedding,1;
+	close;
+
+L_Abrigo:
+	setoption Option_Wedding,0;
+	sc_start SC_Xmas,600000,0;
+	close;
+L_summer:
+	sc_end SC_Xmas;
+	setoption Option_Wedding,0;
+	sc_start SC_Summer,600000,0;
+	close;
+}

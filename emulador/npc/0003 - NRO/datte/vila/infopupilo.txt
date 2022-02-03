@@ -1,0 +1,11 @@
+kakashi,77,149,4	script	Sistema de Pupilo	76,{
+
+mes "O sistema de pupilo é bem simples, um jounin poderá recrutar genins de sua vila para seu time, após recrutar, se ambos estiverem no mesmo grupo e mesmo mapa, quando o genin matar um monstro ele receberá o dobro de exp, após o genin chegar ao nível 999, o jounin do time será recompensado com 1 ponto no ranking";
+next;
+mes "O jounin pode recrutar até 3 genins para o time, e poderá dispensar o genin a qualquer momento";
+close;
+
+OnInit:
+	waitingroom "[Informações]",0;
+
+}

@@ -1,0 +1,210 @@
+
+thor_v03,0,0,0,0	monster	Fire Moth		1264,40,0,0,0
+thor_v03,0,0,0,0	monster	Salamander		1265,40,0,0,0
+
+thor_v03,45,274,5	script	Nativo#5	4_nfwisp,{
+
+	if(checkquest(2) == 1) {
+		if(checkquest(2,HUNTING) == 2) {
+			if(countitem(763) >= 100) {
+				mes "[Nativo]";
+				mes "Parabéns, aqui está sua recompensa.";
+				getitem 764,1;
+				delitem 763,100;
+				completequest 2; 
+				erasequest 2;
+				close;
+			}
+			mes "[Nativo]";
+			mes "Você Não completou sua missão ainda.";
+			close;
+		}
+		mes "[Nativo]";
+		mes "Você Não completou sua missão ainda.";
+		close;
+	}
+
+	mes "[Nativo]";
+	mes "Bem vindo visitante a Dimensão do Fogo, ";
+	mes "nosso mundo é quente e somente para os fortes, ";
+	mes "aqui existem bestas extremamente fortes e implacáveis, ";
+	mes "enfrente meus irmãos e se for forte o bastante, irei presenteá-lo. ";
+	if(select("- Sim:- Não") == 2) { close; }
+		next;	
+		mes "[Nativo]";
+		mes "Recompensa: Fragmento da Dimensão do Fogo";
+		mes "Derrote 100 Fire moth";
+		mes "Derrote 100 Salamander";
+		mes "Coletar 100 Essência de Fogo";
+		if(select("- Pegar a Quest:- Deixa para outra hora") == 2) { close; }
+		setquest 2;
+		close;
+}
+
+thor_v03,58,275,5	script	Instância do Fogo#1	4_gigantes,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+	
+	set .@instance$, "Dimensao Fogo";
+	mes "^ff0000[Instância da Fogo]^000000";
+	mes "Olá, shinobi! Está pronto para começar sua aventura?";
+	menu "Iniciar Raid.",inicio,"Removedor de Raid.",removedor;
+	removedor:
+
+next;
+if(questmade755 == GetTime(8)) {
+mes "^ff0000[Instância do Fogo]^000000";
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+
+if(vip_status(1)) {
+mes "^ff0000[Instância do Fogo]^000000";
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid da Dimensao Fogo. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "^ff0000[Instância do Fogo]^000000";
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7023,1;
+set questmade755, GetTime(8);
+close;
+	
+r2:
+next;
+mes "^ff0000[Instância do Fogo]^000000";
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}
+
+inicio:	
+if(questmade754 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:
+mes "^ff0000[Instância do Fogo]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7023) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Instância do Fogo]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set questmade754, 0;
+delitem 7023,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Instância do Fogo]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Fale comigo novamente!";
+close;
+}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	if($@partymembercount > 2) {
+	mes "Você não pode iniciar a Raid com mais de 2 membros no grupo.";
+	close;
+	}
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos da ^FF0000Dimensão Fogo^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if(getpartyleader(getcharid(1),2) != getcharid(0)) goto naocria;
+
+		if (instance_create(.@instance$) < 0) {
+		mes "Você não atende aos requisitos da ^FF0000Dimensão Fogo^000000.";
+		close;
+
+		naocria:
+		mes "Você precisa ser o líder do grupo para criar a raid ^FF0000Dimensão Fogo^000000.";
+		close;
+		}
+
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		getpartymember getcharid(1),2;
+		for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		}
+		attachrid(getpartyleader(getcharid(1),1));
+		// Começo da Instância
+		hideonnpc ""+instance_npcname("Instância do Fogo#2")+"";
+		instance_announce instance_id(),"Boa sorte, shinobi.",0;
+		monster ""+instance_mapname("moro_vol",instance_id())+"",0,0,"Flame Baby",1266,50,"dimensaofogo::OnMonsterDie1";
+		end;
+	}
+}
+
+moro_vol,0,0,0	script	dimensaofogo	-1,{
+
+OnMonsterDie1:
+	if(!mobcount(""+instance_mapname("moro_vol",instance_id())+"","dimensaofogo::OnMonsterDie1"))  {
+		instance_announce instance_id(),"O Chefe acaba de aparecer no mapa!",0;
+		monster ""+instance_mapname("moro_vol",instance_id())+"",206,174,"Flame Fang",1267,1,"dimensaofogo::OnMonsterDie2";
+		end;
+	}
+	else
+	instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("moro_vol",instance_id())+"","dimensaofogo::OnMonsterDie1"))+" Montros Mortos",0;
+	end;
+	
+OnMonsterDie2:
+	if(!mobcount(""+instance_mapname("moro_vol",instance_id())+"","dimensaofogo::OnMonsterDie2"))  {
+		instance_announce instance_id(),"Parabéns por completar a Dimensão do Fogo!",0;
+		hideoffnpc ""+instance_npcname("Instância do Fogo#2")+"";
+		end;	
+	}
+}
+
+moro_vol,199,178,5	script	Instância do Fogo#2	4_gigantes,{
+	if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "Apenas o líder pode finalizar a missão.";
+		close;
+	}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 2) {
+			mes "Seu Grupo é muito grande. Reduz a quantidade de membros. Só é permitido 2 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+mes "Você conseguiu completar a missão.";
+	close2;
+	getpartymember getcharid(1),0;	
+	getpartymember getcharid(1),1;	
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	attachrid($@partymemberaid[.@i]);	
+		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
+		
+			query_sql("SELECT `index`,`value`  FROM `fogo_limit` WHERE `char_id` = '"+$@partymembercid[.@i]+"'",@fogo,@limitefogo);
+
+				if(!@fogo) {
+					query_sql "INSERT INTO `fogo_limit` (`char_id`, `index`, `value`) VALUES ("+$@partymembercid[.@i]+",1,1)";
+				} else { 
+					query_sql "UPDATE `fogo_limit` SET `value` = `value` + 1 WHERE `char_id`= '"+$@partymembercid[.@i]+"'";	
+				}
+
+	// Recompensas
+	set questmade754, GetTime(8);
+		}
+	}	
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Dimensão do Fogo.",bc_all;	
+	instance_destroy;
+	end;
+}
+moro_vol	mapflag	partylock

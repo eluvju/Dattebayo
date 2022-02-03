@@ -1,0 +1,254 @@
+konoha,200,266,3	script	Uchiha Ancião::kgUchi	734,{
+	if(kgfeito == 1) goto L_alreadyhave;
+	mes "[Uchiha Ancião]";
+	if(Uchiha == 1){goto L_lista;}else{goto L_Wrong;}
+
+	
+	L_lista:
+	mes "Você membro do clã Uchiha";
+	mes "Gostaria de saber como liberar seu kekkei genkai?";
+	menu "Sim, Estou preparado",claro,"Não, ainda não estou pronto",aindan;
+		
+	claro:
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Você precisa liberar uma etapa do Sharingan por vez, qual etapa você quer aprender?";
+	menu "1ª Etapa",prim,"2ª Etapa",segun,"3ª Etapa",terceira,"Mangekyou Sharingan",ms;
+
+	if(sharingan > 0) goto L_alreadyhave;
+	prim:
+	mes "Olá Shinobi, Vou lhe mostrar o caminho para liberar seu Sharingan";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "100x Bijuteria amarela";
+	mes "1000x Osso";
+	mes "300x Banana";
+	mes "25x união da Tribo";
+	mes "1x Pedra do Sábio";
+	mes "1x Simbólo dos 9 reinos";
+	mes "1x Lâmina perdida nas trevas";
+	mes "1x Relogio de bolso";
+	mes "e 5kk de ryous";
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <5000000) goto L_SemItem;
+	if (countitem(7448) < 100) goto L_SemItem;
+	if (countitem(932) < 1000) goto L_SemItem;
+	if (countitem(513) < 300) goto L_SemItem;
+	if (countitem(658) < 25) goto L_SemItem;
+	if (countitem(12040) < 1) goto L_SemItem;
+	if (countitem(7305) < 1) goto L_SemItem;
+	if (countitem(7023) < 1) goto L_SemItem;
+	if (countitem(7513) < 1) goto L_SemItem;
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-5000000;
+	delitem 7448,100;
+	delitem 932,1000;
+	delitem 513,300;
+	delitem 658,25;
+	delitem 12040,1;
+	delitem 7305,1;
+	delitem 7023,1;
+	delitem 7513,1;
+	getitem	19068,1;
+	set sharingan,1;
+	close;
+
+	if(sharingan != 1) goto L_alreadyhave;
+	segun:
+	mes "Olá Shinobi, Vou lhe mostrar o caminho para liberar seu Sharingan";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "800x Trança";
+	mes "20x Espada Chanfrada";
+	mes "2x Esfera das Sombras";
+	mes "2x Ba gua";
+	mes "2x Pedra do sábio";
+	mes "500x Graveto Visto";
+	mes "800x Presa";
+	mes "800x Escama Brilhante";
+	mes "1000x Dente Fossilizado";
+	mes "1x Sharigan Nivel 1";
+	mes "e 5kk de ryous";
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <5000000) goto L_SemItem;
+	if (countitem(901) < 800) goto L_SemItem;
+	if (countitem(7110) < 20) goto L_SemItem;
+	if (countitem(7524) < 2) goto L_SemItem;
+	if (countitem(7169) < 2) goto L_SemItem;
+	if (countitem(12040) < 2) goto L_SemItem;
+	if (countitem(7018) < 500) goto L_SemItem;
+	if (countitem(1063) < 800) goto L_SemItem;
+	if (countitem(954) < 800) goto L_SemItem;
+	if (countitem(1053) < 1000) goto L_SemItem;
+	if (countitem(19068) < 1) goto L_SemItem;
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-5000000;
+	delitem 901,800;
+	delitem 7110,20;
+	delitem 7524,2;
+	delitem 7169,2;
+	delitem 12040,2;
+	delitem 7018,500;
+	delitem 1063,800;
+	delitem 954,800;
+	delitem 1053,1000;
+	delitem 19068,1;
+	getitem	19069,1;
+	set sharingan,2;
+	close;
+
+	if(sharingan != 2) goto L_alreadyhave;
+	terceira:
+	mes "Olá Shinobi, Vou lhe mostrar o caminho para liberar seu Sharingan";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "1500x Zargônio";
+	mes "1500x Gema vermelha";
+	mes "1500x Couro Animal";
+	mes "500x Sopa de Tinta de Lula e Ovos de Sapo";
+	mes "300x Insígnia de herói";
+	mes "150x Sangue Animal";
+	mes "30x Chifre";
+	mes "3x Insignia da Cavalária";
+	mes "1x Sharigan nivel 2";
+	mes "e 5kk de ryous";
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <5000000) goto L_SemItem;
+	if (countitem(912) < 1500) goto L_SemItem;
+	if (countitem(716) < 1500) goto L_SemItem;
+	if (countitem(919) < 1500) goto L_SemItem;
+	if (countitem(12056) < 500) goto L_SemItem;
+	if (countitem(968) < 300) goto L_SemItem;
+	if (countitem(702) < 150) goto L_SemItem;
+	if (countitem(947) < 30) goto L_SemItem;
+	if (countitem(1004) < 3) goto L_SemItem;
+	if (countitem(19069) < 1) goto L_SemItem;
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-5000000;
+	delitem 912,1500;
+	delitem 716,1500;
+	delitem 919,1500;
+	delitem 12056,500;
+	delitem 968,300;
+	delitem 702,150;
+	delitem 947,30;
+	delitem 1004,3;
+	delitem 19069,1;
+	getitem	19070,1;
+	set sharingan,3;
+	close;
+	
+	if(sharingan != 3) goto L_alreadyhave;
+	if(jounin != 1) goto L_graduacao;
+	ms:
+	mes "Olá Shinobi, Vou lhe mostrar o caminho para liberar seu Sharingan";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "30x Lasca de Pedra";
+	mes "1500x Leite";
+	mes "1500x Armadura Destruida";
+	mes "500x Vida verdejante";
+	mes "100x Colar da sabedoria";
+	mes "50x Bainha Velha";
+	mes "10x Pesadelo Maternal";
+	mes "10x Lampião";
+	mes "10x Peça Queimada";
+	mes "1x Desejo das Trevas";
+	mes "1x Livro de Culinária level 10";
+	mes "1x Sharigan nivel 3";
+	mes "e 50kk de ryous";
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Vá! e faça seu treinamento!";	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if(zeny <50000000) goto L_SemItem;
+	if (countitem(7211) < 30) goto L_SemItem;
+	if (countitem(519) < 1500) goto L_SemItem;
+	if (countitem(7069) < 1500) goto L_SemItem;
+	if (countitem(993) < 500) goto L_SemItem;
+	if (countitem(1007) < 100) goto L_SemItem;
+	if (countitem(7022) < 50) goto L_SemItem;
+	if (countitem(7020) < 10) goto L_SemItem;
+	if (countitem(1041) < 10) goto L_SemItem;
+	if (countitem(7512) < 10) goto L_SemItem;
+	if (countitem(7340) < 1) goto L_SemItem;
+	if (countitem(7481) < 1) goto L_SemItem;
+	if (countitem(19070) < 1) goto L_SemItem;
+	next;
+	mes "[^A52A2AUchiha Ancião^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	set zeny,zeny-50000000;
+	delitem 7211,30;
+	delitem 519,1500;
+	delitem 7069,1500;
+	delitem 993,500;
+	delitem 1007,100;
+	delitem 7022,50;
+	delitem 7020,10;
+	delitem 1041,10;
+	delitem 7512,10;
+	delitem 7340,1;
+	delitem 7481,1;
+	delitem 19070,1;
+	getitem	19003,1;
+	set kgfeito,1;
+	set sharingan,4;
+	close;
+
+L_SemItem:
+	next;
+	mes "[^FF0000Uchiha Ancião^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Uchiha Ancião^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_Wrong:
+	mes "[^FF0000Uchiha Ancião^000000]";
+	mes "Você não é deste clã";
+	close;
+
+L_graduacao:
+	mes "[^FF0000Uchiha Ancião^000000]";
+	mes "Desculpe mas apenas jounins podem realizar esse treinamento.";
+	close;
+
+aindan:
+	mes "[^FF0000Uchiha Ancião^000000]";
+	mes "Tudo bem, volte quando estiver pronto.";
+	close;
+
+}
+
+areia,188,94,4	duplicate(kgUchi)	Uchiha Ancião#1	734
+nevoa,63,276,4	duplicate(kgUchi)	Uchiha Ancião#2	734
+prt_monk,84,202,4	duplicate(kgUchi)	Uchiha Ancião#3	734

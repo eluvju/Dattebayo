@@ -1,0 +1,92 @@
+bibli_01,71,70,5	script	Mestre Genjutsu::genbas	121,{
+
+//-----------------------------------------------------------------------------------------------------------
+//											Avançado
+//-----------------------------------------------------------------------------------------------------------
+if(countitem(6006)) {
+
+	if (limite_avan == 1) {mes "Você já chegou a um treinamento avançado, esse é o limite."; close;}
+	if (gen_avan == 1) {mes "Já não há mais nada que posso lhe ensinar."; close;}
+	if(med_basico == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if (med_intermediario == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if (med_avan == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if(resis_basico == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if (resis_intermediario == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if (resis_avan == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if(Class < 4008 || Class > 4011) { mes "Você precisa ser Jounin.";  close; }
+
+	mes "Olá jovem, vejo que você é um treinador de genjutsu. Gostaria de evoluir ele ainda mais para se tornar um mestre genjutsu avançado?";
+	if(select("- Sim:- Não") == 2) { close; }
+		set gen_avan,1;
+		getitem 6012,1;
+		if (countitem(6006) >= 1) {delitem 6006,1;}
+		set limite_avan, limite_avan +1;
+		announce "[...] Uma força enorme é sentida em todo o mundo, alguém assim só pode ter Genjutsu Avançado!",bc_blue|bc_all;
+		close;
+}
+//-----------------------------------------------------------------------------------------------------------
+//											Intermediário
+//-----------------------------------------------------------------------------------------------------------
+if(countitem(6002)) {
+	if (gen_intermediario == 1) {mes "Já não há mais nada que posso lhe ensinar"; close;}
+	if(med_basico == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if (med_intermediario == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if (med_avan == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if(resis_basico == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if (resis_intermediario == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if (resis_avan == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if (limite_inter == 2) {mes "Você já chegou a dois treinamentos intermediários, esse é o limite"; close; }
+	if(Class < 5) { mes "Você precisa ser Chunin ou superior.";  close; }
+	
+	mes "Olá jovem, vejo que você é um treinador de genjutsu. Gostaria de evoluir ele ainda mais para se tornar um mestre genjutsu intermediário?";
+	if(select("- Sim:- Não") == 2) { close; }
+		set gen_intermediario,1;
+		if(countitem(6002) > 0) {delitem 6002,1;}
+		getitem 6006,1;
+		set limite_inter, limite_inter +1;
+		set reset_gen2,1;
+		announce "[...] Um poder é sentido de longe, alguém com chakra considerável, alguém assim só pode ter Genjutsu intermediário!",bc_blue|bc_all;
+		close;
+}
+//-----------------------------------------------------------------------------------------------------------
+//											Básico
+//-----------------------------------------------------------------------------------------------------------
+	if(treinos_basicos >= 3) {mes "Você já aprendeu três trienos básicos, é o limite."; close;}
+	if(med_basico == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if (med_intermediario == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if (med_avan == 1) {mes "Você não pode treinar Genjutsu sendo médico!"; close;}
+	if(resis_basico == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if (resis_intermediario == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if (resis_avan == 1) {mes "Você não pode treinar Genjutsu sendo tanker!"; close;}
+	if(gen_basico == 1) {mes "Agora que você sabe o Genjutsu básica você só tem a crescer!"; close;}
+	
+	mes "[ Instrutor de Genjutsu] ";
+	mes "ATENÇÃO: Antes que continue, é bom lembrar que só pode ter três treinamentos básicos, tem certeza que quer esse treino?";
+	menu "Sim, eu quero",L_sim,"Não, quero outro",nao;
+
+	nao:
+	close;
+
+	L_sim:
+	mes "[ Instrutor de Genjutsu] ";
+	mes "Parabéns, você completou seu treinamento";
+	mes "você agora pode treinar Genjutsu";
+	getitem 6002,1;
+	set gen_basico,1;
+	set treinos_basicos, treinos_basicos +1;
+	close;
+
+OnInit:
+	waitingroom "",0;
+OnTimer1000:
+	setarray .@RoomDisplay$,"Aprender Genjutsu","Evoluir Genjutsu";
+	delwaitingroom;
+	waitingroom .@RoomDisplay$[rand(0,1)],0;
+	initnpctimer;
+
+}
+
+bibli_02,71,70,5	duplicate(genbas)	Mestre Genjutsu#2	121
+bibli_03,71,70,5	duplicate(genbas)	Mestre Genjutsu#3	121
+bibli_04,71,70,5	duplicate(genbas)	Mestre Genjutsu#4	121
+akatsuki,250,225,5	duplicate(genbas)	Mestre Genjutsu#5	121

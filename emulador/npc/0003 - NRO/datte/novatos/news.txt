@@ -1,0 +1,125 @@
+//===== eAthena Script =======================================
+//= GM News
+//===== By: ==================================================
+//= Kit the Baby Fox (A.K.A. IeYasuru)
+//===== Current Version: =====================================
+//= 1.3
+//===== Compatible With: =====================================
+//= eAthena SVN
+//===== Description: =========================================
+//= Shows dialogue box when players log in with news from GMs
+//===== Additional Comments: =================================
+//= NPC views news to players, function posts it from GMs
+//===== Change Log: ==========================================
+//= 1.0: First release
+//============================================================
+//===== Edited/Revised by: ==========================================
+//= MoonlightRO
+//============================================================
+
+-	script	gm_news_viewer::gmnews	-1,{
+
+OnPCLoginEvent:
+
+//cutin "cutin_gaara",3;
+
+// GM News Below
+	// if(getgmlevel() >= 80) end;
+	query_sql "SELECT * FROM `gm_news` WHERE `post_id` > 0",@id,@gm$,@topic$,@news$;
+	if(!getarraysize(@id)) end;
+	set @d,0;
+	while(1) { if(@d >= getarraysize(@id)) break; set @d,@d+1; }
+//	if(#News == @id[@d-1]) end;
+	mes "[ ^99CC66Últimas notícias^000000 ]";
+	set @c,0;
+	while(1)
+	{
+		if(@c >= getarraysize(@id))
+		{
+			set #News,@id[@c-1];
+			break;
+		}
+		mes "~ ^00B200"+@topic$[@c]+"^000000 ~";
+		mes "Últimas notícias: "+@news$[@c]+" - postado por ^00AA00"+@gm$[@c]+"^000000";
+		set @c,@c+1;
+	}
+	close;
+}
+
+in_hunter,100,105,5	script	In-Game News	831,{
+
+	if(getgmlevel() <= 50) end;
+	mes "[ ^99CC66In-Game News^000000 ]";
+	mes "Would you like to add some news for the players?";
+	next;
+	if(select("Add:Delete")&2)
+	{
+		query_sql "SELECT `post_id`,`gm_poster`,`message` FROM `gm_news` WHERE `post_id` > 0",.@id,.@gm$,.@msg$;
+		mes "[ ^99CC66In-Game News^000000 ]";
+		set .@c,0;
+		while(1)
+		{
+			if(.@c >= getarraysize(.@id)) break;
+			mes .@id[.@c]+" - "+.@msg$[.@c];
+			mes " ";
+			set .@c,.@c+1;
+		}
+		next;
+		mes "[ ^99CC66In-Game News^000000 ]";
+		mes "What post would you like to delete?";
+		next;
+		input .@row;
+		if(.@row == 0) close;
+		mes "[ ^99CC66In-Game News^000000 ]";
+		mes "Delete post Id number "+.@row+"?";
+		next;
+		if(select("No:Yes")&1) close;
+		query_sql "DELETE FROM `gm_news` WHERE `post_id` = "+.@row;
+		mes "[ ^99CC66In-Game News^000000 ]";
+		mes "Post deleted.";
+		close;
+	}
+	mes "[ ^99CC66In-Game News^000000 ]";
+	mes "What is the topic of your post?";
+	next;
+	input .@topic$;
+	if(getstrlen(.@topic$) > 63)
+	{
+		mes "[ ^99CC66In-Game News^000000 ]";
+		mes "The topic was too long and could not be added to the database.";
+		next;
+		callfunc("GM_News");
+	}
+	mes "[ ^99CC66In-Game News^000000 ]";
+	mes "What would you like to say?";
+	next;
+	input .@news$;
+	if(getstrlen(.@news$) > 256)
+	{
+		mes "[ ^99CC66In-Game News^000000 ]";
+		mes "Your message was too long and could not be added to the database.";
+		next;
+		callfunc("GM_News");
+	}
+	mes "[ ^99CC66In-Game News^000000 ]";
+	mes "Your message is:";
+	mes "^00AA00"+.@news$;
+	mes "^000000Is this correct?";
+	next;
+	if(select("No:Yes")&1) callfunc "GM_News";
+	mes "[ ^99CC66In-Game News^000000 ]";
+	mes "Your message will be added to the database momentarily...";
+	announce "Última noticia: "+.@topic$,0;
+	set .@GM$,escape_sql(strcharinfo(0));
+	set .@topic$,escape_sql(.@topic$);
+	set .@news$,escape_sql(.@news$);
+	query_sql("INSERT INTO `gm_news` (gm_poster,topic,message) VALUES ('"+.@GM$+"','"+.@topic$+"','"+.@news$+"')");
+	next;
+	mes "[ ^99CC66In-Game News^000000 ]";
+	mes "Message added.";
+	close;
+
+case1:
+close;
+
+}

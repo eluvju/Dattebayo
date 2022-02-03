@@ -1,0 +1,81 @@
+prontera,153,189,5	script	Quests Diárias	100,{
+	if ( atoi( gettimestr("%Y%m%d", 9) ) == #last_TriggerDay ) {mes "[Quests Diárias]"; mes "Você já fez sua quest diária"; close;}
+	set .@t, gettime(4);
+	mes "[Quests Diárias]";
+	mes "Venhe aqui todo dia pra receber uma quest";
+	next;
+	mes "[Quests Diárias]";
+	mes "Hoje é "+ .week$[.@t];
+	mes "E a quest de hoje é pra receber um:";
+	mes getitemname(.reward[.@t]);
+	next;
+	mes "Você precisa dos seguintes itens:";
+	set .@size, getarraysize( getd(".req_id"+ .@t ) );
+	for ( set .@i, 0; .@i < .@size; set .@i, .@i +1 )
+	mes getd(".req_amount"+ .@t +"["+ .@i +"]" ) +" "+ getitemname( getd(".req_id"+ .@t +"["+ .@i +"]" ) );
+	next;
+	if ( select( "Eu quero fazer", "Deixa pra outra hora" ) == 2 ) {
+		mes "Ok, volte mais tarde";
+		close;
+	}
+	if ( gettime(4) != .@t ) {
+		mes "sorry, hoje dia um novo";
+		close;
+	}
+	for ( set .@i, 0; .@i < .@size; set .@i, .@i +1 ) {
+		if ( countitem( getd(".req_id"+ .@t +"["+ .@i +"]" ) ) < getd(".req_amount"+ .@t +"["+ .@i +"]" ) ) {
+			set .@id[ getarraysize(.@id) ], getd(".req_id"+ .@t +"["+ .@i +"]" );
+			set .@amount[ getarraysize(.@amount) ], getd(".req_amount"+ .@t +"["+ .@i +"]" ) - countitem( getd(".req_id"+ .@t +"["+ .@i +"]" ) );
+		}
+	}
+	if ( .@id ) {
+		mes "Está faltando os seguintes itens:";
+		set .@size1, getarraysize(.@id);
+		for ( set .@i, 0; .@i < .@size1; set .@i, .@i +1 )
+		mes .@amount[.@i] +" "+ getitemname( .@id[.@i] );
+		close;
+	}
+	for ( set .@i, 0; .@i < .@size; set .@i, .@i +1 )
+	delitem getd(".req_id"+ .@t +"["+ .@i +"]" ), getd(".req_amount"+ .@t +"["+ .@i +"]" );
+	getitem .reward[.@t], 1;
+	set #last_TriggerDay, atoi(gettimestr("%Y%m%d",9));
+	mes "Você tem todos os itens";
+	mes getitemname(.reward[.@t]);
+	close;
+OnInit:
+	set .week$[0], "Domingo";
+	set .reward[0], 501;
+	setarray .req_id0, 501,502;
+	setarray .req_amount0, 1, 1;
+
+	set .week$[1], "Segunda-Feira";
+	set .reward[1], 501;
+	setarray .req_id1, 501,502;
+	setarray .req_amount1, 1, 1;
+
+	set .week$[2], "Terça-Feira";
+	set .reward[2], 501;
+	setarray .req_id2, 501,502;
+	setarray .req_amount2, 1, 1;
+
+	set .week$[3], "Quarta-Feira";
+	set .reward[3], 501;
+	setarray .req_id3, 501,502;
+	setarray .req_amount3, 1, 1;
+
+	set .week$[4], "Quinta-Feira";
+	set .reward[4], 501;
+	setarray .req_id4, 501,502;
+	setarray .req_amount4, 1, 1;
+
+	set .week$[5], "Sexta-Feira";
+	set .reward[5], 501;
+	setarray .req_id5, 501,502;
+	setarray .req_amount5, 1, 1;
+
+	set .week$[6], "Sábado";
+	set .reward[6], 501;
+	setarray .req_id6, 501,502;
+	setarray .req_amount6, 1, 1;
+	end;
+}

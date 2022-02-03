@@ -1,0 +1,62 @@
+-	script	on_PC_UseSkillswap	-1,{
+    end;
+//When a Character uses a skill
+
+//Troca_posicao
+
+onPcUseSkillEvent:
+
+           if(lskillid == 996) {
+
+
+if (getskilllv(996) == 1) {
+
+if (velo_intermediario != 1) {end;}
+if (Troca_posicao != 1) {end;}
+if (skill996 >= 50) {skill 996,2,0; set skill996,0; dispbottom "[Sys] Level up"; end; }
+set skill996,skill996 +1;
+dispbottom "[Jutsu level] Troca de posição level 1: "+skill996+" de 50";
+
+end;
+
+}
+
+if (getskilllv(996) == 2) {
+
+if (velo_intermediario != 1) {end;}
+if (Troca_posicao != 1) {end;}
+if (skill996 >= 100) {skill 996,3,0; set skill996,0; dispbottom "[Sys] Level up"; end;}
+set skill996,skill996 +1;
+dispbottom "[Jutsu level] Troca de posição level 2: "+skill996+" de 100";
+
+end;
+
+}
+
+if (getskilllv(996) == 3) {
+
+if (vel_avan != 1) {end;}
+if (Troca_posicao != 1) {end;}
+if (skill996 >= 150) {skill 996,4,0; set skill996,0; dispbottom "[Sys] Level up"; end;}
+set skill996,skill996 +1;
+dispbottom "[Jutsu level] Troca de posição level 3: "+skill996+" de 150";
+
+end;
+
+}
+
+if (getskilllv(996) == 4) {
+
+if (vel_avan != 1) {end;}
+if (Troca_posicao != 1) {end;}
+if (skill996 >= 200) {skill 996,5,0; set skill996,0; dispbottom "[Sys] Level up"; end;}
+set skill996,skill996 +1;
+dispbottom "[Jutsu level] Troca de posição level 4: "+skill996+" de 200";
+
+end;
+
+}
+
+                end;
+            }    
+}

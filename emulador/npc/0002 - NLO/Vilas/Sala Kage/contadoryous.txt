@@ -1,0 +1,34 @@
+//==============================================================================================================================================================
+//   Contador de Ryous
+//==============================================================================================================================================================
+salakage,36,33,5	script	Contador de Ryous#1	843,{
+
+mes "[Contador de Ryous]";
+mes "No momento estamos com "+$konoha_ryous+" Ryous";
+close;
+
+}
+
+salakage2,36,33,5	script	Contador de Ryous#2	843,{
+
+mes "[Contador de Ryous]";
+mes "No momento estamos com "+$areia_ryous+" Ryous";
+close;
+
+}
+
+salakage3,36,33,5	script	Contador de Ryous#3	843,{
+
+mes "[Contador de Ryous]";
+mes "No momento estamos com "+$nevoa_ryous+" Ryous";
+close;
+
+}
+
+salakage4,36,33,5	script	Contador de Ryous#4	843,{
+
+mes "[Contador de Ryous]";
+mes "No momento estamos com "+$nuvem_ryous+" Ryous";
+close;
+
+}akatsuki,90,206,5	script	Contador de Ryous#5	843,{mes "[Contador de Ryous]";mes "No momento estamos com "+$akatsuki_ryous+" Ryous";close;}

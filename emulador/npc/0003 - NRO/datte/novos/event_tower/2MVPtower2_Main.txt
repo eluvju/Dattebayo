@@ -1,0 +1,173 @@
+//Author	:	Goddameit
+//Version	:	2011/6/17 - 3:22
+//Web	:	http://goo.gl/92vfA
+kakashi,73,165,4	script	Torre Sangrenta	64,{
+	function	fail	{
+		mes "^FF0000["+getarg(0)+"]^000000";
+		close;
+	}
+	if(select("Entrar na Torre (Ao clicar será cobrada 40kk por party):Sair da partida")==2){
+		if(!instance_id(1))
+			fail("Você não está em uma partida.");
+
+	if(getpartyleader(getcharid(1),2)!=getcharid(0))
+		fail("Você não é o líder da party.");
+
+		instance_warpall "savepoint",0,0;
+		instance_destroy instance_id(1);
+		fail("Finish.");
+	}
+	if(instance_id(1))
+		fail("Você já está em uma partida.");
+	
+	if(!getcharid(1))
+		fail("Você não tem uma party.");
+	
+	if(getpartyleader(getcharid(1),2)!=getcharid(0))
+		fail("Você não é o líder da party.");
+	
+	set .@zenyneed,40000000;
+	if(Zeny<.@zenyneed)
+		fail("Você não possui os 40kk necessário.");
+	else
+		set Zeny,Zeny-.@zenyneed;
+	
+	set .@partymemberneed,3;
+	getpartymember(getcharid(1));
+	if($@partymembercount<.partymemberneed)
+		fail("Você precisa de  "+.@partymemberneed+" membros na party.");
+	
+	select("Fácil","Normal","Difícil","Muito Díficil","Que p***** é essa?!");
+	set .@igid,instance_create("MVPtower:"+(@menu==1?"Easy":@menu==2?"Normal":@menu==3?"Hard":@menu==4?"Crazy":"Damn!"),getcharid(1));
+	instance_attachmap(set(.@t$,@menu+"@tower"),.@igid);
+	instance_set_timeout 3600,3600,.@igid;
+	instance_init .@igid;
+	instance_attach .@igid;
+	set 'datalevel,0;
+	set 'datanumber,0;
+	setmapflag has_instance(.@t$),mf_noteleport;
+	setmapflag has_instance(.@t$),mf_nomemo;
+	setmapflag has_instance(.@t$),mf_nosave;
+	setmapflag has_instance(.@t$),mf_nobranch;
+	setmapflag has_instance(.@t$),mf_noloot;
+	setmapflag has_instance(.@t$),mf_nomobloot;
+	setmapflag has_instance(.@t$),mf_monster_noteleport;
+	setmapflag has_instance(.@t$),mf_nobaseexp;
+	warpparty has_instance(.@t$),$@MVPtowerAdminX[@menu],$@MVPtowerAdminY[@menu],getcharid(1);	
+	end;
+OnPCLogOutEvent:
+//	if(!instance_id(1))
+//		end;
+//	instance_warpall "SavePoint",0,0;
+//	instance_destroy instance_id(1);
+//	end;
+}
+1@tower,384,16,4	script	Assistente da Torre#1	100,{
+	function	num	{
+		switch(getarg(0))
+		{
+			case 1:
+			case 2:
+				if(getarg(2)<3)
+					return;
+				set .@b,getarg(1)+getarg(2);
+				set'datanumber,'datanumber+.@b;
+				return .@b;
+		}
+	}
+	function	Onmvp	{
+		deletearray 'mvp[0],128;
+		deletearray 'num[0],128;
+		setarray 'mvp,1737,1983,1048,1047,1984,1985,1986,1738,1635,1992,1634,1372,1381,1418;
+		switch(getarg(0))
+		{
+			case 1:
+				setarray 'num[1],1,2,2,2,3,3,4,5;
+				return;
+			case 2:
+				setarray 'num[1],1,2,2,3,3,4,5,5;
+				return;
+			case 3:
+				setarray 'num[1],2,2,3,3,4,4,6,6;
+				return;
+			case 4:
+				setarray 'num[1],3,3,4,4,5,6,7,7;
+				return;
+			case 5:
+				setarray 'num[1],3,4,4,5,5,7,9,9,9,10;
+				return;
+		}
+	}
+	function	reward	{
+		getpartymember getarg(1),2;
+		set 'partymembercount,$@partymembercount;
+		copyarray 'partymemberaid[0],$@partymemberaid[0],128;
+		for(set .@i,0;.@i<'partymembercount;set .@i,.@i+1)
+		{
+			if(attachrid('partymemberaid[.@i]))
+			{
+				getmapxy(.@m$,.@x,.@y,0);
+				if(.@m$==getarg(2))
+					callfunc "MVPTower2_Reward_"+getarg(0);
+			}
+		}
+		return;
+	}
+	set 't,atoi(strnpcinfo(2));
+	if(!instance_id(1))
+		end;
+	if('datanumber)
+		end;
+	set 'datalevel,'datalevel+1;
+	if('datalevel<=getarraysize('num[1])){
+		instance_announce instance_id(1),"[Torre Sangrenta] Nível : "+'datalevel+"!",0;
+		Onmvp('t);
+		for(set 'datanumber,0;'num['datalevel]>0;set 'num['datalevel],'num['datalevel]-1)
+			areamonster "this",$@MVPtowerSpawnMX['t]-5,$@MVPtowerSpawnMY['t]-5,$@MVPtowerSpawnMX['t]+5,$@MVPtowerSpawnMY['t]+5,getmonsterinfo(set('p,'mvp[rand(getarraysize('mvp))]),0),'p,set('datanumber,'datanumber+1)/'datanumber,instance_npcname("Assistente da Torre#"+'t,instance_id(1))+"::OnKill";
+		areamonster "this",$@MVPtowerSpawnNX['t]-5,$@MVPtowerSpawnNY['t]-5,$@MVPtowerSpawnNX['t]+5,$@MVPtowerSpawnNY['t]+5,getmonsterinfo(1829,0),1829,num(1,'datalevel,'t),instance_npcname("Assistente da Torre#"+'t,instance_id(1))+"::OnKill";
+		areamonster "this",$@MVPtowerSpawnNX['t]-5,$@MVPtowerSpawnNY['t]-5,$@MVPtowerSpawnNX['t]+5,$@MVPtowerSpawnNY['t]+5,getmonsterinfo(1830,0),1830,num(1,'datalevel,'t),instance_npcname("Assistente da Torre#"+'t,instance_id(1))+"::OnKill";
+	}else{
+		instance_announce instance_id(1),"[Torre] Você venceu!",0;
+		sleep2(1000);
+		getmapxy(.@m$,.@x,.@y,0);
+		reward('t,getcharid(1),.@m$);
+		instance_warpall "SavePoint",0,0;
+		instance_destroy instance_id(1);
+	}
+	end;
+OnKill:
+	set 'datanumber,'datanumber-1;
+	if(set('datanumber,'datanumber>0?'datanumber:0))
+		instance_announce instance_id(1),"[Torre] Ainda falta: "+'datanumber+" inimigo(s).",0;
+	else
+		instance_announce instance_id(1),"[Torre] Você passou de nível.",0;
+	end;
+OnInit:
+	set .t,atoi(strnpcinfo(2));
+	getmapxy(.@m$,$@MVPtowerAdminX[.t],$@MVPtowerAdminY[.t],1,strnpcinfo(0));
+	end;
+}
+2@tower,384,16,4	duplicate(Assistente da Torre#1)	Assistente da Torre#2	100
+3@tower,384,16,4	duplicate(Assistente da Torre#1)	Assistente da Torre#3	100
+4@tower,126,186,4	duplicate(Assistente da Torre#1)	Assistente da Torre#4	100
+5@tower,71,72,4	duplicate(Assistente da Torre#1)	Assistente da Torre#5	100
+1@tower,354,43,4	script	MVPtower Spawn_Normal#1	139,{
+OnInit:
+	set .t,atoi(strnpcinfo(2));
+	getmapxy(.@m$,$@MVPtowerSpawnNX[.t],$@MVPtowerSpawnNY[.t],1,strnpcinfo(0));
+	end;
+}
+2@tower,354,43,4	duplicate(MVPtower Spawn_Normal#1)	MVPtower Spawn_Normal#2	139
+3@tower,354,43,4	duplicate(MVPtower Spawn_Normal#1)	MVPtower Spawn_Normal#3	139
+4@tower,96,213,4	duplicate(MVPtower Spawn_Normal#1)	MVPtower Spawn_Normal#4	139
+5@tower,89,91,4	duplicate(MVPtower Spawn_Normal#1)	MVPtower Spawn_Normal#5	139
+1@tower,371,43,4	script	MVPtower Spawn_MVP#1	139,{
+OnInit:
+	set .t,atoi(strnpcinfo(2));
+	getmapxy(.@m$,$@MVPtowerSpawnMX[.t],$@MVPtowerSpawnMY[.t],1,strnpcinfo(0));
+	end;
+}
+2@tower,371,43,4	duplicate(MVPtower Spawn_MVP#1)	MVPtower Spawn_MVP#2	139
+3@tower,371,43,4	duplicate(MVPtower Spawn_MVP#1)	MVPtower Spawn_MVP#3	139
+4@tower,113,213,4	duplicate(MVPtower Spawn_MVP#1)	MVPtower Spawn_MVP#4	139
+5@tower,97,99,4	duplicate(MVPtower Spawn_MVP#1)	MVPtower Spawn_MVP#5	139

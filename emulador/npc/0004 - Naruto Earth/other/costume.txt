@@ -1,0 +1,12 @@
+function	script	costume	{
+
+	if (countitem(32158) == 1) { set @visu,getlook(LOOK_HEAD_MID); setlook LOOK_HEAD_MID,1482; }
+
+end;
+	}
+
+function	script	un_costume	{
+
+	if (countitem(32158) == 0) {setlook LOOK_HEAD_MID,@visu;}
+end;	
+}

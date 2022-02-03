@@ -1,0 +1,7 @@
+job_wiz,50,166,5	script	Ninjutsu Básico#D3	831,{		
+	if(checkquest(20010) != 1) { next; mes "Você ainda não está pronto para esse treinamento."; close;}
+	mes "[ Instrutor de Ninjutsu] ";
+	mes "Breve explicação sobre ninjutsus básicos";
+	set ninbasico,1;
+	close;
+}

@@ -1,0 +1,103 @@
+-	script	on_sawarabi	-1,{
+    end;
+//When a Character uses a skill
+
+//Sawarabi
+
+onPcUseSkillEvent:
+
+           if(lskillid == 253) {
+
+
+if (getskilllv(253) == 1) {
+
+if (Sawarabi != 1) {end;}
+if (skill253 >= 50) {skill 253,2,0; set skill253,0; dispbottom "[Sys] Level up"; end; }
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 1: "+skill253+" de 50";
+
+end;
+
+}
+
+if (getskilllv(253) == 2) {
+if (Sawarabi != 1) {end;}
+if (skill253 >= 100) {skill 253,3,0; set skill253,0; dispbottom "[Sys] Level up"; end;}
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 2: "+skill253+" de 100";
+
+end;
+
+}
+
+if (getskilllv(253) == 3) {
+
+if (Sawarabi != 1) {end;}
+if (skill253 >= 150) {skill 253,4,0; set skill253,0; dispbottom "[Sys] Level up"; end;}
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 3: "+skill253+" de 150";
+
+end;
+
+}
+
+if (getskilllv(253) == 4) {
+if (Sawarabi != 1) {end;}
+if (skill253 >= 200) {skill 253,5,0; set skill253,0; dispbottom "[Sys] Level up"; end;}
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 4: "+skill253+" de 200";
+
+end;
+
+}
+
+if (getskilllv(253) == 5) {
+if (Sawarabi != 1) {end;}
+if (skill253 >= 250) {skill 253,6,0; set skill253,0; dispbottom "[Sys] Level up"; end;}
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 5: "+skill253+" de 250";
+
+end;
+
+}
+
+if (getskilllv(253) == 6) {
+if (Sawarabi != 1) {end;}
+if (skill253 >= 300) {skill 253,7,0; set skill253,0; dispbottom "[Sys] Level up"; end;}
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 6: "+skill253+" de 300";
+
+end;
+
+}
+if (getskilllv(253) == 7) {
+if (Sawarabi != 1) {end;}
+if (skill253 >= 500) {skill 253,8,0; set skill253,0; dispbottom "[Sys] Level up"; end;}
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 7: "+skill253+" de 500";
+
+end;
+
+}
+if (getskilllv(253) == 8) {
+if (Sawarabi != 1) {end;}
+if (skill253 >= 700) {skill 253,9,0; set skill253,0; dispbottom "[Sys] Level up"; end;}
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 8: "+skill253+" de 700";
+
+end;
+
+}
+if (getskilllv(253) == 9) {
+if (Sawarabi != 1) {end;}
+if (skill253 >= 1000) {skill 253,10,0; set skill253,0; dispbottom "[Sys] Level up"; end;}
+set skill253,skill253 +1;
+dispbottom "[Jutsu level] Tessenka no Mai level 9: "+skill253+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

@@ -1,0 +1,408 @@
+job_sage.gat,115,100,5	script	Anko	882,{
+
+//cutin "anko",3;
+mes "^008000[Anko]^000000";
+savepoint "job_wiz.gat",50,162;
+equip 1201;
+mes "Olá "+strcharinfo(0)+" Seja bem vindo ao Naruto RPG Online!";
+mes "Aqui você viverá no Mundo Shinobi do Anime Naruto. vivenciando o dia a dia de um verdadeiro Ninja!";
+next;
+mes "^008000[Anko]^000000";
+mes "Esqueça tudo que você viu até agora e se torne um Shinobi consagrado de sua Vila!";
+mes "Desafios, História, Combates emocionante. Esse é o Naruto RPG Online!";
+next;
+mes "^008000[Anko]^000000";
+mes "Vamos iniciar sua trajetória, prepare-se pra fazer história!";
+next;
+warp "job_wiz.gat",50,162;
+end;
+
+}
+
+/*
+bibli_01,52,43,5	script	inivi1	139,52,42,{
+if (inicio_tuto >= 1) {end;}
+set inicio_tuto,1;
+cutin "cutin_tsunade",2;
+mes "Seja bem-vindo a Biblioteca, esse vai ser um local muito visitado por você, é aqui que você define seus três treinamentos básicos, e onde você vai escolher sua kekkei genkai.";
+next;
+mes "Aqui também é onde você pode escolher qual treinamento gostaria de melhorar, todos os treinamentos podem ser melhorado atráves de níveis, e é aqui que você escolhe qual quer upar no momento, só falar com este npc a direita quando tiver terminado as quests de seus três treinamentos.";
+next;
+mes "Sem mais delongas, vamos iniciar, escolha três treinamentos, após isso vá até o esgoto e mate 40 vermes, depois é só retornar aqui e falar novamente com os npcs dos treinamentos que escolheu e pronto, após isso poderá aprender os jutsus básicos de seus treinamentos na sala de jutsus!";
+cutin "",255;
+close;
+
+}
+
+bibli_02,52,43,5	script	inivi4	139,52,42,{
+if (inicio_tuto >= 1) {end;}
+set inicio_tuto,1;
+cutin "cutin_tsunade",2;
+mes "Seja bem-vindo a Biblioteca, esse vai ser um local muito visitado por você, é aqui que você define seus três treinamentos básicos, e onde você vai escolher sua kekkei genkai.";
+next;
+mes "Aqui também é onde você pode escolher qual treinamento gostaria de melhorar, todos os treinamentos podem ser melhorado atráves de níveis, e é aqui que você escolhe qual quer upar no momento, só falar com este npc a direita quando tiver terminado as quests de seus três treinamentos.";
+next;
+mes "Sem mais delongas, vamos iniciar, escolha três treinamentos, após isso vá até o esgoto e mate 40 vermes, depois é só retornar aqui e falar novamente com os npcs dos treinamentos que escolheu e pronto, após isso poderá aprender os jutsus básicos de seus treinamentos na sala de jutsus!";
+cutin "",255;
+close;
+
+}
+
+bibli_03,52,43,5	script	inivi2	139,52,42,{
+if (inicio_tuto >= 1) {end;}
+set inicio_tuto,1;
+cutin "cutin_tsunade",2;
+mes "Seja bem-vindo a Biblioteca, esse vai ser um local muito visitado por você, é aqui que você define seus três treinamentos básicos, e onde você vai escolher sua kekkei genkai.";
+next;
+mes "Aqui também é onde você pode escolher qual treinamento gostaria de melhorar, todos os treinamentos podem ser melhorado atráves de níveis, e é aqui que você escolhe qual quer upar no momento, só falar com este npc a direita quando tiver terminado as quests de seus três treinamentos.";
+next;
+mes "Sem mais delongas, vamos iniciar, escolha três treinamentos, após isso vá até o esgoto e mate 40 vermes, depois é só retornar aqui e falar novamente com os npcs dos treinamentos que escolheu e pronto, após isso poderá aprender os jutsus básicos de seus treinamentos na sala de jutsus!";
+cutin "",255;
+close;
+
+}
+
+bibli_04,52,43,5	script	inivi3	139,52,42,{
+if (inicio_tuto >= 1) {end;}
+set inicio_tuto,1;
+cutin "cutin_tsunade",2;
+mes "Seja bem-vindo a Biblioteca, esse vai ser um local muito visitado por você, é aqui que você define seus três treinamentos básicos, e onde você vai escolher sua kekkei genkai.";
+next;
+mes "Aqui também é onde você pode escolher qual treinamento gostaria de melhorar, todos os treinamentos podem ser melhorado atráves de níveis, e é aqui que você escolhe qual quer upar no momento, só falar com este npc a direita quando tiver terminado as quests de seus três treinamentos.";
+next;
+mes "Sem mais delongas, vamos iniciar, escolha três treinamentos, após isso vá até o esgoto e mate 40 vermes, depois é só retornar aqui e falar novamente com os npcs dos treinamentos que escolheu e pronto, após isso poderá aprender os jutsus básicos de seus treinamentos na sala de jutsus!";
+cutin "",255;
+close;
+
+}
+
+areia,109,254,5	script	inivi5	139,37,68,{
+if (inicio_tuto >= 2) {end;}
+set inicio_tuto,2;
+cutin "cutin_tsunade",2;
+mes "Esta é a entrada do esgoto de sua vila, aqui é perigoso se avançar demais então fique atento, observe também o mini-mapa pra não se perder, os pontos vermelhos no mini-mapa são entradas e saídas, após matar os 40 vermes, volte para a biblioteca para finalizar as quests.";
+next;
+mes "Se não achar a biblioteca, encontre um teleportador de vila, que nele tem a opção de teleportar para a entrada da biblioteca";
+cutin "",255;
+close;
+
+}
+
+nevoa,18,112,5	script	inivi6	139,383,101,,{
+if (inicio_tuto >= 2) {end;}
+set inicio_tuto,2;
+cutin "cutin_tsunade",2;
+mes "Esta é a entrada do esgoto de sua vila, aqui é perigoso se avançar demais então fique atento, observe também o mini-mapa pra não se perder, os pontos vermelhos no mini-mapa são entradas e saídas, após matar os 40 vermes, volte para a biblioteca para finalizar as quests.";
+next;
+mes "Se não achar a biblioteca, encontre um teleportador de vila, que nele tem a opção de teleportar para a entrada da biblioteca";
+cutin "",255;
+close;
+
+}
+
+konoha,190,234,5	script	inivi7	139,265,255,{
+if (inicio_tuto >= 2) {end;}
+set inicio_tuto,2;
+cutin "cutin_tsunade",2;
+mes "Esta é a entrada do esgoto de sua vila, aqui é perigoso se avançar demais então fique atento, observe também o mini-mapa pra não se perder, os pontos vermelhos no mini-mapa são entradas e saídas, após matar os 40 vermes, volte para a biblioteca para finalizar as quests.";
+next;
+mes "Se não achar a biblioteca, encontre um teleportador de vila, que nele tem a opção de teleportar para a entrada da biblioteca";
+cutin "",255;
+close;
+
+}
+
+nuvem,24,60,5	script	inivi8	139,28,63,{
+if (inicio_tuto >= 2) {end;}
+set inicio_tuto,2;
+cutin "cutin_tsunade",2;
+mes "Esta é a entrada do esgoto de sua vila, aqui é perigoso se avançar demais então fique atento, observe também o mini-mapa pra não se perder, os pontos vermelhos no mini-mapa são entradas e saídas, após matar os 40 vermes, volte para a biblioteca para finalizar as quests.";
+next;
+mes "Se não achar a biblioteca, encontre um teleportador de vila, que nele tem a opção de teleportar para a entrada da biblioteca";
+cutin "",255;
+close;
+
+}
+
+prt_sewb2,20,17,5	script	inivi22	139,5,5,{
+if (inicio_tuto >= 3) {end;}
+set inicio_tuto,3;
+cutin "cutin_tsunade",2;
+mes "Agora eu vou te mostrar como entrar em combate, preste bem atenção nas seguintes imagens, essa primeira ensina a atacar com ataques físicos.";
+next;
+cutin "",255;
+cutin "atacar",3;
+next;
+mes "Essa próxima ensina como atacar usando jutsus";
+cutin "",255;
+cutin "atacarjutsu",3;
+next;
+mes "Sempre que quiser rever essas imagens, digite @combate";
+cutin "",255;
+close;
+
+}
+
+gl_sew01,258,255,5	script	inivi23	139,5,5,{
+if (inicio_tuto >= 3) {end;}
+set inicio_tuto,3;
+cutin "cutin_tsunade",2;
+mes "Agora eu vou te mostrar como entrar em combate, preste bem atenção nas seguintes imagens, essa primeira ensina a atacar com ataques físicos.";
+next;
+cutin "",255;
+cutin "atacar",3;
+next;
+mes "Essa próxima ensina como atacar usando jutsus";
+cutin "",255;
+cutin "atacarjutsu",3;
+next;
+mes "Sempre que quiser rever essas imagens, digite @combate";
+cutin "",255;
+close;
+
+}
+
+prt_sewb1,131,248,5	script	inivi24	139,5,5,{
+if (inicio_tuto >= 3) {end;}
+set inicio_tuto,3;
+cutin "cutin_tsunade",2;
+mes "Agora eu vou te mostrar como entrar em combate, preste bem atenção nas seguintes imagens, essa primeira ensina a atacar com ataques físicos.";
+next;
+cutin "",255;
+cutin "atacar",3;
+next;
+mes "Essa próxima ensina como atacar usando jutsus";
+cutin "",255;
+cutin "atacarjutsu",3;
+next;
+mes "Sempre que quiser rever essas imagens, digite @combate";
+cutin "",255;
+close;
+
+}
+
+alde_dun01,167,164,5	script	inivi25	139,5,5,{
+if (inicio_tuto >= 3) {end;}
+set inicio_tuto,3;
+cutin "cutin_tsunade",2;
+mes "Agora eu vou te mostrar como entrar em combate, preste bem atenção nas seguintes imagens, essa primeira ensina a atacar com ataques físicos.";
+next;
+cutin "",255;
+cutin "atacar",3;
+next;
+mes "Essa próxima ensina como atacar usando jutsus";
+cutin "",255;
+cutin "atacarjutsu",3;
+next;
+mes "Sempre que quiser rever essas imagens, digite @combate";
+cutin "",255;
+close;
+
+}
+
+bibli_01,50,79,5	script	inivi9	139,50,79,{
+if (inicio_tuto >= 4) {end;}
+set inicio_tuto,4;
+cutin "cutin_tsunade",2;
+mes "Aqui é onde você escolhe sua kekkei genkai, lembrando que assim como os treinamentos, não é possível mudar sua kekkei genkai sem antes usar um item obtido com cash, então escolha bem, se quiser, pesquise antes, não tenha pressa.";
+next;
+mes "Após escolher qual você quer, basta matar 3,5 mil monstros, que irá despertar, todas as kekkei genkai possuem 4 níveis, que vão melhorando com cada nível aumentado";
+cutin "",255;
+close;
+
+}
+
+bibli_02,45,79,5	script	inivi10	139,45,79,{
+if (inicio_tuto >= 4) {end;}
+set inicio_tuto,4;
+cutin "cutin_tsunade",2;
+mes "Aqui é onde você escolhe sua kekkei genkai, lembrando que assim como os treinamentos, não é possível mudar sua kekkei genkai sem antes usar um item obtido com cash, então escolha bem, se quiser, pesquise antes, não tenha pressa.";
+next;
+mes "Após escolher qual você quer, basta matar 3,5 mil monstros, que irá despertar, todas as kekkei genkai possuem 4 níveis, que vão melhorando com cada nível aumentado";
+cutin "",255;
+close;
+
+}
+
+bibli_03,50,83,5	script	inivi11	139,50,83,{
+if (inicio_tuto >= 4) {end;}
+set inicio_tuto,4;
+cutin "cutin_tsunade",2;
+mes "Aqui é onde você escolhe sua kekkei genkai, lembrando que assim como os treinamentos, não é possível mudar sua kekkei genkai sem antes usar um item obtido com cash, então escolha bem, se quiser, pesquise antes, não tenha pressa.";
+next;
+mes "Após escolher qual você quer, basta matar 3,5 mil monstros, que irá despertar, todas as kekkei genkai possuem 4 níveis, que vão melhorando com cada nível aumentado";
+cutin "",255;
+close;
+
+}
+
+bibli_04,50,83,5	script	inivi12	139,50,83,{
+if (inicio_tuto >= 4) {end;}
+set inicio_tuto,4;
+cutin "cutin_tsunade",2;
+mes "Aqui é onde você escolhe sua kekkei genkai, lembrando que assim como os treinamentos, não é possível mudar sua kekkei genkai sem antes usar um item obtido com cash, então escolha bem, se quiser, pesquise antes, não tenha pressa.";
+next;
+mes "Após escolher qual você quer, basta matar 3,5 mil monstros, que irá despertar, todas as kekkei genkai possuem 4 níveis, que vão melhorando com cada nível aumentado";
+cutin "",255;
+close;
+
+}
+
+job_sage,115,97,5	script	inivi13	139,115,97,{
+
+cutin "new1",3;
+end;
+
+}
+
+job_wiz,50,162,5	script	inivi14	139,50,162,{
+
+cutin "new2",3;
+end;
+
+}
+
+job_sage,49,165,5	script	inivi15	139,20,20,{
+
+cutin "new3",3;
+end;
+
+}
+
+moc_fild01,235,377,5	script	inivi16	139,235,377,{
+if (inicio_tuto >= 5) {end;}
+set inicio_tuto,5;
+cutin "cutin_tsunade",2;
+mes "Agora é hora de você escolher qual invocação você deseja ter, assim como kekkei genkai, não é possível trocar, aqui nesse mapa estão os npcs pra cada invocação, só encontrar o que você desejar";
+next;
+mes "As invocações disponíveis são: Cobra, sapo, lesma, macaco, e cachorro";
+next;
+mes "Escolha qual você deseja ter, e o npc te dará uma quest, após completar essa quest você assinará o contrato de sangue com o animal e poderá invocar-lo";
+cutin "",255;
+close;
+
+}
+
+gef_fild04,263,356,5	script	inivi17	139,263,356,{
+if (inicio_tuto >= 5) {end;}
+set inicio_tuto,5;
+cutin "cutin_tsunade",2;
+mes "Agora é hora de você escolher qual invocação você deseja ter, assim como kekkei genkai, não é possível trocar, aqui nesse mapa estão os npcs pra cada invocação, só encontrar o que você desejar";
+next;
+mes "As invocações disponíveis são: Cobra, sapo, lesma, macaco, e cachorro";
+next;
+mes "Escolha qual você deseja ter, e o npc te dará uma quest, após completar essa quest você assinará o contrato de sangue com o animal e poderá invocar-lo";
+cutin "",255;
+close;
+
+}
+
+prt_fild02,173,377,5	script	inivi18	139,173,377,{
+if (inicio_tuto >= 5) {end;}
+set inicio_tuto,5;
+cutin "cutin_tsunade",2;
+mes "Agora é hora de você escolher qual invocação você deseja ter, assim como kekkei genkai, não é possível trocar, aqui nesse mapa estão os npcs pra cada invocação, só encontrar o que você desejar";
+next;
+mes "As invocações disponíveis são: Cobra, sapo, lesma, macaco, e cachorro";
+next;
+mes "Escolha qual você deseja ter, e o npc te dará uma quest, após completar essa quest você assinará o contrato de sangue com o animal e poderá invocar-lo";
+cutin "",255;
+close;
+
+}
+
+yuno_fild08,285,377,5	script	inivi19	139,20,20,{
+if (inicio_tuto >= 5) {end;}
+set inicio_tuto,5;
+cutin "cutin_tsunade",2;
+mes "Agora é hora de você escolher qual invocação você deseja ter, assim como kekkei genkai, não é possível trocar, aqui nesse mapa estão os npcs pra cada invocação, só encontrar o que você desejar";
+next;
+mes "As invocações disponíveis são: Cobra, sapo, lesma, macaco, e cachorro";
+next;
+mes "Escolha qual você deseja ter, e o npc te dará uma quest, após completar essa quest você assinará o contrato de sangue com o animal e poderá invocar-lo";
+cutin "",255;
+close;
+
+}
+
+payon_in03,20,63,5	script	inivi20	139,5,5,{
+if (inicio_tuto >= 6) {end;}
+set inicio_tuto,6;
+cutin "cutin_tsunade",2;
+mes "Aqui é a sala de jutsus, aqui você poderá aprender os jutsus básicos de cada treinamento seu";
+next;
+mes "Você pode trocar-los sempre que quiser, mas só após completar a quest, ou seja, se você aceitou a quest de um jutsu, só poderá remover depois de completar a quest dele.";
+next;
+mes "Se você tiver dúvidas sobre onde encontrar monstros ou itens, visite nosso database, www.nro.nnfro.net/database que achará tudo.";
+next;
+mes "Vamos la, agora é hora de começar a realmente ficar forte! ";
+cutin "",255;
+close;
+
+}
+
+sunagakure,171,125,5	script	inivi21	139,5,5,{
+if (inicio_tuto >= 6) {end;}
+set inicio_tuto,6;
+cutin "cutin_tsunade",2;
+mes "Aqui é a sala de jutsus, aqui você poderá aprender os jutsus básicos de cada treinamento seu";
+next;
+mes "Você pode trocar-los sempre que quiser, mas só após completar a quest, ou seja, se você aceitou a quest de um jutsu, só poderá remover depois de completar a quest dele.";
+next;
+mes "Se você tiver dúvidas sobre onde encontrar monstros ou itens, visite nosso database, www.nro.nnfro.net/database que achará tudo.";
+next;
+mes "Vamos la, agora é hora de começar a realmente ficar forte! ";
+cutin "",255;
+close;
+
+}
+
+payon_in01,18,128,5	script	inivi41	139,5,5,{
+if (inicio_tuto >= 6) {end;}
+set inicio_tuto,6;
+cutin "cutin_tsunade",2;
+mes "Aqui é a sala de jutsus, aqui você poderá aprender os jutsus básicos de cada treinamento seu";
+next;
+mes "Você pode trocar-los sempre que quiser, mas só após completar a quest, ou seja, se você aceitou a quest de um jutsu, só poderá remover depois de completar a quest dele.";
+next;
+mes "Se você tiver dúvidas sobre onde encontrar monstros ou itens, visite nosso database, www.nro.nnfro.net/database que achará tudo.";
+next;
+mes "Vamos la, agora é hora de começar a realmente ficar forte! ";
+cutin "",255;
+close;
+
+}
+
+nuvem,60,63,5	script	inivi51	139,5,5,{
+if (inicio_tuto >= 6) {end;}
+set inicio_tuto,6;
+cutin "cutin_tsunade",2;
+mes "Aqui é a sala de jutsus, aqui você poderá aprender os jutsus básicos de cada treinamento seu";
+next;
+mes "Você pode trocar-los sempre que quiser, mas só após completar a quest, ou seja, se você aceitou a quest de um jutsu, só poderá remover depois de completar a quest dele.";
+next;
+mes "Se você tiver dúvidas sobre onde encontrar monstros ou itens, visite nosso database, www.nro.nnfro.net/database que achará tudo.";
+next;
+mes "Vamos la, agora é hora de começar a realmente ficar forte! ";
+cutin "",255;
+close;
+
+}
+
+
+//if (#nevoa == 1) {warp "kiri",45,126;}
+//if (#suna == 1) {warp "areia",181,161;}
+//if (#konoha == 1) {warp "konoha3",159,194;}
+//if (#nuvem == 1) {warp "nuvem",60,63;}
+
+//-	script	testecarrega	-1,{
+//
+//OnPCLoadMapEvent:
+//if ( strcharinfo(3) != "job_sage" ) end;
+//sleep2 1000;
+//if ( strcharinfo(3) != "job_sage" ) end; // counter-check
+//cutin "new3",3;
+//end;
+//}
+//job_sage	mapflag	loadevent
+//job_sage	mapflag	nosave	SavePoint

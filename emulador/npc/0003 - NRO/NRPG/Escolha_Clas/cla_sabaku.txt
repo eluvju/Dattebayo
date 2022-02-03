@@ -1,0 +1,39 @@
+que_ng,29,70,3	script	Clã Sabaku	734,{
+	show "[Clã Sabaku]";
+	if(elemento == 0){goto aprendersabaku;}
+	if(cla == 1){goto L_alreadyhavecla;}	
+
+
+	aprendersabaku:
+	show "Olá caro shinobi, voce gostaria de fazer parte do Clã Sabaku ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	show "[Clã Sabaku]";
+	show "Muito bem, muito sábia essa escolha!";
+	setjob "4011";
+	set sabaku,sabaku + 1;
+	set cla,cla +1;
+	set genin,genin +1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	show "[Clã Sabaku]";
+	show "Tudo bem, eu entendo.";
+	close;
+
+L_alreadyhave:
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_alreadyhavecla:
+	show "Você já possui um clã";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

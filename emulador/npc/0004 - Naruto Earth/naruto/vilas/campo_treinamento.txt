@@ -1,0 +1,21 @@
+konoha3,129,256,3	script	Campo de Treinamento::tre	4_man_nitt,{
+mes "[Campo de Treinamento]";
+mes "Olá Shinobi, gostaria de ir ao Campo de Treinamento?";
+menu "Sim",SIM,"Não",NAO;
+
+SIM:
+mes "[Campo de Treinamento]";
+mes "Vamos lá!";
+next;
+warp "job_monk",246,79;
+close;
+
+NAO:
+mes "[Campo de Treinamento]";
+mes "Caso mude de idéia estarei aqui!";
+close;
+}
+
+kiragakure,192,292,3	duplicate(tre)	Campo de Treinamento#a	4_man_nitt
+cave,96,82,3	duplicate(tre)	Campo de Treinamento#c	4_man_nitt
+kumogakure,178,186,3	duplicate(tre)	Campo de Treinamento#d	4_man_nitt

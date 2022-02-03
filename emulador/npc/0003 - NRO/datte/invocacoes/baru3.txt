@@ -1,0 +1,90 @@
+pay_fild06,283,128,5	script	Kakashi::baru3	843,{
+
+if (quest_baru3_um == 1) goto L_go;
+if(Baru1 != 1) {mes "Você precisa ter contrato com os Ninkens para aparender esse jutsu"; close;}
+if(Baru2 != 1) {mes "Você precisa aprender o Segundo Nível de Kuchiyose para aprender esse jutsu"; close;}
+if(jounin != 1) {mes "Você precisa ser Jounin para aprender esse jutsu"; close;}
+if(Baru3 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo.";
+next;
+mes "Posso te ajudar a aperfeiçoar seu Kuchiyose no Jutsu!";
+mes "Gostaria de treinar o Kuchiyose: Baru?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Baru
+//========================================================================
+
+L_SS:
+set quest_baru3_um,1;
+mes "Para esse treinamento,você deve provar ser fiel aos Ninkens:";
+mes "- Derrote 1000 Manda";
+mes "- Derrote 1000 Katsuyo";
+mes "- Derrote 1000 Gama-Bunta";
+mes "- Derrote 1000 Enma";
+setquest 12101;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(baru3_mobs_um < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(baru3_mobs_dois < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(baru3_mobs_tres < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+if(baru3_mobs_quatro < 1000) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+skill 740,4,0;
+set Baru3,1;
+set quest_baru3_um,0;
+set baru3_mobs_um, 0;
+set baru3_mobs_dois, 0;
+set baru3_mobs_tres, 0;
+set baru3_mobs_quatro, 0;
+completequest 12101;
+erasequest 12101;
+close;
+
+L_no:
+close;
+}
+
+
+moc_fild13,302,342,5	duplicate(baru3)	Kakashi#311	843
+cmd_fild05,97,192,5	duplicate(baru3)	Kakashi#312	843
+mjolnir_10,57,58,5	duplicate(baru3)	Kakashi#313	843
+
+
+-	script	baru3#1	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1418 && quest_baru3_um == 1) {set baru3_mobs_um,baru3_mobs_um +1; announce "Você já derrotou "+baru3_mobs_um+" / 1000 Manda",bc_blue|bc_self; end;}
+
+}
+
+-	script	baru3#2	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1381 && quest_baru3_um == 1) {set baru3_mobs_dois,baru3_mobs_dois +1; announce "Você já derrotou "+baru3_mobs_dois+" / 1000 Katsuyo",bc_blue|bc_self; end;}
+
+}
+
+-	script	baru3#3	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1089 && quest_baru3_um == 1) {set baru3_mobs_tres,baru3_mobs_tres +1; announce "Você já derrotou "+baru3_mobs_tres+" / 1000 Gama-Bunta",bc_blue|bc_self; end;}
+
+}
+
+-	script	baru3#4	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1057 && quest_baru3_um == 1) {set baru3_mobs_quatro,baru3_mobs_quatro +1; announce "Você já derrotou "+baru3_mobs_quatro+" / 1000 Enma",bc_blue|bc_self; end;}
+
+}

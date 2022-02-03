@@ -1,0 +1,12 @@
+acad_01,32,79,3	script	RankPts#LV	48,{
+if(getgmlevel() < 5) end;
+set .@name$, "BKpts";
+set .@cid,94852 ;
+query_sql "SELECT `value`,`char_id` FROM `global_reg_value` WHERE `str` = '"+.@name$+"' ORDER BY `value` DESC LIMIT 30",.@pts,.@charid;
+query_sql "SELECT `value` FROM `global_reg_value` WHERE `str` = '"+.@name$+"', `char_id` = '"+.@cid+"'",.@pts2;
+	mes "[Top 20 Pts]";
+	for (set .@i,0; .@i<21; set .@i,.@i+1)
+		mes .@charid[.@i]+" - "+.@pts[.@i];
+		mes .@pts2;		
+	close;
+}

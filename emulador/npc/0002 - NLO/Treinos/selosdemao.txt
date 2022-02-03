@@ -1,0 +1,219 @@
+-	script	on_PC_UseSkill#1010	-1,{
+
+OnPCUseSkillEvent:
+		   
+	if(lskillid == 1010) {
+		getmapxy @map$,@x,@y,0;
+		for(set .@i,0;.@i < 1; set .@i,.@i + 1)
+		clone @map$,@x,@y,"NPCNAME::OnEVENT",getcharid(0),getcharid(0),0x81,1,30; 
+		sleep2 1;
+		end;
+	}
+}
+	
+-	script	on_PC_UseSkill#506	-1,{
+
+OnPCUseSkillEvent:
+	//if(lskillid == 506) {
+	//	if(indisguise == 1) {atcommand "@undisguise"; sc_end SC_ITEMSCRIPT; set indisguise,0;	end; }
+	//	sc_start SC_ITEMSCRIPT,900000,4007;
+	//	atcommand "@disguise "+killedrid+"";
+	//	if(killedrid == 1627) { atcommand "@undisguise"; sc_end SC_ITEMSCRIPT; set indisguise,0;end; }
+	//	if(killedrid == 1080) { atcommand "@undisguise"; sc_end SC_ITEMSCRIPT; set indisguise,0;end; }
+	//	set indisguise,1;
+	//	end;
+	//}
+}
+	
+-	script	on_PC_UseSkill#350000	-1,{
+
+OnPCUseSkillEvent:
+	if(lskillid == 350) {
+		sc_start SC_ITEMSCRIPT,6000,4066;
+		end;
+	}
+}
+
+-	script	on_PC_UseSkill#668888	-1,{
+
+OnPCUseSkillEvent:
+	if(lskillid == 668) {
+		atcommand "@effect 573";
+		end;
+	}
+}
+
+-	script	on_PC_UseSkill#372	-1,{
+
+OnPCUseSkillEvent:
+	if(lskillid == 372) {
+		atcommand "@effect 608";
+		end;
+	}
+}
+
+-	script	REMOVERTRANSBIJUU	-1,{
+	
+OnREMOVENDOTRANSBIJUU:
+	DelTimer "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+	atcommand "@undisguise";
+	set indisguise,0;
+	end;
+
+}
+
+-	script	FOME_SONO_DICREASE	-1,{
+
+OnHPDicrease:
+
+atcommand "@undisguise"; 
+set indisguise,0;
+DelTimer "FOME_SONO_DICREASE::OnHPDicrease";
+end;
+
+}
+
+
+
+
+//	if(lskillid == 63) {
+//		if(@selosusado == 2) goto checkjutsus;
+//		if(@selosusado < 2) goto fazselo;
+//		
+//		fazselo:
+//		if(@selosusado == 2) {set @selos,@selos + 200000; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 100000; set @selosusado,@selosusado +1; sleep2 1; end;}
+//		
+//		checkjutsus:
+//		set @selos,@selos +100000;
+//		// Genjutsu
+//		if (@selos == 201) && (seloskill677 >= 1)  { atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill677,1; end;} //Jigoku Kouka no Jutsu
+//		if (@selos == 102) && (seloskill678 >= 1)  { atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill678,1; end;} //Kanashibari no Genjutsu
+//		if (@selos == 300) && (seloskill668 >= 1)  { atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill668,1; end;} //Fukai Kemuri
+//		// Medicina
+//		if (@selos == 1002) && (seloskill322 >= 1) { atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill322,1; end;} //Idou no Kaibutsu (Maças de Indu)
+//		// Fuuinjutsu
+//		if (@selos == 1101) && (seloskill45 >= 1)  { atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill5,1; end;} //Concentração
+//		if (@selos == 10002) && (seloskill543 >= 1){ atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill543,1; end;} //Aura Ninja (Aura Ninja)
+//		if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+//		end;
+//	}  
+//
+//// =========================== Selo de Mao Cachorro ===========================
+//
+//	if(lskillid == 526) {
+//		if(@selosusado == 2) goto checkjutsus;
+//		if(@selosusado < 2) goto fazselo2;
+//		
+//		fazselo2:
+//		if(@selosusado == 2) {set @selos,@selos + 20; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 10; set @selosusado,@selosusado +1; sleep2 1; end;}
+//		
+//		checkjutsus2:
+//		set @selos,@selos +10;
+//		// Genjutsu
+//		if (@selos == 201) && (seloskill677 >= 1)  { atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill677,1; end;} //Jigoku Kouka no Jutsu
+//		if (@selos == 102) && (seloskill678 >= 1)  { atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill678,1; end;} //Kanashibari no Genjutsu
+//		if (@selos == 300) && (seloskill668 >= 1)  { atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill668,1; end;} //Fukai Kemuri
+//		// Medicina
+//		if (@selos == 1002) && (seloskill322 >= 1) { atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill322,1; end;} //Idou no Kaibutsu (Maças de Indu)
+//		// Fuuinjutsu
+//		if (@selos == 1101) && (seloskill45 >= 1)  { atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill5,1; end;} //Concentração
+//		if (@selos == 10002) && (seloskill543 >= 1){ atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill543,1; end;} //Aura Ninja (Aura Ninja)
+//		if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+//		end;
+//	} 	
+//
+//// =========================== Selo de Mao Coelho ===========================
+//
+//	if(lskillid == 500) {
+//		if(@selosusado == 2) goto checkjutsus3;
+//		if(@selosusado < 2) goto fazselo3;
+//		
+//		fazselo3:
+//		if(@selosusado == 2) {set @selos,@selos + 200; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 100; set @selosusado,@selosusado +1; sleep2 1; end;}
+//		
+//		checkjutsus3:
+//		set @selos,@selos +100;
+//		// Genjutsu
+//		if (@selos == 201) && (seloskill677 >= 1)  { atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill677,1; end;} //Jigoku Kouka no Jutsu
+//		if (@selos == 102) && (seloskill678 >= 1)  { atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill678,1; end;} //Kanashibari no Genjutsu
+//		if (@selos == 300) && (seloskill668 >= 1)  { atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill668,1; end;} //Fukai Kemuri
+//		// Medicina
+//		if (@selos == 1002) && (seloskill322 >= 1) { atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill322,1; end;} //Idou no Kaibutsu (Maças de Indu)
+//		// Fuuinjutsu
+//		if (@selos == 1101) && (seloskill45 >= 1)  { atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill5,1; end;} //Concentração
+//		if (@selos == 10002) && (seloskill543 >= 1){ atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill543,1; end;} //Aura Ninja (Aura Ninja)
+//		if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+//		end;
+//	}	
+//
+//// =========================== Selo de Mao Cavalo ===========================
+//	if(lskillid == 262) {
+//		if(@selosusado == 2) goto checkjutsus4;
+//		if(@selosusado < 2) goto fazselo4;
+//		
+//		fazselo4:
+//		if(@selosusado == 2) {set @selos,@selos + 20000; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 10000; set @selosusado,@selosusado +1; sleep2 1; end;}
+//		
+//		checkjutsus4:
+//		set @selos,@selos +10000;
+//		// Genjutsu
+//		if (@selos == 201) && (seloskill677 >= 1)  { atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill677,1; end;} //Jigoku Kouka no Jutsu
+//		if (@selos == 102) && (seloskill678 >= 1)  { atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill678,1; end;} //Kanashibari no Genjutsu
+//		if (@selos == 300) && (seloskill668 >= 1)  { atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill668,1; end;} //Fukai Kemuri
+//		// Medicina
+//		if (@selos == 1002) && (seloskill322 >= 1) { atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill322,1; end;} //Idou no Kaibutsu (Maças de Indu)
+//		// Fuuinjutsu
+//		if (@selos == 1101) && (seloskill45 >= 1)  { atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill5,1; end;} //Concentração
+//		if (@selos == 10002) && (seloskill543 >= 1){ atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill543,1; end;} //Aura Ninja (Aura Ninja)
+//		if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+//		end;
+//	
+//	} 
+//	
+//// =========================== Selo de Mao Macaco ===========================
+//
+//	if(lskillid == 142) {
+//		if(@selosusado == 2) goto checkjutsus5;
+//		if(@selosusado < 2) goto fazselo5;
+//
+//		fazselo5:
+//		if(@selosusado == 2) {set @selos,@selos + 2; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 1; set @selosusado,@selosusado +1; sleep2 1; end;}
+//		
+//		checkjutsus5:
+//		set @selos,@selos +1;
+//		// Genjutsu
+//		if (@selos == 201) && (seloskill677 >= 1)  { atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill677,1; end;} //Jigoku Kouka no Jutsu
+//		if (@selos == 102) && (seloskill678 >= 1)  { atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill678,1; end;} //Kanashibari no Genjutsu
+//		if (@selos == 300) && (seloskill668 >= 1)  { atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill668,1; end;} //Fukai Kemuri
+//		// Medicina
+//		if (@selos == 1002) && (seloskill322 >= 1) { atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill322,1; end;} //Idou no Kaibutsu (Maças de Indu)
+//		// Fuuinjutsu
+//		if (@selos == 1101) && (seloskill45 >= 1)  { atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill5,1; end;} //Concentração
+//		if (@selos == 10002) && (seloskill543 >= 1){ atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill543,1; end;} //Aura Ninja (Aura Ninja)
+//		if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+//		end;
+//	}  
+//
+//// =========================== Selo de Mao Tigre ===========================
+//
+//	if(lskillid == 222) {
+//		if(@selosusado == 2) goto checkjutsus6;
+//		if(@selosusado < 2) goto fazselo6;
+//		
+//		fazselo6:
+//		if(@selosusado == 2) {set @selos,@selos + 2000; set @selosusado,@selosusado +1; end;} else {set @selos,@selos + 1000; set @selosusado,@selosusado +1; sleep2 1; end;}
+//		
+//		checkjutsus6:
+//		set @selos,@selos +1000;
+//		// Genjutsu
+//		if (@selos == 201) && (seloskill677 >= 1)  { atcommand "@useskill 677 "+seloskill677+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill677,1; end;} //Jigoku Kouka no Jutsu
+//		if (@selos == 102) && (seloskill678 >= 1)  { atcommand "@useskill 678 "+seloskill678+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill678,1; end;} //Kanashibari no Genjutsu
+//		if (@selos == 300) && (seloskill668 >= 1)  { atcommand "@useskill 668 "+seloskill668+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill668,1; end;} //Fukai Kemuri
+//		// Medicina
+//		if (@selos == 1002) && (seloskill322 >= 1) { atcommand "@useskill 322 "+seloskill322+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill322,1; end;} //Idou no Kaibutsu (Maças de Indu)
+//		// Fuuinjutsu
+//		if (@selos == 1101) && (seloskill45 >= 1)  { atcommand "@useskill 45 "+seloskill45+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill5,1; end;} //Concentração
+//		if (@selos == 10002) && (seloskill543 >= 1){ atcommand "@useskill 543 "+seloskill543+" "+strcharinfo(0); set @selos,0; set @selosusado,0; set @upskill543,1; end;} //Aura Ninja (Aura Ninja)
+//		if (@selos != 10011) { dispbottom "O seu Jutsu falhou!!"; set @selos,0; set @selosusado,0; end;}
+//		end;
+//	} 

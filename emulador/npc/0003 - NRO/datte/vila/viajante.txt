@@ -1,0 +1,280 @@
+konoha3,217,78,5	script	Viajante Ninja::portos	706,{
+
+
+set @price,200;
+
+mes "[^0000FFViajante Ninja^000000]";
+mes "Bem vindo(a) ao Viajante Ninja";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Eu posso te levar!";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Eu cobro 200 ryous cada viagem, afinal, também preciso de uns trocados.";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Por favor escolha o seu destino!";
+menu "Mamutes de Konoha",segunda,"Esconderijo do Clã Kamizuru",kami,"Esconderijo do Clã Kamizuru Nível 2",kami2,"Minas Shinobi",minas,"Mamutes da Suna",kakashi,"Mamutes da Névoa",venda,"Mamutes da Nuvem",cass,"Garganta da Nuvem",aca;
+
+segunda:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "mjolnir_08",0,0;
+close;
+
+cass:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "ein_fild01",0,0;
+close;
+
+Sem_Zeny:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Você não tem ryous suficientes";
+close;
+
+kami:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "um_dun01",0,0;
+close;
+
+minas:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "mjo_dun01",0,0;
+close;
+
+kami2:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "anthell01",0,0;
+close;
+
+kakashi:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "ve_fild04",0,0;
+close;
+
+venda:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "pay_fild10",0,0;
+close;
+
+Aca:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "tur_dun01",0,0;
+close;
+
+EPI1:
+mes "[^0000FFViajante Ninja^000000]";
+mes "Bem vindo(a) ao Viajante Ninja";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Eu posso te levar!";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Eu cobro 200 ryous cada viagem, afinal, também preciso de uns trocados.";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Por favor escolha o seu destino!";
+menu "^0000FFPaís das Ondas^000000",ondas,"Segunda Divisória",segundaA,"Esconderijo do Clã Kamizuru",kamiA,"Esconderijo do Clã Kamizuru Nível 2",kami2A,"Minas Shinobi",minasA,"Treinamento Kakashi",kakashiA,"Cidade de vendas",vendaA,"Cassino",cassA,"Academia",acaA;
+
+segundaA:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "gef_fild10",300,249;
+close;
+
+cassA:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "jawaii_in",28,99;
+close;
+
+kamiA:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "um_dun01",149,198;
+close;
+
+minasA:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "mjo_dun01",52,14;
+close;
+
+kami2A:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "anthell01",35,267;
+close;
+
+kakashiA:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "kakashi",96,133;
+close;
+
+vendaA:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "prontera",49,23;
+close;
+
+ondas:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+mes "^BEBEBE"+strcharinfo(0)+"^000000, Boa Sorte em sua Missão!";
+warp "ondular",212,185;
+set $PORTO,-1;
+dispbottom "[A vila lhe deseja boa Sorte]";
+close;
+
+AcaA:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "payon_in03",20,188;
+close;
+
+}
+
+kiragakure,176,128,5	duplicate(portos)	Viajante Ninja#h2-2	59
+kumogakure,158,77,5	duplicate(portos)	Viajante Ninja#h2-3	59
+sunagakure,147,106,5	duplicate(portos)	Viajante Ninja#h2-4	59
+//prt_monk.gat,158,182,5	duplicate(portos)	Viajante Ninja#h2-5	59
+akatsuki,120,198,5	duplicate(portos)	Viajante Ninja#h2-6	59
+lou_in02,51,174,5	duplicate(portos)	Viajante Ninja#h2-7	59
+
+
+
+gef_fild10,306,248,5	script	Retorno Viajante Ninja#1::porto	706,{
+
+
+set @price,100;
+
+mes "[^0000FFViajante Ninja^000000]";
+mes "Bem vindo(a) ao Viajante Ninja";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Está querendo conhecer mais esse mundo cheio de perigos e shinobis poderosos?";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Eu posso te levar!";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Eu cobro 200 ryous cada viagem, afinal, também preciso de uns trocados.";
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Por favor escolha o seu destino!";
+menu "Primeira Divisória",volta,"Deixa pra lá",nao1;
+
+volta:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+if (Zeny < @price) goto Sem_Zeny;
+set Zeny,Zeny-@price;
+mes "Yosh, vamos viajar então, se segura pois a viagem é rapida!";
+next;
+warp "gef_fild07",277,332;
+close;
+
+nao1:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Tudo bem, quando precisar você volta!";
+close;
+
+Sem_Zeny1:
+next;
+mes "[^0000FFViajante Ninja^000000]";
+mes "Você não tem ryous suficientes";
+close;
+
+}
+
+//anthell01.gat,30,262,5	duplicate(porto)	Retorno Viajante Ninja#a	706
+//mjo_dun01.gat,54,20,5	duplicate(porto)	Retorno Viajante Ninja#m	706
+//um_dun01.gat,154,203,5	duplicate(porto)	Retorno Viajante Ninja#u	706
+//kakashi.gat,85,148,5	duplicate(porto)	Retorno Viajante Ninja#h	706
+//ondular.gat,211,187,5	duplicate(porto)	Retorno Viajante Ninja#g	706
+
+
+//Mapflags
+rachel	mapflag	pvp	off
+//nrpg_sell	mapflag	pvp	off

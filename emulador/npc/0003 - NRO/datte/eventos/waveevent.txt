@@ -1,0 +1,34 @@
+﻿1@tower.gat,121,120,4	script	Wave Event	882,{
+
+if(getgmlevel() < 30) end;
+
+mes "Nome do mapa:";
+input .wavemap$;
+next;
+mes "ID do Mob:";
+input .waveid;
+next;
+mes "Quantidade do Mob:";
+input .waveqtd;
+next;
+mes "Coordenada X:";
+input .wavex;
+next;
+mes "Coordenada Y:";
+input .wavey;
+next;
+mes "Você quer criar uma wave de "+.waveqtd+" do mob de ID "+.waveid+" ("+strmobinfo(1,.waveid)+") no mapa "+.wavemap$+"("+.wavex+","+.wavey+")?";
+if(select("Não:Sim") == 1) close;
+killmonster $wavemap$,strnpcinfo(0)+"::OnMobKilledWave",1;
+set $wavemap$, .wavemap$;
+set $waveqtd, .waveqtd;
+monster $wavemap$,.wavex,.wavey,"Wave Monster",.waveid,$waveqtd,strnpcinfo(0)+"::OnMobKilledWave";
+announce "[Wave Event]: O Staffer "+strcharinfo(0)+" acaba de invocar uma Wave de "+$waveqtd+" "+strmobinfo(1,.waveid)+" no mapa "+$wavemap$+".",0;
+close;
+end;
+
+OnMobKilledWave:
+set $waveqtd, $waveqtd-1;
+MapAnnounce $wavemap$,"[Wave Event]: Restam "+$waveqtd+" mobs nesta Wave.",0;
+end;
+}

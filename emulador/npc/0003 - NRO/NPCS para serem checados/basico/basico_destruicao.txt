@@ -1,0 +1,10 @@
+-	script	quebrou	-1,{
+
+quebrou_tudo:
+	announce "A Vila "+strcharinfo(2)+" teste",0;
+	end;
+}
+
+in_hunter,99,93,0,0	monster	Ichiraku Ramen	1002,1,1,1,"quebrou::quebrou_tudo"
+//ice_dun02,0,0,0,0	monster	Shinobi Guardião	1656,1,1,36000000,"update_nnfro_rpg::OnMapConquisted"
+//ice_dun03,0,0,0,0	monster	Shinobi Guardião	1656,1,1,36000000,"update_nnfro_rpg::OnMapConquisted"

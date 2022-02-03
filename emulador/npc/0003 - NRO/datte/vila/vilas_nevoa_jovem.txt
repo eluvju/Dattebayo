@@ -1,0 +1,10 @@
+xmas,126,135,5	script	Jovem da Névoa	86,{
+	mes "[Jovem]";
+	mes "Você já ouviu falar dos sete espadachins da Névoa?";
+	mes "Pelo jeito não....";
+	mes "Então irei lhe explicar o que são eles.";
+	mes "Os sete espadachins da névoa, são o grupo dos melhores espadachins de nossa vila, alguns deles sairam da vila e tomaram outros caminhos a não ser lutar pela vila deles.";
+	mes "Você tem interesse em se tornar um ne, então treine bastante com uma espada, de preferência, uma que seja bem grande";
+	mes "Mas vou avisando não é tão fácil quanto parece,vejo você por ai...";
+close;
+}

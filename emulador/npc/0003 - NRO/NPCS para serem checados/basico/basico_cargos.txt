@@ -1,0 +1,33 @@
+-	script	cargos	-1,{
+
+OnPCLogInEvent:
+if (strcharinfo(0)=="asd") goto liderblablabla;
+if (strcharinfo(0)=="Kira") goto lidernevoa;
+if (strcharinfo(0)=="B i s p o") goto liderkonoha;
+if (strcharinfo(0)=="asduhasduhasduhasudha") goto lidersuna;
+
+liderblablabla:
+if (strcharinfo(0)!="asd") end;
+atcommand "@fakename [Líder Akatsuki] "+strcharinfo(0);
+dispbottom "Seja bem-vindo líder Akatsuki, Não tenha piedade!";
+set title$, "The Killer";
+end;
+
+lidernevoa:	
+atcommand "@fakename ?????" strcharinfo(0) ;
+atcommand "@size 2" strcharinfo(0) ;
+set title$ "The Killer" strcharinfo(0);
+dispbottom "Seja bem-vindo Mizukage, Viva a Névoa!";
+end;
+
+liderkonoha:	
+atcommand "@fakename [Hokage] "+strcharinfo(0);
+dispbottom "Seja bem-vindo Hokage, Viva Konoha!";
+end;
+
+lidersuna:	
+atcommand "@fakename [Kazekage] "+strcharinfo(0);
+dispbottom "Seja bem-vindo Kazekage, Viva a Suna!";
+end;
+
+}

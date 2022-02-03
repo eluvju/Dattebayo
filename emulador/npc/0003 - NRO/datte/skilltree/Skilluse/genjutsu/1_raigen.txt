@@ -1,0 +1,79 @@
+-	script	on_PC_UseSkillG01	-1,{
+    end;
+//When a Character uses a skill
+
+//raigen
+
+onPcUseSkillEvent:
+
+           if(lskillid == 177) {
+
+
+if (getskilllv(177) == 1) {
+if (raigen != 1) {end;}
+if (skill177 >= 50) {skill 177,2,0; set skill177,0; dispbottom "[Sys] Level up"; end; }
+set skill177,skill177 +1;
+dispbottom "[Jutsu level] Raigen Raikouchuu level 1: "+skill177+" de 50";
+
+end;
+
+}
+
+if (getskilllv(177) == 2) {
+if (raigen != 1) {end;}
+if (skill177 >= 100) {skill 177,3,0; set skill177,0; dispbottom "[Sys] Level up"; end;}
+set skill177,skill177 +1;
+dispbottom "[Jutsu level] Raigen Raikouchuu level 2: "+skill177+" de 100";
+
+end;
+
+}
+
+if (getskilllv(177) == 3) {
+if (raigen != 1) {end;}
+if (gen_intermediario != 1) {end;}
+if (skill177 >= 150) {skill 177,4,0; set skill177,0; dispbottom "[Sys] Level up"; end;}
+set skill177,skill177 +1;
+dispbottom "[Jutsu level] Raigen Raikouchuu level 3: "+skill177+" de 150";
+
+end;
+
+}
+
+if (getskilllv(177) == 4) {
+if (raigen != 1) {end;}
+if (gen_intermediario != 1) {end;}
+if (skill177 >= 200) {skill 177,5,0; set skill177,0; dispbottom "[Sys] Level up"; end;}
+set skill177,skill177 +1;
+dispbottom "[Jutsu level] Raigen Raikouchuu level 4: "+skill177+" de 200";
+
+end;
+
+}
+
+if (getskilllv(177) == 5) {
+if (raigen != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill177 >= 250) {skill 177,6,0; set skill177,0; dispbottom "[Sys] Level up"; end;}
+set skill177,skill177 +1;
+dispbottom "[Jutsu level] Raigen Raikouchuu level 5: "+skill177+" de 250";
+
+end;
+
+}
+
+if (getskilllv(177) == 6) {
+if (raigen != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill177 >= 300) {skill 177,7,0; set skill177,0; dispbottom "[Sys] Level up"; end;}
+set skill177,skill177 +1;
+dispbottom "[Jutsu level] Raigen Raikouchuu level 6: "+skill177+" de 300";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

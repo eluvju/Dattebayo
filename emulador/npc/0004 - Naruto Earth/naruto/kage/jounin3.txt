@@ -1,0 +1,162 @@
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+3@ecl,43,81,4	script	Rõ	977,{
+	if (jounin == 1) {next; mes "Você já e um ninja de elite"; close;}
+	mes "[Rõ]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu sou avaliador da nuvem, aqui irei ver se você esta preparado pra subir de gradução"; 
+	mes "Deseja subir de gradução?";
+	next;
+	if( select("Claro!:Não...") == 2 )
+	{
+		mes "[Rõ]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Rõ]";
+	mes "Bom, primeiramente você tem ter pontos de missões pra subir de gradução";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Gradução Chunnin:Gradução Jounin:Nenhum"))
+	{
+	case 1:
+		if (chunin == 1) {next; mes "Você já virou Chunnin"; close;}
+		mes "[Rõ]";
+		if ((BaseLevel) < 200 ) {next; mes "Você precisa ser level 200"; close;}
+		mes "Você precisa de 300 pontos pra virar chunnin";
+		next;
+		mes "[Rõ]";
+		mes "Deseja subir de graduação?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Rõ]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(#RPGPOINTS >= 300)
+		{
+			
+			set #RPGPOINTS, #RPGPOINTS-300;
+			atcommand "@job 15";
+			set chunin,1;
+			if(chunin==1)	{announce "[Naruto Earth RPG] "+strcharinfo(0)+" subiu de graduação e agora é Chunnin em troca de 300 pontos",bc_yellow|bc_all; close;}
+			mes "[Rõ]";
+			mes "Parabéns!";
+			close;
+		}
+		break;
+	case 2:
+		if(chunin != 1) {mes "Você primeiro precisa virar Chunnin"; end;}
+		if (jounin == 1) {next; mes "Você já virou Jounin"; close;}
+		mes "[Rõ]";
+		if ((BaseLevel) < 250 ) {next; mes "Você precisa ser level 250"; close;}
+		mes "Você precisa de 700 pontos pra virar jounin";
+		next;
+		mes "[Rõ]";
+		mes "Deseja subir de graduação?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Rõ]";
+			mes "Tudo bem... Até mais!";
+		}
+		if(#RPGPOINTS >= 700)
+		{
+			set #RPGPOINTS, #RPGPOINTS-700;
+			atcommand "@job 4016";
+			set jounin,1;
+			if(jounin==1)	{announce "[Naruto Earth RPG] "+strcharinfo(0)+" subiu de graduação e agora é Jounin em troca de 700 pontos",bc_yellow|bc_all; close;}
+			mes "[Rõ]";
+			mes "Parabéns!";
+			close;
+		}
+		break;
+	case 3:
+		mes "[Rõ]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Rõ]";
+	mes "Me desculpe, mas você não tem todos os pontos necessários para aumentar sua graduação.";
+	mes "Volte quando você tiver!";
+	close;
+}
+
+3@ecl,46,81,4	script	Mercador de Pontos	57,{
+	mes "[Mercador de Pontos]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu sou mercador de pontos de konoha, aqui voce podera adquirir alguns itens especiais por pontos de missao."; 
+	mes "Deseja dar uma olhada?";
+	next;
+	if( select("Claro!:Não...") == 2 )
+	{
+		mes "[Mercador de Pontos]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Mercador de Pontos]";
+	mes "Bom, primeiramente você tem ter pontos de missões pra adquirir estes itens especiais.";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("Manual de Combate:Goma de Mascar:Nenhum"))
+	{
+	case 1:
+		mes "[Mercador de Pontos]";
+		mes "Você precisa de 200 pontos pra Adquirir 01 Manual de Combate.";
+		next;
+		mes "[Mercador de Pontos]";
+		mes "Deseja Adquirir 01 Manual de Combate?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Mercador de Pontos]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(#RPGPOINTS >= 200)
+		{
+			
+			set #RPGPOINTS, #RPGPOINTS-200;
+			getitem 12208,1;
+			mes "[Mercador de Pontos]";
+			mes "Parabéns!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Mercador de Pontos]";
+		mes "Você precisa de 200 pontos pra Adquirir 01 Goma de Mascar.";
+		next;
+		mes "[Mercador de Pontos]";
+		mes "Deseja Adquirir 01 Goma de Mascar?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Mercador de Pontos]";
+			mes "Tudo bem... Até mais!";
+		}
+		if(#RPGPOINTS >= 200)
+		{
+			set #RPGPOINTS, #RPGPOINTS-200;
+			getitem 12210,1;
+			mes "[Mercador de Pontos]";
+			mes "Parabéns!";
+			close;
+		}
+		break;
+	case 3:
+		mes "[Mercador de Pontos]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Mercador de Pontos]";
+	mes "Me desculpe, mas você não tem todos os pontos necessários para adquirir itens especiais.";
+	mes "Volte quando você tiver!";
+	close;
+}

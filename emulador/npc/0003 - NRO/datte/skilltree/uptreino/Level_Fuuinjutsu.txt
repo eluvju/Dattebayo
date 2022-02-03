@@ -1,0 +1,191 @@
+in_hunter,99,99,5	script	Treino de Fuuinjutsu::t_fu	857,{
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+OnStart:
+readparam(bDex);
+if(readparam(bDex)<50) {mes "Antes de adicionar pontos nos seus atributos, é preciso estar com todos os atributos no 50"; close;}
+mes "[Treinamento de fuuinjutsu]";
+mes "Você possui [^0000FF" + AtrPoints5 + "^000000] pontos em fuuinjutsu";
+next;
+mes "Gostaria de adicionar seus pontos em fuuinjutsu agora?";
+next;
+menu "Sim, gostaria",-,"Não, deixa pra depois",fecha;
+if(AtrPoints5 < 1) {set AtrPoints5,0;}
+mes "[Treinamento de fuuinjutsu]";
+mes "Quantos pontos gostaria de adicionar? ["+AtrPoints5+"]";
+next;
+input .@fuuinpoints;
+if(.@fuuinpoints <= AtrPoints5) goto go_tai;
+if(.@fuuinpoints > AtrPoints5) {mes "Você não possui essa quantidade de pontos"; close;}
+mes "^FF0000Digite um numero entre 1 e " + AtrPoints5;
+close;
+
+go_tai:
+set AtrPoints5, AtrPoints5 - .@fuuinpoints;
+atcommand strcharinfo(0)+":@"+.IndexToStat$[@menu] + " " + .@fuuinpoints;
+mes "Os seus pontos foram adicionados";
+close;
+
+fecha:
+close;
+
+OnInit:
+
+//How much exp needed per lvl (make sure each number is bigger than the next)
+setArray .WLvl5[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+
+//How many status points each weapon lvl up
+setArray .Wpoints5[0],
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+
+set .ExpPerKill5, 1;
+set .MaxLvl5, getarraysize(.WLvl5);
+
+setArray .IndexToStat$[1], "dex", "dex", "dex", "dex", "dex", "dex";
+set .statMenu$, "Str:Agi:Vit:Int:Dex:Luk";
+
+set .init, 1;
+end;
+
+OnNPCKillEvent:
+
+if(fuu_basico != 1) {end;}
+if(treino_fuu == 0) {end;}
+
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+
+
+if(killedrid == 1618) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1402) {set WeaponExp5, WeaponExp5 + 90;}
+if(killedrid == 1296) {set WeaponExp5, WeaponExp5 + 90;}
+if(killedrid == 1031) {set WeaponExp5, WeaponExp5 + 90;}
+if(killedrid == 1628) {set WeaponExp5, WeaponExp5 + 90;}
+if(killedrid == 1025) {set WeaponExp5, WeaponExp5 + 90;}
+if(killedrid == 1618) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1769) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1589) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1494) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1408) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1018) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1305) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1194) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1009) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1211) {set WeaponExp5, WeaponExp5 + 180;}
+
+
+if(killedrid == 1322) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1027) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1636) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1036) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1106) {set WeaponExp5, WeaponExp5 + 120;}
+if(killedrid == 1121) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1838) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1169) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1114) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1004) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1059) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1294) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1139) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1632) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1262) {set WeaponExp5, WeaponExp5 + 210;}
+
+if(killedrid == 1405) {set WeaponExp5, WeaponExp5 + 150;}
+if(killedrid == 1009) {set WeaponExp5, WeaponExp5 + 150;}
+if(killedrid == 1517) {set WeaponExp5, WeaponExp5 + 150;}
+if(killedrid == 1093) {set WeaponExp5, WeaponExp5 + 150;}
+if(killedrid == 1040) {set WeaponExp5, WeaponExp5 + 150;}
+
+if(killedrid == 1368) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1067) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1318) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1780) {set WeaponExp5, WeaponExp5 + 180;}
+
+if(killedrid == 1831) {set WeaponExp5, WeaponExp5 + 90;}
+if(killedrid == 1315) {set WeaponExp5, WeaponExp5 + 90;}
+if(killedrid == 1634) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1177) {set WeaponExp5, WeaponExp5 + 90;}
+
+if(killedrid == 1266) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1041) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1073) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1118) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1601) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1735) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1736) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1830) {set WeaponExp5, WeaponExp5 + 210;}
+if(killedrid == 1163) {set WeaponExp5, WeaponExp5 + 210;}
+
+if(killedrid == 1635) {set WeaponExp5, WeaponExp5 + 360;}
+if(killedrid == 1032) {set WeaponExp5, WeaponExp5 + 280;}
+if(killedrid == 1418) {set WeaponExp5, WeaponExp5 + 280;}
+if(killedrid == 1089) {set WeaponExp5, WeaponExp5 + 280;}
+if(killedrid == 1381) {set WeaponExp5, WeaponExp5 + 280;}
+
+if(killedrid == 1066) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1499) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1039) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1312) {set WeaponExp5, WeaponExp5 + 1200;}
+
+if(killedrid == 1992) {set WeaponExp5, WeaponExp5 + 480;}
+
+if(killedrid == 1196) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1202) {set WeaponExp5, WeaponExp5 + 180;}
+if(killedrid == 1257) {set WeaponExp5, WeaponExp5 + 180;}
+
+//if(killedrid == 1839) {set WeaponExp5, WeaponExp5 + 80;}
+if(killedrid == 1401) {set WeaponExp5, WeaponExp5 + 360;}
+if(killedrid == 1154) {set WeaponExp5, WeaponExp5 + 360;}
+if(killedrid == 1771) {set WeaponExp5, WeaponExp5 + 360;}
+
+if(killedrid == 1046) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1829) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1492) {set WeaponExp5, WeaponExp5 + 300;}
+
+if(killedrid == 1293) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1321) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1128) {set WeaponExp5, WeaponExp5 + 300;}
+
+if(killedrid == 1159) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1058) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1289) {set WeaponExp5, WeaponExp5 + 300;}
+if(killedrid == 1147) {set WeaponExp5, WeaponExp5 + 300;}
+
+set WeaponExp5, WeaponExp5 + 1;
+if(.WLvl5[WeaponLvl5] <= WeaponExp5 && WeaponLvl5 < .MaxLvl5)
+{
+set AtrPoints5, AtrPoints5 + .Wpoints5[WeaponLvl5];
+set WeaponLvl5, WeaponLvl5 + 1;
+dispbottom "[Level up] Seu fuuinjutsu agora é level " + WeaponLvl5;
+//dispbottom "[Level up] fale com o Treino de fuuinjutsu na academia pra receber seus pontos";
+set WeaponExp5,0;
+if(WeaponLvl5 == .MaxLvl5) {
+dispbottom "Seu fuuinjutsu está no level máximo.";
+}
+dispbottom "Você recebeu [" + .Wpoints5[WeaponLvl5 - 1] + "] pontos em fuuinjutsu, fale com o Treino de fuuinjutsu.";
+}
+end;
+}
+
+
+
+

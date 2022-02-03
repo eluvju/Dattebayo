@@ -1,0 +1,107 @@
+-	script	usePerfurar	-1,{
+    end;
+//When a Character uses a skill
+
+//Perfurar
+
+onPcUseSkillEvent:
+
+           if(lskillid == 267) {
+
+
+if (getskilllv(267) == 1) {
+
+if (Perfurar != 1) {end;}
+if (skill267 >= 50) {skill 267,2,0; set skill267,0; dispbottom "[Sys] Level up"; end; }
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 1: "+skill267+" de 50";
+
+end;
+
+}
+
+if (getskilllv(267) == 2) {
+if (Perfurar != 1) {end;}
+if (skill267 >= 100) {skill 267,3,0; set skill267,0; dispbottom "[Sys] Level up"; end;}
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 2: "+skill267+" de 100";
+
+end;
+
+}
+
+if (getskilllv(267) == 3) {
+
+if (Perfurar != 1) {end;}
+if (skill267 >= 150) {skill 267,4,0; set skill267,0; dispbottom "[Sys] Level up"; end;}
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 3: "+skill267+" de 150";
+
+end;
+
+}
+
+if (getskilllv(267) == 4) {
+if (Perfurar != 1) {end;}
+if (skill267 >= 200) {skill 267,5,0; set skill267,0; dispbottom "[Sys] Level up"; end;}
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 4: "+skill267+" de 200";
+
+end;
+
+}
+
+if (getskilllv(267) == 5) {
+if (Perfurar != 1) {end;}
+if (skill267 >= 250) {skill 267,6,0; set skill267,0; dispbottom "[Sys] Level up"; end;}
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 5: "+skill267+" de 250";
+
+end;
+
+}
+
+if (getskilllv(267) == 6) {
+if (Perfurar != 1) {end;}
+if (skill267 >= 300) {skill 267,7,0; set skill267,0; dispbottom "[Sys] Level up"; end;}
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 6: "+skill267+" de 300";
+
+end;
+
+}
+
+if (getskilllv(267) == 7) {
+if (Perfurar != 1) {end;}
+if (skill267 >= 500) {skill 267,8,0; set skill267,0; dispbottom "[Sys] Level up"; end;}
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 7: "+skill267+" de 500";
+
+end;
+
+}
+
+if (getskilllv(267) == 8) {
+if (Perfurar != 1) {end;}
+if (skill267 >= 700) {skill 267,9,0; set skill267,0; dispbottom "[Sys] Level up"; end;}
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 8: "+skill267+" de 700";
+
+end;
+
+}
+
+if (getskilllv(267) == 9) {
+if (Perfurar != 1) {end;}
+if (skill267 >= 1000) {skill 267,10,0; set skill267,0; dispbottom "[Sys] Level up"; end;}
+set skill267,skill267 +1;
+dispbottom "[Jutsu level] Oodama rasengan level 9: "+skill267+" de 1000";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

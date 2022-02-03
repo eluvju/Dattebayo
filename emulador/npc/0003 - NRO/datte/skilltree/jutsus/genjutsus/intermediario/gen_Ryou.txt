@@ -1,0 +1,98 @@
+pay_fild10,125,322,5	script	Ryou Mayakashi::genint6	831,{
+
+if (getskilllv(308) >= 1) goto L_delete;
+if(gen_intermediario != 1) {mes "Você precisa estudar genjutsu intermediário antes de aprender esse genjutsu"; close;}
+if (checkquest(2051) == 1) goto L_go;
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsus intermediários, esse é o limite"; close;}
+if(Ryou == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(accept_gen_int == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if (WeaponLvl3 < 40) {mes "Seu nível de genjutsu está baixo demais, é preciso ter nível 40 pra aprender esse genjutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de genjutsu espalhados pelo mundo, eu posso lhe ensinar um genjutsu intermediário";
+next;
+mes "O genjutsu que eu ensino é o: Ryou Mayakashi no Jutsu";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Ryou Mayakashi no Jutsu
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(308) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(308) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 308,0,0;
+set Ryou,0;
+erasequest 2051;
+if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}
+if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_int_seis,1;
+set accept_gen_int,accept_gen_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter genjutsu intermedário level 40";
+mes "- Derrotar 30 Nidachou";
+mes "- Obter 200 Garra de Ave";
+mes "- Obter 3 Selo Maldito";
+setquest 2051;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsu intermediario, esse é o limite"; close;}
+if(gen_int_mobs_seis < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(917) <200) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7442) < 3) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 917,200;
+delitem 7442,3;
+skill 308,1,0;
+set Ryou,1;
+set quest_gen_int_seis,0;
+set gen_int_mobs_seis, 0;
+completequest 2051;
+erasequest 2051;
+set gen_skill_int,gen_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Intermedíario]",0;
+}
+
+-	script	genint#6	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1036 && quest_gen_int_seis == 1) {set gen_int_mobs_seis,gen_int_mobs_seis +1; announce "[Genjutsu Quest] Você já derrotou "+gen_int_mobs_seis+" / 30 Nidachou",bc_blue|bc_self; end;}
+
+}
+
+moc_fild06,375,189,5	duplicate(genint6)	Ryou Mayakashi#61	831,{
+pay_fild03,248,234,5	duplicate(genint6)	Ryou Mayakashi#62	831,{
+ein_fild01,81,37,5	duplicate(genint6)	Ryou Mayakashi#63	831,{

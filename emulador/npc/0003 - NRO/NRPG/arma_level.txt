@@ -1,0 +1,68 @@
+kh_kiehl02,46,43,5	script	Treinamento de Taijutsu	857,{
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+OnStart:
+mes "[Treinamento de Taijutsu]";
+mes "Você possui [^0000FF" + AtrPoints + "^000000] pontos em Taijutsu";
+next;
+mes "Gostaria de adicionar seus pontos em Taijutsu agora?";
+next;
+menu "Sim, gostaria",-,"Não, deixa pra depois",fecha;
+if(AtrPoints < 1) {set AtrPoints,0;}
+mes "[Treinamento de Taijutsu]";
+mes "Quantos pontos gostaria de adicionar? ["+AtrPoints+"]";
+next;
+input .@taipoints;
+if(.@taipoints <= AtrPoints) goto go_tai;
+if(.@taipoints > AtrPoints) {mes "Você não possui essa quantidade de pontos"; close;}
+mes "^FF0000Digite um numero entre 1 e " + AtrPoints;
+close;
+
+go_tai:
+set AtrPoints, AtrPoints - .@taipoints;
+atcommand strcharinfo(0)+":@"+.IndexToStat$[@menu] + " " + .@taipoints;
+mes "Os seus pontos foram adicionados";
+close;
+
+fecha:
+close;
+
+OnInit:
+
+//How much exp needed per lvl (make sure each number is bigger than the next)
+setArray .WLvl[0],
+1, 2, 3, 10, 2500, 4000, 5000, 7500, 10000, 15000,
+20000, 30000, 40000, 50000, 100000, 125000, 150000, 175000, 200000, 250000;
+
+//How many status points each weapon lvl up
+setArray .WPoints[0],
+4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+4, 4, 4, 4, 4, 4, 4, 4, 4, 14;
+
+set .ExpPerKill, 1;
+set .MaxLvl, getarraysize(.WLvl);
+
+setArray .IndexToStat$[1], "str", "str", "str", "str", "str", "str";
+set .statMenu$, "Str:Agi:Vit:Int:Dex:Luk";
+
+set .init, 1;
+end;
+
+OnNPCKillEvent:
+
+if(!.init) donpcevent strnpcinfo(3)+"::OnInit";
+
+set WeaponExp, WeaponExp + .ExpPerKill;
+if(.WLvl[WeaponLvl] <= WeaponExp && WeaponLvl < .MaxLvl)
+{
+set AtrPoints, AtrPoints + .Wpoints[WeaponLvl];
+set WeaponLvl, WeaponLvl + 1;
+dispbottom "[Level up] Seu Taijutsu agora é level " + WeaponLvl;
+dispbottom "[Level up] fale com o fulano pra receber seus pontos";
+if(WeaponLvl == .MaxLvl) {
+dispbottom "Seu Taijutsu está no level máximo.";
+}
+dispbottom "Você recebeu [" + .Wpoints[WeaponLvl - 1] + "] pontos em Taijutsu, fale com o fulano.";
+}
+end;
+}

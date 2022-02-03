@@ -1,0 +1,148 @@
+-	script	Botanic	NpcEM -1,{
+
+OnInit:
+set $EMitem[1], 7193; //semente
+set $EMitem[2], 12054; //algo que envolva água
+set $EMitem[3], 7119; //erva
+disablenpc "Erva Medicinal#A1";
+end;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-	script	Botanic#1	NpcEM#1 -1,{
+
+OnTimer3600000:
+set $EMcharid[1], 0;
+end;
+}
+
+hospital.gat,23,80,4	script	Fazendeiro#1	704,{
+
+set .@zenyneed, 10000000;
+
+// Nome do NPC de Entrada.
+set .nome$,"^800000[Fazendeiro]^000000";
+
+if($EMcharid[1] == getcharid(0)){
+mes .nome$;
+mes "Faça bom proveito do terreno.";
+close;
+end;
+}
+
+if($EMcharid[1] != 0){
+mes .nome$;
+mes "Desculpe, meu terreno já está alugado.";
+close;
+end;
+}
+
+if($EMcharid[1] == 0){
+mes .nome$;
+mes "Olá "+strcharinfo(0)+" gostaria de alugar durante uma hora meu terreno por "+.@zenyneed+" Zenys?";
+switch(select("Sim:Não"))
+{
+case 1:
+next;
+//if(profissão != Botânic){
+//mes .nome$;
+//mes "Desculpe, não confio minhas terras a pessoas que não sejam botânicos.";
+//close;
+//end;
+//}
+
+if(Zeny < .@zenyneed){
+mes .nome$;
+mes "Desculpe, você não tem zenys suficientes.";
+close;
+end;
+}
+
+mes .nome$;
+mes "Muito bem, meu terreno é todo seu por 1h. Faça bom proveito.";
+set Zeny, Zeny - .@zenyneed;
+set $EMcharid[1], getcharid(0);
+enablenpc "Lote#A1";
+disablenpc "Erva Medicinal#A1";
+set $EMplant1[1], 0;
+initnpctimer "Botanic#1";
+close;
+end;
+
+case 2:
+next;
+mes .nome$;
+mes "Ok, volte quando precisar.";
+close;
+end;
+}
+}
+}
+
+hospital.gat,26,80,4	script	Lote#A1	858,{
+
+if($EMcharid[1] != getcharid(0)){
+mes "Você não é o dono deste terreno.";
+close;
+end;
+}
+
+if($EMplant1[1] == 1 || $EMplant1[1] == 2){
+mes "A erva ainda está muito pequena para ser colhida.";
+close;
+end;
+}
+
+mes "Este lote parece fértil. Plantando uma semente e regando com água temperada, com certeza ela crescerá bem.";
+next;
+mes "Gostaria de plantar uma semente de erva medicinal?";
+switch(select("Sim:Não")){
+case 1:
+if(countitem($EMitem[1]) < 1 || countitem($EMitem[2]) < 1){
+mes "Você precisa de uma semente e um regador.";
+close;
+end;
+}
+delitem $EMitem[1], 1;
+delitem $EMitem[2], 1;
+mes "Muito bem. Em 2 minutos ela estará pronta para a colheita.";
+close2;
+initnpctimer;
+set $EMplant1[1], 1;
+
+case 2:
+close;
+}
+
+OnTimer120000:
+stopnpctimer;
+setnpctimer 0;
+set $EMplant1[1], 2;
+enablenpc "Erva Medicinal#A1";
+disablenpc "Lote#A1";
+end;
+
+}
+
+hospital.gat,26,80,4	script	Erva Medicinal#A1	978,{
+
+if($EMcharid[1] != getcharid(0)){
+mes "Você não é o dono deste terreno.";
+close;
+end;
+}
+
+if($EMplant1[1] < 2){
+mes "Não há oque colher aqui.";
+close;
+end;
+}
+
+getitem $EMitem[3], 1;
+set $EMplant1[1], 0;
+enablenpc "Lote#A1";
+disablenpc "Erva Medicinal#A1";
+end;
+
+}

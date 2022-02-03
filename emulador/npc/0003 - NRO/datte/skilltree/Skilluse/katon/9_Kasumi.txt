@@ -1,0 +1,60 @@
+-	script	on_PC_UseSkillk09	-1,{
+    end;
+//When a Character uses a skill
+
+//kasumi
+
+onPcUseSkillEvent:
+
+           if(lskillid == 83) {
+
+
+if (getskilllv(83) == 1) {
+
+if (kasumi != 1) {end;}
+if (nin_avan != 1) {end;}
+if (skill83 >= 50) {skill 83,2,0; set skill83,0; dispbottom "[Sys] Level up"; end; }
+set skill83,skill83 +1;
+dispbottom "[Jutsu level] Kasumi Endan no Jutsu level 1: "+skill83+" de 50";
+
+end;
+
+}
+
+if (getskilllv(83) == 2) {
+if (kasumi != 1) {end;}
+if (nin_avan != 1) {end;}
+if (skill83 >= 100) {skill 83,3,0; set skill83,0; dispbottom "[Sys] Level up"; end;}
+set skill83,skill83 +1;
+dispbottom "[Jutsu level] Kasumi Endan no Jutsu level 2: "+skill83+" de 100";
+
+end;
+
+}
+
+if (getskilllv(83) == 3) {
+
+if (kasumi != 1) {end;}
+if (nin_avan != 1) {end;}
+if (skill83 >= 150) {skill 83,4,0; set skill83,0; dispbottom "[Sys] Level up"; end;}
+set skill83,skill83 +1;
+dispbottom "[Jutsu level] Kasumi Endan no Jutsu level 3: "+skill83+" de 150";
+
+end;
+
+}
+
+if (getskilllv(83) == 4) {
+if (kasumi != 1) {end;}
+if (nin_avan != 1) {end;}
+if (skill83 >= 200) {skill 83,5,0; set skill83,0; dispbottom "[Sys] Level up"; end;}
+set skill83,skill83 +1;
+dispbottom "[Jutsu level] Kasumi Endan no Jutsu level 4: "+skill83+" de 200";
+
+end;
+
+}
+
+                end;
+            }    
+}

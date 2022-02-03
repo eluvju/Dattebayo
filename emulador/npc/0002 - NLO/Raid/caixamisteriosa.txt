@@ -1,0 +1,24 @@
+function	script	caixamisteriosaIII	{
+
+	set .@a,rand(1,100);
+	if (.@a > 90) { goto itens; } //10%
+	if (.@a <= 90) && (.@a >60) { goto zenymedio;} //30%
+	if (.@a <= 60) && (.@a >35) { goto zenymaior;} //25%
+	if (.@a <= 35) && (.@a >=1) { goto pontosmissao; } //35%
+	zenymedio:
+		Zeny = Zeny + 1000000;
+		dispbottom "1.000.000 Zenys adquirido.";
+		end;
+	zenymaior:
+		Zeny = Zeny + 1500000;
+		dispbottom "1.500.000 Zenys adquiridos.";
+		end;
+	pontosmissao:
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 100 WHERE `char_id` = '"+getcharid(0)+"'");
+		dispbottom "100 Pontos de Missão adquiridos.";
+		end;
+	itens:
+		set .@a,rand(901,926);
+		getitem .@a,1;
+		end;
+}

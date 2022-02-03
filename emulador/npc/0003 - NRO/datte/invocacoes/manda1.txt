@@ -1,0 +1,64 @@
+gef_fild04,116,279,5	script	Orochimaru::manda1	70,{
+
+if(quest_manda1_um == 1) goto L_FUNFA;
+if(Kuch == 1) {mes "Você já possui contrato com outro animal"; close;}
+if(accept_kuc == 1) {mes "Você já aceitou outro treinamento de Invocação para realizar"; close;}
+if(Manda1 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com as Cobras";
+next;
+mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+mes "Gostaria de treinar o Kuchiyose: Jya?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Filhote de Cobra
+//========================================================================
+
+L_SS:
+set quest_manda1_um,1;
+set accept_kuc,accept_kuc +1;
+set Kuch,Kuch +1;
+mes "Ótimo, vamos assinar o seu contrato...";
+next;
+mes "Mas o que? Meu pergaminho foi roubado!";
+next;
+mes "Você precisa encontrar-lo, ou você não poderá assinar!";
+next;
+mes "Vá derrotar filhotes de katsuyu, eles tem inveja do nosso poder, e estão sempre causando problemas, só podem ter sido essas lesmas malditas!";
+setquest 12093;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_no:
+close;
+
+L_FUNFA:
+if (countitem(7836) < 1) goto No_Item;
+skill 725,4,0;
+delitem 7836,1;
+set Manda1,1;
+set quest_manda1_um,0;
+completequest 12093;
+erasequest 12093;
+cutin "inicio4",3;
+mes "Você completou seu treinamento,parabéns.";
+next;
+if (#nevoa == 1) {warp "kiragakure",267,258;}
+if (#suna == 1) {warp "sunagakure",171,125;}
+if (#konoha == 1) {warp "konoha3",159,193;}
+if (#nuvem == 1) {warp "nuvem",60,63;}
+close;
+
+No_Item:
+mes "Você não pegou o pergaminho ainda, volte quando pegar!";
+close;
+
+}
+
+moc_fild01,23,102,5	duplicate(manda1)	Orochimaru#111	70
+prt_fild02,44,312,5	duplicate(manda1)	Orochimaru#112	70
+yuno_fild08,35,164,5	duplicate(manda1)	Orochimaru#113	70

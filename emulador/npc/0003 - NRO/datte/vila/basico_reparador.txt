@@ -1,0 +1,78 @@
+///////////////////////////////////////////////////////////////////
+//===== Cronus Script ===========================================//
+//= 							 	=//
+//= Reparador							=//
+//= 								=//
+//===== Por: ====================================================//
+//=								=//
+//=		________                     ,___ 		=//
+//=		\______ \   ____ _____     __| _/ 		=//
+//=		 |    |  \_/ __ \\__  \   / __ |  		=//
+//=		 |    `   \  ___/ / __ \_/ /_/ |  		=//
+//=		/_______  /\___  >____  /\____ |  		=//
+//=		        \/     \/     \/      \/ 		=//
+//=								=//
+//===== Changelog: ========================== Verção Atual ======//
+//= 					=			=//
+//= 1.0 - Iniciado o NPC [Dead] 	=	1.1		=//
+//= 					=			=//
+//= 1.1 - Corrigido bugs [Dead]		=========================//
+//= 								=//
+//===== Descrição: ==============================================//
+//= 								=//
+//= Repara os equipametos. Para Vips ou não-vips		=//
+//= 								=//
+//===== NPC: ====================================================//
+//= 								=//
+ama_in01,19,31,4	script	Reparador::repa	826,{ //	=//
+//= 								=//
+//===== Variaveis: ==============================================//
+//= 							   	=//
+set	.n$,"[^A52A2AReparador^000000]";	// Nome do npc		   	=//
+set	@vip,0;			// 0 para todos possam usar	=//
+set	@preco,0;		// Valor cobrado		=//
+//= 								=//
+//===============================================================//
+///////////////////////////////////////////////////////////////////
+	mes	.n$;
+	if (getgmlevel() < @vip) {
+	mes	"Você não é VIP.";
+	mes	"Só concerto items de VIP's.";
+	close;
+}
+	mes	"Eu posso concertar seus items...";
+	next;
+	mes	.n$;
+	mes	"Quer que eu os concerte?";
+	if(@preco > 0) mes	"É cobrado uma taxa de "+@preco+"";
+	menu	"- Sim",-,"- Não",clse;
+	if(Zeny < @preco) goto F_zeny;
+	atcommand	"@repairall";
+	set zeny,zeny-@preco;
+	mes	"Items concertados.";
+	mes	"";
+	mes	"Volte quando quiser.";
+	close;
+
+F_zeny:
+	next;
+	mes	.n$;
+	mes	"Você não tem os zenys nescessários.";
+	close;
+
+clse:
+	next;
+	mes	.n$;
+	mes	"Volte quando quiser";
+	close;
+}
+
+ama_in01,171,182, 4	duplicate(repa)	Reparador#2	826
+ama_in01,102,28, 4	duplicate(repa)	Reparador#3	826
+ama_in01,183,124, 4	duplicate(repa)	Reparador#4	826
+akatsuki,94,218, 4	duplicate(repa)	Reparador#5	826
+lou_in02,217,81, 4	duplicate(repa)	Reparador#6	826
+nuvem,222,236, 4	duplicate(repa)	Reparador#7	826
+konoha,184,131, 4	duplicate(repa)	Reparador#8	826
+nevoa,186,246, 4	duplicate(repa)	Reparador#9	826
+areia,196,139, 4	duplicate(repa)	Reparador#10	826

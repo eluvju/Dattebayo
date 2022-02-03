@@ -1,0 +1,522 @@
+-	script	Evento#CS	ChuninShiken#CS -1,{
+OnInit:
+// Nome do mapa
+set .CSmap$,"moc_pryd04";
+//ID, Quantidade e Chance dos Mobs
+setarray .CSid[1],1771,1737,1984,1986,1981,1982,1985,1983,1738,1086;
+setarray .CSquant[1],15,2,2,2,2,2,2,2,2,2;
+setarray .CSprob[1],82,2,2,2,2,2,2,2,2,2;
+// Tempo máximo do evento (em minutos/1h = 60)
+set .CStime, 120;
+end;
+
+//$CSstatus-> 0 = Sem CS | 1 = CS rolando | 2 = Npc Desativado | 3 = Registro Habilitado
+
+OnClock0800:
+OnClock1100:
+OnClock1400:
+OnClock1700:
+OnClock2000:
+OnClock2300:
+OnClock0200:
+OnClock0500:
+if(gettime(4) == 0 || gettime(4) == 6 || gettime(4) == 1){
+if($CSstatus == 0){
+set $CSnumber, 0;
+set $CSend, 0;
+set $CSstatus,3;
+set $CSmod, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSname$[.i], 0;
+}
+
+disablenpc "Saída#CS";
+Announce "[Chunin Shiken]: As inscrições para a Chunin Shiken estão abertas e serão encerradas dentro de 1 hora. Corram, pois as vagas são limitadas!",0;
+initnpctimer;
+}
+}
+pvpoff .CSmap$;
+end;
+
+//OnClock1700:
+if($CSstatus == 0){
+set $CSnumber, 0;
+set $CSend, 0;
+set $CSstatus,3;
+set $CSmod, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSname$[.i], 0;
+}
+
+disablenpc "Saída#CS";
+Announce "[Chunin Shiken]: As inscrições para a Chunin Shiken estão abertas e serão encerradas dentro de 1 hora. Corram, pois as vagas são limitadas!",0;
+initnpctimer;
+}
+pvpoff .CSmap$;
+end;
+
+//OnTimer40000:
+OnTimer1800000:
+if($CSstatus == 3){
+Announce "[Chunin Shiken]: As inscrições para a Chunin Shiken estão abertas e serão encerradas dentro de 30 Minutos. Corram, pois as vagas são limitadas!",0;
+}
+end;
+
+//OnTimer45000: 
+OnTimer3300000: 
+if($CSstatus == 3){
+Announce "[Chunin Shiken]: As inscrições para a Chunin Shiken estão abertas e serão encerradas dentro de 5 Minutos. Corram, pois as vagas são limitadas!",0;
+}
+end;
+
+//OnTimer50000: 
+OnTimer3600000: 
+if($CSstatus == 3){
+Announce "[Chunin Shiken]: As inscrições para a Chunin Shiken estão encerradas. O evento iniciará em 5 minutos.",0;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+warpchar .CSmap$,0,0,$CScharid[.i];
+}
+}
+end;
+
+//OnTimer55000: 
+OnTimer3660000: 
+if($CSstatus == 3){
+set $CSmod[1], rand(100);
+set $CSmod[2], rand(100);
+if($CSmod[1] >= $CSmod[2]){
+MapAnnounce .CSmap$,"[Chunin Shiken]: Bem vindos ao Chunin Shiken. O modo escolhido pela maioria foi o Survive. Em 4 minutos os monstros serão invocados.",1;
+}else{
+MapAnnounce .CSmap$,"[Chunin Shiken]: Bem vindos ao Chunin Shiken. O modo escolhido pela maioria foi o Survive/PvP. Em 4 minutos os monstros serão invocados e o PvP será liberado.",1;
+}
+}
+end;
+
+//OnTimer60000:
+OnTimer3900000: 
+if($CSstatus == 3){
+MapAnnounce .CSmap$,"[Chunin Shiken]: Evento iniciado. O último shinobi entre os "+getmapusers(.CSmap$)+" candidatos, a sobreviver será o vencedor. Boa Sorte a todos!",1;
+stopnpctimer;
+setnpctimer 0;
+initnpctimer;
+set $CSstatus,1;
+set .soma, 0;
+set .CStime2, 0;
+if($CSmod[2] > $CSmod[1]) pvpon .CSmap$;
+}
+end;
+
+OnTimer30000:
+if($CSstatus == 1){
+for( set .i, 1; .i < (getarraysize(.CSprob)); set .i, .i + 1 ){
+if(rand(100) <= .CSprob[.i] + .soma){
+set .soma, .i;
+break;
+}else{
+set .soma, rand(9)+1; //set .soma, .soma+.CSprob[.i];
+
+set .soma2, rand(10);
+if(.soma2 == 1){
+monster .CSmap$,7,7,strmobinfo(1,.CSid[.soma]),.CSid[.soma],1;//,strnpcinfo(0)+"::OnMobKilledE";
+}
+if(.soma2 == 2){
+monster .CSmap$,7,192,strmobinfo(1,.CSid[.soma]),.CSid[.soma],1;//,strnpcinfo(0)+"::OnMobKilledE";
+}
+if(.soma2 == 3){
+monster .CSmap$,192,192,strmobinfo(1,.CSid[.soma]),.CSid[.soma],1;//,strnpcinfo(0)+"::OnMobKilledE";
+}
+if(.soma2 == 4){
+monster .CSmap$,192,7,strmobinfo(1,.CSid[.soma]),.CSid[.soma],1;//,strnpcinfo(0)+"::OnMobKilledE";
+}
+
+break; //
+}
+}
+monster .CSmap$,0,0,strmobinfo(1,.CSid[.soma]),.CSid[.soma],.CSquant[.soma];//,strnpcinfo(0)+"::OnMobKilledE";
+MapAnnounce .CSmap$,"[Chunin Shiken]: "+.CSquant[.soma]+" "+strmobinfo(1,.CSid[.soma])+" foram adicionados ao evento.",1;
+
+if(.CStime2 < .CStime*2){
+stopnpctimer;
+setnpctimer 0;
+initnpctimer;
+set .soma, 0;
+set .CStime2, .CStime2 + 1;
+
+if(getmapusers(.CSmap$) == 1){
+killmonster .CSmap$, "All";
+stopnpctimer;
+setnpctimer 0;
+mapannounce .CSmap$,"[Chunin Shiken]: Parabéns! Você é o único sobrevivente. Ao centro do mapa você encontrará o responsável pela sua recompensa.",1;
+enablenpc "Saída#CS";
+pvpoff .CSmap$;
+set $CSstatus,0;
+}
+
+end;
+}else{
+killmonster .CSmap$, "All";
+stopnpctimer;
+setnpctimer 0;
+pvpoff .CSmap$;
+set $CSstatus,0;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSname$[.i], 0;
+}
+Announce "[Chunin Shiken]: A Chunin Shiken chegou ao fim. Não tivemos nenhum vencedor.",0;
+set $CSend, 1;
+enablenpc "Saída#CS";
+}
+
+}
+end;
+
+
+OnPCDieEvent:
+OnPCLogoutEvent:
+if($CSstatus == 1 && strcharinfo(3) == .CSmap$){
+warp "kakashi",155,150;
+sleep2(2000);
+mapannounce .CSmap$,"[Chunin Shiken]: O shinobi "+strcharinfo(0)+" foi morto, sobrando assim apenas "+getmapusers(.CSmap$)+" candidatos à graduação.",1;
+if(getmapusers(.CSmap$) < 2){
+killmonster .CSmap$, "All";
+stopnpctimer;
+setnpctimer 0;
+mapannounce .CSmap$,"[Chunin Shiken]: Parabéns! Você é o único sobrevivente. Ao centro do mapa você encontrará o responsável pela sua recompensa.",1;
+enablenpc "Saída#CS";
+pvpoff .CSmap$;
+set $CSstatus,0;
+}
+end;
+}
+end;
+}
+
+//===== Script: ==============================================
+kakashi.gat,89,141,4	script	Chunin Shiken	882,{
+
+// Nome do npc
+set .npc$,"^800000[Chunin Shiken]^000000";
+
+if(getgmlevel() < 5)
+{
+if(chunin ==1 || jounin == 1){
+mes .npc$;
+mes "Desculpe, mas apenas Genins podem se inscrever.";
+close;
+}
+if($CSstatus < 3)
+{
+mes .npc$;
+mes "Desculpe, não estamos fazendo inscrição neste momento.";
+close;
+}
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+switch(select("Registrar:Informações"))
+{
+case 1:
+if(CSwin == 1){
+mes .npc$;
+mes "Um vencedor não pode ir novamente à Chunin Shiken.";
+close;
+end;
+}
+
+if($CScharid[99] > 0)
+{
+mes .npc$;
+mes "Desculpe, mas as vagas estão esgotadas.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Antes de tudo, algumas informações:";
+mes "Você só pode fazer 1 inscrição por conta.";
+mes "Você perderá o evento caso esteja offline na hora do recall.";
+next;
+mes .npc$;
+mes "Continuar inscrição?";
+switch(select("Continuar:Cancelar"))
+{
+case 1:
+next;
+set .@teste,0;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+if(getcharid(3) == $CSaccid[.i]) set .@teste, 1;
+}
+if(.@teste == 1){
+mes .npc$;
+mes "Desculpe, apenas 1 character por account pode ser inscrito.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Muito bem, para finalizar, escolha qual modo você deseja:";
+switch(select("Survive:Survive/PvP"))
+{
+case 1:
+next;
+mes .npc$;
+mes "Você votou pelo modo Survive!";
+set $CSmod[1], $CSmod[1]+1;
+break;
+
+case 2:
+next;
+mes .npc$;
+mes "Você votou pelo modo Survive/PvP!";
+set $CSmod[2], $CSmod[2]+1;
+break;
+}
+
+next;
+mes .npc$;
+mes "Parabéns! Você está inscrito ao Chunin Shiken!";
+mes "Boa Sorte!";
+close2;
+	set @i, $CSnumber;
+	set $CSnumber, $CSnumber +1;
+	set $CSname$[@i+1], strcharinfo(0);
+	set $CSaccid[@i+1], getcharid(3);
+	set $CScharid[@i+1], getcharid(0);
+end;
+
+case 2:
+next;
+mes .npc$;
+mes "Tudo bem, estarei aqui se precisar.";
+close;
+end;
+}
+
+case 2:
+mes .npc$;
+mes "Chunin Shiken é um evento que ocorre todo dia, dando aos vencedores a graduação de Genin para Chunin. Sendo assim, apenas Genins podem fazer a inscrição.";
+next;
+mes .npc$;
+mes "O evento pode acontecer em dois modos, sendo que em ambos o evento é finalizado quando houver apenas um sobreviventes.";
+next;
+mes .npc$;
+mes "Modo Survive: Os candidatos terão de sobreviver a uma série de monstros, testando suas habilidades de sobrevivencia.";
+next;
+mes .npc$;
+mes "Modo Survive/PvP: Os candidatos batalharão entre si, enquanto tentam sobreviver aos monstros invocados, demonstrando aos mesmo tempo, tanto suas habilidades de sobrevivencia quanto as de combate.";
+next;
+mes .npc$;
+mes "A Shiken tem um limite de 2 horas, desclassificando todos os candidatos, caso esse tempo chegue ao seu limite. O modo do evento será determinado via votação, uma vez que no ato de inscrição, os candidatos votarão no Modo que preferirem.";
+next;
+mes .npc$;
+mes "Horários:";
+mes "Dias de Semana: 18h";
+mes "Finais de Semana: 15h e 18h";
+close;
+}
+}
+
+mes .npc$;
+mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+next;
+switch(select("Gerar nova CS:Finalizar CS atual:Ativar Npc:Desativar Npc:Inscrição"))
+{
+case 1:
+if($CSstatus == 1 || $CSstatus == 3){
+mes .npc$;
+mes "Uma Chunin Shiken já está ativa.";
+close;
+end;
+}
+mes .npc$;
+mes "Chunin Shiken criada com sucesso.";
+close2;
+callsub OnNewCS;
+end;
+
+case 2:
+mes .npc$;
+mes "Chunin Shiken cancelada com sucesso.";
+close2;
+callsub OnCancelCS;
+end;
+
+case 3:
+mes .npc$;
+mes "O npc Chunin Shiken foi ativo com sucesso.";
+set $CSstatus,0;
+close;
+end;
+
+case 4:
+mes .npc$;
+mes "O npc Chunin Shiken foi desativo com sucesso.";
+set $CSstatus,2;
+close;
+end;
+
+case 5:
+mes .npc$;
+mes "Muito bem, para finalizar, escolha qual modo você deseja:";
+switch(select("Survive:Survive/PvP"))
+{
+case 1:
+next;
+mes .npc$;
+mes "Você votou pelo modo Survive!";
+set $CSmod[1], $CSmod[1]+1;
+break;
+
+case 2:
+next;
+mes .npc$;
+mes "Você votou pelo modo Survive/PvP!";
+set $CSmod[2], $CSmod[2]+1;
+break;
+}
+
+next;
+mes .npc$;
+mes "Parabéns! Você está inscrito ao Chunin Shiken!";
+mes "Boa Sorte!";
+close2;
+	set @i, $CSnumber;
+	set $CSnumber, $CSnumber +1;
+	set $CSname$[@i+1], strcharinfo(0);
+	set $CSaccid[@i+1], getcharid(3);
+	set $CScharid[@i+1], getcharid(0);
+end;
+}
+end;
+
+OnNewCS:
+if($CSstatus == 0){
+set $CSnumber, 0;
+set $CSstatus,3;
+set $CSmod, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSname$[.i], 0;
+}
+
+disablenpc "Saída#CS";
+Announce "[Chunin Shiken]: As inscrições para a Chunin Shiken estão abertas e serão encerradas dentro de 1 hora. Corram, pois as vagas são limitadas!",0;
+initnpctimer "Evento#CS"; //Evento#CS	ChuninShiken#CS
+}
+end;
+
+OnCancelCS:
+killmonster .CSmap$, "All";
+stopnpctimer "Evento#CS";
+//set $CSname$, 0;
+//set $CScharid, 0;
+//set $CSaccid, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSname$[.i], 0;
+}
+
+if($CSstatus == 3){
+Announce "[Chunin Shiken]: A Chunin Shiken foi cancelada. Desculpe o transtorno, logo o evento será reativado.",0;
+}
+if($CSstatus == 1){
+MapAnnounce .CSmap$,"[Chunin Shiken]: A Chunin Shiken foi cancelada. Desculpe o transtorno, logo o evento será reativado. Vocês podem sair do evento utilizando o Npc no centro do mapa.",0;
+}
+set $CSstatus, 0;
+end;
+
+}
+
+
+moc_pryd04,100,82,3	script	Saída#CS	48,{ //colocar no mapa .CSmap$
+
+// Nome do npc
+set .npc$,"^800000[Chunin Shiken]^000000";
+
+set .@teste, 0;
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+if(getcharid(0) == $CScharid[.i]){
+set .@teste, 1;
+}
+}
+
+if(.@teste == 1 && $CSend == 0){
+mes .npc$;
+mes "Parabéns "+strcharinfo(0)+"! Aqui está sua recompensa:";
+getitem 7195,16; //ID e quantidade (pergaminhos)
+set CSwin, 1;
+announce "[Chunin Shiken]: Chunin Shiken encerrada. Parabéns ao "+strcharinfo(0)+", o vencedor desta edição.",0;
+close2;
+}else{
+mes .npc$;
+mes "Desculpe, você não está habilitado a receber este prêmio.";
+close2;
+}
+warp "kakashi",123,90;
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CScharid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSaccid[.i], 0;
+}
+
+for( set .i, 1; .i < 100; set .i, .i + 1 ){
+set $CSname$[.i], 0;
+}
+disablenpc "Saída#CS";
+end;
+
+}
+
+moc_pryd04	mapflag	nowarp
+moc_pryd04	mapflag	noteleport
+moc_pryd04	mapflag	nowarpto
+moc_pryd04	mapflag	nobranch
+moc_pryd04	mapflag	nosave	SavePoint
+moc_pryd04	mapflag	nomemo
+moc_pryd04	mapflag	nopenalty
+moc_pryd04	mapflag	noexp

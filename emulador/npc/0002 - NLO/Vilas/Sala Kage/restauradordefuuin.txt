@@ -1,0 +1,60 @@
+salakage,46,20,3	script	Restaurador de Fuuin::restfuuin	897,{
+	mes "[Restaurador de Fuuin]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Depois de anos de pesquisa, consegui desenvolver um método para restaurar o pergaminho raro que tanto almeja.";
+	mes "Estaria interessado?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Restaurador de Fuuin]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Restaurador de Fuuin]";
+	mes "Há uma probabilidade de falhar, você esta ciente disso?";
+	mes "Hahahah brincadeira. Eu preciso de 20 fragmentos de Fuuin no Sho.";
+	next;
+	switch(select("Fuuin no Sho:Nenhum"))
+	{
+	case 1:
+		mes "[Fuuin no Sho]";
+		mes "Recompensa:";
+		mes "1x "+getitemname(753);
+		mes " ";
+		mes "Requerimento:";
+		mes "20x "+getitemname(781);
+		next;
+		mes "[Restaurador de Fuuin]";
+		mes "Podemos restaura-lo?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Restaurador de Fuuin]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(781) >= 20)
+		{
+			delitem 781,20;
+			getitem 753,1;
+			mes "[Restaurador de Fuuin]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Restaurador de Fuuin]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Restaurador de Fuuin]";
+	mes "Me desculpe, mas você não tem todos os fragmentos necessários.";
+	mes "Volte quando você tiver todos eles!";
+	close;
+}
+
+
+salakage2,46,20,3	duplicate(restfuuin)	Restaurador de Fuuin#2	897
+salakage3,46,20,3	duplicate(restfuuin)	Restaurador de Fuuin#3	897
+salakage4,46,20,3	duplicate(restfuuin)	Restaurador de Fuuin#4	897
+

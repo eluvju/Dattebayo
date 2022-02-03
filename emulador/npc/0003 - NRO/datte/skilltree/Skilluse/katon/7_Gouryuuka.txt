@@ -1,0 +1,127 @@
+-	script	on_PC_UseSkillk07	-1,{
+    end;
+//When a Character uses a skill
+
+//Gouryuuka
+
+onPcUseSkillEvent:
+
+           if(lskillid == 80) {
+
+
+if (getskilllv(80) < 10) {
+if (nin_intermediario != 1) {end;}
+if (Gouryuuka != 1) {end;}
+if (skill80 >= 1) {skill 80,10,0; set skill80,0; dispbottom "[Sys] Level up"; end; }
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Corrigindo Gouryuuka no Jutsu Para level 10: "+skill80+" de 100";
+
+end;
+
+}
+
+if (getskilllv(80) == 10) {
+if (nin_intermediario != 1) {end;}
+if (Gouryuuka != 1) {end;}
+if (skill80 >= 50) {skill 80,11,0; set skill80,0; dispbottom "[Sys] Level up"; end; }
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 10: "+skill80+" de 50";
+
+end;
+
+}
+
+if (getskilllv(80) == 11) {
+if (nin_intermediario != 1) {end;}
+if (Gouryuuka != 1) {end;}
+if (skill80 >= 100) {skill 80,12,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 11: "+skill80+" de 100";
+
+end;
+
+}
+
+if (getskilllv(80) == 12) {
+if (nin_intermediario != 1) {end;}
+if (skill80 >= 150) {skill 80,13,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 12: "+skill80+" de 150";
+
+end;
+
+}
+
+if (getskilllv(80) == 13) {
+if (nin_intermediario != 1) {end;}
+if (skill80 >= 200) {skill 80,14,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 13: "+skill80+" de 200";
+
+end;
+
+}
+
+if (getskilllv(80) == 14) {
+if (nin_intermediario != 1) {end;}
+if (skill80 >= 250) {skill 80,15,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 14: "+skill80+" de 250";
+
+end;
+
+}
+
+if (getskilllv(80) == 15) {
+if (nin_intermediario != 1) {end;}
+if (skill80 >= 300) {skill 80,16,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 15: "+skill80+" de 300";
+
+end;
+
+}
+
+if (getskilllv(80) == 16) {
+if (nin_intermediario != 1) {end;}
+if (skill80 >= 500) {skill 80,17,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 16: "+skill80+" de 500";
+
+end;
+
+}
+
+if (getskilllv(80) == 17) {
+if (nin_intermediario != 1) {end;}
+if (skill80 >= 700) {skill 80,18,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 17: "+skill80+" de 700";
+
+end;
+
+}
+
+if (getskilllv(80) == 18) {
+if (nin_intermediario != 1) {end;}
+if (skill80 >= 1000) {skill 80,19,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 18: "+skill80+" de 1000";
+
+end;
+
+}
+
+if (getskilllv(80) == 19) {
+if (nin_intermediario != 1) {end;}
+if (skill80 >= 1000) {skill 80,20,0; set skill80,0; dispbottom "[Sys] Level up"; end;}
+set skill80,skill80 +1;
+dispbottom "[Jutsu level] Gouryuuka no Jutsu level 19: "+skill80+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

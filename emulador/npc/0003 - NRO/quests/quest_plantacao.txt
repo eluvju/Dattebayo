@@ -1,0 +1,42 @@
+nrpg_sell.gat,73,66,5	script	Rose	59,{
+
+if(quest_rose == 1) goto C;
+
+mes "O que faço meu Deus?";
+mes "Hm? o que quer?";
+mes "Não vê que to desesperada?";
+next;
+mes "Eu estava indo para uma venda quando fui atacada por bandidos";
+mes "Eu consegui fugir mas deixei minhas cenouras cair";
+mes "Sem elas meus coelhinhos vão ficar com fome T_T";
+mes "Pode nos ajudar?";
+menu "Sim, porque não?",A,"Agora não",B;
+
+A:
+next;
+mes "Que bom!, eu pensei que estaria perdida";
+mes "Por favor, recupere minhas cenouras!";
+mes "Eram 30 cenouras";
+set quest_rose,1;
+close;
+
+B:
+close;
+
+C:
+mes "Já recuperou minhas 30 cenouras?";
+mes "Deixe eu ver...";
+if(countitem(515) < 30) goto L_SemItem;
+next;
+mes "Que bom, muito obrigada";
+mes "Em troca vou te dar uma roupa que meu marido não usa mais, é o que tenho";
+delitem 515,30;
+getitem 2360,1;
+close;
+
+L_SemItem:
+next;
+mes "Você ainda não recuperou todas";
+close;
+
+}

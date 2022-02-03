@@ -1,0 +1,68 @@
+function	script	get_bi_value	{
+
+	setarray .@k_item_id[0], 1001, 1002, 1003, 1004;
+	setarray .@variable$[0], "#konoha", "#nuvem", "#suna", "#nevoa";
+//====================================================================
+//====================================================================
+//====================================================================
+//====================================================================
+
+	set .@bi,0;
+	if(!getarg(0,0))
+	{
+		set .@count, getarraysize(.@k_item_id);
+		for(set .@i,0; .@i<.@count; set .@i,.@i+1)
+			if(countitem(.@k_item_id[.@i]))
+			{
+				set .@bi,.@i+1;
+				break;
+			}
+	}else if(getarg(0)==1)
+	{
+		set .@count, getarraysize(.@variable$);
+		for(set .@i,0; .@i<.@count; set .@i,.@i+1)
+			if(getd(.@variable$[.@i]))
+			{
+				set .@bi,.@i+1;
+				break;
+			}
+	}else if(getarg(0)==2)
+	{
+		if(!getarg(1,0))
+			set .@bi,callfunc("get_bi_value",0);
+		else
+			set .@bi,getarg(1);
+		if(.@bi)
+			return .@k_item_id[(.@bi-1)];
+		else
+			return 0;
+	}
+	else
+	{
+		if(!getarg(1,0))
+			set .@bi,callfunc("get_bi_value",0);
+		else
+			set .@bi,getarg(1);
+		if(.@bi)
+			return .@variable$[(.@bi-1)];
+		else
+			return "";
+	}
+	return .@bi;
+}
+function	script	refresh_bi_date	{
+	query_sql "DELETE FROM `land` WHERE `char_id` = "+getcharid(0);
+	for(set .@i,0; callfunc("get_bi_value",2,.@i+1); set .@i,.@i+1)
+	{
+		set .@str$, callfunc("get_bi_value",3,.@i+1);
+		setd .@str$,(getarg(0)==.@i+1?set(.@value,$king_aid[getarg(0)]):0);
+		sleep2 1;
+		query_sql "DELETE FROM `global_reg_value` WHERE `str` = '"+.@str$+"' AND `account_id` = "+getcharid(3);
+		sleep2 1;
+		query_sql "INSERT `global_reg_value` VALUES(0,'"+.@str$+"',"+.@value+",2,"+getcharid(3)+")";
+		setd .@str$,.@value;
+		if(getarg(0)==.@i+1)
+			query_sql "INSERT `land` VALUES('"+.@str$+"',"+getcharid(0)+","+(jounin?1:genin?2:0)+")";
+	}
+	return;
+}

@@ -1,0 +1,77 @@
+-	script	Usef_mugen	-1,{
+    end;
+//When a Character uses a skill
+
+//f_mugen
+
+onPcUseSkillEvent:
+
+           if(lskillid == 394) {
+
+
+if (getskilllv(394) == 1) {
+
+if (f_mugen != 1) {end;}
+if (skill394 >= 50) {skill 394,2,0; set skill394,0; dispbottom "[Sys] Level up"; end; }
+set skill394,skill394 +1;
+dispbottom "[Jutsu level] Mugen Sajin Dai level 1: "+skill394+" de 50";
+
+end;
+
+}
+
+if (getskilllv(394) == 2) {
+if (f_mugen != 1) {end;}
+if (skill394 >= 100) {skill 394,3,0; set skill394,0; dispbottom "[Sys] Level up"; end;}
+set skill394,skill394 +1;
+dispbottom "[Jutsu level] Mugen Sajin Dai level 2: "+skill394+" de 100";
+
+end;
+
+}
+
+if (getskilllv(394) == 3) {
+
+if (f_mugen != 1) {end;}
+if (skill394 >= 150) {skill 394,4,0; set skill394,0; dispbottom "[Sys] Level up"; end;}
+set skill394,skill394 +1;
+dispbottom "[Jutsu level] Mugen Sajin Dai level 3: "+skill394+" de 150";
+
+end;
+
+}
+
+if (getskilllv(394) == 4) {
+if (f_mugen != 1) {end;}
+if (skill394 >= 200) {skill 394,5,0; set skill394,0; dispbottom "[Sys] Level up"; end;}
+set skill394,skill394 +1;
+dispbottom "[Jutsu level] Mugen Sajin Dai level 4: "+skill394+" de 200";
+
+end;
+
+}
+
+if (getskilllv(394) == 5) {
+if (f_mugen != 1) {end;}
+if (skill394 >= 250) {skill 394,6,0; set skill394,0; dispbottom "[Sys] Level up"; end;}
+set skill394,skill394 +1;
+dispbottom "[Jutsu level] Mugen Sajin Dai level 5: "+skill394+" de 250";
+
+end;
+
+}
+
+if (getskilllv(394) == 6) {
+if (f_mugen != 1) {end;}
+if (skill394 >= 300) {skill 394,7,0; set skill394,0; dispbottom "[Sys] Level up"; end;}
+set skill394,skill394 +1;
+dispbottom "[Jutsu level] Mugen Sajin Dai level 6: "+skill394+" de 300";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

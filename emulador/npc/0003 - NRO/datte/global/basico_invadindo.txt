@@ -1,0 +1,77 @@
+-	script	invadindo	-1,{
+if (getgmlevel() >= 5) end;
+OnPCLoadMapEvent:
+    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+    if( .@mapname$ == "areia" && ##faction == 3 )
+        announce strcharinfo(0)+" da Vila Oculta da Nevoa acaba de invadir a Suna.",bc_map,0xFF0000;
+    end;
+
+OnInit:
+setmapflag "areia", mf_loadevent;
+end;
+}
+
+-	script	invadindo1	-1,{
+if (getgmlevel() >= 5) end;
+OnPCLoadMapEvent:
+    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+    if( .@mapname$ == "konoha" && ##faction == 2 )
+        announce strcharinfo(0)+" da Vila Oculta da Areia acaba de invadir Konoha.",bc_map,0xFF0000;
+    end;
+
+OnInit:
+setmapflag "konoha", mf_loadevent;
+end;
+}
+
+-	script	invadindo2	-1,{
+if (getgmlevel() >= 5) end;
+OnPCLoadMapEvent:
+    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+    if( .@mapname$ == "nevoa" && ##faction == 2 )
+        announce strcharinfo(0)+" da Vila Oculta da Areia acaba de invadir a Névoa.",bc_map,0xFF0000;
+    end;
+
+OnInit:
+setmapflag "nevoa", mf_loadevent;
+end;
+}
+
+-	script	invadindo3	-1,{
+if (getgmlevel() >= 5) end;
+OnPCLoadMapEvent:
+    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+    if( .@mapname$ == "konoha" && ##faction == 3 )
+        announce strcharinfo(0)+" da Vila Oculta da Nevoa acaba de invadir Konoha.",bc_map,0xFF0000;
+    end;
+
+OnInit:
+setmapflag "konoha", mf_loadevent;
+end;
+}
+
+-	script	invadindo4	-1,{
+if (getgmlevel() >= 5) end;
+OnPCLoadMapEvent:
+    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+    if( .@mapname$ == "areia" && ##faction == 1 )
+        announce strcharinfo(0)+" da Vila Oculta de Konoha acaba de invadir a Suna.",bc_map,0xFF0000;
+    end;
+
+OnInit:
+setmapflag "areia", mf_loadevent;
+end;
+}
+
+-	script	invadindo5	-1,{
+if (getgmlevel() >= 5) end;
+OnPCLoadMapEvent:
+    getmapxy(.@mapname$,.@mapx,.@mapy,0);
+    if( .@mapname$ == "nevoa" && ##faction == 1 )
+        announce strcharinfo(0)+" da Vila Oculta de Konoha acaba de invadir a Névoa.",bc_map,0xFF0000;
+    end;
+
+OnInit:
+setmapflag "nevoa", mf_loadevent;
+end;
+}

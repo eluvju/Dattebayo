@@ -1,0 +1,19 @@
+function	script	nehan	{
+//When a Character uses a skill
+
+//nehan
+
+if (seloskill321 == 1) {
+
+if (Nehan != 1) {end;}
+if (skill321 >= 1000) {set seloskill321,2; set skill321,0; dispbottom "[Sys] Level up"; end; }
+set skill321,skill321 +1;
+dispbottom "[Jutsu level] Nehan level 1: "+skill321+" de 1000";
+
+end;
+
+}
+
+
+                end;
+            }    

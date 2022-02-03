@@ -1,0 +1,75 @@
+konoha,26,265,5	script	Tsuyoshi::equipe_sete	831,{
+
+if (checkquest(2016) == 1) goto L_go;
+//if(elementodoton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Hey, shinobi, se você está buscando uma Soqueira fina, é comigo mesmo.";
+next;
+mes "Uma soqueira mias fina que convencional, que causam dano mais elevado onde quer que acerte.";
+next;
+mes "Gostaria de ter essa arma?";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	Soqueira Fina
+//========================================================================
+
+L_SS:
+next;
+mes "Para esse treinamento,você precisa :";
+mes "- Obter 25x Escama brilhante.";
+mes "- Obter 25x Pele de Sapo.";
+mes "- Obter 50x Minhoca Boa Pinta .";
+mes "- Matar 50 Vermes";
+mes "- Alimentar 3 vacas e receber de recompensa 1 amuleto dos orcs";
+mes "- Alimentar 3 galinhas e receber de recompensa 1 aquamarina";
+setquest 2016;
+set quest_equipe_sete,1;
+next;
+mes "Vá e faça sua missão.";
+close;
+
+L_go:
+if(equipe_mobs_sete < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(954) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(7155) < 25) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(623) < 50) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(931) < 1) {mes "Você ainda não completou sua missão"; close;}
+if (countitem(720) < 1) {mes "Você ainda não completou sua missão"; close;}
+mes "Hehehe, vejo que conseguiu o que te pedi, aqui está o que prometi.";
+completequest 2016;
+erasequest 2016;
+set galinha1,0;
+set galinha2,0;
+set galinha3,0;
+set vaca1,0;
+set vaca2,0;
+set vaca3,0;
+set galinhafeed,0;
+set vacafeed,0;
+set quest_equipe_sete,0;
+set equipe_mobs_sete,0;
+delitem 954,25;
+delitem 7155,25;
+delitem 623,50;
+delitem 931,1;
+delitem 720,1;
+getitem 1367,1;
+close;
+
+L_no:
+close;
+}
+
+-	script	equipe#7	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1070 && quest_equipe_sete == 1) {set equipe_mobs_sete,equipe_mobs_sete +1; announce "[Quest de equipamento] Você já derrotou "+equipe_mobs_sete+" / 50 Verme",bc_blue|bc_self; end;}
+
+}
+
+areia,30,233,5	duplicate(equipe_sete)	Tsuyoshi#1	831
+kiri,317,38,5	duplicate(equipe_sete)	Tsuyoshi#2	831
+nuvem,65,275,5	duplicate(equipe_sete)	Tsuyoshi#3	831

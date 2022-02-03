@@ -1,0 +1,13 @@
+-	script	savesuna	-1,{
+OnPCLoginEvent:
+if (Class == 0)	end;
+if(Rank_S == 1) end;
+if(Rank_A == 1) end;
+if(Rank_B == 1) end;
+if(Rank_C == 1) end;
+if(Rank_D == 1) end;
+if(##faction == 1) {savepoint "konoha",215,176; end;}
+if(##faction == 2) {savepoint "areia",200,166; end;}
+if(##faction == 3) {savepoint "nevoa",203,166; end;}
+
+}

@@ -1,0 +1,238 @@
+biblioteca,71,30,5	script	Katon Básico	1_m_jobguider,{
+
+if(nin_basico != 1) { mes "[Katon Básico]"; mes "Você precisa estudar katon básica antes de aprender um técnica de katon"; close;}
+if(elementokaton != 1) { mes "[Katon Básico]"; mes "Esse elemento não é de sua natureza"; close;}
+
+	mes "[Katon Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Katon escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Katon Housenka:- Katon Hana Shuriken:- Katon Bakufu Ranbu" ) ){
+
+	case 1:
+		next;
+		if(checkquest(1051) == 1) goto 1_go;
+		if(checkquest(2051) == 1) goto 1_go;
+		if(checkquest(3051) == 1) goto 1_go;
+		if(checkquest(4051) == 1) goto 1_go;
+		if(Housenka == 1) goto 1_delete;
+		if(nin_skill_bas >= 3) { mes "[Katon Básico]"; mes "Você já aprendeu três Katons básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Katon Básico]";
+		mes "Housenka no Jutsu?";
+		next;
+		mes "[Katon Básico]";
+		mes "Lembre-se que você só pode ter 3 Katons básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Katon Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Housenka no Jutsu
+		//========================================================================
+		
+		1_delete:
+		mes "[Katon Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Katon Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Katon Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Katon Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Katon Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 17,0,3;
+		set Housenka,0;
+		if(nin_skill_bas > 0) {set nin_skill_bas,nin_skill_bas -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Katon Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 17,10,3;
+		set Housenka,1;
+		set nin_skill_bas,nin_skill_bas +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1051,hunting) == 1 || 
+			checkquest(2051,hunting) == 1 || 
+			checkquest(3051,hunting) == 1 || 
+			checkquest(4051,hunting) == 1	) { mes "[Katon Básico]"; next; mes "Você ainda não completou seu treinamento."; close; }
+		
+		if(checkquest(1051) >= 1) { completequest 1051; erasequest 1051; }
+		if(checkquest(2051) >= 1) { completequest 2051; erasequest 2051; }
+		if(checkquest(3051) >= 1) { completequest 3051; erasequest 3051; }
+		if(checkquest(4051) >= 1) { completequest 4051; erasequest 4051; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(checkquest(1052) == 1) goto 2_go;
+		if(checkquest(2052) == 1) goto 2_go;
+		if(checkquest(3052) == 1) goto 2_go;
+		if(checkquest(4052) == 1) goto 2_go;
+		if(Hana == 1) goto 2_delete;
+		if(nin_skill_bas >= 3) { mes "[Katon Básico]"; mes "Você já aprendeu três Katons básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Katon Básico]";
+		mes "Hana Shuriken?";
+		next;
+		mes "[Katon Básico]";
+		mes "Lembre-se que você só pode ter 3 Katons básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Katon Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Hana Shuriken
+		//========================================================================
+		
+		2_delete:
+		mes "[Katon Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Katon Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Katon Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Katon Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Katon Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 534,0,3;
+		set Hana,0;
+		if(nin_skill_bas > 0) {set nin_skill_bas,nin_skill_bas -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Katon Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 534,10,3;
+		set Hana,1;
+		set nin_skill_bas,nin_skill_bas +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1052,hunting) == 1 || 
+			checkquest(2052,hunting) == 1 || 
+			checkquest(3052,hunting) == 1 || 
+			checkquest(4052,hunting) == 1	) { mes "[Katon Básico]"; next; mes "Você ainda não completou seu treinamento."; close; }
+		
+		if(checkquest(1052) >= 1) { completequest 1052; erasequest 1052; }
+		if(checkquest(2052) >= 1) { completequest 2052; erasequest 2052; }
+		if(checkquest(3052) >= 1) { completequest 3052; erasequest 3052; }
+		if(checkquest(4052) >= 1) { completequest 4052; erasequest 4052; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(checkquest(1053) == 1) goto 3_go;
+		if(checkquest(2053) == 1) goto 3_go;
+		if(checkquest(3053) == 1) goto 3_go;
+		if(checkquest(4053) == 1) goto 3_go;
+		if(bakufu == 1) goto 3_delete;
+		if(nin_skill_bas >= 3) { mes "[Katon Básico]"; mes "Você já aprendeu três Katons básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Katon Básico]";
+		mes "Katon Bakufu Ranbu?";
+		next;
+		mes "[Katon Básico]";
+		mes "Lembre-se que você só pode ter 3 Katons básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Katon Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Katon Bakufu Ranbu
+		//========================================================================
+		
+		3_delete:
+		mes "[Katon Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Katon Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Katon Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Katon Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Katon Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 2212,0,3;
+		set bakufu,0;
+		if(nin_skill_bas > 0) {set nin_skill_bas,nin_skill_bas -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Katon Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 2212,5,3;
+		set bakufu,1;
+		set nin_skill_bas,nin_skill_bas +1;
+		close;
+		
+		3_go:
+		if(	checkquest(1053,hunting) == 1 || 
+			checkquest(2053,hunting) == 1 || 
+			checkquest(3053,hunting) == 1 || 
+			checkquest(4053,hunting) == 1	) { mes "[Katon Básico]"; next; mes "Você ainda não completou seu treinamento."; close; }
+		
+		if(checkquest(1053) >= 1) { completequest 1053; erasequest 1053; }
+		if(checkquest(2053) >= 1) { completequest 2053; erasequest 2053; }
+		if(checkquest(3053) >= 1) { completequest 3053; erasequest 3053; }
+		if(checkquest(4053) >= 1) { completequest 4053; erasequest 4053; }
+		close;
+		
+		3_no:
+		close;
+	}
+}

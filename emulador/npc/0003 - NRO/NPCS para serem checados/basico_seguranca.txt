@@ -1,0 +1,230 @@
+//|==========================================================================================|
+//|   __________     __________       __________   _____          _____   _____        _____ |
+//|  |::::::::::|   |::::::::: |     |::::::::::|  \::::\        /::::/	  \::::\      /::::/ |
+//|  |:: ____ ::|   |:: ____ ::|     |:: ____ ::|   \::::\      /::::/	   \::::\    /::::/  |
+//|  |::|    |::|   |::|    |::|     |::|    |::|    \::::\    /::::/       \::::\  /::::/   |
+//|  |::|    |::|   |::|    |::|     |::|    |::|     \::::\  /::::/         \::::\/::::/    |
+//|  |::|____|::|   |::|____|::|     |::|    |::|      \::::\/::::/           \::::::::/     |
+//|  |::::::::::|   |::::::::::\     |::|    |::| 	\::::::::/             \::::::/	     |
+//|  |::________|   |:: ____ :::\    |::|    |::|	 \::::::/	       	\::::/	     |
+//|  |::|	    |::|     \:::|   |::|____|::|	 /::::::\               |::::|	     |
+//|  |::|           |::|      |::|   |::      ::|       /::::::::\              |::::|       |
+//|  |::|           |::|      |::|   |::::::::::|      /::::/\::::\             |::::|       |
+//|  |__|	    |__|      |__|   |__________|     /____/  \____\	        |____|	     |
+//|        									   	     |
+//|==========================================================================================|
+//|   Script Criando por ragnaproxy | Cronus | Por Favor, não Retire Os Créditos.            |
+//|==========================================================================================|
+//|         ************************* Senha Secundária 4.0 ***************************       |
+//|==========================================================================================|
+kakashi,100,100,5	script	Senha de segurança	121,{
+
+    	  		mes set ( .@a$, "[ ^FF0000Senha de seguranças^000000 ]" );
+    	  		mes "Olá eu sou o assistente da 'senha secundária'";
+    	  	 	mes "Eu sou responsável por todas as senha secundárias";
+    	  	 	next;
+    	  	 	mes .@a$;
+    	  		mes "O que deseja ?";
+    	  		set .@menu, select ( "Criar uma senha:Trocar senha:Deletar senha secundária:Sair" ); 
+    	   
+	if ( .@menu == 1 ) 
+	{   
+	if ( ##SenhaC == 0 )
+    	{
+           Callfunc "SenhaAtiva"; 
+   
+   	}else{
+
+	if ( ##SenhaD == 1 ) Callfunc "SenhaAtiva";
+
+			 next;
+      			 mes .@a$;
+   			 mes "Você já crio sua senha secundária,";
+   			 close;
+   	}
+	}
+	if ( .@menu == 2 )
+	{ 
+    	   	 	 nOPP:
+           	 	 next;
+   	   	 	 mes .@a$;
+   	   		 mes "Digite a senha atual.";
+   	   		 input #ATUALP$;
+		 
+    	if( #ATUALP$ == ##SenhaP$ )
+    	{
+     	  	 	next;
+  	   	 	mes .@a$;
+  	  	 	mes "Digite a nova senha.";
+  	   	 	input ##SenhaP$;
+           	 	next;
+  	   	 	mes .@a$;
+  	   	 	mes "Está correto?";
+   	   	 	mes "^0000FF"+##SenhaP$+"^000000";
+
+   	if ( Select ( "Sim:Não" ) == 2 ) goto nOPP;  next;
+
+		 query_sql "UPDATE `senha_secundaria` SET `Senha_secundaria`='"+##SenhaP$+"' WHERE `conta_id`='"+getcharid (3)+"'";
+
+   	   		mes .@a$;
+   	   		mes "Sua senha foi alterada com sucesso.";
+   	   		close;
+    	}
+     	   		next;
+  	   		mes .@a$;
+   	   		mes "Senha ou palavra chave inválida."; 
+   	   		close;
+	}  
+	if ( .@menu == 3 )
+	{
+			next;
+			mes .@a$;
+			mes "Digite sua senha secundária antes de remover-la";
+			input #SenhaT$;
+			if ( #SenhaT$ != ##SenhaP$ ) {mes "Senha incorreta"; close;}
+			mes "Senha deletado com sucesso.";
+			close2;
+ 	  		query_sql "DELETE FROM `senha_secundaria` WHERE `conta_id`='"+getcharid (3)+"'";
+			query_sql "DELETE FROM `senha_secundaria` WHERE `Senha_secundaria`='"+##SenhaP$+"'";
+			query_sql "DELETE FROM `senha_secundaria` WHERE `Palavra_chave`='"+##PL$+"'";
+			query_sql "DELETE FROM `senha_secundaria` WHERE `Login_s`='"+##LoginP$+"'";	
+			set ##SenhaD,1;
+			set ##SenhaC,1;
+			set ##ConT, 1;
+			end;  
+    	}
+	if ( .@menu == 4 )
+	{
+	close;
+	}	
+}
+
+-	script	##login	-1,{
+
+OnPCLoginEvent:
+
+	if ( getgmlevel ( ) > 99 ) end;
+	if (BaseLevel == 1) {end;}
+        if ( ##COnT == 1 ) end;
+	if ( ##Delete == 1 ) end;
+        if ( ##SenhaC == 0 )
+   	{
+	Callfunc "SenhaAtiva";
+    	}
+        if( ##SenhaC == 1 )
+	{   
+			getmapxy @map$,@x,@y,0;
+			setmapflag ""+@map$+"",mf_nodrop,38;
+			setmapflag ""+@map$+"",mf_notrade,11;
+	       		set @gmlvl,getgmlevel();
+	      		atcommand "@adjgmlvl -1 "+strcharinfo(0);
+	      		pcblockmove getcharid(3),1;
+	      		SEnP:
+	   		mes set ( .@nPCC$, "[^FF0000Segurança^000000]" ); 	
+	      		mes "Sistema de proteção de contas ativado";
+
+	if ( Select ( "Digitar minha senha:Recuperar senha" ) == 1 )
+	{                       
+        input #SenhaT$;
+	if ( #SenhaT$ == ##SenhaP$ )
+	{    
+	     		atcommand "@adjgmlvl "+@gmlvl+" "+strcharinfo(0);
+	       		pcblockmove getcharid(3),0;
+	       		removemapflag ""+@map$+"",mf_nodrop;
+	       		removemapflag ""+@map$+"",mf_notrade;
+	       		next;
+	       		mes .@nPCC$; 
+	       		mes "Senha correta, bom jogo"; 
+	       		close; 
+        }
+	       		close2;
+               		addtimer 2000,"##login::OnTempo"; end;
+	       		OnTempo:	   
+	       		announce "SENHA ERRADA!! VOCÊ SERÁ DESCONECTADO",bc_self,0xD20000;
+	       		sleep2 3000;
+	      		atcommand "@Kick "+Strcharinfo(0); 
+	       		removemapflag ""+@map$+"",mf_nodrop;
+	       		end;
+	}    
+	      		next;  
+              		mes .@nPCC$;
+               		mes "Digite a palavra chave.";
+               		input #CHA$;
+	       		next;
+	               
+         if( #CHA$ == ##PL$ )
+         {   
+             		mes .@nPCC$;
+             		mes "Sua senha abaixo.";
+             		mes  "^0000FF"+##SenhaP$+"^000000";
+             		next; 
+             		goto SEnP;          
+         }
+	     		next;
+             		mes .@nPCC$;
+             		mes "Palavra chave inválida.";
+             		mes "Por medidas de segurança você será desconectado.";
+              		close2;
+              		sleep2 3000;
+	      		atcommand "@Kick "+Strcharinfo(0)+""; end;
+	}
+}
+
+function	script	SenhaAtiva	{
+
+	if ( ##SenhaD  == 1 ) goto DEN;
+        if ( ##SenhaC == 0 )
+	{
+			DEN:
+               		mes set ( .@nPCP$, "[^FF0000Senha secundária^000000]" );
+	       		mes "Olá ^339966"+Strcharinfo(0)+"^000000 seja bem vindo"; 
+	       		next;
+	       		mes .@nPCP$;
+	       		mes "Para melhor segurança da sua conta você poderá criar uma senha secundária"; 
+	       		next;
+	       		mes .@nPCP$;
+	       		mes "Você gostaria de cria uma senha secundaria ?";
+
+	if ( select ( "Sim:Não" ) == 2 )
+	{
+  	       		next;
+	       		mes .@nPCP$;
+	       		mes  "Tudo bem então, tomo cuidado com sua conta.";
+  	       		set ##COnT,1; 
+	       		close;
+	} 
+	       		next;
+	       		mes .@nPCP$;
+	       		mes  "Antes tenho que verificar seu login, digite seu login.";
+	       		input ##LoginP$;
+	       		next;	
+    	       		nAOP:
+	       		mes .@nPCP$;
+      	       		mes "Digite a sua senha secundária, ela pode conter números e letras, e até 24 caracteres. ";
+       	       		input ##SenhaP$; 
+	       		next;		
+
+     	       		mes .@nPCP$;
+      	       		mes "Digite uma palavra chave para recuperação da senha, ela pode conter números e letras, e até 24 caracteres.";
+       	       		input ##PL$;
+	       		next;
+
+  	       		mes $nPCP$;
+ 	       		mes "Está correto?";
+ 	       		mes "Senha";
+ 	       		mes "^0000FF"+##SenhaP$+"^000000";
+	       		mes "Palavra chave";
+	       		mes "^0000FF"+##PL$+"^000000";
+ 	       		next;
+
+ 	if ( Select ( "Sim:Não" ) ==2 ) goto nAOP;
+
+               		mes .@nPCP$;
+               		mes "Sua senha foi definida com sucesso!! boa sorte na sua jornada.";
+               		set ##SenhaC,1;
+			set ##COnT,0; 
+			set ##SenhaD,0;
+        		query_sql "INSERT INTO `senha_secundaria` (`Login_s`,`Senha_secundaria`,`conta_id`,`Palavra_chave`) VALUES ('"+##LoginP$+"','"+##SenhaP$+"','"+getcharid (3)+"','"+##PL$+"')";
+			close; 
+	} 
+}     

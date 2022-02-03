@@ -1,0 +1,42 @@
+// #Ninpou# - Habilidades Básicas (Nv 9) //
+- Recebe a skill automáticamente,após escolher a vila e iniciar na academia shinobi
+
+// #Perícia Shinobi# - Perícia Ninja (Nv 5) //
+- Recebe após conversar com o NPC inicial da academia shinobi,e receber as primeiras informações
+
+// #Shunshin no Jutsu# - Aumentar Agilidade (Nv 3) //
+- Recebe após falar com o NPC da academia shinobi,na quest requer:
+	. Derrotar 20x girino
+	. Falar com o NPC novamente.
+
+// #Kakuremino no Jutsu# - Esconderijo (Nv 1) //
+- Recebe após falar com o NPC da academia shinobi,na quest requer:
+ 	. Derrotar 20x filhote de cobra
+	. Falar com o NPC novamente
+
+// #Perícia em Arremesso# - Prática de Arremesso de Shuriken (Nv 5) //
+- Recebe após falar com o npc da academia shinobi,na quest requer:
+	. Falar com o NPC de treinamento taijutsu da academia
+	. Falar com o NPC novamente
+
+// #Arremessar Kunai# - Arremessar Kunai (Nv 5) //
+- Recebe após falar com o npc da academia shinobi,na quest requer:
+	. Falar com o NPC de treinamento taijutsu e completar a quest dele(caso 1).
+	. Falar com o NPC novamente
+
+// #Arremessar Shuriken# - Arremessar Shuriken (nv 5) //
+- Recebe após falar com o npc da academia shinobi,na quest requer:
+	. Falar com o npc de treinamento taijutsu e completar a quest dele(caso 2).
+	. Falar com o npc novamente
+
+
+
+
+Caso 1:
+- Obter 50x Kunai quebrada
+- Falar com o npc de treinamento taijutsu
+
+Caso 2:
+- Obter 50x Shuriken quebrada
+- Falar com o npc de treinamento taijutsu
+	

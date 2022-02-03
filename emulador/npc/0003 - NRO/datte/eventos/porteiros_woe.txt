@@ -1,0 +1,167 @@
+kakashi,114,143,5	script	Teleportador - Guerra	831,{
+
+//set @zenynecessario,1000000;
+set @zenynecessario,0;
+if (#konoha == 1) && ($konoha_impostos1) {set @zenynecessario,500000;}
+if (#konoha == 1) && ($konoha_impostos2) {set @zenynecessario,0;}
+if (#suna == 1) && ($areia_impostos1) {set @zenynecessario,500000;}
+if (#suna == 1) && ($areia_impostos2) {set @zenynecessario,0;}
+if (#nevoa == 1) && ($nevoa_impostos1) {set @zenynecessario,500000;}
+if (#nevoa == 1) && ($nevoa_impostos2) {set @zenynecessario,0;}
+if (#nuvem == 1) && ($nuvem_impostos1) {set @zenynecessario,500000;}
+if (#nuvem == 1) && ($nuvem_impostos2) {set @zenynecessario,0;}
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1 || nukenin == 1) {set @zenynecessario,0;}
+if (agitcheck() == 0) {mes "[^0000FFTeleportador - Guerra^000000]"; mes "No momento não está tendo guerra"; close;}
+if (BaseLevel < 999) {mes "[^0000FFTeleportador - Guerra^000000]"; mes "O nível mínimo necessário para entrar na guerra é 999"; close;}
+mes "[^0000FFTeleportador - Guerra^000000]";
+mes "Olá poderoso shinobi, gostaria de ir para o local de guerra? Será cobrado uma taxa de ^0000FF"+@zenynecessario+"^000000 zeny";
+menu "- Sim, quero lutar",L_sim,"- Ainda não estou pronto",L_nao;
+
+L_nao:
+close;
+
+L_sim:
+if( Zeny < @zenynecessario ) {mes "Você não possui zeny o suficiente para entrar na guerra"; close;}
+next;
+mes "[^0000FFTeleportador - Guerra^000000]";
+mes "Muito bem, tome cuidado e honre sua vila!";
+set Zeny, Zeny - @zenynecessario;
+next;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1 || nukenin == 1) {warp "schg_dun01",213,71; end;}
+if (#konoha == 1) {warp "schg_dun01",80,140; end;}
+if (#nevoa == 1) {warp "schg_dun01",322,165; end;}
+if (#suna == 1) {warp "schg_dun01",268,305; end;}
+if (#nuvem == 1) {warp "schg_dun01",94,283; end;}
+end;
+
+}
+
+//warps
+schg_dun01,199,132,0	warp	woenova1	1,1,sch_gld,351,89
+sch_gld,288,257,0	warp	woenova6	1,1,sch_gld,71,315
+
+//Castelo 1
+sch_gld,98,183,0	warp	Entrada_Castelo_01	1,1,payg_cas03,226,27
+payg_cas03,262,71,0	warp	Castelo_1_indo_mapa_2	1,1,payg_cas04,76,261
+payg_cas04,79,261,0	warp	Castelo_1_voltando_mapa_1	1,1,payg_cas03,262,66
+payg_cas04,6,261,0	warp	Castelo_1_indo_mapa_3	1,1,payg_cas01,13,115
+payg_cas01,10,115,0	warp	Castelo_1_voltando_mapa_2	1,1,payg_cas04,11,261
+payg_cas01,53,110,0	warp	indo_sala_emp	1,1,payg_cas02,13,40
+payg_cas02,13,43,0	warp	Castelo_1 saindo_emp	1,1,payg_cas01,53,114
+
+//Castelo 2
+sch_gld,180,264,0	warp	sch_gld178180#gefg_cas0353159	1,1,gefg_cas03,87,156
+gefg_cas03,67,223,0	warp	gefg_cas0366223#gefg_cas027642	1,1,gefg_cas02,76,42
+gefg_cas02,81,42,0	warp	gefg_cas027840#gefg_cas0361222	1,1,gefg_cas03,61,222
+gefg_cas02,25,13,0	warp	gefg_cas022315#gefg_cas0117414	1,1,gefg_cas01,174,14
+gefg_cas01,170,14,0	warp	gefg_cas0117312#gefg_cas022213	1,1,gefg_cas02,22,13
+gefg_cas01,181,52,0	warp	gefg_cas0118152#gefg_cas04144166	1,1,gefg_cas04,144,166
+gefg_cas04,140,168,0	warp	gefg_cas04140168#gefg_cas0118552	1,1,gefg_cas01,185,52
+
+//Castelo3
+prtg_cas01,207,183,0	warp	prtg_cas01207183#prtg_cas04246254	1,1,prtg_cas04,246,254
+prtg_cas04,246,259,0	warp	prtg_cas04246259#prtg_cas01204183	1,1,prtg_cas01,204,183
+prtg_cas04,239,256,0	warp	prtg_cas04239256#prtg_cas0345117	1,1,prtg_cas03,45,117
+prtg_cas03,45,121,0	warp	prtg_cas0345121#prtg_cas04239262	1,1,prtg_cas04,239,262
+prtg_cas03,45,42,0	warp	prtg_cas034542#prtg_cas0236187	1,1,prtg_cas02,36,187
+prtg_cas02,36,182,0	warp	prtg_cas0236182#prtg_cas014547	1,1,prtg_cas03,45,47
+sch_gld,138,97,0	warp	sch_gld13897#prtg_cas0214208	1,1,prtg_cas02,14,208
+
+
+
+//monstros
+sch_gld,0,0,0,0	monster	[Guerra] Jounin	1634,140,1800,1800,0
+
+
+/*
+prt_fild02,227,162,4	script	Porteiro#woe2	114,{
+	if(agitcheck()!=1) {mes "Não está tendo guerra nesse momento"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar na guerra é 999"; close;}
+	mes "[Teleportador para a guerra]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Teleportador para a guerra]";
+	mes "Gostaria de entrar na Guerra?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Teleportador para a guerra]";
+	mes "OK "+ strcharinfo(0) +"!";
+//	percentheal 100, 100 ;
+	warp "payg_cas02",272,57;
+	close;
+
+	r2:
+	close;
+}
+
+yuno_fild08,160,195,4	script	Porteiro#woe3	114,{
+	if(agitcheck()!=1) {mes "Não está tendo guerra nesse momento"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar na guerra é 999"; close;}
+	mes "[Teleportador para a guerra]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Teleportador para a guerra]";
+	mes "Gostaria de entrar na Guerra?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Teleportador para a guerra]";
+	mes "OK "+ strcharinfo(0) +"!";
+//	percentheal 100, 100 ;
+	warp "prtg_cas01",99,32;
+	close;
+
+	r2:
+	close;
+}
+
+gef_fild04,171,280,4	script	Porteiro#woe4	114,{
+	if(agitcheck()!=1) {mes "Não está tendo guerra nesse momento"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar na guerra é 999"; close;}
+	mes "[Teleportador para a guerra]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Teleportador para a guerra]";
+	mes "Gostaria de entrar na Guerra?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Teleportador para a guerra]";
+	mes "OK "+ strcharinfo(0) +"!";
+//	percentheal 100, 100 ;
+	warp "gefg_cas04",24,149;
+	close;
+
+	r2:
+	close;
+}
+
+kakashi,114,143,4	script	Entrada WoE	834,{
+	if(agitcheck()!=1) {mes "Não está tendo guerra nesse momento"; close;}
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para entrar na guerra é 999"; close;}
+	mes "[Teleportador para a guerra]";
+	mes "Olá Guerreiro";
+	next;
+	mes "[Teleportador para a guerra]";
+	mes "Gostaria de entrar na Guerra?";
+	next;
+	menu "Sim",r1,"Não",r2;
+	
+	r1:
+	mes "[Teleportador para a guerra]";
+	mes "OK "+ strcharinfo(0) +"!";
+	percentheal 100, 100 ;
+	if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) || (nukenin == 1) {warp "ve_fild01",79,345; close;}
+	if (#konoha == 1) {warp "ve_fild01",56,200; close;}
+	if (#nuvem == 1) {warp "ve_fild01",84,93; close;}
+	if (#nevoa == 1) {warp "ve_fild01",185,22; close;}
+	if (#suna == 1) {warp "ve_fild01",20,304; close;}
+	close;
+
+	r2:
+	close;
+}

@@ -1,0 +1,834 @@
+//===== Cronus Script ======================================== 
+//= Cavaleiro Skill Quest
+//===== Por: =================================================
+//= Lupus, Reddozen
+//= Mehah [Traduziu para PT(br)]
+//===== Versão Atual: ======================================== 
+//= 1.3a
+//============================================================
+
+
+//============================================================
+// Cavaleiro - CHARGE ATTACK
+//============================================================
+payon_in03,34,69,3	script	Professor de Raiton#1::rai	819,{
+	mes "[Professor de Raiton]";
+	if(raitonsec == 1){mes "Quem é você?? Saia daqui!"; close;}
+	if(elementoraiton == 1){goto L_lista;}else{mes "Quem é você?? Saia daqui!"; close;}
+
+	
+	L_lista:
+	mes "Você usuário do elemento Raiton, O raio que tudo alcança!";
+	mes "Gostaria de ver as skills de qual graduação?";
+	menu "Genin",geninraiton,"Chunin",chuninraiton,"Jounin",jouninraiton;
+	
+	
+	geninraiton:
+	if(genin != 1) goto L_nogradu;
+	next;
+	mes "[Professor de Raiton]";
+	mes "Você que é um genin do elemento Raiton, pode aprender os seguintes Jutsus!";
+	menu "- Raikyuu no Jutsu nv 5",skill1raitong,"- Raiton - Shichuu Shibari nv 5",skill2raitong;
+
+	skill1raitong:
+	if(Jutsugenin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Genin: Raikyuu no Jutsu nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "200 Pinças de Escorpião";
+	mes "200 Casco Arco- Íris";
+	mes "20 Língua de Reptil";
+	mes "E terá que derrotar 20 Girinos";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raiog1,1;	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7125) < 200) goto L_SemItem;
+	if (countitem(1013) < 200) goto L_SemItem;
+	if (countitem(903) < 20) goto L_SemItem;
+	if(skillg1raiomobs < 20) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7125,200;
+	delitem 1013,200;
+	delitem 903,20;
+	skill 20,5,0;
+	set Jutsugenin1,0;
+	set Jutsugenin2,1;
+	set skillg1raiomobs,0;
+	set quest_raiog1,0;
+	close;
+
+	skill2raitong:
+	if(Jutsugenin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Genin: Raiton - Shichuu Shibari nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "200 Pinças de Escorpião";
+	mes "150 leites";
+	mes "150 Armadura Destruídas";
+	mes "50 Tendões";
+	mes "E terá que derrotar 20 Morcego";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raiog2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7125) < 200) goto L_SemItem;
+	if (countitem(519) < 150) goto L_SemItem;
+	if (countitem(7069) < 150) goto L_SemItem;
+	if (countitem(1050) < 50) goto L_SemItem;
+	if(skillg2raiomobs < 20) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7125,200;
+	delitem 519,150;
+	delitem 7069,150;
+	delitem 1050,50;
+	skill 21,5,0;
+	set Jutsugenin2,0;
+	set Jutsuchunin1,1;
+	set skillg2raiomobs,0;
+	set quest_raiog2,0;
+	close;
+	
+	
+	chuninraiton:
+	if(chunin != 1) goto L_nogradu;
+	next;
+	mes "[Professor de Raiton]";
+	mes "Você que é um genin do elemento Raiton, pode aprender os seguintes Jutsus!";
+	menu "- Raikyuu no Jutsu nv 10",skill1raitonc,"- Raiton - Shichuu Shibari nv 10",skill2raitonc,"- Chidori nv 5",skill3raitonc,"- Raiton Maisou nv 5",skill4raitonc;
+
+	skill1raitonc:
+	if(Jutsuchunin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Raikyuu no Jutsu nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "200 Shuriken Gasto";
+	mes "100 Ovas de Sapo";
+	mes "150 Patas de Besouro";
+	mes "300 Casco Arco –Íris";
+	mes "100 Garras de Rato";
+	mes "20 União da Tribo";
+	mes "E matar 50 Ratasanas";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioc1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7072) < 200) goto L_SemItem;
+	if (countitem(908) < 100) goto L_SemItem;
+	if (countitem(7202) < 150) goto L_SemItem;
+	if (countitem(1013) < 300) goto L_SemItem;
+	if (countitem(7007) < 100) goto L_SemItem;
+	if (countitem(658) < 20) goto L_SemItem;
+	if(skillc1raiomobs < 50) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7072,200;
+	delitem 908,100;
+	delitem 7202,150;
+	delitem 1013,300;
+	delitem 7007,100;
+	delitem 658,20;
+	skill 20,10,0;
+	set Jutsuchunin1,0;
+	set Jutsuchunin2,1;
+	set skillc1raiomobs,0;
+	set quest_raioc1,0;
+	close;
+
+	skill2raitonc:
+	if(Jutsuchunin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Raiton - Shichuu Shibari nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "150 Língua de Reptil";
+	mes "400 Garra de Lobo do Deserto";
+	mes "200 Teia de Aranha";
+	mes "300 Antenas de Inseto";
+	mes "50 Gema Vermelha";
+	mes "50 Galertas";
+	mes "30 Minhoca Boa Pinta";
+	mes "E matar 30 Barata Macho";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioc2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(903) < 150) goto L_SemItem;
+	if (countitem(7030) < 400) goto L_SemItem;
+	if (countitem(1025) < 200) goto L_SemItem;
+	if (countitem(928) < 300) goto L_SemItem;
+	if (countitem(716) < 50) goto L_SemItem;
+	if (countitem(910) < 50) goto L_SemItem;	
+	if (countitem(623) < 30) goto L_SemItem;		
+	if(skillc2raiomobs < 30) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 903,150;
+	delitem 7030,400;
+	delitem 1025,200;
+	delitem 928,300;
+	delitem 716,50;
+	delitem 910,50;
+	delitem 623,30;
+	skill 21,10,0;
+	set Jutsuchunin2,0;
+	set Jutsuchunin3,1;
+	set skillc2raiomobs,0;
+	set quest_raioc2,0;
+	close;;
+
+	skill3raitonc:
+	next;
+	if(Jutsuchunin3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Chidori nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "500 Patas Pegajosas";
+	mes "300 Retrato Velhos";
+	mes "300 Tranças";
+	mes "50 Luvas do Carrasco";
+	mes "50 Vida Verdejantes";
+	mes "150 Avelãs";
+	mes "15 Coração Imortal";
+	mes "E matar 50 Operários";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioc3,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(918) < 500) goto L_SemItem;
+	if (countitem(7014) < 300) goto L_SemItem;
+	if (countitem(901) < 300) goto L_SemItem;
+	if (countitem(7017) < 50) goto L_SemItem;
+	if (countitem(993) < 50) goto L_SemItem;
+	if (countitem(1026) < 150) goto L_SemItem;
+	if (countitem(929) < 15) goto L_SemItem;
+	if(skillc3raiomobs < 50) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 918,500;
+	delitem 7014,300;
+	delitem 901,300;
+	delitem 7017,50;
+	delitem 993,50;
+	delitem 1026,150;
+	delitem 929,15;
+	skill 84,5,0;
+	set Jutsuchunin3,0;
+	set Jutsuchunin4,1;
+	set skillc3raiomobs,0;
+	set quest_raioc3,0;
+	close;
+
+	skill4raitonc:
+	if(Jutsuchunin4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Raiton Maisou Nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "20 Espetos Quebrados";
+	mes "300 Ossos";
+	mes "300 Escamas Brilhantes";
+	mes "200 galho";
+	mes "150 algemas";
+	mes "300 Sangue de animal";
+	mes "100 raiz marrom";
+	mes "E matar 50 Escaravelhos";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioc4,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7215) < 20) goto L_SemItem;
+	if (countitem(932) < 300) goto L_SemItem;
+	if (countitem(954) < 300) goto L_SemItem;
+	if (countitem(7203) < 200) goto L_SemItem;
+	if (countitem(1098) < 150) goto L_SemItem;
+	if (countitem(702) < 300) goto L_SemItem;
+	if (countitem(7188) < 100) goto L_SemItem;
+	if(skillc4raiomobs < 50) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7215,20;
+	delitem 932,300;
+	delitem 954,300;
+	delitem 7203,200;
+	delitem 1098,150;
+	delitem 702,300;
+	delitem 7188,100;
+	skill 85,5,0;
+	set Jutsuchunin4,0;
+	set Jutsujounin1,1;
+	set skillc4raiomobs,0;
+	set quest_raioc4,0;
+	close;
+
+	jouninraiton:
+	if(jounin != 1) goto L_nogradu;
+	next;
+	mes "[Professor de Raiton]";
+	mes "Você que é um Jounin do elemento Raiton, pode aprender os seguintes Jutsus!";
+	menu "- Raikyuu no Jutsu nv 15",skill1raitonj,"- Raiton - Shichuu Shibari nv 15",skill2raitonj,"- Chidori nv 10",skill3raitonj,"- Raiton Maisou nv 10",skill4raitonj,"- Chidori Nagashi nv 10",skill5raitonj,"- Elemento Raiton nv 10",skill6raitonj;
+
+	skill1raitonj:
+	if(Jutsujounin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Raikyuu no Jutsu nv 15";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "500 Bandagem Estragada";
+	mes "150 pernas de gafanhoto";
+	mes "150 Muco Pegajoso";
+	mes "100 Ametista";
+	mes "200 Casca Quebrada";
+	mes "200 Asas de Libélula";
+	mes "E matar 30 Gremlins";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioj1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(930) < 500) goto L_SemItem;
+	if (countitem(940) < 150) goto L_SemItem;
+	if (countitem(938) < 150) goto L_SemItem;
+	if (countitem(719) < 100) goto L_SemItem;
+	if (countitem(7070) < 200) goto L_SemItem;
+	if (countitem(7064) < 200) goto L_SemItem;
+	if(skillj1raiomobs < 30) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 930,500;
+	delitem 940,150;
+	delitem 938,150;
+	delitem 719,100;
+	delitem 7070,200;
+	delitem 7064,200;
+	skill 20,15,0;
+	set Jutsujounin1,0;
+	set Jutsujounin2,1;
+	set skillj1raiomobs,0;
+	set quest_raioj1,0;
+	close;
+
+	skill2raitonj:
+	if(Jutsujounin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Raiton - Shichuu Shibari nv 15";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "800 Garras de Leopardo";
+	mes "400 Sopa de Tinta de Lula e Ovos de Sapo";
+	mes "300 Lamina Perdida das Trevas";
+	mes "500 Mascara Ninja";
+	mes "400 Mascara do Festival";
+	mes "400 gás tóxico";
+	mes "E matar 40 Gafanhotos";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioj2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7172) < 800) goto L_SemItem;
+	if (countitem(12056) < 400) goto L_SemItem;
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7157) < 500) goto L_SemItem;
+	if (countitem(7187) < 400) goto L_SemItem;
+	if (countitem(7322) < 400) goto L_SemItem;
+	if(skillj2raiomobs < 40) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7172,800;
+	delitem 12056,400;
+	delitem 7023,300;
+	delitem 7157,500;
+	delitem 7187,400;
+	delitem 7322,400;
+	skill 21,15,0;
+	set Jutsujounin2,0;
+	set Jutsujounin3,1;
+	set skillj2raiomobs,0;
+	set quest_raioj2,0;
+	close;
+
+	skill3raitonj:
+	if(Jutsujounin3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Chidori nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "400 Esfera das Sombras";
+	mes "50 Cachimbo";
+	mes "300 Pedra do Sabio";
+	mes "500 Cyfar";
+	mes "200 Pedra do Pesadelo";
+	mes "200 Insígnia de Herói";
+	mes "300 rosa eterna";
+	mes "E matar 30 Ninkames";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioj3,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7524) < 400) goto L_SemItem;
+	if (countitem(2268) < 50) goto L_SemItem;
+	if (countitem(12040) < 300) goto L_SemItem;
+	if (countitem(7053) < 500) goto L_SemItem;
+	if (countitem(7102) < 200) goto L_SemItem;
+	if (countitem(968) < 200) goto L_SemItem;
+	if (countitem(748) < 300) goto L_SemItem;
+	if(skillj3raiomobs < 30) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7524,400;
+	delitem 2268,50;
+	delitem 12040,300;
+	delitem 7053,500;
+	delitem 7102,200;
+	delitem 968,200;
+	delitem 748,300;
+	skill 84,10,0;
+	set Jutsujounin3,0;
+	set Jutsujounin4,1;
+	set skillj1raiomobs,0;
+	set quest_raioj3,0;
+	close;
+
+	skill4raitonj:
+	if(Jutsujounin4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Raiton Maisou nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "400 Relógio de Bolso";
+	mes "400 Bracelete da Obediência";
+	mes "400 Ba Gua";
+	mes "300 Esmeralda";
+	mes "500 Garra de Macaco";
+	mes "500 Cabelos Horrendos";
+	mes "300 lanterna";
+	mes "E matar 40 Doki's";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioj4,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7513) < 400) goto L_SemItem;
+	if (countitem(639) < 400) goto L_SemItem;
+	if (countitem(7169) < 400) goto L_SemItem;
+	if (countitem(721) < 300) goto L_SemItem;
+	if (countitem(7011) < 500) goto L_SemItem;
+	if (countitem(1048) < 500) goto L_SemItem;
+	if (countitem(7191) < 300) goto L_SemItem;
+	if(skillj4raiomobs < 40) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7513,400;
+	delitem 639,400;
+	delitem 7169,400;
+	delitem 721,300;
+	delitem 7011,500;
+	delitem 1048,500;
+	delitem 7191,300;
+	skill 85,10,0;
+	set Jutsujounin4,0;
+	set Jutsujounin5,1;
+	set skillj4raiomobs,0;
+	set quest_raioj4,0;
+	close;
+
+	skill5raitonj:
+	if(Jutsujounin5 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Chidori Nagashi nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "300 Colar do Oblívio";
+	mes "500 Fragmento da Desgraça";
+	mes "500 Selo Maldito";
+	mes "30 Plantas da Névoa";
+	mes "30 plantas de Konoha";
+	mes "30 Plantas da Suna";
+	mes "10 Símbolo do Guerreiro";
+	mes "20 Ouros";
+	mes "E matar 40 Camaleon's";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioj5,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(1008) < 300) goto L_SemItem;
+	if (countitem(7437) < 500) goto L_SemItem;
+	if (countitem(7442) < 500) goto L_SemItem;
+	if (countitem(710) < 30) goto L_SemItem;
+	if (countitem(712) < 30) goto L_SemItem;
+	if (countitem(704) < 30) goto L_SemItem;
+	if (countitem(7484) < 10) goto L_SemItem;
+	if (countitem(969) < 20) goto L_SemItem;
+	if(skillj5raiomobs < 40) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 1008,300;
+	delitem 7437,500;
+	delitem 7442,500;
+	delitem 710,30;
+	delitem 712,30;
+	delitem 704,30;
+	delitem 7484,10;
+	delitem 969,20;
+	skill 541,10,0;
+	set Jutsujounin5,0;
+	set Jutsujounin6,1;
+	set skillj5raiomobs,0;
+	set quest_raioj5,0;
+	close;
+
+	skill6raitonj:
+	if(Jutsujounin6 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Elemento Raiton nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "300 Lamina Perdida das Trevas";
+	mes "300 Fragmento da Desgraça";
+	mes "20 Plantas da Névoa";
+	mes "20 plantas de Konoha";
+	mes "20 Plantas da Suna";
+	mes "15 símbolo de guerreiro";
+	mes "10 Fragmento de Espírito";
+	mes "40 ouro";
+	mes "E matar 40 Jounin";
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_raioj6,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7437) < 300) goto L_SemItem;
+	if (countitem(710) < 20) goto L_SemItem;
+	if (countitem(712) < 20) goto L_SemItem;
+	if (countitem(704) < 20) goto L_SemItem;
+	if (countitem(7484) < 15) goto L_SemItem;
+	if (countitem(7306) < 10) goto L_SemItem;
+	if (countitem(969) < 40) goto L_SemItem;
+	if(skillj6raiomobs < 40) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7023,300;
+	delitem 7437,300;
+	delitem 710,20;
+	delitem 712,20;
+	delitem 704,20;
+	delitem 7484,15;
+	delitem 7306,10;
+	delitem 969,40;
+	skill 400,20,0;
+	set Jutsujounin6,0;
+	set Jutsujounin7,1;
+	set skillj5raiomobs,0;
+	set quest_raioj5,0;
+	close;
+	
+
+L_SemItem:
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+		
+L_nogradu:
+	next;
+	mes "Você não é desta graduação.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_NoJutsu:
+	next;
+	mes "[^FF0000Professor de Raiton^000000]";
+	mes "Você não está preparado para este Jutsu ainda ou ja fez este treinamento!";
+	close;
+}
+
+
+-	script	OnNPCKill_raiog1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raiog1 == 1){goto raio_g1;} else {end;}
+
+raio_g1:
+switch (killedrid) {
+case 1034:
+set skillg1raiomobs, skillg1raiomobs + 1;
+dispbottom "Você ja matou "+skillg1raiomobs+" Girino(s)";
+end;
+
+}
+}
+
+-	script	OnNPCKill_raiog2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raiog2 == 1){goto raio_g2;} else {end;}
+
+raio_g2:
+switch (killedrid) {
+case 1005:
+set skillg2raiomobs, skillg2raiomobs + 1;
+dispbottom "Você ja matou "+skillg2raiomobs+" Morcego(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioc1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioc1 == 1){goto raio_c1;} else {end;}
+
+raio_c1:
+switch (killedrid) {
+case 1209:
+set skillc1raiomobs, skillc1raiomobs + 1;
+dispbottom "Você ja matou "+skillc1raiomobs+" Ratasana(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioc2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioc2 == 1){goto raio_c2;} else {end;}
+
+raio_c2:
+switch (killedrid) {
+case 1053:
+set skillc2raiomobs, skillc2raiomobs + 1;
+dispbottom "Você ja matou "+skillc2raiomobs+" Barata(s) Macho";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioc3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioc3 == 1){goto raio_c3;} else {end;}
+
+raio_c3:
+switch (killedrid) {
+case 1169:
+set skillc3raiomobs, skillc3raiomobs + 1;
+dispbottom "Você ja matou "+skillc3raiomobs+" Operário(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioc4	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioc4 == 1){goto raio_c4;} else {end;}
+
+raio_c4:
+switch (killedrid) {
+case 1211:
+set skillc4raiomobs, skillc4raiomobs + 1;
+dispbottom "Você ja matou "+skillc4raiomobs+" Escaravelho(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioj1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioj1 == 1){goto raio_j1;} else {end;}
+
+raio_j1:
+switch (killedrid) {
+case 1632:
+set skillj1raiomobs, skillj1raiomobs + 1;
+dispbottom "Você ja matou "+skillj1raiomobs+" Gremlin(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioj2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioj2 == 1){goto raio_j2;} else {end;}
+
+raio_j2:
+switch (killedrid) {
+case 1058:
+set skillj2raiomobs, skillj2raiomobs + 1;
+dispbottom "Você ja matou "+skillj2raiomobs+" Gafanhoto(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioj3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioj3 == 1){goto raio_j3;} else {end;}
+
+raio_j3:
+switch (killedrid) {
+case 1315:
+set skillj3raiomobs, skillj3raiomobs + 1;
+dispbottom "Você ja matou "+skillj3raiomobs+" Ninkame(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioj4	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioj4 == 1){goto raio_j4;} else {end;}
+
+raio_j4:
+switch (killedrid) {
+case 1177:
+set skillj4raiomobs, skillj4raiomobs + 1;
+dispbottom "Você ja matou "+skillj4raiomobs+" Doki(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioj5	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioj5 == 1){goto raio_j5;} else {end;}
+
+raio_j5:
+switch (killedrid) {
+case 1831:
+set skillj5raiomobs, skillj5raiomobs + 1;
+dispbottom "Você ja matou "+skillj5raiomobs+" Camaleon(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_raioj6	-1,{
+
+OnNPCKillEvent:
+
+if(quest_raioj6 == 1){goto raio_j6;} else {end;}
+
+raio_j6:
+switch (killedrid) {
+case 1634:
+set skillj6raiomobs, skillj6raiomobs + 1;
+dispbottom "Você ja matou "+skillj6raiomobs+" Jounin(s)";
+
+end;
+
+
+}
+}
+
+morocc_in,52,158,4	duplicate(rai)	Professor de Raiton#1	819
+payon_in01,14,120,4	duplicate(rai)	Professor de Raiton#2	819
+prt_monk,170,218,4	duplicate(rai)	Professor de Raiton#3	819

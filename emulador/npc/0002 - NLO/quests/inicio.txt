@@ -1,0 +1,1153 @@
+academia,88,28,5	script	Akira Izumi	1_M_YOUNGKNIGHT,{
+
+	if(quest_basic_inicio == 6) { 
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "Você virou um ninja tão rápido haha... é estou ficando velho.";
+		close;
+	}
+	
+	if(quest_basic_inicio == 5) {
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "Parabéns apartir de hoje você deixa de ser um estudante para se tornar um genin. Agora escolha o design da sua bandana:";
+		next;
+		if (#konoha == 1) {
+			savepoint "hospital",55,62;
+			switch(select("- Bandana Normal:- Bandana de Lado:- Bandana no Pescoço:- Bandana Yamato:- Bandana Kisame:- Bandana Kakashi")) {
+		
+			case 1:
+				next;
+				getitem 30000,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all;
+				jobchange 1;
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage",31,18;
+				end;
+		
+			case 2:
+				next;
+				getitem 30001,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all;
+				jobchange 1;
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage",31,18;
+				end;
+		
+			case 3:
+				next;
+				getitem 30002,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all;
+				jobchange 1;
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage",31,18;
+				end;
+		
+			case 4:
+				next;
+				getitem 30003,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all;
+				jobchange 1; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage",31,18;
+				end;
+		
+			case 5:
+				next;
+				getitem 30004,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all;
+				jobchange 1; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage",31,18;
+				end;
+		
+			case 6:
+				next;
+				getitem 30005,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin de Konoha, parabéns.",bc_blue|bc_all;
+				jobchange 1; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage",31,18;
+				end;
+			}
+		}
+		
+		if (#suna == 1) {
+			savepoint "hospital2",55,62;
+			switch(select("- Bandana normal:- Bandana de lado:- Bandana no pescoço:- Bandana yamato:- Bandana Kisame:- Bandana Kakashi")) {
+		
+			case 1:
+				next;
+				getitem 30010,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; 
+				jobchange 2; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage2",31,18;
+				end;
+		
+			case 2:
+				next;
+				getitem 30011,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; 
+				jobchange 2; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage2",31,18;
+				end;
+		
+			case 3:
+				next;
+				getitem 30012,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; 
+				jobchange 2; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage2",31,18;
+				end;
+		
+			case 4:
+				next;
+				getitem 30013,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; 
+				jobchange 2; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage2",31,18;
+				end;
+		
+			case 5:
+				next;
+				getitem 30014,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; 
+				jobchange 2; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage2",31,18;
+				end;
+		
+			case 6:
+				next;
+				getitem 30015,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Suna, parabéns.",bc_blue|bc_all; 
+				jobchange 2; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage2",31,18;
+				end;
+			}
+		}
+		if (#nevoa == 1) {
+			savepoint "hospital3",55,62;
+			switch(select("- Bandana Normal:- Bandana de Lado:- Bandana no Pescoço:- Bandana Yamato:- Bandana Kisame:- Bandana Kakashi")) {
+		
+			case 1:
+				next;
+				getitem 30020,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; 
+				jobchange 3;  
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage3",31,18;
+				end;
+		
+			case 2:
+				next;
+				getitem 30021,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; 
+				jobchange 3; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage3",31,18;
+				end;
+		
+			case 3:
+				next;
+				getitem 30022,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; 
+				jobchange 3;  
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage3",31,18;
+				end;
+		
+			case 4:
+				next;
+				getitem 30023,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; 
+				jobchange 3; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage3",31,18;
+				end;
+		
+			case 5:
+				next;
+				getitem 30024,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; 
+				jobchange 3;  
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage3",31,18;
+				end;
+		
+			case 6:
+				next;
+				getitem 30025,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E";
+				announce strcharinfo(0)+" é o mais novo Genin da Névoa, parabéns.",bc_blue|bc_all; 
+				jobchange 3; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage3",31,18;
+				end;
+			}
+		}
+		if (#nuvem == 1) {
+			savepoint "hospital4",55,62;
+			switch(select("- Bandana normal:- Bandana de lado:- Bandana no pescoço:- Bandana yamato:- Bandana Kisame:- Bandana Kakashi")) {
+		
+			case 1:
+				next;
+				getitem 30030,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E";
+				announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; 
+				jobchange 4;  
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage4",31,18;
+				end;
+		
+			case 2:
+				next;
+				getitem 30031,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; 
+				jobchange 4;  
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage4",31,18;
+				end;
+		
+			case 3:
+				next;
+				getitem 30032,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; 
+				jobchange 4; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala."; 
+				close2;
+				warp "salakage4",31,18;
+				end;
+		
+			case 4:
+				next;
+				getitem 30033,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; 
+				jobchange 4;  
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage4",31,18;
+				end;
+		
+			case 5:
+				next;
+				getitem 30034,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E"; 
+				announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; 
+				jobchange 4;   
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage4",31,18;
+				end;
+		
+			case 6:
+				next;
+				getitem 30035,1;
+				setquest 1000;
+				set quest_basic_inicio,6;
+				set title$, "Rank E";
+				announce strcharinfo(0)+" é o mais novo Genin da Nuvem, parabéns.",bc_blue|bc_all; 
+				jobchange 4; 
+				mes "^B0449E[ Akira Izumi ]^000000";
+				mes "O Kage esta esperando você em sua sala.";
+				close2;
+				warp "salakage4",31,18;
+				end;
+			}
+		}
+	}
+	
+	if(quest_basic_inicio < 1) {
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "Olá "+strcharinfo(0)+" , sejá bem vindo a Academia Shinobi!";
+		mes "Eu sou o Akira Izumi, depois de um semestre de aulas finalmente chegou a hora da prova vamos ver se você ira se tornar um genin, GAMBATTE!";
+		skill 4,1,3;
+		skill 9,1,3;
+		next;
+		
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "Durante sua vida shinobi o nivel máximo que chegará será 999, sendo que existem restrições para cada graduação.";
+		skill 523,1,3;
+		skill 524,1,3;
+		skill 8,1,3;
+		next;
+		
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "Nesse mundo shinobi conseguimos dominar 3 tipos de treinamentos, podendo evolui-los para 1 Avançado, 1 Intermediário e 1 Básico.";
+		next;
+		
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "Dentre 5 elementos naturais, um ninja só pode dominar apenas 1, sendo eles: Katon, Suiton, Raiton, Doton e Fuuton.";
+		skill 3012,1,3;
+		next;
+		
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "As nações foram criadas de junções de clãs, cada clã carrega poderes especias, chamados de Habilidade Hidden, com 4 evoluções.";
+		skill 426,1,3;
+		skill 278,1,3;
+		next;
+		
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "Agora que você sabe como o mundo shinobi funciona, vou explicar o procedimento do teste.";
+		next;
+		
+		mes "^B0449E[ Akira Izumi ]^000000";
+		mes "Primeiro você deverá se dirigir para a Sala 1, onde o Kasuo Hiroto-sensei esta e fará a análise de seu corpo para ver qual seu biotipo de batalha.";
+		set quest_basic_inicio,1;
+		close;
+	}
+	mes "^B0449E[ Akira Izumi ]^000000";
+	mes "Termine suas aulas para falar comigo.";
+	close;
+}
+
+academia,60,36,7	script	Kasuo Hiroto	65,{
+
+if(quest_basic_inicio == 2) {
+mes "[^B0449EKasuo Hiroto^000000]";
+mes "Agora você deverá se dirigir para a Sala 2, onde o Mestre Elemental estara a para fazer o teste elemental.";
+close;
+}
+
+if (treinos_escolha < 3) && (quest_basic_inicio != 2) {
+set treinofuuin,0;
+set treinonin,0;
+set treinotai,0;
+set treinogen,0;
+set treinomed,0;
+set treinovelo,0;
+set treinos_escolha,0;
+}
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Olá, meu nome é Kasuo Hiroto e irei analisar seu biotipo de batalha.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "O que são treinamentos você pergunta?";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Treinamentos são os estilos de luta que você irá possuir, você pode ter três treinamentos de uma lista de seis.";
+next;
+vltinicio:
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Os detalhes dos treinamentos disponíveis e seus detalhes você pode conferir abaixo, caso já queira escolher poderá ir na última opção:";
+if(select("- Gostaria de saber mais.:- Já sei tudo obrigado.") == 2) { goto entendi; }
+
+
+menu "- Ninjutsu",ninjutsu,"- Taijutsu",taijutsu,"- Genjutsu",genjutsu,"- Fuuinjutsu",fuuinjutsu,"- Medicina",medicina,"- Velocidade",velocidade,"- Resistência",resistencia;
+
+ninjutsu:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Seu foco principal são ataques mágicos e o atributo inteligência (INT), possui habilidades focadas em ataques de médio e longo alcance.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Seus ataques são de acordo com o elemento que pertence a você (para saber mais sobre elemento, vá para a sala de elementos), e é um treino totalmente ofensivo.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "É aconselhado para jogadores que gostam de jogar mais recuados, e que gostem de causar danos massivos.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Não é aconselhado que este treinamento seja escolhido juntamente de Taijutsu.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo sobre Ninjutsu.";
+next;
+goto vltinicio;
+
+taijutsu:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Seu foco principal são ataque físicos e o atributo força (STR), possui habilidades focadas em ataques de curto e médio alcance.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Alguns deles também ignoram esquivas, é um treino totalmente ofensivo.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "É aconselhado para jogadores mais agressivos e que seja aliado a um personagem que aguente segurar muito dano, pois sempre estará a frente nas batalhas.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Não é aconselhado que este treinamento seja escolhido juntamente de Ninjutsu.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo sobre taijutsu.";
+next;
+goto vltinicio;
+
+genjutsu:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Seu foco principal é debuffs e o atributo Sorte (LUK), possui habilidades que causam anormalidades nos inimigos como: cegueira, slow (lerdeza), atordoamento, sangramento, silêncio, maldição, sono, etc...";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Serve tanto para suporte como para jogadores mais ofensivos e é uma ótima maneira para impedir que seus inimigos possam se mover ou atacar.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "É aconselhado tanto para jogadores que gostam de dar suporte aos aliados, quanto para jogadores mais ofensivos, pois um genjutsu bem aplicado pode ser o diferencial na luta contra um inimigo poderoso.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo sobre genjutsu.";
+next;
+goto vltinicio;
+
+fuuinjutsu:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Seu foco principal é suporte, aplicando buffs em seus aliados, e o atributo Destreza (DEX)";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Possui habilidades utilizadas com selos de mão que buffam seus aliados ou a si mesmo com: aumento de atributos (str,int,dex,agi,etc), diminuição de cast(conjuração), diminuição de custo de SP (mana/chakra), melhoria na precisão, etc.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "É aconselhado para jogadores que gostam de dar suporte para os seus aliados, assim como serve para melhorar o poder seu personagem.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Este treinamento funciona muito bem com Ninjutsu, devido a redução de cast (conjuração) dos jutsus.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo sobre fuuinjutsu.";
+next;
+goto vltinicio;
+
+medicina:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Seu foco principal é suporte e o atributo Inteligência (INT).";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Auxilia você e seus aliados utilizando curas, remoções de armadilhas e habilidades que removem anormalidades como: congelamento, petrificação, atordoamento, sono,etc... Possui algumas habilidades ofensivas como ataques com veneno e buffs que dão aumento de ataque.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "É aconselhado para jogadores de suporte, para manter seus aliados vivos durante a batalha.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo sobre Medicina.";
+next;
+goto vltinicio;
+
+velocidade:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Seu foco principal é a agilidade (AGI).";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Aumenta sua velocidade de movimento, velocidade de ataque, possui habilidades que aumentam a esquiva, teleportes e possui poucas habilidades ofensivas.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "É aconselhado para jogadores que queiram se mover rapidamente enquanto possam dar suporte ou distribuir dano sem sofrer muito dano";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo sobre velocidade.";
+next;
+goto vltinicio;
+
+resistencia:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Seu foco principal é a vitalidade (VIT).";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Aumenta sua duração nas lutas, com o custo de ter menos dano contra outros jogadores.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "É aconselhado para jogadores que gostam de ser a linha de frente durante as batalhas!";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo sobre Resistência.";
+next;
+goto vltinicio;
+
+
+entendi:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Antes de definir os seus três treinamentos, vou dar mais algumas explicações gerais sobre treinamentos, leia com cuidado pois são importantes!";
+next;
+vtl2menu:
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Qual informação sobre treinamentos você gostaria de saber?";
+menu "- Como melhorar meu treinamento",melhorar_t,"- Como mudar de treinamento",mudar_t,"- Pedras de treinamentos",pedras_t,"- Ok, já entendi tudo",entendi2;
+
+melhorar_t:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Os treinamentos são todos divididos por nível de aprendizado, Ao escolher seus treinamentos eles virão no estágio mais baixo, conhecido como básico";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "É possível dominar os treinamentos elevando o estágio dele para treinamento intermediário ou avançado, o que fará que liberem novos jutsus para você aprender, mais poderosos que os do estágio anterior";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Porém não é possível dominar todos os seus três treinamentos para o estágio mais alto; você poderá elevar apenas um treinamento para o estágio mais alto, chamado de avançado. Poderá também evoluir outro treinamento até o intermediário e último ficará como básico.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Sendo assim, É possível ter um treinamento no estágio avançado, dois no estágio intermediário e um no estágio básico";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Para elevar o estágio de seus treinamentos, é preciso antes aumentar o nível base de seus treinamentos, cada treinamento poderá aumentar o nível do 1 ao 100.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Este nível é usado como requisito para elevar o estágio do seu treinamento, o nível necessário para aumentar o estágio do básico para intermediário é 40, e o nível necessário para do intermediário para avançado é 75";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Para aumentar o nível dos treinamentos é preciso matar monstros, cada monstro dá uma quantia diferente de experiência de treinamento e pode ser encontrado no nosso fórum";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "E para escolher qual treinamento deseja aumentar o nível, é só falar com a Kurenai sensei na entrada da biblioteca shinobi!";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Caso queira ver os niveis de seus treinamentos, é só digitar @treinos";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Caso não entendeu algo é só procurar a Kurenai sensei na biblioteca de tutoriais!ou no fórum do game,ou algum (STAFF on no GAME).";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo que precisa saber para melhorar seu treinamento.";
+next;
+goto vtl2menu;
+
+mudar_t:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Caso você não gostou ou simplesmente queira mudar de treinamento é preciso antes possuir alguns itens especiais";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "caso você escolheu errado ou mudou de ideia e seu personagem está apenas no início é aconselhado criar um novo personagem pois é mais fácil que conseguir os itens de remoção";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "O nome dos itens de remoção são removedor de treino básico, intermediário e avançado, cada um serve pra remover um estágio do treinamento e o modo de os obter são: por troca com outros jogadores, ou com doações para o servidor";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Agora você ja sabe como trocar de treinamento.";
+next;
+goto vtl2menu;
+
+pedras_t:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "As pedras de treinamentos são itens que são recebidos ao escolher ou melhorar o seu treinamento, eles possuem poderes que aumentam a força de seu personagem, uma pedra avançada por exemplo possui muito mais força que uma básica";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Essas pedras são ligadas aos seus treinamentos e só possui uma pedra avançada de fuuinjutsu por exemplo quem possuir o treinamento fuuinjutsu avançado.";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Elas não precisam de nenhum comando do usuário para ter efeito, o efeito é automático";
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Já expliquei tudo que sei sobre as pedras de treino.";
+next;
+goto vtl2menu;
+
+entendi2:
+next;
+mes "[^DC143CKasuo Hiroto^000000]";
+mes "Ótimo, agora você possui todas as informações necessárias dos treinamentos.";
+next;
+mes "[^B0449EKasuo Hiroto^000000]";
+mes "Agora você deverá se dirigir para a Sala 2, onde o Mestre Elemental sensei estará a sua espera para fazer o teste elemental";
+if(quest_basic_inicio < 2) { set quest_basic_inicio,2; }
+close;
+
+OnInit:
+	waitingroom "[Instrutor]",0;
+}
+
+academia,158,35,5	script	Mestre Elemental	65,{	
+
+	.@menu$ = "^B0449E[ Koichi Kuwabara ]^000000";
+
+	if(elementokaton || elementosuiton || elementoraiton || elementodoton || elementofuuton) {		
+	
+		mes .@menu$;		
+		mes "Olá "+strcharinfo(0)+" vejó que você ja possui um elemento. ";		
+		mes "Gostaria de trocar de elemento?";			
+		if(select("- Sim:- Não") == 2) close;				
+		next;
+		
+		if(countitem(7005) < 1) { next; mes .@menu$; mes "Você precisa do ticket de troca elemental"; close; }									
+		
+		if( elementokaton ) {					
+			if(getskilllv(534) || getskilllv(17) || getskilllv(2259) ||					
+			getskilllv(19) || getskilllv(186) || getskilllv(80) || getskilllv(81) ||					
+			getskilllv(536) || getskilllv(83) || getskilllv(2211) ) { 
+				mes .@menu$; 
+				mes "Você precisa remover todas as habilidades de Katon"; 
+				close; 
+			}				
+		}
+		
+		if( elementosuiton ) {					
+			if(getskilllv(15) || getskilllv(88) || getskilllv(537) ||					
+			getskilllv(14) || getskilllv(184) || getskilllv(2449) || getskilllv(2447) ||					
+			getskilllv(89) || getskilllv(539) || getskilllv(2203) ) { 
+				mes .@menu$; 
+				mes "Você precisa remover todas as habilidades de Suiton"; 
+				close; 
+			}				
+		}				
+			
+		if( elementoraiton ) {					
+			if(getskilllv(192) || getskilllv(21) || getskilllv(3005) ||					
+			getskilllv(20) || getskilllv(187) || getskilllv(84) || getskilllv(2040) || getskilllv(2454) ||					
+			getskilllv(85) || getskilllv(2214) || getskilllv(541) ) { 
+				mes .@menu$; 
+				mes "Você precisa remover todas as habilidades de Raiton"; 
+				close; 
+			}				
+		}	
+		
+		if( elementodoton ) {					
+			if(getskilllv(185) || getskilllv(91) || getskilllv(137) ||					
+			getskilllv(90) || getskilllv(800) || getskilllv(16) || getskilllv(2446) ||					
+			getskilllv(666) || getskilllv(2216) || getskilllv(653) ) {
+				mes .@menu$; 
+				mes "Você precisa remover todas as habilidades de Doton"; 
+				close; 
+			}				
+		}								
+		
+		if( elementofuuton ) {					
+			if(getskilllv(191) || getskilllv(11) || getskilllv(13) ||					
+			getskilllv(540) || getskilllv(542) || getskilllv(148) || getskilllv(2453) || getskilllv(2002) ||					
+			getskilllv(469) || getskilllv(394) || getskilllv(2005) ) { 
+				mes .@menu$; 
+				mes "Você precisa remover todas as habilidades de Fuuton"; 
+				close; 
+			}				
+		}	
+		
+		mes .@menu$;				
+		mes "Para qual elemento gostaria de mudar?";				
+		switch(select("- Katon:- Suiton:- Raiton:- Doton:- Fuuton")) {					
+			next;					
+			case 1:						
+				if (elementokaton == 1)  { 
+					mes .@menu$; next; mes "Você já é deste elemento"; 
+					close; 
+				}						
+				if (elementosuiton == 1) { 
+					set elementosuiton,0;
+				}						
+				if (elementoraiton == 1) { 
+					set elementoraiton,0;
+				}						
+				if (elementodoton == 1)  {
+					set elementodoton,0; 
+				}						
+				if (elementofuuton == 1) { 
+					set elementofuuton,0;
+				}						
+				set elementokaton,1;						
+				delitem 7005,1;						
+				mes .@menu$;						
+				mes "Elemento trocado com sucesso para Katon";						
+				close;	
+				
+			case 2:	
+		
+				if (elementokaton == 1)  {
+					set elementokaton,0;
+				}						
+				if (elementosuiton == 1) { 
+					mes .@menu$; 
+					next; mes "Você já é deste elemento"; 
+					close;
+				}						
+				if (elementoraiton == 1) { 
+					set elementoraiton,0;
+				}						
+				if (elementodoton == 1)  { 
+					set elementodoton,0; 
+				}						
+				if (elementofuuton == 1) { 
+					set elementofuuton,0;
+				}						
+				set elementosuiton,1;						
+				delitem 7005,1;						
+				mes .@menu$;						
+				mes "Elemento trocado com sucesso para Suiton";						
+				close;					
+				
+			case 3:						
+				if (elementokaton == 1)  {
+					set elementokaton,0;
+				}						
+				if (elementosuiton == 1) { 
+					set elementosuiton,0;
+				}						
+				if (elementoraiton == 1) { 
+					mes .@menu$; 
+					next; 
+					mes "Você já é deste elemento"; 
+					close;
+				}						
+				if (elementodoton == 1)  { 
+					set elementodoton,0; 
+				}						
+				if (elementofuuton == 1) { 
+					set elementofuuton,0;
+				}						
+				set elementoraiton,1;						
+				delitem 7005,1;						
+				mes .@menu$;						
+				mes "Elemento trocado com sucesso para Raiton";			
+				close;
+				
+			case 4:						
+				if (elementokaton == 1)  { 
+					set elementokaton,0;
+				}						
+				if (elementosuiton == 1) { 
+					set elementosuiton,0;
+				}						
+				if (elementoraiton == 1) { 
+					set elementoraiton,0;
+				}						
+				if (elementodoton == 1)  { 
+					mes .@menu$; 
+					next; mes "Você já é deste elemento"; 
+					close; 
+				}						
+				if (elementofuuton == 1) { 
+					set elementofuuton,0;
+				}						
+				set elementodoton,1;						
+				delitem 7005,1;						
+				mes .@menu$;						
+				mes "Elemento trocado com sucesso para Doton";						
+				close;					
+				
+			case 5:						
+				if (elementokaton == 1)  { 
+					set elementokaton,0;
+				}						
+				if (elementosuiton == 1) { 
+					set elementosuiton,0;
+				}						
+				if (elementoraiton == 1) { 
+					set elementoraiton,0;
+				}						
+				if (elementodoton == 1)  { 
+					set elementodoton,0; 
+				}						
+				if (elementofuuton == 1) { 
+					mes .@menu$; 
+					mes "Você já é deste elemento"; 
+					close;
+				}						
+				set elementofuuton,1;						
+				delitem 7005,1;						
+				mes .@menu$;						
+				mes "Elemento trocado com sucesso para Fuuton";						
+				close;								
+		}	
+	}	
+	if(quest_basic_inicio == 2) {
+		mes "^B0449E[ Koichi Kuwabara ]^000000";
+		mes "Olá "+strcharinfo(0)+",  sou Koichi Kuwabara e serei o seu orientador elemental.";
+		next;
+		mes "^B0449E[ Koichi Kuwabara ]^000000";
+		mes "Katon. Elemento fogo, lhe possibilita o poder da incineração dos adversários e soltar rajadas e labaredas pela boca, e os usuarios mais conhecidos que conseguiram dominar este elemento completamente foram os do clãn uchiha da vila da folha. ";
+		next;
+		mes "^B0449E[ Koichi Kuwabara ]^000000";
+		mes "Suiton. Elemento água, lhe possibilita o poder de dominar as moléculas de água para criar paredes, tempestades e soltar rajadas de água pela boca, e os usuários mais conhecidos que conseguiram dominar este elemento completamente foram os do clãn koori da vila da névoa.";
+		next;
+		mes "^B0449E[ Koichi Kuwabara ]^000000";
+		mes "Raiton. Elemento raio, lhe possibilita o poder de dominar as particulas de energia existentes para eletrocutar criar campos de energia e soltar rajadas de raios, e os usuários mais conhecidos que conseguiram dominar este elemento completamente foram os do clãn kaminari da vila da nuvem.";
+		next;
+		mes "^B0449E[ Koichi Kuwabara ]^000000";
+		mes "Doton. Elemento terra, lhe possibilita o poder de dominar as rochas pedras terra e as partículas de poeira para criar muros arremessar pedras elevar ou abaixar a terra criar fissuras  e tremores no solo de batalha, e os usuários mais conhecidos que conseguiram dominar completamente foram os do clan tsuchi da vila da pedra.";
+		next;
+		mes "^B0449E[ Koichi Kuwabara ]^000000";
+		mes "Fuuton. Elemento vento, lhe possibilita o poder de dominar as brisas de vento para criar tufões laminas de corte e rajadas de repulsão de vento, e os usuários mais conhecidos que conseguiram dominar completamente foram os do clan kazekage da vila da suna.";
+		next;
+		mes "^B0449E[ Koichi Kuwabara ]^000000";
+		mes "Bom , agora que já sabe todos os elementos , qual elemento você acha que você pode usar.";
+			switch(select("- Katon:- Suiton:- Raiton:- Doton:- Fuuton"))
+			
+			{
+				case 1:
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Será que você é um usuário de Katon? Vamos ao teste concentre seu chakra no papel e veremos como ele irá reagir.";
+					if(select("- Sim:- Não") == 2) { close; }
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "O papel queimou, parabéns você é um usuário de Katon!";
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Siga para a próxima sala, no 2° Andar. Desejo um ótimo futuro.";
+				close2;
+				set quest_basic_inicio,3;
+				set elementokaton,1;
+				set elemento,1;
+				end;
+				
+				case 2:
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Será que você é um usuário de Suiton? Vamos ao teste concentre seu chakra no papel e veremos como ele irá reagir.";
+					if(select("- Sim:- Não") == 2) { close; }
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "O papel ficou molhado, parabéns você é um usuário de Suiton.";
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Siga para a próxima sala, no 2° Andar. Desejo um ótimo futuro.";
+				close2;
+				set quest_basic_inicio,3;
+				set elementosuiton,1;
+				set elemento,1;
+				end;
+				
+				case 3:
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Será que você é um usuário de Raiton? Vamos ao teste concentre seu chakra no papel e veremos como ele irá reagir.";
+					if(select("- Sim:- Não") == 2) { close; }
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "O papel ficou enrrugado e eletrizado, parabéns você é um usuário de Raiton.";
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Siga para a próxima sala, no 2° Andar. Desejo um ótimo futuro.";
+				close2;
+				set quest_basic_inicio,3;
+				set elementoraiton,1;
+				set elemento,1;
+				end;
+				
+				case 4:
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Será que você é um usuário de Doton? Vamos ao teste concentre seu chakra no papel e veremos como ele irá reagir.";
+					if(select("- Sim:- Não") == 2) { close; }
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "O papel ficou duro feito pedra, parabéns você é um usuário de Doton.";
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Siga para a próxima sala, no 2° Andar. Desejo um ótimo futuro.";
+				close2;
+				set quest_basic_inicio,3;
+				set elementodoton,1;
+				set elemento,1;
+				end;
+				
+				case 5:
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Será que você é um usuário de Fuuton? Vamos ao teste concentre seu chakra no papel e veremos como ele irá reagir.";
+					if(select("- Sim:- Não") == 2) { close; }
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "O papel foi cortado, parabéns você é um usuário de Fuuton.";
+				next;
+				mes "^B0449E[ Koichi Kuwabara ]^000000";
+				mes "Siga para a próxima sala, no 2° Andar. Desejo um ótimo futuro.";
+				close2;
+				set quest_basic_inicio,3;
+				set elementofuuton,1;
+				set elemento,1;
+				end;
+			}
+	}
+	mes "^B0449E[ Koichi Kuwabara ]^000000";
+	mes "Estou ocupado no momento com os testes.";
+	close;
+}
+
+academia,44,162,5	script	Susume Keiko	65,{
+	
+	if(quest_basic_inicio == 4) {
+		mes "[Susume Keioko]";
+		mes "Siga para Sala 3 ,para fazer o seu exame";
+		close;
+	}
+	
+	if(quest_basic_inicio == 3)
+	{
+		mes "[Susume Keiko]";
+		mes "Olá, sou Susume sensei, cuido do segundo andar da academia.";
+		next;
+		mes "[Susume Keiko]";
+		mes "É aqui em que os ninjas vem escolher as habilidades basicas de cada treino que desejam fazer.";
+		next;
+		mes "[Susume Keiko]";
+		mes "Vejo que você é um ninja também, mais a dentro se encontram os 6 senseis que irão lhe dar auxilio para suas habilidades básicas.";
+		next;
+		mes "[Susume Keiko]";
+		mes "Mas desde já devo lhe dizer, você só pode aprender 3 técnicas de cada treinamento, e ao escolher a técnica o sensei ira lhe pedir algo em troca.";
+		next;
+		mes "[Susume Keiko]";
+		mes "Caso tenha escolhido algum jutsu mas deseja aprender outro, fale com o sensei e diga que não ve mais utilidade na habilidade e que deseja aprender outra e só assim poderá aprender outra habilidade.";
+		next;
+		mes "[Susume Keioko]";
+		mes "Você já pode escolher suas habilidades - GAMBATTE!";
+		next;
+		mes "[Susume Keioko]";
+		mes "Siga para Sala 3, para fazer o seu exame.";
+		set quest_basic_inicio,4;
+		close;
+	}
+	mes "^B0449E[ Susume Keiko ]^000000";
+	mes "Está é a sala onde você escolhe os jutsus que gostaria de aprender.";
+	end;
+
+OnInit:
+	waitingroom "[Instrutor de Jutsu]",0;
+
+}
+
+academia,62,76,7	script	Professor#3	65,{
+
+	if(quest_basic_inicio == 5) {
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Volte no Akira Izumi na recepção.";
+		close;
+	}
+
+	if(quest_basic_inicio == 4) {
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Olá jovem shinobi, vejo que você completou os treinamentos básicos e está pronto para meu exame final, não vamos perder tempo então, creio que já estudou tudo que precisa, vamos a primeira pergunta!";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Pergunta: Quantos treinamentos um personagem pode ter?";
+		menu "4",L_errado,"5",L_errado,"3",L_certo,"2",L_errado;
+		
+		L_certo:
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Muito bem! Vamos a segunda pergunta:";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Pergunta: Quantos elementos um personagem pode ter?";
+		menu "1",L_certo1,"2",L_errado,"3",L_errado,"4",L_errado;
+		
+		L_certo1:
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Correto, terceira pergunta:";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Pergunta: Quantos níveis uma Habilidade Hidden pode possuir?";
+		menu "1",L_errado,"2",L_errado,"3",L_errado,"4",L_certo2;
+		
+		L_certo2:
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Boa, quinta pergunta:";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Pergunta: Qual nível máximo do servidor?";
+		menu "200",L_errado,"999",L_certo3,"600",L_errado,"499",L_errado;
+		
+		L_certo3:
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Estudou bastante mesmo hein? Estamos quase no final, se concentra agora!";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Pergunta: Quantos jutsus básicos um ninja pode aprender?";
+		menu "6",L_errado,"9",L_certo4,"2",L_errado,"4",L_errado;
+		
+		L_certo4:
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Última pergunta agora, vamos lá!";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Pergunta: Quantas pedras de treino Avançado você pode ter??";
+		menu "4",L_errado,"3",L_errado,"2",L_errado,"1",L_certo5;
+		
+		L_certo5:
+		next;
+		set quest_basic_inicio,5;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Parabéns jovem prodígio, você realmente me impressionou e está apto agora a se juntar a esse mundo caótico dos shinobis, tome cuidado.";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Busque mais poder, se torne um Chunin, Jounin e busque seus objetivos, não importa quais sejam, não desista!";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "E lembre-se, caso precise de refrescar seus conhecimentos, a academia é aberta a todos os shinobis do mundo, vá agora, e mostre seu jeito ninja!";
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Volte no Akira Izumi na recepção.";
+		close;
+		
+		L_errado:
+		next;
+		mes "[^DC143CExame Escrito^000000]";
+		mes "Que pena... você errou, caso queira refazer o exame, é só falar comigo novamente, boa sorte na próxima vez!";
+		close;
+	}
+	mes "^B0449E[ Professor ]^000000";
+	mes "Estou ocupado no momento programando aulas.";
+	close;
+}
+
+academia,98,46,5	script	Sala 1	837,{end;}
+academia,111,46,5	script	Sala 2	837,{end;}
+academia,98,64,5	script	Sala 3	837,{end;}
+academia,111,64,5	script	Sala 4	837,{end;}
+
+academia,104,92,5	script	SAIDADATREINAMENTO	WARPNPC,2,2,{
+
+OnTouch:
+
+		if(quest_basic_inicio != 6) { mes "Termine o Tutorial"; close2; end; }
+		warp "treinamento",98,136;
+		end;
+
+}
+
+academia,114,44,0	warp	treino#03	2,2,academia,148,36
+academia,145,36,0	warp	treino#04	2,2,academia,110,44
+
+academia,114,62,0	warp	treino#05	2,2,academia,148,76
+academia,145,76,0	warp	treino#06	2,2,academia,110,62
+
+academia,95,44,0	warp	treino#07	2,2,academia,67,36
+academia,70,36,0	warp	treino#08	2,2,academia,98,44
+
+academia,95,62,0	warp	treino#09	2,2,academia,69,76
+academia,72,76,0	warp	treino#10	2,2,academia,98,62
+
+academia,125,22,0	warp	treino#11	1,1,academia,79,148
+academia,79,145,0	warp	treino#12	1,1,academia,125,19
+
+treinamento,94,146,5	script	Retorno#1	99,{
+
+	mes "[Retorno]";
+	mes "Gostaria de retornar para a academia ?";
+	if(select("- Sim:- Não") == 2) { close; }
+	
+	warp "academia",104,89;
+
+}
+
+academia,102,8,5	script	SAIDADAACADEMIA	WARPNPC,2,2,{
+
+OnTouch:
+
+		if(quest_basic_inicio != 6) { mes "Termine o Tutorial"; close2; end; }
+		if(#konoha == 1) { warp "konoha3",240,248; }
+		if(#suna == 1) { warp "sunagakure",225,125; }
+		if(#nevoa == 1) { warp "kirigakure",192,152; }
+		if(#nuvem == 1) { warp "kumogakure",223,110; }
+		
+		mes "Você precisa passar na prova para sair se não ficará mais um semestre estudando.";
+		close;
+
+}

@@ -1,0 +1,154 @@
+//===== eAthena Script =======================================
+//= Bikouchuu Event
+//===== By: ==================================================
+//= hellflaem aka Nezra.
+//===== Current Version: =====================================
+//= 2.1
+//===== Compatible With: =====================================
+//= eAthena SVN & Cronus SVN
+//===== Description: =========================================
+//= An event with 100 false Bikouchuus and 1 really Bikouchuu.
+//===== Additional Comments: =================================
+//= 1.0 script created.	~ hellflaem
+//= 2.0 translated to portuguese. ~ Macabu
+//= 2.1 fixed somethings. ~ Macabu
+//= 2.2 Fiz umas correções ortográficas e pequenos ajustes no script (andfonte)
+//===== Variables: ===========================================
+
+poring_c01	mapflag	nobranch
+poring_c01	mapflag	noicewall
+poring_c01	mapflag	nomemo
+poring_c01	mapflag	noreturn
+poring_c01	mapflag	noteleport
+poring_c01	mapflag	nowarpto
+poring_c01	mapflag	nowarp
+poring_c01	mapflag	pvp	off
+poring_c01	mapflag	nosave
+poring_c01	mapflag	noskill
+
+//===== Script: ==============================================
+treinamento,80,135,5	script	Bikouchuu Premiado	882,{
+
+	if(!.poringcatch)
+	{
+		mes "[Bikouchuu Premiado]";
+		mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+		switch(select("Entrar.:Informação."))
+		{
+			case 1:
+				next;
+				mes "[Bikouchuu Premiado]";
+				mes "Não tem evento por enquanto.";
+				close;
+	
+			case 2:
+				next;
+				mes "[Bikouchuu Premiado]";
+				mes "Requerimento: Nenhum";
+				mes "Premiação: 1 Ticket de Evento";
+				mes "Dia - Horário ";
+				mes "Todos os dias - 08:00, 14:00, 20:00";
+				next;
+				mes "[Bikouchuu Premiado]";
+				mes "São invocados 200 Bikouchuu.";
+				mes "Apenas UM é o verdadeiro e você terá de acha-lo.";
+				close;	
+		}
+	}
+	mes "[Bikouchuu Premiado]";
+	mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+	switch(select("Entrar.:Informação."))
+	{
+		case 1:
+			next;
+			mes "[Bikouchuu Premiado]";
+			mes "Divirta-se!";
+			next;
+			warp "poring_c01", 100, 100;
+			end;
+
+		case 2:
+			next;
+			mes "[Bikouchuu Premiado]";
+			mes "Requerimento: Nenhum";
+			mes "Premiação: 1 Ticket de Evento";
+			mes "Dia - Horário ";
+			mes "Todos os dias - 08:00, 14:00, 20:00";
+			next;
+			mes "[Bikouchuu Premiado]";
+			mes "São invocados 200 Bikouchuu.";
+			mes "Apenas UM é o verdadeiro e você terá de acha-lo.";
+			close;
+	}
+	
+	OnMon0755:	OnMon1355:	OnMon1955:
+	OnTue0755:	OnTue1355:	OnTue1955:
+	OnWed0755:	OnWed1355:	OnWed1955:
+	OnThu0755:	OnThu1355:	OnThu1955:
+	OnFri0755:	OnFri1355:	OnFri1955:
+	OnSat0755:	OnSat1355:	OnSat1955:
+	OnSun0755:	OnSun1355:	OnSun1955:
+		announce "[Bikouchuu Premiado]: Evento irá começar em 5 minutos.",0;
+		end;
+	OnMon0759:	OnMon1359:	OnMon1959:
+	OnTue0759:	OnTue1359:	OnTue1959:
+	OnWed0759:	OnWed1359:	OnWed1959:
+	OnThu0759:	OnThu1359:	OnThu1959:
+	OnFri0759:	OnFri1359:	OnFri1959:
+	OnSat0759:	OnSat1359:	OnSat1959:
+	OnSun0759:	OnSun1359:	OnSun1959:
+		announce "[Bikouchuu Premiado]: Evento irá começar em 1 minutos.",0;
+		end;
+	OnMon0800:	OnMon1400:	OnMon2000:
+	OnTue0800:	OnTue1400:	OnTue2000:
+	OnWed0800:	OnWed1400:	OnWed2000:
+	OnThu0800:	OnThu1400:	OnThu2000:
+	OnFri0800:	OnFri1400:	OnFri2000:
+	OnSat0800:	OnSat1400:	OnSat2000:
+	OnSun0800:	OnSun1400:	OnSun2000:
+		callsub OnEventStart;
+
+		OnEventStart:
+			announce "[Bikouchuu Premiado]: Galera, é hora do evento. Falem comigo para entrar.",0;
+			initnpctimer;
+			monster "poring_c01",0,0,"Bikouchuu",1051,1,strnpcinfo(0)+"::OnMobKilled";
+			monster "poring_c01",0,0,"Bicouchuu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bikochuu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bikoukhuu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bikochuu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bicoukhuu",1051,10,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Biikouchuu",1051,1,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bikoouchuu",1051,1,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bikouuchuu",1051,1,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bikouchuuu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"B1kouchuu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bikuochuu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bik0uchuu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Biikouchu",1051,20,strnpcinfo(0)+"::OnWrongKilled";
+			monster "poring_c01",0,0,"Bikouchu",1051,1,strnpcinfo(0)+"::OnWrongKilled";
+			set .poringcatch,1;
+			end;
+			return;
+
+		OnTimer600000:
+			stopnpctimer;
+			announce "[Bikouchuu Premiado]: O tempo acabou, tente na próxima vez.",0;
+			set .poringcatch,0;
+			killmonsterall "poring_c01";
+			mapwarp "poring_c01","treinamento",86,130;
+			end;
+
+		OnMobKilled:
+			stopnpctimer;
+			announce "[Bikouchuu Premiado]: "+strcharinfo(0)+" encontrou o Bikouchuu Premiado. Tente mais tarde.",0;
+			dispbottom "Parabéns, você me achou.";
+			getitem 730,1;
+			killmonsterall "poring_c01";
+			set .poringcatch,0;
+			mapwarp "poring_c01","treinamento",86,130;
+			end;
+
+		OnWrongKilled:
+			dispbottom "Whaa, você errou feio.";
+			end;
+}

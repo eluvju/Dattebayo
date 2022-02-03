@@ -1,0 +1,57 @@
+-	script	on_PC_UseSkillode	-1,{
+    end;
+//When a Character uses a skill
+
+//Gogyou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 313) {
+
+
+if (getskilllv(313) == 1) {
+
+if (Gogyou != 1) {end;}
+if (skill313 >= 50) {skill 313,2,0; set skill313,0; dispbottom "[Sys] Level up"; end; }
+set skill313,skill313 +1;
+dispbottom "[Jutsu level] Gogyou Fuuin level 1: "+skill313+" de 50";
+
+end;
+
+}
+
+if (getskilllv(313) == 2) {
+if (Gogyou != 1) {end;}
+if (skill313 >= 100) {skill 313,3,0; set skill313,0; dispbottom "[Sys] Level up"; end;}
+set skill313,skill313 +1;
+dispbottom "[Jutsu level] Gogyou Fuuin level 2: "+skill313+" de 100";
+
+end;
+
+}
+
+if (getskilllv(313) == 3) {
+
+if (Gogyou != 1) {end;}
+if (skill313 >= 150) {skill 313,4,0; set skill313,0; dispbottom "[Sys] Level up"; end;}
+set skill313,skill313 +1;
+dispbottom "[Jutsu level] Gogyou Fuuin level 3: "+skill313+" de 150";
+
+end;
+
+}
+
+if (getskilllv(313) == 4) {
+if (Gogyou != 1) {end;}
+if (skill313 >= 200) {skill 313,5,0; set skill313,0; dispbottom "[Sys] Level up"; end;}
+set skill313,skill313 +1;
+dispbottom "[Jutsu level] Gogyou Fuuin level 4: "+skill313+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

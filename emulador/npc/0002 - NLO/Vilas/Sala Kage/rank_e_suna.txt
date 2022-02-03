@@ -1,0 +1,529 @@
+
+sunagakure,0,0,0,0	monster	Erva Daninha	1080,40,360000,180000,1
+
+
+salakage2,37,2,5	script	Lata de Lixo#1sna	845,{
+if(checkquest(10001)==1 && l1!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l1,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,109,255,5	script	Lata de Lixo#2sna	845,{
+if(checkquest(10001)==1 && l2!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l2,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,147,217,5	script	Lata de Lixo#3sna	845,{
+if(checkquest(10001)==1 && l3!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l3,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,177,182,5	script	Lata de Lixo#4sna	845,{
+if(checkquest(10001)==1 && l4!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l4,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,218,157,5	script	Lata de Lixo#5sna	845,{
+if(checkquest(10001)==1 && l5!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l5,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,274,184,5	script	Lata de Lixo#6sna	845,{
+if(checkquest(10001)==1 && l6!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l6,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,306,190,5	script	Lata de Lixo#7sna	845,{
+if(checkquest(10001)==1 && l7!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l7,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,215,257,5	script	Lata de Lixo#8sna	845,{
+if(checkquest(10001)==1 && l8!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l8,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,178,303,5	script	Lata de Lixo#9sna	845,{
+if(checkquest(10001) ==1 && l9!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l9,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,236,128,5	script	Lata de Lixo#10sna	845,{
+if(checkquest(10001) ==1 && l10!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l10,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,245,106,5	script	Lata de Lixo#11sna	845,{
+if(checkquest(10001) ==1 && l11!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l11,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,300,224,5	script	Lata de Lixo#12sna	845,{
+if(checkquest(10001) ==1 && l12!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l12,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,263,283,5	script	Lata de Lixo#13sna	845,{
+if(checkquest(10001) ==1 && l13!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l13,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,155,125,5	script	Lata de Lixo#14sna	845,{
+if(checkquest(10001) ==1 && l14!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l14,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-----------------------------------------------------------
+
+sunagakure,112,140,5	script	Lata de Lixo#15sna	845,{
+if(checkquest(10001) ==1 && l15!=1){
+mes "Um Arquivo Estragado foi Achado no Lixo!";
+set l15,1;
+getitem 718,1;
+close;
+}else{end;}}
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------
+
+sunagakure,92,142,5	script	Ovelha#sna1	890,{
+
+if(tosa1 == 0 && checkquest(10003) ==1) {
+	set tosa1,tosa1 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+//------------------------------------------------------
+
+sunagakure,183,128,5	script	Ovelha#sna2	890,{
+
+if(tosa2 == 0 && checkquest(10003) ==1) {
+	set tosa2,tosa2 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+//------------------------------------------------------
+
+sunagakure,232,149,5	script	Ovelha#sna3	890,{
+
+if(tosa3 == 0 && checkquest(10003) ==1) {
+	set tosa3,tosa3 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+//------------------------------------------------------
+
+sunagakure,237,98,5	script	Ovelha#sna4	890,{
+
+if(tosa4 == 0 && checkquest(10003) ==1) {
+	set tosa4,tosa4 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+//------------------------------------------------------
+
+sunagakure,178,153,5	script	Ovelha#sna5	890,{
+
+if(tosa5 == 0 && checkquest(10003) ==1) {
+	set tosa5,tosa5 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+sunagakure,248,262,5	script	Ovelha#sna6	890,{
+
+if(tosa6 == 0 && checkquest(10003) ==1) {
+	set tosa6,tosa6 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+sunagakure,281,186,5	script	Ovelha#sna7	890,{
+
+if(tosa7 == 0 && checkquest(10003) ==1) {
+	set tosa7,tosa7 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+sunagakure,106,235,5	script	Ovelha#sna8	890,{
+
+if(tosa8 == 0 && checkquest(10003) ==1) {
+	set tosa8,tosa8 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+sunagakure,285,163,5	script	Ovelha#sna9	890,{
+
+if(tosa9 == 0 && checkquest(10003) ==1) {
+	set tosa9,tosa9 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//------------------------------------------------------
+
+sunagakure,134,113,5	script	Ovelha#sna10	890,{
+
+if(tosa10 == 0 && checkquest(10003) ==1) {
+	set tosa10,tosa10 +1;
+	set tosa,tosa +1;
+	mes "^3349CC"+tosa+"^000000 - Ovelha Tosada";
+	close;
+}
+npctalk "Meeeeeeh !";end;
+
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Alimento Boi
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sunagakure,297,250,5	script	Monte de Palha#sna1	430,{
+
+if(checkquest(10004) !=1) { end; }
+if(checkquest(10004) == 1 && f1 < 5 && countitem(719) < 1) {
+	mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+	set f1,f1 +1;
+	getitem 719,1;
+	close;
+}
+end;
+
+}
+
+sunagakure,300,250,5	script	Monte de Palha#sna2	430,{
+
+if(checkquest(10004) !=1) { end; }
+if(checkquest(10004) == 1 && f1 < 5 && countitem(719) < 1) {
+	mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+	set f1,f1 +1;
+	getitem 719,1;
+	close;
+}
+end;
+
+}
+
+sunagakure,300,247,5	script	Monte de Palha#sna3	430,{
+
+if(checkquest(10004) !=1) { end; }
+if(checkquest(10004) == 1 && f1 < 5 && countitem(719) < 1) {
+	mes "Foi Recolhido ^3349CC 1 Palha ^000000, dê de alimento aos Bois e Retorne para pegar mais uma!";
+	set f1,f1 +1;
+	getitem 719,1;
+	close;
+}
+end;
+
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Bois
+//------------------------------------------------------
+
+sunagakure,138,287,5	script	Boi#sna1	889,{
+
+
+if(alb1 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb1,alb1 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+//------------------------------------------------------
+
+sunagakure,135,287,5	script	Boi#sna2	889,{
+
+if(alb2 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb2,alb2 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+}
+//------------------------------------------------------
+
+sunagakure,132,287,5	script	Boi#sna3	889,{
+
+if(alb3 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb3,alb3 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+//------------------------------------------------------
+
+sunagakure,131,285,5	script	Boi#sna4	889,{
+
+if(alb4 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb4,alb4 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+//------------------------------------------------------
+
+sunagakure,133,283,5	script	Boi#sna5	889,{
+
+if(alb5 < 1 && countitem(719) > 0) {
+	mes "Muuuuuuh !";
+	mes "^3349CC Boi Alimentado ~ ^000000";
+	set alb5,alb5 +1;
+	set alb,alb +1;
+	delitem 719,1;
+	end;
+}
+npctalk "Muuuuuuh !";
+end;
+
+}
+
+sunagakure,137,284,5	script	Fazendeiro#sna	85,{
+
+if(alb >= 5) { mes "Obrigado por ajudar a alimentar meus gados, missão completa"; close; }
+mes "Sol Forte, Cheiro de Boi.. Isto é ser um Fazendeiro !";
+next;
+mes "Minha mulher as vezes Reclama, mas é o nosso meio de Sustento xP";
+close;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+//==========================
+// Gato Tora
+//==========================
+sunagakure,194,63,5	script	Tora#1sna	876,{
+
+	if (checkquest(10002) == 1) {
+		mes "Miau!";
+		next;
+		mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+		set achougatotora,1;
+		close;
+	}
+	npctalk "Miau!";
+	end;
+}
+
+sunagakure,115,111,5	script	Tora#2sna	876,{
+
+	if (checkquest(10002) == 1) {
+		mes "Miau!";
+		next;
+		mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+		set achougatotora,1;
+		close;
+	}
+	npctalk "Miau!";
+	end;
+}
+
+sunagakure,251,199,5	script	Tora#3sna	876,{
+
+	if (checkquest(10002) == 1) {
+		mes "Miau!";
+		next;
+		mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+		set achougatotora,1;
+		close;
+	}
+	npctalk "Miau!";
+	end;
+}
+
+sunagakure,200,318,5	script	Tora#4sna	876,{
+
+	if (checkquest(10002) == 1) {
+		mes "Miau!";
+		next;
+		mes "Você achou o gato Tora, retorne para o NPC de Missões!";
+		set achougatotora,1;
+		close;
+	}
+	npctalk "Miau!";
+	end;
+}
+
+//==========================
+// Timer
+//==========================
+
+-	script	ToraTimersna	-1,{
+
+
+OnTimer60000:
+enablenpc "Tora#1sna";
+disablenpc "Tora#2sna";
+disablenpc "Tora#3sna";
+disablenpc "Tora#4sna";
+end;
+
+OnTimer120000:
+disablenpc "Tora#1sna";
+enablenpc "Tora#2sna";
+disablenpc "Tora#3sna";
+disablenpc "Tora#4sna";
+end;
+
+OnTimer180000:
+disablenpc "Tora#1sna";
+disablenpc "Tora#2sna";
+enablenpc "Tora#3sna";
+disablenpc "Tora#4sna";
+end;
+
+OnTimer240000:
+disablenpc "Tora#1sna";
+disablenpc "Tora#2sna";
+disablenpc "Tora#3sna";
+enablenpc "Tora#4sna";
+stopnpctimer;
+initnpctimer;
+end;
+
+OnInit:
+disablenpc "Tora#1sna";
+disablenpc "Tora#2sna";
+disablenpc "Tora#3sna";
+disablenpc "Tora#4sna";
+initnpctimer;
+end;
+
+}

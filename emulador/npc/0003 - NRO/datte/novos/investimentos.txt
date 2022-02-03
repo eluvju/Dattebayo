@@ -1,0 +1,1117 @@
+-	script	edi_1	1083,{
+
+OnMapConquisted1:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1 || countitem(19195) >= 1 || countitem(19196) >= 1 || countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 && countitem(19195) == 0 && countitem(19196) == 0 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($konoha_aldeia1 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia1, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia1 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia1, 0;}
+if ($nevoa_aldeia1 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia1, 0;}
+if ($nuvem_aldeia1 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia1, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia1 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+//donpcevent "NPC2::OnEmo";
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia1, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia1 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia1, 0;}
+if ($nevoa_aldeia1 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia1, 0;}
+if ($nuvem_aldeia1 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia1, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia1 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia1, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia1 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia1, 0;}
+if ($nevoa_aldeia1 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia1, 0;}
+if ($areia_aldeia1 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia1, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia1 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+//donpcevent "NPC2::OnEmo";
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia1, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia1 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia1, 0;}
+if ($nuvem_aldeia1 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia1, 0;}
+if ($areia_aldeia1 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia1, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+
+-	script	edi_2	1083,{
+
+OnMapConquisted2:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($konoha_aldeia2 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia2, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia2 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia2, 0;}
+if ($nevoa_aldeia2 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia2, 0;}
+if ($nuvem_aldeia2 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia2, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia2 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia2, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia2 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia2, 0;}
+if ($nevoa_aldeia2 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia2, 0;}
+if ($nuvem_aldeia2 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia2, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia2 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia2, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia2 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia2, 0;}
+if ($nevoa_aldeia2 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia2, 0;}
+if ($areia_aldeia2 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia2, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia2 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set aldeia2,2277;
+set $nevoa_aldeia2, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia2 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia2, 0;}
+if ($nuvem_aldeia2 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia2, 0;}
+if ($areia_aldeia2 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia2, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_3	1083,{
+
+OnMapConquisted3:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($konoha_aldeia3 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia3, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia3 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia3, 0;}
+if ($nevoa_aldeia3 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia3, 0;}
+if ($nuvem_aldeia3 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia3, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia3 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia3, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia3 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia3, 0;}
+if ($nevoa_aldeia3 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia3, 0;}
+if ($nuvem_aldeia3 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia3, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia3 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia3, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia3 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia3, 0;}
+if ($nevoa_aldeia3 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia3, 0;}
+if ($areia_aldeia3 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia3, 0;}
+end;
+
+L_nevoa:
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia3, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia3 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia3, 0;}
+if ($nuvem_aldeia3 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia3, 0;}
+if ($areia_aldeia3 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia3, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_4	1083,{
+
+OnMapConquisted4:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($konoha_aldeia4 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia4, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia4 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia4, 0;}
+if ($nevoa_aldeia4 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia4, 0;}
+if ($nuvem_aldeia4 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia4, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia4 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia4, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia4 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia4, 0;}
+if ($nevoa_aldeia4 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia4, 0;}
+if ($nuvem_aldeia4 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia4, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia4 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia4, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia4 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia4, 0;}
+if ($nevoa_aldeia4 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia4, 0;}
+if ($areia_aldeia4 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia4, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia4 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia4, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia4 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia4, 0;}
+if ($nuvem_aldeia4 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia4, 0;}
+if ($areia_aldeia4 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia4, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_5	1083,{
+
+OnMapConquisted5:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($konoha_aldeia5 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia5, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia5 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia5, 0;}
+if ($nevoa_aldeia5 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia5, 0;}
+if ($nuvem_aldeia5 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia5, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia5 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia5, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia5 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia5, 0;}
+if ($nevoa_aldeia5 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia5, 0;}
+if ($nuvem_aldeia5 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia5, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia5 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia5, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia5 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia5, 0;}
+if ($nevoa_aldeia5 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia5, 0;}
+if ($areia_aldeia5 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia5, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia5 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia5, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia5 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia5, 0;}
+if ($nuvem_aldeia5 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia5, 0;}
+if ($areia_aldeia5 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia5, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_6	1083,{
+
+OnMapConquisted6:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($konoha_aldeia6 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia6, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia6 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia6, 0;}
+if ($nevoa_aldeia6 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia6, 0;}
+if ($nuvem_aldeia6 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia6, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia6 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia6, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia6 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia6, 0;}
+if ($nevoa_aldeia6 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia6, 0;}
+if ($nuvem_aldeia6 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia6, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia6 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia6, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia6 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia6, 0;}
+if ($nevoa_aldeia6 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia6, 0;}
+if ($areia_aldeia6 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia6, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia6 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia6, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia6 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia6, 0;}
+if ($nuvem_aldeia6 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia6, 0;}
+if ($areia_aldeia6 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia6, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_7	1083,{
+
+OnMapConquisted7:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($konoha_aldeia7 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia7, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia7 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia7, 0;}
+if ($nevoa_aldeia7 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia7, 0;}
+if ($nuvem_aldeia7 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia7, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia7 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia7, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia7 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia7, 0;}
+if ($nevoa_aldeia7 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia7, 0;}
+if ($nuvem_aldeia7 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia7, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia7 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia7, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia7 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia7, 0;}
+if ($nevoa_aldeia7 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia7, 0;}
+if ($areia_aldeia7 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia7, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia7 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia7, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia7 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia7, 0;}
+if ($nuvem_aldeia7 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia7, 0;}
+if ($areia_aldeia7 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia7, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_8	1083,{
+
+OnMapConquisted8:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($konoha_aldeia8 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia8, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia8 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia8, 0;}
+if ($nevoa_aldeia8 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia8, 0;}
+if ($nuvem_aldeia8 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia8, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia8 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia8, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia8 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia8, 0;}
+if ($nevoa_aldeia8 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia8, 0;}
+if ($nuvem_aldeia8 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia8, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia8 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia8, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia8 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia8, 0;}
+if ($nevoa_aldeia8 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia8, 0;}
+if ($areia_aldeia8 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia8, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia8 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia8, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia8 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia8, 0;}
+if ($nuvem_aldeia8 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia8, 0;}
+if ($areia_aldeia8 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia8, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_9	1083,{
+
+OnMapConquisted9:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($Konoha_aldeia9 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia9, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia9 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia9, 0;}
+if ($nevoa_aldeia9 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia9, 0;}
+if ($nuvem_aldeia9 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia9, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia9 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia9, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia9 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia9, 0;}
+if ($nevoa_aldeia9 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia9, 0;}
+if ($nuvem_aldeia9 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia9, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia9 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia9, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia9 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia9, 0;}
+if ($nevoa_aldeia9 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia9, 0;}
+if ($areia_aldeia9 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia9, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia9 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia9, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia9 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia9, 0;}
+if ($nuvem_aldeia9 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia9, 0;}
+if ($areia_aldeia9 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia9, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_10	1083,{
+
+OnMapConquisted10:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_konoha;
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_areia;
+if(strcharinfo(2) == "Vila Oculta da Nuvem") goto L_nuvem;
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_nevoa;
+if (countitem(19020) >= 1) || (countitem(19195) >= 1) || (countitem(19196) >= 1) || (countitem(19197) >= 1) goto L_akat;
+if(nukenin == 1 && countitem(19020) == 0 || nukenin == 1 && countitem(19195) == 0 || nukenin == 1 && countitem(19196) == 0 || nukenin == 1 && countitem(19197) == 0) goto L_nuke;
+end;
+
+L_nuke:
+set nukenin_ryous, nukenin_ryous + 20;
+announce "O Nukenin "+strcharinfo(0)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_akat:
+for( set .id, 21; .id < 31; set .id, .id + 1 ){
+set $AMinfo[.id], $AMinfo[.id] + 1;
+}
+set $akatsuki_ryous, $akatsuki_ryous + 20;
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+end;
+
+L_konoha:
+if ($Konoha_aldeia10 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $Konoha_aldeia10, 1;
+set $Konoha_dominio, $Konoha_dominio + 1;
+set $kage_konoha_points, $kage_konoha_points + 1;
+if ($areia_aldeia10 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia10, 0;}
+if ($nevoa_aldeia10 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia10, 0;}
+if ($nuvem_aldeia10 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia10, 0;}
+end;
+
+L_areia:
+if ($areia_aldeia10 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $areia_aldeia10, 1;
+set $areia_dominio, $areia_dominio + 1;
+set $kage_suna_points, $kage_suna_points + 1;
+if ($konoha_aldeia10 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia10, 0;}
+if ($nevoa_aldeia10 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia10, 0;}
+if ($nuvem_aldeia10 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia10, 0;}
+end;
+
+L_nuvem:
+if ($nuvem_aldeia10 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nuvem_aldeia10, 1;
+set $nuvem_dominio, $nuvem_dominio + 1;
+set $kage_nuvem_points, $kage_nuvem_points + 1;
+if ($konoha_aldeia10 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia10, 0;}
+if ($nevoa_aldeia10 == 1) { if($nevoa_dominio > 0) {set $nevoa_dominio, $nevoa_dominio -1;} set $nevoa_aldeia10, 0;}
+if ($areia_aldeia10 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia10, 0;}
+end;
+
+L_nevoa:
+if ($nevoa_aldeia10 == 1) {announce "A "+strcharinfo(2)+" manteve uma base.",0; end;}
+announce "O Ninja "+strcharinfo(0)+" da "+strcharinfo(2)+" acaba de conquistar uma aldeia",0;
+set $nevoa_aldeia10, 1;
+set $nevoa_dominio, $nevoa_dominio + 1;
+set $kage_nevoa_points, $kage_nevoa_points + 1;
+if ($konoha_aldeia10 == 1) { if($konoha_dominio > 0) {set $konoha_dominio, $konoha_dominio -1;} set $konoha_aldeia10, 0;}
+if ($nuvem_aldeia10 == 1) { if($nuvem_dominio > 0) {set $nuvem_dominio, $nuvem_dominio -1;} set $nuvem_aldeia10, 0;}
+if ($areia_aldeia10 == 1) { if($areia_dominio > 0) {set $areia_dominio, $areia_dominio -1;} set $areia_aldeia10, 0;}
+end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_11	1083,{
+
+OnMapConquisted11:
+if (#konoha == 1) {
+
+announce ""+strcharinfo(0)+" destruiu o portão de Konoha, mas ele é de konoha, o portão foi restaurado.",0;
+
+if ($konoha_portao == 0) {monster "prt_fild02",173,378,"Portão",1905,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 1) {monster "prt_fild02",173,378,"Portão",1906,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 2) {monster "prt_fild02",173,378,"Portão",1907,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 3) {monster "prt_fild02",173,378,"Portão",1908,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 4) {monster "prt_fild02",173,378,"Portão",1909,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 5) {monster "prt_fild02",173,378,"Portão",1910,1,"edi_11::OnMapConquisted11";}
+end;
+}
+
+if (BaseLevel < 999) {
+
+announce ""+strcharinfo(0)+" destruiu o portão de Konoha, mas ele é abaixo de nível 999, o portão foi restaurado.",0;
+
+if ($konoha_portao == 0) {monster "prt_fild02",173,378,"Portão",1905,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 1) {monster "prt_fild02",173,378,"Portão",1906,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 2) {monster "prt_fild02",173,378,"Portão",1907,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 3) {monster "prt_fild02",173,378,"Portão",1908,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 4) {monster "prt_fild02",173,378,"Portão",1909,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 5) {monster "prt_fild02",173,378,"Portão",1910,1,"edi_11::OnMapConquisted11";}
+end;
+}
+set $konoha_caiu,1;
+announce ""+strcharinfo(0)+" destruiu o portão de Konoha, a vila está exposta!.",0;
+end;
+
+}
+
+-	script	edi_12	1083,{
+
+OnMapConquisted12:
+if (#suna == 1) {
+
+announce ""+strcharinfo(0)+" destruiu o portão de suna, mas ele é de suna, o portão foi restaurado.",0;
+
+if ($areia_portao == 0) {monster "moc_fild01", 235,379,"Portão",2001,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 1) {monster "moc_fild01", 235,379,"Portão",2002,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 2) {monster "moc_fild01", 235,379,"Portão",2003,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 3) {monster "moc_fild01", 235,379,"Portão",2004,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 4) {monster "moc_fild01", 235,379,"Portão",2005,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 5) {monster "moc_fild01", 235,379,"Portão",2006,1,"edi_12::OnMapConquisted12";}
+end;
+}
+
+if (BaseLevel < 999) {
+
+announce ""+strcharinfo(0)+" destruiu o portão da suna, mas ele é abaixo de nível 999, o portão foi restaurado.",0;
+
+if ($areia_portao == 0) {monster "moc_fild01", 235,379,"Portão",2001,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 1) {monster "moc_fild01", 235,379,"Portão",2002,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 2) {monster "moc_fild01", 235,379,"Portão",2003,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 3) {monster "moc_fild01", 235,379,"Portão",2004,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 4) {monster "moc_fild01", 235,379,"Portão",2005,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 5) {monster "moc_fild01", 235,379,"Portão",2006,1,"edi_12::OnMapConquisted12";}
+end;
+}
+
+set $areia_caiu,1;
+announce ""+strcharinfo(0)+" destruiu o portão da areia, a vila está exposta!.",0;
+end;
+
+}
+
+-	script	edi_13	1083,{
+
+OnMapConquisted13:
+
+if (#nevoa == 1) {
+
+announce ""+strcharinfo(0)+" destruiu o portão de Névoa, mas ele é de Névoa, o portão foi restaurado.",0;
+
+if ($nevoa_portao == 0) {monster "gef_fild04",263,359,"Portão",2007,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 1) {monster "gef_fild04",263,359,"Portão",2008,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 2) {monster "gef_fild04",263,359,"Portão",2009,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 3) {monster "gef_fild04",263,359,"Portão",2010,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 4) {monster "gef_fild04",263,359,"Portão",2011,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 5) {monster "gef_fild04",263,359,"Portão",2012,1,"edi_13::OnMapConquisted13";}
+end;
+}
+
+if (BaseLevel < 999) {
+
+announce ""+strcharinfo(0)+" destruiu o portão da névoa, mas ele é abaixo de nível 999, o portão foi restaurado.",0;
+
+if ($nevoa_portao == 0) {monster "gef_fild04",263,359,"Portão",2007,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 1) {monster "gef_fild04",263,359,"Portão",2008,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 2) {monster "gef_fild04",263,359,"Portão",2009,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 3) {monster "gef_fild04",263,359,"Portão",2010,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 4) {monster "gef_fild04",263,359,"Portão",2011,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 5) {monster "gef_fild04",263,359,"Portão",2012,1,"edi_13::OnMapConquisted13";}
+end;
+}
+
+set $nevoa_caiu,1;
+announce ""+strcharinfo(0)+" destruiu o portão da névoa, a vila está exposta!.",0;
+end;
+
+}
+
+-	script	edi_14	1083,{
+
+OnMapConquisted14:
+
+if (#nuvem == 1) {
+
+announce ""+strcharinfo(0)+" destruiu o portão da Nuvem, mas ele é da Nuvem, o portão foi restaurado.",0;
+
+if ($nuvem_portao == 0) {monster "yuno_fild08",285,383,"Portão",2013,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 1) {monster "yuno_fild08",285,383,"Portão",2014,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 2) {monster "yuno_fild08",285,383,"Portão",2015,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 3) {monster "yuno_fild08",285,383,"Portão",2016,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 4) {monster "yuno_fild08",285,383,"Portão",2017,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 5) {monster "yuno_fild08",285,383,"Portão",2018,1,"edi_14::OnMapConquisted14";}
+end;
+}
+
+if (BaseLevel < 999) {
+
+announce ""+strcharinfo(0)+" destruiu o portão da Nuvem, mas ele é abaixo de nível 999, o portão foi restaurado.",0;
+
+if ($nuvem_portao == 0) {monster "yuno_fild08",285,383,"Portão",2013,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 1) {monster "yuno_fild08",285,383,"Portão",2014,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 2) {monster "yuno_fild08",285,383,"Portão",2015,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 3) {monster "yuno_fild08",285,383,"Portão",2016,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 4) {monster "yuno_fild08",285,383,"Portão",2017,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 5) {monster "yuno_fild08",285,383,"Portão",2018,1,"edi_14::OnMapConquisted14";}
+end;
+}
+
+
+set $nuvem_caiu,1;
+announce ""+strcharinfo(0)+" destruiu o portão da nuvem, a vila está exposta!.",0;
+end;
+
+OnClock2100:
+
+killmonster "prt_fild02","edi_11::OnMapConquisted11";
+killmonster "moc_fild01","edi_12::OnMapConquisted12";
+killmonster "gef_fild04","edi_13::OnMapConquisted13";
+killmonster "yuno_fild08","edi_14::OnMapConquisted14";
+
+set $konoha_caiu,0;
+set $areia_caiu,0;
+set $nevoa_caiu,0;
+set $nuvem_caiu,0;
+
+if ($konoha_portao == 0) {monster "prt_fild02",173,378,"Portão",1905,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 1) {monster "prt_fild02",173,378,"Portão",1906,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 2) {monster "prt_fild02",173,378,"Portão",1907,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 3) {monster "prt_fild02",173,378,"Portão",1908,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 4) {monster "prt_fild02",173,378,"Portão",1909,1,"edi_11::OnMapConquisted11";}
+if ($konoha_portao == 5) {monster "prt_fild02",173,378,"Portão",1910,1,"edi_11::OnMapConquisted11";}
+
+if ($areia_portao == 0) {monster "moc_fild01", 235,379,"Portão",2001,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 1) {monster "moc_fild01", 235,379,"Portão",2002,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 2) {monster "moc_fild01", 235,379,"Portão",2003,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 3) {monster "moc_fild01", 235,379,"Portão",2004,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 4) {monster "moc_fild01", 235,379,"Portão",2005,1,"edi_12::OnMapConquisted12";}
+if ($areia_portao == 5) {monster "moc_fild01", 235,379,"Portão",2006,1,"edi_12::OnMapConquisted12";}
+
+if ($nevoa_portao == 0) {monster "gef_fild04",263,359,"Portão",2007,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 1) {monster "gef_fild04",263,359,"Portão",2008,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 2) {monster "gef_fild04",263,359,"Portão",2009,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 3) {monster "gef_fild04",263,359,"Portão",2010,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 4) {monster "gef_fild04",263,359,"Portão",2011,1,"edi_13::OnMapConquisted13";}
+if ($nevoa_portao == 5) {monster "gef_fild04",263,359,"Portão",2012,1,"edi_13::OnMapConquisted13";}
+
+if ($nuvem_portao == 0) {monster "yuno_fild08",285,383,"Portão",2013,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 1) {monster "yuno_fild08",285,383,"Portão",2014,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 2) {monster "yuno_fild08",285,383,"Portão",2015,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 3) {monster "yuno_fild08",285,383,"Portão",2016,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 4) {monster "yuno_fild08",285,383,"Portão",2017,1,"edi_14::OnMapConquisted14";}
+if ($nuvem_portao == 5) {monster "yuno_fild08",285,383,"Portão",2018,1,"edi_14::OnMapConquisted14";}
+
+announce "Portões das vilas resetados",0;
+
+killmonster "um_fild01","edi_1::OnMapConquisted1";
+killmonster "gef_fild07","edi_2::OnMapConquisted2";
+killmonster "ein_fild08","edi_3::OnMapConquisted3";
+killmonster "hu_fild03","edi_4::OnMapConquisted4";
+killmonster "moc_fild01","edi_5::OnMapConquisted5";
+killmonster "gef_fild10","edi_6::OnMapConquisted6";
+killmonster "pay_fild08","edi_7::OnMapConquisted7";
+killmonster "gef_fild09","edi_8::OnMapConquisted8";
+killmonster "pay_arche","edi_9::OnMapConquisted9";
+killmonster "gef_fild03","edi_10::OnMapConquisted10";
+
+monster "einbech",46,102,"Aldeia",1694,1,"edi_1::OnMapConquisted1";
+monster "gl_prison",104,21,"Aldeia",1694,1,"edi_2::OnMapConquisted2";
+monster "ra_fild04",350,130,"Aldeia",1694,1,"edi_3::OnMapConquisted3";
+monster "gef_fild10",138,187,"Aldeia",1694,1,"edi_4::OnMapConquisted4";
+monster "tur_dun01",76,191,"Aldeia",1694,1,"edi_5::OnMapConquisted5";
+monster "payon",209,98,"Aldeia",1694,1,"edi_6::OnMapConquisted6";
+monster "ama_fild01",343,334,"Aldeia",1694,1,"edi_7::OnMapConquisted7";
+monster "moc_fild15",135,245,"Aldeia",1694,1,"edi_8::OnMapConquisted8";
+monster "prt_fild00",332,75,"Aldeia",1694,1,"edi_9::OnMapConquisted9";
+monster "ra_fild11",56,234,"Aldeia",1694,1,"edi_10::OnMapConquisted10";
+
+if ($Konoha_dominio == 1) {set $konoha_ryous,$konoha_ryous + 20;}
+if ($Konoha_dominio == 2) {set $konoha_ryous,$konoha_ryous + 40;}
+if ($Konoha_dominio == 3) {set $konoha_ryous,$konoha_ryous + 60;}
+if ($Konoha_dominio == 4) {set $konoha_ryous,$konoha_ryous + 80;}
+if ($Konoha_dominio == 5) {set $konoha_ryous,$konoha_ryous + 100;}
+if ($Konoha_dominio == 6) {set $konoha_ryous,$konoha_ryous + 120;}
+if ($Konoha_dominio == 7) {set $konoha_ryous,$konoha_ryous +140;}
+if ($Konoha_dominio == 8) {set $konoha_ryous,$konoha_ryous + 160;}
+if ($Konoha_dominio == 9) {set $konoha_ryous,$konoha_ryous + 180;}
+if ($Konoha_dominio == 10) {set $konoha_ryous,$konoha_ryous + 200;}
+
+if ($areia_dominio == 1) {set $areia_ryous, $areia_ryous + 20;}
+if ($areia_dominio == 2) {set $areia_ryous, $areia_ryous + 40;}
+if ($areia_dominio == 3) {set $areia_ryous, $areia_ryous + 60;}
+if ($areia_dominio == 4) {set $areia_ryous, $areia_ryous + 80;}
+if ($areia_dominio == 5) {set $areia_ryous, $areia_ryous + 100;}
+if ($areia_dominio == 6) {set $areia_ryous, $areia_ryous + 120;}
+if ($areia_dominio == 7) {set $areia_ryous, $areia_ryous +140;}
+if ($areia_dominio == 8) {set $areia_ryous, $areia_ryous + 160;}
+if ($areia_dominio == 9) {set $areia_ryous, $areia_ryous + 180;}
+if ($areia_dominio == 10) {set $areia_ryous, $areia_ryous + 200;}
+
+if ($nevoa_dominio == 1) {set $nevoa_ryous, $nevoa_ryous + 20;}
+if ($nevoa_dominio == 2) {set $nevoa_ryous, $nevoa_ryous + 40;}
+if ($nevoa_dominio == 3) {set $nevoa_ryous, $nevoa_ryous + 60;}
+if ($nevoa_dominio == 4) {set $nevoa_ryous, $nevoa_ryous + 80;}
+if ($nevoa_dominio == 5) {set $nevoa_ryous, $nevoa_ryous + 100;}
+if ($nevoa_dominio == 6) {set $nevoa_ryous, $nevoa_ryous + 120;}
+if ($nevoa_dominio == 7) {set $nevoa_ryous, $nevoa_ryous +140;}
+if ($nevoa_dominio == 8) {set $nevoa_ryous, $nevoa_ryous + 160;}
+if ($nevoa_dominio == 9) {set $nevoa_ryous, $nevoa_ryous + 180;}
+if ($nevoa_dominio == 10) {set $nevoa_ryous, $nevoa_ryous + 200;}
+
+if ($nuvem_dominio == 1) {set $nuvem_ryous, $nuvem_ryous + 20;}
+if ($nuvem_dominio == 2) {set $nuvem_ryous, $nuvem_ryous + 40;}
+if ($nuvem_dominio == 3) {set $nuvem_ryous, $nuvem_ryous + 60;}
+if ($nuvem_dominio == 4) {set $nuvem_ryous, $nuvem_ryous + 80;}
+if ($nuvem_dominio == 5) {set $nuvem_ryous, $nuvem_ryous + 100;}
+if ($nuvem_dominio == 6) {set $nuvem_ryous, $nuvem_ryous + 120;}
+if ($nuvem_dominio == 7) {set $nuvem_ryous, $nuvem_ryous +140;}
+if ($nuvem_dominio == 8) {set $nuvem_ryous, $nuvem_ryous + 160;}
+if ($nuvem_dominio == 9) {set $nuvem_ryous, $nuvem_ryous + 180;}
+if ($nuvem_dominio == 10) {set $nuvem_ryous, $nuvem_ryous + 200;}
+
+if ($konoha_dominio >= 0) {announce "A Vila oculta da Folha recebeu imposto referente a "+$Konoha_dominio+" aldeia(s) dominadas",0;}
+if ($areia_dominio >= 0) {announce "A Vila oculta da Areia recebeu imposto referente a "+$areia_dominio+" aldeia(s) dominadas",0;}
+if ($nevoa_dominio >= 0) {announce "A Vila oculta da Névoa recebeu imposto referente a "+$nevoa_dominio+" aldeia(s) dominadas",0;}
+if ($nuvem_dominio >= 0) {announce "A A Vila oculta da Nuvem recebeu imposto referente a "+$nuvem_dominio+" aldeia(s) dominadas",0;}
+
+set $konoha_dominio,0;
+set $areia_dominio,0;
+set $nevoa_dominio,0;
+set $nuvem_dominio,0;
+
+set $Konoha_aldeia1,0;
+set $Konoha_aldeia2,0;
+set $Konoha_aldeia3,0;
+set $Konoha_aldeia4,0;
+set $Konoha_aldeia5,0;
+set $Konoha_aldeia6,0;
+set $Konoha_aldeia7,0;
+set $Konoha_aldeia8,0;
+set $Konoha_aldeia9,0;
+set $Konoha_aldeia10,0;
+
+set $areia_aldeia1,0;
+set $areia_aldeia2,0;
+set $areia_aldeia3,0;
+set $areia_aldeia4,0;
+set $areia_aldeia5,0;
+set $areia_aldeia6,0;
+set $areia_aldeia7,0;
+set $areia_aldeia8,0;
+set $areia_aldeia9,0;
+set $areia_aldeia10,0;
+
+set $nevoa_aldeia1,0;
+set $nevoa_aldeia2,0;
+set $nevoa_aldeia3,0;
+set $nevoa_aldeia4,0;
+set $nevoa_aldeia5,0;
+set $nevoa_aldeia6,0;
+set $nevoa_aldeia7,0;
+set $nevoa_aldeia8,0;
+set $nevoa_aldeia9,0;
+set $nevoa_aldeia10,0;
+
+set $nuvem_aldeia1,0;
+set $nuvem_aldeia2,0;
+set $nuvem_aldeia3,0;
+set $nuvem_aldeia4,0;
+set $nuvem_aldeia5,0;
+set $nuvem_aldeia6,0;
+set $nuvem_aldeia7,0;
+set $nuvem_aldeia8,0;
+set $nuvem_aldeia9,0;
+set $nuvem_aldeia10,0;
+
+end;
+
+OnSun1800:
+set $Konoha_hp,0;
+set $areia_hp,0;
+set $nevoa_hp,0;
+set $nuvem_hp,0;
+
+set $konoha_reuniao,0;
+set $areia_reuniao,0;
+set $nuvem_reuniao,0;
+set $nevoa_reuniao,0;
+
+set $konoha_fuga,0;
+set $areia_fuga,0;
+set $nevoa_fuga,0;
+set $nuvem_fuga,0;
+
+set $konoha_guarda1,0;
+set $areia_guarda1,0;
+set $nevoa_guarda1,0;
+set $nuvem_guarda1,0;
+
+set $konoha_guarda2,0;
+set $areia_guarda2,0;
+set $nevoa_guarda2,0;
+set $nuvem_guarda2,0;
+
+set $konoha_guarda3,0;
+set $areia_guarda3,0;
+set $nevoa_guarda3,0;
+set $nuvem_guarda3,0;
+
+set $konoha_guarda4,0;
+set $areia_guarda4,0;
+set $nevoa_guarda4,0;
+set $nuvem_guarda4,0;
+
+set $nuvem_portao,0;
+set $nevoa_portao,0;
+set $areia_portao,0;
+set $konoha_portao,0;
+
+set $Konoha_SP,0;
+set $areia_SP,0;
+set $nevoa_SP,0;
+set $nuvem_SP,0;
+
+announce "[Investimentos] Investimentos resetados",0;
+end;
+
+}
+
+//um_fild01,243,333,3	script	NPC2	722,{
+//
+//OnEmo:
+//if ($nevoa_aldeia1 ==1) {FlagEmblem GetCastleData("prtg_cas02",1);}
+//if ($konoha_aldeia1 ==1) {FlagEmblem GetCastleData("prtg_cas03",1);}
+//if ($nuvem_aldeia1 ==1)	{FlagEmblem GetCastleData("prtg_cas04",1);}
+//if ($areia_aldeia1 ==1)	{FlagEmblem GetCastleData("prtg_cas05",1);}
+//	end;
+//}

@@ -1,0 +1,105 @@
+payon_in03,98,177,5	script	Kaminari Oroshi::raiton1	831,{
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if (Oroshi == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(elementoraiton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elemenatis de Raiton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Kaminari Oroshi";
+next;
+mes "Descrição: O ninja causa uma tempestade elétrica no local, atingindo os inimigos ao redor";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_GI,"Agora não",L_no;
+
+//========================================================================
+//	Kaminari Oroshi
+//========================================================================
+
+L_GI:
+set skillprotect,1;
+if (checkquest(1010) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 100x Girino";
+setquest 1010;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1010,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 21,1,0;
+set Oroshi,1;
+completequest 1010;
+erasequest 1010;
+set skillgenin1,2;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Raiton]",0;
+}
+//=========================================================================
+//	Maisou
+//=========================================================================
+payon_in03,101,176,5	script	Maisou::raiton2	831,{
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if(elementoraiton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 2) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis elemenatis de Raiton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Maisou";
+next;
+mes "Descrição: O ninja cria diversas Shurikens encantadas com raios e as lança contra o inimigo.";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_MA,"Agora não",L_no;
+
+
+L_MA:
+if (maisou == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+set skillprotect,1;
+if (checkquest(1011) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 150x Filhote de cobra";
+setquest 1011;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1011,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 192,1,0;
+set maisou,1;
+completequest 1011;
+erasequest 1011;
+set skillgenin1,3;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Raiton]",0;
+}
+
+//ama_in02,60,42,5	duplicate(raiton1)	Kaminari Oroshi#e1	831
+//ama_in02,60,45,5	duplicate(raiton2)	Maisou#e2	831
+//
+//payon_in03,94,174,5	duplicate(raiton1)	Kaminari Oroshi#e3	831
+//payon_in03,94,171,5	duplicate(raiton2)	Maisou#e4	831
+//
+////ve_in,103,217,5	duplicate(raiton1)	Kaminari Oroshi#e5	831
+//ve_in,103,214,5	duplicate(raiton2)	Maisou#e6	831
+//
+//izlude_in,69,102,5	duplicate(raiton1)	Kaminari Oroshi#e7	831
+//izlude_in,60,102,5	duplicate(raiton2)	Maisou#e8	831

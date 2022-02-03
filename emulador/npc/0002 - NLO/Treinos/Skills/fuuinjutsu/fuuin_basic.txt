@@ -1,0 +1,445 @@
+academia,35,174,5	script	Fuuinjutsu Básico	4_f_zondagirl,{
+
+	mes "[Fuuinjutsu Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de fuuinjutsu escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Precisão:- Aura Ninja:- Concentração:- Glória:- Explodir Chakra" ) ){
+
+	case 1:
+		next;
+		if(checkquest(1031) == 1) goto 1_go;
+		if(checkquest(2031) == 1) goto 1_go;
+		if(checkquest(3031) == 1) goto 1_go;
+		if(checkquest(4031) == 1) goto 1_go;
+		if(Precisao == 1) goto 1_delete;
+		if(skill_basica >= 9) { mes "[Fuuinjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Fuuinjutsu Básico]";
+		mes "Precisão?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Precisão
+		//========================================================================
+		
+		1_delete:
+		mes "[Fuuinjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Fuuinjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Fuuinjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 43,0,3;
+		set Precisao,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Fuuinjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1031; }
+		if(#suna == 1) {  setquest 2031; }
+		if(#nevoa == 1) { setquest 3031; }
+		if(#nuvem == 1) { setquest 4031; }
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1031,hunting) == 1 || 
+			checkquest(2031,hunting) == 1 || 
+			checkquest(3031,hunting) == 1 || 
+			checkquest(4031,hunting) == 1	) { 						mes "[Fuuinjutsu Básico]";			mes "Vejo que você está fazendo está skill.";			mes "Gostaria de desistir dela ?";				if(select("- Não:- Sim") == 2) {					if(checkquest(1031) >= 1) { completequest 1031; erasequest 1031; }					if(checkquest(2031) >= 1) { completequest 2031; erasequest 2031; }					if(checkquest(3031) >= 1) { completequest 3031; erasequest 3031; }					if(checkquest(4031) >= 1) { completequest 4031; erasequest 4031; }					if(skill_basica > 0) { set skill_basica,skill_basica -1; }					mes "[Fuuinjutsu Básico]";					mes "Missão Cancelada com Sucesso"; 					close;				}				mes "[Fuuinjutsu Básico]"; 				mes "Você ainda não completou seu treinamento."; 				close; 			}
+		mes "[Fuuinjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 43,1,3;
+		set Precisao,1;
+		if(checkquest(1031) >= 1) { completequest 1031; erasequest 1031; }
+		if(checkquest(2031) >= 1) { completequest 2031; erasequest 2031; }
+		if(checkquest(3031) >= 1) { completequest 3031; erasequest 3031; }
+		if(checkquest(4031) >= 1) { completequest 4031; erasequest 4031; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(seloskill543 >= 1) {
+			mes "[Fuuinjutsu Básico]";
+			mes "Você acaba de remover os selos e pegar o jutsu.";
+			skill 543,seloskill543,3;
+			set seloskill543,0;
+			close;
+		}
+		if(checkquest(1032) == 1) goto 2_go;
+		if(checkquest(2032) == 1) goto 2_go;
+		if(checkquest(3032) == 1) goto 2_go;
+		if(checkquest(4032) == 1) goto 2_go;
+		if(AuraNin >= 1) goto 2_delete;
+		if(skill_basica >= 9) { mes "[Fuuinjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Fuuinjutsu Básico]";
+		mes "Aura Ninja?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Aura Ninja
+		//========================================================================
+		
+		2_delete:
+		mes "[Fuuinjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Fuuinjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Fuuinjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 543,0,3;
+		set AuraNin,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Fuuinjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1){ setquest 1032; }
+		if(#suna == 1)  { setquest 2032; }
+		if(#nevoa == 1) { setquest 3032; }
+		if(#nuvem == 1) { setquest 4032; }
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1032,hunting) == 1 || 
+			checkquest(2032,hunting) == 1 || 
+			checkquest(3032,hunting) == 1 || 
+			checkquest(4032,hunting) == 1	) { 			mes "[Fuuinjutsu Básico]";			mes "Vejo que você está fazendo está skill.";			mes "Gostaria de desistir dela ?";				if(select("- Não:- Sim") == 2) {					if(checkquest(1032) >= 1) { completequest 1032; erasequest 1032; }					if(checkquest(2032) >= 1) { completequest 2032; erasequest 2032; }					if(checkquest(3032) >= 1) { completequest 3032; erasequest 3032; }					if(checkquest(4032) >= 1) { completequest 4032; erasequest 4032; }					if(skill_basica > 0) { set skill_basica,skill_basica -1; }					mes "[Fuuinjutsu Básico]";					mes "Missão Cancelada com Sucesso"; 					close;				}				mes "[Fuuinjutsu Básico]";				mes "Você ainda não completou seu treinamento.";				close; 			}
+		mes "[Fuuinjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 543,1,3;
+		set AuraNin,1;
+		if(checkquest(1032) >= 1) { completequest 1032; erasequest 1032; }
+		if(checkquest(2032) >= 1) { completequest 2032; erasequest 2032; }
+		if(checkquest(3032) >= 1) { completequest 3032; erasequest 3032; }
+		if(checkquest(4032) >= 1) { completequest 4032; erasequest 4032; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(seloskill45 >= 1) {
+			mes "[Fuuinjutsu Básico]";
+			mes "Você acaba de remover os selos e pegar o jutsu.";
+			skill 45,seloskill45,3;
+			set seloskill45,0;
+			close;
+		}
+		if(checkquest(1033) == 1) goto 3_go;
+		if(checkquest(2033) == 1) goto 3_go;
+		if(checkquest(3033) == 1) goto 3_go;
+		if(checkquest(4033) == 1) goto 3_go;
+		if(Concentracao == 1) goto 3_delete;
+		if(skill_basica >= 9) { mes "[Fuuinjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Fuuinjutsu Básico]";
+		mes "Concentração?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Concentração
+		//========================================================================
+		
+		3_delete:
+		mes "[Fuuinjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Fuuinjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Fuuinjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 45,0,3;
+		set Concentracao,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Fuuinjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1033; }
+		if(#suna == 1) {  setquest 2033; }
+		if(#nevoa == 1) { setquest 3033; }
+		if(#nuvem == 1) { setquest 4033; }
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		3_go:
+		if(	checkquest(1033,hunting) == 1 || 
+			checkquest(2033,hunting) == 1 || 
+			checkquest(3033,hunting) == 1 || 
+			checkquest(4033,hunting) == 1	) { 			mes "[Fuuinjutsu Básico]";			mes "Vejo que você está fazendo está skill.";			mes "Gostaria de desistir dela ?";				if(select("- Não:- Sim") == 2) {					if(checkquest(1033) >= 1) { completequest 1033; erasequest 1033; }					if(checkquest(2033) >= 1) { completequest 2033; erasequest 2033; }					if(checkquest(3033) >= 1) { completequest 3033; erasequest 3033; }					if(checkquest(4033) >= 1) { completequest 4033; erasequest 4033; }					if(skill_basica > 0) { set skill_basica,skill_basica -1; }					mes "[Fuuinjutsu Básico]";					mes "Missão Cancelada com Sucesso"; 					close;				}			mes "[Fuuinjutsu Básico]"; 			mes "Você ainda não completou seu treinamento."; 			close; 			}
+		mes "[Fuuinjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 45,1,3;
+		set Concentracao,1;
+		if(checkquest(1033) >= 1) { completequest 1033; erasequest 1033; }
+		if(checkquest(2033) >= 1) { completequest 2033; erasequest 2033; }
+		if(checkquest(3033) >= 1) { completequest 3033; erasequest 3033; }
+		if(checkquest(4033) >= 1) { completequest 4033; erasequest 4033; }
+		close;
+		
+		3_no:
+		close;
+
+	case 4:
+		next;
+		if(checkquest(1034) == 1) goto 4_go;
+		if(checkquest(2034) == 1) goto 4_go;
+		if(checkquest(3034) == 1) goto 4_go;
+		if(checkquest(4034) == 1) goto 4_go;
+		if(Gloria == 1) goto 4_delete;
+		if(skill_basica >= 9) { mes "[Fuuinjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Fuuinjutsu Básico]";
+		mes "Glória?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+		//========================================================================
+		//	Glória
+		//========================================================================
+		
+		4_delete:
+		mes "[Fuuinjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+		
+		delete_4:
+		mes "[Fuuinjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+		
+		quero_4:
+		mes "[Fuuinjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 75,0,3;
+		set Gloria,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_4:
+		close;
+		
+		4_SS:
+		mes "[Fuuinjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1034; }
+		if(#suna == 1) {  setquest 2034; }
+		if(#nevoa == 1) { setquest 3034; }
+		if(#nuvem == 1) { setquest 4034; }
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		4_go:
+		if(checkquest(1034,hunting) == 1 || 
+		   checkquest(2034,hunting) == 1 || 
+		   checkquest(3034,hunting) == 1 || 
+		   checkquest(4034,hunting) == 1 ) { 			mes "[Fuuinjutsu Básico]";			mes "Vejo que você está fazendo está skill.";			mes "Gostaria de desistir dela ?";				if(select("- Não:- Sim") == 2) {					if(checkquest(1034) >= 1) { completequest 1034; erasequest 1034; }					if(checkquest(2034) >= 1) { completequest 2034; erasequest 2034; }					if(checkquest(3034) >= 1) { completequest 3034; erasequest 3034; }					if(checkquest(4034) >= 1) { completequest 4034; erasequest 4034; }					if(skill_basica > 0) { set skill_basica,skill_basica -1; }					mes "[Fuuinjutsu Básico]";					mes "Missão Cancelada com Sucesso"; 					close;				}
+			mes "[Fuuinjutsu Básico]";			mes "Você ainda não completou seu treinamento."; 			close; 
+		}
+		mes "[Fuuinjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 75,1,3;
+		set Gloria,1;
+		if(checkquest(1034) >= 1) { completequest 1034; erasequest 1034; }
+		if(checkquest(2034) >= 1) { completequest 2034; erasequest 2034; }
+		if(checkquest(3034) >= 1) { completequest 3034; erasequest 3034; }
+		if(checkquest(4034) >= 1) { completequest 4034; erasequest 4034; }
+		close;
+		
+		4_no:
+		close;
+		
+	case 5:
+		next;
+		if(checkquest(1035) == 1) goto 5_go;
+		if(checkquest(2035) == 1) goto 5_go;
+		if(checkquest(3035) == 1) goto 5_go;
+		if(checkquest(4035) == 1) goto 5_go;
+		if(ExplodirChakra == 1) goto 5_delete;
+		if(skill_basica >= 9) { mes "[Fuuinjutsu Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Fuuinjutsu Básico]";
+		mes "Explodir Chakra?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",5_SS,"Agora não",5_no;
+		//========================================================================
+		//	Explodir Chakra
+		//========================================================================
+		
+		5_delete:
+		mes "[Fuuinjutsu Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_5,"Nada não, só papo furado",naoquero_5;
+		
+		delete_5:
+		mes "[Fuuinjutsu Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_5,"Não, não quero",naoquero_5;
+		
+		quero_5:
+		mes "[Fuuinjutsu Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 270,0,3;
+		set ExplodirChakra,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_5:
+		close;
+		
+		5_SS:
+		mes "[Fuuinjutsu Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1035; }
+		if(#suna == 1) {  setquest 2035; }
+		if(#nevoa == 1) { setquest 3035; }
+		if(#nuvem == 1) { setquest 4035; }
+		next;
+		mes "[Fuuinjutsu Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		5_go:
+		if(	checkquest(1035,hunting) == 1 || 
+			checkquest(2035,hunting) == 1 || 
+			checkquest(3035,hunting) == 1 || 
+			checkquest(4035,hunting) == 1	) { 				mes "[Fuuinjutsu Básico]";				mes "Vejo que você está fazendo está skill.";				mes "Gostaria de desistir dela ?";					if(select("- Não:- Sim") == 2) {						if(checkquest(1035) >= 1) { completequest 1035; erasequest 1035; }						if(checkquest(2035) >= 1) { completequest 2035; erasequest 2035; }						if(checkquest(3035) >= 1) { completequest 3035; erasequest 3035; }						if(checkquest(4035) >= 1) { completequest 4035; erasequest 4035; }						if(skill_basica > 0) { set skill_basica,skill_basica -1; }						mes "[Fuuinjutsu Básico]";						mes "Missão Cancelada com Sucesso"; 						close;					}					mes "[Fuuinjutsu Básico]";					mes "Você ainda não completou seu treinamento."; 					close; 			}
+		mes "[Fuuinjutsu Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 270,1,3;
+		set ExplodirChakra,1;
+		if(checkquest(1035) >= 1) { completequest 1035; erasequest 1035; }
+		if(checkquest(2035) >= 1) { completequest 2035; erasequest 2035; }
+		if(checkquest(3035) >= 1) { completequest 3035; erasequest 3035; }
+		if(checkquest(4035) >= 1) { completequest 4035; erasequest 4035; }
+		close;
+		
+		5_no:
+		close;
+	}
+OnInit:
+	waitingroom "[Fuuinjutsu Básico]",0;
+}

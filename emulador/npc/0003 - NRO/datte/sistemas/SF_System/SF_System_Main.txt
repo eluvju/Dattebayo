@@ -1,0 +1,34 @@
+function	script	SF_System_Main	{
+	if(getequipspecify(getarg(0),1)>0)
+	{
+		callfunc "SF_System_"+getequipspecify(getarg(0),1),getarg(0),getequipspecify(getarg(0),2),
+		getequipspecify(getarg(0),3,0),
+		getequipspecify(getarg(0),3,1),
+		getequipspecify(getarg(0),3,2),
+		getequipspecify(getarg(0),3,3),
+		getequipspecify(getarg(0),3,4),
+		getequipspecify(getarg(0),3,5),
+		getequipspecify(getarg(0),3,6),
+		getequipspecify(getarg(0),3,7),
+		getequipspecify(getarg(0),3,8),
+		getequipspecify(getarg(0),3,9);
+		//getarg(0)=sf_type
+		//getarg(1)=sf_data
+		//getarg(2)=sf_var[0]
+		//getarg(3)=sf_var[1]
+		//getarg(4)=sf_var[2]
+		//getarg(5)=sf_var[3]
+		//getarg(6)=sf_var[4]
+		//getarg(7)=sf_var[5]
+		//getarg(8)=sf_var[6]
+		//getarg(9)=sf_var[7]
+		//getarg(10)=sf_var[8]
+		//getarg(11)=sf_var[9]
+	}
+	return;
+}
+/*-	script	SF_OnPCLogOutEvent	-1,{
+OnPCLogOutEvent:
+	query_sql "UPDATE `inventory` set `equip` = 0 WHERE ( `sf_type` != 0  && `char_id` = "+getcharid(0)+" && `equip` != 0 )";
+	end;
+}*/

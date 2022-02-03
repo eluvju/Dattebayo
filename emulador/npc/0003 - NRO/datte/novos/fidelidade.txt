@@ -1,0 +1,71 @@
+kumogakure,188,215,5	script	Fidelidade::fidel	47,{
+
+mes "Olá jogador fiel do NRO, aqui você pode trocar seus pontos de fidelidade por recompensas, confira abaixo os prêmios";
+menu "NRO Point (15 pontos)",expi,"Sair",sair;
+
+expi:
+if(#NRPGPOINTS < 15) {mes "Você não tem pontos de fidelidade suficientes pra efetuar essa troca"; close;}
+getitem 7116,1;
+set #NRPGPOINTS, #NRPGPOINTS -15;
+announce "[Fidelidade] "+strcharinfo(0)+" trocou 15 pontos de fidelidade por um NRO Point.",bc_blue|bc_all;
+close;
+
+drop:
+if(#NRPGPOINTS < 40) {mes "Você não tem pontos de fidelidade suficientes pra efetuar essa troca"; close;}
+getitem 12902,1;
+set #NRPGPOINTS, #NRPGPOINTS -40;
+announce "[Fidelidade] "+strcharinfo(0)+" trocou 40 pontos de fidelidade por uma Caixa de pergaminhos de Drop.",bc_blue|bc_all;
+close;
+
+maior:
+if(#NRPGPOINTS < 20) {mes "Você não tem pontos de fidelidade suficientes pra efetuar essa troca"; close;}
+getitem 7206,1;
+set #NRPGPOINTS, #NRPGPOINTS -20;
+announce "[Fidelidade] "+strcharinfo(0)+" trocou 20 pontos de fidelidade por um Premio maior de evento.",bc_blue|bc_all;
+close;
+
+menor:
+if(#NRPGPOINTS < 10) {mes "Você não tem pontos de fidelidade suficientes pra efetuar essa troca"; close;}
+getitem 7205,1;
+set #NRPGPOINTS, #NRPGPOINTS -10;
+announce "[Fidelidade] "+strcharinfo(0)+" trocou 10 pontos de fidelidade por um Premio menor de evento.",bc_blue|bc_all;
+close;
+
+arma:
+if(#NRPGPOINTS < 10) {mes "Você não tem pontos de fidelidade suficientes pra efetuar essa troca"; close;}
+getitem 7622,1;
+set #NRPGPOINTS, #NRPGPOINTS -10;
+announce "[Fidelidade] "+strcharinfo(0)+" trocou 10 pontos de fidelidade por um Vale level de up arma.",bc_blue|bc_all;
+close;
+
+expuni:
+if(#NRPGPOINTS < 10) {mes "Você não tem pontos de fidelidade suficientes pra efetuar essa troca"; close;}
+getitem 12208,1;
+set #NRPGPOINTS, #NRPGPOINTS -10;
+announce "[Fidelidade] "+strcharinfo(0)+" trocou 10 pontos de fidelidade por uma Unidade de pergaminho de exp.",bc_blue|bc_all;
+close;
+
+dropuni:
+if(#NRPGPOINTS < 10) {mes "Você não tem pontos de fidelidade suficientes pra efetuar essa troca"; close;}
+getitem 12210,1;
+set #NRPGPOINTS, #NRPGPOINTS -10;
+announce "[Fidelidade] "+strcharinfo(0)+" trocou 10 pontos de fidelidade por uma Unidade de pergaminho de drop.",bc_blue|bc_all;
+close;
+
+nivel:
+if(#NRPGPOINTS < 5) {mes "Você não tem pontos de fidelidade suficientes pra efetuar essa troca"; close;}
+getitem 7269,1;
+set #NRPGPOINTS, #NRPGPOINTS -5;
+announce "[Fidelidade] "+strcharinfo(0)+" trocou 10 pontos de fidelidade por um Vale level de up de nível.",bc_blue|bc_all;
+close;
+
+sair:
+close;
+
+
+}
+
+konoha3,266,157,5	duplicate(fidel)	Fidelidade#1	47,{
+sunagakure,274,155,5	duplicate(fidel)	Fidelidade#2	47,{
+kiragakure,215,289,2	duplicate(fidel)	Fidelidade#3	47,{
+lou_in02,255,160,2	duplicate(fidel)	Fidelidade#4	47,{

@@ -1,0 +1,1176 @@
+//===== eAthena Script =============================================================================
+//= Mining Script
+//===== By: ========================================================================================
+//= Precious (1.4)
+//===== Edited to work with current versions of eAthena by: ========================================
+//= ChrisBowen (1.5)
+//===== Current Version: ===========================================================================
+//= 1.5
+//===== Compatible With: ===========================================================================
+//= Any eAthena Version
+//===== Description: ===============================================================================
+//= Enables the player to "mine" in certain Mineraçãos.
+//= There are three levels to the mines
+//= To mine at lvl 1 area you have to have lvl 1 pick axe, to mine at lvl 2, level 2 pickaxe.
+//= Player will have to "learn to mine" and when they do, they will be given lvl 1 pickaxe.
+//===== Additional Comments: =======================================================================
+//= 6/14/05 - Started writing the script
+//= 6/15/05 - v.1.1 worked out the bugs and messed with the random.
+//= 6/16/05 - v.1.3 testesd all spots and added the dup coords. enjoy my script happy.gif
+//= 6/19/05 - v.1.4 fixed last minute bugs, added variables.
+//= 4/18/07 - v.1.5 added new spots to mine (ChrisBowen)
+//==================================================================================================
+//Mining quest===========================================================
+//=======================================================================
+//first level of the mine================================================
+//=======================================================================
+//= Edited script by: ===================================================
+//= ChrisBowen (1.5) (for download go to http://nopaste.php-q.net/290213=
+//=======================================================================
+yuno_fild08,80,287,1	script	Animal Morto::Hunt	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+if (cacador != 1) {mes "Você ainda não é caçador, faça a quest em sua vila"; close;}
+if (countitem(13021) < 1) goto needpickaxelvl1;
+mes "Você encontrou com um animal morto.";
+mes "Gostaria de extrair a pele dele?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto tryagain;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua faca quebrou...espero que tenha outra..";
+delitem 13021,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13021) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto couro;
+if (found == 1) goto couro;
+if (found == 2) goto couro;
+if (found == 3) goto couro;
+if (found == 4) goto couro;
+if (found == 5) goto couro;
+if (found == 6) goto couro;
+if (found == 7) goto couro;
+if (found == 8) goto couro;
+if (found == 9) goto couro;
+if (found == 10) goto couro;
+if (found == 11) goto couro;
+if (found == 12) goto couro;
+if (found == 13) goto pele;
+close;
+
+couro:
+getitem 7820,1;
+set cacadorexp,cacadorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele:
+getitem 1029,1;
+set cacadorexp,cacadorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl1:
+mes "Você precisa de uma faca básica para minerar.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+yuno_fild08,212,92,1	duplicate(Hunt)	Animal Morto#1	754
+yuno_fild08,323,301,1	duplicate(Hunt)	Animal Morto#2	754
+yuno_fild08,290,275,1	duplicate(Hunt)	Animal Morto#3	754
+yuno_fild08,95,214,1	duplicate(Hunt)	Animal Morto#4	754
+
+//Second level of the mine===========================================
+//===================================================================
+ein_fild08,315,227,1	script	Animal Morto::Hunt2	754,{
+
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (cacador != 1) {mes "Você ainda não é caçador, faça a quest em sua vila"; close;}
+if (level_cacador < 10) {mes "Seu nível de caçador está muito baixo, é preciso nível 10 para minerar nesse ponto"; close;}
+if (countitem(13021) < 1) goto needpickaxelvl1;
+mes "Você encontrou com um animal morto.";
+mes "Gostaria de extrair a pele dele?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua faca quebrou...espero que tenha outra..";
+delitem 13021,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13021) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(14);
+if (found == 0) goto couro;
+if (found == 1) goto couro;
+if (found == 2) goto couro;
+if (found == 3) goto couro;
+if (found == 4) goto couro;
+if (found == 5) goto couro;
+if (found == 6) goto couro;
+if (found == 7) goto couro;
+if (found == 8) goto couro;
+if (found == 9) goto couro;
+if (found == 10) goto couro;
+if (found == 11) goto couro;
+if (found == 12) goto pele;
+if (found == 13) goto pele2;
+close;
+
+couro:
+set cacadorexp,cacadorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7820,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele:
+set cacadorexp,cacadorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 1029,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele2:
+set cacadorexp,cacadorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7003,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl1:
+mes "Você precisa de uma faca.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+ein_fild08,161,132,1	duplicate(Hunt2)	Animal Morto#5	754
+ein_fild08,196,217,1	duplicate(Hunt2)	Animal Morto#6	754
+ein_fild08,245,169,1	duplicate(Hunt2)	Animal Morto#7	754
+ein_fild08,95,214,1	duplicate(Hunt2)	Animal Morto#8	754
+//third level of the mine============================================
+//===================================================================
+yuno_fild05,89,191,1	script	Animal Morto::Hunt3	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (cacador != 1) {mes "Você ainda não é caçador, faça a quest em sua vila"; close;}
+if (level_cacador < 20) {mes "Seu nível de caçador está muito baixo, é preciso nível 20 para minerar nesse ponto"; close;}
+if (countitem(13021) < 1) goto needpickaxelvl1;
+mes "Você encontrou com um animal morto.";
+mes "Gostaria de extrair a pele dele?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua faca quebrou...espero que tenha outra..";
+delitem 13021,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13021) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(15);
+if (found == 0) goto couro;
+if (found == 1) goto couro;
+if (found == 2) goto couro;
+if (found == 3) goto couro;
+if (found == 4) goto couro;
+if (found == 5) goto couro;
+if (found == 6) goto couro;
+if (found == 7) goto couro;
+if (found == 8) goto couro;
+if (found == 9) goto couro;
+if (found == 10) goto pele3;
+if (found == 11) goto pele2;
+if (found == 12) goto pele;
+if (found == 13) goto couro;
+if (found == 14) goto couro;
+close;
+
+couro:
+set cacadorexp,cacadorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7820,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele:
+set cacadorexp,cacadorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 1029,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele2:
+set cacadorexp,cacadorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7003,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele3:
+set cacadorexp,cacadorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7065,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl1:
+mes "Você precisa de uma faca.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+yuno_fild05,322,120,1	duplicate(Hunt3)	Animal Morto#9	754
+yuno_fild05,293,279,1	duplicate(Hunt3)	Animal Morto#10	754
+yuno_fild05,77,149,1	duplicate(Hunt3)	Animal Morto#11	754
+yuno_fild05,214,170,1	duplicate(Hunt3)	Animal Morto#12	754
+
+//fourth level of the mine============================================
+//===================================================================
+hu_fild07,216,98,1	script	Animal Morto::Hunt4	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (cacador != 1) {mes "Você ainda não é caçador, faça a quest em sua vila"; close;}
+if (level_cacador < 30) {mes "Seu nível de caçador está muito baixo, é preciso nível 30 para minerar nesse ponto"; close;}
+if (countitem(13021) < 1) goto needpickaxelvl1;
+mes "Você encontrou com um animal morto.";
+mes "Gostaria de extrair a pele dele?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua faca quebrou...espero que tenha outra..";
+delitem 13021,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13021) < 1) goto needpickaxelvl1;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(16);
+if (found == 0) goto couro;
+if (found == 1) goto couro;
+if (found == 2) goto couro;
+if (found == 3) goto couro;
+if (found == 4) goto couro;
+if (found == 5) goto couro;
+if (found == 6) goto couro;
+if (found == 7) goto pele2;
+if (found == 8) goto pele;
+if (found == 9) goto pele4;
+if (found == 10) goto pele3;
+if (found == 11) goto pele2;
+if (found == 12) goto pele;
+if (found == 13) goto pele;
+if (found == 14) goto couro;
+if (found == 15) goto couro;
+close;
+
+couro:
+set cacadorexp,cacadorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7820,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele:
+set cacadorexp,cacadorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 1029,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele2:
+set cacadorexp,cacadorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7003,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele3:
+set cacadorexp,cacadorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7065,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele4:
+set cacadorexp,cacadorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7107,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl1:
+mes "Você precisa de uma faca.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+hu_fild07,170,189,1	duplicate(Hunt4)	Animal Morto#13	754
+hu_fild07,227,365,1	duplicate(Hunt4)	Animal Morto#14	754
+hu_fild07,312,237,1	duplicate(Hunt4)	Animal Morto#15	754
+hu_fild07,225,130,1	duplicate(Hunt4)	Animal Morto#16	754
+
+//fifth level of the mine============================================
+//===================================================================
+ein_fild01,153,224,1	script	Animal Morto::Hunt5	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (cacador != 1) {mes "Você ainda não é caçador, faça a quest em sua vila"; close;}
+if (level_cacador < 40) {mes "Seu nível de caçador está muito baixo, é preciso nível 40 para minerar nesse ponto"; close;}
+if (countitem(13019) < 1) goto needpickaxelvl2;
+mes "Você encontrou com um animal morto.";
+mes "Gostaria de extrair a pele dele?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua faca quebrou...espero que tenha outra..";
+delitem 13019,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13019) < 1) goto needpickaxelvl2;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto couro;
+if (found == 1) goto couro;
+if (found == 2) goto couro;
+if (found == 3) goto couro;
+if (found == 4) goto couro;
+if (found == 5) goto couro;
+if (found == 6) goto couro;
+if (found == 7) goto couro;
+if (found == 8) goto pele5;
+if (found == 9) goto pele4;
+if (found == 10) goto pele3;
+if (found == 11) goto pele2;
+if (found == 12) goto pele;
+if (found == 13) goto pele;
+if (found == 14) goto pele2;
+if (found == 15) goto pele;
+if (found == 16) goto couro;
+if (found == 17) goto couro;
+close;
+
+couro:
+set cacadorexp,cacadorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7820,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele:
+set cacadorexp,cacadorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 1029,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele2:
+set cacadorexp,cacadorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7003,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele3:
+set cacadorexp,cacadorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7065,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele4:
+set cacadorexp,cacadorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7107,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele5:
+set cacadorexp,cacadorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7123,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl2:
+mes "Você precisa de uma faca.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+ein_fild01,305,35,1	duplicate(Hunt5)	Animal Morto#17	754
+ein_fild01,193,183,1	duplicate(Hunt5)	Animal Morto#18	754
+ein_fild01,312,237,1	duplicate(Hunt5)	Animal Morto#19	754
+ein_fild01,130,96,1	duplicate(Hunt5)	Animal Morto#20	754
+
+//sixth level of the mine============================================
+//===================================================================
+hu_fild06,223,96,1	script	Animal Morto::Hunt6	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (cacador != 1) {mes "Você ainda não é caçador, faça a quest em sua vila"; close;}
+if (level_cacador < 50) {mes "Seu nível de caçador está muito baixo, é preciso nível 50 para minerar nesse ponto"; close;}
+if (countitem(13019) < 1) goto needpickaxelvl2;
+mes "Você encontrou com um animal morto.";
+mes "Gostaria de extrair a pele dele?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua faca quebrou...espero que tenha outra..";
+delitem 13019,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13019) < 1) goto needpickaxelvl2;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto couro;
+if (found == 1) goto couro;
+if (found == 2) goto couro;
+if (found == 3) goto couro;
+if (found == 4) goto couro;
+if (found == 5) goto couro;
+if (found == 6) goto couro;
+if (found == 7) goto pele6;
+if (found == 8) goto couro;
+if (found == 9) goto couro;
+if (found == 10) goto couro;
+if (found == 11) goto pele2;
+if (found == 12) goto pele;
+if (found == 13) goto ferr5;
+if (found == 14) goto pele4;
+if (found == 15) goto pele3;
+if (found == 16) goto couro;
+if (found == 17) goto couro;
+close;
+
+couro:
+set cacadorexp,cacadorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7820,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele:
+set cacadorexp,cacadorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 1029,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele2:
+set cacadorexp,cacadorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7003,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele3:
+set cacadorexp,cacadorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7065,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele4:
+set cacadorexp,cacadorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7107,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele5:
+set cacadorexp,cacadorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7123,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele6:
+set cacadorexp,cacadorexp +7;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7161,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl2:
+mes "Você precisa de uma faca.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+hu_fild06,82,109,1	duplicate(Hunt6)	Animal Morto#21	754
+hu_fild06,104,270,1	duplicate(Hunt6)	Animal Morto#22	754
+hu_fild06,287,101,1	duplicate(Hunt6)	Animal Morto#23	754
+hu_fild06,318,242,1	duplicate(Hunt6)	Animal Morto#24	754
+
+//seventh level of the mine============================================
+//===================================================================
+bra_fild01,141,78,1	script	Animal Morto::Hunt7	754,{
+OnInit:
+		if ($1min > gettimetick(2)) goto L_time;
+		delwaitingroom;
+		
+		
+		if ($1min < gettimetick(2)) { 
+
+if (cacador != 1) {mes "Você ainda não é caçador, faça a quest em sua vila"; close;}
+if (level_cacador < 60) {mes "Seu nível de caçador está muito baixo, é preciso nível 60 para minerar nesse ponto"; close;}
+if (countitem(13019) < 1) goto needpickaxelvl2;
+mes "Você encontrou com um animal morto.";
+mes "Gostaria de extrair a pele dele?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+usepickaxe:
+set mine, rand(10);
+if (mine == 0) goto lookagain;
+if (mine == 1) goto lookagain;
+if (mine == 2) goto lookagain;
+if (mine == 3) goto lookagain;
+if (mine == 4) goto lookagain;
+if (mine == 5) goto lookagain;
+if (mine == 6) goto lookagain;
+if (mine == 7) goto lookagain;
+if (mine == 8) goto founditem;
+if (mine == 9) goto founditem;
+close;
+
+lookagain:
+set break, rand(10);
+if (break == 0) goto tryagain;
+if (break == 1) goto tryagain;
+if (break == 2) goto tryagain;
+if (break == 3) goto tryagain;
+if (break == 4) goto broke;
+if (break == 5) goto tryagain;
+if (break == 6) goto tryagain;
+if (break == 7) goto tryagain;
+if (break == 8) goto tryagain;
+if (break == 9) goto tryagain;
+close;
+
+broke:
+next;
+mes "Oh não... sua faca quebrou...espero que tenha outra..";
+delitem 13019,1;
+goto tryagain;
+close;
+
+tryagain:
+next;
+if (countitem(13019) < 1) goto needpickaxelvl2;
+mes "Você não achou nada, quer tentar denovo?";
+menu "Sim.",usepickaxe,"Não.",-;
+close;
+
+founditem:
+set found, rand(18);
+if (found == 0) goto couro;
+if (found == 1) goto couro;
+if (found == 2) goto couro;
+if (found == 3) goto couro;
+if (found == 4) goto couro;
+if (found == 5) goto couro;
+if (found == 6) goto couro;
+if (found == 7) goto labios;
+if (found == 8) goto pele3;
+if (found == 9) goto pele4;
+if (found == 10) goto pele5;
+if (found == 11) goto pele2;
+if (found == 12) goto pele;
+if (found == 13) goto pele6;
+if (found == 14) goto couro;
+if (found == 15) goto couro;
+if (found == 16) goto couro;
+if (found == 17) goto couro;
+close;
+
+couro:
+set cacadorexp,cacadorexp +1;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7820,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele:
+set cacadorexp,cacadorexp +2;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 1029,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele2:
+set cacadorexp,cacadorexp +3;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7003,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele3:
+set cacadorexp,cacadorexp +4;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7065,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele4:
+set cacadorexp,cacadorexp +5;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7107,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele5:
+set cacadorexp,cacadorexp +6;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7123,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+pele6:
+set cacadorexp,cacadorexp +7;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 7161,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+
+labios:
+set cacadorexp,cacadorexp +8;
+next;
+mes "Material coletado com sucesso, experiência de caçador: "+cacadorexp+"/500";
+if (cacadorexp >= 500) {set level_cacador, level_cacador +1; set cacadorexp,0; dispbottom "Profissão: caçador, level up (nível atual: "+level_cacador+")"; }
+getitem 1054,1;
+set $1min,gettimetick(2) + 3;
+close2;
+goto L_time;
+
+needpickaxelvl2:
+mes "Você precisa de uma faca.";
+close;
+
+bigrock:
+mes "You see a big rock.";
+close;
+
+		OnTimer1000:
+		L_time:
+		set $time,$1min - gettimetick(2);
+		set $min,$time % (24*60*60) % (60*60) / (60);
+		set $sec,$time % (24*60*60) % (60*60) % (60);
+		initnpctimer;
+		delwaitingroom;
+		if ($min >= 1) {
+		   waitingroom "Aguarde "+$min+" minutos e "+$sec+" segundos.",0;
+		}
+		if ($min == 0) {
+		 waitingroom "Por favor aguarde "+$sec+" segundos.",0;
+		 }
+		setnpctimer 0;
+		if ($1min == gettimetick(2)) {
+		delwaitingroom;
+		stopnpctimer;
+		setnpctimer 0;
+		}
+}
+}
+
+bra_fild01,243,231,1	duplicate(Hunt7)	Animal Morto#25	754
+bra_fild01,148,58,1	duplicate(Hunt7)	Animal Morto#26	754
+bra_fild01,159,60,1	duplicate(Hunt7)	Animal Morto#27	754
+bra_fild01,196,42,1	duplicate(Hunt7)	Animal Morto#28	754

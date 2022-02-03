@@ -1,0 +1,165 @@
+konoha3,301,230,4	script	Teleportador - Folha::wa1	806,{
+//	if ($kon2dest == 1) {	mes "[^DC143CTeleportador Vila^000000]"; mes "O edifício de inteligência desta vila está destruído, peça um ferreiro para consertar para normalizar este NPC"; close;}
+//	if (BaseLevel > 998) {	mes "[^DC143CTeleportador Vila^000000]"; mes "Apenas jogadores com nível menor que 999 podem usar esse teleportador"; close;}
+	mes "[^DC143CTeleportador Vila^000000]";
+	mes "Olá amigo, estou aqui para facilitar sua vida, e posso te teleportar para os principais locais da vila";
+	next;
+	mes "[^DC143CTeleportador Vila^000000]";
+	mes "Escolhe um lugar para se teleportar";
+	next;
+	menu "- Hospital",hosp,"- Sala do Kage",kage,"- Equipamentos",equipes,"- Academia",jutsus,"- Biblioteca",bib,"- Saída da vila",bonecos,"- Não",nao;
+	
+	hosp:
+	warp "konoha3", 83,225;
+	end;
+
+	kage:
+	warp "konoha3", 191,235;
+	end;
+
+	equipes:
+	warp "konoha3", 276,161;
+	end;
+
+	jutsus:
+	warp "konoha3", 300,228;
+	end;
+
+	bib:
+	warp "konoha3", 267,245;
+	end;
+
+	bonecos:
+	warp "konoha3", 189,63;
+	end;
+
+	nao:
+	close;
+
+OnInit:
+waitingroom "[Teleportador - Vila]",0;
+
+
+}
+
+kumogakure,73,137,4	script	Teleportador - Nuvem::wa2	846,{
+//if ($nuv2dest == 1) {mes "O edifício de inteligência desta vila está destruído, peça um ferreiro para consertar para normalizar este NPC"; close;}
+//	if (BaseLevel > 998) {	mes "[^DC143CTeleportador Vila^000000]"; mes "Apenas jogadores com nível menor que 999 podem usar esse teleportador"; close;}
+	mes "[^DC143CTeleportador Vila^000000]";
+	mes "Olá amigo, estou aqui para facilitar sua vida, e posso te teleportar para os principais locais da vila";
+	next;
+	mes "[^DC143CTeleportador Vila^000000]";
+	mes "Escolhe um lugar para se teleportar";
+	next;
+    	menu "- Hospital",hosp,"- Sala do Kage",kage,"- Equipamentos",equipes,"- Academia",jutsus,"- Biblioteca",bib,"- Saída da vila",bonecos,"- Não",nao;
+	
+	hosp:
+	warp "kumogakure", 162,171;
+	end;
+
+	kage:
+	warp "kumogakure", 72,141;
+	end;
+
+	equipes:
+	warp "kumogakure", 78,149;
+	end;
+
+	jutsus:
+	warp "kumogakure", 16,93;
+	end;
+
+	bib:
+	warp "kumogakure", 189,62;
+	end;
+
+	bonecos:
+	warp "kumogakure", 178,26;
+	end;
+
+	nao:
+	close;
+
+OnInit:
+waitingroom "[Teleportador - Vila]",0;
+
+}
+
+kiragakure,160,194,4	script	Teleportador - Névoa::wa3	117,{
+//if ($nev2dest == 1) {mes "O edifício de inteligência desta vila está destruído, peça um ferreiro para consertar para normalizar este NPC"; close;}
+//	if (BaseLevel > 998) {	mes "[^DC143CTeleportador Vila^000000]"; mes "Apenas jogadores com nível menor que 999 podem usar esse teleportador"; close;}
+	mes "[^DC143CTeleportador Vila^000000]";
+	mes "Olá amigo, estou aqui para facilitar sua vida, e posso te teleportar para os principais locais da vila";
+	next;
+	mes "[^DC143CTeleportador Vila^000000]";
+	mes "Escolhe um lugar para se teleportar";
+	next;
+	menu "- Hospital",hosp,"- Sala do Kage",kage,"- Equipamentos",equipes,"- Academia",jutsus,"- Biblioteca",bib,"- Saída da vila",bonecos,"- Não",nao;
+	
+	hosp:
+	warp "kiragakure", 164,190;
+	end;
+
+	kage:
+	warp "kiragakure", 202,221;
+	end;
+
+	equipes:
+	warp "kiragakure", 266,258;
+	end;
+
+	jutsus:
+	warp "kiragakure", 185,177;
+	end;
+
+	bib:
+	warp "kiragakure", 150,221;
+	end;
+
+	bonecos:
+	warp "kiragakure", 169,127;
+	end;
+
+	nao:
+	close;
+
+OnInit:
+waitingroom "[Teleportador - Vila]",0;
+
+}
+
+job_monk,254,108,4	script	Voltar	806,{
+	mes "[Teleportador]";
+	mes "Olá amigo, Gostaria de voltar?";
+	menu "Sim",hosp,"Não",nao;
+	
+	hosp:
+	warp "SavePoint", 0, 0;
+	end;
+
+	nao:
+	close;
+
+
+
+}
+
+konoha3,77,226,4	duplicate(wa1)	Teleportador - Folha#1	806
+konoha3,195,239,4	duplicate(wa1)	Teleportador - Folha#2	806
+konoha3,276,157,4	duplicate(wa1)	Teleportador - Folha#4	806
+konoha3,272,246,4	duplicate(wa1)	Teleportador - Folha#5	806
+konoha3,195,72,4	duplicate(wa1)	Teleportador - Folha#6	806
+
+kumogakure,81,154,3	duplicate(wa2)	Teleportador - Nuvem#1	846
+kumogakure,193,66,4	duplicate(wa2)	Teleportador - Nuvem#2	846
+kumogakure,179,21,4	duplicate(wa2)	Teleportador - Nuvem#3	846
+kumogakure,164,170,4	duplicate(wa2)	Teleportador - Nuvem#4	846
+kumogakure,11,92,4	duplicate(wa2)	Teleportador - Nuvem#5	846
+
+kiragakure,148,223,4	duplicate(wa3)	Teleportador - Névoa#1	117
+kiragakure,197,222,4	duplicate(wa3)	Teleportador - Névoa#2	117
+kiragakure,265,262,4	duplicate(wa3)	Teleportador - Névoa#3	117
+kiragakure,183,172,4	duplicate(wa3)	Teleportador - Névoa#4	117
+kiragakure,164,126,4	duplicate(wa3)	Teleportador - Névoa#5	117
+
+

@@ -1,0 +1,23 @@
+moc_fild13,285,241,5	script	Ninjutsu Intermediário::internin	831,{
+if (limite_inter == 2) {mes "Você já chegou a dois treinamentos intermediários, esse é o limite"; close;}
+if (nin_intermediario == 1) {mes "Já não há mais nada que posso lhe ensinar"; close;}
+if (WeaponLvl2 < 40) {mes "Você não está pronto pra aprender ninjutsu intermediário, é preciso nível 40 de ninjutsu"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+mes "Hmm vejo que você é diferente de outros que vi por aqui, a força de um chunin é considerável, acho que você está pronto pra ir ao próximo nível de ninjutsu";
+next;
+mes "Vá em frente, e busque mais poder, seje o melhor shinobi que já existiu, pois agora você é diferenciado, agora você é um shinobi com ninjutsu intermediário!";
+set nin_intermediario,1;
+if(countitem(1009) > 0) {delitem 1009,1;}
+getitem 739,1;
+set limite_inter, limite_inter +1;
+announce "[...] Um poder é sentido de longe, alguém com chakra considerável, alguém assim só pode ter ninjutsu intermediário!",bc_blue|bc_all;
+close;
+
+}
+
+moc_fild03,31,313,5	duplicate(internin)	Ninjutsu Intermediário#1	831,{
+yuno_fild05,303,311,5	duplicate(internin)	Ninjutsu Intermediário#2	831,{
+gef_fild05,137,325,5	duplicate(internin)	Ninjutsu Intermediário#3	831,{

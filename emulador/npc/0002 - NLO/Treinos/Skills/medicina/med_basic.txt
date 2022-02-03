@@ -1,0 +1,519 @@
+academia,30,174,5	script	Medicina Básico	1_m_smith,{
+
+	mes "[Medicina Básico]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Medicina escolha qual habilidade você gostaria de aprender.";
+		switch( select( "- Chiyute no Jutsu:- Relaxar:- Inyu Shometsu:- Remover Armadilha:- Souzou Saisei" ) ){
+		
+
+	case 1:
+		next;
+		if(checkquest(1021) == 1) goto 1_go;
+		if(checkquest(2021) == 1) goto 1_go;
+		if(checkquest(3021) == 1) goto 1_go;
+		if(checkquest(4021) == 1) goto 1_go;
+		if(Chiyute == 1) goto 1_delete;
+		if(skill_basica >= 9) { mes "[Medicina Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(med_basico != 1) {  mes .@npc$; mes "Você precisa estudar Medicina Básica antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Medicina Básico]";
+		mes "Chiyute no Jutsu?";
+		next;
+		mes "[Medicina Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Medicina Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+		//========================================================================
+		//	Chiyute no Jutsu
+		//========================================================================
+		
+		1_delete:
+		mes "[Medicina Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Medicina Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+		
+		delete_1:
+		mes "[Medicina Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Medicina Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+		
+		quero_1:
+		mes "[Medicina Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 28,0,3;
+		set Chiyute,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_1:
+		close;
+		
+		1_SS:
+		mes "[Medicina Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1021; }
+		if(#suna == 1) {  setquest 2021; }
+		if(#nevoa == 1) { setquest 3021; }
+		if(#nuvem == 1) { setquest 4021; }
+		next;
+		mes "[Medicina Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		1_go:
+		if(	checkquest(1021,hunting) == 1 || 
+			checkquest(2021,hunting) == 1 || 
+			checkquest(3021,hunting) == 1 || 
+			checkquest(4021,hunting) == 1	) { 
+				mes "[Medicina Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1021) >= 1) { completequest 1021; erasequest 1021; }
+						if(checkquest(2021) >= 1) { completequest 2021; erasequest 2021; }
+						if(checkquest(3021) >= 1) { completequest 3021; erasequest 3021; }
+						if(checkquest(4021) >= 1) { completequest 4021; erasequest 4021; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Medicina Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					}
+					mes "[Medicina Básico]";
+					mes "Você ainda não completou seu treinamento."; 
+					close; 
+				}
+		mes "[Medicina Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 28,1,3;
+		set Chiyute,1;
+		if(checkquest(1021) >= 1) { completequest 1021; erasequest 1021; }
+		if(checkquest(2021) >= 1) { completequest 2021; erasequest 2021; }
+		if(checkquest(3021) >= 1) { completequest 3021; erasequest 3021; }
+		if(checkquest(4021) >= 1) { completequest 4021; erasequest 4021; }
+		close;
+		
+		1_no:
+		close;
+
+	case 2:
+		next;
+		if(checkquest(1022) == 1) goto 2_go;
+		if(checkquest(2022) == 1) goto 2_go;
+		if(checkquest(3022) == 1) goto 2_go;
+		if(checkquest(4022) == 1) goto 2_go;
+		if(Relaxar == 1) goto 2_delete;
+		if(skill_basica >= 9) { mes "[Medicina Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Medicina Básico]";
+		mes "Relaxar?";
+		next;
+		mes "[Medicina Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Medicina Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+		//========================================================================
+		//	Relaxar
+		//========================================================================
+		
+		2_delete:
+		mes "[Medicina Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Medicina Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+		
+		delete_2:
+		mes "[Medicina Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Medicina Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+		
+		quero_2:
+		mes "[Medicina Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 358,0,3;
+		set Relaxar,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_2:
+		close;
+		
+		2_SS:
+		mes "[Medicina Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1022; }
+		if(#suna == 1) {  setquest 2022; }
+		if(#nevoa == 1) { setquest 3022; }
+		if(#nuvem == 1) { setquest 4022; }
+		next;
+		mes "[Medicina Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		2_go:
+		if(	checkquest(1022,hunting) == 1 || 
+			checkquest(2022,hunting) == 1 || 
+			checkquest(3022,hunting) == 1 || 
+			checkquest(4022,hunting) == 1	) {
+				mes "[Medicina Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1022) >= 1) { completequest 1022; erasequest 1022; }
+						if(checkquest(2022) >= 1) { completequest 2022; erasequest 2022; }
+						if(checkquest(3022) >= 1) { completequest 3022; erasequest 3022; }
+						if(checkquest(4022) >= 1) { completequest 4022; erasequest 4022; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Medicina Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					} 
+				mes "[Medicina Básico]";
+				mes "Você ainda não completou seu treinamento."; 
+				close; 
+			}
+			
+		mes "[Medicina Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 358,1,3;
+		set Relaxar,1;
+		if(checkquest(1022) >= 1) { completequest 1022; erasequest 1022; }
+		if(checkquest(2022) >= 1) { completequest 2022; erasequest 2022; }
+		if(checkquest(3022) >= 1) { completequest 3022; erasequest 3022; }
+		if(checkquest(4022) >= 1) { completequest 4022; erasequest 4022; }
+		close;
+		
+		2_no:
+		close;
+		
+	case 3:
+		next;
+		if(checkquest(1023) == 1) goto 3_go;
+		if(checkquest(2023) == 1) goto 3_go;
+		if(checkquest(3023) == 1) goto 3_go;
+		if(checkquest(4023) == 1) goto 3_go;
+		if(Inyu == 1) goto 3_delete;
+		if(skill_basica >= 9) { mes "[Medicina Básico]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+		if(med_basico != 1) {  mes .@npc$; mes "Você precisa estudar Medicina Básica antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Medicina Básico]";
+		mes "Inyu Shometsu?";
+		next;
+		mes "[Medicina Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Medicina Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+		//========================================================================
+		//	Inyu Shometsu
+		//========================================================================
+		
+		3_delete:
+		mes "[Medicina Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Medicina Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+		
+		delete_3:
+		mes "[Medicina Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Medicina Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+		
+		quero_3:
+		mes "[Medicina Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 35,0,3;
+		set Inyu,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_3:
+		close;
+		
+		3_SS:
+		mes "[Medicina Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1023; }
+		if(#suna == 1) {  setquest 2023; }
+		if(#nevoa == 1) { setquest 3023; }
+		if(#nuvem == 1) { setquest 4023; }
+		next;
+		mes "[Medicina Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		3_go:
+		if(	checkquest(1023,hunting) == 1 || 
+			checkquest(2023,hunting) == 1 || 
+			checkquest(3023,hunting) == 1 || 
+			checkquest(4023,hunting) == 1	) { 
+				mes "[Medicina Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1023) >= 1) { completequest 1023; erasequest 1023; }
+						if(checkquest(2023) >= 1) { completequest 2023; erasequest 2023; }
+						if(checkquest(3023) >= 1) { completequest 3023; erasequest 3023; }
+						if(checkquest(4023) >= 1) { completequest 4023; erasequest 4023; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Medicina Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					}
+				mes "[Medicina Básico]";
+				mes "Você ainda não completou seu treinamento."; 
+				close; 
+			}
+		mes "[Medicina Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 35,1,3;
+		set Inyu,1;
+		if(checkquest(1023) >= 1) { completequest 1023; erasequest 1023; }
+		if(checkquest(2023) >= 1) { completequest 2023; erasequest 2023; }
+		if(checkquest(3023) >= 1) { completequest 3023; erasequest 3023; }
+		if(checkquest(4023) >= 1) { completequest 4023; erasequest 4023; }
+		close;
+		
+		3_no:
+		close;
+
+	case 4:
+		next;
+		if(checkquest(1024) == 1) goto 4_go;
+		if(checkquest(2024) == 1) goto 4_go;
+		if(checkquest(3024) == 1) goto 4_go;
+		if(checkquest(4024) == 1) goto 4_go;
+		if(RemovArmadilha == 1) goto 4_delete;
+		if(skill_basica >= 9) { mes "[Medicina Básico]"; mes "Você já aprendeu três Medicinas básicos, esse é o limite"; close; }
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Medicina Básico]";
+		mes "Remover Armadilha?";
+		next;
+		mes "[Medicina Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Medicina Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+		//========================================================================
+		//	Remover Armadilha
+		//========================================================================
+		
+		4_delete:
+		mes "[Medicina Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Medicina Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+		
+		delete_4:
+		mes "[Medicina Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Medicina Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+		
+		quero_4:
+		mes "[Medicina Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 124,0,3;
+		set RemovArmadilha,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_4:
+		close;
+		
+		4_SS:
+		mes "[Medicina Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1024; }
+		if(#suna == 1) {  setquest 2024; }
+		if(#nevoa == 1) { setquest 3024; }
+		if(#nuvem == 1) { setquest 4024; }
+		next;
+		mes "[Medicina Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		4_go:
+		if(	checkquest(1024,hunting) == 1 || 
+			checkquest(2024,hunting) == 1 || 
+			checkquest(3024,hunting) == 1 || 
+			checkquest(4024,hunting) == 1	) { 
+				mes "[Medicina Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1024) >= 1) { completequest 1024; erasequest 1024; }
+						if(checkquest(2024) >= 1) { completequest 2024; erasequest 2024; }
+						if(checkquest(3024) >= 1) { completequest 3024; erasequest 3024; }
+						if(checkquest(4024) >= 1) { completequest 4024; erasequest 4024; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Medicina Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					}
+				mes "[Medicina Básico]"; 
+				mes "Você ainda não completou seu treinamento."; 
+				close; 
+			}
+		mes "[Medicina Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 124,1,3;
+		set RemovArmadilha,1;
+		if(checkquest(1024) >= 1) { completequest 1024; erasequest 1024; }
+		if(checkquest(2024) >= 1) { completequest 2024; erasequest 2024; }
+		if(checkquest(3024) >= 1) { completequest 3024; erasequest 3024; }
+		if(checkquest(4024) >= 1) { completequest 4024; erasequest 4024; }
+		close;
+		
+		4_no:
+		close;
+		
+	case 5:
+		next;
+		if(checkquest(1025) == 1) goto 5_go;
+		if(checkquest(2025) == 1) goto 5_go;
+		if(checkquest(3025) == 1) goto 5_go;
+		if(checkquest(4025) == 1) goto 5_go;
+		if(SouzouSaisei == 1) goto 5_delete;
+		if(skill_basica >= 9) { mes "[Medicina Básico]"; mes "Você já aprendeu três Medicinas básicos, esse é o limite"; close; }
+		if(med_basico != 1) {  mes .@npc$; mes "Você precisa estudar Medicina Básica antes de aprender essa habilidade."; close;}
+		
+		//========================================================================
+		//	MENU
+		//========================================================================
+		
+		mes "[Medicina Básico]";
+		mes "Souzou Saisei?";
+		next;
+		mes "[Medicina Básico]";
+		mes "Lembre-se que você só pode ter 9 skills básicos, após isso não poderá aprender mais nenhum básico";
+		next;
+		mes "[Medicina Básico]";
+		mes "Gostaria de treinar?";
+		menu "Sim, vamos treinar",5_SS,"Agora não",5_no;
+		//========================================================================
+		//	Souzou Saisei
+		//========================================================================
+		
+		5_delete:
+		mes "[Medicina Básico]";
+		mes "Olá novamente, como está esse jutsu que te ensinei?";
+		next;
+		mes "[Medicina Básico]";
+		mes "O que? Você veio falar algo comigo? O que é?";
+		menu "Não gostei desse jutsu, quero remover",delete_5,"Nada não, só papo furado",naoquero_5;
+		
+		delete_5:
+		mes "[Medicina Básico]";
+		mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+		next;
+		mes "[Medicina Básico]";
+		mes "Qual é sua decisão?";
+		menu "Sim, eu tenho certeza",quero_5,"Não, não quero",naoquero_5;
+		
+		quero_5:
+		mes "[Medicina Básico]";
+		mes "Jutsu removido com sucesso";
+		skill 72,0,3;
+		set SouzouSaisei,0;
+		if(skill_basica > 0) {set skill_basica,skill_basica -1;}
+		close;
+		
+		naoquero_5:
+		close;
+		
+		5_SS:
+		mes "[Medicina Básico]";
+		mes "Para consultar os status da missão aperte (Alt+U).";
+		if(#konoha == 1) {setquest 1025; }
+		if(#suna == 1) {  setquest 2025; }
+		if(#nevoa == 1) { setquest 3025; }
+		if(#nuvem == 1) { setquest 4025; }
+		next;
+		mes "[Medicina Básico]";
+		mes "Vá e faça seu treinamento.";
+		set skill_basica,skill_basica +1;
+		close;
+		
+		5_go:
+		if(	checkquest(1025,hunting) == 1 || 
+			checkquest(2025,hunting) == 1 || 
+			checkquest(3025,hunting) == 1 || 
+			checkquest(4025,hunting) == 1	) { 
+				mes "[Medicina Básico]";
+				mes "Vejo que você está fazendo está skill.";
+				mes "Gostaria de desistir dela ?";
+					if(select("- Não:- Sim") == 2) {
+						if(checkquest(1025) >= 1) { completequest 1025; erasequest 1025; }
+						if(checkquest(2025) >= 1) { completequest 2025; erasequest 2025; }
+						if(checkquest(3025) >= 1) { completequest 3025; erasequest 3025; }
+						if(checkquest(4025) >= 1) { completequest 4025; erasequest 4025; }
+						if(skill_basica > 0) { set skill_basica,skill_basica -1; }
+						mes "[Medicina Básico]";
+						mes "Missão Cancelada com Sucesso"; 
+						close;
+					}
+				mes "[Medicina Básico]"; 
+				mes "Você ainda não completou seu treinamento."; 
+				close; 
+			}
+		mes "[Medicina Básico]";
+		mes "Você completou seu treinamento,parabéns.";
+		skill 72,1,3;
+		set SouzouSaisei,1;
+		if(checkquest(1025) >= 1) { completequest 1025; erasequest 1025; }
+		if(checkquest(2025) >= 1) { completequest 2025; erasequest 2025; }
+		if(checkquest(3025) >= 1) { completequest 3025; erasequest 3025; }
+		if(checkquest(4025) >= 1) { completequest 4025; erasequest 4025; }
+		close;
+		
+		5_no:
+		close;
+	}
+OnInit:
+	waitingroom "[Medicina Básico]",0;
+}

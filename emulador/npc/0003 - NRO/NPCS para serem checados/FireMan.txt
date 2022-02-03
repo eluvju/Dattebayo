@@ -1,0 +1,59 @@
+-	script	SaveDataEvent	-1,{
+OnInit:
+	if(!getusers(1))while($PlayerNumberM)setd "$RecordName"+(set($PlayerNumberM,$PlayerNumberM-1)+1)+"$","";
+	end;
+OnPCDieEvent:
+	if( @FMBD ){
+		sleep2 1;
+		atcommand "@alive";
+		misceffect 183;
+		set @FMBD,0;
+		warp @gm$,0,0;
+	}
+	end;
+
+OnPCLoginEvent:
+	setd "$RecordName"+set(@AIDNumberM,set($PlayerNumberM,$PlayerNumberM+1))+"$",strcharinfo(0);
+	end;
+
+OnPCLogoutEvent:
+	setd "$RecordName"+@AIDNumberM+"$",getd("$RecordName"+(set(.@AIDNumberM,set($PlayerNumberM,$PlayerNumberM-1)+1))+"$");
+	attachrid getcharid(3,getd("$RecordName"+@AIDNumberM+"$"));
+	setd "$RecordName"+@AIDNumberM+"$","";
+	set @AIDNumberM,.@AIDNumberM;
+
+}
+function	script	FireMan	{
+if( Sp > (MaxSp/10) )&&( getequipid(2) == 2235 ){
+	getmapxy(.@FMM$,.@FMX,.@FMY,0);
+	set Sp,Sp-(MaxSp/10+rand(5));
+	set .@FAID,getcharid(3);
+	misceffect 97;
+
+		while( .@F < $PlayerNumberM ){
+			set .@F,.@F+1;
+			getmapxy(.@FMMB$,.@FMXB,.@FMYB,0,getd("$RecordName"+.@F+"$"));
+			if( .@FMMB$ == .@FMM$ )&&( pow(.@FMYB-.@FMY,2) <= 1 && pow(.@FMXB-.@FMX,2) <= 1 )&&( getcharid(3,getd("$RecordName"+.@F+"$")) !=  .@FAID ) {
+				attachrid getcharid(3,getd("$RecordName"+.@F+"$"));
+				set @gm$,.@FMM$;
+				if( Hp ){
+					misceffect 183;
+					misceffect 32;
+					set @FMBD,1;
+					heal -rand(1000),0;
+					}
+				attachrid .@FAID;
+				unitwalk getcharid(3,getd("$RecordName"+.@F+"$")),.@FMX+rand(5),.@FMY+rand(5);
+			}
+		}
+	sleep2 200;
+	callfunc "FireMan";
+}
+misceffect 183;
+percentheal -100,-100;
+while(.@f<10){ set .@f,.@f+1; unequip(.@f); }
+end;
+}
+
+
+

@@ -1,0 +1,31 @@
+prt_monk.gat,51,185,5	script	Entrada Secreta#1	58,{
+
+if(getequipid(EQI_HEAD_MID)==19020) ||(getequipid(EQI_HEAD_MID)==19195) ||(getequipid(EQI_HEAD_MID)==19196) ||(getequipid(EQI_HEAD_MID)==19197) {goto entrar;} else {goto L_NoForca;}
+
+entrar:
+mes "Olá Membro da Akatsuki... bem-vindo de volta...";
+next;
+warp "akatsuki",104,26;
+end;
+
+L_NoForca:
+mes "Você não é membro da Akatsuki...";
+close;
+
+}
+
+//akatsuki.gat,100,56,5	script	Acesso ao esconderijo	58,{
+//
+//if(getequipid(EQI_HEAD_MID)==19020) ||(getequipid(EQI_HEAD_MID)==19195) ||(getequipid(EQI_HEAD_MID)==19196) ||(getequipid(EQI_HEAD_MID)==19197) {goto entrar;} else {goto L_NoForca;}
+//
+//entrar:
+//mes "Olá Membro da Akatsuki... bem-vindo de volta...";
+//next;
+//warp "6@tower",155,68;
+//end;
+//
+//L_NoForca:
+//mes "Você não é membro da Akatsuki...";
+//close;
+//
+//}

@@ -1,0 +1,102 @@
+sec_in01,141,111,4	script	Orochimaru	70,{
+if(elemento1 != 1) {mes "Você primeiro precisa escolher seu elemento., "+strcharinfo(0)+"-san!"; end;}
+if(treino_escolha < 3) && (academia_treino != 1) {
+set treinonin1,0;
+set treinotai1,0;
+set treinogen1,0;
+set treinomed1,0;
+set treinovelo1,0;
+set treino_escolha,0;
+}
+
+if(finala == 1){mes "Você já esta treinando."; close;}
+mes "Escolha quais treinos você que pegar, lembrando que você so poder pegar uma vez.";
+next;
+mes "[^DC143CInstrutor de Treinos^000000]";
+mes "Muito bem, qual o primeiro treino que gostaria de pegar?";
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_nin:
+//if(nin_basico !=  1) {mes "Não estou vendo sua habilidade de Ninjutsu! Está tentando me enganar? saia logo daqui!"; end;}
+if (treinonin1 == 1) {next; mes "[^DC143CInstrutor de Treinos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus Treinos"; close;}
+set treinonin1,1;
+set treino_escolha, treino_escolha +1;
+if (treino_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treino^000000]";
+if (treino_escolha == 1) {mes "Ninjutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treino_escolha == 2) {mes "Ninjutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_tai:
+//if(tai_basico !=  1) {mes "Não estou vendo sua habilidade de Taijutsu! Está tentando me enganar? saia logo daqui!"; end;}
+if (treinotai1 == 1) {next; mes "[^DC143CInstrutor de Treinos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus Treinos"; close;}
+set treinotai1,1;
+set treino_escolha, treino_escolha +1;
+if (treino_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinos^000000]";
+if (treino_escolha == 1) {mes "Taijutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treino_escolha == 2) {mes "Taijutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Genjutsu",escolher_gen,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_gen:
+//if(gen_basico !=  1) {mes "Não estou vendo sua habilidade de Genjutsu! Está tentando me enganar? saia logo daqui!"; end;}
+if (treinogen1 == 1) {next; mes "[^DC143CInstrutor de Treinos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus Treinos"; close;}
+set treinogen1,1;
+set treino_escolha, treino_escolha +1;
+if (treino_escolha == 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinos^000000]";
+if (treino_escolha == 1) {mes "Genjutsu né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treino_escolha == 2) {mes "Genjutsu né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Medicina",escolher_med,"- Velocidade",escolher_velo;
+
+escolher_med:
+//if(med_basico !=  1) {mes "Não estou vendo sua habilidade de Medicina! Está tentando me enganar? saia logo daqui!"; end;}
+if (treinomed1 == 1) {next; mes "[^DC143CInstrutor de Treinos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus Treinos"; close;}
+set treinomed1,1;
+set treino_escolha, treino_escolha +1;
+if (treino_escolha >= 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinos^000000]";
+if (treino_escolha == 1) {mes "Medicina né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treino_escolha == 2) {mes "Medicina né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Velocidade",escolher_velo;
+
+escolher_velo:
+//if(vel_basico !=  1) {mes "Não estou vendo sua habilidade de Velocidade! Está tentando me enganar? saia logo daqui!"; end;}
+if (treinovelo1 == 1) {next; mes "[^DC143CInstrutor de Treinos^000000]"; mes "Você já escolheu esse treinamento, fale comigo novamente para continuar a escolha de seus Treinos"; close;}
+set treinovelo1,1;
+set treino_escolha, treino_escolha +1;
+if (treino_escolha >= 3) {goto finalizado;}
+next;
+mes "[^DC143CInstrutor de Treinos^000000]";
+if (treino_escolha == 1) {mes "Velocidade né?, Boa escolha, e qual gostaria que fosse seu segundo treinamento?";}
+if (treino_escolha == 2) {mes "Velocidade né?, Boa escolha, e qual gostaria que fosse seu terceiro treinamento?";}
+menu "- Ninjutsu",escolher_nin,"- Taijutsu",escolher_tai,"- Genjutsu",escolher_gen,"- Medicina",escolher_med;
+
+finalizado:
+next;
+if (treino_escolha != 3) {end;}
+if (up_treinos == 3) {mes "[^DC143CInstrutor de Treinos^000000]"; mes "Você já escolheu seus três Treinos"; close;}
+if (treinonin1 == 1) {skill 738,10,3; set nin_basico,1; set treino_nin,1; set up_treinos, up_treinos +1;}
+if (treinotai1 == 1) {skill 735,10,3; set tai_basico,1; set treino_tai,1; set up_treinos, up_treinos +1;}
+if (treinogen1 == 1) {skill 739,10,3; set gen_basico,1; set treino_gen,1; set up_treinos, up_treinos +1;}
+if (treinomed1 == 1) {skill 737,10,3; set med_basico,1; set treino_med,1; set up_treinos, up_treinos +1;}
+if (treinovelo1 == 1) {skill 736,10,3; set vel_basico,1; set treino_velo,1; set up_treinos, up_treinos +1;}
+set academia_treino,1;
+mes "[^DC143CInstrutor de Treinos^000000]";
+mes "Muito bem, agora você poder evoluir seu treino basta matar monstros";
+set fim,1;
+next;
+mes "[^DC143CInstrutor de Treinos^000000]";
+mes "E lembre-se, se precisar de informações pode consultar a sala aqui!";
+set treino,1;
+set finala,1;
+close;
+
+OnInit:
+	waitingroom "[Treino Basico]",0;
+
+}

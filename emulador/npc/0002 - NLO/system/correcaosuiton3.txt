@@ -1,0 +1,13 @@
+-	script	correcaosuiton3	-1,{
+
+OnPCLoginEvent:
+
+if(HaranBanshou == 1) {
+set HaranBanshou,0;
+skill 88,0,3;
+set Aquatico,1;
+skill 286,1,3;
+dispbottom "Você habilitou a habilidade Campo Aquático!";
+end;
+	}
+}

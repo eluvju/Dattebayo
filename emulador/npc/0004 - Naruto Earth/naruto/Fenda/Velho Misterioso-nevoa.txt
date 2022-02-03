@@ -1,0 +1,16 @@
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+cmd_fild02,203,185,4	script	Velho Misterioso	412,{
+    mes "[Velho Misterioso]";
+    mes "Existem rumores cirulando pela vila que alguns ninjas estavam caminhando pelo mapa e encontraram uma fenda misteriosa que da acesso a uma local poderoso com vários monstros nunca vistos antes, porém eles foram reencontrados vários dias depois espalhados por aqui quase mortos, mas graças aos ninjas medicos com seus grandes poderes de cura conseguiram os salvar";
+	mes "Os ninjas resgatados falaram que só conseguiram passar pela fenda graça a um item que eles haviam encontrado matando alguns monstros nesse mapa.";
+	mes "Caso você encontre essa fenda peço que fique longe dela ou caso tenha sorte e força suficiente tente encarar quem sabe você possa ganhar ótimas recompensas.";
+    close;
+}
+
+

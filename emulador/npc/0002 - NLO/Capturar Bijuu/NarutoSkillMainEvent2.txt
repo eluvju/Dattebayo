@@ -1,0 +1,63 @@
+-	script	NarutoSKillMainEvent2	-1,{
+
+OnTransformacaoBiju:
+		if(indisguise == 1) {atcommand "@undisguise"; sc_end SC_ITEMSCRIPT; set indisguise,0;	end; }
+		mes "Você Quer se transformar em qual bijuu ?";
+			switch(select("- Ichibi:- Nibi:- Sanbi:- Yonbi:- Gobi:- Rokubi:- Shichibi:- Hachibi:- Kyuubi")) {
+			case 1:
+				atcommand "@disguise 1737";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			case 2:
+				atcommand "@disguise 1984";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			case 3:
+				atcommand "@disguise 1986";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			case 4:
+				atcommand "@disguise 1981";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			case 5:
+				atcommand "@disguise 1982";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			case 6:
+				atcommand "@disguise 1985";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			case 7:
+				atcommand "@disguise 1983";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			case 8:
+				atcommand "@disguise 1738";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			case 9:
+				atcommand "@disguise 1086";
+				AddTimer 150000, "REMOVERTRANSBIJUU::OnREMOVENDOTRANSBIJUU";
+				set indisguise,1;
+				close2;
+				end;
+			}
+		end;
+}

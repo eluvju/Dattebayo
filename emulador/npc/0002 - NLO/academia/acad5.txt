@@ -1,0 +1,18 @@
+prontera,155,191,5	script	Academia#6	65,{
+
+if(quest8_3 == 0){
+mes "Voce deve falar com o Gai antes de falar comigo.";
+close;
+}
+
+mes "Olá, eu sou Minato Namikaze, o Yondaime Hokage";
+mes "Vou lhe ensinar coisas sobre fuuinjutsu que eu aprendi com minha esposa e minha sogra";
+mes "Fuuinjutsu sao tecnicas de selamento e barreiras.";
+mes "Você pode habilidades que podem ajudar e assustar seus oponentes, assim como marcas de teletransporte.";
+next;
+mes "Parabens! Voce ja pode se tornar um ninja especializado em fuuinjutsu!";
+getitem 6003, 1;
+set quest8_4, 1;
+set quest8_3, 0;
+close;
+}

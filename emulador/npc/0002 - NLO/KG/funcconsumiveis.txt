@@ -1,0 +1,6 @@
+function	script	KIT_SOCORRO	{
+	progressbar "#00FF00",5;
+	specialeffect2 EF_HEAL3;
+	sc_start2 SC_S_LIFEPOTION,25000,-1,1;
+	end;
+}

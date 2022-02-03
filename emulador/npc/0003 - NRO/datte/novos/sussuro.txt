@@ -1,0 +1,953 @@
+//kakashi,96,160,5	script	Trocador (Konoha)	99,{
+kakashi,96,160,5	script	Trocador	99,{
+
+mes "Eu sou o trocador do Evento de Pergaminhos, Em troca de pergaminhos você poderá receber premiações, basta escolher abaixo!";
+menu "- Removedor Especial de Invocação (60 perg.)",reset,"- Removedor Especial de KG (90 perg.)",reset2,"- Pergaminho reverso de mestre (40 perg.)",reset3,"- Chapéu Aleatório (200 perg.)",hat,"- Fuuin no Sho (700 perg.)",fuuin,"- Prêmio Surpresa (35 perg.)",box,"- Trocador de Linha Kugutsu (60 Perg.)",kugutsu,"- Nada no momento",L_nao;
+
+reset:
+if(countitem(618) < 60) {next; mes "Você não tem a quantidade necessária de Pergaminhos (60)"; close;}
+getitem 7241,1;
+delitem 618,60;
+dispbottom "Troca realizada com sucesso";
+close;
+
+reset2:
+if(countitem(618) < 90) {next; mes "Você não tem a quantidade necessária de Pergaminhos (90)"; close;}
+getitem 7242,1;
+delitem 618,90;
+dispbottom "Troca realizada com sucesso";
+close;
+
+reset3:
+if(countitem(618) < 40) {next; mes "Você não tem a quantidade necessária de Pergaminhos (40)"; close;}
+getitem 7243,1;
+delitem 618,40;
+dispbottom "Troca realizada com sucesso";
+close;
+
+hat:
+if(countitem(618) < 200) {next; mes "Você não tem a quantidade necessária de Pergaminhos (200)"; close;}
+delitem 618,200;
+set @hat,rand(1,3);
+if (@hat == 1) {getitem 19399,1;}
+if (@hat == 2) {getitem 19401,1;}
+if (@hat == 3) {getitem 19388,1;}
+dispbottom "Troca realizada com sucesso";
+close;
+
+fuuin:
+if(countitem(618) < 700) {next; mes "Você não tem a quantidade necessária de Pergaminhos (700)"; close;}
+getitem 749,1;
+delitem 618,700;
+dispbottom "Troca realizada com sucesso";
+close;
+
+kugutsu:
+if(countitem(618) < 60) {next; mes "Você não tem a quantidade necessária de Pergaminhos (60)"; close;}
+getitem 7087,1;
+delitem 618,60;
+dispbottom "Troca realizada com sucesso";
+close;
+
+box:
+if(countitem(618) < 35) {next; mes "Você não tem a quantidade necessária de Pergaminhos (35)"; close;}
+delitem 618,35;
+set @surpresa,rand(1,100);
+if (@surpresa < 20) {
+	set @surpresa2,rand(1,9);
+	if (@surpresa2 == 1) {getitem 744,1;}	
+	if (@surpresa2 == 2) {getitem 745,1;}	
+	if (@surpresa2 == 3) {getitem 663,1;}	
+	if (@surpresa2 == 4) {getitem 669,1;}	
+	if (@surpresa2 == 5) {getitem 681,1;}	
+	if (@surpresa2 == 6) {getitem 685,1;}	
+	if (@surpresa2 == 7) {getitem 659,1;}	
+	if (@surpresa2 == 8) {getitem 735,1;}	
+	if (@surpresa2 == 9) {getitem 7328,1;}	
+}
+if (@surpresa > 20 && @surpresa < 60) {getitem 627,2;}
+if (@surpresa > 60) {getitem 7206,6;}
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_nao:
+close;
+
+}
+
+//kakashi,100,160,5	script	Trocador (Névoa)	99,{
+in_hunter,99,99,5	script	Trocador (Névoa)	99,{
+
+mes "Eu sou o trocador do Evento Queima de Arquivo, Em troca de segredos da Névoa você poderá receber premiações, basta escolher abaixo!";
+menu "- Removedor Especial de Invocação (120 segredos)",reset,"- Chapéu especial (50 segredos)",hat,"- 5 Caixas de Equipe (10 segredos)",equipe,"- 15 Manuais (10 segredos)",manu,"- Caixa de DNA completo (200)",dna,"- Chakra Lendário (20 segredos)",chakra,"- 5 Premiação KG 3 (15 segredos)",kg,"- Fuuin no Sho (500 Segredos)",fuuin,"- Nada no momento",L_nao;
+
+reset:
+if(countitem(1074) < 120) {next; mes "Você não tem a quantidade necessária de Segredos de Névoa (120)"; close;}
+getitem 7241,1;
+delitem 1074,120;
+dispbottom "Troca realizada com sucesso";
+close;
+
+hat:
+if(countitem(1074) < 50) {next; mes "Você não tem a quantidade necessária de Segredos de Névoa (50)"; close;}
+getitem 7335,1;
+delitem 1074,50;
+dispbottom "Troca realizada com sucesso";
+close;
+
+equipe:
+if(countitem(1074) < 10) {next; mes "Você não tem a quantidade necessária de Segredos de Névoa (10)"; close;}
+getitem 7246,5;
+delitem 1074,10;
+dispbottom "Troca realizada com sucesso";
+close;
+
+manu:
+if(countitem(1074) < 10) {next; mes "Você não tem a quantidade necessária de Segredos de Névoa (10)"; close;}
+getitem 7206,15;
+delitem 1074,10;
+dispbottom "Troca realizada com sucesso";
+close;
+
+dna:
+if(countitem(1074) < 200) {next; mes "Você não tem a quantidade necessária de Segredos de Névoa (200)"; close;}
+getitem 7249,1;
+delitem 1074,200;
+dispbottom "Troca realizada com sucesso";
+close;
+
+chakra:
+if(countitem(1074) < 20) {next; mes "Você não tem a quantidade necessária de Segredos de Névoa (20)"; close;}
+getitem 1079,1;
+delitem 1074,20;
+dispbottom "Troca realizada com sucesso";
+close;
+
+kg:
+if(countitem(1074) < 15) {next; mes "Você não tem a quantidade necessária de Segredos de Névoa (15)"; close;}
+getitem 554,5;
+delitem 1074,15;
+dispbottom "Troca realizada com sucesso";
+close;
+
+fuuin:
+if(countitem(1074) < 500) {next; mes "Você não tem a quantidade necessária de Segredos de Névoa (500)"; close;}
+getitem 749,1;
+delitem 1074,500;
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_nao:
+close;
+
+}
+
+//kakashi,100,165,5	script	Trocador (Suna)	99,{
+in_hunter,99,99,5	script	Trocador (Suna)	99,{
+
+mes "Eu sou o trocador do Evento Queima de Arquivo, Em troca de segredos da Suna você poderá receber premiações, basta escolher abaixo!";
+menu "- Removedor Especial de KG (120 segredos)",reset,"- Chapéu especial (50 segredos)",hat,"- 5 Caixas de Equipe (10 segredos)",equipe,"- 15 Manuais (10 segredos)",manu,"- Caixa de DNA completo (200)",dna,"- Chakra Lendário (20 segredos)",chakra,"- 5 Premiação KG 3 (15 segredos)",kg,"- Fuuin no Sho (500 Segredos)",fuuin,"- Nada no momento",L_nao;
+
+reset:
+if(countitem(1075) < 120) {next; mes "Você não tem a quantidade necessária de Segredos de Suna (120)"; close;}
+getitem 7242,1;
+delitem 1075,120;
+dispbottom "Troca realizada com sucesso";
+close;
+
+hat:
+if(countitem(1075) < 50) {next; mes "Você não tem a quantidade necessária de Segredos de Suna (50)"; close;}
+getitem 7334,1;
+delitem 1075,50;
+dispbottom "Troca realizada com sucesso";
+close;
+
+equipe:
+if(countitem(1075) < 10) {next; mes "Você não tem a quantidade necessária de Segredos de Suna (10)"; close;}
+getitem 7246,5;
+delitem 1075,10;
+dispbottom "Troca realizada com sucesso";
+close;
+
+manu:
+if(countitem(1075) < 10) {next; mes "Você não tem a quantidade necessária de Segredos de Suna (10)"; close;}
+getitem 7206,15;
+delitem 1075,10;
+dispbottom "Troca realizada com sucesso";
+close;
+
+dna:
+if(countitem(1075) < 200) {next; mes "Você não tem a quantidade necessária de Segredos de Suna (200)"; close;}
+getitem 7249,1;
+delitem 1075,200;
+dispbottom "Troca realizada com sucesso";
+close;
+
+chakra:
+if(countitem(1075) < 20) {next; mes "Você não tem a quantidade necessária de Segredos de Suna (20)"; close;}
+getitem 1079,1;
+delitem 1075,20;
+dispbottom "Troca realizada com sucesso";
+close;
+
+kg:
+if(countitem(1075) < 15) {next; mes "Você não tem a quantidade necessária de Segredos de Suna (15)"; close;}
+getitem 554,5;
+delitem 1075,15;
+dispbottom "Troca realizada com sucesso";
+close;
+
+fuuin:
+if(countitem(1075) < 500) {next; mes "Você não tem a quantidade necessária de Segredos de Suna (500)"; close;}
+getitem 749,1;
+delitem 1075,500;
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_nao:
+close;
+
+}
+
+//kakashi,96,165,5	script	Trocador (Nuvem)	99,{
+in_hunter,99,99,5	script	Trocador (Nuvem)	99,{
+
+mes "Eu sou o trocador do Evento Queima de Arquivo, Em troca de segredos da Nuvem você poderá receber premiações, basta escolher abaixo!";
+menu "- Pergaminho reverso de mestre (120 segredos)",reset,"- Chapéu especial (50 segredos)",hat,"- 5 Caixas de Equipe (10 segredos)",equipe,"- 15 Manuais (10 segredos)",manu,"- Caixa de DNA completo (200)",dna,"- Chakra Lendário (20 segredos)",chakra,"- 5 Premiação KG 3 (15 segredos)",kg,"- Fuuin no Sho (500 Segredos)",fuuin,"- Nada no momento",L_nao;
+
+reset:
+if(countitem(1076) < 120) {next; mes "Você não tem a quantidade necessária de Segredos de Nuvem (120)"; close;}
+getitem 7243,1;
+delitem 1076,120;
+dispbottom "Troca realizada com sucesso";
+close;
+
+hat:
+if(countitem(1076) < 50) {next; mes "Você não tem a quantidade necessária de Segredos de Nuvem (50)"; close;}
+getitem 7336,1;
+delitem 1076,50;
+dispbottom "Troca realizada com sucesso";
+close;
+
+equipe:
+if(countitem(1076) < 10) {next; mes "Você não tem a quantidade necessária de Segredos de Nuvem (10)"; close;}
+getitem 7246,5;
+delitem 1076,10;
+dispbottom "Troca realizada com sucesso";
+close;
+
+manu:
+if(countitem(1076) < 10) {next; mes "Você não tem a quantidade necessária de Segredos de Nuvem (10)"; close;}
+getitem 7206,15;
+delitem 1076,10;
+dispbottom "Troca realizada com sucesso";
+close;
+
+dna:
+if(countitem(1076) < 200) {next; mes "Você não tem a quantidade necessária de Segredos de Nuvem (200)"; close;}
+getitem 7249,1;
+delitem 1076,200;
+dispbottom "Troca realizada com sucesso";
+close;
+
+chakra:
+if(countitem(1076) < 20) {next; mes "Você não tem a quantidade necessária de Segredos de Nuvem (20)"; close;}
+getitem 1079,1;
+delitem 1076,20;
+dispbottom "Troca realizada com sucesso";
+close;
+
+kg:
+if(countitem(1076) < 15) {next; mes "Você não tem a quantidade necessária de Segredos de Nuvem (15)"; close;}
+getitem 554,5;
+delitem 1076,15;
+dispbottom "Troca realizada com sucesso";
+close;
+
+fuuin:
+if(countitem(1076) < 500) {next; mes "Você não tem a quantidade necessária de Segredos de Nuvem (500)"; close;}
+getitem 749,1;
+delitem 1076,500;
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_nao:
+close;
+
+}
+
+-	script	suss1#1	-1,{
+
+	OnNPCKillEvent:
+
+if(killedrid == 1688) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+
+if(killedrid == 1751) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+
+if(killedrid == 1832) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+if(killedrid == 1241) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+
+if(killedrid == 1049) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+
+if(killedrid == 1101) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+
+if(killedrid == 1050) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+
+if(killedrid == 1574) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+
+if(killedrid == 1575) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+
+if(killedrid == 1060) {
+if ($ladder_4 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_4` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_4` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_4` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+end;
+}
+}
+}
+
+if(killedrid == 1992) {
+if ($ladder_3 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_3` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_3` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_3` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1737) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1984) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1986) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1981) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1982) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1985) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1983) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1738) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+if(killedrid == 1086) {
+if ($ladder_5 == 1) {
+set @CID,getcharid(0);
+set @nome$,"";
+query_sql "SELECT `char_name` FROM `ladder_5` WHERE `char_id`="+@CID+"",@nome$;
+if (@nome$ == ""){
+query_sql "INSERT INTO `ladder_5` (`char_id`,`char_name`,`quantidade`) VALUES ("+@CID+",'"+strcharinfo(0)+"',1)",@esc$;
+} else {
+query_sql "UPDATE `ladder_5` SET `quantidade` = `quantidade` +1 WHERE `char_id`="+@CID+"",@esc$;
+}
+end;
+}
+}
+
+}
+
+-	script	suss2#1	-1,{
+
+	OnNPCKillEvent:
+
+if(killedrid == 1688) {if (tai_intermediario != 1) {end;} set mestreta_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1751) {if (gen_intermediario != 1) {end;} set mestrege_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1832) {if (med_intermediario != 1) {end;} set mestreme_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1241) {if (fuuin_intermediario != 1) {end;} set mestrefu_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1049) {if (velo_intermediario != 1) {end;} set mestreve_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1101) {if (nin_intermediario != 1) {end;} if (elementokaton != 1) {end;} set mestreni_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1050) {if (nin_intermediario != 1) {end;} if (elementosuiton != 1) {end;} set mestreni_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1574) {if (nin_intermediario != 1) {end;} if (elementoraiton != 1) {end;} set mestreni_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1575) {if (nin_intermediario != 1) {end;} if (elementodoton != 1) {end;} set mestreni_dead,1; dispbottom "Mestre derrotado";end; }
+if(killedrid == 1060) {if (nin_intermediario != 1) {end;} if (elementofuuton != 1) {end;} set mestreni_dead,1; dispbottom "Mestre derrotado";end; }
+
+}
+
+
+function	script	caixa	{
+
+	set @a,rand(1,100);
+
+if (@a > 79) {getitem 7206,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 21% de chance recebeu um manual ninja avançado!",bc_blue|bc_all; end;} //21% premio maior
+if (@a <= 79) && (@a >64) {getitem 516,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 15% de chance  recebeu um Prêmio de kills pra kg 1!",bc_blue|bc_all; end;} //15% kills pra kg 500
+if (@a <= 64) && (@a >52) {getitem 552,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 12% de chance  recebeu um Prêmio de kills pra kg 2!",bc_blue|bc_all; end;} //12% kills pra kg 700
+if (@a <= 52) && (@a >43) {getitem 554,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 9% de chance  recebeu um Prêmio de kills pra kg 3!",bc_blue|bc_all; end;} //9% kills pra kg 1000
+if (@a <= 43) && (@a >36) {getitem 581,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 7% de chance  recebeu um Prêmio de kills pra kg 4!",bc_blue|bc_all; end;} //7% kills pra kg 1200
+if (@a <= 36) && (@a >33) {getitem 594,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 3% de chance  recebeu um Prêmio de kills pra kg 5!",bc_blue|bc_all; end;} //3% kills pra kg 1500
+if (@a <= 33) && (@a >31) {getitem 612,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 2% de chance recebeu um Prêmio de kills pra kg 6!",bc_blue|bc_all; end;} //2% kills pra kg 1800
+
+if (@a == 31) {
+
+	set @c,rand(1,10);
+
+if (@c == 1) {getitem 659,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 2) {getitem 663,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 3) {getitem 669,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 4) {getitem 681,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 5) {getitem 685,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 6) {getitem 735,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 7) {getitem 744,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 8) {getitem 745,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 9) {getitem 7328,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um Item lendário!",bc_blue|bc_all; end;}
+if (@c == 10) {getitem 7116,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um NRO Point!",bc_blue|bc_all; end;}
+
+} //1% kg nivel 4
+
+if (@a <= 30) && (@a >25) {getitem 7244,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 5% de chance recebeu um Cadaver Haku!",bc_blue|bc_all; end;} //5% cadaver haku
+if (@a <= 25) && (@a >20) {getitem 7245,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 5% de chance recebeu um Cadaver Zabuza!",bc_blue|bc_all; end;} //5% cadaver zabuza
+if (@a <= 20) && (@a >10) {getitem 12208,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 10% de chance recebeu um Pergaminho xp!",bc_blue|bc_all; end;} //10% perg xp
+if (@a <= 10) && (@a >1) {getitem 12210,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 10% de chance recebeu um Pergaminho drop!",bc_blue|bc_all; end;} //9% perg drops
+
+if (@a == 1) {
+
+	set @b,rand(1,10);
+
+if (@b == 1) {getitem 1151,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all; end;}
+if (@b == 2) {getitem 1152,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+if (@b == 3) {getitem 2509,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+if (@b == 4) {getitem 2510,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+if (@b == 5) {getitem 2339,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+if (@b == 6) {getitem 2340,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+if (@b == 7) {getitem 2411,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+if (@b == 8) {getitem 2412,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+if (@b == 9) {getitem 1160,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+if (@b == 10) {getitem 1161,1; announce " "+strcharinfo(0)+" abriu uma caixa surpresa, e com 1% de chance recebeu um item lendário!!!",bc_blue|bc_all;end;}
+} //1% lendarios
+
+}
+
+//-	script	suss5#1	-1,{
+//
+//OnNPCKillEvent:
+//
+//if(killedrid == 1043) {
+//set @a,rand(1,100);
+//if (@a < 10) {getitem 618,1; end;}
+//}
+//
+//if(killedrid == 1295) {
+//set @b,rand(1,100);
+//if (@b <= 100) {getitem 618,10; end;}
+//}
+//
+//if(killedrid == 1248) {
+//set @c,rand(1,100);
+//if (@c < 5) {getitem 618,1; end;}
+//}
+//
+//if(killedrid == 1239) {
+//set @d,rand(1,100);
+//if (@d <= 100) {getitem 1017,1; end;}
+//}
+//
+//}
+
+//-	script	suss300	-1,{
+//
+//OnClock1100:
+//OnClock1500:
+//OnClock2200:
+//
+//announce "[Evento] O Necron nasceu, corra para derrotá-lo",bc_blue|bc_all;
+//monster "kh_kiehl02",0,0,"[Evento] Necron",1239,1,"suss4::OnZumDie01";
+//end;
+//
+//}
+//
+//-	script	suss4	-1,{
+//
+//OnZumDie01:
+//end;
+//
+//}
+
+//iz_dun01,0,0,0,0	monster	[Evento] Nukenin da Névoa	1043,70,120000,300000 ,0
+//iz_dun01,0,0,0,0	monster	[Evento] Mestre dos Pergaminhos	1295,1,1200000,3600000 ,0
+//kh_kiehl02,0,0,0,0	monster	[Evento] Invocação Maldita	1248,30,5000,5000 ,0
+
+
+//function	script	presentes	{
+//
+//set @z,rand(1,100);
+//if (@z > 40) {getitem 7575,1; end;}
+//if (@z > 10) && (@z < 40) {getitem 7576,1; end;}
+//if (@z <= 10) {getitem 7577,1; end;}
+//end;
+//
+//}
+
+//kakashi,89,158,4	script	Evento de Halloween	1130,{
+//	if( gettime(4) != 6) && (gettime(4) != 0) {mes "O evento encontra-se fechado"; close;}
+//	mes "[Teleportador]";
+//	mes "Olá amigo, Gostaria de acessar o evento de halloween?";
+//	menu "Sim",L_sim,"Não",L_nao,"Como funciona o evento?",info;
+//
+//
+//L_sim:
+//warp "niflheim", 56,148;
+//end;
+//
+//L_nao:
+//close;
+//
+//info:
+//next;
+//mes "Neste evento, terão dezenas de Zumbis, ao serem mortos, eles renascerão entre 10 e 15 minutos, eles podem ser mortos por qualquer jogador de qualquer nível.";
+//next;
+//mes "Quando alguém matar um Zumbi, há uma chance entre 10 do jogador receber uma doce da sorte, estes Doces serão trocados por recompensas no final do evento, que será domingo.";
+//next;
+//mes "As recompensas não serão divulgadas ainda e a entrega delas serão por npc e aleatórias.";
+//next;
+//mes "A cada 30 minutos, nascerá também um Boss, que é um Zumbi maior, quem matar este Zumbi receberá 5 Doces.";
+//next;
+//mes "Ah, Não serão liberadas habilidades dentro do mapa do evento!";
+//next;
+//mes "Boa sorte!";
+//close;
+//
+//}
+
+niflheim,52,151,4	script	Retorno	91,{
+	mes "[Teleportador]";
+	mes "Olá amigo, Gostaria de retornar ao campo de treinamento?";
+	menu "Sim",L_sim,"Não",L_nao;
+
+L_sim:
+warp "kakashi", 88,140;
+end;
+
+L_nao:
+close;
+
+}
+
+//niflheim,56,148,5	script	inivi11	139,52,42,{
+//atcommand "@die "+strcharinfo(0)+"";
+//sleep2 1000;
+//atcommand "@alive "+strcharinfo(0)+"";
+//end;
+//
+//}
+
+//niflheim,0,0,0,0	monster	[Evento] Zumbi	1130,200,600000,900000,0
+//moc_fild01,0,0,0,0	monster	[Evento] Holiday	1130,200,600000,900000,0
+//cmd_fild08,0,0,0,0	monster	[Evento] Holiday	1130,200,600000,900000,0
+//prt_fild01,0,0,0,0	monster	[Evento] Holiday	1130,200,600000,900000,0
+//yuno_fild08,0,0,0,0	monster	[Evento] Holiday	1130,200,600000,900000,0
+//ein_fild08,0,0,0,0	monster	[Evento] Holiday	1130,200,600000,900000,0
+//gef_fild04,0,0,0,0	monster	[Evento] Holiday	1130,200,600000,900000,0
+//mjolnir_01,0,0,0,0	monster	[Evento] Holiday	1130,200,600000,900000,0
+
+//kakashi,90,160,5	script	Troca - Equipamentos	99,{
+//
+//mes "Eu sou o trocador de equipamentos temporários, aqui você poderá trocar seus equipamentos nível 3 antigos por uma caixa de equipamentos nova, faça logo essa troca pois eu não ficarei aqui por muito tempo";
+//menu "- Trocar",go1,"- Agora não",go2;
+//
+//go2:
+//close;
+//
+//go1:
+//next;
+//if(countitem(2103) > 0) {delitem 2103,1; getitem 7246,1; mes "Troca realizada com sucesso"; close;}
+//if(countitem(2306) > 0) {delitem 2306,1; getitem 7246,1; mes "Troca realizada com sucesso"; close;}
+//if(countitem(1467) > 0) {delitem 1467,1; getitem 7246,1; mes "Troca realizada com sucesso"; close;}
+//if(countitem(2422) > 0) {delitem 2422,1; getitem 7246,1; mes "Troca realizada com sucesso"; close;}
+//mes "Você não possui um equipamento antigo nível 3 em seu inventário";
+//close;
+//
+//}
+
+in_hunter,90,160,5	script	Papai Noel	99,{
+
+mes "[^DC143CPapai Noel^000000]";
+mes "Ei você! Me ajude! Vim entregar presentes nessas terras com uns shinobis soltaram um genjutsu nos meus ajudantes e eles estão com os presentes";
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Creio que a única forma de recuperar os presentes será os derrotando pois eles estão agressivos! Recupere os presentes e nós podermos salvar o natal!";
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Quanto mais presentes forem recuperados, mais eu irei recompensar as pessoas que estão me ajudando, o jogador que mais tiver me ajudado receberá um presente especial no fim, e ainda poderá trocar aqui comigo doces por recompensas no final da missão!";
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "O que gostaria de fazer?";
+menu "- Entregar presentes",L_go,"- Ver minha pontuação",L_point,"- Ver quantidade global de presentes",L_global,"- Trocar doces",L_troca,"- Nada no momento",L_close;
+
+L_go:
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Muito bem, me dê aqui os presentes";
+if(countitem(7576) == 0) && (countitem(7577) == 0) {next; mes "[^DC143CPapai Noel^000000]"; mes "Oh não você não possui nenhum presente pra me entregar"; close;}
+set @presente1, countitem(7576);
+set @presente2, countitem(7577);
+delitem 7576, @presente1;
+delitem 7577, @presente2;
+set points_natal, points_natal + 1 * @presente1;
+set points_natal, points_natal + 5 * @presente2;
+set $presentes, $presentes + @presente1;
+set $presentes, $presentes + @presente2;
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Obrigado, você agora possui "+points_natal+" pontos";
+close;
+
+L_global:
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Até o momento foram recuperados "+$presentes+" presentes";
+close;
+
+L_point:
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Você possui "+points_natal+" pontos";
+close;
+
+L_close:
+close;
+
+L_troca:
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Muito obrigado por ter ajudado a salvar o natal, abaixo estão os presentes disponíveis pelos doces que você recuperou dos meus ajudantes";
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Qual presente você quer?";
+menu "- Um chapéu",hats,"- Removedor especial de Invo. (150)",L_um,"- Removedor especial de KG (150)",L_dois,"- Pergaminho Reverso (150)",L_tres,"- Caixa de DNA Completo (250)",L_quatro,"- Caixa de Hat (100)",L_cinco,"- Fuuin no Sho (900)",L_seis,"- Preciso pensar mais",L_close;
+
+L_um:
+if(countitem(7575) < 150) {next; mes "Você não tem a quantidade necessária de doces (150)"; close;}
+getitem 7241,1;
+delitem 7575,150;
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_dois:
+if(countitem(7575) < 150) {next; mes "Você não tem a quantidade necessária de doces (150)"; close;}
+getitem 7242,1;
+delitem 7575,150;
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_tres:
+if(countitem(7575) < 150) {next; mes "Você não tem a quantidade necessária de doces (150)"; close;}
+getitem 7243,1;
+delitem 7575,150;
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_quatro:
+if(countitem(7575) < 250) {next; mes "Você não tem a quantidade necessária de doces (250)"; close;}
+getitem 7249,1;
+delitem 7575,250;
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_cinco:
+if(countitem(7575) < 100) {next; mes "Você não tem a quantidade necessária de doces (100)"; close;}
+getitem 7248,1;
+delitem 7575,100;
+dispbottom "Troca realizada com sucesso";
+close;
+
+L_seis:
+if(countitem(7575) < 900) {next; mes "Você não tem a quantidade necessária de doces (900)"; close;}
+getitem 749,1;
+delitem 7575,900;
+dispbottom "Troca realizada com sucesso";
+close;
+
+hats:
+next;
+mes "[^DC143CPapai Noel^000000]";
+mes "Muito bem, aqui estão os chapéus que eu tenho";
+menu "- Chapéu de Bobo (100)",bobo,"- Chapéu de Palha (100)",palha,"- Chapéu de Rato (100)",rato,"- Chapéu de Porco (100)",porco,"- Boné Aba Reta (100)",bone,"- Máscara Mononoke (100)",mascara,"- Gorro de Natal (50)",natal,"- Preciso pensar mais",L_close;
+
+bobo:
+if(countitem(7575) < 100) {next; mes "Você não tem a quantidade necessária de doces (100)"; close;}
+getitem 2488,1;
+delitem 7575,100;
+dispbottom "Troca realizada com sucesso";
+close;
+
+palha:
+if(countitem(7575) < 100) {next; mes "Você não tem a quantidade necessária de doces (100)"; close;}
+getitem 2489,1;
+delitem 7575,100;
+dispbottom "Troca realizada com sucesso";
+close;
+
+rato:
+if(countitem(7575) < 100) {next; mes "Você não tem a quantidade necessária de doces (100)"; close;}
+getitem 2490,1;
+delitem 7575,100;
+dispbottom "Troca realizada com sucesso";
+close;
+
+porco:
+if(countitem(7575) < 100) {next; mes "Você não tem a quantidade necessária de doces (100)"; close;}
+getitem 2491,1;
+delitem 7575,100;
+dispbottom "Troca realizada com sucesso";
+close;
+
+bone:
+if(countitem(7575) < 100) {next; mes "Você não tem a quantidade necessária de doces (100)"; close;}
+getitem 2492,1;
+delitem 7575,100;
+dispbottom "Troca realizada com sucesso";
+close;
+
+mascara:
+if(countitem(7575) < 100) {next; mes "Você não tem a quantidade necessária de doces (100)"; close;}
+getitem 2493,1;
+delitem 7575,100;
+dispbottom "Troca realizada com sucesso";
+close;
+
+natal:
+if(countitem(7575) < 50) {next; mes "Você não tem a quantidade necessária de doces (50)"; close;}
+getitem 2236,1;
+delitem 7575,50;
+dispbottom "Troca realizada com sucesso";
+close;
+
+
+}
+
+
+niflheim	mapflag	noskill
+niflheim	mapflag	noexp
+niflheim	mapflag	pvp	off
+niflheim	mapflag	nosave	SavePoint
+niflheim	mapflag	nomemo
+niflheim	mapflag	nowarpto
+niflheim	mapflag	nowarp
+niflheim	mapflag	noteleport
+
+//1130,JAKK,Jakk,Jakk,38,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,10,12,1,0,43,0x3611,200,1180,480,648,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+//1436,G_JAKK,Jakk,Jakk,38,10000,0,0,0,1,315,382,5,30,1,38,38,43,75,45,10,12,1,0,43,0x38C5,200,1180,480,648,0,0,0,0,0,0,0,0,571,1000000,571,1000000,571,1000000,571,1000000,571,1000000,0,0,0,0,0,0,0,0,0,0
+

@@ -1,0 +1,94 @@
+//===== Cronus Script ==========================================|
+//= Sistema de Manutenção					|
+//===== Autor: =================================================|
+//= Hurican Dooders						|
+//===== Versão Atual: ==========================================|
+//= 1.2								|
+//===== Compatibilidade: =======================================|
+//= Cronus (todos)						|
+//===== Descrição: =============================================|
+//= Ativa manutenção no servidor, apenas GM's podem logar após	|
+//= manutenção ligada.						|
+//= Mensagem pessoal para npc:main para ativar.			|
+//= Agora com anúncios. Versão 1.2				|
+//= Versão nova com opção de Setar um Nível de GM para logar	|
+//= mesmo com manutenção ativada. Versão 1.2b			|
+//==============================================================|
+reuniao,48,44,5	script	[ GM ] ManuCAT	554,{
+//==============================================================|
+//= Parametros do Script
+//
+	if(getgmlevel() != 99) end;
+	
+	.@npc$ = "                  ^FF6961[ "+strnpcinfo(1)+" ]^000000";
+	.@zeny$ = "Com o ^800080"+getitemname(.@passecomercio)+"^000000 você pode utilizar o serviço sem pagar^808080(O item é consumido)^000000 e ^FF0000VIP não paga!^000000";
+	.@costArmazem = 2500;
+//==============================================================|
+
+mes .@npc$;
+mes "Como posso lhe ajudar?";
+switch(select("- ^FF0000Ligar^000000 Manutenção:- ^000080Desligar^000000 Manutenção:- Nada")){
+
+//=====|
+// MENU - LIGAR MANUTENÇÃO
+
+case 1:
+next;
+mes .@npc$;
+mes "Digite o ^FF0000nível(de GM)^000000 mínimo que poderá logar mesmo com a Manutenção ativada.";
+input $level;
+next;
+mes .@npc$;
+mes "Está correto?";
+mes " ";
+mes "Nível mínimo: ^0000EE"+$level+"^000000";
+if(select("- Sim:- Não") == 2) close;
+next;
+mes .@npc$;
+mes "Manutenção: ^0000EEAtivada!^000000";
+close2;
+initnpctimer;
+announce " "+strnpcinfo(1)+": O servidor entrará em Manutenção em 5 minutos.",bc_blue; end;
+OnTimer240000:
+announce " "+strnpcinfo(1)+": A Manutenção será ativada em 1 minuto.",bc_blue; end;
+OnTimer300000:
+announce " "+strnpcinfo(1)+": Manutenção ativada, retornaremos em breve!",bc_blue;
+sleep2 5000;
+atcommand "@kickall";
+set $main,1;
+
+//=====|
+// MENU - liberar Servidor
+
+case 2:
+next;
+if($main == 0) {	mes .@npc$;
+					mes "O Servidor ^FF0000Não esta em Manutenção^000000.";
+					close; }
+mes .@npc$;
+mes "Manutenção: ^0000CCDesativado!^000000";
+announce " "+strnpcinfo(1)+": Manutenção desativada, bom jogo a todos!",bc_blue;
+set $main,0;
+stopnpctimer;
+close;
+
+//=====|
+case 3:
+close;
+}
+
+//==============================================================|
+//= Limitações ao Logar
+
+OnPcLoginEvent:
+if(getgmlevel() >= $level) end;
+if(getgmlevel() <= 2){
+if($main == 0) end;
+mes .@npc$;
+mes "Servidor em manutenção!";
+mes "Volte mais tarde.";
+sleep2 4000;
+atcommand "@kick "+strcharinfo(0)+"";
+end;
+}
+}

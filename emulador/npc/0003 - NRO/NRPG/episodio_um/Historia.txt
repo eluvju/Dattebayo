@@ -1,0 +1,148 @@
+//===== eAthena Script ========================================
+//= Histórias
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= Introdutor ao Primeiro Episódio.
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+kh_vila,126,179,5	script	OnTouchon	-1,1,5,{
+//============================================================
+OnTouch:
+warp "kh_vila",123,179;
+dispbottom "[Este Horário é perigoso sair]";
+close;
+}
+//===== eAthena Script ========================================
+//= Histórias
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= Introdutor ao Primeiro Episódio.
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+kh_vila,114,173,4	script	Tsunamii	101,{
+//============================================================
+if (EPI != 1) goto done;
+
+if(gettimetick(2) - bc_time < 1200) {
+mes "Este npc de quest tem um delay de 20 minutos";
+mes "Ainda não se passaram os 20 minutos, Por favor aguarde.";
+close;
+}
+else if (gettimetick(2) - bc_time > 1200)
+
+mes "[^000080Tsunamii^000000]";
+mes "Olá ^BEBEBE"+strcharinfo(0)+"^000000 bem vindo à minha casa";
+mes "Vou lhe contar um pouco sobre a minha família antes de você ir à missão amanhã";
+next;
+set bc_time,gettimetick(2);
+menu "-^0000FFOk^000000",Ok;
+
+ok:
+mes "[^000080Tsunamii^000000]";
+mes "Nós os habitantes do ^0000FFPaís das Ondas^000000 temos o Sonho de que nosso vila volte a ser o que era antes";
+next;
+mes "[^000080Tsunamii^000000]";
+mes "A vila está assim por causa de ^FF0000Gatou^000000 o Milionário,que está estragando com a nossa vila";
+next;
+mes "[^000080Tsunamii^000000]";
+mes "Muitas pessoas estão sendo afetadas por isso entre elas meu filho ^006400Inari^000000 e meu pai ^00FFFFTazuna^000000";
+menu "-^00FFFFMe conte sobre o Tazuna^000000",T,"-^006400Me conte sobre o Inari^000000",I;
+
+T:
+next;
+mes "[^000080Tsunamii^000000]";
+mes "Meu pai ^00FFFFTazuna^000000 é um humilde construtor de Pontes que está bravamente salvar o comércio do ^0000FFPaís das Ondas^000000, porém isso é algo que ^FF0000Gatou^000000 não quer";
+set @T,+1;
+close;
+
+I:
+next;
+mes "[^000080Tsunamii^000000]";
+mes "Meu Filho ^006400Inari^000000 desde criança pequeno sempre foi um garoto medroso e sem esperança";
+next;
+mes "[^000080Tsunamii^000000]";
+mes "Até o dia que conheceu Kaiza,um pescador estrangeiro, com qual eu me casei";
+mes "Ele com toda certeza ^BEBEBE"+strcharinfo(0)+"^000000 foi a melhor coisa ao Inari";
+next;
+mes "[^000080Tsunamii^000000]";
+mes "Porém ocorreu uma ^FF0000Fatalidade^000000 e Inari perdeu as esperanças de novo e passa os dias assim na cama sem reação";
+close;
+
+done:
+mes "[^000080Tsunamii^000000]";
+mes "Você já fez essa quest!";
+close;
+
+}
+//===== eAthena Script ========================================
+//= Histórias
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= Introdutor ao Primeiro Episódio.
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+kh_vila,108,184,4	script	Inari	107,{
+//==========Variavéis=========================================
+set @npc$,"[^000080Inari^000000]";
+//============================================================
+mes @npc$;
+mes "Não me Enche!";
+close;
+}
+//===== eAthena Script ========================================
+//= Histórias
+//===== Por: =================================================
+//= Over
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= Introdutor ao Primeiro Episódio.
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+kh_vila,115,169,2	script	Tazuna::1	57,{
+
+//==========Variavéis=========================================
+set @npc$,"[^000080Tazuna^000000]";
+//============================================================
+if (EPI != 1) goto done;
+if (@T == 1) goto F;
+
+if(gettimetick(2) - bc_time < 1200) {
+mes "Este npc de quest tem um delay de 20 minutos";
+mes "Ainda não se passaram os 20 minutos, Por favor aguarde.";
+close;
+}
+else if (gettimetick(2) - bc_time > 1200)
+mes @npc$;
+mes "^BEBEBE"+strcharinfo(0)+"^000000 amanhã teremos um dia dificíl procure descansar";
+close;
+
+F:
+mes @npc$;
+mes "^BEBEBE"+strcharinfo(0)+"^000000 que bom que você já falou com a Tsunamii espero que tenha entendido a nossa situação";
+mes "Acho que está na hora de irmos à ponte";
+close2;
+warp "ama_test",50,19;
+set @T,-1;
+set bc_time,gettimetick(2);
+end;
+
+done:
+mes @npc$;
+mes "Você já fez essa quest!";
+close;
+
+}

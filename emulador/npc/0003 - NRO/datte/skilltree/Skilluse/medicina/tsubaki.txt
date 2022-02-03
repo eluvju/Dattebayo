@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillmai	-1,{
+    end;
+//When a Character uses a skill
+
+//Tsubaki
+
+onPcUseSkillEvent:
+
+           if(lskillid == 33) {
+
+
+if (getskilllv(33) == 1) {
+
+if (Tsubaki != 1) {end;}
+if (skill33 >= 50) {skill 33,2,0; set skill33,0; dispbottom "[Sys] Level up"; end; }
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 1: "+skill33+" de 50";
+
+end;
+
+}
+
+if (getskilllv(33) == 2) {
+if (Tsubaki != 1) {end;}
+if (skill33 >= 100) {skill 33,3,0; set skill33,0; dispbottom "[Sys] Level up"; end;}
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 2: "+skill33+" de 100";
+
+end;
+
+}
+
+if (getskilllv(33) == 3) {
+
+if (Tsubaki != 1) {end;}
+if (skill33 >= 150) {skill 33,4,0; set skill33,0; dispbottom "[Sys] Level up"; end;}
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 3: "+skill33+" de 150";
+
+end;
+
+}
+
+if (getskilllv(33) == 4) {
+if (Tsubaki != 1) {end;}
+if (skill33 >= 200) {skill 33,5,0; set skill33,0; dispbottom "[Sys] Level up"; end;}
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 4: "+skill33+" de 200";
+
+end;
+
+}
+
+if (getskilllv(33) == 5) {
+if (Tsubaki != 1) {end;}
+if (skill33 >= 250) {skill 33,6,0; set skill33,0; dispbottom "[Sys] Level up"; end;}
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 5: "+skill33+" de 250";
+
+end;
+
+}
+
+if (getskilllv(33) == 6) {
+if (Tsubaki != 1) {end;}
+if (skill33 >= 300) {skill 33,7,0; set skill33,0; dispbottom "[Sys] Level up"; end;}
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 6: "+skill33+" de 300";
+
+end;
+
+}
+
+if (getskilllv(33) == 7) {
+if (Tsubaki != 1) {end;}
+if (skill33 >= 500) {skill 33,8,0; set skill33,0; dispbottom "[Sys] Level up"; end;}
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 7: "+skill33+" de 500";
+
+end;
+
+}
+
+if (getskilllv(33) == 8) {
+if (Tsubaki != 1) {end;}
+if (skill33 >= 700) {skill 33,9,0; set skill33,0; dispbottom "[Sys] Level up"; end;}
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 8: "+skill33+" de 700";
+
+end;
+
+}
+
+if (getskilllv(33) == 9) {
+if (Tsubaki != 1) {end;}
+if (skill33 >= 1000) {skill 33,10,0; set skill33,0; dispbottom "[Sys] Level up"; end;}
+set skill33,skill33 +1;
+dispbottom "[Jutsu level] Tsubaki no Mai level 9: "+skill33+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

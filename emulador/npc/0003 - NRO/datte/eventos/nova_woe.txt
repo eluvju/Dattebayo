@@ -1,0 +1,178 @@
+kakashi,103,154,4	script	Batalha Shinobi	990,{
+
+if ($batalha_on != 1) {mes "A batalha não está ativada no momento, volte mais tarde"; close;}
+mes "A batalha está rolando, gostaria de entrar na batalha shinobi?";
+menu "Sim",sim,"Não",nao;
+
+sim:
+switch( rand(1,10) ) {
+
+	case 1:
+	warp "thana_boss", 135,150;
+		close;
+
+	case 2:
+	warp "thana_boss", 125,140;
+		close;
+
+	case 3:
+	warp "thana_boss", 136,129;
+		close;
+
+	case 4:
+	warp "thana_boss", 146,140;
+		close;
+
+	case 5:
+	warp "thana_boss", 153,162;
+		close;
+
+	case 6:
+	warp "thana_boss", 121,158;
+		close;
+
+	case 7:
+	warp "thana_boss", 112,128;
+		close;
+
+	case 8:
+	warp "thana_boss", 140,109;
+		close;
+
+	case 9:
+	warp "thana_boss", 165,125;
+		close;
+
+	case 10:
+	warp "thana_boss", 136,163;
+		close;
+
+nao:
+close;
+
+
+}
+}
+-	script	edi_99	1083,{
+
+OnFri2328:
+OnSun1900:
+
+set $konoha_caiu,0;
+set $nuvem_caiu,0;
+set $nevoa_caiu,0;
+set $suna_caiu,0;
+
+set $suna_tomou_konoha,0;
+set $nevoa_tomou_konoha,0;
+set $nuvem_tomou_konoha,0;
+
+set $suna_tomou_nevoa,0;
+set $konoha_tomou_nevoa,0;
+set $nuvem_tomou_nevoa,0;
+
+set $nuvem_tomou_suna,0;
+set $konoha_tomou_suna,0;
+set $nevoa_tomou_suna,0;
+
+set $nevoa_tomou_nuvem,0;
+set $konoha_tomou_nuvem,0;
+set $suna_tomou_nuvem,0;
+
+
+	announce "[Batalha Shinobi] : A batalha shinobi está iniciando",0;
+	sleep2 10000;
+	announce "[Batalha Shinobi] : Todas as vilas se preparem, uma grande batalha terá inicio agora",0;
+	sleep2 10000;
+	announce "[Batalha Shinobi] : Defende sua base e destrua a do inimigo!",0;
+	sleep2 10000;
+	announce "[Batalha Shinobi] : Entrada está aberta",0;	
+	set $batalha_on,1;
+	end;
+
+OnFri2338:
+OnSun2000:
+	set $batalha_on,0;
+	announce "[Batalha Shinobi] : A batalha shinobi está encerrada",0;
+	sleep2 10000;
+	announce "[Batalha Shinobi] : Resultados finais estão sendo computados",0;
+	sleep2 10000;
+	announce "[Batalha Shinobi] : Konoha obteve "+$konoha_points+" pontos durante a batalha",0;
+	sleep2 3000;
+	announce "[Batalha Shinobi] : Névoa obteve "+$nevoa_points+" pontos durante a batalha",0;
+	sleep2 3000;
+	announce "[Batalha Shinobi] : Suna obteve "+$suna_points+" pontos durante a batalha",0;
+	sleep2 3000;
+	announce "[Batalha Shinobi] : Nuvem obteve "+$nuvem_points+" pontos durante a batalha",0;
+	set $konoha_points,0;
+	set $nevoa_points,0;
+	set $suna_points,0;
+	set $nuvem_points,0;
+	end;
+
+
+}
+
+-	script	update_nnfro_rpg4	-1,{
+
+
+OnMapKonohaBijuu:
+if ($batalha_on != 1) {end;}
+announce "[Batalha Shinobi] : Nuvem tem "+$nuvem_points+"",0;
+announce "[Batalha Shinobi] : Konoha tem "+$konoha_points+"",0;
+announce "[Batalha Shinobi] : Suna tem "+$suna_points+"",0;
+announce "[Batalha Shinobi] : Névoa tem "+$nevoa_points+"",0;
+if(#konoha == 1) {if ($suna_tomou_konoha == 1) {set $suna_tomou_konoha,0; set $suna_points, $suna_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso konoha recupera a base e soma 1 ponto",bc_blue|bc_all; end;} if ($nuvem_tomou_konoha == 1) {set $nuvem_tomou_konoha,0; set $nuvem_points, $nuvem_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso konoha recupera a base e soma 1 ponto",bc_blue|bc_all; end;} if ($nevoa_tomou_konoha == 1) {set $nevoa_tomou_konoha,0; set $nevoa_points, $nevoa_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso konoha recupera a base e soma 1 ponto",bc_blue|bc_all; end;} set $konoha_caiu,1; set $konoha_points, $konoha_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso konoha perde 1 ponto",bc_blue|bc_all; end;}
+if(#nuvem == 1) {if ($nuvem_tomou_konoha == 1) {set $nuvem_points, $nuvem_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso nuvem é penalizado em 1 ponto",bc_blue|bc_all; end;} if ($suna_tomou_konoha == 1) {set $suna_tomou_konoha,0; set $nuvem_tomou_konoha,1; set $nevoa_tomou_konoha,0; set $suna_points, $suna_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso nuvem domina a base konoha e soma 1 ponto",bc_blue|bc_all; end;}  if ($nevoa_tomou_konoha ==1) {set $suna_tomou_konoha,0; set $nuvem_tomou_konoha,1; set $nevoa_tomou_konoha,0; set $nevoa_points, $nevoa_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso nuvem domina a base konoha e soma 1 ponto",bc_blue|bc_all; end;} set $konoha_caiu,1; set $nuvem_tomou_konoha,1; set $suna_tomou_konoha,0; set $nevoa_tomou_konoha,0; set $nuvem_points, $nuvem_points +1; set $konoha_points, $konoha_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu de Konoha, com isso a Nuvem soma 1 ponto, enquanto konoha perde 1 ponto",bc_blue|bc_all; end;}
+if(#suna == 1) {if ($suna_tomou_konoha == 1) {set $suna_points, $suna_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso suna é penalizado em 1 ponto",bc_blue|bc_all; end;}if ($nuvem_tomou_konoha == 1) {set $nuvem_tomou_konoha,0; set $suna_tomou_konoha,1; set $nevoa_tomou_konoha,0; set $nuvem_points, $nuvem_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso suna domina a base konoha e soma 1 ponto",bc_blue|bc_all; end;}  if ($nevoa_tomou_konoha ==1) {set $suna_tomou_konoha,1; set $nuvem_tomou_konoha,0; set $nevoa_tomou_konoha,0; set $nevoa_points, $nevoa_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso suna domina a base konoha e soma 1 ponto",bc_blue|bc_all; end;} set $konoha_caiu,1; set $nuvem_tomou_konoha,0; set $suna_tomou_konoha,1; set $nevoa_tomou_konoha,0; set $suna_points, $suna_points +1; set $konoha_points, $konoha_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu de Konoha, com isso a suna soma 1 ponto, enquanto konoha perde 1 ponto",bc_blue|bc_all; end;}
+if(#nevoa == 1) {if ($nevoa_tomou_konoha == 1) {set $konoha_points, $konoha_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso névoa é penalizado em 1 ponto",bc_blue|bc_all; end;}if ($nuvem_tomou_konoha == 1) {set $nuvem_tomou_konoha,0; set $suna_tomou_konoha,0; set $nevoa_tomou_konoha,1; set $nuvem_points, $nuvem_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso névoa domina a base konoha e soma 1 ponto",bc_blue|bc_all; end;}  if ($suna_tomou_konoha ==1) {set $suna_tomou_konoha,0; set $nuvem_tomou_konoha,0; set $nevoa_tomou_konoha,1; set $suna_points, $suna_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso névoa domina a base konoha e soma 1 ponto",bc_blue|bc_all; end;} set $konoha_caiu,1; set $nuvem_tomou_konoha,0; set $suna_tomou_konoha,0; set $nevoa_tomou_konoha,1; set $nevoa_points, $nevoa_points +1; set $konoha_points, $konoha_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu de Konoha, com isso a névoa soma 1 ponto, enquanto konoha perde 1 ponto",bc_blue|bc_all; end;}
+end;
+
+OnMapNevoaBijuu:
+if ($batalha_on != 1) {end;}
+announce "[Batalha Shinobi] : Nuvem tem "+$nuvem_points+"",0;
+announce "[Batalha Shinobi] : Konoha tem "+$konoha_points+"",0;
+announce "[Batalha Shinobi] : Suna tem "+$suna_points+"",0;
+announce "[Batalha Shinobi] : Névoa tem "+$nevoa_points+"",0;
+if(#nevoa == 1) {if ($suna_tomou_nevoa == 1) {set $suna_tomou_nevoa,0; set $suna_points, $suna_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso névoa recupera a base e soma 1 ponto",bc_blue|bc_all; end;} if ($nuvem_tomou_nevoa == 1) {set $nuvem_tomou_nevoa,0; set $nuvem_points, $nuvem_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso névoa recupera a base e soma 1 ponto",bc_blue|bc_all; end;} if ($konoha_tomou_nevoa == 1) {set $konoha_tomou_nevoa,0; set $konoha_points, $konoha_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso névoa recupera a base e soma 1 ponto",bc_blue|bc_all; end;} set $nevoa_caiu,1; set $nevoa_points, $nevoa_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso a névoa perde 1 ponto",bc_blue|bc_all; end;}
+if(#nuvem == 1) {if ($nuvem_tomou_nevoa == 1) {set $nuvem_points, $nuvem_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso nuvem é penalizado em 1 ponto",bc_blue|bc_all; end;} if ($suna_tomou_nevoa == 1) {set $suna_tomou_nevoa,0; set $nuvem_tomou_nevoa,1; set $konoha_tomou_nevoa,0; set $suna_points, $suna_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso nuvem domina a base névoa e soma 1 ponto",bc_blue|bc_all; end;}  if ($konoha_tomou_nevoa ==1) {set $suna_tomou_nevoa,0; set $nuvem_tomou_nevoa,1; set $konoha_tomou_nevoa,0; set $konoha_points, $konoha_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso nuvem domina a base névoa e soma 1 ponto",bc_blue|bc_all; end;} set $nevoa_caiu,1; set $nuvem_tomou_nevoa,1; set $suna_tomou_nevoa,0; set $konoha_tomou_nevoa,0; set $nuvem_points, $nuvem_points +1; set $nevoa_points, $nevoa_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da névoa, com isso a Nuvem soma 1 ponto, enquanto névoa perde 1 ponto",bc_blue|bc_all; end;}
+if(#suna == 1) {if ($suna_tomou_nevoa == 1) {set $suna_points, $suna_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso suna é penalizado em 1 ponto",bc_blue|bc_all; end;} if ($nuvem_tomou_nevoa == 1) {set $nuvem_tomou_nevoa,0; set $suna_tomou_nevoa,1; set $konoha_tomou_nevoa,0; set $nuvem_points, $nuvem_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso suna domina a base névoa e soma 1 ponto",bc_blue|bc_all; end;}  if ($konoha_tomou_nevoa ==1) {set $suna_tomou_nevoa,1; set $nuvem_tomou_nevoa,0; set $konoha_tomou_nevoa,0; set $konoha_points, $konoha_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso suna domina a base névoa e soma 1 ponto",bc_blue|bc_all; end;} set $nevoa_caiu,1; set $nuvem_tomou_nevoa,0; set $suna_tomou_nevoa,1; set $nevoa_tomou_nevoa,0; set $suna_points, $suna_points +1; set $nevoa_points, $nevoa_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da névoa, com isso a suna soma 1 ponto, enquanto névoa perde 1 ponto",bc_blue|bc_all; end;}
+if(#konoha == 1) {if ($konoha_tomou_nevoa == 1) {set $konoha_points, $konoha_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso konoha é penalizado em 1 ponto",bc_blue|bc_all; end;} if ($nuvem_tomou_nevoa == 1) {set $nuvem_tomou_nevoa,0; set $suna_tomou_nevoa,0; set $konoha_tomou_nevoa,1; set $nuvem_points, $nuvem_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso konoha domina a base névoa e soma 1 ponto",bc_blue|bc_all; end;}  if ($suna_tomou_nevoa ==1) {set $suna_tomou_nevoa,0; set $nuvem_tomou_nevoa,0; set $konoha_tomou_nevoa,1; set $suna_points, $suna_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso konoha domina a base névoa e soma 1 ponto",bc_blue|bc_all; end;} set $nevoa_caiu,1; set $nuvem_tomou_nevoa,0; set $suna_tomou_nevoa,0; set $konoha_tomou_nevoa,1; set $konoha_points, $konoha_points +1; set $nevoa_points, $nevoa_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da névoa, com isso konoha soma 1 ponto, enquanto névoa perde 1 ponto",bc_blue|bc_all; end;}
+end;
+
+OnMapSunaBijuu:
+if ($batalha_on != 1) {end;}
+announce "[Batalha Shinobi] : Nuvem tem "+$nuvem_points+"",0;
+announce "[Batalha Shinobi] : Konoha tem "+$konoha_points+"",0;
+announce "[Batalha Shinobi] : Suna tem "+$suna_points+"",0;
+announce "[Batalha Shinobi] : Névoa tem "+$nevoa_points+"",0;
+if(#suna == 1) {if ($nevoa_tomou_suna == 1) {set $nevoa_tomou_suna,0; set $nevoa_points, $nevoa_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso suna recupera a base e soma 1 ponto",bc_blue|bc_all; end;} if ($nuvem_tomou_suna == 1) {set $nuvem_tomou_suna,0; set $nuvem_points, $nuvem_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso suna recupera a base e soma 1 ponto",bc_blue|bc_all; end;} if ($konoha_tomou_suna == 1) {set $konoha_tomou_suna,0; set $konoha_points, $konoha_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso suna recupera a base e soma 1 ponto",bc_blue|bc_all; end;} set $suna_caiu,1; set $suna_points, $suna_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso a suna perde 1 ponto",bc_blue|bc_all; end;}
+if(#nuvem == 1) {if ($nuvem_tomou_suna == 1) {set $nuvem_points, $nuvem_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso nuvem é penalizado em 1 ponto",bc_blue|bc_all; end;}  if ($nevoa_tomou_suna == 1) {set $nevoa_tomou_suna,0; set $nuvem_tomou_suna,1; set $konoha_tomou_suna,0; set $nevoa_points, $nevoa_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso nuvem domina a base suna e soma 1 ponto",bc_blue|bc_all; end;}  if ($konoha_tomou_suna ==1) {set $nevoa_tomou_suna,0; set $nuvem_tomou_suna,1; set $konoha_tomou_suna,0; set $konoha_points, $konoha_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso nuvem domina a base suna e soma 1 ponto",bc_blue|bc_all; end;} set $suna_caiu,1; set $nuvem_tomou_suna,1; set $nevoa_tomou_suna,0; set $konoha_tomou_suna,0; set $nuvem_points, $nuvem_points +1; set $suna_points, $suna_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da suna, com isso a Nuvem soma 1 ponto, enquanto suna perde 1 ponto",bc_blue|bc_all; end;}
+if(#nevoa == 1) {if ($nevoa_tomou_suna == 1) {set $nevoa_points, $nevoa_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso névoa é penalizado em 1 ponto",bc_blue|bc_all; end;}if ($nuvem_tomou_suna == 1) {set $nuvem_tomou_suna,0; set $nevoa_tomou_suna,1; set $konoha_tomou_suna,0; set $nuvem_points, $nuvem_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso névoa domina a base suna e soma 1 ponto",bc_blue|bc_all; end;}  if ($konoha_tomou_suna ==1) {set $nevoa_tomou_suna,1; set $nuvem_tomou_suna,0; set $konoha_tomou_suna,0; set $konoha_points, $konoha_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso névoa domina a base suna e soma 1 ponto",bc_blue|bc_all; end;} set $suna_caiu,1; set $nuvem_tomou_suna,0; set $nevoa_tomou_suna,1; set $konoha_tomou_suna,0; set $nevoa_points, $nevoa_points +1; set $suna_points, $suna_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da suna, com isso a névoa soma 1 ponto, enquanto suna perde 1 ponto",bc_blue|bc_all; end;}
+if(#konoha == 1) {if ($konoha_tomou_suna == 1) {set $konoha_points, $konoha_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso konoha é penalizado em 1 ponto",bc_blue|bc_all; end;} if ($nuvem_tomou_suna == 1) {set $nuvem_tomou_suna,0; set $nevoa_tomou_suna,0; set $konoha_tomou_suna,1; set $nuvem_points, $nuvem_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso konoha domina a base suna e soma 1 ponto",bc_blue|bc_all; end;}  if ($nevoa_tomou_suna ==1) {set $nevoa_tomou_suna,0; set $nuvem_tomou_suna,0; set $konoha_tomou_suna,1; set $nevoa_points, $nevoa_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso konoha domina a base suna e soma 1 ponto",bc_blue|bc_all; end;} set $suna_caiu,1; set $nuvem_tomou_suna,0; set $nevoa_tomou_suna,0; set $konoha_tomou_suna,1; set $konoha_points, $konoha_points +1; set $suna_points, $suna_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da suna, com isso konoha soma 1 ponto, enquanto suna perde 1 ponto",bc_blue|bc_all; end;}
+end;
+
+OnMapNuvemBijuu:
+if ($batalha_on != 1) {end;}
+announce "[Batalha Shinobi] : Nuvem tem "+$nuvem_points+"",0;
+announce "[Batalha Shinobi] : Konoha tem "+$konoha_points+"",0;
+announce "[Batalha Shinobi] : Suna tem "+$suna_points+"",0;
+announce "[Batalha Shinobi] : Névoa tem "+$nevoa_points+"",0;
+if(#nuvem == 1) {if ($nevoa_tomou_suna == 1) {set $nevoa_tomou_nuvem,0; set $nevoa_points, $nevoa_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso nuvem recupera a base e soma 1 ponto",bc_blue|bc_all; end;} if ($suna_tomou_nuvem == 1) {set $suna_tomou_nuvem,0; set $suna_points, $suna_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso nuvem recupera a base e soma 1 ponto",bc_blue|bc_all; end;} if ($konoha_tomou_nuvem == 1) {set $konoha_tomou_nuvem,0; set $konoha_points, $konoha_points -1; set $nuvem_points, $nuvem_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso nuvem recupera a base e soma 1 ponto",bc_blue|bc_all; end;} set $nuvem_caiu,1; set $nuvem_points, $nuvem_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso a nuvem perde 1 ponto",bc_blue|bc_all; end;}
+if(#suna == 1) {if ($suna_tomou_nuvem == 1) {set $suna_points, $suna_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso suna é penalizado em 1 ponto",bc_blue|bc_all; end;}if ($nevoa_tomou_nuvem == 1) {set $nevoa_tomou_nuvem,0; set $suna_tomou_nuvem,1; set $konoha_tomou_nuvem,0; set $nevoa_points, $nevoa_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso suna domina a base nuvem e soma 1 ponto",bc_blue|bc_all; end;}  if ($konoha_tomou_nuvem ==1) {set $nevoa_tomou_nuvem,0; set $suna_tomou_nuvem,1; set $konoha_tomou_nuvem,0; set $konoha_points, $konoha_points -1; set $suna_points, $suna_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso suna domina a base nuvem e soma 1 ponto",bc_blue|bc_all; end;} set $nuvem_caiu,1; set $suna_tomou_nuvem,1; set $nevoa_tomou_nuvem,0; set $konoha_tomou_nuvem,0; set $suna_points, $suna_points +1; set $nuvem_points, $nuvem_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da nuvem, com isso a suna soma 1 ponto, enquanto nuvem perde 1 ponto",bc_blue|bc_all; end;}
+if(#nevoa == 1) {if ($nevoa_tomou_nuvem == 1) {set $nevoa_points, $nevoa_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso névoa é penalizado em 1 ponto",bc_blue|bc_all; end;} if ($nuvem_tomou_nuvem == 1) {set $suna_tomou_nuvem,0; set $nevoa_tomou_nuvem,1; set $konoha_tomou_nuvem,0; set $nuvem_points, $nuvem_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso névoa domina a base nuvem e soma 1 ponto",bc_blue|bc_all; end;}  if ($konoha_tomou_nuvem ==1) {set $nevoa_tomou_nuvem,1; set $suna_tomou_nuvem,0; set $konoha_tomou_nuvem,0; set $konoha_points, $konoha_points -1; set $nevoa_points, $nevoa_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso névoa domina a base nuvem e soma 1 ponto",bc_blue|bc_all; end;} set $nuvem_caiu,1; set $suna_tomou_nuvem,0; set $nevoa_tomou_nuvem,1; set $konoha_tomou_nuvem,0; set $nevoa_points, $nevoa_points +1; set $nuvem_points, $nuvem_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da nuvem, com isso a névoa soma 1 ponto, enquanto nuvem perde 1 ponto",bc_blue|bc_all; end;}
+if(#konoha == 1) {if ($konoha_tomou_nuvem == 1) {set $konoha_points, $konoha_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou seu próprio bijuu, com isso névoa é penalizado em 1 ponto",bc_blue|bc_all; end;}if ($suna_tomou_nuvem == 1) {set $suna_tomou_nuvem,0; set $nevoa_tomou_nuvem,0; set $konoha_tomou_nuvem,1; set $nuvem_points, $nuvem_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu que estava dominado, com isso konoha domina a base nuvem e soma 1 ponto",bc_blue|bc_all; end;}  if ($nevoa_tomou_nuvem ==1) {set $nevoa_tomou_nuvem,0; set $suna_tomou_nuvem,0; set $konoha_tomou_nuvem,1; set $nevoa_points, $nevoa_points -1; set $konoha_points, $konoha_points +1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu dominado, com isso konoha domina a base nuvem e soma 1 ponto",bc_blue|bc_all; end;} set $nuvem_caiu,1; set $suna_tomou_nuvem,0; set $nevoa_tomou_nuvem,0; set $konoha_tomou_nuvem,1; set $konoha_points, $konoha_points +1; set $nuvem_points, $nuvem_points -1; announce "[Batalha Shinobi] "+strcharinfo(0)+" matou o Bijuu da nuvem, com isso konoha soma 1 ponto, enquanto nuvem perde 1 ponto",bc_blue|bc_all; end;}
+end;
+
+
+}
+
+thana_boss,62,171,0,0	monster	Bijuu de Konoha	1693,1,1,300000,"update_nnfro_rpg4::OnMapKonohaBijuu"
+thana_boss,202,75,0,0	monster	Bijuu da Névoa	1693,1,1,300000,"update_nnfro_rpg4::OnMapNevoaBijuu"
+thana_boss,78,76,0,0	monster	Bijuu da Suna	1693,1,1,300000,"update_nnfro_rpg4::OnMapSunaBijuu"
+thana_boss,217,167,0,0	monster	Bijuu da Nuvem	1693,1,1,300000,"update_nnfro_rpg4::OnMapNuvemBijuu"
+
+//thana_boss,112,114,0,0	monster	Portão de Konoha	1693,1,1,300000,"update_nnfro_rpg4::OnMapKonohaPortao"
+//thana_boss,161,115,0,0	monster	Portão da Névoa	1693,1,1,300000,"update_nnfro_rpg4::OnMapNevoaPortao"
+//thana_boss,168,153,0,0	monster	Portão da Suna	1693,1,1,300000,"update_nnfro_rpg4::OnMapSunaPortao"
+//thana_boss,106,156,0,0	monster	Portão da Nuvem	1693,1,1,300000,"update_nnfro_rpg4::OnMapNuvemPortao"

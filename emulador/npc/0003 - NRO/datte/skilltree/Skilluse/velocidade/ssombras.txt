@@ -1,0 +1,57 @@
+-	script	useSSombras	-1,{
+    end;
+//When a Character uses a skill
+
+//SSombras
+
+onPcUseSkillEvent:
+
+           if(lskillid == 529) {
+
+
+if (getskilllv(529) == 1) {
+
+if (SSombras != 1) {end;}
+if (skill529 >= 50) {skill 529,2,0; set skill529,0; dispbottom "[Sys] Level up"; end; }
+set skill529,skill529 +1;
+dispbottom "[Jutsu level] Salto das Sombras level 1: "+skill529+" de 50";
+
+end;
+
+}
+
+if (getskilllv(529) == 2) {
+if (SSombras != 1) {end;}
+if (skill529 >= 100) {skill 529,3,0; set skill529,0; dispbottom "[Sys] Level up"; end;}
+set skill529,skill529 +1;
+dispbottom "[Jutsu level] Salto das Sombras level 2: "+skill529+" de 100";
+
+end;
+
+}
+
+if (getskilllv(529) == 3) {
+
+if (SSombras != 1) {end;}
+if (skill529 >= 150) {skill 529,4,0; set skill529,0; dispbottom "[Sys] Level up"; end;}
+set skill529,skill529 +1;
+dispbottom "[Jutsu level] Salto das Sombras level 3: "+skill529+" de 150";
+
+end;
+
+}
+
+if (getskilllv(529) == 4) {
+if (SSombras != 1) {end;}
+if (skill529 >= 200) {skill 529,5,0; set skill529,0; dispbottom "[Sys] Level up"; end;}
+set skill529,skill529 +1;
+dispbottom "[Jutsu level] Salto das Sombras level 4: "+skill529+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

@@ -1,0 +1,61 @@
+//===== Custom Script ======================================= 
+//= Name Changer via character select and coupon
+//===== By: ==================================================
+//= YoonA/gcbancod @ eAthena
+//===== Credit(s): ===========================================
+//= Thanks to BrianL
+//===== Additional Comments: =================================
+//= Thanks to BrianL
+//============================================================
+
+ra_in01,208,90,3	script	Mudança de Nome	402,{
+
+
+	set @x,1;		// How many rename credits will be added. Default value is 1.
+	set @y,7175;		// Coupon Id. default value is 7199 (Uknown Coupon).
+	set @z,1;		// How many coupon(s) to exchange with rename credits. Default value is 2.
+
+	if (nometrocado == 1) {mes "É permitido apenas uma mudança de nome por personagem"; close;}
+	mes "[Mudança de Nome]";
+	mes "Olá, eu posso lhe mudar seu nome por 1 ticket de mudança de nick";
+	mes "Está interessado?";
+	next;
+	switch(select("Sim, eu tenho o ticket:Não, deixa pra lá"))
+	{
+	case 1:
+		if(countitem(@y) < 1) {
+			mes "[Mudança de Nome]";
+			mes "Você não tem um ticket em seu inventário.";
+			mes "Volte quando tiver.";
+			close;
+			}
+
+		mes "[Mudança de Nome]";
+		mes "Ok, preste atenção agora, basta você relogar, na seleção de seu personagem aparecerá uma opção em baixo nomeado 'renomear'.";
+		mes "É só clicar na opção e escolher o seu novo nome, lembrando que esse processo só pode ser feito uma vez por personagem e não é aceito caracteres especiais";
+		next;
+		mes "Gostaria de continuar?";
+		next;
+		switch(select("Continue:Não")) 
+		{
+		case 1:
+			mes "[Mudança de Nome]";
+			mes "Ok, está agora liberado a opção de renomear na tela de seleção de personagem.";
+			mes "Obrigado por usar meus serviços!";
+			delitem @y,@z;
+			set nometrocado,1;
+			query_sql "UPDATE `char` SET `rename` = `rename` + "+@x+" WHERE `char_id` = '"+getcharid(0)+"'";
+			close;
+
+		case 2:
+			mes "[Mudança de Nome]";
+			mes "Até mais!";
+			close;
+		}
+
+	case 2:
+		mes "[Mudança de Nome]";
+		mes "Até mais!";
+		close;
+	}
+}

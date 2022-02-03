@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkilltai03	-1,{
+    end;
+//When a Character uses a skill
+
+//Jyuuken
+
+onPcUseSkillEvent:
+
+           if(lskillid == 48) {
+
+
+if (getskilllv(48) == 1) {
+
+if (Jyuuken != 1) {end;}
+if (skill48 >= 50) {skill 48,2,0; set skill48,0; dispbottom "[Sys] Level up"; end; }
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 1: "+skill48+" de 50";
+
+end;
+
+}
+
+if (getskilllv(48) == 2) {
+if (Jyuuken != 1) {end;}
+if (skill48 >= 100) {skill 48,3,0; set skill48,0; dispbottom "[Sys] Level up"; end;}
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 2: "+skill48+" de 100";
+
+end;
+
+}
+
+if (getskilllv(48) == 3) {
+
+if (Jyuuken != 1) {end;}
+if (skill48 >= 150) {skill 48,4,0; set skill48,0; dispbottom "[Sys] Level up"; end;}
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 3: "+skill48+" de 150";
+
+end;
+
+}
+
+if (getskilllv(48) == 4) {
+if (Jyuuken != 1) {end;}
+if (skill48 >= 200) {skill 48,5,0; set skill48,0; dispbottom "[Sys] Level up"; end;}
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 4: "+skill48+" de 200";
+
+end;
+
+}
+
+if (getskilllv(48) == 5) {
+if (Jyuuken != 1) {end;}
+if (skill48 >= 250) {skill 48,6,0; set skill48,0; dispbottom "[Sys] Level up"; end;}
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 5: "+skill48+" de 250";
+
+end;
+
+}
+
+if (getskilllv(48) == 6) {
+if (Jyuuken != 1) {end;}
+if (skill48 >= 300) {skill 48,7,0; set skill48,0; dispbottom "[Sys] Level up"; end;}
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 6: "+skill48+" de 300";
+
+end;
+
+}
+
+if (getskilllv(48) == 7) {
+if (Jyuuken != 1) {end;}
+if (skill48 >= 500) {skill 48,8,0; set skill48,0; dispbottom "[Sys] Level up"; end;}
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 7: "+skill48+" de 500";
+
+end;
+
+}
+
+if (getskilllv(48) == 8) {
+if (Jyuuken != 1) {end;}
+if (skill48 >= 700) {skill 48,9,0; set skill48,0; dispbottom "[Sys] Level up"; end;}
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 8: "+skill48+" de 700";
+
+end;
+
+}
+
+if (getskilllv(48) == 9) {
+if (Jyuuken != 1) {end;}
+if (skill48 >= 1000) {skill 48,10,0; set skill48,0; dispbottom "[Sys] Level up"; end;}
+set skill48,skill48 +1;
+dispbottom "[Jutsu level] Jyuuken Ryuu level 9: "+skill48+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

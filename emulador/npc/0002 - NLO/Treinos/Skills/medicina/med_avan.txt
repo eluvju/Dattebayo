@@ -1,0 +1,896 @@
+//------------------------------------------------------------------------------------------------------------------------------------------
+// Shouen no Jutsu
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+payon,141,158,5	script	Shouen no Jutsu	1_m_smith,{
+
+	.@npc$ = "[Medicina Avançado]";
+
+	// Informações
+	.@NomeSkill = "Shouen";
+	.@SkillId = 70;
+	.@idquest = 6020;
+
+if(Class < 4008 || Class > 4011) {  mes "[Medicina Avançado]";  mes "Você precisa ser Jounin.";  close; }
+if(med_avan != 1) {  mes .@npc$; mes "Você precisa estudar Medicina avançada antes de aprender essa habilidade."; close;}
+
+if(getskilllv(.@SkillId) > 0){
+	mes .@npc$;
+	mes "Olá novamente, como está esse jutsu que te ensinei?";
+	next;
+	mes .@npc$;
+	mes "O que? Você veio falar algo comigo? O que é?";
+	if(select("- Nada não, só papo furado:- Não gostei desse jutsu, quero remover") == 1) { close; }
+	close2;
+	skill .@SkillId,0,3;
+	set skill_avancado,skill_avancado -1;
+	end;
+}
+
+//-------------------------------------------
+// Quests
+//-------------------------------------------
+	if(checkquest(.@idquest) == 1) {
+			mes .@npc$;
+			mes "Vejo que você está fazendo aprendendo essa habilidade. Gostaria de Remover ?";
+			if(select("- Não, Quero completar a Missão.:- Sim, Quero remover-la.") == 2) {
+				mes "Para remover essa quest, vou precisar de 1 Removedor de Quest Avançado. Vou verificar se você tem o item...";
+				next;
+				if(countitem(7019) == 0) { close; }
+				delitem 7019,1;
+				set med_item1_avan1,0;
+				set med_item2_avan1,0;
+				set med_item3_avan1,0;
+				set med_item_avan1_1$,0;
+				set med_item_avan1_2$,0;
+				set med_item_avan1_3$,0;
+				completequest .@idquest; 
+				erasequest .@idquest;
+				set skill_avancado,skill_avancado -1;
+				mes "Quest Removida com Sucesso";
+				close;
+			}
+		mes .@npc$;
+		mes "Vamos ver se já conseguiu os:";
+		mes "- 30 "+med_item_avan1_1$+"";
+		mes "- 30 "+med_item_avan1_2$+""; 
+		mes "- 30 "+med_item_avan1_3$+""; 
+		mes "- 1 Fuuin no Sho";
+		mes "- 30,000,000 Zeny";
+		next;
+		if(countitem(med_item1_avan1) >= 30 && countitem(med_item2_avan1) >= 30 && countitem(med_item3_avan1) >= 30 && countitem(753) >= 1 && Zeny >= 30000000) {
+			delitem med_item1_avan1,30;
+			delitem med_item2_avan1,30;
+			delitem med_item3_avan1,30;
+			delitem 753,1;
+			set Zeny, Zeny - 30000000;
+			skill .@SkillId,1,3;
+			set .@NomeSkill,1;
+			set med_item1_avan1,0;
+			set med_item2_avan1,0;
+			set med_item3_avan1,0;
+			set med_item_avan1_1$,0;
+			set med_item_avan1_2$,0;
+			set med_item_avan1_3$,0;
+			completequest .@idquest; 
+			erasequest .@idquest;
+			mes .@npc$;
+			mes "Você completou seu treinamento, parabéns.";
+			close;
+		}
+		mes .@npc$; 
+		mes "Você ainda não completou seu treinamento"; 
+		close;
+	}
+
+if(skill_avancado >= 2 || Shouen >= 1) { mes .@npc$; mes "Você já aprendeu duas skills Medicina avançados, esse é o limite"; close;}
+
+//-------------------------------------------
+// Menu
+//-------------------------------------------
+		mes .@npc$;
+		mes "Eu sou um dos senseis de Medicina espalhado pelo mundo, eu posso lhe ensinar um Medicina avançado";
+		next;
+		mes .@npc$;
+		mes "A técnica de Medicina que eu ensino é o: "+strnpcinfo(1)+"";
+		mes "Gostaria de treinar?";
+		if(select("- Sim:- Não") == 2 ) { close; }
+			next;
+			mes .@npc$;
+			mes "Para esse treinamento,você precisa de:";
+			mes "- Obter Três itens aleatórios sorteados.";
+			mes "- Obter 1 Fuuin no sho";
+			mes "- 30,000,000 Zeny";
+			next;
+			mes .@npc$;
+			mes "Gostaria de treinar?";
+			if(select("- Sim:- Não") == 2 ) { close; }
+				next;
+				mes .@npc$;
+				mes "Para esse treinamento,você precisa de:";
+				next;
+				mes .@npc$;
+				mes "Gostaria de fazer o sorteio dos itens pra começar essa quest?";
+				if(select("- Sim:- Não") == 2 ) { close; }
+	
+				next;
+				mes .@npc$;
+				mes "Muito bem, vou agora sortear quais itens eu preciso que você pegue";
+				next;
+				mes .@npc$;
+				mes "Sorteando...";
+				goto sorteio1;
+				
+				sorteio1:
+					set @a,rand(1,11);
+					
+					if(@a == 1) { set med_item1_avan1, 737; set med_item_avan1_1$, "União da Tribo";}
+					if(@a == 2) { set med_item1_avan1, 738; set med_item_avan1_1$, "Pedra Brilhante";}
+					if(@a == 3) { set med_item1_avan1, 739; set med_item_avan1_1$, "Ametista";}
+					if(@a == 4) { set med_item1_avan1, 740; set med_item_avan1_1$, "Granada";}
+					if(@a == 5) { set med_item1_avan1, 741; set med_item_avan1_1$, "Peridoto";}
+					if(@a == 6) { set med_item1_avan1, 742; set med_item_avan1_1$, "Safira";}
+					if(@a == 7) { set med_item1_avan1, 743; set med_item_avan1_1$, "Opala";}
+					if(@a == 8) { set med_item1_avan1, 744; set med_item_avan1_1$, "Zircônio";}
+					if(@a == 9) { set med_item1_avan1, 745; set med_item_avan1_1$, "Trança";}
+					if(@a == 10){ set med_item1_avan1, 746; set med_item_avan1_1$, "Coração Imortal";}
+					if(@a == 11){ set med_item1_avan1, 747; set med_item_avan1_1$, "Bandagem Estragada";}
+					goto sorteio2;
+				
+				sorteio2:
+					set @b,rand(1,11);
+					
+					if(@b == 1) { if(med_item1_avan1 == 737) goto sorteio2; set med_item2_avan1, 737; set med_item_avan1_2$, "União da Tribo";}
+					if(@b == 2) { if(med_item1_avan1 == 738) goto sorteio2; set med_item2_avan1, 738; set med_item_avan1_2$, "Pedra Brilhante";}
+					if(@b == 3) { if(med_item1_avan1 == 739) goto sorteio2; set med_item2_avan1, 739; set med_item_avan1_2$, "Ametista";}
+					if(@b == 4) { if(med_item1_avan1 == 740) goto sorteio2; set med_item2_avan1, 740; set med_item_avan1_2$, "Granada";}
+					if(@b == 5) { if(med_item1_avan1 == 741) goto sorteio2; set med_item2_avan1, 741; set med_item_avan1_2$, "Peridoto";}
+					if(@b == 6) { if(med_item1_avan1 == 742) goto sorteio2; set med_item2_avan1, 742; set med_item_avan1_2$, "Safira";}
+					if(@b == 7) { if(med_item1_avan1 == 743) goto sorteio2; set med_item2_avan1, 743; set med_item_avan1_2$, "Opala";}
+					if(@b == 8) { if(med_item1_avan1 == 744) goto sorteio2; set med_item2_avan1, 744; set med_item_avan1_2$, "Zircônio";}
+					if(@b == 9) { if(med_item1_avan1 == 745) goto sorteio2; set med_item2_avan1, 745; set med_item_avan1_2$, "Trança";}
+					if(@b == 10){ if(med_item1_avan1 == 746) goto sorteio2; set med_item2_avan1, 746; set med_item_avan1_2$, "Coração Imortal";}
+					if(@b == 11){ if(med_item1_avan1 == 747) goto sorteio2; set med_item2_avan1, 747; set med_item_avan1_2$, "Bandagem Estragada";}
+					goto sorteio3;
+				
+				sorteio3:
+					set @c,rand(1,11);
+					
+					if(@c == 1) { if(med_item1_avan1 == 737) || med_item2_avan1 == (737) goto sorteio3; set med_item3_avan1, 737; set med_item_avan1_3$, "União da Tribo";}
+					if(@c == 2) { if(med_item1_avan1 == 738) || med_item2_avan1 == (738) goto sorteio3; set med_item3_avan1, 738; set med_item_avan1_3$, "Pedra Brilhante";}
+					if(@c == 3) { if(med_item1_avan1 == 739) || med_item2_avan1 == (739) goto sorteio3; set med_item3_avan1, 739; set med_item_avan1_3$, "Ametista";}
+					if(@c == 4) { if(med_item1_avan1 == 740) || med_item2_avan1 == (740) goto sorteio3; set med_item3_avan1, 740; set med_item_avan1_3$, "Granada";}
+					if(@c == 5) { if(med_item1_avan1 == 741) || med_item2_avan1 == (741) goto sorteio3; set med_item3_avan1, 741; set med_item_avan1_3$, "Peridoto";}
+					if(@c == 6) { if(med_item1_avan1 == 742) || med_item2_avan1 == (742) goto sorteio3; set med_item3_avan1, 742; set med_item_avan1_3$, "Safira";}
+					if(@c == 7) { if(med_item1_avan1 == 743) || med_item2_avan1 == (743) goto sorteio3; set med_item3_avan1, 743; set med_item_avan1_3$, "Opala";}
+					if(@c == 8) { if(med_item1_avan1 == 744) || med_item2_avan1 == (744) goto sorteio3; set med_item3_avan1, 744; set med_item_avan1_3$, "Zircônio";}
+					if(@c == 9) { if(med_item1_avan1 == 745) || med_item2_avan1 == (745) goto sorteio3; set med_item3_avan1, 745; set med_item_avan1_3$, "Trança";}
+					if(@c == 10){ if(med_item1_avan1 == 746) || med_item2_avan1 == (746) goto sorteio3; set med_item3_avan1, 746; set med_item_avan1_3$, "Coração Imortal";}
+					if(@c == 11){ if(med_item1_avan1 == 747) || med_item2_avan1 == (747) goto sorteio3; set med_item3_avan1, 747; set med_item_avan1_3$, "Bandagem Estragada";}
+					next;
+					mes .@npc$;
+					mes "Os itens sorteados são: 30 "+med_item_avan1_1$+", 30 "+med_item_avan1_2$+", 30 "+med_item_avan1_3$+".";
+					set skill_avancado,skill_avancado +1;
+					setquest .@idquest;
+					close;
+		
+	OnInit:
+	waitingroom "[Medicina Avançado]",0;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+// Sopro Divino
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+payon,148,148,5	script	Sopro Divino	1_m_smith,{
+
+	.@npc$ = "[Medicina Avançado]";
+
+	// Informações
+	.@NomeSkill = "SoproDivino";
+	.@SkillId = 2043;
+	.@idquest = 6021;
+	
+if(Class < 4008 || Class > 4011) {  mes "[Medicina Avançado]";  mes "Você precisa ser Jounin.";  close; }
+if(med_avan != 1) {  mes .@npc$; mes "Você precisa estudar Medicina avançada antes de aprender essa habilidade."; close;}
+
+if(getskilllv(.@SkillId) > 0){
+	mes .@npc$;
+	mes "Olá novamente, como está esse jutsu que te ensinei?";
+	next;
+	mes .@npc$;
+	mes "O que? Você veio falar algo comigo? O que é?";
+	if(select("- Nada não, só papo furado:- Não gostei desse jutsu, quero remover") == 1) { close; }
+	close2;
+	skill .@SkillId,0,3;
+	set skill_avancado,skill_avancado -1;
+	end;
+}
+
+//-------------------------------------------
+// Quests
+//-------------------------------------------
+	if(checkquest(.@idquest) == 1) {
+			mes .@npc$;
+			mes "Vejo que você está fazendo aprendendo essa habilidade. Gostaria de Remover ?";
+			if(select("- Não, Quero completar a Missão.:- Sim, Quero remover-la.") == 2) {
+				mes "Para remover essa quest, vou precisar de 1 Removedor de Quest Avançado. Vou verificar se você tem o item...";
+				next;
+				if(countitem(7019) == 0) { close; }
+				delitem 7019,1;
+				set med_item1_avan2,0;
+				set med_item2_avan2,0;
+				set med_item3_avan2,0;
+				set med_item_avan2_1$,0;
+				set med_item_avan2_2$,0;
+				set med_item_avan2_3$,0;
+				completequest .@idquest; 
+				erasequest .@idquest;
+				set skill_avancado,skill_avancado -1;
+				mes "Quest Removida com Sucesso";
+				close;
+			}
+		mes .@npc$;
+		mes "Vamos ver se já conseguiu os:";
+		mes "- 30 "+med_item_avan2_1$+"";
+		mes "- 30 "+med_item_avan2_2$+""; 
+		mes "- 30 "+med_item_avan2_3$+""; 
+		mes "- 1 Fuuin no Sho";
+		mes "- 30,000,000 Zeny";
+		next;
+		if(countitem(med_item1_avan2) >= 30 && countitem(med_item2_avan2) >= 30 && countitem(med_item3_avan2) >= 30 && countitem(753) >= 1 && Zeny >= 30000000) {
+			delitem med_item1_avan2,30;
+			delitem med_item2_avan2,30;
+			delitem med_item3_avan2,30;
+			delitem 753,1;
+			set Zeny, Zeny - 30000000;
+			skill .@SkillId,1,3;
+			set .@NomeSkill,1;
+			set med_item1_avan2,0;
+			set med_item2_avan2,0;
+			set med_item3_avan2,0;
+			set med_item_avan2_1$,0;
+			set med_item_avan2_2$,0;
+			set med_item_avan2_3$,0;
+			completequest .@idquest; 
+			erasequest .@idquest;
+			mes .@npc$;
+			mes "Você completou seu treinamento, parabéns.";
+			close;
+		}
+		mes .@npc$; 
+		mes "Você ainda não completou seu treinamento"; 
+		close;
+	}
+
+if(skill_avancado >= 2 || SoproDivino >= 1) { mes .@npc$; mes "Você já aprendeu duas skills Medicina avançados, esse é o limite"; close;}
+//-------------------------------------------
+// Menu
+//-------------------------------------------
+		mes .@npc$;
+		mes "Eu sou um dos senseis de Medicina espalhado pelo mundo, eu posso lhe ensinar um Medicina avançado";
+		next;
+		mes .@npc$;
+		mes "A técnica de Medicina que eu ensino é o: "+strnpcinfo(1)+"";
+		mes "Gostaria de treinar?";
+		if(select("- Sim:- Não") == 2 ) { close; }
+			next;
+			mes .@npc$;
+			mes "Para esse treinamento,você precisa de:";
+			mes "- Obter Três itens aleatórios sorteados.";
+			mes "- Obter 1 Fuuin no sho";
+			mes "- 30,000,000 Zeny";
+			next;
+			mes .@npc$;
+			mes "Gostaria de treinar?";
+			if(select("- Sim:- Não") == 2 ) { close; }
+				next;
+				mes .@npc$;
+				mes "Para esse treinamento,você precisa de:";
+				next;
+				mes .@npc$;
+				mes "Gostaria de fazer o sorteio dos itens pra começar essa quest?";
+				if(select("- Sim:- Não") == 2 ) { close; }
+	
+				next;
+				mes .@npc$;
+				mes "Muito bem, vou agora sortear quais itens eu preciso que você pegue";
+				next;
+				mes .@npc$;
+				mes "Sorteando...";
+				goto sorteio1;
+				
+				sorteio1:
+					set @a,rand(1,11);
+					
+					if(@a == 1) { set med_item1_avan2, 737; set med_item_avan2_1$, "União da Tribo";}
+					if(@a == 2) { set med_item1_avan2, 738; set med_item_avan2_1$, "Pedra Brilhante";}
+					if(@a == 3) { set med_item1_avan2, 739; set med_item_avan2_1$, "Ametista";}
+					if(@a == 4) { set med_item1_avan2, 740; set med_item_avan2_1$, "Granada";}
+					if(@a == 5) { set med_item1_avan2, 741; set med_item_avan2_1$, "Peridoto";}
+					if(@a == 6) { set med_item1_avan2, 742; set med_item_avan2_1$, "Safira";}
+					if(@a == 7) { set med_item1_avan2, 743; set med_item_avan2_1$, "Opala";}
+					if(@a == 8) { set med_item1_avan2, 744; set med_item_avan2_1$, "Zircônio";}
+					if(@a == 9) { set med_item1_avan2, 745; set med_item_avan2_1$, "Trança";}
+					if(@a == 10){ set med_item1_avan2, 746; set med_item_avan2_1$, "Coração Imortal";}
+					if(@a == 11){ set med_item1_avan2, 747; set med_item_avan2_1$, "Bandagem Estragada";}
+					goto sorteio2;
+				
+				sorteio2:
+					set @b,rand(1,11);
+					
+					if(@b == 1) { if(med_item1_avan2 == 737) goto sorteio2; set med_item2_avan2, 737; set med_item_avan2_2$, "União da Tribo";}
+					if(@b == 2) { if(med_item1_avan2 == 738) goto sorteio2; set med_item2_avan2, 738; set med_item_avan2_2$, "Pedra Brilhante";}
+					if(@b == 3) { if(med_item1_avan2 == 739) goto sorteio2; set med_item2_avan2, 739; set med_item_avan2_2$, "Ametista";}
+					if(@b == 4) { if(med_item1_avan2 == 740) goto sorteio2; set med_item2_avan2, 740; set med_item_avan2_2$, "Granada";}
+					if(@b == 5) { if(med_item1_avan2 == 741) goto sorteio2; set med_item2_avan2, 741; set med_item_avan2_2$, "Peridoto";}
+					if(@b == 6) { if(med_item1_avan2 == 742) goto sorteio2; set med_item2_avan2, 742; set med_item_avan2_2$, "Safira";}
+					if(@b == 7) { if(med_item1_avan2 == 743) goto sorteio2; set med_item2_avan2, 743; set med_item_avan2_2$, "Opala";}
+					if(@b == 8) { if(med_item1_avan2 == 744) goto sorteio2; set med_item2_avan2, 744; set med_item_avan2_2$, "Zircônio";}
+					if(@b == 9) { if(med_item1_avan2 == 745) goto sorteio2; set med_item2_avan2, 745; set med_item_avan2_2$, "Trança";}
+					if(@b == 10){ if(med_item1_avan2 == 746) goto sorteio2; set med_item2_avan2, 746; set med_item_avan2_2$, "Coração Imortal";}
+					if(@b == 11){ if(med_item1_avan2 == 747) goto sorteio2; set med_item2_avan2, 747; set med_item_avan2_2$, "Bandagem Estragada";}
+					goto sorteio3;
+				
+				sorteio3:
+					set @c,rand(1,11);
+					
+					if(@c == 1) { if(med_item1_avan2 == 737) || med_item2_avan2 == (737) goto sorteio3; set med_item3_avan2, 737; set med_item_avan2_3$, "União da Tribo";}
+					if(@c == 2) { if(med_item1_avan2 == 738) || med_item2_avan2 == (738) goto sorteio3; set med_item3_avan2, 738; set med_item_avan2_3$, "Pedra Brilhante";}
+					if(@c == 3) { if(med_item1_avan2 == 739) || med_item2_avan2 == (739) goto sorteio3; set med_item3_avan2, 739; set med_item_avan2_3$, "Ametista";}
+					if(@c == 4) { if(med_item1_avan2 == 740) || med_item2_avan2 == (740) goto sorteio3; set med_item3_avan2, 740; set med_item_avan2_3$, "Granada";}
+					if(@c == 5) { if(med_item1_avan2 == 741) || med_item2_avan2 == (741) goto sorteio3; set med_item3_avan2, 741; set med_item_avan2_3$, "Peridoto";}
+					if(@c == 6) { if(med_item1_avan2 == 742) || med_item2_avan2 == (742) goto sorteio3; set med_item3_avan2, 742; set med_item_avan2_3$, "Safira";}
+					if(@c == 7) { if(med_item1_avan2 == 743) || med_item2_avan2 == (743) goto sorteio3; set med_item3_avan2, 743; set med_item_avan2_3$, "Opala";}
+					if(@c == 8) { if(med_item1_avan2 == 744) || med_item2_avan2 == (744) goto sorteio3; set med_item3_avan2, 744; set med_item_avan2_3$, "Zircônio";}
+					if(@c == 9) { if(med_item1_avan2 == 745) || med_item2_avan2 == (745) goto sorteio3; set med_item3_avan2, 745; set med_item_avan2_3$, "Trança";}
+					if(@c == 10){ if(med_item1_avan2 == 746) || med_item2_avan2 == (746) goto sorteio3; set med_item3_avan2, 746; set med_item_avan2_3$, "Coração Imortal";}
+					if(@c == 11){ if(med_item1_avan2 == 747) || med_item2_avan2 == (747) goto sorteio3; set med_item3_avan2, 747; set med_item_avan2_3$, "Bandagem Estragada";}
+					next;
+					mes .@npc$;
+					mes "Os itens sorteados são: 30 "+med_item_avan2_1$+", 30 "+med_item_avan2_2$+", 30 "+med_item_avan2_3$+".";
+					set skill_avancado,skill_avancado +1;
+					setquest .@idquest;
+					close;
+		
+	OnInit:
+	waitingroom "[Medicina Avançado]",0;
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+// Jinsei o Kyoyu Suru
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+payon,143,167,5	script	Jinsei o Kyoyu Suru	1_m_smith,{
+
+	.@npc$ = "[Medicina Avançado]";
+
+	// Informações
+	.@NomeSkill = "JinseioKyoyuSuru";
+	.@SkillId = 5007;
+	.@idquest = 6022;
+	
+if(Class < 4008 || Class > 4011) {  mes "[Medicina Avançado]";  mes "Você precisa ser Jounin.";  close; }
+if(med_avan != 1) {  mes .@npc$; mes "Você precisa estudar Medicina avançada antes de aprender essa habilidade."; close;}
+	
+if(getskilllv(.@SkillId) > 0){
+	mes .@npc$;
+	mes "Olá novamente, como está esse jutsu que te ensinei?";
+	next;
+	mes .@npc$;
+	mes "O que? Você veio falar algo comigo? O que é?";
+	if(select("- Nada não, só papo furado:- Não gostei desse jutsu, quero remover") == 1) { close; }
+	close2;
+	skill .@SkillId,0,3;
+	set skill_avancado,skill_avancado -1;
+	end;
+}
+
+//-------------------------------------------
+// Quests
+//-------------------------------------------
+	if(checkquest(.@idquest) == 1) {
+			mes .@npc$;
+			mes "Vejo que você está fazendo aprendendo essa habilidade. Gostaria de Remover ?";
+			if(select("- Não, Quero completar a Missão.:- Sim, Quero remover-la.") == 2) {
+				mes "Para remover essa quest, vou precisar de 1 Removedor de Quest Avançado. Vou verificar se você tem o item...";
+				next;
+				if(countitem(7019) == 0) { close; }
+				delitem 7019,1;
+				set med_item1_avan3,0;
+				set med_item2_avan3,0;
+				set med_item3_avan3,0;
+				set med_item_avan3_1$,0;
+				set med_item_avan3_2$,0;
+				set med_item_avan3_3$,0;
+				completequest .@idquest; 
+				erasequest .@idquest;
+				set skill_avancado,skill_avancado -1;
+				mes "Quest Removida com Sucesso";
+				close;
+			}
+		mes .@npc$;
+		mes "Vamos ver se já conseguiu os:";
+		mes "- 30 "+med_item_avan3_1$+"";
+		mes "- 30 "+med_item_avan3_2$+""; 
+		mes "- 30 "+med_item_avan3_3$+""; 
+		mes "- 1 Fuuin no Sho";
+		mes "- 30,000,000 Zeny";
+		next;
+		if(countitem(med_item1_avan3) >= 30 && countitem(med_item2_avan3) >= 30 && countitem(med_item3_avan3) >= 30 && countitem(753) >= 1 && Zeny >= 30000000) {
+			delitem med_item1_avan3,30;
+			delitem med_item2_avan3,30;
+			delitem med_item3_avan3,30;
+			delitem 753,1;
+			set Zeny, Zeny - 30000000;
+			skill .@SkillId,1,3;
+			set .@NomeSkill,1;
+			set med_item1_avan3,0;
+			set med_item2_avan3,0;
+			set med_item3_avan3,0;
+			set med_item_avan3_1$,0;
+			set med_item_avan3_2$,0;
+			set med_item_avan3_3$,0;
+			completequest .@idquest; 
+			erasequest .@idquest;
+			mes .@npc$;
+			mes "Você completou seu treinamento, parabéns.";
+			close;
+		}
+		mes .@npc$; 
+		mes "Você ainda não completou seu treinamento"; 
+		close;
+	}
+	
+if(med_avan != 1) { mes .@npc$; mes "Você precisa estudar Medicina avançado antes de aprender esse Medicina"; close;}
+if(skill_avancado >= 2 || JinseioKyoyuSuru >= 1) { mes .@npc$; mes "Você já aprendeu duas skills Medicina avançados, esse é o limite"; close;}
+//-------------------------------------------
+// Menu
+//-------------------------------------------
+		mes .@npc$;
+		mes "Eu sou um dos senseis de Medicina espalhado pelo mundo, eu posso lhe ensinar um Medicina avançado";
+		next;
+		mes .@npc$;
+		mes "A técnica de Medicina que eu ensino é o: "+strnpcinfo(1)+"";
+		mes "Gostaria de treinar?";
+		if(select("- Sim:- Não") == 2 ) { close; }
+			next;
+			mes .@npc$;
+			mes "Para esse treinamento,você precisa de:";
+			mes "- Obter Três itens aleatórios sorteados.";
+			mes "- Obter 1 Fuuin no sho";
+			mes "- 30,000,000 Zeny";
+			next;
+			mes .@npc$;
+			mes "Gostaria de treinar?";
+			if(select("- Sim:- Não") == 2 ) { close; }
+				next;
+				mes .@npc$;
+				mes "Para esse treinamento,você precisa de:";
+				next;
+				mes .@npc$;
+				mes "Gostaria de fazer o sorteio dos itens pra começar essa quest?";
+				if(select("- Sim:- Não") == 2 ) { close; }
+	
+				next;
+				mes .@npc$;
+				mes "Muito bem, vou agora sortear quais itens eu preciso que você pegue";
+				next;
+				mes .@npc$;
+				mes "Sorteando...";
+				goto sorteio1;
+				
+				sorteio1:
+					set @a,rand(1,11);
+					
+					if(@a == 1) { set med_item1_avan3, 737; set med_item_avan3_1$, "União da Tribo";}
+					if(@a == 2) { set med_item1_avan3, 738; set med_item_avan3_1$, "Pedra Brilhante";}
+					if(@a == 3) { set med_item1_avan3, 739; set med_item_avan3_1$, "Ametista";}
+					if(@a == 4) { set med_item1_avan3, 740; set med_item_avan3_1$, "Granada";}
+					if(@a == 5) { set med_item1_avan3, 741; set med_item_avan3_1$, "Peridoto";}
+					if(@a == 6) { set med_item1_avan3, 742; set med_item_avan3_1$, "Safira";}
+					if(@a == 7) { set med_item1_avan3, 743; set med_item_avan3_1$, "Opala";}
+					if(@a == 8) { set med_item1_avan3, 744; set med_item_avan3_1$, "Zircônio";}
+					if(@a == 9) { set med_item1_avan3, 745; set med_item_avan3_1$, "Trança";}
+					if(@a == 10){ set med_item1_avan3, 746; set med_item_avan3_1$, "Coração Imortal";}
+					if(@a == 11){ set med_item1_avan3, 747; set med_item_avan3_1$, "Bandagem Estragada";}
+					goto sorteio2;
+				
+				sorteio2:
+					set @b,rand(1,11);
+					
+					if(@b == 1) { if(med_item1_avan3 == 737) goto sorteio2; set med_item2_avan3, 737; set med_item_avan3_2$, "União da Tribo";}
+					if(@b == 2) { if(med_item1_avan3 == 738) goto sorteio2; set med_item2_avan3, 738; set med_item_avan3_2$, "Pedra Brilhante";}
+					if(@b == 3) { if(med_item1_avan3 == 739) goto sorteio2; set med_item2_avan3, 739; set med_item_avan3_2$, "Ametista";}
+					if(@b == 4) { if(med_item1_avan3 == 740) goto sorteio2; set med_item2_avan3, 740; set med_item_avan3_2$, "Granada";}
+					if(@b == 5) { if(med_item1_avan3 == 741) goto sorteio2; set med_item2_avan3, 741; set med_item_avan3_2$, "Peridoto";}
+					if(@b == 6) { if(med_item1_avan3 == 742) goto sorteio2; set med_item2_avan3, 742; set med_item_avan3_2$, "Safira";}
+					if(@b == 7) { if(med_item1_avan3 == 743) goto sorteio2; set med_item2_avan3, 743; set med_item_avan3_2$, "Opala";}
+					if(@b == 8) { if(med_item1_avan3 == 744) goto sorteio2; set med_item2_avan3, 744; set med_item_avan3_2$, "Zircônio";}
+					if(@b == 9) { if(med_item1_avan3 == 745) goto sorteio2; set med_item2_avan3, 745; set med_item_avan3_2$, "Trança";}
+					if(@b == 10){ if(med_item1_avan3 == 746) goto sorteio2; set med_item2_avan3, 746; set med_item_avan3_2$, "Coração Imortal";}
+					if(@b == 11){ if(med_item1_avan3 == 747) goto sorteio2; set med_item2_avan3, 747; set med_item_avan3_2$, "Bandagem Estragada";}
+					goto sorteio3;
+				
+				sorteio3:
+					set @c,rand(1,11);
+					
+					if(@c == 1) { if(med_item1_avan3 == 737) || med_item2_avan3 == (737) goto sorteio3; set med_item3_avan3, 737; set med_item_avan3_3$, "União da Tribo";}
+					if(@c == 2) { if(med_item1_avan3 == 738) || med_item2_avan3 == (738) goto sorteio3; set med_item3_avan3, 738; set med_item_avan3_3$, "Pedra Brilhante";}
+					if(@c == 3) { if(med_item1_avan3 == 739) || med_item2_avan3 == (739) goto sorteio3; set med_item3_avan3, 739; set med_item_avan3_3$, "Ametista";}
+					if(@c == 4) { if(med_item1_avan3 == 740) || med_item2_avan3 == (740) goto sorteio3; set med_item3_avan3, 740; set med_item_avan3_3$, "Granada";}
+					if(@c == 5) { if(med_item1_avan3 == 741) || med_item2_avan3 == (741) goto sorteio3; set med_item3_avan3, 741; set med_item_avan3_3$, "Peridoto";}
+					if(@c == 6) { if(med_item1_avan3 == 742) || med_item2_avan3 == (742) goto sorteio3; set med_item3_avan3, 742; set med_item_avan3_3$, "Safira";}
+					if(@c == 7) { if(med_item1_avan3 == 743) || med_item2_avan3 == (743) goto sorteio3; set med_item3_avan3, 743; set med_item_avan3_3$, "Opala";}
+					if(@c == 8) { if(med_item1_avan3 == 744) || med_item2_avan3 == (744) goto sorteio3; set med_item3_avan3, 744; set med_item_avan3_3$, "Zircônio";}
+					if(@c == 9) { if(med_item1_avan3 == 745) || med_item2_avan3 == (745) goto sorteio3; set med_item3_avan3, 745; set med_item_avan3_3$, "Trança";}
+					if(@c == 10){ if(med_item1_avan3 == 746) || med_item2_avan3 == (746) goto sorteio3; set med_item3_avan3, 746; set med_item_avan3_3$, "Coração Imortal";}
+					if(@c == 11){ if(med_item1_avan3 == 747) || med_item2_avan3 == (747) goto sorteio3; set med_item3_avan3, 747; set med_item_avan3_3$, "Bandagem Estragada";}
+					next;
+					mes .@npc$;
+					mes "Os itens sorteados são: 30 "+med_item_avan3_1$+", 30 "+med_item_avan3_2$+", 30 "+med_item_avan3_3$+".";
+					set skill_avancado,skill_avancado +1;
+					setquest .@idquest;
+					close;
+		
+	OnInit:
+	waitingroom "[Medicina Avançado]",0;
+}
+
+////------------------------------------------------------------------------------------------------------------------------------------------
+//// Iyasu
+////------------------------------------------------------------------------------------------------------------------------------------------
+//
+//gef_fild14,197,223,5	script	Iyasu	1_m_smith,{
+//
+//	.@npc$ = "[Medicina Avançado]";
+//
+//	// Informações
+//	.@NomeSkill = "Iyasu";
+//	.@SkillId = 5011;
+//	.@idquest = 6023;
+//	
+//if(Class < 4008 || Class > 4011) {  mes "[Medicina Avançado]";  mes "Você precisa ser Jounin.";  close; }
+//	
+//if(med_avan != 1) { mes .@npc$; mes "Você precisa estudar Medicina avançado antes de aprender esse Medicina"; close;}
+//
+//if(getskilllv(.@SkillId) > 0){
+//	mes .@npc$;
+//	mes "Olá novamente, como está esse jutsu que te ensinei?";
+//	next;
+//	mes .@npc$;
+//	mes "O que? Você veio falar algo comigo? O que é?";
+//	if(select("- Nada não, só papo furado:- Não gostei desse jutsu, quero remover") == 1) { close; }
+//	close2;
+//	skill .@SkillId,0,3;
+//	set skill_avancado,skill_avancado -1;
+//	end;
+//}
+//
+////-------------------------------------------
+//// Quests
+////-------------------------------------------
+//	if(checkquest(.@idquest) == 1) {
+//			mes .@npc$;
+//			mes "Vejo que você está fazendo aprendendo uma está habilidade. Gostaria de Remover ?";
+//			if(select("- Não, Quero completar a Missão.:- Sim, Quero remover-la.") == 2) {
+//				set med_item1_avan4,0;
+//				set med_item2_avan4,0;
+//				set med_item3_avan4,0;
+//				set med_item_avan4_1$,0;
+//				set med_item_avan4_2$,0;
+//				set med_item_avan4_3$,0;
+//				completequest .@idquest; 
+//				erasequest .@idquest;
+//				set skill_avancado,skill_avancado -1;
+//				mes "Quest Removida com Sucesso";
+//				close;
+//			}
+//		mes .@npc$;
+//		mes "Vamos ver se já conseguiu os:";
+//		mes "- 30 "+med_item_avan4_1$+"";
+//		mes "- 20 "+med_item_avan4_2$+""; 
+//		mes "- 30 "+med_item_avan4_3$+""; 
+//		mes "- 1 Fuuin no Sho";
+//		mes "- 10 Plantas de Cada Vila";
+//		mes "- 30,000,000 Zeny";
+//		if(countitem(med_item1_avan4) >= 30 && countitem(med_item2_avan4) >= 20 && countitem(med_item3_avan4) >= 30 && countitem(753) >= 1 && Zeny >= 30000000) {
+//			delitem med_item1_avan4,30;
+//			delitem med_item2_avan4,20;
+//			delitem med_item3_avan4,30;
+//			delitem 753,1;
+//			set Zeny, Zeny - 30000000;
+//			skill .@SkillId,1,3;
+//			set .@NomeSkill,1;
+//			set med_item1_avan4,0;
+//			set med_item2_avan4,0;
+//			set med_item3_avan4,0;
+//			set med_item_avan4_1$,0;
+//			set med_item_avan4_2$,0;
+//			set med_item_avan4_3$,0;
+//			completequest .@idquest; 
+//			erasequest .@idquest;
+//			mes .@npc$;
+//			mes "Você completou seu treinamento, parabéns.";
+//			close;
+//		}
+//		next; 
+//		mes .@npc$; 
+//		mes "Você ainda não completou seu treinamento"; 
+//		close;
+//	}
+//
+//if(skill_avancado >= 2 || Iyasu >= 1) { mes .@npc$; mes "Você já aprendeu duas skills Medicina avançados, esse é o limite"; close;}
+////-------------------------------------------
+//// Menu
+////-------------------------------------------
+//		mes .@npc$;
+//		mes "Eu sou um dos senseis de Medicina espalhado pelo mundo, eu posso lhe ensinar um Medicina avançado";
+//		next;
+//		mes .@npc$;
+//		mes "A técnica de Medicina que eu ensino é o: "+strnpcinfo(1)+"";
+//		mes "Gostaria de treinar?";
+//		if(select("- Sim:- Não") == 2 ) { close; }
+//			next;
+//			mes .@npc$;
+//			mes "Para esse treinamento,você precisa de:";
+//			mes "- Obter Três itens aleatórios sorteados.";
+//			mes "- Obter 10 plantas de cada vila";
+//			mes "- Obter 1 Fuuin no sho";
+//			mes "- 30,000,000 Zeny";
+//			next;
+//			mes .@npc$;
+//			mes "Gostaria de treinar?";
+//			if(select("- Sim:- Não") == 2 ) { close; }
+//				next;
+//				mes .@npc$;
+//				mes "Para esse treinamento,você precisa de:";
+//				next;
+//				mes .@npc$;
+//				mes "Gostaria de fazer o sorteio dos itens pra começar essa quest?";
+//				if(select("- Sim:- Não") == 2 ) { close; }
+//	
+//				next;
+//				mes .@npc$;
+//				mes "Muito bem, vou agora sortear quais itens eu preciso que você pegue";
+//				next;
+//				mes .@npc$;
+//				mes "Sorteando...";
+//				goto sorteio1;
+//				
+//				sorteio1:
+//					set @a,rand(1,11);
+//					
+//					if(@a == 1) { set med_item1_avan4, 737; set med_item_avan4_1$, "União da Tribo";}
+//					if(@a == 2) { set med_item1_avan4, 738; set med_item_avan4_1$, "Pedra Brilhante";}
+//					if(@a == 3) { set med_item1_avan4, 739; set med_item_avan4_1$, "Ametista";}
+//					if(@a == 4) { set med_item1_avan4, 740; set med_item_avan4_1$, "Granada";}
+//					if(@a == 5) { set med_item1_avan4, 741; set med_item_avan4_1$, "Peridoto";}
+//					if(@a == 6) { set med_item1_avan4, 742; set med_item_avan4_1$, "Safira";}
+//					if(@a == 7) { set med_item1_avan4, 743; set med_item_avan4_1$, "Opala";}
+//					if(@a == 8) { set med_item1_avan4, 744; set med_item_avan4_1$, "Zircônio";}
+//					if(@a == 9) { set med_item1_avan4, 745; set med_item_avan4_1$, "Trança";}
+//					if(@a == 10){ set med_item1_avan4, 746; set med_item_avan4_1$, "Coração Imortal";}
+//					if(@a == 11){ set med_item1_avan4, 747; set med_item_avan4_1$, "Bandagem Estragada";}
+//					goto sorteio2;
+//				
+//				sorteio2:
+//					set @b,rand(1,11);
+//					
+//					if(@b == 1) { if(med_item1_avan4 == 737) goto sorteio2; set med_item2_avan4, 737; set med_item_avan4_2$, "União da Tribo";}
+//					if(@b == 2) { if(med_item1_avan4 == 738) goto sorteio2; set med_item2_avan4, 738; set med_item_avan4_2$, "Pedra Brilhante";}
+//					if(@b == 3) { if(med_item1_avan4 == 739) goto sorteio2; set med_item2_avan4, 739; set med_item_avan4_2$, "Ametista";}
+//					if(@b == 4) { if(med_item1_avan4 == 740) goto sorteio2; set med_item2_avan4, 740; set med_item_avan4_2$, "Granada";}
+//					if(@b == 5) { if(med_item1_avan4 == 741) goto sorteio2; set med_item2_avan4, 741; set med_item_avan4_2$, "Peridoto";}
+//					if(@b == 6) { if(med_item1_avan4 == 742) goto sorteio2; set med_item2_avan4, 742; set med_item_avan4_2$, "Safira";}
+//					if(@b == 7) { if(med_item1_avan4 == 743) goto sorteio2; set med_item2_avan4, 743; set med_item_avan4_2$, "Opala";}
+//					if(@b == 8) { if(med_item1_avan4 == 744) goto sorteio2; set med_item2_avan4, 744; set med_item_avan4_2$, "Zircônio";}
+//					if(@b == 9) { if(med_item1_avan4 == 745) goto sorteio2; set med_item2_avan4, 745; set med_item_avan4_2$, "Trança";}
+//					if(@b == 10){ if(med_item1_avan4 == 746) goto sorteio2; set med_item2_avan4, 746; set med_item_avan4_2$, "Coração Imortal";}
+//					if(@b == 11){ if(med_item1_avan4 == 747) goto sorteio2; set med_item2_avan4, 747; set med_item_avan4_2$, "Bandagem Estragada";}
+//					goto sorteio3;
+//				
+//				sorteio3:
+//					set @c,rand(1,11);
+//					
+//					if(@c == 1) { if(med_item1_avan4 == 737) || med_item2_avan4 == (737) goto sorteio3; set med_item3_avan4, 737; set med_item_avan4_3$, "União da Tribo";}
+//					if(@c == 2) { if(med_item1_avan4 == 738) || med_item2_avan4 == (738) goto sorteio3; set med_item3_avan4, 738; set med_item_avan4_3$, "Pedra Brilhante";}
+//					if(@c == 3) { if(med_item1_avan4 == 739) || med_item2_avan4 == (739) goto sorteio3; set med_item3_avan4, 739; set med_item_avan4_3$, "Ametista";}
+//					if(@c == 4) { if(med_item1_avan4 == 740) || med_item2_avan4 == (740) goto sorteio3; set med_item3_avan4, 740; set med_item_avan4_3$, "Granada";}
+//					if(@c == 5) { if(med_item1_avan4 == 741) || med_item2_avan4 == (741) goto sorteio3; set med_item3_avan4, 741; set med_item_avan4_3$, "Peridoto";}
+//					if(@c == 6) { if(med_item1_avan4 == 742) || med_item2_avan4 == (742) goto sorteio3; set med_item3_avan4, 742; set med_item_avan4_3$, "Safira";}
+//					if(@c == 7) { if(med_item1_avan4 == 743) || med_item2_avan4 == (743) goto sorteio3; set med_item3_avan4, 743; set med_item_avan4_3$, "Opala";}
+//					if(@c == 8) { if(med_item1_avan4 == 744) || med_item2_avan4 == (744) goto sorteio3; set med_item3_avan4, 744; set med_item_avan4_3$, "Zircônio";}
+//					if(@c == 9) { if(med_item1_avan4 == 745) || med_item2_avan4 == (745) goto sorteio3; set med_item3_avan4, 745; set med_item_avan4_3$, "Trança";}
+//					if(@c == 10){ if(med_item1_avan4 == 746) || med_item2_avan4 == (746) goto sorteio3; set med_item3_avan4, 746; set med_item_avan4_3$, "Coração Imortal";}
+//					if(@c == 11){ if(med_item1_avan4 == 747) || med_item2_avan4 == (747) goto sorteio3; set med_item3_avan4, 747; set med_item_avan4_3$, "Bandagem Estragada";}
+//					next;
+//					mes .@npc$;
+//					mes "Os itens sorteados são: 30 "+med_item_avan4_1$+", 20 "+med_item_avan4_2$+", 30 "+med_item_avan4_3$+".";
+//					set skill_avancado,skill_avancado +1;
+//					setquest .@idquest;
+//					close;
+//		
+//	OnInit:
+//	waitingroom "[Medicina Avançado]",0;
+//}
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+// Saigo no Hitokuchi
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+payon,143,181,5	script	Saigo no Hitokuchi	1_m_smith,{
+
+	.@npc$ = "[Medicina Avançado]";
+
+	// Informações
+	.@NomeSkill = "SaigonoHitokuchi";
+	.@SkillId = 2045;
+	.@idquest = 6024;
+	
+if(Class < 4008 || Class > 4011) {  mes "[Medicina Avançado]";  mes "Você precisa ser Jounin.";  close; }
+if(med_avan != 1) {  mes .@npc$; mes "Você precisa estudar Medicina avançada antes de aprender essa habilidade."; close;}
+	
+if(getskilllv(.@SkillId) > 0){
+	mes .@npc$;
+	mes "Olá novamente, como está esse jutsu que te ensinei?";
+	next;
+	mes .@npc$;
+	mes "O que? Você veio falar algo comigo? O que é?";
+	if(select("- Nada não, só papo furado:- Não gostei desse jutsu, quero remover") == 1) { close; }
+	close2;
+	skill .@SkillId,0,3;
+	set skill_avancado,skill_avancado -1;
+	end;
+}
+
+//-------------------------------------------
+// Quests
+//-------------------------------------------
+	if(checkquest(.@idquest) == 1) {
+			mes .@npc$;
+			mes "Vejo que você está fazendo aprendendo essa habilidade. Gostaria de Remover ?";
+			if(select("- Não, Quero completar a Missão.:- Sim, Quero remover-la.") == 2) {
+				mes "Para remover essa quest, vou precisar de 1 Removedor de Quest Avançado. Vou verificar se você tem o item...";
+				next;
+				if(countitem(7019) == 0) { close; }
+				delitem 7019,1;
+				set med_item1_avan5,0;
+				set med_item2_avan5,0;
+				set med_item3_avan5,0;
+				set med_item_avan5_1$,0;
+				set med_item_avan5_2$,0;
+				set med_item_avan5_3$,0;
+				completequest .@idquest; 
+				erasequest .@idquest;
+				set skill_avancado,skill_avancado -1;
+				mes "Quest Removida com Sucesso";
+				close;
+			}
+		mes .@npc$;
+		mes "Vamos ver se já conseguiu os:";
+		mes "- 30 "+med_item_avan5_1$+"";
+		mes "- 30 "+med_item_avan5_2$+""; 
+		mes "- 30 "+med_item_avan5_3$+""; 
+		mes "- 1 Fuuin no Sho";
+		mes "- 30,000,000 Zeny";
+		next;
+		if(countitem(med_item1_avan5) >= 30 && countitem(med_item2_avan5) >= 30 && countitem(med_item3_avan5) >= 30 && countitem(753) >= 1 && Zeny >= 30000000) {
+			delitem med_item1_avan5,30;
+			delitem med_item2_avan5,30;
+			delitem med_item3_avan5,30;
+			delitem 753,1;
+			set Zeny, Zeny - 30000000;
+			skill .@SkillId,1,3;
+			set .@NomeSkill,1;
+			set med_item1_avan5,0;
+			set med_item2_avan5,0;
+			set med_item3_avan5,0;
+			set med_item_avan5_1$,0;
+			set med_item_avan5_2$,0;
+			set med_item_avan5_3$,0;
+			completequest .@idquest; 
+			erasequest .@idquest;
+			mes .@npc$;
+			mes "Você completou seu treinamento, parabéns.";
+			close;
+		}
+		mes .@npc$; 
+		mes "Você ainda não completou seu treinamento"; 
+		close;
+	}
+
+if(med_avan != 1) { mes .@npc$; mes "Você precisa estudar Medicina avançado antes de aprender esse Medicina"; close;}
+if(skill_avancado >= 2 || SaigonoHitokuchi >= 1) { mes .@npc$; mes "Você já aprendeu duas skills Medicina avançados, esse é o limite"; close;}
+//-------------------------------------------
+// Menu
+//-------------------------------------------
+		mes .@npc$;
+		mes "Eu sou um dos senseis de Medicina espalhado pelo mundo, eu posso lhe ensinar um Medicina avançado";
+		next;
+		mes .@npc$;
+		mes "A técnica de Medicina que eu ensino é o: "+strnpcinfo(1)+"";
+		mes "Gostaria de treinar?";
+		if(select("- Sim:- Não") == 2 ) { close; }
+			next;
+			mes .@npc$;
+			mes "Para esse treinamento,você precisa de:";
+			mes "- Obter Três itens aleatórios sorteados.";
+			mes "- Obter 1 Fuuin no sho";
+			mes "- 30,000,000 Zeny";
+			next;
+			mes .@npc$;
+			mes "Gostaria de treinar?";
+			if(select("- Sim:- Não") == 2 ) { close; }
+				next;
+				mes .@npc$;
+				mes "Para esse treinamento,você precisa de:";
+				next;
+				mes .@npc$;
+				mes "Gostaria de fazer o sorteio dos itens pra começar essa quest?";
+				if(select("- Sim:- Não") == 2 ) { close; }
+	
+				next;
+				mes .@npc$;
+				mes "Muito bem, vou agora sortear quais itens eu preciso que você pegue";
+				next;
+				mes .@npc$;
+				mes "Sorteando...";
+				goto sorteio1;
+				
+				sorteio1:
+					set @a,rand(1,11);
+					
+					if(@a == 1) { set med_item1_avan5, 737; set med_item_avan5_1$, "União da Tribo";}
+					if(@a == 2) { set med_item1_avan5, 738; set med_item_avan5_1$, "Pedra Brilhante";}
+					if(@a == 3) { set med_item1_avan5, 739; set med_item_avan5_1$, "Ametista";}
+					if(@a == 4) { set med_item1_avan5, 740; set med_item_avan5_1$, "Granada";}
+					if(@a == 5) { set med_item1_avan5, 741; set med_item_avan5_1$, "Peridoto";}
+					if(@a == 6) { set med_item1_avan5, 742; set med_item_avan5_1$, "Safira";}
+					if(@a == 7) { set med_item1_avan5, 743; set med_item_avan5_1$, "Opala";}
+					if(@a == 8) { set med_item1_avan5, 744; set med_item_avan5_1$, "Zircônio";}
+					if(@a == 9) { set med_item1_avan5, 745; set med_item_avan5_1$, "Trança";}
+					if(@a == 10){ set med_item1_avan5, 746; set med_item_avan5_1$, "Coração Imortal";}
+					if(@a == 11){ set med_item1_avan5, 747; set med_item_avan5_1$, "Bandagem Estragada";}
+					goto sorteio2;
+				
+				sorteio2:
+					set @b,rand(1,11);
+					
+					if(@b == 1) { if(med_item1_avan5 == 737) goto sorteio2; set med_item2_avan5, 737; set med_item_avan5_2$, "União da Tribo";}
+					if(@b == 2) { if(med_item1_avan5 == 738) goto sorteio2; set med_item2_avan5, 738; set med_item_avan5_2$, "Pedra Brilhante";}
+					if(@b == 3) { if(med_item1_avan5 == 739) goto sorteio2; set med_item2_avan5, 739; set med_item_avan5_2$, "Ametista";}
+					if(@b == 4) { if(med_item1_avan5 == 740) goto sorteio2; set med_item2_avan5, 740; set med_item_avan5_2$, "Granada";}
+					if(@b == 5) { if(med_item1_avan5 == 741) goto sorteio2; set med_item2_avan5, 741; set med_item_avan5_2$, "Peridoto";}
+					if(@b == 6) { if(med_item1_avan5 == 742) goto sorteio2; set med_item2_avan5, 742; set med_item_avan5_2$, "Safira";}
+					if(@b == 7) { if(med_item1_avan5 == 743) goto sorteio2; set med_item2_avan5, 743; set med_item_avan5_2$, "Opala";}
+					if(@b == 8) { if(med_item1_avan5 == 744) goto sorteio2; set med_item2_avan5, 744; set med_item_avan5_2$, "Zircônio";}
+					if(@b == 9) { if(med_item1_avan5 == 745) goto sorteio2; set med_item2_avan5, 745; set med_item_avan5_2$, "Trança";}
+					if(@b == 10){ if(med_item1_avan5 == 746) goto sorteio2; set med_item2_avan5, 746; set med_item_avan5_2$, "Coração Imortal";}
+					if(@b == 11){ if(med_item1_avan5 == 747) goto sorteio2; set med_item2_avan5, 747; set med_item_avan5_2$, "Bandagem Estragada";}
+					goto sorteio3;
+				
+				sorteio3:
+					set @c,rand(1,11);
+					
+					if(@c == 1) { if(med_item1_avan5 == 737) || med_item2_avan5 == (737) goto sorteio3; set med_item3_avan5, 737; set med_item_avan5_3$, "União da Tribo";}
+					if(@c == 2) { if(med_item1_avan5 == 738) || med_item2_avan5 == (738) goto sorteio3; set med_item3_avan5, 738; set med_item_avan5_3$, "Pedra Brilhante";}
+					if(@c == 3) { if(med_item1_avan5 == 739) || med_item2_avan5 == (739) goto sorteio3; set med_item3_avan5, 739; set med_item_avan5_3$, "Ametista";}
+					if(@c == 4) { if(med_item1_avan5 == 740) || med_item2_avan5 == (740) goto sorteio3; set med_item3_avan5, 740; set med_item_avan5_3$, "Granada";}
+					if(@c == 5) { if(med_item1_avan5 == 741) || med_item2_avan5 == (741) goto sorteio3; set med_item3_avan5, 741; set med_item_avan5_3$, "Peridoto";}
+					if(@c == 6) { if(med_item1_avan5 == 742) || med_item2_avan5 == (742) goto sorteio3; set med_item3_avan5, 742; set med_item_avan5_3$, "Safira";}
+					if(@c == 7) { if(med_item1_avan5 == 743) || med_item2_avan5 == (743) goto sorteio3; set med_item3_avan5, 743; set med_item_avan5_3$, "Opala";}
+					if(@c == 8) { if(med_item1_avan5 == 744) || med_item2_avan5 == (744) goto sorteio3; set med_item3_avan5, 744; set med_item_avan5_3$, "Zircônio";}
+					if(@c == 9) { if(med_item1_avan5 == 745) || med_item2_avan5 == (745) goto sorteio3; set med_item3_avan5, 745; set med_item_avan5_3$, "Trança";}
+					if(@c == 10){ if(med_item1_avan5 == 746) || med_item2_avan5 == (746) goto sorteio3; set med_item3_avan5, 746; set med_item_avan5_3$, "Coração Imortal";}
+					if(@c == 11){ if(med_item1_avan5 == 747) || med_item2_avan5 == (747) goto sorteio3; set med_item3_avan5, 747; set med_item_avan5_3$, "Bandagem Estragada";}
+					next;
+					mes .@npc$;
+					mes "Os itens sorteados são: 30 "+med_item_avan5_1$+", 30 "+med_item_avan5_2$+", 30 "+med_item_avan5_3$+".";
+					set skill_avancado,skill_avancado +1;
+					setquest .@idquest;
+					close;
+		
+	OnInit:
+	waitingroom "[Medicina Avançado]",0;
+}

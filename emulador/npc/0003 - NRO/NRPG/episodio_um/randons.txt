@@ -1,0 +1,51 @@
+ondular,163,91,4	script	Velha	863,{
+
+//==========Variavéis=========================================
+set @npc$,"[^000080Velha^000000]";
+//============================================================
+
+mes @npc$;
+mes "Oh meu jovem...";
+mes "Você não sabe o quanto temos sofrido nas mãos do Gatou";
+mes "Eu rezo todo dia pra alguém nos ajudar...";
+close;
+}
+
+ondular,167,155,4	script	Morador#1	534,{
+
+//==========Variavéis=========================================
+set @npc$,"[^000080Morador^000000]";
+//============================================================
+
+mes @npc$;
+mes "Olá...";
+mes "Eu era um grande amigo do Kaiza";
+mes "Aquele maldito Gatou... nunca vou perdoar ele!";
+close;
+}
+
+ondular,85,198,4	script	Morador#2	538,{
+
+//==========Variavéis=========================================
+set @npc$,"[^000080Morador^000000]";
+//============================================================
+
+mes @npc$;
+mes "Grr";
+mes "Nossa economia está toda acabada graças aquele Gatou maldito";
+mes "Se eu pelo menos fosse forte o bastante pra enfrentar o Zabuza...";
+close;
+}
+
+ondular,53,120,4	script	Moradora	701,{
+
+//==========Variavéis=========================================
+set @npc$,"[^000080Moradora^000000]";
+//============================================================
+
+mes @npc$;
+mes "Bem-vindo ao País das ondas";
+mes "Você veio em uma hora complicada";
+mes "Estamos todos com medo do Gatou e seus subordinados...";
+close;
+}

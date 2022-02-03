@@ -1,0 +1,110 @@
+treinamento,73,166,4	script	Mama Noel#1	719,{
+
+	set .@instance$, "Natal Perdido";
+	
+if(#questmade100 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:
+mes "^ff0000[Instrutor de Instâncias]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7016) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Instrutor de Instâncias]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set #questmade100, 0;
+delitem 7016,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Instrutor de Instâncias]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Busque o removedor na Sala VIP!";
+close;
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos do ^FF0000Natal Perdido^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if (instance_create(.@instance$) < 0) {
+			mes "Você não atende aos requisitos do ^FF0000Natal Perdido^000000.";
+			close;
+		}
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		donpcevent instance_npcname("#ins_1@xm_mobs")+"::OnEnable";
+		hideonnpc ""+instance_npcname("Mama Noel#2")+"";
+	}
+	end;
+}
+
+1@xm_d,128,93,4	script	Mama Noel#2	719,{
+
+if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "Apenas o líder pode finalizar a missão.";
+		close;
+	}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 8) {
+			mes .@npc$;
+			mes "Seu Grupo é muito grande. Reduz a quantidade de membros. Só é permitido 8 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+	mes .@npc$;
+	mes "Você conseguiu completar a missão. O Natal foi salvo por seu grupo!";	
+	close2;
+	getpartymember getcharid(1),0;
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
+				// Recompensas
+				query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 100 WHERE `char_id` = '"+getcharid(0)+"'");
+				getitem 776,1;
+				set #questmade100, GetTime(8);
+		}
+	}
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Raid Natal Perdido.",bc_all;
+	instance_destroy;
+	end;
+}
+
+1@xm_d,0,0,0	script	#ins_1@xm_mobs	-1,{
+OnEnable:
+	set .@map$, instance_mapname("1@xm_d");
+	set .@label$, instance_npcname(strnpcinfo(0))+"::OnMyMobDead";
+	set .@mob_dead_num,mobcount(.@map$,instance_npcname("#ins_1@xm_mobs")+"::OnMyMobDead");
+	mapannounce .@map$,"Noel Falso: Estou aqui para acabar com os sonhos de vocês!",bc_all;
+	sleep 4000;
+	mapannounce .@map$,"[MISSÃO] Encontre e derrote o Noel Falso e seus presentes!",bc_all;
+	sleep 1000;
+	monster instance_mapname("1@xm_d"),121,199,"Presente Amaldiçoado",1743,2;
+	monster instance_mapname("1@xm_d"),138,197,"Presente Amaldiçoado",1743,2;
+	monster instance_mapname("1@xm_d"),139,214,"Presente Amaldiçoado",1743,2;
+	monster instance_mapname("1@xm_d"),121,214,"Presente Amaldiçoado",1743,2;
+	monster instance_mapname("1@xm_d"),131,208,"Noel Falso",1962,1,instance_npcname(strnpcinfo(0))+"::OnNoelDie";
+	end;
+
+	OnNoelDie:
+	set .@map$, instance_mapname("1@xm_d");
+	mapannounce .@map$,"MISSÃO COMPLETA! O líder do grupo deve retirar a premiação com a Mama Noel!",bc_all;
+	hideoffnpc ""+instance_npcname("Mama Noel#2")+"";
+	end;
+	}
+}

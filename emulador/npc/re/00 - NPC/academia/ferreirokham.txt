@@ -1,0 +1,294 @@
+///////////////////////////////////////////////////////////////////
+//===== Cronus Script ===========================================//
+//= 							 	=//
+//= Reparador							=//
+//= 								=//
+//===== Por: ====================================================//
+//=								=//
+//=       KIRA THE CAT
+//=								=//
+//===== Changelog: ========================== Versão Atual ======//
+// Criado em 28/02/2021 
+// Alteração Dia 22/06/2021
+// 		Alterada estrutura do NPC para compor o novo modelo de Kafra Pass
+// 		Alterado o modelo de estrutura do NPC para uma forma mais organizada
+//		Criado Interações Especiais Para VIP's
+//      Finalizado 23/06/2021 - 16:31
+//===== Descrição: ==============================================//
+// == NPC FERREIRO (+4) da Academia
+// == Com LIMITE de Item apenas +4
+// ============================================================
+lou_in02,133,178,4	script	Ferreiro::ferreirokham	826,{	
+// ============================================================
+
+	.@npc$ = "               ^cfa417[ "+strnpcinfo(1)+" ]^000000";
+	.@descricao$ = "Infelizmente eu so consigo evoluir Até o ^FF0000+4^000000, mas existem ferreiros que conseguem evoluir até ^FF0000+20^000000.";
+	set .@t, 3,5;	// Delay Seconds.
+
+// ============================================================
+
+	disable_items;
+	if (isbegin_quest(1001) == 1) { goto novato;} // Quest " Complete a Academia "
+	if (countitem(6456) != 0) { goto Ferreiro_VIP; }
+	else {goto veterano;}
+
+// ============================================================
+		
+	veterano:
+	mes .@npc$;
+	mes " ";
+	mes "Eu posso refinar todos os tipos de ^008000Equipamentos^000000.";
+	mes " ";
+	mes .@descricao$;	
+	switch(select("- Quero Refinar:- Esquece:- ^800080Como é Ser Ferreiro?^000000")) {
+
+	
+	case 3:
+	if (Q_Ferreiro == 1) { close; } // Quest Profissão FERREIRO
+	else {  next;
+			mes .@npc$;
+			mes " ";
+			mes "Não me faça perder tempo";
+			close; }
+	
+	case 2:
+		close;
+			
+	case 1:	
+		next;
+		mes .@npc$;
+		mes " ";
+		mes "Para refinar até o ^FF0000+4^000000 eu irei cobrar apenas o custo da ^800080forja^000000...";
+		mes " ";
+		mes "Porém após o ^FF0000+7^000000 você vai precisar de um ^9400d3Item Catalizador^000000.";
+		next;
+		mes .@npc$;
+		mes " ";
+		mes "Possuimos uma tabela de valores para a ^800080forja^000000, saiba mais escolhendo o equipamento.";
+		mes " ";
+		mes "Que Equipamentos o senhor gostaria de refinar?";
+		
+		setarray .@position$[1], "","","","","","","","","","";
+		set .@menu$,"";
+		for(set .@i,1; .@i<=10; set .@i,.@i+1) {
+			if(getequipisequiped(.@i)) {
+				set .@menu$, .@menu$ + .@position$[.@i] + "- " + "" + getequipname(.@i) + "";
+				set .@equipped,1;
+			}
+			set .@menu$, .@menu$ + ":";
+		}
+		
+		set .@part,select(.@menu$);
+		if( !getequipisequiped(.@part) ) {
+			close;
+		}
+		
+		if( !getequipisenableref(.@part) ) {
+			next;
+			mes .@npc$;
+			mes " ";
+			mes "Esse equipamento não pode ser refinado.";
+			close;
+		}
+		
+		if( getequiprefinerycnt(.@part) >= 4 ) {
+			next;
+			mes .@npc$;
+			mes " ";
+			mes "Este item não pode ser refinado ^FF0000AQUI^000000, pois encontra-se ^FF0000+4^000000.";
+			close;
+		}
+
+// ============================================================
+// Configurações do NPC
+	
+		.@itemmineral = 986; // Anvil
+		.@itemmineral2 = 987; // Anvil Oridecon
+		.@itemmineral3 = 988; // Anvil Golden
+		.@itemmineral4 = 989; // Anvil Emp	
+		
+		.@nivel = ""+(getequiprefinerycnt(.@part)+1)+"";
+		if(getequiprefinerycnt(.@part) < 1){
+		.@chance = "100";
+		.@valor = "15000";
+		}
+		if(getequiprefinerycnt(.@part) == 1){
+		.@chance = "85";
+		.@valor = "50000";
+		}
+		if(getequiprefinerycnt(.@part) == 2){
+		.@chance = "75";
+		.@valor = "85000";
+		}
+		if(getequiprefinerycnt(.@part) == 3){
+		.@chance = "50";
+		.@valor = "100000";
+		}
+		if( getequiprefinerycnt(.@part) >= 7 ) {next;
+												mes .@npc$;
+												mes " ";
+												mes "Nivel de Refinamento: [ ^FF0000"+.@nivel+"^000000 ]";
+												mes "Chance de Refinar: [ ^FF0000"+.@chance+"%^000000 ]";
+												mes "Custo: [ ^FF0000"+.@valor+"^000000 ] Zeny";
+												mes "Material: [ ^FF0000"+getitemname(.@itemmineral)+"^000000 ]";
+												mes " ";
+												goto refine; }
+
+// ============================================================
+
+		else next;
+		mes .@npc$;
+		mes " ";
+		mes "Nivel de Refinamento: [ ^FF0000"+.@nivel+"^000000 ]";
+		mes "Chance de Refinar: [ ^FF0000"+.@chance+"%^000000 ]";
+		mes "Custo: [ ^FF0000"+.@valor+"^000000 ] Zeny";
+		mes " ";
+		goto refine;
+		
+		refine:
+		next;
+		mes .@npc$;
+		mes " ";
+		mes "Gostaria de refinar seu item?";
+		mes " ";
+		mes "Não Esqueça que você pode ^FF0000perder seu item permanentemente^000000";
+		if(select("- ^FF0000Sim^000000:- Não") == 2) close;
+
+//===============================================
+//
+// +7  ou Mais cobrando o Item itemmineral
+// Com chance de ser destruido
+//
+//==============================================
+		
+		if(getequiprefinerycnt(.@part) >= 7 && Zeny >= .@valor && countitem(.@itemmineral) >= 1) {
+			next;
+			mes .@npc$;
+			mes " ";
+			mes "Vejo que seu equipamento encontra-se ^FF0000+7^000000";
+			mes " ";
+			mes "Gostaria de usar o item ^FF0000"+getitemname(.@itemmineral)+"^000000 Para refinar seu equipamento?";
+			if(select("^FF0000- Refinar^000000:- Não") == 2) { close; }
+				
+			if(getequiprefinerycnt(.@part) >= rand(.@chance)) {
+				next;
+				mes .@npc$;
+				mes " ";
+				mes "Espere alguns segundos enquanto eu realizo a ^FF0000forja^000000";
+				while ( .@t ) {
+				mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+				sleep2 1000 ;
+				set .@t, .@t - 1;
+					}
+				atcommand "@effect 101 "+@player$;
+				set Zeny , Zeny - .@valor;
+				delitem .@itemmineral,1;
+				failedrefitem .@part;
+				dispbottom "[Servidor] Dattebayo: -" + .@valor + "z";
+				dispbottom "[Servidor] Dattebayo: Item "+getitemname(.@itemmineral)+" foi removido!";
+				if (getgmlevel() >= 5) {npctalk "Kham: "+ strcharinfo ( 0 ) +" Não foi dessa vez amigo.";}
+					close;
+			}
+			next;
+			mes .@npc$;
+			mes " ";
+			mes "Espere alguns segundos enquanto eu realizo a ^FF0000forja^000000";
+			while ( .@t ) {
+				mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+				sleep2 1000 ;
+				set .@t, .@t - 1;
+					}
+			atcommand "@effect 101 "+@player$;
+			delitem 986,1;
+			set Zeny , Zeny - .@valor;
+			emotion ET_BEST;
+			successrefitem .@part;
+			dispbottom "[Servidor] Dattebayo: -" + .@valor + "z";
+			dispbottom "[Servidor] Dattebayo: Item "+getitemname(.@itemmineral)+" foi removido!";
+			if (getgmlevel() >= 5) {npctalk ""+strnpcinfo(1)+": "+ strcharinfo ( 0 ) +" Tudo certo até a proxima amigo";}
+			close;
+		}
+//===============================================
+//
+// +0 AO +4
+// APENAS COBRA ZENY
+//
+//==============================================
+		
+		if(getequiprefinerycnt(.@part) < 7 && Zeny >= .@valor ) {
+			
+			if(getequiprefinerycnt(.@part) >= rand(.@chance)) {
+				next;
+				mes .@npc$;
+				mes " ";
+				mes "Espere alguns segundos enquanto eu realizo a ^FF0000forja^000000";
+				while ( .@t ) {
+				mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+				sleep2 1000 ;
+				set .@t, .@t - 1;
+					}
+				atcommand "@effect 101 "+@player$;
+				set Zeny , Zeny - .@valor;
+				failedrefitem .@part;
+				dispbottom "[Servidor] Dattebayo: -" + .@valor + "z";
+				dispbottom "[Servidor] Dattebayo: Seu item Foi Destruido!";
+				if (getgmlevel() >= 5) {npctalk ""+strnpcinfo(1)+": "+ strcharinfo ( 0 ) +" Não foi dessa vez amigo.";}
+				close;
+			}
+			next;
+			mes .@npc$;
+			mes " ";
+			mes "Espere alguns segundos enquanto eu realizo a ^FF0000Forja^000000.";
+			while ( .@t ) {
+				mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+				sleep2 1000 ;
+				set .@t, .@t - 1;
+					}
+			atcommand "@effect 101 "+@player$;
+			set Zeny , Zeny - .@valor;
+			emotion ET_BEST;
+			successrefitem .@part;
+			if(getequiprefinerycnt(.@part) == 4){announce ""+strnpcinfo(1)+": "+strcharinfo(0)+" Forjou um equipamento "+getequiprefinerycnt(EQI_HAND_R)+"+.",bc_blue|bc_all;}
+			dispbottom "[Servidor] Dattebayo: -" + .@valor + "z";
+			if (getgmlevel() >= 5) {npctalk ""+strnpcinfo(1)+": "+ strcharinfo ( 0 ) +" Tudo certo até a proxima!";}
+			close;
+		}
+		next;
+		mes .@npc$;
+		mes " ";
+		mes "Você não possui zeny suficiente ou [ ^FF0000"+getitemname(.@itemmineral)+"^000000 ]";
+		close;
+	}
+//=====================
+// Quest newbie
+// A ser determinada
+// Cobrar mesmo assim
+//=====================	
+
+	Ferreiro_VIP:
+	if (Ferreiro_VIP_Q == 1) goto veterano;
+	mes .@npc$;
+	mes " ";
+	mes "Vejo que você possui um item especial ai";
+	next;
+	mes .@npc$;
+	mes " ";
+	mes "Vou guiar você até o Mestre Ferreiro";
+	navigateto("louyang", 156, 177, NAV_NONE, 1);
+	set Ferreiro_VIP_Q,1;
+	close;
+
+	Novato:
+//	set primeiravezferreiro,1;
+	mes .@npc$;
+	mes " ";
+	mes "Eu sou o famoso ferreiro do pais do rio. Todos me chamam de kham mas não é meu nome.";
+	mes " ";
+	mes "Eu trabalho ajudando novatos a melhorar seus equipamentos, para enfrentar esse mundo cruel dos shinobis.";
+	goto veterano;
+
+
+}
+
+prontera,161,159,4	duplicate(ferreirokham)	Ferreiro Kham#ferreirokham1	826
+

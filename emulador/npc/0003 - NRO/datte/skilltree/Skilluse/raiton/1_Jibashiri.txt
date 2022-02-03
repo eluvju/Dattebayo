@@ -1,0 +1,108 @@
+-	script	on_PC_UseSkill001	-1,{
+    end;
+//When a Character uses a skill
+
+//Jibashiri
+
+onPcUseSkillEvent:
+
+           if(lskillid == 187) {
+
+
+if (getskilllv(187) == 1) {
+
+if (Jibashiri != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 50) {skill 187,2,0; set skill187,0; dispbottom "[Sys] Level up"; end; }
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 1: "+skill187+" de 50";
+
+end;
+
+}
+
+if (getskilllv(187) == 2) {
+if (Jibashiri != 1) {end;}
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 100) {skill 187,3,0; set skill187,0; dispbottom "[Sys] Level up"; end;}
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 2: "+skill187+" de 100";
+
+end;
+
+}
+
+if (getskilllv(187) == 3) {
+
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 150) {skill 187,4,0; set skill187,0; dispbottom "[Sys] Level up"; end;}
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 3: "+skill187+" de 150";
+
+end;
+
+}
+
+if (getskilllv(187) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 200) {skill 187,5,0; set skill187,0; dispbottom "[Sys] Level up"; end;}
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 4: "+skill187+" de 200";
+
+end;
+
+}
+
+if (getskilllv(187) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 250) {skill 187,6,0; set skill187,0; dispbottom "[Sys] Level up"; end;}
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 5: "+skill187+" de 250";
+
+end;
+
+}
+
+if (getskilllv(187) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 300) {skill 187,7,0; set skill187,0; dispbottom "[Sys] Level up"; end;}
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 6: "+skill187+" de 300";
+
+end;
+
+}
+
+if (getskilllv(187) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 500) {skill 187,8,0; set skill187,0; dispbottom "[Sys] Level up"; end;}
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 7: "+skill187+" de 500";
+
+end;
+
+}
+
+if (getskilllv(187) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 700) {skill 187,9,0; set skill187,0; dispbottom "[Sys] Level up"; end;}
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 8: "+skill187+" de 700";
+
+end;
+
+}
+
+if (getskilllv(187) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill187 >= 1000) {skill 187,10,0; set skill187,0; dispbottom "[Sys] Level up"; end;}
+set skill187,skill187 +1;
+dispbottom "[Jutsu level] Jibashiri level 9: "+skill187+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

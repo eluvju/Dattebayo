@@ -1,0 +1,25 @@
+-	script	on_PC_UseSkilld02	-1,{
+    end;
+//When a Character uses a skill
+
+//tate
+
+onPcUseSkillEvent:
+
+           if(lskillid == 356) {
+
+
+if (getskilllv(356) == 1) {
+
+if (Doryuuheki != 1) {end;}
+if (skill356 >= 1000) {skill 356,2,0; set skill356,0; dispbottom "[Sys] Level up"; end; }
+set skill356,skill356 +1;
+dispbottom "[Jutsu level] Suna no Tate level 1: "+skill356+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

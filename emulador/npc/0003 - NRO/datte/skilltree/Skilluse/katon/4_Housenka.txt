@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkillk04	-1,{
+    end;
+//When a Character uses a skill
+
+//housenka
+
+onPcUseSkillEvent:
+
+           if(lskillid == 17) {
+
+
+if (getskilllv(17) == 1) {
+
+if (housenka != 1) {end;}
+if (skill17 >= 50) {skill 17,2,0; set skill17,0; dispbottom "[Sys] Level up"; end; }
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 1: "+skill17+" de 50";
+
+end;
+
+}
+
+if (getskilllv(17) == 2) {
+if (housenka != 1) {end;}
+if (skill17 >= 100) {skill 17,3,0; set skill17,0; dispbottom "[Sys] Level up"; end;}
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 2: "+skill17+" de 100";
+
+end;
+
+}
+
+if (getskilllv(17) == 3) {
+
+if (nin_intermediario != 1) {end;}
+if (skill17 >= 150) {skill 17,4,0; set skill17,0; dispbottom "[Sys] Level up"; end;}
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 3: "+skill17+" de 150";
+
+end;
+
+}
+
+if (getskilllv(17) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill17 >= 200) {skill 17,5,0; set skill17,0; dispbottom "[Sys] Level up"; end;}
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 4: "+skill17+" de 200";
+
+end;
+
+}
+
+if (getskilllv(17) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill17 >= 250) {skill 17,6,0; set skill17,0; dispbottom "[Sys] Level up"; end;}
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 5: "+skill17+" de 250";
+
+end;
+
+}
+
+if (getskilllv(17) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill17 >= 300) {skill 17,7,0; set skill17,0; dispbottom "[Sys] Level up"; end;}
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 6: "+skill17+" de 300";
+
+end;
+
+}
+
+if (getskilllv(17) == 7) {
+if (nin_avan != 1) {end;}
+if (skill17 >= 500) {skill 17,8,0; set skill17,0; dispbottom "[Sys] Level up"; end;}
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 7: "+skill17+" de 500";
+
+end;
+
+}
+
+if (getskilllv(17) == 8) {
+if (nin_avan != 1) {end;}
+if (skill17 >= 700) {skill 17,9,0; set skill17,0; dispbottom "[Sys] Level up"; end;}
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 8: "+skill17+" de 700";
+
+end;
+
+}
+
+if (getskilllv(17) == 9) {
+if (nin_avan != 1) {end;}
+if (skill17 >= 1000) {skill 17,10,0; set skill17,0; dispbottom "[Sys] Level up"; end;}
+set skill17,skill17 +1;
+dispbottom "[Jutsu level] Housenka no Jutsu level 9: "+skill17+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

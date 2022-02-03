@@ -1,0 +1,49 @@
+job_monk,249,116,4	script	Troca de Tickets	4_m_across,{
+
+    set @npcname$,"[^0000ffEventos Premiação^000000]";
+
+    mes @npcname$;
+	mes "Olá, gostaria de trocar ticket de evento?";
+    if (select("Trocar os Tickets!","Cancela") == 2) 
+        close;
+
+
+    next;
+    mes @npcname$;
+    mes "Boas Compras.";
+    close2;
+    callshop "ItensEvento",1;
+    npcshopattach "ItensEvento";
+    end;
+
+OnBuyItem:
+
+    for(set .@i,0; .@i<getarraysize(.evento_item); set .@i,.@i+1) {
+        for(set .@d,0; .@d<getarraysize(@bought_nameid); set .@d,.@d+1) {
+            if(@bought_nameid[.@d]==.evento_item[.@i]) {
+                if(checkweight(@bought_nameid[.@d],@bought_quantity[.@d])) {
+                    if(countitem(730) >= .evento_cost[.@i]*@bought_quantity[.@d]) {
+						delitem 730,.evento_cost[.@i]*@bought_quantity[.@d];
+                        getitem @bought_nameid[.@d],@bought_quantity[.@d]; end;
+                    } else dispbottom "Você não tem Ticket suficientes para comprar esse item.";
+                } else dispbottom "Desculpe mais você está muito pesado para comprar esse item.";
+            }
+        }
+    }
+OnInit:
+waitingroom "Troca Tickets Evento",0;
+    setarray .evento_item[0],            32161; // ID dos Itens
+    setarray .evento_cost[0],            70; // preço dos itens(unidade) em ticket de evento.
+	
+	
+	npcshopdelitem "ItensEvento",510;
+	if(getarraysize(.evento_item) >= 1) {
+		npcshopitem "ItensEvento",.evento_item[.i],.evento_cost[.i];
+		for( set .i,0; .evento_item[.i]; set .i,.i+1 ) {
+			npcshopadditem "ItensEvento",.evento_item[.i],.evento_cost[.i];
+		}
+	}
+    end;
+}
+
+-	shop	ItensEvento	-1,501:-1

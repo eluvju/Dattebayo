@@ -1,0 +1,141 @@
+nevoa.gat,152,289,5	script	Equipamentos#a	837,{
+mes "[Loja de Equipamentos]";
+mes "Bem-vindo a loja de equipamentos da Névoa!";
+next;
+mes "[Loja de Equipamentos]";
+mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi!";
+next;
+mes "[Loja de Equipamentos]";
+mes "Boas compras!";
+close;
+}
+
+konoha3,145,229,5	script	Equipamentos#b	837,{
+mes "[Loja de Equipamentos]";
+mes "Bem-vindo a loja de equipamentos de Konoha!";
+next;
+mes "[Loja de Equipamentos]";
+mes "Aqui na loja você encontrará vários equipamentos úteis na sua trajetória shinobi!";
+next;
+mes "[Loja de Equipamentos]";
+mes "Boas compras!";
+close;
+}
+
+prt_fild09.gat,93,365,5	script	1º Esconderijo Kamizaru	837,{
+mes "[1º Esconderijo do Clã Kamizaru]";
+mes "Entrada do 1º esconderijo do clã Kamizaru!";
+close;
+}
+
+cmd_fild01.gat,31,315,5	script	2º Esconderijo Kamizaru	837,{
+mes "[2º Esconderijo do Clã Kamizaru]";
+mes "Entrada do 2º esconderijo do clã Kamizaru!";
+close;
+}
+
+abyss_01.gat,257,275,5	script	Minas	837,{
+mes "[Minas]";
+mes "Entrada das minas!";
+close;
+}
+
+//academia
+
+payon_in03,92,126,5	script	Sala de Kekkei Genkai	837,{
+mes "[Sala de Kekkei Genkai]";
+mes "Entenda e escolha aqui sua Kekkei Genkai!";
+close;
+}
+
+payon_in03,105,126,5	script	Sala de Invocação	837,{
+mes "[Sala de Invocação]";
+mes "Entenda e escolha aqui sua Invocação!";
+close;
+}
+
+payon_in03,102,131,5	script	Sala de Treinamentos	837,{
+mes "[Sala de Treinamentos]";
+mes "Entenda e escolha aqui seus treinamentos, aqui também tem a entrada para a sala de jutsus e área de combate!";
+close;
+}
+
+payon_in03,6,70,5	script	Tutoriais Avançados	837,{
+mes "[Tutoriais Avançados]";
+mes "Aqui você encontra outros tutoriais que poderão lhe ajudar";
+close;
+}
+
+payon_in03,17,71,5	script	Salas de Exames	837,{
+mes "[Salas de Exames]";
+mes "Nestas salas se encontram os exames necessários para conseguir sua certificação Shinobi";
+close;
+}
+
+payon_in03,100,155,5	script	Localizações	837,{
+mes "[Localizações]";
+mes "Em frente, Sala de jutsus básicos, aqui se encontram os jutsus básicos que você pode escolher dependendo dos treinamentos que você escolheu na sala anterior";
+next;
+mes "A esquerda, Área de combate";
+close;
+}
+
+payon_in03,76,156,5	script	Área de Combate	837,{
+mes "[Área de Combate]";
+mes "Aprenda a lutar aqui na Área de combate!";
+close;
+}
+
+yuno_in03,56,188,5	script	Localizações#1	837,{
+mes "[Localizações]";
+mes "Bem-vindo a sala de treinamentos, logo acima, entrada para sala de jutsus";
+close;
+}
+
+konoha3,244,250,5	script	Academia#1	837,{
+mes "[Academia]";
+mes "Bem-vindo a academia, o melhor local de ensino!";
+close;
+}
+
+sunagakure,226,260,5	script	Academia#2	837,{
+mes "[Academia]";
+mes "Bem-vindo a academia, o melhor local de ensino!";
+close;
+}
+
+kumogakure,140,101,5	script	Academia#3	837,{
+mes "[Academia]";
+mes "Bem-vindo a academia, o melhor local de ensino!";
+close;
+}
+
+kiragakure,157,198,5	script	Academia#4	837,{
+mes "[Academia]";
+mes "Bem-vindo a academia, o melhor local de ensino!";
+close;
+}
+
+hospital,103,16,5	script	Hospital#9	837,{
+mes "[Hospital]";
+mes "Na parte oeste, ala de atendimento médico, a direita dessa sala, saída para a vila, ao sul, saída para a província";
+close;
+}
+
+hospital2,103,16,5	script	Hospital#6	837,{
+mes "[Hospital]";
+mes "Na parte oeste, ala de atendimento médico, a direita dessa sala, saída para a vila, ao sul, saída para a província";
+close;
+}
+
+hospital3,103,16,5	script	Hospital#7	837,{
+mes "[Hospital]";
+mes "Na parte oeste, ala de atendimento médico, a direita dessa sala, saída para a vila, ao sul, saída para a província";
+close;
+}
+
+hospital4,103,16,5	script	Hospital#8	837,{
+mes "[Hospital]";
+mes "Na parte oeste, ala de atendimento médico, a direita dessa sala, saída para a vila, ao sul, saída para a província";
+close;
+}

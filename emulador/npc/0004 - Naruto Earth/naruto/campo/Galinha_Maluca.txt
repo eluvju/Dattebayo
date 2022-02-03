@@ -1,0 +1,97 @@
+//============================================================
+job_monk,246,116,4	script	Galinha Maluca	800,{
+
+	set .@GMAccess,80;	// GM level required to access NPC
+
+	if (.startcluck) {
+		specialeffect2 EF_HIT3;
+		switch(rand(15)) {
+			case 0: npctalk "Galinha Maluca : CLUUUUUUCK!!!"; unitkill getcharid(3); skilleffect "NPC_SELFDESTRUCTION",1; emotion ET_HUK; break;
+			case 1: npctalk "Galinha Maluca : Cluuuuuck!~"; break;
+			case 2: unitkill getcharid(3); skilleffect "NPC_SELFDESTRUCTION",1; break;
+			case 3: sc_start SC_Freeze,10000,0; break;
+			case 4: npctalk "Galinha Maluca : CLUUUUUUUUUCK!!!"; unitkill getcharid(3); skilleffect "NPC_SELFDESTRUCTION",1; emotion ET_HUK; break;
+			case 5: sc_start SC_Sleep,10000,0; break;
+			case 6: sc_start SC_Stone,10000,0; emotion ET_KIK; break;
+			case 7: npctalk "Galinha Maluca : CLUUUUUUCK!!!"; unitkill getcharid(3); skilleffect "NPC_SELFDESTRUCTION",1; emotion ET_HUK; break;
+			case 8: npctalk "Galinha Maluca : Cluck! CLUUUCK!!"; unitkill getcharid(3); skilleffect "NPC_SELFDESTRUCTION",1; emotion ET_HUK; break;
+			case 9: sc_start SC_Stun,10000,0; break;
+			case 10: sc_start SC_Sleep,10000,0; emotion ET_KIK; break;
+			case 11: npctalk "Galinha Maluca : Cluck! Cluck!"; break;
+			case 12: sc_start SC_Stun,10000,0; break;
+			case 13: unitkill getcharid(3); skilleffect "NPC_SELFDESTRUCTION",1; break;
+			default:
+				if (rand(50) < 4) {
+					npctalk "Galinha Maluca : WOOF!...........";
+					specialeffect2 EF_SPHERE;
+					announce "[Galinha Maluca] " + strcharinfo(0) + " retirou o prêmio! Muito bem!",0;
+					getitem $cluck_item_id,$cluck_item_amount;
+					set .startcluck,0;
+				} else {
+					npctalk "Galinha Maluca : Cluck! CLUUUCK!!";
+					unitkill getcharid(3); skilleffect "NPC_SELFDESTRUCTION",1;
+				}
+				break;
+		}
+		end;
+	}
+	mes "[Galinha Maluca]";
+	if (getgmlevel() >= .@GMAccess) {
+		mes "Cluck cluck! Cluuuuuck? ^FF0000~Olá " + strcharinfo(0) + ", Quer jogar hoje?~^000000";
+		mes "Cluck cluck... CLUCK! ^FF0000~Apenas me diga o que fazer!~^000000";
+		next;
+		while(1) switch(select("Iniciar Evento:Checar Premio:Escolher Premio:Nada hoje Galinha")) {
+			case 1:
+				mes "[Galinha Maluca]";
+				mes "CLUCK! ^FF0000~Ok!~^000000";
+				emotion ET_OK;
+				close2;
+				announce "[Galinha Maluca] está prestes a começar no Centro de Treinamento!",bc_blue;
+				initnpctimer;
+				end;
+			case 2:
+				mes "[Galinha Maluca]";
+				mes "Cluck, cluck cluck... Cluck! ^FF0000~O prêmio atual é^000000 ^008000"+ $cluck_item_amount +" "+ getitemname($cluck_item_id) +".^000000";
+				next;
+				break;
+			case 3:
+				mes "[Galinha Maluca]";
+				mes "Cluck cluck? Cluck??? ^FF0000~Qual deveria ser o prêmio para ganhar? Por favor insira o ID.~^000000";
+				input $cluck_item_id;
+				next;
+				mes "[Galinha Maluca]";
+				mes "Cluck? cluuuck? ^FF0000~Quantos desse item eu deveria dar?~^000000";
+				input $cluck_item_amount;
+				next;
+				mes "[Galinha Maluca]";
+				mes "Cluck cluck..? Cluck. ^FF0000~ok, o prêmio é^000000 ^008000"+ $cluck_item_amount +" "+ getitemname($cluck_item_id) +"^000000? ^FF0000Ótimo.~^000000";
+				emotion ET_OK;
+				next;
+				break;
+			case 4:
+				mes "[Galinha Maluca]";
+				mes "Cluck cluck cluck...";
+				close;
+		}
+	}
+	mes "Cluck cluck! Cluuuuuck?";
+	mes "Cluck....";
+	close;
+
+OnTimer10000:
+	announce "Por favor, corra até o centro de treinamento se quiser brincar com a galinha maluca!",bc_blue;
+	end;
+OnTimer20000:
+	announce "A galinha maluca comeu um dos meus itens! Estou com muito medo de recuperá-lo!",bc_blue;
+	end;
+OnTimer30000:
+	announce "Clique na galinha maluca e tente retirar o item, se tiver sorte você vai ganhar! Você está pronto?",bc_blue;
+	end;
+OnTimer40000:
+	announce "GO! Clique na galinha maluca para garantir seu premio!",bc_blue;
+	stopnpctimer;
+	if (!$cluck_item_id) set $cluck_item_id,734;
+	if (!$cluck_item_amount) set $cluck_item_amount,2;
+	set .startcluck,1;
+	end;
+}

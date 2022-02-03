@@ -1,0 +1,100 @@
+ein_fild01,68,232,5	script	Dai Senkou::taiint10	831,{
+
+if (getskilllv(357) >= 1) goto L_delete;
+if(tai_intermediario != 1) {mes "Você precisa estudar taijutsu intermediário antes de aprender esse taijutsu"; close;}
+if (checkquest(2039) == 1) goto L_go;
+if(tai_skill_int >= 3) {mes "Você já aprendeu três taijutsus intermediários, esse é o limite"; close;}
+if(accept_tai_int == 3) {mes "Você já aceitou três treinamentos pra realizar de taijutsu"; close;}
+if(DSenkou == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if (WeaponLvl < 40) {mes "Seu nível de taijutsu está baixo demais, é preciso ter nível 40 ou mais pra aprender esse taijutsu"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de taijutsu espalhado pelo mundo, eu posso lhe ensinar um taijutsu intermediário";
+next;
+mes "O taijutsu que eu ensino é o: Dai Senkou";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Dai Senkou
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(357) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(357) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 357,0,0;
+set DSenkou,0;
+erasequest 2039;
+if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;}
+if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_tai_int_dez,1;
+set accept_tai_int,accept_tai_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter taijutsu intermediário level 40";
+mes "- Derrotar 25 Shinobi ladrão.";
+mes "- Obter 10 Casca Quebrada";
+mes "- Obter 60 Casca de Tartaruga";
+mes "- Obter 60 Raiz de Planta Carnívora";
+setquest 2039;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(tai_skill_int >= 3) {mes "Você já aprendeu três taijutsus intermediários, esse é o limite"; close;}
+if(tai_int_mobs_dez < 25) {mes "Você ainda não completou seu treinamento de matar os mobs"; close;}
+if (countitem(7070) <10) {mes "Você ainda não completou seu treinamento de juntar 10 Casca Quebrada"; close;}
+if (countitem(7062) < 60) {mes "Você ainda não completou seu treinamento de juntar 60 Casco de Tartaruga"; close;}
+if (countitem(1033) < 60) {mes "Você ainda não completou seu treinamento de juntar 60 Raiz de Planta Carnívora"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7070,10;
+delitem 7062,60;
+delitem 1033,60;
+skill 357,1,0;
+set DSenkou,1;
+set quest_tai_int_dez,0;
+set tai_int_mobs_dez,0;
+completequest 2039;
+erasequest 2039;
+set tai_skill_int,tai_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Taijutsu Intermediário]",0;
+}
+
+-	script	taiint#10	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1201 && quest_tai_int_dez == 1) {set tai_int_mobs_dez,tai_int_mobs_dez +1; announce "[Taijutsu Quest] Você já derrotou "+tai_int_mobs_dez+" / 25 Shinobi ladrão",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_08,346,343,5	duplicate(taiint10)	Dai Senkou#101	831,{
+pay_fild10,321,274,5	duplicate(taiint10)	Dai Senkou#102	831,{
+ve_fild04,142,168,5	duplicate(taiint10)	Dai Senkou#103	831,{

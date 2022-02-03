@@ -1,0 +1,103 @@
+-	script	on_PC_UseSkillfu03	-1,{
+    end;
+//When a Character uses a skill
+
+//kamaitachi
+
+onPcUseSkillEvent:
+
+           if(lskillid == 540) {
+
+
+if (getskilllv(540) == 1) {
+
+if (nindou != 1) {end;}
+if (skill540 >= 50) {skill 540,2,0; set skill540,0; dispbottom "[Sys] Level up"; end; }
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 1: "+skill540+" de 50";
+
+end;
+
+}
+
+if (getskilllv(540) == 2) {
+if (nindou != 1) {end;}
+if (skill540 >= 100) {skill 540,3,0; set skill540,0; dispbottom "[Sys] Level up"; end;}
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 2: "+skill540+" de 100";
+
+end;
+
+}
+
+if (getskilllv(540) == 3) {
+if (skill540 >= 150) {skill 540,4,0; set skill540,0; dispbottom "[Sys] Level up"; end;}
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 3: "+skill540+" de 150";
+
+end;
+
+}
+
+if (getskilllv(540) == 4) {
+if (skill540 >= 200) {skill 540,5,0; set skill540,0; dispbottom "[Sys] Level up"; end;}
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 4: "+skill540+" de 200";
+
+end;
+
+}
+
+if (getskilllv(540) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill540 >= 250) {skill 540,6,0; set skill540,0; dispbottom "[Sys] Level up"; end;}
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 5: "+skill540+" de 250";
+
+end;
+
+}
+
+if (getskilllv(540) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill540 >= 300) {skill 540,7,0; set skill540,0; dispbottom "[Sys] Level up"; end;}
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 6: "+skill540+" de 300";
+
+end;
+
+}
+
+if (getskilllv(540) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill540 >= 500) {skill 540,8,0; set skill540,0; dispbottom "[Sys] Level up"; end;}
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 7: "+skill540+" de 500";
+
+end;
+
+}
+
+if (getskilllv(540) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill540 >= 700) {skill 540,9,0; set skill540,0; dispbottom "[Sys] Level up"; end;}
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 8: "+skill540+" de 700";
+
+end;
+
+}
+
+if (getskilllv(540) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill540 >= 1000) {skill 540,10,0; set skill540,0; dispbottom "[Sys] Level up"; end;}
+set skill540,skill540 +1;
+dispbottom "[Jutsu level] Kamaitachi level 9: "+skill540+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

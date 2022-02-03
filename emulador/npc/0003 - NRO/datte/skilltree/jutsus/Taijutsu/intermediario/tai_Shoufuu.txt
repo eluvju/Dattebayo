@@ -1,0 +1,101 @@
+ein_fild01,103,59,5	script	Shoufuu Rendan::taiinter15	831,{
+
+if (getskilllv(171) >= 1) goto L_delete;
+if(tai_intermediario != 1) {mes "Você precisa estudar taijutsu intermediário antes de aprender esse taijutsu"; close;}
+if (checkquest(2128) == 1) goto L_go;
+if(tai_skill_int >= 3) {mes "Você já aprendeu três taijutsus intermediários, esse é o limite"; close;}
+if(accept_tai_int == 3) {mes "Você já aceitou três treinamentos pra realizar de taijutsu"; close;}
+if(ShoufuuR == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if (WeaponLvl < 40) {mes "Seu nível de taijutsu está baixo demais, é preciso ter nível 40 ou mais pra aprender esse taijutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de taijutsu espalhado pelo mundo, eu posso lhe ensinar um taijutsu intermediário";
+next;
+mes "O taijutsu que eu ensino é o: Shoufuu Rendan";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Shoufuu Rendan
+//========================================================================
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(171) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(171) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 171,0,0;
+set ShoufuuR,0;
+erasequest 2128;
+if(accept_tai_int > 0) {set accept_tai_int,accept_tai_int -1;}
+if(tai_skill_int > 0) {set tai_skill_int,tai_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_tai_int_quinze,1;
+set accept_tai_int,accept_tai_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter taijutsu intermediário level 40";
+mes "- Derrotar 25 Barata.";
+mes "- Obter 15 Brigan";
+mes "- Obter 50 Casca Arredondada";
+mes "- Obter 100 Couro de Animal";
+setquest 2128;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(tai_skill_int >= 3) {mes "Você já aprendeu três taijutsus intermediários, esse é o limite"; close;}
+if(tai_int_mobs_quinze < 25) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(7054) <15) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1096) < 50) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(919) <100) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7054,15;
+delitem 1096,50;
+delitem 919,100;
+skill 171,1,0;
+set ShoufuuR,1;
+set quest_tai_int_quinze,0;
+set tai_int_mobs_quinze, 0;
+completequest 2128;
+erasequest 2128;
+set tai_skill_int,tai_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Taijutsu Intermediário]",0;
+}
+
+-	script	taiinter#15	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1618 && quest_tai_int_quinze == 1) {set tai_int_mobs_quinze,tai_int_mobs_quinze +1; announce "[Taijutsu Quest] Você já derrotou "+tai_int_mobs_quinze+" / 25 Barata",bc_blue|bc_self; end;}
+
+}
+
+mjolnir_08,110,55,5	duplicate(taiinter15)	Shoufuu Rendan#11	831,{
+pay_fild10,205,258,5	duplicate(taiinter15)	Shoufuu Rendan#12	831,{
+ve_fild04,181,132,5	duplicate(taiinter15)	Shoufuu Rendan#13	831,{

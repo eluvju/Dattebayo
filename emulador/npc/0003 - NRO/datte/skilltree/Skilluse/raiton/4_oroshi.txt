@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkill004	-1,{
+    end;
+//When a Character uses a skill
+
+//Oroshi
+
+onPcUseSkillEvent:
+
+           if(lskillid == 21) {
+
+
+if (getskilllv(21) == 1) {
+
+if (Oroshi != 1) {end;}
+if (skill21 >=50) {skill 21,2,0; set skill21,0; dispbottom "[Sys] Level up"; end; }
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 1: "+skill21+" de 50";
+
+end;
+
+}
+
+if (getskilllv(21) == 2) {
+if (Oroshi != 1) {end;}
+if (skill21 >= 100) {skill 21,3,0; set skill21,0; dispbottom "[Sys] Level up"; end;}
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 2: "+skill21+" de 100";
+
+end;
+
+}
+
+if (getskilllv(21) == 3) {
+
+if (nin_intermediario != 1) {end;}
+if (skill21 >= 150) {skill 21,4,0; set skill21,0; dispbottom "[Sys] Level up"; end;}
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 3: "+skill21+" de 150";
+
+end;
+
+}
+
+if (getskilllv(21) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill21 >= 200) {skill 21,5,0; set skill21,0; dispbottom "[Sys] Level up"; end;}
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 4: "+skill21+" de 200";
+
+end;
+
+}
+
+if (getskilllv(21) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill21 >= 250) {skill 21,6,0; set skill21,0; dispbottom "[Sys] Level up"; end;}
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 5: "+skill21+" de 250";
+
+end;
+
+}
+
+if (getskilllv(21) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill21 >= 300) {skill 21,7,0; set skill21,0; dispbottom "[Sys] Level up"; end;}
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 6: "+skill21+" de 300";
+
+end;
+
+}
+
+if (getskilllv(21) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill21 >= 500) {skill 21,8,0; set skill21,0; dispbottom "[Sys] Level up"; end;}
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 7: "+skill21+" de 500";
+
+end;
+
+}
+
+if (getskilllv(21) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill21 >= 700) {skill 21,9,0; set skill21,0; dispbottom "[Sys] Level up"; end;}
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 8: "+skill21+" de 700";
+
+end;
+
+}
+
+if (getskilllv(21) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill21 >= 1000) {skill 21,10,0; set skill21,0; dispbottom "[Sys] Level up"; end;}
+set skill21,skill21 +1;
+dispbottom "[Jutsu level] Raiton Kaminari Oroshi level 9: "+skill21+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

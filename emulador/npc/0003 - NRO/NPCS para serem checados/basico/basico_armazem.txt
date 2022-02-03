@@ -1,0 +1,590 @@
+in_hunter.gat,96,92,2	script	Status da Vila#1	99,{
+
+if ($Konohadest == 1) {goto destruido;}
+if ($Konohadest != 1) {goto normal;}
+
+destruido:
+mes "O edifício principal está destruido, peça ao Kage para reparar-lo";
+	close;
+
+normal:
+mes "O edifício principal está em boas condições, defenda esse edifício com sua vida!";
+	close;
+
+}
+
+in_hunter.gat,96,92,2	script	Status da Vil#2	99,{
+
+if ($sunadest == 1) {goto destruido;}
+if ($sunadest != 1) {goto normal;}
+
+destruido:
+mes "O edifício principal está destruido, peça ao Kage para reparar-lo";
+	close;
+
+normal:
+mes "O edifício principal está em boas condições, defenda esse edifício com sua vida!";
+	close;
+
+}
+
+in_hunter.gat,96,92,2	script	Status da Vila#3	99,{
+
+if ($nevoadest == 1) {goto destruido;}
+if ($nevoadest != 1) {goto normal;}
+
+destruido:
+mes "O edifício principal está destruido, peça ao Kage para reparar-lo";
+	close;
+
+normal:
+mes "O edifício principal está em boas condições, defenda esse edifício com sua vida!";
+	close;
+
+}
+
+in_hunter.gat,96,92,2	script	Status da Vila#4	99,{
+
+if ($nukenindest == 1) {goto destruido;}
+if ($nukenindest != 1) {goto normal;}
+
+destruido:
+mes "O edifício principal está destruido, peça ao Kage para reparar-lo";
+	close;
+
+normal:
+mes "O edifício principal está em boas condições, defenda esse edifício com sua vida!";
+	close;
+
+}
+
+-	script	edi_kon	1083,{
+
+OnMapConquisted1:
+if(strcharinfo(2) == "Vila Oculta da Folha") goto L_own;
+	announce "O clã "+strcharinfo(2)+" acaba de destruir o edifício principal de Konoha!",0;
+	set $Konohadest,1;
+	end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+
+-	script	edi_suna	1083,{
+
+OnMapConquisted2:
+if(strcharinfo(2) == "Vila Oculta da Areia") goto L_own;
+	announce "O clã "+strcharinfo(2)+" acaba de destruir o edifício principal da Suna!",0;
+	set $sunadest,1;
+	end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_nevoa	1083,{
+
+OnMapConquisted3:
+if(strcharinfo(2) == "Vila Oculta da Nevoa") goto L_own;
+	announce "O clã "+strcharinfo(2)+" acaba de destruir o edifício principal da Névoa!",0;
+	set $nevoadest,1;
+	end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_nuke	1083,{
+
+OnMapConquisted4:
+if(strcharinfo(2) == "Nukenin") goto L_own;
+	announce "O clã "+strcharinfo(2)+" acaba de destruir o edifício principal da Nukenin!",0;
+	set $nukenindest,1;
+	end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+-	script	edi_aka	1083,{
+
+OnMapConquisted5:
+if(strcharinfo(2) == "Akatsuki") goto L_own;
+	announce "O clã "+strcharinfo(2)+" acaba de destruir o edifício principal da Nukenin!",0;
+	set $akatdest,1;
+	end;
+
+L_own:
+announce "Um shinobi da "+strcharinfo(2)+" destruiu o próprio edifício, ele sofrerá a irá de sua vila.",0;
+atcommand "@die";
+end;
+
+}
+
+job_wiz,115,97,0,0	monster	Edifício Principal	1002,1,1,36000000,"edi_kon::OnMapConquisted1"
+job_wiz,46,99,0,0	monster	Edifício Principal	1002,1,1,36000000,"edi_suna::OnMapConquisted2"
+job_wiz,113,170,0,0	monster	Edifício Principal	1002,1,1,36000000,"edi_nevoa::OnMapConquisted3"
+monk_test,329,62,0,0	monster	Edifício Principal	1002,1,1,36000000,"edi_nuke::OnMapConquisted4"
+//monk_test,329,62,0,0	monster	Edifício Principal	1002,1,1,36000000,"edi_nuke::OnMapConquisted5"
+
+
+
+konoha.gat,54,185,2	script	Armazem de Konoha	99,{
+
+if(Rank_S == 1) goto vila;
+if(Rank_A == 1) goto vila;
+if(Rank_B == 1) goto vila;
+if(Rank_C == 1) goto vila;
+if(Rank_D == 1) goto vila;
+if(##faction != 1) goto vila;
+
+mes "Seus pontos de profissão são: "+pontos_profissao+"";
+mes " A sua vila possui: "+$troncosKon+" Troncos";
+mes " A sua vila possui: "+$ferrosKon+" Ferros";
+mes " A sua vila possui: "+$peixesKon+" Peixes";
+menu "Depositar recursos",deposit,"Saír",sair;
+
+deposit:
+if (profissao != 1) goto proff;
+next;
+mes "Olá trabalhador, vejo que quer ajudar sua vila com alguns recursos";
+next;
+mes "Me diga, qual sua profissão?";
+menu "Lenhador",lenha,"Mineirador",mineira,"Pescador",pesca;
+
+lenha:
+next;
+mes "Gostaria de depositar quantas colunas de madeira?";
+input @qnt1;
+if (@qnt1 == 0) goto ERRO;
+if (countitem(7222) < @qnt1) goto SemItem;
+delitem 7222,@qnt1;
+set pontos_profissao, pontos_profissao + @qnt1;
+set $troncosKon, $troncosKon + @qnt1;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+mineira:
+next;
+mes "Gostaria de depositar quantos ferros?";
+input @qnt3;
+if (@qnt3 == 0) goto ERRO;
+if (countitem(7231) < @qnt3) goto SemItem;
+delitem 7231,@qnt3;
+set pontos_profissao, pontos_profissao + @qnt3;
+set $ferrosKon, $ferrosKon + @qnt3;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+pesca:
+next;
+mes "Gostaria de depositar quantos Peixes?";
+input @qnt2;
+if (@qnt2 == 0) goto ERRO;
+if (countitem(579) < @qnt2) goto SemItem;
+delitem 579,@qnt2;
+set pontos_profissao, pontos_profissao + @qnt2;
+set $peixesKon, $peixesKon + @qnt2;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+proff:
+next;
+mes "Você não tem profissão, não pode depositar recursos.";
+close;
+
+ERRO:
+next;
+mes "Você não pode depositar 0 recursos";
+close;
+
+SemItem:
+next;
+mes "Você não possui essa quantidade de recursos";
+close;
+
+sair:
+close;
+
+vila:
+mes "Você não é dessa vila!";
+close;
+
+
+}
+
+areia.gat,101,235,2	script	Armazem da Suna	99,{
+
+if(Rank_S == 1) goto vila;
+if(Rank_A == 1) goto vila;
+if(Rank_B == 1) goto vila;
+if(Rank_C == 1) goto vila;
+if(Rank_D == 1) goto vila;
+if(##faction != 2) goto vila;
+
+mes "Seus pontos de profissão são: "+pontos_profissao+"";
+mes " A sua vila possui: "+$troncossun+" Troncos";
+mes " A sua vila possui: "+$ferrossun+" Ferros";
+mes " A sua vila possui: "+$peixessun+" Peixes";
+menu "Depositar recursos",deposit,"Saír",sair;
+
+deposit:
+if (profissao != 1) goto proff;
+next;
+mes "Olá trabalhador, vejo que quer ajudar sua vila com alguns recursos";
+next;
+mes "Me diga, qual sua profissão?";
+menu "Lenhador",lenha,"Mineirador",mineira,"Pescador",pesca;
+
+lenha:
+next;
+mes "Gostaria de depositar quantas colunas de madeira?";
+input @qnt1;
+if (@qnt1 == 0) goto ERRO;
+if (countitem(7222) < @qnt1) goto SemItem;
+delitem 7222,@qnt1;
+set pontos_profissao, pontos_profissao + @qnt1;
+set $troncossun, $troncossun + @qnt1;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+mineira:
+next;
+mes "Gostaria de depositar quantos ferros?";
+input @qnt3;
+if (@qnt3 == 0) goto ERRO;
+if (countitem(7231) < @qnt3) goto SemItem;
+delitem 7231,@qnt3;
+set pontos_profissao, pontos_profissao + @qnt3;
+set $ferrossun, $ferrossun + @qnt3;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+pesca:
+next;
+mes "Gostaria de depositar quantos Peixes?";
+input @qnt2;
+if (@qnt2 == 0) goto ERRO;
+if (countitem(579) < @qnt2) goto SemItem;
+delitem 579,@qnt2;
+set pontos_profissao, pontos_profissao + @qnt2;
+set $peixessun, $peixessun + @qnt2;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+proff:
+next;
+mes "Você não tem profissão, não pode depositar recursos.";
+close;
+
+ERRO:
+next;
+mes "Você não pode depositar 0 recursos";
+close;
+
+SemItem:
+next;
+mes "Você não possui essa quantidade de recursos";
+close;
+
+sair:
+close;
+
+vila:
+mes "Você não é dessa vila!";
+close;
+
+
+}
+
+nevoa.gat,231,266,2	script	Armazem da Névoa	99,{
+
+if(Rank_S == 1) goto vila;
+if(Rank_A == 1) goto vila;
+if(Rank_B == 1) goto vila;
+if(Rank_C == 1) goto vila;
+if(Rank_D == 1) goto vila;
+if(##faction != 3) goto vila;
+
+mes "Seus pontos de profissão são: "+pontos_profissao+"";
+mes " A sua vila possui: "+$troncosnev+" Troncos";
+mes " A sua vila possui: "+$ferrosnev+" Ferros";
+mes " A sua vila possui: "+$peixesnev+" Peixes";
+menu "Depositar recursos",deposit,"Saír",sair;
+
+deposit:
+if (profissao != 1) goto proff;
+next;
+mes "Olá trabalhador, vejo que quer ajudar sua vila com alguns recursos";
+next;
+mes "Me diga, qual sua profissão?";
+menu "Lenhador",lenha,"Mineirador",mineira,"Pescador",pesca;
+
+lenha:
+next;
+mes "Gostaria de depositar quantas colunas de madeira?";
+input @qnt1;
+if (@qnt1 == 0) goto ERRO;
+if (countitem(7222) < @qnt1) goto SemItem;
+delitem 7222,@qnt1;
+set pontos_profissao, pontos_profissao + @qnt1;
+set $troncosnev, $troncosnev + @qnt1;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+mineira:
+next;
+mes "Gostaria de depositar quantos ferros?";
+input @qnt3;
+if (@qnt3 == 0) goto ERRO;
+if (countitem(7231) < @qnt3) goto SemItem;
+delitem 7231,@qnt3;
+set pontos_profissao, pontos_profissao + @qnt3;
+set $ferrosnev, $ferrosnev + @qnt3;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+pesca:
+next;
+mes "Gostaria de depositar quantos Peixes?";
+input @qnt2;
+if (@qnt2 == 0) goto ERRO;
+if (countitem(579) < @qnt2) goto SemItem;
+delitem 579,@qnt2;
+set pontos_profissao, pontos_profissao + @qnt2;
+set $peixesnev, $peixesnev + @qnt2;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+proff:
+next;
+mes "Você não tem profissão, não pode depositar recursos.";
+close;
+
+ERRO:
+next;
+mes "Você não pode depositar 0 recursos";
+close;
+
+SemItem:
+next;
+mes "Você não possui essa quantidade de recursos";
+close;
+
+sair:
+close;
+
+vila:
+mes "Você não é dessa vila!";
+close;
+
+
+}
+
+prt_monk.gat,262,256,2	script	Armazem dos Nukenins	99,{
+
+if(getequipid(EQI_HEAD_MID)==19079) goto cont;
+if(getequipid(EQI_HEAD_MID)==19078) goto cont;
+if(getequipid(EQI_HEAD_MID)==19081) goto cont;
+if(getequipid(EQI_HEAD_MID)==19020) || if(getequipid(EQI_HEAD_MID)==19195) || if(getequipid(EQI_HEAD_MID)==19196) || if(getequipid(EQI_HEAD_MID)==19197) {goto cont;} else {goto vila;}
+
+cont:
+mes "Seus pontos de profissão são: "+pontos_profissao+"";
+mes " A sua vila possui: "+$troncosnuk+" Troncos";
+mes " A sua vila possui: "+$ferrosnuk+" Ferros";
+mes " A sua vila possui: "+$peixesnuk+" Peixes";
+menu "Depositar recursos",deposit,"Saír",sair;
+
+deposit:
+if (profissao != 1) goto proff;
+next;
+mes "Olá trabalhador, vejo que quer ajudar sua vila com alguns recursos";
+next;
+mes "Me diga, qual sua profissão?";
+menu "Lenhador",lenha,"Mineirador",mineira,"Pescador",pesca;
+
+lenha:
+next;
+mes "Gostaria de depositar quantas colunas de madeira?";
+input @qnt1;
+if (@qnt1 == 0) goto ERRO;
+if (countitem(7222) < @qnt1) goto SemItem;
+delitem 7222,@qnt1;
+set pontos_profissao, pontos_profissao + @qnt1;
+set $troncosnuk, $troncosnuk + @qnt1;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+mineira:
+next;
+mes "Gostaria de depositar quantos ferros?";
+input @qnt3;
+if (@qnt3 == 0) goto ERRO;
+if (countitem(7231) < @qnt3) goto SemItem;
+delitem 7231,@qnt3;
+set pontos_profissao, pontos_profissao + @qnt3;
+set $ferrosnuk, $ferrosnuk + @qnt3;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+pesca:
+next;
+mes "Gostaria de depositar quantos Peixes?";
+input @qnt2;
+if (@qnt2 == 0) goto ERRO;
+if (countitem(579) < @qnt2) goto SemItem;
+delitem 579,@qnt2;
+set pontos_profissao, pontos_profissao + @qnt2;
+set $peixesnuk, $peixesnuk + @qnt2;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+proff:
+next;
+mes "Você não tem profissão, não pode depositar recursos.";
+close;
+
+ERRO:
+next;
+mes "Você não pode depositar 0 recursos";
+close;
+
+SemItem:
+next;
+mes "Você não possui essa quantidade de recursos";
+close;
+
+sair:
+close;
+
+vila:
+mes "Você não é dessa vila!";
+close;
+
+
+}
+
+6@tower.gat,180,99,2	script	Armazem dos Akatsukis	99,{
+
+if(getequipid(EQI_HEAD_MID)==19020) || if(getequipid(EQI_HEAD_MID)==19195) || if(getequipid(EQI_HEAD_MID)==19196) || if(getequipid(EQI_HEAD_MID)==19197) {goto cont;} else {goto vila;}
+
+cont:
+mes "Seus pontos de profissão são: "+pontos_profissao+"";
+mes " A sua vila possui: "+$troncosaka+" Troncos";
+mes " A sua vila possui: "+$ferrosaka+" Ferros";
+mes " A sua vila possui: "+$peixesaka+" Peixes";
+menu "Depositar recursos",deposit,"Saír",sair;
+
+deposit:
+if (profissao != 1) goto proff;
+next;
+mes "Olá trabalhador, vejo que quer ajudar sua vila com alguns recursos";
+next;
+mes "Me diga, qual sua profissão?";
+menu "Lenhador",lenha,"Mineirador",mineira,"Pescador",pesca;
+
+lenha:
+next;
+mes "Gostaria de depositar quantas colunas de madeira?";
+input @qnt1;
+if (@qnt1 == 0) goto ERRO;
+if (countitem(7222) < @qnt1) goto SemItem;
+delitem 7222,@qnt1;
+set pontos_profissao, pontos_profissao + @qnt1;
+set $troncosaka, $troncosaka + @qnt1;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+mineira:
+next;
+mes "Gostaria de depositar quantos ferros?";
+input @qnt3;
+if (@qnt3 == 0) goto ERRO;
+if (countitem(7231) < @qnt3) goto SemItem;
+delitem 7231,@qnt3;
+set pontos_profissao, pontos_profissao + @qnt3;
+set $ferrosaka, $ferrosaka + @qnt3;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+pesca:
+next;
+mes "Gostaria de depositar quantos Peixes?";
+input @qnt2;
+if (@qnt2 == 0) goto ERRO;
+if (countitem(579) < @qnt2) goto SemItem;
+delitem 579,@qnt2;
+set pontos_profissao, pontos_profissao + @qnt2;
+set $peixesaka, $peixesaka + @qnt2;
+next;
+mes "Obrigado pela sua ajuda, você recebeu pontos por ajudar sua vila";
+close;
+
+proff:
+next;
+mes "Você não tem profissão, não pode depositar recursos.";
+close;
+
+ERRO:
+next;
+mes "Você não pode depositar 0 recursos";
+close;
+
+SemItem:
+next;
+mes "Você não possui essa quantidade de recursos";
+close;
+
+sair:
+close;
+
+vila:
+mes "Você não é dessa vila!";
+close;
+
+
+}
+
+in_hunter.gat,99,101,2	script	Conserto de edificios	99,{
+
+
+if(getgmlevel() < 99) goto L_nao;
+	set $Konohadest,0;
+	set $nevoadest,0;
+	set $sunadest,0;
+	set $nukenindest,0;
+	set $akadest,0;
+	mes "Consertado";
+	close;
+
+L_nao:
+close;
+
+}

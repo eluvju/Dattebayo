@@ -1,0 +1,36 @@
+-	script	on_PC_UseSkillfassump	-1,{
+    end;
+//When a Character uses a skill
+
+//f_kakero
+
+onPcUseSkillEvent:
+
+           if(lskillid == 464) {
+
+
+if (getskilllv(464) == 1) {
+
+if (f_kakero != 1) {end;}
+if (skill464 >= 500) {skill 464,2,0; set skill464,0; dispbottom "[Sys] Level up"; end; }
+set skill464,skill464 +1;
+dispbottom "[Jutsu level] Kakero Daja level 1: "+skill464+" de 500";
+
+end;
+
+}
+
+if (getskilllv(464) == 2) {
+if (f_kakero != 1) {end;}
+if (skill464 >= 700) {skill 464,3,0; set skill464,0; dispbottom "[Sys] Level up"; end;}
+set skill464,skill464 +1;
+dispbottom "[Jutsu level] Kakero Daja level 2: "+skill464+" de 700";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

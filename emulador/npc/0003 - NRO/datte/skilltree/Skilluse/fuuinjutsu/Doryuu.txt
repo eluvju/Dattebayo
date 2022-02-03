@@ -1,0 +1,57 @@
+-	script	on_PC_UseSkillfdor	-1,{
+    end;
+//When a Character uses a skill
+
+//f_Doryuu
+
+onPcUseSkillEvent:
+
+           if(lskillid == 676) {
+
+
+if (getskilllv(676) == 1) {
+
+if (f_Doryuu != 1) {end;}
+if (skill676 >= 50) {skill 676,2,0; set skill676,0; dispbottom "[Sys] Level up"; end; }
+set skill676,skill676 +1;
+dispbottom "[Jutsu level] Doryuu Heki level 1: "+skill676+" de 50";
+
+end;
+
+}
+
+if (getskilllv(676) == 2) {
+if (f_Doryuu != 1) {end;}
+if (skill676 >= 100) {skill 676,3,0; set skill676,0; dispbottom "[Sys] Level up"; end;}
+set skill676,skill676 +1;
+dispbottom "[Jutsu level] Doryuu Heki level 2: "+skill676+" de 100";
+
+end;
+
+}
+
+if (getskilllv(676) == 3) {
+
+if (f_Doryuu != 1) {end;}
+if (skill676 >= 150) {skill 676,4,0; set skill676,0; dispbottom "[Sys] Level up"; end;}
+set skill676,skill676 +1;
+dispbottom "[Jutsu level] Doryuu Heki level 3: "+skill676+" de 150";
+
+end;
+
+}
+
+if (getskilllv(676) == 4) {
+if (f_Doryuu != 1) {end;}
+if (skill676 >= 200) {skill 676,5,0; set skill676,0; dispbottom "[Sys] Level up"; end;}
+set skill676,skill676 +1;
+dispbottom "[Jutsu level] Doryuu Heki level 4: "+skill676+" de 200";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

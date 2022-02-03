@@ -1,0 +1,463 @@
+p_track01	mapflag	nobranch
+p_track01	mapflag	noicewall
+p_track01	mapflag	nomemo
+p_track01	mapflag	noreturn
+p_track01	mapflag	noteleport
+p_track01	mapflag	nowarpto
+p_track01	mapflag	nowarp
+p_track01	mapflag	pvp	off
+p_track01	mapflag	nosave
+
+prontera.gat,0,0,0	script	PraceAnnouncer	-1,{
+
+OnClock0019:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0100:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0200:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0300:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0400:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0500:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0600:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0700:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0800:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock0900:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1000:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1100:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1200:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1300:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1400:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1500:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1600:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1700:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1800:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock1900:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock2000:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock2100:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock2200:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnClock2300:
+        set $accessPrace, 1;
+        announce "A Corrida kuchiyose está aberta,Entre e ganhe recompensas!",0;
+        end;
+
+OnCheckTimer:
+        mes "[Warper]";
+        mes "A Corrida kuchiyose está fechada!";
+        set @hour, gettime(3);
+        set @minute, gettime(2);
+        set @second, gettime(1);
+	set @hour2, gettime(3);
+        if (gettime(3) == 1) set @hour2, @hour2-1;
+        if (gettime(3) == 2) set @hour2, @hour2-2;
+        if (gettime(3) == 3) set @hour2, @hour2-3;
+        if (gettime(3) == 5) set @hour2, @hour2-1;
+        if (gettime(3) == 6) set @hour2, @hour2-2;
+        if (gettime(3) == 7) set @hour2, @hour2-3;
+        if (gettime(3) == 9) set @hour2, @hour2-1;
+        if (gettime(3) == 10) set @hour2, @hour2-2;
+        if (gettime(3) == 11) set @hour2, @hour2-3;
+        if (gettime(3) == 13) set @hour2, @hour2-1;
+        if (gettime(3) == 14) set @hour2, @hour2-2;
+        if (gettime(3) == 15) set @hour2, @hour2-3;
+        if (gettime(3) == 17) set @hour2, @hour2-1;
+        if (gettime(3) == 18) set @hour2, @hour2-2;
+        if (gettime(3) == 19) set @hour2, @hour2-3;
+        if (gettime(3) == 21) set @hour2, @hour2-1;
+        if (gettime(3) == 22) set @hour2, @hour2-2;
+        if (gettime(3) == 23) set @hour2, @hour2-3;
+        if (@second <= 9 && @minute <= 9 && @hour <=9) { mes "Agora são(é) ^FF00000"+@hour+"^000000:^FF00000"+@minute+"^000000:^FF00000"+@second+"^000000."; goto Timemesed;}
+        if (@second <= 9 && @minute <= 9) { mes "Agora são(é) ^FF0000"+@hour+"^000000:^FF00000"+@minute+"^000000:^FF00000"+@second+"^000000."; goto Timemesed;}
+        if (@second <= 9 && @hour <= 9) { mes "Agora são(é) ^FF00000"+@hour+"^000000:^FF0000"+@minute+"^000000:^FF00000"+@second+"^000000."; goto Timemesed;}
+        if (@minute <= 9 && @hour <= 9) { mes "Agora são(é) ^FF00000"+@hour+"^000000:^FF00000"+@minute+"^000000:^FF0000"+@second+"^000000."; goto Timemesed;}
+        if (@second <= 9) { mes "Agora são(é) ^FF0000"+@hour+"^000000:^FF0000"+@minute+"^000000:^FF00000"+@second+"^000000."; goto Timemesed;}
+        if (@minute <= 9) { mes "Agora são(é) ^FF0000"+@hour+"^000000:^FF00000"+@minute+"^000000:^FF0000"+@second+"^000000."; goto Timemesed;}
+        if (@hour <= 9) { mes "Agora são(é) ^FF00000"+@hour+"^000000:^FF0000"+@minute+"^000000:^FF0000"+@second+"^000000."; goto Timemesed;}
+        mes "Agora são(é) ^FF0000"+@hour+"^000000:^FF0000"+@minute+"^000000:^FF0000"+@second+"^000000.";
+
+Timemesed:
+        if (@hour2 <= 9) { mes "A próximA Corrida kuchiyose está programada para ^FF00000"+@hour2+"^000000:^FF000000^000000:^FF000000^000000."; goto Timemesed2;}
+        mes "A próximA Corrida kuchiyose está programada para ^FF0000"+@hour2+"^000000:^FF000000^000000:^FF000000^000000.";
+
+Timemesed2:
+        close;
+}
+
+kakashi.gat,94,159,4	script	Corrida kuchiyose::Prace	882,{
+
+        if ($accessPrace == 0) goto PraceOff;
+        mes "[Warper]";
+        mes "Você quer que eu te teleporte para o mapa da Corrida kuchiyose?";
+	next;
+	mes "É necessário ter nível 999, e uma taxa de 500,000 zeny";
+        menu "Sim",-,"Não",L_no;
+        close2;
+	if (BaseLevel < 999) {mes "O nível mínimo necessário para na corrida é 999"; close;}
+	if (Zeny < 500000) {mes "É preciso 500,000 zeny pra entrar na corrida"; close;}
+	set Zeny,Zeny-500000;
+        warp "p_track01.gat",52,41;
+        end;
+
+L_no:
+        next;
+        mes "[Warper]";
+        mes "Vejo você na próxima!!";
+        close;
+
+PraceOff:
+        doevent "PraceAnnouncer::OnCheckTimer";
+        close;
+
+}
+
+//p_track01,78,42,0	warp	p_track002	1,3,prontera,142,170
+
+//NPC Checker
+p_track01,44,41,0	script	Checker#prace0	-1,{
+end;
+
+OnChequeo:
+for(set .@tmp1,0;.@tmp1<(getarraysize($prace_bidders));set .@tmp1,.@tmp1+1) {
+        if(attachrid($prace_bidders[.@tmp1])) {
+         if (@prace_playing!=1) { end; }
+         dispbottom "O vencedor é o "+$prace_winner$+" e você apostou no "+@prace_winner$+".";
+         if (@prace_winner$==$prace_winner$ && @prace_winner$!="") {  
+   dispbottom "Você ganhou!"; mapannounce "p_track01"," Parabéns! "+strcharinfo(0)+" ganhou!",1,0xFFAB54;
+   getitem 12937,2; emotion 21,1;
+   } else { dispbottom "Você perdeu."; emotion 28,1;}
+   set @prace_winner$,"";set @prace_playing,0;
+  } //else { announce .@tmp1+" || "+$prace_bidders[.@tmp1],bc_all; }  //debug
+}         
+for(set .@tmp1,0;.@tmp1<(getarraysize($prace_bidders));set .@tmp1,.@tmp1+1) {
+ set $prace_bidders[.@tmp1],0;
+}
+
+}
+
+//NPC Principal
+p_track01,58,41,2	script	Bidder#prace0	765,{ 
+if ($prace_random < 1) callsub OnInit;
+if (@prace_playing==1) goto AlreadyPlaying;
+
+getmapxy(.@mapname$,.@x1,.@y,1,"Sapo#prace1");
+getmapxy(.@mapname$,.@x2,.@y,1,"Cobra#prace2");
+getmapxy(.@mapname$,.@x3,.@y,1,"Macaco#prace3");
+getmapxy(.@mapname$,.@x4,.@y,1,"Cachorro#prace4");
+getmapxy(.@mapname$,.@x5,.@y,1,"Lesma#prace5");
+getmapxy(.@mapname$,.@x6,.@y,1,"Marionete#prace6");
+if (.@x1 != 58 || .@x2 != 58 || .@x3 != 58 || .@x4 != 58 || .@x5 != 58 || .@x6 != 58) {
+mes "[Bidder]";mes "Há uma corrida em andamento...";close;
+end;
+}
+
+
+set .@prace_zeny,2000;
+mes "[Bidder]";mes "Escolha a kuchiyose que deseja apostar:";mes "Isso irá custar "+.@prace_zeny+" Zeny.";next;
+menu "Sapo",p1,"Cobra",p2,"Macaco",p3,"Cachorro",p4,"Lesma",p5,"Marionete",p6,"  None",-;
+mes "[Bidder]"; mes "Até mais.";close;
+
+p1:
+ if (Zeny < .@prace_zeny) { goto NoZeny; } else { set Zeny,Zeny-.@prace_zeny; }
+ set @prace_winner$,"Sapo"; goto Ready;
+p2:
+ if (Zeny < .@prace_zeny) { goto NoZeny; } else { set Zeny,Zeny-.@prace_zeny; }
+ set @prace_winner$,"Cobra"; goto Ready;
+p3:
+ if (Zeny < .@prace_zeny) { goto NoZeny; } else { set Zeny,Zeny-.@prace_zeny; }
+ set @prace_winner$,"Macaco"; goto Ready;
+p4:
+ if (Zeny < .@prace_zeny) { goto NoZeny; } else { set Zeny,Zeny-.@prace_zeny; }
+ set @prace_winner$,"Cachorro"; goto Ready;
+p5:
+ if (Zeny < .@prace_zeny) { goto NoZeny; } else { set Zeny,Zeny-.@prace_zeny; }
+ set @prace_winner$,"Lesma"; goto Ready;
+p6:
+ if (Zeny < .@prace_zeny) { goto NoZeny; } else { set Zeny,Zeny-.@prace_zeny; }
+ set @prace_winner$,"Marionete"; goto Ready;
+
+Ready:
+ set $prace_bets,$prace_bets+1;
+ set $prace_bidders[$prace_bets],getcharid(3);
+ set @prace_playing,1;
+ mes "[Bidder]";
+ mes "Eu tenho "+$prace_bets+" aposta(s).";
+ setnpctimer 60000;startnpctimer;
+ npctalk "Eu tenho a aposta do(a) "+strcharinfo(0)+"!";
+ close;
+ 
+Start1:
+ setnpctimer 0;startnpctimer;end;
+ 
+AlreadyPlaying:
+ mes "[Bidder]";mes "Você escolheu o ^00bb00"+@prace_winner$+"^000000";
+ close;
+ 
+
+NoZeny:
+ set @prace_winner$,"";
+ mes "[Bidder]";mes "Você não tem zeny suficiente.";close;
+
+StartRace:
+donpcevent "Macaco#prace3::OnRace";
+donpcevent "Sapo#prace1::OnRace";
+donpcevent "Marionete#prace6::OnRace";
+donpcevent "Cobra#prace2::OnRace";
+donpcevent "Lesma#prace5::OnRace";
+donpcevent "Cachorro#prace4::OnRace";
+end;
+
+OnStopRace:
+donpcevent "Sapo#prace1::OnStop";
+donpcevent "Cobra#prace2::OnStop";
+donpcevent "Macaco#prace3::OnStop";
+donpcevent "Cachorro#prace4::OnStop";
+donpcevent "Lesma#prace5::OnStop";
+donpcevent "Marionete#prace6::OnStop";
+if ($prace_winner$!="") callsub WinRace;
+end;
+
+ReturnRace:
+donpcevent "Sapo#prace1::OnReturn";
+donpcevent "Cobra#prace2::OnReturn";
+donpcevent "Macaco#prace3::OnReturn";
+donpcevent "Cachorro#prace4::OnReturn";
+donpcevent "Lesma#prace5::OnReturn";
+donpcevent "Marionete#prace6::OnReturn";
+end;
+
+
+WinRace:
+mapannounce "p_track01","The winner is "+$prace_winner$,1,0xFFAB54;
+donpcevent "Checker#prace0::OnChequeo";
+sleep2 10000;
+mapwarp "p_track01.gat","kakashi.gat",97,158;
+set $accessPrace, 0;
+setnpctimer 30000;startnpctimer;
+end;
+
+
+OnInit:
+        set $prace_random,70;
+        set $prace_random2,600;
+        set $prace_winner$,"";
+        set $prace_bets,0;
+        set $prace_bidders,0;
+        end;
+        
+OnTimer500:
+ mapannounce "p_track01","Em suas marcas...",1,0xFFAB54;end;        
+
+OnTimer3000:
+ mapannounce "p_track01","...3...",1,0xFFAB54;end;        
+ 
+OnTimer4000:
+ mapannounce "p_track01","...2...",1,0xFFAB54;end;        
+
+OnTimer5000:
+ mapannounce "p_track01","...1...",1,0xFFAB54;
+ callsub StartRace;end;
+
+OnTimer6000:
+ stopnpctimer;
+mapannounce "p_track01","JÁ!!!",1,0xFFAB54;end;
+
+OnTimer35000:
+ set $prace_winner$,"";set $prace_bets,0;
+ stopnpctimer;callsub ReturnRace;end;
+
+OnTimer90000:
+ npctalk "Eu tenho "+$prace_bets+" aposta(s). Mais alguém?"; end;
+OnTimer110000:
+ npctalk "A corrida começará em breve. Última chance."; end;
+ announce "Venha para corrida ja vai começar",0;
+OnTimer120000:
+ goto Start1; end;
+
+}
+
+
+
+
+
+//-----------------------------------
+// Racer NPC's
+//-----------------------------------
+p_track01,58,38,2	script	Sapo#prace1	1790,{ 
+end;
+OnRace:
+ initnpctimer; startnpctimer;end;
+OnStop:
+ stopnpctimer;end;
+OnReturn:
+ npcwalkto 58,38;end;
+OnTimer1100:
+ getmapxy(.@mapname$,.@x,.@y,1,"Sapo#prace1");
+ if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+ setnpctimer rand($prace_random2);startnpctimer;
+ if ((.@x-1) == 29) { set $prace_winner$,"Sapo"; emotion 29; donpcevent "Bidder#prace0::OnStopRace"; }
+ end;
+}
+p_track01,58,36,2	script	Cobra#prace2	1781,{ 
+end;
+OnRace:
+ initnpctimer; startnpctimer;end;
+OnStop:
+ stopnpctimer;end;
+OnReturn:
+ npcwalkto 58,36;end;
+OnTimer1100:
+ getmapxy(.@mapname$,.@x,.@y,1,"Cobra#prace2");
+ if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+ setnpctimer rand($prace_random2);startnpctimer;
+ if ((.@x-1) == 29) { set $prace_winner$,"Cobra"; emotion 29; donpcevent "Bidder#prace0::OnStopRace"; }
+ end;
+}
+p_track01,58,34,2	script	Macaco#prace3	1327,{ 
+end;
+OnRace:
+ initnpctimer; startnpctimer;end;
+OnStop:
+ stopnpctimer;end;
+OnReturn:
+ npcwalkto 58,34;end;
+OnTimer1100:
+ getmapxy(.@mapname$,.@x,.@y,1,"Macaco#prace3");
+ if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+ setnpctimer rand($prace_random2);startnpctimer;
+ if ((.@x-1) == 29) { set $prace_winner$,"Macaco"; emotion 29; donpcevent "Bidder#prace0::OnStopRace"; }
+ end;
+}
+p_track01,58,32,2	script	Cachorro#prace4	1324,{ 
+end;
+OnRace:
+ initnpctimer; startnpctimer;end;
+OnStop:
+ stopnpctimer;end;
+OnReturn:
+ npcwalkto 58,32;end;
+OnTimer1100:
+ getmapxy(.@mapname$,.@x,.@y,1,"Cachorro#prace4");
+ if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+ setnpctimer rand($prace_random2);startnpctimer;
+ if ((.@x-1) == 29) { set $prace_winner$,"Cachorro"; emotion 29; donpcevent "Bidder#prace0::OnStopRace"; }
+ end;
+}
+p_track01,58,30,2	script	Lesma#prace5	1916,{ 
+end;
+OnRace:
+ initnpctimer; startnpctimer;end;
+OnStop:
+ stopnpctimer;end;
+OnReturn:
+ npcwalkto 58,30;end;
+OnTimer1100:
+ getmapxy(.@mapname$,.@x,.@y,1,"Lesma#prace5");
+ if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+ setnpctimer rand($prace_random2);startnpctimer;
+ if ((.@x-1) == 29) { set $prace_winner$,"Lesma"; emotion 29; donpcevent "Bidder#prace0::OnStopRace"; }
+ end;
+}
+p_track01,58,28,2	script	Marionete#prace6	1447,{ 
+end;
+OnRace:
+ initnpctimer; startnpctimer;end;
+OnStop:
+ stopnpctimer;end;
+OnReturn:
+ npcwalkto 58,28;end;
+OnTimer1100:
+ getmapxy(.@mapname$,.@x,.@y,1,"Marionete#prace6");
+ if(rand(100) < $prace_random) npcwalkto .@x-1,.@y;
+ setnpctimer rand($prace_random2);startnpctimer;
+ if ((.@x-1) == 29) { set $prace_winner$,"Marionete"; emotion 29; donpcevent "Bidder#prace0::OnStopRace"; }
+ end;
+}

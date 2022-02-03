@@ -1,0 +1,1860 @@
+//===== eAthena Script =======================================
+//= Naruto Arena
+//===== By: ==================================================
+//= Seintz
+//===== Current Version: =====================================
+//= 1.0 - Made Indonesian Naruto Arena Engine
+//=	- Added Naruto, Sasuke, and Sakura
+//=	- Added Naruto, Sasuke, and Sakura as Enemy
+//=	- Single Battle
+//= 1.1 - Team Battle
+//=	- Made Ninja Point
+//=	- Erased Ninja's Organization
+//=	- Erased Ninja's Name
+//= 1.2 - Erased Team Battle, change to Single Battle
+//=	- Fixed Result
+//=	- Erased Skill Name
+//= 1.3 - Added Kiba, Shino, and Hinata
+//=	- Added Kiba, Shino, and Hinata as Enemy
+//= 1.4 - Added Shikamaru, Chouji, and Ino
+//=	- Added Shikamaru, Chouji, and Ino as Enemy
+//=	- Added Stun Effect
+//= 1.5	- Erased Enemy's Name
+//=	- Changed Enemy's Name to AI V.12
+//= 1.6 - Added Rock Lee, Tenten, and Neiji
+//=	- Fixed Stun Effect
+//= 1.7	- Added Gaara, Kankurou, and Temari
+//=	- Fixed Skill
+//= 2.0	- Added Unlocking Ninja System
+//= 2.1 - Added Level, but can't improve level
+//= 2.2 - Fixed Sasuke's Chidori
+//= 2.3	- Total Fixed and Balanced Skill Name and Effect
+//=	- Added Chakra, Bloodline
+//=	- Added Unique Chakra, Spirit
+//= 2.4	- Added Dosu, Zaku, and Kin
+//= 2.5	- Added Level Function
+//=	- Added Experience Function
+//=	- Fixed Spirit Chakra from Random to Constant
+//= 2.6	- Added Improve Enemy Attack Function by Level
+//= 2.7	- Added Unique Character, Ryouji Seintz
+//=	- Added Unique Character, Hellowin Cavemen
+//=	- Edited Changelog
+//= 2.8	- Added Organization
+//= 2.9	- Added Unique Organization, Seintz Corp.
+//=	- Fixed Seintz Skill
+//= 3.0 - Added Yoroi
+//= 3.1 - Added English Naruto Arena
+//===== Compatible With: =====================================
+//= eAthena SVN Stable
+//===== Description: =========================================
+//= Salah satu mini game yang dapat diterapkan di Ragnarok.
+//= Terilhami dari web based game naruto-arena.com
+//= Created by Seintz
+//===== Unique ===============================================
+//= Single Battle
+//= Ninja Point
+//= Spirit Chakra
+//= Some Different Skill
+//= Organization
+//= Improve Enemy Attack by Level
+//= Unique Character :
+//= Ryouji Seintz
+//= Unique Organization :
+//= Seintz Corp.
+//==== Request Unique ========================================
+//= If you want your personal character
+//= Contact : teguhandir@yahoo.com
+//= Sent your character name
+//= Your character story
+//= Your character skills
+//= If you have the picture, send it
+//= The most unique character'll be set as unique character
+//==== Donation ==============================================
+//= If you want donate for this script
+//= Contact : teguhandir@yahoo.com
+//= You get :
+//= Get your own unique charaters (3)
+//= Always be the first newest Naruto Arena version user
+//= You just have to donate minimum US$ 5 to get the facilitate
+//= And you just have to donate 1 time!
+//==== Translator ============================================
+//= If you want translate this script to your language
+//= Contact : teguhandir@yahoo.com
+//= You'll get your own unique character
+//= And also, you'll be the get the newest Naruto Arena faster
+//==== Supporter =============================================
+//= If you want help me to improve this script
+//= Please contact : teguhandir@yahoo.com
+//============================================================
+
+prontera,155,185,4	script	Naruto Arena	899,{
+	mes "[Naruto Arena]";
+	mes "Welcome to Ragnarok Naruto Arena.";
+	next;
+	if(registrasi == 0) {
+		mes "[Naruto Arena]";
+		mes "Hmm.. You haven't registered yet.";
+		mes "Wanna register?";
+		next;
+		menu "Yes",M_Reg,"No",M_Close;
+	}
+	if(registrasi == 1) {
+		goto M_Menu;
+	}
+
+////////////
+// CLOSE //
+//////////
+
+M_Close:
+	close;
+
+///////////////////
+// REGISTRATION //
+/////////////////
+
+M_Reg:
+	mes "[Naruto Arena]";
+	mes "Choose your organization..";
+	next;
+	menu "Konoha Army",M_RegKonoha,"Missing-Nin",M_RegMisNin,"Akatsuki",M_RegAkatsuki,"Seintz Corp.",M_RegSeintz;
+
+M_RegKonoha:
+	set organisasi,1;
+	goto M_Regis;
+
+M_RegMisNin:
+	set organisasi,2;
+	goto M_Regis;
+
+M_RegAkatsuki:
+	set organisasi,3;
+	goto M_Regis;
+
+M_RegSeintz:
+	set organisasi,4;
+	goto M_Regis;
+
+M_Regis:
+	mes "[Naruto Arena]";
+	mes "Thanks for registering.";
+	mes "You're Ninja now..";
+	set registrasi,1;
+	set level,1;
+	set menang,0;
+	set kalah,0;
+	set main,0;
+	set ninjapoint,0;
+	next;
+	goto M_Menu;
+
+/////////////////
+// HOME BOARD //
+///////////////
+
+M_Menu:
+	set pick,0;
+	mes "[Naruto Arena]";
+	mes "What do you want to do ?";
+	next;
+	menu "Battle",M_PickChar,"Check My Ninja",M_Status,"Purchasing Ninja",M_UnlockNinja,"Close",M_Close;
+
+///////////////////
+// NINJA STATUS //
+/////////////////
+
+M_Status:
+	set ninjaexp,menang*30;
+	set level,ninjaexp/300+1;
+	mes "- " + strcharinfo(0) + " Status -";
+	if(organisasi == 1) {
+		mes "Konoha Army";
+	}
+	if(organisasi == 2) {
+		mes "Missing-Nin";
+	}
+	if(organisasi == 3) {
+		mes "Akatsuki";
+	}
+	if(organisasi == 4) {
+		mes "Seintz Corp.";
+	}
+	mes "-----------------------";
+	mes "Level : " + level + "";
+	mes "EXP : " + ninjaexp + "";
+	mes "Play : " + main + "";
+	mes "Win : " + menang + "";
+	mes "Lose : " + kalah + "";
+	mes "Ninja Point : " + ninjapoint + "";
+	next;
+	goto M_Menu;
+
+//////////////////////
+// UNLOCKING NINJA //
+////////////////////
+
+M_UnlockNinja:
+	mes "[Naruto Arena]";
+	mes "If you want to buy a ninja, you must have enough Ninja Point.";
+	mes "What ninja are your interesting?";
+	next;
+	menu "Kiba",M_UnlockKiba,"Shino",M_UnlockShino,"Hinata",M_UnlockHinata,"Shikamaru",M_UnlockShikamaru,"Chouji",M_UnlockChouji,"Ino",M_UnlockIno,"Rock Lee",M_UnlockRockLee,"Tenten",M_UnlockTenten,"Neiji",M_UnlockNeiji,"Gaara",M_UnlockGaara,"Kankuro",M_UnlockKankuro,"Temari",M_UnlockTemari,"Dosu",M_UnlockDosu,"Zaku",M_UnlockZaku,"Kin",M_UnlockKin,"Back",M_Menu;
+
+M_UnlockKiba:
+	mes "[Naruto Arena]";
+	mes "For Kiba, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyKiba,"Back",M_UnlockNinja;
+
+M_UnlockShino:
+	mes "[Naruto Arena]";
+	mes "For Shino, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyShino,"Back",M_UnlockNinja;
+
+M_UnlockHinata:
+	mes "[Naruto Arena]";
+	mes "For Hinata, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyHinata,"Back",M_UnlockNinja;
+
+M_UnlockShikamaru:
+	mes "[Naruto Arena]";
+	mes "For Shikamaru, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyShikamaru,"Back",M_UnlockNinja;
+
+M_UnlockChouji:
+	mes "[Naruto Arena]";
+	mes "For Chouji, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyChouji,"Back",M_UnlockNinja;
+
+M_UnlockIno:
+	mes "[Naruto Arena]";
+	mes "For Ino, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyIno,"Back",M_UnlockNinja;
+
+M_UnlockRockLee:
+	mes "[Naruto Arena]";
+	mes "For Rock Lee, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyRockLee,"Back",M_UnlockNinja;
+
+M_UnlockTenten:
+	mes "[Naruto Arena]";
+	mes "For Tenten, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyTenten,"Back",M_UnlockNinja;
+
+M_UnlockNeiji:
+	mes "[Naruto Arena]";
+	mes "For Neiji, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyNeiji,"Back",M_UnlockNinja;
+
+M_UnlockGaara:
+	mes "[Naruto Arena]";
+	mes "For Gaara, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyGaara,"Back",M_UnlockNinja;
+
+M_UnlockKankuro:
+	mes "[Naruto Arena]";
+	mes "For Kankuro, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyKankuro,"Back",M_UnlockNinja;
+
+M_UnlockTemari:
+	mes "[Naruto Arena]";
+	mes "For Temari, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyTemari,"Back",M_UnlockNinja;
+
+M_UnlockDosu:
+	mes "[Naruto Arena]";
+	mes "For Dosu, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyDosu,"Back",M_UnlockNinja;
+
+M_UnlockZaku:
+	mes "[Naruto Arena]";
+	mes "For Zaku, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyZaku,"Back",M_UnlockNinja;
+
+M_UnlockKin:
+	mes "[Naruto Arena]";
+	mes "For Kin, you must have 50 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyKin,"Back",M_UnlockNinja;
+
+M_UnlockYoroi:
+	mes "[Naruto Arena]";
+	mes "For Yoroi, you must have 100 Ninja Point.";
+	mes "Are you sure?";
+	next;
+	menu "Yes",M_BuyYoroi,"Back",M_UnlockNinja;
+
+M_BuyKiba:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Kiba";
+		set unlockkiba,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyShino:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Shino";
+		set unlockshino,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyHinata:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Hinata";
+		set unlockhinata,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyShikamaru:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";;
+		mes "Now you've your own Shikamaru";
+		set unlockshikamaru,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyChouji:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";;
+		mes "Now you've your own Chouji";
+		set unlockchouji,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyIno:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Ino";
+		set unlockino,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyRockLee:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Rock Lee";
+		set unlockrocklee,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyTenten:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Tenten";
+		set unlocktenten,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyNeiji:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";;
+		mes "Now you've your own Neiji";
+		set unlockneiji,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyGaara:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Gaara.";
+		set unlockgaara,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyKankuro:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";;
+		mes "Now you've your own Kankuro";
+		set unlockkankuro,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyTemari:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Temari";
+		set unlocktemari,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyDosu:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Dosu";
+		set unlockdosu,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyZaku:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Zaku";
+		set unlockzaku,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyKin:
+	if(ninjapoint > 49) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Kin";
+		set unlockkin,1;
+		set ninjapoint,ninjapoint-50;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+M_BuyYoroi:
+	if(ninjapoint > 99) {
+		mes "[Naruto Arena]";
+		mes "Now you've your own Yoroi";
+		set unlockyoroi,1;
+		set ninjapoint,ninjapoint-100;
+		next;
+		goto M_Menu;
+	}
+	mes "[Naruto Arena]";
+	mes "You don't have enough Ninja Point";
+	next;
+	goto M_Menu;
+
+/////////////
+// BATTLE //
+///////////
+
+////////////////////////
+// PICKING CHARACTER //
+//////////////////////
+
+M_PickChar:
+	mes "[Naruto Arena]";
+	mes "Choose your character,";
+	next;
+	menu "Uzumaki Naruto",M_PickNaruto,"Uchiha Sasuke",M_PickSasuke,"Haruno Sakura",M_PickSakura,"Inuzuka Kiba",M_PickKiba,"Aburame Shino",M_PickShino,"Hyuuga Hinata",M_PickHinata,"Nara Shikamaru",M_PickShikamaru,"Akamichi Chouji",M_PickChouji,"Yamanaka Ino",M_PickIno,"Rock Lee",M_PickRockLee,"Tenten",M_PickTenten,"Hyuuga Neiji",M_PickNeiji,"Gaara of the Desert",M_PickGaara,"Kankuro",M_PickKankuro,"Temari",M_PickTemari,"Dosu Kinuta",M_PickDosu,"Zaku Abumi",M_PickZaku,"Kin Tsuchi",M_PickKin,"Lanjut",M_PickChar2;
+
+M_PickChar2:
+	menu "Akadou Yoroi",M_PickYoroi,"Ryouji Seintz",M_PickSeintz,"Hellowin Cavemen",M_PickHellowin,"Back",M_PickChar;
+
+M_PickNaruto:
+	set pick,1;
+	goto M_GetEnemy;
+
+M_PickSasuke:
+	set pick,2;
+	goto M_GetEnemy;
+
+M_PickSakura:
+	set pick,3;
+	goto M_GetEnemy;
+
+M_PickKiba:
+	if(unlockkiba == 1) {
+		set pick,4;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Kiba.";
+	next;
+	goto M_PickChar;
+
+M_PickShino:
+	if(unlockshino == 1) {
+		set pick,5;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Shino.";
+	next;
+	goto M_PickChar;
+
+M_PickHinata:
+	if(unlockhinata == 1) {
+		set pick,6;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Hinata.";
+	next;
+	goto M_PickChar;
+
+M_PickShikamaru:
+	if(unlockshikamaru == 1) {
+		set pick,7;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Shikamaru.";
+	next;
+	goto M_PickChar;
+
+M_PickChouji:
+	if(unlockchouji == 1) {
+		set pick,8;
+		set pill,1;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Chouji.";
+	next;
+	goto M_PickChar;
+
+M_PickIno:
+	if(unlockino == 1) {
+		set pick,9;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Ino.";
+	next;
+	goto M_PickChar;
+
+M_PickRockLee:
+	if(unlockrocklee == 1) {
+		set pick,10;
+		set drink,1;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Rock Lee.";
+	next;
+	goto M_PickChar;
+
+M_PickTenten:
+	if(unlocktenten == 1) {
+		set pick,11;
+		set dragonrising,0;
+		set dragontrap,0;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Tenten.";
+	next;
+	goto M_PickChar;
+
+M_PickNeiji:
+	if(unlockneiji == 1) {
+		set pick,12;
+		set dustwinds,0;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Neiji.";
+	next;
+	goto M_PickChar;
+
+M_PickGaara:
+	if(unlockgaara == 1) {
+		set pick,13;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Gaara.";
+	next;
+	goto M_PickChar;
+
+M_PickKankuro:
+	if(unlockkankuro == 1) {
+		set pick,14;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Kankuro.";
+	next;
+	goto M_PickChar;
+
+M_PickTemari:
+	if(unlocktemari == 1) {
+		set pick,15;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Temari.";
+	next;
+	goto M_PickChar;
+
+M_PickDosu:
+	if(unlockdosu == 1) {
+		set pick,16;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Dosu.";
+	next;
+	goto M_PickChar;
+
+M_PickZaku:
+	if(unlockzaku == 1) {
+		set pick,17;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Zaku.";
+	next;
+	goto M_PickChar;
+
+M_PickKin:
+	if(unlockkin == 1) {
+		set pick,18;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Kin.";
+	next;
+	goto M_PickChar;
+
+M_PickYoroi:
+	if(unlockyoroi == 1) {
+		set pick,19;
+		goto M_GetEnemy;
+	}
+	mes "You haven't buy Yoroi.";
+	next;
+	goto M_PickChar;
+
+M_PickSeintz:
+	set pick,100;
+	goto M_GetEnemy;
+
+M_PickHellowin:
+	set pick,101;
+	goto M_GetEnemy;
+
+////////////////
+// GET ENEMY //
+//////////////
+
+M_GetEnemy:
+	mes "[Naruto Arena]";
+	mes "Get ready";
+	mes "Your opponent is";
+	mes "Naruto Arena AI V.12";
+	next;
+	goto M_PrepareBattle;
+
+/////////////////////
+// PREPARE BATTLE //
+///////////////////
+
+M_PrepareBattle:
+	set pickhp,100;
+	set enemyhp,100;
+	set chakranin,0;
+	set chakratai,0;
+	set chakragen,0;
+	set chakrablo,0;
+	set chakraspi,0;
+	set main,main+1;
+	set effectstun,0;
+	set shadowclone,0;
+	set sharingan,0;
+	set innersakura,0;
+	set dynamic,0;
+	set doubleheadedwolf,0;
+	set bug,0;
+	set bugwall,0;
+	set hinatabyakugan,0;
+	set meditate,0;
+	set shadowneckbind,0;
+	set meattank,0;
+	set changeofheart,0;
+	set openfifth,0;
+	set armorofsand,0;
+	set dustwind,0;
+	set desert,0;
+	set deathlycombo,0;
+	set posionbomb,0;
+	set melodyarm,0;
+	set vibrating,0;
+	set soundmanipulation,0;
+	set aircutter,0;
+	set unnervingbells,0;
+	set needlebelltrap,0;
+	set illusionduplicate,0;
+	set kineffect1,0;
+	set blueeyes,0;
+	set duplicating,0;
+	set deathlystrike,0;
+	set yoroiabsoprtion,0;
+	goto M_BattleBoard;
+
+///////////////////
+// BATTLE BOARD //
+/////////////////
+
+M_BattleBoard:
+	if(pickhp < 1) {
+		mes "Y O U";
+		mes "L O S E";
+		set kalah,kalah+1;
+		set ninjapoint,ninjapoint-5;
+		next;
+		goto M_Menu;
+	}
+	if(enemyhp < 1) {
+		mes "Y O U";
+		mes "W I N";
+		set menang,menang+1;
+		set ninjapoint,ninjapoint+3;
+		next;
+		goto M_Menu;
+	}
+	if(effectstun > 0) {
+		set effectstun,effectstun-1;
+	}
+	if(shadowclone > 0) {
+		set shadowclone,shadowclone-1;
+	}
+	if(sharingan > 0) {
+		set sharingan,sharingan-1;
+	}
+	if(innersakura > 0) {
+		set innersakura,innersakura-1;
+	}
+	if(dynamic > 0) {
+		set dynamic,dynamic-1;
+	}
+	if(doubleheadedwolf > 0) {
+		set doubleheadedwolf,doubleheadedwolf-1;
+	}
+	if(bug > 0) {
+		set bug,bug-1;
+	}
+	if(bugwall > 0) {
+		set bugwall,bugwall-1;
+	}
+	if(hinatabyakugan > 0) {
+		set hinatabyakugan,hinatabyakugan-1;
+	}
+	if(meditate > 0) {
+		set meditate,meditate-1;
+	}
+	if(shadowneckbind > 0) {
+		set shadowneckbind,shadowneckbind-1;
+	}
+	if(meattank > 0) {
+		set meattank,meattank-1;
+	}
+	if(changeofheart > 0) {
+		set changeofheart,changeofheart-1;
+	}
+	if(openfifth > 0) {
+		set openfifth,openfifth-1;
+	}
+	if(armorofsand > 0) {
+		set armorofsand,armorofsand-1;
+	}
+	if(dustwinds > 0) {
+		set dustwind,dustwind-1;
+	}
+	if(desert > 0) {
+		set desert,desert-1;
+	}
+	if(deathlycombo > 0) {
+		set deathlycombo,deathlycombo-1;
+	}
+	if(posionbomb > 0) {
+		set poisonbomb,poisonbomb-1;
+	}
+	if(melodyarm > 0) {
+		set melodyarm,melodyarm-1;
+	}
+	if(vibrating > 0) {
+		set vibrating,vibrating-1;
+	}
+	if(soundmanipulation > 0) {
+		set soundmanipulation,soundmanipulation-1;
+	}
+	if(kineffect1 > 0) {
+		set kineffect1,kineffect1-1;
+	}
+	if(blueeyes > 0) {
+		set blueeyes,blueeyes-1;
+	}
+	if(duplicating > 0) {
+		set duplicating,duplicating-1;
+	}
+	if(deathlystrike > 0) {
+		set deathlystrike,deathlystrike-1;
+	}
+	set chakranin,chakranin+rand(0,2);
+	set chakratai,chakratai+rand(0,2);
+	set chakragen,chakragen+rand(0,2);
+	set chakrablo,chakrablo+rand(0,2);
+	set chakraspi,chakraspi+2;
+	set damage,0;
+	set support,0;
+	set offensive,0;
+	set defensive,0;
+	mes "" + strcharinfo(0) + "";
+	mes "-----------------------";
+	mes "HP " + strcharinfo(0) + " : " + pickhp + "";
+	mes "Ninjutsu : " + chakranin + "";
+	mes "Taijutsu : " + chakratai + "";
+	mes "Genjutsu : " + chakragen + "";
+	mes "Bloodline: " + chakrablo + "";
+	mes "Spirit   : " + chakraspi + "";
+	mes "-----------------------";
+	mes "HP Musuh : " + enemyhp + "";
+	mes "-----------------------";
+	mes "Created by Seintz";
+	next;
+	goto M_SkillBoard;
+
+//////////////////
+// SKILL BOARD //
+////////////////
+
+M_SkillBoard:
+	if(pick == 1) {
+		menu "Shadow Clone - S",M_NarutoSkill1,"Uzumaki Naruto Combo - T",M_NarutoSkill2,"Rasengan - NS",M_NarutoSkill3;
+	}
+	if(pick == 2) {
+		menu "Sharingan - B",M_SasukeSkill1,"Lion Combo - TS",M_SasukeSkill2,"Chidori - NS",M_SasukeSkill3;
+	}
+	if(pick == 3) {
+		menu "Inner Sakura - SS",M_SakuraSkill1,"K.O. Punch - T",M_SakuraSkill2,"Cure - N",M_SakuraSkill3;
+	}
+	if(pick == 4) {
+		menu "Dynamic Air Making - S",M_KibaSkill1,"Double Headed Wolf - TB",M_KibaSkill2,"Garouga - TS",M_KibaSkill3;
+	}
+	if(pick == 5) {
+		menu "Female Bug - S",M_ShinoSkill1,"Bug Wall - BBS",M_ShinoSkill2,"Chakra Leach - B",M_ShinoSkill3;
+	}
+	if(pick == 6) {
+		menu "Byakugan - B",M_HinataSkill1,"Hinata Gentle Fist - TS",M_HinataSkill2,"Eight Trigrams 64 Palms Attack - NS",M_HinataSkill3;
+	}
+	if(pick == 7) {
+		menu "Meditate",M_ShikamaruSkill1,"Shadow Bind - BG",M_ShikamaruSkill2,"Shadow Neck Bind - G",M_ShikamaruSkill3;
+	}
+	if(pick == 8) {
+		menu "Akamichi Pills - S",M_ChoujiSkill1,"Partial Double Size - T",M_ChoujiSkill2,"Meat Tank - B",M_ChoujiSkill3;
+	}
+	if(pick == 9) {
+		menu "Change of Heart - GG",M_InoSkill1,"Art of Valentine - S",M_InoSkill2,"Mind Body Disturbance - GS",M_InoSkill3;
+	}
+	if(pick == 10) {
+		menu "Fifth Gate Opening",M_RockLeeSkill1,"High Speed Taijutsu - T",M_RockLeeSkill2,"Omote Renge - TB",M_RockLeeSkill3;
+	}
+	if(pick == 11) {
+		menu "Twin Rising Dragon Full Release - T",M_TentenSkill1,"Twin Rising Dragon Trap - T",M_TentenSkill2,"Twin Rising Dragon - T",M_TentenSkill3;
+	}
+	if(pick == 12) {
+		menu "Eight Trigram Heavenly Spin - BS",M_NeijiSkill1,"Eight Trigram Sixty Four Palms - TB",M_NeijiSkill2,"Neji Gentle Fist - TS",M_NeijiSkill3;
+	}
+	if(pick == 13) {
+		menu "Armor of Sand - S",M_GaaraSkill1,"Desert Coffin - NS",M_GaaraSkill2,"Desert Graveyard - NN",M_GaaraSkill3;
+	}
+	if(pick == 14) {
+		menu "Puppet Preparation - S",M_KankuroSkill1,"Black Secret Machine One Slot - SSS",M_KankuroSkill2,"Poisono Bomb - SS",M_KankuroSkill3;
+	}
+	if(pick == 15) {
+		menu "Cutting Whirlwind - N",M_TemariSkill1,"Summoning Quick Beheading Dance - NSS",M_TemariSkill2,"Dust Wind - NN",M_TemariSkill3;
+	}
+	if(pick == 16) {
+		menu "Melody Arm Tuning - S",M_DosuSkill1,"Vibrating Sound Drill - T",M_DosuSKill2,"Sound Manipulation - G",M_DosuSkill3;
+	}
+	if(pick == 17) {
+		menu "Air Cutter - B",M_ZakuSkill1,"Extreme Air Cutter - BSS",M_ZakuSkill2,"Wall of Air - B",M_ZakuSkill3;
+	}
+	if(pick == 18) {
+		menu "Unnerving Bells - G",M_KinSkill1,"Needle and Bell Trap",M_KinSkill2,"Illusion Duplication Attack",M_KinSkill3;
+	}
+	if(pick == 19) {
+		menu "Chakra and Life Abosrption",M_YoroiSkill1,"Draining Assault - TT",M_YoroiSkill2,"Energy Drain - T",M_YoroiSkill3;
+	}
+	if(pick == 100) {
+		menu "Blue Eyes - B",M_SeintzSkill1,"Ryouji Sword Slash - T",M_SeintzSkill2,"Summoning Blue Dragon - NS",M_SeintzSkill3;
+	}
+	if(pick == 101) {
+		menu "Duplicating - G",M_HellowinSkill1,"Summon Hollow - NSS",M_HellowinSkill2,"Deathly Strike - NBS",M_HellowinSkill3;
+	}
+
+///////////////////
+// NARUTO SKILL //
+/////////////////
+
+M_NarutoSkill1:
+	if(chakraspi > 0) {
+		set shadowclone,3;
+		set chakraspi,chakraspi-1;
+		set support,1;
+	}
+	goto M_Result;
+
+M_NarutoSkill2:
+	if(chakratai > 0) {
+		if(shadowclone > 0) {
+			set damage,damage+15;
+		}
+		set damage,damage+15;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_NarutoSkill3:
+	if(chakranin > 0 && chakraspi > 0 && shadowclone > 0) {
+		set chakranin,chakranin-1;
+		set chakratai,chakraspi-1;
+		set damage,45;
+		set enemyhp,enemyhp-damage;
+		set effectstun,1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+///////////////////
+// SASUKE SKILL //
+/////////////////
+
+M_SasukeSkill1:
+	if(chakrablo > 0) {
+		set sharingan,3;
+		set chakrablo,chakrablo-1;
+		set support,1;
+	}
+	goto M_Result;
+
+M_SasukeSkill2:
+	if(chakratai > 0 && chakraspi > 0) {
+		if(sharingan > 0) {
+			set damage,damage+15;
+		}
+		set chakratai,chakratai-1;
+		set chakraspi,chakraspi-1;
+		set damage,damage+30;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_SasukeSkill3:
+	if(chakranin > 0 && chakraspi > 0 && sharingan > 0) {
+		set chakranin,chakranin-1;
+		set chakraspi,chakraspi-1;
+		set damage,60;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+///////////////////
+// SAKURA SKILL //
+/////////////////
+
+M_SakuraSkill1:
+	set innersakura,5;
+	set support,1;
+	goto M_Result;
+
+M_SakuraSkill2:
+	if(chakratai > 0) {
+		if(innersakura > 0) {
+			set damage,damage+15;
+			set effectstun,effectstun+1;
+		}
+		set chakratai,chakratai-1;
+		set damage,damage+15;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_SakuraSkill3:
+	if(chakranin > 0) {
+		set chakranin,chakranin-1;
+		set damage,20;
+		set charhp,charhp+damage;
+		set defensive,1;
+	}
+	goto M_Result;
+
+/////////////////
+// KIBA SKILL //
+///////////////
+
+M_KibaSkill1:
+	if(chakraspi > 0) {
+		set dynamic,5;
+		set chakraspi,chakraspi-1;
+		set support,1;
+	}
+	goto M_Result;
+
+M_KibaSkill2:
+	if(chakratai > 0 && chakrablo > 0 && dynamic > 0) {
+		set chakratai,chakratai-1;
+		set chakrablo,chakrablo-1;
+		set doubleheadedwolf,3;
+		set damage,15;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_KibaSkill3:
+	if(chakratai > 0 && chakraspi > 0) {
+		if(doubleheadedwolf > 0) {
+			set damage,damage+15;
+		}
+		set damage,damage+30;
+		set chakratai,chakratai-1;
+		set chakraspi,chakraspi-1;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+//////////////////
+// SHINO SKILL //
+////////////////
+
+M_ShinoSkill1:
+	set bug,8;
+	set support,1;
+
+M_ShinoSkill2:
+	if(chakrablo > 1 && chakraspi > 0) {
+		set chakrablo,chakrablo-2;
+		set chakraspi,chakraspi-1;
+		set bugwall,2;
+		set damage,100;
+		set defensive,1;
+	}
+	goto M_Result;
+
+M_ShinoSkill3:
+	if(chakrablo > 0 && bug > 0) {
+		set chakrablo,chakrablo-1;
+		set damage,15;
+		set enemyhp,enemyhp-damage;
+		set chakranin,chakranin+1;
+		set chakratai,chakratai+1;
+		set chakragen,chakragen+1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+///////////////////
+// HINATA SKILL //
+/////////////////
+
+M_HinataSkill1:
+	if(chakrablo > 0) {
+		set hinatabyakugan,4;
+		set chakrablo,chakrablo-1;
+		set support,1;
+	}
+	goto M_Result;
+
+M_HinataSkill2:
+	if(chakratai > 0 && chakraspi > 0) {
+		set hinatagentlefist,2;
+		set chakratai,chakratai-1;
+		set chakraspi,chakraspi-1;
+		set damage,15;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_HinataSkill3:
+	if(chakranin > 0 && chakraspi > 0) {
+		if(hinatabyakugan > 0) {
+			set damage,damage+15;
+		}
+		set chakranin,chakranin-1;
+		set chakratai,chakraspi-1;
+		set damage,damage+15;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+//////////////////////
+// SHIKAMARU SKILL //
+////////////////////
+
+M_ShikamaruSkill1:
+	set meditate,5;
+	set support,1;
+	goto M_Result;
+
+M_ShikamaruSkill2:
+	if(chakrablo > 0 && chakragen > 0 && meditate > 0) {
+		set chakrablo,chakranin-1;
+		set chakragen,chakragen-1;
+		set effectstun,effectstun+2;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_ShikamaruSkill3:
+	if(chakragen > 0 && meditate > 0) {
+		set shadowneckbind,2;
+		set chakragen,chakragen-1;
+		set damage,30;
+		set offensive,1;
+	}
+	goto M_Result;
+
+/////////////
+// CHOUJI //
+///////////
+
+M_ChoujiSkill1:
+	if(chakraspi > 0) {
+		if(pill == 3) {
+			set pill,4;
+		}
+		if(pill == 2) {
+			set pill,3;
+		}
+		if(pill == 1) {
+			set pill,2;
+		}
+	}
+	set pickhp,pickhp-20;
+	set support,1;
+	goto M_Result;
+
+M_ChoujiSkill2:
+	if(chakratai > 0) {
+		set chakratai,chakratai-1;
+		set damage,20*pill;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_ChoujiSkill3:
+	if(chakrablo > 0) {
+		set meattank,2;
+		set chakrablo,chakrablo-1;
+		set damage,15*pill;
+		set effectstun,effectstun+2;
+		set offensive,1;
+	}
+	goto M_Result;
+
+////////////////
+// INO SKILL //
+//////////////
+
+M_InoSkill1:
+	if(chakragen > 1) {
+		set changeofheart,3;
+		set chakragen,chakragen-2;
+		set damage,0;
+		set effectstun,effectstun+3;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_InoSkill2:
+	if(chakraspi > 0 && changeofheart > 0) {
+		set chakraspi,chakraspi-1;
+		set damage,25;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_InoSkill3:
+	if(chakragen > 0 && chakraspi > 0 && changeofheart == 0) {
+		set chakragen,chakragen-1;
+		set chakraspi,chakraspi-1;
+		set damage,25;
+		set enemyhp,enemyhp-damage;
+		set effectstun,effectstun+1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+/////////////////////
+// ROCK LEE SKILL //
+///////////////////
+
+M_RockLeeSkill1:
+	set openfifth,+5;
+	set support,1;
+	goto M_Result;
+
+M_RockLeeSkill2:
+	if(chakratai > 0 && openfifth > 0) {
+		set chakratai,chakratai-1;
+		set damage,30;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_RockLeeSkill3:
+	if(chakratai > 0 && chakrablo > 0 && openfifth > 0 && pickhp < 30) {
+		set enemyhp,0;
+		set damage,100;
+		set offensive,1;
+	}
+	goto M_Result;
+
+///////////////////
+// TENTEN SKILL //
+/////////////////
+
+M_TentenSkill1:
+	if(chakratai > 0) {
+		set chakratai,chakratai-1;
+		set dragonrising,1;
+		set support,1;
+	}
+	goto M_Result;
+
+M_TentenSkill2:
+	if(chakratai > 0 && dragonrising > 0) {
+		set chakratai,chakratai-1;
+		set dragontrap,1;
+		set effectstun,3;
+		set damage,rand(10,20);
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	if(chakratai > 0 && dragonrising == 0) {
+		set chakratai,chakratai-1;
+		set dragontrap,1;
+		set effectstun,2;
+		set damage,rand(10,15);
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_TentenSkill3:
+	if(chakratai > 0 && dragonrising > 0 && dragontrap > 0) {
+		set chakratai,chakratai-1;
+		set effectstun,effectstun+1;
+		set damage,rand(0,100);
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	if(chakratai > 0 && dragonrising > 0 && dragontrap == 0) {
+		set chakratai,chakratai-1;
+		set damage,rand(0,100);
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	if(chakratai > 0 && dragonrising == 0 && dragontrap > 0) {
+		set chakratai,chakratai-1;
+		set effectstun,effectstun+1;
+		set damage,rand(20,50);
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	if(chakratai > 0 && dragonrising == 0 && dragontrap == 0) {
+		set chakratai,chakratai-1;
+		set damage,rand(20,30);
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+//////////////////
+// NEIJI SKILL //
+////////////////
+
+M_NeijiSkill1:
+	if(chakrablo > 0 && chakraspi > 0) {
+		set chakrablo,chakrablo-1;
+		set chakraspi,chakraspi-1;
+		set damage,15;
+		set enemyhp,enemyhp-damage;
+		set effectstun,1;
+	}
+	goto M_Result;
+
+M_NeijiSkill2:
+	if(chakratai > 0 && chakrablo > 0) {
+		set chakratai,chakratai-1;
+		set chakrablo,chakrablo-1;
+		set damage,30;
+		set enemyhp,enemyhp-damage;
+		set chakratai,chakratai+rand(0,1);
+		set chakranin,chakranin+rand(0,1);
+		set chakragen,chakragen+rand(0,1);
+		set chakrablo,chakrablo+rand(0,1);
+		set chakraspi,chakraspi+rand(0,1);
+	}
+	goto M_Result;
+
+M_NeijiSkill3:
+	if(chakratai > 0 && chakraspi > 0) {
+		set chakratai,chakratai-1;
+		set chakraspi,chakraspi-1;
+		set damage,50;
+		set enemyhp,enemyhp-damage;
+		set chakratai,chakratai+rand(0,1);
+		set chakranin,chakranin+rand(0,1);
+		set chakragen,chakragen+rand(0,1);
+		set chakrablo,chakrablo+rand(0,1);
+		set chakraspi,chakraspi+rand(0,1);
+	}
+	goto M_Result;
+
+//////////////////
+// GAARA SKILL //
+////////////////
+
+M_GaaraSkill1:
+	if(chakraspi > 0) {
+		set chakraspi,chakraspi-1;
+		set armorofsand,3;
+		set damage,40;
+		set defensive,1;
+	}
+	goto M_Result;
+
+M_GaaraSkill2:
+	if(chakranin > 0 && chakraspi > 0) {
+		set desert,2;
+		set chakranin,chakranin-1;
+		set chakraspi,chakraspi-1;
+		set damage,10;
+		set enemyhp,enemyhp-damage;
+		set effectstun,2;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_GaaraSkill3:
+	if(chakranin > 1 && desert > 0) {
+		set chakranin,chakranin-2;
+		set damage,100;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+////////////////////
+// KANKURO SKILL //
+//////////////////
+
+M_KankuroSkill1:
+	if(chakraspi > 0) {
+		set deathlycombo,deathlycombo+5;
+		set support,1;
+	}
+	goto M_Result;
+
+M_KankuroSkill2:
+	if(chakraspi > 2 && deathlycombo > 0) {
+		set chakraspi,chakraspi-3;
+		set damage,45;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_KankuroSkill3:
+	if(chakraspi > 0) {
+		set chakraspi,chakraspi-1;
+		set poisonbomb,poisonbomb+3;
+		set damage,30;
+		set offensive,1;
+	}
+	goto M_Result;
+
+///////////////////
+// TEMARI SKILL //
+/////////////////
+
+M_TemariSkill1:
+	if(chakranin > 0) {
+		set chakranin,chakranin-1;
+		set damage,20;
+		set enemyhp,enemyhp-damage;
+		set effectstun,1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_TemariSkill2:
+	if(chakranin > 0 && chakraspi > 1) {
+		set chakranin,chakranin-1;
+		set chakraspi,chakraspi-2;
+		set damage,50;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_TemariSkill3:
+	if(chakranin > 1) {
+		set dustwind,3;
+		set effectstun,1;
+		set chakranin,chakranin-2;
+		set support,1;
+	}
+	goto M_Result;
+
+/////////////////
+// DOSU SKILL //
+///////////////
+
+M_DosuSkill1:
+	if(chakraspi > 0) {
+		set chakraspi,chakraspi-1;
+		set melodyarm,melodyarm+5;
+		set support,1;
+	}
+	goto M_Result;
+
+M_DosuSkill2:
+	if(chakratai > 0) {
+		if(melodyarm > 0) {
+			set damage,damage+20;
+		}
+		set vibrating,4;
+		set damage,damage+20;
+		set enemyhp,enemyhp-damage;
+		set chakratai,chakratai-1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_DosuSkill3:
+	if(chakragen > 0 && vibrating > 0) {
+		set soundmanipulation,soundmanipulation+5;
+		set chakragen,chakragen-1;
+		set damage,10;
+		set offensive,1;
+	}
+	goto M_Result;
+
+/////////////////
+// ZAKU SKILL //
+///////////////
+
+M_ZakuSkill1:
+	if(chakrablo > 0) {
+		set chakrablo,chakrablo-1;
+		set damage,20;
+		set enemyhp,enemyhp-damage;
+		set aircutter,1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_ZakuSkill2:
+	if(chakrablo > 0 && chakraspi > 1 && aircutter > 0) {
+		set chakrablo,chakrablo-1;
+		set chakraspi,chakraspi-2;
+		set damage,50;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+		set aircutter,0;
+	}
+	goto M_Result;
+
+M_ZakuSkill3:
+	if(chakrablo > 0) {
+		set chakrablo,chakrablo-1;
+		set damage,10;
+		set enemyhp,enemyhp-damage;
+		set effectstun,1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+////////////////
+// KIN SKILL //
+//////////////
+
+M_KinSkill1:
+	if(chakragen > 0) {
+		if(needlebelltrap == 1) {
+			set kineffect1,+2;
+			set needlebelltrap,-1;
+		}
+		if(illusionduplication == 1) {
+			set kineffect1,+2;
+			set illusionduplication,-1;
+		}
+		set unnervingbells,1;
+		set chakragen,chakragen-1;
+		set chakragen,chakragen+rand(0,1);
+		set chakratai,chakratai+rand(0,1);
+		set chakranin,chakranin+rand(0,1);
+		set chakrablo,chakrablo+rand(0,1);
+		set chakraspi,chakraspi+rand(0,1);
+		set support,1;
+	}
+	goto M_Result;
+
+M_KinSkill2:
+	if(chakragen > 0) {
+		if(unnervingbells == 1) {
+			set effectstun,effectstun+1;
+			set unnervingbells,0;
+		}
+		if(illusionduplication == 1) {
+			set damage,10;
+			set enemyhp,enemyhp-damage;
+			set offensive,1;
+			set illusionduplication,0;
+		}
+		set needlebelltrap,1;
+		set effectstun,effectstun+2;
+		set chakragen,chakragen-1;
+		set damage,0;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_KinSkill3:
+	if(chakraspi > 0) {
+		if(kineffect1 > 0) {
+			set damage,damage+10;
+		}
+		if(unnervingbells > 0) {
+			set damage,damage+15;
+			set unnervingbells,0;
+		}
+		if(needlebelltrap > 0) {
+			set damage,enemyhp*2/10;
+			set needlebelltrap,0;
+		}
+		set illusionduplication,1;
+		set chakraspi,chakraspi-1;
+		set damage,damage+15;
+		set enemyhp,enemyhp-damage;
+	}
+	goto M_Result;
+
+///////////////////
+// SEINTZ SKILL //
+/////////////////
+
+M_SeintzSkill1:
+	if(chakrablo > 0) {
+		set blueeyes,5;
+		set chakrablo,chakrablo-1;
+		set support,1;
+	}
+	goto M_Result;
+
+M_SeintzSkill2:
+	if(chakratai > 0) {
+		if(blueeyes > 0) {
+			set damage,damage+20;
+		}
+		set damage,damage+20;
+		set enemyhp,enemyhp-damage;
+		set chakratai,chakratai-1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+M_SeintzSkill3:
+	if(chakranin > 0 && chakraspi > 0 && blueeyes > 0) {
+		set damage,damage+50;
+		set enemyhp,enemyhp-damage;
+		set chakranin,chakranin-1;
+		set chakraspi,chakraspi-1;
+		set effectstun,1;
+		set offensive,1;
+	}
+	goto M_Result;
+
+/////////////////////
+// HELLOWIN SKILL //
+///////////////////
+
+M_HellowinSkill1:
+	if(chakragen > 0) {
+		set chakragen,chakragen-1;
+		set effectstun,1;
+		set duplicating,3;
+		set support,1;
+	}
+	goto M_Result;
+
+M_HellowinSkill2:
+	if(chakranin > 0 && chakraspi > 1) {
+		set chakranin,chakranin-1;
+		set chakraspi,chakraspi-1;
+		set damage,45;
+		set enemyhp,enemyhp-damage;
+		set offensive,1;
+	}
+
+M_HellowinSkill3:
+	if(chakranin > 0 && chakrablo > 0 && chakraspi > 0 && duplicating > 0) {
+		set chakranin,chakranin-1;
+		set chakrablo,chakrablo-1;
+		set chakraspi,chakraspi-1;
+		set damage,25;
+		set deathlystrike,4;
+		set offensive,1;
+	}
+
+//////////////////
+// YOROI SKILL //
+////////////////
+
+M_YoroiSkill1:
+	if(yoroiabsorption == 1) {
+		set yoroiabsorption,0;
+	}
+	if(yoroiabsorption == 0) {
+		set yoroiabsorption,1;
+	}
+	set support,1;
+	goto M_Result;
+
+M_YoroiSkill2:
+	if(chakratai > 1) {
+		if(yoroiabsorption > 0) {
+		set chakranin,chakranin+3;
+		set chakratai,chakratai+3;
+		set chakragen,chakragen+3;
+		set chakrablo,chakrablo+3;
+		set chakraspi,chakraspi+3;
+		set damage,0;
+		}
+		if(yoroiabsoprtion == 0) {
+		set damage,45;
+		set enemyhp,enemyhp-damage;
+		set pickhp,pickhp+45;
+		}
+		set offensive,1;
+		set chakratai,chakratai-2;
+	}
+	goto M_Result;
+
+M_YoroiSkill3:
+	if(chakratai > 0) {
+		if(yoroiabsorption > 0) {
+		set chakranin,chakranin+1;
+		set chakratai,chakratai+1;
+		set chakragen,chakragen+1;
+		set chakrablo,chakrablo+1;
+		set chakraspi,chakraspi+1;
+		set damage,0;
+		}
+		if(yoroiabsorption == 0) {
+		set damage,20;
+		set enemyhp,enemyhp-damage;
+		set pickhp,pickhp+15;
+		set effectstun,1;
+	}
+	set offensive,1;
+	set chakratai,chakratai-1;
+	}
+	goto M_Result;
+
+/////////////
+// RESULT //
+///////////
+
+M_Result:
+	mes "" + strcharinfo(0) + "";
+	mes "-----------------------";
+	if(offensive == 1) {
+		mes "" + strcharinfo(0) + " attacking opponent, deal " + damage + ".";
+	}
+	if(defensive == 1) {
+		mes "" + strcharinfo(0) + " do defense, give " + damage + " point.";
+	}
+	if(support == 1) {
+		mes "" + strcharinfo(0) + " do support skill.";
+	}
+	next;
+	if(poisonbomb > 0) {
+		mes "AI V.12 take 10 damage from Poison Bomb";
+		set enemyhp,enemyhp-10;
+		next;
+	}
+	if(doubleheadedwolf > 0) {
+		mes "AI V.12 take 15 damage from Double Headed Wolf";
+		set enemyhp,enemyhp-15;
+		next;
+	}
+	if(hinatagentlefist > 0) {
+		mes "AI V.12 take 15 damage from Hinata Gentle Fist";
+		set enemyhp,enemyhp-15;
+		next;
+	}
+	if(shadowneckbind > 0) {
+		mes "AI V.12 take 15 damage from Shadow Neck Bind";
+		set enemyhp,enemyhp-15;
+		next;
+	}
+	if(meattank > 0) {
+		mes "AI V.12 take 15 damage from Meat Tank";
+		set enemyhp,enemyhp-15*pill;
+		next;
+	}
+	if(soundmanipulation > 0) {
+		mes "AI V.12 take 10 damage from Sound Manipulation";
+		set enemyhp,enemyhp-10;
+	}
+	if(deathlystrike > 0) {
+		mes "AI V.12 take 25 damage from Deathly Strike";
+		set enemyhp,enemyhp-25;
+	}
+	if(bugwall > 0) {
+		mes "" + strcharinfo(0) + " is invisible.";
+		next;
+		goto M_BattleBoard;
+	}
+	if(effectstun > 0) {
+		mes "Opponent can't move because stun effect.";
+		next;
+		goto M_BattleBoard;
+	}
+	if(level < 6) {
+		set hurt,rand(0,30);
+	}
+	if(level < 11) {
+		set hurt,rand(10,40);
+	}
+	if(level < 16) {
+		set hurt,rand(20,50);
+	}
+	if(level < 21) {
+		set hurt,rand(30,60);
+	}
+	if(level < 26) {
+		set hurt,rand(40,70);
+	}
+	if(level > 25) {
+		set hurt,rand(50,70);
+	}
+	if(shadowclone > 0) {
+		set hurt,hurt-15;
+	}
+	if(sharingan > 0) {
+		set hurt,hurt/2;
+	}
+	if(innersakura == 1) {
+		set hurt,hurt*3/4;
+	}
+	if(armorofsand > 0) {
+		set hurt,hurt-40;
+	}
+	if(dustwind > 0) {
+		set hurt,hurt/2;
+	}
+	if(blueeyes > 0) {
+		set hurt,hurt/2;
+	}
+	if(duplicating > 0) {
+		set hurt,hurt/2;
+	}
+	set pickhp,pickhp-hurt;
+	mes "AI V.12";
+	mes "-----------------------";
+	mes "AI V.12 attacking " + strcharinfo(0) + ", deals " + hurt + ".";
+	next;
+	goto M_BattleBoard;
+}

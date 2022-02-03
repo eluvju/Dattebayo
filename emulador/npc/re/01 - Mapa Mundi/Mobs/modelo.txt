@@ -1,0 +1,34 @@
+Modelo Mobs
+
+//==================================================
+// Prontera, Training Dummy Area
+//==================================================
+prontera,251,77	monster	Dummy Lv50	2409,1,5000
+prontera,259,77	monster	Dummy Lv50	2409,1,5000
+
+// Prontera Castle
+prt_cas,367,138,15,19	monster	Plate	3455,15
+
+//===== rAthena Script =======================================
+//= Champion Monster Spawn Script
+//=======================================================
+abbey02,0,0	monster	Swift Zombie Slaughter	2603,2,300000
+gl_prison,0,0	monster	Solid Zombie Prisoner	2604,2,300000
+gld_dun04,0,0	monster	Zombie Master Ringleader	2605,2,300000
+
+//==================================================
+// prt_fild08 - Prontera Field 
+//==================================================
+prt_fild08,0,0	monster	Poring	1002,110,5000
+prt_fild08,0,0	monster	Lunatic	1063,100,5000
+prt_fild08,0,0	monster	Fabre	1007,100,5000
+prt_fild08,0,0	monster	Little Poring	2398,30,50000
+
+//==================================================
+// abbey02 - Cursed Monastery
+//==================================================
+abbey02,0,0	monster	Zombie Slaughter	1864,210,5000
+abbey02,0,0	monster	Ragged Zombie	1865,70,5000
+abbey02,0,0	monster	Flame Skull	1869,21,5000
+abbey02,0,0	monster	Necromancer	1870,7,5000
+abbey02,236,78,21,18	boss_monster	Fallen Bishop	1871,1,7200000,600000,1

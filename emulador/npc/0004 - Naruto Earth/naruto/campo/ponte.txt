@@ -1,0 +1,26 @@
+prontera,151,171,5	script	Iruka Umino	426,{
+
+
+mes "teste skill";
+skill 735,10,3;
+skill 736,10,3;
+skill 737,10,3;
+skill 738,10,3;
+skill 739,10,3;
+skill 740,10,3;
+skill 741,10,3;
+skill 742,10,3;
+skill 743,10,3;
+skill 744,10,3;
+skill 745,10,3;
+skill 746,10,3;
+skill 747,10,3;
+skill 748,10,3;
+skill 749,10,3;
+skill 750,10,3;
+skill 751,10,3;
+skill 752,10,3;
+skill 753,10,3;
+close;
+
+}

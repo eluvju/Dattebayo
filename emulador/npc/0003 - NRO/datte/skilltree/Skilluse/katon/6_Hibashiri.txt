@@ -1,0 +1,73 @@
+-	script	on_PC_UseSkillk06	-1,{
+    end;
+//When a Character uses a skill
+
+//Hibashiri
+
+onPcUseSkillEvent:
+
+           if(lskillid == 535) {
+
+
+if (getskilllv(535) == 1) {
+
+
+if (skill535 >= 50) {skill 535,2,0; set skill535,0; dispbottom "[Sys] Level up"; end; }
+set skill535,skill535 +1;
+dispbottom "[Jutsu level] Hibashiri level 1: "+skill535+" de 50";
+
+end;
+
+}
+
+if (getskilllv(535) == 2) {
+
+if (skill535 >= 150) {skill 535,3,0; set skill535,0; dispbottom "[Sys] Level up"; end; }
+set skill535,skill535 +1;
+dispbottom "[Jutsu level] Hibashiri level 2: "+skill535+" de 150";
+
+end;
+
+}
+
+if (getskilllv(535) == 3) {
+if (skill535 >= 200) {skill 535,4,0; set skill535,0; dispbottom "[Sys] Level up"; end;}
+set skill535,skill535 +1;
+dispbottom "[Jutsu level] Hibashiri level 3: "+skill535+" de 200";
+
+end;
+
+}
+
+if (getskilllv(535) == 4) {
+
+if (skill535 >= 250) {skill 535,5,0; set skill535,0; dispbottom "[Sys] Level up"; end;}
+set skill535,skill535 +1;
+dispbottom "[Jutsu level] Hibashiri level 4: "+skill535+" de 250";
+
+end;
+
+}
+
+if (getskilllv(535) == 4) {
+if (nin_intermediario != 1) {end;}
+if (skill535 >= 300) {skill 535,5,0; set skill535,0; dispbottom "[Sys] Level up"; end;}
+set skill535,skill535 +1;
+dispbottom "[Jutsu level] Hibashiri level 4: "+skill535+" de 300";
+
+end;
+
+}
+
+if (getskilllv(535) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill535 >= 500) {skill 535,6,0; set skill535,0; dispbottom "[Sys] Level up"; end;}
+set skill535,skill535 +1;
+dispbottom "[Jutsu level] Hibashiri level 5: "+skill535+" de 500";
+
+end;
+
+                end;
+            }
+}
+}

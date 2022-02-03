@@ -1,0 +1,51 @@
+job_knt.gat,43,53,5	script	Iruka	121,{
+
+
+//cutin "cutin_iruka",2;
+mes "[^FFA500Iruka^000000]";
+mes "Olá "+strcharinfo(0)+"";
+set jutsus_basicos_enabled, 1;
+set Jutsu_basicos1, 1;
+mes "Pelo visto voce quer se tornar um Ninja forte, como eu...hahaha. Brincadeira garoto";
+mes "Eu sou apenas um professor da academia shinobi.";
+next;
+mes "[^FFA500Iruka^000000]";
+mes "Você conhece a academia shinobi?";
+menu "^FF0000Não^000000",lnao,"^0000FFSim, Já^000000",lsim;
+
+lnao:
+next;
+mes "[^FFA500Iruka^000000]";
+mes "Entao irei lhe explicar,uma academia onde um conjunto de professores";
+mes "iram ensinar os alunos a ser um Ninja";
+mes "Aprendem a arremessar Shuriken, a fazer jutsus básicos";
+mes "como o Kawarimi, Bunshin e Henge.";
+next;
+mes "[^FFA500Iruka^000000]";
+mes "Depois de acabar a academia você fara um teste";
+mes "Para se tornar um ninja oficial de uma vila";
+mes "Inicialmente um Genin, isso voce aprendera dentro da Academia";
+mes "Os ranks Shinobis, as missões, como um ninja deve se portar em uma missão.";
+next;
+mes "[^FFA500Iruka^000000]";
+mes "Voce entendeu tudo garoto?";
+mes "Entao Irei lhe levar agora para a academia Shinobi, onde voce aprendera a ser um Ninja de verdade.";
+mes "Aceita ir?";
+menu "^0000FFSim, Já^000000",lsim,"^FF0000Não^000000",lnem;
+
+
+lsim:
+next;
+mes "[^FFA500Iruka^000000]";
+mes "Vejo que voce estudou então sobre a academia Shinobi";
+mes "Nesse caso Irei lhe levar agora para a academia Shinobi";
+mes "Onde voce aprendera a ser um Ninja de verdade.";
+next;
+warp "job_knt",43,142;
+end;
+
+lnem:
+cutin "",255;
+close;
+
+}

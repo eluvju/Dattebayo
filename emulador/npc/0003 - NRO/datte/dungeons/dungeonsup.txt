@@ -1,0 +1,187 @@
+-	script	dungeon#announcer	-1,{
+
+OnClock0700:
+OnClock0900:
+OnClock1100:
+OnClock1300:
+OnClock1500:
+OnClock1700:
+OnClock1900:
+OnClock2100:
+OnClock2300:
+OnClock0100:
+OnClock0300:
+OnClock0500:
+
+	announce "As dungeons de up estão abertas",0;
+	sleep2 10000;
+	announce "Dungeons de up: Por favor vá até sua vila e encontre o npc para ter acesso as dungeons.",0;
+	sleep2 10000;
+	announce "Dungeons de up: Após um minuto a entrada irá se fechar.",0;
+	sleep2 10000;
+	announce "Dungeons de up: Entrada irá fechar em breve.",0;
+	set $dungeons,1;
+	initnpctimer;
+	end;
+
+
+OnTimer30000:
+	announce "Dungeons de up : Últimos 30 segundos.",0;
+	sleep2 5000;
+	announce "Dungeons de up : Corra pra sua vila.",0;
+	end;
+	
+OnTimer50000:
+	announce "Dungeons de up : Últimos 10 segundos.",0;
+	end;
+	
+OnTimer55000:
+	announce "Dungeons de up : 5.",0;
+	end;
+	
+OnTimer56000:
+	announce "Dungeons de up : 4.",0;
+	end;
+	
+OnTimer57000:
+	announce "Dungeons de up : 3.",0;
+	end;
+	
+OnTimer58000:
+	announce "Dungeons de up : 2.",0;
+	end;
+	
+OnTimer59000:
+	announce "Dungeons de up : 1.",0;
+	end;
+	
+OnTimer60000:
+	announce "Dungeons de up : Acabou o tempo, aguarde o próximo evento.",0;
+	end;
+	
+OnTimer61000:
+	set $dungeons,0;
+	stopnpctimer;
+	end;
+
+OnClock0730:
+OnClock0930:
+OnClock1130:
+OnClock1330:
+OnClock1530:
+OnClock1730:
+OnClock1930:
+OnClock2130:
+OnClock2330:
+OnClock0130:
+OnClock0330:
+OnClock0530:
+mapwarp "hu_fild02","kakashi",0,0;
+mapwarp "ve_fild04","kakashi",0,0;
+mapwarp "lhz_fild03","kakashi",0,0;
+mapwarp "ra_fild01","kakashi",0,0;
+	}
+	
+konoha,160,96,6	script	Dungeons de Up::dung	705,{
+
+if($dungeons != 1) goto L_eror;
+mes "[Dungeons de Up]";
+mes "Bem-Vindo a entrada das ^FF0000Dungeons de Up^000000";
+mes "Deseja entrar? ";
+next;
+menu "Entrar",-,"Informações",Info,"Não, obrigado",Cancel;
+
+mes "Por favor escolha uma sala";
+menu "Level 0-200",dun1,"Level 201-400",dun2,"Level 401-600",dun3,"Level 601-800",dun4;
+
+dun1:
+if(Baselevel > 200) {mes "Desculpe mas essa sala é somente para shinobis com nível menor que 200"; close;}
+next;
+mes "Boa sorte!";
+next;
+warp "hu_fild02",0,0;
+close;
+
+dun2:
+if(Baselevel > 400) {mes "Desculpe mas essa sala é somente para shinobis com nível menor que 400"; close;}
+next;
+mes "Boa sorte!";
+next;
+warp "ve_fild04",0,0;
+close;
+
+dun3:
+if(Baselevel > 600) {mes "Desculpe mas essa sala é somente para shinobis com nível menor que 600"; close;}
+next;
+mes "Boa sorte!";
+next;
+warp "lhz_fild03",0,0;
+close;
+
+dun4:
+if(Baselevel > 800) {mes "Desculpe mas essa sala é somente para shinobis com nível menor que 800"; close;}
+next;
+mes "Boa sorte!";
+next;
+warp "ra_fild01",0,0;
+close;
+
+L_eror:
+mes "[Dungeons de Up]";
+mes "As Dungeons de up estão fechadas agora.";
+mes "Elas abrirão em breve.";
+close;
+
+Info:
+mes "[Dungeons de Up]";
+mes "Nas Dungeons de up você pode aumentar seu nível em uma das dungeons";
+mes "Aproveite para aumentar seu nível e seu poder";
+close;
+
+Cancel:
+mes	"[Dungeons de Up]";
+mes	"Até logo";
+close;
+end;
+}
+
+kiri,170,99,5	duplicate(dung)	Dungeons de Up#1	705,{
+nuvem,131,54,5	duplicate(dung)	Dungeons de Up#2	705,{
+areia,176,105,5	duplicate(dung)	Dungeons de Up#3	705,{
+
+// -- Mapflags
+hu_fild02	mapflag	nowarp
+hu_fild02	mapflag	nowarpto
+hu_fild02	mapflag	noteleport
+hu_fild02	mapflag	nosave
+hu_fild02	mapflag	nomemo
+hu_fild02	mapflag	nobranch
+hu_fild02	mapflag	noloot
+hu_fild02	mapflag	nopenalty
+
+ve_fild04	mapflag	nowarp
+ve_fild04	mapflag	nowarpto
+ve_fild04	mapflag	noteleport
+ve_fild04	mapflag	nosave
+ve_fild04	mapflag	nomemo
+ve_fild04	mapflag	nobranch
+ve_fild04	mapflag	noloot
+ve_fild04	mapflag	nopenalty
+
+lhz_fild03	mapflag	nowarp
+lhz_fild03	mapflag	nowarpto
+lhz_fild03	mapflag	noteleport
+lhz_fild03	mapflag	nosave
+lhz_fild03	mapflag	nomemo
+lhz_fild03	mapflag	nobranch
+lhz_fild03	mapflag	noloot
+lhz_fild03	mapflag	nopenalty
+
+ra_fild01	mapflag	nowarp
+ra_fild01	mapflag	nowarpto
+ra_fild01	mapflag	noteleport
+ra_fild01	mapflag	nosave
+ra_fild01	mapflag	nomemo
+ra_fild01	mapflag	nobranch
+ra_fild01	mapflag	noloot
+ra_fild01	mapflag	nopenalty

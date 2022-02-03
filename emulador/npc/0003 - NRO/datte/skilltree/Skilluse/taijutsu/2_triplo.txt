@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkilltai02	-1,{
+    end;
+//When a Character uses a skill
+
+//Shippo
+
+onPcUseSkillEvent:
+
+           if(lskillid == 263) {
+
+
+if (getskilllv(263) == 1) {
+
+if (Shippo != 1) {end;}
+if (skill263 >= 50) {skill 263,2,0; set skill263,0; dispbottom "[Sys] Level up"; end; }
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 1: "+skill263+" de 50";
+
+end;
+
+}
+
+if (getskilllv(263) == 2) {
+if (Shippo != 1) {end;}
+if (skill263 >= 100) {skill 263,3,0; set skill263,0; dispbottom "[Sys] Level up"; end;}
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 2: "+skill263+" de 100";
+
+end;
+
+}
+
+if (getskilllv(263) == 3) {
+
+if (Shippo != 1) {end;}
+if (skill263 >= 150) {skill 263,4,0; set skill263,0; dispbottom "[Sys] Level up"; end;}
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 3: "+skill263+" de 150";
+
+end;
+
+}
+
+if (getskilllv(263) == 4) {
+if (Shippo != 1) {end;}
+if (skill263 >= 200) {skill 263,5,0; set skill263,0; dispbottom "[Sys] Level up"; end;}
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 4: "+skill263+" de 200";
+
+end;
+
+}
+
+if (getskilllv(263) == 5) {
+if (Shippo != 1) {end;}
+if (skill263 >= 250) {skill 263,6,0; set skill263,0; dispbottom "[Sys] Level up"; end;}
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 5: "+skill263+" de 250";
+
+end;
+
+}
+
+if (getskilllv(263) == 6) {
+if (Shippo != 1) {end;}
+if (skill263 >= 300) {skill 263,7,0; set skill263,0; dispbottom "[Sys] Level up"; end;}
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 6: "+skill263+" de 300";
+
+end;
+
+}
+
+if (getskilllv(263) == 7) {
+if (Shippo != 1) {end;}
+if (skill263 >= 500) {skill 263,8,0; set skill263,0; dispbottom "[Sys] Level up"; end;}
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 7: "+skill263+" de 500";
+
+end;
+
+}
+
+if (getskilllv(263) == 8) {
+if (Shippo != 1) {end;}
+if (skill263 >= 700) {skill 263,9,0; set skill263,0; dispbottom "[Sys] Level up"; end;}
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 8: "+skill263+" de 700";
+
+end;
+
+}
+
+if (getskilllv(263) == 9) {
+if (Shippo != 1) {end;}
+if (skill263 >= 1000) {skill 263,10,0; set skill263,0; dispbottom "[Sys] Level up"; end;}
+set skill263,skill263 +1;
+dispbottom "[Jutsu level] Shippo Tetsu Rendan level 9: "+skill263+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

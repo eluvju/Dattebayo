@@ -1,0 +1,22 @@
+job_wiz,50,166,5	script	Chunin#l4	831,{
+
+	if (checkquest(1016) != 1) {mes"Não posso te ajudar em nada..."; close;}
+	if (lasca == 1) {mes "Não posso te ajudar em nada..."; close;}
+	mes " [ Chunin ]";
+	mes "Estamos estudando uma nova pedra e seus misteriosos podereres, e precisamos de sua ajuda.";
+	mes "Consiga a seguinte lista de materiais:";
+	next;
+	mes "- 100x Torrão de areia";
+	mes "- 1x Ferro";
+	if (countitem(625) < 1) {next; mes "Você ainda não completou seu treinamento"; close;}
+	if (countitem(1056) < 100) {next; mes "Você ainda não completou seu treinamento"; close;}
+	next;
+	mes "Obrigado pela ajuda,aqui está seu premio...";
+	getitem 7211,1;
+	delitem 625,1;
+	delitem 1056,100;
+	set lasca,1;
+	close;
+	
+
+}

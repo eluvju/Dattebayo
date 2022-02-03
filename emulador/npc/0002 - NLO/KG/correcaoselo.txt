@@ -1,0 +1,189 @@
+payon,188,233,4	script	Pesquisador#2	1_f_gypsy,{
+
+
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	
+
+	.@questid = 40006;
+
+	.@questid2 = 40007;
+	
+	.@questid3 = 40022;
+
+	.@item1 = 900;
+
+	.@item2 = 907;
+
+	.@item3 = 908;
+	
+	.@item4 = 923;
+
+	.@itemqnt1 = 1;
+
+	.@itemqnt2 = 1;
+
+	.@itemqnt3 = 1;
+	
+	.@itemqnt4 = 1;
+
+	
+
+	if(pegoukg == 4) {
+
+		mes .@npc$;
+
+		mes "Você já chegou no nivel máximo do Selo Amaldiçoado.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item2) >= .@itemqnt2 && Zeny >= 30000000) {
+
+				set pegoukg,4;
+
+				set expkg,0;
+
+				announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo Amaldiçoado do céu para o nível 4!",bc_blue|bc_all; 
+
+				delitem 30110,1; 
+				getitem2 30110,1,1,0,0,30093,0,0,0;
+
+				equip 30110;
+
+				delitem .@item1,.@itemqnt1;
+
+				delitem .@item2,.@itemqnt2;
+
+				Zeny = Zeny - 30000000;
+
+				completequest .@questid;
+
+				erasequest .@questid;
+
+				mes .@npc$;
+
+				mes "Parabéns, você acabou de liberar seu poder Selo Amaldiçoado.";
+
+				close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+
+	
+
+	if(checkquest(.@questid2) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item3) >= .@itemqnt3 && Zeny >= 30000000) {
+
+				set pegoukg,4; 
+
+				set expkg,0; 
+
+				announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 4!",bc_blue|bc_all; 
+
+				delitem 30111,1; 
+				getitem2 30111,1,1,0,0,30093,0,0,0;
+
+				equip 30111;
+
+				delitem .@item1,.@itemqnt1;
+
+				delitem .@item3,.@itemqnt3;
+
+				Zeny = Zeny - 30000000;
+
+				completequest .@questid2;
+
+				erasequest .@questid2;
+
+				mes .@npc$;
+
+				mes "Parabéns, você acabou de liberar seu poder Selo Amaldiçoado.";
+
+				close;
+
+		}
+
+		mes .@npc$;
+
+		mes "Você não tem todos os itens ainda.";
+
+		close;
+
+	}
+	
+	if(checkquest(.@questid3) == 1) {
+
+		if(countitem(.@item1) >= .@itemqnt1 && countitem(.@item4) >= .@itemqnt4 && Zeny >= 30000000) {
+			set pegoukg,4; 
+			set expkg,0; 
+			announce " "+strcharinfo(0)+" Acaba de melhorar seu Selo amaldiçoado da terra para o nível 4!",bc_blue|bc_all; 
+			delitem 30127,1; 
+			getitem2 30127,1,1,0,0,30093,0,0,0;
+			equip 30127;
+			delitem .@item1,.@itemqnt1;
+			delitem .@item4,.@itemqnt4;
+			Zeny = Zeny - 30000000;
+			completequest .@questid3;
+			erasequest .@questid3;
+			mes .@npc$;
+			mes "Parabéns, você acabou de liberar seu poder Selo Amaldiçoado.";
+			close;
+		}
+		mes .@npc$;
+		mes "Você não tem todos os itens ainda.";
+		close;
+
+	}
+
+	
+
+	if(countitem(30110) || countitem(30111) || countitem(30127) && expkg >= 10000000) {
+
+		mes .@npc$;
+		mes "Hehehe eu sabia que você não ia resistir, que a sede por mais poder nao iria acabar, e olhe só aqui esta voce...";
+		next;
+		mes .@npc$;
+		mes "em busca de mais e mais poder, mas pra isso voce terá que provar que é fiel a mim, esta disposto a isso?";
+		if(select("- Sim, estou pronto:- Não estou pronto ainda") == 2) { next; mes .@npc$; mes "Certo, estarei aqui quando estiver preparado."; close; }
+			next;
+			mes .@npc$;
+			mes "Para continuar o treinamento você precisa pagar 20.000.000 Zeny.";
+			mes "Gostaria de continuar o treinamento?";
+			if(select("- Sim, gostaria:- Não estou interessado") == 2) close;
+				next;
+				mes .@npc$;
+				mes "Ótimo, entao para provar sua fidelidade a mim.";
+				next;
+				mes .@npc$;
+				mes "Traga-me os seguintes itens:";
+				mes "1 Kit Cirurgico";
+				mes "20,000,000 Zeny";
+				next;
+				mes "Caso seja Selo do Céu:";
+				mes "1 Pergaminho Secreto do Céu";
+				next;
+				mes "Caso seja Selo da Terra:";
+				mes "1 Pergaminho Secreto da Terra";
+				setquest .@questid;
+				close;
+	}
+	mes .@npc$;
+	mes "Você não é Selo Amaldiçoado ou não está pronto para evolui-lo.";
+	close;
+
+}

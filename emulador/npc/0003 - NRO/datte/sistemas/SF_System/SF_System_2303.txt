@@ -1,0 +1,297 @@
+function	script	SF_System_2303	{
+
+// 2=Def - 3=Mdef 
+//1: Def
+if(getarg(1)==1)
+{
+	bonus bDef2Rate,-20;
+	dispbottom "[Bonus] : Defesa: -20% ";
+}else if(getarg(1)==2)
+{
+	bonus bMdef,getarg(3);
+	dispbottom "[Bonus] : Defesa Mágica: "+getarg(3)+" ";
+}else if(getarg(1)==3)
+{
+	bonus2 bSubEle,Ele_Holy,10;
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+}else if(getarg(1)==4)
+//1:resistência a congelamento
+{
+	bonus2 bResEff,Eff_Freeze,1000;
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+}else if(getarg(1)==5)
+//1:resistência a petrificar
+{
+	bonus2 bResEff,Eff_Stone,1000;
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+}else if(getarg(1)==6)
+//1:resistencia a maldição
+{
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==7)
+//1:resistencia a stun
+{
+	bonus2 bResEff,Eff_Stun,1000;
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+}else if(getarg(1)==8)
+//1:resistencia a sono
+{
+	bonus2 bResEff,Eff_Sleep,1000;
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+}else if(getarg(1)==9)
+//2: sagrado, resistência a congelamento
+{
+	bonus2 bSubEle,Ele_Holy,10;
+	bonus2 bResEff,Eff_Freeze,1000;
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+}else if(getarg(1)==10)
+//2: sagrado, resistencia a petrificar 
+{
+	bonus2 bSubEle,Ele_Holy,10;
+	bonus2 bResEff,Eff_Stone,1000;
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+}else if(getarg(1)==11)
+//2: sagrado, indestrutivo
+{
+	bonus2 bSubEle,Ele_Holy,10;
+	bonus bUnbreakableArmor,0;
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+	dispbottom "[Bonus] : Indestrutível";
+}else if(getarg(1)==12)
+//2: sagrado, resistencia a maldição
+{
+	bonus2 bSubEle,Ele_Holy,10;
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==13)
+//2: resistência a congelamento, resistencia a petrificar 
+{
+	bonus2 bResEff,Eff_Freeze,1000;
+	bonus2 bResEff,Eff_Stone,1000;
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+}else if(getarg(1)==14)
+//2: resistência a congelamento,  indestrutivo
+{
+	bonus2 bResEff,Eff_Freeze,1000;
+	bonus bUnbreakableArmor,0;
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+	dispbottom "[Bonus] : Indestrutível";
+}else if(getarg(1)==15)
+//2: resistência a congelamento, resistencia a maldição
+{
+	bonus2 bResEff,Eff_Freeze,1000;
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==16)
+//2: resistencia a petrificar,  indestrutivo
+{
+	bonus2 bResEff,Eff_Stone,1000;
+	bonus bUnbreakableArmor,0;
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+	dispbottom "[Bonus] : Indestrutível";
+}else if(getarg(1)==17)
+//2: resistencia a petrificar, resistencia a maldição
+{
+	bonus2 bResEff,Eff_Stone,1000;
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==18)
+//2: indestrutivo, resistencia a maldição
+{
+	bonus bUnbreakableArmor,0;
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Indestrutível";
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==19)
+//2: Mdef,  Def
+{
+	bonus bMdef,getarg(3);
+	bonus bDef2Rate,-20;
+	dispbottom "[Bonus] : Defesa Mágica: "+getarg(3)+" ";
+	dispbottom "[Bonus] : Defesa: -20% ";
+}else if(getarg(1)==20)
+//2: Mdef,  resistência congelamento
+{
+	bonus bMdef,getarg(3);
+	bonus2 bResEff,Eff_Freeze,1000;
+	dispbottom "[Bonus] : Defesa Mágica: "+getarg(3)+" ";
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+}else if(getarg(1)==21)
+//2: Mdef,  resistência petrificar
+{
+	bonus bMdef,getarg(3);
+	bonus2 bResEff,Eff_Stone,1000;
+	dispbottom "[Bonus] : Defesa Mágica: "+getarg(3)+" ";
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+}else if(getarg(1)==22)
+//2: Mdef, resistencia a maldição
+{
+	bonus bMdef,getarg(3);
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Defesa Mágica: "+getarg(3)+" ";
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==23)
+//2: Mdef, sagrado
+{
+	bonus bMdef,getarg(3);
+	bonus2 bSubEle,Ele_Holy,10;
+	dispbottom "[Bonus] : Defesa Mágica: "+getarg(3)+" ";
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+}else if(getarg(1)==24)
+//2:Mdef, resistencia a sono
+{
+	bonus bMdef,getarg(3);
+	bonus2 bResEff,Eff_Sleep,1000;
+	dispbottom "[Bonus] : Defesa Mágica: "+getarg(3)+" ";
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+}else if(getarg(1)==25)
+//2:Mdef, resistencia a stun
+{
+	bonus bMdef,getarg(3);
+	bonus2 bResEff,Eff_Stun,1000;
+	dispbottom "[Bonus] : Defesa Mágica: "+getarg(3)+" ";
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+}else if(getarg(1)==26)
+//2:def, indestrutivo
+{
+	bonus bDef2Rate,-20;
+	bonus bUnbreakableArmor,0;
+	dispbottom "[Bonus] : Defesa: -20% ";
+	dispbottom "[Bonus] : Indestrutível";
+}else if(getarg(1)==27)
+//2: def,  resistência congelamento
+{
+	bonus bDef2Rate,-20;
+	bonus2 bResEff,Eff_Freeze,1000;
+	dispbottom "[Bonus] : Defesa: -20% ";
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+}else if(getarg(1)==28)
+//2: def,  resistência petrificar
+{
+	bonus bDef2Rate,-20;
+	bonus2 bResEff,Eff_Stone,1000;
+	dispbottom "[Bonus] : Defesa: -20% ";
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+}else if(getarg(1)==29)
+//2: def, resistencia a maldição
+{
+	bonus bDef2Rate,-20;
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Defesa: -20% ";
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==30)
+//2: def, sagrado
+{
+	bonus bDef2Rate,-20;
+	bonus2 bSubEle,Ele_Holy,10;
+	dispbottom "[Bonus] : Defesa: -20% ";
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+}else if(getarg(1)==31)
+//2:def, resistencia a sono
+{
+	bonus bDef2Rate,-20;
+	bonus2 bResEff,Eff_Sleep,1000;
+	dispbottom "[Bonus] : Defesa: -20% ";
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+}else if(getarg(1)==32)
+//2:def, resistencia a stun
+{
+	bonus bDef2Rate,-20;
+	bonus2 bResEff,Eff_Stun,1000;
+	dispbottom "[Bonus] : Defesa: -20% ";
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+}else if(getarg(1)==33)
+//2:def, indestrutivo
+{
+	bonus bDef2Rate,-20;
+	bonus bUnbreakableArmor,0;
+	dispbottom "[Bonus] : Defesa: -20% ";
+	dispbottom "[Bonus] : Indestrutível";
+}else if(getarg(1)==34)
+//2:  resistencia a stun, resistencia a sono
+{
+	bonus2 bResEff,Eff_Stun,1000;
+	bonus2 bResEff,Eff_Sleep,1000;
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+}else if(getarg(1)==35)
+//2:  resistencia a stun, sagrado
+{
+	bonus2 bResEff,Eff_Stun,1000;
+	bonus2 bSubEle,Ele_Holy,10;
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+}else if(getarg(1)==36)
+//2:  resistencia a stun, resistência a congelamento
+{
+	bonus2 bResEff,Eff_Stun,1000;
+	bonus2 bResEff,Eff_Freeze,1000;
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+}else if(getarg(1)==37)
+//2:  resistencia a stun, resistência a petrificar
+{
+	bonus2 bResEff,Eff_Stun,1000;
+	bonus2 bResEff,Eff_Stone,1000;
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+}else if(getarg(1)==38)
+//2:  resistencia a stun,  resistencia a maldição
+{
+	bonus2 bResEff,Eff_Stun,1000;
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==39)
+//2: resistencia a stun, indestrutivo
+{
+	bonus2 bResEff,Eff_Stun,1000;
+	bonus bUnbreakableArmor,0;
+	dispbottom "[Bonus] : Defesa contra atordoamento: 10%";
+	dispbottom "[Bonus] : Indestrutível";
+}else if(getarg(1)==40)
+//2: resistencia a sono, sagrado
+{
+	bonus2 bResEff,Eff_Sleep,1000;
+	bonus2 bSubEle,Ele_Holy,10;
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+	dispbottom "[Bonus] : Defesa contra taijutsu: 10%";
+}else if(getarg(1)==41)
+//2: resistencia a sono, resistência a congelamento
+{
+	bonus2 bResEff,Eff_Sleep,1000;
+	bonus2 bResEff,Eff_Freeze,1000;
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+	dispbottom "[Bonus] : Defesa contra congelamento: 10%";
+}else if(getarg(1)==42)
+//2: resistencia a sono,  resistência a petrificar
+{
+	bonus2 bResEff,Eff_Sleep,1000;
+	bonus2 bResEff,Eff_Stone,1000;
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+	dispbottom "[Bonus] : Defesa contra petrificação: 10%";
+}else if(getarg(1)==43)
+//2: resistencia a sono,  resistencia a maldição
+{
+	bonus2 bResEff,Eff_Sleep,1000;
+	bonus2 bResEff,Eff_Curse,1000;
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+	dispbottom "[Bonus] : Defesa contra maldição: 10%";
+}else if(getarg(1)==44)
+//2:resistencia a sono, indestrutivo 
+{
+	bonus2 bResEff,Eff_Sleep,1000;
+	bonus bUnbreakableArmor,0;
+	dispbottom "[Bonus] : Defesa contra sono: 10%";
+	dispbottom "[Bonus] : Indestrutível";
+}else
+	dispbottom "Que azar, veio uma arma sem nada...";
+	return;
+}

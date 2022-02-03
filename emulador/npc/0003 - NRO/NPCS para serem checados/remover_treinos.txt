@@ -1,0 +1,30 @@
+kakashi,90,144,5	script	Removodores de Treinos	99,{
+
+if( getcharid(0) > 74575 ) {mes "Seu personagem é muito novo para receber estes itens"; close;}
+if (troca_recebida == 1) {mes "Este personagem já recebeu os itens para remover treinamentos, use os itens antes do dia 02 de Dezembro, ou correrá risco de perder os itens."; close;}
+mes "Olá, devido as recentes mudanças nos treinamentos que tivemos estamos disponibilizando um removedor de treino avançado, intermediário e básico por personagem, assim podendo escolher novos treinamentos.";
+next;
+mes "É importante destacar que estes itens, se não usados, serão inutilizados no dia 02 de Dezembro, então se for trocar os treinamentos de seu personagem faça isso antes do dia 02 de Dezembro!";
+next;
+mes "Esta remoção é possível ser feita apenas uma vez por personagem, então pense bem antes de mudar";
+next;
+mes "Apenas um treino avançado, um treinamento intermediário e um básico poderão ser removidos, e não todos. Use com sabedoria.";
+next;
+mes "É também importante dizer que os treinamentos serão removidos e não trocados, os jutsus e treinamentos serão removidos porém o nível de treinamento será mantido.";
+next;
+mes "Aqui estão os itens, tenha bom proveito!";
+getitem 12946,1;
+getitem 12947,1;
+getitem 12948,1;
+set troca_recebida,1;
+close;
+
+OnInit:
+	waitingroom "",0;
+OnTimer1000:
+	setarray .@RoomDisplay$,"Removedores de treino","Use Até o dia 02/12","Aproveite antes que acabe!","Removedores de treino";
+	delwaitingroom;
+	waitingroom .@RoomDisplay$[rand(0,3)],0;
+	initnpctimer;
+
+}

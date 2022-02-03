@@ -1,0 +1,137 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+biblioteca,109,70,5	script	Katon Intermediario	1_m_jobguider,{
+if(checkquest(30093) == 1) goto skillkata1;
+if(checkquest(30094) == 1) goto skillkata2;
+if(checkquest(30095) == 1) goto skillkata3;
+if(checkquest(30096) == 1) goto skillkata4;
+if(elementokaton != 1) { mes "[Katon Intermediario]"; mes "Esse elemento não é de sua natureza"; close;}
+if(treino_nin_inter != 1) { mes "[Katon Intermediario]"; mes "Você precisa estudar Ninjutsu Intermediario antes de aprender as skills"; close;}
+if(kata_skill_inter >= 3) { mes "[Katon Intermediario]"; mes "Você já aprendeu três skill de Katon Intermediario, esse é o limite"; close; }
+	mes "[Katon Intermediario]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Katon Intermediario. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Katon Intermediario]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Katon Intermediario]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Katon Intermediario]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808Yasaka no Magatama^000000:^8A0808Katon Gougakyuu^000000:^8A0808Katon Gouryuuka^000000"))
+	{
+	case 1:
+		if (ka1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Yasaka no Magatama:";
+		mes "Meteoro";
+		next;
+		mes "[Katon Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Katon Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillkata1:
+		setquest 30093;
+		if(checkquest(30093,hunting) == 2 && countitem(32149) >= 1)
+		{
+			completequest 30093;
+			erasequest 30093;
+			delitem 32149,1;
+			set kata_skill_inter,kata_skill_inter +1;
+			skill 81,10,3;
+			set ka1,1;
+			mes "[Katon Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (ka2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Dragão Explosivo";
+		next;
+		mes "[Katon Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Katon Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Katon Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillkata2:
+		setquest 30094;
+		if(checkquest(30094,hunting) == 2 && countitem(32149) >= 1)
+		{
+			completequest 30094;
+			erasequest 30094;
+			delitem 32149,1;
+			set kata_skill_inter,kata_skill_inter +1;
+			skill 19,10,3;
+			set ka2,1;
+			mes "[Katon Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (k3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Chuva de Meteoros";
+		next;
+		mes "[Katon Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Katon Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Katon Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillkata3:
+		setquest 30095;
+		if(checkquest(30095,hunting) == 2 && countitem(32149) >= 1)
+		{
+			completequest 30095;
+			erasequest 30095;
+			delitem 32149,1;
+			set kata_skill_inter,kata_skill_inter +1;
+			set ka3,1;
+			skill 5006,5,3;
+			mes "[Katon Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Katon Intermediario]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Katon Intermediario]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de katon avanaçado.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

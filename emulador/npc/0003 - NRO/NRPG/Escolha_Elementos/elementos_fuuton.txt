@@ -1,0 +1,38 @@
+ama_in01,91,18,3	script	Elemento Fuuton	734,{
+	show "[Elemento Fuuton]";
+	if(getskilllv(535)) goto L_alreadyhave;
+	if(elemento >= 2){goto L_elementos;}
+	if(elementofuuton == 1){goto L_alreadyhave;}	
+	if(elemento == 0){goto aprenderfuuton;}
+	if(elemento == 1){goto aprenderfuuton;}
+
+
+	aprenderfuuton:
+	show "Olá caro shinobi, voce gostaria de aprender o Elemento Fuuton (Vento) ?";
+	menu "Sim, Eu quero",sim, "Não",nao;
+
+	sim:
+	next;
+	show "[Elemento Fuuton]";
+	show "Muito bem, muito sábia essa escolha!";
+	set elementofuuton,elementofuuton + 1;
+	set elemento,elemento + 1;
+	set genin,1;
+	set Jutsugenin1,1;
+	close;
+
+	
+	nao:
+	close;
+
+L_alreadyhave:
+	next;
+	show "[Elemento Fuuton]";
+	show "Eu já o ensinei";
+	show "tudo que eu sei...";
+	close;
+
+L_elementos:
+	show "Você ja aprendeu dois elementos!";
+	close;
+}

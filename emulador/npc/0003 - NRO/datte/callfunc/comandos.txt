@@ -1,0 +1,2051 @@
+-	script	atcmd_sample_inject	-1,{
+	OnInit:
+		bindatcmd("main", "atcmd_sample_inject::OnAtCmd");
+		end;
+		
+	OnAtCmd:
+		if (.@atcmd_parameters$[0] == "on" || .@atcmd_parameters$[0] == "off" || .@atcmd_parameters$[0] == "") {useatcmd "@main " + .@atcmd_parameters$[0]; end;}
+		if (getgmlevel() > 0) {
+			useatcmd "@main " + .@atcmd_parameters$[0] + " " + .@atcmd_parameters$[1] + " " + .@atcmd_parameters$[2] + " " + .@atcmd_parameters$[3] + " " + .@atcmd_parameters$[4] + " " 
+			+ .@atcmd_parameters$[5] + " "+ .@atcmd_parameters$[6] + " "+ .@atcmd_parameters$[7] + " "+ .@atcmd_parameters$[8] + " "+ .@atcmd_parameters$[9] + " "	
+			+ .@atcmd_parameters$[10] + " "+ .@atcmd_parameters$[11] + " "+ .@atcmd_parameters$[12] + " "+ .@atcmd_parameters$[13] + " "+ .@atcmd_parameters$[14] + " "
+			+ .@atcmd_parameters$[15] + " "+ .@atcmd_parameters$[16] + " "+ .@atcmd_parameters$[17] + " "+ .@atcmd_parameters$[18] + " "+ .@atcmd_parameters$[19];
+			end;
+}
+		if(Zeny >= 5000) {
+			set Zeny, Zeny - 5000;
+			dispbottom "Foram gastos 5000 zeny por usar o @main";
+			useatcmd "@main " + .@atcmd_parameters$[0] + " " + .@atcmd_parameters$[1] + " " + .@atcmd_parameters$[2] + " " + .@atcmd_parameters$[3] + " " + .@atcmd_parameters$[4] + " " 
+			+ .@atcmd_parameters$[5] + " "+ .@atcmd_parameters$[6] + " "+ .@atcmd_parameters$[7] + " "+ .@atcmd_parameters$[8] + " "+ .@atcmd_parameters$[9] + " "	
+			+ .@atcmd_parameters$[10] + " "+ .@atcmd_parameters$[11] + " "+ .@atcmd_parameters$[12] + " "+ .@atcmd_parameters$[13] + " "+ .@atcmd_parameters$[14] + " "
+			+ .@atcmd_parameters$[15] + " "+ .@atcmd_parameters$[16] + " "+ .@atcmd_parameters$[17] + " "+ .@atcmd_parameters$[18] + " "+ .@atcmd_parameters$[19];
+		} else {
+			dispbottom "Desculpe, é preciso 5000 zeny pra usar o @main";
+		}
+		end;
+}
+
+-	script	atcmd_sample_new	-1,{
+    OnInit:
+        bindatcmd("treinos", "atcmd_sample_new::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+        dispbottom "Treinamento de Ninjutsu: Level "+WeaponLvl2+"";
+        dispbottom "Treinamento de Taijutsu: Level "+WeaponLvl+"";
+        dispbottom "Treinamento de Fuuinjutsu: Level "+WeaponLvl5+"";
+        dispbottom "Treinamento de Genjutsu: Level "+WeaponLvl3+"";
+        dispbottom "Treinamento de Medicina: Level "+WeaponLvl4+"";
+        dispbottom "Treinamento de Velocidade: Level "+WeaponLvl6+"";
+        end;
+}
+
+-	script	atcmd_sample_new2	-1,{
+    OnInit:
+        bindatcmd("fuuinjutsu", "atcmd_sample_new2::OnAtCmd");
+setArray .WLvl10[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+        end;
+        
+    OnAtCmd:
+if(WeaponLvl5 == 0) {dispbottom "Você ainda não treinou Fuuinjutsu"; end;}
+if(treino_fuu != 1) {dispbottom "Fuuinjutsu não está ativado para ser treinado, caso queira treinar, vá na biblioteca";}
+
+if(WeaponLvl5 > 0) {dispbottom "Nível Fuuinjutsu: "+WeaponLvl5+""; dispbottom "Exp: "+WeaponExp5/4+" de "+.WLvl10[WeaponLvl5]/4+"";}
+        end;
+}
+
+-	script	atcmd_sample_new3	-1,{
+    OnInit:
+        bindatcmd("taijutsu", "atcmd_sample_new3::OnAtCmd");
+setArray .WLvl10[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+        end;
+        
+    OnAtCmd:
+if(WeaponLvl == 0) {dispbottom "Você ainda não treinou Taijutsu"; end;}
+if(treino_tai != 1) {dispbottom "Taijutsu não está ativado para ser treinado, caso queira treinar, vá na biblioteca";}
+
+if(WeaponLvl > 0) {dispbottom "Nível Taijutsu: "+WeaponLvl+""; dispbottom "Exp: "+WeaponExp/4+" de "+.WLvl10[WeaponLvl]/4+"";}
+        end;
+}
+
+-	script	atcmd_sample_new4	-1,{
+    OnInit:
+        bindatcmd("ninjutsu", "atcmd_sample_new4::OnAtCmd");
+setArray .WLvl10[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+        end;
+        
+    OnAtCmd:
+if(WeaponLvl2 == 0) {dispbottom "Você ainda não treinou Ninjutsu"; end;}
+if(treino_nin != 1) {dispbottom "Ninjutsu não está ativado para ser treinado, caso queira treinar, vá na biblioteca";}
+
+if(WeaponLvl2 > 0) {dispbottom "Nível Ninjutsu: "+WeaponLvl2+""; dispbottom "Exp: "+WeaponExp2/4+" de "+.WLvl10[WeaponLvl2]/4+"";}
+        end;
+}
+
+-	script	atcmd_sample_new5	-1,{
+    OnInit:
+        bindatcmd("genjutsu", "atcmd_sample_new5::OnAtCmd");
+setArray .WLvl10[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+        end;
+        
+    OnAtCmd:
+if(WeaponLvl3 == 0) {dispbottom "Você ainda não treinou Genjutsu"; end;}
+if(treino_gen != 1) {dispbottom "Genjutsu não está ativado para ser treinado, caso queira treinar, vá na biblioteca";}
+
+if(WeaponLvl3 > 0) {dispbottom "Nível Genjutsu: "+WeaponLvl3+""; dispbottom "Exp: "+WeaponExp3/4+" de "+.WLvl10[WeaponLvl3]/4+"";}
+        end;
+}
+
+-	script	atcmd_sample_new6	-1,{
+    OnInit:
+        bindatcmd("medicina", "atcmd_sample_new6::OnAtCmd");
+setArray .WLvl10[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+        end;
+        
+    OnAtCmd:
+if(WeaponLvl4 == 0) {dispbottom "Você ainda não treinou Medicina"; end;}
+if(treino_med != 1) {dispbottom "Medicina não está ativado para ser treinado, caso queira treinar, vá na biblioteca";}
+
+if(WeaponLvl4 > 0) {dispbottom "Nível Medicina: "+WeaponLvl4+""; dispbottom "Exp: "+WeaponExp4/4+" de "+.WLvl10[WeaponLvl4]/4+"";}
+        end;
+}
+
+-	script	atcmd_sample_new7	-1,{
+    OnInit:
+        bindatcmd("velocidade", "atcmd_sample_new7::OnAtCmd");
+setArray .WLvl10[0],
+1,84,110,143,186,242,316,411,535,696,
+905,1178,1532,1991,2589,3365,4375,5688,7395,9539,
+10494,11638,13966,16210,19452,23343,28012,33615,40339,48409,
+53250,58576,64433,70877,77972,85767,94344,103779,114157,125720,
+128084,129365,130658,131965,133284,134367,135710,137067,138438,139822,
+141220,141220,141220,141221,141221,141221,141221,141222,141222,141222,
+141222,141223,141223,141223,141223,141224,141224,141224,141224,141225,
+141225,141225,141225,141226,141226,141226,141226,141227,141227,141227,
+141227,141228,141228,141228,141228,141229,141229,141229,141229,141230,
+141230,141230,141230,141231,141231,141231,141231,141232,141232,141232;
+        end;
+        
+    OnAtCmd:
+if(WeaponLvl6 == 0) {dispbottom "Você ainda não treinou Velocidade"; end;}
+if(treino_velo != 1) {dispbottom "Velocidade não está ativado para ser treinado, caso queira treinar, vá na biblioteca";}
+
+if(WeaponLvl6 > 0) {dispbottom "Nível Velocidade: "+WeaponLvl6+""; dispbottom "Exp: "+WeaponExp6/4+" de "+.WLvl10[WeaponLvl6]/4+"";}
+        end;
+}
+
+-	script	atcmd_sample_new8	-1,{
+    OnInit:
+        bindatcmd("ficha", "atcmd_sample_new8::OnAtCmd");
+        end;
+        
+    OnAtCmd:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {goto cont;} else {dispbottom "Esse comando só pode ser usado nas vilas"; end;}
+
+cont:
+
+query_sql("SELECT `quest_points`, `S`, `A`, `B`, `C`, `D`, `E` FROM `char` WHERE `char_id` = '"+getcharid(0)+"'", @qp, @s, @a, @b, @c, @d, @e);
+query_sql "SELECT (`diasvip`) FROM `login` WHERE `account_id` = "+getcharid(3), @recebeu;
+mes "Confira agora um breve relatório do seu personagem:";
+next;
+	mes "[Relatório de missões]";
+	mes "Quantidade de missões feitas: "+missaocount+"";
+	mes "Você possui "+@qp+" pontos de missão acumulados.";
+	mes "Você fez:";
+	mes "[ "+@s+" ] Missões de Ranking S";
+	mes "[ "+@a+" ] Missões de Ranking A";
+	mes "[ "+@b+" ] Missões de Ranking B";
+	mes "[ "+@c+" ] Missões de Ranking C";
+	mes "[ "+@d+" ] Missões de Ranking D";
+	mes "[ "+@e+" ] Missões de Ranking E";
+	next;
+//	mes "[Relatório de Linhagem Sanguinea]";
+
+//if(kg_sharingan == 1) {set @kglevel,1;}
+//if(kg_sharingan == 2)  {set @kglevel,2;}
+//if(kg_sharingan == 3)  {set @kglevel,3;}
+//if(kg_sharingan == 4)  {set @kglevel,4;}
+//
+//if(kg_byakugan == 1) {set @kglevel,1;}
+//if(kg_byakugan == 2)  {set @kglevel,2;}
+//if(kg_byakugan == 3)  {set @kglevel,3;}
+//if(kg_byakugan == 4)  {set @kglevel,4;}
+//
+//if(kg_hyouton == 1)  {set @kglevel,1;}
+//if(kg_hyouton == 2)  {set @kglevel,2;}
+//if(kg_hyouton == 3)  {set @kglevel,3;}
+//if(kg_hyouton == 4)  {set @kglevel,4;}
+//
+//if(kg_lee == 1)  {set @kglevel,1;}
+//if(kg_lee == 2)  {set @kglevel,2;}
+//if(kg_lee == 3)  {set @kglevel,3;}
+//if(kg_lee == 4)  {set @kglevel,4;}
+//
+//if(kg_kugutsu == 1)  {set @kglevel,1;}
+//if(kg_kugutsu == 2)  {set @kglevel,2;}
+//if(kg_kugutsu == 3)  {set @kglevel,3;}
+//if(kg_kugutsu == 4)  {set @kglevel,4;}
+//
+//if(kg_baika == 1)  {set @kglevel,1;}
+//if(kg_baika == 2)  {set @kglevel,2;}
+//if(kg_baika == 3)  {set @kglevel,3;}
+//if(kg_baika == 4)  {set @kglevel,4;}
+//
+//if(kg_nara == 1) {set @kglevel,1;}
+//if(kg_nara == 2)  {set @kglevel,2;}
+//if(kg_nara == 3)  {set @kglevel,3;}
+//if(kg_nara == 4)  {set @kglevel,4;}
+//
+//if(kg_seloceu == 1)  {set @kglevel,1;}
+//if(kg_seloceu == 2)  {set @kglevel,2;}
+//if(kg_seloceu == 3)  {set @kglevel,3;}
+//if(kg_seloceu == 4)  {set @kglevel,4;}
+//
+//if(kg_seloterra == 1)  {set @kglevel,1;}
+//if(kg_seloterra == 2)  {set @kglevel,2;}
+//if(kg_seloterra == 3)  {set @kglevel,3;}
+//if(kg_seloterra == 4)  {set @kglevel,4;}
+//
+//if(@kglevel == 0 ) {mes "Você ainda não despertou sua kekkei genkai";}
+//if (@kglevel > 0 ) {mes "Sua Kekkei genkai está nivel: "+@kglevel+".";}
+//	mes "Sua Kekkei genkai está nivel: "+@kglevel+".";
+//	next;
+	mes "[Relatório de batalha]";
+	mes "Sua reputação é: "+reputation2+"";
+	next;
+	mes "[Relatório da Conta]";
+	mes "Você possui "+@recebeu+" dias vip restantes";
+        close;
+}
+
+-	script	atcmd_sample_new15	-1,{
+    OnInit:
+        bindatcmd("fidelidade", "atcmd_sample_new15::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+        dispbottom "Seus pontos de fidelidade: "+#NRPGPOINTS+"";
+        end;
+}
+
+-	script	atcmd_sample_new16	-1,{
+    OnInit:
+        bindatcmd("pescador", "atcmd_sample_new16::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	if(pescador!=1) {mes "Você ainda não é pescador"; close;}
+        dispbottom "Você está nível: "+level_pescador+" com exp : "+pescadorexp+" / 700";
+	dispbottom "Se você estiver com exp para aumentar de nível, o nível será aumentado na próxima vez que conseguir o recurso";
+        end;
+}
+
+-	script	atcmd_sample_new17	-1,{
+    OnInit:
+        bindatcmd("lenhador", "atcmd_sample_new17::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	if(lenhador!=1) {mes "Você ainda não é lenhador"; close;}
+        dispbottom "Você está nível: "+level_lenhador+" com exp : "+lenhadorexp+" / 500";
+	dispbottom "Se você estiver com exp para aumentar de nível, o nível será aumentado na próxima vez que conseguir o recurso";
+        end;
+}
+
+-	script	atcmd_sample_new18	-1,{
+    OnInit:
+        bindatcmd("minerador", "atcmd_sample_new18::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	if(mineirador!=1) {mes "Você ainda não é minerador"; close;}
+        dispbottom "Você está nível: "+level_minerador+" com exp : "+mineracaoexp+" / 500";
+	dispbottom "Se você estiver com exp para aumentar de nível, o nível será aumentado na próxima vez que conseguir o recurso";
+        end;
+}
+
+-	script	atcmd_sample_new19	-1,{
+    OnInit:
+        bindatcmd("ajuda", "atcmd_sample_new19::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "lou_in02") {goto cont;} else {dispbottom "Esse comando só pode ser usado nas vilas"; end;}
+
+cont:
+		mes "Ola, bem vindo ao NRO,e estou aqui para ajudar";
+	mes "Todos iniciantes do servidor são muito importantes para nós, para isso focamos 100% no suporte";
+	mes "Antes de mais nada,preciso saber: Qual a sua dúvida?";
+	menu "- ^000000FAQ^000000",op1,"- ^000000Bugs e Soluções^000000",op2,"- ^000000Meu novo char^000000",op3,"-  ^000000Suporte^000000 ",op4; 
+
+		op1:
+		mes "[  ^000000FAQ^000000  ]";
+		menu "- ^000000Como liberar sua kg^000000",op11,"-  ^000000Como virar jounin^000000 ",op12,"-  ^000000Como obter 1 cargo^000000 ",op13,"-  ^000000Mapa Mundi^000000 ",op14;
+			op11:
+			mes "[ ^000000Como liberar sua kg^000000 ]";
+			mes "Para liberar sua kg, é necessario você escolher 1, para isso é importante ir biblioteca";
+			mes "Quando chegar a biblioteca, converse com o npc 'Escolha sua kg', e selecione a kg de sua preferencia";
+			mes "Após isso,você deve liberar sua kg, a forma mais facil de liberar a kg é matando mobs, de prerefencia.";
+			mes "No esgoto 1 da sua vila, a quantidade de mobs para liberar é equivalente a 3-4k de mobs,"; 
+			close;
+
+			op12:
+			mes "[ ^000000Como virar jounin^000000 ]";
+			mes "Para virar jounin antes é necessario virar chunin, é relativamente simples e existe varios modos";					mes "De virar, sendo eles: Missões horarias dadas pelo kage, shiken realizado pela staff.";
+			mes "Para saber o horario dos shikens, fiquem ligados no forum do nro, http://nro.nnfro.net/forum/";
+			close;	
+
+			op13:
+			mes "[ ^000000Como obter um cargo^000000  ]";
+			mes "Cargos, são o ponto chave do NRO, e alguns deles muito cobiçados pelos players";
+			mes "Todos os cargos são obtidos apartir de shiken realizados pela staff, e existe um tempo de inscrição";
+			mes "A diferença de cargos é obvia, cada um deles com uma função, e todos eles são importantes";
+			close;		
+			
+			op14:
+			mes "[ ^000000Mundo NRO^000000  ]";
+			mes "O mapa mundi do nro é muito extenso e existem inumeras variedades de lugares para UP";
+			mes "Cada um com a sua peculiaredade, tornando o NRO um jogo muito mais diversificado";
+			mes "Para facilitar a movimentação é recomendado você utilizar a Database tanto para pesquisa";
+			mes "Quanto para solucionar duvidas, para isso recomendo que acesse http://nro.nnfro.net/database/";
+			close;
+
+		op2:
+		mes"[ ^000000Bugs e soluções^000000 ]";
+		menu "- ^000000Gravity Error^000000",op21,"- ^000000Erro na pasta Al^000000",op22,"- ^000000Problema de dimensão(tela pequena/preta) ^000000",op23;
+			op21:
+			mes "[ ^000000Gravity Error^000000 ]";
+			mes "É provavel o erro mais comum de qualquer jogador no NRO e podendo ser facilmente resolvido com passos simples";
+			mes "1* Mantenha sempre atualizado seu NRO pelo autopatch e seu BRO";
+			mes "2* Fique sempre atento ao forum para que não fique desatualizado";
+			close;
+
+			op22:
+			mes "[ ^000000Erro na pasta Al^000000 ]";
+			mes "Erro muito comum nos usuarios de kugutsu e muito simples de arrumar.";
+			mes "1* passo: certifique-se de ter a pasta Al dentro da pasta do seu NRO, muito provavel que não tenha";
+			mes "2* Passo: sendo assim, va até o forum na area de suporte, e baixe no topico de resolvidos o arquivo";
+			mes "3* passo: extraia o arquivo na pasta do seu NRO e seja feliz";
+			close;
+
+			op23:
+			mes "[ ^000000Problemas de dimensão(tela pequena/preta)^000000 ]";
+			mes "Erro muito comum em usuarios do Windows 7";
+			mes "1* passo: va na pasta do nro e abra o arquivo Setup.exe como Administrador e marque a opção fullscreen";
+			mes "2* passo: caso não resolva, va no forum do nro e acesse a area de suporte(Resolvidos)";
+			mes "3* passo: baixe o arquivo do tópico, 'Nro não abre' e extraia o setup na pasta do nro";
+			mes "4* passo: execute como administrador e altere as dimensões de acordo com o seu monito e seja feliz.";
+			close;
+			
+
+		op3:
+		mes "[  ^000000Meu novo char^000000  ]"; 
+		menu "- ^000000Treinos^000000",op31,"- ^000000Atributos^000000",op32;
+			op31:
+			mes "[ ^000000Treinos^000000 ]";
+			mes "No nro existe ao todo 6 tipos de treinos sendo eles: Taijutsu, Ninjutsu, Genjutsu, Medicina, Velocidade e Fuuinjutsu";
+			mes "Cada um com sua caracteristica, vantagem e desvantagem";
+			mes "No nro é possivel pegar apenas 3 Treinos basicos, 2 Treinos inters, desses 2 inter escolhendo apenas 1 avançado";
+			mes "Cada treino da 1 bonus unico ao usuario e melhorando assim a jogabilidade do usuario";
+			mes "Aqui vai um resumo basico de cada treino";
+			mes "Taijutsu: Combate corpo a corpo especializado em danos rapidos a curto alcance";
+			mes "Ninjutsu: Combate a longa distancia especialista em tecnicas de elementos";
+			mes "Velocidade: Treino baseado em bufs focado em velocidade de ataque, movimento e esquiva";
+			mes "Medicina: Treino focado em suporte, com tecnicas de cura, entre outras";
+			mes "Fuuinjutsu: Treino especialista em selamentos, focado exclusivamente em buffs";
+			mes "Genjutsu: Treino focado no ilusionismo e desarme do oponente, focado exclusivamente em debuffs";
+			close;
+			op32:
+			mes "[ ^000000Atributos^000000 ]";
+			mes "Entendendo os atributos";
+			mes "Força: Aumenta a capacidade de carregar itens e aumenta o dano de ataques baseados no ATQ do usuario";
+			mes "Vitalidae: aumenta a defesa fisica , sua vida(HP) e a capacidade de regeneração.";
+			mes "Sorte: aumenta taxa de acerto critico, esquiva perfeita e resistencia a genjutsu";
+			mes "Inteligencia: Aumenta o ataque magico, defesa magica e o dano de ataques baseados no MATQ";
+			mes "Destreza: aumenta a precisão do usuario, diminui o cast de skills";
+			mes "Agilidade: aumenta a esquiva do usuario";
+
+		op4:
+		mes "[  ^000000Suporte^000000  ]";
+		menu "- ^00000Informações Gerais^000000",op41;
+			op41:
+			mes "[ ^000000Informações^000000 ]";
+			mes "O nosso servidor é baseado no anime Naruto,e moldado no jogo Ragnarok,e não possue fins lucrativos,";
+			mes "Nenhuma doação é obrigatória,e toda doação será convertida em melhorias para o própio servidor.";
+			mes "Para que o atendimente seja 100% eficaz existem varios staffs para ajuda-los em seus problemas";
+			mes "melhor meio de contato entre a Staff e os Players é o skype, o ADM darkis da suporte todo dia";
+			mes "assim como GM Kira, qualquer duvida adicionem eles no skype, mpjaps do ADM e grein.13 do kira.";
+			mes "Bom jogo a todos e uma otima experiencia no NRO, see ya";
+			close;
+}
+
+-	script	atcmd_sample_new20	-1,{
+    OnInit:
+        bindatcmd("kg", "atcmd_sample_new20::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	if(getgmlevel() < 1) {dispbottom "Esse comando é apenas para vips"; end;}
+	if(kgmobs1 > 0) {set @showkg, 50 - kgmobs1;}
+	if(kgmobs2 > 0) {set @showkg, 16429 - kgmobs2;}
+	if(kgmobs3 > 0) {set @showkg, 44429 - kgmobs3;}
+	if (byakugan == 3) || (GELO == 3) || (byakugan == 3) || (LEE2 == 3) || (MARIONETE == 3) || (AKIMICHI == 3) || (NARA2 == 3) || (SELO1 == 3) || (SELO2 == 3) {dispbottom  "Sua Kekkei Genkai já está no nível 3, portanto não precisa mais de mortes, inicie a quest do nível 4 para evoluir ainda mais seu poder"; end;}
+        dispbottom  "Lhe falta aproximadamente "+@showkg+" monstros para upar sua Kekkei Genkai";
+	close;
+}
+
+-	script	atcmd_sample_new21	-1,{
+    OnInit:
+        bindatcmd("help", "atcmd_sample_new21::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "lou_in02") {goto cont;} else {dispbottom "Esse comando só pode ser usado nas vilas"; end;}
+
+cont:
+if (BaseLevel > 500) {mes "O nível máximo para ser teleportado diretamente para a biblioteca é 500, você pode acessar a sala no campo de treinamento"; close;}
+warp "acad_01",29,73;
+end;
+}
+
+-	script	atcmd_sample_new22	-1,{
+    OnInit:
+        bindatcmd("combate", "atcmd_sample_new22::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+cutin "cutin_tsunade",2;
+mes "Agora eu vou te mostrar como entrar em combate, preste bem atenção nas seguintes imagens, essa primeira ensina a atacar com ataques físicos.";
+next;
+cutin "",255;
+cutin "atacar",3;
+next;
+mes "Essa próxima ensina como atacar usando jutsus";
+cutin "",255;
+cutin "atacarjutsu",3;
+next;
+mes "Sempre que quiser rever essas imagens, digite @combate";
+cutin "",255;
+close;
+}
+
+-	script	atcmd_sample_new23	-1,{
+    OnInit:
+        bindatcmd("interface", "atcmd_sample_new23::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	mes "Confira agora o interface do servidor";
+	cutin "tela",3;
+	next;
+	cutin "",255;
+	close;
+}
+
+-	script	atcmd_sample_new24	-1,{
+    OnInit:
+        bindatcmd("resetbijuu", "atcmd_sample_new24::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	if(getgmlevel() < 90) {dispbottom "Esse comando é apenas para vips"; end;}
+	mes "Reset done";
+		set $nuv1dest,0;
+		set $nuv2dest,0;
+		set $nuv3dest,0;
+		set $kon1dest,0;
+		set $kon2dest,0;
+		set $kon3dest,0;
+		set $nev1dest,0;
+		set $nev2dest,0;
+		set $nev3dest,0;
+		set $sun1dest,0;
+		set $sun2dest,0;
+		set $sun3dest,0;
+	close;
+}
+
+-	script	atcmd_sample_new25	-1,{
+    OnInit:
+        bindatcmd("testebijuu", "atcmd_sample_new25::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	if(getgmlevel() < 90) {dispbottom "Esse comando é apenas para vips"; end;}
+	mes ""+$bijuu_nevoa+"";
+	mes ""+$bijuu_konoha+"";
+	mes ""+$bijuu_areia+"";
+	mes ""+$bijuu_nuvem+"";
+	mes "Ryous Névoa: "+$nevoa_ryous+"";
+	mes "Ryous Suna: "+$areia_ryous+"";
+	mes "Ryous Konoha: "+$konoha_ryous+"";
+	mes "Ryous Nuvem: "+$nuvem_ryous+"";
+	close;
+}
+
+-	script	atcmd_sample_new26	-1,{
+    OnInit:
+        bindatcmd("resetjin", "atcmd_sample_new26::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+	if(getgmlevel() < 90) {dispbottom "Esse comando é apenas para vips"; end;}
+set $AkJC[1], 0;
+set $AkJC[2], 0;
+set $AkJC[3], 0;
+set $AkJC[4], 0;
+set $AkJC[5], 0;
+	close;
+}
+
+-	script	atcmd_sample_new27	-1,{
+    OnInit:
+        bindatcmd("voltar", "atcmd_sample_new27::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+if (BaseLevel >998) {mes "Este comando é apenas para jogadores com nível menor que 999"; close;}
+if (academia_done != 1) {mes "Este comando é apenas para jogadores que completaram o treinamento na academia"; close;}
+	mes "Olá jogador, este comando é para jogadores novatos voltarem diretamente para a vila, lembrando que o comando serve apenas para jogadores com nível abaixo de 999";
+	next;
+	warp "SavePoint", 0, 0;
+	close;
+}
+
+-	script	atcmd_sample_new28	-1,{
+    OnInit:
+        bindatcmd("mapa", "atcmd_sample_new28::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+//if (#konoha == 1) {cutin "mapakonoha",2; end;}
+//if (#nevoa == 1) {cutin "mapanevoa",2; end;}
+//if (#suna == 1) {cutin "mapasuna",2; end;}
+//if (#nuvem == 1) {cutin "mapanuvem",2; end;}
+if (strcharinfo(3) != "kumogakure") && (strcharinfo(3) != "sunagakure") && (strcharinfo(3) != "kiragakure") && (strcharinfo(3) != "konoha3") && (strcharinfo(3) != "nuvem") && (strcharinfo(3) != "konoha") && (strcharinfo(3) != "areia") && (strcharinfo(3) != "nevoa") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra em ^DC143CFora da vila^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para usar nosso sistema de localização é preciso estar dentro da província ou na vila, caso esteja perdido e seja um jogador novato abaixo do nível, poderá usar o comando @voltar para retornar para sua vila em segurança!";
+close;
+}
+if (strcharinfo(3) == "konoha") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra na ^DC143CProvíncia de Konoha^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local na lista para selecionar um local para marcar no seu mini-mapa, para melhor visualização clique no traço no mini-mapa até expandir-lo";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para remover as marcações do seu mini-mapa basta digitar o comando @resetarmapa, ou selecionar no menu abaixo a opção de remover marcações do mini-mapa";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Caso prefira também temos um mapa que mostra a geografia das vilas";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "O que gostaria de fazer?";
+menu "- Mostrar o mapa",L_mapa,"- Marcar locais importantes no mini-mapa",L_marcar,"- Nada",L_close;
+
+L_mapa:
+next;
+cutin "geografia",3;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Essa imagem mostra como funciona a geografia das vilas, na Vila e Província possuem os principais pontos para o shinobi como hospital, sala do kage e muito mais, já nos campos são onde se encontram os monstros";
+next;
+cutin "",255;
+close;
+
+L_marcar:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local para marcar em seu mini-mapa";
+menu "- Esgoto",L_esgoto,"- Hospital",L_hosp,"- Saída para os campos",L_saida,"- Entrada para a vila",L_vila,"- Remover marcações do mini-mapa",L_reset,"- Nenhum",L_close;
+
+L_esgoto:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,191,226,1,0xFF0000;
+close;
+
+L_hosp:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,110,255,2,0xFF0000;
+close;
+
+L_saida:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,150,21,3,0xFF0000;
+close;
+
+L_vila:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,197,273,4,0xFF0000;
+close;
+
+L_reset:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcações do mini-mapa removidos";
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,100,96,50,0xFF0000;
+viewpoint 2,155,226,51,0xFF0000;
+viewpoint 2,211,147,52,0xFF0000;
+viewpoint 2,160,222,53,0xFF0000;
+viewpoint 2,161,135,54,0xFF0000;
+viewpoint 2,53,109,55,0xFF0000;
+viewpoint 2,135,42,56,0xFF0000;
+viewpoint 2,158,77,57,0xFF0000;
+viewpoint 2,127,129,58,0xFF0000;
+viewpoint 2,135,77,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+viewpoint 2,141,98,61,0xFF0000;
+viewpoint 2,165,196,62,0xFF0000;
+viewpoint 2,219,259,63,0xFF0000;
+viewpoint 2,240,250,64,0xFF0000;
+close;
+
+L_close:
+close;
+
+}
+
+/////////////////////////////////////
+
+if (strcharinfo(3) == "areia") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra na ^DC143CProvíncia da Suna^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local na lista para selecionar um local para marcar no seu mini-mapa, para melhor visualização clique no traço no mini-mapa até expandir-lo";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para remover as marcações do seu mini-mapa basta digitar o comando @resetarmapa, ou selecionar no menu abaixo a opção de remover marcações do mini-mapa";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Caso prefira também temos um mapa que mostra a geografia das vilas";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "O que gostaria de fazer?";
+menu "- Mostrar o mapa",L_mapa2,"- Marcar locais importantes no mini-mapa",L_marcar2,"- Nada",L_close2;
+
+L_mapa2:
+next;
+cutin "geografia",3;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Essa imagem mostra como funciona a geografia das vilas, na Vila e Província possuem os principais pontos para o shinobi como hospital, sala do kage e muito mais, já nos campos são onde se encontram os monstros";
+next;
+cutin "",255;
+close;
+
+L_marcar2:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local para marcar em seu mini-mapa";
+menu "- Esgoto",L_esgoto2,"- Hospital",L_hosp2,"- Saída para os campos",L_saida2,"- Entrada para a vila",L_vila2,"- Remover marcações do mini-mapa",L_reset2,"- Nenhum",L_close2;
+
+L_esgoto2:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,108,251,5,0xFF0000;
+close;
+
+L_hosp2:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,177,164,6,0xFF0000;
+close;
+
+L_saida2:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,153,22,7,0xFF0000;
+close;
+
+L_vila2:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,116,270,8,0xFF0000;
+close;
+
+L_reset2:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcações do mini-mapa removidos";
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,100,96,50,0xFF0000;
+viewpoint 2,155,226,51,0xFF0000;
+viewpoint 2,211,147,52,0xFF0000;
+viewpoint 2,160,222,53,0xFF0000;
+viewpoint 2,161,135,54,0xFF0000;
+viewpoint 2,53,109,55,0xFF0000;
+viewpoint 2,135,42,56,0xFF0000;
+viewpoint 2,158,77,57,0xFF0000;
+viewpoint 2,127,129,58,0xFF0000;
+viewpoint 2,135,77,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+viewpoint 2,141,98,61,0xFF0000;
+viewpoint 2,165,196,62,0xFF0000;
+viewpoint 2,219,259,63,0xFF0000;
+viewpoint 2,240,250,64,0xFF0000;
+close;
+
+L_close2:
+close;
+
+}
+
+/////////////////////////////////////////////////
+
+if (strcharinfo(3) == "nevoa") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra na ^DC143CProvíncia da Nevoa^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local na lista para selecionar um local para marcar no seu mini-mapa, para melhor visualização clique no traço no mini-mapa até expandir-lo";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para remover as marcações do seu mini-mapa basta digitar o comando @resetarmapa, ou selecionar no menu abaixo a opção de remover marcações do mini-mapa";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Caso prefira também temos um mapa que mostra a geografia das vilas";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "O que gostaria de fazer?";
+menu "- Mostrar o mapa",L_mapa3,"- Marcar locais importantes no mini-mapa",L_marcar3,"- Nada",L_close3;
+
+L_mapa3:
+next;
+cutin "geografia",3;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Essa imagem mostra como funciona a geografia das vilas, na Vila e Província possuem os principais pontos para o shinobi como hospital, sala do kage e muito mais, já nos campos são onde se encontram os monstros";
+next;
+cutin "",255;
+close;
+
+L_marcar3:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local para marcar em seu mini-mapa";
+menu "- Esgoto",L_esgoto3,"- Hospital",L_hosp3,"- Saída para os campos",L_saida3,"- Entrada para a vila",L_vila3,"- Remover marcações do mini-mapa",L_reset3,"- Nenhum",L_close3;
+
+L_esgoto3:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,77,347,9,0xFF0000;
+close;
+
+L_hosp3:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,193,102,10,0xFF0000;
+close;
+
+L_saida3:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,163,7,11,0xFF0000;
+close;
+
+L_vila3:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,67,373,12,0xFF0000;
+close;
+
+L_reset3:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcações do mini-mapa removidos";
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,100,96,50,0xFF0000;
+viewpoint 2,155,226,51,0xFF0000;
+viewpoint 2,211,147,52,0xFF0000;
+viewpoint 2,160,222,53,0xFF0000;
+viewpoint 2,161,135,54,0xFF0000;
+viewpoint 2,53,109,55,0xFF0000;
+viewpoint 2,135,42,56,0xFF0000;
+viewpoint 2,158,77,57,0xFF0000;
+viewpoint 2,127,129,58,0xFF0000;
+viewpoint 2,135,77,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+viewpoint 2,141,98,61,0xFF0000;
+viewpoint 2,165,196,62,0xFF0000;
+viewpoint 2,219,259,63,0xFF0000;
+viewpoint 2,240,250,64,0xFF0000;
+close;
+
+L_close3:
+close;
+
+}
+
+//////////////////////////////////////////////
+
+if (strcharinfo(3) == "nuvem") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra na ^DC143CProvíncia da Nuvem^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local na lista para selecionar um local para marcar no seu mini-mapa, para melhor visualização clique no traço no mini-mapa até expandir-lo";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para remover as marcações do seu mini-mapa basta digitar o comando @resetarmapa, ou selecionar no menu abaixo a opção de remover marcações do mini-mapa";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Caso prefira também temos um mapa que mostra a geografia das vilas";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "O que gostaria de fazer?";
+menu "- Mostrar o mapa",L_mapa4,"- Marcar locais importantes no mini-mapa",L_marcar4,"- Nada",L_close4;
+
+L_mapa4:
+next;
+cutin "geografia",3;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Essa imagem mostra como funciona a geografia das vilas, na Vila e Província possuem os principais pontos para o shinobi como hospital, sala do kage e muito mais, já nos campos são onde se encontram os monstros";
+next;
+cutin "",255;
+close;
+
+L_marcar4:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local para marcar em seu mini-mapa";
+menu "- Esgoto",L_esgoto4,"- Hospital",L_hosp4,"- Saída para os campos",L_saida4,"- Entrada para a vila",L_vila4,"- Remover marcações do mini-mapa",L_reset4,"- Nenhum",L_close4;
+
+L_esgoto4:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,206,339,13,0xFF0000;
+close;
+
+L_hosp4:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,199,165,14,0xFF0000;
+close;
+
+L_saida4:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,144,25,15,0xFF0000;
+close;
+
+L_vila4:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,218,361,16,0xFF0000;
+close;
+
+L_reset4:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcações do mini-mapa removidos";
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,100,96,50,0xFF0000;
+viewpoint 2,155,226,51,0xFF0000;
+viewpoint 2,211,147,52,0xFF0000;
+viewpoint 2,160,222,53,0xFF0000;
+viewpoint 2,161,135,54,0xFF0000;
+viewpoint 2,53,109,55,0xFF0000;
+viewpoint 2,135,42,56,0xFF0000;
+viewpoint 2,158,77,57,0xFF0000;
+viewpoint 2,127,129,58,0xFF0000;
+viewpoint 2,135,77,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+viewpoint 2,141,98,61,0xFF0000;
+viewpoint 2,165,196,62,0xFF0000;
+viewpoint 2,219,259,63,0xFF0000;
+viewpoint 2,240,250,64,0xFF0000;
+close;
+
+L_close4:
+close;
+
+}
+
+
+//////////////////////////////////////////////
+
+if (strcharinfo(3) == "konoha3") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra na ^DC143CVila Oculta de Konoha^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local na lista para selecionar um local para marcar no seu mini-mapa, para melhor visualização clique no traço no mini-mapa até expandir-lo";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para remover as marcações do seu mini-mapa basta digitar o comando @resetarmapa, ou selecionar no menu abaixo a opção de remover marcações do mini-mapa";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Caso prefira também temos um mapa que mostra a geografia das vilas";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "O que gostaria de fazer?";
+menu "- Mostrar o mapa",L_mapa_5,"- Marcar locais importantes no mini-mapa",L_marcar_5,"- Nada",L_close_5;
+
+L_mapa_5:
+next;
+cutin "geografia",3;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Essa imagem mostra como funciona a geografia das vilas, na Vila e Província possuem os principais pontos para o shinobi como hospital, sala do kage e muito mais, já nos campos são onde se encontram os monstros";
+next;
+cutin "",255;
+close;
+
+L_marcar_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local para marcar em seu mini-mapa";
+menu "- Academia",L_acad_5,"- Entrada do Hospital",L_hosp_5,"- Bonecos de Treino",L_bonecos_5,"- Centro de Treinamento",L_treino_5,"- Sala de Equipamentos",L_equips_5,"- Escritório do Kage",L_kage_5,"- Sala vip",L_vip_5,"- Biblioteca",L_bibli_5,"- Viajante Ninja",L_tp_5,"- Resetadora",L_reseta_5,"- Armazém",L_storage_5,"- Saída para Província",L_saida_5,"- Remover marcações do mini-mapa",L_reset_5,"- Nenhum",L_close_5;
+
+L_acad_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,240, 250,64,0xFF0000;
+close;
+
+L_hosp_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,88,229,17,0xFF0000;
+close;
+
+L_bonecos_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,105,252,18,0xFF0000;
+close;
+
+L_treino_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,129,256,19,0xFF0000;
+close;
+
+L_equips_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,147,226,20,0xFF0000;
+close;
+
+L_kage_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,194,233,21,0xFF0000;
+close;
+
+L_vip_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,215,133,22,0xFF0000;
+close;
+
+L_bibli_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,281,163,23,0xFF0000;
+close;
+
+L_tp_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,217,78,24,0xFF0000;
+close;
+
+L_reseta_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,161,93,25,0xFF0000;
+close;
+
+L_storage_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,153,126,26,0xFF0000;
+close;
+
+L_saida_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,207,53,27,0xFF0000;
+close;
+
+L_reset_5:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcações do mini-mapa removidos";
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,100,96,50,0xFF0000;
+viewpoint 2,155,226,51,0xFF0000;
+viewpoint 2,211,147,52,0xFF0000;
+viewpoint 2,160,222,53,0xFF0000;
+viewpoint 2,161,135,54,0xFF0000;
+viewpoint 2,53,109,55,0xFF0000;
+viewpoint 2,135,42,56,0xFF0000;
+viewpoint 2,158,77,57,0xFF0000;
+viewpoint 2,127,129,58,0xFF0000;
+viewpoint 2,135,77,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+viewpoint 2,141,98,61,0xFF0000;
+viewpoint 2,165,196,62,0xFF0000;
+viewpoint 2,219,259,63,0xFF0000;
+viewpoint 2,240,250,64,0xFF0000;
+close;
+
+L_close_5:
+close;
+
+}
+
+//////////////////////////////////////////////
+
+if (strcharinfo(3) == "sunagakure") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra na ^DC143CVila Oculta da Suna^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local na lista para selecionar um local para marcar no seu mini-mapa, para melhor visualização clique no traço no mini-mapa até expandir-lo";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para remover as marcações do seu mini-mapa basta digitar o comando @resetarmapa, ou selecionar no menu abaixo a opção de remover marcações do mini-mapa";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Caso prefira também temos um mapa que mostra a geografia das vilas";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "O que gostaria de fazer?";
+menu "- Mostrar o mapa",L_mapa_6,"- Marcar locais importantes no mini-mapa",L_marcar_6,"- Nada",L_close_6;
+
+L_mapa_6:
+next;
+cutin "geografia",3;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Essa imagem mostra como funciona a geografia das vilas, na Vila e Província possuem os principais pontos para o shinobi como hospital, sala do kage e muito mais, já nos campos são onde se encontram os monstros";
+next;
+cutin "",255;
+close;
+
+L_marcar_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local para marcar em seu mini-mapa";
+menu "- Academia",L_acad_6,"- Entrada do Hospital",L_hosp_6,"- Bonecos de Treino",L_bonecos_6,"- Centro de Treinamento",L_treino_6,"- Sala de Equipamentos",L_equips_6,"- Escritório do Kage",L_kage_6,"- Sala vip",L_vip_6,"- Biblioteca",L_bibli_6,"- Viajante Ninja",L_tp_6,"- Resetadora",L_reseta_6,"- Armazém",L_storage_6,"- Saída para Província",L_saida_6,"- Remover marcações do mini-mapa",L_reset_6,"- Nenhum",L_close_6;
+
+L_acad_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,219,259,63,0xFF0000;
+close;
+
+L_hosp_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,265,281,28,0xFF0000;
+close;
+
+L_bonecos_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,160,289,29,0xFF0000;
+close;
+
+L_treino_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,283,157,30,0xFF0000;
+close;
+
+L_equips_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,300,217,31,0xFF0000;
+close;
+
+L_kage_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,199,190,32,0xFF0000;
+close;
+
+L_vip_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,271,239,33,0xFF0000;
+close;
+
+L_bibli_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,213,159,34,0xFF0000;
+close;
+
+L_tp_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,147,106,35,0xFF0000;
+close;
+
+L_reseta_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,251,121,36,0xFF0000;
+close;
+
+L_storage_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,216,133,37,0xFF0000;
+close;
+
+L_saida_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,200,70,38,0xFF0000;
+close;
+
+L_reset_6:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcações do mini-mapa removidos";
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,100,96,50,0xFF0000;
+viewpoint 2,155,226,51,0xFF0000;
+viewpoint 2,211,147,52,0xFF0000;
+viewpoint 2,160,222,53,0xFF0000;
+viewpoint 2,161,135,54,0xFF0000;
+viewpoint 2,53,109,55,0xFF0000;
+viewpoint 2,135,42,56,0xFF0000;
+viewpoint 2,158,77,57,0xFF0000;
+viewpoint 2,127,129,58,0xFF0000;
+viewpoint 2,135,77,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+viewpoint 2,141,98,61,0xFF0000;
+viewpoint 2,165,196,62,0xFF0000;
+viewpoint 2,219,259,63,0xFF0000;
+viewpoint 2,240,250,64,0xFF0000;
+close;
+
+L_close_6:
+close;
+
+}
+
+/////////////////////////
+
+if (strcharinfo(3) == "kiragakure") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra na ^DC143CVila Oculta da Névoa^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local na lista para selecionar um local para marcar no seu mini-mapa, para melhor visualização clique no traço no mini-mapa até expandir-lo";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para remover as marcações do seu mini-mapa basta digitar o comando @resetarmapa, ou selecionar no menu abaixo a opção de remover marcações do mini-mapa";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Caso prefira também temos um mapa que mostra a geografia das vilas";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "O que gostaria de fazer?";
+menu "- Mostrar o mapa",L_mapa_7,"- Marcar locais importantes no mini-mapa",L_marcar_7,"- Nada",L_close_7;
+
+L_mapa_7:
+next;
+cutin "geografia",3;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Essa imagem mostra como funciona a geografia das vilas, na Vila e Província possuem os principais pontos para o shinobi como hospital, sala do kage e muito mais, já nos campos são onde se encontram os monstros";
+next;
+cutin "",255;
+close;
+
+L_marcar_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local para marcar em seu mini-mapa";
+menu "- Academia",L_acad_7,"- Entrada do Hospital",L_hosp_7,"- Bonecos de Treino",L_bonecos_7,"- Centro de Treinamento",L_treino_7,"- Sala de Equipamentos",L_equips_7,"- Escritório do Kage",L_kage_7,"- Sala vip",L_vip_7,"- Biblioteca",L_bibli_7,"- Viajante Ninja",L_tp_7,"- Resetadora",L_reseta_7,"- Armazém",L_storage_7,"- Saída para Província",L_saida_7,"- Remover marcações do mini-mapa",L_reset_7,"- Nenhum",L_close_7;
+
+L_acad_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,165,196,62,0xFF0000;
+close;
+
+L_hosp_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,152,226,39,0xFF0000;
+close;
+
+L_bonecos_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,208,291,40,0xFF0000;
+close;
+
+L_treino_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,192,292,41,0xFF0000;
+close;
+
+L_equips_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,160,277,42,0xFF0000;
+close;
+
+L_kage_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,201,223,43,0xFF0000;
+close;
+
+L_vip_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,217,213,44,0xFF0000;
+close;
+
+L_bibli_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,247,175,45,0xFF0000;
+close;
+
+L_tp_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,176,128,46,0xFF0000;
+close;
+
+L_reseta_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,221,269,47,0xFF0000;
+close;
+
+L_storage_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,154,200,48,0xFF0000;
+close;
+
+L_saida_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,207,153,49,0xFF0000;
+close;
+
+L_reset_7:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcações do mini-mapa removidos";
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,100,96,50,0xFF0000;
+viewpoint 2,155,226,51,0xFF0000;
+viewpoint 2,211,147,52,0xFF0000;
+viewpoint 2,160,222,53,0xFF0000;
+viewpoint 2,161,135,54,0xFF0000;
+viewpoint 2,53,109,55,0xFF0000;
+viewpoint 2,135,42,56,0xFF0000;
+viewpoint 2,158,77,57,0xFF0000;
+viewpoint 2,127,129,58,0xFF0000;
+viewpoint 2,135,77,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+viewpoint 2,141,98,61,0xFF0000;
+viewpoint 2,165,196,62,0xFF0000;
+viewpoint 2,219,259,63,0xFF0000;
+viewpoint 2,240,250,64,0xFF0000;
+close;
+
+L_close_7:
+close;
+
+}
+
+/////////////////////////
+
+if (strcharinfo(3) == "kumogakure") {
+mes "[^DC143CSistema de Localização^000000]";
+mes "Olá shinobi, bem vindo ao sistema de localização para novatos, no momento você se encontra na ^DC143CVila Oculta da Nuvem^000000";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local na lista para selecionar um local para marcar no seu mini-mapa, para melhor visualização clique no traço no mini-mapa até expandir-lo";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Para remover as marcações do seu mini-mapa basta digitar o comando @resetarmapa, ou selecionar no menu abaixo a opção de remover marcações do mini-mapa";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Caso prefira também temos um mapa que mostra a geografia das vilas";
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "O que gostaria de fazer?";
+menu "- Mostrar o mapa",L_mapa_8,"- Marcar locais importantes no mini-mapa",L_marcar_8,"- Nada",L_close_8;
+
+L_mapa_8:
+next;
+cutin "geografia",3;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Essa imagem mostra como funciona a geografia das vilas, na Vila e Província possuem os principais pontos para o shinobi como hospital, sala do kage e muito mais, já nos campos são onde se encontram os monstros";
+next;
+cutin "",255;
+close;
+
+L_marcar_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Escolha um local para marcar em seu mini-mapa";
+menu "- Academia",L_acad_8,"- Entrada do Hospital",L_hosp_8,"- Bonecos de Treino",L_bonecos_8,"- Centro de Treinamento",L_treino_8,"- Sala de Equipamentos",L_equips_8,"- Escritório do Kage",L_kage_8,"- Sala vip",L_vip_8,"- Biblioteca",L_bibli_8,"- Viajante Ninja",L_tp_8,"- Resetadora",L_reseta_8,"- Armazém",L_storage_8,"- Saída para Província",L_saida_8,"- Remover marcações do mini-mapa",L_reset_8,"- Nenhum",L_close_8;
+
+L_acad_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,141,98,61,0xFF0000;
+close;
+
+L_hosp_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,100,96,50,0xFF0000;
+close;
+
+L_bonecos_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,155,226,51,0xFF0000;
+close;
+
+L_treino_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,211,147,52,0xFF0000;
+close;
+
+L_equips_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,160,222,53,0xFF0000;
+close;
+
+L_kage_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,161,135,54,0xFF0000;
+close;
+
+L_vip_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,53,109,55,0xFF0000;
+close;
+
+L_bibli_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,135,42,56,0xFF0000;
+close;
+
+L_tp_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,158,77,57,0xFF0000;
+close;
+
+L_reseta_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,127,129,58,0xFF0000;
+close;
+
+L_storage_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,135,77,59,0xFF0000;
+close;
+
+L_saida_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcação adicionada no seu mini-mapa, para melhor visualização clique no traço no mini-mapa para expandir-lo, e para remover as marcações basta digitar @resetarmapa";
+viewpoint 1,181,26,60,0xFF0000;
+close;
+
+L_reset_8:
+next;
+mes "[^DC143CSistema de Localização^000000]";
+mes "Marcações do mini-mapa removidos";
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,100,96,50,0xFF0000;
+viewpoint 2,155,226,51,0xFF0000;
+viewpoint 2,211,147,52,0xFF0000;
+viewpoint 2,160,222,53,0xFF0000;
+viewpoint 2,161,135,54,0xFF0000;
+viewpoint 2,53,109,55,0xFF0000;
+viewpoint 2,135,42,56,0xFF0000;
+viewpoint 2,158,77,57,0xFF0000;
+viewpoint 2,127,129,58,0xFF0000;
+viewpoint 2,135,77,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+viewpoint 2,141,98,61,0xFF0000;
+viewpoint 2,165,196,62,0xFF0000;
+viewpoint 2,219,259,63,0xFF0000;
+viewpoint 2,240,250,64,0xFF0000;
+close;
+
+L_close_8:
+close;
+
+}
+	end;
+}
+
+-	script	atcmd_sample_new29	-1,{
+    OnInit:
+        bindatcmd("resetarmapa", "atcmd_sample_new29::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+viewpoint 2,191,226,1,0xFF0000;
+viewpoint 2,110,255,2,0xFF0000;
+viewpoint 2,150,21,3,0xFF0000;
+viewpoint 2,197,273,4,0xFF0000;
+viewpoint 2,108,251,5,0xFF0000;
+viewpoint 2,177,164,6,0xFF0000;
+viewpoint 2,153,22,7,0xFF0000;
+viewpoint 2,116,270,8,0xFF0000;
+viewpoint 2,77,347,9,0xFF0000;
+viewpoint 2,193,102,10,0xFF0000;
+viewpoint 2,163,7,11,0xFF0000;
+viewpoint 2,67,373,12,0xFF0000;
+viewpoint 2,206,339,13,0xFF0000;
+viewpoint 2,199,165,14,0xFF0000;
+viewpoint 2,144,25,15,0xFF0000;
+viewpoint 2,218,361,16,0xFF0000;
+viewpoint 2,88,229,17,0xFF0000;
+viewpoint 2,105,252,18,0xFF0000;
+viewpoint 2,129,256,19,0xFF0000;
+viewpoint 2,147,226,20,0xFF0000;
+viewpoint 2,194,233,21,0xFF0000;
+viewpoint 2,215,133,22,0xFF0000;
+viewpoint 2,281,163,23,0xFF0000;
+viewpoint 2,217,78,24,0xFF0000;
+viewpoint 2,161,93,25,0xFF0000;
+viewpoint 2,153,126,26,0xFF0000;
+viewpoint 2,207,53,27,0xFF0000;
+viewpoint 2,265,281,28,0xFF0000;
+viewpoint 2,160,289,29,0xFF0000;
+viewpoint 2,283,157,30,0xFF0000;
+viewpoint 2,300,217,31,0xFF0000;
+viewpoint 2,199,190,32,0xFF0000;
+viewpoint 2,271,239,33,0xFF0000;
+viewpoint 2,213,159,34,0xFF0000;
+viewpoint 2,147,106,35,0xFF0000;
+viewpoint 2,251,121,36,0xFF0000;
+viewpoint 2,216,133,37,0xFF0000;
+viewpoint 2,200,70,38,0xFF0000;
+viewpoint 2,152,226,39,0xFF0000;
+viewpoint 2,208,291,40,0xFF0000;
+viewpoint 2,192,292,41,0xFF0000;
+viewpoint 2,160,277,42,0xFF0000;
+viewpoint 2,201,223,43,0xFF0000;
+viewpoint 2,217,213,44,0xFF0000;
+viewpoint 2,247,175,45,0xFF0000;
+viewpoint 2,176,128,46,0xFF0000;
+viewpoint 2,221,269,47,0xFF0000;
+viewpoint 2,154,200,48,0xFF0000;
+viewpoint 2,207,153,49,0xFF0000;
+viewpoint 2,207,243,50,0xFF0000;
+viewpoint 2,120,141,51,0xFF0000;
+viewpoint 2,158,172,52,0xFF0000;
+viewpoint 2,75,188,53,0xFF0000;
+viewpoint 2,156,212,54,0xFF0000;
+viewpoint 2,172,146,55,0xFF0000;
+viewpoint 2,192,142,56,0xFF0000;
+viewpoint 2,125,232,57,0xFF0000;
+viewpoint 2,217,94,58,0xFF0000;
+viewpoint 2,138,161,59,0xFF0000;
+viewpoint 2,181,26,60,0xFF0000;
+mes "Marcações removidas do mini-mapa";
+close;
+}
+
+-	script	atcmd_sample_new30	-1,{
+    OnInit:
+      bindatcmd("corrigirhp", "atcmd_sample_new30::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+if(getgmlevel() < 50) {dispbottom "Esse comando é apenas para vips"; end;}
+set $bijuu_konoha, $bijuu_konoha +1;
+dispbottom "Quantidade de bijuus em konoha agora: "+$bijuu_konoha+"";
+end;
+
+}
+
+-	script	atcmd_sample_new31	-1,{
+    OnInit:
+      bindatcmd("mudarwinner", "atcmd_sample_new31::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+if(getgmlevel() < 50) {dispbottom "Esse comando é apenas para vips"; end;}
+set $Winner_Ladder1$, "Uchiha Itachi";
+dispbottom "dono alterado";
+end;
+
+}
+
+-	script	atcmd_sample_new32	-1,{
+    OnInit:
+      bindatcmd("resetjinko", "atcmd_sample_new32::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+if(getgmlevel() < 50) {dispbottom "Esse comando é apenas para vips"; end;}
+set $JDinfo[4], 0;
+set $JDinfo[8], 0;
+dispbottom "dono alterado";
+end;
+
+}
+
+-	script	atcmd_sample_new33	-1,{
+    OnInit:
+      bindatcmd("testespada", "atcmd_sample_new33::OnAtCmd");
+
+        end;
+        
+    OnAtCmd:
+if(getgmlevel() < 5) {dispbottom "Esse comando é apenas para vips"; end;}
+getitem 1166,1;
+getitem 1168,1;
+getitem 1171,1;
+getitem 1173,1;
+getitem 1153,1;
+getitem 1170,1;
+getitem 1169,1;
+end;
+
+}

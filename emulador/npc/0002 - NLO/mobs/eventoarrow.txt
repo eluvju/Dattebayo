@@ -1,0 +1,8 @@
+//----lhz_dun01
+lhz_dun01,0,0,0,0	monster	Zabuza		1299,4,600000,0,0
+lhz_dun01,0,0,0,0	monster	Haku		1298,4,600000,0,0
+lhz_dun01,0,0,0,0	monster	Capanga		1301,50,0,0,0
+lhz_dun01,0,0,0,0	monster	Doki		1994,6,0,0,0
+lhz_dun01,0,0,0,0	monster	Doki		2025,6,0,0,0
+lhz_dun01,0,0,0,0	monster	Doki		2026,6,0,0,0
+lhz_dun01,0,0,0,0	monster	Cobra Gigante		1234,6,0,0,0

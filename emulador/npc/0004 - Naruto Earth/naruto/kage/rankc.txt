@@ -1,0 +1,234 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+1@ecl,53,90,4	script	Missão Rank C::C1	453,{
+	if(c6 == 1){mes "Você ja feiz todas missões Rank C."; close;}
+	if(d6 != 1) {mes "Você primeiro precisa fazer as missões rank D"; end;}
+	if(checkquest(30023) == 1) goto questativa13;
+	if(checkquest(30024) == 1) goto questativa14;
+	if(checkquest(30025) == 1) goto questativa15;
+	if(checkquest(30026) == 1) goto questativa16;
+	if(checkquest(30027) == 1) goto questativa17;
+	if(checkquest(30028) == 1) goto questativa18;
+	mes "[Rank C]";
+	mes "Opa vejo que você ja terminou todas as missões rank D";
+	mes "Iremos passar pra missões Rank C";
+	next;
+	mes "[Rank C]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns missões interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Rank C]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Rank C]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Rank C]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^FF0000Missão 1^000000:^FF0000Missão 2^000000:^FF0000Missão 3^000000:^FF0000Missão 4^000000:^FF0000Missão 5^000000:^FF0000Missão 6^000000:^FF0000Nenhum^000000"))
+	{
+	case 1:
+		if (c1 == 1) {next; mes "Você já completou essa missão"; close;}
+		mes "Recompensa:";
+		mes "30 Pontos de Missão";
+		next;
+		mes "[Rank C]";
+		mes "Deseja fazer esta missão?";
+		setquest 30023;	
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Rank C]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		questativa13:
+		if(checkquest(30023,hunting) == 2)
+		{
+			completequest 30023;
+			erasequest 30023;
+			set Zeny,Zeny+40000;
+			atcommand "@lvup 3";
+			set c1,1;
+			set #RPGPOINTS, #RPGPOINTS+30;
+			mes "[Rank C]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if(c1 != 1) {mes "Você primeiro fazer a missão 1"; end;}
+		if (c2 == 1) {next; mes "Você já completou essa missão"; close;}
+		mes "Recompensa:";
+		mes "30 Pontos de Missão";
+		next;
+		mes "[Rank C]";
+		mes "Deseja fazer esta missão?";
+		setquest 30024;			
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Rank C]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		questativa14:
+		if(checkquest(30024,hunting) == 2)
+		{
+			completequest 30024;
+			erasequest 30024;
+			set Zeny,Zeny+40000;
+			atcommand "@lvup 3";
+			set c2,1;
+			set #RPGPOINTS, #RPGPOINTS+30;
+			mes "[Rank C]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if(c2 != 1) {mes "Você primeiro fazer a missão 2"; end;}
+		if (c3 == 1) {next; mes "Você já completou essa missão"; close;}
+		mes "Recompensa:";
+		mes "30 Pontos de Missão";
+		next;
+		mes "[Rank C]";
+		mes "Deseja fazer esta missão?";
+		setquest 30025;			
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Rank C]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		questativa15:
+		if(checkquest(30025,hunting) == 2)
+		{
+			completequest 30025;
+			erasequest 30025;
+			set Zeny,Zeny+40000;
+			atcommand "@lvup 3";
+			set c3,1;
+			set #RPGPOINTS, #RPGPOINTS+30;
+			mes "[Rank C]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		if(c3 != 1) {mes "Você primeiro fazer a missão 3"; end;}
+		if (c4 == 1) {next; mes "Você já completou essa missão"; close;}
+		mes "Recompensa:";
+		mes "30 Pontos de Missão";
+		next;
+		mes "[Rank C]";
+		mes "Deseja fazer esta missão?";
+		setquest 30026;			
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Rank C]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		questativa16:
+		if(checkquest(30026,hunting) == 2)
+		{
+			completequest 30026;
+			erasequest 30026;
+			set Zeny,Zeny+40000;
+			atcommand "@lvup 3";
+			set c4,1;
+			set #RPGPOINTS, #RPGPOINTS+30;
+			mes "[Rank C]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 5:
+		if(c4 != 1) {mes "Você primeiro fazer a missão 4"; end;}
+		if (c5 == 1) {next; mes "Você já completou essa missão"; close;}
+		mes "Recompensa:";
+		mes "30 Pontos de Missão";
+		next;
+		mes "[Rank C]";
+		mes "Deseja fazer esta missão?";
+		setquest 30027;			
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Rank C]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		questativa17:
+		if(checkquest(30027,hunting) == 2)
+		{
+			completequest 30027;
+			erasequest 30027;
+			set Zeny,Zeny+40000;
+			atcommand "@lvup 3";
+			set c5,1;
+			set #RPGPOINTS, #RPGPOINTS+30;
+			mes "[Rank C]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+		case 6:
+		if(c5 != 1) {mes "Você primeiro fazer a missão 5"; end;}
+		if (c6 == 1) {next; mes "Você já completou essa missão"; close;}
+		mes "Recompensa:";
+		mes "30 Pontos de Missão";
+		next;
+		mes "[Rank C]";
+		mes "Deseja fazer esta missão?";
+		setquest 30028;			
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Rank C]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		questativa18:
+		if(checkquest(30028,hunting) == 2)
+		{
+			completequest 30028;
+			erasequest 30028;
+			set Zeny,Zeny+40000;
+			atcommand "@lvup 3";
+			set c6,1;
+			set #RPGPOINTS, #RPGPOINTS+35;
+			mes "[Rank C]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 7:
+		mes "[Rank C]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Rank C]";
+	mes "Me desculpe, mas você não tem todos os itens necessários para esta missão.";
+	mes "Volte quando você tiver todos os itens!";
+	close;
+OnInit:
+	waitingroom "[Missões Rank C]",0;
+
+}
+
+2@ecl,53,90,4	duplicate(C1)	Missão Rank C#1	114
+3@ecl,53,90,4	duplicate(C1)	Missão Rank C#2	856

@@ -1,0 +1,41 @@
+kakashi,81,91,5	script	Shinobi Misterioso#3	831,{
+
+if (checkquest(3055) == 1) goto L_go;
+if (getskilllv(8)) {mes "Você já sabe esse jutsu"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+mes "Ei.. você!";
+mes "Aposto que você não sabe esse jutsu que eu sei, haha sou melhor que você, eu sei o jutsu Vigor e você não!";
+next;
+mes "Mas como eu sou educado, eu vou lhe ensinar, porque um dia eu quero ser o kage da minha vila";
+next;
+mes "Gostaria de aprender?";
+menu "Sim, eu quero",L_GI,"Agora não",L_no;
+
+//========================================================================
+//	Gian
+//========================================================================
+
+L_GI:
+mes "Pra realizar esse treinamento você precisa fazer o seguinte:";
+mes "Pegar 80 Poeira Venenosa";
+setquest 3055;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7154) < 80) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 7154,80;
+skill 8,10,0;
+completequest 3055;
+erasequest 3055;
+announce "[Jutsu Rank E] "+strcharinfo(0)+" completou a quest de Vigor",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+}

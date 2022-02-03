@@ -1,0 +1,248 @@
+///////////////////////////////////////////////////////////////////
+//===== Cronus Script ===========================================//
+//= 							 	=//
+//= Reparador							=//
+//= 								=//
+//===== Por: ====================================================//
+//=								=//
+//=       KIRA THE CAT
+//=								=//
+//===== Changelog: ========================== Versão Atual ======//
+// Criado em 28/02/2021 
+// Alteração Dia 22/06/2021
+// 		Alterada estrutura do NPC para compor o novo modelo de Kafra Pass
+// 		Alterado o modelo de estrutura do NPC para uma forma mais organizada
+//		Criado Interações Especiais Para VIP's
+//      Finalizado 23/06/2021 - 16:31
+//===== Descrição: ==============================================//
+// == NPC FERREIRO VIP
+// == Com LIMITE de Item apenas +4
+// ============================================================
+lou_in02,164,81,5	script	Mestre Armeiro	813,{
+// ============================================================
+
+	.@npc$ = "                  ^ff00bb[ "+strnpcinfo(1)+" ]^000000";
+	.@descricao$ = "Infelizmente eu so consigo evoluir Até o ^FF0000+4^000000, mas existem ferreiros que conseguem evoluir até ^FF0000+20^000000.";
+	.@costrefinador = 100000;
+	set .@t, 3,5;	// Delay Seconds.
+
+// ============================================================
+
+	disable_items;
+	if (countitem(6238) || countitem(6228) || countitem(6229) || countitem(6230) || countitem(6231) || countitem(6456))
+		set .@bWeaponUp,1;
+	if (countitem(6239) || countitem(6232) || countitem(6233) || countitem(6234) || countitem(6235) || countitem(6457))
+		set .@bArmorUp,1;
+
+// ============================================================
+// Quest Profissão Ferreiro		
+//		
+//	if (!.@bWeaponUp && !.@bArmorUp) || (Ferreiro_VIP_Q == 1) {
+//		mes "[Refine Master]";
+//		mes "Hello!";
+//		mes "What's up?";
+//		mes "I'm a specialist";
+//		mes "for refining items,";
+//		mes "but I don't work anymore.";
+//		next;
+//		switch(select("I'll go on my way.:Hmm... this makes me curious.")) {
+//		case 1:
+//			mes "[Refine Master]";
+//			mes "Take care, adventurer.";
+//			close;
+//		case 2:
+//			mes "[Refine Master]";
+//			mes "Actually, I sometimes provide refine services for adventurers with a ^006400Refine Ticket^000000...";
+//			mes "Bye bye~!";
+//			close;
+//		}
+//	}
+// ============================================================
+// ENUNCIADO
+
+	emotion ET_SURPRISE;
+	mes .@npc$;
+	mes "Saudações o/";
+	mes " ";
+	mes "Eu sou ^ff00bb"+strnpcinfo(1)+"^000000 e posso refinar qualquer coisa.";
+	next;
+	mes .@npc$;
+	mes "Você só precisa ter um ^800080Ticket^000000 e refinaremos sua arma no mesmo valor.";
+	mes " ";
+	mes "Se você tem ^800080Ticket^000000 ^FF0000+4^000000, sua Arma vai ficar ^FF0000+4^000000 sem chance de quebrar.";
+	if(select("- Volto Depois!:- ^800080Eu Tenho o Ticket^000000") == 1) {	close;	}
+
+// ============================================================
+// TENHO Ticket
+// ============================================================
+	
+	next;
+	mes .@npc$;
+	mes "Escolha a ^000080Arma^000000 que deseja refinar!";
+	setarray .@position$[1],"Right hand";
+	setarray .@indices[1], EQI_HAND_R;
+	for(set .@i,1; .@i<=1; set .@i,.@i+1)
+		set .@menu$, .@menu$+((getequipisequiped(.@indices[.@i]))?getequipname(.@indices[.@i]):.@position$[.@i]+"- [Empty]")+":";
+	set .@part, .@indices[ select(.@menu$) ];
+
+	if (!getequipisequiped(.@part)) {	next;
+										mes .@npc$;
+										mes "Você precisa equipar sua arma para refinar!";
+										close;	}
+	if (!getequipisenableref(.@part)) {
+		emotion ET_OTL;
+		mes .@npc$;
+		mes "Desculpa, não posso te ajudar com isso pivete!";
+		close;
+	}
+	.@refineitemid = getequipid(.@part); // save id of the item
+	.@refinerycnt = getequiprefinerycnt(.@part); //save refinery count
+	setarray .@card[0], getequipcardid(.@part,0), getequipcardid(.@part,1), getequipcardid(.@part,2), getequipcardid(.@part,3);
+	switch(getequipweaponlv(.@part)) {
+	default:
+	
+// ============================================================
+// TICKET ID'S
+// ============================================================
+
+	case 0:
+		setarray .@tickets[0],6457,6235,6234,6233,6232,6239;
+		setarray .@levels[0],5,6,7,8,9,11;
+		set .@type$,"Armor";
+		set .@check,.@bArmorUp;
+		break;
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+		setarray .@tickets[0],6456,6231,6230,6229,6228,6238;
+		setarray .@levels[0],5,6,7,8,9,11;
+		set .@type$,"Armamento";
+		set .@check,.@bWeaponUp;
+		break;
+	}
+
+// ============================================================
+//  Não deu
+// ============================================================
+
+	if (!.@check) { next;
+					emotion ET_THINK;
+					mes .@npc$;
+					mes "Se você deseja refinar isto:^006400"+.@type$+"^000000, Utilize o ^800080Ticket refinador^000000 ^006400"+.@type$+"^000000.";
+					mes " ";
+					mes "Até mais";
+					close;	}
+// ============================================================
+//  Escolha seu Ticket Refinador
+// ============================================================	
+
+	next;
+	mes .@npc$;
+	mes "Agora escolha o ^800080Ticket refinador^000000 de ^006400"+.@type$+"^000000 que deseja.";
+	set .@menu$,"";
+	for(set .@i,0; .@i<getarraysize(.@tickets); set .@i,.@i+1)
+		set .@menu$, .@menu$+getitemname(.@tickets[.@i])+":";
+	set .@select, select(.@menu$)-1;
+	set .@ticket_lv, .@levels[.@select];
+	set .@ticket_id, .@tickets[.@select];
+
+// =============== //
+// NÃO TEM TICKET //
+// ============= //
+	if (countitem(.@ticket_id) == 0) {
+		next;
+		emotion ET_QUESTION;
+		mes .@npc$;
+		mes "O ^800080Ticket refinador^000000 não esta no seu inventário.";
+		mes " ";
+		mes "Visite a nossa ^FF0000Loja de Rops^000000 para comprar um.";
+		close;}
+
+// =========== //
+// MAX REFINE //
+// ========= //
+
+	if (getequiprefinerycnt(.@part) >= .@ticket_lv) {
+		next;
+		emotion ET_PROFUSELY_SWEAT;
+		mes .@npc$;
+		mes "^8B4513Você ja refinou o maximo possível com este: ^FF0000+"+.@ticket_lv+" ^800080Ticket refinador^000000";
+		mes " ";
+		mes "Volte com outro item para eu refinar!";
+		close;}
+
+// =========== //
+// Cobrança
+// =========== //
+
+	if (.@ticket_lv == 5) { set .@totalcost_ferreiro_ticket, 555000;} // +5 Item
+	if (.@ticket_lv == 6) { set .@totalcost_ferreiro_ticket, 6660000;} // +6 Item
+	if (.@ticket_lv == 7) { set .@totalcost_ferreiro_ticket, 7770000;} // +7 Item
+	if (.@ticket_lv == 8) { set .@totalcost_ferreiro_ticket, 8880000;} // +8 Item
+	if (.@ticket_lv == 9) { set .@totalcost_ferreiro_ticket, 9990000;} // +9 Item
+	if (.@ticket_lv == 11) { set .@totalcost_ferreiro_ticket, 11110000;} // +11 Item
+	next;
+	mes .@npc$;
+	mes "Vou refinar sua ^800080"+getequipname(.@part)+"^000000 Até o ^FF0000+^000000"+.@ticket_lv+". ";
+	mes " ";
+	mes "Vou utilizar o item ^006400"+getitemname(.@ticket_id)+"^000000 e cobrar ^FF000000" + .@totalcost_ferreiro_ticket + "z^000000";
+	mes " ";
+	mes "Posso Continuar?";
+	if(select("- Não.:- Claro.") == 1) {close;}
+	
+	next;
+	mes .@npc$;
+	mes "Espere alguns segundos enquanto eu faço minha MAGICA!";
+	mes " ";
+	while( .@t ) {	mes ""+ .@t +" segundo"+ ( ( .@t > 1 ) ? "s" : "" ) +".";
+					sleep2 1000 ;
+					set .@t, .@t - 1; } 
+	if (Zeny < .@totalcost_ferreiro_ticket) { 	next;
+								mes .@npc$;
+								mes "OW OW...";
+								mes " ";
+								mes "Você não possui dinheiro suficiente.";
+								close;	}
+	if (countitem(.@ticket_id)) {	delitem .@ticket_id,1;	
+									Zeny = Zeny-.@totalcost_ferreiro_ticket;									
+		// anti-hack
+		if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) ||
+			callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3])) {
+			mes .@npc$;
+			emotion ET_FRET;
+			mes "Espere ai...";
+			mes "Você trocou os itens, de o fora daqui!!";
+			close;}
+	} else {
+		next;
+		mes .@npc$;
+		mes "Erro!";
+		mes " ";
+		mes "CHAME UM STAFF.";
+		close;
+	}
+
+// =========== //
+//  ANUNCIOS
+// =========== //	
+
+	next;
+	specialeffect EF_SUI_EXPLOSION;
+	successrefitem .@part, .@ticket_lv - getequiprefinerycnt(.@part);
+	announce ""+strnpcinfo(1)+": "+strcharinfo(0)+" Forjou uma arma "+getequiprefinerycnt(EQI_HAND_R)+"+.",bc_blue|bc_all;
+	dispbottom "[Servidor] Dattebayo: Item "+getitemname(.@ticket_id)+" foi removido!";
+	dispbottom "[Servidor] Dattebayo: -" + .@totalcost_ferreiro_ticket + "z";
+	if (getgmlevel() >= 5) {npctalk ""+strnpcinfo(1)+": XABLAUUUUU!!!!"; }
+
+// =========== //
+// FINAL
+// =========== //
+
+	mes .@npc$;
+	mes "Aqui esta~";
+	mes " ";
+	mes "Novinha e folha sua... ^FF0000+"+getequiprefinerycnt(EQI_HAND_R)+" ^800080"+getequipname(.@part)+"^000000.";
+	set .@totalcost_ferreiro_ticket, 0;
+	close;
+}

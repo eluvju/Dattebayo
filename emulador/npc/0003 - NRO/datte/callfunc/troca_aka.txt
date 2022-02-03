@@ -1,0 +1,57 @@
+ra_in01,199,91,5	script	Troca de Chapéu Aka	99,{
+
+if(countitem(19020) == 1) goto inicio;
+if(countitem(19195) == 1) goto inicio;
+if(countitem(19196) == 1) goto inicio;
+if(countitem(19197) == 1) goto inicio;
+
+mes "Você não é um Akatsuki";
+close;
+
+inicio:
+mes "Eu sou o trocador de Chapeus Akatsuki, se está cansado de seu chapéu e quer mudar você pode trocar por outro comigo, é importante que você deixe desequipado seu chapéu pra essa troca ser feita, vamos lá!";
+next;
+mes "Qual Chapéu você gostaria de ter?";
+menu "Chapéu Normal",normal,"Chapéu com gola",hatgola,"Apenas a gola",gola,"Nenhum Chapéu e gola",nada,"Deixa prá lá",L_close;;
+
+normal:
+
+if(countitem(19020) == 1) {delitem 19020,1;}
+if(countitem(19195) == 1) {delitem 19195,1;}
+if(countitem(19196) == 1) {delitem 19196,1;}
+if(countitem(19197) == 1) {delitem 19197,1;}
+
+getitem 19020,1;
+close;
+
+hatgola:
+if(countitem(19020) == 1) {delitem 19020,1;}
+if(countitem(19195) == 1) {delitem 19195,1;}
+if(countitem(19196) == 1) {delitem 19196,1;}
+if(countitem(19197) == 1) {delitem 19197,1;}
+
+getitem 19196,1;
+close;
+
+gola:
+if(countitem(19020) == 1) {delitem 19020,1;}
+if(countitem(19195) == 1) {delitem 19195,1;}
+if(countitem(19196) == 1) {delitem 19196,1;}
+if(countitem(19197) == 1) {delitem 19197,1;}
+
+getitem 19195,1;
+close;
+
+nada:
+if(countitem(19020) == 1) {delitem 19020,1;}
+if(countitem(19195) == 1) {delitem 19195,1;}
+if(countitem(19196) == 1) {delitem 19196,1;}
+if(countitem(19197) == 1) {delitem 19197,1;}
+
+getitem 19197,1;
+close;
+
+L_close:
+close;
+
+}

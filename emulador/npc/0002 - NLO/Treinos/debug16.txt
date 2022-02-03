@@ -1,0 +1,7 @@
+sec_in02,145,176,5	script	DebugSkill#10	99,{
+if(debugnazukii == 1 ) { close;}
+mes "Debug.";
+set skill_intermediaria, 4;
+set debugnazukii,1;
+close;
+}

@@ -1,0 +1,151 @@
+treinamento,80,121,5	script	Maito Gai	1_m_pastor,{
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+	.@questkuchy1 = 50010;
+	.@questkuchy2 = 50011;
+	.@quest2kuchy1 = 50105;
+	.@quest3kuchy1 = 50210;
+	
+	if(getskilllv(2505) == 3 ) {
+		mes .@npc$;
+		mes "Você ja está no nivel máximo.";
+		close;
+	}
+	
+		if(checkquest(.@quest3kuchy1) == 1) {
+		mes .@npc$;
+		mes "Você precisa ir ao mundo paralelo conversar com o Mestre Tartaruga";
+		close;
+		}
+
+		if(kuchiyose2 == 1 || kuchiyose == 1 || kuchiyose3 == 1) { 
+		mes .@npc$; 
+		mes "Você já tem um contrato"; 
+		close; 
+		}
+
+	if(getskilllv(2505) == 2) {
+		if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+			mes .@npc$;
+			mes "Vejo que você já possui um contrato, você gostaria de se tornar um Mestre?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Para se tornar um mestre kuchiyose você precisa ir até o mundo paralelo das tartarugas e falar com o Mestre Tartaruga.";
+				next;
+				mes .@npc$;
+				mes "Para entrar nesse mundo você vai precisar de um Pergaminho Reverso e ir até o local que conecta esse mundo com o outro.";
+				next;
+				mes .@npc$;
+				mes "Já vou logo avisando que não será nada facil controlar totalmente sua invocação.";
+				next;
+				mes .@npc$;
+				mes "Então vamos continuar com o treinamento.";
+				setquest .@quest3kuchy1;
+				close;
+		}
+		mes .@npc$;
+		mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";
+		close;
+	}		//----------------------------------------------------------------------------------------------------
+	if(checkquest(.@quest2kuchy1) == 1) {		
+		if(countitem(736) >= 20 && countitem(755) >= 20 && countitem(756) >= 20) {			
+			if(checkquest(.@quest2kuchy1,HUNTING) == 2) {				
+				if(Zeny >= 30000000){					
+					mes .@npc$;					
+					mes "Parabéns você completou seu treinamento.";					
+					mes "Agora você já pode invocar sua kuchiyose.";					
+					delitem 736,20;
+					delitem 755,20;
+					delitem 756,20;
+					set Zeny, Zeny - 30000000;
+					skill 2505,2,3;
+					completequest .@quest2kuchy1;
+					erasequest .@quest2kuchy1;
+					close;
+				}				
+				mes .@npc$;				
+				mes "Você não tem zeny suficiente.";				
+				close;			
+			}			
+			mes .@npc$;			
+			mes "Você não completou seu treinamento ainda.";			
+			close;		
+		}		
+		mes .@npc$;		
+		mes "Você não completou seu treinamento ainda.";		
+		close;	
+	}		
+		
+		if(getskilllv(2505) == 1) {		
+			if(Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {			
+				mes .@npc$;			
+				mes "Vejo que você já possui um contrato, você gostaria de evolui-lo?";			
+				if(select("- Sim:- Não") == 2) { close; }				
+					mes .@npc$;				
+					mes "Então vamos continuar com o treinamento.";				
+					next;				
+					mes "Traga-me:";				
+					mes "20x Pergaminho em Branco";				
+					mes "20x Pergaminho Branco Lendário";				
+					mes "20x Segredo Shinobi";				
+					mes "30,000,000 Zeny";				
+					mes "Mate 100 Cobras";				
+					setquest .@quest2kuchy1;				
+					close;		
+			}		
+			mes .@npc$;		
+			mes "Você precisa ser Jounin para evoluir sua Kuchiyose.";		
+			close;	
+		}
+	//----------------------------------------------------------------------------------------------------	
+	if(checkquest(.@questkuchy2) == 1) {
+		if(checkquest(.@questkuchy2,HUNTING) == 2) {
+			mes .@npc$;
+			mes "Parabéns você derrotou todos os monstros!";
+			mes "Vou verificar se você tem os outros items e o Zeny...";
+			if(countitem(736) < 10 || Zeny < 5000000) { close; }
+				next;
+				mes .@npc$;
+				mes "Parabéns!";
+				delitem 736,10;
+				skill 2505,1,3;
+				completequest .@questkuchy2; 
+				erasequest .@questkuchy2;
+				close;
+		}
+		mes .@npc$;
+		mes "Você não completou seu treinamento ainda.";
+		close;
+	}
+
+	if(Class > 5) {
+		if(livrotartaruga >= 1) {
+			mes .@npc$;
+			mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+			mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo, eu posso lhe ajudar a fazer contrato com as tartarugas.";
+			next;
+			mes .@npc$;
+			mes "Se você assinar contrato comigo não poderá escolher outro contrato depois!";
+			mes "Gostaria de treinar o Kuchiyose: Tartaruga?";
+			if(select("- Sim:- Não") == 2) { close; }
+				mes .@npc$;
+				mes "Não vai ser nada facil, será um treinamento arduo.";
+				next;
+				mes .@npc$;
+				mes "Vou precisar que você me traga:";
+				mes "10x Pergaminho em Branco.";
+				mes "5.000.000 zenys.";
+				mes "E mate 100x Tartarugas.";
+				next;
+				mes .@npc$;
+				mes "Boa sorte!";
+				setquest .@questkuchy2;
+				set kuchiyose4,1;
+				close;
+		}
+		mes .@npc$;
+		mes "Antes de falar comigo leia na biblioteca mais a respeito das invocações.";
+		close;
+	}
+	mes .@npc$;	mes "Você precisa ser Chunin ou superior para aprender Kuchiyose.";
+	close;
+}

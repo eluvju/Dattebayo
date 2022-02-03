@@ -1,0 +1,66 @@
+bibli_01,71,52,5	script	Fuuinjutsu Básico::fuuinbas	121,{
+//	if (treinos_aceitos >= 3) {mes "Você já aceitou a missão de três treinamentos, complete-os para dominar o treinamento, o andamento deles você pode ver no alt u"; close;}
+	if(treinos_basicos >= 3) {mes "Você já aprendeu três trienos básicos, é o limite."; close;}
+	if(fuu_basico == 1) {mes "Agora que você sabe o Fuuinjutsu básico você só tem a crescer!"; close;}
+	if (checkquest(2122) == 1) goto L_go;
+
+	
+	mes "Antes de escolher seus treinamentos, dê uma olhadinha nessa tela que explica a interface do jogo, sempre que quiser ver essa imagem novamente, basta digitar @interface no chat";
+	next;
+	cutin "tela",3;
+	next;
+	cutin "",255;
+	mes "ATENÇÃO: Antes que continue, é bom lembrar que só pode ter três treinamentos básicos, tem certeza que quer esse treino?";
+	menu "Sim, eu quero",L_sim,"Não, quero outro",nao;
+
+	nao:
+	close;
+
+	L_sim:
+	mes "[ Instrutor de Fuuinjutsu] ";
+	mes "Olá, vamos aprender o básico do Fuuinjutsu";
+	next;
+	mes "Os Fuuinjutsus assim como ninjutsus precisam de chakra pra ser usado, se você não tiver chakra o suficiente, o Fuuinjutsu não irá funcionar";
+	next;
+	mes "Fuuinjutsus são técnicas que ajudam os shinobis durante as lutas com selamentos, são de grande utilidade, muito usado em estrategias";
+	next;
+	mes "Todo Fuuinjutsu aprendido vem no nível 1, e você tem que evoluir todos seus Fuuinjutsus pra se tornarem mais fortes";
+	next;
+	mes "Depois que você fizer esse treinamento, você poderá treinar seu Fuuinjutsu e a cada nível aumentado receberá pontos em destreza, que é o atributo que aumenta a velocidade de jutsus e chance de acerto";
+	next;
+	mes "Agora que já sabe o básico de Fuuinjutsu, vamos fazer um treinamento rápido pra você começar a evoluir seu Fuuinjutsu";
+	next;
+	mes "Vá e derrote 40 vermes no esgoto";
+	setquest 2122;
+	set treinos_aceitos, treinos_aceitos +1;
+	close;
+
+L_go:
+if(checkquest(2122,hunting) != 2) {mes "Você ainda não completou seu treinamento"; close;}
+//if (countitem(713) < 7) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Parabéns, você completou seu treinamento";
+mes "você agora pode treinar Fuuinjutsu";
+//delitem 713,7;
+getitem 1024,1;
+completequest 2122;
+erasequest 2122;
+set fuu_basico,1;
+set treinos_bilbioteca,1;
+set treinos_basicos, treinos_basicos +1;
+close;
+
+OnInit:
+	waitingroom "",0;
+OnTimer1000:
+	setarray .@RoomDisplay$,"Aprender Fuuinjutsu","Aprender Fuuinjutsu","Aprender Fuuinjutsu","Aprender Fuuinjutsu";
+	delwaitingroom;
+	waitingroom .@RoomDisplay$[rand(0,3)],0;
+	initnpctimer;
+
+}
+
+bibli_02,71,52,5	duplicate(fuuinbas)	Fuuinjutsu Básico#2	121
+bibli_03,71,52,5	duplicate(fuuinbas)	Fuuinjutsu Básico#3	121
+bibli_04,71,52,5	duplicate(fuuinbas)	Fuuinjutsu Básico#4	121
+lou_in02,178,87,5	duplicate(fuuinbas)	Fuuinjutsu Básico#5	121
+izlude_in,148,127,5	duplicate(fuuinbas)	Fuuinjutsu Básico#6	121

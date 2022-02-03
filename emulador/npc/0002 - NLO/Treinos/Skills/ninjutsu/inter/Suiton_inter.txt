@@ -1,0 +1,394 @@
+academia,55,149,5	script	Suiton Intermediario	1_m_hof,{
+
+if(elementosuiton != 1) { mes "[Suiton Intermediário]"; mes "Esse elemento não é de sua natureza"; close;}
+
+	if(Class == 7 || Class == 8 || Class == 9 || Class == 10 || Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+	
+	mes "[Suiton Intermediário]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Suiton escolha qual habilidade você gostaria de aprender.";
+	switch( select( "- Suiryuudan:- Mizurappa:- Suiton Suisahan:- Suiton Daibakufu no Jutsu" ) ){
+
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 1:
+			next;
+			if(checkquest(5060) == 1) goto 1_go;
+			if(Suiryuudan == 1) goto 1_delete;
+			if(skill_intermediaria >= 6) { mes "[Suiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Suiton Intermediário]";
+			mes "Suiryuudan?";
+			next;
+			mes "[Suiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Suiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+			
+			//========================================================================
+			//	Suiryuudan
+			//========================================================================
+			
+			1_delete:
+				mes "[Suiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Suiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+			
+			delete_1:
+				mes "[Suiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Suiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+			
+			quero_1:
+				mes "[Suiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Suiryuudan,0;
+				skill 14,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_1:
+				close;
+			
+			1_SS:
+				mes "[Suiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5060;
+				next;
+				mes "[Suiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			1_go:
+				if(checkquest(5060) >= 1) {
+					mes "[Suiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5060) >= 1) { completequest 5060; erasequest 5060; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Suiton Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5060,hunting) != 2) { mes "[Suiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Suiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5060; 
+									erasequest 5060;
+									skill 14,1,3;
+									set Suiryuudan,1;
+									close;
+								}
+								mes "[Suiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			1_no:
+				close;
+			
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 2:
+			next;
+			if(checkquest(5061) == 1) goto 2_go;
+			if(Mizurappa == 1) goto 2_delete;
+			if(skill_intermediaria >= 6) { mes "[Suiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Suiton Intermediário]";
+			mes "Mizurappa?";
+			next;
+			mes "[Suiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Suiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+			
+			//========================================================================
+			//	Mizurappa
+			//========================================================================
+			
+			2_delete:
+				mes "[Suiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Suiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+			
+			delete_2:
+				mes "[Suiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Suiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+			
+			quero_2:
+				mes "[Suiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Mizurappa,0;
+				skill 184,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_2:
+				close;
+			
+			2_SS:
+				mes "[Suiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5061;
+				next;
+				mes "[Suiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			2_go:
+				if(checkquest(5061) >= 1) {
+					mes "[Suiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5061) >= 1) { completequest 5061; erasequest 5061; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Suiton Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+								
+							case 1:
+								if(checkquest(5061,hunting) != 2) { mes "[Suiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Suiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5061; 
+									erasequest 5061;
+									skill 184,1,3;
+									set Mizurappa,1;
+									close;
+								}
+								mes "[Suiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+			2_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 3:
+			next;
+			if(checkquest(5062) == 1) goto 3_go;
+			if(OndaAquatica == 1) goto 3_delete;
+			if(skill_intermediaria >= 6) { mes "[Suiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Suiton Intermediário]";
+			mes "Suiton Suisahan?";
+			next;
+			mes "[Suiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Suiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+			
+			//========================================================================
+			//	Suiton Suisahan
+			//========================================================================
+			
+			3_delete:
+				mes "[Suiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Suiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+			
+			delete_3:
+				mes "[Suiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Suiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+			
+			quero_3:
+				mes "[Suiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set OndaAquatica,0;
+				skill 2449,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_3:
+				close;
+			
+			3_SS:
+				mes "[Suiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5062;
+				next;
+				mes "[Suiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			3_go:
+				if(checkquest(5062) >= 1) {
+					mes "[Suiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, quero continuar a fazer essa habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5062) >= 1) { completequest 5062; erasequest 5062; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Suiton Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5062,hunting) != 2) { mes "[Suiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Suiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5062; 
+									erasequest 5062;
+									skill 2449,1,3;
+									set OndaAquatica,1;
+									close;
+								}
+								mes "[Suiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			3_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 4:
+			next;
+			if(checkquest(5063) == 1) goto 4_go;
+			if(Daibakufu == 1) goto 4_delete;
+			if(skill_intermediaria >= 6) { mes "[Suiton Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Suiton Intermediário]";
+			mes "Suiton Daibakufu no Jutsu?";
+			next;
+			mes "[Suiton Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Suiton Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+			
+			//========================================================================
+			//	Suiton Daibakufu no Jutsu
+			//========================================================================
+			
+			4_delete:
+				mes "[Suiton Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Suiton Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+			
+			delete_4:
+				mes "[Suiton Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Suiton Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+			
+			quero_4:
+				mes "[Suiton Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Daibakufu,0;
+				skill 86,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_4:
+				close;
+			
+			4_SS:
+				mes "[Suiton Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5063;
+				next;
+				mes "[Suiton Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			4_go:
+				if(checkquest(5063) >= 1) {
+					mes "[Suiton Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5063) >= 1) { completequest 5063; erasequest 5063; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Suiton Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+								
+							case 1:
+								if(checkquest(5063,hunting) != 2) { mes "[Suiton Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Suiton Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5063; 
+									erasequest 5063;
+									skill 86,1,3;
+									set Daibakufu,1;
+									close;
+								}
+								mes "[Suiton Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+			4_no:
+				close;
+	}
+	}
+	mes "[Suiton Intermediário]"; 
+	mes "Você precisa ser Chunin ou superior."; 
+	close;
+OnInit:
+	waitingroom "[Suiton Intermediário]",0;
+		
+}

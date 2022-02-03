@@ -1,0 +1,207 @@
+salakagen,44,20,3	script	Segundo Elemento#15::ele	831,{
+	mes "[Kurenai]";
+	if(elemento == 2){goto L_elementos;}
+	if(cla == 1){goto L_cla;}
+	if(chunin == 1){goto L_lista;}
+	if(chunin != 1){goto L_chunin;}
+	if(Jutsuchunin1 != 1) goto L_NoJutsu;
+
+
+L_lista:
+	mes "Olá aprendiz, eu posso ensinar para você seu segundo elemento";
+	mes "Este são os estilos de luta que poderá aprender.";
+	menu "- Taijutsu",taijutsu,"- Ninjutsu Katon",katon,"- Ninjutsu Suiton",suiton,"- Ninjutsu Raiton",raiton,"- Ninjutsu Doton",doton,"- Ninjutsu fuuton",fuuton,"- Jutsu Médico",medico,"- Fuuinjutsu",fuuinjutsu;
+
+	taijutsu:
+	mes "[Taijutsu]";
+	if(elemento == 2){goto L_elementos;}
+	if(elementotaijutsu == 1){goto L_alreadyhave;}	
+	if(elemento == 1){goto aprendertaijutsu2;}
+
+	aprendertaijutsu2:
+	mes "Olá caro shinobi, voce gostaria de aprender o Taijutsu (Corpo a corpo) ?";
+	menu "Sim, Eu quero",simtai2, "Não",nao;
+
+	simtai2:
+	next;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementotaijutsu,elementotaijutsu + 1;
+	set elemento,elemento + 1;
+	set taijutsusec,1;
+	set Jutsu2chunin1,1;
+	close;
+
+
+	doton:
+	mes "[Kurenai]";
+	if(elemento == 2){goto L_elementos;}
+	if(elementodoton == 1){goto L_alreadyhave;}
+	if(elemento == 1){goto aprenderdoton2;}
+
+	aprenderdoton2:
+	mes "Olá caro shinobi, voce gostaria de aprender o Elemento Doton (Terra) ?";
+	menu "Sim, Eu quero",simdot2, "Não",nao;
+
+	simdot2:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementodoton,elementodoton + 1;
+	set elemento,elemento + 1;
+	set dotonsec,1;
+	set Jutsu2chunin1,1;
+	close;
+
+	fuuinjutsu:
+	mes "[Kurenai]";
+	if(elemento == 2){goto L_elementos;}
+	if(elementofuuinjutsu == 1){goto L_alreadyhave;}
+	if(elemento == 1){goto aprenderfuuinjutsu2;}
+
+
+	aprenderfuuinjutsu2:
+	mes "Olá caro shinobi, voce gostaria de aprender Fuuinjutsu (Selamentos) ?";
+	menu "Sim, Eu quero",simfuuin2, "Não",nao;
+
+	simfuuin2:
+	next;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementofuuinjutsu,elementofuuinjutsu + 1;
+	set elemento,elemento + 1;
+	set fuuinjutsusec,1;
+	set Jutsu2chunin1,1;
+	close;
+
+	fuuton:
+	mes "[Kurenai]";
+	if(elemento == 2){goto L_elementos;}
+	if(elementofuuton == 1){goto L_alreadyhave;}
+	if(elemento == 1){goto aprenderfuuton2;}
+
+	aprenderfuuton2:
+	mes "Olá caro shinobi, voce gostaria de aprender o Elemento Fuuton (Vento) ?";
+	menu "Sim, Eu quero",simfuut2, "Não",nao;
+
+	simfuut2:
+	next;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementofuuton,elementofuuton + 1;
+	set elemento,elemento + 1;
+	set fuutonsec,1;
+	set Jutsu2chunin1,1;
+	close;
+
+	katon:
+	mes "[Kurenai]";
+	if(elemento == 2){goto L_elementos;}
+	if(elementokaton == 1){goto L_alreadyhave;}
+	if(elemento == 1){goto aprenderfogo2;}
+
+	aprenderfogo2:
+	mes "Olá caro shinobi, voce gostaria de aprender o elemento Katon (Fogo) ?";
+	menu "Sim, Eu quero",simkat2, "Não",nao;
+
+	simkat2:
+	next;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementofogo,elementofogo + 1;
+	set elemento,elemento + 1;
+	set katonsec,1;
+	set Jutsu2chunin1,1;
+	close;
+
+	medico:
+	mes "[Kurenai]";
+	if(elemento == 2){goto L_elementos;}
+	if(elementomedico == 1){goto L_alreadyhave;}	
+	if(elemento == 1){goto aprendermedico2;}
+
+	aprendermedico2:
+	mes "Olá caro shinobi, voce gostaria de aprender o Medico (Jutsu Médico) ?";
+	menu "Sim, Eu quero",simmed2, "Não",nao;
+
+	simmed2:
+	next;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementomedico,elementomedico + 1;
+	set elemento,elemento + 1;
+	set medicosec,1;
+	set Jutsu2chunin1,1;
+	close;
+
+	raiton:
+	mes "[Kurenai]";
+	if(elemento >= 2){goto L_elementos;}
+	if(elementoraiton == 1){goto L_alreadyhave;}
+	if(elemento == 1){goto aprenderraiton2;}
+
+
+	aprenderraiton2:
+	mes "Olá caro shinobi, voce gostaria de aprender o elemento Raiton (Trovão) ?";
+	menu "Sim, Eu quero",simrait2, "Não",nao;
+
+	simrait2:
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementoraiton,elementoraiton + 1;
+	set elemento,elemento + 1;
+	set raitonsec,1;
+	set Jutsu2chunin1,1;
+	close;
+
+
+	suiton:
+	mes "[Kurenai]";
+	if(elemento == 2){goto L_elementos;}
+	if(elementoagua == 1){goto L_alreadyhave;}	
+	if(elemento == 1){goto aprenderagua2;}
+
+	aprenderagua2:
+	mes "Olá caro shinobi, voce gostaria de aprender o elemento Suiton (Água) ?";
+	menu "Sim, Eu quero",simsuit2, "Não",nao;
+
+	simsuit2:
+	next;
+	mes "[Kurenai]";
+	mes "Muito bem, muito sábia essa escolha!";
+	set elementoagua,elementoagua + 1;
+	set elemento,elemento + 1;
+	set suitonsec,1;
+	set Jutsu2chunin1,1;
+	close;
+
+nao:
+close;
+
+
+L_alreadyhave:
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_elementos:
+	mes "Você só pode aprender dois elementos!";
+	close;
+
+L_cla:
+	mes "Você é membro de um clã, só shinobis personalizados pode aprender dois elementos";
+	close;
+
+L_chunin:
+	mes "Você ainda não é Chunin, Apenas chunins podem aprender o segundo elemento";
+	close;
+
+L_NoJutsu:
+	mes "Você precisa completar seu treinamento de genin antes de avançar";
+	close;
+
+}
+
+
+
+salakage,44,20,3	duplicate(ele)	Segundo Elemento#2	831
+salakagea,44,20,3	duplicate(ele)	Segundo Elemento#3	831

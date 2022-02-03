@@ -1,0 +1,79 @@
+xmas.gat,109,159,5	script	Kinjutsus#h1-1::kinju	59,{
+
+mes "[Invocações]";
+mes "Pergaminho de Kinjutso de Invocação.";
+mes "Quem o tem possui a capacidade de invocar criaturas inimaginavelmente fortes.";
+next;
+mes "Pergaminho que permite a Invocação de Monstros Fortissimos.";
+next;
+mes "[Invocações]";
+mes "^FF0000100^000000 Língua de Réptil";
+mes "^FF000010^000000 União da Tribo";
+mes "^FF000010^000000 Muco Pegajoso";
+mes "^FF0000200^000000 Retrato Velho";
+mes "^FF000010^000000 Lasca de Pedra";
+mes "^FF0000100^000000 Insígnia do Herói";
+mes "^FF000010^000000 Luva do Carrasco";
+mes "^FF000010^000000 Colar da Sabedoria";
+mes "^FF000010^000000 Mandíbula de Formiga";
+mes "^FF000010^000000 Sangue Escarlate";
+mes "^FF000010^000000 Ouro";
+mes "^FF000010^000000 Pesadelo Maternal";
+mes "^FF000010^000000 Foice de Louva-a-Deus";
+next;
+mes "[Invocações]";
+mes "Terminou?";
+next;
+mes "Deixe me ver.";
+next;
+if (countitem(903) < 100) goto SemItem;
+if (countitem(658) < 10) goto SemItem;
+if (countitem(938) < 10) goto SemItem;
+if (countitem(7014) < 200) goto SemItem;
+if (countitem(7211) < 10) goto SemItem;
+if (countitem(968) < 100) goto SemItem;
+if (countitem(7017) < 10) goto SemItem;
+if (countitem(1007) < 10) goto SemItem;
+if (countitem(1014) < 10) goto SemItem;
+if (countitem(990) < 10) goto SemItem;
+if (countitem(969) < 10) goto SemItem;
+if (countitem(7020) < 10) goto SemItem;
+if (countitem(1031) < 10) goto SemItem;
+mes "[Invocações]";
+mes "Você tem todos os itens necessários! Aqui está o seu resultado!";
+next;
+delitem 903,100;
+delitem 658,10;
+delitem 938,10;
+delitem 7014,200;
+delitem 7211,10;
+delitem 968,100;
+delitem 7017,10;
+delitem 1007,10;
+delitem 1014,10;
+delitem 990,10;
+delitem 969,10;
+delitem 7020,10;
+delitem 1031,10;
+getitem 19129,1;
+announce "O Shinobi " + strcharinfo(0) + " Completou a Lendária missão de Kuchiyose no Jutsu!",0;
+mes "[Invocações]";
+mes "Volte Sempre!!";
+close;
+
+
+SemItem:
+next;
+mes "[Invocações]";
+mes "Desculpe, mas você ainda não completou a sua missão!";
+close;
+
+NAO:
+next;
+mes "Você não tem o level necessário para essa missão ou não tem todos os items requeridos";
+close;
+
+}
+
+morocc_in.gat,115,164,5	duplicate(kinju)	Kinjutsus#h2-2	59
+payon_in03.gat,94,130,5	duplicate(kinju)	Kinjutsus#h2-3	59

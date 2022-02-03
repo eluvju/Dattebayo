@@ -1,0 +1,121 @@
+// Filds Konoha
+
+//-----Fild Konoha: pay_fild07 Rank E
+pay_fild07,0,0,0,0	monster	Planta de Konoha	1079,1,600000,600000,0
+pay_fild07,0,0,0,0	monster	Lagarta		1007,100,0,0,0
+pay_fild07,0,0,0,0	monster	Filhote de Javali		1167,100,0,0,0
+pay_fild07,0,0,0,0	monster	Filhote de Coelho		1591,100,0,0,0
+pay_fild07,0,0,0,0	monster	Árvore Morta		1010,100,0,0,0
+
+//-----Fild Konoha: mjolnir_08 Rank E
+
+mjolnir_08,0,0,0,0	monster	Javali		1166,75,0,0,0
+mjolnir_08,0,0,0,0	monster	Guaxinim		1056,75,0,0,0
+mjolnir_08,0,0,0,0	monster	Gato do Mato		1586,75,0,0,0
+//Mini-Boss
+mjolnir_08,0,0,0,0	boss_monster	Macaco		1861,1,1800000,0,0
+
+//-----Fild 03 Konoha:mjolnir_01
+mjolnir_01,0,0,0,0	monster	Borboleta		1018,75,0,0,0
+mjolnir_01,0,0,0,0	monster	Argos		1100,75,0,0,0
+mjolnir_01,0,0,0,0	monster	Planta Carnívora		1118,75,0,0,0
+mjolnir_01,0,0,0,0	monster	Serpente		1747,75,0,0,0
+
+//-----Fild 04 Konoha:mjolnir_10
+
+mjolnir_10,0,0,0,0	monster	Mantis		1139,75,0,0,0
+mjolnir_10,0,0,0,0	monster	Gato selvagem		1261,75,0,0,0
+mjolnir_10,0,0,0,0	monster	Zangão		1303,75,0,0,0
+mjolnir_10,0,0,0,0	monster	Tucano		2073,75,0,0,0
+mjolnir_10,0,0,0,0	monster	Genin		1656,75,0,0,0
+//Mini-Boss
+mjolnir_10,0,0,0,0	boss_monster	Mantis Assassino		1294,1,1800000,0,0
+
+
+//-----Fild 05 Konoha:mjolnir_05
+
+mjolnir_05,0,0,0,0	monster	Planta Venenosa		1216,75,0,0,0
+mjolnir_05,0,0,0,0	monster	Grove		1687,75,0,0,0
+mjolnir_05,0,0,0,0	monster	Escorpião		1387,75,0,0,0
+mjolnir_05,0,0,0,0	monster	Rabo de Verme		1024,75,0,0,0
+mjolnir_05,0,0,0,0	monster	Chunin		1636,75,0,0,0
+
+
+//-----Fild 06 Konoha:mjolnir_11
+
+mjolnir_11,0,0,0,0	monster	Árvore Assassina		1495,75,0,0,0
+mjolnir_11,0,0,0,0	monster	Gorila		1499,75,0,0,0
+mjolnir_11,0,0,0,0	monster	Orangotango		1498,75,0,0,0
+mjolnir_11,0,0,0,0	monster	Demônio Farejador		1773,75,0,0,0
+//Boss
+mjolnir_11,0,0,0,0	boss_monster	Espírito da Floresta		1991,1,3600000,0,0
+
+
+//--------------------- Tanzaku fild1 - cmd_fild01 --------------------------------
+cmd_fild01,0,0,0,0	monster	Urso Albino		1243,75,0,0,0
+cmd_fild01,0,0,0,0	monster	Urso Pardo		1417,75,0,0,0
+cmd_fild01,0,0,0,0	monster	Urso vermelho		1232,75,0,0,0
+//Mini-Boss
+cmd_fild01,0,0,0,0	boss_monster	Urso Raivoso		1306,1,1800000,0,0
+
+//----fild 2 - gef_fild02
+
+gef_fild02,0,0,0,0	monster	Urso Filhote		1622,75,0,0,0
+gef_fild02,0,0,0,0	monster	Urso		1603,75,0,0,0
+gef_fild02,0,0,0,0	monster	Centopéia Vermelha		1099,75,0,0,0
+
+//----fild 3 - gef_fild03 - todos agressivos
+gef_fild03,0,0,0,0	monster	Talo de Verme		1215,75,0,0,0
+gef_fild03,0,0,0,0	monster	Cão demônio		1866,75,0,0,0
+gef_fild03,0,0,0,0	monster	Flor Tóxica		2015,75,0,0,0
+// Boss
+gef_fild03,0,0,0,0	boss_monster	Kiel	1734,1,1800000,0,0
+
+//---fild 4 - gef_fild10 - todos agressivos
+gef_fild10,0,0,0,0	monster	Tengu	1405,75,0,0,0
+gef_fild10,0,0,0,0	monster	Esporo	1014,75,0,0,0
+gef_fild10,0,0,0,0	monster	Esporo Venenoso		1077,75,0,0,0
+// Boss
+gef_fild10,0,0,0,0	boss_monster	Kidd	3096,1,1800000,0,0
+
+
+//--------------------- Fontes Termais ------------------------------------
+
+prt_fild02,0,0,0,0	monster	Suigetsu		1998,75,0,0,0
+prt_fild02,0,0,0,0	monster	Juugo		1996,75,0,0,0
+prt_fild02,0,0,0,0	monster	Sasuke		1999,75,0,0,0
+prt_fild02,0,0,0,0	monster	Karin		1997,75,0,0,0
+
+prt_fild02,0,0,0,0	boss_monster	Yahiko	3598,1,7200000,0,0
+
+//-----fild 7 - um_fild03
+um_fild03,0,0,0,0	monster	Leopardo Filhote		1415,75,0,0,0
+um_fild03,0,0,0,0	monster	Leopardo		2072,75,0,0,0
+um_fild03,0,0,0,0	monster	Onça		1517,75,0,0,0
+//Mini-Boss
+um_fild03,0,0,0,0	boss_monster	Tigre		1115,1,3600000,0,0
+
+//-----fild 8 - moc_fild03
+moc_fild03,0,0,0,0	monster	Golem de Madeira		1497,75,0,0,0
+moc_fild03,0,0,0,0	monster	Varejeira		1042,75,0,0,0
+moc_fild03,0,0,0,0	monster	Lobo		1022,75,0,0,0
+//Boss
+moc_fild03,0,0,0,0	boss_monster	Líder da Matilha		1092,1,3600000,0,0
+
+
+//--------------------------------- País dos Rios ------------------------------------------
+
+//----fild 1 - gef_fild14 - todos agressivos
+gef_fild14,0,0,0,0	monster	Jounin		1634,50,0,0,0
+gef_fild14,0,0,0,0	monster	Byorgue		1839,50,0,0,0
+gef_fild14,0,0,0,0	monster	Shinobi		1401,50,0,0,0
+
+gef_fild14,0,0,0,0	boss_monster	Kisame	3580,1,7200000,0,0
+
+
+//----fild 2 - hu_fild03
+hu_fild03,0,0,0,0	monster	Bandido		1373,50,0,0,0
+hu_fild03,0,0,0,0	monster	Anbu		1635,50,0,0,0
+hu_fild03,0,0,0,0	monster	Cap Anbu		1992,50,0,0,0
+
+hu_fild03,0,0,0,0	boss_monster	Konan	3581,1,7200000,0,0

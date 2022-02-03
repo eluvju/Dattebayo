@@ -1,0 +1,159 @@
+//Author : goddameit(DeathFire)
+//Assist : .g(NihilityFire)
+//Test : .g(ShuraFire)
+//Web : http://www.okay.hk/?fromuser=goddameit
+//Version : 3
+prontera,150,180,4	script	Login diário	990,{
+	function	reward {
+		set Zeny,Zeny+rand(1,10)*1000+rand(0,999);
+		return;
+	}
+	function	se	;
+	function	de	;
+	function	sd	{
+		set @dsp_t2,0;
+		set @dsp_t3,0;
+		set @dsp_t7,0;
+		set @dsp_t1,compare(getarg(0),"a1");
+
+		while(!compare(getarg(0),"a"+@dsp_t1+"b"+@dsp_t2))
+		{
+			set @dsp_t2,@dsp_t2+1;
+			if(@dsp_t2%23==0)sleep2(1);
+		}
+		
+		while(!compare(getarg(0),"d"+@dsp_t3+"e"))
+		{
+			set @dsp_t3,@dsp_t3+1;
+			if(@dsp_t3%53==0)sleep2(1);
+		}
+		
+		if(!compare(getarg(0),"c"+gettime(7)))
+			set @dsp_t3,1;
+		
+		if(@dsp_t3==1)
+			set @dsp_t1,0;
+		
+		if(compare(getarg(0),"a1"))
+		{
+			if(!sqrt(pow(@dsp_t3-gettime(8),2)))
+				set @dsp_t1,1;
+			else
+				set @dsp_t1,0;
+		}
+		
+		if(sqrt(pow(@dsp_t3-gettime(8),2))>1)
+			set @dsp_t3,1;
+			
+		if(@dsp_t3!=1)
+			set @dsp_t3,0;
+			
+		while(!compare(getarg(0),"e"+@dsp_t7+"f"))
+		{
+			set @dsp_t7,@dsp_t7+1;
+			if(@dsp_t7%53==0)sleep2(1);
+		}
+			
+	}
+	mes "Bem vindo ao login diário";
+	mes "Aqui você pode ganhar um premio por logar 7 dias seguidos";
+	mes "Somente 1 char por conta pode se registrar, e o item é intransferível.";
+	mes "o registro no próximo dia é sempre liberado as 01:00 horas";
+	if(#dsp$=="")
+		set #dsp$,"a0b0c"+gettime(7)+"d"+gettime(8)+"e0f";
+	sd(#dsp$);
+	mes "[Você ^FF0000"+(@dsp_t1?"já":"ainda não")+"^000000 registrou]";
+	if(@dsp_t2)
+		mes "[Sequência de "+@dsp_t2+" dias]";
+	switch(select("Acompanhar","Registrar",(getgmlevel()==99?"[Limpar]":"")))
+	{
+		case 1:
+			se();
+		case 2:
+			de();
+		case 3:
+			close2;
+			goto OnClen;
+	}
+	function	de	{
+		close2;
+		if(@dsp_t1)
+		{
+			mes "Você já registrou.";
+			close;
+		}
+		mes "Digite uma frase qualquer";
+		input .@temp$;
+		for(set .@i,0;;set .@i,.@i+1)
+		{
+			if(.@i%37==0)sleep2(1);
+			if(getd("$dps_username_"+.@i+"$")=="")
+				break;
+		}
+		set @dsp_t2,@dsp_t2+1;
+		set @dsp_t7,@dsp_t7+1;
+		if(@dsp_t3==1)
+			set @dsp_t2,1;
+		setd "$dps_username_"+.@i+"$",strcharinfo(0);
+		setd "$dps_usertalk_"+.@i+"$",(.@temp$=="(null)"?"":.@temp$);
+		setd "$dps_usertime_"+.@i+"$",gettime(3)+"h"+gettime(2)+"m"+gettime(1)+"s";
+		setd "$dps_usertims_"+.@i+"$",@dsp_t2;		
+		setd "$dps_usertotl_"+.@i+"$",@dsp_t7;
+		set #dsp$,"a1b"+@dsp_t2+"c"+gettime(7)+"d"+gettime(8)+"e"+@dsp_t7+"f";
+		mes "Pronto";
+		reward();
+		close;
+	}
+	function	se	{
+		function	ti	{
+			if(getarg(0)<10)
+				return "000"+getarg(0);
+			if(getarg(0)<100)
+				return "00"+getarg(0);
+			if(getarg(0)<1000)
+				return "0"+getarg(0);
+			return getarg(0);
+		}
+		close2;
+		while(getd("$dps_username_"+.@i+"$")!="")
+		{
+			if(getd("$dps_usertalk_"+.@i+"$")=="")
+			{
+				set .@i,.@i+1;
+				continue;
+			}
+			mes "[No."+ti(.@i+1)+"]";
+			mes "^FF0000"+getd("$dps_usertime_"+.@i+"$")+" foi o horário que se registrou hoje.";
+			mes "^8B7500'"+getd("$dps_username_"+.@i+"$")+"'";
+			mes "^008B00Disse:'"+getd("$dps_usertalk_"+.@i+"$")+"'^000000";
+			mes "[^008B00Dias seguidos^000000/^FF0000total ^008B00"+getd("$dps_usertims_"+.@i+"$")+"^000000/^FF0000"+getd("$dps_usertotl_"+.@i+"$")+"^000000 dias]";
+			mes "=====================";
+			set .@i,.@i+1;
+			if(.@i%24==0)
+			{
+				if(select("[continue]","[end]")==1)
+					next;
+				else
+					break;
+			}
+		}
+		close;
+	}
+
+OnInit:
+	waitingroom "{[Login diário]}",0;
+OnClock0100:
+
+OnClen:
+
+	while(getd("$dps_username_"+.@i+"$")!="")
+	{
+		setd "$dps_username_"+.@i+"$","";
+		setd "$dps_usertalk_"+.@i+"$","";
+		setd "$dps_usertime_"+.@i+"$","";
+		setd "$dps_usertims_"+.@i+"$","";
+		setd "$dps_usertotl_"+.@i+"$","";
+		set .@i,.@i+1;
+	}
+	end;
+}

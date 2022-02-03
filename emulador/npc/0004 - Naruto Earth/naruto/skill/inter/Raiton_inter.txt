@@ -1,0 +1,137 @@
+//=============================================
+//== Cronus Tools :: Gerador de missão's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+biblioteca,107,70,5	script	Raiton Intermediario	1_m_innkeeper,{
+if(checkquest(30101) == 1) goto skillrait1;
+if(checkquest(30102) == 1) goto skillrait2;
+if(checkquest(30103) == 1) goto skillrait3;
+if(checkquest(30104) == 1) goto skillrait4;
+if(elementoraiton != 1) { mes "[Raiton Intermediario]"; mes "Esse elemento não é de sua natureza"; close;}
+if(treino_nin_inter != 1) { mes "[Raiton Intermediario]"; mes "Você precisa estudar Ninjutsu Intermediario antes de aprender as skills"; close;}
+if(rai_skill_inter >= 3) { mes "[Raiton Intermediario]"; mes "Você já aprendeu três skill de Raiton Intermediario, esse é o limite"; close; }
+	mes "[Raiton Intermediario]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Eu tenho alguns skills de Raiton Intermediario. Interessantes aqui, deseja dar uma olhada?";
+	next;
+	if( select("Sim:Não") == 2 )
+	{
+		mes "[Raiton Intermediario]";	
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Raiton Intermediario]";
+	mes "Lembrando que você tem que fazer as missões na ordem.";
+	next;
+	mes "[Raiton Intermediario]";
+	mes "Bom, estas são as missões que eu tenho...";
+	mes "Sobre qual deles vai querer saber mais?";
+	next;
+	switch(select("^8A0808Adoramus^000000:^8A0808Passos de silfide^000000:^8A0808Kaminariyari^000000"))
+	{
+	case 1:
+		if (ra1 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Adoramus";
+		next;
+		mes "[Raiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Raiton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillrait1:
+		setquest 30101;
+		if(checkquest(30101,hunting) == 2 && countitem(32150) >= 1)
+		{
+			completequest 30101;
+			erasequest 30101;
+			delitem 32150,1;
+			set rai_skill_inter,rai_skill_inter +1;
+			skill 2040,6,3;
+			set ra1,1;
+			mes "[Raiton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		if (ra2 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Passos de silfide";
+		next;
+		mes "[Raiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Raiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Raiton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillrait2:
+		setquest 30102;
+		if(checkquest(30102,hunting) == 2 && countitem(32150) >= 1)
+		{
+			completequest 30102;
+			erasequest 30102;
+			delitem 32150,1;
+			set rai_skill_inter,rai_skill_inter +1;
+			skill 2444,5,3;
+			set ra2,1;
+			mes "[Raiton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 3:
+		if (ra3 == 1) {next; mes "Você ja pegou essa skill"; close;}
+		mes "Recompensa:";
+		mes "Kaminariyari";
+		next;
+		mes "[Raiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		mes "[Raiton Intermediario]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Raiton Intermediario]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		skillrait3:
+		setquest 30103;
+		if(checkquest(30103,hunting) == 2 && countitem(32150) >= 1)
+		{
+			completequest 30103;
+			erasequest 30103;
+			delitem 32150,1;
+			set rai_skill_inter,rai_skill_inter +1;
+			set ra3,1;
+			skill 2454,5,3;
+			mes "[Raiton Intermediario]";
+			mes "Parabéns! Aqui está!";
+			close;
+		}
+		break;
+	case 4:
+		mes "[Raiton Intermediario]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Raiton Intermediario]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de raiton Intermediario.";
+	mes "Volte quando você tiver matado!";
+	close;
+}

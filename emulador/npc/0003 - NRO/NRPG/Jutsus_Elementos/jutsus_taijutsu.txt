@@ -1,0 +1,834 @@
+//===== Cronus Script ======================================== 
+//= Cavaleiro Skill Quest
+//===== Por: =================================================
+//= Lupus, Reddozen
+//= Mehah [Traduziu para PT(br)]
+//===== Versão Atual: ======================================== 
+//= 1.3a
+//============================================================
+
+
+//============================================================
+// Cavaleiro - CHARGE ATTACK
+//============================================================
+payon_in03,28,70,3	script	Professor de Taijutsu#1::taij	819,{
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	if(taijutsusec == 1){mes "Quem é você?? Saia daqui!"; close;}
+	if(elementotaijutsu == 1){goto L_lista;}else{mes "Quem é você?? Saia daqui!"; close;}
+
+	
+	L_lista:
+	mes "Você usuário do elemento Taijutsu, O elemento ardente que tudo destroi!";
+	mes "Gostaria de ver as skills de qual graduação?";
+	menu "- Genin",genintaijutsu,"- Chunin",chunintaijutsu,"- Jounin",jounintaijutsu;
+	
+	
+	genintaijutsu:
+	if(genin != 1) goto L_nogradu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Você que é um genin do elemento Taijutsu, pode aprender os seguintes Jutsus!";
+	menu "- Golpe Fulminante nv 5",skill1taijutsug,"- Ataque Vital nv 5",skill2taijutsug;
+
+	skill1taijutsug:
+	if(Jutsugenin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Genin: Golpe Fulminante nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "200 Pinças de Escorpião";
+	mes "200 Casco Arco- Íris";
+	mes "20 Língua de Reptil";
+	mes "E terá que derrotar 20 Girinos";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsug1,1;	
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7125) < 200) goto L_SemItem;
+	if (countitem(1013) < 200) goto L_SemItem;
+	if (countitem(903) < 20) goto L_SemItem;
+	if(skillg1taijutsumobs < 20) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7125,200;
+	delitem 1013,200;
+	delitem 903,20;
+	skill 5,5,0;
+	set Jutsugenin1,0;
+	set Jutsugenin2,1;
+	set skillg1taijutsumobs,0;
+	set quest_taijutsug1,0;
+	close;
+
+	skill2taijutsug:
+	if(Jutsugenin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Genin: Ataque Vital nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "200 Pinças de Escorpião";
+	mes "150 leites";
+	mes "150 Armadura Destruídas";
+	mes "50 Tendões";
+	mes "E terá que derrotar 20 Morcego";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsug2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7125) < 200) goto L_SemItem;
+	if (countitem(519) < 150) goto L_SemItem;
+	if (countitem(7069) < 150) goto L_SemItem;
+	if (countitem(1050) < 50) goto L_SemItem;
+	if(skillg2taijutsumobs < 20) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7125,200;
+	delitem 519,150;
+	delitem 7069,150;
+	delitem 1050,50;
+	skill 399,5,0;
+	set Jutsugenin2,0;
+	set Jutsuchunin1,1;
+	set skillg2taijutsumobs,0;
+	set quest_taijutsug2,0;
+	close;
+	
+	
+	chunintaijutsu:
+	if(chunin != 1) goto L_nogradu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Você que é um chunin do elemento Taijutsu, pode aprender os seguintes Jutsus!";
+	menu "- Golpe Fulminante nv 10",skill1taijutsuc,"- Ataque Vital nv 15",skill2taijutsuc,"- Mamonita nv 10",skill3taijutsuc,"- Lâminas Destruidoras nv 10",skill4taijutsuc;
+
+	skill1taijutsuc:
+	if(Jutsuchunin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Golpe Fulminante nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "200 Shuriken Gasto";
+	mes "100 Ovas de Sapo";
+	mes "150 Patas de Besouro";
+	mes "300 Casco Arco –Íris";
+	mes "100 Garras de Rato";
+	mes "20 União da Tribo";
+	mes "E matar 50 Ratasanas";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuc1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7072) < 200) goto L_SemItem;
+	if (countitem(908) < 100) goto L_SemItem;
+	if (countitem(7202) < 150) goto L_SemItem;
+	if (countitem(1013) < 300) goto L_SemItem;
+	if (countitem(7007) < 100) goto L_SemItem;
+	if (countitem(658) < 20) goto L_SemItem;
+	if(skillc1taijutsumobs < 50) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7072,200;
+	delitem 908,100;
+	delitem 7202,150;
+	delitem 1013,300;
+	delitem 7007,100;
+	delitem 658,20;
+	skill 5,10,0;
+	set Jutsuchunin1,0;
+	set Jutsuchunin2,1;
+	set skillc1taijutsumobs,0;
+	set quest_taijutsuc1,0;
+	close;
+
+	skill2taijutsuc:
+	if(Jutsuchunin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Ataque Vital nv 15";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "150 Língua de Reptil";
+	mes "400 Garra de Lobo do Deserto";
+	mes "200 Teia de Aranha";
+	mes "300 Antenas de Inseto";
+	mes "50 Gema Vermelha";
+	mes "50 Galertas";
+	mes "30 Minhoca Boa Pinta";
+	mes "E matar 30 Barata Macho";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuc2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(903) < 150) goto L_SemItem;
+	if (countitem(7030) < 400) goto L_SemItem;
+	if (countitem(1025) < 200) goto L_SemItem;
+	if (countitem(928) < 300) goto L_SemItem;
+	if (countitem(716) < 50) goto L_SemItem;
+	if (countitem(910) < 50) goto L_SemItem;	
+	if (countitem(623) < 30) goto L_SemItem;		
+	if(skillc2taijutsumobs < 30) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 903,150;
+	delitem 7030,400;
+	delitem 1025,200;
+	delitem 928,300;
+	delitem 716,50;
+	delitem 910,50;
+	delitem 623,30;
+	skill 399,15,0;
+	set Jutsuchunin2,0;
+	set Jutsuchunin3,1;
+	set skillc2taijutsumobs,0;
+	set quest_taijutsuc2,0;
+	close;
+
+	skill3taijutsuc:
+	if(Jutsuchunin3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Mamonita nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "500 Patas Pegajosas";
+	mes "300 Retrato Velhos";
+	mes "300 Tranças";
+	mes "50 Luvas do Carrasco";
+	mes "50 Vida Verdejantes";
+	mes "150 Avelãs";
+	mes "15 Coração Imortal";
+	mes "E matar 50 Operários";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuc3,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(918) < 500) goto L_SemItem;
+	if (countitem(7014) < 300) goto L_SemItem;
+	if (countitem(901) < 300) goto L_SemItem;
+	if (countitem(7017) < 50) goto L_SemItem;
+	if (countitem(993) < 50) goto L_SemItem;
+	if (countitem(1026) < 150) goto L_SemItem;
+	if (countitem(929) < 15) goto L_SemItem;
+	if(skillc3taijutsumobs < 50) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 918,500;
+	delitem 7014,300;
+	delitem 901,300;
+	delitem 7017,50;
+	delitem 993,50;
+	delitem 1026,150;
+	delitem 929,15;
+	skill 42,10,0;
+	set Jutsuchunin3,0;
+	set Jutsuchunin4,1;
+	set skillc3taijutsumobs,0;
+	set quest_taijutsuc3,0;
+	close;
+
+	skill4taijutsuc:
+	if(Jutsuchunin4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Chunin: Lâminas Destruidoras nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "20 Espetos Quebrados";
+	mes "300 Ossos";
+	mes "300 Escamas Brilhantes";
+	mes "200 galho";
+	mes "150 algemas";
+	mes "300 Sangue de animal";
+	mes "100 raiz marrom";
+	mes "E matar 50 Escaravelhos";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuc4,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7215) < 20) goto L_SemItem;
+	if (countitem(932) < 300) goto L_SemItem;
+	if (countitem(954) < 300) goto L_SemItem;
+	if (countitem(7203) < 200) goto L_SemItem;
+	if (countitem(1098) < 150) goto L_SemItem;
+	if (countitem(702) < 300) goto L_SemItem;
+	if (countitem(7188) < 100) goto L_SemItem;
+	if(skillc4taijutsumobs < 50) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7215,20;
+	delitem 932,300;
+	delitem 954,300;
+	delitem 7203,200;
+	delitem 1098,150;
+	delitem 702,300;
+	delitem 7188,100;
+	skill 136,10,0;
+	set Jutsuchunin4,0;
+	set Jutsujounin1,1;
+	set skillc4taijutsumobs,0;
+	set quest_taijutsuc4,0;
+	close;
+
+
+	jounintaijutsu:
+	if(jounin != 1) goto L_nogradu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Você que é um Jounin do elemento Taijutsu, pode aprender os seguintes Jutsus!";
+	menu "- Virar Tatami nv 5",skill1taijutsuj,"- Lâminas Destruidoras nv 15",skill2taijutsuj,"- Chakra no Mesu nv 5",skill3taijutsuj,"- Tsuuten Kyaku nv 10",skill4taijutsuj,"- Choque Rápido nv 10",skill5taijutsuj,"- Omote Renge nv 5",skill6taijutsuj;
+
+	skill1taijutsuj:
+	if(Jutsujounin1 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Virar Tatami nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "500 Bandagem Estragada";
+	mes "150 pernas de gafanhoto";
+	mes "150 Muco Pegajoso";
+	mes "100 Ametista";
+	mes "200 Casca Quebrada";
+	mes "200 Asas de Libélula";
+	mes "E matar 30 Gremlins";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuj1,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(930) < 500) goto L_SemItem;
+	if (countitem(940) < 150) goto L_SemItem;
+	if (countitem(938) < 150) goto L_SemItem;
+	if (countitem(719) < 100) goto L_SemItem;
+	if (countitem(7070) < 200) goto L_SemItem;
+	if (countitem(7064) < 200) goto L_SemItem;
+	if(skillj1taijutsumobs < 30) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 930,500;
+	delitem 940,150;
+	delitem 938,150;
+	delitem 719,100;
+	delitem 7070,200;
+	delitem 7064,200;
+	skill 527,5,0;
+	set Jutsujounin1,0;
+	set Jutsujounin2,1;
+	set skillj1taijutsumobs,0;
+	set quest_taijutsuj1,0;
+	close;
+
+	skill2taijutsuj:
+	if(Jutsujounin2 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Lâminas Destruidoras nv 15";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "800 Garras de Leopardo";
+	mes "400 Sopa de Tinta de Lula e Ovos de Sapo";
+	mes "300 Lamina Perdida das Trevas";
+	mes "500 Mascara Ninja";
+	mes "400 Mascara do Festival";
+	mes "400 gás tóxico";
+	mes "E matar 40 Gafanhotos";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuj2,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7172) < 800) goto L_SemItem;
+	if (countitem(12056) < 400) goto L_SemItem;
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7157) < 500) goto L_SemItem;
+	if (countitem(7187) < 400) goto L_SemItem;
+	if (countitem(7322) < 400) goto L_SemItem;
+	if(skillj2taijutsumobs < 40) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7172,800;
+	delitem 12056,400;
+	delitem 7023,300;
+	delitem 7157,500;
+	delitem 7187,400;
+	delitem 7322,400;
+	skill 136,10,0;
+	set Jutsujounin2,0;
+	set Jutsujounin3,1;
+	set skillj2taijutsumobs,0;
+	set quest_taijutsuj2,0;
+	close;
+
+	skill3taijutsuj:
+	if(Jutsujounin3 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Chakra no Mesu nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "400 Esfera das Sombras";
+	mes "50 Cachimbo";
+	mes "300 Pedra do Sabio";
+	mes "500 Cyfar";
+	mes "200 Pedra do Pesadelo";
+	mes "200 Insígnia de Herói";
+	mes "300 rosa eterna";
+	mes "E matar 30 Ninkames";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuj3,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7524) < 400) goto L_SemItem;
+	if (countitem(2268) < 50) goto L_SemItem;
+	if (countitem(12040) < 300) goto L_SemItem;
+	if (countitem(7053) < 500) goto L_SemItem;
+	if (countitem(7102) < 200) goto L_SemItem;
+	if (countitem(968) < 200) goto L_SemItem;
+	if (countitem(748) < 300) goto L_SemItem;
+	if(skillj3taijutsumobs < 30) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7524,400;
+	delitem 2268,50;
+	delitem 12040,300;
+	delitem 7053,500;
+	delitem 7102,200;
+	delitem 968,200;
+	delitem 748,300;
+	skill 266,5,0;
+	set Jutsujounin3,0;
+	set Jutsujounin4,1;
+	set skillj1taijutsumobs,0;
+	set quest_taijutsuj3,0;
+	close;
+
+	skill4taijutsuj:
+	if(Jutsujounin4 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Tsuuten Kyaku nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "400 Relógio de Bolso";
+	mes "400 Bracelete da Obediência";
+	mes "400 Ba Gua";
+	mes "300 Esmeralda";
+	mes "400 Garra de Macaco";
+	mes "500 Cabelos Horrendos";
+	mes "300 lanterna";
+	mes "E matar 40 Doki's";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuj4,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7513) < 400) goto L_SemItem;
+	if (countitem(639) < 400) goto L_SemItem;
+	if (countitem(7169) < 400) goto L_SemItem;
+	if (countitem(721) < 300) goto L_SemItem;
+	if (countitem(7011) < 400) goto L_SemItem;
+	if (countitem(1048) < 500) goto L_SemItem;
+	if (countitem(7191) < 300) goto L_SemItem;
+	if(skillj4taijutsumobs < 40) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7513,400;
+	delitem 639,400;
+	delitem 7169,400;
+	delitem 721,300;
+	delitem 7011,400;
+	delitem 1048,500;
+	delitem 7191,300;
+	skill 62,10,0;
+	set Jutsujounin4,0;
+	set Jutsujounin5,1;
+	set skillj4taijutsumobs,0;
+	set quest_taijutsuj4,0;
+	close;
+
+	skill5taijutsuj:
+	if(Jutsujounin5 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Choque Rápido nv 10";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "300 Colar do Oblívio";
+	mes "500 Fragmento da Desgraça";
+	mes "500 Selo Maldito";
+	mes "30 Plantas da Névoa";
+	mes "30 plantas de Konoha";
+	mes "30 Plantas da Suna";
+	mes "10 Símbolo do Guerreiro";
+	mes "20 Ouros";
+	mes "E matar 40 Camaleon's";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuj5,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(1008) < 300) goto L_SemItem;
+	if (countitem(7437) < 500) goto L_SemItem;
+	if (countitem(7442) < 500) goto L_SemItem;
+	if (countitem(710) < 30) goto L_SemItem;
+	if (countitem(712) < 30) goto L_SemItem;
+	if (countitem(704) < 30) goto L_SemItem;
+	if (countitem(7484) < 10) goto L_SemItem;
+	if (countitem(969) < 20) goto L_SemItem;
+	if(skillj5taijutsumobs < 40) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 1008,300;
+	delitem 7437,500;
+	delitem 7442,500;
+	delitem 710,30;
+	delitem 712,30;
+	delitem 704,30;
+	delitem 7484,10;
+	delitem 969,20;
+	skill 488,10,0;
+	set Jutsujounin5,0;
+	set Jutsujounin6,1;
+	set skillj5taijutsumobs,0;
+	set quest_taijutsuj5,0;
+	close;
+
+	skill6taijutsuj:
+	if(Jutsujounin6 != 1) goto L_NoJutsu;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Olá Shinobi, Vou lhe ensinar o Jutsu de Jounin: Omote Renge nv 5";
+	mes "Neste treinamento você terá que pegar os seguintes itens:";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "300 Lamina Perdida das Trevas";
+	mes "300 Fragmento da Desgraça";
+	mes "20 Plantas da Névoa";
+	mes "20 plantas de Konoha";
+	mes "20 Plantas da Suna";
+	mes "15 símbolo de guerreiro";
+	mes "10 Fragmento de Espírito";
+	mes "40 ouro";
+	mes "E matar 40 Jounin";
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Vá! e faça seu treinamento!";
+	set quest_taijutsuj6,1;
+	mes "Eu sou meio esquecido, não lembro se você passou aqui.";	
+	mes "Então vou checar se você ja completou o treinamento";
+	if (countitem(7023) < 300) goto L_SemItem;
+	if (countitem(7437) < 300) goto L_SemItem;
+	if (countitem(710) < 20) goto L_SemItem;
+	if (countitem(712) < 20) goto L_SemItem;
+	if (countitem(704) < 20) goto L_SemItem;
+	if (countitem(7484) < 15) goto L_SemItem;
+	if (countitem(7306) < 10) goto L_SemItem;
+	if (countitem(969) < 40) goto L_SemItem;
+	if(skillj6taijutsumobs < 40) goto L_SemItem;
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Párabens, Você completou seu treinamento!";
+	delitem 7023,300;
+	delitem 7437,300;
+	delitem 710,20;
+	delitem 712,20;
+	delitem 704,20;
+	delitem 7484,15;
+	delitem 7306,10;
+	delitem 969,40;
+	skill 368,20,0;
+	set Jutsujounin6,0;
+	set Jutsujounin7,1;
+	set skillj5taijutsumobs,0;
+	set quest_taijutsuj5,0;
+	close;
+
+
+L_SemItem:
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Você não possui os requisitos do treinamento.";
+	mes "Volte quando tiver todos!.";
+	close;
+		
+L_nogradu:
+	next;
+	mes "Você não é desta graduação.";
+	emotion e_gasp;
+	close;
+
+L_alreadyhave:
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Eu já o ensinei";
+	mes "tudo que eu sei...";
+	close;
+
+L_NoJutsu:
+	next;
+	mes "[^FF0000Professor de Taijutsu^000000]";
+	mes "Você não está preparado para este Jutsu ainda ou ja fez este treinamento!";
+	close;
+}
+
+
+-	script	OnNPCKill_taijutsug1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsug1 == 1){goto taijutsu_g1;} else {end;}
+
+taijutsu_g1:
+switch (killedrid) {
+case 1034:
+set skillg1taijutsumobs, skillg1taijutsumobs + 1;
+dispbottom "Você ja matou "+skillg1taijutsumobs+" Girino(s)";
+end;
+
+}
+}
+
+-	script	OnNPCKill_taijutsug2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsug2 == 1){goto taijutsu_g2;} else {end;}
+
+taijutsu_g2:
+switch (killedrid) {
+case 1005:
+set skillg2taijutsumobs, skillg2taijutsumobs + 1;
+dispbottom "Você ja matou "+skillg2taijutsumobs+" Morcego(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuc1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuc1 == 1){goto taijutsu_c1;} else {end;}
+
+taijutsu_c1:
+switch (killedrid) {
+case 1209:
+set skillc1taijutsumobs, skillc1taijutsumobs + 1;
+dispbottom "Você ja matou "+skillc1taijutsumobs+" Ratasana(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuc2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuc2 == 1){goto taijutsu_c2;} else {end;}
+
+taijutsu_c2:
+switch (killedrid) {
+case 1053:
+set skillc2taijutsumobs, skillc2taijutsumobs + 1;
+dispbottom "Você ja matou "+skillc2taijutsumobs+" Barata(s) Macho";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuc3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuc3 == 1){goto taijutsu_c3;} else {end;}
+
+taijutsu_c3:
+switch (killedrid) {
+case 1169:
+set skillc3taijutsumobs, skillc3taijutsumobs + 1;
+dispbottom "Você ja matou "+skillc3taijutsumobs+" Operário(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuc4	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuc4 == 1){goto taijutsu_c4;} else {end;}
+
+taijutsu_c4:
+switch (killedrid) {
+case 1211:
+set skillc4taijutsumobs, skillc4taijutsumobs + 1;
+dispbottom "Você ja matou "+skillc4taijutsumobs+" Escaravelho(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuj1	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuj1 == 1){goto taijutsu_j1;} else {end;}
+
+taijutsu_j1:
+switch (killedrid) {
+case 1632:
+set skillj1taijutsumobs, skillj1taijutsumobs + 1;
+dispbottom "Você ja matou "+skillj1taijutsumobs+" Gremlin(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuj2	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuj2 == 1){goto taijutsu_j2;} else {end;}
+
+taijutsu_j2:
+switch (killedrid) {
+case 1058:
+set skillj2taijutsumobs, skillj2taijutsumobs + 1;
+dispbottom "Você ja matou "+skillj2taijutsumobs+" Gafanhoto(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuj3	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuj3 == 1){goto taijutsu_j3;} else {end;}
+
+taijutsu_j3:
+switch (killedrid) {
+case 1315:
+set skillj3taijutsumobs, skillj3taijutsumobs + 1;
+dispbottom "Você ja matou "+skillj3taijutsumobs+" Ninkame(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuj4	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuj4 == 1){goto taijutsu_j4;} else {end;}
+
+taijutsu_j4:
+switch (killedrid) {
+case 1177:
+set skillj4taijutsumobs, skillj4taijutsumobs + 1;
+dispbottom "Você ja matou "+skillj4taijutsumobs+" Doki(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuj5	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuj5 == 1){goto taijutsu_j5;} else {end;}
+
+taijutsu_j5:
+switch (killedrid) {
+case 1831:
+set skillj5taijutsumobs, skillj5taijutsumobs + 1;
+dispbottom "Você ja matou "+skillj5taijutsumobs+" Camaleon(s)";
+
+end;
+
+
+}
+}
+
+-	script	OnNPCKill_taijutsuj6	-1,{
+
+OnNPCKillEvent:
+
+if(quest_taijutsuj6 == 1){goto taijutsu_j6;} else {end;}
+
+taijutsu_j6:
+switch (killedrid) {
+case 1634:
+set skillj6taijutsumobs, skillj6taijutsumobs + 1;
+dispbottom "Você ja matou "+skillj6taijutsumobs+" Jounin(s)";
+
+end;
+
+
+}
+}
+
+morocc_in,41,173,4	duplicate(taij)	Professor de Taijutsu#1	819
+payon_in01,16,127,4	duplicate(taij)	Professor de Taijutsu#2	819
+prt_monk,166,229,4	duplicate(taij)	Professor de Taijutsu#3	819

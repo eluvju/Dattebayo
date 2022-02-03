@@ -1,0 +1,14 @@
+aldeg_cas04,133,215,4	script	Iruka Umino	426,{
+
+mes "Olá shinobi, vamos dar seguimento aos principios basicos de um ninja!";
+mes "Aqui nesse lugar, você tomara uma decisão muito importante quando se refere a vila, aqui será o lugar que irá determinar sua vida como ninja";
+mes "Então antes de escolher pense bastante sobre qual você irá escolher porque é uma escolha sem volta viu?!";
+mes "Depois que voce escolhe sua vila, você irá está destinado a viver dentro dos principios postos pelo Kage de sua vila!";
+mes "Existe boatos que uma certa vez uma pessoa que por algum motivo ganacioso estava em busca de poder, e reijeitando o sistema posto por seu Kage..";
+mes "... roubou um pergaminho proibido e rejeitou sua vila e começou a viver como um renegado, logo o kage quando soube da noticia, muito entristecido com o acontecimento..";
+mes "..não teve outra opção se nao por seus mais bem treinados ninjas denominados Anbus em busca desse rapaz, oferencendo até mesmo um premio para quem conseguir recuperar..";
+mes ".. esse documento que contem segredos da vila, então sem mais historias.. Pense bem! O Destino é feito através das suas escolhas...";
+
+close;
+
+}

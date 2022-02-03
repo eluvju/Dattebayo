@@ -1,0 +1,106 @@
+-	script	on_PC_UseSkilltai16	-1,{
+    end;
+//When a Character uses a skill
+
+//Gutten
+
+onPcUseSkillEvent:
+
+           if(lskillid == 136) {
+
+
+if (getskilllv(136) == 1) {
+
+if (Gutten != 1) {end;}
+if (skill136 >= 50) {skill 136,2,0; set skill136,0; dispbottom "[Sys] Level up"; end; }
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 1: "+skill136+" de 50";
+
+end;
+
+}
+
+if (getskilllv(136) == 2) {
+if (Gutten != 1) {end;}
+if (skill136 >= 100) {skill 136,3,0; set skill136,0; dispbottom "[Sys] Level up"; end;}
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 2: "+skill136+" de 100";
+
+end;
+
+}
+
+if (getskilllv(136) == 3) {
+
+if (Gutten != 1) {end;}
+if (skill136 >= 150) {skill 136,4,0; set skill136,0; dispbottom "[Sys] Level up"; end;}
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 3: "+skill136+" de 150";
+
+end;
+
+}
+
+if (getskilllv(136) == 4) {
+if (Gutten != 1) {end;}
+if (skill136 >= 200) {skill 136,5,0; set skill136,0; dispbottom "[Sys] Level up"; end;}
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 4: "+skill136+" de 200";
+
+end;
+
+}
+
+if (getskilllv(136) == 5) {
+if (Gutten != 1) {end;}
+if (skill136 >= 250) {skill 136,6,0; set skill136,0; dispbottom "[Sys] Level up"; end;}
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 5: "+skill136+" de 250";
+
+end;
+
+}
+
+if (getskilllv(136) == 6) {
+if (Gutten != 1) {end;}
+if (skill136 >= 300) {skill 136,7,0; set skill136,0; dispbottom "[Sys] Level up"; end;}
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 6: "+skill136+" de 300";
+
+end;
+
+}
+
+if (getskilllv(136) == 7) {
+if (Gutten != 1) {end;}
+if (skill136 >= 400) {skill 136,8,0; set skill136,0; dispbottom "[Sys] Level up"; end;}
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 7: "+skill136+" de 400";
+
+end;
+
+}
+
+if (getskilllv(136) == 8) {
+if (Gutten != 1) {end;}
+if (skill136 >= 500) {skill 136,9,0; set skill136,0; dispbottom "[Sys] Level up"; end;}
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 8: "+skill136+" de 500";
+
+end;
+
+}
+
+if (getskilllv(136) == 9) {
+if (Gutten != 1) {end;}
+if (skill136 >= 700) {skill 136,10,0; set skill136,0; dispbottom "[Sys] Level up"; end;}
+set skill136,skill136 +1;
+dispbottom "[Jutsu level] Hakkeshou Gutten level 9: "+skill136+" de 700";
+
+end;
+
+}
+
+                end;
+            }    
+}

@@ -1,0 +1,41 @@
+kakashi,84,92,5	script	Shinobi Misterioso#2	831,{
+
+if (checkquest(3054) == 1) goto L_go;
+if (getskilllv(426)) {mes "Você já sabe esse jutsu"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+mes "Ei.. você!";
+mes "Aposto que você não sabe esse jutsu que eu sei, haha sou melhor que você, eu sei o salto ninja e você não!";
+next;
+mes "Mas como eu sou educado, eu vou lhe ensinar, porque um dia eu quero ser o kage da minha vila";
+next;
+mes "Gostaria de aprender?";
+menu "Sim, eu quero",L_GI,"Agora não",L_no;
+
+//========================================================================
+//	Gian
+//========================================================================
+
+L_GI:
+mes "Pra realizar esse treinamento você precisa fazer o seguinte:";
+mes "Pegar 60 Rabos de Cobra";
+setquest 3054;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(934) < 60) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 934,60;
+skill 426,5,0;
+completequest 3054;
+erasequest 3054;
+announce "[Jutsu Rank E] "+strcharinfo(0)+" completou a quest do salto ninja",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+}

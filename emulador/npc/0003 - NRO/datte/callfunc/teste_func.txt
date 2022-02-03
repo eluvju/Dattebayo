@@ -1,0 +1,3090 @@
+function	script	kg_byakugan	{
+if (byakugan == 1) {bonus bSpeedAddRate,5; skill 7,10; skill 263,10; skill 272,10; bonus2 bAddRace,RC_NonBoss,5; bonus2 bAddRace,RC_Boss,5; bonus2 bAddRace2,5,5;}
+if (byakugan == 2) {bonus bSpeedAddRate,5; skill 7,10; skill 263,10; skill 272,10; skill 273,10; bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10;}
+if (byakugan == 3) {bonus bSpeedAddRate,5; skill 7,10; skill 263,10; skill 272,10; skill 273,10; skill 371,10; bonus2 bAddRace,RC_NonBoss,15; bonus2 bAddRace,RC_Boss,15; bonus2 bAddRace2,5,15;}
+if (byakugan == 4) {bonus bSpeedAddRate,5; skill 7,10; skill 263,10; skill 272,10; skill 273,10; skill 371,10; skill 949,1; bonus2 bAddRace,RC_NonBoss,20; bonus2 bAddRace,RC_Boss,20; bonus2 bAddRace2,5,20; bonus3 bAutoSpell,"MO_CALLSPIRITS",1,1000; skill 375,5; skill 372,10;}
+end;
+}
+
+function	script	KG_SELO1	{
+if (SELO1 == 1) {bonus bMatkRate,8;}
+if (SELO1 == 2) {skill 531,1; bonus bMatkRate,14;}
+if (SELO1 == 3) {skill 531,1; skill 374,1; bonus bMatkRate,20;}
+if (SELO1 == 4) {skill 531,2; skill 749,1; skill 374,1; bonus bMatkRate,26;}
+end;
+}
+
+function	script	KG_SELO2	{
+if (SELO2 == 1) { bonus bStr,4; bonus bAgi,4; bonus2 bAddRace,RC_NonBoss,5; bonus2 bAddRace,RC_Boss,5; bonus2 bAddRace2,5,5;}
+if (SELO2 == 2) { skill 1001,1; bonus bStr,8; bonus bAgi,8; bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10;}
+if (SELO2 == 3) { skill 146,1; skill 1001,1; bonus bStr,12; bonus bAgi,12; bonus2 bAddRace,RC_NonBoss,15; bonus2 bAddRace,RC_Boss,15; bonus2 bAddRace2,5,15;}
+if (SELO2 == 4) { skill 146,1; skill 1001,1; bonus bStr,16; bonus bAgi,16; skill 750,1; bonus2 bAddRace,RC_NonBoss,20; bonus2 bAddRace,RC_Boss,20; bonus2 bAddRace2,5,20;}
+end;
+}
+
+function	script	KG_GELO	{
+if (GELO == 1) {  bonus bMatkRate,10; bonus bAgi,5; skill 763,1;}
+if (GELO == 2) {  bonus bMatkRate,15; bonus bAgi,10; skill 763,1;}
+if (GELO == 3) {  bonus bMatkRate,25; bonus bAgi,15; skill 763,1;}
+if (GELO == 4) {  skill 278,10; skill 403,1; skill 763,1; bonus bMatkRate,33; bonus bAgi,20; skill 135,1; bonus bSpeedAddRate,5;}
+end;
+}
+
+function	script	ROMARIO	{
+if (NARA2 == 1) {bonus bMatkRate,7; bonus2 bAddRace,RC_NonBoss,7; bonus2 bAddRace,RC_Boss,7; bonus2 bAddRace2,5,7;}
+if (NARA2 == 2) {bonus bMatkRate,13; bonus2 bAddRace,RC_NonBoss,13; bonus2 bAddRace,RC_Boss,13; bonus2 bAddRace2,5,13; skill 190,1; skill 269,1;}
+if (NARA2 == 3) {bonus bMatkRate,17; bonus2 bAddRace,RC_NonBoss,17; bonus2 bAddRace,RC_Boss,17; bonus2 bAddRace2,5,17; skill 190,5; skill 269,1;}
+if (NARA2 == 4) {bonus bMatkRate,25; bonus2 bAddRace,RC_NonBoss,25; bonus2 bAddRace,RC_Boss,25; bonus2 bAddRace2,5,25; skill 190,7; skill 269,1; skill 752,1;}
+end;
+}
+
+function	script	kg_AKIMICHI	{
+if (AKIMICHI == 1) {bonus2 bAddRace,RC_NonBoss,5; bonus2 bAddRace,RC_Boss,5; bonus2 bAddRace2,5,5; bonus bStr,10; bonus bHPrecovRate,10;}
+if (AKIMICHI == 2) {bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10; bonus bStr,13; bonus bHPrecovRate,15; skill 753,1;}
+if (AKIMICHI == 3) {bonus2 bAddRace,RC_NonBoss,15; bonus2 bAddRace,RC_Boss,15; bonus2 bAddRace2,5,15; bonus bStr,16; bonus bHPrecovRate,20; skill 753,1; skill 754,1;}
+if (AKIMICHI == 4) {bonus2 bAddRace,RC_NonBoss,20; bonus2 bAddRace,RC_Boss,20; bonus2 bAddRace2,5,20; bonus bStr,20; bonus bHPrecovRate,25; skill 753,1; skill 754,1; skill 755,1;}
+
+
+//if (AKIMICHI == 1) {bonus bMaxHPrate,10; bonus2 bAddRace,RC_NonBoss,5; bonus2 bAddRace,RC_Boss,5; bonus2 bAddRace2,5,5;}
+//if (AKIMICHI == 2) {skill 753,1; bonus bMaxHPrate,17; bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10; bonus bSpeedAddRate,20;}
+//if (AKIMICHI == 3) {skill 753,1; skill 754,1; bonus bMaxHPrate,24; bonus2 bAddRace,RC_NonBoss,15; bonus2 bAddRace,RC_Boss,15; bonus2 bAddRace2,5,15; bonus bSpeedAddRate,23;}
+//if (AKIMICHI == 4) {skill 753,1; skill 754,1; skill 755,1; bonus bMaxHPrate,30; bonus2 bAddRace,RC_NonBoss,20; bonus2 bAddRace,RC_Boss,20; bonus2 bAddRace2,5,20; bonus bSpeedAddRate,26;}
+end;
+}
+
+//function	script	kg_MARIONETE	{
+//if (MARIONETE == 1) {bonus2 bSCDamage,SC_POISON,10; bonus2 bSubEle,Ele_Ghost,1; bonus2 bSubEle,Ele_Fire,1; bonus2 bSubEle,Ele_Water,1; bonus2 bSubEle,Ele_Wind,1; bonus2 bSubEle,Ele_Earth,1; bonus2 bSubEle,Ele_Holy,1; bonus2 bSubEle,Ele_Poison,1; bonus2 bSubEle,Ele_Dark,1;  skill 247,5; skill 744,4; skill 71,4; bonus bVit,10;}
+//if (MARIONETE == 2) {bonus2 bSCDamage,SC_POISON,20; bonus2 bSubEle,Ele_Ghost,2; bonus2 bSubEle,Ele_Fire,2; bonus2 bSubEle,Ele_Water,2; bonus2 bSubEle,Ele_Wind,2; bonus2 bSubEle,Ele_Earth,2; bonus2 bSubEle,Ele_Holy,2; bonus2 bSubEle,Ele_Poison,2; bonus2 bSubEle,Ele_Dark,2; skill 247,5; skill 744,4; skill 745,4; skill 71,4; bonus bVit,15;}
+//if (MARIONETE == 3) {bonus2 bSCDamage,SC_POISON,30; bonus2 bSubEle,Ele_Ghost,3; bonus2 bSubEle,Ele_Fire,3; bonus2 bSubEle,Ele_Water,3; bonus2 bSubEle,Ele_Wind,3; bonus2 bSubEle,Ele_Earth,3; bonus2 bSubEle,Ele_Holy,3; bonus2 bSubEle,Ele_Poison,3; bonus2 bSubEle,Ele_Dark,3; skill 247,5; skill 744,4; skill 745,4; skill 746,4; skill 71,4; bonus bVit,20;}
+//if (MARIONETE == 4) {skill 139,10; skill 141,10; bonus2 bSCDamage,SC_POISON,40; bonus2 bSubEle,Ele_Ghost,5; bonus2 bSubEle,Ele_Fire,5; bonus2 bSubEle,Ele_Water,5; bonus2 bSubEle,Ele_Wind,5; bonus2 bSubEle,Ele_Earth,5; bonus2 bSubEle,Ele_Holy,5; bonus2 bSubEle,Ele_Poison,5; bonus2 bSubEle,Ele_Dark,5; skill 243,1; skill 247,5; skill 744,4; skill 745,4; skill 746,4; skill 71,4; bonus bVit,30; skill 244,1;}
+//end;
+//}
+
+function	script	kg_MARIONETE	{
+if (MARIONETE == 1) {if (marionete_nivel_1 > 0) {skill marionete_nivel_1,1;}} // Caminho Roxo
+
+if (MARIONETE == 2) {if (marionete_nivel_1 > 0) {skill marionete_nivel_1,1;} if (marionete_nivel_2 > 0) {skill marionete_nivel_2,1;}} // Caminho Roxo
+
+if (MARIONETE == 3) {if (marionete_nivel_1 > 0) {skill marionete_nivel_1,1;} if (marionete_nivel_2 > 0) {skill marionete_nivel_2,1;} if (marionete_nivel_3 > 0) {skill marionete_nivel_3,1;}} // Caminho Roxo
+
+if (MARIONETE_4_1 == 1) {if (marionete_nivel_1 > 0) {skill marionete_nivel_1,1;} if (marionete_nivel_2 > 0) {skill marionete_nivel_2,1;} if (marionete_nivel_3 > 0) {skill marionete_nivel_3,1;} if (marionete_roxa > 0) {skill marionete_roxa,1;} bonus bMaxHPrate,-10;  bonus2 bSubEle,Ele_Ghost,-5; bonus2 bSubEle,Ele_Fire,-5; bonus2 bSubEle,Ele_Water,-5; bonus2 bSubEle,Ele_Wind,-5; bonus2 bSubEle,Ele_Earth,-5; bonus2 bSubEle,Ele_Holy,-5; bonus2 bSubEle,Ele_Poison,-5; bonus2 bSubEle,Ele_Dark,-5; bonus bLuk,30; bonus2 bSCDamage,SC_POISON,30;} //Linha Roxa - Melhoramento da marionete
+if (MARIONETE_4_2 == 1) {if (linha_vermelha == 1) {skill 964,1;} if (linha_vermelha == 2) {skill 965,1;} skill 379,10; bonus bLuk,20; bonus bVit,30; bonus bCastRate,-5; bonus2 bSCDamage,SC_POISON,25;} // Linha Vermelha - Duas ativações
+if (MARIONETE_4_3 == 1) {if (marionete_nivel_1 > 0) {skill marionete_nivel_1,1;} if (marionete_nivel_2 > 0) {skill marionete_nivel_2,1;} if (marionete_nivel_3 > 0) {skill marionete_nivel_3,1;} bonus bCastRate,-5; bonus bLuk,25; bonus bDex,20; bonus bVit,25; bonus2 bSubEle,Ele_Ghost,7; bonus2 bSubEle,Ele_Fire,7; bonus2 bSubEle,Ele_Water,7; bonus2 bSubEle,Ele_Wind,7; bonus2 bSubEle,Ele_Earth,7; bonus2 bSubEle,Ele_Holy,7; bonus2 bSubEle,Ele_Poison,7; bonus2 bSubEle,Ele_Dark,7; bonus bMatkRate,-7; bonus2 bAddRace,RC_NonBoss,-7; bonus2 bAddRace,RC_Boss,-7; bonus2 bAddRace2,5,-7; skill 396,1; skill 255,1; skill 71,5; if (linha_branca == 1) {skill 327,1;} if (linha_branca == 2) {skill 309,20;} if (linha_branca == 3) {skill 310,16;} }  // Linha branca - suporte
+end;
+}
+
+function	script	RONALDO	{
+//if (LEE2 == 1) {bonus2 bAddRace,RC_DemiHuman,5; skill 764,1; bonus bSpeedAddRate,2;}
+//if (LEE2 == 2) {bonus2 bAddRace,RC_DemiHuman,7; skill 764,1; skill 765,1; bonus bSpeedAddRate,5;}
+//if (LEE2 == 3) {bonus2 bAddRace,RC_DemiHuman,12; skill 764,1; skill 765,1;  skill 766,1; bonus bSpeedAddRate,7;}
+//if (LEE2 == 4) {bonus2 bAddRace,RC_DemiHuman,15; skill 368,5;  skill 764,1;  skill 765,1;  skill 766,1;  skill 767,1; bonus bSpeedAddRate,10;}
+
+//Lee 1.0
+//if (LEE2 == 1) {skill 764,1; bonus bSpeedAddRate,1; bonus2 bSkillAtk,419,7; bonus2 bSkillAtk,415,7; bonus2 bSkillAtk,413,7; bonus2 bSkillAtk,417,7;}
+//if (LEE2 == 2) {skill 764,1; skill 765,1; bonus bSpeedAddRate,2; bonus2 bSkillAtk,419,14; bonus2 bSkillAtk,415,14; bonus2 bSkillAtk,413,14; bonus2 bSkillAtk,417,14;}
+//if (LEE2 == 3) {skill 764,1; skill 765,1;  skill 766,1; bonus bSpeedAddRate,3; bonus2 bSkillAtk,419,21; bonus2 bSkillAtk,415,21; bonus2 bSkillAtk,413,21; bonus2 bSkillAtk,417,21;}
+//if (LEE2 == 4) {skill 368,5;  skill 764,1;  skill 765,1;  skill 766,1;  skill 767,1; bonus bSpeedAddRate,5; bonus2 bSkillAtk,419,25; bonus2 bSkillAtk,415,25; bonus2 bSkillAtk,413,25; bonus2 bSkillAtk,417,25;}
+
+//Lee Rework 2.0
+if (LEE2 == 1) {skill 951,1; skill 957,1; bonus2 bAddRace,RC_NonBoss,5; bonus2 bAddRace,RC_Boss,5; bonus2 bAddRace2,5,5; bonus bAgi,3; bonus bSpeedAddRate,1;}
+if (LEE2 == 2) {skill 951,1; skill 957,1; skill 958,1; skill 959,1; bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10; bonus bAgi,6; bonus bSpeedAddRate,2;}
+if (LEE2 == 3) {skill 951,1; skill 957,1; skill 958,1; skill 959,1; skill 960,1; skill 961,1; bonus2 bAddRace,RC_NonBoss,15; bonus2 bAddRace,RC_Boss,15; bonus2 bAddRace2,5,15; bonus bAgi,9; bonus bSpeedAddRate,3;}
+if (LEE2 == 4) {skill 951,1; skill 957,1; skill 958,1; skill 959,1; skill 960,1; skill 961,1; skill 962,1; skill 963,1; bonus2 bAddRace,RC_NonBoss,20; bonus2 bAddRace,RC_Boss,20; bonus2 bAddRace2,5,20; bonus bAgi,12; bonus bSpeedAddRate,4;}
+end;
+}
+
+function	script	sharingan	{
+//sharingan_1 = percepção
+//sharingan_2 = hipnotismo
+//sharingan_3 = poder
+//sharingan_4 = protetor
+if (sharingan_1 == 1) {bonus bCopycat,20; bonus bFlee,30;  skill 768,1; bonus bMatkRate,15; bonus2 bAddRace,RC_NonBoss,15; bonus2 bAddRace,RC_Boss,15; bonus2 bAddRace2,5,15;}
+if (sharingan_2 == 1) {bonus2 bSCResist,SC_Stun,25; bonus2 bSCResist,SC_Freeze,25; bonus2 bSCResist,Eff_Silence,25; bonus2 bSCResist,Eff_Poison,25; skill 769,1; bonus2 bAddEffWhenHit,Eff_Confusion,1000; bonus2 bSCDamage,SC_STUN,55;}
+if (sharingan_3 == 1) {bonus bMatkRate,25; skill 770,1; bonus bCopycat,1;}
+if (sharingan_4 == 1) {bonus bMaxSPrate,15; skill 771,1; bonus2 bSubEle,Ele_Ghost,12; bonus2 bSubEle,Ele_Fire,12; bonus2 bSubEle,Ele_Water,12; bonus2 bSubEle,Ele_Wind,12; bonus2 bSubEle,Ele_Earth,12; bonus2 bSubEle,Ele_Holy,12; bonus2 bSubEle,Ele_Poison,12; bonus2 bSubEle,Ele_Dark,12;}
+end;
+}
+
+function	script	kg_kibaku	{
+if (kibaku == 1) {bonus2 bAddRace,RC_NonBoss,5; bonus2 bAddRace,RC_Boss,5; bonus2 bAddRace2,5,5; bonus bHit,40; skill 521,10;}
+if (kibaku == 2) {bonus2 bAddRace,RC_NonBoss,8; bonus2 bAddRace,RC_Boss,8; bonus2 bAddRace2,5,8; bonus bHit,45; skill 521,10;}
+if (kibaku == 3) {bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10; bonus bHit,50; skill 521,10; skill 731,1; skill 512,5;}
+//if (kibaku == 4) {bonus2 bAddRace,RC_NonBoss,13; bonus2 bAddRace,RC_Boss,13; bonus2 bAddRace2,5,13; bonus bHit,50; skill 521,10; skill 731,1; skill 8016,1; skill 512,10; skill 513,1;}
+if (kibaku == 4) {bonus2 bAddRace,RC_NonBoss,13; bonus2 bAddRace,RC_Boss,13; bonus2 bAddRace2,5,13; bonus bHit,60; skill 521,10; skill 731,1; skill 512,10; skill 513,13; skill 173,4;}
+//if (kibaku == 4) {bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10; bonus bHit,50; skill 521,10; skill 731,1; skill 512,10; skill 513,5; skill 173,3;}
+end;
+}
+
+function	script	kg_Jashin	{
+if (Jashin == 1) {bonus bSpeedAddRate,8; bonus2 bAddEff,Eff_Bleeding,70; skill 252,1; bonus2 bSCDamage,SC_BLEEDING,7; }
+if (Jashin == 2) {bonus bSpeedAddRate,8; bonus2 bAddEff,Eff_Bleeding,140; skill 252,2; bonus2 bSCDamage,SC_BLEEDING,14; }
+if (Jashin == 3) {bonus bSpeedAddRate,8; bonus2 bAddEff,Eff_Bleeding,210; skill 252,4; bonus2 bSCDamage,SC_BLEEDING,21; }
+if (Jashin == 4) {bonus bSpeedAddRate,8; bonus2 bAddEff,Eff_Bleeding,250; skill 252,5; skill 774,1; bonus2 bSCDamage,SC_BLEEDING,28; skill 673,10; bonus bPayback,500;}
+end;
+}
+
+function	script	kg_suika	{
+if (Suika == 1) {bonus2 bAddRace,RC_NonBoss,5; bonus2 bAddRace,RC_Boss,5; bonus2 bAddRace2,5,5; bonus2 bSkillAtk,528,10; bonus2 bSkillAtk,530,10; bonus bHitRate,1;}
+if (Suika == 2) {bonus2 bAddRace,RC_NonBoss,8; bonus2 bAddRace,RC_Boss,8; bonus2 bAddRace2,5,8; bonus2 bSkillAtk,528,15; bonus2 bSkillAtk,530,15; bonus bHitRate,2; skill 114,5;}
+if (Suika == 3) {bonus2 bAddRace,RC_NonBoss,12; bonus2 bAddRace,RC_Boss,12; bonus2 bAddRace2,5,12; bonus2 bSkillAtk,528,20; bonus2 bSkillAtk,530,20; bonus bHitRate,3; skill 114,5;}
+if (Suika == 4) {bonus2 bAddRace,RC_NonBoss,15; bonus2 bAddRace,RC_Boss,15; bonus2 bAddRace2,5,15; bonus2 bSkillAtk,528,25; bonus2 bSkillAtk,530,25; bonus bHitRate,5; skill 114,5; skill 1001,1;}
+end;
+}
+
+function	script	kg_Ibuse	{
+if (getskilllv(150) > 0) {dispbottom "Você possui o jutsu Recuar, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (Ibuse == 1) {bonus2 bSubRace,RC_DemiHuman,1; bonus bNoKnockback,0; bonus bMaxHPrate,2; bonus2 bAddRace,RC_NonBoss,-2; bonus2 bAddRace,RC_Boss,-2; bonus2 bAddRace2,5,-2;}
+if (Ibuse == 2) {bonus2 bSubRace,RC_DemiHuman,2; bonus3 bAutoSpell,"NPC_POISON",5,5; bonus bNoKnockback,0; bonus bMaxHPrate,5; bonus2 bAddRace,RC_NonBoss,-3; bonus2 bAddRace,RC_Boss,-3; bonus2 bAddRace2,5,-3;}
+if (Ibuse == 3) {bonus2 bSubRace,RC_DemiHuman,3; bonus3 bAutoSpell,"NPC_POISON",5,10; skill 406,8; bonus bNoKnockback,0; bonus bMaxHPrate,7; bonus2 bAddRace,RC_NonBoss,-5; bonus2 bAddRace,RC_Boss,-5; bonus2 bAddRace2,5,-5;}
+if (Ibuse == 4) {bonus2 bSubRace,RC_DemiHuman,7; bonus3 bAutoSpell,"NPC_POISON",5,25; skill 406,8; skill 735,4; bonus bNoKnockback,0; bonus bMaxHPrate,13; bonus2 bSCResist,Eff_Poison,100; bonus3 bAutoSpellWhenHit,176,1,10; bonus bMatkRate,10; bonus2 bAddRace,RC_NonBoss,-7; bonus2 bAddRace,RC_Boss,-7; bonus2 bAddRace2,5,-7; bonus bSpeedAddRate,-10;}
+end;
+}
+
+function	script	kg_Mitsashi	{
+//if (getskilllv(416) > 0) {dispbottom "Você possui o jutsu Preparar konoha Senpuu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+//if (getskilllv(414) > 0) {dispbottom "Você possui o jutsu Preparar konoha Renpuu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+//if (getskilllv(418) > 0) {dispbottom "Você possui o jutsu Preparar konoha Shoufu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+//if (getskilllv(412) > 0) {dispbottom "Você possui o jutsu Preparar konoha Dai Senpu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+//if (getskilllv(279) > 0) {dispbottom "Você possui o jutsu Autospell, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+//if (getskilllv(263) > 0) {dispbottom "Você possui o jutsu Shippo Tetsu Rendan, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (Mitsashi == 1) {bonus bSpeedAddRate,8; bonus bDex,20; bonus2 bSkillAtk,523,10; bonus2 bSkillAtk,524,10; bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10;  bonus bDelayRate,-3;}
+if (Mitsashi == 2) {bonus bSpeedAddRate,8; bonus bDex,25; bonus2 bSkillAtk,523,20; bonus2 bSkillAtk,524,20; bonus2 bAddRace,RC_NonBoss,12; bonus2 bAddRace,RC_Boss,12; bonus2 bAddRace2,5,12; skill 1004,10;  bonus bDelayRate,-5;}
+if (Mitsashi == 3) {bonus bSpeedAddRate,8; bonus bDex,28; bonus2 bSkillAtk,523,30; bonus2 bSkillAtk,524,30; bonus2 bAddRace,RC_NonBoss,15; bonus2 bAddRace,RC_Boss,15; bonus2 bAddRace2,5,15; skill 1004,10; skill 522,10; skill 525,10;  bonus bDelayRate,-7;}
+if (Mitsashi == 4) {bonus bSpeedAddRate,8; bonus bDex,30; bonus2 bSkillAtk,523,40; bonus2 bSkillAtk,524,40; bonus2 bAddRace,RC_NonBoss,18; bonus2 bAddRace,RC_Boss,18; bonus2 bAddRace2,5,18; skill 1004,10; skill 522,10; skill 525,10; bonus2 bSkillAtk,525,10; skill 775,1;  skill 523,15;  bonus bDelayRate,-10; skill 524,15;}
+end;
+}
+
+function	script	kg_Tayuya	{
+if (Tayuya == 1) {bonus2 bAddEff,Eff_Confusion,70; bonus bLongAtkDef,5; bonus2 bSCDamage,SC_Confusion,10;}
+if (Tayuya == 2) {bonus2 bAddEff,Eff_Confusion,140; bonus bLongAtkDef,8; bonus2 bSCDamage,SC_Confusion,10; skill 994,2;}
+if (Tayuya == 3) {bonus2 bAddEff,Eff_Confusion,210; bonus bLongAtkDef,11; bonus2 bSCDamage,SC_Confusion,10; skill 994,5; skill 993,5;}
+if (Tayuya == 4) {bonus2 bAddEff,Eff_Confusion,250; bonus bLongAtkDef,15; bonus2 bSCDamage,SC_Confusion,40; skill 993,8; skill 994,10; skill 732,4; skill 733,4; skill 734,4;}
+end;
+}
+
+function	script	kg_Aburame	{
+if (getskilllv(416) > 0) {dispbottom "Você possui o jutsu Preparar konoha Senpuu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (getskilllv(414) > 0) {dispbottom "Você possui o jutsu Preparar konoha Renpuu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (getskilllv(418) > 0) {dispbottom "Você possui o jutsu Preparar konoha Shoufu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (getskilllv(412) > 0) {dispbottom "Você possui o jutsu Preparar konoha Dai Senpu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (getskilllv(279) > 0) {dispbottom "Você possui o jutsu Autospell, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (getskilllv(263) > 0) {dispbottom "Você possui o jutsu Shippo Tetsu Rendan, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (getskilllv(48) > 0) {dispbottom "Você possui o jutsu Jyuuken Ryuu, que por motivos de equilibrio, não pode ser usado juntamente com esta Kekkei Genkai, por favor remova-o para utilizar seus efeitos"; end;}
+if (Aburame == 1) {bonus bSpeedAddRate,-5; bonus bMdef,2; bonus2 bAddRace,RC_NonBoss,3; bonus2 bAddRace,RC_Boss,3; bonus2 bAddRace2,5,3; bonus bAtkRange,1; skill 776,1; skill 200,1; if(checkfalcon() == 0 && getskilllv("HT_FALCON")>0) {setfalcon;}  bonus bAspdRate,-3;}
+if (Aburame == 2) {bonus bSpeedAddRate,-5; bonus bMdef,4; bonus2 bAddRace,RC_NonBoss,6; bonus2 bAddRace,RC_Boss,6; bonus2 bAddRace2,5,6; bonus bAtkRange,1; skill 776,1; skill 200,3; if(checkfalcon() == 0 && getskilllv("HT_FALCON")>0) {setfalcon;} bonus bAspdRate,-5;}
+if (Aburame == 3) {bonus bSpeedAddRate,-5; bonus bMdef,6; bonus2 bAddRace,RC_NonBoss,8; bonus2 bAddRace,RC_Boss,8; bonus2 bAddRace2,5,8; bonus bAtkRange,1; skill 776,1; skill 200,5; if(checkfalcon() == 0 && getskilllv("HT_FALCON")>0) {setfalcon;} bonus bAspdRate,-7;}
+if (Aburame == 4) {bonus bSpeedAddRate,-5; bonus bMdef,7; bonus2 bAddRace,RC_NonBoss,10; bonus2 bAddRace,RC_Boss,10; bonus2 bAddRace2,5,10; bonus bAtkRange,1; skill 776,1; skill 777,1; skill 381,5; skill 128,10; skill 131,2; skill 129,15; skill 130,1; skill 44,10; skill 200,7; bonus2 bSkillAtk,129,200; if(checkfalcon() == 0 && getskilllv("HT_FALCON")>0) {setfalcon;} bonus bAspdRate,-10;}
+end;
+}
+
+//AddTimer 7000, "FOME_UCHIHA_DICREASE::OnHPUCHIHA1";
+// AddTimer 6000, "FOME_UCHIHA_DICREASE::OnHPUCHIHA2";
+// AddTimer 5000, "FOME_UCHIHA_DICREASE::OnHPUCHIHA3";
+// AddTimer 4000, "FOME_UCHIHA_DICREASE::OnHPUCHIHA4";
+
+// AddTimer 4000, "FOME_BYAKUGAN_DICREASE::OnHPBYAKUGAN4";
+// AddTimer 6000, "FOME_BYAKUGAN_DICREASE::OnHPBYAKUGAN3";
+// AddTimer 7000, "FOME_BYAKUGAN_DICREASE::OnHPBYAKUGAN2";
+// AddTimer 8000, "FOME_BYAKUGAN_DICREASE::OnHPBYAKUGAN1";
+
+// AddTimer 4000, "FOME_SELO1_DICREASE::OnHPSELO11";
+// AddTimer 3000, "FOME_SELO1_DICREASE::OnHPSELO12";
+// AddTimer 2000, "FOME_SELO1_DICREASE::OnHPSELO13";
+// AddTimer 1000, "FOME_SELO1_DICREASE::OnHPSELO14";
+
+// AddTimer 1000, "FOME_SELO2_DICREASE::OnHPSELO24";
+// AddTimer 2000, "FOME_SELO2_DICREASE::OnHPSELO23";
+// AddTimer 4000, "FOME_SELO2_DICREASE::OnHPSELO21";
+// AddTimer 3000, "FOME_SELO2_DICREASE::OnHPSELO22";
+
+// AddTimer 2000, "FOME_GELO_DICREASE::OnHPGELO4";
+// AddTimer 3000, "FOME_GELO_DICREASE::OnHPGELO3";
+// AddTimer 4000, "FOME_GELO_DICREASE::OnHPGELO2";
+// AddTimer 5000, "FOME_GELO_DICREASE::OnHPGELO1";
+
+
+// AddTimer 5000, "FOME_NARA_DICREASE::OnHPNARA1";
+// AddTimer 4000, "FOME_NARA_DICREASE::OnHPNARA2";
+//  AddTimer 3000, "FOME_NARA_DICREASE::OnHPNARA3";
+//  AddTimer 2000, "FOME_NARA_DICREASE::OnHPNARA4";
+
+// AddTimer 8000, "FOME_AKIMICHI_DICREASE::OnHPAKIMICHI1";
+// AddTimer 7000, "FOME_AKIMICHI_DICREASE::OnHPAKIMICHI2";
+// AddTimer 6000, "FOME_AKIMICHI_DICREASE::OnHPAKIMICHI3";
+// AddTimer 4000, "FOME_AKIMICHI_DICREASE::OnHPAKIMICHI4";
+
+// AddTimer 4000, "FOME_MARIONETE_DICREASE::OnHPMARIONETE4";
+// AddTimer 6000, "FOME_MARIONETE_DICREASE::OnHPMARIONETE3";
+// AddTimer 10000, "FOME_MARIONETE_DICREASE::OnHPMARIONETE1";
+// AddTimer 8000, "FOME_MARIONETE_DICREASE::OnHPMARIONETE2";
+
+
+// AddTimer 7000, "FOME_LEE_DICREASE::OnHPLEE1";
+// AddTimer 6000, "FOME_LEE_DICREASE::OnHPLEE2";
+// AddTimer 5000, "FOME_LEE_DICREASE::OnHPLEE3";
+// AddTimer 3000, "FOME_LEE_DICREASE::OnHPLEE4";
+
+-	script	FOME_BYAKUGAN_DICREASE	-1,{
+	
+OnHPBYAKUGAN1:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 8000, "FOME_BYAKUGAN_DICREASE::OnHPBYAKUGAN1";
+	End;
+
+OnHPBYAKUGAN2:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 7000, "FOME_BYAKUGAN_DICREASE::OnHPBYAKUGAN2";
+	End;
+
+OnHPBYAKUGAN3:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 6000, "FOME_BYAKUGAN_DICREASE::OnHPBYAKUGAN3";
+	End;
+
+OnHPBYAKUGAN4:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 4000, "FOME_BYAKUGAN_DICREASE::OnHPBYAKUGAN4";
+	End;
+}
+
+-	script	FOME_UCHIHA_DICREASE	-1,{
+	
+OnHPUCHIHA1:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 7000, "FOME_UCHIHA_DICREASE::OnHPUCHIHA1";
+	End;
+
+OnHPUCHIHA2:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 6000, "FOME_UCHIHA_DICREASE::OnHPUCHIHA2";
+	End;
+
+OnHPUCHIHA3:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 5000, "FOME_UCHIHA_DICREASE::OnHPUCHIHA3";
+	End;
+
+OnHPUCHIHA4:
+	percentheal 1,-1; // This will heal 100% SP
+	AddTimer 4000, "FOME_UCHIHA_DICREASE::OnHPUCHIHA4";
+	End;
+}
+
+-	script	FOME_SELO1_DICREASE	-1,{
+	
+OnHPSELO11:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 4000, "FOME_SELO1_DICREASE::OnHPSELO11";
+	End;
+
+OnHPSELO12:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 3000, "FOME_SELO1_DICREASE::OnHPSELO12";
+	End;
+
+OnHPSELO13:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 2000, "FOME_SELO1_DICREASE::OnHPSELO13";
+	End;
+
+OnHPSELO14:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 1000, "FOME_SELO1_DICREASE::OnHPSELO14";
+	End;
+}
+
+-	script	FOME_SELO2_DICREASE	-1,{
+	
+OnHPSELO21:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 8000, "FOME_SELO2_DICREASE::OnHPSELO21";
+	End;
+
+OnHPSELO22:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 7000, "FOME_SELO2_DICREASE::OnHPSELO22";
+	End;
+
+OnHPSELO23:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 6000, "FOME_SELO2_DICREASE::OnHPSELO23";
+	End;
+
+OnHPSELO24:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 4000, "FOME_SELO2_DICREASE::OnHPSELO24";
+	End;
+}
+
+-	script	FOME_GELO_DICREASE	-1,{
+	
+OnHPGELO1:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 5000, "FOME_GELO_DICREASE::OnHPGELO1";
+	End;
+
+OnHPGELO2:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 4000, "FOME_GELO_DICREASE::OnHPGELO2";
+	End;
+
+OnHPGELO3:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 3000, "FOME_GELO_DICREASE::OnHPGELO3";
+	End;
+
+OnHPGELO4:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 2000, "FOME_GELO_DICREASE::OnHPGELO4";
+	End;
+}
+
+-	script	FOME_NARA_DICREASE	-1,{
+	
+OnHPNARA1:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 5000, "FOME_NARA_DICREASE::OnHPNARA1";
+	End;
+
+OnHPNARA2:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 4000, "FOME_NARA_DICREASE::OnHPNARA2";
+	End;
+
+OnHPNARA3:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 3000, "FOME_NARA_DICREASE::OnHPNARA3";
+	End;
+
+OnHPNARA4:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 2000, "FOME_NARA_DICREASE::OnHPNARA4";
+	End;
+}
+
+-	script	FOME_AKIMICHI_DICREASE	-1,{
+	
+OnHPAKIMICHI1:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 8000, "FOME_AKIMICHI_DICREASE::OnHPAKIMICHI1";
+	End;
+
+OnHPAKIMICHI2:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 7000, "FOME_AKIMICHI_DICREASE::OnHPAKIMICHI2";
+	End;
+
+OnHPAKIMICHI3:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 6000, "FOME_AKIMICHI_DICREASE::OnHPAKIMICHI3";
+	End;
+
+OnHPAKIMICHI4:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 4000, "FOME_AKIMICHI_DICREASE::OnHPAKIMICHI4";
+	End;
+}
+
+-	script	FOME_LEE_DICREASE	-1,{
+	
+OnHPLEE1:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 7000, "FOME_LEE_DICREASE::OnHPLEE1";
+	End;
+
+OnHPLEE2:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 6000, "FOME_LEE_DICREASE::OnHPLEE2";
+	End;
+
+OnHPLEE3:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 5000, "FOME_LEE_DICREASE::OnHPLEE3";
+	End;
+
+OnHPLEE4:
+	percentheal -1,0; // This will heal 100% SP
+	AddTimer 3000, "FOME_LEE_DICREASE::OnHPLEE4";
+	End;
+}
+
+-	script	FOME_MARIONETE_DICREASE	-1,{
+	
+OnHPMARIONETE1:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 10000, "FOME_MARIONETE_DICREASE::OnHPMARIONETE1";
+	End;
+
+OnHPMARIONETE2:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 8000, "FOME_MARIONETE_DICREASE::OnHPMARIONETE2";
+	End;
+
+OnHPMARIONETE3:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 6000, "FOME_MARIONETE_DICREASE::OnHPMARIONETE3";
+	End;
+
+OnHPMARIONETE4:
+	percentheal 0,-1; // This will heal 100% SP
+	AddTimer 4000, "FOME_MARIONETE_DICREASE::OnHPMARIONETE4";
+	End;
+}
+
+
+function	script	removerkg	{
+
+mes "Você tem certeza que quer remover sua Kekkei Genkai? Será preciso evoluir a nova do zero (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Sim",doit,"Não",nao;
+
+doit:
+if (kg_seloceu > 0) {set kg_seloceu,0; set pegoukg,0; if(countitem(19149) >= 1) {delitem 19149,1;} set SELO1,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;} }
+if (kg_seloterra > 0) {set kg_seloterra,0; set pegoukg,0; if(countitem(19150) >= 1) {delitem 19150,1;} set SELO2,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (kg_sharingan > 0) {set quest_mangekyou,0; set kg_sharingan,0; set pegoukg,0; set OlhoHipnotico,0; set sharingan_2,0; set OlhoPoderoso,0; set sharingan_3,0; set OlhoPerceptivo,0; set sharingan_4,0; set OlhoProtetor,0; set sharingan_1,0; if(countitem(19168) >= 1) {delitem 19168,1;} if(countitem(19169) >= 1) {delitem 19169,1;}  if(countitem(19170) >= 1) {delitem 19170,1;}  if(countitem(19003) >= 1) {delitem 19003,1;} if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (kg_byakugan > 0) {set kg_byakugan,0; set pegoukg,0; if(countitem(19002) >= 1) {delitem 19002,1;} set byakugan,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (kg_hyouton > 0) {set kg_hyouton,0; set pegoukg,0; if(countitem(19152) >= 1) {delitem 19152,1;} set GELO,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (kg_lee > 0) {set kg_lee,0; set pegoukg,0; if(countitem(19155) >= 1) {delitem 19155,1;} set LEE2,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+
+if (kg_kugutsu > 0) {
+set kg_kugutsu,0;
+set pegoukg,0;
+if(countitem(19154) >= 1) {delitem 19154,1;}
+set MARIONETE,0;
+if (marionete_nivel_1 > 0) {set marionete_nivel_1,0;}
+if (marionete_nivel_2 > 0) {set marionete_nivel_2,0;}
+if (marionete_nivel_3 > 0) {set marionete_nivel_3,0;}
+if (marionete_roxa > 0) {set marionete_roxa,0;}
+if (linha_branca > 0) {set linha_branca,0;}
+if (linha_vermelha > 0 ) {set linha_vermelha,0;}
+if (MARIONETE_4_1 > 0) {set MARIONETE_4_1,0;}
+if (MARIONETE_4_2 > 0) {set MARIONETE_4_2,0;}
+if (MARIONETE_4_3 > 0) {set MARIONETE_4_3,0;}
+if (quest_karasu_A > 0) {set quest_karasu_A,0;}
+if (quest_karasu_B > 0) {set quest_karasu_B,0;}
+if (quest_karasu_C > 0) {set quest_karasu_C,0;}
+if (quest_kuroari_A  > 0) {set quest_kuroari_A ,0;}
+if (quest_kuroari_B  > 0) {set quest_kuroari_B ,0;}
+if (quest_kuroari_C  > 0) {set quest_kuroari_C ,0;}
+if (quest_sanshoouo_A  > 0) {set quest_sanshoouo_A ,0;}
+if (quest_sanshoouo_B  > 0) {set quest_sanshoouo_B ,0;}
+if (quest_sanshoouo_C  > 0) {set quest_sanshoouo_C ,0;}
+if (quest_kugutsu_quatro > 0) {set quest_kugutsu_quatro,0;}
+
+if (kgmobs1 > 0) {set kgmobs1,0;}
+if (kgmobs2 > 0) {set kgmobs2,0;}
+if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+if (kg_baika > 0) {set kg_baika,0; set pegoukg,0; if(countitem(19153) >= 1) {delitem 19153,1;} set AKIMICHI,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (kg_nara > 0) {set kg_nara,0; set pegoukg,0; if(countitem(19151) >= 1) {delitem 19151,1;} set NARA2,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+
+if (kibaku > 0) {set kg_kibaku,0; set pegoukg,0; if(countitem(19212) >= 1) {delitem 19212,1;} set kibaku,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (Jashin > 0) {set kg_Jashin,0; set pegoukg,0; if(countitem(19210) >= 1) {delitem 19210,1;} set Jashin,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (Ibuse > 0) {set kg_Ibuse,0; set pegoukg,0; if(countitem(19218) >= 1) {delitem 19218,1;} set Ibuse,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (Mitsashi > 0) {set kg_Bukijutsu,0; set pegoukg,0; if(countitem(19207) >= 1) {delitem 19207,1;} set Mitsashi,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (Tayuya > 0) {set kg_flauta,0; set pegoukg,0; if(countitem(19211) >= 1) {delitem 19211,1;} set Tayuya,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+if (Aburame > 0) {set kg_kikaichu,0; set pegoukg,0; if(countitem(19216) >= 1) {delitem 19216,1;} set Aburame,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}}
+
+dispbottom "Kekkei Genkai removido com sucesso";
+close;
+
+nao:
+getitem 1091,1;
+end;
+
+}
+
+function	script	removerkgesp	{
+
+mes "Você tem certeza que quer remover sua Kekkei Genkai? Serão devolvidos os itens utilizado nas quests com este removedor especial (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Sim",doit,"Não",nao;
+
+doit:
+if (kg_seloceu > 0) {
+if (kg_seloceu == 3) {getitem 627,8;}
+if (kg_seloceu == 4) {getitem 627,23;}
+if (kg_seloceu == 5) {getitem 529,1; getitem 7116,5;  getitem 669,1; getitem 627,23;}
+set kg_seloceu,0; set pegoukg,0; if(countitem(19149) >= 1) {delitem 19149,1;} set SELO1,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;} 
+
+}
+
+////////////////////
+
+if (kg_seloterra > 0) {
+if (kg_seloterra == 3) {getitem 627,8;}
+if (kg_seloterra == 4) {getitem 627,23;}
+if (kg_seloterra == 5) {getitem 529,1; getitem 7116,5;  getitem 681,1; getitem 627,23;}
+set kg_seloterra,0; set pegoukg,0; if(countitem(19150) >= 1) {delitem 19150,1;} set SELO2,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (kg_sharingan > 0) {
+if (kg_sharingan == 3) {getitem 627,8;}
+if (kg_sharingan == 4) {getitem 627,23;}
+if (kg_sharingan == 5) {getitem 930,100; getitem 7134,50; getitem 529,1; getitem 663,1;	getitem 7116,5; getitem 627,23;}
+set quest_mangekyou,0; set kg_sharingan,0; set pegoukg,0; set OlhoHipnotico,0; set sharingan_2,0; set OlhoPoderoso,0; set sharingan_3,0; set OlhoPerceptivo,0; set sharingan_4,0; set OlhoProtetor,0; set sharingan_1,0; if(countitem(19168) >= 1) {delitem 19168,1;} if(countitem(19169) >= 1) {delitem 19169,1;}  if(countitem(19170) >= 1) {delitem 19170,1;}  if(countitem(19003) >= 1) {delitem 19003,1;} if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (kg_byakugan > 0) {
+if (kg_byakugan == 3) {getitem 627,8;}
+if (kg_byakugan == 4) {getitem 627,23;}
+if (kg_byakugan == 5) {getitem 529,1; getitem 7116,5;  getitem 659,1; getitem 627,23;}
+set kg_byakugan,0; set pegoukg,0; if(countitem(19002) >= 1) {delitem 19002,1;} set byakugan,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (kg_hyouton > 0) {
+if (kg_hyouton == 3) {getitem 627,8;}
+if (kg_hyouton == 4) {getitem 627,23;}
+if (kg_hyouton == 5) {getitem 529,1; getitem 7116,5;  getitem 745,1; getitem 627,23;}
+set kg_hyouton,0; set pegoukg,0; if(countitem(19152) >= 1) {delitem 19152,1;} set GELO,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (kg_lee > 0) {
+if (kg_lee == 3) {getitem 627,8;}
+if (kg_lee == 4) {getitem 627,23;}
+if (kg_lee == 5) {getitem 529,1; getitem 7116,5;  getitem 735,1; getitem 627,23;}
+set kg_lee,0; set pegoukg,0; if(countitem(19155) >= 1) {delitem 19155,1;} set LEE2,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (kg_kugutsu > 0) {
+if (kg_kugutsu == 3) {getitem 627,8;}
+if (kg_kugutsu == 4) {getitem 627,23;}
+if (kg_kugutsu == 5) {getitem 529,1; getitem 7116,5;  getitem 744,1; getitem 627,23;}
+set kg_kugutsu,0; set pegoukg,0; if(countitem(19154) >= 1) {delitem 19154,1;} set MARIONETE,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+if (marionete_nivel_1 > 0) {set marionete_nivel_1,0;}
+if (marionete_nivel_2 > 0) {set marionete_nivel_2,0;}
+if (marionete_nivel_3 > 0) {set marionete_nivel_3,0;}
+if (marionete_roxa > 0) {set marionete_roxa,0;}
+if (linha_branca > 0) {set linha_branca,0;}
+if (linha_vermelha > 0 ) {set linha_vermelha,0;}
+if (MARIONETE_4_1 > 0) {set MARIONETE_4_1,0;}
+if (MARIONETE_4_2 > 0) {set MARIONETE_4_2,0;}
+if (MARIONETE_4_3 > 0) {set MARIONETE_4_3,0;}
+if (quest_karasu_A > 0) {set quest_karasu_A,0;}
+if (quest_karasu_B > 0) {set quest_karasu_B,0;}
+if (quest_karasu_C > 0) {set quest_karasu_C,0;}
+if (quest_kuroari_A  > 0) {set quest_kuroari_A ,0;}
+if (quest_kuroari_B  > 0) {set quest_kuroari_B ,0;}
+if (quest_kuroari_C  > 0) {set quest_kuroari_C ,0;}
+if (quest_sanshoouo_A  > 0) {set quest_sanshoouo_A ,0;}
+if (quest_sanshoouo_B  > 0) {set quest_sanshoouo_B ,0;}
+if (quest_sanshoouo_C  > 0) {set quest_sanshoouo_C ,0;}
+if (quest_kugutsu_quatro > 0) {set quest_kugutsu_quatro,0;}
+
+if (kgmobs1 > 0) {set kgmobs1,0;}
+if (kgmobs2 > 0) {set kgmobs2,0;}
+if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (kg_baika > 0) {
+if (kg_baika == 3) {getitem 627,8;}
+if (kg_baika == 4) {getitem 627,23;}
+if (kg_baika == 5) {getitem 529,1; getitem 7116,5;  getitem 685,1; getitem 627,23;}
+set kg_baika,0; set pegoukg,0; if(countitem(19153) >= 1) {delitem 19153,1;} set AKIMICHI,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (kg_nara > 0) {
+if (kg_nara == 3) {getitem 627,8;}
+if (kg_nara == 4) {getitem 627,23;}
+if (kg_nara == 5) {getitem 529,1; getitem 7116,5;  getitem 7328,1; getitem 627,23;}
+set kg_nara,0; set pegoukg,0; if(countitem(19151) >= 1) {delitem 19151,1;} set NARA2,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+/////////////////////
+
+if (kibaku > 0) {
+
+if (kibaku == 1) {getitem 12959,1; getitem 7116,1;}
+if (kibaku == 2) {getitem 12959,1; getitem 7116,3;}
+if (kibaku == 3) {getitem 12959,1; getitem 7116,6;}
+if (kibaku == 4) {getitem 12959,1; getitem 7116,6; getitem 973,1; getitem 12953,2;}
+set kg_kibaku,0; set pegoukg,0; if(countitem(19212) >= 1) {delitem 19212,1;} set kibaku,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (Jashin > 0) {
+
+if (Jashin == 1) {getitem 12959,1; getitem 7116,1;}
+if (Jashin == 2) {getitem 12959,1; getitem 7116,3;}
+if (Jashin == 3) {getitem 12959,1; getitem 7116,6;}
+if (Jashin == 4) {getitem 12959,1; getitem 7116,6; getitem 973,1; getitem 12949,2;}
+set kg_Jashin,0; set pegoukg,0; if(countitem(19210) >= 1) {delitem 19210,1;} set Jashin,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (Ibuse > 0) {
+
+if (Ibuse == 1) {getitem 12959,1; getitem 7116,1;}
+if (Ibuse == 2) {getitem 12959,1; getitem 7116,3;}
+if (Ibuse == 3) {getitem 12959,1; getitem 7116,6;}
+if (Ibuse == 4) {getitem 12959,1; getitem 7116,6; getitem 973,1; getitem 12952,2;}
+set kg_Ibuse,0; set pegoukg,0; if(countitem(19218) >= 1) {delitem 19218,1;} set Ibuse,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (Mitsashi > 0) {
+
+if (Mitsashi == 1) {getitem 12959,1; getitem 7116,1;}
+if (Mitsashi == 2) {getitem 12959,1; getitem 7116,3;}
+if (Mitsashi == 3) {getitem 12959,1; getitem 7116,6;}
+if (Mitsashi == 4) {getitem 12959,1; getitem 7116,6; getitem 973,1; getitem 12954,2;}
+set kg_Bukijutsu,0; set pegoukg,0; if(countitem(19207) >= 1) {delitem 19207,1;} set Mitsashi,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (Tayuya > 0) {
+
+if (Tayuya == 1) {getitem 12959,1; getitem 7116,1;}
+if (Tayuya == 2) {getitem 12959,1; getitem 7116,3;}
+if (Tayuya == 3) {getitem 12959,1; getitem 7116,6;}
+if (Tayuya == 4) {getitem 12959,1; getitem 7116,6; getitem 973,1; getitem 12951,2;}
+set kg_flauta,0; set pegoukg,0; if(countitem(19211) >= 1) {delitem 19211,1;} set Tayuya,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+if (Aburame > 0) {
+
+if (Aburame == 1) {getitem 12959,1; getitem 7116,1;}
+if (Aburame == 2) {getitem 12959,1; getitem 7116,3;}
+if (Aburame == 3) {getitem 12959,1; getitem 7116,6;}
+if (Aburame == 4) {getitem 12959,1; getitem 7116,6; getitem 973,1; getitem 12950,2;}
+set kg_kikaichu,0; set pegoukg,0; if(countitem(19216) >= 1) {delitem 19216,1;} set Aburame,0; if (kgmobs1 > 0) {set kgmobs1,0;} if (kgmobs2 > 0) {set kgmobs2,0;} if (kgmobs3 > 0) {set kgmobs3,0;}
+
+}
+
+////////////////////
+
+dispbottom "Kekkei Genkai removido com sucesso";
+close;
+
+nao:
+getitem 7242,1;
+close;
+
+}
+
+function	script	removerbasico	{
+
+mes "Você tem certeza que quer remover um treinamento básico? Todos os jutsus que estão anexados a ele serão deletados (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Sim",doit,"Não",nao;
+
+doit:
+mes "Qual é o treino básico que você deseja remover?";
+menu "Ninjutsu",nin,"Taijutsu",tai,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Velocidade",velo,"Medicina",med,"Nenhum",nao;
+
+nin:
+if(nin_basico != 1) {mes "Você não tem esse treino para remover"; getitem 1090,1; close;}
+if(nin_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; close;}
+if(nin_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; close;}
+next;
+mes "Ok, vamos lá";
+set nin_basico,0;
+set skillgenin1,0;
+//set treinos_aceitos,treinos_aceitos -1;
+if (checkquest(2118) >= 0) { erasequest 2118;}
+set treinos_basicos,treinos_basicos -1;
+skill 185,0,0;
+set Doryuuheki,0;
+if (checkquest(1010) > 0) { erasequest 1010;}
+skill 91,0,0;
+set Sousou,0;
+if (checkquest(1011) > 0) { erasequest 1011;}
+skill 191,0,0;
+set kamaitachi,0;
+if (checkquest(1010) > 0) { erasequest 1010;}
+skill 11,0,0;
+set daitoppa,0;
+if (checkquest(1011) > 0) { erasequest 1011;}
+skill 534,0,0;
+set hanashuriken,0;
+if (checkquest(1010) > 0) { erasequest 1010;}
+skill 17,0,0;
+set housenka,0;
+if (checkquest(1011) > 0) { erasequest 1011;}
+skill 21,0,0;
+set Oroshi,0;
+if (checkquest(1010) > 0) { erasequest 1010;}
+skill 192,0,0;
+set maisou,0;
+if (checkquest(1011) > 0) { erasequest 1011;}
+skill 88,0,0;
+set Banshou,0;
+if (checkquest(1010) > 0) { erasequest 1010;}
+skill 15,0,0;
+set hanhonryuu,0;
+if (checkquest(1011) > 0) { erasequest 1011;}
+skill 116,0,0;
+set armadilha_doton,0;
+if (checkquest(1012) > 0) { erasequest 1012;}
+skill 90,0,0;
+set Raishin,0;
+if (checkquest(1013) > 0) { erasequest 1013;}
+skill 540,0,0;
+set nindou,0;
+if (checkquest(1012) > 0) { erasequest 1012;}
+skill 115,0,0;
+set repulsor,0;
+if (checkquest(1013) > 0) { erasequest 1013;}
+skill 19,0,0;
+set gougakyuu,0;
+if (checkquest(1012) > 0) { erasequest 1012;}
+skill 123,0,0;
+set P_Explosivo,0;
+if (checkquest(1013) > 0) { erasequest 1013;}
+skill 20,0,0;
+set Gian,0;
+if (checkquest(1012) > 0) { erasequest 1012;}
+skill 119,0,0;
+set paralisador,0;
+if (checkquest(1013) > 0) { erasequest 1013;}
+skill 14,0,0;
+set suiryuudan,0;
+if (checkquest(1012) > 0) { erasequest 1012;}
+skill 121,0,0;
+set P_Congelante,0;
+if (checkquest(1013) > 0) { erasequest 1013;}
+dispbottom "Ninjutsu básico removido com sucesso";
+close;
+
+tai:
+if(tai_basico != 1) {mes "Você não tem esse treino para remover"; getitem 1090,1; close;}
+if(tai_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; close;}
+if(tai_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; close;}
+next;
+mes "Ok, vamos lá";
+set tai_basico,0;
+//set treinos_aceitos,treinos_aceitos -1;
+if (checkquest(2119) >= 0) { erasequest 2119;}
+set treinos_basicos,treinos_basicos -1;
+set tai_skill_bas,0;
+set accept_tai_bas,0;
+skill 48,0,0;
+set Jyuuken,0;
+if (checkquest(2059) > 0) {erasequest 2059;}
+skill 5,0,0;
+set Buyou,0;
+if (checkquest(2057) > 0) {erasequest 2057;}
+skill 399,0,0;
+set Shikomishindan,0;
+if (checkquest(2061) > 0) {erasequest 2061;}
+skill 263,0,0;
+set Shippo,0;
+if (checkquest(2058) > 0) {erasequest 2058;}
+skill 58,0,0;
+set Tokken,0;
+if (checkquest(2062) > 0) {erasequest 2062;}
+skill 416,0,0;
+skill 417,0,0;
+set Rasteira,0;
+if (checkquest(2185) > 0) {erasequest 2185;}
+close;
+
+gen:
+if(gen_basico != 1) {mes "Você não tem esse treino para remover"; getitem 1090,1; close;}
+if(gen_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; close;}
+if(gen_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; close;}
+next;
+mes "Ok, vamos lá";
+set gen_basico,0;
+//set treinos_aceitos,treinos_aceitos -1;
+if (checkquest(2120) >= 0) { erasequest 2120;}
+set treinos_basicos,treinos_basicos -1;
+set accept_gen,0;
+set gen_skill_bas,0;
+skill 182,0,0;
+set Fukai,0;
+if (checkquest(2044) > 0) {erasequest 2044;}
+skill 30,0,0;
+set Mahi,0;
+if (checkquest(2094) > 0) {erasequest 2094;}
+skill 177,0,0;
+set raigen,0;
+if (checkquest(2041) > 0) {erasequest 2041;}
+skill 179,0,0;
+set shikumi,0;
+if (checkquest(2158) > 0) {erasequest 2158;}
+skill 6,0,0;
+set provocar,0;
+if (checkquest(2157) > 0) {erasequest 2157;}
+skill 181,0,0;
+set kokubanjou,0;
+if (checkquest(2085) > 0) {erasequest 2085;}
+skill 672,0,0;
+set Kasegui,0;
+if (checkquest(2188) > 0) {erasequest 2188;}
+close;
+
+fuuin:
+if(fuu_basico != 1) {mes "Você não tem esse treino para remover"; getitem 1090,1; close;}
+if(fuuin_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; close;}
+if(fuuin_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; close;}
+next;
+mes "Ok, vamos lá";
+set fuu_basico,0;
+set accept_fuu,0;
+set fuu_skill_bas,0;
+//set treinos_aceitos,treinos_aceitos -1;
+if (checkquest(2122) >= 0) { erasequest 2122;}
+set treinos_basicos,treinos_basicos -1;
+set Aura,0;
+set seloskill543,0;
+if (checkquest(2095) > 0) {erasequest 2095;}
+set seloskill45,0;
+set concentracao,0;
+if (checkquest(2093) > 0) {erasequest 2093;}
+skill 75,0,0;
+set gloria,0;
+if (checkquest(2130) > 0) {erasequest 2130;}
+//skill 8,0,0;
+//set vigor,0;
+//if (checkquest(3106) > 0) {erasequest 3106;}
+skill 43,0,0;
+set precisao,0;
+if (checkquest(2156) > 0) {erasequest 2156;}
+//skill 30,0,0;
+//set Mahi,0;
+//if (checkquest(2094) > 0) {erasequest 2094;}
+//skill 255,0,0;
+//set f_protecao,0;
+//if (checkquest(2109) > 0) {erasequest 2109;}
+skill 327,0,0;
+set KanchiDenden,0;
+if (checkquest(2179) > 0) {erasequest 2179;}
+skill 319,0,0;
+set TengaiHoujin,0;
+if (checkquest(2180) > 0) {erasequest 2180;}
+skill 330,0,0;
+set TenshaFuinChakra,0;
+if (checkquest(2180) > 0) {erasequest 2181;}
+close;
+
+med:
+if(med_basico != 1) {mes "Você não tem esse treino para remover"; getitem 1090,1; close;}
+if(med_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; close;}
+if(med_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; close;}
+next;
+mes "Ok, vamos lá";
+set med_basico,0;
+//set treinos_aceitos,treinos_aceitos -1;
+if (checkquest(2121) >= 0) { erasequest 2121;}
+set treinos_basicos,treinos_basicos -1;
+set med_skill_bas,0;
+set accept_med,0;
+skill 28,0,0;
+set Chiyute,0;
+if (checkquest(2079) > 0) {erasequest 2079;}
+skill 66,0,0;
+set Nikudan,0;
+if (checkquest(2071) > 0) {erasequest 2071;}
+skill 124,0,0;
+set Remover,0;
+if (checkquest(2060) > 0) {erasequest 2060;}
+skill 35,0,0;
+set Shometsu,0;
+if (checkquest(2081) > 0) {erasequest 2081;}
+skill 72,0,0;
+set Souzou,0;
+if (checkquest(2083) > 0) {erasequest 2083;}
+skill 358,0,0;
+set relax,0;
+if (checkquest(2080) > 0) {erasequest 2080;}
+close;
+
+velo:
+if(velo_basico != 1) {mes "Você não tem esse treino para remover"; getitem 1090,1; close;}
+if(vel_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; close;}
+if(velo_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; close;}
+next;
+mes "Ok, vamos lá";
+set velo_basico,0;
+//set treinos_aceitos,treinos_aceitos -1;
+if (checkquest(2123) >= 0) { erasequest 2123;}
+set treinos_basicos,treinos_basicos -1;
+set velo_skill_bas,0;
+set accept_velo,0;
+skill 509,0,0;
+set atk_concentrado,0;
+if (checkquest(8017) > 0) {erasequest 8017;}
+skill 49,0,0;
+set V_Pericia,0;
+if (checkquest(8019) > 0) {erasequest 8019;}
+skill 495,0,0;
+set Rapidez_mao,0;
+if (checkquest(8020) > 0) {erasequest 8020;}
+skill 996,0,0;
+set Troca_posicao,0;
+if (checkquest(8021) > 0) {erasequest 8021;}
+skill 150,0,0;
+set recuar,0;
+if (checkquest(8017) > 0) {erasequest 8017;}
+skill 111,0,0;
+set Adrenalina_P,0;
+if (checkquest(8018) > 0) {erasequest 8018;}
+skill 29,0,0;
+set Aumentar_agi,0;
+if (checkquest(3056) > 0) {erasequest 3056;}
+close;
+
+nao:
+getitem 1090,1;
+close;
+
+}
+
+function	script	removerinter	{
+
+mes "Você tem certeza que quer remover um treinamento intermediário? Todos os jutsus que estão anexados a ele serão deletados (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Sim",doit,"Não",nao;
+
+doit:
+mes "Qual é o treino intermediário que você deseja remover?";
+menu "Ninjutsu",nin,"Taijutsu",tai,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Velocidade",velo,"Medicina",med,"Nenhum",nao;
+
+nin:
+if(nin_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 1092,1; close;}
+if(nin_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um intermediário"; close;}
+next;
+mes "Ok, vamos lá";
+set nin_intermediario,0;
+set limite_inter,limite_inter -1;
+if(countitem(739) > 0) {delitem 739,1;}
+if(countitem(1009) == 0) {getitem 1009,1;}
+skill 92,0,0;
+set D_Jigoku,0;
+if (checkquest(1014) > 0) {erasequest 1014;}
+skill 16,0,0;
+set kyuu,0;
+if (checkquest(1015) > 0) {erasequest 1015;}
+skill 542,0,0;
+set Renkuudan,0;
+if (checkquest(1014) > 0) {erasequest 1014;}
+skill 400,0,0;
+set atsugai,0;
+if (checkquest(1015) > 0) {erasequest 1015;}
+skill 186,0,0;
+set Haisekishou,0;
+if (checkquest(1014) > 0) {erasequest 1014;}
+skill 80,0,0;
+set Gouryuuka,0;
+if (checkquest(1015) > 0) {erasequest 1015;}
+skill 187,0,0;
+set Jibashiri,0;
+if (checkquest(1014) > 0) {erasequest 1014;}
+skill 85,0,0;
+set shibarai,0;
+if (checkquest(1015) > 0) {erasequest 1015;}
+skill 184,0,0;
+set Mizurappa,0;
+if (checkquest(1014) > 0) {erasequest 1014;}
+skill 87,0,0;
+set Suijinheki,0;
+if (checkquest(1015) > 0) {erasequest 1015;}
+skill 148,0,0;
+set atsugai,0;
+if (checkquest(1015) > 0) {erasequest 1015;}
+
+dispbottom "Ninjutsu intermediário removido com sucesso";
+end;
+
+tai:
+if(tai_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 1092,1; close;}
+if(tai_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um intermediário"; close;}
+next;
+mes "Ok, vamos lá";
+
+set tai_intermediario,0;
+set tai_skill_int,0;
+set accept_tai_int,0;
+set limite_inter,limite_inter -1;
+if(countitem(740) > 0) {delitem 740,1;}
+if(countitem(1021) == 0) {getitem 1021,1;}
+skill 266,0,0;
+set ChakraM,0;
+if (checkquest(2028) > 0) {erasequest 2028;}
+skill 214,0,0;
+set fufuken,0;
+if (checkquest(2038) > 0) {erasequest 2038;}
+skill 136,0,0;
+set Gutten,0;
+if (checkquest(2036) > 0) {erasequest 2036;}
+skill 370,0,0;
+set Rasengan,0;
+if (checkquest(2126) > 0) {erasequest 2126;}
+skill 357,0,0;
+set DSenkou,0;
+if (checkquest(2039) > 0) {erasequest 2039;}
+skill 171,0,0;
+set ShoufuuR,0;
+if (checkquest(2128) > 0) {erasequest 2128;}
+skill 62,0,0;
+set TsuutenKyaku,0;
+if (checkquest(2129) > 0) {erasequest 2129;}
+skill 412,0,0;
+skill 413,0,0;
+set tornado,0;
+if (checkquest(2186) > 0) {erasequest 2186;}
+skill 1016,0,0;
+set Intensos,0;
+if (checkquest(2187) > 0) {erasequest 2187;}
+dispbottom "Taijutsu intermediário removido com sucesso";
+close;
+
+gen:
+if(gen_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 1092,1; close;}
+if(gen_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um intermediário"; close;}
+next;
+mes "Ok, vamos lá";
+
+set gen_intermediario,0;
+set gen_skill_int,0;
+set accept_gen_int,0;
+set limite_inter,limite_inter -1;
+if(countitem(738) > 0) {delitem 738,1;}
+if(countitem(1023) == 0) {getitem 1023,1;}
+skill 110,0,0;
+set Genzouga,0;
+if (checkquest(2035) > 0) {erasequest 2035;}
+skill 402,0,0;
+set Goukan,0;
+if (checkquest(2050) > 0) {erasequest 2050;}
+skill 76,0,0;
+set Jigyaku,0;
+if (checkquest(2048) > 0) {erasequest 2048;}
+set seloskill668,0;
+set Kemuri,0;
+if (checkquest(2046) > 0) {erasequest 2046;}
+skill 308,0,0;
+set Ryou,0;
+if (checkquest(2051) > 0) {erasequest 2051;}
+skill 369,0,0;
+set Sakki,0;
+if (checkquest(2049) > 0) {erasequest 2049;}
+skill 532,0,0;
+set Shinkirou,0;
+if (checkquest(2189) > 0) {erasequest 2189;}
+skill 223,0,0;
+set MugenOnsa,0;
+if (checkquest(2190) > 0) {erasequest 2190;}
+skill 678,0,0;
+set Kanashibari,0;
+if (checkquest(3001) > 0) {erasequest 3001;}
+set seloskill677,0;
+set Jigoku,0;
+if (checkquest(3000) > 0) {erasequest 3000;}
+skill 207,0,0;
+set Kokuangyo,0;
+if (checkquest(2191) > 0) {erasequest 2191;}
+dispbottom "Genjutsu intermediário removido com sucesso";
+close;
+
+fuuin:
+if(fuuin_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 1092,1; close;}
+if(fuuin_avan == 1) {mes "Você precisa deletar seu treinamento avançado antes de deletar um intermediário"; close;}
+next;
+mes "Ok, vamos lá";
+
+set fuuin_intermediario,0;
+set fuu_skill_int,0;
+set accept_fuu_int,0;
+set limite_inter,limite_inter -1;
+if(countitem(741) > 0) {delitem 741,1;}
+if(countitem(1024) == 0) {getitem 1024,1;}
+set seloskill321,0;
+skill 304,0,0;
+set Nehan,0;
+if (checkquest(2045) > 0) {erasequest 2045;}
+skill 279,0,0;
+set auto_spell,0;
+if (checkquest(2111) > 0) {erasequest 2111;}
+skill 34,0,0;
+set bencao,0;
+if (checkquest(2068) > 0) {erasequest 2068;}
+skill 322,0,0;
+set Idou,0;
+if (checkquest(2052) > 0) {erasequest 2052;}
+skill 24,0,0;
+set Revelacao,0;
+if (checkquest(2159) > 0) {erasequest 2159;}
+skill 317,0,0;
+set FuubakuHoujin,0;
+if (checkquest(2183) > 0) {erasequest 2183;}
+skill 533,0,0;
+set PericiaNinja,0;
+if (checkquest(2184) > 0) {erasequest 2184;}
+skill 270,0,0;
+set FuriaInterior,0;
+if (checkquest(2182) > 0) {erasequest 2182;}
+dispbottom "Fuuinjutsu intermediário removido com sucesso";
+close;
+
+med:
+if(med_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 1092,1; close;}
+if(med_avan == 1) {mes "Você precisa deletar seu treinamento avançado antes de deletar um intermediário"; close;}
+next;
+mes "Ok, vamos lá";
+
+set med_intermediario,0;
+set med_skill_int,0;
+set accept_med_int,0;
+set limite_inter,limite_inter -1;
+if(countitem(742) > 0) {delitem 742,1;}
+if(countitem(1027) == 0) {getitem 1027,1;}
+skill 255,0,0;
+set f_protecao,0;
+if (checkquest(2109) > 0) {erasequest 2109;}
+skill 277,0,0;
+set Kaisher,0;
+if (checkquest(2112) > 0) {erasequest 2112;}
+skill 176,0,0;
+set Seijutsu,0;
+if (checkquest(2072) > 0) {erasequest 2072;}
+skill 54,0,0;
+set Shikon,0;
+if (checkquest(2113) > 0) {erasequest 2113;}
+skill 307,0,0;
+set Byakugo,0;
+if (checkquest(2090) > 0) {erasequest 2090;}
+skill 33,0,0;
+set Tsubaki,0;
+if (checkquest(2074) > 0) {erasequest 2074;}
+dispbottom "Medicina intermediário removido com sucesso";
+close;
+
+velo:
+if(velo_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 1092,1; close;}
+if(vel_avan == 1) {mes "Você precisa deletar seu treinamento avançado antes de deletar um intermediário"; close;}
+next;
+mes "Ok, vamos lá";
+
+set velo_intermediario,0;
+set velo_skill_int,0;
+set accept_velo_int,0;
+set limite_inter,limite_inter -1;
+if(countitem(1099) > 0) {delitem 1099,1;}
+if(countitem(1051) == 0) {getitem 1051,1;}
+skill 383,0,0;
+set Vel_Caminho,0;
+if (checkquest(2147) > 0) {erasequest 2147;}
+skill 411,0,0;
+set Vel_corrida,0;
+if (checkquest(2148) > 0) {erasequest 2148;}
+skill 350,0,0;
+set fuga,0;
+if (checkquest(2149) > 0) {erasequest 2149;}
+skill 27,0,0;
+set oboro,0;
+if (checkquest(2148) > 0) {erasequest 2148;}
+skill 26,0,0;
+set shushin,0;
+if (checkquest(2150) > 0) {erasequest 2150;}
+dispbottom "Velocidade intermediário removido com sucesso";
+close;
+
+nao:
+getitem 1092,1;
+close;
+
+}
+
+function	script	removeravan	{
+
+mes "Você tem certeza que quer remover um treinamento avançado? Todos os jutsus que estão anexados a ele serão deletados (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Sim",doit,"Não",nao;
+
+doit:
+next;
+mes "Qual é o treino avançado que você deseja remover?";
+menu "Ninjutsu",nin,"Taijutsu",tai,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Velocidade",velo,"Medicina",med,"Nenhum",nao;
+
+nin:
+if(nin_avan != 1) {mes "Você não possui esse treino"; getitem 1095,1; close;}
+next;
+mes "Ok, vamos lá";
+
+set nin_avan,0;
+set limite_avan,limite_avan -1;
+if (countitem(751) > 0) {delitem 751,1;}
+if(countitem(739) == 0) {getitem 739,1;}
+skill 666,0,0;
+set Gandan,0;
+skill 394,0,0;
+set f_mugen,0;
+skill 536,0,0;
+set Zokokku,0;
+skill 84,0,0;
+set R_chidori,0;
+skill 539,0,0;
+set Goshokuzame,0;
+skill 653,0,0;
+set Doryuusou,0;
+skill 400,0,0;
+set f_atsugai,0;
+skill 83,0,0;
+set Endan,0;
+skill 541,0,0;
+set R_chidoriN,0;
+skill 89,0,0;
+set Suishouha,0;
+dispbottom "Ninjutsu Avançado removido com sucesso";
+close;
+
+tai:
+if(tai_avan != 1) {mes "Você não possui esse treino"; getitem 1095,1; close;}
+next;
+mes "Ok, vamos lá";
+
+set tai_avan,0;
+set tai_skill_ava,0;
+set accept_tai_ava,0;
+set limite_avan,limite_avan -1;
+if (countitem(752) > 0) {delitem 752,1;}
+if(countitem(740) == 0) {getitem 740,1;}
+skill 420,0,0;
+set Cambalhota,0;
+set quest_tai_ava_quatro,0;
+set tai_avan4_item1,0;
+set tai_avan4_item2,0;
+set tai_avan4_item3,0;
+set taiavan4_1$,0;
+set taiavan4_2$,0;
+set taiavan4_3$,0;
+//
+skill 421,0,0;
+set Dinamyc,0;
+set quest_tai_ava_um,0;
+set tai_avan1_item1,0;
+set tai_avan1_item2,0;
+set tai_avan1_item3,0;
+set taiavan1_1$,0;
+set taiavan1_2$,0;
+set taiavan1_3$,0;
+//
+skill 248,0,0;
+set tai_Fe,0;
+set quest_tai_ava_cinco,0;
+set tai_avan5_item1,0;
+set tai_avan5_item2,0;
+set tai_avan5_item3,0;
+set taiavan5_1$,0;
+set taiavan5_2$,0;
+set taiavan5_3$,0;
+//
+skill 397,0,0;
+set Perfurar,0;
+set quest_tai_ava_dois,0;
+set tai_avan2_item1,0;
+set tai_avan2_item2,0;
+set tai_avan2_item3,0;
+set taiavan2_1$,0;
+set taiavan2_2$,0;
+set taiavan2_3$,0;
+//
+skill 254,0,0;
+set Sawarabi,0;
+set quest_tai_ava_tres,0;
+set tai_avan3_item1,0;
+set tai_avan3_item2,0;
+set tai_avan3_item3,0;
+set taiavan3_1$,0;
+set taiavan3_2$,0;
+set taiavan3_3$,0;
+//
+skill 414,0,0;
+skill 415,0,0;
+set tai_voadora,0;
+set quest_tai_ava_seis,0;
+set tai_avan6_item1,0;
+set tai_avan6_item2,0;
+set tai_avan6_item3,0;
+set taiavan6_1$,0;
+set taiavan6_2$,0;
+set taiavan6_3$,0;
+//
+skill 418,0,0;
+skill 419,0,0;
+set tai_chute,0;
+set quest_tai_ava_sete,0;
+set tai_avan7_item1,0;
+set tai_avan7_item2,0;
+set tai_avan7_item3,0;
+set taiavan7_1$,0;
+set taiavan7_2$,0;
+set taiavan7_3$,0;
+//
+dispbottom "Taijutsu avançado removido com sucesso";
+close;
+
+gen:
+if(gen_avan != 1) {mes "Você não possui esse treino"; getitem 1095,1; close;}
+next;
+mes "Ok, vamos lá";
+
+set gen_avan,0;
+set gen_skill_ava,0;
+set accept_gen_ava,0;
+set limite_avan,limite_avan -1;
+if (countitem(750) > 0) {delitem 750,1;}
+if(countitem(738) == 0) {getitem 738,1;}
+//
+skill 667,0,0;
+set Bakuhatsu,0;
+set quest_gen_ava_um,0;
+set gen_avan1_item1,0;
+set gen_avan1_item2,0;
+set gen_avan1_item3,0;
+set genavan1_1$,0;
+set genavan1_2$,0;
+set genavan1_3$,0;
+//
+skill 659,0,0;
+set FuriaD,0;
+set quest_gen_ava_cinco,0;
+set gen_avan5_item1,0;
+set gen_avan5_item2,0;
+set gen_avan5_item3,0;
+set genavan5_1$,0;
+set genavan5_2$,0;
+set genavan5_3$,0;
+//
+skill 532,0,0;
+set Imagem,0;
+set quest_gen_ava_sete,0;
+set gen_avan7_item1,0;
+set gen_avan7_item2,0;
+set gen_avan7_item3,0;
+set genavan7_1$,0;
+set genavan7_2$,0;
+set genavan7_3$,0;
+//
+skill 663,0,0;
+set Kokohi,0;
+set quest_gen_ava_dois,0;
+set gen_avan2_item1,0;
+set gen_avan2_item2,0;
+set gen_avan2_item3,0;
+set genavan2_1$,0;
+set genavan2_2$,0;
+set genavan2_3$,0;
+//
+skill 311,0,0;
+set Miro,0;
+set quest_gen_ava_tres,0;
+set gen_avan3_item1,0;
+set gen_avan3_item2,0;
+set gen_avan3_item3,0;
+set genavan3_1$,0;
+set genavan3_2$,0;
+set genavan3_3$,0;
+//
+skill 662,0,0;
+set Noroi,0;
+set quest_gen_ava_quatro,0;
+set gen_avan4_item1,0;
+set gen_avan4_item2,0;
+set gen_avan4_item3,0;
+set genavan4_1$,0;
+set genavan4_2$,0;
+set genavan4_3$,0;
+//
+skill 217,0,0;
+set RemoverArmadura,0;
+set quest_gen_ava_seis,0;
+set gen_avan6_item1,0;
+set gen_avan6_item2,0;
+set gen_avan6_item3,0;
+set genavan6_1$,0;
+set genavan6_2$,0;
+set genavan6_3$,0;
+//
+skill 328,0,0;
+set Jubaku,0;
+set quest_gen_ava_sete,0;
+set gen_avan7_item1,0;
+set gen_avan7_item2,0;
+set gen_avan7_item3,0;
+set genavan7_1$,0;
+set genavan7_2$,0;
+set genavan7_3$,0;
+//
+dispbottom "Genjutsu avançado removido com sucesso";
+close;
+
+fuuin:
+if(fuuin_avan != 1) {mes "Você não possui esse treino"; getitem 1095,1; close;}
+next;
+mes "Ok, vamos lá";
+set fuuin_avan,0;
+set fuuin_skill_ava,0;
+set accept_fuu_ava,0;
+set limite_avan,limite_avan -1;
+if (countitem(753) > 0) {delitem 753,1;}
+if(countitem(741) == 0) {getitem 741,1;}
+//
+skill 78,0,0;
+set Enfraquecer,0;
+set quest_fuu_ava_quatro,0;
+set fuu_avan4_item1,0;
+set fuu_avan4_item2,0;
+set fuu_avan4_item3,0;
+set fuuavan4_1$,0;
+set fuuavan4_2$,0;
+set fuuavan4_3$,0;
+//
+skill 113,0,0;
+set Gaia,0;
+set quest_fuu_ava_cinco,0;
+set fuu_avan5_item1,0;
+set fuu_avan5_item2,0;
+set fuu_avan5_item3,0;
+set fuuavan5_1$,0;
+set fuuavan5_2$,0;
+set fuuavan5_3$,0;
+//
+skill 464,0,0;
+set Kaupe,0;
+set quest_fuu_ava_dois,0;
+set fuu_avan2_item1,0;
+set fuu_avan2_item2,0;
+set fuu_avan2_item3,0;
+set fuuavan2_1$,0;
+set fuuavan2_2$,0;
+set fuuavan2_3$,0;
+//
+skill 288,0,0;
+set ProtegerT,0;
+set quest_fuu_ava_seis,0;
+set fuu_avan6_item1,0;
+set fuu_avan6_item2,0;
+set fuu_avan6_item3,0;
+set fuuavan6_1$,0;
+set fuuavan6_2$,0;
+set fuuavan6_3$,0;
+//
+skill 544,0,0;
+set Shiki,0;
+set quest_fuu_ava_um,0;
+set fuu_avan1_item1,0;
+set fuu_avan1_item2,0;
+set fuu_avan1_item3,0;
+set fuuavan1_1$,0;
+set fuuavan1_2$,0;
+set fuuavan1_3$,0;
+//
+skill 362,0,0;
+set Shugo,0;
+set quest_fuu_ava_tres,0;
+set fuu_avan3_item1,0;
+set fuu_avan3_item2,0;
+set fuu_avan3_item3,0;
+set fuuavan3_1$,0;
+set fuuavan3_2$,0;
+set fuuavan3_3$,0;
+//
+skill 313,0,0;
+set Gogyou,0;
+set quest_fuu_ava_sete,0;
+set fuu_avan7_item1,0;
+set fuu_avan7_item2,0;
+set fuu_avan7_item3,0;
+set fuuavan7_1$,0;
+set fuuavan7_2$,0;
+set fuuavan7_3$,0;
+
+dispbottom "Fuuinjutsu avançado removido com sucesso";
+close;
+
+med:
+if(med_avan != 1) {mes "Você não possui esse treino"; getitem 1095,1; close;}
+next;
+mes "Ok, vamos lá";
+set med_avan,0;
+set med_skill_ava,0;
+set accept_med_ava,0;
+set limite_avan,limite_avan -1;
+if (countitem(754) > 0) {delitem 754,1;}
+if(countitem(742) == 0) {getitem 742,1;}
+//
+skill 404,0,0;
+set Bruma,0;
+set quest_med_ava_dois,0;
+set med_avan2_item1,0;
+set med_avan2_item2,0;
+set med_avan2_item3,0;
+set medavan2_1$,0;
+set medavan2_2$,0;
+set medavan2_3$,0;
+//
+skill 74,0,0;
+set Chikatsu,0;
+set quest_med_ava_quatro,0;
+set med_avan4_item1,0;
+set med_avan4_item2,0;
+set med_avan4_item3,0;
+set medavan4_1$,0;
+set medavan4_2$,0;
+set medavan4_3$,0;
+//
+skill 268,0,0;
+set Muralha,0;
+set quest_med_ava_cinco,0;
+set med_avan5_item1,0;
+set med_avan5_item2,0;
+set med_avan5_item3,0;
+set medavan5_1$,0;
+set medavan5_2$,0;
+set medavan5_3$,0;
+//
+skill 70,0,0;
+set Shouen,0;
+set quest_med_ava_um,0;
+set med_avan1_item1,0;
+set med_avan1_item2,0;
+set med_avan1_item3,0;
+set medavan1_1$,0;
+set medavan1_2$,0;
+set medavan1_3$,0;
+//
+skill 140,0,0;
+set Toxica,0;
+set quest_med_ava_tres,0;
+set med_avan3_item1,0;
+set med_avan3_item2,0;
+set med_avan3_item3,0;
+set medavan3_1$,0;
+set medavan3_2$,0;
+set medavan3_3$,0;
+//
+dispbottom "Medicina avançada removido com sucesso";
+close;
+
+velo:
+if(vel_avan != 1) {mes "Você não possui esse treino"; getitem 1095,1; close;}
+next;
+mes "Ok, vamos lá";
+set vel_avan,0;
+set vel_skill_ava,0;
+set accept_vel_ava,0;
+set limite_avan,limite_avan -1;
+if (countitem(7021) > 0) {delitem 7021,1;}
+if(countitem(1099) == 0) {getitem 1099,1;}
+//
+skill 528,0,0;
+set CorteN,0;
+set quest_vel_ava_um,0;
+set vel_avan1_item1,0;
+set vel_avan1_item2,0;
+set vel_avan1_item3,0;
+set velavan1_1$,0;
+set velavan1_2$,0;
+set velavan1_3$,0;
+//
+skill 530,0,0;
+set CSombra,0;
+set quest_vel_ava_quatro,0;
+set vel_avan4_item1,0;
+set vel_avan4_item2,0;
+set vel_avan4_item3,0;
+set velavan4_1$,0;
+set velavan4_2$,0;
+set velavan4_3$,0;
+//
+skill 264,0,0;
+set Passo,0;
+set quest_vel_ava_tres,0;
+set vel_avan3_item1,0;
+set vel_avan3_item2,0;
+set vel_avan3_item3,0;
+set velavan3_1$,0;
+set velavan3_2$,0;
+set velavan3_3$,0;
+//
+skill 529,0,0;
+set SSombras,0;
+set quest_vel_ava_dois,0;
+set vel_avan2_item1,0;
+set vel_avan2_item2,0;
+set vel_avan2_item3,0;
+set velavan2_1$,0;
+set velavan2_2$,0;
+set velavan2_3$,0;
+//
+skill 389,0,0;
+set espreitar,0;
+set quest_vel_ava_cinco,0;
+set vel_avan5_item1,0;
+set vel_avan5_item2,0;
+set vel_avan5_item3,0;
+set velavan5_1$,0;
+set velavan5_2$,0;
+set velavan5_3$,0;
+//
+dispbottom "Velocidade avançada removido com sucesso";
+close;
+
+nao:
+getitem 1095,1;
+close;
+
+}
+
+
+function	script	removeravanq	{
+
+mes "Você tem certeza que quer remover suas quests avançadas? Lembrando que isso irá remover todas as quests avançadas que você possui";
+menu "Sim",doit,"Não",nao;
+
+doit:
+mes "Qual é o treino avançado que você possui?";
+menu "Ninjutsu",nin,"Taijutsu",tai,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Velocidade",velo,"Medicina",med,"Nenhum",nao;
+
+nin:
+if(nin_avan != 1) {mes "Você não possui esse treino"; getitem 1097,1; close;}
+next;
+mes "Ok, vamos lá";
+//
+set quest_doton_ava_um,0;
+set dot_avan1_item1,0;
+set dot_avan1_item2,0;
+set dot_avan1_item3,0;
+set dotavan1_1$,0;
+set dotavan1_2$,0;
+set dotavan1_3$,0;
+//
+set quest_fuuton_ava_um,0;
+set fuut_avan1_item1,0;
+set fuut_avan1_item2,0;
+set fuut_avan1_item3,0;
+set fuutavan1_1$,0;
+set fuutavan1_2$,0;
+set fuutavan1_3$,0;
+//
+set quest_katon_ava_um,0;
+set kat_avan1_item1,0;
+set kat_avan1_item2,0;
+set kat_avan1_item3,0;
+set katavan1_1$,0;
+set katavan1_2$,0;
+set katavan1_3$,0;
+//
+set quest_raiton_ava_um,0;
+set rai_avan1_item1,0;
+set rai_avan1_item2,0;
+set rai_avan1_item3,0;
+set raitavan1_1$,0;
+set raitavan1_2$,0;
+set raitavan1_3$,0;
+//
+set quest_suiton_ava_um,0;
+set sui_avan1_item1,0;
+set sui_avan1_item2,0;
+set sui_avan1_item3,0;
+set suiavan1_1$,0;
+set suiavan1_2$,0;
+set suiavan1_3$,0;
+//
+set quest_doton_ava_dois,0;
+set dot_avan2_item1,0;
+set dot_avan2_item2,0;
+set dot_avan2_item3,0;
+set dotavan2_1$,0;
+set dotavan2_2$,0;
+set dotavan2_3$,0;
+//
+set quest_fuuton_ava_dois,0;
+set fuut_avan2_item1,0;
+set fuut_avan2_item2,0;
+set fuut_avan2_item3,0;
+set fuutavan2_1$,0;
+set fuutavan2_2$,0;
+set fuutavan2_3$,0;
+//
+set quest_katon_ava_dois,0;
+set kat_avan2_item1,0;
+set kat_avan2_item2,0;
+set kat_avan2_item3,0;
+set katavan2_1$,0;
+set katavan2_2$,0;
+set katavan2_3$,0;
+//
+set quest_raiton_ava_dois,0;
+set rai_avan2_item1,0;
+set rai_avan2_item2,0;
+set rai_avan2_item3,0;
+set raitavan2_1$,0;
+set raitavan2_2$,0;
+set raitavan2_3$,0;
+//
+set quest_suiton_ava_dois,0;
+set sui_avan2_item1,0;
+set sui_avan2_item2,0;
+set sui_avan2_item3,0;
+set suiavan2_1$,0;
+set suiavan2_2$,0;
+set suiavan2_3$,0;
+//
+dispbottom "Quests de Ninjutsu Avançado removidas com sucesso";
+close;
+
+tai:
+if(tai_avan != 1) {mes "Você não possui esse treino"; getitem 1097,1; close;}
+//if(tai_skill_ava > 0) {mes "Você só pode remover as quests avançadas se não tiver aprendido nenhum jutsu avançado"; getitem 1097,1; close;}
+if(tai_skill_ava == 2) {mes "Você Já possui suas duas avançadas aprendidas, não há quests para remover"; getitem 1097,1; close;}
+if(tai_skill_ava == 1) && (accept_tai_ava == 1) {mes "Você não possui quests para serem removidas deste treinamento"; getitem 1097,1; close;}
+next;
+mes "Ok, vamos lá";
+//
+if(tai_skill_ava == 0) {set accept_tai_ava,0;} 
+if(tai_skill_ava == 1) && (accept_tai_ava == 2) {set accept_tai_ava,accept_tai_ava -1;} 
+//
+set quest_tai_ava_quatro,0;
+set tai_avan4_item1,0;
+set tai_avan4_item2,0;
+set tai_avan4_item3,0;
+set taiavan4_1$,0;
+set taiavan4_2$,0;
+set taiavan4_3$,0;
+//
+set quest_tai_ava_um,0;
+set tai_avan1_item1,0;
+set tai_avan1_item2,0;
+set tai_avan1_item3,0;
+set taiavan1_1$,0;
+set taiavan1_2$,0;
+set taiavan1_3$,0;
+//
+set quest_tai_ava_cinco,0;
+set tai_avan5_item1,0;
+set tai_avan5_item2,0;
+set tai_avan5_item3,0;
+set taiavan5_1$,0;
+set taiavan5_2$,0;
+set taiavan5_3$,0;
+//
+set quest_tai_ava_dois,0;
+set tai_avan2_item1,0;
+set tai_avan2_item2,0;
+set tai_avan2_item3,0;
+set taiavan2_1$,0;
+set taiavan2_2$,0;
+set taiavan2_3$,0;
+//
+set quest_tai_ava_tres,0;
+set tai_avan3_item1,0;
+set tai_avan3_item2,0;
+set tai_avan3_item3,0;
+set taiavan3_1$,0;
+set taiavan3_2$,0;
+set taiavan3_3$,0;
+//
+dispbottom "Quests de Taijutsu avançado removidas com sucesso";
+close;
+
+gen:
+if(gen_avan != 1) {mes "Você não possui esse treino"; getitem 1097,1; close;}
+//if(gen_skill_ava > 0) {mes "Você só pode remover as quests avançadas se não tiver aprendido nenhum jutsu avançado"; getitem 1097,1; close;}
+if(gen_skill_ava == 2) {mes "Você Já possui suas duas avançadas aprendidas, não há quests para remover"; getitem 1097,1; close;}
+if(gen_skill_ava == 1) && (accept_gen_ava == 1) {mes "Você não possui quests para serem removidas deste treinamento"; getitem 1097,1; close;}
+next;
+mes "Ok, vamos lá";
+//
+if(gen_skill_ava == 0) {set accept_gen_ava,0;} 
+if(gen_skill_ava == 1) {set accept_gen_ava,accept_gen_ava -1;} 
+//
+set quest_gen_ava_um,0;
+set gen_avan1_item1,0;
+set gen_avan1_item2,0;
+set gen_avan1_item3,0;
+set genavan1_1$,0;
+set genavan1_2$,0;
+set genavan1_3$,0;
+//
+set quest_gen_ava_cinco,0;
+set gen_avan5_item1,0;
+set gen_avan5_item2,0;
+set gen_avan5_item3,0;
+set genavan5_1$,0;
+set genavan5_2$,0;
+set genavan5_3$,0;
+//
+set quest_gen_ava_sete,0;
+set gen_avan7_item1,0;
+set gen_avan7_item2,0;
+set gen_avan7_item3,0;
+set genavan7_1$,0;
+set genavan7_2$,0;
+set genavan7_3$,0;
+//
+set quest_gen_ava_dois,0;
+set gen_avan2_item1,0;
+set gen_avan2_item2,0;
+set gen_avan2_item3,0;
+set genavan2_1$,0;
+set genavan2_2$,0;
+set genavan2_3$,0;
+//
+set quest_gen_ava_tres,0;
+set gen_avan3_item1,0;
+set gen_avan3_item2,0;
+set gen_avan3_item3,0;
+set genavan3_1$,0;
+set genavan3_2$,0;
+set genavan3_3$,0;
+//
+set quest_gen_ava_quatro,0;
+set gen_avan4_item1,0;
+set gen_avan4_item2,0;
+set gen_avan4_item3,0;
+set genavan4_1$,0;
+set genavan4_2$,0;
+set genavan4_3$,0;
+//
+set quest_gen_ava_seis,0;
+set gen_avan6_item1,0;
+set gen_avan6_item2,0;
+set gen_avan6_item3,0;
+set genavan6_1$,0;
+set genavan6_2$,0;
+set genavan6_3$,0;
+//
+dispbottom "Quests de Genjutsu avançado removidas com sucesso";
+close;
+
+fuuin:
+if(fuuin_avan != 1) {mes "Você não possui esse treino"; getitem 1097,1; close;}
+//if(fuuin_skill_ava > 0) {mes "Você só pode remover as quests avançadas se não tiver aprendido nenhum jutsu avançado"; getitem 1097,1; close;}
+if(fuuin_skill_ava == 2) {mes "Você Já possui suas duas avançadas aprendidas, não há quests para remover"; getitem 1097,1; close;}
+if(fuuin_skill_ava == 1) && (accept_fuu_ava == 1) {mes "Você não possui quests para serem removidas deste treinamento"; getitem 1097,1; close;}
+next;
+mes "Ok, vamos lá";
+//
+if(fuuin_skill_ava == 0) {set accept_fuu_ava,0;} 
+if(fuuin_skill_ava == 1) {set accept_fuu_ava,accept_fuu_ava -1;} 
+//
+set quest_fuu_ava_quatro,0;
+set fuu_avan4_item1,0;
+set fuu_avan4_item2,0;
+set fuu_avan4_item3,0;
+set fuuavan4_1$,0;
+set fuuavan4_2$,0;
+set fuuavan4_3$,0;
+//
+set quest_fuu_ava_cinco,0;
+set fuu_avan5_item1,0;
+set fuu_avan5_item2,0;
+set fuu_avan5_item3,0;
+set fuuavan5_1$,0;
+set fuuavan5_2$,0;
+set fuuavan5_3$,0;
+//
+set quest_fuu_ava_dois,0;
+set fuu_avan2_item1,0;
+set fuu_avan2_item2,0;
+set fuu_avan2_item3,0;
+set fuuavan2_1$,0;
+set fuuavan2_2$,0;
+set fuuavan2_3$,0;
+//
+set quest_fuu_ava_seis,0;
+set fuu_avan6_item1,0;
+set fuu_avan6_item2,0;
+set fuu_avan6_item3,0;
+set fuuavan6_1$,0;
+set fuuavan6_2$,0;
+set fuuavan6_3$,0;
+//
+set quest_fuu_ava_um,0;
+set fuu_avan1_item1,0;
+set fuu_avan1_item2,0;
+set fuu_avan1_item3,0;
+set fuuavan1_1$,0;
+set fuuavan1_2$,0;
+set fuuavan1_3$,0;
+//
+set quest_fuu_ava_tres,0;
+set fuu_avan3_item1,0;
+set fuu_avan3_item2,0;
+set fuu_avan3_item3,0;
+set fuuavan3_1$,0;
+set fuuavan3_2$,0;
+set fuuavan3_3$,0;
+
+dispbottom "Quests de Fuuinjutsu avançado removidas com sucesso";
+close;
+
+med:
+if(med_avan != 1) {mes "Você não possui esse treino"; getitem 1097,1; close;}
+//if(med_skill_ava > 0) {mes "Você só pode remover as quests avançadas se não tiver aprendido nenhum jutsu avançado"; getitem 1097,1; close;}
+if(med_skill_ava == 2) {mes "Você Já possui suas duas avançadas aprendidas, não há quests para remover"; getitem 1097,1; close;}
+if(med_skill_ava == 1) && (accept_med_ava == 1) {mes "Você não possui quests para serem removidas deste treinamento"; getitem 1097,1; close;}
+next;
+mes "Ok, vamos lá";
+//
+if(med_skill_ava == 0) {set accept_med_ava,0;} 
+if(med_skill_ava == 1) {set accept_med_ava,accept_med_ava -1;} 
+//
+set quest_med_ava_dois,0;
+set med_avan2_item1,0;
+set med_avan2_item2,0;
+set med_avan2_item3,0;
+set medavan2_1$,0;
+set medavan2_2$,0;
+set medavan2_3$,0;
+//
+set quest_med_ava_quatro,0;
+set med_avan4_item1,0;
+set med_avan4_item2,0;
+set med_avan4_item3,0;
+set medavan4_1$,0;
+set medavan4_2$,0;
+set medavan4_3$,0;
+//
+set quest_med_ava_cinco,0;
+set med_avan5_item1,0;
+set med_avan5_item2,0;
+set med_avan5_item3,0;
+set medavan5_1$,0;
+set medavan5_2$,0;
+set medavan5_3$,0;
+//
+set quest_med_ava_um,0;
+set med_avan1_item1,0;
+set med_avan1_item2,0;
+set med_avan1_item3,0;
+set medavan1_1$,0;
+set medavan1_2$,0;
+set medavan1_3$,0;
+//
+set quest_med_ava_tres,0;
+set med_avan3_item1,0;
+set med_avan3_item2,0;
+set med_avan3_item3,0;
+set medavan3_1$,0;
+set medavan3_2$,0;
+set medavan3_3$,0;
+//
+dispbottom "Quests de Medicina avançada removidas com sucesso";
+close;
+
+velo:
+if(vel_avan != 1) {mes "Você não possui esse treino"; getitem 1097,1; close;}
+//if(vel_skill_ava > 0) {mes "Você só pode remover as quests avançadas se não tiver aprendido nenhum jutsu avançado"; getitem 1097,1; close;}
+if(vel_skill_ava == 2) {mes "Você Já possui suas duas avançadas aprendidas, não há quests para remover"; getitem 1097,1; close;}
+if(vel_skill_ava == 1) && (accept_vel_ava == 1) {mes "Você não possui quests para serem removidas deste treinamento"; getitem 1097,1; close;}
+next;
+mes "Ok, vamos lá";
+//
+if(vel_skill_ava == 0) {set accept_vel_ava,0;} 
+if(vel_skill_ava == 1) {set accept_vel_ava,accept_vel_ava -1;} 
+//
+set quest_vel_ava_um,0;
+set vel_avan1_item1,0;
+set vel_avan1_item2,0;
+set vel_avan1_item3,0;
+set velavan1_1$,0;
+set velavan1_2$,0;
+set velavan1_3$,0;
+//
+set quest_vel_ava_quatro,0;
+set vel_avan4_item1,0;
+set vel_avan4_item2,0;
+set vel_avan4_item3,0;
+set velavan4_1$,0;
+set velavan4_2$,0;
+set velavan4_3$,0;
+//
+set quest_vel_ava_tres,0;
+set vel_avan3_item1,0;
+set vel_avan3_item2,0;
+set vel_avan3_item3,0;
+set velavan3_1$,0;
+set velavan3_2$,0;
+set velavan3_3$,0;
+//
+set quest_vel_ava_dois,0;
+set vel_avan2_item1,0;
+set vel_avan2_item2,0;
+set vel_avan2_item3,0;
+set velavan2_1$,0;
+set velavan2_2$,0;
+set velavan2_3$,0;
+//
+set quest_vel_ava_cinco,0;
+set vel_avan5_item1,0;
+set vel_avan5_item2,0;
+set vel_avan5_item3,0;
+set velavan5_1$,0;
+set velavan5_2$,0;
+set velavan5_3$,0;
+dispbottom "Quests de Velocidade avançada removidas com sucesso";
+close;
+
+nao:
+close;
+
+}
+
+function	script	bijuukonoha	{
+
+if (#konoha != 1) {end;}
+if ($kon3dest == 1) {end;}
+
+if ($bijuu_konoha == 1) {set @receberhp1,5; set @recebersp1,5;}
+if ($bijuu_konoha == 2) {set @receberhp1,10; set @recebersp1,10;}
+if ($bijuu_konoha == 3) {set @receberhp1,15; set @recebersp1,25;}
+if ($bijuu_konoha == 4) {set @receberhp1,20; set @recebersp1,20;}
+if ($bijuu_konoha == 5) {set @receberhp1,25; set @recebersp1,25;}
+if ($bijuu_konoha == 6) {set @receberhp1,30; set @recebersp1,30;}
+if ($bijuu_konoha == 7) {set @receberhp1,35; set @recebersp1,35;}
+if ($bijuu_konoha == 8) {set @receberhp1,40; set @recebersp1,40;}
+if ($bijuu_konoha == 9) {set @receberhp1,45; set @recebersp1,45;}
+
+if ($Konoha_hp == 1) {set @receberhp2, 3;}
+if ($Konoha_hp == 2) {set @receberhp2, 6;}
+if ($Konoha_hp == 3) {set @receberhp2, 9;}
+if ($Konoha_hp == 4) {set @receberhp2, 12;}
+if ($Konoha_hp == 5) {set @receberhp2, 15;}
+
+if ($Konoha_SP == 1) {set @recebersp2,1;}
+if ($Konoha_SP == 2) {set @recebersp2,2;}
+if ($Konoha_SP == 3) {set @recebersp2,3;}
+if ($Konoha_SP == 4) {set @recebersp2,4;}
+if ($Konoha_SP == 5) {set @recebersp2,5;}
+
+set @receberhp, @receberhp1 + @receberhp2;
+set @recebersp, @recebersp1 + @recebersp2;
+
+bonus bMaxHPrate, @receberhp;
+bonus bMaxSPrate, @recebersp;
+
+}
+
+
+function	script	bijuuareia	{
+
+if (#suna != 1) {end;}
+if ($sun3dest == 1) {end;}
+
+if ($bijuu_areia == 1) {set @receberhps1,5; set @recebersps1,5;}
+if ($bijuu_areia == 2) {set @receberhps1,10; set @recebersps1,10;}
+if ($bijuu_areia == 3) {set @receberhps1,15; set @recebersps1,15;}
+if ($bijuu_areia == 4) {set @receberhps1,20; set @recebersps1,20;}
+if ($bijuu_areia == 5) {set @receberhps1,25; set @recebersps1,25;}
+if ($bijuu_areia == 6) {set @receberhps1,30; set @recebersps1,30;}
+if ($bijuu_areia == 7) {set @receberhps1,35; set @recebersps1,35;}
+if ($bijuu_areia == 8) {set @receberhps1,40; set @recebersps1,40;}
+if ($bijuu_areia == 9) {set @receberhps1,45; set @recebersps1,45;}
+
+if ($areia_hp == 1) {set @receberhps2, 3;}
+if ($areia_hp == 2) {set @receberhps2, 6;}
+if ($areia_hp == 3) {set @receberhps2, 9;}
+if ($areia_hp == 4) {set @receberhps2, 12;}
+if ($areia_hp == 5) {set @receberhps2, 15;}
+
+if ($areia_SP == 1) {set @recebersps2,1;}
+if ($areia_SP == 2) {set @recebersps2,2;}
+if ($areia_SP == 3) {set @recebersps2,3;}
+if ($areia_SP == 4) {set @recebersps2,4;}
+if ($areia_SP == 5) {set @recebersps2,5;}
+
+set @receberhps, @receberhps1 + @receberhps2;
+set @recebersps, @recebersps1 + @recebersps2;
+
+bonus bMaxHPrate, @receberhps;
+bonus bMaxSPrate, @recebersps;
+
+
+}
+
+function	script	bijuunevoa	{
+
+if (#nevoa != 1) {end;}
+if ($nev3dest == 1) {end;}
+
+if ($bijuu_nevoa == 1) {set @receberhp1,5; set @recebersp1,5;}
+if ($bijuu_nevoa == 2) {set @receberhp1,10; set @recebersp1,10;}
+if ($bijuu_nevoa == 3) {set @receberhp1,15; set @recebersp1,15;}
+if ($bijuu_nevoa == 4) {set @receberhp1,20; set @recebersp1,20;}
+if ($bijuu_nevoa == 5) {set @receberhp1,25; set @recebersp1,25;}
+if ($bijuu_nevoa == 6) {set @receberhp1,30; set @recebersp1,30;}
+if ($bijuu_nevoa == 7) {set @receberhp1,35; set @recebersp1,35;}
+if ($bijuu_nevoa == 8) {set @receberhp1,40; set @recebersp1,40;}
+if ($bijuu_nevoa == 9) {set @receberhp1,45; set @recebersp1,45;}
+
+if ($nevoa_hp == 1) {set @receberhp2, 3;}
+if ($nevoa_hp == 2) {set @receberhp2, 6;}
+if ($nevoa_hp == 3) {set @receberhp2, 9;}
+if ($nevoa_hp == 4) {set @receberhp2, 12;}
+if ($nevoa_hp == 5) {set @receberhp2, 15;}
+
+if ($nevoa_SP == 1) {set @recebersp2,1;}
+if ($nevoa_SP == 2) {set @recebersp2,2;}
+if ($nevoa_SP == 3) {set @recebersp2,3;}
+if ($nevoa_SP == 4) {set @recebersp2,4;}
+if ($nevoa_SP == 5) {set @recebersp2,5;}
+
+set @receberhp, @receberhp1 + @receberhp2;
+set @recebersp, @recebersp1 + @recebersp2;
+
+bonus bMaxHPrate, @receberhp;
+bonus bMaxSPrate, @recebersp;
+
+
+}
+
+function	script	bijuunuvem	{
+
+if (#nuvem != 1) {end;}
+if ($nuv3dest == 1) {end;}
+
+if ($bijuu_nuvem == 1) {set @receberhp1,5; set @recebersp1,5;}
+if ($bijuu_nuvem == 2) {set @receberhp1,10; set @recebersp1,10;}
+if ($bijuu_nuvem == 3) {set @receberhp1,15; set @recebersp1,15;}
+if ($bijuu_nuvem == 4) {set @receberhp1,20; set @recebersp1,20;}
+if ($bijuu_nuvem == 5) {set @receberhp1,25; set @recebersp1,25;}
+if ($bijuu_nuvem == 6) {set @receberhp1,30; set @recebersp1,30;}
+if ($bijuu_nuvem == 7) {set @receberhp1,35; set @recebersp1,35;}
+if ($bijuu_nuvem == 8) {set @receberhp1,40; set @recebersp1,40;}
+if ($bijuu_nuvem == 9) {set @receberhp1,45; set @recebersp1,45;}
+
+if ($nuvem_hp == 1) {set @receberhp2, 3;}
+if ($nuvem_hp == 2) {set @receberhp2, 6;}
+if ($nuvem_hp == 3) {set @receberhp2, 9;}
+if ($nuvem_hp == 4) {set @receberhp2, 12;}
+if ($nuvem_hp == 5) {set @receberhp2, 15;}
+
+if ($nuvem_SP == 1) {set @recebersp2,1;}
+if ($nuvem_SP == 2) {set @recebersp2,2;}
+if ($nuvem_SP == 3) {set @recebersp2,3;}
+if ($nuvem_SP == 4) {set @recebersp2,4;}
+if ($nuvem_SP == 5) {set @recebersp2,5;}
+
+set @receberhp, @receberhp1 + @receberhp2;
+set @recebersp, @recebersp1 + @recebersp2;
+
+bonus bMaxHPrate, @receberhp;
+bonus bMaxSPrate, @recebersp;
+
+
+}
+
+function	script	nuvemskills	{
+
+if ($nuv3dest == 1) {end;}
+
+if ($nuvem_reuniao == 1) {skill 758,1;}
+if ($nuvem_fuga == 1) {skill 760,1;}
+if ($nuvem_guarda1 == 1) {skill 945,1;}
+if ($nuvem_guarda2 == 1) {skill 946,1;}
+if ($nuvem_guarda3 == 1) {skill 947,1;}
+if ($nuvem_guarda4 == 1) {skill 948,1;}
+
+if ($bijuu_nuvem == 1) {set @receberhp1,5; set @recebersp1,5;}
+if ($bijuu_nuvem == 2) {set @receberhp1,10; set @recebersp1,10;}
+if ($bijuu_nuvem == 3) {set @receberhp1,15; set @recebersp1,15;}
+if ($bijuu_nuvem == 4) {set @receberhp1,20; set @recebersp1,20;}
+if ($bijuu_nuvem == 5) {set @receberhp1,25; set @recebersp1,25;}
+if ($bijuu_nuvem == 6) {set @receberhp1,30; set @recebersp1,30;}
+if ($bijuu_nuvem == 7) {set @receberhp1,35; set @recebersp1,35;}
+if ($bijuu_nuvem == 8) {set @receberhp1,40; set @recebersp1,40;}
+if ($bijuu_nuvem == 9) {set @receberhp1,45; set @recebersp1,45;}
+
+if ($nuvem_hp == 1) {set @receberhp2, 3;}
+if ($nuvem_hp == 2) {set @receberhp2, 6;}
+if ($nuvem_hp == 3) {set @receberhp2, 9;}
+if ($nuvem_hp == 4) {set @receberhp2, 12;}
+if ($nuvem_hp == 5) {set @receberhp2, 15;}
+
+if ($nuvem_SP == 1) {set @recebersp2,1;}
+if ($nuvem_SP == 2) {set @recebersp2,2;}
+if ($nuvem_SP == 3) {set @recebersp2,3;}
+if ($nuvem_SP == 4) {set @recebersp2,4;}
+if ($nuvem_SP == 5) {set @recebersp2,5;}
+
+set @receberhp, @receberhp1 + @receberhp2;
+set @recebersp, @recebersp1 + @recebersp2;
+
+bonus bMaxHPrate, @receberhp;
+bonus bMaxSPrate, @recebersp;
+
+}
+
+function	script	konohaskills	{
+
+if ($kon3dest == 1) {end;}
+
+if ($konoha_reuniao == 1) {skill 758,1;}
+if ($konoha_fuga == 1) {skill 760,1;}
+if ($konoha_guarda1 == 1) {skill 945,1;}
+if ($konoha_guarda2 == 1) {skill 946,1;}
+if ($konoha_guarda3 == 1) {skill 947,1;}
+if ($konoha_guarda4 == 1) {skill 948,1;}
+
+if ($bijuu_konoha == 1) {set @receberhp1,5; set @recebersp1,5;}
+if ($bijuu_konoha == 2) {set @receberhp1,10; set @recebersp1,10;}
+if ($bijuu_konoha == 3) {set @receberhp1,15; set @recebersp1,15;}
+if ($bijuu_konoha == 4) {set @receberhp1,20; set @recebersp1,20;}
+if ($bijuu_konoha == 5) {set @receberhp1,25; set @recebersp1,25;}
+if ($bijuu_konoha == 6) {set @receberhp1,30; set @recebersp1,30;}
+if ($bijuu_konoha == 7) {set @receberhp1,35; set @recebersp1,35;}
+if ($bijuu_konoha == 8) {set @receberhp1,40; set @recebersp1,40;}
+if ($bijuu_konoha == 9) {set @receberhp1,45; set @recebersp1,45;}
+
+if ($Konoha_hp == 1) {set @receberhp2, 3;}
+if ($Konoha_hp == 2) {set @receberhp2, 6;}
+if ($Konoha_hp == 3) {set @receberhp2, 9;}
+if ($Konoha_hp == 4) {set @receberhp2, 12;}
+if ($Konoha_hp == 5) {set @receberhp2, 15;}
+
+if ($Konoha_SP == 1) {set @recebersp2,1;}
+if ($Konoha_SP == 2) {set @recebersp2,2;}
+if ($Konoha_SP == 3) {set @recebersp2,3;}
+if ($Konoha_SP == 4) {set @recebersp2,4;}
+if ($Konoha_SP == 5) {set @recebersp2,5;}
+
+set @receberhp, @receberhp1 + @receberhp2;
+set @recebersp, @recebersp1 + @recebersp2;
+
+bonus bMaxHPrate, @receberhp;
+bonus bMaxSPrate, @recebersp;
+
+}
+
+function	script	areiaskills	{
+
+if ($sun3dest == 1) {end;}
+
+if ($areia_reuniao == 1) {skill 758,1;}
+if ($areia_fuga == 1) {skill 760,1;}
+if ($areia_guarda1 == 1) {skill 945,1;}
+if ($areia_guarda2 == 1) {skill 946,1;}
+if ($areia_guarda3 == 1) {skill 947,1;}
+if ($areia_guarda4 == 1) {skill 948,1;}
+
+if ($bijuu_areia == 1) {set @receberhp1,5; set @recebersp1,5;}
+if ($bijuu_areia == 2) {set @receberhp1,10; set @recebersp1,10;}
+if ($bijuu_areia == 3) {set @receberhp1,15; set @recebersp1,15;}
+if ($bijuu_areia == 4) {set @receberhp1,20; set @recebersp1,20;}
+if ($bijuu_areia == 5) {set @receberhp1,25; set @recebersp1,25;}
+if ($bijuu_areia == 6) {set @receberhp1,30; set @recebersp1,30;}
+if ($bijuu_areia == 7) {set @receberhp1,35; set @recebersp1,35;}
+if ($bijuu_areia == 8) {set @receberhp1,40; set @recebersp1,40;}
+if ($bijuu_areia == 9) {set @receberhp1,45; set @recebersp1,45;}
+
+if ($areia_hp == 1) {set @receberhp2, 3;}
+if ($areia_hp == 2) {set @receberhp2, 6;}
+if ($areia_hp == 3) {set @receberhp2, 9;}
+if ($areia_hp == 4) {set @receberhp2, 12;}
+if ($areia_hp == 5) {set @receberhp2, 15;}
+
+if ($areia_SP == 1) {set @recebersp2,1;}
+if ($areia_SP == 2) {set @recebersp2,2;}
+if ($areia_SP == 3) {set @recebersp2,3;}
+if ($areia_SP == 4) {set @recebersp2,4;}
+if ($areia_SP == 5) {set @recebersp2,5;}
+
+set @receberhp, @receberhp1 + @receberhp2;
+set @recebersp, @recebersp1 + @recebersp2;
+
+bonus bMaxHPrate, @receberhp;
+bonus bMaxSPrate, @recebersp;
+
+
+}
+
+function	script	nevoaskills	{
+
+if ($nev3dest == 1) {end;}
+
+if ($nevoa_reuniao == 1) {skill 758,1;}
+if ($nevoa_fuga == 1) {skill 760,1;}
+if ($nevoa_guarda1 == 1) {skill 945,1;}
+if ($nevoa_guarda2 == 1) {skill 946,1;}
+if ($nevoa_guarda3 == 1) {skill 947,1;}
+if ($nevoa_guarda4 == 1) {skill 948,1;}
+
+if ($bijuu_nevoa == 1) {set @receberhp1,5; set @recebersp1,5;}
+if ($bijuu_nevoa == 2) {set @receberhp1,10; set @recebersp1,10;}
+if ($bijuu_nevoa == 3) {set @receberhp1,15; set @recebersp1,15;}
+if ($bijuu_nevoa == 4) {set @receberhp1,20; set @recebersp1,20;}
+if ($bijuu_nevoa == 5) {set @receberhp1,25; set @recebersp1,25;}
+if ($bijuu_nevoa == 6) {set @receberhp1,30; set @recebersp1,30;}
+if ($bijuu_nevoa == 7) {set @receberhp1,35; set @recebersp1,35;}
+if ($bijuu_nevoa == 8) {set @receberhp1,40; set @recebersp1,40;}
+if ($bijuu_nevoa == 9) {set @receberhp1,45; set @recebersp1,45;}
+
+if ($nevoa_hp == 1) {set @receberhp2, 3;}
+if ($nevoa_hp == 2) {set @receberhp2, 6;}
+if ($nevoa_hp == 3) {set @receberhp2, 9;}
+if ($nevoa_hp == 4) {set @receberhp2, 12;}
+if ($nevoa_hp == 5) {set @receberhp2, 15;}
+
+if ($nevoa_SP == 1) {set @recebersp2,1;}
+if ($nevoa_SP == 2) {set @recebersp2,2;}
+if ($nevoa_SP == 3) {set @recebersp2,3;}
+if ($nevoa_SP == 4) {set @recebersp2,4;}
+if ($nevoa_SP == 5) {set @recebersp2,5;}
+
+set @receberhp, @receberhp1 + @receberhp2;
+set @recebersp, @recebersp1 + @recebersp2;
+
+bonus bMaxHPrate, @receberhp;
+bonus bMaxSPrate, @recebersp;
+
+}
+
+function	script	akatskills	{
+
+bonus bMaxHPrate, $AkJC[1];
+bonus bMaxSPrate, $AkJC[1];
+bonus bAllstats, $AkJC[1] *2;
+bonus bMatkRate, $AkJC[1];
+bonus bMaxSPRate, $AkJC[1]; 
+bonus2 bAddRace,RC_NonBoss, $AkJC[1];
+bonus2 bAddRace,RC_Boss, $AkJC[1];
+bonus2 bAddRace2,5, $AkJC[1];
+
+}
+
+function	script	trocarvila	{
+
+//if (#trocasvila >= 5) {mes "Você não pode mais trocar de vila, o limite é 5.";  getitem 7081,1; close; }
+//mes "Antes de prosseguir, saiba que o limite para uma conta trocar de vila, é cinco.";
+//next;
+query_sql "SELECT (`delayvila`) FROM `login` WHERE `account_id` = "+getcharid(3), @restante;
+if (@restante > 0) {mes "Ainda faltam "+@restante+" dias para você poder utilizar o trocador de vila nessa conta novamente!"; getitem 7081,1; close;}
+mes "Pra qual vila você gostaria de se transferir? (Se clicar em cancelar, seu item não será devolvido e o delay para trocar novamente na conta é de 30 dias)";
+menu "Konoha",konoha,"Suna",suna,"Névoa",nevoa,"Nuvem",nuvem,"Nenhuma no momento",nenhuma;
+
+nenhuma:
+getitem 7081,1;
+close;
+
+no:
+getitem 7081,1;
+close;
+
+konoha:
+next;
+//mes "Indisponível no momento.";  //Balanceamento
+//getitem 7081,1; //Balanceamento
+//close; //Balanceamento
+mes "Tem certeza que quer trocar sua vila pra Konoha?";
+menu "Sim, tenho certeza",simk,"Não",no;
+
+simk:
+if (#konoha == 1) {if (nukenin == 1) {atcommand "@job 4008"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;} mes "Nukenin desfeito, para receber sua bandana, por favor relogue"; close;} mes "Sua conta já é dessa vila"; getitem 7081,1; close;}
+if (#suna == 1) {if (nukenin == 1) {atcommand "@job 4008"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #suna,0; set #konoha,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 2) {atcommand "@job 1";} if (Class == 9) {atcommand "@job 7";} if (Class == 4010) {atcommand "@job 4008";}}
+if (#nuvem == 1) {if (nukenin == 1) {atcommand "@job 4008"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nuvem,0; set #konoha,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 4) {atcommand "@job 1";} if (Class == 15) {atcommand "@job 7";} if (Class == 4016) {atcommand "@job 4008";}}
+if (#nevoa == 1) {if (nukenin == 1) {atcommand "@job 4008"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nevoa,0; set #konoha,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 3) {atcommand "@job 1";} if (Class == 11) {atcommand "@job 7";} if (Class == 4012) {atcommand "@job 4008";}}
+
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+next;
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+normal:
+if(#konoha == 1) {getitem 19008,1;}
+if(#nuvem == 1) {getitem 19040,1;}
+if(#suna == 1) {getitem 19006,1;}
+if(#nevoa == 1) {getitem 19001,1;}
+//set #trocasvila, #trocasvila + 1;
+next;
+mes "Troca de vila finalizada com sucesso, ^5c5c5clembrando que o delay para trocar de vila é 30 dias.^000000";
+        close;
+close;
+
+kakashi:
+if(#konoha == 1) {getitem 19004,1;}
+if(#nuvem == 1) {getitem 19074,1;}
+if(#suna == 1) {getitem 19076,1;}
+if(#nevoa == 1) {getitem 19073,1;}
+//set #trocasvila, #trocasvila + 1;
+next;
+mes "Troca de vila finalizada com sucesso, ^5c5c5clembrando que o delay para trocar de vila é 30 dias.^000000";
+        close;
+close;
+
+lado:
+if(#konoha == 1) {getitem 19034,1;}
+if(#nuvem == 1) {getitem 19165,1;}
+if(#suna == 1) {getitem 19018,1;}
+if(#nevoa == 1) {getitem 19019,1;}
+//set #trocasvila, #trocasvila + 1;
+next;
+mes "Troca de vila finalizada com sucesso, ^5c5c5clembrando que o delay para trocar de vila é 30 dias.^000000";
+        close;
+close;
+
+pescoco:
+if(#konoha == 1) {getitem 19025,1;}
+if(#nuvem == 1) {getitem 19098,1;}
+if(#suna == 1) {getitem 19096,1;}
+if(#nevoa == 1) {getitem 19097,1;}
+//set #trocasvila, #trocasvila + 1;
+next;
+mes "Troca de vila finalizada com sucesso, ^5c5c5clembrando que o delay para trocar de vila é 30 dias.^000000";
+        close;
+close;
+
+yamato:
+if(#konoha == 1) {getitem 19170,1;}
+if(#nuvem == 1) {getitem 19095,1;}
+if(#suna == 1) {getitem 19168,1;}
+if(#nevoa == 1) {getitem 19169,1;}
+//set #trocasvila, #trocasvila + 1;
+next;
+mes "Troca de vila finalizada com sucesso, ^5c5c5clembrando que o delay para trocar de vila é 30 dias.^000000";
+        close;
+close;
+
+kisame:
+if(#konoha == 1) {getitem 19030,1;}
+if(#nuvem == 1) {getitem 19127,1;}
+if(#suna == 1) {getitem 19156,1;}
+if(#nevoa == 1) {getitem 19016,1;}
+//set #trocasvila, #trocasvila + 1;
+next;
+mes "Troca de vila finalizada com sucesso, ^5c5c5clembrando que o delay para trocar de vila é 30 dias.^000000";
+        close;
+close;
+
+suna:
+next;
+mes "Tem certeza que quer trocar sua vila pra Suna?";
+menu "Sim, tenho certeza",sims,"Não",no;
+
+sims:
+if (#suna == 1) {if (nukenin == 1) {atcommand "@job 4010"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;} mes "Nukenin desfeito, para receber sua bandana, por favor relogue"; close;} mes "Sua conta já é dessa vila"; getitem 7081,1; close;}
+if (#konoha == 1) {if (nukenin == 1) {atcommand "@job 4010"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #konoha,0; set #suna,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 1) {atcommand "@job 2";} if (Class == 7) {atcommand "@job 9";} if (Class == 4008) {atcommand "@job 4010";}}
+if (#nuvem == 1) {if (nukenin == 1) {atcommand "@job 4010"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nuvem,0; set #suna,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 4) {atcommand "@job 2";} if (Class == 15) {atcommand "@job 9";} if (Class == 4016) {atcommand "@job 4010";}}
+if (#nevoa == 1) {if (nukenin == 1) {atcommand "@job 4010"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nevoa,0; set #suna,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 3) {atcommand "@job 2";} if (Class == 11) {atcommand "@job 9";} if (Class == 4012) {atcommand "@job 4010";}}
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+next;
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+nevoa:
+next;
+mes "Tem certeza que quer trocar sua vila pra Névoa?";
+menu "Sim, tenho certeza",simne,"Não",no;
+
+simne:
+if (#nevoa == 1) {if (nukenin == 1) {atcommand "@job 4012"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;} mes "Nukenin desfeito, para receber sua bandana, por favor relogue"; close;} mes "Sua conta já é dessa vila"; getitem 7081,1; close;}
+if (#konoha == 1) {if (nukenin == 1) {atcommand "@job 4012"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #konoha,0; set #nevoa,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 1) {atcommand "@job 3";} if (Class == 7) {atcommand "@job 11";} if (Class == 4008) {atcommand "@job 4012";}}
+if (#nuvem == 1) {if (nukenin == 1) {atcommand "@job 4012"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nuvem,0; set #nevoa,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 4) {atcommand "@job 3";} if (Class == 15) {atcommand "@job 11";} if (Class == 4016) {atcommand "@job 4012";}}
+if (#suna == 1) {if (nukenin == 1) {atcommand "@job 4012"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #suna,0; set #nevoa,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 2) {atcommand "@job 3";} if (Class == 9) {atcommand "@job 11";} if (Class == 4010) {atcommand "@job 4012";}}
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+next;
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+nuvem:
+next;
+mes "Tem certeza que quer trocar sua vila pra Nuvem?";
+menu "Sim, tenho certeza",simnu,"Não",no;
+
+simnu:
+if (#nuvem == 1) {if (nukenin == 1) {atcommand "@job 4016"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;} mes "Nukenin desfeito, para receber sua bandana, por favor relogue"; close;} mes "Sua conta já é dessa vila"; getitem 7081,1; close;}
+if (#konoha == 1) {if (nukenin == 1) {atcommand "@job 4016"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #konoha,0; set #nuvem,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 1) {atcommand "@job 4";} if (Class == 7) {atcommand "@job 15";} if (Class == 4008) {atcommand "@job 4016";}}
+if (#nevoa == 1) {if (nukenin == 1) {atcommand "@job 4016"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #nevoa,0; set #nuvem,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 3) {atcommand "@job 4";} if (Class == 11) {atcommand "@job 15";} if (Class == 4012) {atcommand "@job 4016";}}
+if (#suna == 1) {if (nukenin == 1) {atcommand "@job 4016"; set nukenin,0; if(countitem(19078) == 1) {delitem 19078,1;} if(countitem(19079) == 1) {delitem 19079,1;} if(countitem(19080) == 1) {delitem 19080,1;} if(countitem(19081) == 1) {delitem 19081,1;}} set #suna,0; set #nuvem,1; Query_Sql("UPDATE `login` SET `delayvila` = 30 WHERE `account_id` = '"+GetCharID(3)+"'"); if (Class == 2) {atcommand "@job 4";} if (Class == 9) {atcommand "@job 15";} if (Class == 4010) {atcommand "@job 4016";}}
+if(countitem(19001) == 1) {delitem 19001,1;}
+if(countitem(19006) == 1) {delitem 19006,1;}
+if(countitem(19008) == 1) {delitem 19008,1;}
+if(countitem(19040) == 1) {delitem 19040,1;}
+
+if(countitem(19073) == 1) {delitem 19073,1;}
+if(countitem(19074) == 1) {delitem 19074,1;}
+if(countitem(19076) == 1) {delitem 19076,1;}
+if(countitem(19004) == 1) {delitem 19004,1;}
+
+if(countitem(19034) == 1) {delitem 19034,1;}
+if(countitem(19018) == 1) {delitem 19018,1;}
+if(countitem(19019) == 1) {delitem 19019,1;}
+if(countitem(19165) == 1) {delitem 19165,1;}
+
+if(countitem(19025) == 1) {delitem 19025,1;}
+if(countitem(19096) == 1) {delitem 19096,1;}
+if(countitem(19097) == 1) {delitem 19097,1;}
+if(countitem(19098) == 1) {delitem 19098,1;}
+
+if(countitem(19168) == 1) {delitem 19168,1;}
+if(countitem(19169) == 1) {delitem 19169,1;}
+if(countitem(19170) == 1) {delitem 19170,1;}
+if(countitem(19095) == 1) {delitem 19095,1;}
+
+if(countitem(19030) == 1) {delitem 19030,1;}
+if(countitem(19156) == 1) {delitem 19156,1;}
+if(countitem(19016) == 1) {delitem 19016,1;}
+if(countitem(19127) == 1) {delitem 19127,1;}
+next;
+mes "Qual bandana você gostaria de ter? (Se cancelar, ficará sem bandana até relogar)";
+menu "Bandana normal",normal,"Bandana Kakashi",kakashi,"Bandana de lado",lado,"Bandana no pescoço",pescoco,"Bandana Yamato",yamato,"Bandana Kisame",kisame;
+
+}
+
+function	script	removerinvo	{
+
+mes "Você tem certeza que quer remover sua Invocação? Será preciso evoluir a nova do zero";
+menu "Sim",doit,"Não",nao;
+
+doit:
+set Kuch,0;
+set accept_kuc,0;
+set Baru1,0;
+set Baru2,0;
+set Baru3,0;
+set Enma1,0;
+set Enma2,0;
+set Enma3,0;
+set Gama1,0;
+set Gama2,0;
+set Gama3,0;
+set Katsu1,0;
+set Katsu2,0;
+set Katsu3,0;
+set Manda1,0;
+set Manda2,0;
+set Manda3,0;
+set quest_baru1_um,0;
+set quest_baru2_um,0;
+set quest_baru3_um,0;
+set quest_enma1_um,0;
+set quest_enma2_um,0;
+set quest_enma3_um,0;
+set quest_gama1_um,0;
+set quest_gama2_um,0;
+set quest_gama3_um,0;
+set quest_katsu1_um,0;
+set quest_katsu2_um,0;
+set quest_katsu3_um,0;
+set quest_manda1_um,0;
+set quest_manda2_um,0;
+set quest_manda3_um,0;
+set quest_cobra_3,0;
+set quest_sapo_3,0;
+set quest_cachorro_3,0;
+set quest_macaco_3,0;
+set quest_lesma_3,0;
+if (getskilllv(721) > 0) {skill 721,0,0;}
+if (getskilllv(722) > 0) {skill 722,0,0;}
+if (getskilllv(723) > 0) {skill 723,0,0;}
+if (getskilllv(724) > 0) {skill 724,0,0;}
+if (getskilllv(725) > 0) {skill 725,0,0;}
+if (getskilllv(726) > 0) {skill 726,0,0;}
+if (getskilllv(727) > 0) {skill 727,0,0;}
+if (getskilllv(728) > 0) {skill 728,0,0;}
+if (getskilllv(729) > 0) {skill 729,0,0;}
+if (getskilllv(730) > 0) {skill 730,0,0;}
+if (getskilllv(731) > 0) {skill 731,0,0;}
+if (getskilllv(732) > 0) {skill 732,0,0;}
+if (getskilllv(733) > 0) {skill 733,0,0;}
+if (getskilllv(734) > 0) {skill 734,0,0;}
+if (getskilllv(735) > 0) {skill 735,0,0;}
+if (getskilllv(736) > 0) {skill 736,0,0;}
+if (getskilllv(737) > 0) {skill 737,0,0;}
+if (getskilllv(738) > 0) {skill 738,0,0;}
+if (getskilllv(739) > 0) {skill 739,0,0;}
+if (getskilllv(739) > 0) {skill 739,0,0;}
+if (getskilllv(740) > 0) {skill 740,0,0;}
+if (getskilllv(741) > 0) {skill 741,0,0;}
+if (getskilllv(742) > 0) {skill 742,0,0;}
+if (getskilllv(743) > 0) {skill 743,0,0;}
+if (getskilllv(744) > 0) {skill 744,0,0;}
+if (getskilllv(745) > 0) {skill 745,0,0;}
+if (getskilllv(746) > 0) {skill 746,0,0;}
+if (getskilllv(747) > 0) {skill 747,0,0;}
+if (getskilllv(748) > 0) {skill 748,0,0;}
+dispbottom "Invocação removida com sucesso";
+close;
+
+nao:
+getitem 643,1;
+close;
+
+}
+
+function	script	removerinvoesp	{
+
+mes "Você tem certeza que quer remover sua Invocação? Você receberá os itens da quest nivel 3 de volta (Caso tenha) com este removedor especial";
+menu "Sim",doit,"Não",nao;
+
+doit:
+if (Manda3 == 1) {getitem 7836,1; getitem 640,1; getitem 639,1; getitem 7244,1; getitem 7245,1;}
+if (Gama3 == 1) {getitem 7835,1; getitem 640,1; getitem 639,1; getitem 7244,1; getitem 7245,1;}
+if (Baru3 == 1) {getitem 7705,1; getitem 640,1; getitem 639,1; getitem 7244,1; getitem 7245,1;}
+if (Enma3 == 1) {getitem 7838,1; getitem 640,1; getitem 639,1; getitem 7244,1; getitem 7245,1;}
+if (Katsu3 == 1) {getitem 7837,1; getitem 640,1; getitem 639,1; getitem 7244,1; getitem 7245,1;}
+set Kuch,0;
+set accept_kuc,0;
+set Baru1,0;
+set Baru2,0;
+set Baru3,0;
+set Enma1,0;
+set Enma2,0;
+set Enma3,0;
+set Gama1,0;
+set Gama2,0;
+set Gama3,0;
+set Katsu1,0;
+set Katsu2,0;
+set Katsu3,0;
+set Manda1,0;
+set Manda2,0;
+set Manda3,0;
+set quest_baru1_um,0;
+set quest_baru2_um,0;
+set quest_baru3_um,0;
+set quest_enma1_um,0;
+set quest_enma2_um,0;
+set quest_enma3_um,0;
+set quest_gama1_um,0;
+set quest_gama2_um,0;
+set quest_gama3_um,0;
+set quest_katsu1_um,0;
+set quest_katsu2_um,0;
+set quest_katsu3_um,0;
+set quest_manda1_um,0;
+set quest_manda2_um,0;
+set quest_manda3_um,0;
+set quest_cobra_3,0;
+set quest_sapo_3,0;
+set quest_cachorro_3,0;
+set quest_macaco_3,0;
+set quest_lesma_3,0;
+if (getskilllv(721) > 0) {skill 721,0,0;}
+if (getskilllv(722) > 0) {skill 722,0,0;}
+if (getskilllv(723) > 0) {skill 723,0,0;}
+if (getskilllv(724) > 0) {skill 724,0,0;}
+if (getskilllv(725) > 0) {skill 725,0,0;}
+if (getskilllv(726) > 0) {skill 726,0,0;}
+if (getskilllv(727) > 0) {skill 727,0,0;}
+if (getskilllv(728) > 0) {skill 728,0,0;}
+if (getskilllv(729) > 0) {skill 729,0,0;}
+if (getskilllv(730) > 0) {skill 730,0,0;}
+if (getskilllv(731) > 0) {skill 731,0,0;}
+if (getskilllv(732) > 0) {skill 732,0,0;}
+if (getskilllv(733) > 0) {skill 733,0,0;}
+if (getskilllv(734) > 0) {skill 734,0,0;}
+if (getskilllv(735) > 0) {skill 735,0,0;}
+if (getskilllv(736) > 0) {skill 736,0,0;}
+if (getskilllv(737) > 0) {skill 737,0,0;}
+if (getskilllv(738) > 0) {skill 738,0,0;}
+if (getskilllv(739) > 0) {skill 739,0,0;}
+if (getskilllv(739) > 0) {skill 739,0,0;}
+if (getskilllv(740) > 0) {skill 740,0,0;}
+if (getskilllv(741) > 0) {skill 741,0,0;}
+if (getskilllv(742) > 0) {skill 742,0,0;}
+if (getskilllv(743) > 0) {skill 743,0,0;}
+if (getskilllv(744) > 0) {skill 744,0,0;}
+if (getskilllv(745) > 0) {skill 745,0,0;}
+if (getskilllv(746) > 0) {skill 746,0,0;}
+if (getskilllv(747) > 0) {skill 747,0,0;}
+if (getskilllv(748) > 0) {skill 748,0,0;}
+dispbottom "Invocação removida com sucesso";
+close;
+
+nao:
+getitem 7241,1;
+close;
+
+}
+
+function	script	trocarele	{
+
+mes "Você tem certeza que quer trocar seu elemento? Lembrando que se clicar em cancelar, seu item será deletado sem devolução";
+menu "Sim",doit,"Não",L_NO;
+
+doit:
+if (nin_basico == 1) {next; mes "Você não pode ter ninjutsu básico como um treino antes de trocar seu elemento"; getitem 7141,1; close;}
+if (nin_intermediario == 1) {next; mes "Você não pode ter ninjutsu intermediário como um treino antes de trocar seu elemento"; getitem 7141,1; close;}
+if (nin_avan == 1) {next; mes "Você não pode ter ninjutsu avançado como um treino antes de trocar seu elemento"; getitem 7141,1; close;}
+next;
+mes "Vamos lá, qual o novo elemento que você deseja?";
+menu "^FF0000- Katon^000000",L_katon,"^0000FF- Suiton^000000",L_suiton,"^EEDD82- Raiton^000000",L_raiton,"^32CD32- Fuuton^000000",L_fuuton,"^8B4513- Doton^000000",L_doton,"- Mudei de ideia, não quero mudar",L_NO;
+
+
+L_katon:
+if (elementokaton == 1) {next; getitem 7141,1; mes "Você já é deste elemento"; close;}
+
+if (elementodoton == 1) {set elementodoton,0;}
+if (elementosuiton == 1) {set elementosuiton,0;}
+if (elementoraiton == 1) {set elementoraiton,0;}
+if (elementofuuton == 1) {set elementofuuton,0;}
+set elementokaton,1;
+dispbottom "Elemento trocado com sucesso para Katon";
+close;
+
+L_suiton:
+
+if (elementosuiton == 1) {next; getitem 7141,1; mes "Você já é deste elemento"; close;}
+
+if (elementodoton == 1) {set elementodoton,0;}
+if (elementokaton == 1) {set elementokaton,0;}
+if (elementoraiton == 1) {set elementoraiton,0;}
+if (elementofuuton == 1) {set elementofuuton,0;}
+set elementosuiton,1;
+dispbottom "Elemento trocado com sucesso para Suiton";
+close;
+
+L_raiton:
+
+if (elementoraiton == 1) {next; getitem 7141,1; mes "Você já é deste elemento"; close;}
+
+if (elementodoton == 1) {set elementodoton,0;}
+if (elementokaton == 1) {set elementokaton,0;}
+if (elementosuiton == 1) {set elementosuiton,0;}
+if (elementofuuton == 1) {set elementofuuton,0;}
+set elementoraiton,1;
+dispbottom "Elemento trocado com sucesso para raiton";
+close;
+
+L_doton:
+
+if (elementodoton == 1) {next; getitem 7141,1; mes "Você já é deste elemento"; close;}
+
+if (elementoraiton == 1) {set elementoraiton,0;}
+if (elementokaton == 1) {set elementokaton,0;}
+if (elementosuiton == 1) {set elementosuiton,0;}
+if (elementofuuton == 1) {set elementofuuton,0;}
+set elementodoton,1;
+dispbottom "Elemento trocado com sucesso para doton";
+close;
+
+L_fuuton:
+
+if (elementofuuton == 1) {next; getitem 7141,1; mes "Você já é deste elemento"; close;}
+
+if (elementoraiton == 1) {set elementoraiton,0;}
+if (elementokaton == 1) {set elementokaton,0;}
+if (elementosuiton == 1) {set elementosuiton,0;}
+if (elementodoton == 1) {set elementodoton,0;}
+set elementofuuton,1;
+dispbottom "Elemento trocado com sucesso para fuuton";
+close;
+
+L_NO:
+getitem 7141,1;
+close;
+
+}
+
+function	script	removersharingan	{
+
+mes "Olá, gostaria de trocar de Mangekyou Sharingan? (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Quero o do Poder",Poder,"Quero o da Percepção",Perceptivo,"Quero o do Hipnotismo",Hipnotico,"Quero o da Proteção",Protetor,"Nenhum, quero continuar com esse",fechar;
+
+Perceptivo:
+next;
+if (sharingan_1 == 0) && (sharingan_2 == 0) && (sharingan_3 == 0) && (sharingan_4 == 0) {mes "Apenas quem tem o mangekyou Sharingan pode fazer esta troca"; getitem 12945,1; close;}
+set OlhoPerceptivo,1;
+set OlhoHipnotico,0;
+set OlhoProtetor,0;
+set OlhoPoderoso,0;
+set sharingan_2,0;
+set sharingan_3,0;
+set sharingan_4,0;
+set sharingan_1,1;
+set quest_mangekyou,4;
+unequip 10;
+mes "Sharingan trocado com sucesso para: Olho da percepção";
+close;
+
+Hipnotico:
+next;
+if (sharingan_1 == 0) && (sharingan_2 == 0) && (sharingan_3 == 0) && (sharingan_4 == 0) {mes "Apenas quem tem o mangekyou Sharingan pode fazer esta troca"; getitem 12945,1; close;}
+set OlhoPoderoso,0;
+set OlhoProtetor,0;
+set OlhoPerceptivo,0;
+set OlhoHipnotico,1;
+set sharingan_1,0;
+set sharingan_3,0;
+set sharingan_4,0;
+set sharingan_2,1;
+set quest_mangekyou,4;
+unequip 10;
+mes "Sharingan trocado com sucesso para: Olho da hipnotismo";
+close;
+
+Protetor:
+next;
+if (sharingan_1 == 0) && (sharingan_2 == 0) && (sharingan_3 == 0) && (sharingan_4 == 0) {mes "Apenas quem tem o mangekyou Sharingan pode fazer esta troca"; getitem 12945,1; close;}
+set OlhoHipnotico,0;
+set OlhoPerceptivo,0;
+set OlhoPoderoso,0;
+set OlhoProtetor,1;
+set sharingan_1,0;
+set sharingan_2,0;
+set sharingan_3,0;
+set sharingan_4,1;
+set quest_mangekyou,4;
+unequip 10;
+mes "Sharingan trocado com sucesso para: Olho da proteção";
+close;
+
+Poder:
+next;
+if (sharingan_1 == 0) && (sharingan_2 == 0) && (sharingan_3 == 0) && (sharingan_4 == 0) {mes "Apenas quem tem o mangekyou Sharingan pode fazer esta troca"; getitem 12945,1; close;}
+set OlhoProtetor,0;
+set OlhoHipnotico,0;
+set OlhoPerceptivo,0;
+set OlhoPoderoso,1;
+set sharingan_1,0;
+set sharingan_2,0;
+set sharingan_4,0;
+set sharingan_3,1;
+set troca_sharingan,1;
+set quest_mangekyou,4;
+unequip 10;
+mes "Sharingan trocado com sucesso para: Olho do poder";
+close;
+
+fechar:
+getitem 12945,1;
+close;
+
+}
+
+function	script	mestreinvoca	{
+
+mes "Olá, Qual mestre de treino gostaria de invocar neste local? Basta escolher da lista abaixo, não pode ser usado nas vilas e províncias. Caso decida invocar depois clique em 'Agora Nao' para recuperar o item";
+menu "- Katon",katon,"- Suiton",suiton,"- Doton",doton,"- Fuuton",fuuton,"- Raiton",raiton,"- Medicina",medicina,"- Velocidade",velocidade,"- Fuuinjutsu",fuuin,"- Taijutsu",taijutsu,"- Genjutsu",genjutsu,"- Agora não",nao;
+
+katon:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Katon",1101,1; 
+dispbottom "Mestre invocado";
+close;
+
+suiton:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Suiton",1050,1; 
+dispbottom "Mestre invocado";
+close;
+
+doton:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Doton",1575,1; 
+dispbottom "Mestre invocado";
+close;
+
+fuuton:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Fuuton",1060,1; 
+dispbottom "Mestre invocado";
+close;
+
+raiton:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Raiton",1574,1; 
+dispbottom "Mestre invocado";
+close;
+
+medicina:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Medinin",1832,1; 
+dispbottom "Mestre invocado";
+close;
+
+velocidade:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Velocidade",1049,1; 
+dispbottom "Mestre invocado";
+close;
+
+fuuin:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Fuuinjutsu",1241,1; 
+dispbottom "Mestre invocado";
+close;
+
+taijutsu:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Taijutsu",1688,1; 
+dispbottom "Mestre invocado";
+close;
+
+genjutsu:
+if (strcharinfo(3) == "konoha3") || (strcharinfo(3) == "kumogakure") || (strcharinfo(3) == "nevoa") || (strcharinfo(3) == "kiragakure") || (strcharinfo(3) == "sunagakure") || (strcharinfo(3) == "akatsuki") || (strcharinfo(3) == "lou_in02") {mes "Nao pode ser invocado dentro das vilas"; close;}
+monster "this",-1,-1,"Mestre Genjutsu",1751,1; 
+dispbottom "Mestre invocado";
+close;
+
+nao:
+getitem 7243,1;
+close;
+
+}
+
+function	script	removerlinha	{
+
+mes "Olá, gostaria de trocar de Linha Kugutsu? (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "- Quero a Roxa",roxa,"- Quero a Vermelha",vermelha,"- Quero Branca",branca,"- Nenhuma, quero continuar com essa",fechar;
+
+roxa:
+next;
+if (MARIONETE == 0) && (MARIONETE_4_1 == 0) && (MARIONETE_4_2 == 0) && (MARIONETE_4_3 == 0) {mes "Apenas quem tem uma linha de Kugutsu pode fazer esta troca"; getitem 7087,1; close;}
+set MARIONETE_4_1,0;
+set MARIONETE_4_2,0;
+set MARIONETE_4_3,0;
+set MARIONETE_4_1,1;
+set marionete_roxa,0;
+set linha_branca,0;
+set linha_vermelha,0;
+mes "Linha de Kugutsu trocada com sucesso para: Linha Roxa";
+close;
+
+vermelha:
+next;
+if (MARIONETE == 0) && (MARIONETE_4_1 == 0) && (MARIONETE_4_2 == 0) && (MARIONETE_4_3 == 0) {mes "Apenas quem tem uma linha de Kugutsu pode fazer esta troca"; getitem 7087,1; close;}
+set MARIONETE_4_1,0;
+set MARIONETE_4_2,0;
+set MARIONETE_4_3,0;
+set MARIONETE_4_2,1;
+set marionete_roxa,0;
+set linha_branca,0;
+set linha_vermelha,0;
+mes "Linha de Kugutsu trocada com sucesso para: Linha Vermelha";
+close;
+
+branca:
+next;
+if (MARIONETE == 0) && (MARIONETE_4_1 == 0) && (MARIONETE_4_2 == 0) && (MARIONETE_4_3 == 0) {mes "Apenas quem tem uma linha de Kugutsu pode fazer esta troca"; getitem 7087,1; close;}
+set MARIONETE_4_1,0;
+set MARIONETE_4_2,0;
+set MARIONETE_4_3,0;
+set MARIONETE_4_3,1;
+set marionete_roxa,0;
+set linha_branca,0;
+set linha_vermelha,0;
+mes "Linha de Kugutsu trocada com sucesso para: Linha Branca";
+close;
+
+fechar:
+getitem 7087,1;
+close;
+
+}
+
+-	script	DELAYVILA#CONTROL	-1,{
+
+OnClock0000:
+Query_Sql("UPDATE `login` SET `delayvila` = `delayvila` - 1 WHERE `delayvila` >= 1");
+end;
+}

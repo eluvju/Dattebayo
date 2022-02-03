@@ -1,0 +1,63 @@
+function	script	concentracao	{
+//When a Character uses a skill
+
+//concentracao
+
+if (seloskill45 == 1) {
+
+if (concentracao != 1) {end;}
+if (skill45 >= 50) {set seloskill45,2; set skill45,0; dispbottom "[Sys] Level up"; end; }
+set skill45,skill45 +1;
+dispbottom "[Jutsu level] Concentração level 1: "+skill45+" de 50";
+
+end;
+
+}
+
+if (seloskill45 == 2) {
+if (fuuin_intermediario != 1) {end;}
+if (concentracao != 1) {end;}
+if (skill45 >= 100) {set seloskill45,3; set skill45,0; dispbottom "[Sys] Level up"; end;}
+set skill45,skill45 +1;
+dispbottom "[Jutsu level] Concentração level 2: "+skill45+" de 100";
+
+end;
+
+}
+
+if (seloskill45 == 3) {
+if (fuuin_intermediario != 1) {end;}
+if (concentracao != 1) {end;}
+if (skill45 >= 150) {set seloskill45,4; set skill45,0; dispbottom "[Sys] Level up"; end;}
+set skill45,skill45 +1;
+dispbottom "[Jutsu level] Concentração level 3: "+skill45+" de 150";
+
+end;
+
+}
+
+if (seloskill45 == 4) {
+if (fuuin_avan != 1) {end;}
+if (concentracao != 1) {end;}
+if (skill45 >= 200) {set seloskill45,5; set skill45,0; dispbottom "[Sys] Level up"; end;}
+set skill45,skill45 +1;
+dispbottom "[Jutsu level] Concentração level 4: "+skill45+" de 200";
+
+end;
+
+}
+
+if (seloskill45 == 5) {
+if (fuuin_avan != 1) {end;}
+if (concentracao != 1) {end;}
+if (skill45 >= 300) {set seloskill45,6; set skill45,0; dispbottom "[Sys] Level up"; end;}
+set skill45,skill45 +1;
+dispbottom "[Jutsu level] Concentração level 5: "+skill45+" de 300";
+
+end;
+
+}
+
+
+                end;
+            }    

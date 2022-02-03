@@ -1,0 +1,211 @@
+
+xmas_fild01,0,0,0,0	monster	Ice Guardian		1257,30,0,0,0
+xmas_fild01,0,0,0,0	monster	Gazeti		1258,30,0,0,0
+
+xmas_fild01,75,49,5	script	Nativo#1	4_man_benkuni,{
+
+	if(checkquest(1) == 1) {
+		if(checkquest(1,HUNTING) == 2) {
+			if(countitem(766) >= 100) {
+				mes "[Nativo]";
+				mes "Parabéns, aqui está sua recompensa.";
+				getitem 767,1;
+				delitem 766,100;
+				completequest 1; 
+				erasequest 1;
+				close;
+			}
+			mes "[Nativo]";
+			mes "Você Não completou sua missão ainda.";
+			close;
+		}
+		mes "[Nativo]";
+		mes "Você Não completou sua missão ainda.";
+		close;
+	}
+
+	mes "[Nativo]";
+	mes "Bem vindo visitante a Dimensão de Gelo, nosso mundo é frio e isolado, ";
+	mes "aqui existem bestas extremamente fortes e implacáveis, ";
+	mes "ultimamente estamos enfrentando uma invasão de monstros, ";
+	mes "caso me ajude, você será muito bem recompensado.";
+	if(select("- Sim:- Não") == 2) { close; }
+		next;	
+		mes "[Nativo]";
+		mes "Recompensa: Fragmento da Dimensão do Gelo";
+		mes "Derrote 100 Gazeti";
+		mes "Derrote 100 Ice Salamander";
+		mes "Coletar 100 Gelo Cristalino";
+		if(select("- Pegar a Quest:- Deixa para outra hora") == 2) { close; }
+		setquest 1;
+		close;
+}
+
+xmas_fild01,90,49,5	script	Instância do Gelo#1	4_whitetiger,{
+
+	.@npc$ = "[" + strnpcinfo(1) + "]";
+	
+	set .@instance$, "Dimensao Gelo";
+	mes "^ff0000[Instância de Gelo]^000000";
+	mes "Olá, shinobi! Está pronto para começar sua aventura?";
+	menu "Iniciar Raid.",inicio,"Removedor de Raid.",removedor;
+	removedor:
+next;
+if(questmade753 == GetTime(8)) {
+mes "^ff0000[Instância da Luz]^000000";
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+	
+if(vip_status(1)) {
+mes "^ff0000[Instância de Gelo]^000000";
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid do Dimensao Gelo. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "^ff0000[Instância de Gelo]^000000";
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7022,1;
+set questmade753, GetTime(8);
+close;
+	
+r2:
+next;
+mes "^ff0000[Instância de Gelo]^000000";
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}
+
+inicio:	
+if(questmade752 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:
+mes "^ff0000[Instância de Gelo]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7022) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Instância de Gelo]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set questmade752, 0;
+delitem 7022,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Instância de Gelo]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Fale comigo novamente!";
+close;
+}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	if($@partymembercount > 2) {
+	mes "Você não pode iniciar a Raid com mais de 2 membros no grupo.";
+	close;
+	}
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos da ^FF0000Dimensão Gelo^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if(getpartyleader(getcharid(1),2) != getcharid(0)) goto naocria;
+
+		if (instance_create(.@instance$) < 0) {
+		mes "Você não atende aos requisitos da ^FF0000Dimensão Gelo^000000.";
+		close;
+
+		naocria:
+		mes "Você precisa ser o líder do grupo para criar a raid ^FF0000Dimensão Gelo^000000.";
+		close;
+		}
+
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		getpartymember getcharid(1),2;
+		for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		}
+		attachrid(getpartyleader(getcharid(1),1));
+		// Começo da Instância
+		hideonnpc ""+instance_npcname("Instância do Gelo#2")+"";
+		instance_announce instance_id(),"Boa sorte, shinobi.",0;
+		monster ""+instance_mapname("ice_dun03",instance_id())+"",0,0,"Ice Knight",1260,50,"dimensaogelo::OnMonsterDie1";
+		end;
+	}
+}
+ice_dun03,0,0,0	script	dimensaogelo	-1,{
+
+OnMonsterDie1:
+	if(!mobcount(""+instance_mapname("ice_dun03",instance_id())+"","dimensaogelo::OnMonsterDie1"))  {
+		instance_announce instance_id(),"O Chefe acaba de aparecer no mapa!",0;
+		monster ""+instance_mapname("ice_dun03",instance_id())+"",149,136,"Queen Guardian",1262,1,"dimensaogelo::OnMonsterDie2";
+		end;
+	}
+	else
+	instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("ice_dun03",instance_id())+"","dimensaogelo::OnMonsterDie1"))+" Montros Mortos",0;
+	end;
+	
+OnMonsterDie2:
+	if(!mobcount(""+instance_mapname("ice_dun03",instance_id())+"","dimensaogelo::OnMonsterDie2"))  {		
+		instance_announce instance_id(),"Parabéns por completar a Dimensão do Gelo!",0;
+		hideoffnpc ""+instance_npcname("Instância do Gelo#2")+"";
+		end;	
+	}
+}
+
+ice_dun03,146,23,5	script	Instância do Gelo#2	4_whitetiger,{
+
+if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "Apenas o líder pode finalizar a missão.";
+		close;
+	}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 2) {
+			mes "Seu Grupo é muito grande. Reduz a quantidade de membros. Só é permitido 2 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+
+mes "Você conseguiu completar a missão.";
+	close2;
+	getpartymember getcharid(1),0;	
+	getpartymember getcharid(1),1;	
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	attachrid($@partymemberaid[.@i]);	
+		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
+		
+			query_sql("SELECT `index`,`value`  FROM `gelo_limit` WHERE `char_id` = '"+$@partymembercid[.@i]+"'",@gelo,@limitegelo);
+
+			if(!@gelo) {
+					query_sql "INSERT INTO `gelo_limit` (`char_id`, `index`, `value`) VALUES ("+$@partymembercid[.@i]+",1,1)";
+				} else { 
+					query_sql "UPDATE `gelo_limit` SET `value` = `value` + 1 WHERE `char_id`= '"+$@partymembercid[.@i]+"'";	
+				}
+
+	// Recompensas
+	set questmade752, GetTime(8);
+		}
+	}	
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Dimensão de Gelo.",bc_all;	
+	instance_destroy;
+	end;
+}
+
+ice_dun03	mapflag	partylock

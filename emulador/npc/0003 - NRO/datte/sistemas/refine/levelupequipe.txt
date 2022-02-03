@@ -1,0 +1,114 @@
+ama_in01,29,17,4	script	Velho Ferreiro Chefe::VFC	990,{
+
+mes "Olá, eu ja fui o antigo chefe desse país";
+mes "hoje em dia eu ajudo os shinobis do mundo com minha especialidade";
+next;
+mes "eu melhoro os equipamentos dos shinobis, eu sou o único do mundo que pode melhorar todos os tipos de equipamentos";
+next;
+mes "Está interessado em ter a minha ajuda?";
+menu "Sim, estou interessado",L_slot,"Me explique sobre seus serviços",L_guia;
+
+L_slot:
+next;
+mes "Ótimo, é sempre bom ter equipamentos cada vez melhores";
+next;
+mes "Lembre-se que precisa estar com o item equipado e que é preciso ter um metal de refinação";
+mes "o level máximo de todos os equipamentos é 99";
+next;
+mes "Escolha um tipo de equipamento que gostaria de melhorar";
+menu "Arma",L_weapon,"Colete",L_armor,"Calçado",L_sapato,"Capa",L_capa,"Arma elemental",L_element;
+
+L_weapon:
+if (getequipisequiped(EQI_HAND_R) == 0) goto L_NothingEquiped;
+if(getequiprefinerycnt(EQI_HAND_R) >= 99) { next ;mes "Seu equipamento está no level máximo"; close;}
+if (countitem(7622) < 1) {next; mes "Você não tem um metal de refinação pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 4;
+if (getequipisequiped(EQI_HAND_R) == 10) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 20) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 30) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 40) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 50) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 60) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 70) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 80) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 90) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+if (getequipisequiped(EQI_HAND_R) == 100) {announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_R)+", impressionante",bc_blue|bc_all; close;}
+close;
+
+L_armor:
+if (getequipisequiped(EQI_ARMOR) == 0) goto L_NothingEquiped;
+if(getequiprefinerycnt(EQI_ARMOR) >= 99) { next ;mes "Seu equipamento está no level máximo"; close;}
+if (countitem(7622) < 1) {next; mes "Você não tem um metal de refinação pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 2;
+announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_ARMOR)+", impressionante",bc_blue|bc_all;
+close;
+
+L_sapato:
+if (getequipisequiped(EQI_SHOES) == 0) goto L_NothingEquiped;
+if(getequiprefinerycnt(EQI_SHOES) >= 99) { next ;mes "Seu equipamento está no level máximo"; close;}
+if (countitem(7622) < 1) {next; mes "Você não tem um metal de refinação pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 6;
+announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_SHOES)+", impressionante",bc_blue|bc_all;
+close;
+
+L_capa:
+if (getequipisequiped(EQI_GARMENT) == 0) goto L_NothingEquiped;
+if(getequiprefinerycnt(EQI_GARMENT) >= 99) { next ;mes "Seu equipamento está no level máximo"; close;}
+if (countitem(7622) < 1) {next; mes "Você não tem um metal de refinação pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 5;
+announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_GARMENT)+", impressionante",bc_blue|bc_all;
+close;
+
+L_element:
+if (getequipisequiped(EQI_HAND_L) == 0) goto L_NothingEquiped;
+if(getequiprefinerycnt(EQI_HAND_L) >= 99) { next ;mes "Seu equipamento está no level máximo"; close;}
+if (countitem(7622) < 1) {next; mes "Você não tem um metal de refinação pro melhoramento do seu equipamento"; close;}
+delitem 7622,1;
+successrefitem 3;
+announce "[Ferreiro Chefe] "+strcharinfo(0)+" melhorou um equipamento pro level "+getequiprefinerycnt(EQI_HAND_L)+", impressionante",bc_blue|bc_all;
+close;
+
+L_guia:
+next;
+mes "Eu sou o único ferreiro que possui o serviço de melhorar equipamentos.";
+next;
+mes "o meu serviço requer um metal de refinação, que é adquirido ao matar monstros";
+next;
+mes "Todo equipamento pode ser melhorado até o level 99";
+next;
+mes "É de extrema importância";
+next;
+mes "Esse é o fim desse tutorial!";
+close;
+
+L_NothingEquiped:
+next;
+mes "Você não possui nada equipado nesse slot";
+close;
+
+
+}
+
+ama_in01,96,28,4	duplicate(VFC)	Velho Ferreiro Chefe#1	990,{
+ama_in01,175,183,4	duplicate(VFC)	Velho Ferreiro Chefe#2	990,{
+ama_in01,172,127,4	duplicate(VFC)	Velho Ferreiro Chefe#3	990,{
+6@tower,127,69,4	duplicate(VFC)	Velho Ferreiro Chefe#4	990,{
+
+-	script	testeevento	-1,{
+
+
+OnSun1500:
+set $doublexp,1;
+announce "[Evento Automático] Acaba de começar o evento 2x semanal, duração de 2 horas, aproveitem",bc_blue|bc_all;
+end;
+
+OnSun1700:
+set $doublexp,0;
+announce "[Evento Automático] acabou o evento 2x semanal, até a próxima",bc_blue|bc_all;
+end;
+
+}

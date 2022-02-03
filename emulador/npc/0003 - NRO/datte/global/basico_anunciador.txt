@@ -1,0 +1,71 @@
+//===== eAthena Script ========================================
+//= Anunciador
+//===== Por: =================================================
+//= Over ~ NRPG
+//===== Versão Atual: ========================================
+//= 1.0
+//===== Descrição: ===========================================
+//= NPC com anuncio somente para itens...quantidade certa.[Low Rate]
+//===== Comentários Adicionais: ==============================
+//= (Versão: Mudança) [Nome]
+//============================================================
+nrpg_sell,58,25,4	script	Anunciador	708,{
+//=================Variavéis==================================
+set @nomedonpc$,"[^000080Anunciador^000000]";
+//============================================================
+        set .@now, gettimetick(0);
+        if( .@now < bvip_delay ) {
+                dispbottom "Ainda faltam "+(bvip_delay - .@now)/1000/60+" minutos para você poder utilizar o Anunciador novamente!";
+                end;
+        }
+mes @nomedonpc$;
+mes "Olá ^BEBEBE"+strcharinfo(0)+"^000000 você deseja anunciar qual desses itens que você possui?";
+next;
+      GetInventoryList;
+      Set @menu$,"";
+      for(Set @i,0; @i<@inventorylist_count; Set 
+
+@i,@i+1)
+       if(@menu$=="") Set 
+
+@menu$,@inventorylist_amount[@i]+"x "+GetItemName(@inventorylist_id[@i]);
+       else Set 
+
+@menu$,@menu$+":"+@inventorylist_amount[@i]+"x "+GetItemName(@inventorylist_id[@i]);
+      Set @menu$,@menu$+":Cancelar";
+      Set @sel,select(@menu$)-1;
+      if(@sel==@inventorylist_count) end;
+      Set @qnt,@inventorylist_amount[@sel];
+      if(@qnt>=1){
+	Anuncio:
+	mes @nomedonpc$;
+	mes "Ok, ^BEBEBE"+strcharinfo(0)+"^000000 você deseja anunciar quantos?";
+	mes " (Caso você digitar um número maior do que você realmente possui anunciará o número máximo que você possui.)";
+	next;
+	input @qnt,0,@inventorylist_amount[@sel];
+	if (@qnt == 0) goto ERRO;
+	mes @nomedonpc$;
+	mes @qnt+"x "+GetItemName(@inventorylist_id[@sel])+" Está Correto?";
+	next;
+	mes @nomedonpc$;
+	mes ""+strcharinfo(0)+" este anuncio custará 10000 ^FF0000zeny^000000";
+	if(Zeny <10000) goto NAOTEMZENY;
+	next;
+	if(select("Sim","Não")==2) end;
+	set Zeny, Zeny-10000;
+	close2;
+	announce ""+strcharinfo(O)+", está vendendo "+@qnt+"x "+GetItemName(@inventorylist_id[@sel])+" na Cidade das Vendas.",bc_yellow|bc_all;
+        set bvip_delay, gettimetick(0) + 3600000; // Delay de 20s
+	close;
+	NAOTEMZENY:
+	next;
+	mes @nomedonpc$;
+	mes "Desculpe-me ^BEBEBE"+strcharinfo(0)+"^000000 você não têm 2000 ^FF0000zeny^000000";
+	close;
+	
+	ERRO:
+	mes @nomedonpc$;
+	mes "Você não deve anunciar ^000080Zero^000000  Itens";
+	close;
+}
+}

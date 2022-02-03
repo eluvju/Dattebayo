@@ -1,0 +1,38 @@
+//By	Goddameit
+//Ver	2013/07/12
+-	script	SP_EVENT_FOR_CDTIME	-1,{
+OnPCLogoutEvent:
+	set .@bool,1;
+OnPCLoginEvent:
+	getskilllist;
+	set .@cid,getcharid(0);
+	set .@skilllist_count,@skilllist_count;
+	deletearray .@skilllist_id[0],128;
+	deletearray .@skilllist_lv[0],128;
+	copyarray .@skilllist_id[0],@skilllist_id[0],.@skilllist_count;
+	copyarray .@skilllist_lv[0],@skilllist_lv[0],.@skilllist_count;
+	for(set .@i,0; (.@i<.@skilllist_count)||( .@skilllist_id[.@i] < 0 || .@skilllist_lv[.@i] < 0 ); set .@i,.@i+1)
+	{
+		set .@cd,0;
+		if( .@bool == 0 )
+		{
+			query_sql "SELECT `cooldown` FROM `skill_cooldown` WHERE `char_id` = '"+.@cid+"' AND `skillid` = '"+.@skilllist_id[.@i]+"' LIMIT 1",.@cd;
+			if( .@cd > 0 )
+			{
+				setskillcooldown .@skilllist_id[.@i],.@cd;
+			}
+		}else
+		{
+			set .@cd,getskillcooldown(.@skilllist_id[.@i]);
+			if( .@cd > 0 )
+			{
+				query_sql "INSERT `skill_cooldown` VALUES(NULL,'"+.@cid+"','"+.@skilllist_id[.@i]+"','"+.@cd+"')";
+			}
+		}
+	}
+	if( .@bool == 0 )
+		set .@bool2,query_sql("DELETE FROM `skill_cooldown` WHERE `char_id` = '"+.@cid+"'");
+	else
+		set .@bool2,query_sql("DELETE FROM `skill_cooldown` WHERE `char_id` = '"+.@cid+"' AND `cooldown` <= 0");
+	end;
+}

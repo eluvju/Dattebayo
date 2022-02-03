@@ -1,0 +1,105 @@
+// =====================Created by MoonlightRO==========
+// ================== Please do not remove credits ========
+// ================ Please do not re-release this script as your own. Don't do it period. ======
+// ================= Latest Version : 1.1 =======================
+prontera,155,150,6	script	Relatorio	459,{
+set .gm,50;//GM Level to access the GM Menu. Default: 50
+
+	// GM menu 
+	//It allows GMs Level 50 or more to Start and Stop invasions.
+	if (getgmlevel()>.gm) {
+		if (.mobs_left) {
+			mes "[Invasão]";
+			mes "Uma invasão está em progresso!";
+			mes "Local: " + .Map$;
+			mes "^FF0000"+.mobs_left+"^000000 inimigos restantes";
+			mes " ";
+			mes "Para Invasão?";
+			if(select("Não:Sim")==1) close;
+			donpcevent "Relatorio::OnTimer1805000";
+			mes "Invasão interrompida";
+			announce "A Invasão foi cancelada por "+strcharinfo(0),bc_all;
+			close;
+		}
+		mes "[Invasão]";
+		mes "Please customize the Invasão event before starting it.";
+		mes "Note - The Goblin Leader drops x5 of the prize.";
+		Main:
+		next;
+		mes "[Invasão]";
+			switch(select("Item [" + getitemname(.ItemID) + "]:Start Event")) {
+		case 1:
+			mes "Which item would you like the Goblin Leader to drop?";
+			mes "Please input the item ID:";
+			input .ItemID;
+			goto Main;
+		case 2:
+			mes "Starting the event now...";
+			close2;
+			goto OnStart;
+	}
+	
+	// If a player clicks the NPC, it displays:
+	
+	mes "[Invasão]";
+	mes .mobs_left+" invadiram "+.Map$[.rand_map]+"!";
+	close;
+	
+			/////////////////////////
+			//The actual NPC Script//
+			/////////////////////////
+OnMinute50:
+OnStart:
+	killmonster .Map$,"Relatorio::OnSpecialMobDead";
+	set .mobs_left, 1;
+	sleep2 1000;
+	set $@ran, rand(1,6);
+	if ($@ran == 6) set .Map$,"nevoa";
+	if ($@ran == 5) set .Map$,"konoha";
+	if ($@ran == 4) set .Map$,"areia";
+	if ($@ran == 3) set .Map$,"nevoa";
+	if ($@ran == 2) set .Map$,"konoha";
+	if ($@ran == 1) set .Map$,"areia";
+	sleep2 1000;
+	announce "[ Relatório ]: Estamos com uma invasão aqui na vila de " + .Map$ + "!", bc_all;
+	sleep2 5000;
+	announce "[ Relatório ]: Membros da vila, Precisamos de sua ajuda pra matar os bandidos!", bc_all;
+	monster .Map$,0,0,"Bandidos",1201,250,"Relatorio::OnMyMobDead";
+	set .mobs_left, 250;
+	end;
+	
+	
+OnTimer902500:	// 30 minutes later, kills all the mobs.
+	killmonster .Map$,"Relatorio::OnSpecialMobDead";
+	set .mobs_left, 0;
+	end;
+
+	
+OnStop://When the event is stopped by a GM, or all monsters dead.
+	killmonster .Map$,"Relatorio::OnSpecialMobDead";
+	announce ""+strcharinfo(0)+" encerrou a invasão!",bc_all;
+	end;
+
+OnMyMobDead://When a Goblin is killed
+	set .mobs_left, .mobs_left-1;
+	if (.mobs_left==0) {
+		announce "[Relatório]: O lider dos bandidos está agora em " + .Map$ + "!", bc_all;
+		monster .Map$,0,0,"Lider dos bandidos",1201,1,"Relatorio::OnSpecialMobDead";
+
+	} else {
+		announce "["+.mobs_left+"/250] bandidos restando.",bc_map;
+	}
+	end;
+
+OnSpecialMobDead:
+		announce strcharinfo(0)+" derrotou o último bandido e seu líder - e recebeu uma recompensa da vila!", bc_all;
+		getitem .ItemID,5;
+		donpcevent "Relatorio::OnStop";
+	}
+	end;
+
+}
+
+nevoa	mapflag	noteleport
+konoha	mapflag	noteleport
+areia	mapflag	noteleport

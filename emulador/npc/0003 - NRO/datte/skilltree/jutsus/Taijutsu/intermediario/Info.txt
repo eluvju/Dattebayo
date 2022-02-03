@@ -1,0 +1,163 @@
+30850367
+
+@asdasas
+
+Darkis2709
+
+Mzk1OTUxNmI5
+
+mysql -u root -p darkis_NRO < isso.sql
+
+mysql -u root -p NRO < sql.sql
+
+Splack | GamesHost.com.br diz (21:55):
+*nnfronet
+Splack | GamesHost.com.br diz (21:55):
+yT+HE4,.l^Q3
+
+-FTP:
+IP: 208.115.225.173
+Usuário: root
+Senha: 7aR2fTgl64
+
+mysql -u root -p uchyha < uchya.sql
+
+
+http://187.45.180.65/~nnfronet/
+
+-- Dados de Acesso ao cPanel --
+Endereço de Acesso: http://187.45.180.65/cpanel/
+Usuário: nnfronet
+Senha: oBlVFO-)+z
+
+-- Dados de Acesso FTP --
+Host/Endereço FTP: 187.45.180.65
+Usuário: nnfronet
+Senha: oBlVFO-)+z
+Diretório para publicar seu site: /public_html/
+
+mportantes Informações de Login
+
+WHM: https://186.227.192.249:2087
+Usuário WHM:  root
+Senha WHM : At4a149d80
+
+Usuário: narut712
+Senha: oMo92r27aC
+
+Configuração do VPS
+
+Sistema Operacional: CentOS 6 (64bit)
+Painel de controle: cPanel/WHM
+Endereços Ips Alocados:
+
+186.227.192.249
+
+186.227.192.250
+
+
+
+DNS Name Server 1: ns1.nnfro.net 186.227.192.249
+DNS Name Server 2: ns2.nnfro.net 186.227.192.250
+
+----------------------------------
+Informações de Acesso SSH:
+----------------------------------
+- Endereço IP: 186.227.192.249
+- Porta SSH: 1891
+- Usuário SSH: root
+- Senha: At4a149d80
+
+E-mails: ducho11@hotmail.com e brunosoares.inf@gmail.com (verifico todos diariamente, então qualquer necessidade de contato pode entrar em contato via eles que sem sombra de dúvida terás resposta em menos de 24h)
+
+Skype: x.xBrunox.x (apesar de não usar muito)
+
+=====================================================================================================
+//Comandos Putty
+killall map-server_sql char-server_sql login-server_sql
+killall map-server_sql2 char-server_sql2 login-server_sql2
+killall map-server_sql3 char-server_sql3 login-server_sql3
+killall map-server_high char-server_high login-server_high
+
+gdb map-server_sql map-server_sql.core
+
+./map-server_sql&
+./char-server_sql&
+./login-server_sql&
+
+Felipe - Suporte: chmod 777 configure
+Felipe - Suporte: ./configure
+Felipe - Suporte: make clean
+Felipe - Suporte: make sql
+Felipe - Suporte: make sql
+
+./configure --enable-64bit
+./configure --with-pcre
+
+./configure --enable-debug=gdb --with-zlib=DIR --enable-64bit
+
+importar BD: mysql -u root -p eduzao < eduzao.sql
+
+
+
+mysqldump -u root --password=SENACdarkis!@# -p --databases NNFRO2 > highbackup.sql
+mysqldump -u root --password -p --databases NNFRO2 > highbackup.sql
+mysqldump -u root --password -p --databases NRPG > NRPG.sql
+
+mysqldump -u root --password -p --databases NRO > backup.sql
+
+====================================
+Plano: RagStarter
+Endereço IP: 199.168.184.212
+Usuário: root
+Senha: K4qwa3J0t7
+Porta: 22
+
+Link PhpMyAdmin: http://199.168.184.212/phpmyadmin/
+
+Pastas:
+Emulador: /home/emulador
+Apache: /home/www
+
+nformações do Servidor de Ragnarok Online
+====================================
+Plano: RagBronze
+Endereço IP: 199.168.184.213
+Usuário: root
+Senha: yjCK7yk249
+Porta: 22
+Link PhpMyAdmin: http://199.168.184.213/phpmyadmin/
+
+Informações do Servidor de Ragnarok Online
+====================================
+Plano: RagGold
+Endereço IP: 199.168.184.214
+Usuário: root
+Senha: YX5q49tc8o
+Porta: 22
+Link PhpMyAdmin: http://199.168.184.214/phpmyadmin/
+
+Informações do Servidor de Ragnarok Online
+====================================
+Plano: RagStarter
+Endereço IP: 67.23.240.110
+Usuário: root
+Senha: 4oS83fm8Jy
+Porta: 22
+
+Link PhpMyAdmin: http://67.23.240.110/phpmyadmin/
+
+*mysqldump bancodedados > arquivo.sql -h localhost -u usuario -p
+
+mysql -h localhost -u usuario -p bancodedados < arquivo.sql
+
+
+mysqldump NNFROHIGHTESTE > sqlhighbackup.sql -h localhost -u root -p
+
+tar -czvf sqlhighbackup.tar.gz sqlhighbackup.sql
+
+tar -vzxf 04-02-NRPG.sql.bz2
+
+mysqldump NRPG2 > 04-02-2011-NRPG.sql -h localhost -u root -p
+
+ mysql -p -u root NRPG2 < 04-02-NRPG.sql

@@ -1,0 +1,351 @@
+///////////////////////////////////////////////////////////////////
+//===== Cronus Script ===========================================//
+//= 							 	=//
+//= Reparador							=//
+//= 								=//
+//===== Por: ====================================================//
+//=								=//
+//=       KIRA THE CAT
+//=								=//
+//===== Changelog: ========================== Versão Atual ======//
+// Criado em 28/02/2021 
+// Alteração Dia 22/06/2021
+// 		Alterada estrutura do NPC para compor o novo modelo de Kafra Pass
+// 		Alterado o modelo de estrutura do NPC para uma forma mais organizada
+//		Criado Interações Especiais Para VIP's
+//      Finalizado 23/06/2021 - 16:31
+//===== Descrição: ==============================================//
+// == NPC Estilista com Desconto para PASSE e VIP FREE
+// ============================================================
+louyang,262,97,1	script	Rui::estilistarui	756,{
+//==============================================================
+
+	set @descontEstilistaRui,2500; // Desconto para realizar o Serviço
+	set .@t, 3;	// Delay Seconds.
+
+	.@costEstilistaRui = 5000;
+	.@passecomercio = 1084;		
+	.@npc$ = "                             ^cfa417[ "+strnpcinfo(1)+" ]^000000"; // Titulo
+	.@zeny$ = "Estarei cobrando ^FF0000" + .@costEstilistaRui + "z^000000,Com o ^800080Passe^000000 você paga apenas ^800080" + (.@costEstilistaRui-@descontEstilistaRui) + "z^000000 e ^FF0000VIP não paga!^000000"; // Merchan
+
+//==============================================================
+
+
+		if (isbegin_quest(1001) == 1) { goto novato;} // Quest " Complete a Academia "
+		else {goto veterano;}
+
+//==============================================================
+	
+			veterano:
+			set @a,rand(1,3);
+	
+					if(@a == 1) { goto dialogo1;}
+					if(@a == 2) { goto dialogo2;}
+					if(@a == 3) { goto dialogo3;}
+
+	
+			dialogo1:
+			mes .@npc$;
+			mes "Nossa que cabelo HORRENDOOOOO!!";
+			mes " ";
+			mes "Como voce esta aguentando se olhar no espelho?";
+			next;
+			mes .@npc$;
+			mes "Meu querido eu resolvo isso ai OK?";
+			mes " ";
+			mes "Por apenas: ^FF0000" + .@costEstilistaRui + "z^000000 é claro e";	
+			mes "aqui aceitamos seu ^800080"+getitemname(.@passecomercio)+"^000000.";
+			next;
+			mes .@npc$;
+			mes "Mas querido antes preciso avisar que ^FF0000eu cobro antes^000000, mesmo se você não escolher nada OK?";
+			mes " ";
+			mes "E como todos sabemos... ^FF0000VIP não paga!^000000"; 
+			menu "^FF0000Pagar^000000",pago,"^800088Sou VIP^000000",vip,"Sem chance",LCancel;
+			
+
+			dialogo2:
+			mes .@npc$;
+			mes "Meu deus o que acabou de passar pelos meus olhos...";
+			mes " ";
+			mes "Me ajuda a te ajudar neh amor? UI!";
+			next;
+			mes .@npc$;
+			mes "Meu querido eu resolvo isso ai OK?";
+			mes " ";
+			mes "Por apenas: ^FF0000" + .@costEstilistaRui + "z^000000 é claro e";	
+			mes "aqui aceitamos seu ^800080"+getitemname(.@passecomercio)+"^000000.";
+			next;
+			mes .@npc$;
+			mes "Mas querido antes preciso avisar que ^FF0000eu cobro antes^000000, mesmo se você não escolher nada OK?";
+			mes " ";
+			mes "E como todos sabemos... ^FF0000VIP não paga!^000000"; 
+			menu "^FF0000Pagar^000000",pago,"^800088Sou VIP^000000",vip,"Sem chance",LCancel;
+
+			dialogo3:
+			mes .@npc$;
+			mes "To sem palavras, voce pode ate ser um ninja...";
+			mes " ";
+			mes "Mas você não é nenhum largado neh amor...";
+			next;
+			mes .@npc$;
+			mes "Meu querido eu resolvo isso ai OK?";
+			mes " ";
+			mes "Por apenas: ^FF0000" + .@costEstilistaRui + "z^000000 é claro e";	
+			mes "aqui aceitamos seu ^800080"+getitemname(.@passecomercio)+"^000000.";
+			next;
+			mes .@npc$;
+			mes "Mas querido antes preciso avisar que ^FF0000eu cobro antes^000000, mesmo se você não escolher nada OK?";
+			mes " ";
+			mes "E como todos sabemos... ^FF0000VIP não paga!^000000"; 
+			menu "^FF0000Pagar^000000",pago,"^800088Sou VIP^000000",vip,"Sem chance",LCancel;
+			
+
+	pago:	
+	if (getgmlevel() >= 5) { goto vip; }
+	if (countitem(.@passecomercio) >= 1) { goto passe; }
+	if (0 >= (.@costEstilistaRui - Zeny)) { goto rica; }
+	if (0 < (.@costEstilistaRui - Zeny)) { goto pobre; }
+	else { 	mes .@npc$;
+			mes " ";
+			mes "Um erro inesperado ocorreu!";
+			close;}
+
+//=======================================================================================
+//
+// PASSE
+//
+//=======================================================================================
+							
+			passe:
+			next;
+			mes .@npc$;
+			mes "Vejo que voce possui o ^800080"+getitemname(.@passecomercio)+"^000000.";
+			mes " ";
+			mes "Você pode utilizar o serviço sem pagar^808080(O item será consumido)^000000...";
+			switch(select("^800080Usar o Passe^000000:^FF0000Quero pagar^000000:Nao, Esquece"))  {
+	
+			case 1:
+			next;
+			delitem .@passecomercio,1;
+			dispbottom "[Servidor] Dattebayo: Item ^800080"+getitemname(.@passecomercio)+"^000000 foi Removido!";
+			mes .@npc$;
+			mes "Boa escolha, não aguento olhar pra essa sua cabeça ai";
+			mes " ";
+			mes "No que eu posso ajudar voce?";
+			menu "Novo Corte",Lstyle,"Pintar o Cabelo",Lcolor,"^FF0000Mudei de ideia^000000",LCancel;
+			close;
+	
+			case 2:
+			if (0 >= (.@costEstilistaRui - Zeny)) { goto rica; }
+			if (0 < (.@costEstilistaRui - Zeny)) { goto pobre; }
+			else { 	mes .@npc$;
+					mes " ";
+					mes "Um erro inesperado ocorreu!";
+					close;}
+	
+			case 3:
+			goto LCancel;
+	
+	}
+
+//=======================================================================================
+//
+// PAGAMENTO
+//
+//=======================================================================================
+
+	
+			pobre:
+			next;
+			mes .@npc$;
+			mes "Eca, pobre sai daqui.";
+			mes " ";
+			mes "Torne-se ^FF0000VIP^000000 agora mesmo e utilize nossos servicos de graça!";
+			close;
+	
+			rica:
+			set Zeny,Zeny - .@costEstilistaRui;
+			dispbottom "[Servidor] Dattebayo: -^FF0000" + .@costEstilistaRui + "z^000000";
+			next;
+			mes .@npc$;	
+			mes "Boa escolha, não aguento olhar pra essa sua cabeça ai";
+			mes " ";
+			mes "No que eu posso ajudar voce?";
+			menu "Novo Corte",Lstyle,"Pintar o Cabelo",Lcolor,"^FF0000Mudei de ideia^000000",LCancel;	
+	
+
+//=======================================================================================
+//
+// VIP
+//
+//=======================================================================================									
+									
+		vip:	
+			if (getgmlevel() <= 4) { next;
+									mes .@npc$;
+									mes "VIP neh... sei...";
+									mes " ";
+									mes "Cai fora ou vou chamar a policia!";
+									close;}
+			next;
+			mes .@npc$;	
+			mes "Ai amor no que eu posso te ajudar hj?";
+			mes " ";
+			menu "Novo Corte",Lstyle,"Pintar o Cabelo",Lcolor,"^FF0000Mudei de ideia^000000",LCancel;	
+	
+
+//=======================================================================================
+//
+// ESTILO DO CABELO
+//
+//=======================================================================================	
+
+	Lstyle:
+		next;
+		mes .@npc$;
+		mes "Você tem ideia do corte que voce quer ou quer dar uma olhada?";
+		mes " ";
+		mes "Aqui temos opções de até ^0000FF23^000000 estilos.";
+		menu "Olhar",Lbrowsesty,"Eu sei o que eu quero!",Lwantsty;
+
+	Lwantsty:
+		next;
+		mes .@npc$;
+		mes "Ótimo! Agora escolhe o cabelo!";
+		mes " ";
+		mes "Escolhe um número de cabelo entre ^0000FF0 e 23^000000.";
+		mes "O número 0 é estilo padrão de seu cabelo";
+ 		next;
+		input @sty;
+		if (@sty>23) close;
+		if (@sty<0) close;
+		setlook 1,@sty;
+		set meucabelo,getlook(1);
+		next;
+		mes .@npc$;
+		mes "Está bem, ou gostaria de outro estilo?";
+		next;
+		menu "Gostei desse",-,"Estilo diferente, por favor",Lwantsty;
+		next;
+		goto Lstop;
+		
+
+	Lbrowsesty:
+		next;
+		set @look, -1;
+		mes .@npc$;
+		mes "LA VAMOS NÓSSS~~  Me avise quando achar um que gostou ok?";
+		next;
+
+	Lbrowserep:
+		set @look,@look+1;
+		setlook 1,@look;
+		mes .@npc$;
+		mes "Este é o número^FF9009 "+@look+" ^000000!"; 
+		if(@look == 23) menu "Volte para o começo",Lbrowsesty,"Eu gosto desse",Lstop;
+		if(@look != 23)	menu "Continua",Lbrowserep,"Eu gostei desse",Lstop;
+
+
+//=======================================================================================
+//
+// COR DO CABELO
+//
+//=======================================================================================		
+	Lcolor:
+		next;
+		mes .@npc$;
+		mes "Você gostaria de algumas demonstrações ou você sabe o que deseja?";
+		menu "Demonstração",Lbrowsecolor,"Eu sei o que eu quero!",Lwantcolor;
+
+	Lwantcolor:
+		next;
+		mes .@npc$;
+		mes "Escolha uma cor e vamos começar.";
+		mes " ";
+		mes "Escolha uma cor de cabelo ^0000FFentre 0 e 5^000000.";
+		mes "O número 0 é o padrão.";
+ 		next;
+		input @color;
+		if (@color>5) close;
+		if (@color<0) close;
+		setlook 6,@color;
+		next;
+		mes .@npc$;
+		mes "Está bom ou gostaria de outra cor?";
+		menu "Está bom",Lstop,"Outra cor, por favor",Lwantcolor;
+
+
+	Lbrowsecolor:
+		next;
+		set @look, -1;
+		mes .@npc$;
+		mes "Okay, Vamos lá!  Apenas me diga quando achar algo que goste ta bom?";
+		next;
+
+	Lbrowsecolorrep:
+		set @look,@look+1;
+		setlook 6,@look;
+		mes "Este é a cor ^FF9009 "+@look+" ^000000!"; 
+		if(@look == 5) menu "Volte para o inicio",Lbrowsecolor,"Eu gostei desse",Lstop;
+		if(@look != 5)	menu "Continue",Lbrowsecolorrep,"Eu gostei desse",Lstop;
+
+//============================================================================================
+//
+// FIM DO DIALOGO
+//
+//============================================================================================
+	Lstop:
+	next;
+	mes .@npc$;
+	mes "Esta Satisfeito?";
+	menu "^FF0000Estou Satisfeito^000000",-,"Novo Corte",Lstyle,"Pintar o Cabelo",Lcolor;
+	next;
+	if (getgmlevel() >= 5) { set @a,rand(1,3);
+	
+							 if(@a == 1) { goto fala1;}
+							 if(@a == 2) { goto fala2;}
+							 if(@a == 3) { goto fala3;}
+	
+		fala1:
+		npctalk ""+strnpcinfo(1)+": "+ strcharinfo ( 0 ) +" é a nova rainha do PEDAÇOOOO!";
+		close;
+	
+		fala2:
+		npctalk ""+strnpcinfo(1)+": VADIA voce esta um absurdo, AMAYYY "+ strcharinfo ( 0 ) +"";
+		close;
+		
+		fala3:
+		npctalk ""+strnpcinfo(1)+": Espalha pra todo mundo que passou aqui ein "+ strcharinfo ( 0 ) +". ";
+		close;
+		}
+	else {close; }
+	
+	LCancel:
+	close;
+
+//============================================================================================
+//
+// Quest Academia
+//
+//============================================================================================
+
+			novato:
+			mes .@npc$;
+			mes "Fazendo academia ein? ADOROOOOO!";
+			mes " ";
+			mes "Vou fazer um favor pra você e te deixar...";
+			mes " ";
+			mes "UM ABSURDOOOOOOOOOOOO!!!";
+			next;
+			mes .@npc$;
+			mes "Essa aqui vai ser por ^FF0000conta da casa!^000000 Mas a proxima eu vou cobrar ein...";
+			mes " ";
+			mes "Qual seu plano pra esse cabelo ai?	";
+			menu "Novo Corte",Lstyle,"Pintar o Cabelo",Lcolor,"Nada",LCancel;
+}
+
+//===== NPC: ====================================================//
+
+prontera,157,159,3	duplicate(estilistarui)	Estilista#2	756
+
+//==============================================================//

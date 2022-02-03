@@ -1,0 +1,79 @@
+konoha3,148,252,5	script	Ferreiro::pro_ferreiro	59,{
+
+if (jatemmain == 1) goto L_no;
+if(ferreiro == 1) goto L_temprofissao;
+if (checkquest(2013) == 1) goto L_go;
+//========================================================================
+//	MENU
+//========================================================================
+mes "Puff~";
+next;
+mes "  Clack~";
+next;
+mes "    Toq~";
+next;
+mes "Ah, desculpa não havia te visto!";
+mes "Olá "+strcharinfo(0)+"-san.";
+mes "Você parece bem disposto hoje! Gostaria trabalhar duro como um Ferreiro? Eu posso lhe ensinar.";
+menu "Sim, eu quero",L_SS,"Agora não",L_no;
+//========================================================================
+//	ferreiro
+//========================================================================
+
+L_SS:
+next;
+mes "Puff~ Que calor!";
+next;
+mes "Bom, primeiramente preciso que você consiga alguns itens que irão me ajudar muito!";
+next;
+mes "Aqui está a lista de itens:";
+next;
+mes "- Obter 150x Escama de Cobra."; //(Id: 926)
+mes "- Obter 30x Escamas Brilhantes."; //(Id: 954)
+mes "- Obter 5x Aquamarina."; //(id: 720)
+mes "- Obter 1x Minério de Elunium."; //(Id: 757)
+mes "- Matar 100x Manmosukas"; // 1040
+setquest 2013;
+next;
+mes "Vá e faça essas tarefas por favor.";
+close;
+
+L_go:
+if (checkquest(2013,hunting) != 2) {mes "Você ainda não completou suas Tarefas."; close;}
+if (countitem(926) < 150) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(954) < 30) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(720) < 5) {mes "Você ainda não completou suas tarefas"; close;}
+if (countitem(757) < 1) {mes "Você ainda não completou suas tarefas"; close;}
+mes "Com essa velocidade, logo logo você será um grande ferreiro!!";
+next;
+mes "Agora você é um Ferreiro!";
+completequest 2013;
+delitem 926,150;
+delitem 954,30;
+delitem 720,5;
+delitem 757,1;
+getitem 1005,1;
+getitem 2275,1;
+set ferreiro,1;
+set jatemmain,1;
+announce "[Profissão] "+strcharinfo(0)+" acaba de virar Ferreiro!",bc_blue|bc_all;
+close;
+
+L_no:
+close;
+
+L_temprofissao:
+mes "Olá novamente! O que você está fazendo por aqui jovem aprendiz?";
+menu "Eu preciso de outro Martelo.",luva,"Nada, só de passagem.",L_no;
+
+luva:
+if (countitem(1005) >= 1) {mes "Você não precisa de outra Martelo."; close;}
+mes "Aqui está";
+getitem 1005,1;
+close;
+
+}
+
+sunagakure,131,287,5	duplicate(pro_ferreiro)	Ferreiro#1	59,{
+kiri,371,198,5	duplicate(pro_ferreiro)	Ferreiro#2	59,{
+nuvem,99,135,5	duplicate(pro_ferreiro)	Ferreiro#3	59,{

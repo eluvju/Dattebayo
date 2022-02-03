@@ -1,0 +1,159 @@
+//Author:Goddameit
+//Update:2011/4/16 AM3:01
+
+prontera,150,180,4	script	PK-Fight	990,{
+if( select("[Register]","[Cancle]") == 2 || $@A2 >=2 || $@Team1$ == strcharinfo(1) || $@Team2$ == strcharinfo(1)
+ || getpartyleader(getcharid(1),1) != getcharid(3) ){ close; }
+	if( $@A2 ){
+		set $@A,($@A== 1?2:1);
+		set $@A2,$@A2+1;
+	}
+	if( !$@A2 ){
+	set $@A,rand(1,2); 
+	set $@A2,$@A2+1; }
+	setd "$@Team"+$@A+"$",strcharinfo(1);
+	setd "$@Team"+$@A,getcharid(1);
+	mes "Complete";
+	close;	
+	
+OnInit:
+	set $@NPCNAME$,strnpcinfo(0);
+	disablenpc $@NPCNAME$;
+	disablenpc "1";
+	disablenpc "2";
+	end;
+}
+
+-	script	PK-Fight_confi	-1,{
+wparty:
+	getpartymember getarg(3),1;
+	for(set .@i,0;.@i<$@partymembercount;set .@i,.@i+1)
+		warpchar getarg(0),getarg(1),getarg(2),$@partymembercid[.@i];
+	return;
+OnPCKillEvent:
+	set .@k,1;
+OnPCDieEvent:
+	getmapxy(.@q$,.@qq,.@qqq,0);
+	set .@T,( strcharinfo(1) == $@Team1$ ? 1 : 2 );
+	if( .@T && $@C && .@q$ == $@RunMap$ ){
+		if( .@k ){
+			setd "$@Tk"+.@T,getd( "$@Tk"+.@T )+1;
+		}
+		if( !.@k ){
+			warp $@mapname$,getd("$@teammapxy"+.@T+"[0]"),getd("$@teammapxy"+.@T+"[1]");
+			sleep2 1;
+			atcommand "@alive";
+		}
+	}
+	end;
+
+OnClock0100:
+OnClock0400:
+OnClock0700:
+OnClock1000:
+OnClock1300:
+OnClock1600:
+OnClock1900:
+OnClock2200:
+OnStarrtt:
+	announce "[System]:PK-Fight after 5 minutes we will start , please Register now.",bc_all;
+	enablenpc $@NPCNAME$;
+OnStarrt:	
+	set $@PK_Fight_On,( !$@PK_Fight_On ? 1 : 0 );
+	set $@Team1$,"";
+	set $@Team2$,"";
+	set $@Team1,0;
+	set $@Team2,0;
+	set $@Tk1,0;
+	set $@Tk2,0;
+	set $@A,0;
+	set $@C,0;
+	enablenpc "GM-PK_Fight";
+	if( $@end ){ set $@end,0; end; }
+//=======================================================
+	sleep $@wait[0];
+
+	if( !$@Team1 || !$@Team2 ){
+		announce "[System]:PK-Fight is ended.",bc_all;
+		disablenpc $@NPCNAME$;
+		disablenpc "1";
+		disablenpc "2";
+		set $@end,1;
+		callsub OnStarrt;
+		end;
+	}
+	announce "[System]:PK-Fight is started!",bc_all;
+	callsub wparty,$@mapname$,$@teammapxy1[0],$@teammapxy1[1],$@Team1;
+	callsub wparty,$@mapname$,$@teammapxy2[0],$@teammapxy2[1],$@Team2;
+//=======================================================
+	sleep $@wait[1];
+	
+	mapannounce $@mapname$,"[System]:PK-Fight start now",bc_map;
+	set $@C,1;
+	sleep $@wait[2];
+	enablenpc "2";
+	enablenpc "1";
+	callsub wparty,$@RunMap$,0,0,$@Team1;
+	callsub wparty,$@RunMap$,0,0,$@Team2;
+//=======================================================
+	sleep $@wait[3];
+	
+	if( $@Tk1 == $@Tk2 ){
+		announce "[System]: No winer!",bc_all;
+		set $@end,1;
+		callsub OnStarrt;
+		end;
+	}
+	set .Win,( $@Tk1 > $@Tk2 ? 1 : 2 );
+	announce "[System]: "+getd("$@Team"+.Win+"$")+" wins!",bc_all;
+	getpartymember getd("$@Team"+.Win),2;
+	for(; .u<getarraysize($@partymemberaid);set .u,.u+1){
+		attachrid $@partymemberaid[.u];
+		set #CASHPOINTS,#CASHPOINTS+50;
+		warp "SavePoint",0,0;
+		detachrid;
+	}
+	set .Win,(.Win==1?2:1);
+	getpartymember getd("$@Team"+.Win),2;
+	for(set .u,0; .u<getarraysize($@partymemberaid);set .u,.u+1){
+		attachrid $@partymemberaid[.u];
+		set #CASHPOINTS,#CASHPOINTS+20;
+		warp "SavePoint",0,0;
+		detachrid;
+	}
+	set $@end,1;
+	callsub OnStarrt;
+	end;
+}
+pvp_n_1-1,106,130,4	script	1	100,{
+if( select("Return","Repair","Check the score") == 3 ){
+	announce "[System]: "+$@Team1$+"'s points : "+$@Tk1+" , "+$@Team2$+"'s points : "+$@Tk2,bc_self;
+	close;
+}
+if( @menu == 2 ){
+	atcommand "@repairall";
+	close;
+}
+warp $@RunMap$,0,0;
+close;
+
+OnInit:
+	set $@RunMap$,"pvp_n_1-2";	//game map name
+	setarray $@wait[0],10000,1000,2000,30000;
+	getmapxy($@mapname$,.i,.ii,1,strnpcinfo(0));
+	setd "$@teammapxy"+strnpcinfo(0)+"[0]",.i;
+	setd "$@teammapxy"+strnpcinfo(0)+"[1]",.ii;
+	setwall $@mapname$,103,123,10,6,0,"wall3";
+	setwall $@mapname$,.103,75,10,6,0,"wall4";
+	end;
+}
+pvp_n_1-1,106,69,4	duplicate(1)	2	100
+
+
+
+prontera,152,182,4	script	GM-PK_Fight	100,{
+	if( !getgmlevel() ){end;}
+	disablenpc "GM-PK_Fight";
+	doevent "PK-Fight_confi::OnStarrtt";
+	end;
+}

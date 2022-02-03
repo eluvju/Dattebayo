@@ -1,0 +1,73 @@
+//=============================================
+//== Cronus Tools :: Gerador de Quest's =======
+//== Versão: ==================================
+//== 1.0
+//== Autor: ===================================
+//== RoM
+//=============================================
+prt_fild09,49,294,5	script	Tobi	402,{
+if(checkquest(30250) == 1) goto ativa20;
+if(jounin != 1) {mes "Você primeiro precisa virar Jounin"; end;}
+if ((BaseLevel) < 300 ) {next; mes "Você precisa ser level 300 para falar comigo"; close;}
+if(nuken == 1){mes "Você já é nukenin"; close;}
+	mes "[Tobi]";
+	mes "Quem e você? O que esta fazendo aqui?";
+	next;
+	mes "Então você quer deserdar da sua vila, posso lhe afirmar que não será facil, você tera que correr atrás de tudo sozinho.";
+	next;
+	mes "Você tem certeza dessa escolha?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Nukenin]";	
+		mes "Então suma da minha frente.";
+		close;
+	}
+	mes "Então me prove que você está preparado para seguir este caminho.";
+	next;
+	mes "Mate o Orochimaru em seu Esconderijo e roube um Pergaminho de Experimentos dele, em seguida mate 100 Akatsuki Rank S.";
+	next;
+	mes "OK?";
+	next;
+	switch(select("Ok:Esqueçe deixa pra proxima"))
+	{
+	case 1:
+		mes "[Nukenin]";
+		mes "Deseja mesmo fazer isso? uma vez feita não tem mais volta.";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Nukenin]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		ativa20:
+		setquest 30250;
+		if(checkquest(30250,hunting) == 2 && countitem(32162) >= 1)
+		{
+			completequest 30250;
+			erasequest 30250;
+			savepoint "cave",110,66;
+			delitem 32162,1;
+     			getitem 30019,1;
+			atcommand "@job 4009";
+			set nuken,1;
+			set konoha,0;
+			set nevoa,0;
+			set nuvem,0;
+			mes "NICE";
+			warp "cave",110,66;
+			announce "[Naruto Earth RPG] "+strcharinfo(0)+" Virou renegado agora não pertence a mais nenhum vila.",bc_yellow|bc_all;
+			close;
+		}
+		break;
+	case 2:
+		mes "[Nukenin]";
+		mes "Tudo bem, estarei aqui se você mudar de idéia.";
+		close;
+	}
+	mes "[Nukenin]";
+	mes "Me desculpe, mas você não matou todos os monstro necessários para esta missão ou esta faltando o pergaminho de experimentos";
+	mes "Volte quando você tiver matado!";
+	close;
+}

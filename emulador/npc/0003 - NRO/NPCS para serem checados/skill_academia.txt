@@ -1,0 +1,292 @@
+//===== Cronus Script ======================================== 
+//= Curandeira
+//===== Por: =================================================
+//= DennyLoko
+//===== Versão Atual: ======================================== 
+//= 1.3
+//===== Descrição: =========================================== 
+//= Recupera HP e SP gratuitamente
+//= Usado as cordenadas do NPC do eAthena
+//===== Changelog: =========================================== 
+//= 1.0 Iniciado o Npc [DennyLoko]
+//= 1.1 Organizado o NPc [Kamper]
+//= 1.1b corrigindo erro na duplicate de rachel [Tiu Skan]
+//= - Removidos ".gat" 
+//= Script Reestruturado [Mehah]
+//= 1.2 Removido falas, adicionado cura de Homunculo e Moscóvia. [RoM]
+//= 1.3 Adicionado a opção paga. [RoM]
+//============================================================
+
+acad_01,87,28,5	script	Atendente	434,{
+
+//========================================================================
+//   MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Bem-vindo a academia Shinobi, aqui você vai aprender os jutsus que todos os shinobis precisam saber antes de se tornarem um Genin.";
+next;
+mes "Segue a lista dos Jutsus que você vai aprender:";
+menu "Kage bunshin no Jutsu",L_KB,
+     "Kawarimi no Jutsu",L_Kawa,
+     "Henge no Jutsu",L_Henge,
+     "Arremeso de Kunai",L_Kunai,
+     "Arremeso de Shuriken",L_Shuri;
+
+
+
+//========================================================================
+//   Kage bunshin
+//========================================================================
+
+L_KB:
+if (kagebunshin == 1) {next; mes "Você já sabe esse jutsu"; close;}
+if (checkquest(1000) == 1) goto L_go;
+if (checkquest(1000) == 2) goto L_go;
+if (checkquest(1000) != -1) goto cont;
+
+
+cont:
+next;
+mes "^0080C0Kage Bunshin no Jutsu^000000";
+mes "Com esse jutsu você cria um clone seu pra lhe ajudar nas batalhas.";
+mes "Gostaria de Aprender ?";
+menu "Sim",-,
+     "Não",L_nao;
+
+next;
+setquest 1000;
+mes "^0080C0Kage Bunshin no Jutsu^000000";
+mes "Pra aprender esse jutsu você vai precisar buscar um pergaminho com informações de como aprender esse jutsu, encontre-o em:";
+mes "^0000FFBiblioteca da academia^000000";
+next;
+mes "^0080C0Kage Bunshin no Jutsu^000000";
+mes "Você buscou o pergaminho?";
+menu "Sim",L_go,
+     "Não",L_nao;
+
+L_go:
+if(countitem(618) < 1) goto faltaitem;
+delitem 618,1;
+next;
+mes "^0080C0Kage Bunshin no Jutsu^000000";
+mes "Muito bem, você aprendeu a habilidade!";
+set kagebunshin,1;
+erasequest 1000;
+set Jutsu_Academia,Jutsu_Academia +1;
+skill 1010,1,0; //EDITAR
+//	Achieve( 4);
+
+close;
+
+//========================================================================
+//   Henge
+//========================================================================
+
+L_Henge:
+if (J_Henge == 1) {next; mes "Você já sabe esse jutsu"; close;}
+if (checkquest(1001) == 1) goto L_go2;
+if (checkquest(1001,HUNTING) == 2 ) goto L_go2;
+if (checkquest(1001) != -1) goto cont2;
+
+cont2:
+mes "^0080C0Henge no Jutsu^000000";
+mes "Com esta técnica você consegue se transformar em um objeto pra enganar seu inimigo.";
+mes "Gostaria de Aprender ?";
+menu "Sim",-,
+     "Não",L_nao;
+
+next;
+setquest 1001;
+mes "^0080C0Henge no Jutsu^000000";
+mes "Os requisitos para aprender esta habilidade são:";
+mes "^0000FFIr para o campo de treinamento e derrotar um Boneco de treino^000000";
+next;
+mes "^0080C0Henge no Jutsu^000000";
+mes "Você já cumpriu seu treinamento?";
+menu "Sim",-,
+     "Não",L_nao;
+
+L_go2:
+next;
+if (checkquest(1001,HUNTING) != 2 ) goto faltaitem;
+mes "^0080C0Henge no Jutsu^000000";
+mes "Muito bem, você aprendeu a habilidade!";
+completequest 1001;
+erasequest 1001;
+set J_Henge,1;
+set Jutsu_Academia,Jutsu_Academia +1;
+skill 506,1,0; //EDITAR
+//	Achieve( 5);
+close;
+
+//========================================================================
+//  Arremeso de Kunai
+//========================================================================
+
+L_Kunai:
+
+next;
+if (J_Arremeso == 1) {next; mes "Você já sabe esse jutsu"; close;}
+if (checkquest(1002) == 1) goto L_go3;
+if (checkquest(1002) != -1) goto cont3;
+
+cont3:
+mes "^0080C0Arremeso de Kunai^000000";
+mes "Nesse treinamento você aprimora o arremeso de Kunais.";
+mes "Gostaria de Aprender ?";
+menu "Sim",-,
+     "Não",L_nao;
+
+next;
+setquest 1002;
+mes "^0080C0Arremeso de Kunai^000000";
+mes "Nesse treinamento você precisa ir pro campo de treinamento treinar nos bonecos de treino e pra provar seu treinamento trazer:";
+mes "^0000FF5 Cabeças de Bonecos de Treino^000000";
+next;
+mes "^0080C0Arremeso de KunaiU^000000";
+mes "Você tem estes requisitos?";
+menu "Sim",-,
+     "Não",L_nao;
+
+L_go3:
+if(countitem(19054) < 5) goto faltaitem;
+delitem 19054,5;
+next;
+mes "^0080C0Arremeso de Kunai^000000";
+completequest 1002;
+erasequest 1002;
+mes "Muito bem, você aprendeu a habilidade!";
+set J_Arremeso,1;
+set Jutsu_Academia,Jutsu_Academia +1;
+skill 524,10,0;
+//	Achieve( 6);
+close;
+
+//========================================================================
+//  Arremeso de Shuriken
+//========================================================================
+
+L_Shuri:
+if (J_Shuriken == 1) {next; mes "Você já sabe esse jutsu"; close;}
+if (checkquest(1003) == 1) goto L_go4;
+if (checkquest(1003,HUNTING) == 2 ) goto L_go4;
+if (checkquest(1003) != -1) goto cont4;
+
+next;
+mes "^0080C0Arremeso de Shuriken^000000";
+mes "Nesse treinamento você aprimora o arremeso de shurikens.";
+mes "Gostaria de Aprender ?";
+menu "Sim",-,
+     "Não",L_nao;
+
+cont4:
+next;
+setquest 1003;
+mes "^0080C0Arremeso de Shuriken^000000";
+mes "Os requisitos para aprender esta habilidade são:";
+mes "^0000FFIr para o campo de treinamento e treinar em 10 bonecos de treino^000000";
+next;
+mes "^0080C0Arremeso de Shuriken^000000";
+mes "Você já cumpriu seu treinamento?";
+menu "Sim",-,
+     "Não",L_nao;
+
+L_go4:
+next;
+if (checkquest(1003,HUNTING) != 2 ) goto faltaitem;
+mes "^0080C0Arremeso de Shuriken^000000";
+mes "Muito bem, você aprendeu a habilidade!";
+set J_Shuriken,1;
+completequest 1003;
+erasequest 1003;
+skill 523,10,0;
+set Jutsu_Academia,Jutsu_Academia +1;
+	Achieve( 7);
+close;
+
+//========================================================================
+//   Kawarimi
+//========================================================================
+
+L_Kawa:
+if (J_Kawa == 1) {next; mes "Você já sabe esse jutsu"; close;}
+if (checkquest(1004) == 1) goto L_go5;
+if (checkquest(1004) == 2) goto L_go5;
+if (checkquest(1004) != -1) goto cont5;
+
+next;
+mes "^0080C0Kawarimi no Jutsu^000000";
+mes "Com esse jutsu você substitui seu corpo com outro objeto, é usado para fugir de um ataque.";
+mes "Gostaria de Aprender ?";
+menu "Sim",-,
+     "Não",L_nao;
+
+cont5:
+next;
+setquest 1004;
+mes "^0080C0Kawarimi no Jutsu^000000";
+mes "Pra aprender esse jutsu você vai precisar achar o instrutor responsável por esse treinamento, o Yamada";
+mes "^0000FFEncontre o Yamada em sua sala de aula^000000";
+next;
+mes "^0080C0Kawarimi no Jutsu^000000";
+mes "Você conversou com o Yamada?";
+menu "Sim",-,
+     "Não",L_nao;
+
+L_go5:
+if (checkquest(1004) != 2) goto faltaitem;
+next;
+mes "^0080C0Kawarimi no Jutsu^000000";
+mes "Muito bem, você aprendeu a habilidade!";
+set J_Kawa,1;
+set Busca_Kawa,0;
+skill 51,5,0;
+erasequest 1004;
+skill 213,5,0;
+set Jutsu_Academia,Jutsu_Academia +1;
+	Achieve( 8);
+close;
+
+completou_kawa:
+next;
+mes "Você já aprendeu este jutsu!";
+close;
+
+L_nao:
+mes "Certo, se quiser retorne aqui..";
+close;
+
+faltaitem:
+mes "Está faltando algo, verifique e retorne.";
+close;
+
+}
+
+acad_01,181,191,5	script	Yamada	884,{
+if (checkquest(1004) == 1) {goto kawa;} else {mes "^0080C0Yamada^000000"; mes "E ai, está aprendendo muito?"; close;}
+
+kawa:
+mes "^0080C0Yamada^000000";
+mes "Você está aqui pra aprender o Kawarimi?";
+mes "Certo, dê uma estudada nesse pergaminho comigo";
+next;
+mes "Fácil né? Agora retorne pro sala de recepção";
+completequest 1004;
+close;
+
+
+
+}
+
+acad_01,12,81,5	script	Pegar livro	58,{
+if (checkquest(1000) == 1) {goto KBLIVRO;} else {mes "Hm, nada interessante aqui..."; close;}
+
+KBLIVRO:
+mes "Hmm.. Será que é esse pergaminho?";
+getitem 618,1;
+completequest 1000;
+close;
+
+
+
+}

@@ -1,0 +1,102 @@
+payon_in03,98,189,5	script	Shinkuuha no Jutsu::fuuton1	831,{
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if (kamaitachi == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(elementofuuton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//========================================================================
+//   MENU
+//========================================================================
+mes "Eu sou um dos senseis elementais de fuuton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Shinkuuha no Jutsu";
+next;
+mes "Descrição: O ninja solta uma lâmina de vento que causa dano";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_KM,"Agora não",L_no;;
+
+//========================================================================
+//	Shinkuuha no Jutsu
+//========================================================================
+
+L_KM:
+if (checkquest(1010) == 1) goto L_go;
+set skillprotect,1;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 100x Girino";
+setquest 1010;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1010,hunting) != 2) {next; mes "Você ainda não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 191,1,0;
+set kamaitachi,1;
+completequest 1010;
+erasequest 1010;
+set skillgenin1,2;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuton]",0;
+}
+
+//=========================================================================
+//	Daitoppa
+//=========================================================================
+payon_in03,101,188,5	script	Daitoppa::fuuton2	831,{
+if(nin_basico != 1) {mes "Você precisa de ninjutsu básico para aprender esse jutsu"; close;}
+if(elementofuuton != 1) {mes "Esse elemento não é de sua natureza"; close;}
+//if(skillgenin1 != 2) {mes "Você precisa aprender o jutsu anterior pra aprender esse"; close;}
+mes "Eu sou um dos senseis elementais de fuuton, e posso te ensinar o seguinte Jutsu:";
+next;
+mes "Daitoppa";
+next;
+mes "Descrição: O ninja cria rajadas de vento que atinge diversos inimigos que estão a sua frente";
+next;
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_DT,"Agora não",L_no;
+
+L_DT:
+if (daitoppa == 1) {next; mes "Você já aprendeu esse jutsu."; close;}
+set skillprotect,1;
+if (checkquest(1011) == 1) goto L_go;
+mes "Para esse treinamento,você precisa :";
+mes "- Derrotar 150x Filhote de cobra";
+setquest 1011;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (checkquest(1011,hunting) != 2) {next; mes "Você não completou seu treinamento."; close;}
+mes "Você completou seu treinamento, parabéns.";
+skill 11,1,0;
+set daitoppa,1;
+completequest 1011;
+erasequest 1011;
+set skillgenin1,3;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Fuuton]",0;
+}
+
+//ama_in02,60,40,5	duplicate(fuuton1)	Shinkuuha no Jutsu#e1	831
+//ama_in02,55,40,5	duplicate(fuuton2)	Daitoppa#e2	831
+//
+//payon_in03,99,174,5	duplicate(fuuton1)	Shinkuuha no Jutsu#e3	831
+//payon_in03,99,171,5	duplicate(fuuton2)	Daitoppa#e4	831
+//
+//ve_in,99,214,5	duplicate(fuuton1)	Shinkuuha no Jutsu#e5	831
+//ve_in,99,217,5	duplicate(fuuton2)	Daitoppa#e6	831
+//
+//izlude_in,60,98,5	duplicate(fuuton1)	Shinkuuha no Jutsu#e7	831
+//izlude_in,69,98,5	duplicate(fuuton2)	Daitoppa#e8	831

@@ -1,0 +1,71 @@
+-	script	Kokubanjou	-1,{
+    end;
+//When a Character uses a skill
+
+//kokubanjou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 181) {
+
+
+if (getskilllv(181) == 1) {
+
+if (kokubanjou != 1) {end;}
+if (skill181 >= 50) {skill 181,2,0; set skill181,0; dispbottom "[Sys] Level up"; end; }
+set skill181,skill181 +1;
+dispbottom "[Jutsu level] Kokubanjou no Jutsu level 1: "+skill181+" de 50";
+
+end;
+
+}
+
+if (getskilllv(181) == 2) {
+if (kokubanjou != 1) {end;}
+if (gen_intermediario != 1) {end;}
+if (skill181 >= 100) {skill 181,3,0; set skill181,0; dispbottom "[Sys] Level up"; end;}
+set skill181,skill181 +1;
+dispbottom "[Jutsu level] Kokubanjou no Jutsu level 2: "+skill181+" de 100";
+
+end;
+
+}
+
+if (getskilllv(181) == 3) {
+
+if (kokubanjou != 1) {end;}
+if (gen_intermediario != 1) {end;}
+if (skill181 >= 150) {skill 181,4,0; set skill181,0; dispbottom "[Sys] Level up"; end;}
+set skill181,skill181 +1;
+dispbottom "[Jutsu level] Kokubanjou no Jutsu level 3: "+skill181+" de 150";
+
+end;
+
+}
+
+if (getskilllv(181) == 4) {
+if (kokubanjou != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill181 >= 200) {skill 181,5,0; set skill181,0; dispbottom "[Sys] Level up"; end;}
+set skill181,skill181 +1;
+dispbottom "[Jutsu level] Kokubanjou no Jutsu level 4: "+skill181+" de 200";
+
+end;
+
+}
+
+if (getskilllv(181) == 5) {
+if (kokubanjou != 1) {end;}
+if (gen_avan != 1) {end;}
+if (skill181 >= 250) {skill 181,6,0; set skill181,0; dispbottom "[Sys] Level up"; end;}
+set skill181,skill181 +1;
+dispbottom "[Jutsu level] Kokubanjou no Jutsu level 5: "+skill181+" de 250";
+
+end;
+
+}
+
+
+                end;
+            }    
+}

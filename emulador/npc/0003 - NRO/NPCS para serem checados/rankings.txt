@@ -1,0 +1,146 @@
+//-	script	Sample	-1,{
+//OnPCDieEvent:
+//set .@playerid, getcharid( 3,rid2name(killerrid) );
+//if( !isloggedin(.@playerid) )end;
+//if( J_Shuriken ){ 
+//	set Point,Point+1;
+//	dispbottom "Gained 1 Points because you have a variable named [variable]";
+//	}else{
+//	dispbottom "You didnt have the Variable.";
+//	}
+//
+//}
+
+-	script	Example	-1,{
+
+//if (agitcheck() == 1) {end;}
+OnPCKillEvent:
+
+	if(AttachRID(killedrid))
+	{// killed person attached
+		if( title$ == "RankE") {goto ranke;}
+		if( title$ == "RankD") {goto rankd;}
+		if( title$ == "RankC") {goto rankc;}
+		if( title$ == "RankB") {goto rankb;}
+		if( title$ == "RankA") {goto ranka;}
+		if( title$ == "RankS") {goto ranks;}
+
+
+			ranke:
+			if(AttachRID(killerrid))
+			if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+			{// killer reattached
+
+			rankd:
+			if(AttachRID(killerrid))
+			if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankS") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankA") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankB") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankC") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+			//if (title$ == "RankE") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+			{// killer reattached
+			
+
+			rankc:
+			if(AttachRID(killerrid))
+			if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankS") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankA") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankB") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankC") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankD") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankE") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+			{// killer reattached
+
+			rankb:
+			if(AttachRID(killerrid))
+			if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankS") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankA") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankB") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankC") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankD") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankE") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+			{// killer reattached
+
+
+			ranka:
+			if(AttachRID(killerrid))
+			if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+			//if (title$ == "RankS") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankA") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankB") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankC") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankD") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankE") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+			{// killer reattached
+
+			ranks:
+			if(AttachRID(killerrid))
+			if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";} Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankS") {end;}
+//			if (title$ == "RankA") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankB") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankC") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankD") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+//			if (title$ == "RankE") {if (agitcheck() == 1) {Set reputacao, reputacao + 1; dispbottom "Sua reputação subiu: "+reputacao+" pontos";}Set reputacao, reputacao + 5; dispbottom "Sua reputação subiu: "+reputacao+" pontos"; end;}
+			{// killer reattached
+
+}
+}
+-	script	Sample	-1,{
+OnPCDieEvent:
+
+Set reputacao, reputacao - 1;
+if (reputacao < 0) {set reputacao,0; end; dispbottom "Sua reputação caiu: "+reputacao+" pontos";}
+dispbottom "Sua reputação caiu: "+reputacao+" pontos";
+end;
+
+
+}
+
+kakashi,85,175,5,	script	Subir de Rank Shinobi::GradRank	899,{
+
+mes "Yo, Você já sabe o que são os rankings shinobi?";
+next;
+mes "Os rankings são formas de classificar os shinobis pelo mundo, aqui no NRO quanto maior seu ranking, mais benefícios você tem";
+next;
+mes "Pra subir de ranking, é preciso ter os pre-requisitos e vir falar comigo, você pode conferir os requisitos no fórum";
+next;
+mes "Vamos ao que interessa, acha que está pronto pra subir de ranking?";
+menu "Sim, estou pronto",L_sim,"Ainda não",L_nao,"Requisitos",requi;
+
+L_sim:
+next;
+mes "Primeiro vamos ver... você é ranking: "+title$+"";
+next;
+mes "Sendo assim vamos ver se você tem os pre-requisitos pra subir de ranking";
+	if (title$ == "RankA") {if (reputacao >= 5000) && (missaocount >= 750) {set title$, "RankS"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank S"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+	if (title$ == "RankB") {if (reputacao >= 3000) && (missaocount >= 500) {set title$, "RankA"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank A"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+	if (title$ == "RankC") {if (reputacao >= 1000) && (missaocount >= 300) {set title$, "RankB"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank B"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+	if (title$ == "RankD") {if (reputacao >= 500) && (missaocount >= 150) {set title$, "RankC"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank C"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+	if (title$ == "RankE") {if (reputacao >= 200) && (missaocount >= 50) {set title$, "RankD"; next; mes "Yosh!, Você está apto a subir de ranking, você agora é um shinobi Rank D"; announce "[Ranking Shinobi] "+strcharinfo(0)+" acaba de subir de ranking, seu respeito cresce por todo o mundo!",bc_blue|bc_all; close;}}
+next;
+mes "É uma pena, você ainda não está pronto";
+close;
+
+requi:
+next;
+mes "Os requisitos pra subir de ranking são os seguintes:";
+next;
+mes "Do Rank E para Rank D: 200 de reputação e 50 missões feitas";
+next;
+mes "Do Rank D para Rank C: 500 de reputação e 150 missões feitas";
+next;
+mes "Do Rank C para Rank B: 1000 de reputação e 300 missões feitas";
+next;
+mes "Do Rank B para Rank A: 3000 de reputação e 500 missões feitas";
+next;
+mes "Do Rank A para Rank S: 5000 de reputação e 750 missões feitas";
+close;
+
+L_nao:
+close;
+
+}

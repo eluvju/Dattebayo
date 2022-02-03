@@ -1,0 +1,683 @@
+academia,40,149,5	script	Genjutsu Intermediario	4_m_thaiongbak,{
+
+	if(Class == 7 || Class == 8 || Class == 9 || Class == 10 || Class == 4008 || Class == 4009 || Class == 4010 || Class == 4011) {
+	
+	mes "[Genjutsu Intermediário]";
+	mes "Olá "+strcharinfo(0)+", sou professor de Genjutsu escolha qual habilidade você gostaria de aprender.";
+	switch( select( "- Jigoku Kouka:- Kanashibari no Genjutsu:- Jigyaku no Chakra:- Fukai Kemuri:- Kokuangyo:- Shinkirou no Genjutsu:- Akai Tsukiakari" ) ){
+
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 1:
+			next;
+			if(checkquest(5040) == 1) goto 1_go;
+			if(JigokuKouka == 1) goto 1_delete;
+			if(skill_intermediaria >= 6) { mes "[Genjutsu Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(gen_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu intermediário antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Genjutsu Intermediário]";
+			mes "Jigoku Kouka?";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",1_SS,"Agora não",1_no;
+			
+			//========================================================================
+			//	Jigoku Kouka
+			//========================================================================
+			
+			1_delete:
+				mes "[Genjutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_1,"Nada não, só papo furado",naoquero_1;
+			
+			delete_1:
+				mes "[Genjutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_1,"Não, não quero",naoquero_1;
+			
+			quero_1:
+				mes "[Genjutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set JigokuKouka,0;
+				skill 677,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_1:
+				close;
+			
+			1_SS:
+				mes "[Genjutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5040;
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			1_go:
+				if(checkquest(5040) >= 1) {
+					mes "[Genjutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {		
+							case 2:
+							if(checkquest(5040) >= 1) { completequest 5040; erasequest 5040; }
+							if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+							mes "[Genjutsu Intermediário]";
+							mes "Missão Cancelada com Sucesso"; 
+							close;
+							
+							case 1:
+								if(checkquest(5040,hunting) != 2) { mes "[Genjutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Genjutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5040; 
+									erasequest 5040;
+									skill 677,1,3;
+									set JigokuKouka,1;
+									close;
+								}
+								mes "[Genjutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+			1_no:
+				close;
+			
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 2:
+			next;
+			if(checkquest(5041) == 1) goto 2_go;
+			if(KanashibariGenjutsu == 1) goto 2_delete;
+			if(skill_intermediaria >= 6) { mes "[Genjutsu Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(gen_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu intermediário antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Genjutsu Intermediário]";
+			mes "Kanashibari no Genjutsu?";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",2_SS,"Agora não",2_no;
+			
+			//========================================================================
+			//	Kanashibari no Genjutsu
+			//========================================================================
+			
+			2_delete:
+				mes "[Genjutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_2,"Nada não, só papo furado",naoquero_2;
+			
+			delete_2:
+				mes "[Genjutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_2,"Não, não quero",naoquero_2;
+			
+			quero_2:
+				mes "[Genjutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set KanashibariGenjutsu,0;
+				skill 678,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_2:
+				close;
+			
+			2_SS:
+				mes "[Genjutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5041;
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			2_go:
+				if(checkquest(5041) >= 1) {
+					mes "[Genjutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5041) >= 1) { completequest 5041; erasequest 5041; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Genjutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5041,hunting) != 2) { mes "[Genjutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Genjutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5041; 
+									erasequest 5041;
+									skill 678,1,3;
+									set KanashibariGenjutsu,1;
+									close;
+								}
+								mes "[Genjutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			2_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 3:
+			next;
+			if(checkquest(5042) == 1) goto 3_go;
+			if(JigyakuChakra == 1) goto 3_delete;
+			if(skill_intermediaria >= 6) { mes "[Genjutsu Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(gen_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu intermediário antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Genjutsu Intermediário]";
+			mes "Jigyaku Chakra?";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",3_SS,"Agora não",3_no;
+			
+			//========================================================================
+			//	Jigyaku Chakra
+			//========================================================================
+			
+			3_delete:
+				mes "[Genjutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_3,"Nada não, só papo furado",naoquero_3;
+			
+			delete_3:
+				mes "[Genjutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_3,"Não, não quero",naoquero_3;
+			
+			quero_3:
+				mes "[Genjutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set JigyakuChakra,0;
+				skill 76,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_3:
+				close;
+			
+			3_SS:
+				mes "[Genjutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5042;
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			3_go:
+				if(checkquest(5042) >= 1) {
+					mes "[Genjutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5042) >= 1) { completequest 5042; erasequest 5042; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Genjutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5042,hunting) != 2) { mes "[Genjutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Genjutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5042; 
+									erasequest 5042;
+									skill 76,1,3;
+									set JigyakuChakra,1;
+									close;
+								}
+								mes "[Genjutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			3_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 4:
+			next;
+			if(checkquest(5043) == 1) goto 4_go;
+			if(FukaiKemuri == 1) goto 4_delete;
+			if(skill_intermediaria >= 6) { mes "[Genjutsu Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(gen_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu intermediário antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Genjutsu Intermediário]";
+			mes "Fukai Kemuri?";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",4_SS,"Agora não",4_no;
+			
+			//========================================================================
+			//	Fukai Kemuri
+			//========================================================================
+			
+			4_delete:
+				mes "[Genjutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_4,"Nada não, só papo furado",naoquero_4;
+			
+			delete_4:
+				mes "[Genjutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_4,"Não, não quero",naoquero_4;
+			
+			quero_4:
+				mes "[Genjutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set FukaiKemuri,0;
+				skill 668,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_4:
+				close;
+			
+			4_SS:
+				mes "[Genjutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5043;
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			4_go:
+				if(checkquest(5043) >= 1) {
+					mes "[Genjutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5043) >= 1) { completequest 5043; erasequest 5043; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Genjutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5043,hunting) != 2) { mes "[Genjutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Genjutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5043; 
+									erasequest 5043;
+									skill 668,1,3;
+									set FukaiKemuri,1;
+									close;
+								}
+								mes "[Genjutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			4_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 5:
+			next;
+			if(checkquest(5044) == 1) goto 5_go;
+			if(Kokuangyo == 1) goto 5_delete;
+			if(skill_intermediaria >= 6) { mes "[Genjutsu Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(gen_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu intermediário antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Genjutsu Intermediário]";
+			mes "Kokuangyo?";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",5_SS,"Agora não",5_no;
+			
+			//========================================================================
+			//	Kokuangyo
+			//========================================================================
+			
+			5_delete:
+				mes "[Genjutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_5,"Nada não, só papo furado",naoquero_5;
+			
+			delete_5:
+				mes "[Genjutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_5,"Não, não quero",naoquero_5;
+			
+			quero_5:
+				mes "[Genjutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set Kokuangyo,0;
+				skill 207,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_5:
+				close;
+			
+			5_SS:
+				mes "[Genjutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5044;
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			5_go:
+				if(checkquest(5044) >= 1) {
+					mes "[Genjutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5044) >= 1) { completequest 5044; erasequest 5044; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Genjutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5044,hunting) != 2) { mes "[Genjutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Genjutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5044; 
+									erasequest 5044;
+									skill 207,1,3;
+									set Kokuangyo,1;
+									close;
+								}
+								mes "[Genjutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			5_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 6:
+			next;
+			if(checkquest(5045) == 1) goto 6_go;
+			if(ShinkirouGenjutsu == 1) goto 6_delete;
+			if(skill_intermediaria >= 6) { mes "[Genjutsu Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(gen_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu intermediário antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Genjutsu Intermediário]";
+			mes "Shinkirou no Genjutsu?";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",6_SS,"Agora não",6_no;
+			
+			//========================================================================
+			//	Shinkirou no Genjutsu
+			//========================================================================
+			
+			6_delete:
+				mes "[Genjutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_6,"Nada não, só papo furado",naoquero_6;
+			
+			delete_6:
+				mes "[Genjutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_6,"Não, não quero",naoquero_6;
+			
+			quero_6:
+				mes "[Genjutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set ShinkirouGenjutsu,0;
+				skill 532,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_6:
+				close;
+			
+			6_SS:
+				mes "[Genjutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5045;
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			6_go:
+				if(checkquest(5045) >= 1) {
+					mes "[Genjutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5045) >= 1) { completequest 5045; erasequest 5045; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Genjutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+								
+							case 1:
+								if(checkquest(5045,hunting) != 2) { mes "[Genjutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Genjutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5045; 
+									erasequest 5045;
+									skill 532,1,3;
+									set ShinkirouGenjutsu,1;
+									close;
+								}
+								mes "[Genjutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			6_no:
+				close;
+		//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		case 7:
+			next;
+			if(checkquest(5046) == 1) goto 7_go;
+			if(AkaiTsukiakari == 1) goto 7_delete;
+			if(skill_intermediaria >= 6) { mes "[Genjutsu Intermediário]"; mes "Você já aprendeu todas skills básicos, esse é o limite"; close; }
+			if(gen_intermediario != 1) {  mes .@npc$; mes "Você precisa estudar Genjutsu intermediário antes de aprender essa habilidade."; close;}
+			
+			//========================================================================
+			//	MENU
+			//========================================================================
+			
+			mes "[Genjutsu Intermediário]";
+			mes "Akai Tsukiakari?";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Lembre-se que você só pode ter 6 skills intermediária, após isso não poderá aprender mais nenhum intermediário";
+			next;
+			mes "[Genjutsu Intermediário]";
+			mes "Gostaria de treinar?";
+			menu "Sim, vamos treinar",7_SS,"Agora não",7_no;
+			
+			//========================================================================
+			//	Akai Tsukiakari
+			//========================================================================
+			
+			7_delete:
+				mes "[Genjutsu Intermediário]";
+				mes "Olá novamente, como está esse jutsu que te ensinei?";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "O que? Você veio falar algo comigo? O que é?";
+				menu "Não gostei desse jutsu, quero remover",delete_7,"Nada não, só papo furado",naoquero_7;
+			
+			delete_7:
+				mes "[Genjutsu Intermediário]";
+				mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Qual é sua decisão?";
+				menu "Sim, eu tenho certeza",quero_7,"Não, não quero",naoquero_7;
+			
+			quero_7:
+				mes "[Genjutsu Intermediário]";
+				mes "Jutsu removido com sucesso";
+				set AkaiTsukiakari,0;
+				skill 3029,0,3;
+				if(skill_intermediaria > 0) {set skill_intermediaria,skill_intermediaria -1;}
+				close;
+			
+			naoquero_7:
+				close;
+			
+			7_SS:
+				mes "[Genjutsu Intermediário]";
+				mes "Para consultar os status da missão aperte (Alt+U).";
+				setquest 5046;
+				next;
+				mes "[Genjutsu Intermediário]";
+				mes "Vá e faça seu treinamento.";
+				set skill_intermediaria,skill_intermediaria +1;
+				close;
+			
+			7_go:
+				if(checkquest(5046) >= 1) {
+					mes "[Genjutsu Intermediário]";
+					mes "Vejo que você está fazendo está skill.";
+					mes "Gostaria de desistir dela ?";
+						switch(select("- Não, Quero Continuar a fazer essa Habilidade:- Sim")) {
+							case 2:
+								if(checkquest(5046) >= 1) { completequest 5046; erasequest 5046; }
+								if(skill_intermediaria > 0) { set skill_intermediaria,skill_intermediaria -1; }
+								mes "[Genjutsu Intermediário]";
+								mes "Missão Cancelada com Sucesso"; 
+								close;
+							
+							case 1:
+								if(checkquest(5046,hunting) != 2) { mes "[Genjutsu Intermediário]"; mes "Você ainda não completou seu treinamento."; close; }
+								{
+									mes "[Genjutsu Intermediario]";
+									mes "Jutsu Completo";
+									completequest 5046;
+									erasequest 5046;
+									skill 3029,1,3;
+									set AkaiTsukiakari,1;
+									close;
+								}
+								mes "[Genjutsu Intermediário]"; 
+								mes "Você ainda não completou seu treinamento."; 
+								close;
+						}
+				}
+		
+			7_no:
+				close;
+			
+	}
+	}
+	mes "[Fuuinjutsu Intermediário]"; 
+	mes "Você precisa ser Chunin ou superior."; 
+	close;
+OnInit:
+	waitingroom "[Genjutsu Intermediário]",0;
+		
+}

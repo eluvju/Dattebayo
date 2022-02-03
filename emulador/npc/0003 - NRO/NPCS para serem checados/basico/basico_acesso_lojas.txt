@@ -1,0 +1,74 @@
+monk_in,68,46,4	script	Entrada#1	45,1,1,{
+if ($nukenindest == 1) goto SemItem;
+
+mes "Bem-vindo!";
+next;
+warp "monk_in", 38,39;
+close;
+
+SemItem:
+mes "O edifício principal de sua vila está destruído, peça para seu Kage consertar!";
+close;
+
+
+}
+
+monk_in,129,47,4	script	Entrada#2	45,1,1,{
+if ($nukenindest == 1) goto SemItem;
+
+mes "Bem-vindo!";
+next;
+warp "monk_in", 161,38;
+close;
+
+SemItem:
+mes "O edifício principal de sua vila está destruído, peça para seu Kage consertar!";
+close;
+
+
+}
+
+areia,149,94,4	script	Entrada#3	45,1,1,{
+if ($sunadest == 1) goto SemItem;
+
+mes "Bem-vindo!";
+next;
+warp "morocc_in", 134,73;
+close;
+
+SemItem:
+mes "O edifício principal de sua vila está destruído, peça para seu Kage consertar!";
+close;
+
+
+}
+
+nevoa,159,206,4	script	Entrada#4	45,1,1,{
+if ($nevoadest == 1) goto SemItem;
+
+mes "Bem-vindo!";
+next;
+warp "ama_in01", 175,173;
+close;
+
+SemItem:
+mes "O edifício principal de sua vila está destruído, peça para seu Kage consertar!";
+close;
+
+
+}
+
+konoha,171,92,4	script	Entrada#5	45,1,1,{
+if ($Konohadest == 1) goto SemItem;
+
+mes "Bem-vindo!";
+next;
+warp "payon_in01", 181,75;
+close;
+
+SemItem:
+mes "O edifício principal de sua vila está destruído, peça para seu Kage consertar!";
+close;
+
+
+}

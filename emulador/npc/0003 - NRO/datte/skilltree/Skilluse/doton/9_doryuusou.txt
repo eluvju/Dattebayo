@@ -1,0 +1,58 @@
+-	script	on_PC_UseSkilld09	-1,{
+    end;
+//When a Character uses a skill
+
+//doryuusou
+
+onPcUseSkillEvent:
+
+           if(lskillid == 653) {
+
+
+if (getskilllv(653) == 1) {
+
+if (doryuusou != 1) {end;}
+if (nin_avan != 1) {end;}
+if (skill653 >= 50) {skill 653,2,0; set skill653,0; dispbottom "[Sys] Level up"; end; }
+set skill653,skill653 +1;
+dispbottom "[Jutsu level] Doton Doryuusou no Jutsu level 1: "+skill653+" de 50";
+
+end;
+
+}
+
+if (getskilllv(653) == 2) {
+if (doryuusou != 1) {end;}
+if (nin_avan != 1) {end;}
+if (skill653 >= 100) {skill 653,3,0; set skill653,0; dispbottom "[Sys] Level up"; end;}
+set skill653,skill653 +1;
+dispbottom "[Jutsu level] Doton Doryuusou no Jutsu level 2: "+skill653+" de 100";
+
+end;
+
+}
+
+if (getskilllv(653) == 3) {
+
+if (nin_avan != 1) {end;}
+if (skill653 >= 150) {skill 653,4,0; set skill653,0; dispbottom "[Sys] Level up"; end;}
+set skill653,skill653 +1;
+dispbottom "[Jutsu level] Doton Doryuusou no Jutsu level 3: "+skill653+" de 150";
+
+end;
+
+}
+
+if (getskilllv(653) == 4) {
+if (nin_avan != 1) {end;}
+if (skill653 >= 200) {skill 653,5,0; set skill653,0; dispbottom "[Sys] Level up"; end;}
+set skill653,skill653 +1;
+dispbottom "[Jutsu level] Doton Doryuusou no Jutsu level 4: "+skill653+" de 200";
+
+end;
+
+}
+
+                end;
+            }    
+}

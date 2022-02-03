@@ -1,0 +1,10 @@
+sec_in01,187,106,5	script	Hiruzen	4_m_fairykid4,{
+if(kg != 1) {mes "Você primeiro precisa falar com Asuma Sarutobi., "+strcharinfo(0)+"-san!"; end;}
+mes "Olá, novato! Eu sou o Lendário Hiruzen! Vou te explicar um pouco sobre a Kuchiyose no Jutsu! Você sabe o que são as invocações?"; 
+next;
+mes "A Técnica de Invocação é um jutsu de espaço-tempo que permite que o invocador transporte animais através de longas distâncias instantaneamente através do sangue do usuário";
+next;
+mes "Antes que uma invocação animal possa ser executada, o invocador candidato deve primeiro assinar um contrato com uma determinada espécie. Essas espécies podem ser Sapo, Lesma, Cobra ou Cachorro. Cada animal oferece benefícios diferentes, portanto, pense bem antes de assinar um contrato e escolha com cuidado a sua Kuchiyose!";
+set kuch,1; 
+ close;
+}

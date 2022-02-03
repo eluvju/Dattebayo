@@ -1,0 +1,377 @@
+function	script	remveraid	{
+	query_sql "UPDATE `ii_limit` SET `account_id`= "+getcharid(3)+", `value` = `value`-1 WHERE `value` > 0";
+	end;
+}
+
+// ============================================================================================================================================
+
+function	script	removerbasico	{
+
+mes "Você tem certeza que quer remover um treinamento básico? Todos os jutsus que estão anexados a ele serão deletados (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Sim",doit,"Não",nao;
+
+doit:
+mes "Qual é o treino básico que você deseja remover?";
+menu "Ninjutsu",nin,"Taijutsu",tai,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Velocidade",velo,"Medicina",med,"Resistência",resist,"Nenhum",nao;
+
+nin:
+if(nin_basico != 1) {mes "Você não tem esse treino para remover"; getitem 7008,1; close;}
+if(nin_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(nin_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(skill_basica >= 1) { mes "Você precisa remover todos seus jutsus básicos para remover o treino!"; getitem 7008,1; close; }
+next;
+mes "Ok, vamos lá";
+if(countitem(6000) > 0) {delitem 6000,1;}
+set nin_basico,0;
+set treinos_basicos,treinos_basicos -1;
+dispbottom "Ninjutsu básico removido com sucesso";
+close;
+
+
+
+
+tai:
+if(tai_basico != 1) {mes "Você não tem esse treino para remover"; getitem 7008,1; close;}
+if(tai_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(tai_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(skill_basica >= 1) { mes "Você precisa remover todos seus jutsus básicos para remover o treino!"; getitem 7008,1; close; }
+next;
+mes "Ok, vamos lá";
+if(countitem(6001) > 0) {delitem 6001,1;}
+set tai_basico,0;
+set treinos_basicos,treinos_basicos -1;
+dispbottom "Taijutsu básico removido com sucesso";
+close;
+
+gen:
+if(gen_basico != 1) {mes "Você não tem esse treino para remover"; getitem 7008,1; close;}
+if(gen_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(gen_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(skill_basica >= 1) { mes "Você precisa remover todos seus jutsus básicos para remover o treino!"; getitem 7008,1; close; }
+next;
+mes "Ok, vamos lá";
+if(countitem(6002) > 0) {delitem 6002,1;}
+set gen_basico,0;
+set treinos_basicos,treinos_basicos -1;
+dispbottom "Genjutsu básico removido com sucesso";
+close;
+
+
+fuuin:
+if(fuu_basico != 1) {mes "Você não tem esse treino para remover"; getitem 7008,1; close;}
+if(fuuin_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(fuuin_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(skill_basica >= 1) { mes "Você precisa remover todos seus jutsus básicos para remover o treino!"; getitem 7008,1; close; }
+next;
+mes "Ok, vamos lá";
+if(countitem(6003) > 0) {delitem 6003,1;}
+set fuu_basico,0;
+set treinos_basicos,treinos_basicos -1;
+dispbottom "Fuuinjutsu básico removido com sucesso";
+close;
+
+med:
+if(med_basico != 1) {mes "Você não tem esse treino para remover"; getitem 7008,1; close;}
+if(med_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(med_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(skill_basica >= 1) { mes "Você precisa remover todos seus jutsus básicos para remover o treino!"; getitem 7008,1; close; }
+next;
+mes "Ok, vamos lá";
+if(countitem(6004) > 0) {delitem 6004,1;}
+set med_basico,0;
+set treinos_basicos,treinos_basicos -1;
+dispbottom "Medicina básico removido com sucesso";
+close;
+
+velo:
+if(velo_basico != 1) {mes "Você não tem esse treino para remover"; getitem 7008,1; close;}
+if(vel_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(velo_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(skill_basica >= 1) { mes "Você precisa remover todos seus jutsus básicos para remover o treino!"; getitem 7008,1; close; }
+next;
+mes "Ok, vamos lá";
+if(countitem(6005) > 0) {delitem 6005,1;}
+set velo_basico,0;
+set treinos_basicos,treinos_basicos -1;
+dispbottom "Velocidade básico removido com sucesso";
+close;
+
+resist:
+if(resis_basico != 1) {mes "Você não tem esse treino para remover"; getitem 7008,1; close;}
+if(resis_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(resis_intermediario == 1) {mes "Você precisa deletar seu treinamento intermediário antes de deletar um básico"; getitem 7008,1; close;}
+if(skill_basica >= 1) { mes "Você precisa remover todos seus jutsus básicos para remover o treino!"; getitem 7008,1; close; }
+next;
+mes "Ok, vamos lá";
+if(countitem(6018) > 0) {delitem 6018,1;}
+set resis_basico,0;
+set treinos_basicos,treinos_basicos -1;
+dispbottom "Resistência básico removido com sucesso";
+close;
+
+nao:
+getitem 7008,1;
+close;
+
+}
+
+function	script	removerinter	{
+
+mes "Você tem certeza que quer remover um treinamento intermediário? Todos os jutsus que estão anexados a ele serão deletados (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Sim",doit,"Não",nao;
+
+doit:
+mes "Qual é o treino intermediário que você deseja remover?";
+menu "Ninjutsu",nin,"Taijutsu",tai,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Velocidade",velo,"Medicina",med,"Resistência",resist,"Nenhum",nao;
+
+//==================================================================================
+// Ninjutsu
+nin:
+if(nin_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 7009,1; close;}
+if(nin_avan) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um intermediário"; getitem 7009,1; close;}
+if(skill_intermediaria >= 1) { mes "Você precisa remover todos seus jutsus intermediários para mudar o treino."; getitem 7009,1; close; }
+next;
+mes "Ok, vamos lá";
+
+set nin_intermediario,0;
+set limite_inter,limite_inter -1;
+if(countitem(6007) > 0) {delitem 6007,1;}
+if(countitem(6000) == 0) {getitem 6000,1;}
+dispbottom "Ninjutsu intermediário removido com sucesso";
+end;
+
+//==================================================================================
+// Taijutsu
+tai:
+if(tai_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 7009,1; close;}
+if(tai_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um intermediário"; getitem 7009,1; close;}
+if(skill_intermediaria >= 1) { mes "Você precisa remover todos seus jutsus intermediários para mudar o treino."; getitem 7009,1; close; }
+next;
+mes "Ok, vamos lá";
+
+set tai_intermediario,0;
+set limite_inter,limite_inter -1;
+if(countitem(6008) > 0) {delitem 6008,1;}
+if(countitem(6001) == 0) {getitem 6001,1;}
+dispbottom "Taijutsu intermediário removido com sucesso";
+close;
+
+//==================================================================================
+// Genjutsu
+gen:
+if(gen_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 7009,1; close;}
+if(gen_avan == 1) {mes "Você precisa deletar seu treinamento avançado e intermediário antes de deletar um intermediário"; getitem 7009,1; close;}
+if(skill_intermediaria >= 1) { mes "Você precisa remover todos seus jutsus intermediários para mudar o treino."; getitem 7009,1; close; }
+next;
+mes "Ok, vamos lá";
+set gen_intermediario,0;
+set limite_inter,limite_inter -1;
+if(countitem(6006) > 0) {delitem 6006,1;}
+if(countitem(6002) == 0) {getitem 6002,1;}
+dispbottom "Genjutsu intermediário removido com sucesso";
+close;
+
+//==================================================================================
+// Fuuinjutsu
+fuuin:
+if(fuuin_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 7009,1; close;}
+if(fuuin_avan == 1) {mes "Você precisa deletar seu treinamento avançado antes de deletar um intermediário"; getitem 7009,1; close;}
+if(skill_intermediaria >= 1) { mes "Você precisa remover todos seus jutsus intermediários para mudar o treino."; getitem 7009,1; close; }
+next;
+mes "Ok, vamos lá";
+
+set fuuin_intermediario,0;
+set limite_inter,limite_inter -1;
+if(countitem(6009) > 0) {delitem 6009,1;}
+if(countitem(6003) == 0) {getitem 6003,1;}
+dispbottom "Fuuinjutsu intermediário removido com sucesso";
+close;
+
+//==================================================================================
+// Medicina
+med:
+if(med_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 7009,1; close;}
+if(med_avan == 1) {mes "Você precisa deletar seu treinamento avançado antes de deletar um intermediário"; getitem 7009,1; close;}
+if(skill_intermediaria >= 1) { mes "Você precisa remover todos seus jutsus intermediários para mudar o treino."; getitem 7009,1; close; }
+next;
+mes "Ok, vamos lá";
+
+set med_intermediario,0;
+set limite_inter,limite_inter -1;
+if(countitem(6010) > 0) {delitem 6010,1;}
+if(countitem(6004) == 0) {getitem 6004,1;}
+
+dispbottom "Medicina intermediário removido com sucesso";
+close;
+
+//==================================================================================
+// Velocidade
+velo:
+if(velo_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 7009,1; close;}
+if(vel_avan == 1) {mes "Você precisa deletar seu treinamento avançado antes de deletar um intermediário"; getitem 7009,1; close;}
+if(skill_intermediaria >= 1) { mes "Você precisa remover todos seus jutsus intermediários para mudar o treino."; getitem 7009,1; close; }
+next;
+mes "Ok, vamos lá";
+
+set velo_intermediario,0;
+set limite_inter,limite_inter -1;
+if(countitem(6011) > 0) {delitem 6011,1;}
+if(countitem(6005) == 0) {getitem 6005,1;}
+dispbottom "Velocidade intermediário removido com sucesso";
+close;
+
+//==================================================================================
+// Resistência
+resist:
+if(resis_intermediario != 1) {mes "Você não tem esse treino para remover"; getitem 7009,1; close;}
+if(resis_avan == 1) {mes "Você precisa deletar seu treinamento avançado antes de deletar um intermediário"; getitem 7009,1; close;}
+if(skill_intermediaria >= 1) { mes "Você precisa remover todos seus jutsus intermediários para mudar o treino."; getitem 7009,1; close; }
+next;
+mes "Ok, vamos lá";
+
+set resis_intermediario,0;
+set limite_inter,limite_inter -1;
+if(countitem(6019) > 0) {delitem 6019,1;}
+if(countitem(6018) == 0) {getitem 6018,1;}
+dispbottom "Resistência intermediário removido com sucesso";
+close;
+
+nao:
+getitem 7009,1;
+close;
+
+}
+
+//=====================================================================================================================================================================
+
+function	script	removeravan	{
+
+mes "Você tem certeza que quer remover um treinamento avançado? Todos os jutsus que estão anexados a ele serão deletados (NÃO CLIQUE EM CANCELAR, OU PERDERÁ O ITEM)";
+menu "Sim",doit,"Não",nao;
+
+doit:
+next;
+mes "Qual é o treino avançado que você deseja remover?";
+menu "Ninjutsu",nin,"Taijutsu",tai,"Genjutsu",gen,"Fuuinjutsu",fuuin,"Velocidade",velo,"Medicina",med,"Resistência",resist,"Nenhum",nao;
+
+//==================================================================================
+// Ninjutsu
+
+nin:
+if(nin_avan != 1 ) {mes "Você não possui esse treino"; getitem 7010,1; close;}
+if(skill_avancada >= 1) { mes "Você precisa remover seus jutsus Avançados para trocar de treino."; getitem 7010,1; close;}
+next;
+mes "Ok, vamos lá";
+
+set nin_avan,0;
+set nin_skill_avan,0;
+set limite_avan,limite_avan -1;
+if(countitem(6013) > 0) {delitem 6013,1;}
+if(countitem(6007) == 0) {getitem 6007,1;}
+
+dispbottom "Ninjutsu Avançado removido com sucesso";
+close;
+
+//==================================================================================
+// Taijutsu
+
+tai:
+if(tai_avan != 1) {mes "Você não possui esse treino"; getitem 7010,1; close;}
+if(skill_avancada >= 1) { mes "Você precisa remover seus jutsus Avançados para trocar de treino."; getitem 7010,1; close;}
+next;
+mes "Ok, vamos lá";
+
+set tai_avan,0;
+set limite_avan,limite_avan -1;
+if (countitem(6014) > 0) {delitem 6014,1;}
+if(countitem(6008) == 0) {getitem 6008,1;}
+
+dispbottom "Taijutsu avançado removido com sucesso";
+close;
+
+//==================================================================================
+// Genjutsu
+
+gen:
+if(gen_avan != 1) {mes "Você não possui esse treino"; getitem 7010,1; close;}
+if(skill_avancada >= 1) { mes "Você precisa remover seus jutsus Avançados para trocar de treino."; getitem 7010,1; close;}
+next;
+mes "Ok, vamos lá";
+
+set gen_avan,0;
+set limite_avan,limite_avan -1;
+if (countitem(6012) > 0) {delitem 6012,1;}
+if(countitem(6006) == 0) {getitem 6006,1;}
+dispbottom "Genjutsu avançado removido com sucesso";
+close;
+
+//==================================================================================
+// Fuuinjutsu
+
+fuuin:
+if(fuuin_avan != 1) {mes "Você não possui esse treino"; getitem 7010,1; close;}
+if(skill_avancada >= 1) { mes "Você precisa remover seus jutsus Avançados para trocar de treino."; getitem 7010,1; close;}
+next;
+mes "Ok, vamos lá";
+set fuuin_avan,0;
+set limite_avan,limite_avan -1;
+if (countitem(6015) > 0) {delitem 6015,1;}
+if(countitem(6009) == 0) {getitem 6009,1;}
+dispbottom "Fuuinjutsu avançado removido com sucesso";
+close;
+
+//==================================================================================
+// Medicina
+
+med:
+if(med_avan != 1) {mes "Você não possui esse treino"; getitem 7010,1; close;}
+if(skill_avancada >= 1) { mes "Você precisa remover seus jutsus Avançados para trocar de treino."; getitem 7010,1; close;}
+next;
+mes "Ok, vamos lá";
+set med_avan,0;
+set limite_avan,limite_avan -1;
+if (countitem(6016) > 0) {delitem 6016,1;}
+if(countitem(6010) == 0) {getitem 6010,1;}
+
+dispbottom "Medicina avançada removido com sucesso";
+close;
+
+//==================================================================================
+// Velocidade
+
+velo:
+if(vel_avan != 1) {mes "Você não possui esse treino"; getitem 7010,1; close;}
+if(skill_avancada >= 1) { mes "Você precisa remover seus jutsus Avançados para trocar de treino."; getitem 7010,1; close;}
+next;
+mes "Ok, vamos lá";
+set vel_avan,0;
+set limite_avan,limite_avan -1;
+if (countitem(6017) > 0) {delitem 6017,1;}
+if(countitem(6011) == 0) {getitem 6011,1;}
+if(getskilllv(264) >= 1) { skill 264,0,3; set Hiraishin,0; set skill_avancada,skill_avancada -1; dispbottom "Habilidade Hiraishin Removida"; }
+dispbottom "Velocidade avançada removido com sucesso";
+close;
+
+//==================================================================================
+// Resistência
+
+resist:
+if(resis_avan != 1) {mes "Você não possui esse treino"; getitem 7010,1; close;}
+if(skill_avancada >= 1) { mes "Você precisa remover seus jutsus Avançados para trocar de treino."; getitem 7010,1; close;}
+next;
+mes "Ok, vamos lá";
+set resis_avan,0;
+set limite_avan,limite_avan -1;
+if (countitem(6020) > 0) {delitem 6020,1;}
+if(countitem(6019) == 0) {getitem 6019,1;}
+
+dispbottom "Resistência avançada removido com sucesso";
+close;
+
+nao:
+getitem 7010,1;
+close;
+
+}
+
+//=====================================================================================================================================================================

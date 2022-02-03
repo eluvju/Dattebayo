@@ -1,0 +1,102 @@
+moc_fild13,182,211,5	script	Genzouga::genint7	831,{
+
+if (getskilllv(110) >= 1) goto L_delete;
+if(gen_intermediario != 1) {mes "Você precisa estudar genjutsu intermediário antes de aprender esse genjutsu"; close;}
+if (checkquest(2035) == 1) goto L_go;
+if(Genzouga == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsus intermediários, esse é o limite"; close;}
+if(accept_gen_int == 3) {mes "Você já aceitou três treinamentos pra realizar de genjutsu"; close;}
+if (WeaponLvl3 < 40) {mes "Seu nível de genjutsu está baixo demais, é preciso ter nível 40 pra aprender esse genjutsu"; close;}
+
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Genjutsu espalhado pelo mundo, eu posso lhe ensinar um genjutsu intermediário";
+next;
+mes "O Genjutsu que eu ensino é o: Genzouga";
+mes "Gostaria de treinar?";
+menu "Sim, vamos treinar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Genzouga
+//========================================================================
+
+
+L_delete:
+mes "Olá novamente, como está esse jutsu que te ensinei?";
+next;
+mes "O que? Você veio falar algo comigo? O que é?";
+menu "Não gostei desse jutsu, quero remover",delete,"Nada não, só papo furado",naoquero;
+
+delete:
+mes "Você tem certeza que gostaria de remover este jutsu? Se sim, você poderá aprender outro em seu lugar, porém terá que fazer a quest novamente";
+next;
+mes "Qual é sua decisão?";
+menu "Sim, eu tenho certeza",quero,"Não, não quero",naoquero;
+
+quero:
+if (getskilllv(110) == 0) {next; mes "Você não pode remover este jutsu porque ainda não o aprendeu, complete a quest e depois tente novamente"; close;}
+if (getskilllv(110) >= 1) {
+mes "Jutsu removido com sucesso";
+skill 110,0,0;
+set Genzouga,0;
+erasequest 2035;
+if(accept_gen_int > 0) {set accept_gen_int,accept_gen_int -1;}
+if(gen_skill_int > 0) {set gen_skill_int,gen_skill_int -1;}
+close;
+}
+
+naoquero:
+close;
+
+L_SS:
+set quest_gen_int_sete,1;
+set accept_gen_int,accept_gen_int +1;
+mes "Para esse treinamento,você precisa :";
+mes "- Ter Genjutsu intermediário level 40";
+mes "- Derrotar 30 Barata Macho.";
+mes "- Obter 100 Carvão";
+mes "- Obter 100 Minério de aço";
+mes "- Obter 100 Avelã ";
+setquest 2035;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if(gen_skill_int >= 3) {mes "Você já aprendeu três genjutsus intermediários, esse é o limite"; close;}
+if(gen_int_mobs_sete < 30) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1003) <100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1002) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+if (countitem(1026) < 100) {mes "Você ainda não completou seu treinamento"; close;}
+mes "Você completou seu treinamento,parabéns.";
+delitem 1003,100;
+delitem 1002,100;
+delitem 1026,100;
+skill 110,1,0;
+set Genzouga,1;
+set quest_gen_int_sete,0;
+set gen_int_mobs_sete,0;
+completequest 2035;
+erasequest 2035;
+set gen_skill_int,gen_skill_int +1;
+close;
+
+L_no:
+close;
+
+OnInit:
+	waitingroom "[Genjutsu Intermedíario]",0;
+}
+
+-	script	genint#7	-1,{
+
+  OnNPCKillEvent:
+
+if(killedrid == 1053 && quest_gen_int_sete == 1) {set gen_int_mobs_sete,gen_int_mobs_sete +1; announce "[Genjutsu Quest] Você já derrotou "+gen_int_mobs_sete+" / 30 Barata Macho",bc_blue|bc_self; end;}
+
+}
+
+gef_fild05,267,167,5	duplicate(genint7)	Genzouga#61	831,{
+moc_fild03,178,295,5	duplicate(genint7)	Genzouga#62	831,{
+yuno_fild05,232,249,5	duplicate(genint7)	Genzouga#63	831,{

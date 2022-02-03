@@ -1,0 +1,18 @@
+prontera,154,191,5	script	Academia#5	65,{
+
+if(quest8_2 == 0){
+mes "Você deve falar com o Mestre Ninjutsu e escolher seu elemento antes falar comigo.";
+close;
+}
+
+mes "Olá, eu sou Maito Gai, o mais forte em taijutsu segundo o lendário Uchiha Madara";
+mes "Vou lhe ensinar coisas sobre taijutsu";
+mes "Seu foco principal é o dano bruto e o ataque (STR), seja no combate corpo-a-corpo, curto, médio ou longo alcance";
+mes "Você pode ter habilidades em shurikenjutsu, bukijutsu, kenjutsu ou combate mano-a-mano";
+next;
+mes "Parabens! Voce ja pode se tornar um ninja especializado em taijutsu!";
+getitem 6001, 1;
+set quest8_3, 1;
+set quest8_2, 0;
+close;
+}

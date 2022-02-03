@@ -1,0 +1,105 @@
+-	script	on_PC_UseSkillk02	-1,{
+    end;
+//When a Character uses a skill
+
+//Hana Shuriken
+
+onPcUseSkillEvent:
+
+           if(lskillid == 534) {
+
+
+if (getskilllv(534) == 1) {
+
+if (hanashuriken != 1) {end;}
+if (skill534 >= 50) {skill 534,2,0; set skill534,0; dispbottom "[Sys] Level up"; end; }
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 1: "+skill534+" de 50";
+
+end;
+
+}
+
+if (getskilllv(534) == 2) {
+if (hanashuriken != 1) {end;}
+if (skill534 >= 100) {skill 534,3,0; set skill534,0; dispbottom "[Sys] Level up"; end;}
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 2: "+skill534+" de 100";
+
+end;
+
+}
+
+if (getskilllv(534) == 3) {
+
+
+if (skill534 >= 150) {skill 534,4,0; set skill534,0; dispbottom "[Sys] Level up"; end;}
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 3: "+skill534+" de 150";
+
+end;
+
+}
+
+if (getskilllv(534) == 4) {
+if (skill534 >= 200) {skill 534,5,0; set skill534,0; dispbottom "[Sys] Level up"; end;}
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 4: "+skill534+" de 200";
+
+end;
+
+}
+
+if (getskilllv(534) == 5) {
+if (nin_intermediario != 1) {end;}
+if (skill534 >= 250) {skill 534,6,0; set skill534,0; dispbottom "[Sys] Level up"; end;}
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 5: "+skill534+" de 250";
+
+end;
+
+}
+
+if (getskilllv(534) == 6) {
+if (nin_intermediario != 1) {end;}
+if (skill534 >= 300) {skill 534,7,0; set skill534,0; dispbottom "[Sys] Level up"; end;}
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 6: "+skill534+" de 300";
+
+end;
+
+}
+
+if (getskilllv(534) == 7) {
+if (nin_intermediario != 1) {end;}
+if (skill534 >= 500) {skill 534,8,0; set skill534,0; dispbottom "[Sys] Level up"; end;}
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 7: "+skill534+" de 500";
+
+end;
+
+}
+
+if (getskilllv(534) == 8) {
+if (nin_intermediario != 1) {end;}
+if (skill534 >= 700) {skill 534,9,0; set skill534,0; dispbottom "[Sys] Level up"; end;}
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 8: "+skill534+" de 700";
+
+end;
+
+}
+
+if (getskilllv(534) == 9) {
+if (nin_intermediario != 1) {end;}
+if (skill534 >= 1000) {skill 534,10,0; set skill534,0; dispbottom "[Sys] Level up"; end;}
+set skill534,skill534 +1;
+dispbottom "[Jutsu level] Hana Shuriken level 9: "+skill534+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

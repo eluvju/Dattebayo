@@ -1,0 +1,130 @@
+//
+//
+//	Author		Goddameit
+//	Version		2015/02/25
+//	Web		http://goo.gl/0vY9GV
+//
+//
+//prontera,150,176,4	script	Recompensa WoE	100,{
+//	if(select("Receber recompensa", "Abrir correio") == 2) {
+//		mes "Feche essa janela para abrir seu correio.";
+//		close2;
+//		openmail;
+//		end;
+//	} else {
+//		mes "Premiações a receber: "+woegamewin;
+//		close;
+//	}
+//}
+
+kakashi,78,119,4	script	Recompensa WoE - Tempo	100,{
+
+mes "[^DC143CRecompensa WoE - Tempo^000000]";
+mes "Olá, aqui os líderes das vilas poderão receber as recompensas por ter dominado os castelos da guerra por mais tempo, pra cada desafio do tempo vencido, terá direito a uma caixa de recompensa com 1 Fuuin no jutsu, 1 Box Novato, 100 Ryous e 30kk de Zeny para ser distribuido entre os membros da vila";
+next;
+mes "[^DC143CRecompensa WoE - Tempo^000000]";
+mes "Deseja receber sua premiação? Você tem direito a receber: "+woegamewin+" premiações";
+menu "- Sim, quero receber minhas premiações",L_sim,"- Ainda não",L_nao;
+
+L_sim:
+next;
+if (woegamewin < 1) {mes "[^DC143CRecompensa WoE - Tempo^000000]"; mes "Você não tem direito a nenhuma recompensa, domine um castelo da guerra por mais tempo para receber essa premiação"; close;}
+mes "Muito bem, aqui está!";
+getitem 12961, woegamewin;
+set woegamewin,0;
+close;
+
+L_nao:
+close;
+
+}
+
+function	script	func_Godd_WoEMOD_TimeGame	{
+	setarray .@castle_name$, "payg_cas02", "prtg_cas01", "gefg_cas04";
+	set .@num, getarraysize(.@castle_name$);
+	switch(getarg(0)) {
+		case 0:
+			query_sql "DROP TABLE IF EXISTS `tmp_woetimegame`; ";
+			query_sql "CREATE TABLE IF NOT EXISTS `tmp_woetimegame` ( `castle_name` varchar(30) NOT NULL default '', `guild_id` int(11) unsigned NOT NULL default '0', `tick` int(11) unsigned NOT NULL default '0', `timestamp` datetime NOT NULL default '0000-00-00 00:00:00') ENGINE=MyISAM; ";
+			for(set .@i, 0; .@i < .@num; set .@i, .@i+1) {
+				set .@now_onwer, getcastledata(.@castle_name$[.@i], 1);
+				if(.@now_onwer > 0)
+					query_sql "INSERT INTO `tmp_woetimegame` VALUES('"+escape_sql(.@castle_name$[.@i])+"', "+.@now_onwer+", 1, NOW()); ";
+			}
+			break;
+		case 1:
+			for(set .@i, 0; .@i < .@num; set .@i, .@i+1) {
+				if(getarg(1, "") == .@castle_name$[.@i]) {
+					set .@now_onwer, getcastledata(getarg(1), 1);
+					query_sql "SELECT `guild_id` FROM `tmp_woetimegame` WHERE `guild_id` = "+.@now_onwer+" AND `castle_name` = '"+escape_sql(getarg(1))+"'", .@now_onwer_bool;
+					query_sql "SELECT `guild_id` FROM `tmp_woetimegame` WHERE `guild_id` = "+getarg(2)+" AND `castle_name` = '"+escape_sql(getarg(1))+"'", .@after_onwer_bool;
+					if(.@now_onwer_bool > 0)
+						query_sql "UPDATE `tmp_woetimegame` SET `tick` = `tick` + TIMESTAMPDIFF(SECOND, `timestamp`,  NOW()) WHERE `guild_id` = "+.@now_onwer+" AND `castle_name` = '"+escape_sql(getarg(1))+"'; ";
+					if(.@after_onwer_bool > 0)
+						query_sql "UPDATE `tmp_woetimegame` SET `timestamp` = NOW() WHERE `guild_id` = "+getarg(2)+" AND `castle_name` = '"+escape_sql(getarg(1))+"'; ";
+					else
+						query_sql "INSERT INTO `tmp_woetimegame` VALUES('"+escape_sql(getarg(1))+"', "+getarg(2)+", 1, NOW()); ";
+					set .@tick, 0;
+					query_sql "SELECT `tick` FROM `tmp_woetimegame` WHERE `guild_id` = "+.@now_onwer+" AND `castle_name` = '"+escape_sql(getarg(1))+"'; ", .@tick;
+					announce "[Guerra]: "+getguildname(getarg(2))+" tomou o castelo "+getarg(1)+", "+getguildname(.@now_onwer)+" já possuiu o castelo por: ["+callfunc("Time2Str", gettimetick(2)+.@tick)+"]", 0;
+					break;
+				}
+			}
+			break;
+		case 2:
+			for(set .@i, 0; .@i < .@num; set .@i, .@i+1) {
+				deletearray .@guild_rank;
+				deletearray .@tick_rank;
+				set .@now_onwer, getcastledata(.@castle_name$[.@i], 1);
+				query_sql "UPDATE `tmp_woetimegame` SET `tick` = `tick` + TIMESTAMPDIFF(SECOND, `timestamp`,  NOW()) WHERE `guild_id` = "+.@now_onwer+";  ";
+				query_sql "SELECT `guild_id`, `tick` FROM `tmp_woetimegame` WHERE `castle_name` = '"+escape_sql(.@castle_name$[.@i])+"' AND `tick` > 10 ORDER BY `tick` DESC; ", .@guild_rank, .@tick_rank;
+				if(.@guild_rank[0] > 0) {
+					if(attachrid(getcharid(3, getguildmaster(.@guild_rank[0])))) {
+						set woegamewin, woegamewin+1;
+						detachrid;
+					} else
+						query_sql "INSERT INTO `global_reg_value` (`char_id`, `str`, `value`, `type`, `account_id`) VALUES("+getguildmasterid(.@guild_rank[0])+", 'woegamewin', 1, 3, 0) ON DUPLICATE KEY UPDATE `value` = `value`+1; ";
+					announce "[Guerra]: "+.@castle_name$[.@i]+" foi dominado pela "+getguildname(.@guild_rank[0])+" por ["+callfunc("Time2Str", gettimetick(2)+.@tick_rank[0])+"] e venceu o desafio de tempo por este castelo", 0;
+				}
+			}
+			query_sql "DROP TABLE IF EXISTS `tmp_woetimegame`; ";
+			break;
+	}
+	return;
+}
+
+// Time calculation Function
+// *********************************************************************
+function	script	Time2Str	{
+	set .@Time_Left, getarg(0) - gettimetick(2);
+	
+	set .@Days, .@Time_Left / 86400;
+	set .@Time_Left, .@Time_Left - (.@Days * 86400);
+	set .@Hours, .@Time_Left / 3600;
+	set .@Time_Left, .@Time_Left - (.@Hours * 3600);
+	set .@Minutes, .@Time_Left / 60;
+	set .@Time_Left, .@Time_Left - (.@Minutes * 60);
+	
+	set .@Time$, "";
+	if( .@Days > 1 )
+		set .@Time$, .@Time$ + .@Days + " dias, ";
+	else if( .@Days > 0 )
+		set .@Time$, .@Time$ + .@Days + " dia, ";
+
+	if( .@Hours > 1 )
+		set .@Time$, .@Time$ + .@Hours + " horas, ";
+	else if( .@Hours > 0 )
+		set .@Time$, .@Time$ + .@Hours + " hora, ";
+
+	if( .@Minutes > 1 )
+		set .@Time$, .@Time$ + .@Minutes + " minutos, ";
+	else if( .@Minutes > 0 )
+		set .@Time$, .@Time$ + .@Minutes + " minuto, ";
+
+	if( .@Time_Left > 1 || .@Time_Left == 0 )
+		set .@Time$, .@Time$ + .@Time_Left + " segundos";
+	else if( .@Time_Left == 1 )
+		set .@Time$, .@Time$ + .@Time_Left + " segundo";
+	
+	return .@Time$;
+}

@@ -1,0 +1,53 @@
+// Filds Suna
+
+// Suna: fild 1 - moc_fild12 - todos passivos
+moc_fild12,0,0,0,0	monster	Planta de Suna	1078,1,600000,600000,0
+moc_fild12,0,0,0,0	monster	Ovo de Andre		1097,50,0,0,0
+moc_fild12,0,0,0,0	monster	Filhote de Ave do Deserto		1240,100,0,0,0
+moc_fild12,0,0,0,0	monster	Condor		1009,100,0,0,0
+moc_fild12,0,0,0,0	monster	Filhote de Lobo do Deserto		1107,100,0,0,0
+
+//fild 2 - moc_fild09 - todos passivos exceto mini boss
+moc_fild09,0,0,0,0	monster	Pedra Viva		2061,75,0,0,0
+moc_fild09,0,0,0,0	monster	Ave do Deserto		1019,75,0,0,0
+moc_fild09,0,0,0,0	monster	Bactéria		1627,75,0,0,0
+moc_fild09,0,0,0,0	monster	Traça		1114,75,0,0,0
+//Mini-Boss
+moc_fild09,0,0,0,0	boss_monster	Grifo		1259,1,1800000,0,0
+
+//fild 3 - moc_fild05
+moc_fild05,0,0,0,0	monster	Víbora do Deserto		1030,100,0,0,0
+moc_fild05,0,0,0,0	monster	Escorpião Marrom		1559,100,0,0,0
+moc_fild05,0,0,0,0	monster	Lagarto		1119,100,0,0,0
+moc_fild05,0,0,0,0	monster	Planta do Deserto		1368,100,0,0,0
+moc_fild05,0,0,0,0	monster	Genin		1656,100,0,0,0
+
+//fild 4 - moc_fild04
+moc_fild04,0,0,0,0	monster	Grilo		1058,100,0,0,0
+moc_fild04,0,0,0,0	monster	Grande Ave do Deserto		1369,100,0,0,0
+moc_fild04,0,0,0,0	monster	Verme Sorrateiro		1127,100,0,0,0
+moc_fild04,0,0,0,0	monster	Hiena		1794,100,0,0,0
+//Mini-Boss
+moc_fild04,0,0,0,0	boss_monster	Hiena Demoníaca		1791,1,1800000,0,0
+
+//fild 5 - moc_fild01 - todos agressivos
+moc_fild01,0,0,0,0	monster	Furacão		1692,100,0,0,0
+moc_fild01,0,0,0,0	monster	Lobo do Deserto		1106,100,0,0,0
+moc_fild01,0,0,0,0	monster	Parasita		1256,100,0,0,0
+moc_fild01,0,0,0,0	monster	Cacto		1055,100,0,0,0
+moc_fild01,0,0,0,0	monster	Chunin		1636,100,0,0,0
+
+//fild 6 - moc_fild13 todos agressivos
+moc_fild13,0,0,0,0	monster	Dragão do Deserto		1715,75,0,0,0
+moc_fild13,0,0,0,0	monster	Areia Movediça		1165,75,0,0,0
+moc_fild13,0,0,0,0	monster	Praga		1378,75,0,0,0
+moc_fild13,0,0,0,0	monster	Dokebi		1110,75,0,0,0
+//Boss
+moc_fild13,0,0,0,0	boss_monster	Demônio do Deserto		1159,1,3600000,0,0
+
+//fild 7 - moc_fild02 todos agressivos
+moc_fild02,0,0,0,0	monster	Harpia		1376,75,0,0,0
+moc_fild02,0,0,0,0	monster	Golem		1040,75,0,0,0
+moc_fild02,0,0,0,0	monster	Mosca Caçadora		1035,75,0,0,0
+//Boss
+moc_fild02,0,0,0,0	boss_monster	Javali Dourado		1840,1,3600000,0,0

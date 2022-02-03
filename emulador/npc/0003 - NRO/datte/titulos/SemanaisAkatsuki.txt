@@ -1,0 +1,260 @@
+-	script	Evento#SA	SemanalAkatsuki -1,{
+OnClock0000:
+if(gettime(4) == 0){
+set $SAinfo2[1], 0;
+}
+end;
+}
+
+akatsuki,151,198,4	script	Auxiliar Akatsuki#SA	880,{
+
+if(getguildmaster(9) != strcharinfo(0) && getgmlevel() < 5) end;
+
+// Nome do npc
+set .npc$,"^800000[Auxiliar Akatsuki]^000000";
+
+mes .npc$;
+mes "Ola Mestre, em que tipo de conquista estaria interessado?";
+
+switch(select("Informacao Acampamento")){
+case 1:
+next;
+if($SAinfo2[1] == 1){
+mes .npc$;
+mes "Nao poderia esperar menos de voces. Vou agora mesmo analisar as informacoes obtidas.";
+close;
+end;
+}
+if($SA1info[1] == 1 && $SAinfo2[1] == 0){
+mes .npc$;
+mes "Nao poderia esperar menos de voces. Vou agora mesmo analisar as informacoes obtidas.";
+set $akatsuki_ryous, $akatsuki_ryous + 150;
+announce "[Missao Akatsuki]: A Akatsuki acaba de completar uma missao semanal.",0;
+set $SAinfo2[1], 1;
+set $SAinfo[1], 0;
+close;
+end;
+}
+mes .npc$;
+mes "Certo, eu estou providenciando algumas de suas ordens a mim, porem para efetuar uma delas, preciso de certas informacoes de um certo individuo.";
+next;
+mes .npc$;
+mes "O problema e que a forca deste individuo esta muito alem da minha, e para piorar, ele e o lider de um acampamento que possui um forte esquema de seguranca.";
+next;
+mes .npc$;
+mes "Creio que o Sr. tera que levar a organizacao Akatsuki para adiquirir esta informacoo.";
+next;
+mes .npc$;
+mes "Este acampamento e composto por jounins de grande forca, pertencentes a Vila Oculta da Grama, e a entrada que da acesso ao Lider, e bloqueada por 9 selos.";
+next;
+mes .npc$;
+mes "Cada um destes 9 selos e protegido por um chefe de seguranca que tambem sao ninjas muito fortes.";
+next;
+mes .npc$;
+mes "Todos estes chefes de seguranca estao conectados entre si por um jutsu onde eles conseguem sentir quando outro chefe e derrotado.";
+next;
+mes .npc$;
+mes "Logo, derrotar um por um esta fora de cogitacao, caso contrario, o Lider ira fugir. O unico meio d derrotar todos os chefes ao mesmo tempo.";
+next;
+mes .npc$;
+mes "Pelo que andei me informando, o tempo para o jutsu mental deles fazer efeito e de aproximadamente 30 segundos.";
+next;
+mes .npc$;
+mes "Sendo assim, quando o primeiro chefe for derrotado, todos os outros deverro ser derrotados em ate 30 segundos, caso contrario a missao falhara.";
+next;
+mes .npc$;
+mes "Tomem cuidado para que os vigias nao os vejam. Caso contrario, a missao falhara da mesma forma.";
+next;
+mes .npc$;
+mes "Apos derrotados, e so quebrar o selo e irem derrotar o mestre. Tomem cuidado pois ele e extremamente forte.";
+next;
+mes .npc$;
+mes "O acampamento fica..., por la voce pode entrar um de seus subordinados. Ele esta vigiando a area, boa sorte mestre!";
+set $SAinfo[1], 1;
+set $SA1info[2], 7;
+close;
+end;
+}
+end;
+}
+
+mjolnir_04.gat,169,143,4	script	Passagem Secreta#SA2	111,{
+if(countitem(19020) < 1 && countitem(19195) < 1 && countitem(19195) <61 && countitem(19197) < 1 && getgmlevel() < 5) end;
+warp "lhz_fild01",226,113;
+end;
+}
+
+
+mjolnir_04.gat,175,138,4	script	Subordinado Akatsuki#SA1	880,{
+
+if(countitem(19020) < 1 && countitem(19195) < 1 && countitem(19195) <61 && countitem(19197) < 1 && getgmlevel() < 5) end;
+
+// Nome do npc
+set .npc$,"^800000[Subordinado Akatsuki]^000000";
+
+if($SAinfo2[1] == 1){
+mes .npc$;
+mes "Nao poderia esperar menos de voces.";
+close;
+end;
+}
+
+if($SAinfo[1] == 0){
+mes .npc$;
+mes "Mestre Akatsuki! e uma honra ver o Sr. por aqui. No momento estou vigiando este acamapamento a pedido do seu Auxiliar.";
+close;
+end;
+}
+
+mes .npc$;
+mes "Mestre Akatsuki! Nao acredito que voces vieram pessoalmente.";
+next;
+mes .npc$;
+mes "De qualquer forma, o acampamento fica nesse proximo mapa. Os chefes estao rondando a area, e uma boa hora para ataca-los!";
+set $SA1info[2], 7;
+killmonster "lhz_fild01",strnpcinfo(0)+"::OnChefeKill";
+killmonster "ama_test",strnpcinfo(0)+"::OnLiderKill";
+monster "lhz_fild01",0,0,"Chefe de Seguranca",1123,$SA1info[2],strnpcinfo(0)+"::OnChefeKill";
+close;
+end;
+
+OnChefeKill:
+set $SA1info[2], $SA1info[2] - 1;
+mapannounce "lhz_fild01","[Missao Akatsuki]: Um dos chefes de seguranca foi derrotado e o selo quebrado. Restam "+$SA1info[2]+" Selos.",1;
+if($SA1info[2] == 0){
+stopnpctimer;
+setnpctimer 0;
+monster "ama_test",0,0,"Lider do Acampamento",1124,1,strnpcinfo(0)+"::OnLiderKill";
+}else{
+if($SA1info[2] == 2) initnpctimer;
+}
+end;
+
+OnLiderKill:
+set $SA1info[1], 1;
+end;
+
+OnTimer30000:
+if($SA1info[2] > 0){
+mapannounce "lhz_fild01","[Missao Akatsuki]: Um dos chefes de seguranca sobreviveu e acionou o alarme. O Lider do Acampamento acabou fugindo.",1;
+killmonster "lhz_fild01",strnpcinfo(0)+"::OnChefeKill";
+killmonster "ama_test",strnpcinfo(0)+"::OnLiderKill";
+set $SAinfo[1], 0;
+}
+end;
+}
+
+lhz_fild01.gat,226,123,4	script	Passagem Secreta#SA1	111,{
+
+if(countitem(19020) < 1 && countitem(19195) < 1 && countitem(19195) <61 && countitem(19197) < 1 && getgmlevel() < 5) end;
+if($SAinfo[1] == 0) end;
+if($SA1info[2] > 0){
+mes "Uma passagem secreta... Pode-se sentir um chakra a protegendo. Deve se tratar de um Selo!";
+close;
+end;
+}
+warp "ama_test",0,0;
+end;
+}
+
+lhz_fild01,201,52,4	script	trap_a#n_1-1::VigiaSA	882,5,5,{
+OnTouch:
+// Nome do npc
+set .npc$,"^800000[Vigia Acampamento]^000000";
+
+killmonster "lhz_fild01","All";
+killmonster "ama_test","All";
+mes .npc$;
+mes "Um Intruso! Soar Alarmes!!!";
+maprespawnguildid $KDmap$,$KDinfo[2],1;
+maprespawnguildid $KDmap$,$KDinfo[2],2;
+//killmonster "lhz_fild01",strnpcinfo(0)+"::OnChefeKill";
+//killmonster "ama_test",strnpcinfo(0)+"::OnLiderKill";
+set $SAinfo[1], 0;
+close;
+end;
+}
+//pvp_n_3-5,110,91,0	duplicate(VigiaSA)	VigiaSA#2	882,5,5
+lhz_fild01,75,193,0	duplicate(VigiaSA)	VigiaSA#2	882,5,5
+lhz_fild01,91,163,0	duplicate(VigiaSA)	VigiaSA#3	882,5,5
+lhz_fild01,79,125,0	duplicate(VigiaSA)	VigiaSA#4	882,5,5
+lhz_fild01,31,36,0	duplicate(VigiaSA)	VigiaSA#5	882,5,5
+lhz_fild01,186,326,0	duplicate(VigiaSA)	VigiaSA#6	882,5,5
+lhz_fild01,169,300,0	duplicate(VigiaSA)	VigiaSA#7	882,5,5
+lhz_fild01,153,289,0	duplicate(VigiaSA)	VigiaSA#8	882,5,5
+lhz_fild01,143,256,0	duplicate(VigiaSA)	VigiaSA#9	882,5,5
+lhz_fild01,113,226,0	duplicate(VigiaSA)	VigiaSA#10	882,5,5
+lhz_fild01,84,235,0	duplicate(VigiaSA)	VigiaSA#11	882,5,5
+lhz_fild01,78,202,0	duplicate(VigiaSA)	VigiaSA#12	882,5,5
+lhz_fild01,104,193,0	duplicate(VigiaSA)	VigiaSA#13	882,5,5
+lhz_fild01,130,214,0	duplicate(VigiaSA)	VigiaSA#14	882,5,5
+lhz_fild01,162,198,0	duplicate(VigiaSA)	VigiaSA#15	882,5,5
+lhz_fild01,176,163,0	duplicate(VigiaSA)	VigiaSA#16	882,5,5
+lhz_fild01,205,141,0	duplicate(VigiaSA)	VigiaSA#17	882,5,5
+lhz_fild01,228,141,0	duplicate(VigiaSA)	VigiaSA#18	882,5,5
+lhz_fild01,256,141,0	duplicate(VigiaSA)	VigiaSA#19	882,5,5
+lhz_fild01,249,124,0	duplicate(VigiaSA)	VigiaSA#20	882,5,5
+lhz_fild01,249,109,0	duplicate(VigiaSA)	VigiaSA#21	882,5,5
+lhz_fild01,202,106,0	duplicate(VigiaSA)	VigiaSA#22	882,5,5
+lhz_fild01,204,123,0	duplicate(VigiaSA)	VigiaSA#23	882,5,5
+lhz_fild01,176,130,0	duplicate(VigiaSA)	VigiaSA#24	882,5,5
+lhz_fild01,141,134,0	duplicate(VigiaSA)	VigiaSA#25	882,5,5
+lhz_fild01,154,103,0	duplicate(VigiaSA)	VigiaSA#26	882,5,5
+lhz_fild01,142,85,0	duplicate(VigiaSA)	VigiaSA#27	882,5,5
+lhz_fild01,113,90,0	duplicate(VigiaSA)	VigiaSA#28	882,5,5
+lhz_fild01,118,62,0	duplicate(VigiaSA)	VigiaSA#29	882,5,5
+lhz_fild01,145,57,0	duplicate(VigiaSA)	VigiaSA#30	882,5,5
+lhz_fild01,168,72,0	duplicate(VigiaSA)	VigiaSA#31	882,5,5
+lhz_fild01,39,38,0	duplicate(VigiaSA)	VigiaSA#32	882,5,5
+lhz_fild01,116,27,0	duplicate(VigiaSA)	VigiaSA#33	882,5,5
+lhz_fild01,341,224,0	duplicate(VigiaSA)	VigiaSA#34	882,5,5
+lhz_fild01,344,196,0	duplicate(VigiaSA)	VigiaSA#35	882,5,5
+lhz_fild01,331,166,0	duplicate(VigiaSA)	VigiaSA#36	882,5,5
+lhz_fild01,298,142,0	duplicate(VigiaSA)	VigiaSA#37	882,5,5
+lhz_fild01,275,128,0	duplicate(VigiaSA)	VigiaSA#38	882,5,5
+lhz_fild01,279,105,0	duplicate(VigiaSA)	VigiaSA#39	882,5,5
+lhz_fild01,260,46,0	duplicate(VigiaSA)	VigiaSA#40	882,5,5
+lhz_fild01,232,42,0	duplicate(VigiaSA)	VigiaSA#41	882,5,5
+lhz_fild01,255,80,0	duplicate(VigiaSA)	VigiaSA#42	882,5,5
+lhz_fild01,361,245,0	duplicate(VigiaSA)	VigiaSA#43	882,5,5
+lhz_fild01,33,82,0	duplicate(VigiaSA)	VigiaSA#44	882,5,5
+lhz_fild01,71,78,0	duplicate(VigiaSA)	VigiaSA#45	882,5,5
+lhz_fild01,57,52,0	duplicate(VigiaSA)	VigiaSA#46	882,5,5
+lhz_fild01,80,51,0	duplicate(VigiaSA)	VigiaSA#47	882,5,5
+lhz_fild01,102,51,0	duplicate(VigiaSA)	VigiaSA#48	882,5,5
+lhz_fild01,284,379,0	duplicate(VigiaSA)	VigiaSA#49	882,5,5
+lhz_fild01,306,371,0	duplicate(VigiaSA)	VigiaSA#50	882,5,5
+lhz_fild01,283,351,0	duplicate(VigiaSA)	VigiaSA#51	882,5,5
+lhz_fild01,298,337,0	duplicate(VigiaSA)	VigiaSA#52	882,5,5
+lhz_fild01,320,338,0	duplicate(VigiaSA)	VigiaSA#53	882,5,5
+lhz_fild01,317,205,0	duplicate(VigiaSA)	VigiaSA#54	882,5,5
+lhz_fild01,334,302,0	duplicate(VigiaSA)	VigiaSA#55	882,5,5
+lhz_fild01,316,292,0	duplicate(VigiaSA)	VigiaSA#56	882,5,5
+lhz_fild01,333,284,0	duplicate(VigiaSA)	VigiaSA#57	882,5,5
+lhz_fild01,324,249,0	duplicate(VigiaSA)	VigiaSA#58	882,5,5
+lhz_fild01,310,231,0	duplicate(VigiaSA)	VigiaSA#59	882,5,5
+lhz_fild01,287,249,0	duplicate(VigiaSA)	VigiaSA#60	882,5,5
+lhz_fild01,316,280,0	duplicate(VigiaSA)	VigiaSA#61	882,5,5
+lhz_fild01,287,308,0	duplicate(VigiaSA)	VigiaSA#62	882,5,5
+lhz_fild01,236,267,0	duplicate(VigiaSA)	VigiaSA#63	882,5,5
+lhz_fild01,237,238,0	duplicate(VigiaSA)	VigiaSA#64	882,5,5
+lhz_fild01,209,241,0	duplicate(VigiaSA)	VigiaSA#65	882,5,5
+lhz_fild01,275,206,0	duplicate(VigiaSA)	VigiaSA#66	882,5,5
+lhz_fild01,225,211,0	duplicate(VigiaSA)	VigiaSA#67	882,5,5
+lhz_fild01,227,188,0	duplicate(VigiaSA)	VigiaSA#68	882,5,5
+lhz_fild01,205,179,0	duplicate(VigiaSA)	VigiaSA#69	882,5,5
+lhz_fild01,178,196,0	duplicate(VigiaSA)	VigiaSA#70	882,5,5
+lhz_fild01,171,234,0	duplicate(VigiaSA)	VigiaSA#71	882,5,5
+lhz_fild01,187,275,0	duplicate(VigiaSA)	VigiaSA#72	882,5,5
+lhz_fild01,236,321,0	duplicate(VigiaSA)	VigiaSA#73	882,5,5
+lhz_fild01,263,331,0	duplicate(VigiaSA)	VigiaSA#74	882,5,5
+lhz_fild01,248,358,0	duplicate(VigiaSA)	VigiaSA#75	882,5,5
+lhz_fild01,228,331,0	duplicate(VigiaSA)	VigiaSA#76	882,5,5
+
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+konoha3,81,230,0	warp	entrada1	1,1,inicio,31,6
+kumogakure,160,167,0	warp	entrada2	1,1,inicio3,31,6
+kiragakure,165,196,0	warp	entrada3	1,1,inicio2,31,6
+
+inicio2,31,2,0	warp	saida1	1,1,kiragakure,159,197
+inicio3,31,2,0	warp	saida2	1,1,kumogakure,162,171
+inicio,31,2,0	warp	saida3	1,1,konoha3,81,226

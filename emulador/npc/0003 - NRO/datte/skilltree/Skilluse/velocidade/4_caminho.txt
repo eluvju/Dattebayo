@@ -1,0 +1,116 @@
+-	script	on_PC_UseSkillcamin	-1,{
+    end;
+//When a Character uses a skill
+
+//Vel_Caminho
+
+onPcUseSkillEvent:
+
+           if(lskillid == 383) {
+
+
+if (getskilllv(383) == 1) {
+
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 50) {skill 383,2,0; set skill383,0; dispbottom "[Sys] Level up"; end; }
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 1: "+skill383+" de 50";
+
+end;
+
+}
+
+if (getskilllv(383) == 2) {
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 150) {skill 383,3,0; set skill383,0; dispbottom "[Sys] Level up"; end;}
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 2: "+skill383+" de 150";
+
+end;
+
+}
+
+if (getskilllv(383) == 3) {
+
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 200) {skill 383,4,0; set skill383,0; dispbottom "[Sys] Level up"; end;}
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 3: "+skill383+" de 200";
+
+end;
+
+}
+
+if (getskilllv(383) == 4) {
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 250) {skill 383,5,0; set skill383,0; dispbottom "[Sys] Level up"; end;}
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 4: "+skill383+" de 250";
+
+end;
+
+}
+
+if (getskilllv(383) == 5) {
+
+if (vel_avan != 1) {end;}
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 300) {skill 383,6,0; set skill383,0; dispbottom "[Sys] Level up"; end;}
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 5: "+skill383+" de 300";
+
+end;
+
+}
+
+if (getskilllv(383) == 6) {
+
+if (vel_avan != 1) {end;}
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 400) {skill 383,7,0; set skill383,0; dispbottom "[Sys] Level up"; end;}
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 6: "+skill383+" de 400";
+
+end;
+
+}
+
+if (getskilllv(383) == 7) {
+
+if (vel_avan != 1) {end;}
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 500) {skill 383,8,0; set skill383,0; dispbottom "[Sys] Level up"; end;}
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 7: "+skill383+" de 500";
+
+end;
+
+}
+
+if (getskilllv(383) == 8) {
+
+if (vel_avan != 1) {end;}
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 700) {skill 383,9,0; set skill383,0; dispbottom "[Sys] Level up"; end;}
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 8: "+skill383+" de 700";
+
+end;
+
+}
+
+if (getskilllv(383) == 9) {
+
+if (vel_avan != 1) {end;}
+if (Vel_Caminho != 1) {end;}
+if (skill383 >= 1000) {skill 383,10,0; set skill383,0; dispbottom "[Sys] Level up"; end;}
+set skill383,skill383 +1;
+dispbottom "[Jutsu level] Kaze Shunshin level 9: "+skill383+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

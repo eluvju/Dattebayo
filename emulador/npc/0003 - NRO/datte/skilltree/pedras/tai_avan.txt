@@ -1,0 +1,22 @@
+gl_prison,116,146,5	script	Taijutsu Avançado	831,{
+if (limite_avan == 1) {mes "Você já chegou a um treinamento avançado, esse é o limite"; close;}
+if (tai_avan == 1) {mes "Já não há mais nada que posso lhe ensinar"; close;}
+if (jounin != 1) {mes "Apenas Jounins podem falar comigo"; close;}
+if (WeaponLvl < 75) {mes "Você não está pronto pra aprender Taijutsu Avançado, é preciso nível 75 de Taijutsu"; close;}
+
+//========================================================================
+//   MENU
+//========================================================================
+if (mestreta_dead != 1) {mes "Você está quase pronto para se tornar um usuário avançado, é preciso antes derrotar o mestre taijutsu"; close;}
+mes "!!, a sua força é enorme, seu chakra é um dos maiores que ja vi!, você é mais do que digno de aprender Taijutsu Avançado";
+next;
+mes "Vá em frente, e busque mais poder, seje o melhor shinobi que já existiu, pois agora você é diferenciado, agora você é um shinobi com Taijutsu Avançado!";
+set tai_avan,1;
+getitem 752,1;
+if (countitem(740) >= 1) {delitem 740,1;}
+set tai_avan_new,1;
+set limite_avan, limite_avan +1;
+announce "[...] Uma força enorme é sentido em todo o mundo, alguém assim só pode ter Taijutsu Avançado!",bc_blue|bc_all;
+close;
+
+}

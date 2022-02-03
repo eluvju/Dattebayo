@@ -1,0 +1,103 @@
+ra_in01,219,95,5	script	Troca de Máscara ANBU	1_m_01,{
+
+.@npc$ = "[" + strnpcinfo(1) + "]";
+
+	if(countitem(30066) == 1) goto inicio;
+	if(countitem(30067) == 1) goto inicio;
+	if(countitem(30068) == 1) goto inicio;
+	if(countitem(30069) == 1) goto inicio;
+	if(countitem(30070) == 1) goto inicio;
+	if(countitem(30071) == 1) goto inicio;
+	if(countitem(30072) == 1) goto inicio;
+		mes .@npc$;
+		mes "Você não possui máscara ANBU";
+		close;
+
+	
+	inicio:
+	mes .@npc$;
+	mes "Eu sou o trocador de Máscaras ANBU, se está cansado de sua máscara você pode trocar por outra comigo, é importante que você deixe desequipado sua máscara pra essa troca ser feita, vamos lá!";
+	mes "Qual Máscara você gostaria de ter?";
+	switch(select("- Máscara 1:- Máscara 2:- Máscara 3:- Máscara 4:- Máscara 5:- Máscara 6:- Máscara 7:- Sair")) {
+
+		case 1:
+			if(countitem(30066) == 1) { close; }
+			if(countitem(30067) == 1) {delitem 30067,1;}
+			if(countitem(30068) == 1) {delitem 30068,1;}
+			if(countitem(30069) == 1) {delitem 30069,1;}
+			if(countitem(30070) == 1) {delitem 30070,1;}
+			if(countitem(30071) == 1) {delitem 30071,1;}
+			if(countitem(30072) == 1) {delitem 30072,1;}
+			getitem 30066,1;
+			close;
+			
+		case 2:
+			if(countitem(30066) == 1) { delitem 30066,1; }
+			if(countitem(30067) == 1) { close; }
+			if(countitem(30068) == 1) { delitem 30068,1; }
+			if(countitem(30069) == 1) { delitem 30069,1; }
+			if(countitem(30070) == 1) { delitem 30070,1; }
+			if(countitem(30071) == 1) { delitem 30071,1; }
+			if(countitem(30072) == 1) { delitem 30072,1; }
+			getitem 30067,1;
+			close;
+			
+		case 3:
+			if(countitem(30066) == 1) { delitem 30066,1; }
+			if(countitem(30067) == 1) { delitem 30067,1; }
+			if(countitem(30068) == 1) { close; }
+			if(countitem(30069) == 1) { delitem 30069,1; }
+			if(countitem(30070) == 1) { delitem 30070,1; }
+			if(countitem(30071) == 1) { delitem 30071,1; }
+			if(countitem(30072) == 1) { delitem 30072,1; }
+			getitem 30068,1;
+			close;
+		
+		case 4:
+			if(countitem(30066) == 1) { delitem 30066,1; }
+			if(countitem(30067) == 1) { delitem 30067,1; }
+			if(countitem(30068) == 1) { delitem 30068,1; }
+			if(countitem(30069) == 1) { close; }
+			if(countitem(30070) == 1) { delitem 30070,1; }
+			if(countitem(30071) == 1) { delitem 30071,1; }
+			if(countitem(30072) == 1) { delitem 30072,1; }
+			getitem 30069,1;
+			close;
+			
+		case 5:
+			if(countitem(30066) == 1) { delitem 30066,1; }
+			if(countitem(30067) == 1) { delitem 30067,1; }
+			if(countitem(30068) == 1) { delitem 30068,1; }
+			if(countitem(30069) == 1) { delitem 30069,1; }
+			if(countitem(30070) == 1) { close; }
+			if(countitem(30071) == 1) { delitem 30071,1; }
+			if(countitem(30072) == 1) { delitem 30072,1; }
+			getitem 30070,1;
+			close;
+			
+		case 6:
+			if(countitem(30066) == 1) { delitem 30066,1; }
+			if(countitem(30067) == 1) { delitem 30067,1; }
+			if(countitem(30068) == 1) { delitem 30068,1; }
+			if(countitem(30069) == 1) { delitem 30069,1; }
+			if(countitem(30070) == 1) { delitem 30070,1; }
+			if(countitem(30071) == 1) { close; }
+			if(countitem(30072) == 1) { delitem 30072,1; }
+			getitem 30071,1;
+			close;
+			
+		case 7:
+			if(countitem(30066) == 1) { delitem 30066,1; }
+			if(countitem(30067) == 1) { delitem 30067,1; }
+			if(countitem(30068) == 1) { delitem 30068,1; }
+			if(countitem(30069) == 1) { delitem 30069,1; }
+			if(countitem(30070) == 1) { delitem 30070,1; }
+			if(countitem(30071) == 1) { delitem 30071,1; }
+			if(countitem(30072) == 1) { close; }
+			getitem 30072,1;
+			close;
+			
+		case 8:
+			close;
+	}
+}

@@ -1,0 +1,186 @@
+ein_fild02,280,284,4	script	Totem#31::totquatro	406,{
+	.@npcName$ = "^ff0000[" + strnpcinfo(1) + "]^000000";
+
+	if (COOLDOWN_TOMBSTONE_QUATRO > gettimetick(2)){
+		.@Time = COOLDOWN_TOMBSTONE_QUATRO - gettimetick(2);
+		.@minutes = (.@Time % (60 * 60)) / 60;
+		.@seconds = .@Time % 60;
+		mes .@npcName$;
+		mes "Você pode tentar novamente em " + sprintf("%02d:%02d", .@minutes, .@seconds);
+		close;
+	}
+
+	mes .@npcName$;
+	mes "Tentativas restantes : " + .ATTEMPT;
+	mes "O número está entre : " + .MINI_NUM + " - " + .MAX_NUM;
+	mes "Qual é sua aposta?";
+
+	.@rand = rand(.MINI_NUM,.MAX_NUM);
+	.@attempt = .ATTEMPT;
+	.@mini = .MINI_NUM;
+	.@max = .MAX_NUM;
+	//debugmes "" + .@rand;	//debug for GM
+	while(.@number != .@rand && .@attempt){
+		input .@number;
+		if(.@number < .@mini || .@number > .@max || .@number == .@mini || .@number == .@max){
+			mes "Número invalido.";
+			next;
+		}else{
+			.@attempt --;
+
+			if(.@number == .@rand)
+				break;
+
+			if(.@number < .@rand)
+				.@mini = .@number;
+
+			if(.@number > .@rand)
+				.@max = .@number;
+		}
+		next;
+		mes .@npcName$;
+		mes "Tentativas restantes : " + .@attempt;
+		mes "O número está entre : " + .@mini + " - " + .@max;
+		mes "Qual é sua aposta?";
+
+	}
+
+	mes .@npcName$;
+	if(.@number == .@rand){
+		specialeffect2 77;
+		mes .@number + " é o número correto!";
+		npctalk .@npcName$ + ": " + .@number + " é a resposta correta!",strnpcinfo(3),bc_self;
+		set COOLDOWN_TOMBSTONE_QUATRO, gettimetick(2) + (.COOLDOWN_WIN * 60);
+		//================================
+		//you can add buffs etc for reward
+		query_sql("UPDATE `char` SET `quest_points` = `quest_points` + 100 WHERE `char_id` = '"+getcharid(0)+"'");
+		getitem 734,1;
+		dispbottom "Parabéns, você ganhou 100 pontos de missão e 1 Caixa Misteriosa!";
+		//================================
+		close;
+	}
+	mes "A resposta correta era " + .@rand + ".";
+	set COOLDOWN_TOMBSTONE_QUATRO, gettimetick(2) + (.COOLDOWN_LOSS * 60);
+	close;
+end;
+OnInit:
+	specialeffect 203;
+
+	.MINI_NUM = 1;
+	.MAX_NUM = 300;
+	.ATTEMPT = 5;
+
+	.COOLDOWN_WIN = 20;	//cool-down on Wining in minutes
+	.COOLDOWN_LOSS = 5;	//cool-down on Losing in minutes
+end;
+}
+
+
+ein_fild02,331,155,3	duplicate(totquatro)	Totem#32	406
+ein_fild02,211,141,3	duplicate(totquatro)	Totem#33	406
+ein_fild02,122,34,3	duplicate(totquatro)	Totem#34	406
+ein_fild02,107,358,3	duplicate(totquatro)	Totem#35	406
+
+-	script	TimerTotem4	-1,{
+
+
+
+OnTimer600000:
+
+enablenpc "Totem#32";
+
+disablenpc "Totem#33";
+
+disablenpc "Totem#34";
+
+disablenpc "Totem#35";
+
+disablenpc "totquatro";
+
+end;
+
+
+
+OnTimer1200000:
+
+disablenpc "Totem#32";
+
+enablenpc "Totem#33";
+
+disablenpc "Totem#34";
+
+disablenpc "Totem#35";
+
+disablenpc "totquatro";
+
+end;
+
+
+
+OnTimer1800000:
+
+disablenpc "Totem#32";
+
+disablenpc "Totem#33";
+
+enablenpc "Totem#34";
+
+disablenpc "Totem#35";
+
+disablenpc "totquatro";
+
+end;
+
+
+
+OnTimer2400000:
+
+disablenpc "Totem#32";
+
+disablenpc "Totem#33";
+
+disablenpc "Totem#34";
+
+enablenpc "Totem#35";
+
+disablenpc "totquatro";
+
+end;
+
+OnTimer3000000:
+
+disablenpc "Totem#32";
+
+disablenpc "Totem#33";
+
+disablenpc "Totem#34";
+
+disablenpc "Totem#35";
+
+enablenpc "totquatro";
+
+stopnpctimer;
+
+initnpctimer;
+
+end;
+
+
+
+OnInit:
+
+disablenpc "Totem#32";
+
+disablenpc "Totem#33";
+
+disablenpc "Totem#34";
+
+disablenpc "Totem#35";
+
+disablenpc "totquatro";
+
+initnpctimer;
+
+end;
+
+}

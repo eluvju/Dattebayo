@@ -1,0 +1,119 @@
+prtg_cas01,126,205,3	script	Recompensa da Guerra	459,{
+if (agitcheck() || agitcheck2()) goto L_woeon;
+mes "Olá  ^ff8000"+strcharinfo(0)+"^000000,";
+mes "Escolha o castelo";
+switch(select("Kriemhild:Swanhild:Fadgridh:Skoegul:Gondul")) {
+	case 1:
+		if ( getcastledata( "prtg_cas01", 1) != getcharid(2) ) goto L_not_owner;
+		if ( $castle_claimed[1] ) goto L_claimed;
+		if ( getguildmasterid( getcharid(2) ) != getcharid(0) ) goto L_not_gm;
+		mes "Recebendo a premiação";
+		getitem 923,1;
+		announce "Recompensa da Guerra : O Líder [ "+strcharinfo(0)+" ] recebeu a premiação da guerra em nome da [ "+strcharinfo(2)+" ]",bc_all;
+		set $castle_claimed[1], 1;
+		close;
+			L_not_owner:
+	mes "Sua vila não é dono desse castelo";
+	close;
+		L_claimed:
+	mes "Sua vila já recebeu a recompensa por essa guerra";
+	close;
+		L_not_gm:
+	mes "Diga ao seu líder pra falar comigo";
+	close;
+	case 2:
+		if ( getcastledata( "prtg_cas02", 1) != getcharid(2) ) goto L_not_owner2;
+		if ( $castle_claimed2[1] ) goto L_claimed2;
+		if ( getguildmasterid( getcharid(2) ) != getcharid(0) ) goto L_not_gm2;
+		mes "receiving the reward for this castle";
+		announce "WoE Prize Giver : Guild Master [ "+strcharinfo(0)+" ] Just Claimed the Prize for His Guild [ "+strcharinfo(2)+" ]",bc_all;
+		set $castle_claimed2[1], 1;
+		close;
+			L_not_owner2:
+		mes "Your Guild Failed to take this Castle";
+		mes "If your guild owned a castle ask your guild master to claim reward from me";
+		close;
+		L_claimed2:
+		mes "Your guild already received the reward for this castle";
+		close;
+			L_not_gm2:
+		mes "Ask your Guild Master to see me";
+		close;
+
+	case 3:
+		if ( getcastledata( "prtg_cas03", 1) != getcharid(2) ) goto L_not_owner3;
+		if ( $castle_claimed2[1] ) goto L_claimed3;
+		if ( getguildmasterid( getcharid(2) ) != getcharid(0) ) goto L_not_gm3;
+		mes "receiving the reward for this castle";
+		announce "WoE Prize Giver : Guild Master [ "+strcharinfo(0)+" ] Just Claimed the Prize for His Guild [ "+strcharinfo(2)+" ]",bc_all;
+		set $castle_claimed3[1], 1;
+		close;
+			L_not_owner3:
+		mes "Your Guild Failed to take this Castle";
+		mes "If your guild owned a castle ask your guild master to claim reward from me";
+		close;
+		L_claimed3:
+		mes "Your guild already received the reward for this castle";
+		close;
+			L_not_gm3:
+		mes "Ask your Guild Master to see me";
+		close;
+
+	case 4:
+		if ( getcastledata( "prtg_cas04", 1) != getcharid(2) ) goto L_not_owner4;
+		if ( $castle_claimed2[1] ) goto L_claimed4;
+		if ( getguildmasterid( getcharid(2) ) != getcharid(0) ) goto L_not_gm4;
+		mes "receiving the reward for this castle";
+		announce "WoE Prize Giver : Guild Master [ "+strcharinfo(0)+" ] Just Claimed the Prize for His Guild [ "+strcharinfo(2)+" ]",bc_all;
+		set $castle_claimed4[1], 1;
+		close;
+		L_not_owner4:
+		mes "Your Guild Failed to take this Castle";
+		mes "If your guild owned a castle ask your guild master to claim reward from me";
+		close;
+		L_claimed4:
+		mes "Your guild already received the reward for this castle";
+		close;
+		L_not_gm4:
+		mes "Ask your Guild Master to see me";
+		close;
+
+	case 5:
+		if ( getcastledata( "prtg_cas06", 1) != getcharid(2) ) goto L_not_owner5;
+		if ( $castle_claimed2[1] ) goto L_claimed5;
+		if ( getguildmasterid( getcharid(2) ) != getcharid(0) ) goto L_not_gm5;
+		mes "receiving the reward for this castle";
+		getitem 20001,40;
+		getitem 2004,25;
+		getitem 676,40;
+		announce "WoE Prize Giver : Guild Master [ "+strcharinfo(0)+" ] Just Claimed the Prize for His Guild [ "+strcharinfo(2)+" ]",bc_all;
+		set $castle_claimed5[1], 1;
+		close;
+		L_not_owner5:
+		mes "Your Guild Failed to take this Castle";
+		mes "If your guild owned a castle ask your guild master to claim reward from me";
+		close;
+		L_claimed5:
+		mes "Your guild already received the reward for this castle";
+		close;
+		L_not_gm5:
+		mes "Ask your Guild Master to see me";
+		close;
+		}
+
+	L_woeon:
+		mes "A guerra está em andamento,";
+		close;
+
+OnAgitEnd:
+set $castle_claimed[1], 0; // everytime woe ends the variable resets
+set $castle_claimed2[1], 0;
+set $castle_claimed3[1], 0;
+set $castle_claimed4[1], 0;
+set $castle_claimed5[1], 0; // everytime woe ends the variable resets
+end;
+
+OnInit:
+waitingroom "Recompensa da Guerra",0;
+end;
+}

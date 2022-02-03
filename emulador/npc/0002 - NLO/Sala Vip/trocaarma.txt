@@ -1,0 +1,436 @@
+ra_in01,236,96,5	script	Troca de Arma Rank S	730,{
+	mes "[Troca de Arma Rank S]";
+	mes "Olá "+StrCharInfo(0)+", posso reaver a essência de sua arma. Estaria interessado?";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Troca de Arma Rank S]";
+		mes "Estarei aqui caso mude de ideia...";
+		close;
+	}
+	next;
+	mes "^ff0000**ATENÇÃO** REMOVE OS ENCANTAMENTOS ANTES DE REALIZAR A TROCA!^000000";
+	next;
+	mes "^ff0000**ATENÇÃO** REMOVE OS ENCANTAMENTOS ANTES DE REALIZAR A TROCA!^000000";
+	next;
+	mes "[Troca de Arma Rank S]";
+	mes "Qual arma você deseja realizar a troca?";
+		next;
+	switch(select("Kubikiri:Samehada:Nuibari:Kabutowari:Shibuki:Kiba:Hiramekarei:Bastão:Huuma Shuriken:Punhos de Chakra:Kusanagi:Kunai de 3 Pontas:Kibaku Nendo S:Arco Amaldiçoado:Nenhum"))
+	{
+	case 1:
+		mes "[Kubikiri]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1101) >= 1)
+		{
+			delitem 1101,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+	case 2:
+		mes "[Samehada]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1102) >= 1)
+		{
+			delitem 1102,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 3:
+		mes "[Nuibari]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1103) >= 1)
+		{
+			delitem 1103,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 4:
+		mes "[Kabutowari]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1104) >= 1)
+		{
+			delitem 1104,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 5:
+		mes "[Shibuki]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1105) >= 1)
+		{
+			delitem 1105,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 6:
+		mes "[Kiba]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1106) >= 1)
+		{
+			delitem 1106,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 7:
+		mes "[Hiramekarei]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1107) >= 1)
+		{
+			delitem 1107,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 8:
+		mes "[Bastão]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1108) >= 1)
+		{
+			delitem 1108,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 9:
+		mes "[Huuma Shuriken]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1109) >= 1)
+		{
+			delitem 1109,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 10:
+		mes "[Punhos de Chakra]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1110) >= 1)
+		{
+			delitem 1110,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 11:
+		mes "[Kusanagi]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1111) >= 1)
+		{
+			delitem 1111,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 12:
+		mes "[Kunai de 3 Pontas]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1112) >= 1)
+		{
+			delitem 1112,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 13:
+		mes "[Kibaku Nendo S]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1113) >= 1)
+		{
+			delitem 1113,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+case 14:
+		mes "[Arco Amaldiçoado]";
+		mes "Você vai recuperar:";
+		mes "20x "+getitemname(760);
+		mes "1x "+getitemname(761);
+		mes "1x "+getitemname(762);
+		mes "5000000 Zenys";
+		next;
+		mes "[Troca de Arma Rank S]";
+		mes "Quer realizar a troca?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Troca de Arma Rank S]";
+			mes "Estarei aqui caso mude de ideia...";
+			close;
+		}
+		if(countitem(1235) >= 1)
+		{
+			delitem 1235,1;
+			getitem 760,20;
+			getitem 761,1;
+			getitem 762,1;
+			set Zeny,Zeny+5000000;
+			mes "[Troca de Arma Rank S]";
+			mes "Aqui está!";
+			close;
+		}
+		break;
+	case 15:
+		mes "[Troca de Arma Rank S]";
+		mes "Estarei aqui caso mude de ideia...";
+		close;
+	}
+	mes "[Troca de Arma Rank S]";
+	mes "Você não possui nenhum armamento Rank S";
+	mes "...";
+	close;
+}

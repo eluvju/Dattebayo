@@ -1,0 +1,13 @@
+sec_in01,169,175,5	script	Asuma Sarutobi	4_m_chn8guek,{
+if(treino != 1) {mes "Você primeiro precisa falar com Orochimaru., "+strcharinfo(0)+"-san!"; end;}
+//if(academia_treinos != 1) {mes "Você primeiro precisa falar com Kakashi Hatake., "+strcharinfo(0)+"-san!"; end;}
+mes "Olá, aprendiz! Eu sou o Asuma Sensei! Você sabe o que é Kekkei Genkai?"; 
+next;
+mes "Kekkei Genkai são técnicas limitadas à herança sanguínea. De acordo com a sua linhagem, você possui habilidades que foram passadas geneticamente de forma hereditária pelos seus antepassados.";
+next;
+mes "Existem Kekkei Genkais que são conhecidas como Dõjutsu, vinculadas à jutsus oculares, como Sharingan e Byakugan. Outras Kekkei Genkais são usadas através do corpo, como os ossos do clã Kaguya de Kimimaro. E ainda tem aquelas que combinam dois elementos da natureza para criar um novo, como o elemento gelo (Hyouton) criado a partir da combinação de Fuuton e Suiton, do clã Koori.";
+next;
+mes "As Kekkei Genkais podem ser evoluídas ao longo da vida e somente os maiores ninjas conseguem desenvolvê-las para se tornarem cada vez mais fortes!";
+set kg,1;
+	close;
+}

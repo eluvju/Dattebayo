@@ -1,0 +1,61 @@
+sec_in01,166,31,4	script	Minato	492,{
+if(kuch != 1) {mes "Você primeiro precisa falar com Hiruzen., "+strcharinfo(0)+"-san!"; end;}
+if(examefinal == 1){mes "Você já concluiu o exame."; close;}
+	mes "[Minato]";
+	mes "Olá "+StrCharInfo(0)+"!";
+	mes "Chegou a hora do Exame Final! É agora que saberemos se você virará um Genin ou não!";
+	mes "Mas para isso você precisará realizar uma missão...";
+	next;
+	if( select("Claro!:Talvez mais tarde...") == 2 )
+	{
+		mes "[Minato]";
+		mes "Que falta de ambição... Estarei aqui se você mudar de ideia!";
+		close;
+	}
+	switch(select("Vamos lá"))
+	{
+	case 1:
+		mes "[Minato]";
+		mes "A sua missão é me trazer:";
+		mes "15 Dentes de Lobo";
+		mes "10 Cascas";
+		mes "Para isso, mate os monstros Lobo e Pinto no Campo de Treinamento!";
+		next;
+		mes "[Minato]";
+		mes "Deseja fazer esta missão?";
+		next;
+		if( select("Sim!:Agora não...") == 2 )
+		{
+			mes "[Minato]";
+			mes "Tudo bem... Até mais!";
+			close;
+		}
+		if(countitem(614) >= 15 && countitem(621) >= 10)
+		{
+			delitem 614,15;
+			delitem 621,10;
+			skill 426,5,3;
+			skill 117,5,3;
+			skill 124,1,3;
+			skill 8,4,3;
+			skill 278,10,3;
+			skill 51,1,3;
+			skill 533,2,3;
+			skill 358,1,3;
+			skill 1,9,3;
+			skill 213,1,3;
+			set examefinal,1;
+			warp "aldeg_cas04",168,59;
+			mes "[Minato]";
+			mes "Parabéns!";
+			close;
+		}
+		break;
+	}
+	mes "[Minato]";
+	mes "Está querendo me enganar? Você não tem todos os itens necessários para essa missão!!!";
+	mes "Volte somente quando você tiver todos os itens!!!";
+	close;
+
+
+}

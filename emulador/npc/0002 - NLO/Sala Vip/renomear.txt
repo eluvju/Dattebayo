@@ -1,0 +1,134 @@
+//Credits to Mystogan,hellflaem,~AnnieRuru~,Swapnil123,KeyWorld
+//I m using item 7623 Just replace the item with the one you want 
+//the players to exchange in order to able to rename their character.
+//Scripts allows only a-z,A-Z,0-9 and white space in their name.
+//It checks for party/Guild ...
+//==============================================================
+//===================== The Name Changer =========================
+//==============================================================
+
+ra_in01,208,90,4	script	Livro de Registro	894,{
+// ============ Npc's Name ====================
+set .@npcname$,"[ ^002f77Atendente^000000 ]";
+// ============ Name Filters ======================
+setarray .filter$[0],
+	"Admin",
+	"Game Master",
+	"[GM]",
+	"GM ","!";
+
+// ============ Main Script =======================
+offers:
+	mes .@npcname$;
+	mes "Bem-vindo ao livro de registros!";
+	mes "";
+	mes "^FF0000 - Nós podemos mudar seu nome se você tiver 15,000 Cash.";
+	next;
+	if((getcharid(2) > 0) || (getcharid(1) > 0))
+	{
+		mes .@npcname$;
+		mes "Se quer mudar de nome, se retire de sua party/guild.";
+		close;
+	}
+	else if(#CASHPOINTS < 15000)
+	{
+		mes .@npcname$;
+		mes "Você não cash o suficiente para trocar de nome.";
+		close;
+	}
+	else
+	{
+		inputs:
+		mes .@npcname$;
+		mes "Digite o nome que deseja ter:";
+		if (input(.@newname$, 4, 23))
+		{
+			mes "^ff0000 - Precisa ter pelo menos de 4-23 caraceteres^000000";
+			next;
+			goto inputs;
+		}
+		
+		if ( callfunc( "check_string", .@newname$ ) == 0 ) {
+				mes "^ff0000 - Nome inválido^000000";
+				mes "Você só pode usar a-z A-Z e 0-9";
+				next;
+				goto inputs;
+		}
+		for (set .@i , 0; .@i < getarraysize ( .filter$ ); set .@i, .@i + 1)
+		{
+			if(compare(.@newname$, .filter$[.@i]))
+			{
+				mes "^ff0000 - Nome inválido^000000";
+				next;
+				goto inputs;
+			}
+		}
+		
+		mes .@npcname$;
+		mes "Gostaria de continuar?";
+		mes "";
+		mes " ^ff0000- Você será kickado do servidor para completar a mudança de nome.^000000";
+		mes "";
+		mes "^ff0000- Após isso basta entrar novamente concluir a mudança nome.^000000";
+		if(select("Não:Sim")==1) close;
+		next;
+		// Checks if the name is available
+		query_sql "SELECT `account_id` FROM `char` WHERE `name` = '"+escape_sql(.@newname$)+"'",.@aid;
+		if(.@aid)
+		{
+			mes "^FF0000 - Nome indisponível^000000";
+			next;
+			goto inputs;
+		}
+		else 
+		{
+			mes "^006633 - Available^000000";
+			mes .@npcname$;
+			set #CASHPOINTS,#CASHPOINTS-15000;
+			query_sql "UPDATE `char` SET name = '"+escape_sql(.@newname$)+"' WHERE char_id = "+getcharid(0)+";";
+			mes "Seu nome ^ff0000"+strcharinfo(0)+"^000000 foi alterado para ^ff0000"+.@newname$+"^000000.";
+			announce "Livro de registros: "+strcharinfo(0)+" acaba de mudar seu nome para "+.@newname$+"",bc_blue|bc_all;
+			close2;
+			atcommand "@kick "+strcharinfo(0);
+			end;
+		} // The players name has been changed.
+	}
+} // End of Script.
+
+
+
+
+function	script	check_string	{
+
+	set .@str$, getarg(0);
+	set .@len, getstrlen(.@str$);
+	set .@key$, "|^" + rand(0xffffff) + "^|";
+	set .@tmp$, "";
+
+	setarray .@char_list$
+		,"A","B","C","D","E","F","G","H","I","J","K","L","M", "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
+		// compare isn't case sensitive, so don't need to add "a", "b", "c", "d", "e", ...
+		,"1","2","3","4","5","6","7","8","9","0"," "
+	;
+	set .@size, getarraysize(.@char_list$);
+
+	while ( .@i<.@len ) {
+		set .@j, 0;
+
+		while ( .@j < .@size ) {
+			if ( compare( .@key$ + .@str$, .@key$ + .@tmp$ + .@char_list$[.@j] ) ) {
+				set .@tmp$,.@tmp$+.@char_list$[.@j];
+				break;
+			}
+			set .@j, .@j+1;
+		}
+
+		if ( .@j == .@size )
+			return 0;
+
+		set .@i, .@i+1;
+		sleep2( .@i % 20 == 0 );
+	}
+
+	return 1;
+}

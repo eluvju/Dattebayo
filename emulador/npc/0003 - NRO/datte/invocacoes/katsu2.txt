@@ -1,0 +1,54 @@
+ra_fild03,214,269,5	script	Tsunade::katsu2	423,{
+
+if( title$ == "RankE") {mes "É necessário no mínimo Rank C para fazer essa quest"; close;}
+if( title$ == "RankD") {mes "É necessário no mínimo Rank C para fazer essa quest"; close;}
+if (quest_katsu2_um == 1) goto L_go;
+if(Katsu1 != 1) {mes "Você precisa ter contrato com as Namekujis para aparender esse jutsu"; close;}
+if(Katsu2 == 1) {mes "Você já aprendeu esse jutsu"; close;}
+if(jounin == 1) goto L_SS;
+if(chunin != 1) {mes "Você precisa ser Chunin para aprender esse jutsu"; close;}
+if( title$ == "RankE") {mes "É necessário no mínimo Rank C para fazer essa quest"; close;}
+if( title$ == "RankD") {mes "É necessário no mínimo Rank C para fazer essa quest"; close;}
+//========================================================================
+//	MENU
+//========================================================================
+mes "Olá ^0080C0"+strcharinfo(0)+"^000000 !";
+mes "Eu sou um dos senseis de Kuchyiose espalhado pelo mundo.";
+next;
+mes "Posso te ajudar a aperfeiçoar seu Kuchiyose no Jutsu!";
+mes "Gostaria de treinar o Kuchiyose: Namekuji?";
+menu "Sim, vamos começar",L_SS,"Agora não",L_no;
+//========================================================================
+//	Namekuji
+//========================================================================
+
+L_SS:
+set quest_katsu2_um,1;
+mes "Para esse treinamento,você deve provar ser fiel as Namekujis:";
+mes "- Obter 1 Cadáver do Zabuza";
+mes "- Obter 1 Cadáver do Haku";
+setquest 12097;
+next;
+mes "Vá e faça seu treinamento.";
+close;
+
+L_go:
+if (countitem(7244) < 1) goto No_Item;
+if (countitem(7245) < 1) goto No_Item;
+mes "Você completou seu treinamento,parabéns.";
+delitem 7244,1;
+delitem 7245,1;
+skill 729,4,0;
+set Katsu2,1;
+completequest 12097;
+erasequest 12097;
+close;
+
+L_no:
+close;
+
+No_Item:
+mes "Você não pegou o pergaminho ainda, volte quando pegar!";
+close;
+
+}

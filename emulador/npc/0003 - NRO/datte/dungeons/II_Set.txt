@@ -1,0 +1,35 @@
+//
+//
+//	Below is base setting which used to define game map,x,z, and some variable
+//
+//
+-	script	II_SET	-1,{
+OnInit:
+	//	Name of npc of running game
+	setarray .npc_name$,"Mestre da Dungeon","Sabio de Dungeon","Velho Sábio","Mestre";
+	//
+	//	Amount of player that used to active game
+	setarray .map_p,5,5,5,1;
+	//
+	// Limit of the dat
+	setarray .map_limit,4,6,6,6;
+	end;
+}
+//
+//	You don't need to modify this event
+-	script	II_GameMain	-1,{
+	for(set .@i,0;set(.@N$,getvariableofnpc(.npc_name$[.@i],"II_SET"))!="";set .@i,.@i+1)
+		if( .@N$ == strnpcinfo(0) )
+			set .@B,.@i+1;
+	if( .@B )
+		callfunc "II_Level",.@B-1;
+	else
+		callfunc "II_Level",-1;
+}
+//
+//	NPC that used to started your game after you're sent to game map
+//	Add or modify below to change game map or npc name
+1@nyd,30,40,4	duplicate(II_GameMain)	Mestre da Dungeon	55
+2@cata,80,140,4	duplicate(II_GameMain)	Sabio de Dungeon	55
+1@cata,160,19,4	duplicate(II_GameMain)	Velho Sábio	55
+2@caves,9,195,4	duplicate(II_GameMain)	Mestre	55

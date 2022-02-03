@@ -1,0 +1,104 @@
+treinamento,100,137,5	script	Dia das Crianças	882,{
+
+	if(!.criancacatch) {
+		mes "[Dia das Crianças]";
+		mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+		switch(select("- Entrar.:- Informação.")) {
+		
+		case 1:
+		next;
+		mes "[Dia das Crianças]";
+		mes "Não tem evento por enquanto.";
+		close;
+			
+		case 2:
+		next;
+		mes "[Dia das Crianças]";
+		mes "Evento ";
+		mes "Requerimento: Nenhum";
+		mes "Premiação: 1 Caixa de Presente";
+		mes "Horário";
+		mes "9:00";
+		mes "12:00";
+		mes "15:00";
+		mes "18:00";
+		mes "21:00";
+		mes "23:00";
+		next;
+		mes "[Dia das Crianças]";
+		mes "São invocados 200 Presentes.";
+		mes "Ao derrotar todos o evento é finalizado.";
+		close;
+		}
+	}
+	
+	mes "[Dia das Crianças]";
+	mes "Olá "+strcharinfo(0)+" o que posso fazer por você?";
+	switch(select("- Entrar.:- Informação.")) {
+	
+		case 1:
+		next;
+		mes "[Dia das Crianças]";
+		mes "Divirta-se!";
+		next;
+		warp "xmas_dun02", 0, 0;
+		end;
+			
+		case 2:
+		next;
+		mes "[Dia das Crianças]";
+		mes "Evento ";
+		mes "Requerimento: Nenhum";
+		mes "Premiação: 1 Caixa de Presente";
+		mes "Horário";
+		mes "9:00";
+		mes "12:00";
+		mes "15:00";
+		mes "18:00";
+		mes "21:00";
+		mes "23:00";
+		next;
+		mes "[Dia das Crianças]";
+		mes "São invocados 200 Presentes.";
+		mes "Ao derrotar todos o evento é finalizado.";
+		close;
+	}
+
+	OnClock0900:
+	OnClock1200:
+	OnClock1500:
+	OnClock1800:
+	OnClock2100:
+	OnClock2300:
+		callsub OnCriancaStart;
+		
+		OnCriancaStart:
+		announce "[Dia das Crianças]: Evento está aberto corra para derrotar os presentes.",0;
+		initnpctimer;
+		monster "xmas_dun02",0,0,"Presente",1307,200,"criancas::OnMobKilled";
+		set .criancacatch,1;
+		end;
+		return;
+		
+	OnTimer3600000:
+		stopnpctimer;
+		announce "[Dia das Crianças]: O tempo acabou, tente na próxima vez.",0;
+		set .criancacatch,0;
+		killmonsterall "xmas_dun02";
+		mapwarp "xmas_dun02","treinamento",86,130;
+		end;
+}
+
+xmas_dun02,0,0,0	script	criancas	-1,{
+	OnMobKilled:
+		if(!mobcount("xmas_dun02","criancas::OnMobKilled")) {
+			stopnpctimer;
+			announce "[Dia das Crianças]: "Todos os presentes foram mortos volte na próxima.",0;
+			set .criancacatch,0;
+			mapwarp "xmas_dun02","treinamento",86,130;
+			end;
+		}
+		else
+			announce "Faltam mobcount("xmas_dun02","criancas::OnMobKilled"))+" Presentes",bc_map;
+		end;
+}

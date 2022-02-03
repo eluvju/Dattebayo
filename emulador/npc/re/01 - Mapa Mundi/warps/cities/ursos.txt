@@ -1,0 +1,16 @@
+//Permissão Rank C se for suna
+//Permissão Rank A se for Konoha
+
+lhz_fild02,166,367,0	script	 #enterursos0	45,2,2,{
+	
+	OnTouch:
+	callfunc("warps"),	// Função
+	"moc_ruins",			// Mapa
+	71,				// Coordenada X
+	24,				// Coordenada Y
+	0,				// Quest (default +1000_
+	502,					// Item (Default 0)
+	1;					// Item Quantidade
+}
+
+moc_ruins,71,19,0	warp	enterursos0-1	2,2,lhz_fild02,164,363

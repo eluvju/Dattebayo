@@ -1,0 +1,77 @@
+//===== Cronus Script ======================================== 
+//= Curandeira
+//===== Por: =================================================
+//= DennyLoko
+//===== Versão Atual: ======================================== 
+//= 1.1b
+//===== Descrição: =========================================== 
+//= Recupera HP e SP gratuitamente
+//= Usado as cordenadas do NPC do eAthena
+//===== Changelog: =========================================== 
+//= 1.0 Iniciado o Npc [DennyLoko]
+//= 1.1 Organizado o NPc [Kamper]
+//= 1.1b corrigindo erro na duplicate de rachel [Tiu Skan]
+//= - Removidos ".gat" 
+//= Script Reestruturado [Mehah]
+//============================================================
+
+konoha,199,313,5	script	Hospital de Konoha	91,{
+
+if(##faction != 1) goto vila;
+
+emotion 21;
+percentheal 100,100;
+dispbottom "Curado!";
+	end;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+}
+
+areia,210,235,3	script	Hospital da Suna	91,{
+
+if(##faction != 2) goto vila;
+
+emotion 21;
+percentheal 100,100;
+dispbottom "Curado!";
+	end;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+}
+
+nevoa,148,317,3	script	Hospital da Névoa	91,{
+
+if(##faction != 3) goto vila;
+
+emotion 21;
+percentheal 100,100;
+dispbottom "Curado!";
+	end;
+
+vila:
+mes "Você não é desta vila, não te ajudaremos!";
+close;
+
+}
+
+prt_monk,181,246,3	script	Hospital Nukenin	91,{
+
+if(Rank_S == 1) || (Class == 4049) {goto cura;} else {goto vila;}
+
+cura:
+emotion 21;
+percentheal 100,100;
+dispbottom "Curado!";
+	end;
+
+vila:
+mes "Você não é Nukenin, não te ajudaremos!";
+close;
+
+}

@@ -1,0 +1,149 @@
+prt_fild10.gat,334,133,5	script	Explorador#1	832,{
+mes "[Explorador]";
+mes "Na minha aventura pelo Mundo Shinobi me deparei com algo incrível!";
+next;
+mes "[Explorador]";
+mes "Monstros de areia surgem de forma desconhecida neste deserto!";
+next;
+mes "[Explorador]";
+mes "Ouvi dizer que habita neste local uma criatura com um poder extraordinário!";
+next;
+mes "[Explorador]";
+mes "Tome muito cuidado!";
+close;
+}
+
+ayo_dun01.gat,268,17,7	script	Explorador#2	832,{
+mes "[Explorador]";
+mes "Na minha aventura pelo Mundo Shinobi me deparei com algo incrível!";
+next;
+mes "[Explorador]";
+mes "Dentro desse local está um esconderijo cheio de gatos!";
+next;
+mes "[Explorador]";
+mes "Ouvi dizer que habita neste local uma criatura com um poder extraordinário!";
+next;
+mes "[Explorador]";
+mes "Tome muito cuidado!";
+close;
+}
+
+gef_fild07.gat,259,290,5	script	Explorador#3	832,{
+mes "[Explorador]";
+mes "No meio de minha exploração pelo Mundo Shinobi descobri uma caverna submarina incrível!";
+next;
+mes "[Explorador]";
+mes "Nessa caverna por algum motivo desconhecido as pessoas conseguem respirar debaixo da água!";
+next;
+mes "[Explorador]";
+mes "Posso te levar até lá, mas fique sabendo que existe uma criatura muito poderosa nessa caverna!";
+next;
+mes "[Explorador]";
+mes "Desejá ir para lá?";
+menu "Sim",SIM,"Não",NAO;
+
+SIM:
+mes "[Explorador]";
+mes "Boa sorte!";
+next;
+warp "iz_dun03.gat",34,63;
+close;
+
+NAO:
+mes "[Explorador]";
+mes "Caso mude de idéia estarei te esperando!";
+close;
+}
+
+pay_arche.gat,41,137,5	script	Explorador#4	832,{
+mes "[Explorador]";
+mes "Na minha aventura pelo Mundo Shinobi me deparei com algo incrível!";
+next;
+mes "[Explorador]";
+mes "Dentro desta caverna vivem diversos animais selvagens!";
+next;
+mes "[Explorador]";
+mes "Ouvi dizer que habita neste local uma criatura com um poder extraordinário!";
+next;
+mes "[Explorador]";
+mes "Tome muito cuidado!";
+close;
+}
+
+mjolnir_08.gat,191,38,3	script	Explorador#5	832,{
+mes "[Explorador]";
+mes "Na minha aventura pelo Mundo Shinobi me deparei com algo incrível!";
+next;
+mes "[Explorador]";
+mes "Ao atravessar esta floresta cheguei em uma praia deslumbrante!";
+next;
+mes "[Explorador]";
+mes "Ouvi dizer que habita neste local uma criatura com um poder extraordinário!";
+next;
+mes "[Explorador]";
+mes "Tome muito cuidado!";
+close;
+}
+
+mjolnir_08.gat,37,348,3	script	Explorador#6	832,{
+mes "[Explorador]";
+mes "Na minha aventura pelo Mundo Shinobi me deparei com algo incrível!";
+next;
+mes "[Explorador]";
+mes "A floresta que se encontra a partir deste ponto está cercada de lesmas!";
+next;
+mes "[Explorador]";
+mes "Ouvi dizer que existe um lago cercado por bolhas de sabão, e que neste lago se encontra uma criatura com um poder extraordinário!";
+next;
+mes "[Explorador]";
+mes "Tome muito cuidado!";
+close;
+}
+
+gef_fild03.gat,62,375,3	script	Explorador#7	832,{
+mes "[Explorador]";
+mes "Na minha aventura pelo Mundo Shinobi me deparei com algo incrível!";
+next;
+mes "[Explorador]";
+mes "Esta incrível florestas é habitada por insetos muito fortes!";
+next;
+mes "[Explorador]";
+mes "Ouvi rumores que dentro dela habita uma criatura com um poder extraordinário!";
+next;
+mes "[Explorador]";
+mes "Tome muito cuidado!";
+close;
+}
+
+prt_fild02.gat,310,19,3	script	Explorador#8	832,{
+mes "[Explorador]";
+mes "Na minha aventura pelo Mundo Shinobi me deparei com algo incrível!";
+next;
+mes "[Explorador]";
+mes "Após me perder nessa florestas encontrei o terreno montanhoso a seguir!";
+next;
+mes "[Explorador]";
+mes "Nesse lugar ouvi um rugido que aparenta ser de uma criatura extremamente forte!";
+next;
+mes "[Explorador]";
+mes "Tome muito cuidado!";
+close;
+}
+
+gef_fild03.gat,316,22,3	script	Explorador#9	832,{
+mes "[Explorador]";
+mes "Na minha aventura pelo Mundo Shinobi me deparei com algo incrível!";
+next;
+mes "[Explorador]";
+mes "Dentro desta vasta floresta me deparei com vários lobos e raposas!";
+next;
+mes "[Explorador]";
+mes "A todo momento um rugido muito forte ecoava por todos os cantos!";
+next;
+mes "[Explorador]";
+mes "Existem rumores que existe uma criatura com um poder impressionante nessa floresta!";
+next;
+mes "[Explorador]";
+mes "Tome muito cuidado!";
+close;
+}

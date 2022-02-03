@@ -1,0 +1,106 @@
+-	script	on_TsuutenKyaku	-1,{
+    end;
+//When a Character uses a skill
+
+//TsuutenKyaku
+
+onPcUseSkillEvent:
+
+           if(lskillid == 62) {
+
+
+if (getskilllv(62) == 1) {
+
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 50) {skill 62,2,0; set skill62,0; dispbottom "[Sys] Level up"; end; }
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 1: "+skill62+" de 50";
+
+end;
+
+}
+
+if (getskilllv(62) == 2) {
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 100) {skill 62,3,0; set skill62,0; dispbottom "[Sys] Level up"; end;}
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 2: "+skill62+" de 100";
+
+end;
+
+}
+
+if (getskilllv(62) == 3) {
+
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 150) {skill 62,4,0; set skill62,0; dispbottom "[Sys] Level up"; end;}
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 3: "+skill62+" de 150";
+
+end;
+
+}
+
+if (getskilllv(62) == 4) {
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 200) {skill 62,5,0; set skill62,0; dispbottom "[Sys] Level up"; end;}
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 4: "+skill62+" de 200";
+
+end;
+
+}
+
+if (getskilllv(62) == 5) {
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 250) {skill 62,6,0; set skill62,0; dispbottom "[Sys] Level up"; end;}
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 5: "+skill62+" de 250";
+
+end;
+
+}
+
+if (getskilllv(62) == 6) {
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 300) {skill 62,7,0; set skill62,0; dispbottom "[Sys] Level up"; end;}
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 6: "+skill62+" de 300";
+
+end;
+
+}
+
+if (getskilllv(62) == 7) {
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 500) {skill 62,8,0; set skill62,0; dispbottom "[Sys] Level up"; end;}
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 7: "+skill62+" de 500";
+
+end;
+
+}
+
+if (getskilllv(62) == 8) {
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 700) {skill 62,9,0; set skill62,0; dispbottom "[Sys] Level up"; end;}
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 8: "+skill62+" de 700";
+
+end;
+
+}
+
+if (getskilllv(62) == 9) {
+if (TsuutenKyaku != 1) {end;}
+if (skill62 >= 1000) {skill 62,10,0; set skill62,0; dispbottom "[Sys] Level up"; end;}
+set skill62,skill62 +1;
+dispbottom "[Jutsu level] TsuutenKyaku level 9: "+skill62+" de 1000";
+
+end;
+
+}
+
+                end;
+            }    
+}

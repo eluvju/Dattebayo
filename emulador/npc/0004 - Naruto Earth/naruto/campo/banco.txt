@@ -1,0 +1,117 @@
+//===== Hercules Script ======================================
+//= Banker Script
+//===== By: ==================================================
+//= Syrus22 (1.0)
+//===== Current Version: =====================================
+//= 2.0
+//===== Description: =========================================
+//= An account wide Banker to store Zeny
+//===== Additional Comments: =================================
+//= Syrus22 - There's an optional transaction fee at the top of
+//= the script. To use it simply change the first set command
+//= to set the cost variable to whatever you want the fee to be.
+//= Version 2.0: Optimized and brought the script up to standard. [Jguy]
+//============================================================
+
+job_monk,265,113,5	script	Banqueiro	109,{
+set @cost,500;
+mes "[Banker]";
+mes "Bem-vindo ao Primeiro Banco do mundo shinobi. Como posso ajudá-lo hoje?";
+next;
+switch(select("Eu gostaria de fazer um depósito.:Eu gostaria de fazer uma retirada.:Qual é o meu saldo atual?:Cancel")) {
+	case 1:
+		mes "[Banker]";
+		mes "Muito bem ... Quanto você gostaria de depositar? O máximo que você pode depositar de uma só vez é 999.999 Iene.";
+		next;
+		if (@cost > 0) {
+			mes "[Banker]";
+			mes "Ah, e percebe que existe uma Cobrança de" +@cost + " Iene em todas as transações!";
+			next;
+		}
+		input @deposit;
+		if (@deposit < 1) {
+			mes "Certifique-se de me pedir para depositar uma quantia real.";
+			close;
+		}
+		else if (@deposit > Zeny) {
+			mes "Não parece que você tem a quantidade de iene que está tentando depositar!";
+			close;
+		}
+		else if (@deposit > (Zeny - @cost)) {
+			mes "Você precisa de " + @cost + " Iene para cobrir a taxa de transação!";
+			close;
+		}
+		else {
+		Zeny -= @deposit;
+		Zeny -= @cost;
+		set #bankstorage,#bankstorage + @deposit;
+		mes "[Banker]";
+		mes "Muito obrigado ... Seu iene está em boas mãos.";
+		close;
+		}
+
+	case 2:
+		mes "[Banker]";
+		mes "Muito bem ... Quanto você gostaria de retirar? O máximo que você pode retirar de uma só vez é 999.999 Iene";
+		next;
+		if (@cost > 0) {
+			mes "[Banker]";
+			mes "Ah, e percebe que existe uma " +@cost + " Iene cobra em todas as transações!";
+			next;
+		}
+		input @withdrawl;
+		if (@withdrawl < 1) {
+			mes "Por favor, não jogue jogos. Eu preciso de uma quantia real para me retirar.";
+			close;
+		}
+		else if (@withdrawl > #bankstorage) {
+			mes "Eu mostro que você só tem ^00FF00" + #bankstorage +"^000000 iene na sua conta!";
+			close;
+		}
+		else if ((@cost > Zeny) && ((Zeny + @withdrawl) > @cost)) {
+			mes "[Banker]";
+			mes "Você não tem o Iene para a taxa de transação no momento. Gostaria que eu cobrasse a taxa diretamente do seu saque?";
+			next;
+			switch(select("Yes please.:No, Thanks")){
+			case 1:
+				mes "[Banker]";
+				mes "Removendo " + @cost + " da sua retirada para cobrir a taxa de depósito...";
+				set @withdrawl,@withdrawl - @cost;
+				set #bankstorage,#bankstorage - @cost;
+				set @cost,0;
+				next;
+				Zeny -= @cost;
+				Zeny += @withdrawl;
+				set #bankstorage,#bankstorage - @withdrawl;
+				mes "[Banker]";
+				mes "Aqui está o seu Iene. Tenha um bom dia.";
+				close;
+			case 2:
+				mes "[Banker]";
+				mes "Muito bem ... volte sempre em breve.";
+				close;
+			}
+		}
+		else {
+			Zeny -= @cost;
+			Zeny += @withdrawl;
+			set #bankstorage,#bankstorage - @withdrawl;
+			mes "[Banker]";
+			mes "Aqui está o seu Iene. Tenha um bom dia.";
+			close;
+		}
+	case 3:
+		mes "[Banker]";
+		mes "Hmmmm, deixe-me verificar alguns papéis.";
+		next;
+		mes "*Rustle, Rustle*";
+		next;
+		mes "[Banker]";
+		mes "Você tem atualmente " + #bankstorage + " Iene na sua conta.";
+		close;
+	case 4:
+		mes "[Banker]";
+		mes "Muito bem ... volte sempre em breve.";
+		close;
+	}
+}

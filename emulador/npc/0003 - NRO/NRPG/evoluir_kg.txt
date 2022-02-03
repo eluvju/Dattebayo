@@ -1,0 +1,542 @@
+gef_fild07,181,239,4	script	Evolução de KG	990,{
+
+mes "Olá, aqui você pode evoluir seu Kekkei Genkai para obter um poder maior";
+next;
+mes "Cada Kekkei Genkai possui 4 níveis, para obter o primeiro nível, é preciso fazer a quest ou shiken do nível 1 do Kekkei Genkai de sua escolha";
+next;
+mes "Está interessado em ter a minha ajuda?";
+menu "Sim, estou interessado",L_slot,"Não",L_nao;
+
+L_slot:
+next;
+mes "Ótimo, é sempre bom ter mais força";
+next;
+mes "Lembre-se que precisa estar com o item equipado";
+next;
+mes "Qual é seu Kekkei Genkai?";
+menu "Byakugan",L_kunai,"Selo Amaldiçoado do Céu",L_lamina,"Selo Amaldiçoado da Terra",terra,"Hyouton",Hyouton,"Usuário das Sombras",nara,"Baika",baika,"Portões de chakra",lee,"Kugutsu",kugu,"Sharingan",shar;
+
+L_nao:
+close;
+
+L_kunai:
+if (byakugan == 0) {mes "Você não possui esse Kekkei Genkai"; close;}
+if (byakugan == 1) goto bya1;
+if (byakugan == 2) goto bya2;
+if (byakugan == 3) goto bya3;
+if (byakugan == 4) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+
+bya1:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sbya1,"Não",L_close;
+
+bya2:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 10x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sbya2,"Não",L_close;
+
+bya3:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sbya3,"Não",L_close;
+
+sbya1:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+set byakugan,2;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+byakugan+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sbya2:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+set byakugan,3;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+byakugan+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sbya3:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+set byakugan,4;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+byakugan+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+L_lamina:
+if (SELO1 == 0) {mes "Você não possui esse Kekkei Genkai"; close;}
+if (SELO1 == 1) goto selo11;
+if (SELO1 == 2) goto selo12;
+if (SELO1 == 3) goto selo13;
+if (SELO1 == 4) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+
+selo11:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sselo11,"Não",L_close;
+
+selo12:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 10x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sselo12,"Não",L_close;
+
+selo13:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sselo13,"Não",L_close;
+
+sselo11:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+set SELO1,2;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+SELO1+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sselo12:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+set SELO1,3;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+SELO1+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sselo13:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+set SELO1,4;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+SELO1+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+terra:
+if (SELO2 == 0) {mes "Você não possui esse Kekkei Genkai"; close;}
+if (SELO2 == 1) goto SELO21;
+if (SELO2 == 2) goto SELO22;
+if (SELO2 == 3) goto SELO23;
+if (SELO2 == 4) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+
+SELO21:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sSELO21,"Não",L_close;
+
+SELO22:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 10x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sSELO22,"Não",L_close;
+
+SELO23:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sSELO23,"Não",L_close;
+
+sSELO21:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+set SELO2,2;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+SELO2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sSELO22:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+set SELO2,3;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+SELO2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sSELO23:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+set SELO2,4;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+SELO2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+Hyouton:
+if (GELO == 0) {mes "Você não possui esse Kekkei Genkai"; close;}
+if (GELO == 1) goto gelo1;
+if (GELO == 2) goto gelo2;
+if (GELO == 3) goto gelo3;
+if (GELO == 4) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+
+gelo1:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sgelo1,"Não",L_close;
+
+gelo2:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sgelo2,"Não",L_close;
+
+gelo3:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sgelo3,"Não",L_close;
+
+sgelo1:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+set GELO,2;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+GELO+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sgelo2:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+set GELO,3;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+GELO+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sgelo3:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+set GELO,4;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+GELO+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+nara:
+if (NARA2 == 0) {mes "Você não possui esse Kekkei Genkai"; close;}
+if (NARA2 == 1) goto NARA11;
+if (NARA2 == 2) goto NARA12;
+if (NARA2 == 3) goto NARA13;
+if (NARA2 == 4) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+
+NARA11:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",damn,"Não",L_close;
+
+NARA12:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 10x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",damnz,"Não",L_close;
+
+NARA13:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",damnzz,"Não",L_close;
+
+damn:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+set NARA2,2;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+NARA2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+damnz:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+set NARA2,3;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+NARA2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+damnzz:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+set NARA2,4;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+NARA2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+baika:
+if (AKIMICHI == 0) {mes "Você não possui esse Kekkei Genkai"; close;}
+if (AKIMICHI == 1) goto baika1;
+if (AKIMICHI == 2) goto baika2;
+if (AKIMICHI == 3) goto baika3;
+if (AKIMICHI == 4) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+
+baika1:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sbaika1,"Não",L_close;
+
+baika2:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 10x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sbaika2,"Não",L_close;
+
+baika3:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sbaika3,"Não",L_close;
+
+sbaika1:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+set AKIMICHI,2;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+AKIMICHI+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sbaika2:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+set AKIMICHI,3;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+AKIMICHI+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sbaika3:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+set AKIMICHI,4;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+AKIMICHI+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+lee:
+if (LEE2 == 0) {mes "Você não possui esse Kekkei Genkai"; close;}
+if (LEE2 == 1) goto LEE11;
+if (LEE2 == 2) goto LEE12;
+if (LEE2 == 3) goto LEE13;
+if (LEE2 == 4) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+
+LEE11:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",dude,"Não",L_close;
+
+LEE12:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 10x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",dudes,"Não",L_close;
+
+LEE13:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",dudess,"Não",L_close;
+
+dude:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+set LEE2,2;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+LEE2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+dudes:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+set LEE2,3;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+LEE2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+dudess:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+set LEE2,4;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+LEE2+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+kugu:
+if (MARIONETE == 0) {mes "Você não possui esse Kekkei Genkai"; close;}
+if (MARIONETE == 1) goto MARIONETE1;
+if (MARIONETE == 2) goto MARIONETE2;
+if (MARIONETE == 3) goto MARIONETE3;
+if (MARIONETE == 4) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+
+MARIONETE1:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sMARIONETE1,"Não",L_close;
+
+MARIONETE2:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 10x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sMARIONETE2,"Não",L_close;
+
+MARIONETE3:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sMARIONETE3,"Não",L_close;
+
+sMARIONETE1:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+set MARIONETE,2;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+MARIONETE+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sMARIONETE2:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+set MARIONETE,3;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+MARIONETE+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sMARIONETE3:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+set MARIONETE,4;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível "+MARIONETE+"",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+shar:
+if (countitem(19068) == 1) goto shar1;
+if (countitem(19069) == 1) goto shar2;
+if (countitem(19070) == 1) goto shar3;
+if (countitem(19003) == 1) {mes "Sua Kekkei Genkai já está no máximo"; close;}
+mes "Você não possui essa Kekkei Genkai";
+close;
+
+shar1:
+next;
+mes "Vi que seu Kekkei Genkai é nível 1";
+next;
+mes "É preciso ter 3x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sshar1,"Não",L_close;
+
+shar2:
+next;
+mes "Vi que seu Kekkei Genkai é nível 2";
+next;
+mes "É preciso ter 10x Sangue preservado para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sshar2,"Não",L_close;
+
+shar3:
+next;
+mes "Vi que seu Kekkei Genkai é nível 3";
+next;
+mes "É preciso ter 30x Sangue preservado e um sangue preservado especial para evoluir-lo, gostaria de evoluir?";
+menu "Sim",sshar3,"Não",L_close;
+
+sshar1:
+next;
+if (countitem(923) < 3) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,3;
+delitem 19068,1;
+getitem 19069,1;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível 2",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sshar2:
+next;
+if (countitem(923) < 10) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+delitem 923,10;
+delitem 19069,1;
+getitem 19070,1;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível 3",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+sshar3:
+next;
+if (countitem(923) < 30) {next; mes "Você ainda não tem os Sangues preservados que precisa pra evoluir"; close;}
+if (countitem(950) < 1) {next; mes "Você ainda não tem o Sangue preservado especial que precisa pra evoluir"; close;}
+delitem 923,30;
+delitem 950,1;
+delitem 19070,1;
+getitem 19003,1;
+announce "[Evolução KG] "+strcharinfo(0)+" Acaba de evoluir sua Kekkei Genkai para nível 4",bc_blue|bc_all;
+mes "Kekkei Genkai evoluida com sucesso";
+close;
+
+L_close:
+close;
+
+}

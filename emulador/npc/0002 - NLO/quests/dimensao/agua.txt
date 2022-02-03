@@ -1,0 +1,207 @@
+
+iz_dun03,0,0,0,0	monster	Think		1285,30,0,0,0
+iz_dun03,0,0,0,0	monster	Bell		1286,30,0,0,0
+
+iz_dun03,51,68,5	script	Nativo#2	709,{
+	if(checkquest(6) == 1) {
+		if(checkquest(6,HUNTING) == 2) {
+			if(countitem(769) >= 100) {
+				mes "[Nativo]";
+				mes "Parabéns, aqui está sua recompensa.";
+				getitem 770,1;
+				delitem 769,100;
+				completequest 6; 
+				erasequest 6;
+				close;
+			}
+			mes "[Nativo]";
+			mes "Você Não completou sua missão ainda.";
+			close;
+		}
+		mes "[Nativo]";
+		mes "Você Não completou sua missão ainda.";
+		close;
+	}
+	mes "[Nativo]";
+	mes "Bem vindo visitante a Dimensão da Água, ";
+	mes "te darei um item que permite respirar em baixo dágua, mas só por pouco tempo... ";
+	mes "ultimamente estamos enfrentando uma invasão de monstros, ";
+	mes "caso me ajude, você será muito bem recompensado.";
+	if(select("- Sim:- Não") == 2) { close; }
+		next;	
+		mes "[Nativo]";
+		mes "Recompensa: Fragmento da Dimensão da Água";
+		mes "Derrote 100 Think";
+		mes "Derrote 100 Bell";
+		mes "Coletar 100 Amostra de Água";
+		if(select("- Pegar a Quest:- Deixa para outra hora") == 2) { close; }
+		setquest 6;
+		close;
+}
+
+iz_dun03,46,58,5	script	Instância da Água#1	708,{
+
+	set .@instance$, "Dimensao Agua";
+	mes "^ff0000[Instância da Água]^000000";
+	mes "Olá, shinobi! Está pronto para começar sua aventura?";
+	menu "Iniciar Raid.",inicio,"Removedor de Raid.",removedor;
+	removedor:
+next;
+if(questmade761 == GetTime(8)) {
+mes "^ff0000[Instância da Água]^000000";
+mes "Você pode resetar sua raid novamente amanhã!";
+close;
+}
+
+if(vip_status(1)) {
+mes "^ff0000[Instância da Água]^000000";
+mes "Olá "+ strcharinfo(0) +", você tem direito a 1 Reset da Raid da Dimensão Água. Gostaria de utilizar ele agora?";
+menu "- Sim.",r1,"- Não.",r2;
+		
+r1:
+next;
+mes "^ff0000[Instância da Água]^000000";
+mes "Boa sorte "+ strcharinfo(0) +"!";
+getitem 7026,1;
+set questmade761, GetTime(8);
+close;
+	
+r2:
+next;
+mes "^ff0000[Instância da Água]^000000";
+mes "Estarei aqui se mudar de ideia!";
+close;	
+}
+
+inicio:	
+if(questmade760 == GetTime(8)) {
+if(vip_status(1)) goto reset;
+mes "Você já realizou essa instância hoje. Você pode jogar novamente amanhã!";
+close;
+
+reset:
+mes "^ff0000[Instância da Água]^000000";
+mes "Vou precisar de 1 Removedor de Raid para realizar meu jutsu!";
+if(countitem (7026) < 1) goto moedas;
+next;
+mes "**Uma aura de chakra é formada em sua volta**";
+specialeffect2 488;
+next;
+mes "^ff0000[Instância da Água]^000000";
+mes "Meu jutsu foi um sucesso! Você pode entrar no portal novamente!";
+set questmade760, 0;
+delitem 7026,1;
+close;
+
+moedas:
+next;
+mes "^ff0000[Instância da Água]^000000";
+mes "Shinobi, preciso do meu pagamento para realizar o jutsu, você não tem o Removedor de Raid! Fale comigo novamente!";
+close;
+}
+	
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	if($@partymembercount > 2) {
+	mes "Você não pode iniciar a Raid com mais de 2 membros no grupo.";
+	close;
+	}
+}
+
+	if (instance_id()) {
+		if (select("Entrar na raid.:Cancelar.") == 2) end;
+		if (instance_enter(.@instance$) != 0) {
+			mes "Você não atende aos requisitos da ^FF0000Dimensão Água^000000.";
+			close;
+		}
+	} else {
+		if (select("Criar raid.:Cancelar.") == 2) end;
+		if(getpartyleader(getcharid(1),2) != getcharid(0)) goto naocria;
+
+		if (instance_create(.@instance$) < 0) {
+		mes "Você não atende aos requisitos da ^FF0000Dimensão Água^000000.";
+		close;
+
+		naocria:
+		mes "Você precisa ser o líder do grupo para criar a raid ^FF0000Dimensão Água^000000.";
+		close;
+		}
+
+		mes "Raid criada.";
+		close2;
+		instance_enter(.@instance$);
+		getpartymember getcharid(1),2;
+		for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		attachrid($@partymemberaid[.@i]);
+		}
+		attachrid(getpartyleader(getcharid(1),1));
+		// Começo da Instância
+		hideonnpc ""+instance_npcname("Instância da Água#2")+"";
+		instance_announce instance_id(),"Boa sorte shinobi!",0;
+		monster ""+instance_mapname("iz_dun04",instance_id())+"",0,0,"Predator",1287,50,"dimensaoagua::OnMonsterDie1";
+		end;
+	}
+}
+iz_dun04,0,0,0	script	dimensaoagua	-1,{
+
+OnMonsterDie1:
+	if(!mobcount(""+instance_mapname("iz_dun04",instance_id())+"","dimensaoagua::OnMonsterDie1"))  {
+		instance_announce instance_id(),"O Chefe acaba de aparecer no mapa!",0;
+		monster ""+instance_mapname("iz_dun04",instance_id())+"",130,227,"Water Guardian",1289,1,"dimensaoagua::OnMonsterDie2";
+		end;
+	}
+	else
+	instance_announce instance_id(),"Há "+(50 - mobcount(""+instance_mapname("iz_dun04",instance_id())+"","dimensaoagua::OnMonsterDie1"))+" Montros Mortos",0;
+	end;
+
+OnMonsterDie2:
+		if(!mobcount(""+instance_mapname("iz_dun04",instance_id())+"","dimensaoagua::OnMonsterDie2"))  {
+		instance_announce instance_id(),"Parabéns por completar a Dimensão da Água!",0;
+		hideoffnpc ""+instance_npcname("Instância da Água#2")+"";
+		end;	
+	}
+}
+
+iz_dun04,24,32,5	script	Instância da Água#2	708,{
+
+	if(getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "Apenas o líder pode finalizar a missão.";
+		close;
+	}
+	getpartymember getcharid(1),1;
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+		if($@partymembercount > 2) {
+			mes "Seu Grupo é muito grande. Reduz a quantidade de membros. Só é permitido 2 pessoas.";
+			instance_destroy;
+			close;
+		}
+	}
+
+	mes "Você conseguiu completar a missão.";
+	close2;
+	getpartymember getcharid(1),0;	
+	getpartymember getcharid(1),1;	
+	getpartymember getcharid(1),2;
+	for(.@i = 0; .@i < $@partymembercount; .@i++) {
+	attachrid($@partymemberaid[.@i]);	
+		if ( isloggedin( $@partymemberaid[.@i], $@partymembercid[.@i] ) ) {
+
+			query_sql("SELECT `index`,`value`  FROM `agua_limit` WHERE `char_id` = '"+$@partymembercid[.@i]+"'",@agua,@limiteagua);
+			
+				if(!@agua) {
+					query_sql "INSERT INTO `agua_limit` (`char_id`, `index`, `value`) VALUES ("+$@partymembercid[.@i]+",1,1)";
+				} else { 
+					query_sql "UPDATE `agua_limit` SET `value` = `value` + 1 WHERE `char_id`= '"+$@partymembercid[.@i]+"'";	
+				}
+	// Recompensas
+	set questmade760, GetTime(8);
+		}
+	}	
+	announce "O Grupo ["+getpartyname(getcharid(1))+"] acaba de completar a Dimensão da Água.",bc_all;	
+	instance_destroy;
+	end;
+}
+
+iz_dun04	mapflag	partylock
