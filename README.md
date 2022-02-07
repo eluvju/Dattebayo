@@ -1,4 +1,4 @@
-<img src="doc/logo.png" align="right" height="90" />
+<!---<img src="doc/logo.png" align="right" height="90" />
 
 # rAthena
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/rathena/rathena.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rathena/rathena/alerts/) [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/rathena/rathena.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rathena/rathena/context:cpp) ![GitHub](https://img.shields.io/github/license/rathena/rathena.svg) ![GitHub repo size](https://img.shields.io/github/repo-size/rathena/rathena.svg)
@@ -70,3 +70,5 @@ Details on how to contribute to rAthena can be found in [CONTRIBUTING.md](https:
 
 ## 6. License
 Copyright (c) rAthena Development Team - Licensed under [GNU General Public License v3.0](https://github.com/rathena/rathena/blob/master/LICENSE)
+
+--->
